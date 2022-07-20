@@ -28,6 +28,9 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# Visual Studio cache/options directory
+.vs/
+
 # vercel
 .vercel
 
