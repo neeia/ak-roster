@@ -1,0 +1,5573 @@
+{
+  "char_285_medic2": {
+    "id": "char_285_medic2",
+    "name": "Lancet-2",
+    "rarity": 1,
+    "isCnOnly": false,
+    "skills": [],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_286_cast3": {
+    "id": "char_286_cast3",
+    "name": "Castle-3",
+    "rarity": 1,
+    "isCnOnly": false,
+    "skills": [],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_376_therex": {
+    "id": "char_376_therex",
+    "name": "Thermal-EX",
+    "rarity": 1,
+    "isCnOnly": false,
+    "skills": [],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_4000_jnight": {
+    "id": "char_4000_jnight",
+    "name": "\"Justice Knight\"",
+    "rarity": 1,
+    "isCnOnly": false,
+    "skills": [],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_502_nblade": {
+    "id": "char_502_nblade",
+    "name": "Yato",
+    "rarity": 2,
+    "isCnOnly": false,
+    "skills": [],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_500_noirc": {
+    "id": "char_500_noirc",
+    "name": "Noir Corne",
+    "rarity": 2,
+    "isCnOnly": false,
+    "skills": [],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_503_rang": {
+    "id": "char_503_rang",
+    "name": "Rangers",
+    "rarity": 2,
+    "isCnOnly": false,
+    "skills": [],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_501_durin": {
+    "id": "char_501_durin",
+    "name": "Durin",
+    "rarity": 2,
+    "isCnOnly": false,
+    "skills": [],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_009_12fce": {
+    "id": "char_009_12fce",
+    "name": "12F",
+    "rarity": 2,
+    "isCnOnly": false,
+    "skills": [],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_123_fang": {
+    "id": "char_123_fang",
+    "name": "Fang",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_charge_cost[1]",
+        "iconId": null,
+        "skillName": "Charge α"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_240_wyvern": {
+    "id": "char_240_wyvern",
+    "name": "Vanilla",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_wyvern_1",
+        "iconId": null,
+        "skillName": "Command - Reinforcement"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_192_falco": {
+    "id": "char_192_falco",
+    "name": "Plume",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_quickattack[1]",
+        "iconId": null,
+        "skillName": "Swift Strike α"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_208_melan": {
+    "id": "char_208_melan",
+    "name": "Melantha",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[1]",
+        "iconId": null,
+        "skillName": "ATK Up α"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_281_popka": {
+    "id": "char_281_popka",
+    "name": "Popukar",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[1]",
+        "iconId": null,
+        "skillName": "ATK Up α"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_209_ardign": {
+    "id": "char_209_ardign",
+    "name": "Cardigan",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_heal_self[1]",
+        "iconId": null,
+        "skillName": "Regeneration α"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_122_beagle": {
+    "id": "char_122_beagle",
+    "name": "Beagle",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_def_up[1]",
+        "iconId": null,
+        "skillName": "DEF Up α"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_284_spot": {
+    "id": "char_284_spot",
+    "name": "Spot",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_spot_1",
+        "iconId": null,
+        "skillName": "Secondary Healing Mode"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_124_kroos": {
+    "id": "char_124_kroos",
+    "name": "Kroos",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_kroos_1",
+        "iconId": null,
+        "skillName": "Double Tap - Auto"
+      }
+    ],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_211_adnach": {
+    "id": "char_211_adnach",
+    "name": "Adnachiel",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[1]",
+        "iconId": null,
+        "skillName": "ATK Up α"
+      }
+    ],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_121_lava": {
+    "id": "char_121_lava",
+    "name": "Lava",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_magic_rage[1]",
+        "iconId": null,
+        "skillName": "Tactical Chant α"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_120_hibisc": {
+    "id": "char_120_hibisc",
+    "name": "Hibiscus",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_heal_up[1]",
+        "iconId": null,
+        "skillName": "Healing Up α"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_212_ansel": {
+    "id": "char_212_ansel",
+    "name": "Ansel",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_range_extend",
+        "iconId": null,
+        "skillName": "Healing Range Up"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_210_stward": {
+    "id": "char_210_stward",
+    "name": "Steward",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_stward_1",
+        "iconId": "skcom_powerstrike[1]",
+        "skillName": "Power Strike α"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_278_orchid": {
+    "id": "char_278_orchid",
+    "name": "Orchid",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_quickattack[1]",
+        "iconId": null,
+        "skillName": "Swift Strike α"
+      }
+    ],
+    "class": "Supporter",
+    "modules": []
+  },
+  "char_141_nights": {
+    "id": "char_141_nights",
+    "name": "Haze",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[2]",
+        "iconId": null,
+        "skillName": "ATK Up β"
+      },
+      {
+        "skillId": "skchr_nights_2",
+        "iconId": null,
+        "skillName": "Crimson Eyes"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_109_fmout": {
+    "id": "char_109_fmout",
+    "name": "Gitano",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_magic_rage[2]",
+        "iconId": null,
+        "skillName": "Tactical Chant β"
+      },
+      {
+        "skillId": "skchr_fmout_2",
+        "iconId": null,
+        "skillName": "Destiny"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "占卜师旅行套装",
+        "moduleId": "uniequip_002_fmout",
+        "typeName": "SPC-X"
+      }
+    ]
+  },
+  "char_253_greyy": {
+    "id": "char_253_greyy",
+    "name": "Greyy",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_magic_rage[2]",
+        "iconId": null,
+        "skillName": "Tactical Chant β"
+      },
+      {
+        "skillId": "skchr_greyy_2",
+        "iconId": null,
+        "skillName": "Electrostatic Discharge"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "新的开始",
+        "moduleId": "uniequip_002_greyy",
+        "typeName": "SPC-Y"
+      }
+    ]
+  },
+  "char_328_cammou": {
+    "id": "char_328_cammou",
+    "name": "Click",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[2]",
+        "iconId": null,
+        "skillName": "ATK Up β"
+      },
+      {
+        "skillId": "skchr_cammou_2",
+        "iconId": null,
+        "skillName": "Synchronized Attack"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_469_indigo": {
+    "id": "char_469_indigo",
+    "name": "Indigo",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_indigo_1",
+        "iconId": null,
+        "skillName": "Lighthouse Guardian"
+      },
+      {
+        "skillId": "skchr_indigo_2",
+        "iconId": null,
+        "skillName": "Labyrinth of Light"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "法杖保养套装",
+        "moduleId": "uniequip_002_indigo",
+        "typeName": "MSC-X"
+      }
+    ]
+  },
+  "char_4004_pudd": {
+    "id": "char_4004_pudd",
+    "name": "Pudding",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_magic_rage[2]",
+        "iconId": null,
+        "skillName": "Tactical Chant β"
+      },
+      {
+        "skillId": "skchr_pudd_2",
+        "iconId": null,
+        "skillName": "Diffusion Current"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "Portable Electrical Measuring Equipment",
+        "moduleId": "uniequip_002_pudd",
+        "typeName": "CHA-Y"
+      }
+    ]
+  },
+  "char_235_jesica": {
+    "id": "char_235_jesica",
+    "name": "Jessica",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_jesica_1",
+        "iconId": "skcom_powerstrike[2]",
+        "skillName": "Power Strike β"
+      },
+      {
+        "skillId": "skchr_jesica_2",
+        "iconId": null,
+        "skillName": "Smokescreen"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "杰西卡的订单",
+        "moduleId": "uniequip_002_jesica",
+        "typeName": "MAR-Y"
+      }
+    ]
+  },
+  "char_126_shotst": {
+    "id": "char_126_shotst",
+    "name": "Meteor",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_shotst_1",
+        "iconId": null,
+        "skillName": "Armor Breaker"
+      },
+      {
+        "skillId": "skchr_shotst_2",
+        "iconId": null,
+        "skillName": "Armor Breaker - Spread"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "猎刀",
+        "moduleId": "uniequip_002_shotst",
+        "typeName": "MAR-X"
+      }
+    ]
+  },
+  "char_190_clour": {
+    "id": "char_190_clour",
+    "name": "Vermeil",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[2]",
+        "iconId": null,
+        "skillName": "ATK Up β"
+      },
+      {
+        "skillId": "skchr_clour_2",
+        "iconId": null,
+        "skillName": "Double Shot"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "“不落”",
+        "moduleId": "uniequip_002_clour",
+        "typeName": "MAR-X"
+      }
+    ]
+  },
+  "char_133_mm": {
+    "id": "char_133_mm",
+    "name": "May",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_mm_1",
+        "iconId": null,
+        "skillName": "Paralyzing Shell"
+      },
+      {
+        "skillId": "skchr_mm_2",
+        "iconId": null,
+        "skillName": "Binding Shock"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "新手侦探礼包",
+        "moduleId": "uniequip_002_mm",
+        "typeName": "MAR-X"
+      }
+    ]
+  },
+  "char_118_yuki": {
+    "id": "char_118_yuki",
+    "name": "Shirayuki",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_yuki_1",
+        "iconId": null,
+        "skillName": "Shuriken"
+      },
+      {
+        "skillId": "skchr_yuki_2",
+        "iconId": null,
+        "skillName": "Fatal Shuriken"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "手里剑",
+        "moduleId": "uniequip_002_yuki",
+        "typeName": "ART-Y"
+      }
+    ]
+  },
+  "char_440_pinecn": {
+    "id": "char_440_pinecn",
+    "name": "Pinecone",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_pinecn_1",
+        "iconId": null,
+        "skillName": "RMA Spikes"
+      },
+      {
+        "skillId": "skchr_pinecn_2",
+        "iconId": null,
+        "skillName": "Electrical Overcharge"
+      }
+    ],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_302_glaze": {
+    "id": "char_302_glaze",
+    "name": "Ambriel",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_glaze_1",
+        "iconId": null,
+        "skillName": "Snaring Shell"
+      },
+      {
+        "skillId": "skchr_glaze_2",
+        "iconId": null,
+        "skillName": "Radar Sweep"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "Portable Radar Equipment",
+        "moduleId": "uniequip_002_glaze",
+        "typeName": "DEA-X"
+      }
+    ]
+  },
+  "char_366_acdrop": {
+    "id": "char_366_acdrop",
+    "name": "Aciddrop",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_acdrop_1",
+        "iconId": null,
+        "skillName": "Fancy Shot"
+      },
+      {
+        "skillId": "skchr_acdrop_2",
+        "iconId": null,
+        "skillName": "Trigger Time"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "“自由、洋葱圈和我”",
+        "moduleId": "uniequip_002_acdrop",
+        "typeName": "ARC-X"
+      }
+    ]
+  },
+  "char_198_blackd": {
+    "id": "char_198_blackd",
+    "name": "Courier",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_charge_cost[2]",
+        "iconId": null,
+        "skillName": "Charge β"
+      },
+      {
+        "skillId": "skchr_blackd_2",
+        "iconId": null,
+        "skillName": "Command - Defense"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_149_scave": {
+    "id": "char_149_scave",
+    "name": "Scavenger",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_charge_cost[2]",
+        "iconId": null,
+        "skillName": "Charge β"
+      },
+      {
+        "skillId": "skchr_scave_2",
+        "iconId": null,
+        "skillName": "Command - Attack"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_290_vigna": {
+    "id": "char_290_vigna",
+    "name": "Vigna",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_vigna_1",
+        "iconId": "skcom_atk_up[2]",
+        "skillName": "ATK Up β"
+      },
+      {
+        "skillId": "skchr_vigna_2",
+        "iconId": null,
+        "skillName": "Hammer-On"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": [
+      {
+        "moduleName": "The Greatrock",
+        "moduleId": "uniequip_002_vigna",
+        "typeName": "CHG-Y"
+      }
+    ]
+  },
+  "char_151_myrtle": {
+    "id": "char_151_myrtle",
+    "name": "Myrtle",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_assist_cost[2]",
+        "iconId": null,
+        "skillName": "Support β"
+      },
+      {
+        "skillId": "skchr_myrtle_2",
+        "iconId": null,
+        "skillName": "Healing Wings"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_452_bstalk": {
+    "id": "char_452_bstalk",
+    "name": "Beanstalk",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_bstalk_1",
+        "iconId": null,
+        "skillName": "Sentinel Command"
+      },
+      {
+        "skillId": "skchr_bstalk_2",
+        "iconId": null,
+        "skillName": "'Everyone Together!'"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_130_doberm": {
+    "id": "char_130_doberm",
+    "name": "Dobermann",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_doberm_1",
+        "iconId": "skcom_powerstrike[2]",
+        "skillName": "Power Strike β"
+      },
+      {
+        "skillId": "skchr_doberm_2",
+        "iconId": null,
+        "skillName": "Spur"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "Military Telescope",
+        "moduleId": "uniequip_002_doberm",
+        "typeName": "INS-Y"
+      }
+    ]
+  },
+  "char_289_gyuki": {
+    "id": "char_289_gyuki",
+    "name": "Matoimaru",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_heal_self[2]",
+        "iconId": null,
+        "skillName": "Regeneration β"
+      },
+      {
+        "skillId": "skchr_gyuki_2",
+        "iconId": null,
+        "skillName": "Demonic Power"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "断竹插花作品",
+        "moduleId": "uniequip_002_gyuki",
+        "typeName": "DRE-Y"
+      }
+    ]
+  },
+  "char_159_peacok": {
+    "id": "char_159_peacok",
+    "name": "Conviction",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_peacok_1",
+        "iconId": null,
+        "skillName": "Judgment"
+      },
+      {
+        "skillId": "skchr_peacok_2",
+        "iconId": null,
+        "skillName": "Genesis"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "断罪之拳",
+        "moduleId": "uniequip_002_peacok",
+        "typeName": "DRE-X"
+      }
+    ]
+  },
+  "char_193_frostl": {
+    "id": "char_193_frostl",
+    "name": "Frostleaf",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_frostl_1",
+        "iconId": null,
+        "skillName": "Frost Tomahawk"
+      },
+      {
+        "skillId": "skchr_frostl_2",
+        "iconId": null,
+        "skillName": "Ice Tomahawk"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_127_estell": {
+    "id": "char_127_estell",
+    "name": "Estelle",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[2]",
+        "iconId": null,
+        "skillName": "ATK Up β"
+      },
+      {
+        "skillId": "skchr_estell_2",
+        "iconId": null,
+        "skillName": "Sacrificial Strike"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_185_frncat": {
+    "id": "char_185_frncat",
+    "name": "Mousse",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_frncat_1",
+        "iconId": null,
+        "skillName": "Scratch"
+      },
+      {
+        "skillId": "skchr_frncat_2",
+        "iconId": null,
+        "skillName": "Fury"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_301_cutter": {
+    "id": "char_301_cutter",
+    "name": "Cutter",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_cutter_1",
+        "iconId": null,
+        "skillName": "Redshift"
+      },
+      {
+        "skillId": "skchr_cutter_2",
+        "iconId": null,
+        "skillName": "Crimson Crescent"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "Replaceable Tool Set",
+        "moduleId": "uniequip_002_cutter",
+        "typeName": "SWO-Y"
+      }
+    ]
+  },
+  "char_337_utage": {
+    "id": "char_337_utage",
+    "name": "Utage",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_utage_1",
+        "iconId": null,
+        "skillName": "Space Out"
+      },
+      {
+        "skillId": "skchr_utage_2",
+        "iconId": null,
+        "skillName": "Descending Strike - Earth Splitter"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_271_spikes": {
+    "id": "char_271_spikes",
+    "name": "Arene",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_spikes_1",
+        "iconId": null,
+        "skillName": "Just Kidding"
+      },
+      {
+        "skillId": "skchr_spikes_2",
+        "iconId": null,
+        "skillName": "Deadly Prank"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_237_gravel": {
+    "id": "char_237_gravel",
+    "name": "Gravel",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_gravel_1",
+        "iconId": null,
+        "skillName": "Shadow Assault"
+      },
+      {
+        "skillId": "skchr_gravel_2",
+        "iconId": null,
+        "skillName": "Rat Swarm"
+      }
+    ],
+    "class": "Specialist",
+    "modules": [
+      {
+        "moduleName": "Covert Action Toolkit",
+        "moduleId": "uniequip_002_gravel",
+        "typeName": "EXE-X"
+      }
+    ]
+  },
+  "char_272_strong": {
+    "id": "char_272_strong",
+    "name": "Jaye",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_strong_1",
+        "iconId": null,
+        "skillName": "Shell Splitter"
+      },
+      {
+        "skillId": "skchr_strong_2",
+        "iconId": null,
+        "skillName": "Sashimi Platter"
+      }
+    ],
+    "class": "Specialist",
+    "modules": [
+      {
+        "moduleName": "精钢刀具套组",
+        "moduleId": "uniequip_002_strong",
+        "typeName": "MER-X"
+      }
+    ]
+  },
+  "char_236_rope": {
+    "id": "char_236_rope",
+    "name": "Rope",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_rope_1",
+        "iconId": null,
+        "skillName": "Hook Shot"
+      },
+      {
+        "skillId": "skchr_rope_2",
+        "iconId": null,
+        "skillName": "Double Hook"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_117_myrrh": {
+    "id": "char_117_myrrh",
+    "name": "Myrrh",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_myrrh_1",
+        "iconId": null,
+        "skillName": "Dual Healing"
+      },
+      {
+        "skillId": "skchr_myrrh_2",
+        "iconId": null,
+        "skillName": "Medic Field"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_187_ccheal": {
+    "id": "char_187_ccheal",
+    "name": "Gavial",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_ccheal_1",
+        "iconId": null,
+        "skillName": "Vitality Restoration"
+      },
+      {
+        "skillId": "skchr_ccheal_2",
+        "iconId": null,
+        "skillName": "Vitality Restoration - Wide Range"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_298_susuro": {
+    "id": "char_298_susuro",
+    "name": "Sussurro",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_heal_up[2]",
+        "iconId": null,
+        "skillName": "Healing Up β"
+      },
+      {
+        "skillId": "skchr_susuro_2",
+        "iconId": null,
+        "skillName": "Deep Healing"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_181_flower": {
+    "id": "char_181_flower",
+    "name": "Perfumer",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_heal_up[2]",
+        "iconId": null,
+        "skillName": "Healing Up β"
+      },
+      {
+        "skillId": "skchr_flower_2",
+        "iconId": null,
+        "skillName": "Fine Blending"
+      }
+    ],
+    "class": "Medic",
+    "modules": [
+      {
+        "moduleName": "'Aegean's Kiss'",
+        "moduleId": "uniequip_002_flower",
+        "typeName": "RIN-Y"
+      }
+    ]
+  },
+  "char_385_finlpp": {
+    "id": "char_385_finlpp",
+    "name": "Purestream",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_finlpp_1",
+        "iconId": null,
+        "skillName": "Healing Waves"
+      },
+      {
+        "skillId": "skchr_finlpp_2",
+        "iconId": null,
+        "skillName": "Lifespring"
+      }
+    ],
+    "class": "Medic",
+    "modules": [
+      {
+        "moduleName": "“江河之韵”",
+        "moduleId": "uniequip_002_finlpp",
+        "typeName": "WAH-Y"
+      }
+    ]
+  },
+  "char_4041_chnut": {
+    "id": "char_4041_chnut",
+    "name": "Chestnut",
+    "rarity": 4,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_chnut_1",
+        "iconId": null,
+        "skillName": "积微成著"
+      },
+      {
+        "skillId": "skchr_chnut_2",
+        "iconId": null,
+        "skillName": "厚土迸发"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_199_yak": {
+    "id": "char_199_yak",
+    "name": "Matterhorn",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_yak_1",
+        "iconId": null,
+        "skillName": "Stamina Enhancement"
+      },
+      {
+        "skillId": "skchr_yak_2",
+        "iconId": null,
+        "skillName": "Cold Resistance"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_150_snakek": {
+    "id": "char_150_snakek",
+    "name": "Cuora",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_def_up[2]",
+        "iconId": null,
+        "skillName": "DEF Up β"
+      },
+      {
+        "skillId": "skchr_snakek_2",
+        "iconId": null,
+        "skillName": "Shell Defense"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_381_bubble": {
+    "id": "char_381_bubble",
+    "name": "Bubble",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_def_up[2]",
+        "iconId": null,
+        "skillName": "DEF Up β"
+      },
+      {
+        "skillId": "skchr_bubble_2",
+        "iconId": null,
+        "skillName": "'Beaten Up'"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_196_sunbr": {
+    "id": "char_196_sunbr",
+    "name": "Gummy",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_sunbr_1",
+        "iconId": null,
+        "skillName": "Provisions"
+      },
+      {
+        "skillId": "skchr_sunbr_2",
+        "iconId": null,
+        "skillName": "Cooking"
+      }
+    ],
+    "class": "Defender",
+    "modules": [
+      {
+        "moduleName": "蜜糖馅饼礼包",
+        "moduleId": "uniequip_002_sunbr",
+        "typeName": "GUA-X"
+      }
+    ]
+  },
+  "char_260_durnar": {
+    "id": "char_260_durnar",
+    "name": "Dur-nar",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[2]",
+        "iconId": null,
+        "skillName": "ATK Up β"
+      },
+      {
+        "skillId": "skchr_durnar_2",
+        "iconId": null,
+        "skillName": "Shielded Counterattack"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_110_deepcl": {
+    "id": "char_110_deepcl",
+    "name": "Deepcolor",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_deepcl_1",
+        "iconId": null,
+        "skillName": "Shadow Tentacle"
+      },
+      {
+        "skillId": "skchr_deepcl_2",
+        "iconId": null,
+        "skillName": "Visual Trap"
+      }
+    ],
+    "class": "Supporter",
+    "modules": [
+      {
+        "moduleName": "Weird Palette",
+        "moduleId": "uniequip_002_deepcl",
+        "typeName": "SUM-Y"
+      }
+    ]
+  },
+  "char_183_skgoat": {
+    "id": "char_183_skgoat",
+    "name": "Earthspirit",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[2]",
+        "iconId": null,
+        "skillName": "ATK Up β"
+      },
+      {
+        "skillId": "skchr_skgoat_2",
+        "iconId": null,
+        "skillName": "Quicksand Conversion"
+      }
+    ],
+    "class": "Supporter",
+    "modules": [
+      {
+        "moduleName": "待确认的申请表",
+        "moduleId": "uniequip_002_skgoat",
+        "typeName": "DEC-Y"
+      }
+    ]
+  },
+  "char_258_podego": {
+    "id": "char_258_podego",
+    "name": "Podenco",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_podego_1",
+        "iconId": null,
+        "skillName": "Aromatherapy"
+      },
+      {
+        "skillId": "skchr_podego_2",
+        "iconId": null,
+        "skillName": "Spread Spores"
+      }
+    ],
+    "class": "Supporter",
+    "modules": [
+      {
+        "moduleName": "“不谢的苗圃”",
+        "moduleId": "uniequip_002_podego",
+        "typeName": "DEC-X"
+      }
+    ]
+  },
+  "char_484_robrta": {
+    "id": "char_484_robrta",
+    "name": "Roberta",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_robrta_1",
+        "iconId": null,
+        "skillName": "Siracusan-Style Makeup"
+      },
+      {
+        "skillId": "skchr_robrta_2",
+        "iconId": null,
+        "skillName": "Full Auto Modeler"
+      }
+    ],
+    "class": "Supporter",
+    "modules": []
+  },
+  "char_355_ethan": {
+    "id": "char_355_ethan",
+    "name": "Ethan",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_ethan_1",
+        "iconId": null,
+        "skillName": "Fancy Maneuvers"
+      },
+      {
+        "skillId": "skchr_ethan_2",
+        "iconId": null,
+        "skillName": "Suspended Cross"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_277_sqrrel": {
+    "id": "char_277_sqrrel",
+    "name": "Shaw",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_sqrrel_1",
+        "iconId": null,
+        "skillName": "Steam Pump"
+      },
+      {
+        "skillId": "skchr_sqrrel_2",
+        "iconId": null,
+        "skillName": "High-Pressure Water Cannon"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_128_plosis": {
+    "id": "char_128_plosis",
+    "name": "Ptilopsis",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_heal_up[3]",
+        "iconId": null,
+        "skillName": "Healing Up γ"
+      },
+      {
+        "skillId": "skchr_plosis_2",
+        "iconId": null,
+        "skillName": "Enkephalin"
+      }
+    ],
+    "class": "Medic",
+    "modules": [
+      {
+        "moduleName": "Medic Environment Analyze System",
+        "moduleId": "uniequip_002_plosis",
+        "typeName": "RIN-X"
+      }
+    ]
+  },
+  "char_275_breeze": {
+    "id": "char_275_breeze",
+    "name": "Breeze",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_breeze_1",
+        "iconId": null,
+        "skillName": "Cluster Therapy"
+      },
+      {
+        "skillId": "skchr_breeze_2",
+        "iconId": null,
+        "skillName": "Widespread Therapy"
+      }
+    ],
+    "class": "Medic",
+    "modules": [
+      {
+        "moduleName": "Surgical Instrument Kit",
+        "moduleId": "uniequip_002_breeze",
+        "typeName": "RIN-X"
+      }
+    ]
+  },
+  "char_115_headbr": {
+    "id": "char_115_headbr",
+    "name": "Zima",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_charge_cost[3]",
+        "iconId": null,
+        "skillName": "Charge γ"
+      },
+      {
+        "skillId": "skchr_headbr_2",
+        "iconId": null,
+        "skillName": "Ursus's Roar"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_102_texas": {
+    "id": "char_102_texas",
+    "name": "Texas",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_charge_cost[3]",
+        "iconId": null,
+        "skillName": "Charge γ"
+      },
+      {
+        "skillId": "skchr_texas_2",
+        "iconId": null,
+        "skillName": "Sword Rain"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_349_chiave": {
+    "id": "char_349_chiave",
+    "name": "Chiave",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_charge_cost[3]",
+        "iconId": null,
+        "skillName": "Charge γ"
+      },
+      {
+        "skillId": "skchr_chiave_2",
+        "iconId": null,
+        "skillName": "Blazing Wire Stripper"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_261_sddrag": {
+    "id": "char_261_sddrag",
+    "name": "Reed",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_quickattack[3]",
+        "iconId": null,
+        "skillName": "Swift Strike γ"
+      },
+      {
+        "skillId": "skchr_sddrag_2",
+        "iconId": null,
+        "skillName": "Soul Spark"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": [
+      {
+        "moduleName": "Spear Clean Suit",
+        "moduleId": "uniequip_002_sddrag",
+        "typeName": "CHG-Y"
+      }
+    ]
+  },
+  "char_496_wildmn": {
+    "id": "char_496_wildmn",
+    "name": "Wild Mane",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_wildmn_1",
+        "iconId": null,
+        "skillName": "Stabbing Lance"
+      },
+      {
+        "skillId": "skchr_wildmn_2",
+        "iconId": null,
+        "skillName": "Lance Charge"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": [
+      {
+        "moduleName": "Spear Replacement Suit",
+        "moduleId": "uniequip_002_wildmn",
+        "typeName": "CHG-X"
+      }
+    ]
+  },
+  "char_401_elysm": {
+    "id": "char_401_elysm",
+    "name": "Elysium",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_assist_cost[3]",
+        "iconId": null,
+        "skillName": "Support γ"
+      },
+      {
+        "skillId": "skchr_elysm_2",
+        "iconId": null,
+        "skillName": "Monitor"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_476_blkngt": {
+    "id": "char_476_blkngt",
+    "name": "Blacknight",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_blkngt_1",
+        "iconId": null,
+        "skillName": "半醒"
+      },
+      {
+        "skillId": "skchr_blkngt_2",
+        "iconId": null,
+        "skillName": "安眠"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_308_swire": {
+    "id": "char_308_swire",
+    "name": "Swire",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_swire_1",
+        "iconId": null,
+        "skillName": "Command and Dispatch"
+      },
+      {
+        "skillId": "skchr_swire_2",
+        "iconId": null,
+        "skillName": "Cooperative Combat"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "Self-defense Lipstick",
+        "moduleId": "uniequip_002_swire",
+        "typeName": "INS-X"
+      }
+    ]
+  },
+  "char_265_sophia": {
+    "id": "char_265_sophia",
+    "name": "Whislash",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_sophia_1",
+        "iconId": null,
+        "skillName": "Motivational Skills"
+      },
+      {
+        "skillId": "skchr_sophia_2",
+        "iconId": null,
+        "skillName": "Whip Sword"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "Whipsword Wire.L",
+        "moduleId": "uniequip_002_sophia",
+        "typeName": "INS-X"
+      }
+    ]
+  },
+  "char_106_franka": {
+    "id": "char_106_franka",
+    "name": "Franka",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_quickattack[3]",
+        "iconId": null,
+        "skillName": "Swift Strike γ"
+      },
+      {
+        "skillId": "skchr_franka_2",
+        "iconId": null,
+        "skillName": "Vorpal Edge"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "尖端铝热单元",
+        "moduleId": "uniequip_002_franka",
+        "typeName": "DRE-X"
+      }
+    ]
+  },
+  "char_131_flameb": {
+    "id": "char_131_flameb",
+    "name": "Flamebringer",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_flameb_1",
+        "iconId": null,
+        "skillName": "Blood Pact"
+      },
+      {
+        "skillId": "skchr_flameb_2",
+        "iconId": null,
+        "skillName": "Blade Demon"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "锈损的断刀",
+        "moduleId": "uniequip_002_flameb",
+        "typeName": "DRE-Y"
+      }
+    ]
+  },
+  "char_155_tiger": {
+    "id": "char_155_tiger",
+    "name": "Indra",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_tiger_1",
+        "iconId": null,
+        "skillName": "Armorcrusher"
+      },
+      {
+        "skillId": "skchr_tiger_2",
+        "iconId": null,
+        "skillName": "Sundered Soul"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_415_flint": {
+    "id": "char_415_flint",
+    "name": "Flint",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_flint_1",
+        "iconId": null,
+        "skillName": "Relentless"
+      },
+      {
+        "skillId": "skchr_flint_2",
+        "iconId": null,
+        "skillName": "Display of Might"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_140_whitew": {
+    "id": "char_140_whitew",
+    "name": "Lappland",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_whitew_1",
+        "iconId": null,
+        "skillName": "Sundial"
+      },
+      {
+        "skillId": "skchr_whitew_2",
+        "iconId": null,
+        "skillName": "Wolf Spirit"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_294_ayer": {
+    "id": "char_294_ayer",
+    "name": "Ayerscarpe",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_ayer_1",
+        "iconId": null,
+        "skillName": "Shrapnel Burst"
+      },
+      {
+        "skillId": "skchr_ayer_2",
+        "iconId": null,
+        "skillName": "Activate Phase Blades"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_252_bibeak": {
+    "id": "char_252_bibeak",
+    "name": "Bibeak",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_bibeak_1",
+        "iconId": null,
+        "skillName": "Plumage Pins"
+      },
+      {
+        "skillId": "skchr_bibeak_2",
+        "iconId": null,
+        "skillName": "Blade Swap"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "A Well-Made Shirt",
+        "moduleId": "uniequip_002_bibeak",
+        "typeName": "SWO-X"
+      }
+    ]
+  },
+  "char_459_tachak": {
+    "id": "char_459_tachak",
+    "name": "Tachanka",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_tachak_1",
+        "iconId": null,
+        "skillName": "Incendiary Grenade"
+      },
+      {
+        "skillId": "skchr_tachak_2",
+        "iconId": null,
+        "skillName": "Spray and Pray"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "Machinegun Rack",
+        "moduleId": "uniequip_002_tachak",
+        "typeName": "SWO-X"
+      }
+    ]
+  },
+  "char_143_ghost": {
+    "id": "char_143_ghost",
+    "name": "Specter",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "ATK Up γ"
+      },
+      {
+        "skillId": "skchr_ghost_2",
+        "iconId": null,
+        "skillName": "Bone Fracture"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_356_broca": {
+    "id": "char_356_broca",
+    "name": "Broca",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_broca_1",
+        "iconId": null,
+        "skillName": "Galvanize"
+      },
+      {
+        "skillId": "skchr_broca_2",
+        "iconId": null,
+        "skillName": "High-Voltage Current"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_274_astesi": {
+    "id": "char_274_astesi",
+    "name": "Astesia",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_astesi_1",
+        "iconId": null,
+        "skillName": "Astral Protection"
+      },
+      {
+        "skillId": "skchr_astesi_2",
+        "iconId": null,
+        "skillName": "Astral Sword"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_333_sidero": {
+    "id": "char_333_sidero",
+    "name": "Sideroca",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_heal_self[3]",
+        "iconId": null,
+        "skillName": "Regeneration γ"
+      },
+      {
+        "skillId": "skchr_sidero_2",
+        "iconId": null,
+        "skillName": "Restorative Surge"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_475_akafyu": {
+    "id": "char_475_akafyu",
+    "name": "Akafuyu",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_akafyu_1",
+        "iconId": null,
+        "skillName": "Nobukage-ryu - Kaminari Gatana no Zei"
+      },
+      {
+        "skillId": "skchr_akafyu_2",
+        "iconId": null,
+        "skillName": "Nobukage-ryu - Juumonji Masaru"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_421_crow": {
+    "id": "char_421_crow",
+    "name": "La Pluma",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_crow_1",
+        "iconId": null,
+        "skillName": "Rapid Slashing"
+      },
+      {
+        "skillId": "skchr_crow_2",
+        "iconId": null,
+        "skillName": "Reap"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_486_takila": {
+    "id": "char_486_takila",
+    "name": "Tequila",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_takila_1",
+        "iconId": null,
+        "skillName": "Decisive Action"
+      },
+      {
+        "skillId": "skchr_takila_2",
+        "iconId": null,
+        "skillName": "Esoteric Bladework"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_129_bluep": {
+    "id": "char_129_bluep",
+    "name": "Blue Poison",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_bluep_1",
+        "iconId": null,
+        "skillName": "Twinshot - Auto"
+      },
+      {
+        "skillId": "skchr_bluep_2",
+        "iconId": null,
+        "skillName": "Venom Spray"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "标准比色卡",
+        "moduleId": "uniequip_002_bluep",
+        "typeName": "MAR-Y"
+      }
+    ]
+  },
+  "char_204_platnm": {
+    "id": "char_204_platnm",
+    "name": "Platinum",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "ATK Up γ"
+      },
+      {
+        "skillId": "skchr_platnm_2",
+        "iconId": null,
+        "skillName": "Pegasian Sight"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "独自旅行套装",
+        "moduleId": "uniequip_002_platnm",
+        "typeName": "MAR-X"
+      }
+    ]
+  },
+  "char_367_swllow": {
+    "id": "char_367_swllow",
+    "name": "GreyThroat",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_swllow_1",
+        "iconId": null,
+        "skillName": "Flying Feathers"
+      },
+      {
+        "skillId": "skchr_swllow_2",
+        "iconId": null,
+        "skillName": "Counterflow"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "母爱的倒影",
+        "moduleId": "uniequip_002_swllow",
+        "typeName": "MAR-Y"
+      }
+    ]
+  },
+  "char_365_aprl": {
+    "id": "char_365_aprl",
+    "name": "April",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_aprl_1",
+        "iconId": null,
+        "skillName": "Precise Shooting"
+      },
+      {
+        "skillId": "skchr_aprl_2",
+        "iconId": null,
+        "skillName": "Flexible Camouflage"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "高保真通讯耳机",
+        "moduleId": "uniequip_002_aprl",
+        "typeName": "MAR-Y"
+      }
+    ]
+  },
+  "char_1021_kroos2": {
+    "id": "char_1021_kroos2",
+    "name": "Kroos the Keen Glint",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_kroos2_1",
+        "iconId": null,
+        "skillName": "无痕"
+      },
+      {
+        "skillId": "skchr_kroos2_2",
+        "iconId": null,
+        "skillName": "封喉"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "真心的话和想冒的险",
+        "moduleId": "uniequip_002_kroos2",
+        "typeName": "MAR-X"
+      }
+    ]
+  },
+  "char_219_meteo": {
+    "id": "char_219_meteo",
+    "name": "Meteorite",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_meteo_1",
+        "iconId": null,
+        "skillName": "Buckshot"
+      },
+      {
+        "skillId": "skchr_meteo_2",
+        "iconId": null,
+        "skillName": "High-Explosive Shell"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "无名的身份牌",
+        "moduleId": "uniequip_002_meteo",
+        "typeName": "ART-Y"
+      }
+    ]
+  },
+  "char_379_sesa": {
+    "id": "char_379_sesa",
+    "name": "Sesa",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "ATK Up γ"
+      },
+      {
+        "skillId": "skchr_sesa_2",
+        "iconId": null,
+        "skillName": "Delayed Concussive Parts"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "“灵魂共鸣”",
+        "moduleId": "uniequip_002_sesa",
+        "typeName": "ART-X"
+      }
+    ]
+  },
+  "char_279_excu": {
+    "id": "char_279_excu",
+    "name": "Executor",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_excu_1",
+        "iconId": null,
+        "skillName": "Muzzle's Elegy"
+      },
+      {
+        "skillId": "skchr_excu_2",
+        "iconId": null,
+        "skillName": "Final Journey"
+      }
+    ],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_346_aosta": {
+    "id": "char_346_aosta",
+    "name": "Aosta",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_quickattack[3]",
+        "iconId": null,
+        "skillName": "Swift Strike γ"
+      },
+      {
+        "skillId": "skchr_aosta_2",
+        "iconId": null,
+        "skillName": "Shadow Nails"
+      }
+    ],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_002_amiya": {
+    "id": "char_002_amiya",
+    "name": "Amiya",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_magic_rage[3]",
+        "iconId": null,
+        "skillName": "Tactical Chant γ"
+      },
+      {
+        "skillId": "skchr_amiya_2",
+        "iconId": null,
+        "skillName": "Spirit Burst"
+      },
+      {
+        "skillId": "skchr_amiya_3",
+        "iconId": null,
+        "skillName": "Chimera"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_405_absin": {
+    "id": "char_405_absin",
+    "name": "Absinthe",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_absin_1",
+        "iconId": null,
+        "skillName": "Enforcement Mode"
+      },
+      {
+        "skillId": "skchr_absin_2",
+        "iconId": null,
+        "skillName": "Ultimatum"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_411_tomimi": {
+    "id": "char_411_tomimi",
+    "name": "Tomimi",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_tomimi_1",
+        "iconId": null,
+        "skillName": "Tribal Techniques"
+      },
+      {
+        "skillId": "skchr_tomimi_2",
+        "iconId": null,
+        "skillName": "Gavial's Protection Plan"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_166_skfire": {
+    "id": "char_166_skfire",
+    "name": "Skyfire",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "ATK Up γ"
+      },
+      {
+        "skillId": "skchr_skfire_2",
+        "iconId": null,
+        "skillName": "Fire of Heaven"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "阻燃处理方案",
+        "moduleId": "uniequip_002_skfire",
+        "typeName": "SPC-Y"
+      }
+    ]
+  },
+  "char_306_leizi": {
+    "id": "char_306_leizi",
+    "name": "Leizi",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "ATK Up γ"
+      },
+      {
+        "skillId": "skchr_leizi_2",
+        "iconId": null,
+        "skillName": "Thunderclap"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "'All the Thunderlight'",
+        "moduleId": "uniequip_002_leizi",
+        "typeName": "CHA-X"
+      }
+    ]
+  },
+  "char_135_halo": {
+    "id": "char_135_halo",
+    "name": "Astgenne",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_halo_1",
+        "iconId": null,
+        "skillName": "双端导流"
+      },
+      {
+        "skillId": "skchr_halo_2",
+        "iconId": null,
+        "skillName": "星束交汇"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "未组装的钟表",
+        "moduleId": "uniequip_002_halo",
+        "typeName": "CHA-Y"
+      }
+    ]
+  },
+  "char_344_beewax": {
+    "id": "char_344_beewax",
+    "name": "Beeswax",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_beewax_1",
+        "iconId": null,
+        "skillName": "Growing Sandstorm"
+      },
+      {
+        "skillId": "skchr_beewax_2",
+        "iconId": null,
+        "skillName": "Guardian Obelisk"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_373_lionhd": {
+    "id": "char_373_lionhd",
+    "name": "Leonhardt",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "ATK Up γ"
+      },
+      {
+        "skillId": "skchr_lionhd_2",
+        "iconId": null,
+        "skillName": "Deconstruct and Detonate"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "传承与开拓",
+        "moduleId": "uniequip_002_lionhd",
+        "typeName": "SPC-X"
+      }
+    ]
+  },
+  "char_388_mint": {
+    "id": "char_388_mint",
+    "name": "Mint",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_mint_1",
+        "iconId": null,
+        "skillName": "Wind Whispers"
+      },
+      {
+        "skillId": "skchr_mint_2",
+        "iconId": null,
+        "skillName": "Swirling Vortex"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_338_iris": {
+    "id": "char_338_iris",
+    "name": "Iris",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_iris_1",
+        "iconId": null,
+        "skillName": "Fairytale Guardian"
+      },
+      {
+        "skillId": "skchr_iris_2",
+        "iconId": null,
+        "skillName": "Dreamland's Cradle"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "梦之城堡立体书",
+        "moduleId": "uniequip_002_iris",
+        "typeName": "MSC-X"
+      }
+    ]
+  },
+  "char_1011_lava2": {
+    "id": "char_1011_lava2",
+    "name": "Lava the Purgatory",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_lava2_1",
+        "iconId": null,
+        "skillName": "Flame Quenched Dagger"
+      },
+      {
+        "skillId": "skchr_lava2_2",
+        "iconId": null,
+        "skillName": "Ring of Hellfire"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "萨卡兹的刀",
+        "moduleId": "uniequip_002_lava2",
+        "typeName": "SPC-X"
+      }
+    ]
+  },
+  "char_489_serum": {
+    "id": "char_489_serum",
+    "name": "Corroserum",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_serum_1",
+        "iconId": null,
+        "skillName": "Focus Overload"
+      },
+      {
+        "skillId": "skchr_serum_2",
+        "iconId": null,
+        "skillName": "Conductive Corrosive Blast"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_4013_kjera": {
+    "id": "char_4013_kjera",
+    "name": "Kjera",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "ATK Up γ"
+      },
+      {
+        "skillId": "skchr_kjera_2",
+        "iconId": null,
+        "skillName": "Unrestrained Heart"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_4040_rockr": {
+    "id": "char_4040_rockr",
+    "name": "Rockrock",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skcom_magic_rage[3]",
+        "iconId": null,
+        "skillName": "战术咏唱·γ型"
+      },
+      {
+        "skillId": "skchr_rockr_2",
+        "iconId": null,
+        "skillName": "自负此轭"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_242_otter": {
+    "id": "char_242_otter",
+    "name": "Mayer",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_otter_1",
+        "iconId": null,
+        "skillName": "Bionic Device"
+      },
+      {
+        "skillId": "skchr_otter_2",
+        "iconId": null,
+        "skillName": "Detonate and Recycle"
+      }
+    ],
+    "class": "Supporter",
+    "modules": [
+      {
+        "moduleName": "'Meeboo' Control Terminal XP",
+        "moduleId": "uniequip_002_otter",
+        "typeName": "SUM-X"
+      }
+    ]
+  },
+  "char_336_folivo": {
+    "id": "char_336_folivo",
+    "name": "Scene",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_folivo_1",
+        "iconId": null,
+        "skillName": "Protective Camouflage"
+      },
+      {
+        "skillId": "skchr_folivo_2",
+        "iconId": null,
+        "skillName": "Panoramic Overload"
+      }
+    ],
+    "class": "Supporter",
+    "modules": [
+      {
+        "moduleName": "Improved Lens.P",
+        "moduleId": "uniequip_002_folivo",
+        "typeName": "SUM-X"
+      }
+    ]
+  },
+  "char_108_silent": {
+    "id": "char_108_silent",
+    "name": "Silence",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_heal_up[3]",
+        "iconId": null,
+        "skillName": "Healing Up γ"
+      },
+      {
+        "skillId": "skchr_silent_2",
+        "iconId": null,
+        "skillName": "Medical Drone"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_171_bldsk": {
+    "id": "char_171_bldsk",
+    "name": "Warfarin",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_bldsk_1",
+        "iconId": null,
+        "skillName": "Emergency Triage"
+      },
+      {
+        "skillId": "skchr_bldsk_2",
+        "iconId": null,
+        "skillName": "Unstable Plasma"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_345_folnic": {
+    "id": "char_345_folnic",
+    "name": "Folinic",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_folnic_1",
+        "iconId": null,
+        "skillName": "Max-Dosage Infusion"
+      },
+      {
+        "skillId": "skchr_folnic_2",
+        "iconId": null,
+        "skillName": "Compound Drug Shell"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_348_ceylon": {
+    "id": "char_348_ceylon",
+    "name": "Ceylon",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_ceylon_1",
+        "iconId": null,
+        "skillName": "Concentrated Hydrotherapy"
+      },
+      {
+        "skillId": "skchr_ceylon_2",
+        "iconId": null,
+        "skillName": "Water Blessing"
+      }
+    ],
+    "class": "Medic",
+    "modules": [
+      {
+        "moduleName": "野外考察套装",
+        "moduleId": "uniequip_002_ceylon",
+        "typeName": "WAH-X"
+      }
+    ]
+  },
+  "char_436_whispr": {
+    "id": "char_436_whispr",
+    "name": "Whisperain",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_whispr_1",
+        "iconId": null,
+        "skillName": "Oriented Diagnosis"
+      },
+      {
+        "skillId": "skchr_whispr_2",
+        "iconId": null,
+        "skillName": "Pain Suppression"
+      }
+    ],
+    "class": "Medic",
+    "modules": [
+      {
+        "moduleName": "古朴的急救箱",
+        "moduleId": "uniequip_002_whispr",
+        "typeName": "WAH-X"
+      }
+    ]
+  },
+  "char_402_tuye": {
+    "id": "char_402_tuye",
+    "name": "Tuye",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_tuye_1",
+        "iconId": null,
+        "skillName": "Aqua Loop"
+      },
+      {
+        "skillId": "skchr_tuye_2",
+        "iconId": null,
+        "skillName": "Cardiac Stimulant"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_473_mberry": {
+    "id": "char_473_mberry",
+    "name": "Mulberry",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_mberry_1",
+        "iconId": null,
+        "skillName": "Healing Haze"
+      },
+      {
+        "skillId": "skchr_mberry_2",
+        "iconId": null,
+        "skillName": "Safe Zone"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_449_glider": {
+    "id": "char_449_glider",
+    "name": "Honeyberry",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_glider_1",
+        "iconId": null,
+        "skillName": "Spiritual Care"
+      },
+      {
+        "skillId": "skchr_glider_2",
+        "iconId": null,
+        "skillName": "Rouse"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_1024_hbisc2": {
+    "id": "char_1024_hbisc2",
+    "name": "Hibiscus the Purifier",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "攻击力强化·γ型"
+      },
+      {
+        "skillId": "skchr_hbisc2_2",
+        "iconId": null,
+        "skillName": "抚业之触"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_148_nearl": {
+    "id": "char_148_nearl",
+    "name": "Nearl",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_nearl_1",
+        "iconId": null,
+        "skillName": "First Aid"
+      },
+      {
+        "skillId": "skchr_nearl_2",
+        "iconId": null,
+        "skillName": "First Aid Mode"
+      }
+    ],
+    "class": "Defender",
+    "modules": [
+      {
+        "moduleName": "改良骑士盾牌",
+        "moduleId": "uniequip_002_nearl",
+        "typeName": "GUA-X"
+      }
+    ]
+  },
+  "char_226_hmau": {
+    "id": "char_226_hmau",
+    "name": "Hung",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_hmau_1",
+        "iconId": null,
+        "skillName": "Treatment Countermeasure"
+      },
+      {
+        "skillId": "skchr_hmau_2",
+        "iconId": null,
+        "skillName": "Medical Mode Countermeasure"
+      }
+    ],
+    "class": "Defender",
+    "modules": [
+      {
+        "moduleName": "八点档情景剧录像带",
+        "moduleId": "uniequip_002_hmau",
+        "typeName": "GUA-Y"
+      }
+    ]
+  },
+  "char_144_red": {
+    "id": "char_144_red",
+    "name": "Projekt Red",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_red_1",
+        "iconId": null,
+        "skillName": "Execution Mode"
+      },
+      {
+        "skillId": "skchr_red_2",
+        "iconId": null,
+        "skillName": "Wolfpack"
+      }
+    ],
+    "class": "Specialist",
+    "modules": [
+      {
+        "moduleName": "Mystery Prop Pack",
+        "moduleId": "uniequip_002_red",
+        "typeName": "EXE-Y"
+      }
+    ]
+  },
+  "char_243_waaifu": {
+    "id": "char_243_waaifu",
+    "name": "Waai Fu",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_waaifu_1",
+        "iconId": null,
+        "skillName": "One-inch Punch"
+      },
+      {
+        "skillId": "skchr_waaifu_2",
+        "iconId": null,
+        "skillName": "Seven-styles Kick"
+      }
+    ],
+    "class": "Specialist",
+    "modules": [
+      {
+        "moduleName": "The Classic of Hung Mei Wing Chun",
+        "moduleId": "uniequip_002_waaifu",
+        "typeName": "EXE-X"
+      }
+    ]
+  },
+  "char_214_kafka": {
+    "id": "char_214_kafka",
+    "name": "Kafka",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_kafka_1",
+        "iconId": null,
+        "skillName": "Cube of Absurdism"
+      },
+      {
+        "skillId": "skchr_kafka_2",
+        "iconId": null,
+        "skillName": "Shears of Surrealism"
+      }
+    ],
+    "class": "Specialist",
+    "modules": [
+      {
+        "moduleName": "Rubik's Cube Pendant",
+        "moduleId": "uniequip_002_kafka",
+        "typeName": "EXE-Y"
+      }
+    ]
+  },
+  "char_455_nothin": {
+    "id": "char_455_nothin",
+    "name": "Mr.Nothing",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_nothin_1",
+        "iconId": null,
+        "skillName": "Cautious Retreat"
+      },
+      {
+        "skillId": "skchr_nothin_2",
+        "iconId": null,
+        "skillName": "Wax and Wane"
+      }
+    ],
+    "class": "Specialist",
+    "modules": [
+      {
+        "moduleName": "“檐下听雨”",
+        "moduleId": "uniequip_002_nothin",
+        "typeName": "MER-X"
+      }
+    ]
+  },
+  "char_107_liskam": {
+    "id": "char_107_liskam",
+    "name": "Liskarm",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_liskam_1",
+        "iconId": null,
+        "skillName": "Charged Defense"
+      },
+      {
+        "skillId": "skchr_liskam_2",
+        "iconId": null,
+        "skillName": "Counter Arc"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_201_moeshd": {
+    "id": "char_201_moeshd",
+    "name": "Croissant",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_moeshd_1",
+        "iconId": null,
+        "skillName": "Auto Defense"
+      },
+      {
+        "skillId": "skchr_moeshd_2",
+        "iconId": null,
+        "skillName": "Magnetic Hammer"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_325_bison": {
+    "id": "char_325_bison",
+    "name": "Bison",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_def_up[3]",
+        "iconId": null,
+        "skillName": "DEF Up γ"
+      },
+      {
+        "skillId": "skchr_bison_2",
+        "iconId": null,
+        "skillName": "Intensified Defense"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_163_hpsts": {
+    "id": "char_163_hpsts",
+    "name": "Vulcan",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_hpsts_1",
+        "iconId": null,
+        "skillName": "Guardian Mode"
+      },
+      {
+        "skillId": "skchr_hpsts_2",
+        "iconId": null,
+        "skillName": "Combat Mode"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_378_asbest": {
+    "id": "char_378_asbest",
+    "name": "Asbestos",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_asbest_1",
+        "iconId": null,
+        "skillName": "Resilient Mode"
+      },
+      {
+        "skillId": "skchr_asbest_2",
+        "iconId": null,
+        "skillName": "Thermal Power Mode"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_4025_aprot2": {
+    "id": "char_4025_aprot2",
+    "name": "Shalem",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_aprot2_1",
+        "iconId": null,
+        "skillName": "速战速决"
+      },
+      {
+        "skillId": "skchr_aprot2_2",
+        "iconId": null,
+        "skillName": "燃命狂欢"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_4047_pianst": {
+    "id": "char_4047_pianst",
+    "name": "Czerny",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_pianst_1",
+        "iconId": null,
+        "skillName": "纷飞十指"
+      },
+      {
+        "skillId": "skchr_pianst_2",
+        "iconId": null,
+        "skillName": "曲惊四座"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_457_blitz": {
+    "id": "char_457_blitz",
+    "name": "Blitz",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_blitz_1",
+        "iconId": null,
+        "skillName": "Flash Shield"
+      },
+      {
+        "skillId": "skchr_blitz_2",
+        "iconId": null,
+        "skillName": "Shield Bash"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_304_zebra": {
+    "id": "char_304_zebra",
+    "name": "Heavyrain",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_zebra_1",
+        "iconId": null,
+        "skillName": "Emergency Camouflage"
+      },
+      {
+        "skillId": "skchr_zebra_2",
+        "iconId": null,
+        "skillName": "Group Camouflage"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_431_ashlok": {
+    "id": "char_431_ashlok",
+    "name": "Ashlock",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "ATK Up γ"
+      },
+      {
+        "skillId": "skchr_ashlok_2",
+        "iconId": null,
+        "skillName": "Focused Bombardment"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_422_aurora": {
+    "id": "char_422_aurora",
+    "name": "Aurora",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_aurora_1",
+        "iconId": null,
+        "skillName": "Homeland Protector"
+      },
+      {
+        "skillId": "skchr_aurora_2",
+        "iconId": null,
+        "skillName": "Artificial Snowfall"
+      }
+    ],
+    "class": "Defender",
+    "modules": [
+      {
+        "moduleName": "盾用摄制模块",
+        "moduleId": "uniequip_002_aurora",
+        "typeName": "HES-X"
+      }
+    ]
+  },
+  "char_145_prove": {
+    "id": "char_145_prove",
+    "name": "Provence",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_prove_1",
+        "iconId": null,
+        "skillName": "Wolf's Eye"
+      },
+      {
+        "skillId": "skchr_prove_2",
+        "iconId": null,
+        "skillName": "Prey Seeker"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "尾巴养护套装",
+        "moduleId": "uniequip_002_prove",
+        "typeName": "ARC-X"
+      }
+    ]
+  },
+  "char_158_milu": {
+    "id": "char_158_milu",
+    "name": "Firewatch",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_milu_1",
+        "iconId": null,
+        "skillName": "Camouflage"
+      },
+      {
+        "skillId": "skchr_milu_2",
+        "iconId": null,
+        "skillName": "Tactical Transceiver"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "Field Sniper Equipment",
+        "moduleId": "uniequip_002_milu",
+        "typeName": "DEA-Y"
+      }
+    ]
+  },
+  "char_218_cuttle": {
+    "id": "char_218_cuttle",
+    "name": "Andreana",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "ATK Up γ"
+      },
+      {
+        "skillId": "skchr_cuttle_2",
+        "iconId": null,
+        "skillName": "Interdictive Sniping Tactics"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "Gunsmithing Toolkit",
+        "moduleId": "uniequip_002_cuttle",
+        "typeName": "DEA-X"
+      }
+    ]
+  },
+  "char_363_toddi": {
+    "id": "char_363_toddi",
+    "name": "Toddifons",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_toddi_1",
+        "iconId": null,
+        "skillName": "Signal Arrow"
+      },
+      {
+        "skillId": "skchr_toddi_2",
+        "iconId": null,
+        "skillName": "Portable Fortcracker Arrows"
+      }
+    ],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_4043_erato": {
+    "id": "char_4043_erato",
+    "name": "Erato",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_erato_1",
+        "iconId": null,
+        "skillName": "安眠旋律"
+      },
+      {
+        "skillId": "skchr_erato_2",
+        "iconId": null,
+        "skillName": "英雄赞歌"
+      }
+    ],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_1027_greyy2": {
+    "id": "char_1027_greyy2",
+    "name": "Greyy the Lightningbearer",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skcom_quickattack[3]",
+        "iconId": null,
+        "skillName": "迅捷打击·γ型"
+      },
+      {
+        "skillId": "skchr_greyy2_2",
+        "iconId": null,
+        "skillName": "晨曦信标"
+      }
+    ],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_173_slchan": {
+    "id": "char_173_slchan",
+    "name": "Cliffheart",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_slchan_1",
+        "iconId": null,
+        "skillName": "Chain Hook"
+      },
+      {
+        "skillId": "skchr_slchan_2",
+        "iconId": null,
+        "skillName": "Binding Chains"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_383_snsant": {
+    "id": "char_383_snsant",
+    "name": "Snowsant",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_snsant_1",
+        "iconId": null,
+        "skillName": "Barbed Clawhook"
+      },
+      {
+        "skillId": "skchr_snsant_2",
+        "iconId": null,
+        "skillName": "Telescoping Electric Net"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_174_slbell": {
+    "id": "char_174_slbell",
+    "name": "Pramanix",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_slbell_1",
+        "iconId": null,
+        "skillName": "Echolocation"
+      },
+      {
+        "skillId": "skchr_slbell_2",
+        "iconId": null,
+        "skillName": "Natural Deterrent"
+      }
+    ],
+    "class": "Supporter",
+    "modules": []
+  },
+  "char_254_vodfox": {
+    "id": "char_254_vodfox",
+    "name": "Shamare",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_vodfox_1",
+        "iconId": null,
+        "skillName": "Malediction"
+      },
+      {
+        "skillId": "skchr_vodfox_2",
+        "iconId": null,
+        "skillName": "Cursed Doll"
+      }
+    ],
+    "class": "Supporter",
+    "modules": []
+  },
+  "char_195_glassb": {
+    "id": "char_195_glassb",
+    "name": "Istina",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_glassb_1",
+        "iconId": null,
+        "skillName": "Concentration"
+      },
+      {
+        "skillId": "skchr_glassb_2",
+        "iconId": null,
+        "skillName": "Literature Storm"
+      }
+    ],
+    "class": "Supporter",
+    "modules": [
+      {
+        "moduleName": "读书笔记",
+        "moduleId": "uniequip_002_glassb",
+        "typeName": "DEC-Y"
+      }
+    ]
+  },
+  "char_326_glacus": {
+    "id": "char_326_glacus",
+    "name": "Glaucus",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_glacus_1",
+        "iconId": null,
+        "skillName": "Binary Reload"
+      },
+      {
+        "skillId": "skchr_glacus_2",
+        "iconId": null,
+        "skillName": "Counter EMP"
+      }
+    ],
+    "class": "Supporter",
+    "modules": [
+      {
+        "moduleName": "外骨骼装备",
+        "moduleId": "uniequip_002_glacus",
+        "typeName": "DEC-X"
+      }
+    ]
+  },
+  "char_433_windft": {
+    "id": "char_433_windft",
+    "name": "Windflit",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_windft_1",
+        "iconId": null,
+        "skillName": "此身为筑"
+      },
+      {
+        "skillId": "skchr_windft_2",
+        "iconId": null,
+        "skillName": "此身为源"
+      }
+    ],
+    "class": "Supporter",
+    "modules": []
+  },
+  "char_101_sora": {
+    "id": "char_101_sora",
+    "name": "Sora",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_sora_1",
+        "iconId": null,
+        "skillName": "Hymn of Respite"
+      },
+      {
+        "skillId": "skchr_sora_2",
+        "iconId": null,
+        "skillName": "Hymn of Battle"
+      }
+    ],
+    "class": "Supporter",
+    "modules": []
+  },
+  "char_4045_heidi": {
+    "id": "char_4045_heidi",
+    "name": "Heidi",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_heidi_1",
+        "iconId": null,
+        "skillName": "虚构故事·怒士"
+      },
+      {
+        "skillId": "skchr_heidi_2",
+        "iconId": null,
+        "skillName": "虚构故事·锈城"
+      }
+    ],
+    "class": "Supporter",
+    "modules": []
+  },
+  "char_343_tknogi": {
+    "id": "char_343_tknogi",
+    "name": "Tsukinogi",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_tknogi_1",
+        "iconId": null,
+        "skillName": "Without a Trace"
+      },
+      {
+        "skillId": "skchr_tknogi_2",
+        "iconId": null,
+        "skillName": "Forest's Embrace"
+      }
+    ],
+    "class": "Supporter",
+    "modules": []
+  },
+  "char_4019_ncdeer": {
+    "id": "char_4019_ncdeer",
+    "name": "Nine-Colored Deer",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_ncdeer_1",
+        "iconId": null,
+        "skillName": "人间降吉"
+      },
+      {
+        "skillId": "skchr_ncdeer_2",
+        "iconId": null,
+        "skillName": "仙山去远"
+      }
+    ],
+    "class": "Supporter",
+    "modules": []
+  },
+  "char_492_quercu": {
+    "id": "char_492_quercu",
+    "name": "Quercus",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_quercu_1",
+        "iconId": null,
+        "skillName": "大地的慈悲"
+      },
+      {
+        "skillId": "skchr_quercu_2",
+        "iconId": null,
+        "skillName": "生灵的回响"
+      }
+    ],
+    "class": "Supporter",
+    "modules": []
+  },
+  "char_215_mantic": {
+    "id": "char_215_mantic",
+    "name": "Manticore",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_mantic_1",
+        "iconId": null,
+        "skillName": "Scorpion Venom"
+      },
+      {
+        "skillId": "skchr_mantic_2",
+        "iconId": null,
+        "skillName": "Toxic Overload"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_478_kirara": {
+    "id": "char_478_kirara",
+    "name": "Kirara",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_kirara_1",
+        "iconId": null,
+        "skillName": "Anchor Strike"
+      },
+      {
+        "skillId": "skchr_kirara_2",
+        "iconId": null,
+        "skillName": "Anchor Point Snap"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_241_panda": {
+    "id": "char_241_panda",
+    "name": "FEater",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_panda_1",
+        "iconId": null,
+        "skillName": "Raging Iron Fist"
+      },
+      {
+        "skillId": "skchr_panda_2",
+        "iconId": null,
+        "skillName": "Destructive Fist"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_4036_forcer": {
+    "id": "char_4036_forcer",
+    "name": "Enforcer",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_forcer_1",
+        "iconId": null,
+        "skillName": "护身射击"
+      },
+      {
+        "skillId": "skchr_forcer_2",
+        "iconId": null,
+        "skillName": "惊爆射击"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_451_robin": {
+    "id": "char_451_robin",
+    "name": "Robin",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_robin_1",
+        "iconId": null,
+        "skillName": "Binding 'Clip'"
+      },
+      {
+        "skillId": "skchr_robin_2",
+        "iconId": null,
+        "skillName": "Launching 'Clip'"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_458_rfrost": {
+    "id": "char_458_rfrost",
+    "name": "Frost",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_rfrost_1",
+        "iconId": null,
+        "skillName": "Trap Deployment"
+      },
+      {
+        "skillId": "skchr_rfrost_2",
+        "iconId": null,
+        "skillName": "Incapacitated Prey"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_369_bena": {
+    "id": "char_369_bena",
+    "name": "Bena",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_bena_1",
+        "iconId": null,
+        "skillName": "Fervent Trimming"
+      },
+      {
+        "skillId": "skchr_bena_2",
+        "iconId": null,
+        "skillName": "Rapid Trimming"
+      }
+    ],
+    "class": "Specialist",
+    "modules": [
+      {
+        "moduleName": "《乔弗瑞古今童话集》精装本",
+        "moduleId": "uniequip_002_bena",
+        "typeName": "PUM-Y"
+      }
+    ]
+  },
+  "char_4016_kazema": {
+    "id": "char_4016_kazema",
+    "name": "Kazemaru",
+    "rarity": 5,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_kazema_1",
+        "iconId": null,
+        "skillName": "纸艺·迅击"
+      },
+      {
+        "skillId": "skchr_kazema_2",
+        "iconId": null,
+        "skillName": "纸艺·双影"
+      }
+    ],
+    "class": "Specialist",
+    "modules": [
+      {
+        "moduleName": "旧物",
+        "moduleId": "uniequip_002_kazema",
+        "typeName": "PUM-X"
+      }
+    ]
+  },
+  "char_103_angel": {
+    "id": "char_103_angel",
+    "name": "Exusiai",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_angel_1",
+        "iconId": null,
+        "skillName": "Charging Mode"
+      },
+      {
+        "skillId": "skchr_angel_2",
+        "iconId": null,
+        "skillName": "Shooting Mode"
+      },
+      {
+        "skillId": "skchr_angel_3",
+        "iconId": null,
+        "skillName": "Overloading Mode"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "能天使的杰作",
+        "moduleId": "uniequip_002_angel",
+        "typeName": "MAR-X"
+      }
+    ]
+  },
+  "char_332_archet": {
+    "id": "char_332_archet",
+    "name": "Archetto",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_archet_1",
+        "iconId": null,
+        "skillName": "Dispersing Arrows"
+      },
+      {
+        "skillId": "skchr_archet_2",
+        "iconId": null,
+        "skillName": "Pursuing Arrows"
+      },
+      {
+        "skillId": "skchr_archet_3",
+        "iconId": null,
+        "skillName": "Thundering Arrows"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "“明天的种子”",
+        "moduleId": "uniequip_002_archet",
+        "typeName": "MAR-Y"
+      }
+    ]
+  },
+  "char_456_ash": {
+    "id": "char_456_ash",
+    "name": "Ash",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_ash_1",
+        "iconId": null,
+        "skillName": "Supporting Fire"
+      },
+      {
+        "skillId": "skchr_ash_2",
+        "iconId": null,
+        "skillName": "Assault Tactics"
+      },
+      {
+        "skillId": "skchr_ash_3",
+        "iconId": null,
+        "skillName": "Breaching Rounds"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "破墙榴弹战术收纳包",
+        "moduleId": "uniequip_002_ash",
+        "typeName": "MAR-Y"
+      }
+    ]
+  },
+  "char_340_shwaz": {
+    "id": "char_340_shwaz",
+    "name": "Schwarz",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_shwaz_1",
+        "iconId": null,
+        "skillName": "Charged Shot"
+      },
+      {
+        "skillId": "skchr_shwaz_2",
+        "iconId": null,
+        "skillName": "Sharp Eye"
+      },
+      {
+        "skillId": "skchr_shwaz_3",
+        "iconId": null,
+        "skillName": "Final Tactics"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "定制弩配件套装",
+        "moduleId": "uniequip_002_shwaz",
+        "typeName": "ARC-X"
+      }
+    ]
+  },
+  "char_430_fartth": {
+    "id": "char_430_fartth",
+    "name": "Fartooth",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_quickattack[3]",
+        "iconId": null,
+        "skillName": "Swift Strike γ"
+      },
+      {
+        "skillId": "skchr_fartth_2",
+        "iconId": null,
+        "skillName": "Ally Support"
+      },
+      {
+        "skillId": "skchr_fartth_3",
+        "iconId": null,
+        "skillName": "Feathershine Arrows"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "First-show Support Set",
+        "moduleId": "uniequip_002_fartth",
+        "typeName": "DEA-X"
+      }
+    ]
+  },
+  "char_113_cqbw": {
+    "id": "char_113_cqbw",
+    "name": "W",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_cqbw_1",
+        "iconId": null,
+        "skillName": "King of Hearts"
+      },
+      {
+        "skillId": "skchr_cqbw_2",
+        "iconId": null,
+        "skillName": "Jack in the Box"
+      },
+      {
+        "skillId": "skchr_cqbw_3",
+        "iconId": null,
+        "skillName": "D12"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "佣兵的行囊",
+        "moduleId": "uniequip_002_cqbw",
+        "typeName": "ART-X"
+      }
+    ]
+  },
+  "char_300_phenxi": {
+    "id": "char_300_phenxi",
+    "name": "Fiammetta",
+    "rarity": 6,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_phenxi_1",
+        "iconId": null,
+        "skillName": "“你须直面”"
+      },
+      {
+        "skillId": "skchr_phenxi_2",
+        "iconId": null,
+        "skillName": "“你须愧悔”"
+      },
+      {
+        "skillId": "skchr_phenxi_3",
+        "iconId": null,
+        "skillName": "“你须偿还”"
+      }
+    ],
+    "class": "Sniper",
+    "modules": [
+      {
+        "moduleName": "“律外”特种弹药配给组",
+        "moduleId": "uniequip_002_phenxi",
+        "typeName": "ART-Y"
+      }
+    ]
+  },
+  "char_197_poca": {
+    "id": "char_197_poca",
+    "name": "Rosa",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "ATK Up γ"
+      },
+      {
+        "skillId": "skchr_poca_2",
+        "iconId": null,
+        "skillName": "Split Shot"
+      },
+      {
+        "skillId": "skchr_poca_3",
+        "iconId": null,
+        "skillName": "Avalanche Breaker"
+      }
+    ],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_391_rosmon": {
+    "id": "char_391_rosmon",
+    "name": "Rosmontis",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_rosmon_1",
+        "iconId": null,
+        "skillName": "Expanded Cognition"
+      },
+      {
+        "skillId": "skchr_rosmon_2",
+        "iconId": null,
+        "skillName": "Nociceptor Inhibition"
+      },
+      {
+        "skillId": "skchr_rosmon_3",
+        "iconId": null,
+        "skillName": "'As You Wish'"
+      }
+    ],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_1013_chen2": {
+    "id": "char_1013_chen2",
+    "name": "Ch'en the Holungday",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_chen2_1",
+        "iconId": null,
+        "skillName": "High-Pressure Splash"
+      },
+      {
+        "skillId": "skchr_chen2_2",
+        "iconId": null,
+        "skillName": "'Night of Violet'"
+      },
+      {
+        "skillId": "skchr_chen2_3",
+        "iconId": null,
+        "skillName": "'Holiday Storm'"
+      }
+    ],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_112_siege": {
+    "id": "char_112_siege",
+    "name": "Siege",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_charge_cost[3]",
+        "iconId": null,
+        "skillName": "Charge γ"
+      },
+      {
+        "skillId": "skchr_siege_2",
+        "iconId": null,
+        "skillName": "Aerial Hammer"
+      },
+      {
+        "skillId": "skchr_siege_3",
+        "iconId": null,
+        "skillName": "Skull Breaker"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_222_bpipe": {
+    "id": "char_222_bpipe",
+    "name": "Bagpipe",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_quickattack[3]",
+        "iconId": null,
+        "skillName": "Swift Strike γ"
+      },
+      {
+        "skillId": "skchr_bpipe_2",
+        "iconId": null,
+        "skillName": "High-Impact Assault"
+      },
+      {
+        "skillId": "skchr_bpipe_3",
+        "iconId": null,
+        "skillName": "Locked Breech Burst"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": [
+      {
+        "moduleName": "Piledriver Spear Magazine",
+        "moduleId": "uniequip_002_bpipe",
+        "typeName": "CHG-X"
+      }
+    ]
+  },
+  "char_362_saga": {
+    "id": "char_362_saga",
+    "name": "Saga",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_charge_cost[3]",
+        "iconId": null,
+        "skillName": "Charge γ"
+      },
+      {
+        "skillId": "skchr_saga_2",
+        "iconId": null,
+        "skillName": "Cleansing Evil"
+      },
+      {
+        "skillId": "skchr_saga_3",
+        "iconId": null,
+        "skillName": "Fierce Glare"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_479_sleach": {
+    "id": "char_479_sleach",
+    "name": "Saileach",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_assist_cost[3]",
+        "iconId": null,
+        "skillName": "Support γ"
+      },
+      {
+        "skillId": "skchr_sleach_2",
+        "iconId": null,
+        "skillName": "Inheritance of Faith"
+      },
+      {
+        "skillId": "skchr_sleach_3",
+        "iconId": null,
+        "skillName": "Glorious Banner"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_420_flamtl": {
+    "id": "char_420_flamtl",
+    "name": "Flametail",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_flamtl_1",
+        "iconId": null,
+        "skillName": "Quick Intuition"
+      },
+      {
+        "skillId": "skchr_flamtl_2",
+        "iconId": null,
+        "skillName": "'Pinus Sylvestris'"
+      },
+      {
+        "skillId": "skchr_flamtl_3",
+        "iconId": null,
+        "skillName": "Flameheart"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": []
+  },
+  "char_134_ifrit": {
+    "id": "char_134_ifrit",
+    "name": "Ifrit",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_ifrit_1",
+        "iconId": null,
+        "skillName": "Fanaticism"
+      },
+      {
+        "skillId": "skchr_ifrit_2",
+        "iconId": null,
+        "skillName": "Pyroclasm"
+      },
+      {
+        "skillId": "skchr_ifrit_3",
+        "iconId": null,
+        "skillName": "Scorched Earth"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_213_mostma": {
+    "id": "char_213_mostma",
+    "name": "Mostima",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "ATK Up γ"
+      },
+      {
+        "skillId": "skchr_mostma_2",
+        "iconId": null,
+        "skillName": "Lock of Shattered Time"
+      },
+      {
+        "skillId": "skchr_mostma_3",
+        "iconId": null,
+        "skillName": "Key of Chronology"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "锁与匙之家",
+        "moduleId": "uniequip_002_mostma",
+        "typeName": "SPC-Y"
+      }
+    ]
+  },
+  "char_180_amgoat": {
+    "id": "char_180_amgoat",
+    "name": "Eyjafjalla",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_amgoat_1",
+        "iconId": null,
+        "skillName": "Duetto"
+      },
+      {
+        "skillId": "skchr_amgoat_2",
+        "iconId": null,
+        "skillName": "Ignition"
+      },
+      {
+        "skillId": "skchr_amgoat_3",
+        "iconId": null,
+        "skillName": "Volcano"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_2013_cerber": {
+    "id": "char_2013_cerber",
+    "name": "Ceobe",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_cerber_1",
+        "iconId": null,
+        "skillName": "'Really Cold Axe'"
+      },
+      {
+        "skillId": "skchr_cerber_2",
+        "iconId": null,
+        "skillName": "'Really Hot Knives'"
+      },
+      {
+        "skillId": "skchr_cerber_3",
+        "iconId": null,
+        "skillName": "'Really Heavy Spear'"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_2015_dusk": {
+    "id": "char_2015_dusk",
+    "name": "Dusk",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_dusk_1",
+        "iconId": null,
+        "skillName": "Transcendental Stroke"
+      },
+      {
+        "skillId": "skchr_dusk_2",
+        "iconId": null,
+        "skillName": "Flowing Ink"
+      },
+      {
+        "skillId": "skchr_dusk_3",
+        "iconId": null,
+        "skillName": "Image over Form"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "无题长卷",
+        "moduleId": "uniequip_002_dusk",
+        "typeName": "SPC-X"
+      }
+    ]
+  },
+  "char_472_pasngr": {
+    "id": "char_472_pasngr",
+    "name": "Passenger",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_pasngr_1",
+        "iconId": null,
+        "skillName": "Touch of Static"
+      },
+      {
+        "skillId": "skchr_pasngr_2",
+        "iconId": null,
+        "skillName": "Focus Command"
+      },
+      {
+        "skillId": "skchr_pasngr_3",
+        "iconId": null,
+        "skillName": "Glorious Shards"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "Electromagnetic Regulator",
+        "moduleId": "uniequip_002_pasngr",
+        "typeName": "CHA-X"
+      },
+      {
+        "moduleName": "王权金币",
+        "moduleId": "uniequip_003_pasngr",
+        "typeName": "CHA-Y"
+      }
+    ]
+  },
+  "char_426_billro": {
+    "id": "char_426_billro",
+    "name": "Carnelian",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_billro_1",
+        "iconId": null,
+        "skillName": "Sandstorm Guardian"
+      },
+      {
+        "skillId": "skchr_billro_2",
+        "iconId": null,
+        "skillName": "Sand Fetters"
+      },
+      {
+        "skillId": "skchr_billro_3",
+        "iconId": null,
+        "skillName": "Mark of Gluttony"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_377_gdglow": {
+    "id": "char_377_gdglow",
+    "name": "Goldenglow",
+    "rarity": 6,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_gdglow_1",
+        "iconId": null,
+        "skillName": "火花四溅"
+      },
+      {
+        "skillId": "skchr_gdglow_2",
+        "iconId": null,
+        "skillName": "电流翻涌"
+      },
+      {
+        "skillId": "skchr_gdglow_3",
+        "iconId": null,
+        "skillName": "澄净闪耀"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_4046_ebnhlz": {
+    "id": "char_4046_ebnhlz",
+    "name": "Ebenholz",
+    "rarity": 6,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_ebnhlz_1",
+        "iconId": null,
+        "skillName": "渐快急板"
+      },
+      {
+        "skillId": "skchr_ebnhlz_2",
+        "iconId": null,
+        "skillName": "荒芜回响"
+      },
+      {
+        "skillId": "skchr_ebnhlz_3",
+        "iconId": null,
+        "skillName": "寂静之声"
+      }
+    ],
+    "class": "Caster",
+    "modules": [
+      {
+        "moduleName": "源石骰子收纳盒",
+        "moduleId": "uniequip_002_ebnhlz",
+        "typeName": "MSC-X"
+      }
+    ]
+  },
+  "char_206_gnosis": {
+    "id": "char_206_gnosis",
+    "name": "Gnosis",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_gnosis_1",
+        "iconId": null,
+        "skillName": "High-Speed Cogitation"
+      },
+      {
+        "skillId": "skchr_gnosis_2",
+        "iconId": null,
+        "skillName": "Zero-Point Burst"
+      },
+      {
+        "skillId": "skchr_gnosis_3",
+        "iconId": null,
+        "skillName": "Hypothermia"
+      }
+    ],
+    "class": "Supporter",
+    "modules": []
+  },
+  "char_291_aglina": {
+    "id": "char_291_aglina",
+    "name": "Angelina",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_aglina_1",
+        "iconId": null,
+        "skillName": "Arcane Staff - Quick Charge Mode"
+      },
+      {
+        "skillId": "skchr_aglina_2",
+        "iconId": null,
+        "skillName": "Arcane Staff - Particle Mode"
+      },
+      {
+        "skillId": "skchr_aglina_3",
+        "iconId": null,
+        "skillName": "Arcane Staff - Anti-Gravity Mode"
+      }
+    ],
+    "class": "Supporter",
+    "modules": [
+      {
+        "moduleName": "重力校准模块",
+        "moduleId": "uniequip_002_aglina",
+        "typeName": "DEC-Y"
+      }
+    ]
+  },
+  "char_358_lisa": {
+    "id": "char_358_lisa",
+    "name": "Suzuran",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_lisa_1",
+        "iconId": null,
+        "skillName": "I'll Do My Best"
+      },
+      {
+        "skillId": "skchr_lisa_2",
+        "iconId": null,
+        "skillName": "Childhood Frolic"
+      },
+      {
+        "skillId": "skchr_lisa_3",
+        "iconId": null,
+        "skillName": "Foxfire Haze"
+      }
+    ],
+    "class": "Supporter",
+    "modules": [
+      {
+        "moduleName": "怀中御守",
+        "moduleId": "uniequip_002_lisa",
+        "typeName": "DEC-X"
+      }
+    ]
+  },
+  "char_248_mgllan": {
+    "id": "char_248_mgllan",
+    "name": "Magallan",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_mgllan_1",
+        "iconId": null,
+        "skillName": "High-Efficiency Freezing Module"
+      },
+      {
+        "skillId": "skchr_mgllan_2",
+        "iconId": null,
+        "skillName": "Laser Mining Module"
+      },
+      {
+        "skillId": "skchr_mgllan_3",
+        "iconId": null,
+        "skillName": "Armed Combat Module"
+      }
+    ],
+    "class": "Supporter",
+    "modules": [
+      {
+        "moduleName": "Drone Control Module.P",
+        "moduleId": "uniequip_002_mgllan",
+        "typeName": "SUM-X"
+      },
+      {
+        "moduleName": "教学用龙腾无人机",
+        "moduleId": "uniequip_003_mgllan",
+        "typeName": "SUM-Y"
+      }
+    ]
+  },
+  "char_1012_skadi2": {
+    "id": "char_1012_skadi2",
+    "name": "Skadi the Corrupting Heart",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_skadi2_1",
+        "iconId": null,
+        "skillName": "Chant of Returning by Varied Paths"
+      },
+      {
+        "skillId": "skchr_skadi2_2",
+        "iconId": null,
+        "skillName": "Wish of Burial Beyond the Light"
+      },
+      {
+        "skillId": "skchr_skadi2_3",
+        "iconId": null,
+        "skillName": "'The Tide Surges, The Tide Recedes'"
+      }
+    ],
+    "class": "Supporter",
+    "modules": []
+  },
+  "char_2023_ling": {
+    "id": "char_2023_ling",
+    "name": "Ling",
+    "rarity": 6,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_ling_1",
+        "iconId": null,
+        "skillName": "重进酒"
+      },
+      {
+        "skillId": "skchr_ling_2",
+        "iconId": null,
+        "skillName": "笑鸣瑟"
+      },
+      {
+        "skillId": "skchr_ling_3",
+        "iconId": null,
+        "skillName": "宁作吾"
+      }
+    ],
+    "class": "Supporter",
+    "modules": [
+      {
+        "moduleName": "诗短梦长",
+        "moduleId": "uniequip_002_ling",
+        "typeName": "SUM-Y"
+      }
+    ]
+  },
+  "char_250_phatom": {
+    "id": "char_250_phatom",
+    "name": "Phantom",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_phatom_1",
+        "iconId": null,
+        "skillName": "Phantom of the Night"
+      },
+      {
+        "skillId": "skchr_phatom_2",
+        "iconId": null,
+        "skillName": "Bloody Opus"
+      },
+      {
+        "skillId": "skchr_phatom_3",
+        "iconId": null,
+        "skillName": "Night Raid"
+      }
+    ],
+    "class": "Specialist",
+    "modules": [
+      {
+        "moduleName": "Miss Christine's Felt",
+        "moduleId": "uniequip_002_phatom",
+        "typeName": "EXE-X"
+      }
+    ]
+  },
+  "char_322_lmlee": {
+    "id": "char_322_lmlee",
+    "name": "Lee",
+    "rarity": 6,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_lmlee_1",
+        "iconId": null,
+        "skillName": "小惩大诫"
+      },
+      {
+        "skillId": "skchr_lmlee_2",
+        "iconId": null,
+        "skillName": "驱凶辟邪"
+      },
+      {
+        "skillId": "skchr_lmlee_3",
+        "iconId": null,
+        "skillName": "贵客盈门"
+      }
+    ],
+    "class": "Specialist",
+    "modules": [
+      {
+        "moduleName": "“无问吉凶”",
+        "moduleId": "uniequip_002_lmlee",
+        "typeName": "MER-X"
+      }
+    ]
+  },
+  "char_400_weedy": {
+    "id": "char_400_weedy",
+    "name": "Weedy",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_weedy_1",
+        "iconId": null,
+        "skillName": "Barrel Burst"
+      },
+      {
+        "skillId": "skchr_weedy_2",
+        "iconId": null,
+        "skillName": "Hydraulics Mode"
+      },
+      {
+        "skillId": "skchr_weedy_3",
+        "iconId": null,
+        "skillName": "Liquid Nitrogen Cannon"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_225_haak": {
+    "id": "char_225_haak",
+    "name": "Aak",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_haak_1",
+        "iconId": null,
+        "skillName": "Rapid Fire"
+      },
+      {
+        "skillId": "skchr_haak_2",
+        "iconId": null,
+        "skillName": "Type-γ Stimpack"
+      },
+      {
+        "skillId": "skchr_haak_3",
+        "iconId": null,
+        "skillName": "Durian-Flavored Stimpack"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_474_glady": {
+    "id": "char_474_glady",
+    "name": "Gladiia",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_glady_1",
+        "iconId": null,
+        "skillName": "Waterless Parting of the Great Ocean"
+      },
+      {
+        "skillId": "skchr_glady_2",
+        "iconId": null,
+        "skillName": "Waterless Grasp of the Raging Seas"
+      },
+      {
+        "skillId": "skchr_glady_3",
+        "iconId": null,
+        "skillName": "Waterless Dance of the Shattered Maelstrom"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_437_mizuki": {
+    "id": "char_437_mizuki",
+    "name": "Mizuki",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_mizuki_1",
+        "iconId": null,
+        "skillName": "Awaken"
+      },
+      {
+        "skillId": "skchr_mizuki_2",
+        "iconId": null,
+        "skillName": "Prisoner's Dilemma"
+      },
+      {
+        "skillId": "skchr_mizuki_3",
+        "iconId": null,
+        "skillName": "Moon in the Water"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_1023_ghost2": {
+    "id": "char_1023_ghost2",
+    "name": "Specter the Unchained",
+    "rarity": 6,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_ghost2_1",
+        "iconId": null,
+        "skillName": "生存的技巧"
+      },
+      {
+        "skillId": "skchr_ghost2_2",
+        "iconId": null,
+        "skillName": "生存的渴望"
+      },
+      {
+        "skillId": "skchr_ghost2_3",
+        "iconId": null,
+        "skillName": "生存的重压"
+      }
+    ],
+    "class": "Specialist",
+    "modules": [
+      {
+        "moduleName": "“唱片”收藏箱",
+        "moduleId": "uniequip_002_ghost2",
+        "typeName": "PUM-X"
+      }
+    ]
+  },
+  "char_4048_doroth": {
+    "id": "char_4048_doroth",
+    "name": "Dorothy",
+    "rarity": 6,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_doroth_1",
+        "iconId": null,
+        "skillName": "危险目标清除"
+      },
+      {
+        "skillId": "skchr_doroth_2",
+        "iconId": null,
+        "skillName": "流沙区域生成"
+      },
+      {
+        "skillId": "skchr_doroth_3",
+        "iconId": null,
+        "skillName": "高速共振排障"
+      }
+    ],
+    "class": "Specialist",
+    "modules": []
+  },
+  "char_147_shining": {
+    "id": "char_147_shining",
+    "name": "Shining",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_shining_1",
+        "iconId": null,
+        "skillName": "Creed"
+      },
+      {
+        "skillId": "skchr_shining_2",
+        "iconId": null,
+        "skillName": "Auto Protect"
+      },
+      {
+        "skillId": "skchr_shining_3",
+        "iconId": null,
+        "skillName": "Creed Field"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_179_cgbird": {
+    "id": "char_179_cgbird",
+    "name": "Nightingale",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_heal_up[3]",
+        "iconId": null,
+        "skillName": "Healing Up γ"
+      },
+      {
+        "skillId": "skchr_cgbird_2",
+        "iconId": null,
+        "skillName": "Arts Shield"
+      },
+      {
+        "skillId": "skchr_cgbird_3",
+        "iconId": null,
+        "skillName": "Sanctuary"
+      }
+    ],
+    "class": "Medic",
+    "modules": [
+      {
+        "moduleName": "'Closed Hope'",
+        "moduleId": "uniequip_002_cgbird",
+        "typeName": "RIN-X"
+      }
+    ]
+  },
+  "char_003_kalts": {
+    "id": "char_003_kalts",
+    "name": "Kal'tsit",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_kalts_1",
+        "iconId": null,
+        "skillName": "Command: Structural Fortification"
+      },
+      {
+        "skillId": "skchr_kalts_2",
+        "iconId": null,
+        "skillName": "Command: Tactical Coordination"
+      },
+      {
+        "skillId": "skchr_kalts_3",
+        "iconId": null,
+        "skillName": "Command: Meltdown"
+      }
+    ],
+    "class": "Medic",
+    "modules": []
+  },
+  "char_4042_lumen": {
+    "id": "char_4042_lumen",
+    "name": "Lumen",
+    "rarity": 6,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_lumen_1",
+        "iconId": null,
+        "skillName": "沐雨"
+      },
+      {
+        "skillId": "skchr_lumen_2",
+        "iconId": null,
+        "skillName": "沛霖"
+      },
+      {
+        "skillId": "skchr_lumen_3",
+        "iconId": null,
+        "skillName": "灯火不灭"
+      }
+    ],
+    "class": "Medic",
+    "modules": [
+      {
+        "moduleName": "纯铜单筒望远镜",
+        "moduleId": "uniequip_002_lumen",
+        "typeName": "WAH-X"
+      }
+    ]
+  },
+  "char_136_hsguma": {
+    "id": "char_136_hsguma",
+    "name": "Hoshiguma",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_hsguma_1",
+        "iconId": null,
+        "skillName": "Warpath"
+      },
+      {
+        "skillId": "skchr_hsguma_2",
+        "iconId": null,
+        "skillName": "Thorns"
+      },
+      {
+        "skillId": "skchr_hsguma_3",
+        "iconId": null,
+        "skillName": "Saw of Strength"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_202_demkni": {
+    "id": "char_202_demkni",
+    "name": "Saria",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_demkni_1",
+        "iconId": null,
+        "skillName": "First Aid"
+      },
+      {
+        "skillId": "skchr_demkni_2",
+        "iconId": null,
+        "skillName": "Medicine Dispensing"
+      },
+      {
+        "skillId": "skchr_demkni_3",
+        "iconId": null,
+        "skillName": "Calcification"
+      }
+    ],
+    "class": "Defender",
+    "modules": [
+      {
+        "moduleName": "闲置的拳击手套",
+        "moduleId": "uniequip_002_demkni",
+        "typeName": "GUA-X"
+      }
+    ]
+  },
+  "char_423_blemsh": {
+    "id": "char_423_blemsh",
+    "name": "Blemishine",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_blemsh_1",
+        "iconId": null,
+        "skillName": "Surging Brilliance"
+      },
+      {
+        "skillId": "skchr_blemsh_2",
+        "iconId": null,
+        "skillName": "Deterring Radiance"
+      },
+      {
+        "skillId": "skchr_blemsh_3",
+        "iconId": null,
+        "skillName": "Divine Avatar"
+      }
+    ],
+    "class": "Defender",
+    "modules": [
+      {
+        "moduleName": "工匠团的回响",
+        "moduleId": "uniequip_002_blemsh",
+        "typeName": "GUA-Y"
+      }
+    ]
+  },
+  "char_2014_nian": {
+    "id": "char_2014_nian",
+    "name": "Nian",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_nian_1",
+        "iconId": null,
+        "skillName": "Tin Burning"
+      },
+      {
+        "skillId": "skchr_nian_2",
+        "iconId": null,
+        "skillName": "Copper Seal"
+      },
+      {
+        "skillId": "skchr_nian_3",
+        "iconId": null,
+        "skillName": "Iron Defense"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_311_mudrok": {
+    "id": "char_311_mudrok",
+    "name": "Mudrock",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_def_up[3]",
+        "iconId": null,
+        "skillName": "DEF Up γ"
+      },
+      {
+        "skillId": "skchr_mudrok_2",
+        "iconId": null,
+        "skillName": "Crag Splitter"
+      },
+      {
+        "skillId": "skchr_mudrok_3",
+        "iconId": null,
+        "skillName": "Bloodline of Desecrated Earth"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_416_zumama": {
+    "id": "char_416_zumama",
+    "name": "Eunectes",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_zumama_1",
+        "iconId": null,
+        "skillName": "Tomahawk"
+      },
+      {
+        "skillId": "skchr_zumama_2",
+        "iconId": null,
+        "skillName": "Menacing Slash"
+      },
+      {
+        "skillId": "skchr_zumama_3",
+        "iconId": null,
+        "skillName": "Iron Will"
+      }
+    ],
+    "class": "Defender",
+    "modules": [
+      {
+        "moduleName": "祖玛玛的工具箱",
+        "moduleId": "uniequip_002_zumama",
+        "typeName": "HES-X"
+      }
+    ]
+  },
+  "char_4039_horn": {
+    "id": "char_4039_horn",
+    "name": "Horn",
+    "rarity": 6,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_horn_1",
+        "iconId": null,
+        "skillName": "照明榴弹"
+      },
+      {
+        "skillId": "skchr_horn_2",
+        "iconId": null,
+        "skillName": "暴风号令"
+      },
+      {
+        "skillId": "skchr_horn_3",
+        "iconId": null,
+        "skillName": "终极防线"
+      }
+    ],
+    "class": "Defender",
+    "modules": []
+  },
+  "char_264_f12yin": {
+    "id": "char_264_f12yin",
+    "name": "Mountain",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_f12yin_1",
+        "iconId": null,
+        "skillName": "Left Hook"
+      },
+      {
+        "skillId": "skchr_f12yin_2",
+        "iconId": null,
+        "skillName": "Sweeping Stance"
+      },
+      {
+        "skillId": "skchr_f12yin_3",
+        "iconId": null,
+        "skillName": "Earth-Shattering Smash"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_172_svrash": {
+    "id": "char_172_svrash",
+    "name": "SilverAsh",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_svrash_1",
+        "iconId": "skcom_powerstrike[3]",
+        "skillName": "Power Strike γ"
+      },
+      {
+        "skillId": "skchr_svrash_2",
+        "iconId": null,
+        "skillName": "Rules of Survival"
+      },
+      {
+        "skillId": "skchr_svrash_3",
+        "iconId": null,
+        "skillName": "Truesilver Slash"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_293_thorns": {
+    "id": "char_293_thorns",
+    "name": "Thorns",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "ATK Up γ"
+      },
+      {
+        "skillId": "skchr_thorns_2",
+        "iconId": null,
+        "skillName": "Protective Spikes"
+      },
+      {
+        "skillId": "skchr_thorns_3",
+        "iconId": null,
+        "skillName": "Destreza"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_010_chen": {
+    "id": "char_010_chen",
+    "name": "Ch'en",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_chen_1",
+        "iconId": null,
+        "skillName": "Sheathed Strike"
+      },
+      {
+        "skillId": "skchr_chen_2",
+        "iconId": null,
+        "skillName": "Chi Xiao - Unsheath"
+      },
+      {
+        "skillId": "skchr_chen_3",
+        "iconId": null,
+        "skillName": "Chi Xiao - Shadowless"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "Rhodes Island Standard Combat Sword",
+        "moduleId": "uniequip_002_chen",
+        "typeName": "SWO-X"
+      }
+    ]
+  },
+  "char_4009_irene": {
+    "id": "char_4009_irene",
+    "name": "Irene",
+    "rarity": 6,
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_irene_1",
+        "iconId": null,
+        "skillName": "起风"
+      },
+      {
+        "skillId": "skchr_irene_2",
+        "iconId": null,
+        "skillName": "裂潮"
+      },
+      {
+        "skillId": "skchr_irene_3",
+        "iconId": null,
+        "skillName": "判决"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "厚重的经卷",
+        "moduleId": "uniequip_002_irene",
+        "typeName": "SWO-Y"
+      }
+    ]
+  },
+  "char_017_huang": {
+    "id": "char_017_huang",
+    "name": "Blaze",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_huang_1",
+        "iconId": "skcom_powerstrike[3]",
+        "skillName": "Power Strike γ"
+      },
+      {
+        "skillId": "skchr_huang_2",
+        "iconId": null,
+        "skillName": "Chainsaw Extension Module"
+      },
+      {
+        "skillId": "skchr_huang_3",
+        "iconId": null,
+        "skillName": "Boiling Burst"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_350_surtr": {
+    "id": "char_350_surtr",
+    "name": "Surtr",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_surtr_1",
+        "iconId": null,
+        "skillName": "Laevatain"
+      },
+      {
+        "skillId": "skchr_surtr_2",
+        "iconId": null,
+        "skillName": "Molten Giant"
+      },
+      {
+        "skillId": "skchr_surtr_3",
+        "iconId": null,
+        "skillName": "Twilight"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_188_helage": {
+    "id": "char_188_helage",
+    "name": "Hellagur",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_helage_1",
+        "iconId": null,
+        "skillName": "Crescent Moon"
+      },
+      {
+        "skillId": "skchr_helage_2",
+        "iconId": null,
+        "skillName": "Half Moon"
+      },
+      {
+        "skillId": "skchr_helage_3",
+        "iconId": null,
+        "skillName": "Full Moon"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_485_pallas": {
+    "id": "char_485_pallas",
+    "name": "Pallas",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_pallas_1",
+        "iconId": null,
+        "skillName": "Strikes of Victory"
+      },
+      {
+        "skillId": "skchr_pallas_2",
+        "iconId": null,
+        "skillName": "Whip of Conviction"
+      },
+      {
+        "skillId": "skchr_pallas_3",
+        "iconId": null,
+        "skillName": "Blessing of Heroism"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "'Ούρος'",
+        "moduleId": "uniequip_002_pallas",
+        "typeName": "INS-X"
+      },
+      {
+        "moduleName": "“赫里亚之辉”",
+        "moduleId": "uniequip_003_pallas",
+        "typeName": "INS-Y"
+      }
+    ]
+  },
+  "char_1014_nearl2": {
+    "id": "char_1014_nearl2",
+    "name": "Nearl the Radiant Knight",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_nearl2_1",
+        "iconId": null,
+        "skillName": "Flaming Edge"
+      },
+      {
+        "skillId": "skchr_nearl2_2",
+        "iconId": null,
+        "skillName": "Night-Scouring Gleam"
+      },
+      {
+        "skillId": "skchr_nearl2_3",
+        "iconId": null,
+        "skillName": "Blazing Sun's Obeisance"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "耀阳锋刃",
+        "moduleId": "uniequip_002_nearl2",
+        "typeName": "DRE-X"
+      }
+    ]
+  },
+  "char_230_savage": {
+    "id": "char_230_savage",
+    "name": "Savage",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_savage_1",
+        "iconId": "skcom_powerstrike[2]",
+        "skillName": "Power Strike β"
+      },
+      {
+        "skillId": "skchr_savage_2",
+        "iconId": null,
+        "skillName": "Precise Blast"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_282_catap": {
+    "id": "char_282_catap",
+    "name": "Catapult",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_catap_1",
+        "iconId": "skcom_blowrange_up[1]",
+        "skillName": "Blast Range Up α"
+      }
+    ],
+    "class": "Sniper",
+    "modules": []
+  },
+  "char_283_midn": {
+    "id": "char_283_midn",
+    "name": "Midnight",
+    "rarity": 3,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_midn_1",
+        "iconId": "skcom_enchant[1]",
+        "skillName": "Enchant Weapon α"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_137_brownb": {
+    "id": "char_137_brownb",
+    "name": "Beehunter",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_brownb_1",
+        "iconId": null,
+        "skillName": "Flexibility"
+      },
+      {
+        "skillId": "skchr_brownb_2",
+        "iconId": null,
+        "skillName": "Soaring Fists"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_347_jaksel": {
+    "id": "char_347_jaksel",
+    "name": "Jackie",
+    "rarity": 4,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_jaksel_1",
+        "iconId": null,
+        "skillName": "Grit Those Teeth!"
+      },
+      {
+        "skillId": "skchr_jaksel_2",
+        "iconId": null,
+        "skillName": "Pay Close Attention!"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  },
+  "char_164_nightm": {
+    "id": "char_164_nightm",
+    "name": "Nightmare",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_nightm_1",
+        "iconId": null,
+        "skillName": "Drain Soul"
+      },
+      {
+        "skillId": "skchr_nightm_2",
+        "iconId": null,
+        "skillName": "Night Phantom"
+      }
+    ],
+    "class": "Caster",
+    "modules": []
+  },
+  "char_220_grani": {
+    "id": "char_220_grani",
+    "name": "Grani",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_def_up[3]",
+        "iconId": null,
+        "skillName": "DEF Up γ"
+      },
+      {
+        "skillId": "skchr_grani_2",
+        "iconId": null,
+        "skillName": "Press the Attack!"
+      }
+    ],
+    "class": "Vanguard",
+    "modules": [
+      {
+        "moduleName": "Cavalry Policeman Suit",
+        "moduleId": "uniequip_002_grani",
+        "typeName": "CHG-X"
+      }
+    ]
+  },
+  "char_263_skadi": {
+    "id": "char_263_skadi",
+    "name": "Skadi",
+    "rarity": 6,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skcom_quickattack[3]",
+        "iconId": null,
+        "skillName": "Swift Strike γ"
+      },
+      {
+        "skillId": "skchr_skadi_2",
+        "iconId": null,
+        "skillName": "Wave Strike"
+      },
+      {
+        "skillId": "skchr_skadi_3",
+        "iconId": null,
+        "skillName": "Tidal Elegy"
+      }
+    ],
+    "class": "Guard",
+    "modules": [
+      {
+        "moduleName": "潮湿的剑袋",
+        "moduleId": "uniequip_002_skadi",
+        "typeName": "DRE-Y"
+      },
+      {
+        "moduleName": "往日残梦",
+        "moduleId": "uniequip_003_skadi",
+        "typeName": "DRE-X"
+      }
+    ]
+  },
+  "char_1001_amiya2": {
+    "id": "char_1001_amiya2",
+    "name": "Amiya (Guard)",
+    "rarity": 5,
+    "isCnOnly": false,
+    "skills": [
+      {
+        "skillId": "skchr_amiya2_1",
+        "iconId": null,
+        "skillName": "Ying Xiao - Fleeting Night"
+      },
+      {
+        "skillId": "skchr_amiya2_2",
+        "iconId": null,
+        "skillName": "Ying Xiao - Shadowless"
+      }
+    ],
+    "class": "Guard",
+    "modules": []
+  }
+}
