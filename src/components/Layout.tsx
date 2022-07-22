@@ -1,8 +1,10 @@
-import React from "react";
-import { AppBar, Box, Container, IconButton, Toolbar, Typography } from "@mui/material";
+import React, { useEffect } from "react";
+import { AppBar, Box, Container, IconButton, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import Head from "next/head";
 import config from "../data/config";
 import MenuIcon from '@mui/icons-material/Menu';
+import AppDrawer from "./AppDrawer";
+import appTheme from "../styles/theme/appTheme";
 
 interface Props {
   tab: keyof typeof config.tabs;
@@ -14,9 +16,16 @@ const Layout = (props: Props) => {
   const { siteTitle, tabs } = config;
   const { title: tabTitle, description: tabDescription, pages } = tabs[tab];
   const { title: pageTitle, description: pageDescription } = pages[page as keyof typeof pages] ?? {};
-  const title = `${tabTitle} « ${pageTitle} » ${siteTitle}`
+  const title = `${tabTitle} . ${pageTitle} . ${siteTitle}`
+
+
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const handleDrawerToggle = React.useCallback(() => {
+    setDrawerOpen((open) => !open);
+  }, []);
+
   return (
-    <>
+    <ThemeProvider theme={appTheme}>
       <Head>
         <title>{title}</title>
         <meta
@@ -32,6 +41,8 @@ const Layout = (props: Props) => {
           property="og:description"
           content={pageDescription}
         />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#fbc02d" />
       </Head>
       <Box
         display="grid"
@@ -41,12 +52,21 @@ const Layout = (props: Props) => {
         gridTemplateColumns="auto 1fr"
       >
         <AppDrawer
-          mobileOpen={mobileOpen}
+          tab={tab}
+          page={page}
+          open={drawerOpen}
           onDrawerToggle={handleDrawerToggle}
         />
-
-        <AppBar enableColorOnDark sx={{ gridArea: "header" }}>
-          <Toolbar variant="dense">
+        <AppBar
+          position="sticky"
+          enableColorOnDark
+          sx={{ gridArea: "header" }}
+        >
+          <Toolbar
+            variant="dense"
+            sx={{
+            }}
+          >
             <IconButton
               aria-label="toggle navbar"
               edge="start"
@@ -57,11 +77,16 @@ const Layout = (props: Props) => {
                 },
               }}
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: "background.paper" }} />
             </IconButton>
-            <Typography component="h2" variant="h5" noWrap>
-              {pageTitle}
-            </Typography>
+            <Box component="span" sx={{ verticalAlign: "bottom" }}>
+              <Typography component="h2" variant="h5" noWrap sx={{ display: "inline", verticalAlign: "baseline", }}>
+                {pageTitle}
+              </Typography>
+              <Typography component="h3" variant="h6" noWrap sx={{ ml: "1.5rem", display: "inline", verticalAlign: "baseline", }}>
+                {pageDescription}
+              </Typography>
+            </Box>
           </Toolbar>
         </AppBar>
 
@@ -73,6 +98,7 @@ const Layout = (props: Props) => {
           {children}
         </Container>
       </Box>
-    </>
+    </ThemeProvider>
   )
 }
+export default Layout;
