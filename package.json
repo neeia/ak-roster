@@ -6,7 +6,8 @@
     "start": "next dev",
     "next:build": "next build",
     "next:start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server": "yarn next:build && NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@emotion/cache": "^11.9.3",
@@ -27,6 +28,8 @@
     "@types/react-dom": "18.0.6",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.2",
+    "express": "^4.18.1",
+    "next-offline": "^5.0.5",
     "typescript": "4.7.4"
   }
 }
