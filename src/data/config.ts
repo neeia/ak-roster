@@ -1,5 +1,5 @@
 const config = {
-  siteTitle: "Arknights Rooster",
+  siteTitle: "AK Rooster",
   siteUrl: "https://krooster.com/",
   siteDescription:
     "A collection and progress tracker for Arknights, a game developed by Hypergryph.",
@@ -10,7 +10,7 @@ const config = {
       pages: {
         "/input": {
           title: "Input",
-          description: "Enter things",
+          description: "Enter data about your operators.",
         },
         "/view": {
           title: "Collection",
