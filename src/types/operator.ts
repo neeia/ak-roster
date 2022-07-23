@@ -34,6 +34,22 @@ export interface OpJsonModule {
   typeName: string;
 }
 
+export interface LegacyOperator {
+  id: string;
+  name: string;
+  favorite: boolean;
+  rarity: number;
+  potential: number;
+  promotion: number;
+  owned: boolean;
+  level: number;
+  skillLevel: number;
+  skill1Mastery?: number;
+  skill2Mastery?: number;
+  skill3Mastery?: number;
+  module?: number[];
+}
+
 // Converts an opJson entry into an Operator
 export function defaultOperatorObject([_, op]: [any, OpJsonObj]): [string, Operator] {
   return [
