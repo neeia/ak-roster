@@ -1,4 +1,4 @@
-export const classList = [
+const classList = [
   "Guard",
   "Sniper",
   "Defender",
@@ -8,3 +8,4 @@ export const classList = [
   "Specialist",
   "Vanguard",
 ]
+export default classList;
