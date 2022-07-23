@@ -27,6 +27,7 @@ const Input: NextPage = () => {
 
   return (
     <Layout tab="/data" page="/input">
+      <EditOperator opId={opId} onClose={() => setOpId("")} />
       <Box sx={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
@@ -34,9 +35,24 @@ const Input: NextPage = () => {
         gridGap: "0.75rem",
         margin: "0px",
         padding: "0px",
+        "& .MuiTypography-root": {
+          display: "flex",
+          lineHeight: "1.25rem",
+          color: "text.primary",
+          letterSpacing: "normal",
+          textTransform: "none",
+          pointerEvents: "none",
+          flexDirection: "column",
+          mx: "-1rem",
+        },
+        "& .MuiButton-root": {
+          display: "grid",
+          boxShadow: 2,
+          backgroundColor: "info.main",
+          width: "100%",
+        }
       }}>
         <OperatorSelector onClick={setOpId} />
-        <EditOperator opId={opId} onClose={() => setOpId("")} />
       </Box>
     </Layout>
   );
