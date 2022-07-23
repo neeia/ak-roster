@@ -1,7 +1,6 @@
 import React from "react";
 import { Operator } from "../../../types/operator";
 import { Box, Button, IconButton } from "@mui/material";
-import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { MAX_PROMOTION_BY_RARITY } from "../../../util/changeOperator";
 
 interface Props {
@@ -20,25 +19,20 @@ const Promotion = ((props: Props) => {
       justifyContent: "center",
       gap: "4px",
     }}>
-      {[...Array(3)].map((_, i) => {
-        const disabled = !op.owned || i < MAX_PROMOTION_BY_RARITY[op.rarity];
-        return (
-          <IconButton
-            sx={{
-              border: op.potential === i ? "" : ""
-            }}
-            onClick={() => onChange(op.id, "promotion", i)}
-            disabled={disabled}
-            key={`pro${i + 1}`}
-          >
-            <img
-              width="32px"
-              src={`/img/elite/${i}.png`}
-              alt={`Elite ${i} Button`}
-            />
-          </IconButton>
-        )
-      })}
+      {[...Array(MAX_PROMOTION_BY_RARITY[op.rarity] + 1)].map((_, i) =>
+        <IconButton
+          className={op.promotion === i ? "active" : "inactive"}
+          onClick={() => onChange(op.id, "promotion", i)}
+          disabled={!op.owned}
+          key={`pro${i + 1}`}
+        >
+          <img
+            width="32px"
+            src={`/img/elite/${i}.png`}
+            alt={`Elite ${i} Button`}
+          />
+        </IconButton>
+      )}
     </Box>
   )
 })

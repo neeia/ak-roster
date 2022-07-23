@@ -1,6 +1,7 @@
 import React from "react";
 import { Operator } from "../../../types/operator";
 import { Box, Button, IconButton } from "@mui/material";
+import { getMaxPotentialById } from "../../../util/changeOperator";
 
 interface Props {
   op: Operator;
@@ -18,11 +19,9 @@ const Potential = ((props: Props) => {
       justifyContent: "center",
       gap: "4px",
     }}>
-      {[...Array(6)].map((_, i) =>
-          <IconButton
-            sx={{
-              border: op.potential === i + 1 ? "" : ""
-            }}
+      {[...Array(getMaxPotentialById(op.id))].map((_, i) =>
+        <IconButton
+          className={op.potential === i + 1 ? "active" : "inactive"}
           onClick={() => onChange(op.id, "potential", i + 1)}
           disabled={!op.owned}
           key={`pot${i + 1}`}
