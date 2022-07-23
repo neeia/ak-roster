@@ -18,27 +18,24 @@ const General = ((props: Props) => {
       display: "flex",
       justifyContent: "center",
       gap: "4px",
+      "& > *": {
+        lineHeight: 0.5,
+      }
     }}>
       <Button
-        sx={{
-          lineHeight: 1.25,
-          border: op.owned ? "" : "",
-        }}
+        className={op.owned ? "active" : ""}
         onClick={() => onChange(op.id, "owned", !op.owned)}
       >
         Own
       </Button>
       <Button
-        sx={{
-          lineHeight: 1.25,
-          border: op.favorite ? "" : ""
-        }}
+        className={op.favorite ? "active" : "inactive"}
         onClick={() => onChange(op.id, "favorite", !op.favorite)}
         disabled={!op.owned}
       >
         {op.favorite
-          ? <Favorite fontSize="small" color="info" sx={{ m: "2px" }} />
-          : <FavoriteBorder fontSize="small" color="info" sx={{ m: "2px" }} />}
+          ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
+          : <FavoriteBorder fontSize="small" color="error" sx={{ m: "2px" }} />}
       </Button>
     </Box>
   )

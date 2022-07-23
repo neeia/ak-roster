@@ -1,44 +1,33 @@
 import React, { useEffect } from "react";
-import { Operator } from "../../types/operator";
-import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, Slide, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { TransitionProps } from "@mui/material/transitions";
-import changeOperator from "../../util/changeOperator";
-import useLocalStorage from "../../util/useLocalStorage";
+import { defaultOperatorObject, LegacyOperator, Operator, OpJsonModule, OpJsonObj } from "../../types/operator";
+import operatorJson from "../../data/operators.json";
+import { Box, Dialog, DialogContent, DialogTitle, Typography, useMediaQuery, useTheme } from "@mui/material";
 import EditRow from "./EditRow";
 import General from "./EditPieces/General";
 import Potential from "./EditPieces/Potential";
 import Promotion from "./EditPieces/Promotion";
 import Mastery from "./EditPieces/Mastery";
 import Module from "./EditPieces/Module";
+import Level from "./EditPieces/Level";
+import SkillLevel from "./EditPieces/SkillLevel";
+import useOperators from "../../util/useOperators";
+
 
 interface Props {
   opId: string;
   onClose: () => void;
 }
 
-const EditOperator = React.memo((props: Props) => {
+const EditOperator = ((props: Props) => {
   const { opId, onClose } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
+  const [operators, onChange, applyBatch] = useOperators();
 
-  const [operators, setOperators] = useLocalStorage<Record<string, Operator>>("operators", {});
   const op = operators[opId];
-  if (!op) return <></>
-
-  const onChange = (operatorID: string, property: string, value: number | boolean, index?: number) => {
-    if (isNaN(value as any)) {
-      return;
-    }
-    setOperators(
-      (oldOperators: Record<string, Operator>): Record<string, Operator> => {
-        const copyOperators = { ...oldOperators };
-        const copyOperatorData = { ...copyOperators[operatorID] };
-        copyOperators[operatorID] = changeOperator(copyOperatorData, property, value, index);
-        return copyOperators;
-      }
-    );
-  }
+  if (!op) return null;
+  const opInfo: OpJsonObj = operatorJson[opId as keyof typeof operatorJson];
 
   let intermediate = opId;
   if (op.promotion === 2) {
@@ -51,14 +40,14 @@ const EditOperator = React.memo((props: Props) => {
   const opSplit = op.name.split(" the ");
   const name = (
     <Typography
-      component="h5"
+      component="div"
       variant="h2"
       sx={{
         marginLeft: "8px",
         paddingTop: "12px",
       }}>
       <Typography
-        component="h5"
+        component="div"
         variant="h2"
         sx={{ fontSize: "50%", }}
       >
@@ -100,18 +89,24 @@ const EditOperator = React.memo((props: Props) => {
           titleL="Promotion"
           titleR="Level"
           childrenL={<Promotion op={op} onChange={onChange} />}
-          childrenR={<Potential op={op} onChange={onChange} />}
+          childrenR={<Level op={op} onChange={onChange} />}
         />
-        <EditRow
-          titleL="Skill Rank"
-          titleR="Masteries"
-          childrenL={<General op={op} onChange={onChange} />}
-          childrenR={<Mastery op={op} onChange={onChange} />}
-        />
-        <EditRow
-          titleR="Modules"
-          childrenR={<Module op={op} onChange={onChange} />}
-        />
+        {opInfo.skills.length !== 0
+          ? <EditRow
+            titleL="Skill Rank"
+            titleR="Masteries"
+            childrenL={<SkillLevel op={op} onChange={onChange} />}
+            childrenR={<Mastery op={op} onChange={onChange} />}
+          />
+          : null
+        }
+        {opInfo.modules.length !== 0
+          ? <EditRow
+            titleR="Modules"
+            childrenR={<Module op={op} onChange={onChange} />}
+          />
+          : null
+        }
       </DialogContent>
     </Dialog>
   );

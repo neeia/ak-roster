@@ -1,7 +1,7 @@
 import React from "react";
 import { Operator, OpJsonModule, OpJsonObj } from "../../../types/operator";
-import { Box, Button, IconButton, Typography } from "@mui/material";
 import operatorJson from "../../../data/operators.json";
+import { Box, Button, IconButton, Typography } from "@mui/material";
 import { MODULE_REQ_BY_RARITY } from "../../../util/changeOperator";
 
 interface Props {
@@ -55,51 +55,47 @@ const Module = ((props: Props) => {
               variant="caption2"
               sx={{
                 gridArea: "name",
-                fontWeight: 100,
                 mb: -0.25,
                 zIndex: 1
               }}>
               {module.moduleName}
             </Typography>
-            {opInfo !== undefined
-              ?
-              <Box sx={{ gridArea: "icon", display: "flex", flexDirection: "column" }}>
-                <Box
-                  component="img"
-                  width="48px"
-                  src={`/img/equip/${module.moduleId}.png`}
-                  alt={`Module ${i + 1}`}
-                />
+            <Box sx={{ gridArea: "icon", display: "flex", flexDirection: "column", alignItems: "center", }}>
+              <Box
+                className={disabled ? "Mui-disabled" : ""}
+                component="img"
+                width="48px"
+                src={`/img/equip/${module.moduleId}.png`}
+                alt={`Module ${i + 1}`}
+              />
+              <Typography
+                variant="caption3"
+                sx={{
+                  mb: -0.25,
+                  zIndex: 1
+                }}>
                 {module.typeName}
-              </Box>
-              : ""}
+              </Typography>
+            </Box>
             {[...Array(4)].map((_, j) =>
               <Button
-                key={`mastery${j}Button`}
+                className={!disabled && (op.module && op.module[i] ? op.module[i] === j : j === 0) ? "active" : "inactive"}
+                key={`mod${j}Button`}
                 sx={{
                   gridRow: 2,
                   gridColumn: j + 2,
                   display: "grid",
                   p: 0.5,
                   minWidth: 0,
-                  border: (op.mastery ?? [])[i] === j ? "" : ""
+                  backgroundColor: "background.default",
                 }}
-                onClick={() => onChange(op.id, "mastery", j, i)}
+                onClick={() => onChange(op.id, "module", j, i)}
                 disabled={disabled}
               >
-                <Box
-                  sx={{ gridArea: "1 / 1" }}
-                  component="img"
+                <img
                   width="32px"
-                  src={`/img/rank/bg.png`}
-                  alt={""}
-                />
-                <Box
-                  sx={{ gridArea: "1 / 1" }}
-                  component="img"
-                  width="32px"
-                  src={`/img/rank/m-${j}.png`}
-                  alt={`Mastery ${j}`}
+                  src={`/img/equip/img_stg${j}.png`}
+                  alt={`Module ${j}`}
                 />
               </Button>
             )}

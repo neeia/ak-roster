@@ -64,6 +64,7 @@ const Mastery = ((props: Props) => {
             {opInfo !== undefined
               ? <Box
                 component="img"
+                className={op.promotion < i ? "Mui-disabled" : ""}
                 sx={{ gridArea: "icon" }}
                 width="48px"
                 src={`/img/skills/${opInfo.skills[i].iconId ?? opInfo.skills[i].skillId}.png`}
@@ -72,28 +73,25 @@ const Mastery = ((props: Props) => {
               : ""}
             {[...Array(4)].map((_, j) =>
               <Button
+                className={!disabled && (op.mastery && op.mastery[i] ? op.mastery[i] === j : j === 0) ? "active" : "inactive"}
                 key={`mastery${j}Button`}
                 sx={{
                   gridRow: 2,
                   gridColumn: j + 2,
                   display: "grid",
+                  "& > *": { gridArea: "1 / 1" },
                   p: 0.5,
                   minWidth: 0,
-                  border: (op.mastery ?? [])[i] === j ? "" : ""
                 }}
                 onClick={() => onChange(op.id, "mastery", j, i)}
                 disabled={disabled}
               >
-                <Box
-                  sx={{ gridArea: "1 / 1" }}
-                  component="img"
+                <img
                   width="32px"
                   src={`/img/rank/bg.png`}
                   alt={""}
                 />
-                <Box
-                  sx={{ gridArea: "1 / 1" }}
-                  component="img"
+                <img
                   width="32px"
                   src={`/img/rank/m-${j}.png`}
                   alt={`Mastery ${j}`}
