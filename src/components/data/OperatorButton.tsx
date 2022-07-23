@@ -17,6 +17,7 @@ interface Props {
 
 const OperatorButton = ((props: Props) => {
   const { op, onClick } = props;
+  if (!op.name) return null;
   const [n, t] = op.name.split(" the ");
   const name = t ?? n;
   const width = getTextWidth(name, JSON.stringify(appTheme.typography.caption).replace(/[\{\}]+/g, "")) * WIDTH_TO_PX;
@@ -26,18 +27,10 @@ const OperatorButton = ((props: Props) => {
     <Typography
       component="div"
       variant={width > LONG_CUTOFF ? width > LONGER_CUTOFF ? "caption3" : "caption2" : "caption"}
-      sx={{
-        display: "flex",
-        lineHeight: "1.25rem",
-        color: "text.primary",
-        letterSpacing: "normal",
-        textTransform: "none",
-        pointerEvents: "none",
-        flexDirection: "column",
-        mx: "-1rem",
-      }}
     >
-      {width > LONGER_CUTOFF && name.includes(" ") ? name.split(" ").map((s: string) => <Box key={s} sx={{ lineHeight: 1.1, }}>{s}</Box>) : name}
+      {width > LONGER_CUTOFF && name.includes(" ")
+        ? name.split(" ").map((s: string) => <Box key={s} sx={{ lineHeight: 1, }}>{s}</Box>)
+        : name}
     </Typography>
   // Process operator name
   let opName = (
@@ -61,12 +54,6 @@ const OperatorButton = ((props: Props) => {
       onClick={() => {
         setSelected(!selected);
         onClick(op.id);
-      }}
-      sx={{
-        display: "grid",
-        boxShadow: 2,
-        backgroundColor: "info.light",
-        width: "100%",
       }}>
       <Box
         component="img"
@@ -84,7 +71,7 @@ const OperatorButton = ((props: Props) => {
         alignSelf: "start",
       }}>
         {op.favorite
-          ? <Favorite fontSize="small" color="info" sx={{ m: "2px" }} />
+          ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
           : ""}
       </Box>
       {opName}
