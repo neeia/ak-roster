@@ -36,18 +36,21 @@ function minMax(min: number, value: number, max: number) {
 const changeOperator = (op: Operator, prop: string, value: number | boolean, index?: number): Operator => {
   if (!op.owned && prop !== "owned") return op;
   switch (prop) {
-    case "potential":
-      op.potential = minMax(1, +value, getMaxPotentialById(op.id));
-      break;
     case "owned":
       op.owned = value > 0;
       op.favorite = false;
       op.potential = +value;
       op.promotion = +value - 1;
-      op.level = +value - 1;
+      op.level = +value;
       op.skillLevel = (value && op.rarity > 2 ? 1 : 0);
       op.mastery = [];
       op.module = [];
+      break;
+    case "favorite":
+      op.favorite = value > 0;
+      break;
+    case "potential":
+      op.potential = minMax(1, +value, getMaxPotentialById(op.id));
       break;
     case "promotion":
       op.promotion = minMax(0, +value, MAX_PROMOTION_BY_RARITY[op.rarity])
@@ -59,7 +62,7 @@ const changeOperator = (op: Operator, prop: string, value: number | boolean, ind
       }
       break;
     case "level":
-      op.level = minMax(1, op.level, MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]);
+      op.level = minMax(1, +value, MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]);
       break;
     case "skillLevel":
       op.skillLevel = minMax(1, +value, 7);
