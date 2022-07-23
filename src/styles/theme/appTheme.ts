@@ -15,9 +15,9 @@ const appTheme = createTheme({
       dark: yellow[700],
     },
     error: {
-      main: yellow[700],
-      light: yellow[700],
-      dark: yellow[700],
+      main: red[500],
+      light: red[500],
+      dark: red[500],
     },
     warning: {
       main: yellow[700],
@@ -25,9 +25,9 @@ const appTheme = createTheme({
       dark: yellow[700],
     },
     info: {
-      main: red[500],
-      light: "#262624",
-      dark: red[400],
+      main: "#292928",
+      light: "#323233",
+      dark: "#292928",
     },
     success: {
       main: yellow[700],
@@ -35,7 +35,7 @@ const appTheme = createTheme({
       dark: yellow[700],
     },
     background: {
-      default: grey[900],
+      default: "#272727",
       paper: "#121212",
     },
     text: {
