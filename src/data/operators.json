@@ -2,88 +2,99 @@
   "char_285_medic2": {
     "id": "char_285_medic2",
     "name": "Lancet-2",
+    "cnName": "Lancet-2",
     "rarity": 1,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [],
-    "class": "Medic",
     "modules": []
   },
   "char_286_cast3": {
     "id": "char_286_cast3",
     "name": "Castle-3",
+    "cnName": "Castle-3",
     "rarity": 1,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [],
-    "class": "Guard",
     "modules": []
   },
   "char_376_therex": {
     "id": "char_376_therex",
     "name": "Thermal-EX",
+    "cnName": "THRM-EX",
     "rarity": 1,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [],
-    "class": "Specialist",
     "modules": []
   },
   "char_4000_jnight": {
     "id": "char_4000_jnight",
     "name": "\"Justice Knight\"",
+    "cnName": "正义骑士号",
     "rarity": 1,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [],
-    "class": "Sniper",
     "modules": []
   },
   "char_502_nblade": {
     "id": "char_502_nblade",
     "name": "Yato",
+    "cnName": "夜刀",
     "rarity": 2,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [],
-    "class": "Vanguard",
     "modules": []
   },
   "char_500_noirc": {
     "id": "char_500_noirc",
     "name": "Noir Corne",
+    "cnName": "黑角",
     "rarity": 2,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [],
-    "class": "Defender",
     "modules": []
   },
   "char_503_rang": {
     "id": "char_503_rang",
     "name": "Rangers",
+    "cnName": "巡林者",
     "rarity": 2,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [],
-    "class": "Sniper",
     "modules": []
   },
   "char_501_durin": {
     "id": "char_501_durin",
     "name": "Durin",
+    "cnName": "杜林",
     "rarity": 2,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [],
-    "class": "Caster",
     "modules": []
   },
   "char_009_12fce": {
     "id": "char_009_12fce",
     "name": "12F",
+    "cnName": "12F",
     "rarity": 2,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [],
-    "class": "Caster",
     "modules": []
   },
   "char_123_fang": {
     "id": "char_123_fang",
     "name": "Fang",
+    "cnName": "芬",
     "rarity": 3,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -92,13 +103,14 @@
         "skillName": "Charge α"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_240_wyvern": {
     "id": "char_240_wyvern",
     "name": "Vanilla",
+    "cnName": "香草",
     "rarity": 3,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -107,13 +119,14 @@
         "skillName": "Command - Reinforcement"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_192_falco": {
     "id": "char_192_falco",
     "name": "Plume",
+    "cnName": "翎羽",
     "rarity": 3,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -122,13 +135,14 @@
         "skillName": "Swift Strike α"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_208_melan": {
     "id": "char_208_melan",
     "name": "Melantha",
+    "cnName": "玫兰莎",
     "rarity": 3,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -137,13 +151,14 @@
         "skillName": "ATK Up α"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_281_popka": {
     "id": "char_281_popka",
     "name": "Popukar",
+    "cnName": "泡普卡",
     "rarity": 3,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -152,13 +167,14 @@
         "skillName": "ATK Up α"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_209_ardign": {
     "id": "char_209_ardign",
     "name": "Cardigan",
+    "cnName": "卡缇",
     "rarity": 3,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -167,13 +183,14 @@
         "skillName": "Regeneration α"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_122_beagle": {
     "id": "char_122_beagle",
     "name": "Beagle",
+    "cnName": "米格鲁",
     "rarity": 3,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -182,13 +199,14 @@
         "skillName": "DEF Up α"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_284_spot": {
     "id": "char_284_spot",
     "name": "Spot",
+    "cnName": "斑点",
     "rarity": 3,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -197,13 +215,14 @@
         "skillName": "Secondary Healing Mode"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_124_kroos": {
     "id": "char_124_kroos",
     "name": "Kroos",
+    "cnName": "克洛丝",
     "rarity": 3,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -212,13 +231,14 @@
         "skillName": "Double Tap - Auto"
       }
     ],
-    "class": "Sniper",
     "modules": []
   },
   "char_211_adnach": {
     "id": "char_211_adnach",
     "name": "Adnachiel",
+    "cnName": "安德切尔",
     "rarity": 3,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -227,13 +247,14 @@
         "skillName": "ATK Up α"
       }
     ],
-    "class": "Sniper",
     "modules": []
   },
   "char_121_lava": {
     "id": "char_121_lava",
     "name": "Lava",
+    "cnName": "炎熔",
     "rarity": 3,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -242,13 +263,14 @@
         "skillName": "Tactical Chant α"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_120_hibisc": {
     "id": "char_120_hibisc",
     "name": "Hibiscus",
+    "cnName": "芙蓉",
     "rarity": 3,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -257,13 +279,14 @@
         "skillName": "Healing Up α"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_212_ansel": {
     "id": "char_212_ansel",
     "name": "Ansel",
+    "cnName": "安赛尔",
     "rarity": 3,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -272,13 +295,14 @@
         "skillName": "Healing Range Up"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_210_stward": {
     "id": "char_210_stward",
     "name": "Steward",
+    "cnName": "史都华德",
     "rarity": 3,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -287,13 +311,14 @@
         "skillName": "Power Strike α"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_278_orchid": {
     "id": "char_278_orchid",
     "name": "Orchid",
+    "cnName": "梓兰",
     "rarity": 3,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -302,13 +327,14 @@
         "skillName": "Swift Strike α"
       }
     ],
-    "class": "Supporter",
     "modules": []
   },
   "char_141_nights": {
     "id": "char_141_nights",
     "name": "Haze",
+    "cnName": "夜烟",
     "rarity": 4,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -322,13 +348,14 @@
         "skillName": "Crimson Eyes"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_109_fmout": {
     "id": "char_109_fmout",
     "name": "Gitano",
+    "cnName": "远山",
     "rarity": 4,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -342,7 +369,6 @@
         "skillName": "Destiny"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "占卜师旅行套装",
@@ -354,7 +380,9 @@
   "char_253_greyy": {
     "id": "char_253_greyy",
     "name": "Greyy",
+    "cnName": "格雷伊",
     "rarity": 4,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -368,7 +396,6 @@
         "skillName": "Electrostatic Discharge"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "新的开始",
@@ -380,7 +407,9 @@
   "char_328_cammou": {
     "id": "char_328_cammou",
     "name": "Click",
+    "cnName": "卡达",
     "rarity": 4,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -394,13 +423,14 @@
         "skillName": "Synchronized Attack"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_469_indigo": {
     "id": "char_469_indigo",
     "name": "Indigo",
+    "cnName": "深靛",
     "rarity": 4,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -414,7 +444,6 @@
         "skillName": "Labyrinth of Light"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "法杖保养套装",
@@ -426,7 +455,9 @@
   "char_4004_pudd": {
     "id": "char_4004_pudd",
     "name": "Pudding",
+    "cnName": "布丁",
     "rarity": 4,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -440,7 +471,6 @@
         "skillName": "Diffusion Current"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "Portable Electrical Measuring Equipment",
@@ -452,7 +482,9 @@
   "char_235_jesica": {
     "id": "char_235_jesica",
     "name": "Jessica",
+    "cnName": "杰西卡",
     "rarity": 4,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -466,7 +498,6 @@
         "skillName": "Smokescreen"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "杰西卡的订单",
@@ -478,7 +509,9 @@
   "char_126_shotst": {
     "id": "char_126_shotst",
     "name": "Meteor",
+    "cnName": "流星",
     "rarity": 4,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -492,7 +525,6 @@
         "skillName": "Armor Breaker - Spread"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "猎刀",
@@ -504,7 +536,9 @@
   "char_190_clour": {
     "id": "char_190_clour",
     "name": "Vermeil",
+    "cnName": "红云",
     "rarity": 4,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -518,7 +552,6 @@
         "skillName": "Double Shot"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "“不落”",
@@ -530,7 +563,9 @@
   "char_133_mm": {
     "id": "char_133_mm",
     "name": "May",
+    "cnName": "梅",
     "rarity": 4,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -544,7 +579,6 @@
         "skillName": "Binding Shock"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "新手侦探礼包",
@@ -556,7 +590,9 @@
   "char_118_yuki": {
     "id": "char_118_yuki",
     "name": "Shirayuki",
+    "cnName": "白雪",
     "rarity": 4,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -570,7 +606,6 @@
         "skillName": "Fatal Shuriken"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "手里剑",
@@ -582,7 +617,9 @@
   "char_440_pinecn": {
     "id": "char_440_pinecn",
     "name": "Pinecone",
+    "cnName": "松果",
     "rarity": 4,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -596,13 +633,14 @@
         "skillName": "Electrical Overcharge"
       }
     ],
-    "class": "Sniper",
     "modules": []
   },
   "char_302_glaze": {
     "id": "char_302_glaze",
     "name": "Ambriel",
+    "cnName": "安比尔",
     "rarity": 4,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -616,7 +654,6 @@
         "skillName": "Radar Sweep"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "Portable Radar Equipment",
@@ -628,7 +665,9 @@
   "char_366_acdrop": {
     "id": "char_366_acdrop",
     "name": "Aciddrop",
+    "cnName": "酸糖",
     "rarity": 4,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -642,7 +681,6 @@
         "skillName": "Trigger Time"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "“自由、洋葱圈和我”",
@@ -654,7 +692,9 @@
   "char_198_blackd": {
     "id": "char_198_blackd",
     "name": "Courier",
+    "cnName": "讯使",
     "rarity": 4,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -668,13 +708,14 @@
         "skillName": "Command - Defense"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_149_scave": {
     "id": "char_149_scave",
     "name": "Scavenger",
+    "cnName": "清道夫",
     "rarity": 4,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -688,13 +729,14 @@
         "skillName": "Command - Attack"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_290_vigna": {
     "id": "char_290_vigna",
     "name": "Vigna",
+    "cnName": "红豆",
     "rarity": 4,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -708,7 +750,6 @@
         "skillName": "Hammer-On"
       }
     ],
-    "class": "Vanguard",
     "modules": [
       {
         "moduleName": "The Greatrock",
@@ -720,7 +761,9 @@
   "char_151_myrtle": {
     "id": "char_151_myrtle",
     "name": "Myrtle",
+    "cnName": "桃金娘",
     "rarity": 4,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -734,13 +777,14 @@
         "skillName": "Healing Wings"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_452_bstalk": {
     "id": "char_452_bstalk",
     "name": "Beanstalk",
+    "cnName": "豆苗",
     "rarity": 4,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -754,13 +798,14 @@
         "skillName": "'Everyone Together!'"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_130_doberm": {
     "id": "char_130_doberm",
     "name": "Dobermann",
+    "cnName": "杜宾",
     "rarity": 4,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -774,7 +819,6 @@
         "skillName": "Spur"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "Military Telescope",
@@ -786,7 +830,9 @@
   "char_289_gyuki": {
     "id": "char_289_gyuki",
     "name": "Matoimaru",
+    "cnName": "缠丸",
     "rarity": 4,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -800,7 +846,6 @@
         "skillName": "Demonic Power"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "断竹插花作品",
@@ -812,7 +857,9 @@
   "char_159_peacok": {
     "id": "char_159_peacok",
     "name": "Conviction",
+    "cnName": "断罪者",
     "rarity": 4,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -826,7 +873,6 @@
         "skillName": "Genesis"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "断罪之拳",
@@ -838,7 +884,9 @@
   "char_193_frostl": {
     "id": "char_193_frostl",
     "name": "Frostleaf",
+    "cnName": "霜叶",
     "rarity": 4,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -852,13 +900,14 @@
         "skillName": "Ice Tomahawk"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_127_estell": {
     "id": "char_127_estell",
     "name": "Estelle",
+    "cnName": "艾丝黛尔",
     "rarity": 4,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -872,13 +921,14 @@
         "skillName": "Sacrificial Strike"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_185_frncat": {
     "id": "char_185_frncat",
     "name": "Mousse",
+    "cnName": "慕斯",
     "rarity": 4,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -892,13 +942,14 @@
         "skillName": "Fury"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_301_cutter": {
     "id": "char_301_cutter",
     "name": "Cutter",
+    "cnName": "刻刀",
     "rarity": 4,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -912,7 +963,6 @@
         "skillName": "Crimson Crescent"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "Replaceable Tool Set",
@@ -924,7 +974,9 @@
   "char_337_utage": {
     "id": "char_337_utage",
     "name": "Utage",
+    "cnName": "宴",
     "rarity": 4,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -938,13 +990,14 @@
         "skillName": "Descending Strike - Earth Splitter"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_271_spikes": {
     "id": "char_271_spikes",
     "name": "Arene",
+    "cnName": "芳汀",
     "rarity": 4,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -958,13 +1011,14 @@
         "skillName": "Deadly Prank"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_237_gravel": {
     "id": "char_237_gravel",
     "name": "Gravel",
+    "cnName": "砾",
     "rarity": 4,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -978,7 +1032,6 @@
         "skillName": "Rat Swarm"
       }
     ],
-    "class": "Specialist",
     "modules": [
       {
         "moduleName": "Covert Action Toolkit",
@@ -990,7 +1043,9 @@
   "char_272_strong": {
     "id": "char_272_strong",
     "name": "Jaye",
+    "cnName": "孑",
     "rarity": 4,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -1004,7 +1059,6 @@
         "skillName": "Sashimi Platter"
       }
     ],
-    "class": "Specialist",
     "modules": [
       {
         "moduleName": "精钢刀具套组",
@@ -1016,7 +1070,9 @@
   "char_236_rope": {
     "id": "char_236_rope",
     "name": "Rope",
+    "cnName": "暗索",
     "rarity": 4,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -1030,13 +1086,14 @@
         "skillName": "Double Hook"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_117_myrrh": {
     "id": "char_117_myrrh",
     "name": "Myrrh",
+    "cnName": "末药",
     "rarity": 4,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -1050,13 +1107,14 @@
         "skillName": "Medic Field"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_187_ccheal": {
     "id": "char_187_ccheal",
     "name": "Gavial",
+    "cnName": "嘉维尔",
     "rarity": 4,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -1070,13 +1128,14 @@
         "skillName": "Vitality Restoration - Wide Range"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_298_susuro": {
     "id": "char_298_susuro",
     "name": "Sussurro",
+    "cnName": "苏苏洛",
     "rarity": 4,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -1090,13 +1149,14 @@
         "skillName": "Deep Healing"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_181_flower": {
     "id": "char_181_flower",
     "name": "Perfumer",
+    "cnName": "调香师",
     "rarity": 4,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -1110,7 +1170,6 @@
         "skillName": "Fine Blending"
       }
     ],
-    "class": "Medic",
     "modules": [
       {
         "moduleName": "'Aegean's Kiss'",
@@ -1122,7 +1181,9 @@
   "char_385_finlpp": {
     "id": "char_385_finlpp",
     "name": "Purestream",
+    "cnName": "清流",
     "rarity": 4,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -1136,7 +1197,6 @@
         "skillName": "Lifespring"
       }
     ],
-    "class": "Medic",
     "modules": [
       {
         "moduleName": "“江河之韵”",
@@ -1148,7 +1208,9 @@
   "char_4041_chnut": {
     "id": "char_4041_chnut",
     "name": "Chestnut",
+    "cnName": "褐果",
     "rarity": 4,
+    "class": "Medic",
     "isCnOnly": true,
     "skills": [
       {
@@ -1162,13 +1224,14 @@
         "skillName": "厚土迸发"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_199_yak": {
     "id": "char_199_yak",
     "name": "Matterhorn",
+    "cnName": "角峰",
     "rarity": 4,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -1182,13 +1245,14 @@
         "skillName": "Cold Resistance"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_150_snakek": {
     "id": "char_150_snakek",
     "name": "Cuora",
+    "cnName": "蛇屠箱",
     "rarity": 4,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -1202,13 +1266,14 @@
         "skillName": "Shell Defense"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_381_bubble": {
     "id": "char_381_bubble",
     "name": "Bubble",
+    "cnName": "泡泡",
     "rarity": 4,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -1222,13 +1287,14 @@
         "skillName": "'Beaten Up'"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_196_sunbr": {
     "id": "char_196_sunbr",
     "name": "Gummy",
+    "cnName": "古米",
     "rarity": 4,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -1242,7 +1308,6 @@
         "skillName": "Cooking"
       }
     ],
-    "class": "Defender",
     "modules": [
       {
         "moduleName": "蜜糖馅饼礼包",
@@ -1254,7 +1319,9 @@
   "char_260_durnar": {
     "id": "char_260_durnar",
     "name": "Dur-nar",
+    "cnName": "坚雷",
     "rarity": 4,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -1268,13 +1335,14 @@
         "skillName": "Shielded Counterattack"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_110_deepcl": {
     "id": "char_110_deepcl",
     "name": "Deepcolor",
+    "cnName": "深海色",
     "rarity": 4,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -1288,7 +1356,6 @@
         "skillName": "Visual Trap"
       }
     ],
-    "class": "Supporter",
     "modules": [
       {
         "moduleName": "Weird Palette",
@@ -1300,7 +1367,9 @@
   "char_183_skgoat": {
     "id": "char_183_skgoat",
     "name": "Earthspirit",
+    "cnName": "地灵",
     "rarity": 4,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -1314,7 +1383,6 @@
         "skillName": "Quicksand Conversion"
       }
     ],
-    "class": "Supporter",
     "modules": [
       {
         "moduleName": "待确认的申请表",
@@ -1326,7 +1394,9 @@
   "char_258_podego": {
     "id": "char_258_podego",
     "name": "Podenco",
+    "cnName": "波登可",
     "rarity": 4,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -1340,7 +1410,6 @@
         "skillName": "Spread Spores"
       }
     ],
-    "class": "Supporter",
     "modules": [
       {
         "moduleName": "“不谢的苗圃”",
@@ -1352,7 +1421,9 @@
   "char_484_robrta": {
     "id": "char_484_robrta",
     "name": "Roberta",
+    "cnName": "罗比菈塔",
     "rarity": 4,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -1366,13 +1437,14 @@
         "skillName": "Full Auto Modeler"
       }
     ],
-    "class": "Supporter",
     "modules": []
   },
   "char_355_ethan": {
     "id": "char_355_ethan",
     "name": "Ethan",
+    "cnName": "伊桑",
     "rarity": 4,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -1386,13 +1458,14 @@
         "skillName": "Suspended Cross"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_277_sqrrel": {
     "id": "char_277_sqrrel",
     "name": "Shaw",
+    "cnName": "阿消",
     "rarity": 4,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -1406,13 +1479,14 @@
         "skillName": "High-Pressure Water Cannon"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_128_plosis": {
     "id": "char_128_plosis",
     "name": "Ptilopsis",
+    "cnName": "白面鸮",
     "rarity": 5,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -1426,7 +1500,6 @@
         "skillName": "Enkephalin"
       }
     ],
-    "class": "Medic",
     "modules": [
       {
         "moduleName": "Medic Environment Analyze System",
@@ -1438,7 +1511,9 @@
   "char_275_breeze": {
     "id": "char_275_breeze",
     "name": "Breeze",
+    "cnName": "微风",
     "rarity": 5,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -1452,7 +1527,6 @@
         "skillName": "Widespread Therapy"
       }
     ],
-    "class": "Medic",
     "modules": [
       {
         "moduleName": "Surgical Instrument Kit",
@@ -1464,7 +1538,9 @@
   "char_115_headbr": {
     "id": "char_115_headbr",
     "name": "Zima",
+    "cnName": "凛冬",
     "rarity": 5,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1478,13 +1554,14 @@
         "skillName": "Ursus's Roar"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_102_texas": {
     "id": "char_102_texas",
     "name": "Texas",
+    "cnName": "德克萨斯",
     "rarity": 5,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1498,13 +1575,14 @@
         "skillName": "Sword Rain"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_349_chiave": {
     "id": "char_349_chiave",
     "name": "Chiave",
+    "cnName": "贾维",
     "rarity": 5,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1518,13 +1596,14 @@
         "skillName": "Blazing Wire Stripper"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_261_sddrag": {
     "id": "char_261_sddrag",
     "name": "Reed",
+    "cnName": "苇草",
     "rarity": 5,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1538,7 +1617,6 @@
         "skillName": "Soul Spark"
       }
     ],
-    "class": "Vanguard",
     "modules": [
       {
         "moduleName": "Spear Clean Suit",
@@ -1550,7 +1628,9 @@
   "char_496_wildmn": {
     "id": "char_496_wildmn",
     "name": "Wild Mane",
+    "cnName": "野鬃",
     "rarity": 5,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1564,7 +1644,6 @@
         "skillName": "Lance Charge"
       }
     ],
-    "class": "Vanguard",
     "modules": [
       {
         "moduleName": "Spear Replacement Suit",
@@ -1576,7 +1655,9 @@
   "char_401_elysm": {
     "id": "char_401_elysm",
     "name": "Elysium",
+    "cnName": "极境",
     "rarity": 5,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1590,13 +1671,14 @@
         "skillName": "Monitor"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_476_blkngt": {
     "id": "char_476_blkngt",
     "name": "Blacknight",
+    "cnName": "夜半",
     "rarity": 5,
+    "class": "Vanguard",
     "isCnOnly": true,
     "skills": [
       {
@@ -1610,13 +1692,14 @@
         "skillName": "安眠"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_308_swire": {
     "id": "char_308_swire",
     "name": "Swire",
+    "cnName": "诗怀雅",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1630,7 +1713,6 @@
         "skillName": "Cooperative Combat"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "Self-defense Lipstick",
@@ -1642,7 +1724,9 @@
   "char_265_sophia": {
     "id": "char_265_sophia",
     "name": "Whislash",
+    "cnName": "鞭刃",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1656,7 +1740,6 @@
         "skillName": "Whip Sword"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "Whipsword Wire.L",
@@ -1668,7 +1751,9 @@
   "char_106_franka": {
     "id": "char_106_franka",
     "name": "Franka",
+    "cnName": "芙兰卡",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1682,7 +1767,6 @@
         "skillName": "Vorpal Edge"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "尖端铝热单元",
@@ -1694,7 +1778,9 @@
   "char_131_flameb": {
     "id": "char_131_flameb",
     "name": "Flamebringer",
+    "cnName": "炎客",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1708,7 +1794,6 @@
         "skillName": "Blade Demon"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "锈损的断刀",
@@ -1720,7 +1805,9 @@
   "char_155_tiger": {
     "id": "char_155_tiger",
     "name": "Indra",
+    "cnName": "因陀罗",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1734,13 +1821,14 @@
         "skillName": "Sundered Soul"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_415_flint": {
     "id": "char_415_flint",
     "name": "Flint",
+    "cnName": "燧石",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1754,13 +1842,14 @@
         "skillName": "Display of Might"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_140_whitew": {
     "id": "char_140_whitew",
     "name": "Lappland",
+    "cnName": "拉普兰德",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1774,13 +1863,14 @@
         "skillName": "Wolf Spirit"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_294_ayer": {
     "id": "char_294_ayer",
     "name": "Ayerscarpe",
+    "cnName": "断崖",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1794,13 +1884,14 @@
         "skillName": "Activate Phase Blades"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_252_bibeak": {
     "id": "char_252_bibeak",
     "name": "Bibeak",
+    "cnName": "柏喙",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1814,7 +1905,6 @@
         "skillName": "Blade Swap"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "A Well-Made Shirt",
@@ -1826,7 +1916,9 @@
   "char_459_tachak": {
     "id": "char_459_tachak",
     "name": "Tachanka",
+    "cnName": "战车",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1840,7 +1932,6 @@
         "skillName": "Spray and Pray"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "Machinegun Rack",
@@ -1852,7 +1943,9 @@
   "char_143_ghost": {
     "id": "char_143_ghost",
     "name": "Specter",
+    "cnName": "幽灵鲨",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1866,13 +1959,14 @@
         "skillName": "Bone Fracture"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_356_broca": {
     "id": "char_356_broca",
     "name": "Broca",
+    "cnName": "布洛卡",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1886,13 +1980,14 @@
         "skillName": "High-Voltage Current"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_274_astesi": {
     "id": "char_274_astesi",
     "name": "Astesia",
+    "cnName": "星极",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1906,13 +2001,14 @@
         "skillName": "Astral Sword"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_333_sidero": {
     "id": "char_333_sidero",
     "name": "Sideroca",
+    "cnName": "铸铁",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1926,13 +2022,14 @@
         "skillName": "Restorative Surge"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_475_akafyu": {
     "id": "char_475_akafyu",
     "name": "Akafuyu",
+    "cnName": "赤冬",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1946,13 +2043,14 @@
         "skillName": "Nobukage-ryu - Juumonji Masaru"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_421_crow": {
     "id": "char_421_crow",
     "name": "La Pluma",
+    "cnName": "羽毛笔",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1966,13 +2064,14 @@
         "skillName": "Reap"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_486_takila": {
     "id": "char_486_takila",
     "name": "Tequila",
+    "cnName": "龙舌兰",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -1986,13 +2085,14 @@
         "skillName": "Esoteric Bladework"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_129_bluep": {
     "id": "char_129_bluep",
     "name": "Blue Poison",
+    "cnName": "蓝毒",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -2006,7 +2106,6 @@
         "skillName": "Venom Spray"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "标准比色卡",
@@ -2018,7 +2117,9 @@
   "char_204_platnm": {
     "id": "char_204_platnm",
     "name": "Platinum",
+    "cnName": "白金",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -2032,7 +2133,6 @@
         "skillName": "Pegasian Sight"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "独自旅行套装",
@@ -2044,7 +2144,9 @@
   "char_367_swllow": {
     "id": "char_367_swllow",
     "name": "GreyThroat",
+    "cnName": "灰喉",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -2058,7 +2160,6 @@
         "skillName": "Counterflow"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "母爱的倒影",
@@ -2070,7 +2171,9 @@
   "char_365_aprl": {
     "id": "char_365_aprl",
     "name": "April",
+    "cnName": "四月",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -2084,7 +2187,6 @@
         "skillName": "Flexible Camouflage"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "高保真通讯耳机",
@@ -2096,7 +2198,9 @@
   "char_1021_kroos2": {
     "id": "char_1021_kroos2",
     "name": "Kroos the Keen Glint",
+    "cnName": "寒芒克洛丝",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": true,
     "skills": [
       {
@@ -2110,7 +2214,6 @@
         "skillName": "封喉"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "真心的话和想冒的险",
@@ -2122,7 +2225,9 @@
   "char_219_meteo": {
     "id": "char_219_meteo",
     "name": "Meteorite",
+    "cnName": "陨星",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -2136,7 +2241,6 @@
         "skillName": "High-Explosive Shell"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "无名的身份牌",
@@ -2148,7 +2252,9 @@
   "char_379_sesa": {
     "id": "char_379_sesa",
     "name": "Sesa",
+    "cnName": "慑砂",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -2162,7 +2268,6 @@
         "skillName": "Delayed Concussive Parts"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "“灵魂共鸣”",
@@ -2174,7 +2279,9 @@
   "char_279_excu": {
     "id": "char_279_excu",
     "name": "Executor",
+    "cnName": "送葬人",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -2188,13 +2295,14 @@
         "skillName": "Final Journey"
       }
     ],
-    "class": "Sniper",
     "modules": []
   },
   "char_346_aosta": {
     "id": "char_346_aosta",
     "name": "Aosta",
+    "cnName": "奥斯塔",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -2208,13 +2316,14 @@
         "skillName": "Shadow Nails"
       }
     ],
-    "class": "Sniper",
     "modules": []
   },
   "char_002_amiya": {
     "id": "char_002_amiya",
     "name": "Amiya",
+    "cnName": "阿米娅",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -2233,13 +2342,14 @@
         "skillName": "Chimera"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_405_absin": {
     "id": "char_405_absin",
     "name": "Absinthe",
+    "cnName": "苦艾",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -2253,13 +2363,14 @@
         "skillName": "Ultimatum"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_411_tomimi": {
     "id": "char_411_tomimi",
     "name": "Tomimi",
+    "cnName": "特米米",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -2273,13 +2384,14 @@
         "skillName": "Gavial's Protection Plan"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_166_skfire": {
     "id": "char_166_skfire",
     "name": "Skyfire",
+    "cnName": "天火",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -2293,7 +2405,6 @@
         "skillName": "Fire of Heaven"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "阻燃处理方案",
@@ -2305,7 +2416,9 @@
   "char_306_leizi": {
     "id": "char_306_leizi",
     "name": "Leizi",
+    "cnName": "惊蛰",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -2319,7 +2432,6 @@
         "skillName": "Thunderclap"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "'All the Thunderlight'",
@@ -2331,7 +2443,9 @@
   "char_135_halo": {
     "id": "char_135_halo",
     "name": "Astgenne",
+    "cnName": "星源",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": true,
     "skills": [
       {
@@ -2345,7 +2459,6 @@
         "skillName": "星束交汇"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "未组装的钟表",
@@ -2357,7 +2470,9 @@
   "char_344_beewax": {
     "id": "char_344_beewax",
     "name": "Beeswax",
+    "cnName": "蜜蜡",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -2371,13 +2486,14 @@
         "skillName": "Guardian Obelisk"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_373_lionhd": {
     "id": "char_373_lionhd",
     "name": "Leonhardt",
+    "cnName": "莱恩哈特",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -2391,7 +2507,6 @@
         "skillName": "Deconstruct and Detonate"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "传承与开拓",
@@ -2403,7 +2518,9 @@
   "char_388_mint": {
     "id": "char_388_mint",
     "name": "Mint",
+    "cnName": "薄绿",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -2417,13 +2534,14 @@
         "skillName": "Swirling Vortex"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_338_iris": {
     "id": "char_338_iris",
     "name": "Iris",
+    "cnName": "爱丽丝",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -2437,7 +2555,6 @@
         "skillName": "Dreamland's Cradle"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "梦之城堡立体书",
@@ -2449,7 +2566,9 @@
   "char_1011_lava2": {
     "id": "char_1011_lava2",
     "name": "Lava the Purgatory",
+    "cnName": "炎狱炎熔",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -2463,7 +2582,6 @@
         "skillName": "Ring of Hellfire"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "萨卡兹的刀",
@@ -2475,7 +2593,9 @@
   "char_489_serum": {
     "id": "char_489_serum",
     "name": "Corroserum",
+    "cnName": "蚀清",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -2489,13 +2609,14 @@
         "skillName": "Conductive Corrosive Blast"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_4013_kjera": {
     "id": "char_4013_kjera",
     "name": "Kjera",
+    "cnName": "耶拉",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -2509,13 +2630,14 @@
         "skillName": "Unrestrained Heart"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_4040_rockr": {
     "id": "char_4040_rockr",
     "name": "Rockrock",
+    "cnName": "洛洛",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": true,
     "skills": [
       {
@@ -2529,13 +2651,14 @@
         "skillName": "自负此轭"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_242_otter": {
     "id": "char_242_otter",
     "name": "Mayer",
+    "cnName": "梅尔",
     "rarity": 5,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -2549,7 +2672,6 @@
         "skillName": "Detonate and Recycle"
       }
     ],
-    "class": "Supporter",
     "modules": [
       {
         "moduleName": "'Meeboo' Control Terminal XP",
@@ -2561,7 +2683,9 @@
   "char_336_folivo": {
     "id": "char_336_folivo",
     "name": "Scene",
+    "cnName": "稀音",
     "rarity": 5,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -2575,7 +2699,6 @@
         "skillName": "Panoramic Overload"
       }
     ],
-    "class": "Supporter",
     "modules": [
       {
         "moduleName": "Improved Lens.P",
@@ -2587,7 +2710,9 @@
   "char_108_silent": {
     "id": "char_108_silent",
     "name": "Silence",
+    "cnName": "赫默",
     "rarity": 5,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -2601,13 +2726,14 @@
         "skillName": "Medical Drone"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_171_bldsk": {
     "id": "char_171_bldsk",
     "name": "Warfarin",
+    "cnName": "华法琳",
     "rarity": 5,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -2621,13 +2747,14 @@
         "skillName": "Unstable Plasma"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_345_folnic": {
     "id": "char_345_folnic",
     "name": "Folinic",
+    "cnName": "亚叶",
     "rarity": 5,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -2641,13 +2768,14 @@
         "skillName": "Compound Drug Shell"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_348_ceylon": {
     "id": "char_348_ceylon",
     "name": "Ceylon",
+    "cnName": "锡兰",
     "rarity": 5,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -2661,7 +2789,6 @@
         "skillName": "Water Blessing"
       }
     ],
-    "class": "Medic",
     "modules": [
       {
         "moduleName": "野外考察套装",
@@ -2673,7 +2800,9 @@
   "char_436_whispr": {
     "id": "char_436_whispr",
     "name": "Whisperain",
+    "cnName": "絮雨",
     "rarity": 5,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -2687,7 +2816,6 @@
         "skillName": "Pain Suppression"
       }
     ],
-    "class": "Medic",
     "modules": [
       {
         "moduleName": "古朴的急救箱",
@@ -2699,7 +2827,9 @@
   "char_402_tuye": {
     "id": "char_402_tuye",
     "name": "Tuye",
+    "cnName": "图耶",
     "rarity": 5,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -2713,13 +2843,14 @@
         "skillName": "Cardiac Stimulant"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_473_mberry": {
     "id": "char_473_mberry",
     "name": "Mulberry",
+    "cnName": "桑葚",
     "rarity": 5,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -2733,13 +2864,14 @@
         "skillName": "Safe Zone"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_449_glider": {
     "id": "char_449_glider",
     "name": "Honeyberry",
+    "cnName": "蜜莓",
     "rarity": 5,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -2753,13 +2885,14 @@
         "skillName": "Rouse"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_1024_hbisc2": {
     "id": "char_1024_hbisc2",
     "name": "Hibiscus the Purifier",
+    "cnName": "濯尘芙蓉",
     "rarity": 5,
+    "class": "Medic",
     "isCnOnly": true,
     "skills": [
       {
@@ -2773,13 +2906,14 @@
         "skillName": "抚业之触"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_148_nearl": {
     "id": "char_148_nearl",
     "name": "Nearl",
+    "cnName": "临光",
     "rarity": 5,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -2793,7 +2927,6 @@
         "skillName": "First Aid Mode"
       }
     ],
-    "class": "Defender",
     "modules": [
       {
         "moduleName": "改良骑士盾牌",
@@ -2805,7 +2938,9 @@
   "char_226_hmau": {
     "id": "char_226_hmau",
     "name": "Hung",
+    "cnName": "吽",
     "rarity": 5,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -2819,7 +2954,6 @@
         "skillName": "Medical Mode Countermeasure"
       }
     ],
-    "class": "Defender",
     "modules": [
       {
         "moduleName": "八点档情景剧录像带",
@@ -2831,7 +2965,9 @@
   "char_144_red": {
     "id": "char_144_red",
     "name": "Projekt Red",
+    "cnName": "红",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -2845,7 +2981,6 @@
         "skillName": "Wolfpack"
       }
     ],
-    "class": "Specialist",
     "modules": [
       {
         "moduleName": "Mystery Prop Pack",
@@ -2857,7 +2992,9 @@
   "char_243_waaifu": {
     "id": "char_243_waaifu",
     "name": "Waai Fu",
+    "cnName": "槐琥",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -2871,7 +3008,6 @@
         "skillName": "Seven-styles Kick"
       }
     ],
-    "class": "Specialist",
     "modules": [
       {
         "moduleName": "The Classic of Hung Mei Wing Chun",
@@ -2883,7 +3019,9 @@
   "char_214_kafka": {
     "id": "char_214_kafka",
     "name": "Kafka",
+    "cnName": "卡夫卡",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -2897,7 +3035,6 @@
         "skillName": "Shears of Surrealism"
       }
     ],
-    "class": "Specialist",
     "modules": [
       {
         "moduleName": "Rubik's Cube Pendant",
@@ -2909,7 +3046,9 @@
   "char_455_nothin": {
     "id": "char_455_nothin",
     "name": "Mr.Nothing",
+    "cnName": "乌有",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -2923,7 +3062,6 @@
         "skillName": "Wax and Wane"
       }
     ],
-    "class": "Specialist",
     "modules": [
       {
         "moduleName": "“檐下听雨”",
@@ -2935,7 +3073,9 @@
   "char_107_liskam": {
     "id": "char_107_liskam",
     "name": "Liskarm",
+    "cnName": "雷蛇",
     "rarity": 5,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -2949,13 +3089,14 @@
         "skillName": "Counter Arc"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_201_moeshd": {
     "id": "char_201_moeshd",
     "name": "Croissant",
+    "cnName": "可颂",
     "rarity": 5,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -2969,13 +3110,14 @@
         "skillName": "Magnetic Hammer"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_325_bison": {
     "id": "char_325_bison",
     "name": "Bison",
+    "cnName": "拜松",
     "rarity": 5,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -2989,13 +3131,14 @@
         "skillName": "Intensified Defense"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_163_hpsts": {
     "id": "char_163_hpsts",
     "name": "Vulcan",
+    "cnName": "火神",
     "rarity": 5,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -3009,13 +3152,14 @@
         "skillName": "Combat Mode"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_378_asbest": {
     "id": "char_378_asbest",
     "name": "Asbestos",
+    "cnName": "石棉",
     "rarity": 5,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -3029,33 +3173,35 @@
         "skillName": "Thermal Power Mode"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_4025_aprot2": {
     "id": "char_4025_aprot2",
     "name": "Shalem",
+    "cnName": "暮落",
     "rarity": 5,
-    "isCnOnly": true,
+    "class": "Defender",
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_aprot2_1",
         "iconId": null,
-        "skillName": "速战速决"
+        "skillName": "Rapid Onslaught"
       },
       {
         "skillId": "skchr_aprot2_2",
         "iconId": null,
-        "skillName": "燃命狂欢"
+        "skillName": "Carnival of Self-Immolation"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_4047_pianst": {
     "id": "char_4047_pianst",
     "name": "Czerny",
+    "cnName": "车尔尼",
     "rarity": 5,
+    "class": "Defender",
     "isCnOnly": true,
     "skills": [
       {
@@ -3069,13 +3215,14 @@
         "skillName": "曲惊四座"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_457_blitz": {
     "id": "char_457_blitz",
     "name": "Blitz",
+    "cnName": "闪击",
     "rarity": 5,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -3089,13 +3236,14 @@
         "skillName": "Shield Bash"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_304_zebra": {
     "id": "char_304_zebra",
     "name": "Heavyrain",
+    "cnName": "暴雨",
     "rarity": 5,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -3109,13 +3257,14 @@
         "skillName": "Group Camouflage"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_431_ashlok": {
     "id": "char_431_ashlok",
     "name": "Ashlock",
+    "cnName": "灰毫",
     "rarity": 5,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -3129,13 +3278,14 @@
         "skillName": "Focused Bombardment"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_422_aurora": {
     "id": "char_422_aurora",
     "name": "Aurora",
+    "cnName": "极光",
     "rarity": 5,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -3149,7 +3299,6 @@
         "skillName": "Artificial Snowfall"
       }
     ],
-    "class": "Defender",
     "modules": [
       {
         "moduleName": "盾用摄制模块",
@@ -3161,7 +3310,9 @@
   "char_145_prove": {
     "id": "char_145_prove",
     "name": "Provence",
+    "cnName": "普罗旺斯",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -3175,7 +3326,6 @@
         "skillName": "Prey Seeker"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "尾巴养护套装",
@@ -3187,7 +3337,9 @@
   "char_158_milu": {
     "id": "char_158_milu",
     "name": "Firewatch",
+    "cnName": "守林人",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -3201,7 +3353,6 @@
         "skillName": "Tactical Transceiver"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "Field Sniper Equipment",
@@ -3213,7 +3364,9 @@
   "char_218_cuttle": {
     "id": "char_218_cuttle",
     "name": "Andreana",
+    "cnName": "安哲拉",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -3227,7 +3380,6 @@
         "skillName": "Interdictive Sniping Tactics"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "Gunsmithing Toolkit",
@@ -3239,7 +3391,9 @@
   "char_363_toddi": {
     "id": "char_363_toddi",
     "name": "Toddifons",
+    "cnName": "熔泉",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -3253,13 +3407,14 @@
         "skillName": "Portable Fortcracker Arrows"
       }
     ],
-    "class": "Sniper",
     "modules": []
   },
   "char_4043_erato": {
     "id": "char_4043_erato",
     "name": "Erato",
+    "cnName": "埃拉托",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": true,
     "skills": [
       {
@@ -3273,13 +3428,14 @@
         "skillName": "英雄赞歌"
       }
     ],
-    "class": "Sniper",
     "modules": []
   },
   "char_1027_greyy2": {
     "id": "char_1027_greyy2",
     "name": "Greyy the Lightningbearer",
+    "cnName": "承曦格雷伊",
     "rarity": 5,
+    "class": "Sniper",
     "isCnOnly": true,
     "skills": [
       {
@@ -3293,13 +3449,14 @@
         "skillName": "晨曦信标"
       }
     ],
-    "class": "Sniper",
     "modules": []
   },
   "char_173_slchan": {
     "id": "char_173_slchan",
     "name": "Cliffheart",
+    "cnName": "崖心",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -3313,13 +3470,14 @@
         "skillName": "Binding Chains"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_383_snsant": {
     "id": "char_383_snsant",
     "name": "Snowsant",
+    "cnName": "雪雉",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -3333,13 +3491,14 @@
         "skillName": "Telescoping Electric Net"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_174_slbell": {
     "id": "char_174_slbell",
     "name": "Pramanix",
+    "cnName": "初雪",
     "rarity": 5,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -3353,13 +3512,14 @@
         "skillName": "Natural Deterrent"
       }
     ],
-    "class": "Supporter",
     "modules": []
   },
   "char_254_vodfox": {
     "id": "char_254_vodfox",
     "name": "Shamare",
+    "cnName": "巫恋",
     "rarity": 5,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -3373,13 +3533,14 @@
         "skillName": "Cursed Doll"
       }
     ],
-    "class": "Supporter",
     "modules": []
   },
   "char_195_glassb": {
     "id": "char_195_glassb",
     "name": "Istina",
+    "cnName": "真理",
     "rarity": 5,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -3393,7 +3554,6 @@
         "skillName": "Literature Storm"
       }
     ],
-    "class": "Supporter",
     "modules": [
       {
         "moduleName": "读书笔记",
@@ -3405,7 +3565,9 @@
   "char_326_glacus": {
     "id": "char_326_glacus",
     "name": "Glaucus",
+    "cnName": "格劳克斯",
     "rarity": 5,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -3419,7 +3581,6 @@
         "skillName": "Counter EMP"
       }
     ],
-    "class": "Supporter",
     "modules": [
       {
         "moduleName": "外骨骼装备",
@@ -3431,7 +3592,9 @@
   "char_433_windft": {
     "id": "char_433_windft",
     "name": "Windflit",
+    "cnName": "掠风",
     "rarity": 5,
+    "class": "Supporter",
     "isCnOnly": true,
     "skills": [
       {
@@ -3445,13 +3608,14 @@
         "skillName": "此身为源"
       }
     ],
-    "class": "Supporter",
     "modules": []
   },
   "char_101_sora": {
     "id": "char_101_sora",
     "name": "Sora",
+    "cnName": "空",
     "rarity": 5,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -3465,13 +3629,14 @@
         "skillName": "Hymn of Battle"
       }
     ],
-    "class": "Supporter",
     "modules": []
   },
   "char_4045_heidi": {
     "id": "char_4045_heidi",
     "name": "Heidi",
+    "cnName": "海蒂",
     "rarity": 5,
+    "class": "Supporter",
     "isCnOnly": true,
     "skills": [
       {
@@ -3485,13 +3650,14 @@
         "skillName": "虚构故事·锈城"
       }
     ],
-    "class": "Supporter",
     "modules": []
   },
   "char_343_tknogi": {
     "id": "char_343_tknogi",
     "name": "Tsukinogi",
+    "cnName": "月禾",
     "rarity": 5,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -3505,33 +3671,35 @@
         "skillName": "Forest's Embrace"
       }
     ],
-    "class": "Supporter",
     "modules": []
   },
   "char_4019_ncdeer": {
     "id": "char_4019_ncdeer",
     "name": "Nine-Colored Deer",
+    "cnName": "九色鹿",
     "rarity": 5,
-    "isCnOnly": true,
+    "class": "Supporter",
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_ncdeer_1",
         "iconId": null,
-        "skillName": "人间降吉"
+        "skillName": "Fortune Bringer of the Mortal Realm"
       },
       {
         "skillId": "skchr_ncdeer_2",
         "iconId": null,
-        "skillName": "仙山去远"
+        "skillName": "Return to the Immortal Mountain"
       }
     ],
-    "class": "Supporter",
     "modules": []
   },
   "char_492_quercu": {
     "id": "char_492_quercu",
     "name": "Quercus",
+    "cnName": "夏栎",
     "rarity": 5,
+    "class": "Supporter",
     "isCnOnly": true,
     "skills": [
       {
@@ -3545,13 +3713,14 @@
         "skillName": "生灵的回响"
       }
     ],
-    "class": "Supporter",
     "modules": []
   },
   "char_215_mantic": {
     "id": "char_215_mantic",
     "name": "Manticore",
+    "cnName": "狮蝎",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -3565,13 +3734,14 @@
         "skillName": "Toxic Overload"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_478_kirara": {
     "id": "char_478_kirara",
     "name": "Kirara",
+    "cnName": "绮良",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -3585,13 +3755,14 @@
         "skillName": "Anchor Point Snap"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_241_panda": {
     "id": "char_241_panda",
     "name": "FEater",
+    "cnName": "食铁兽",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -3605,13 +3776,14 @@
         "skillName": "Destructive Fist"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_4036_forcer": {
     "id": "char_4036_forcer",
     "name": "Enforcer",
+    "cnName": "见行者",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": true,
     "skills": [
       {
@@ -3625,13 +3797,14 @@
         "skillName": "惊爆射击"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_451_robin": {
     "id": "char_451_robin",
     "name": "Robin",
+    "cnName": "罗宾",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -3645,13 +3818,14 @@
         "skillName": "Launching 'Clip'"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_458_rfrost": {
     "id": "char_458_rfrost",
     "name": "Frost",
+    "cnName": "霜华",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -3665,13 +3839,14 @@
         "skillName": "Incapacitated Prey"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_369_bena": {
     "id": "char_369_bena",
     "name": "Bena",
+    "cnName": "贝娜",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -3685,7 +3860,6 @@
         "skillName": "Rapid Trimming"
       }
     ],
-    "class": "Specialist",
     "modules": [
       {
         "moduleName": "《乔弗瑞古今童话集》精装本",
@@ -3697,7 +3871,9 @@
   "char_4016_kazema": {
     "id": "char_4016_kazema",
     "name": "Kazemaru",
+    "cnName": "风丸",
     "rarity": 5,
+    "class": "Specialist",
     "isCnOnly": true,
     "skills": [
       {
@@ -3711,7 +3887,6 @@
         "skillName": "纸艺·双影"
       }
     ],
-    "class": "Specialist",
     "modules": [
       {
         "moduleName": "旧物",
@@ -3723,7 +3898,9 @@
   "char_103_angel": {
     "id": "char_103_angel",
     "name": "Exusiai",
+    "cnName": "能天使",
     "rarity": 6,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -3742,7 +3919,6 @@
         "skillName": "Overloading Mode"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "能天使的杰作",
@@ -3754,7 +3930,9 @@
   "char_332_archet": {
     "id": "char_332_archet",
     "name": "Archetto",
+    "cnName": "空弦",
     "rarity": 6,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -3773,7 +3951,6 @@
         "skillName": "Thundering Arrows"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "“明天的种子”",
@@ -3785,7 +3962,9 @@
   "char_456_ash": {
     "id": "char_456_ash",
     "name": "Ash",
+    "cnName": "灰烬",
     "rarity": 6,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -3804,7 +3983,6 @@
         "skillName": "Breaching Rounds"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "破墙榴弹战术收纳包",
@@ -3816,7 +3994,9 @@
   "char_340_shwaz": {
     "id": "char_340_shwaz",
     "name": "Schwarz",
+    "cnName": "黑",
     "rarity": 6,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -3835,7 +4015,6 @@
         "skillName": "Final Tactics"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "定制弩配件套装",
@@ -3847,7 +4026,9 @@
   "char_430_fartth": {
     "id": "char_430_fartth",
     "name": "Fartooth",
+    "cnName": "远牙",
     "rarity": 6,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -3866,7 +4047,6 @@
         "skillName": "Feathershine Arrows"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "First-show Support Set",
@@ -3878,7 +4058,9 @@
   "char_113_cqbw": {
     "id": "char_113_cqbw",
     "name": "W",
+    "cnName": "W",
     "rarity": 6,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -3897,7 +4079,6 @@
         "skillName": "D12"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "佣兵的行囊",
@@ -3909,7 +4090,9 @@
   "char_300_phenxi": {
     "id": "char_300_phenxi",
     "name": "Fiammetta",
+    "cnName": "菲亚梅塔",
     "rarity": 6,
+    "class": "Sniper",
     "isCnOnly": true,
     "skills": [
       {
@@ -3928,7 +4111,6 @@
         "skillName": "“你须偿还”"
       }
     ],
-    "class": "Sniper",
     "modules": [
       {
         "moduleName": "“律外”特种弹药配给组",
@@ -3940,7 +4122,9 @@
   "char_197_poca": {
     "id": "char_197_poca",
     "name": "Rosa",
+    "cnName": "早露",
     "rarity": 6,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -3959,13 +4143,14 @@
         "skillName": "Avalanche Breaker"
       }
     ],
-    "class": "Sniper",
     "modules": []
   },
   "char_391_rosmon": {
     "id": "char_391_rosmon",
     "name": "Rosmontis",
+    "cnName": "迷迭香",
     "rarity": 6,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -3984,13 +4169,14 @@
         "skillName": "'As You Wish'"
       }
     ],
-    "class": "Sniper",
     "modules": []
   },
   "char_1013_chen2": {
     "id": "char_1013_chen2",
     "name": "Ch'en the Holungday",
+    "cnName": "假日威龙陈",
     "rarity": 6,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -4009,13 +4195,14 @@
         "skillName": "'Holiday Storm'"
       }
     ],
-    "class": "Sniper",
     "modules": []
   },
   "char_112_siege": {
     "id": "char_112_siege",
     "name": "Siege",
+    "cnName": "推进之王",
     "rarity": 6,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -4034,13 +4221,14 @@
         "skillName": "Skull Breaker"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_222_bpipe": {
     "id": "char_222_bpipe",
     "name": "Bagpipe",
+    "cnName": "风笛",
     "rarity": 6,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -4059,7 +4247,6 @@
         "skillName": "Locked Breech Burst"
       }
     ],
-    "class": "Vanguard",
     "modules": [
       {
         "moduleName": "Piledriver Spear Magazine",
@@ -4071,7 +4258,9 @@
   "char_362_saga": {
     "id": "char_362_saga",
     "name": "Saga",
+    "cnName": "嵯峨",
     "rarity": 6,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -4090,13 +4279,14 @@
         "skillName": "Fierce Glare"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_479_sleach": {
     "id": "char_479_sleach",
     "name": "Saileach",
+    "cnName": "琴柳",
     "rarity": 6,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -4115,13 +4305,14 @@
         "skillName": "Glorious Banner"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_420_flamtl": {
     "id": "char_420_flamtl",
     "name": "Flametail",
+    "cnName": "焰尾",
     "rarity": 6,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -4140,13 +4331,14 @@
         "skillName": "Flameheart"
       }
     ],
-    "class": "Vanguard",
     "modules": []
   },
   "char_134_ifrit": {
     "id": "char_134_ifrit",
     "name": "Ifrit",
+    "cnName": "伊芙利特",
     "rarity": 6,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -4165,13 +4357,14 @@
         "skillName": "Scorched Earth"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_213_mostma": {
     "id": "char_213_mostma",
     "name": "Mostima",
+    "cnName": "莫斯提马",
     "rarity": 6,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -4190,7 +4383,6 @@
         "skillName": "Key of Chronology"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "锁与匙之家",
@@ -4202,7 +4394,9 @@
   "char_180_amgoat": {
     "id": "char_180_amgoat",
     "name": "Eyjafjalla",
+    "cnName": "艾雅法拉",
     "rarity": 6,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -4221,13 +4415,14 @@
         "skillName": "Volcano"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_2013_cerber": {
     "id": "char_2013_cerber",
     "name": "Ceobe",
+    "cnName": "刻俄柏",
     "rarity": 6,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -4246,13 +4441,14 @@
         "skillName": "'Really Heavy Spear'"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_2015_dusk": {
     "id": "char_2015_dusk",
     "name": "Dusk",
+    "cnName": "夕",
     "rarity": 6,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -4271,7 +4467,6 @@
         "skillName": "Image over Form"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "无题长卷",
@@ -4283,7 +4478,9 @@
   "char_472_pasngr": {
     "id": "char_472_pasngr",
     "name": "Passenger",
+    "cnName": "异客",
     "rarity": 6,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -4302,7 +4499,6 @@
         "skillName": "Glorious Shards"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "Electromagnetic Regulator",
@@ -4319,7 +4515,9 @@
   "char_426_billro": {
     "id": "char_426_billro",
     "name": "Carnelian",
+    "cnName": "卡涅利安",
     "rarity": 6,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -4338,13 +4536,14 @@
         "skillName": "Mark of Gluttony"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_377_gdglow": {
     "id": "char_377_gdglow",
     "name": "Goldenglow",
+    "cnName": "澄闪",
     "rarity": 6,
+    "class": "Caster",
     "isCnOnly": true,
     "skills": [
       {
@@ -4363,13 +4562,14 @@
         "skillName": "澄净闪耀"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_4046_ebnhlz": {
     "id": "char_4046_ebnhlz",
     "name": "Ebenholz",
+    "cnName": "黑键",
     "rarity": 6,
+    "class": "Caster",
     "isCnOnly": true,
     "skills": [
       {
@@ -4388,7 +4588,6 @@
         "skillName": "寂静之声"
       }
     ],
-    "class": "Caster",
     "modules": [
       {
         "moduleName": "源石骰子收纳盒",
@@ -4400,7 +4599,9 @@
   "char_206_gnosis": {
     "id": "char_206_gnosis",
     "name": "Gnosis",
+    "cnName": "灵知",
     "rarity": 6,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -4419,13 +4620,14 @@
         "skillName": "Hypothermia"
       }
     ],
-    "class": "Supporter",
     "modules": []
   },
   "char_291_aglina": {
     "id": "char_291_aglina",
     "name": "Angelina",
+    "cnName": "安洁莉娜",
     "rarity": 6,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -4444,7 +4646,6 @@
         "skillName": "Arcane Staff - Anti-Gravity Mode"
       }
     ],
-    "class": "Supporter",
     "modules": [
       {
         "moduleName": "重力校准模块",
@@ -4456,7 +4657,9 @@
   "char_358_lisa": {
     "id": "char_358_lisa",
     "name": "Suzuran",
+    "cnName": "铃兰",
     "rarity": 6,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -4475,7 +4678,6 @@
         "skillName": "Foxfire Haze"
       }
     ],
-    "class": "Supporter",
     "modules": [
       {
         "moduleName": "怀中御守",
@@ -4487,7 +4689,9 @@
   "char_248_mgllan": {
     "id": "char_248_mgllan",
     "name": "Magallan",
+    "cnName": "麦哲伦",
     "rarity": 6,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -4506,7 +4710,6 @@
         "skillName": "Armed Combat Module"
       }
     ],
-    "class": "Supporter",
     "modules": [
       {
         "moduleName": "Drone Control Module.P",
@@ -4523,7 +4726,9 @@
   "char_1012_skadi2": {
     "id": "char_1012_skadi2",
     "name": "Skadi the Corrupting Heart",
+    "cnName": "浊心斯卡蒂",
     "rarity": 6,
+    "class": "Supporter",
     "isCnOnly": false,
     "skills": [
       {
@@ -4542,13 +4747,14 @@
         "skillName": "'The Tide Surges, The Tide Recedes'"
       }
     ],
-    "class": "Supporter",
     "modules": []
   },
   "char_2023_ling": {
     "id": "char_2023_ling",
     "name": "Ling",
+    "cnName": "令",
     "rarity": 6,
+    "class": "Supporter",
     "isCnOnly": true,
     "skills": [
       {
@@ -4567,7 +4773,6 @@
         "skillName": "宁作吾"
       }
     ],
-    "class": "Supporter",
     "modules": [
       {
         "moduleName": "诗短梦长",
@@ -4579,7 +4784,9 @@
   "char_250_phatom": {
     "id": "char_250_phatom",
     "name": "Phantom",
+    "cnName": "傀影",
     "rarity": 6,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -4598,7 +4805,6 @@
         "skillName": "Night Raid"
       }
     ],
-    "class": "Specialist",
     "modules": [
       {
         "moduleName": "Miss Christine's Felt",
@@ -4610,7 +4816,9 @@
   "char_322_lmlee": {
     "id": "char_322_lmlee",
     "name": "Lee",
+    "cnName": "老鲤",
     "rarity": 6,
+    "class": "Specialist",
     "isCnOnly": true,
     "skills": [
       {
@@ -4629,7 +4837,6 @@
         "skillName": "贵客盈门"
       }
     ],
-    "class": "Specialist",
     "modules": [
       {
         "moduleName": "“无问吉凶”",
@@ -4641,7 +4848,9 @@
   "char_400_weedy": {
     "id": "char_400_weedy",
     "name": "Weedy",
+    "cnName": "温蒂",
     "rarity": 6,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -4660,13 +4869,14 @@
         "skillName": "Liquid Nitrogen Cannon"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_225_haak": {
     "id": "char_225_haak",
     "name": "Aak",
+    "cnName": "阿",
     "rarity": 6,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -4685,13 +4895,14 @@
         "skillName": "Durian-Flavored Stimpack"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_474_glady": {
     "id": "char_474_glady",
     "name": "Gladiia",
+    "cnName": "歌蕾蒂娅",
     "rarity": 6,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -4710,13 +4921,14 @@
         "skillName": "Waterless Dance of the Shattered Maelstrom"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_437_mizuki": {
     "id": "char_437_mizuki",
     "name": "Mizuki",
+    "cnName": "水月",
     "rarity": 6,
+    "class": "Specialist",
     "isCnOnly": false,
     "skills": [
       {
@@ -4735,13 +4947,14 @@
         "skillName": "Moon in the Water"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_1023_ghost2": {
     "id": "char_1023_ghost2",
     "name": "Specter the Unchained",
+    "cnName": "归溟幽灵鲨",
     "rarity": 6,
+    "class": "Specialist",
     "isCnOnly": true,
     "skills": [
       {
@@ -4760,7 +4973,6 @@
         "skillName": "生存的重压"
       }
     ],
-    "class": "Specialist",
     "modules": [
       {
         "moduleName": "“唱片”收藏箱",
@@ -4772,7 +4984,9 @@
   "char_4048_doroth": {
     "id": "char_4048_doroth",
     "name": "Dorothy",
+    "cnName": "多萝西",
     "rarity": 6,
+    "class": "Specialist",
     "isCnOnly": true,
     "skills": [
       {
@@ -4791,13 +5005,14 @@
         "skillName": "高速共振排障"
       }
     ],
-    "class": "Specialist",
     "modules": []
   },
   "char_147_shining": {
     "id": "char_147_shining",
     "name": "Shining",
+    "cnName": "闪灵",
     "rarity": 6,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -4816,13 +5031,14 @@
         "skillName": "Creed Field"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_179_cgbird": {
     "id": "char_179_cgbird",
     "name": "Nightingale",
+    "cnName": "夜莺",
     "rarity": 6,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -4841,7 +5057,6 @@
         "skillName": "Sanctuary"
       }
     ],
-    "class": "Medic",
     "modules": [
       {
         "moduleName": "'Closed Hope'",
@@ -4853,7 +5068,9 @@
   "char_003_kalts": {
     "id": "char_003_kalts",
     "name": "Kal'tsit",
+    "cnName": "凯尔希",
     "rarity": 6,
+    "class": "Medic",
     "isCnOnly": false,
     "skills": [
       {
@@ -4872,13 +5089,14 @@
         "skillName": "Command: Meltdown"
       }
     ],
-    "class": "Medic",
     "modules": []
   },
   "char_4042_lumen": {
     "id": "char_4042_lumen",
     "name": "Lumen",
+    "cnName": "流明",
     "rarity": 6,
+    "class": "Medic",
     "isCnOnly": true,
     "skills": [
       {
@@ -4897,7 +5115,6 @@
         "skillName": "灯火不灭"
       }
     ],
-    "class": "Medic",
     "modules": [
       {
         "moduleName": "纯铜单筒望远镜",
@@ -4909,7 +5126,9 @@
   "char_136_hsguma": {
     "id": "char_136_hsguma",
     "name": "Hoshiguma",
+    "cnName": "星熊",
     "rarity": 6,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -4928,13 +5147,14 @@
         "skillName": "Saw of Strength"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_202_demkni": {
     "id": "char_202_demkni",
     "name": "Saria",
+    "cnName": "塞雷娅",
     "rarity": 6,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -4953,7 +5173,6 @@
         "skillName": "Calcification"
       }
     ],
-    "class": "Defender",
     "modules": [
       {
         "moduleName": "闲置的拳击手套",
@@ -4965,7 +5184,9 @@
   "char_423_blemsh": {
     "id": "char_423_blemsh",
     "name": "Blemishine",
+    "cnName": "瑕光",
     "rarity": 6,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -4984,7 +5205,6 @@
         "skillName": "Divine Avatar"
       }
     ],
-    "class": "Defender",
     "modules": [
       {
         "moduleName": "工匠团的回响",
@@ -4996,7 +5216,9 @@
   "char_2014_nian": {
     "id": "char_2014_nian",
     "name": "Nian",
+    "cnName": "年",
     "rarity": 6,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -5015,13 +5237,14 @@
         "skillName": "Iron Defense"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_311_mudrok": {
     "id": "char_311_mudrok",
     "name": "Mudrock",
+    "cnName": "泥岩",
     "rarity": 6,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -5040,13 +5263,14 @@
         "skillName": "Bloodline of Desecrated Earth"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_416_zumama": {
     "id": "char_416_zumama",
     "name": "Eunectes",
+    "cnName": "森蚺",
     "rarity": 6,
+    "class": "Defender",
     "isCnOnly": false,
     "skills": [
       {
@@ -5065,7 +5289,6 @@
         "skillName": "Iron Will"
       }
     ],
-    "class": "Defender",
     "modules": [
       {
         "moduleName": "祖玛玛的工具箱",
@@ -5077,7 +5300,9 @@
   "char_4039_horn": {
     "id": "char_4039_horn",
     "name": "Horn",
+    "cnName": "号角",
     "rarity": 6,
+    "class": "Defender",
     "isCnOnly": true,
     "skills": [
       {
@@ -5096,13 +5321,14 @@
         "skillName": "终极防线"
       }
     ],
-    "class": "Defender",
     "modules": []
   },
   "char_264_f12yin": {
     "id": "char_264_f12yin",
     "name": "Mountain",
+    "cnName": "山",
     "rarity": 6,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5121,13 +5347,14 @@
         "skillName": "Earth-Shattering Smash"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_172_svrash": {
     "id": "char_172_svrash",
     "name": "SilverAsh",
+    "cnName": "银灰",
     "rarity": 6,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5146,13 +5373,14 @@
         "skillName": "Truesilver Slash"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_293_thorns": {
     "id": "char_293_thorns",
     "name": "Thorns",
+    "cnName": "棘刺",
     "rarity": 6,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5171,13 +5399,14 @@
         "skillName": "Destreza"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_010_chen": {
     "id": "char_010_chen",
     "name": "Ch'en",
+    "cnName": "陈",
     "rarity": 6,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5196,7 +5425,6 @@
         "skillName": "Chi Xiao - Shadowless"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "Rhodes Island Standard Combat Sword",
@@ -5208,7 +5436,9 @@
   "char_4009_irene": {
     "id": "char_4009_irene",
     "name": "Irene",
+    "cnName": "艾丽妮",
     "rarity": 6,
+    "class": "Guard",
     "isCnOnly": true,
     "skills": [
       {
@@ -5227,7 +5457,6 @@
         "skillName": "判决"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "厚重的经卷",
@@ -5239,7 +5468,9 @@
   "char_017_huang": {
     "id": "char_017_huang",
     "name": "Blaze",
+    "cnName": "煌",
     "rarity": 6,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5258,13 +5489,14 @@
         "skillName": "Boiling Burst"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_350_surtr": {
     "id": "char_350_surtr",
     "name": "Surtr",
+    "cnName": "史尔特尔",
     "rarity": 6,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5283,13 +5515,14 @@
         "skillName": "Twilight"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_188_helage": {
     "id": "char_188_helage",
     "name": "Hellagur",
+    "cnName": "赫拉格",
     "rarity": 6,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5308,13 +5541,14 @@
         "skillName": "Full Moon"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_485_pallas": {
     "id": "char_485_pallas",
     "name": "Pallas",
+    "cnName": "帕拉斯",
     "rarity": 6,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5333,7 +5567,6 @@
         "skillName": "Blessing of Heroism"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "'Ούρος'",
@@ -5350,7 +5583,9 @@
   "char_1014_nearl2": {
     "id": "char_1014_nearl2",
     "name": "Nearl the Radiant Knight",
+    "cnName": "耀骑士临光",
     "rarity": 6,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5369,7 +5604,6 @@
         "skillName": "Blazing Sun's Obeisance"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "耀阳锋刃",
@@ -5381,7 +5615,9 @@
   "char_230_savage": {
     "id": "char_230_savage",
     "name": "Savage",
+    "cnName": "暴行",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5395,13 +5631,14 @@
         "skillName": "Precise Blast"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_282_catap": {
     "id": "char_282_catap",
     "name": "Catapult",
+    "cnName": "空爆",
     "rarity": 3,
+    "class": "Sniper",
     "isCnOnly": false,
     "skills": [
       {
@@ -5410,13 +5647,14 @@
         "skillName": "Blast Range Up α"
       }
     ],
-    "class": "Sniper",
     "modules": []
   },
   "char_283_midn": {
     "id": "char_283_midn",
     "name": "Midnight",
+    "cnName": "月见夜",
     "rarity": 3,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5425,13 +5663,14 @@
         "skillName": "Enchant Weapon α"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_137_brownb": {
     "id": "char_137_brownb",
     "name": "Beehunter",
+    "cnName": "猎蜂",
     "rarity": 4,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5445,13 +5684,14 @@
         "skillName": "Soaring Fists"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_347_jaksel": {
     "id": "char_347_jaksel",
     "name": "Jackie",
+    "cnName": "杰克",
     "rarity": 4,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5465,13 +5705,14 @@
         "skillName": "Pay Close Attention!"
       }
     ],
-    "class": "Guard",
     "modules": []
   },
   "char_164_nightm": {
     "id": "char_164_nightm",
     "name": "Nightmare",
+    "cnName": "夜魔",
     "rarity": 5,
+    "class": "Caster",
     "isCnOnly": false,
     "skills": [
       {
@@ -5485,13 +5726,14 @@
         "skillName": "Night Phantom"
       }
     ],
-    "class": "Caster",
     "modules": []
   },
   "char_220_grani": {
     "id": "char_220_grani",
     "name": "Grani",
+    "cnName": "格拉尼",
     "rarity": 5,
+    "class": "Vanguard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5505,7 +5747,6 @@
         "skillName": "Press the Attack!"
       }
     ],
-    "class": "Vanguard",
     "modules": [
       {
         "moduleName": "Cavalry Policeman Suit",
@@ -5517,7 +5758,9 @@
   "char_263_skadi": {
     "id": "char_263_skadi",
     "name": "Skadi",
+    "cnName": "斯卡蒂",
     "rarity": 6,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5536,7 +5779,6 @@
         "skillName": "Tidal Elegy"
       }
     ],
-    "class": "Guard",
     "modules": [
       {
         "moduleName": "潮湿的剑袋",
@@ -5553,7 +5795,9 @@
   "char_1001_amiya2": {
     "id": "char_1001_amiya2",
     "name": "Amiya (Guard)",
+    "cnName": "阿米娅(近卫)",
     "rarity": 5,
+    "class": "Guard",
     "isCnOnly": false,
     "skills": [
       {
@@ -5567,7 +5811,6 @@
         "skillName": "Ying Xiao - Shadowless"
       }
     ],
-    "class": "Guard",
     "modules": []
   }
 }

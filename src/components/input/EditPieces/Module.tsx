@@ -17,19 +17,6 @@ const Module = ((props: Props) => {
   const { op, onChange } = props;
   const opInfo: OpJsonObj = operatorJson[op.id as keyof typeof operatorJson];
 
-  // returns whether an operator has a skill of the given number
-  const hasSkill = (skill: number) => {
-    switch (skill) {
-      case 0:
-        return op.rarity > 2;
-      case 1:
-        return op.rarity > 3;
-      case 2:
-        return op.rarity === 6 || op.name === "Amiya";
-      default: return undefined;
-    }
-  }
-
   return (
     <Box sx={{
       display: "flex",

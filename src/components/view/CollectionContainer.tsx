@@ -2,23 +2,21 @@ import React, { useEffect } from "react";
 import { defaultOperatorObject, Operator, OpJsonObj } from '../../types/operator';
 import classList from "../../data/classList";
 import { Box } from "@mui/material";
-import OperatorButton from "./OperatorButton";
 import operatorJson from "../../data/operators.json";
 import useOperators from "../../util/useOperators";
+import OperatorBlock from "./OperatorBlock";
 
 interface Props {
-  onClick: (opId: string) => void;
-  filter?: (op: any) => boolean;  
-  toggleGroup?: string[];
-  postSort?: (opA: Operator, opB: Operator) => number;
+  filter?: (op: OpJsonObj) => boolean;
+  sort?: (opA: Operator, opB: Operator) => number;
 }
 
-const OperatorSelector = React.memo((props: Props) => {
-  const { onClick, filter, postSort } = props;
+const CollectionContainer = React.memo((props: Props) => {
+  const { filter, sort } = props;
 
   const [operators, onChange, applyBatch] = useOperators();
 
-  const ps = postSort ?? (() => 0)
+  const ps = sort ?? (() => 0)
   function sortComparator(a: OpJsonObj, b: OpJsonObj) {
     return ps(operators[a.id], operators[b.id]) ||
       b.rarity - a.rarity ||
@@ -28,11 +26,11 @@ const OperatorSelector = React.memo((props: Props) => {
 
   // Operator Selector Component
   return (
-    <Box component="ul" sx={{
+    <Box component="ol" sx={{
       display: "contents",
     }}>
       {Object.values(operatorJson)
-        .filter(filter ?? (() => true))
+        .filter((op: OpJsonObj) => filter ? filter(op) : true)
         .sort(sortComparator)
         .map((op: OpJsonObj) => {
           return <Box
@@ -40,10 +38,10 @@ const OperatorSelector = React.memo((props: Props) => {
             sx={{ listStyleType: "none", display: "contents" }}
             key={op.id}
           >
-            <OperatorButton op={operators[op.id]} onClick={onClick} />
+            <OperatorBlock op={operators[op.id]} />
           </Box>
         })
       }
     </Box>)
 });
-export default OperatorSelector;
+export default CollectionContainer;
