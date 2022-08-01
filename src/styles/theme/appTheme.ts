@@ -17,7 +17,7 @@ const appTheme = createTheme({
     error: {
       main: red[500],
       light: red[500],
-      dark: red[500],
+      dark: "#362020",
     },
     warning: {
       main: yellow[700],
@@ -101,3 +101,4 @@ declare module '@mui/material/Typography' {
     caption3: true;
   }
 }
+

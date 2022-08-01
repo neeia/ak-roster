@@ -15,10 +15,11 @@ export interface Operator {
 export interface OpJsonObj {
   id: string;
   name: string;
+  cnName: string;
   rarity: number;
+  class: string;
   isCnOnly: boolean;
   skills: OpJsonSkill[];
-  class: string;
   modules: OpJsonModule[];
 }
 

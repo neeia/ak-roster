@@ -7,7 +7,8 @@
     "next:build": "next build",
     "next:start": "next start",
     "lint": "next lint",
-    "server": "yarn next:build && NODE_ENV=production node server.js"
+    "server": "yarn next:build && NODE_ENV=production node server.js",
+    "update:operators": "git submodule update --remote && node ./scripts/operators.mjs"
   },
   "dependencies": {
     "@emotion/cache": "^11.9.3",
@@ -17,9 +18,10 @@
     "@fontsource/roboto": "^4.5.7",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.0",
-    "firebase": "^9.9.0",
+    "firebase": "^9.9.1",
     "next": "12.2.2",
     "react": "18.2.0",
+    "react-custom-scrollbars-2": "^4.5.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {

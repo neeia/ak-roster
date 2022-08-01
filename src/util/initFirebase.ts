@@ -1,15 +1,6 @@
-import { initializeApp } from "firebase/app";
+import { getApps, initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue } from "firebase/database";
-
-const db = getDatabase();
-const connectedRef = ref(db, ".info/connected");
-onValue(connectedRef, (snap) => {
-  if (snap.val() === true) {
-    console.log("connected");
-  } else {
-    console.log("not connected");
-  }
-});
+import { useEffect } from "react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDjpt2G4GFQjYbPT5Mrj6L2meeWEnsCEgU",
@@ -22,5 +13,7 @@ const firebaseConfig = {
   databaseURL: "https://ak-roster-default-rtdb.firebaseio.com/",
 };
 
-const initFirebase = initializeApp(firebaseConfig);
+const initFirebase = () => {
+  if (!getApps().length) initializeApp(firebaseConfig);
+}
 export default initFirebase;

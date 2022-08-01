@@ -5,6 +5,7 @@ import config from "../data/config";
 import MenuIcon from '@mui/icons-material/Menu';
 import AppDrawer from "./AppDrawer";
 import appTheme from "../styles/theme/appTheme";
+import Scrollbars from "react-custom-scrollbars-2";
 
 interface Props {
   tab: keyof typeof config.tabs;
@@ -17,7 +18,6 @@ const Layout = (props: Props) => {
   const { title: tabTitle, description: tabDescription, pages } = tabs[tab];
   const { title: pageTitle, description: pageDescription } = pages[page as keyof typeof pages] ?? {};
   const title = `${tabTitle} . ${pageTitle} . ${siteTitle}`
-
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const handleDrawerToggle = React.useCallback(() => {
@@ -46,7 +46,7 @@ const Layout = (props: Props) => {
       </Head>
       <Box
         display="grid"
-        height="100vh"
+        height="100%"
         gridTemplateAreas={'"drawer header" "drawer main"'}
         gridTemplateRows="auto 1fr auto"
         gridTemplateColumns="auto 1fr"
@@ -89,14 +89,15 @@ const Layout = (props: Props) => {
             </Box>
           </Toolbar>
         </AppBar>
-
-        <Container
-          component="main"
-          maxWidth="xl"
-          sx={{ gridArea: "main", p: 2 }}
-        >
-          {children}
-        </Container>
+        <Scrollbars autoHeight autoHeightMin="95vh" autoHide autoHideTimeout={300} autoHideDuration={600}>
+          <Container
+            component="main"
+            maxWidth="xl"
+            sx={{ gridArea: "main", p: 2, position: "relative" }}
+          >
+            {children}
+          </Container>
+        </Scrollbars>
       </Box>
     </ThemeProvider>
   )
