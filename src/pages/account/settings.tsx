@@ -9,14 +9,6 @@ import initFirebase from "../../util/initFirebase";
 const Settings: NextPage = () => {
   initFirebase();
   const [user, setUser] = useState<User | null>(getAuth().currentUser);
-  useEffect(() => {
-    if (!user) {
-      router.push({
-        pathname: '/account/login',
-        query: { returnUrl: router.asPath }
-      }, '/account/login');
-    }
-  }, []);
 
   return (
     <Layout tab="/account" page="/settings">

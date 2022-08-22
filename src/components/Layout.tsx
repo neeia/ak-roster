@@ -5,7 +5,6 @@ import config from "../data/config";
 import MenuIcon from '@mui/icons-material/Menu';
 import AppDrawer from "./AppDrawer";
 import appTheme from "../styles/theme/appTheme";
-import Scrollbars from "react-custom-scrollbars-2";
 
 interface Props {
   tab: keyof typeof config.tabs;
@@ -49,7 +48,12 @@ const Layout = (props: Props) => {
         height="100%"
         gridTemplateAreas={'"drawer header" "drawer main"'}
         gridTemplateRows="auto 1fr auto"
-        gridTemplateColumns="auto 1fr"
+        sx={{
+          gridTemplateColumns: {
+            xs: "0px 1fr",
+            xl: "220px 1fr"
+          }
+        }}
       >
         <AppDrawer
           tab={tab}
@@ -89,15 +93,13 @@ const Layout = (props: Props) => {
             </Box>
           </Toolbar>
         </AppBar>
-        <Scrollbars autoHeight autoHeightMin="95vh" autoHide autoHideTimeout={300} autoHideDuration={600}>
-          <Container
-            component="main"
-            maxWidth="xl"
-            sx={{ gridArea: "main", p: 2, position: "relative" }}
-          >
-            {children}
-          </Container>
-        </Scrollbars>
+        <Container
+          component="main"
+          maxWidth="xl"
+          sx={{ gridArea: "main", p: 2, position: "relative" }}
+        >
+          {children}
+        </Container>
       </Box>
     </ThemeProvider>
   )

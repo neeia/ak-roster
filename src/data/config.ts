@@ -25,10 +25,12 @@ const config = {
         "/profile": {
           title: "Profile",
           description: "Pro files",
+          requireLogin: true,
         },
         "/settings": {
           title: "Settings",
           description: "Set things",
+          requireLogin: true,
         }
       }
     },
@@ -43,6 +45,7 @@ const config = {
         "/headhunt": {
           title: "Headhunt",
           description: "Look up units",
+          requireLogin: true,
         }
       }
     },

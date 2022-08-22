@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { defaultOperatorObject, Operator, OpJsonObj } from '../../types/operator';
+import React from "react";
+import { Operator, OpJsonObj } from '../../types/operator';
 import classList from "../../data/classList";
 import { Box } from "@mui/material";
 import operatorJson from "../../data/operators.json";
