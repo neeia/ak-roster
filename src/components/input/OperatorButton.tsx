@@ -13,10 +13,11 @@ const LONGER_CUTOFF = 95;
 interface Props {
   op: Operator;
   onClick: (opId: string) => void;
+  hidden: boolean;
 }
 
 const OperatorButton = ((props: Props) => {
-  const { op, onClick } = props;
+  const { op, onClick, hidden } = props;
   if (!op.name) return null;
   const [n, t] = op.name.split(" the ");
   const name = t ?? n;
@@ -50,32 +51,38 @@ const OperatorButton = ((props: Props) => {
   const imgUrl = `/img/avatars/${op.id}.png`;
 
   return (
-    <Button
-      onClick={() => {
-        setSelected(!selected);
-        onClick(op.id);
-      }}>
-      <Box
-        component="img"
-        sx={{
-          width: `4rem`,
+    <Box
+      component="li"
+      sx={{ listStyleType: "none", display: hidden ? "none" : "" }}
+    >
+      <Button
+        onClick={() => {
+          setSelected(!selected);
+          onClick(op.id);
+        }}>
+        <Box
+          component="img"
+          sx={{
+            height: `4rem`,
+            width: `4rem`,
+            gridArea: "1 / 1",
+            borderBottom: `3px solid ${rarityColors[op.rarity]}`,
+          }}
+          src={imgUrl}
+          alt=""
+        />
+        <Box sx={{
           gridArea: "1 / 1",
-          borderBottom: `3px solid ${rarityColors[op.rarity]}`,
-        }}
-        src={imgUrl}
-        alt=""
-      />
-      <Box sx={{
-        gridArea: "1 / 1",
-        textAlign: "left",
-        alignSelf: "start",
-      }}>
-        {op.favorite
-          ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
-          : ""}
-      </Box>
-      {opName}
-    </Button>
+          textAlign: "left",
+          alignSelf: "start",
+        }}>
+          {op.favorite
+            ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
+            : ""}
+        </Box>
+        {opName}
+      </Button>
+    </Box>
   )
 });
 
