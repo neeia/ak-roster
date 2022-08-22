@@ -17,11 +17,12 @@ import ExtLink from "./EditPieces/ExtLink";
 
 interface Props {
   opId: string;
+  open: boolean;
   onClose: () => void;
 }
 
 const EditOperator = ((props: Props) => {
-  const { opId, onClose } = props;
+  const { opId, open, onClose } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -96,7 +97,7 @@ const EditOperator = ((props: Props) => {
 
   return (
     <Dialog
-      open={opId !== ""}
+      open={open}
       onClose={onClose}
       fullScreen={fullScreen}
     >
