@@ -17,6 +17,7 @@ const OperatorSelector = React.memo((props: Props) => {
   const { onClick, filter, sort } = props;
 
   const [operators, onChange, applyBatch] = useOperators();
+  const defineFilter = filter ?? (() => true);
 
   const ps = sort ?? (() => 0)
   function sortComparator(a: OpJsonObj, b: OpJsonObj) {
@@ -32,16 +33,9 @@ const OperatorSelector = React.memo((props: Props) => {
       display: "contents",
     }}>
       {Object.values(operatorJson)
-        .filter((op: OpJsonObj) => filter ? filter(op) : true)
         .sort(sortComparator)
         .map((op: OpJsonObj) => {
-          return <Box
-            component="li"
-            sx={{ listStyleType: "none", display: "contents" }}
-            key={op.id}
-          >
-            <OperatorButton op={operators[op.id]} onClick={onClick} />
-          </Box>
+          return <OperatorButton key={op.id} op={operators[op.id]} onClick={onClick} hidden={!defineFilter(op)} />
         })
       }
     </Box>)

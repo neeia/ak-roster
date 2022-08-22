@@ -1,4 +1,4 @@
-import { Search } from "@mui/icons-material";
+import { Backspace, Clear, HighlightOffOutlined, Search } from "@mui/icons-material";
 import { Dialog, IconButton, InputAdornment, TextField } from "@mui/material";
 import React from "react";
 
@@ -9,8 +9,17 @@ interface Props {
 }
 
 const SearchDialog = React.memo((props: Props) => {
-  const { open, onClose,  setSearch } = props;
+  const { open, onClose, setSearch } = props;
   const [searchText, setSearchText] = React.useState("")
+
+  const onChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value);
+    if (e.target.value === "") {
+      setSearch("");
+    }
+  }, []);
+  const search = React.useCallback((e: React.MouseEvent<HTMLButtonElement>) => { e.preventDefault(); setSearch(searchText); }, [searchText]);
+  const clear = React.useCallback((e: React.MouseEvent<HTMLButtonElement>) => { e.preventDefault(); setSearchText(""); setSearch(""); }, []);
 
   return (
     <Dialog
@@ -26,7 +35,7 @@ const SearchDialog = React.memo((props: Props) => {
       }}
       sx={{
         pointerEvents: "none",
-        position: "fixed",
+        width: "100vw",
         top: "unset",
       }}
       PaperProps={{ style: { pointerEvents: 'auto' } }}
@@ -38,14 +47,25 @@ const SearchDialog = React.memo((props: Props) => {
           sx={{
             backgroundColor: "#333333",
           }}
+          autoFocus
           autoComplete="off"
           placeholder="Type to start searching..."
           value={searchText}
-          onChange={e => { setSearchText(e.target.value); setSearch(e.target.value); }}
+          onChange={onChange}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton type="submit" onClick={(e) => { e.preventDefault(); setSearch(searchText); }}>
+                <IconButton type="reset"
+                  onClick={clear}
+                  sx={{
+                    opacity: searchText.length,
+                    pointerEvents: searchText.length === 0 ? "none" : "",
+                  }}
+                  disabled={searchText.length === 0}
+                >
+                  <Clear />
+                </IconButton>
+                <IconButton type="submit" onClick={search}>
                   <Search />
                 </IconButton>
               </InputAdornment>
