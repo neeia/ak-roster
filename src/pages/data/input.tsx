@@ -18,7 +18,16 @@ const OperatorSelector = dynamic(
 export interface SortListItem {
   key: string;
   desc: boolean;
-  value: (a: Operator, b: Operator) => number;
+}
+const sortFunctions = {
+  "None": (): number => 0,
+  "Name": (a: Operator, b: Operator): number => b.name.localeCompare(a.name),
+  "Level": (a: Operator, b: Operator): number => a.level - b.level,
+  "Rarity": (a: Operator, b: Operator): number => a.rarity - b.rarity,
+  "Promotion": (a: Operator, b: Operator): number => a.promotion - b.promotion,
+  "Potential": (a: Operator, b: Operator): number => a.potential - b.potential,
+  "Favorite": (a: Operator, b: Operator): number => +a.favorite - +b.favorite,
+  "Modules": (a: Operator, b: Operator): number => a.module.reduce(r => r + 1, 0) - b.module.reduce(r => r + 1, 0),
 }
 
 interface FilterListItem {
@@ -35,31 +44,45 @@ const EditOperator = dynamic(
   { ssr: false }
 );
 const Input: NextPage = () => {
-  const [opId, setOpId] = React.useState("")
+  const [opId, setOpId] = React.useState("");
+  const [editOpen, setEditOpen] = React.useState(false);
+
+  const handleSelectOp = React.useCallback((id: string) => {
+    setOpId(id);
+    setEditOpen(true);
+  }, []);
+
   const [sortQueue, setSortQueue] = React.useState<SortListItem[]>([]);
-  const [presetOpen, setPresetOpen] = React.useState(false)
-  const [filterOpen, setFilterOpen] = React.useState(false)
-  const [searchOpen, setSearchOpen] = React.useState(false)
-  const [searchName, setSearchName] = React.useState("")
+  const [presetOpen, setPresetOpen] = React.useState(false);
+  const [filterOpen, setFilterOpen] = React.useState(false);
+  const [searchOpen, setSearchOpen] = React.useState(false);
+  const [searchName, setSearchName] = React.useState("");
 
   /*
    * (key) -> remove this sort from the queue
-   * (key, value) -> add this sort to the queue, descending
-   * (key, desc) -> change the sort mode for this sorting
-   * (key, value, desc) -> this should never happen
+   * (key, desc) -> add the sort with this sorting
    */
-  function toggleSortOrder(key: string, value?: (a: Operator, b: Operator) => number, desc?: boolean) {
-    const origValue = sortQueue.filter((li: SortListItem) => li.key === key);
+  function toggleSortOrder(key: string, desc?: boolean) {
     const filteredQueue = sortQueue.filter((li: SortListItem) => li.key !== key);
-    if (value) {
-      setSortQueue(_ => [...filteredQueue, { key: key, desc: desc ?? true, value: value }]);
-    } else if (desc !== undefined && origValue.length > 0) {
-      const orig = origValue[0];
-      setSortQueue(_ => [...filteredQueue, { key: key, desc: desc, value: orig.value }]);
+    if (desc !== undefined) {
+      setSortQueue(_ => [...filteredQueue, { key: key, desc: desc }]);
     } else {
       setSortQueue(_ => [...filteredQueue]);
     }
   }
+
+  const sortFunction = React.useCallback((a: Operator, b: Operator) => {
+    return sortQueue.map(({ key, desc }) => {
+      let compareKey = sortFunctions[key as keyof typeof sortFunctions](a, b);
+      return desc ? compareKey : -compareKey;
+    }).reduce((acc, curr) => {
+      return acc || curr;
+    }, 0);
+  }, [sortQueue])
+
+  const filterFunction = React.useCallback((op: OpJsonObj) => {
+    return op.name.toLowerCase().includes(searchName.toLowerCase()) || op.cnName.toLowerCase().includes(searchName.toLowerCase());
+  }, [searchName]);
 
   const [selectedPreset, setSelectedPreset] = useState("")
   const [selectState, setSelectState] = React.useState(SELECT_STATE.Grid);
@@ -67,7 +90,7 @@ const Input: NextPage = () => {
 
   return (
     <Layout tab="/data" page="/input">
-      <EditOperator opId={opId} onClose={() => setOpId("")} />
+      <EditOperator opId={opId} open={editOpen} onClose={() => setEditOpen(false)} />
       <FilterDialog title="Presets" open={presetOpen} onClose={() => setPresetOpen(false)}>
         <Box>
 
@@ -87,7 +110,7 @@ const Input: NextPage = () => {
                 height: "min-content"
               }
             }}>
-            <SortDialog sortQueue={sortQueue} handleChange={toggleSortOrder} />
+            <SortDialog sortKeys={Object.keys(sortFunctions)} sortQueue={sortQueue} handleChange={toggleSortOrder} />
             <IconButton onClick={() => setPresetOpen(true)} >
               <FormatPaintOutlined fontSize="large" color="primary" />
             </IconButton>
@@ -125,14 +148,9 @@ const Input: NextPage = () => {
           }
         }}>
           <OperatorSelector
-            onClick={setOpId}
-            sort={(a: Operator, b: Operator) => {
-              const func = sortQueue.find((f: SortListItem) => f.value(a, b) !== 0);
-              return func ? func.value(a, b) * (+func.desc * 2 - 1) : 0
-            }}
-            filter={(op: OpJsonObj) => {
-              return op.name.toLowerCase().includes(searchName.toLowerCase()) || op.cnName.toLowerCase().includes(searchName.toLowerCase());
-            }}
+            onClick={handleSelectOp}
+            sort={sortFunction}
+            filter={filterFunction}
           />
         </Box>
       </Box>
