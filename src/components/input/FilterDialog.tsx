@@ -13,8 +13,6 @@ const FilterDialog = ((props: Props) => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-
-
   return (
     <>
       <Dialog

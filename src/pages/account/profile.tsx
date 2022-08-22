@@ -12,7 +12,7 @@ const CollectionContainer = dynamic(
 const View: NextPage = () => {
 
   return (
-    <Layout tab="/data" page="/view">
+    <Layout tab="/account" page="/profile">
       <Box sx={{
         display: "flex",
         flexDirection: "column",
