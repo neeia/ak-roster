@@ -2,6 +2,7 @@ import React from "react";
 import { Operator, OpJsonObj } from "../../../types/operator";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import operatorJson from "../../../data/operators.json";
+import { getNumSkills } from "../../../util/changeOperator";
 
 interface Props {
   op: Operator;
@@ -16,19 +17,6 @@ const Mastery = ((props: Props) => {
   const { op, onChange } = props;
   const opInfo: OpJsonObj = operatorJson[op.id as keyof typeof operatorJson];
 
-  // returns whether an operator has a skill of the given number
-  const hasSkill = (skill: number) => {
-    switch (skill) {
-      case 0:
-        return op.rarity > 2;
-      case 1:
-        return op.rarity > 3;
-      case 2:
-        return op.rarity === 6 || op.name === "Amiya";
-      default: return undefined;
-    }
-  }
-
   return (
     <Box sx={{
       display: "flex",
@@ -36,9 +24,8 @@ const Mastery = ((props: Props) => {
       justifyContent: "center",
       gap: "4px",
     }}>
-      {[...Array(3)].map((_, i) => {
+      {[...Array(getNumSkills(op))].map((_, i) => {
         const disabled = !op.owned || op.skillLevel < 7 || op.promotion < 2;
-        if (!hasSkill(i)) return "";
         return (
           <Box
             key={`maB${i}`}
