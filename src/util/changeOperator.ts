@@ -18,6 +18,11 @@ export const MODULE_REQ_BY_RARITY = [
   0, 99, 99, 99, 40, 50, 60
 ];
 
+export const getNumSkills = (op: Operator) => {
+  if (op.name === "Amiya") return 3;
+  else return op.rarity > 3 ? (op.rarity > 5 ? 3 : 2) : 1;
+}
+
 export const getMaxPotentialById = (opId: string) => {
   switch (opId) {
     case "char_159_peacok":

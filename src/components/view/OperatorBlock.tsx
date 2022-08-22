@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { Operator } from "../../types/operator";
 import { Favorite } from "@mui/icons-material";
 import { rarityColors } from "../../styles/rarityColors";
-import { MAX_LEVEL_BY_RARITY } from "../../util/changeOperator";
+import { getNumSkills, MAX_LEVEL_BY_RARITY } from "../../util/changeOperator";
 
 interface Props {
   op: Operator;
@@ -191,8 +191,9 @@ const OperatorBlock = React.memo((props: Props) => {
       justifySelf: "end",
       gap: "2px",
     }}>
-      {[...Array(op.rarity > 2 ? (op.rarity > 3 ? 3 : 2) : 1)].map((_, n: number) =>
+      {[...Array(getNumSkills(op))].map((_, n: number) =>
         <Box
+          key={n}
           sx={{
             display: op.promotion >= n ? "grid" : "none",
             marginLeft: { xs: "0px", sm: `${4 * n}px` },
