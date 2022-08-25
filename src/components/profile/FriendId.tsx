@@ -9,7 +9,7 @@ interface Props {
   user: User;
 }
 
-const FriendInput = ((props: Props) => {
+const FriendID = ((props: Props) => {
   const { user } = props;
   const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
 
@@ -80,4 +80,4 @@ const FriendInput = ((props: Props) => {
     </Box>);
 });
 
-export default FriendInput;
+export default FriendID;

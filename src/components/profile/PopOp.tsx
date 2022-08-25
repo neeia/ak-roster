@@ -25,12 +25,6 @@ const PopOp = React.memo((props: Props) => {
     return realFilterIn(op) && (op.name.toLowerCase().includes(search.toLowerCase()) || op.cnName.toLowerCase().includes(search.toLowerCase()));
   }, [realFilterIn, search]);
 
-  function sortComparator(a: OpJsonObj, b: OpJsonObj) {
-    return b.rarity - a.rarity ||
-      classList.indexOf(a.class) - classList.indexOf(b.class) ||
-      a.name.localeCompare(b.name)
-  }
-
   return (
     <>
       <Dialog
