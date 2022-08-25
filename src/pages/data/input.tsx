@@ -145,6 +145,9 @@ const Input: NextPage = () => {
             backgroundColor: "info.main",
             width: "100%",
             height: "min-content",
+          },
+          "& .unowned": {
+            opacity: 0.75
           }
         }}>
           <OperatorSelector
