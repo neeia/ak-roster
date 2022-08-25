@@ -12,22 +12,22 @@ const EditRow = React.memo((props: Props) => {
   return (
     <Box sx={{
       display: "grid",
-      gridTemplateColumns: {
-        xs: "repeat(11, 1fr)",
-        sm: "repeat(11, 1fr)",
-      },
+      gridTemplateColumns: "repeat(11, 1fr)",
       gap: "1rem",
       "& .MuiButtonBase-root": {
         boxShadow: 1,
-        backgroundColor: "info.light",
+        backgroundColor: "info.main",
       },
       "& .inactive": {
         opacity: 0.75,
       },
       "& .active": {
         opacity: 1,
-        outline: "1px solid gold",
-        boxShadow: 2,
+        boxShadow: 0,
+        borderBottomWidth: { xs: "0.2rem", sm: "0.25rem" },
+        borderBottomColor: "primary.main",
+        borderBottomStyle: "solid",
+        backgroundColor: "info.light",
       },
       "& .Mui-disabled": {
         opacity: 0.25,
@@ -36,7 +36,7 @@ const EditRow = React.memo((props: Props) => {
     }}>
       <Box sx={{
         gridColumn: {
-          xs: "span 12",
+          xs: "span 11",
           sm: "span 4",
         },
         display: "grid",
@@ -65,7 +65,7 @@ const EditRow = React.memo((props: Props) => {
       </Box>
       <Box sx={{
         gridColumn: {
-          xs: "span 12",
+          xs: "span 11",
           sm: "span 7",
         },
         display: "grid",
