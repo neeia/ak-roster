@@ -53,6 +53,7 @@ const OperatorButton = ((props: Props) => {
   return (
     <Box
       component="li"
+      className={op.owned ? "" : "unowned"}
       sx={{ listStyleType: "none", display: hidden ? "none" : "" }}
     >
       <Button
@@ -62,6 +63,7 @@ const OperatorButton = ((props: Props) => {
         }}>
         <Box
           component="img"
+          loading="lazy"
           sx={{
             height: `4rem`,
             width: `4rem`,
