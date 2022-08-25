@@ -1,5 +1,4 @@
 import React from "react";
-import { Operator } from "../../types/operator";
 import { Button, Dialog, FormControl, IconButton } from "@mui/material";
 import SortBlock from "./SortPieces/SortBlock";
 import { Tune } from "@mui/icons-material";

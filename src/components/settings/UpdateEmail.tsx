@@ -1,7 +1,6 @@
 import { Box, Button, TextField } from "@mui/material";
 import { FirebaseError } from "firebase/app";
 import { EmailAuthProvider, reauthenticateWithCredential, updateEmail, User } from "firebase/auth";
-import { getDatabase } from "firebase/database";
 import React, { useState } from "react";
 import { authErrors } from "../../util/authErrors";
 import PasswordTextField from "../PasswordTextField";

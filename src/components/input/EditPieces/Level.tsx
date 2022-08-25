@@ -1,6 +1,6 @@
 import React from "react";
 import { Operator } from "../../../types/operator";
-import { Box, Button, IconButton, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import { MAX_LEVEL_BY_RARITY } from "../../../util/changeOperator";
 import { HorizontalRule, KeyboardArrowDownSharp, KeyboardArrowUpSharp, KeyboardDoubleArrowLeftSharp, KeyboardDoubleArrowRightSharp } from "@mui/icons-material";
 

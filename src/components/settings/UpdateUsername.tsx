@@ -1,7 +1,7 @@
 import { ContentPasteOutlined, InventoryOutlined } from "@mui/icons-material";
 import { Box, Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { updateProfile, User } from "firebase/auth";
-import { child, get, getDatabase, onValue, ref, remove, set } from "firebase/database";
+import { child, get, getDatabase, ref, remove, set } from "firebase/database";
 import React, { useState } from "react";
 
 function isAlphaNumeric(str: string) {

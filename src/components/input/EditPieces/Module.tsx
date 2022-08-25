@@ -1,7 +1,7 @@
 import React from "react";
 import { Operator, OpJsonModule, OpJsonObj } from "../../../types/operator";
 import operatorJson from "../../../data/operators.json";
-import { Box, Button, IconButton, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { MODULE_REQ_BY_RARITY } from "../../../util/changeOperator";
 
 interface Props {

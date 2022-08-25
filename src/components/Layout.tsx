@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { AppBar, Box, Container, IconButton, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import Head from "next/head";
 import config from "../data/config";

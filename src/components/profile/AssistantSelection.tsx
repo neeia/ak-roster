@@ -1,12 +1,9 @@
-import { Backspace, PersonAddAlt1 } from "@mui/icons-material";
-import { Box, Button, IconButton, Typography } from "@mui/material";
-import { EmailAuthProvider, reauthenticateWithCredential, updateEmail, User } from "firebase/auth";
-import { getDatabase, onValue, ref, remove, set } from "firebase/database";
+import { Box } from "@mui/material";
+import { User } from "firebase/auth";
+import { getDatabase, ref, remove, set } from "firebase/database";
 import React, { useCallback, useState } from "react";
 import { OpJsonObj } from "../../types/operator";
-import { getNumSkills } from "../../util/changeOperator";
 import useOperators from "../../util/useOperators";
-import operatorJson from "../../data/operators.json";
 import PopOp from "./PopOp";
 import useLocalStorage from "../../util/useLocalStorage";
 import { AccountInfo } from "../../types/doctor";
@@ -18,7 +15,7 @@ interface Props {
 
 const AssistantSelection = ((props: Props) => {
   const { user } = props;
-  const [operators, onChange, applyBatch] = useOperators();
+  const [operators] = useOperators();
   const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
 
   const db = getDatabase();

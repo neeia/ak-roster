@@ -1,4 +1,4 @@
-import { Box, Button, Dialog, DialogContent, DialogTitle, Popover, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Dialog, DialogContent, DialogTitle, TextField } from "@mui/material";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import React, { useState } from "react";
 
@@ -11,7 +11,6 @@ interface Props {
 const ResetPassword = ((props: Props) => {
   const { open, onClose, email } = props;
   const auth = getAuth();
-  const theme = useTheme();
 
   const [resetEmail, setResetEmail] = useState<string>(email ?? "");
   const [errorEmail, setErrorEmail] = useState<string>("");

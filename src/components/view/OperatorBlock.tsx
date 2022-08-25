@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { Operator } from "../../types/operator";
 import { Favorite } from "@mui/icons-material";
 import { rarityColors } from "../../styles/rarityColors";
