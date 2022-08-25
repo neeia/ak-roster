@@ -89,6 +89,7 @@ const OperatorBlock = React.memo((props: Props) => {
       </Box>
       <Box
         component="img"
+        loading="lazy"
         sx={{
           gridArea: "potential",
           width: { xs: "16px", sm: "24px" },
@@ -110,6 +111,7 @@ const OperatorBlock = React.memo((props: Props) => {
         marginLeft: { xs: "-4px", sm: "-6px" },
       }}
       component="img"
+      loading="lazy"
       src={`/img/elite/${op.promotion}_s_box.png`}
       height="100%"
       alt={``}
@@ -206,17 +208,20 @@ const OperatorBlock = React.memo((props: Props) => {
           }}>
           <Box
             component="img"
+            loading="lazy"
             src={`/img/rank/bg.png`}
             alt={``}
           />
           {(!op.mastery[n] || op.mastery[n] === 0
             ? <Box
               component="img"
+              loading="lazy"
               src={`/img/rank/${op.skillLevel}.png`}
               alt={`Level ${op.skillLevel}`}
             />
             : <Box
               component="img"
+              loading="lazy"
               src={`/img/rank/m-${op.mastery[n]}.png`}
               alt={`Mastery Level ${op.mastery[n]}`}
             />
@@ -262,6 +267,7 @@ const OperatorBlock = React.memo((props: Props) => {
             />
             <Box
               component="img"
+              loading="lazy"
               zIndex={2}
               src={url}
               alt={`Module ${n + 1}`}
@@ -314,8 +320,10 @@ const OperatorBlock = React.memo((props: Props) => {
       <Box
         component="img"
         src={`/img/avatars/${intermediate}.png`}
+        loading="lazy"
         sx={{
           gridArea: "img",
+          height: { xs: "84px", sm: "124px" },
           width: { xs: "80px", sm: "120px" },
           borderBottom: `4px solid ${rarityColors[op.rarity]}`,
         }}
