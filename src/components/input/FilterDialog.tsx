@@ -27,7 +27,7 @@ const FilterDialog = ((props: Props) => {
           alignItems: "center",
           paddingBottom: "12px",
         }}>
-          <Divider>{title}</Divider>
+          {title}
         </DialogTitle>
         <DialogContent sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
           <Box>
