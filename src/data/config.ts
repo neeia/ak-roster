@@ -10,11 +10,11 @@ const config = {
       pages: {
         "/input": {
           title: "Input",
-          description: "Enter data about your operators.",
+          description: "Enter data about owned operators.",
         },
         "/view": {
           title: "Collection",
-          description: "Collect things",
+          description: "View a summary of operator data.",
         }
       }
     },
@@ -29,7 +29,7 @@ const config = {
         },
         "/settings": {
           title: "Settings",
-          description: "Set things",
+          description: "Make changes to account details.",
           requireLogin: true,
         }
       }
