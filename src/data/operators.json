@@ -848,7 +848,7 @@
     ],
     "modules": [
       {
-        "moduleName": "断竹插花作品",
+        "moduleName": "Bamboo Ikebana",
         "moduleId": "uniequip_002_gyuki",
         "typeName": "DRE-Y"
       }
@@ -875,7 +875,7 @@
     ],
     "modules": [
       {
-        "moduleName": "断罪之拳",
+        "moduleName": "The Fist of Conviction",
         "moduleId": "uniequip_002_peacok",
         "typeName": "DRE-X"
       }
@@ -1061,7 +1061,7 @@
     ],
     "modules": [
       {
-        "moduleName": "精钢刀具套组",
+        "moduleName": "Steel Tool Set",
         "moduleId": "uniequip_002_strong",
         "typeName": "MER-X"
       }
@@ -1086,7 +1086,13 @@
         "skillName": "Double Hook"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "铁皮首饰盒",
+        "moduleId": "uniequip_002_rope",
+        "typeName": "HOK-X"
+      }
+    ]
   },
   "char_117_myrrh": {
     "id": "char_117_myrrh",
@@ -1458,7 +1464,13 @@
         "skillName": "Suspended Cross"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "超级喷漆套装",
+        "moduleId": "uniequip_002_ethan",
+        "typeName": "AMB-X"
+      }
+    ]
   },
   "char_277_sqrrel": {
     "id": "char_277_sqrrel",
@@ -1679,17 +1691,38 @@
     "cnName": "夜半",
     "rarity": 5,
     "class": "Vanguard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_blkngt_1",
         "iconId": null,
-        "skillName": "半醒"
+        "skillName": "Drowsy"
       },
       {
         "skillId": "skchr_blkngt_2",
         "iconId": null,
-        "skillName": "安眠"
+        "skillName": "Peaceful Slumber"
+      }
+    ],
+    "modules": []
+  },
+  "char_497_ctable": {
+    "id": "char_497_ctable",
+    "name": "Cantabile",
+    "cnName": "晓歌",
+    "rarity": 5,
+    "class": "Vanguard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_ctable_1",
+        "iconId": null,
+        "skillName": "观火"
+      },
+      {
+        "skillId": "skchr_ctable_2",
+        "iconId": null,
+        "skillName": "浮光"
       }
     ],
     "modules": []
@@ -1769,7 +1802,7 @@
     ],
     "modules": [
       {
-        "moduleName": "尖端铝热单元",
+        "moduleName": "Cutting-edge Thermite Unit",
         "moduleId": "uniequip_002_franka",
         "typeName": "DRE-X"
       }
@@ -1796,7 +1829,7 @@
     ],
     "modules": [
       {
-        "moduleName": "锈损的断刀",
+        "moduleName": "Rusty Broken Blade",
         "moduleId": "uniequip_002_flameb",
         "typeName": "DRE-Y"
       }
@@ -2201,17 +2234,17 @@
     "cnName": "寒芒克洛丝",
     "rarity": 5,
     "class": "Sniper",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_kroos2_1",
         "iconId": null,
-        "skillName": "无痕"
+        "skillName": "Traceless"
       },
       {
         "skillId": "skchr_kroos2_2",
         "iconId": null,
-        "skillName": "封喉"
+        "skillName": "Silencer"
       }
     ],
     "modules": [
@@ -2653,6 +2686,27 @@
     ],
     "modules": []
   },
+  "char_4054_malist": {
+    "id": "char_4054_malist",
+    "name": "Minimalist",
+    "cnName": "至简",
+    "rarity": 5,
+    "class": "Caster",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skcom_quickattack[3]",
+        "iconId": null,
+        "skillName": "迅捷打击·γ型"
+      },
+      {
+        "skillId": "skchr_malist_2",
+        "iconId": null,
+        "skillName": "神工意匠"
+      }
+    ],
+    "modules": []
+  },
   "char_242_otter": {
     "id": "char_242_otter",
     "name": "Mayer",
@@ -3064,7 +3118,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“檐下听雨”",
+        "moduleName": "'Shelter from the Rain'",
         "moduleId": "uniequip_002_nothin",
         "typeName": "MER-X"
       }
@@ -3470,7 +3524,13 @@
         "skillName": "Binding Chains"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "“凌绝顶”",
+        "moduleId": "uniequip_002_slchan",
+        "typeName": "HOK-X"
+      }
+    ]
   },
   "char_383_snsant": {
     "id": "char_383_snsant",
@@ -3491,7 +3551,13 @@
         "skillName": "Telescoping Electric Net"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "雪雉的宝贝存钱罐",
+        "moduleId": "uniequip_002_snsant",
+        "typeName": "HOK-X"
+      }
+    ]
   },
   "char_174_slbell": {
     "id": "char_174_slbell",
@@ -3700,17 +3766,17 @@
     "cnName": "夏栎",
     "rarity": 5,
     "class": "Supporter",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_quercu_1",
         "iconId": null,
-        "skillName": "大地的慈悲"
+        "skillName": "Earth's Benevolence"
       },
       {
         "skillId": "skchr_quercu_2",
         "iconId": null,
-        "skillName": "生灵的回响"
+        "skillName": "Echo of Life"
       }
     ],
     "modules": []
@@ -3734,7 +3800,13 @@
         "skillName": "Toxic Overload"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "训练用尾部防护套装",
+        "moduleId": "uniequip_002_mantic",
+        "typeName": "AMB-X"
+      }
+    ]
   },
   "char_478_kirara": {
     "id": "char_478_kirara",
@@ -3755,7 +3827,13 @@
         "skillName": "Anchor Point Snap"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "《闹闹生存挑战3 联机版》",
+        "moduleId": "uniequip_002_kirara",
+        "typeName": "AMB-X"
+      }
+    ]
   },
   "char_241_panda": {
     "id": "char_241_panda",
@@ -4023,6 +4101,38 @@
       }
     ]
   },
+  "char_4055_bgsnow": {
+    "id": "char_4055_bgsnow",
+    "name": "Позёмка",
+    "cnName": "鸿雪",
+    "rarity": 6,
+    "class": "Sniper",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_bgsnow_1",
+        "iconId": null,
+        "skillName": "抑扬格"
+      },
+      {
+        "skillId": "skchr_bgsnow_2",
+        "iconId": null,
+        "skillName": "点题"
+      },
+      {
+        "skillId": "skchr_bgsnow_3",
+        "iconId": null,
+        "skillName": "锐笔速写"
+      }
+    ],
+    "modules": [
+      {
+        "moduleName": "打字机色带",
+        "moduleId": "uniequip_002_bgsnow",
+        "typeName": "ARC-Y"
+      }
+    ]
+  },
   "char_430_fartth": {
     "id": "char_430_fartth",
     "name": "Fartooth",
@@ -4052,6 +4162,11 @@
         "moduleName": "First-show Support Set",
         "moduleId": "uniequip_002_fartth",
         "typeName": "DEA-X"
+      },
+      {
+        "moduleName": "支持者来信",
+        "moduleId": "uniequip_003_fartth",
+        "typeName": "DEA-Y"
       }
     ]
   },
@@ -4544,22 +4659,22 @@
     "cnName": "澄闪",
     "rarity": 6,
     "class": "Caster",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_gdglow_1",
         "iconId": null,
-        "skillName": "火花四溅"
+        "skillName": "Scattering Sparks"
       },
       {
         "skillId": "skchr_gdglow_2",
         "iconId": null,
-        "skillName": "电流翻涌"
+        "skillName": "Surging Current"
       },
       {
         "skillId": "skchr_gdglow_3",
         "iconId": null,
-        "skillName": "澄净闪耀"
+        "skillName": "Crystalline Shine"
       }
     ],
     "modules": []
@@ -4755,27 +4870,27 @@
     "cnName": "令",
     "rarity": 6,
     "class": "Supporter",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_ling_1",
         "iconId": null,
-        "skillName": "重进酒"
+        "skillName": "Sips of Wine"
       },
       {
         "skillId": "skchr_ling_2",
         "iconId": null,
-        "skillName": "笑鸣瑟"
+        "skillName": "Amidst Pleasant Melodies"
       },
       {
         "skillId": "skchr_ling_3",
         "iconId": null,
-        "skillName": "宁作吾"
+        "skillName": "To Remain Oneself"
       }
     ],
     "modules": [
       {
-        "moduleName": "诗短梦长",
+        "moduleName": "Fond Dream with Poetry",
         "moduleId": "uniequip_002_ling",
         "typeName": "SUM-Y"
       }
@@ -4819,27 +4934,27 @@
     "cnName": "老鲤",
     "rarity": 6,
     "class": "Specialist",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_lmlee_1",
         "iconId": null,
-        "skillName": "小惩大诫"
+        "skillName": "Stern Admonishment"
       },
       {
         "skillId": "skchr_lmlee_2",
         "iconId": null,
-        "skillName": "驱凶辟邪"
+        "skillName": "Exorcise Evil"
       },
       {
         "skillId": "skchr_lmlee_3",
         "iconId": null,
-        "skillName": "贵客盈门"
+        "skillName": "Honored Guest"
       }
     ],
     "modules": [
       {
-        "moduleName": "“无问吉凶”",
+        "moduleName": "'Wandering'",
         "moduleId": "uniequip_002_lmlee",
         "typeName": "MER-X"
       }
@@ -4921,7 +5036,13 @@
         "skillName": "Waterless Dance of the Shattered Maelstrom"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "执政官手镜",
+        "moduleId": "uniequip_002_glady",
+        "typeName": "HOK-X"
+      }
+    ]
   },
   "char_437_mizuki": {
     "id": "char_437_mizuki",
@@ -4947,7 +5068,13 @@
         "skillName": "Moon in the Water"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "使者之约",
+        "moduleId": "uniequip_002_mizuki",
+        "typeName": "AMB-X"
+      }
+    ]
   },
   "char_1023_ghost2": {
     "id": "char_1023_ghost2",
@@ -4978,6 +5105,11 @@
         "moduleName": "“唱片”收藏箱",
         "moduleId": "uniequip_002_ghost2",
         "typeName": "PUM-X"
+      },
+      {
+        "moduleName": "未竟之美",
+        "moduleId": "uniequip_003_ghost2",
+        "typeName": "PUM-Y"
       }
     ]
   },
@@ -5491,6 +5623,32 @@
     ],
     "modules": []
   },
+  "char_1026_gvial2": {
+    "id": "char_1026_gvial2",
+    "name": "Gavial the Invincible",
+    "cnName": "百炼嘉维尔",
+    "rarity": 6,
+    "class": "Guard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_gvial2_1",
+        "iconId": null,
+        "skillName": "精准痛击"
+      },
+      {
+        "skillId": "skchr_gvial2_2",
+        "iconId": null,
+        "skillName": "链锯强袭"
+      },
+      {
+        "skillId": "skchr_gvial2_3",
+        "iconId": null,
+        "skillName": "丛林之魂"
+      }
+    ],
+    "modules": []
+  },
   "char_350_surtr": {
     "id": "char_350_surtr",
     "name": "Surtr",
@@ -5606,7 +5764,7 @@
     ],
     "modules": [
       {
-        "moduleName": "耀阳锋刃",
+        "moduleName": "Blade of Blazing Sun",
         "moduleId": "uniequip_002_nearl2",
         "typeName": "DRE-X"
       }
@@ -5781,7 +5939,7 @@
     ],
     "modules": [
       {
-        "moduleName": "潮湿的剑袋",
+        "moduleName": "Moist Sword Bag",
         "moduleId": "uniequip_002_skadi",
         "typeName": "DRE-Y"
       },
