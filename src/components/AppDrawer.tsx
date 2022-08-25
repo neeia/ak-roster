@@ -1,10 +1,11 @@
 ﻿import { Person, ArrowRight, Description, ExpandLess, ExpandMore, PeopleAlt, PersonSearch, ContactPage, ManageAccounts } from "@mui/icons-material";
-import { Box, Button, Collapse, Divider, Drawer, Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
-import { getAuth, User } from "firebase/auth";
+import { Box, Button, Collapse, Divider, Drawer, IconButton, Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
+import { getAuth, onAuthStateChanged, signOut, User } from "firebase/auth";
 import NextLink from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import config from "../data/config";
 import appTheme from "../styles/theme/appTheme";
+import { getUserStatus } from "../util/getUserStatus";
 import initFirebase from "../util/initFirebase";
 import LoginButton from "./LoginButton";
 import RegisterButton from "./RegisterButton";
@@ -12,9 +13,9 @@ import RegisterButton from "./RegisterButton";
 
 const DRAWER_WIDTH_PX = 220;
 const ICON_BY_PATH = [
-  <Description key="d" />,
-  <ManageAccounts key="a" />,
-  <PersonSearch key="c" />
+  <Description key="d" height="1.5rem" />,
+  <ManageAccounts key="a" height="1.5rem" />,
+  <PersonSearch key="c" height="1.5rem" />,
 ];
 
 interface ConfigPage {
@@ -33,7 +34,7 @@ const ListItemTab: React.FC<{ tabTitle: string; startOpen: boolean; icon: React.
           {icon}
         </ListItemIcon>
         <ListItemText primary={tabTitle} />
-        {open ? <ExpandLess /> : <ExpandMore />}
+        {open ? <ExpandLess height="1.5rem" /> : <ExpandMore height="1.5rem" />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         {children}
@@ -57,9 +58,15 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
 
   initFirebase();
   const [user, setUser] = useState<User | null>();
-  React.useEffect(() => {
-    setUser(getAuth().currentUser)
-  });
+  useEffect(() => {
+    getUserStatus().then((user) => {
+      setUser(user);
+    })
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+  }, []);
 
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
@@ -92,11 +99,36 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
         <Button onClick={() => setRegister(true)}>
           Register
         </Button>
-        <LoginButton open={login} onClose={() => setLogin(false)} />
-        <RegisterButton open={register} onClose={() => setRegister(false)} />
+        <LoginButton open={login} onClose={() => setLogin(false)}>
+          <Button
+            onClick={() => {
+              setRegister(true);
+              setLogin(false);
+            }}
+            sx={{ color: "text.secondary" }}
+          >
+            Sign Up Instead
+          </Button>
+        </LoginButton>
+        <RegisterButton open={register} onClose={() => setRegister(false)} >
+          <Button
+            onClick={() => {
+              setRegister(false);
+              setLogin(true);
+            }}
+            sx={{ color: "text.secondary" }}
+          >
+            Log In Instead
+          </Button>
+        </RegisterButton>
       </Box>
-      <Box sx={{ display: user ? "flex" : "none", m: "4px", pl: 2 }}>
-        お帰り, {user?.displayName}.
+      <Box sx={{ display: user ? "grid" : "none", gridTemplateRows: "auto 1fr", gap: "4px", m: "4px", alignItems: "center", justifyContent: "center" }}>
+        <Typography>
+          お帰り, {user?.displayName}.
+        </Typography>
+        <Button onClick={() => { signOut(getAuth()) }}>
+          Log Out
+        </Button>
       </Box>
       <Divider />
       <List>
@@ -109,18 +141,27 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
           >
             {Object.entries(pages)
               .map(([pagePath, pg]: [string, ConfigPage]) => (
-                <ListItem key={pg.title} sx={{ p: 0 }}>
+                <ListItem
+                  key={pg.title}
+                  sx={{
+                    p: 0,
+                    "& .Mui-focusVisible": {
+                      color: "#fff"
+                    }
+                  }}
+                >
                   <ListItemIcon sx={{ minWidth: 0, pr: 1, pl: 3, }}>
-                    <ArrowRight />
+                    <ArrowRight height="1.5rem" />
                   </ListItemIcon>
                   <ListItemButton
+                    tabIndex={-1}
                     sx={{
                       ...(currentPage === pg.title && {
                         bgcolor: "primary.main",
                         ":hover": {
                           bgcolor: "primary.main",
                           filter: "brightness(110%)"
-                        }
+                        },
                       })
                     }}
                     disabled={pg.requireLogin && !user}
@@ -137,7 +178,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
                           ...(currentPage === pg.title && {
                             color: "background.paper",
                             fontWeight: "bold",
-                          })
+                          }),
                         }}
                         variant="body2"
                       >
