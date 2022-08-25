@@ -13,7 +13,7 @@ interface Props {
   user: User;
 }
 
-const AssistantSelection = ((props: Props) => {
+const Assistant = ((props: Props) => {
   const { user } = props;
   const [operators] = useOperators();
   const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
@@ -53,4 +53,4 @@ const AssistantSelection = ((props: Props) => {
     </Box>);
 });
 
-export default AssistantSelection;
+export default Assistant;

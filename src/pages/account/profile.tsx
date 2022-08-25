@@ -6,8 +6,8 @@ import initFirebase from "../../util/initFirebase";
 import { getUserStatus } from "../../util/getUserStatus";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import SupportSelection from "../../components/profile/SupportSelection";
-import AssistantSelection from "../../components/profile/AssistantSelection";
-import FriendInput from "../../components/profile/FriendInput";
+import Assistant from "../../components/profile/Assistant";
+import FriendID from "../../components/profile/FriendId";
 import Level from "../../components/profile/Level";
 import Server from "../../components/profile/Server";
 import Onboard from "../../components/profile/Onboard";
@@ -67,7 +67,7 @@ const Profile: NextPage = () => {
           },
         }}>
           <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 1 }}>
-            <FriendInput user={user} />
+            <FriendID user={user} />
             <Server user={user} />
           </Box>
           <Box sx={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 1 }}>
@@ -75,7 +75,7 @@ const Profile: NextPage = () => {
             <Onboard user={user} />
           </Box>
           <Divider />
-          <AssistantSelection user={user} />
+          <Assistant user={user} />
           <SupportSelection user={user} />
         </Box>}
     </Layout>
