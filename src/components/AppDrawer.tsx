@@ -1,10 +1,9 @@
-﻿import { Person, ArrowRight, Description, ExpandLess, ExpandMore, PeopleAlt, PersonSearch, ContactPage, ManageAccounts } from "@mui/icons-material";
-import { Box, Button, Collapse, Divider, Drawer, IconButton, Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
+﻿import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch, ManageAccounts } from "@mui/icons-material";
+import { Box, Button, Collapse, Divider, Drawer, Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import { getAuth, onAuthStateChanged, signOut, User } from "firebase/auth";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 import config from "../data/config";
-import appTheme from "../styles/theme/appTheme";
 import { getUserStatus } from "../util/getUserStatus";
 import initFirebase from "../util/initFirebase";
 import LoginButton from "./LoginButton";

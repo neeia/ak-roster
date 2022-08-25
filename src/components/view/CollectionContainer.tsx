@@ -14,7 +14,7 @@ interface Props {
 const CollectionContainer = React.memo((props: Props) => {
   const { filter, sort } = props;
 
-  const [operators, onChange, applyBatch] = useOperators();
+  const [operators] = useOperators();
 
   const ps = sort ?? (() => 0)
   function sortComparator(a: OpJsonObj, b: OpJsonObj) {

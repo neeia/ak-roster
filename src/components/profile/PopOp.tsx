@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { OpJsonObj } from '../../types/operator';
 import classList from "../../data/classList";
 import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { CloseOutlined, PersonAddAlt1 } from "@mui/icons-material";
+import { CloseOutlined } from "@mui/icons-material";
 import OperatorSelector from "../input/OperatorSelector";
 
 interface Props {

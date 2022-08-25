@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Dialog, DialogContent, DialogTitle, useMediaQuery, useTheme } from "@mui/material";
 
 interface Props {
   title: string;

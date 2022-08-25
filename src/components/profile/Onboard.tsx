@@ -1,9 +1,9 @@
-import { MenuItem, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { User } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 import React, { useCallback, useState } from "react";
 import useLocalStorage from "../../util/useLocalStorage";
-import { AccountInfo, servers } from "../../types/doctor";
+import { AccountInfo } from "../../types/doctor";
 
 interface Props {
   user: User;

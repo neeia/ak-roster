@@ -1,4 +1,4 @@
-import { Backspace, Clear, HighlightOffOutlined, Search } from "@mui/icons-material";
+import { Clear, Search } from "@mui/icons-material";
 import { Dialog, IconButton, InputAdornment, TextField } from "@mui/material";
 import React from "react";
 

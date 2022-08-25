@@ -1,16 +1,9 @@
-import { Backspace, PersonAddAlt1 } from "@mui/icons-material";
-import { Box, Button, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
-import { EmailAuthProvider, reauthenticateWithCredential, updateEmail, User } from "firebase/auth";
-import { getDatabase, onValue, ref, remove, set } from "firebase/database";
-import React, { useCallback, useState } from "react";
-import { OpJsonObj } from "../../types/operator";
-import { getNumSkills } from "../../util/changeOperator";
-import useOperators from "../../util/useOperators";
-import operatorJson from "../../data/operators.json";
-import PopOp from "./PopOp";
+import { Box, InputAdornment, TextField } from "@mui/material";
+import { User } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
+import React, { useState } from "react";
 import useLocalStorage from "../../util/useLocalStorage";
 import { AccountInfo } from "../../types/doctor";
-import OpSelectionButton from "./OpSelectionButton";
 
 interface Props {
   user: User;

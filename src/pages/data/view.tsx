@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import type { NextPage } from "next";
-import { Box, Button, ButtonGroup, Dialog, IconButton, InputAdornment, TextField } from "@mui/material";
+import { Box } from "@mui/material";
 import dynamic from "next/dynamic";
 import Layout from "../../components/Layout";
-import { Operator, OpJsonObj } from "../../types/operator";
 
 const CollectionContainer = dynamic(
   () => import("../../components/view/CollectionContainer"),

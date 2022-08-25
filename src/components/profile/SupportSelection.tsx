@@ -1,7 +1,6 @@
-import { Backspace, PersonAddAlt1 } from "@mui/icons-material";
-import { Box, Button, IconButton, Typography } from "@mui/material";
-import { EmailAuthProvider, reauthenticateWithCredential, updateEmail, User } from "firebase/auth";
-import { getDatabase, onValue, ref, remove, set } from "firebase/database";
+import { Box, Button, Typography } from "@mui/material";
+import { User } from "firebase/auth";
+import { getDatabase, ref, remove, set } from "firebase/database";
 import React, { useCallback, useState } from "react";
 import { OpJsonObj } from "../../types/operator";
 import { getNumSkills } from "../../util/changeOperator";

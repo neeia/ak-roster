@@ -1,7 +1,6 @@
-import { VisibilityOffOutlined, VisibilityOutlined } from "@mui/icons-material";
-import { Box, Button, IconButton, InputAdornment, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import { FirebaseError } from "firebase/app";
-import { EmailAuthProvider, getAuth, reauthenticateWithCredential, sendPasswordResetEmail, updatePassword, User } from "firebase/auth";
+import { EmailAuthProvider, reauthenticateWithCredential, updatePassword, User } from "firebase/auth";
 import React, { useState } from "react";
 import { authErrors } from "../../util/authErrors";
 import PasswordTextField from "../PasswordTextField";

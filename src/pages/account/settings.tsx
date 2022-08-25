@@ -1,12 +1,10 @@
 ﻿import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { Box, Button, ButtonGroup, Dialog, Divider, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
-import { User, getAuth, updateProfile, onAuthStateChanged } from "firebase/auth";
-import { getDatabase, ref, onValue, remove, set } from "firebase/database";
+import { Box } from "@mui/material";
+import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import Layout from "../../components/Layout";
 import initFirebase from "../../util/initFirebase";
 import { getUserStatus } from "../../util/getUserStatus";
-import { ContentPasteOutlined, InventoryOutlined } from "@mui/icons-material";
 import UpdateUsername from "../../components/settings/UpdateUsername";
 import UpdateEmail from "../../components/settings/UpdateEmail";
 import UpdatePassword from "../../components/settings/UpdatePassword";

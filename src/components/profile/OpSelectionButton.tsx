@@ -1,9 +1,7 @@
 import React from "react";
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { Operator } from "../../types/operator";
-import { Backspace, Favorite, PersonAddAlt1 } from "@mui/icons-material";
-import { rarityColors } from "../../styles/rarityColors";
-import { getNumSkills, MAX_LEVEL_BY_RARITY } from "../../util/changeOperator";
+import { Backspace, PersonAddAlt1 } from "@mui/icons-material";
 
 function imgUrl(op: Operator) {
   let intermediate = op?.id ?? "";
