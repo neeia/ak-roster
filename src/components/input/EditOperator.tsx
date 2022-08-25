@@ -14,7 +14,6 @@ import SkillLevel from "./EditPieces/SkillLevel";
 import useOperators from "../../util/useOperators";
 import ExtLink from "./EditPieces/ExtLink";
 
-
 interface Props {
   opId: string;
   open: boolean;
@@ -77,17 +76,17 @@ const EditOperator = ((props: Props) => {
       },
       flexDirection: "column"
     }}>
-      <ExtLink href={`https://aceship.github.io/AN-EN-Tags/akhrchars.html?opname=${op.name}`} label="ACE">
+      <ExtLink href={`https://aceship.github.io/AN-EN-Tags/akhrchars.html?opname=${op.name}`} label="ACE" title="Aceship">
         <img src={`/img/ext/aceship.png`} width={iconWidth} />
       </ExtLink>
-      <ExtLink href={`https://gamepress.gg/arknights/operator/${op.name.replace(/( the )|[ !@#$%^&*(),.]/g, "-")}`} label="GP">
+      <ExtLink href={`https://gamepress.gg/arknights/operator/${op.name.replace(/( the )|[ !@#$%^&*(),.]/g, "-")}`} label="GP" title="Gamepress">
         <img src={`/img/ext/gp.png`} width={iconWidth} />
       </ExtLink>
       <ExtLink href={`http://prts.wiki/w/${encodeURIComponent(opInfo.cnName)}`} label="PRTS">
         <img src={`/img/ext/prts.png`} width={iconWidth} />
       </ExtLink>
       {opId in sg0
-        ? <ExtLink href={`https://sanitygone.help/operators/${op.name.toLowerCase().replace(/ /g, "-")}`} label="S;G">
+        ? <ExtLink href={`https://sanitygone.help/operators/${op.name.toLowerCase().replace(/ /g, "-")}`} label="S;G" title="Sanity;Gone">
           <img src={`/img/ext/sg0.png`} width={iconWidth} />
         </ExtLink>
         : null
