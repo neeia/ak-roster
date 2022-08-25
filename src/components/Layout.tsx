@@ -87,9 +87,6 @@ const Layout = (props: Props) => {
               <Typography component="h2" variant="h5" noWrap sx={{ display: "inline", verticalAlign: "baseline", }}>
                 {pageTitle}
               </Typography>
-              <Typography component="h3" variant="h6" noWrap sx={{ ml: "1.5rem", display: "inline", verticalAlign: "baseline", }}>
-                {pageDescription}
-              </Typography>
             </Box>
           </Toolbar>
         </AppBar>
