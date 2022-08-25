@@ -17,7 +17,7 @@ const appTheme = createTheme({
     error: {
       main: red[500],
       light: red[500],
-      dark: "#362020",
+      dark: "#362122",
     },
     warning: {
       main: yellow[700],
@@ -25,8 +25,8 @@ const appTheme = createTheme({
       dark: yellow[700],
     },
     info: {
-      main: "#292928",
-      light: "#323233",
+      main: "#303030",
+      light: "#363635",
       dark: "#292928",
     },
     success: {
