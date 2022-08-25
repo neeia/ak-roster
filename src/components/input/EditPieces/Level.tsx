@@ -17,7 +17,6 @@ const Level = React.memo((props: Props) => {
 
   const [levelField, setLevelField] = React.useState<string>(op.level.toString());
   function updateLevel(lvl: string | number) {
-    console.log(lvl);
     if (typeof lvl === "number") {
       onChange(op.id, "level", lvl);
       setLevelField(Math.max(Math.min(lvl, MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]), 1).toString());
