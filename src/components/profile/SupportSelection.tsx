@@ -167,7 +167,8 @@ const SupportSelection = ((props: Props) => {
                             },
                             alignItems: "center",
                             justifyContent: "center",
-                            height: "1.5rem"
+                            height: "1.5rem",
+                            color: "text.primary"
                           }}
                         >
                           {opInfo.skills[k].skillName}
