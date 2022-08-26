@@ -3,6 +3,9 @@ import { Box, Button, IconButton, InputAdornment, TextField } from "@mui/materia
 import { updateProfile, User } from "firebase/auth";
 import { child, get, getDatabase, ref, remove, set } from "firebase/database";
 import React, { useState } from "react";
+import { AccountInfo } from "../../types/doctor";
+import useLocalStorage from "../../util/useLocalStorage";
+import UpdatePrivacy from "./UpdatePrivacy";
 
 function isAlphaNumeric(str: string) {
   var code, i, len;
@@ -25,6 +28,7 @@ interface Props {
 const UpdateUsername = ((props: Props) => {
   const { user } = props;
   const db = getDatabase();
+  const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
 
   const [newUsername, setNewUsername] = useState<string>("");
   const [errorUsername, setErrorUsername] = useState<string>("");
@@ -47,6 +51,11 @@ const UpdateUsername = ((props: Props) => {
       setErrorUsername("Use a maximum of 24 characters.");
       return;
     }
+    if (newUsername.toLowerCase() === user.displayName?.toLowerCase()) {
+      updateDisplayName(newUsername);
+      return;
+    }
+
     const checkUser = "phonebook/" + newUsername.toLowerCase();
     setErrorUsername("Checking...");
     get(child(ref(db), checkUser)).then((snapshot) => {
@@ -65,27 +74,36 @@ const UpdateUsername = ((props: Props) => {
                 setErrorUsername("Something went wrong!");
                 return;
               }
-              setErrorUsername("Saved.");
-              setNewUsername(newSnapshot.key ?? "");
-              updateProfile(user, { displayName: newSnapshot.key });
-              window.location.reload();
+              updateDisplayName(newUsername);
             });
           });
         });
       }
     });
   };
+  const updateDisplayName = (s: string) => {
+    const d = { ...doctor };
+    d.displayName = newUsername;
+    setDoctor(d);
+    set(ref(db, "users/" + (user.uid) + "/info/displayName"), s)
+    setErrorUsername("Saved.");
+    updateProfile(user, { displayName: s });
+    window.location.reload();
+  }
 
   return (
     <>
       Update Username
-      <TextField
-        id="Current Username"
-        label="Current Username"
-        value={user?.displayName || "No Username Set"}
-        variant="standard"
-        disabled
-      />
+      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <TextField
+          id="Current Username"
+          label="Current Username"
+          value={user?.displayName || "No Username Set"}
+          variant="standard"
+          disabled
+        />
+        <UpdatePrivacy user={user} />
+      </Box>
       <TextField
         id="Share Link"
         label="Share Link"
