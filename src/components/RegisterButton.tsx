@@ -110,7 +110,7 @@ const RegisterButton = ((props: Props) => {
               setError("");
             }}
           />
-          <FormControlLabel control={<Checkbox value={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />} label="Remember Me" />
+          <FormControlLabel control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />} label="Remember Me" />
           <Divider />
           <Box sx={{
             display: "flex",
