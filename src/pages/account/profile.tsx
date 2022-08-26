@@ -26,10 +26,6 @@ const Profile: NextPage = () => {
     });
   }, []);
 
-  const [level, setLevel] = useState<string>("");
-  const [server, setServer] = useState<string>("");
-
-
   return (
     <Layout tab="/account" page="/profile">
       {!user ? "" :
