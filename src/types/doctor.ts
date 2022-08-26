@@ -1,7 +1,8 @@
 export interface AccountInfo {
+  displayName?: string;
   friendCode?: FriendCode;
   server?: string;
-  public?: boolean;
+  private?: boolean;
   support?: OperatorSkillSlot[];
   assistant?: string;
   level?: number;
