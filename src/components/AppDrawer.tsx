@@ -84,7 +84,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
         }}
       >
         <NextLink
-          href={siteUrl}
+          href={`/`}
         >
           {siteTitle}
         </NextLink>
