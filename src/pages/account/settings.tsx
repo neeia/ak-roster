@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { Box } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import Layout from "../../components/Layout";
 import initFirebase from "../../util/initFirebase";
