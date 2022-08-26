@@ -155,6 +155,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
                   <ListItemButton
                     tabIndex={-1}
                     sx={{
+                      p: 0,
                       ...(currentPage === pg.title && {
                         bgcolor: "primary.main",
                         ":hover": {
@@ -173,7 +174,8 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
                         sx={{
                           display: "block",
                           width: "100%",
-                          py: 0.5,
+                          px: 2,
+                          py: 1.5,
                           ...(currentPage === pg.title && {
                             color: "background.paper",
                             fontWeight: "bold",
