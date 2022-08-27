@@ -64,6 +64,9 @@ const appTheme = createTheme({
       fontWeight: 400,
       fontSize: "0.6rem",
     },
+    h1: {
+      fontSize: "4rem",
+    },
     h2: {
       fontSize: "2.5rem",
     },
