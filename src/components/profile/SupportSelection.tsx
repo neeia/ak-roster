@@ -129,8 +129,8 @@ const SupportSelection = ((props: Props) => {
                             },
                             "& > *": {
                               gridArea: "1 / 1",
-                              width: "2rem",
-                              height: "2rem",
+                              width: "37px",
+                              height: "34px",
                             },
                             minWidth: 0,
                           }}>
