@@ -24,7 +24,7 @@ const EditRow = (props: Props) => {
       "& .active": {
         opacity: 1,
         boxShadow: 0,
-        borderBottomWidth: { xs: "0.2rem", sm: "0.25rem" },
+        borderBottomWidth: "0.25rem",
         borderBottomColor: "primary.main",
         borderBottomStyle: "solid",
         backgroundColor: "info.light",
