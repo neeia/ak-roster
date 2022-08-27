@@ -11,6 +11,8 @@ import FriendID from "../../components/profile/FriendId";
 import Level from "../../components/profile/Level";
 import Server from "../../components/profile/Server";
 import Onboard from "../../components/profile/Onboard";
+import Discord from "../../components/profile/Discord";
+import Reddit from "../../components/profile/Reddit";
 
 const Profile: NextPage = () => {
   initFirebase();
@@ -73,6 +75,12 @@ const Profile: NextPage = () => {
           <Divider />
           <Assistant user={user} />
           <SupportSelection user={user} />
+          <Divider />
+          <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            Connections
+            <Discord user={user} />
+            <Reddit user={user} />
+          </Box>
         </Box>}
     </Layout>
   );
