@@ -34,7 +34,7 @@ const Lookup: NextPage = () => {
         })
       }
     })
-  }, [username]);
+  }, [db, username]);
 
   return (
     <Layout tab="/network" page="/lookup">
