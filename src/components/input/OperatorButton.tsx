@@ -66,8 +66,8 @@ const OperatorButton = ((props: Props) => {
           className={op.owned ? "" : "unowned"}
           loading="lazy"
           sx={{
-            height: `4rem`,
-            width: `4rem`,
+            height: "calc(4rem + 3px)",
+            width: "4rem",
             gridArea: "1 / 1",
             borderBottom: `3px solid ${rarityColors[op.rarity]}`,
           }}
