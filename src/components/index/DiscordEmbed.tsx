@@ -45,7 +45,7 @@ const DiscordEmbed = ((props: Props) => {
       target="_blank"
       rel="noreferrer noopener"
     >
-      <Box sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }} component="img" src="/res/kroos2ava.png" loading="lazy" />
+      <Box sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }} component="img" src="/res/kroos2ava.png" alt="" loading="lazy" />
       <Box sx={{ display: "flex", flexDirection: "column", gap: 0 }}>
         <Typography variant="body1" >
           {name}
@@ -55,7 +55,7 @@ const DiscordEmbed = ((props: Props) => {
         </Typography>
       </Box>
       <Divider orientation="vertical" />
-      <Box sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }} component="img" src="/img/ext/icon_clyde_white_RGB.svg" loading="lazy" />
+      <Box sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }} component="img" src="/img/ext/icon_clyde_white_RGB.svg" alt="Discord" loading="lazy" />
     </Link>
   );
 });

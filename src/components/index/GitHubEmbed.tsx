@@ -1,10 +1,10 @@
-﻿import React, { useEffect, useState } from "react";
-import { Box, Divider, Link, Typography } from "@mui/material";
+﻿import React from "react";
+import { Box, Link, Typography } from "@mui/material";
 import NextLink from 'next/link'
 import manifest from "../../../public/manifest.json"
 import { OpenInNew } from "@mui/icons-material";
 
-const GITH_COLOR = "#7a7a7a";
+const GITH_COLOR = "#50505a";
 const repo = "https://github.com/neeia/ak-roster-next";
 const cons = [
   {
@@ -17,17 +17,13 @@ const cons = [
   {
     name: "Samidare☔️",
     login: "iansjk",
-    avatar: "/img/ext/samidare.jpg",
+    avatar: "/img/ext/samidare.webp",
     dark: false,
     color: "#fff"
   }
 ];
 
-
-interface Props {
-}
-
-const GitHubEmbed = ((props: Props) => {
+const GitHubEmbed = (() => {
 
   return (
     <Box>
@@ -57,7 +53,7 @@ const GitHubEmbed = ((props: Props) => {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <Box sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }} component="img" src={"/img/ext/gh-light.png"} />
+          <Box sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }} component="img" src="/img/ext/gh-light.png" alt="GitHub" />
           <Box sx={{ display: "flex", flexDirection: "column", gap: 0 }}>
             <Typography variant="body1" >
               AK Roster
@@ -72,7 +68,7 @@ const GitHubEmbed = ((props: Props) => {
           <OpenInNew fontSize="small" />
         </Link>
       </NextLink>
-      <Typography variant="h5" sx={{ pt: 3, pb: 1 }}>
+      <Typography variant="h5" component="h3" sx={{ pt: 3, pb: 1 }}>
         Contributors:
       </Typography>
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
@@ -100,7 +96,7 @@ const GitHubEmbed = ((props: Props) => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <Box sx={{ borderRadius: "50%", width: "48px", height: "48px" }} component="img" src={c.avatar} loading="lazy" />
+            <Box sx={{ borderRadius: "50%", width: "48px", height: "48px" }} component="img" src={c.avatar} alt="" />
             <Box sx={{ display: "flex", flexDirection: "column", gap: 0 }}>
               <Typography variant="body1" >
                 {c.name}
