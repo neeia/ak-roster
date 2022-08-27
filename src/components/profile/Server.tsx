@@ -16,13 +16,13 @@ const Server = ((props: Props) => {
   const db = getDatabase();
 
   const [server, _setServer] = useState<string>(doctor.server ?? "");
-  const setServer = useCallback((value: string) => {
+  const setServer = (value: string) => {
     const d = { ...doctor };
     _setServer(value);
     d.server = value;
     setDoctor(d);
     set(ref(db, `users/${user.uid}/info/server/`), value);
-  }, []);
+  };
 
   return (
     <TextField

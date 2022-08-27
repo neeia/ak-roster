@@ -73,12 +73,12 @@ const Mastery = ((props: Props) => {
                 onClick={() => onChange(op.id, "mastery", j, i)}
                 disabled={disabled}
               >
-                <img
+                <Box component="img"
                   width="32px"
                   src={`/img/rank/bg.png`}
                   alt={""}
                 />
-                <img
+                <Box component="img"
                   width="32px"
                   src={`/img/rank/m-${j}.png`}
                   alt={`Mastery ${j}`}

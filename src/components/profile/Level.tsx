@@ -26,7 +26,7 @@ const Level = ((props: Props) => {
   const db = getDatabase();
 
   const [level, _setLevel] = useState<string>(doctor.level?.toString() ?? "");
-  const setLevel = useCallback((value: string) => {
+  const setLevel = (value: string) => {
     const d = { ...doctor };
     _setLevel(value);
     if (value === "") {
@@ -39,7 +39,7 @@ const Level = ((props: Props) => {
       setDoctor(d);
       set(ref(db, `users/${user.uid}/info/level/`), l);
     }
-  }, []);
+  };
 
   return (
     <TextField

@@ -11,7 +11,7 @@ interface Props {
   sort?: (opA: Operator, opB: Operator) => number;
 }
 
-const CollectionContainer = React.memo((props: Props) => {
+const CollectionContainer = (props: Props) => {
   const { filter, sort } = props;
 
   const [operators] = useOperators();
@@ -43,5 +43,5 @@ const CollectionContainer = React.memo((props: Props) => {
         })
       }
     </Box>)
-});
+}
 export default CollectionContainer;

@@ -33,7 +33,7 @@ const Promotion = ((props: Props) => {
           disabled={!op.owned}
           key={`pro${i + 1}`}
         >
-          <img
+          <Box component="img"
             width="32px"
             src={`/img/elite/${i}.png`}
             alt={`Elite ${i} Button`}

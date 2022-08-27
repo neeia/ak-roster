@@ -8,18 +8,18 @@ interface Props {
   setSearch: (search: string) => void;
 }
 
-const SearchDialog = React.memo((props: Props) => {
+const SearchDialog = (props: Props) => {
   const { open, onClose, setSearch } = props;
   const [searchText, setSearchText] = React.useState("")
 
-  const onChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
     if (e.target.value === "") {
       setSearch("");
     }
-  }, []);
-  const search = React.useCallback((e: React.MouseEvent<HTMLButtonElement>) => { e.preventDefault(); setSearch(searchText); }, [searchText]);
-  const clear = React.useCallback((e: React.MouseEvent<HTMLButtonElement>) => { e.preventDefault(); setSearchText(""); setSearch(""); }, []);
+  };
+  const search = (e: React.MouseEvent<HTMLButtonElement>) => { e.preventDefault(); setSearch(searchText); };
+  const clear = (e: React.MouseEvent<HTMLButtonElement>) => { e.preventDefault(); setSearchText(""); setSearch(""); };
 
   return (
     <Dialog
@@ -75,5 +75,5 @@ const SearchDialog = React.memo((props: Props) => {
       </form>
     </Dialog>
   );
-});
+}
 export default SearchDialog;

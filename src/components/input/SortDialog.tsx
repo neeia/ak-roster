@@ -28,7 +28,7 @@ const SortDialog = ((props: Props) => {
         </Button>
         <FormControl>
           {sortQueue.map((sl: SortListItem, index: number) =>
-            <SortBlock value={sl.key} values={sortKeys} handleChange={handleChange} />
+            <SortBlock key={sl.key} value={sl.key} values={sortKeys} handleChange={handleChange} />
           )}
         </FormControl>
         <Button>

@@ -33,7 +33,7 @@ const Potential = ((props: Props) => {
           disabled={!op.owned}
           key={`pot${i + 1}`}
         >
-          <img
+          <Box component="img"
             width="32px"
             src={`/img/potential/${i + 1}.png`}
             alt={`Potential ${i + 1} Button`}

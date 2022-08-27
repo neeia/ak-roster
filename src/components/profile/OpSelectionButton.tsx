@@ -19,7 +19,7 @@ interface Props {
   clear: () => void;
 }
 
-const OpSelectionButton = React.memo((props: Props) => {
+const OpSelectionButton = (props: Props) => {
   const { op, onClick, clear } = props;
 
   return (op
@@ -87,5 +87,5 @@ const OpSelectionButton = React.memo((props: Props) => {
       <PersonAddAlt1 />
     </IconButton>
   );
-});
+}
 export default OpSelectionButton;

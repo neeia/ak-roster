@@ -19,7 +19,7 @@ const SortBlock = ((props: Props) => {
     <>
       <Select onChange={e => handleChange(e.target.value as string)} value={value}>
         {values.map((v: string) =>
-          <MenuItem value={v}>{v}</MenuItem>
+          <MenuItem key={v} value={v}>{v}</MenuItem>
         )}
       </Select>
     </>

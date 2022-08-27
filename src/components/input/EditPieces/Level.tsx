@@ -12,7 +12,7 @@ interface Props {
     value: number | boolean
   ) => void;
 }
-const Level = React.memo((props: Props) => {
+const Level = (props: Props) => {
   const { op, onChange } = props;
 
   const [levelField, setLevelField] = React.useState<string>(op.level.toString());
@@ -144,5 +144,5 @@ const Level = React.memo((props: Props) => {
       {max}
     </Box>
   )
-})
+}
 export default Level;

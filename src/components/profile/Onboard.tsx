@@ -16,14 +16,14 @@ const Onboard = ((props: Props) => {
   const db = getDatabase();
 
   const [onboard, _setOnboard] = useState<Date | undefined>(doctor.onboard);
-  const setServer = useCallback((value: string) => {
+  const setServer = (value: string) => {
     const d = { ...doctor };
     const date = value as unknown as Date;
     _setOnboard(date);
     d.onboard = date;
     setDoctor(d);
     set(ref(db, `users/${user.uid}/info/onboard/`), date);
-  }, []);
+  };
 
   return (
     <TextField

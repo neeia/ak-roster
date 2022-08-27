@@ -11,7 +11,7 @@ interface Props {
     value: number | boolean
   ) => void;
 }
-const SkillLevel = React.memo((props: Props) => {
+const SkillLevel = (props: Props) => {
   const { op, onChange } = props;
 
   const previousSkillLevel = op.skillLevel > 4 ? 4 : 1;
@@ -109,5 +109,5 @@ const SkillLevel = React.memo((props: Props) => {
       {rankButton(nextSkillLevel)}
     </Box>
   )
-})
+}
 export default SkillLevel;
