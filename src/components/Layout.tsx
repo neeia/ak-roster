@@ -41,6 +41,7 @@ const Layout = (props: Props) => {
             content={pageTitle} />
           <meta
             key="description"
+            name="description"
             property="og:description"
             content={pageDescription}
           />
