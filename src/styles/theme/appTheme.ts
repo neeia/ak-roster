@@ -5,8 +5,8 @@ const appTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: "#fbc02d",
-      light: yellow[700],
+      main: "#ffd440",
+      light: "#fed480",
       dark: "#fbc02d",
     },
     secondary: {
