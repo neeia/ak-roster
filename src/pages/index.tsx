@@ -1,12 +1,9 @@
-import { CacheProvider } from '@emotion/react'
-import { NoteAlt } from '@mui/icons-material'
-import { Box, Button, Container, CssBaseline, Divider, IconButton, Link, ThemeProvider, Typography } from '@mui/material'
+﻿import { CacheProvider } from '@emotion/react'
+import { Box, Container, CssBaseline, Divider, Link, ThemeProvider, Typography } from '@mui/material'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import NextLink from 'next/link'
-import Image from 'next/image'
 import config from '../data/config'
-import styles from '../styles/Home.module.css'
 import appTheme from '../styles/theme/appTheme'
 import createEmotionCache from '../util/createEmotionCache'
 import DiscordEmbed from '../components/index/DiscordEmbed'
@@ -26,69 +23,78 @@ const Home: NextPage = () => {
             property="og:url"
             content={config.siteUrl}
           />
-          <meta key="title"
+          <meta
+            key="title"
             property="og:title"
             content="Arknights Roster" />
           <meta
             key="description"
+            name="description"
             property="og:description"
             content="A collection and progress tracker for Arknights, a game developed by Hypergryph."
           />
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/manifest.json" />
           <meta name="theme-color" content="#fbc02d" />
         </Head>
         <Box component="main" sx={{
-          display: "grid",
-          gridTemplateRows: "auto 1fr",
+          display: "flex",
+          flexDirection: "column",
           "& em": {
             color: "primary.main",
             fontStyle: "normal",
           }
         }}>
           <Box sx={{
-            "::before": {
-              content: '""',
-              position: "absolute",
-              backgroundImage: "url(/res/kroos2banner.png)",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              width: "100%",
-              height: "100%",
-              zIndex: -1,
-            },
-            "::after": {
-              content: '""',
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              backgroundColor: "background.paper",
-              zIndex: -2,
-            },
-            backgroundColor: "rgba(0, 0, 0, 0.1)",
-            position: "relative",
+            backgroundColor: "background.paper",
+            backgroundImage: "url(/res/kroos2banner.webp)",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             height: "220px",
-            overflow: "hidden"
+            overflow: "hidden",
           }}>
-            <Typography variant="h1" sx={{
-              textShadow: "1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000"
+            <Box sx={{
+              position: "relative",
+              "::before": {
+                content: '""',
+                position: "absolute",
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0,
+                margin: "auto",
+                width: "calc(100% - 0.5rem)",
+                height: "calc(100% - 1rem)",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                filter: "blur(2rem)",
+              }
             }}>
-              Ar<em>k</em>nights <em>Rooster</em>
-            </Typography>
+              <Typography variant="h1" position="relative">
+                Ar<em>k</em>nights <em>Rooster</em>
+              </Typography>
+            </Box>
           </Box>
           <Container sx={{
             height: "100vh",
             display: "flex",
             flexDirection: "column",
-            pt: 6,
+            py: 6,
             gap: 6,
-            pb: 6
           }}>
             <Box sx={{ display: "grid", gridTemplateColumns: "2.5fr 3fr", gap: "4%" }}>
-              <Box boxShadow={10} component="img" src="/res/CollectionSample.png" width="480px" height="300px" loading="lazy" />
+              <Box
+                boxShadow={10}
+                component="img"
+                src="/res/CollectionSample.webp"
+                width="495px"
+                height="300px"
+                alt="A screenshot of a user's collection." />
               <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pt: 1 }} >
                 <Typography variant="h2">
                   Share your entire collection with the world <em>instantly.</em>
@@ -108,7 +114,8 @@ const Home: NextPage = () => {
                       backgroundColor: "primary.main",
                       mt: 2,
                       display: "block",
-                      width: "30%",
+                      width: "100%",
+                      maxWidth: "12rem",
                       px: 2,
                       py: 1.5,
                       color: "background.default",
@@ -141,16 +148,6 @@ const Home: NextPage = () => {
                 pt: 1
               }
             }}>
-              <Box className="block">
-                <Typography variant="h2">
-                  Discord
-                </Typography>
-                <Typography variant="body1">
-                  Your feedback is appreciated - every bit helps make Krooster better for everyone.
-                  To make requests and keep up with the latest changes, join the Discord server.
-                </Typography>
-                <DiscordEmbed />
-              </Box>
               <Box sx={{ display: "flex", flexDirection: "column", gridRow: "span 2", gap: 1, pt: 1 }} >
                 <Typography variant="h2">
                   Development
@@ -173,6 +170,16 @@ const Home: NextPage = () => {
                   <dd>MUI v5</dd>
                 </Box>
                 <GitHubEmbed />
+              </Box>
+              <Box className="block">
+                <Typography variant="h2">
+                  Discord
+                </Typography>
+                <Typography variant="body1">
+                  Your feedback is appreciated - every bit helps make Krooster better for everyone.
+                  To make requests and keep up with the latest changes, join the Discord server.
+                </Typography>
+                <DiscordEmbed />
               </Box>
               <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pt: 1 }} >
                 <Typography variant="h2">
