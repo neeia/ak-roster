@@ -79,7 +79,7 @@ const Module = ((props: Props) => {
                 onClick={() => onChange(op.id, "module", j, i)}
                 disabled={disabled}
               >
-                <img
+                <Box component="img"
                   width="32px"
                   src={`/img/equip/img_stg${j}.png`}
                   alt={`Module ${j}`}

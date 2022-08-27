@@ -18,7 +18,7 @@ interface Props {
 
 const OperatorButton = ((props: Props) => {
   const { op, onClick, hidden } = props;
-  if (!op.name) return null;
+
   const [n, t] = op.name.split(" the ");
   const name = t ?? n;
   const width = getTextWidth(name, JSON.stringify(appTheme.typography.caption).replace(/[\{\}]+/g, "")) * WIDTH_TO_PX;
@@ -63,6 +63,7 @@ const OperatorButton = ((props: Props) => {
         }}>
         <Box
           component="img"
+          className={op.owned ? "" : "unowned"}
           loading="lazy"
           sx={{
             height: `4rem`,

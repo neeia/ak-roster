@@ -22,13 +22,13 @@ const Assistant = ((props: Props) => {
 
   const [assistant, _setAssistant] = useState<string>(doctor.assistant ?? "");
   const [open, setOpen] = useState<boolean>(false);
-  const setAssistant = useCallback((value: string) => {
+  const setAssistant = (value: string) => {
     const d = { ...doctor };
     _setAssistant(value);
     d.assistant = value;
     setDoctor(d);
     set(ref(db, `users/${user.uid}/info/assistant/`), value);
-  }, []);
+  };
   const clear = () => {
     const d = { ...doctor };
     _setAssistant("");

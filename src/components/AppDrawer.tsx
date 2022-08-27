@@ -43,7 +43,7 @@ const ListItemTab: React.FC<{ tabTitle: string; startOpen: boolean; icon: React.
 }
 
 interface Props {
-  tab: keyof typeof config.tabs;
+  tab: string;
   page: string;
   open: boolean;
   onDrawerToggle: () => void;
@@ -52,7 +52,7 @@ interface Props {
 const AppDrawer: React.FC<Props> = React.memo((props) => {
   const { tab, page, open, onDrawerToggle } = props;
   const { siteTitle, siteUrl, tabs } = config;
-  const { title: currentTab, pages } = tabs[tab];
+  const { title: currentTab, pages } = tabs[tab as keyof typeof tabs];
   const { title: currentPage } = pages[page as keyof typeof pages] ?? {};
 
   initFirebase();
@@ -246,4 +246,6 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
     </Box>
   );
 })
+
+AppDrawer.displayName = "AppDrawer";
 export default AppDrawer;

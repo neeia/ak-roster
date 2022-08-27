@@ -9,7 +9,7 @@ interface Props {
   op: Operator;
 }
 
-const OperatorBlock = React.memo((props: Props) => {
+const OperatorBlock = (props: Props) => {
   const { op } = props;
   if (!op.owned) return null;
 
@@ -333,5 +333,5 @@ const OperatorBlock = React.memo((props: Props) => {
       {op.module ? moduleBlock : ""}
     </Box>
   );
-});
+}
 export default OperatorBlock;

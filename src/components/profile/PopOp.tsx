@@ -13,17 +13,17 @@ interface Props {
   filter?: (op: OpJsonObj) => boolean;
 }
 
-const PopOp = React.memo((props: Props) => {
+const PopOp = (props: Props) => {
   const { open, onClose, title, onClick, filter } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const [search, setSearch] = useState<String>("");
 
-  const realFilterIn = filter ?? (() => true);
   const filterFunction = React.useCallback((op: OpJsonObj) => {
+    const realFilterIn = filter ?? (() => true);
     return realFilterIn(op) && (op.name.toLowerCase().includes(search.toLowerCase()) || op.cnName.toLowerCase().includes(search.toLowerCase()));
-  }, [realFilterIn, search]);
+  }, [filter, search]);
 
   return (
     <>
@@ -90,5 +90,5 @@ const PopOp = React.memo((props: Props) => {
       </Dialog>
     </>
   );
-});
+}
 export default PopOp;

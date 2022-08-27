@@ -77,17 +77,17 @@ const EditOperator = ((props: Props) => {
       flexDirection: "column"
     }}>
       <ExtLink href={`https://aceship.github.io/AN-EN-Tags/akhrchars.html?opname=${op.name}`} label="ACE" title="Aceship">
-        <img src={`/img/ext/aceship.png`} width={iconWidth} />
+        <Box component="img" src={`/img/ext/aceship.png`} width={iconWidth} alt="" />
       </ExtLink>
       <ExtLink href={`https://gamepress.gg/arknights/operator/${op.name.replace(/( the )|[ !@#$%^&*(),.]/g, "-")}`} label="GP" title="Gamepress">
-        <img src={`/img/ext/gp.png`} width={iconWidth} />
+        <Box component="img" src={`/img/ext/gp.png`} width={iconWidth} alt="" />
       </ExtLink>
       <ExtLink href={`http://prts.wiki/w/${encodeURIComponent(opInfo.cnName)}`} label="PRTS">
-        <img src={`/img/ext/prts.png`} width={iconWidth} />
+        <Box component="img" src={`/img/ext/prts.png`} width={iconWidth} alt="" />
       </ExtLink>
       {opId in sg0
         ? <ExtLink href={`https://sanitygone.help/operators/${op.name.toLowerCase().replace(/ /g, "-")}`} label="S;G" title="Sanity;Gone">
-          <img src={`/img/ext/sg0.png`} width={iconWidth} />
+          <Box component="img" src={`/img/ext/sg0.png`} width={iconWidth} alt="" />
         </ExtLink>
         : null
       }

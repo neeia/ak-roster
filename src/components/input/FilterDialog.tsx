@@ -8,7 +8,7 @@ interface Props {
   onClose: () => void;
 }
 
-const FilterDialog = ((props: Props) => {
+const FilterDialog = (props: Props) => {
   const { title, children, open, onClose } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -37,5 +37,5 @@ const FilterDialog = ((props: Props) => {
       </Dialog>
     </>
   );
-});
+}
 export default FilterDialog;

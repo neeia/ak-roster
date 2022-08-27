@@ -7,7 +7,7 @@ interface Props {
   childrenL?: React.ReactNode;
   childrenR?: React.ReactNode;
 }
-const EditRow = React.memo((props: Props) => {
+const EditRow = (props: Props) => {
   const { titleL, titleR, childrenL, childrenR } = props
   return (
     <Box sx={{
@@ -94,6 +94,6 @@ const EditRow = React.memo((props: Props) => {
       </Box>
     </Box>
   );
-});
+}
 
 export default EditRow;

@@ -25,7 +25,7 @@ const SupportSelection = ((props: Props) => {
   const [supps, setSupps] = useState<OperatorSkillSlot[]>(doctor.support ?? []);
   const [index, setIndex] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
-  const setSupp = useCallback((value: string) => {
+  const setSupp = (value: string) => {
     const s = [...supps];
     const d = { ...doctor };
     s[index] = { opID: value, opSkill: 0 };
@@ -34,8 +34,8 @@ const SupportSelection = ((props: Props) => {
     d.support[index] = s[index];
     setDoctor(d);
     set(ref(db, `users/${user.uid}/info/support/${index}`), s[index]);
-  }, [index]);
-  const setSkill = useCallback((target: number, value: number) => {
+  };
+  const setSkill = (target: number, value: number) => {
     const s = [...supps];
     const d = { ...doctor };
     s[target] = { opID: s[target].opID, opSkill: value };
@@ -44,7 +44,7 @@ const SupportSelection = ((props: Props) => {
     d.support[target] = s[target]
     setDoctor(d);
     set(ref(db, `users/${user.uid}/info/support/${target}/opSkill/`), value);
-  }, [supps]);
+  };
   const clearSupp = (target: number) => {
     const s = [...supps];
     const d = { ...doctor };
@@ -134,7 +134,7 @@ const SupportSelection = ((props: Props) => {
                             },
                             minWidth: 0,
                           }}>
-                            <img
+                            <Box component="img"
                               src={`/img/rank/bg.png`}
                               loading="lazy"
                               alt={""}
