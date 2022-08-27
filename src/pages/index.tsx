@@ -88,7 +88,7 @@ const Home: NextPage = () => {
             pb: 6
           }}>
             <Box sx={{ display: "grid", gridTemplateColumns: "2.5fr 3fr", gap: "4%" }}>
-              <Box component="img" src="/res/CollectionSample.png" width="100%" boxShadow={10} />
+              <Box boxShadow={10} component="img" src="/res/CollectionSample.png" width="480px" height="300px" loading="lazy" />
               <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pt: 1 }} >
                 <Typography variant="h2">
                   Share your entire collection with the world <em>instantly.</em>
@@ -130,8 +130,18 @@ const Home: NextPage = () => {
               </Box>
             </Box>
             <Divider />
-            <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8%" }}>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pt: 1 }} >
+            <Box sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "8%",
+              "& .block": {
+                display: "flex",
+                flexDirection: "column",
+                gap: 1,
+                pt: 1
+              }
+            }}>
+              <Box className="block">
                 <Typography variant="h2">
                   Discord
                 </Typography>
@@ -194,7 +204,7 @@ const Home: NextPage = () => {
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    <Box component="img" width="100%" src="/img/ext/kofi.png" alt="Ko-fi icon" />
+                    <Box component="img" width="131px" height="37px" src="/img/ext/kofi.png" alt="Ko-fi icon" loading="lazy" />
                   </Link>
                 </Typography>
               </Box>

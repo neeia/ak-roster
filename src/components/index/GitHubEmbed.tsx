@@ -100,7 +100,7 @@ const GitHubEmbed = ((props: Props) => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <Box sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }} component="img" src={c.avatar} />
+            <Box sx={{ borderRadius: "50%", width: "48px", height: "48px" }} component="img" src={c.avatar} loading="lazy" />
             <Box sx={{ display: "flex", flexDirection: "column", gap: 0 }}>
               <Typography variant="body1" >
                 {c.name}
