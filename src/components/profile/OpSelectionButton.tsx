@@ -36,9 +36,10 @@ const OpSelectionButton = (props: Props) => {
           }
         }}
         src={imgUrl(op)}
-        alt=""
+        alt={op.name}
       />
       <IconButton
+        aria-label="Clear Operator"
         sx={{
           height: {
             xs: "2rem",
@@ -55,6 +56,7 @@ const OpSelectionButton = (props: Props) => {
         <Backspace />
       </IconButton>
       <IconButton
+        aria-label="Select Operator"
         sx={{
           height: {
             xs: "2rem",
@@ -72,6 +74,7 @@ const OpSelectionButton = (props: Props) => {
       </IconButton>
     </Box >
     : <IconButton
+      aria-label="Select Operator"
       sx={{
         borderRadius: "2px",
         height: {

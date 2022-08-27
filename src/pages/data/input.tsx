@@ -109,14 +109,14 @@ const Input: NextPage = () => {
                 height: "min-content"
               }
             }}>
-            <SortDialog sortKeys={Object.keys(sortFunctions)} sortQueue={sortQueue} handleChange={toggleSortOrder} />
-            <IconButton onClick={() => setPresetOpen(true)} >
+            <IconButton onClick={() => setPresetOpen(true)} aria-label="Batch Edit" >
               <FormatPaintOutlined fontSize="large" color="primary" />
             </IconButton>
-            <IconButton onClick={() => setFilterOpen(true)} >
+            <SortDialog sortKeys={Object.keys(sortFunctions)} sortQueue={sortQueue} handleChange={toggleSortOrder} />
+            <IconButton onClick={() => setFilterOpen(true)} aria-label="Filter">
               <FilterAltOutlined fontSize="large" color="primary" />
             </IconButton>
-            <IconButton onClick={() => setSearchOpen(!searchOpen)} >
+            <IconButton onClick={() => setSearchOpen(!searchOpen)} aria-label="Search" >
               <Search fontSize="large" color="primary" />
             </IconButton>
           </ButtonGroup>
