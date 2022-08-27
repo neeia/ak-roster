@@ -11,12 +11,6 @@ app
   .then(() => {
     const server = express();
 
-    // requests to /service-worker.js
-    server.get(
-      "/service-worker.js",
-      express.static(path.join(__dirname, ".next"))
-    );
-
     // all other requests
     server.get("*", (req, res) => {
       return handle(req, res);
