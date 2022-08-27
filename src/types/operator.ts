@@ -3,6 +3,7 @@ export interface Operator {
   name: string;
   favorite: boolean;
   rarity: number;
+  class: string;
   potential: number;
   promotion: number;
   owned: boolean;
@@ -60,6 +61,7 @@ export function defaultOperatorObject([_, op]: [any, OpJsonObj]): [string, Opera
       name: op.name,
       favorite: false,
       rarity: op.rarity,
+      class: op.class,
       potential: 0,
       promotion: -1,
       owned: false,
@@ -80,6 +82,7 @@ export function defaultPresetObject(_: any, index: number): [string, Operator] {
       name: `Untitled Preset ${index + 1}`,
       favorite: false,
       rarity: 6,
+      class: "",
       potential: 1,
       promotion: 0,
       owned: true,

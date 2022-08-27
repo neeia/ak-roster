@@ -28,6 +28,7 @@ function convertLegacy([_, op]: [any, LegacyOperator]): [string, Operator] {
       name: op.name,
       favorite: op.favorite,
       rarity: op.rarity,
+      class: operatorJson[op.id as keyof typeof operatorJson].class,
       potential: op.potential,
       promotion: op.promotion,
       owned: op.owned,
