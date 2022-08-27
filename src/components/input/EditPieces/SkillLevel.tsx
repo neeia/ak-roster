@@ -20,24 +20,10 @@ const SkillLevel = (props: Props) => {
   function updateRank(rank: number) {
     onChange(op.id, "skillLevel", rank);
   };
-  const m1 = (
-    <Button
-      onClick={() => updateRank(op.skillLevel - 1)}
-      disabled={!op.owned || op.skillLevel === 1}
-    >
-      <KeyboardArrowDownSharp fontSize="large" />
-    </Button>
-  );
-  const p1 = (
-    <Button
-      onClick={() => updateRank(op.skillLevel + 1)}
-      disabled={!op.owned || op.skillLevel === [4, 7, 7][op.promotion]}
-    >
-      <KeyboardArrowUpSharp fontSize="large" />
-    </Button>
-  );
+
   const rankButton = (rank: number) => (
     <Button
+      aria-label={`Skill Rank to ${rank}`}
       onClick={() => updateRank(rank)}
       disabled={!op.owned || op.skillLevel === rank || rank > [4, 7, 7][op.promotion]}
     >
@@ -83,7 +69,14 @@ const SkillLevel = (props: Props) => {
           height: "min-content",
         }
       }}>
-        {m1}
+        <Button
+          aria-label="Lower Skill Rank"
+          sx={{ display: { xs: "none", sm: "" }, }}
+          onClick={() => updateRank(op.skillLevel - 1)}
+          disabled={!op.owned || op.skillLevel === 1}
+        >
+          <KeyboardArrowDownSharp fontSize="large" />
+        </Button>
         <Box sx={{ display: "grid", "& > *": { gridArea: "1 / 1", width: "3.75rem" } }}>
           <Box
             component="img"
@@ -104,7 +97,14 @@ const SkillLevel = (props: Props) => {
               }}
             />}
         </Box>
-        {p1}
+        <Button
+          aria-label="Raise Skill Rank"
+          sx={{ display: { xs: "none", sm: "" }, }}
+          onClick={() => updateRank(op.skillLevel + 1)}
+          disabled={!op.owned || op.skillLevel === [4, 7, 7][op.promotion]}
+        >
+          <KeyboardArrowUpSharp fontSize="large" />
+        </Button>
       </Box>
       {rankButton(nextSkillLevel)}
     </Box>
