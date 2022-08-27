@@ -18,6 +18,7 @@ const SortDialog = ((props: Props) => {
   return (
     <>
       <IconButton
+        aria-label="Sort"
         onClick={() => setOpen(true)}
       >
         <Tune fontSize="large" color="primary" />

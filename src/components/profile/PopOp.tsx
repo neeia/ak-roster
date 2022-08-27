@@ -46,7 +46,7 @@ const PopOp = (props: Props) => {
           <Typography variant="h2" component="span">
             {title}
           </Typography>
-          <IconButton onClick={onClose}>
+          <IconButton onClick={onClose} aria-label="Close">
             <CloseOutlined />
           </IconButton>
         </DialogTitle>
