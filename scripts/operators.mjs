@@ -109,6 +109,7 @@ const createOperatorsJson = () => {
             moduleName: enModuleData?.uniEquipName ?? cnModuleData.uniEquipName,
             moduleId: cnModuleData.uniEquipId,
             typeName: cnModuleData.typeName1 + '-' + cnModuleData.typeName2,
+            isCnOnly: enModuleData === undefined
           }
         })
       }
