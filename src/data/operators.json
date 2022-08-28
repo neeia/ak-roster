@@ -373,7 +373,8 @@
       {
         "moduleName": "占卜师旅行套装",
         "moduleId": "uniequip_002_fmout",
-        "typeName": "SPC-X"
+        "typeName": "SPC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -400,7 +401,8 @@
       {
         "moduleName": "新的开始",
         "moduleId": "uniequip_002_greyy",
-        "typeName": "SPC-Y"
+        "typeName": "SPC-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -448,7 +450,8 @@
       {
         "moduleName": "法杖保养套装",
         "moduleId": "uniequip_002_indigo",
-        "typeName": "MSC-X"
+        "typeName": "MSC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -475,7 +478,8 @@
       {
         "moduleName": "Portable Electrical Measuring Equipment",
         "moduleId": "uniequip_002_pudd",
-        "typeName": "CHA-Y"
+        "typeName": "CHA-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -502,7 +506,8 @@
       {
         "moduleName": "杰西卡的订单",
         "moduleId": "uniequip_002_jesica",
-        "typeName": "MAR-Y"
+        "typeName": "MAR-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -529,7 +534,8 @@
       {
         "moduleName": "猎刀",
         "moduleId": "uniequip_002_shotst",
-        "typeName": "MAR-X"
+        "typeName": "MAR-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -556,7 +562,8 @@
       {
         "moduleName": "“不落”",
         "moduleId": "uniequip_002_clour",
-        "typeName": "MAR-X"
+        "typeName": "MAR-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -583,7 +590,8 @@
       {
         "moduleName": "新手侦探礼包",
         "moduleId": "uniequip_002_mm",
-        "typeName": "MAR-X"
+        "typeName": "MAR-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -610,7 +618,8 @@
       {
         "moduleName": "手里剑",
         "moduleId": "uniequip_002_yuki",
-        "typeName": "ART-Y"
+        "typeName": "ART-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -658,7 +667,8 @@
       {
         "moduleName": "Portable Radar Equipment",
         "moduleId": "uniequip_002_glaze",
-        "typeName": "DEA-X"
+        "typeName": "DEA-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -685,7 +695,8 @@
       {
         "moduleName": "“自由、洋葱圈和我”",
         "moduleId": "uniequip_002_acdrop",
-        "typeName": "ARC-X"
+        "typeName": "ARC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -754,7 +765,8 @@
       {
         "moduleName": "The Greatrock",
         "moduleId": "uniequip_002_vigna",
-        "typeName": "CHG-Y"
+        "typeName": "CHG-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -823,7 +835,8 @@
       {
         "moduleName": "Military Telescope",
         "moduleId": "uniequip_002_doberm",
-        "typeName": "INS-Y"
+        "typeName": "INS-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -850,7 +863,8 @@
       {
         "moduleName": "Bamboo Ikebana",
         "moduleId": "uniequip_002_gyuki",
-        "typeName": "DRE-Y"
+        "typeName": "DRE-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -877,7 +891,8 @@
       {
         "moduleName": "The Fist of Conviction",
         "moduleId": "uniequip_002_peacok",
-        "typeName": "DRE-X"
+        "typeName": "DRE-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -967,7 +982,8 @@
       {
         "moduleName": "Replaceable Tool Set",
         "moduleId": "uniequip_002_cutter",
-        "typeName": "SWO-Y"
+        "typeName": "SWO-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -1036,7 +1052,8 @@
       {
         "moduleName": "Covert Action Toolkit",
         "moduleId": "uniequip_002_gravel",
-        "typeName": "EXE-X"
+        "typeName": "EXE-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -1063,7 +1080,8 @@
       {
         "moduleName": "Steel Tool Set",
         "moduleId": "uniequip_002_strong",
-        "typeName": "MER-X"
+        "typeName": "MER-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -1090,7 +1108,8 @@
       {
         "moduleName": "铁皮首饰盒",
         "moduleId": "uniequip_002_rope",
-        "typeName": "HOK-X"
+        "typeName": "HOK-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -1180,7 +1199,8 @@
       {
         "moduleName": "'Aegean's Kiss'",
         "moduleId": "uniequip_002_flower",
-        "typeName": "RIN-Y"
+        "typeName": "RIN-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -1207,7 +1227,8 @@
       {
         "moduleName": "“江河之韵”",
         "moduleId": "uniequip_002_finlpp",
-        "typeName": "WAH-Y"
+        "typeName": "WAH-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -1318,7 +1339,8 @@
       {
         "moduleName": "蜜糖馅饼礼包",
         "moduleId": "uniequip_002_sunbr",
-        "typeName": "GUA-X"
+        "typeName": "GUA-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -1366,7 +1388,8 @@
       {
         "moduleName": "Weird Palette",
         "moduleId": "uniequip_002_deepcl",
-        "typeName": "SUM-Y"
+        "typeName": "SUM-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -1393,7 +1416,8 @@
       {
         "moduleName": "待确认的申请表",
         "moduleId": "uniequip_002_skgoat",
-        "typeName": "DEC-Y"
+        "typeName": "DEC-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -1420,7 +1444,8 @@
       {
         "moduleName": "“不谢的苗圃”",
         "moduleId": "uniequip_002_podego",
-        "typeName": "DEC-X"
+        "typeName": "DEC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -1468,7 +1493,8 @@
       {
         "moduleName": "超级喷漆套装",
         "moduleId": "uniequip_002_ethan",
-        "typeName": "AMB-X"
+        "typeName": "AMB-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -1516,7 +1542,8 @@
       {
         "moduleName": "Medic Environment Analyze System",
         "moduleId": "uniequip_002_plosis",
-        "typeName": "RIN-X"
+        "typeName": "RIN-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -1543,7 +1570,8 @@
       {
         "moduleName": "Surgical Instrument Kit",
         "moduleId": "uniequip_002_breeze",
-        "typeName": "RIN-X"
+        "typeName": "RIN-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -1633,7 +1661,8 @@
       {
         "moduleName": "Spear Clean Suit",
         "moduleId": "uniequip_002_sddrag",
-        "typeName": "CHG-Y"
+        "typeName": "CHG-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -1660,7 +1689,8 @@
       {
         "moduleName": "Spear Replacement Suit",
         "moduleId": "uniequip_002_wildmn",
-        "typeName": "CHG-X"
+        "typeName": "CHG-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -1750,7 +1780,8 @@
       {
         "moduleName": "Self-defense Lipstick",
         "moduleId": "uniequip_002_swire",
-        "typeName": "INS-X"
+        "typeName": "INS-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -1777,7 +1808,8 @@
       {
         "moduleName": "Whipsword Wire.L",
         "moduleId": "uniequip_002_sophia",
-        "typeName": "INS-X"
+        "typeName": "INS-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -1804,7 +1836,8 @@
       {
         "moduleName": "Cutting-edge Thermite Unit",
         "moduleId": "uniequip_002_franka",
-        "typeName": "DRE-X"
+        "typeName": "DRE-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -1831,7 +1864,8 @@
       {
         "moduleName": "Rusty Broken Blade",
         "moduleId": "uniequip_002_flameb",
-        "typeName": "DRE-Y"
+        "typeName": "DRE-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -1942,7 +1976,8 @@
       {
         "moduleName": "A Well-Made Shirt",
         "moduleId": "uniequip_002_bibeak",
-        "typeName": "SWO-X"
+        "typeName": "SWO-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -1969,7 +2004,8 @@
       {
         "moduleName": "Machinegun Rack",
         "moduleId": "uniequip_002_tachak",
-        "typeName": "SWO-X"
+        "typeName": "SWO-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -2143,7 +2179,8 @@
       {
         "moduleName": "标准比色卡",
         "moduleId": "uniequip_002_bluep",
-        "typeName": "MAR-Y"
+        "typeName": "MAR-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -2170,7 +2207,8 @@
       {
         "moduleName": "独自旅行套装",
         "moduleId": "uniequip_002_platnm",
-        "typeName": "MAR-X"
+        "typeName": "MAR-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -2197,7 +2235,8 @@
       {
         "moduleName": "母爱的倒影",
         "moduleId": "uniequip_002_swllow",
-        "typeName": "MAR-Y"
+        "typeName": "MAR-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -2224,7 +2263,8 @@
       {
         "moduleName": "高保真通讯耳机",
         "moduleId": "uniequip_002_aprl",
-        "typeName": "MAR-Y"
+        "typeName": "MAR-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -2251,7 +2291,8 @@
       {
         "moduleName": "真心的话和想冒的险",
         "moduleId": "uniequip_002_kroos2",
-        "typeName": "MAR-X"
+        "typeName": "MAR-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -2278,7 +2319,8 @@
       {
         "moduleName": "无名的身份牌",
         "moduleId": "uniequip_002_meteo",
-        "typeName": "ART-Y"
+        "typeName": "ART-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -2305,7 +2347,8 @@
       {
         "moduleName": "“灵魂共鸣”",
         "moduleId": "uniequip_002_sesa",
-        "typeName": "ART-X"
+        "typeName": "ART-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -2442,7 +2485,8 @@
       {
         "moduleName": "阻燃处理方案",
         "moduleId": "uniequip_002_skfire",
-        "typeName": "SPC-Y"
+        "typeName": "SPC-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -2469,7 +2513,8 @@
       {
         "moduleName": "'All the Thunderlight'",
         "moduleId": "uniequip_002_leizi",
-        "typeName": "CHA-X"
+        "typeName": "CHA-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -2496,7 +2541,8 @@
       {
         "moduleName": "未组装的钟表",
         "moduleId": "uniequip_002_halo",
-        "typeName": "CHA-Y"
+        "typeName": "CHA-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -2544,7 +2590,8 @@
       {
         "moduleName": "传承与开拓",
         "moduleId": "uniequip_002_lionhd",
-        "typeName": "SPC-X"
+        "typeName": "SPC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -2592,7 +2639,8 @@
       {
         "moduleName": "梦之城堡立体书",
         "moduleId": "uniequip_002_iris",
-        "typeName": "MSC-X"
+        "typeName": "MSC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -2619,7 +2667,8 @@
       {
         "moduleName": "萨卡兹的刀",
         "moduleId": "uniequip_002_lava2",
-        "typeName": "SPC-X"
+        "typeName": "SPC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -2730,7 +2779,8 @@
       {
         "moduleName": "'Meeboo' Control Terminal XP",
         "moduleId": "uniequip_002_otter",
-        "typeName": "SUM-X"
+        "typeName": "SUM-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -2757,7 +2807,8 @@
       {
         "moduleName": "Improved Lens.P",
         "moduleId": "uniequip_002_folivo",
-        "typeName": "SUM-X"
+        "typeName": "SUM-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -2847,7 +2898,8 @@
       {
         "moduleName": "野外考察套装",
         "moduleId": "uniequip_002_ceylon",
-        "typeName": "WAH-X"
+        "typeName": "WAH-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -2874,7 +2926,8 @@
       {
         "moduleName": "古朴的急救箱",
         "moduleId": "uniequip_002_whispr",
-        "typeName": "WAH-X"
+        "typeName": "WAH-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -2985,7 +3038,8 @@
       {
         "moduleName": "改良骑士盾牌",
         "moduleId": "uniequip_002_nearl",
-        "typeName": "GUA-X"
+        "typeName": "GUA-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -3012,7 +3066,8 @@
       {
         "moduleName": "八点档情景剧录像带",
         "moduleId": "uniequip_002_hmau",
-        "typeName": "GUA-Y"
+        "typeName": "GUA-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -3039,7 +3094,8 @@
       {
         "moduleName": "Mystery Prop Pack",
         "moduleId": "uniequip_002_red",
-        "typeName": "EXE-Y"
+        "typeName": "EXE-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -3066,7 +3122,8 @@
       {
         "moduleName": "The Classic of Hung Mei Wing Chun",
         "moduleId": "uniequip_002_waaifu",
-        "typeName": "EXE-X"
+        "typeName": "EXE-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -3093,7 +3150,8 @@
       {
         "moduleName": "Rubik's Cube Pendant",
         "moduleId": "uniequip_002_kafka",
-        "typeName": "EXE-Y"
+        "typeName": "EXE-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -3120,7 +3178,8 @@
       {
         "moduleName": "'Shelter from the Rain'",
         "moduleId": "uniequip_002_nothin",
-        "typeName": "MER-X"
+        "typeName": "MER-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -3357,7 +3416,8 @@
       {
         "moduleName": "盾用摄制模块",
         "moduleId": "uniequip_002_aurora",
-        "typeName": "HES-X"
+        "typeName": "HES-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -3384,7 +3444,8 @@
       {
         "moduleName": "尾巴养护套装",
         "moduleId": "uniequip_002_prove",
-        "typeName": "ARC-X"
+        "typeName": "ARC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -3411,7 +3472,8 @@
       {
         "moduleName": "Field Sniper Equipment",
         "moduleId": "uniequip_002_milu",
-        "typeName": "DEA-Y"
+        "typeName": "DEA-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -3438,7 +3500,8 @@
       {
         "moduleName": "Gunsmithing Toolkit",
         "moduleId": "uniequip_002_cuttle",
-        "typeName": "DEA-X"
+        "typeName": "DEA-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -3528,7 +3591,8 @@
       {
         "moduleName": "“凌绝顶”",
         "moduleId": "uniequip_002_slchan",
-        "typeName": "HOK-X"
+        "typeName": "HOK-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -3555,7 +3619,8 @@
       {
         "moduleName": "雪雉的宝贝存钱罐",
         "moduleId": "uniequip_002_snsant",
-        "typeName": "HOK-X"
+        "typeName": "HOK-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -3624,7 +3689,8 @@
       {
         "moduleName": "读书笔记",
         "moduleId": "uniequip_002_glassb",
-        "typeName": "DEC-Y"
+        "typeName": "DEC-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -3651,7 +3717,8 @@
       {
         "moduleName": "外骨骼装备",
         "moduleId": "uniequip_002_glacus",
-        "typeName": "DEC-X"
+        "typeName": "DEC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -3804,7 +3871,8 @@
       {
         "moduleName": "训练用尾部防护套装",
         "moduleId": "uniequip_002_mantic",
-        "typeName": "AMB-X"
+        "typeName": "AMB-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -3831,7 +3899,8 @@
       {
         "moduleName": "《闹闹生存挑战3 联机版》",
         "moduleId": "uniequip_002_kirara",
-        "typeName": "AMB-X"
+        "typeName": "AMB-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -3942,7 +4011,8 @@
       {
         "moduleName": "《乔弗瑞古今童话集》精装本",
         "moduleId": "uniequip_002_bena",
-        "typeName": "PUM-Y"
+        "typeName": "PUM-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -3969,7 +4039,8 @@
       {
         "moduleName": "旧物",
         "moduleId": "uniequip_002_kazema",
-        "typeName": "PUM-X"
+        "typeName": "PUM-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -4001,7 +4072,8 @@
       {
         "moduleName": "能天使的杰作",
         "moduleId": "uniequip_002_angel",
-        "typeName": "MAR-X"
+        "typeName": "MAR-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -4033,7 +4105,8 @@
       {
         "moduleName": "“明天的种子”",
         "moduleId": "uniequip_002_archet",
-        "typeName": "MAR-Y"
+        "typeName": "MAR-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -4065,7 +4138,8 @@
       {
         "moduleName": "破墙榴弹战术收纳包",
         "moduleId": "uniequip_002_ash",
-        "typeName": "MAR-Y"
+        "typeName": "MAR-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -4097,7 +4171,8 @@
       {
         "moduleName": "定制弩配件套装",
         "moduleId": "uniequip_002_shwaz",
-        "typeName": "ARC-X"
+        "typeName": "ARC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -4129,7 +4204,8 @@
       {
         "moduleName": "打字机色带",
         "moduleId": "uniequip_002_bgsnow",
-        "typeName": "ARC-Y"
+        "typeName": "ARC-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -4161,12 +4237,14 @@
       {
         "moduleName": "First-show Support Set",
         "moduleId": "uniequip_002_fartth",
-        "typeName": "DEA-X"
+        "typeName": "DEA-X",
+        "isCnOnly": false
       },
       {
         "moduleName": "支持者来信",
         "moduleId": "uniequip_003_fartth",
-        "typeName": "DEA-Y"
+        "typeName": "DEA-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -4198,7 +4276,8 @@
       {
         "moduleName": "佣兵的行囊",
         "moduleId": "uniequip_002_cqbw",
-        "typeName": "ART-X"
+        "typeName": "ART-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -4230,7 +4309,8 @@
       {
         "moduleName": "“律外”特种弹药配给组",
         "moduleId": "uniequip_002_phenxi",
-        "typeName": "ART-Y"
+        "typeName": "ART-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -4366,7 +4446,8 @@
       {
         "moduleName": "Piledriver Spear Magazine",
         "moduleId": "uniequip_002_bpipe",
-        "typeName": "CHG-X"
+        "typeName": "CHG-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -4502,7 +4583,8 @@
       {
         "moduleName": "锁与匙之家",
         "moduleId": "uniequip_002_mostma",
-        "typeName": "SPC-Y"
+        "typeName": "SPC-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -4586,7 +4668,8 @@
       {
         "moduleName": "无题长卷",
         "moduleId": "uniequip_002_dusk",
-        "typeName": "SPC-X"
+        "typeName": "SPC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -4618,12 +4701,14 @@
       {
         "moduleName": "Electromagnetic Regulator",
         "moduleId": "uniequip_002_pasngr",
-        "typeName": "CHA-X"
+        "typeName": "CHA-X",
+        "isCnOnly": false
       },
       {
         "moduleName": "王权金币",
         "moduleId": "uniequip_003_pasngr",
-        "typeName": "CHA-Y"
+        "typeName": "CHA-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -4707,7 +4792,8 @@
       {
         "moduleName": "源石骰子收纳盒",
         "moduleId": "uniequip_002_ebnhlz",
-        "typeName": "MSC-X"
+        "typeName": "MSC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -4765,7 +4851,8 @@
       {
         "moduleName": "重力校准模块",
         "moduleId": "uniequip_002_aglina",
-        "typeName": "DEC-Y"
+        "typeName": "DEC-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -4797,7 +4884,8 @@
       {
         "moduleName": "怀中御守",
         "moduleId": "uniequip_002_lisa",
-        "typeName": "DEC-X"
+        "typeName": "DEC-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -4829,12 +4917,14 @@
       {
         "moduleName": "Drone Control Module.P",
         "moduleId": "uniequip_002_mgllan",
-        "typeName": "SUM-X"
+        "typeName": "SUM-X",
+        "isCnOnly": false
       },
       {
         "moduleName": "教学用龙腾无人机",
         "moduleId": "uniequip_003_mgllan",
-        "typeName": "SUM-Y"
+        "typeName": "SUM-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -4892,7 +4982,8 @@
       {
         "moduleName": "Fond Dream with Poetry",
         "moduleId": "uniequip_002_ling",
-        "typeName": "SUM-Y"
+        "typeName": "SUM-Y",
+        "isCnOnly": false
       }
     ]
   },
@@ -4924,7 +5015,8 @@
       {
         "moduleName": "Miss Christine's Felt",
         "moduleId": "uniequip_002_phatom",
-        "typeName": "EXE-X"
+        "typeName": "EXE-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -4956,7 +5048,8 @@
       {
         "moduleName": "'Wandering'",
         "moduleId": "uniequip_002_lmlee",
-        "typeName": "MER-X"
+        "typeName": "MER-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -5040,7 +5133,8 @@
       {
         "moduleName": "执政官手镜",
         "moduleId": "uniequip_002_glady",
-        "typeName": "HOK-X"
+        "typeName": "HOK-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -5072,7 +5166,8 @@
       {
         "moduleName": "使者之约",
         "moduleId": "uniequip_002_mizuki",
-        "typeName": "AMB-X"
+        "typeName": "AMB-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -5104,12 +5199,14 @@
       {
         "moduleName": "“唱片”收藏箱",
         "moduleId": "uniequip_002_ghost2",
-        "typeName": "PUM-X"
+        "typeName": "PUM-X",
+        "isCnOnly": true
       },
       {
         "moduleName": "未竟之美",
         "moduleId": "uniequip_003_ghost2",
-        "typeName": "PUM-Y"
+        "typeName": "PUM-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -5193,7 +5290,8 @@
       {
         "moduleName": "'Closed Hope'",
         "moduleId": "uniequip_002_cgbird",
-        "typeName": "RIN-X"
+        "typeName": "RIN-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -5251,7 +5349,8 @@
       {
         "moduleName": "纯铜单筒望远镜",
         "moduleId": "uniequip_002_lumen",
-        "typeName": "WAH-X"
+        "typeName": "WAH-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -5309,7 +5408,8 @@
       {
         "moduleName": "闲置的拳击手套",
         "moduleId": "uniequip_002_demkni",
-        "typeName": "GUA-X"
+        "typeName": "GUA-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -5341,7 +5441,8 @@
       {
         "moduleName": "工匠团的回响",
         "moduleId": "uniequip_002_blemsh",
-        "typeName": "GUA-Y"
+        "typeName": "GUA-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -5425,7 +5526,8 @@
       {
         "moduleName": "祖玛玛的工具箱",
         "moduleId": "uniequip_002_zumama",
-        "typeName": "HES-X"
+        "typeName": "HES-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -5561,7 +5663,8 @@
       {
         "moduleName": "Rhodes Island Standard Combat Sword",
         "moduleId": "uniequip_002_chen",
-        "typeName": "SWO-X"
+        "typeName": "SWO-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -5593,7 +5696,8 @@
       {
         "moduleName": "厚重的经卷",
         "moduleId": "uniequip_002_irene",
-        "typeName": "SWO-Y"
+        "typeName": "SWO-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -5729,12 +5833,14 @@
       {
         "moduleName": "'Ούρος'",
         "moduleId": "uniequip_002_pallas",
-        "typeName": "INS-X"
+        "typeName": "INS-X",
+        "isCnOnly": false
       },
       {
         "moduleName": "“赫里亚之辉”",
         "moduleId": "uniequip_003_pallas",
-        "typeName": "INS-Y"
+        "typeName": "INS-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -5766,7 +5872,8 @@
       {
         "moduleName": "Blade of Blazing Sun",
         "moduleId": "uniequip_002_nearl2",
-        "typeName": "DRE-X"
+        "typeName": "DRE-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -5909,7 +6016,8 @@
       {
         "moduleName": "Cavalry Policeman Suit",
         "moduleId": "uniequip_002_grani",
-        "typeName": "CHG-X"
+        "typeName": "CHG-X",
+        "isCnOnly": false
       }
     ]
   },
@@ -5941,12 +6049,14 @@
       {
         "moduleName": "Moist Sword Bag",
         "moduleId": "uniequip_002_skadi",
-        "typeName": "DRE-Y"
+        "typeName": "DRE-Y",
+        "isCnOnly": false
       },
       {
         "moduleName": "往日残梦",
         "moduleId": "uniequip_003_skadi",
-        "typeName": "DRE-X"
+        "typeName": "DRE-X",
+        "isCnOnly": true
       }
     ]
   },

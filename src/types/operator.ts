@@ -34,6 +34,7 @@ export interface OpJsonModule {
   moduleName: string;
   moduleId: string;
   typeName: string;
+  isCnOnly: boolean;
 }
 
 export interface LegacyOperator {
