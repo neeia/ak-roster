@@ -33,7 +33,7 @@ const Mastery = ((props: Props) => {
               display: "grid",
               gridTemplateAreas: `"icon name name name name"
                       "icon m m m m"`,
-              gridTemplateColumns: `"auto repeat(4, 1fr)"`,
+              gridTemplateColumns: "auto repeat(4, 1fr)",
               gridTemplateRows: "auto 1fr",
               justifyItems: "center",
               alignItems: "center",

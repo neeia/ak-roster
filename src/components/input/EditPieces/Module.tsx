@@ -33,7 +33,7 @@ const Module = ((props: Props) => {
               display: "grid",
               gridTemplateAreas: `"icon name name name name"
                       "icon m m m m"`,
-              gridTemplateColumns: `"auto repeat(4, 1fr)"`,
+              gridTemplateColumns: "auto repeat(4, 1fr)",
               gridTemplateRows: "auto 1fr",
               justifyItems: "center",
               alignItems: "center",
@@ -41,6 +41,7 @@ const Module = ((props: Props) => {
             <Typography
               variant="caption2"
               sx={{
+                textAlign: "center",
                 gridArea: "name",
                 mb: -0.25,
                 zIndex: 1
