@@ -1,5 +1,5 @@
 import { ContentPasteOutlined, InventoryOutlined } from "@mui/icons-material";
-import { Box, Button, IconButton, InputAdornment, TextField } from "@mui/material";
+import { Box, Button, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import { updateProfile, User } from "firebase/auth";
 import { child, get, getDatabase, ref, remove, set } from "firebase/database";
 import React, { useState } from "react";
@@ -113,8 +113,11 @@ const UpdateUsername = ((props: Props) => {
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              {copyLink ? "Copied!" : "Copy"}
+              <Typography id="copy-label">
+                {copyLink ? "Copied!" : "Copy"}
+              </Typography>
               <IconButton
+                aria-labelledby="copy-label"
                 onClick={() => { setCopiedLink(true); navigator.clipboard.writeText(`https://krooster.com/u/${user.displayName}`); }}
               >
                 {copyLink

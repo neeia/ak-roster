@@ -100,6 +100,7 @@ const RegisterButton = ((props: Props) => {
               setPassword(e.target.value);
               setError("");
             }}
+            ariaId="reg-pass"
           />
           <PasswordTextField
             id="Repeat Password"
@@ -109,6 +110,7 @@ const RegisterButton = ((props: Props) => {
               setRepeat(e.target.value);
               setError("");
             }}
+            ariaId="reg-rep"
           />
           <FormControlLabel control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />} label="Remember Me" />
           <Divider />

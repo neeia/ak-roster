@@ -49,7 +49,7 @@ const UpdatePassword = ((props: Props) => {
   return (
     <>
       Update Password
-      <TextField
+      <PasswordTextField
         id="Current Password"
         label="Current Password"
         value={password}
@@ -57,7 +57,7 @@ const UpdatePassword = ((props: Props) => {
           setPassword(e.target.value);
           setErrorPassword("");
         }}
-        variant="filled"
+        ariaId="upw-cur"
       />
       <PasswordTextField
         id="Enter New Password"
@@ -67,6 +67,7 @@ const UpdatePassword = ((props: Props) => {
           setNewPassword(e.target.value);
           setErrorPassword("");
         }}
+        ariaId="upw-ne1"
       />
       <PasswordTextField
         id="Repeat Password"
@@ -76,6 +77,7 @@ const UpdatePassword = ((props: Props) => {
           setRepeatPassword(e.target.value);
           setErrorPassword("");
         }}
+        ariaId="upw-ne2"
       />
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <Button onClick={tryPassword}>
