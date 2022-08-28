@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Dialog, FormControl, IconButton } from "@mui/material";
-import SortBlock from "./SortPieces/SortBlock";
+import SortBlock from "./SortBlock";
 import { Tune } from "@mui/icons-material";
 import { SortListItem } from "../../pages/data/input";
 
