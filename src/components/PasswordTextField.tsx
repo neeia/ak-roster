@@ -1,5 +1,5 @@
 import { VisibilityOffOutlined, VisibilityOutlined } from "@mui/icons-material";
-import { IconButton, InputAdornment, TextField } from "@mui/material";
+import { IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 
 
@@ -8,10 +8,11 @@ interface Props {
   label: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  ariaId: string;
 }
 
 const PasswordTextField = ((props: Props) => {
-  const { id, label, value, onChange } = props;
+  const { id, label, value, onChange, ariaId } = props;
 
   const [showPW, setShowPW] = useState<boolean>(false);
 
@@ -27,8 +28,11 @@ const PasswordTextField = ((props: Props) => {
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
-            {showPW ? "Hide" : "Show"}
+            <Typography id={`show-pw-${ariaId}`}>
+              {showPW ? "Hide" : "Show"}
+            </Typography>
             <IconButton
+              aria-labelledby={`show-pw-${ariaId}`}
               tabIndex={-1}
               onClick={() => setShowPW(!showPW)}
             >

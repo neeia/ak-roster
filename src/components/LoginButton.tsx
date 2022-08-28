@@ -97,6 +97,7 @@ const LoginButton = ((props: Props) => {
               setPassword(e.target.value);
               setError("");
             }}
+            ariaId="logn-pass"
           />
           <FormControlLabel control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />} label="Remember Me" />
           <Divider />

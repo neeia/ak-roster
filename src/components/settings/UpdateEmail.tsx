@@ -69,6 +69,7 @@ const UpdateEmail = ((props: Props) => {
           setPassword(e.target.value);
           setError("");
         }}
+        ariaId="email"
       />
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <Button onClick={tryEmail}>
