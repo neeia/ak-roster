@@ -64,7 +64,7 @@ const Discord = ((props: Props) => {
         }}
       />
       <TextField
-        id="Tag"
+        id="Discord Tag"
         label="Tag"
         value={friendTag}
         onChange={(e) => {

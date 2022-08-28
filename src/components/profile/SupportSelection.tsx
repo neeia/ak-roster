@@ -76,7 +76,7 @@ const SupportSelection = ((props: Props) => {
           const op = operators[supps[i]?.opID ?? undefined];
           const opInfo = op ? operatorJson[op.id as keyof typeof operatorJson] : undefined;
           return (
-            <>
+            <Box display="contents" key={op.id}>
               <OpSelectionButton
                 op={op}
                 onClick={() => {
@@ -129,8 +129,8 @@ const SupportSelection = ((props: Props) => {
                             },
                             "& > *": {
                               gridArea: "1 / 1",
-                              width: "37px",
-                              height: "34px",
+                              width: "36px",
+                              height: "35px",
                             },
                             minWidth: 0,
                           }}>
@@ -186,7 +186,7 @@ const SupportSelection = ((props: Props) => {
                   <div />
                 </>
               )}
-            </>
+            </Box>
           );
         })}
       </Box>
