@@ -40,7 +40,7 @@ const appTheme = createTheme({
     },
     text: {
       primary: '#fff',
-      secondary: grey[500],
+      secondary: grey[400],
     }
   },
   typography: {
