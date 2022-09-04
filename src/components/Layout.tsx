@@ -101,7 +101,7 @@ const Layout = (props: Props) => {
           <Container
             component="main"
             maxWidth="xl"
-            sx={{ gridArea: "main", p: 2, position: "relative" }}
+            sx={{ gridArea: "main", p: { xs: 1, sm: 2 }, position: "relative" }}
           >
             {children}
           </Container>
