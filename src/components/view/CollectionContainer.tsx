@@ -15,11 +15,11 @@ const CollectionContainer = (props: Props) => {
   const { filter, sort } = props;
 
   const [operators] = useOperators();
+  const defineFilter = filter ?? (() => true);
 
   const ps = sort ?? (() => 0)
   function sortComparator(a: OpJsonObj, b: OpJsonObj) {
     return ps(operators[a.id], operators[b.id]) ||
-      b.rarity - a.rarity ||
       classList.indexOf(a.class) - classList.indexOf(b.class) ||
       a.name.localeCompare(b.name)
   }
@@ -30,14 +30,9 @@ const CollectionContainer = (props: Props) => {
       display: "contents",
     }}>
       {Object.values(operatorJson)
-        .filter((op: OpJsonObj) => filter ? filter(op) : true)
         .sort(sortComparator)
         .map((op: OpJsonObj) => {
-          return <Box
-            component="li"
-            sx={{ listStyleType: "none", display: "contents" }}
-            key={op.id}
-          >
+          return <Box component="li" key={op.id} sx={{ listStyleType: "none", display: !defineFilter(op) ? "none" : "" }}>
             <OperatorBlock op={operators[op.id]} />
           </Box>
         })
