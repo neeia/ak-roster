@@ -13,16 +13,15 @@ interface Props {
   toggleGroup?: string[];
 }
 
-const OperatorSelector = (props: Props) => {
+const OperatorSelector = React.memo((props: Props) => {
   const { onClick, filter, sort } = props;
 
-  const [operators, onChange, applyBatch] = useOperators();
+  const [operators] = useOperators();
   const defineFilter = filter ?? (() => true);
 
   const ps = sort ?? (() => 0)
   function sortComparator(a: OpJsonObj, b: OpJsonObj) {
     return ps(operators[a.id], operators[b.id]) ||
-      b.rarity - a.rarity ||
       classList.indexOf(a.class) - classList.indexOf(b.class) ||
       a.name.localeCompare(b.name)
   }
@@ -35,9 +34,12 @@ const OperatorSelector = (props: Props) => {
       {Object.values(operatorJson)
         .sort(sortComparator)
         .map((op: OpJsonObj) => {
-          return <OperatorButton key={op.id} op={operators[op.id]} onClick={onClick} hidden={!defineFilter(op)} />
+          return <Box component="li" key={op.id} sx={{ listStyleType: "none", display: !defineFilter(op) ? "none" : "" }}>
+            <OperatorButton op={operators[op.id]} onClick={onClick} />
+          </Box>
         })
       }
     </Box>)
-}
+});
+OperatorSelector.displayName = "OperatorSelector";
 export default OperatorSelector;
