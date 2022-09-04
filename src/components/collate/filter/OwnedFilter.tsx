@@ -1,66 +1,40 @@
-import { MenuItem, TextField } from "@mui/material";
-import { User } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
-import React, { useCallback, useEffect, useState } from "react";
-import { AccountInfo } from "../../../types/doctor";
-import { FilterFunction } from "../../../types/filter";
-import { OpJsonObj } from "../../../types/operator";
-import useLocalStorage from "../../../util/useLocalStorage";
-
-const filters: Record<string, { label: string, fn: FilterFunction }> = {
-  "ANY": {
-    label: "Any",
-    fn: () => true,
-  },
-  "TRUE": {
-    label: "Owned Only",
-    fn: (op: OpJsonObj) => op.isCnOnly,
-  },
-  "FALSE": {
-    label: "Unowned Only",
-    fn: (op: OpJsonObj) => !op.isCnOnly,
-  }
-}
-const filterKey = "owned";
+import { Check, Clear } from "@mui/icons-material";
+import { Box, Divider, IconButton } from "@mui/material";
+import React from "react";
 
 interface Props {
-  addFilter: (property: string, key: string, value: FilterFunction) => void;
-  removeFilter: (property: string, key: string) => void;
+  ownedFilter: boolean | undefined;
+  toggleFilter: (value: boolean) => void;
 }
-
 const OwnedFilter = (props: Props) => {
-  const { addFilter, removeFilter } = props;
-  const [doctor] = useLocalStorage<AccountInfo>("doctor", {});
+  const { ownedFilter, toggleFilter } = props;
 
-  const [serverFilter, _setServerFilter] = useState<string>(doctor.server ? (doctor.server === "CN" ? doctor.server : "EN") : "ANY");
-  const setServerFilter = (s: string) => {
-    console.log("Attempting to delete " + serverFilter)
-    removeFilter(filterKey, serverFilter);
-    _setServerFilter(s);
-    console.log("Attempting to add " + s)
-    addFilter(filterKey, s, filters[s].fn);
-  }
 
-  useEffect(() => {
-    addFilter(filterKey, serverFilter, filters[serverFilter].fn);
-  }, [])
-
+  const r = 4;
   return (
-    <TextField
-      id="Select Server"
-      label="Server"
-      variant="filled"
-      select
-      value={serverFilter}
-      onChange={(e) => setServerFilter(e.target.value)}
-      sx={{ width: "6rem" }}
-    >
-      {Object.keys(filters).map((s) => (
-        <MenuItem key={s} value={s}>
-          {filters[s].label}
-        </MenuItem>
-      ))}
-    </TextField>);
+    <Box display="flex" flexDirection="column" width="100%">
+      <Box>
+        <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
+          Owned
+        </Divider>
+      </Box>
+      <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" width="100%" height="100%">
+        <IconButton
+          className={ownedFilter === true ? "active" : "inactive"}
+          sx={{ borderRadius: `${r}px 0px 0px ${r}px` }}
+          onClick={() => toggleFilter(true)}
+        >
+          <Check htmlColor="lightgreen" />
+        </IconButton>
+        <IconButton
+          className={ownedFilter === false ? "active" : "inactive"}
+          sx={{ borderRadius: `0px ${r}px ${r}px 0px` }}
+          onClick={() => toggleFilter(false)}
+        >
+          <Clear htmlColor="red" />
+        </IconButton>
+      </Box>
+    </Box>);
 }
 
 export default OwnedFilter;

@@ -1,30 +1,14 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import type { NextPage } from "next";
 import { Box, ButtonGroup, IconButton } from "@mui/material";
 import dynamic from "next/dynamic";
 import Layout from "../../components/Layout";
-import { Operator, OpJsonObj } from "../../types/operator";
-import { FilterAltOutlined, FormatPaintOutlined, Search } from "@mui/icons-material";
+import { FormatPaintOutlined } from "@mui/icons-material";
 import SearchDialog from "../../components/collate/SearchDialog";
 import FilterDialog from "../../components/collate/FilterDialog";
 import SortDialog from "../../components/collate/SortDialog";
-import { FilterFunction } from "../../types/filter";
-
-export interface SortListItem {
-  key: string;
-  desc: boolean;
-}
-const sortFunctions = {
-  "None": (): number => 0,
-  "Name": (a: Operator, b: Operator): number => b.name.localeCompare(a.name),
-  "Level": (a: Operator, b: Operator): number => a.level - b.level,
-  "Rarity": (a: Operator, b: Operator): number => a.rarity - b.rarity,
-  "Promotion": (a: Operator, b: Operator): number => a.promotion - b.promotion,
-  "Potential": (a: Operator, b: Operator): number => a.potential - b.potential,
-  "Favorite": (a: Operator, b: Operator): number => +a.favorite - +b.favorite,
-  "Modules": (a: Operator, b: Operator): number => a.module.reduce(r => r + 1, 0) - b.module.reduce(r => r + 1, 0),
-}
-
+import HelpDialog from "../../components/input/HelpDialog";
+import useSSF from "../../util/useSSF";
 
 export enum SELECT_STATE {
   Grid,
@@ -47,111 +31,73 @@ const Input: NextPage = () => {
     setEditOpen(true);
   }, []);
 
-  const [sortQueue, setSortQueue] = React.useState<SortListItem[]>([]);
+  const [, setSearchName,
+    sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction,
+    filter, addFilter, removeFilter, clearFilters, filterFunction] = useSSF([
+      { key: "Rarity", desc: true },
+    ]);
+
   const [presetOpen, setPresetOpen] = React.useState(false);
-  const [searchOpen, setSearchOpen] = React.useState(false);
-  const [searchName, setSearchName] = React.useState("");
-
-  /*
-   * (key) -> remove this sort from the queue
-   * (key, desc) -> add the sort with this sorting
-   */
-  function toggleSortOrder(key: string, desc?: boolean) {
-    const filteredQueue = sortQueue.filter((li: SortListItem) => li.key !== key);
-    if (desc !== undefined) {
-      setSortQueue(_ => [...filteredQueue, { key: key, desc: desc }]);
-    } else {
-      setSortQueue(_ => [...filteredQueue]);
-    }
-  }
-
-  const sortFunction = React.useCallback((a: Operator, b: Operator) => {
-    return sortQueue.map(({ key, desc }) => {
-      let compareKey = sortFunctions[key as keyof typeof sortFunctions](a, b);
-      return desc ? compareKey : -compareKey;
-    }).reduce((acc, curr) => {
-      return acc || curr;
-    }, 0);
-  }, [sortQueue])
-
-  const [filterOpen, setFilterOpen] = React.useState(false);
-  const [filter, _setFilter] = React.useState<Record<string, Record<string, FilterFunction>>>({});
-  const addFilter = useCallback((p: string, k: string, fp: FilterFunction) => {
-    const currFilter = { ...filter };
-    const propertyFilter = currFilter[p];
-    console.log("Adding " + p + "-" + k);
-    if (!propertyFilter) {
-      currFilter[p] = {};
-    }
-    // Key doesn't exist, add filter in
-    currFilter[p][k] = fp;
-    _setFilter(currFilter);
-  }, [filter]);
-  const removeFilter = useCallback((p: string, k: string) => {
-    const currFilter = { ...filter };
-    const propertyFilter = currFilter[p];
-    console.log("Deleting" + p + "-" + k)
-    if (propertyFilter && Object.keys(propertyFilter).includes(k)) {
-      // Key exists already, time to remove it
-      console.log("Key at " + p + "-" + k + " deleted")
-      delete currFilter[p][k];
-    } else console.log("Key at " + p + "-" + k + " doesn't exist - could not delete")
-    _setFilter(currFilter);
-  }, [filter]);
-
-  const filterFunction = (op: OpJsonObj) => {
-    const filterFunctions = Object.values(filter)
-      .map(v1 => Object.values(v1).some(v2 => v2(op)));
-    return filterFunctions.every(v => v)
-      && (op.name.toLowerCase().includes(searchName.toLowerCase())
-        || op.cnName.toLowerCase().includes(searchName.toLowerCase()));
-  }
-
-  const [selectedPreset, setSelectedPreset] = useState("")
-  const [selectState, setSelectState] = React.useState(SELECT_STATE.Grid);
-  const [selectBatchOps, setSelectBatchOps] = useState<string[]>([])
+  const [selectedPreset, setSelectedPreset] = useState("");
+  const [selectState, setSelectState] = useState(SELECT_STATE.Grid);
+  const [selectBatchOps, setSelectBatchOps] = useState<string[]>([]);
 
   return (
     <Layout tab="/data" page="/input">
-      <EditOperator opId={opId} open={editOpen} onClose={() => setEditOpen(false)} />
-
-      <FilterDialog
-        open={filterOpen}
-        onClose={() => setFilterOpen(false)}
-        addFilter={addFilter}
-        removeFilter={removeFilter}
-      />
-      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} setSearch={setSearchName} />
-      <Box sx={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 1 }}>
-        <Box sx={{ height: "100%" }}>
-          <ButtonGroup
-            orientation="vertical"
-            sx={{
-              position: "sticky",
-              top: 64,
-              "& .MuiIconButton.root": {
-                height: "min-content"
-              }
-            }}>
-            <IconButton onClick={() => setPresetOpen(true)} aria-label="Batch Edit" >
-              <FormatPaintOutlined fontSize="large" color="primary" />
-            </IconButton>
-            <SortDialog sortKeys={Object.keys(sortFunctions)} sortQueue={sortQueue} handleChange={toggleSortOrder} />
-            <IconButton onClick={() => setFilterOpen(true)} aria-label="Filter">
-              <FilterAltOutlined fontSize="large" color="primary" />
-            </IconButton>
-            <IconButton onClick={() => setSearchOpen(!searchOpen)} aria-label="Search" >
-              <Search fontSize="large" color="primary" />
-            </IconButton>
-          </ButtonGroup>
-        </Box>
+      <Box sx={{
+        display: "grid",
+        gridTemplateAreas: { xs: `"ctrl" "box"`, sm: `"ctrl box"` },
+        gridTemplateColumns: { xs: "1fr", sm: "auto 1fr" },
+        gap: 2
+      }}>
+        <ButtonGroup sx={{
+          gridArea: "ctrl",
+          flexDirection: { xs: "row", sm: "column" },
+          position: "sticky",
+          top: 64,
+          zIndex: 10,
+          gap: 1,
+          "& .MuiIconButton-root": {
+            height: "min-content",
+          },
+          "& .MuiSvgIcon-root": {
+            height: { xs: "1.5rem", sm: "2.5rem" },
+          },
+          justifyContent: "space-around",
+          height: "min-content",
+          backgroundColor: { xs: "info.main", sm: "transparent" },
+          boxShadow: {
+            xs: 5,
+            sm: 0
+          },
+        }}>
+          <IconButton onClick={() => setPresetOpen(true)} aria-label="Batch Edit" >
+            <FormatPaintOutlined fontSize="large" color="primary" />
+          </IconButton>
+          <SortDialog
+            sortFns={sortFunctions}
+            sortQueue={sortQueue}
+            setSortQueue={setSortQueue}
+            toggleSort={toggleSort}
+          />
+          <FilterDialog
+            filter={filter}
+            addFilter={addFilter}
+            removeFilter={removeFilter}
+            clearFilters={clearFilters}
+          />
+          <SearchDialog setSearch={setSearchName} />
+          <HelpDialog />
+        </ButtonGroup>
         <Box sx={{
           display: "grid",
+          gridArea: "box",
           gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
+          gridTemplateRows: "min-content",
           justifyContent: "center",
-          gridGap: "0.75rem",
-          margin: "0px",
-          padding: "0px",
+          gap: { xs: 0.5, sm: 1 },
+          margin: 0,
+          padding: 0,
           "& .MuiTypography-root": {
             display: "flex",
             lineHeight: "1.25rem",
@@ -165,7 +111,7 @@ const Input: NextPage = () => {
           "& .MuiButton-root": {
             display: "grid",
             boxShadow: 2,
-            backgroundColor: "info.main",
+            backgroundColor: { xs: "info.dark", sm: "info.main" },
             width: "100%",
             height: "min-content",
           },
@@ -178,6 +124,7 @@ const Input: NextPage = () => {
             sort={sortFunction}
             filter={filterFunction}
           />
+          <EditOperator opId={opId} open={editOpen} onClose={() => setEditOpen(false)} />
         </Box>
       </Box>
     </Layout>
