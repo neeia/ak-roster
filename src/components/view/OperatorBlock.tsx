@@ -11,7 +11,6 @@ interface Props {
 
 const OperatorBlock = (props: Props) => {
   const { op } = props;
-  if (!op.owned) return null;
 
   let intermediate = op.id;
   if (op.promotion === 2) {
@@ -77,14 +76,14 @@ const OperatorBlock = (props: Props) => {
     }}>
       <Box sx={{
         gridArea: "potential",
-        width: { xs: "14px", sm: "25px" },
-        height: { xs: "20px", sm: "28px" },
+        width: { xs: "12px", sm: "20px" },
+        height: { xs: "18px", sm: "20px" },
         alignSelf: "center",
         justifySelf: "center",
       }}>
         <svg width="100%" height="100%">
           <rect x="0" y="0" width="100%" height="100%"
-            fill="#323232" fillOpacity="0.95" stroke="#808080" strokeWidth="1.5" />
+            fill="#323232" fillOpacity="0.85" stroke="#666666" strokeWidth={2} />
         </svg>
       </Box>
       <Box
@@ -178,9 +177,9 @@ const OperatorBlock = (props: Props) => {
       display: "grid",
       gridTemplateAreas: `"potential" "elite" "level"`,
     }}>
-      {op.potential > 1 ? potentialBlock : ""}
-      {op.promotion > 0 ? promotionBlock : ""}
-      {op.promotion > 0 || op.level > 1 ? levelBlock : ""}
+      {op.potential > 1 ? potentialBlock : null}
+      {op.promotion > 0 ? promotionBlock : null}
+      {op.promotion > 0 || op.level > 1 ? levelBlock : null}
     </Box >
 
   const skillBlock =
@@ -304,6 +303,7 @@ const OperatorBlock = (props: Props) => {
       boxShadow: 1,
       padding: { xs: "4px 8px 4px 6px", sm: "6px 10px 8px 10px" },
       margin: { xs: "2px 4px 4px 10px", sm: "2px 16px 10px 12px" },
+      opacity: op.owned ? 1 : 0.5
     }}>
       {opName}
       <Favorite
