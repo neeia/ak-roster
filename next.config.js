@@ -3,7 +3,7 @@ const withOffline = require("next-offline");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  //reactStrictMode: true,
   productionBrowserSourceMaps: true,
 }
 
