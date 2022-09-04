@@ -2,7 +2,7 @@ import React from "react";
 import { OpJsonObj } from "../../types/operator";
 import operatorJson from "../../data/operators.json";
 import sg0 from "../../data/sg0.json";
-import { Box, Dialog, DialogContent, DialogTitle, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import EditRow from "./EditRow";
 import General from "./EditPieces/General";
 import Potential from "./EditPieces/Potential";
@@ -13,6 +13,8 @@ import Level from "./EditPieces/Level";
 import SkillLevel from "./EditPieces/SkillLevel";
 import useOperators from "../../util/useOperators";
 import ExtLink from "./EditPieces/ExtLink";
+import { Close } from "@mui/icons-material";
+import Image from "next/image";
 
 interface Props {
   opId: string;
@@ -20,7 +22,7 @@ interface Props {
   onClose: () => void;
 }
 
-const EditOperator = ((props: Props) => {
+const EditOperator = React.memo((props: Props) => {
   const { opId, open, onClose } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -126,6 +128,9 @@ const EditOperator = ((props: Props) => {
         />
         {name}
         {links}
+        <IconButton onClick={onClose} sx={{ display: { sm: "none" } }}>
+          <Close />
+        </IconButton>
       </DialogTitle>
       <DialogContent>
         <EditRow
@@ -160,4 +165,5 @@ const EditOperator = ((props: Props) => {
     </Dialog>
   );
 });
+EditOperator.displayName = "EditOperator";
 export default EditOperator;

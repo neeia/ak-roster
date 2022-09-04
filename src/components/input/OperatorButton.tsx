@@ -5,6 +5,7 @@ import { rarityColors } from "../../styles/rarityColors";
 import { Favorite } from "@mui/icons-material";
 import getTextWidth from "../../styles/getTextWidth";
 import appTheme from "../../styles/theme/appTheme";
+import Image from "next/image";
 
 const WIDTH_TO_PX = 10 / 7;
 const LONG_CUTOFF = 75;
@@ -13,11 +14,10 @@ const LONGER_CUTOFF = 95;
 interface Props {
   op: Operator;
   onClick: (opId: string) => void;
-  hidden: boolean;
 }
 
-const OperatorButton = ((props: Props) => {
-  const { op, onClick, hidden } = props;
+const OperatorButton = React.memo((props: Props) => {
+  const { op, onClick } = props;
 
   const [n, t] = op.name.split(" the ");
   const name = t ?? n;
@@ -52,9 +52,7 @@ const OperatorButton = ((props: Props) => {
 
   return (
     <Box
-      component="li"
       className={op.owned ? "" : "unowned"}
-      sx={{ listStyleType: "none", display: hidden ? "none" : "" }}
     >
       <Button
         onClick={() => {
@@ -62,22 +60,21 @@ const OperatorButton = ((props: Props) => {
           onClick(op.id);
         }}>
         <Box
-          component="img"
           className={op.owned ? "" : "unowned"}
-          loading="lazy"
           sx={{
             height: "calc(4rem + 3px)",
             width: "4rem",
             gridArea: "1 / 1",
             borderBottom: `3px solid ${rarityColors[op.rarity]}`,
           }}
-          src={imgUrl}
-          alt=""
-        />
+        >
+          <Image src={imgUrl} height="128px" width="128px" alt="" />
+        </Box>
         <Box sx={{
           gridArea: "1 / 1",
           textAlign: "left",
           alignSelf: "start",
+          zIndex: 1,
         }}>
           {op.favorite
             ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
@@ -88,5 +85,5 @@ const OperatorButton = ((props: Props) => {
     </Box>
   )
 });
-
+OperatorButton.displayName = "OperatorButton";
 export default OperatorButton;
