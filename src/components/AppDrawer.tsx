@@ -78,8 +78,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "start",
-          pl: 2,
+          justifyContent: "center",
           minHeight: "48px"
         }}
       >
@@ -121,10 +120,10 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
           </Button>
         </RegisterButton>
       </Box>
-      <Box sx={{ display: user ? "grid" : "none", gridTemplateRows: "auto 1fr", gap: "4px", m: "4px", alignItems: "center", justifyContent: "center" }}>
-        <Typography>
-          お帰り, {user?.displayName}.
-        </Typography>
+      <Box sx={{ display: user ? "grid" : "none", gridTemplateColumns: "1fr 1fr", gap: "4px", m: "4px" }}>
+        <Button>
+          Sync
+        </Button>
         <Button onClick={() => { signOut(getAuth()) }}>
           Log Out
         </Button>
