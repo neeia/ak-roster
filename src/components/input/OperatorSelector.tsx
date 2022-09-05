@@ -8,7 +8,7 @@ import useOperators from "../../util/useOperators";
 
 interface Props {
   onClick: (opId: string) => void;
-  filter?: (op: OpJsonObj) => boolean;
+  filter?: (opInfo: OpJsonObj, op: Operator) => boolean;
   sort?: (opA: Operator, opB: Operator) => number;
   toggleGroup?: string[];
 }
@@ -20,8 +20,8 @@ const OperatorSelector = React.memo((props: Props) => {
   const defineFilter = filter ?? (() => true);
 
   const ps = sort ?? (() => 0)
-  function sortComparator(a: OpJsonObj, b: OpJsonObj) {
-    return ps(operators[a.id], operators[b.id]) ||
+  function sortComparator(a: Operator, b: Operator) {
+    return ps(a, b) ||
       classList.indexOf(a.class) - classList.indexOf(b.class) ||
       a.name.localeCompare(b.name)
   }
@@ -31,10 +31,16 @@ const OperatorSelector = React.memo((props: Props) => {
     <Box component="ol" sx={{
       display: "contents",
     }}>
-      {Object.values(operatorJson)
+      {Object.values(operators)
         .sort(sortComparator)
-        .map((op: OpJsonObj) => {
-          return <Box component="li" key={op.id} sx={{ listStyleType: "none", display: !defineFilter(op) ? "none" : "" }}>
+        .map((op: Operator) => {
+          return <Box
+            component="li"
+            key={op.id}
+            sx={{
+              listStyleType: "none",
+              display: !defineFilter(operatorJson[op.id as keyof typeof operatorJson], op) ? "none" : ""
+            }}>
             <OperatorButton op={operators[op.id]} onClick={onClick} />
           </Box>
         })

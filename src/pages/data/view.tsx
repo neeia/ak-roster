@@ -7,34 +7,27 @@ import { Operator } from "../../types/operator";
 import classList from "../../data/classList";
 import { ModeEdit } from "@mui/icons-material";
 import SortDialog from "../../components/collate/SortDialog";
-import useSSF from "../../util/useSSF";
 import FilterDialog from "../../components/collate/FilterDialog";
 import SearchDialog from "../../components/collate/SearchDialog";
 import HelpDialog from "../../components/view/HelpDialog";
-
-function defaultSort(a: Operator, b: Operator) {
-  return (b.owned ? 1 : 0) - (a.owned ? 1 : 0) ||
-    b.promotion - a.promotion || b.level - a.level ||
-    b.rarity - a.rarity ||
-    classList.indexOf(a.class) - classList.indexOf(b.class) ||
-    (b.module?.length ?? 0) - (a.module?.length ?? 0) ||
-    a.name.localeCompare(b.name)
-}
+import useOperators from "../../util/useOperators";
+import { useSort, useFilter } from "../../util/useSSF";
 
 const CollectionContainer = dynamic(
   () => import("../../components/view/CollectionContainer"),
   { ssr: false }
 );
 const View: NextPage = () => {
-  const [, setSearchName,
-    sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction,
-    filter, addFilter, removeFilter, clearFilters, filterFunction] = useSSF([
-      { key: "Level", desc: true },
-      { key: "Rarity", desc: true },
-    ],
-      {
-        "owned": { "owned": (op: Operator) => op.owned }
-      });
+  const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
+    { key: "Level", desc: true },
+    { key: "Rarity", desc: true },
+  ]);
+  const [, setSearchName, filter, addFilter, removeFilter, clearFilters, filterFunction] = useFilter(
+    {
+      "owned": { "owned": (op: Operator) => op.owned }
+    });
+
+  const [operators] = useOperators();
 
   return (
     <Layout tab="/data" page="/view">
@@ -91,6 +84,7 @@ const View: NextPage = () => {
           gap: "12px 6px",
         }}>
           <CollectionContainer
+            operators={operators}
             sort={sortFunction}
             filter={filterFunction}
           />

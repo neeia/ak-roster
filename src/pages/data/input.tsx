@@ -8,7 +8,7 @@ import SearchDialog from "../../components/collate/SearchDialog";
 import FilterDialog from "../../components/collate/FilterDialog";
 import SortDialog from "../../components/collate/SortDialog";
 import HelpDialog from "../../components/input/HelpDialog";
-import useSSF from "../../util/useSSF";
+import { useSort, useFilter } from "../../util/useSSF";
 
 export enum SELECT_STATE {
   Grid,
@@ -31,11 +31,10 @@ const Input: NextPage = () => {
     setEditOpen(true);
   }, []);
 
-  const [, setSearchName,
-    sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction,
-    filter, addFilter, removeFilter, clearFilters, filterFunction] = useSSF([
+  const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
       { key: "Rarity", desc: true },
     ]);
+  const [, setSearchName, filter, addFilter, removeFilter, clearFilters, filterFunction] = useFilter();
 
   const [presetOpen, setPresetOpen] = React.useState(false);
   const [selectedPreset, setSelectedPreset] = useState("");
