@@ -16,9 +16,9 @@ const CollectionContainer = (props: Props) => {
 
   const defineFilter = filter ?? (() => true);
 
-  const ps = sort ?? (() => 0)
+  const defineSort = sort ?? (() => 0)
   function sortComparator(a: Operator, b: Operator) {
-    return ps(a, b) ||
+    return defineSort(a, b) ||
       classList.indexOf(a.class) - classList.indexOf(b.class) ||
       a.name.localeCompare(b.name)
   }
