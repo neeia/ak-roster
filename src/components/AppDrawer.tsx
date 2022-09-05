@@ -1,4 +1,4 @@
-﻿import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch, ManageAccounts } from "@mui/icons-material";
+import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch, ManageAccounts } from "@mui/icons-material";
 import { Box, Button, Collapse, Divider, Drawer, Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import { getAuth, onAuthStateChanged, signOut, User } from "firebase/auth";
 import NextLink from "next/link";
