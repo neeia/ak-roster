@@ -120,7 +120,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
           </Button>
         </RegisterButton>
       </Box>
-      <Box sx={{ display: user ? "grid" : "none", gridTemplateRows: "auto 1fr", gap: "4px", m: "4px", alignItems: "center", justifyContent: "center" }}>
+      <Box sx={{ display: user ? "grid" : "none", gridTemplateColumns: "1fr 1fr", gap: "4px", m: "4px" }}>
         <Button onClick={() => { signOut(getAuth()) }}>
           Sync Data
         </Button>
