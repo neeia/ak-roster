@@ -3,23 +3,22 @@ import { Operator, OpJsonObj } from '../../types/operator';
 import classList from "../../data/classList";
 import { Box } from "@mui/material";
 import operatorJson from "../../data/operators.json";
-import useOperators from "../../util/useOperators";
 import OperatorBlock from "./OperatorBlock";
 
 interface Props {
-  filter?: (op: OpJsonObj) => boolean;
+  operators: Record<string, Operator>;
+  filter?: (opInfo: OpJsonObj, op: Operator) => boolean;
   sort?: (opA: Operator, opB: Operator) => number;
 }
 
 const CollectionContainer = (props: Props) => {
-  const { filter, sort } = props;
+  const { operators, filter, sort } = props;
 
-  const [operators] = useOperators();
   const defineFilter = filter ?? (() => true);
 
   const ps = sort ?? (() => 0)
-  function sortComparator(a: OpJsonObj, b: OpJsonObj) {
-    return ps(operators[a.id], operators[b.id]) ||
+  function sortComparator(a: Operator, b: Operator) {
+    return ps(a, b) ||
       classList.indexOf(a.class) - classList.indexOf(b.class) ||
       a.name.localeCompare(b.name)
   }
@@ -29,11 +28,17 @@ const CollectionContainer = (props: Props) => {
     <Box component="ol" sx={{
       display: "contents",
     }}>
-      {Object.values(operatorJson)
+      {Object.values(operators)
         .sort(sortComparator)
-        .map((op: OpJsonObj) => {
-          return <Box component="li" key={op.id} sx={{ listStyleType: "none", display: !defineFilter(op) ? "none" : "" }}>
-            <OperatorBlock op={operators[op.id]} />
+        .map((op: Operator) => {
+          return <Box
+            component="li"
+            key={op.id}
+            sx={{
+              listStyleType: "none",
+              display: !defineFilter(operatorJson[op.id as keyof typeof operatorJson], op) ? "none" : ""
+            }}>
+            <OperatorBlock op={op} />
           </Box>
         })
       }
