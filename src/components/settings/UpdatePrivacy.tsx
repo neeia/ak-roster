@@ -24,12 +24,9 @@ const UpdatePrivacy = ((props: Props) => {
     if (value) {
       remove(ref(db, `users/${user.uid}/info/private/`));
     } else {
-      set(ref(db, `users/${user.uid}/info/private/`), value);
+      set(ref(db, `users/${user.uid}/info/private/`), true);
     }
   }
-  console.log(doctor.private);
-  console.log(!doctor.private);
-  console.log(isPublic);
 
   return (
     <FormControlLabel
