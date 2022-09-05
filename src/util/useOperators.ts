@@ -40,6 +40,24 @@ function convertLegacy([_, op]: [any, LegacyOperator]): [string, Operator] {
   ];
 }
 
+export function repair(ops: Record<string, Operator>) {
+  let rooster = { ...ops }
+  Object.entries(operatorJson).forEach((props: [opId: string, opJ: OpJsonObj]) => {
+    const [opId, opJsonItem] = props;
+    const op = rooster[opId];
+
+    // check for missing operators to repair
+    if (!op || !op.name || !op.id) {
+      if (opJsonItem) rooster[opId] = defaultOperatorObject([opId, opJsonItem])[1];
+    }
+    // check for outdated operators to redefine
+    else if (isUndefined(op.class)) {
+      rooster[opId] = convertLegacy([op.id, op as any])[1];
+    }
+  })
+  return rooster;
+}
+
 function useOperators() {
   const defaultOperators = Object.fromEntries(
     Object.entries(operatorJson).map(defaultOperatorObject)
@@ -86,26 +104,7 @@ function useOperators() {
     [setOperators]
   );
 
-  Object.entries(operatorJson).forEach((props: [opId: string, opJ: OpJsonObj]) => {
-    const [opId] = props;
-    const op = operators[opId];
-    
-    // check for missing operators to repair
-    if (!op || !op.name || !op.id) {
-      const opJsonItem = operatorJson[opId as keyof typeof operatorJson];
-      if (opJsonItem)
-        setOperators((oldOperators: Record<string, Operator>): Record<string, Operator> => {
-          const copyOperators = { ...oldOperators };
-          copyOperators[opId] = defaultOperatorObject([opId, opJsonItem])[1];
-          return copyOperators;
-        });
-    }
-    // check for outdated operators to redefine
-    else if (!isUndefined((op as any)["skill1Mastery"])) {
-      const newOps = Object.fromEntries(Object.entries(operators).map(convertLegacy));
-      setOperators(newOps);
-    }
-  });
+  setOperators(repair(operators));
 
   return [operators, onChange, applyBatch] as const
 }
