@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { User } from "firebase/auth";
 import { getDatabase, ref, remove, set } from "firebase/database";
 import React, { useCallback, useState } from "react";
-import { OpJsonObj } from "../../types/operator";
+import { Operator, OpJsonObj } from "../../types/operator";
 import useOperators from "../../util/useOperators";
 import PopOp from "./PopOp";
 import useLocalStorage from "../../util/useLocalStorage";
@@ -38,6 +38,7 @@ const Assistant = ((props: Props) => {
   };
 
   const filter = (op: OpJsonObj) => operators[op.id]?.owned;
+  const sort = (a: Operator, b: Operator) => a.name.localeCompare(b.name);
 
   return (
     <Box sx={{ width: "min-content", display: "flex", flexDirection: "column", gap: "0.25rem" }}>
@@ -49,7 +50,14 @@ const Assistant = ((props: Props) => {
         }}
         clear={clear}
       />
-      <PopOp open={open} onClose={() => setOpen(false)} title="Set Assistant" onClick={setAssistant} filter={filter} />
+      <PopOp
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Set Assistant"
+        onClick={setAssistant}
+        filter={filter}
+        sort={sort}
+      />
     </Box>);
 });
 

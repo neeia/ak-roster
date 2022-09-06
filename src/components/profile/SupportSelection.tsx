@@ -2,7 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { User } from "firebase/auth";
 import { getDatabase, ref, remove, set } from "firebase/database";
 import React, { useCallback, useState } from "react";
-import { OpJsonObj } from "../../types/operator";
+import { Operator, OpJsonObj } from "../../types/operator";
 import { getNumSkills } from "../../util/changeOperator";
 import useOperators from "../../util/useOperators";
 import operatorJson from "../../data/operators.json";
@@ -57,6 +57,7 @@ const SupportSelection = ((props: Props) => {
   };
 
   const filter = (op: OpJsonObj) => operators[op.id]?.owned && !supps.find((v) => !v || v.opID === op.id) && (index ? true : op.rarity < 6);
+  const sort = (a: Operator, b: Operator) => b.promotion - a.promotion || b.level - a.level || b.rarity - a.rarity;
 
   return (
     <>
@@ -196,6 +197,7 @@ const SupportSelection = ((props: Props) => {
         title="Set Support"
         onClick={setSupp}
         filter={filter}
+        sort={sort}
       />
     </>);
 });
