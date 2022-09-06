@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { Box, ButtonGroup, IconButton, InputAdornment, TextField } from "@mui/material";
+import { Box, ButtonGroup, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import Layout from "../../../components/Layout";
 import initFirebase from "../../../util/initFirebase";
-import { Badge, Search } from "@mui/icons-material";
+import { ArrowBack, Search } from "@mui/icons-material";
 import { child, get, getDatabase, ref } from "firebase/database";
 import { useRouter } from "next/router";
 import { isArray } from "util";
 import CollectionContainer from "../../../components/view/CollectionContainer";
-import { defaultOperatorObject, Operator, OpJsonObj } from "../../../types/operator";
+import { Operator } from "../../../types/operator";
 import SearchDialog from "../../../components/collate/SearchDialog";
 import FilterDialog from "../../../components/collate/FilterDialog";
 import SortDialog from "../../../components/collate/SortDialog";
 import { useFilter, useSort } from "../../../util/useSSF";
-import operatorJson from "../../../data/operators.json";
 import { repair } from "../../../util/useOperators";
 import ProfileDialog from "../../../components/lookup/ProfileDialog";
 import { AccountInfo } from "../../../types/doctor";
 import { SocialInfo } from "../../../types/social";
-import HelpDialog from "../../../components/lookup/HelpDialog";
 
 
 const Lookup: NextPage = () => {
@@ -39,11 +37,9 @@ const Lookup: NextPage = () => {
           if (s2.exists()) {
             const v = s2.val();
 
-            setRoster(repair(v.roster));
+            repair(v.roster, setRoster);
             setDoctor(v.info);
             setSocial(v.connections);
-            console.log(doctor);
-            console.log(social);
           }
         })
       }
@@ -67,95 +63,112 @@ const Lookup: NextPage = () => {
     });
 
   return (
-    <Layout tab="/network" page="/lookup">
-      <Box sx={{
-        display: "flex",
-        maxWidth: "sm"
-      }}
-        component="form"
-      >
-        <TextField
-          sx={{ width: "100%" }}
-          autoFocus
-          autoComplete="off"
-          placeholder="Find a user..."
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton type="submit" onClick={e => { e.preventDefault(); search(); }}>
-                  <Search />
-                </IconButton>
-              </InputAdornment>
-            )
-          }}
-        />
-      </Box>
-      <Box sx={{
-        display: "grid",
-        gridTemplateAreas: { xs: `"ctrl" "box"`, sm: `"ctrl box"` },
-        gridTemplateColumns: { xs: "1fr", sm: "auto 1fr" },
-        gap: 2
-      }}>
-        <ButtonGroup
-          sx={{
-            gridArea: "ctrl",
-            flexDirection: { xs: "row", sm: "column" },
-            position: "sticky",
-            top: 64,
-            zIndex: 10,
-            gap: 1,
-            "& .MuiIconButton-root": {
+    <Layout
+      tab="/network"
+      page="/lookup"
+      header={doctor
+        ? <>
+          <IconButton
+            aria-label="Back to lookup"
+            edge="start"
+            onClick={() => { setSocial(undefined); setDoctor(undefined); setRoster(undefined); }}
+          >
+            <ArrowBack sx={{ color: "background.paper" }} />
+          </IconButton>
+          <Typography variant="h5" sx={{ lineHeight: "1rem", mr: 1.5 }}>
+            {doctor.displayName}
+          </Typography>
+          <ProfileDialog social={social} user={doctor} />
+        </>
+        : null
+      }
+    >
+      {doctor
+        ? null
+        : <Box sx={{
+          display: "flex",
+          maxWidth: "sm"
+        }}
+          component="form"
+        >
+          <TextField
+            sx={{ width: "100%", display: roster ? "none" : "" }}
+            autoFocus
+            autoComplete="off"
+            placeholder="Find a user..."
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton type="submit" onClick={e => { e.preventDefault(); search(); }}>
+                    <Search />
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
+          />
+        </Box>
+      }
+      {roster
+        ?
+        <Box sx={{
+          display: "grid",
+          gridTemplateAreas: { xs: `"ctrl" "box"`, sm: `"ctrl box"` },
+          gridTemplateColumns: { xs: "1fr", sm: "auto 1fr" },
+          gap: 2
+        }}>
+          <ButtonGroup
+            sx={{
+              gridArea: "ctrl",
+              flexDirection: { xs: "row", sm: "column" },
+              position: "sticky",
+              top: 64,
+              zIndex: 10,
+              gap: 1,
+              "& .MuiIconButton-root": {
+                height: "min-content",
+              },
+              "& .MuiSvgIcon-root": {
+                height: { xs: "1.5rem", sm: "2.5rem" },
+              },
+              justifyContent: "space-around",
               height: "min-content",
-            },
-            "& .MuiSvgIcon-root": {
-              height: { xs: "1.5rem", sm: "2.5rem" },
-            },
-            justifyContent: "space-around",
-            height: "min-content",
-            backgroundColor: { xs: "info.main", sm: "transparent" },
-            boxShadow: {
-              xs: 5,
-              sm: 0
-            },
-          }}>
-          <ProfileDialog
-            user={doctor}
-            social={social}
-          />
-          <SortDialog
-            sortFns={sortFunctions}
-            sortQueue={sortQueue}
-            setSortQueue={setSortQueue}
-            toggleSort={toggleSort}
-          />
-          <FilterDialog
-            filter={filter}
-            addFilter={addFilter}
-            removeFilter={removeFilter}
-            clearFilters={clearFilters}
-          />
-          <SearchDialog setSearch={setSearchName} />
-          <HelpDialog />
-        </ButtonGroup>
-        {
-          roster
-            ? <Box sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: { xs: "center", sm: "left" },
-              gap: "12px 6px",
+              backgroundColor: { xs: "info.main", sm: "transparent" },
+              boxShadow: {
+                xs: 5,
+                sm: 0
+              },
             }}>
-              <CollectionContainer
-                operators={roster}
-                sort={sortFunction}
-                filter={filterFunction}
-              />
-            </Box>
-            : null
-        }
-      </Box>
+            <SortDialog
+              sortFns={sortFunctions}
+              sortQueue={sortQueue}
+              setSortQueue={setSortQueue}
+              toggleSort={toggleSort}
+            />
+            <FilterDialog
+              filter={filter}
+              addFilter={addFilter}
+              removeFilter={removeFilter}
+              clearFilters={clearFilters}
+            />
+            <SearchDialog setSearch={setSearchName} />
+          </ButtonGroup>
+          <Box sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: { xs: "center", sm: "left" },
+            gap: "12px 6px",
+          }}>
+            <CollectionContainer
+              operators={roster}
+              sort={sortFunction}
+              filter={filterFunction}
+            />
+          </Box>
+        </Box>
+        : null
+      }
     </Layout>
   );
 }
