@@ -8,9 +8,24 @@ import appTheme from '../styles/theme/appTheme'
 import createEmotionCache from '../util/createEmotionCache'
 import DiscordEmbed from '../components/index/DiscordEmbed'
 import GitHubEmbed from '../components/index/GitHubEmbed'
+import { useEffect, useState } from 'react'
+import { LockClockOutlined } from '@mui/icons-material'
 
 const Home: NextPage = () => {
   const clientSideEmotionCache = createEmotionCache();
+
+  const [seconds, setSeconds] = useState(60);
+  useEffect(() => {
+    let myInterval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+      if (seconds === 0) {
+        clearInterval(myInterval)
+      }
+    }, 1000);
+    return () => clearInterval(myInterval);
+  }, [seconds]);
 
   return (
     <CacheProvider value={clientSideEmotionCache}>
@@ -56,7 +71,7 @@ const Home: NextPage = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            height: "220px",
+            height: { xs: "105px", sm: "220px" },
             overflow: "hidden",
           }}>
             <Box sx={{
@@ -75,7 +90,7 @@ const Home: NextPage = () => {
                 filter: "blur(2rem)",
               }
             }}>
-              <Typography variant="h1" position="relative">
+              <Typography variant="h1" position="relative" textAlign="center" sx={{ fontSize: { xs: "2rem", sm: "4rem" } }}>
                 Ar<em>k</em>nights <em>Rooster</em>
               </Typography>
             </Box>
@@ -84,25 +99,18 @@ const Home: NextPage = () => {
             height: "100vh",
             display: "flex",
             flexDirection: "column",
-            py: 6,
+            py: { xs: 1, sm: 6 },
             gap: 6,
           }}>
-            <Box sx={{ display: "grid", gridTemplateColumns: "2.5fr 3fr", gap: "4%" }}>
-              <Box
-                boxShadow={10}
-                component="img"
-                src="/res/CollectionSample.webp"
-                width="495px"
-                height="300px"
-                alt="A screenshot of a user's collection." />
+            <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "2.5fr 3fr" }, gap: "4%" }}>
               <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pt: 1 }} >
-                <Typography variant="h2">
+                <Typography variant="h2" sx={{ fontSize: { xs: "1.75rem", sm: "2rem" } }}>
                   Share your entire collection with the world <em>instantly.</em>
                 </Typography>
-                <Typography variant="body1">
+                <Typography variant="body1" sx={{ display: { xs: "none", sm: "block" } }}>
                   Want to show off your roster to your friends? Flex on the world? Need to find that one support unit to beat CC? Krooster lets you do all that, and more.
                 </Typography>
-                <Typography variant="body1">
+                <Typography variant="body1" sx={{ fontSize: { xs: "1rem", sm: "1rem" } }}>
                   You can get started without even making an account. And the best part? It&apos;s totally free. No ads, no paywall, and entirely open-source.
                 </Typography>
                 <NextLink
@@ -128,6 +136,7 @@ const Home: NextPage = () => {
                       textAlign: "center",
                       verticalAlign: "middle",
                       boxShadow: 1,
+                      alignSelf: { xs: "center", sm: "start" },
                     }}
                     variant="button"
                   >
@@ -135,18 +144,26 @@ const Home: NextPage = () => {
                   </Link>
                 </NextLink>
               </Box>
+              <Box
+                boxShadow={10}
+                component="img"
+                src="/res/CollectionSample.webp"
+                width="495px"
+                sx={{ maxWidth: "100%", maxHeight: "auto", order: { xs: -1, sm: -1 } }}
+                alt="A screenshot of a user's collection."
+              />
             </Box>
             <Divider />
             <Box sx={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
+              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
               gap: "8%",
               "& .block": {
                 display: "flex",
                 flexDirection: "column",
                 gap: 1,
                 pt: 1
-              }
+              },
             }}>
               <Box sx={{ display: "flex", flexDirection: "column", gridRow: "span 2", gap: 1, pt: 1 }} >
                 <Typography variant="h2">
@@ -188,32 +205,55 @@ const Home: NextPage = () => {
                 <Typography variant="body1">
                   If you like what I do and have money to spare, you should donate it to a charity.
                   But if you really want to, then you can also support the site.
-                  <Link
-                    sx={{
-                      backgroundColor: "#FF5E5B",
-                      mt: 2,
-                      display: "block",
-                      width: "30%",
-                      height: "min-content",
-                      pl: 1.5,
-                      pr: 2,
-                      pt: 1.5,
-                      pb: 1,
-                      ":hover": {
-                        filter: "brightness(120%)"
-                      },
-                      borderRadius: "4px",
-                      boxShadow: 1,
-                    }}
-                    href="https://ko-fi.com/neeia"
-                    component="a"
-                    title="Open Ko-fi"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    <Box component="img" width="131px" height="37px" src="/img/ext/kofi.png" alt="Ko-fi icon" loading="lazy" />
-                  </Link>
                 </Typography>
+                <Link
+                  sx={{
+                    backgroundColor: "#FF5E5B",
+                    mt: 2,
+                    display: "block",
+                    width: "30%",
+                    minWidth: "min-content",
+                    height: "min-content",
+                    borderRadius: "4px",
+                    boxShadow: 1,
+                    position: "relative",
+                    mb: 6,
+                  }}
+                  onClick={() => window.open("https://ko-fi.com/neeia", "_blank", "noreferrer noopener")}
+                  title="Open Ko-fi"
+                  component="button"
+                  disabled={seconds > 0}
+                >
+                  {seconds
+                    ? <Box sx={{
+                      position: "absolute",
+                      backgroundColor: "rgba(0,0,0,0.7)",
+                      width: "100%",
+                      height: "100%",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      display: "flex",
+                      gap: 1
+                    }}>
+                      <LockClockOutlined />
+                      <Typography variant="button">
+                        {seconds}
+                      </Typography>
+                    </Box>
+                    : null
+                  }
+                  <Box sx={{
+                    ml: 1.5,
+                    mr: 2,
+                    mt: 1.5,
+                    mb: 1,
+                    ":hover": {
+                      filter: "brightness(120%)"
+                    },
+                  }} component="img" width="131px" height="37px"
+                    src="/img/ext/kofi.png" alt="Ko-fi icon" loading="lazy"
+                  />
+                </Link>
               </Box>
             </Box>
           </Container>
