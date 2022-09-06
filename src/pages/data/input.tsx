@@ -1,19 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import type { NextPage } from "next";
-import { Box, ButtonGroup, IconButton } from "@mui/material";
+import { Box, ButtonGroup } from "@mui/material";
 import dynamic from "next/dynamic";
 import Layout from "../../components/Layout";
-import { FormatPaintOutlined } from "@mui/icons-material";
 import SearchDialog from "../../components/collate/SearchDialog";
 import FilterDialog from "../../components/collate/FilterDialog";
 import SortDialog from "../../components/collate/SortDialog";
-import HelpDialog from "../../components/input/HelpDialog";
 import { useSort, useFilter } from "../../util/useSSF";
 
-export enum SELECT_STATE {
-  Grid,
-  Batch
-}
 const EditOperator = dynamic(
   () => import("../../components/input/EditOperator"),
   { ssr: false }
@@ -26,23 +20,21 @@ const Input: NextPage = () => {
   const [opId, setOpId] = React.useState("");
   const [editOpen, setEditOpen] = React.useState(false);
 
-  const handleSelectOp = React.useCallback((id: string) => {
+  const handleSelectOp = (id: string) => {
     setOpId(id);
     setEditOpen(true);
-  }, []);
+  };
 
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
-      { key: "Rarity", desc: true },
-    ]);
+    { key: "Rarity", desc: true },
+  ]);
   const [, setSearchName, filter, addFilter, removeFilter, clearFilters, filterFunction] = useFilter();
 
-  const [presetOpen, setPresetOpen] = React.useState(false);
-  const [selectedPreset, setSelectedPreset] = useState("");
-  const [selectState, setSelectState] = useState(SELECT_STATE.Grid);
-  const [selectBatchOps, setSelectBatchOps] = useState<string[]>([]);
-
   return (
-    <Layout tab="/data" page="/input">
+    <Layout
+      tab="/data"
+      page="/input"
+    >
       <Box sx={{
         display: "grid",
         gridTemplateAreas: { xs: `"ctrl" "box"`, sm: `"ctrl box"` },
@@ -69,10 +61,10 @@ const Input: NextPage = () => {
             xs: 5,
             sm: 0
           },
+          "& .Mui-disabled": {
+            opacity: 0.5,
+          }
         }}>
-          <IconButton onClick={() => setPresetOpen(true)} aria-label="Batch Edit" >
-            <FormatPaintOutlined fontSize="large" color="primary" />
-          </IconButton>
           <SortDialog
             sortFns={sortFunctions}
             sortQueue={sortQueue}
@@ -86,7 +78,6 @@ const Input: NextPage = () => {
             clearFilters={clearFilters}
           />
           <SearchDialog setSearch={setSearchName} />
-          <HelpDialog />
         </ButtonGroup>
         <Box sx={{
           display: "grid",
@@ -113,10 +104,11 @@ const Input: NextPage = () => {
             backgroundColor: { xs: "info.dark", sm: "info.main" },
             width: "100%",
             height: "min-content",
+            ":hover": { brightness: 1.1 }
           },
           "& .unowned": {
             opacity: 0.75
-          }
+          },
         }}>
           <OperatorSelector
             onClick={handleSelectOp}
