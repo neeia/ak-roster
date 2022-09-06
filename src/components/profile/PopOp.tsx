@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { OpJsonObj } from '../../types/operator';
-import classList from "../../data/classList";
-import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Operator, OpJsonObj } from '../../types/operator';
+import { Box, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { CloseOutlined } from "@mui/icons-material";
 import OperatorSelector from "../input/OperatorSelector";
 
@@ -10,20 +9,17 @@ interface Props {
   onClose: () => void;
   title: string;
   onClick: (opId: string) => void;
-  filter?: (op: OpJsonObj) => boolean;
+  filter?: (opInfo: OpJsonObj, op: Operator) => boolean;
+  sort?: (opA: Operator, opB: Operator) => number;
+  toggleGroup?: string[];
+  sticky?: boolean;
+  children?: React.ReactNode;
 }
 
 const PopOp = (props: Props) => {
-  const { open, onClose, title, onClick, filter } = props;
+  const { open, onClose, title, onClick, filter, sort, toggleGroup, sticky, children } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-
-  const [search, setSearch] = useState<String>("");
-
-  const filterFunction = React.useCallback((op: OpJsonObj) => {
-    const realFilterIn = filter ?? (() => true);
-    return realFilterIn(op) && (op.name.toLowerCase().includes(search.toLowerCase()) || op.cnName.toLowerCase().includes(search.toLowerCase()));
-  }, [filter, search]);
 
   return (
     <>
@@ -80,13 +76,29 @@ const PopOp = (props: Props) => {
                 width: "100%",
                 height: "min-content",
               },
+              "& .untoggled": {
+                opacity: 0.5
+              },
+              "& .toggled": {
+              },
             }}>
             <OperatorSelector
-              onClick={(opId: string) => { onClick(opId); onClose(); }}
-              filter={filterFunction}
+              onClick={(opId: string) => {
+                onClick(opId);
+                if (!sticky) onClose();
+              }}
+              sort={sort}
+              filter={filter}
+              toggleGroup={toggleGroup}
             />
           </Box>
         </DialogContent>
+        {children
+          ? <DialogActions>
+            {children}
+          </DialogActions>
+          : null
+        }
       </Dialog>
     </>
   );
