@@ -41,27 +41,12 @@ const Profile: NextPage = () => {
             boxShadow: 1,
             backgroundColor: "info.main",
           },
-          "& .inactive": {
-            opacity: 0.75,
-          },
-          "& .active": {
-            opacity: 1,
-            borderBottomWidth: "0.25rem",
-            borderBottomColor: "primary.main",
-            borderBottomStyle: "solid",
-            boxShadow: 2,
-            backgroundColor: "info.light",
-          },
-          "& .Mui-disabled": {
-            opacity: 0.25,
-            boxShadow: 0,
-          },
           "& *:before": {
             border: "none",
             borderStyle: "none !important",
           },
           "& .MuiFilledInput-root": {
-            borderRadius: "2px",
+            borderRadius: "4px",
           },
         }}>
           <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 1 }}>

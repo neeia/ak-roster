@@ -19,8 +19,9 @@ const ProfileDialog = (props: Props) => {
   return (
     <>
       <IconButton onClick={() => { setOpen(true); }} aria-label="Filter">
-        <BadgeOutlined fontSize="large" color="primary" />
+        <BadgeOutlined sx={{ color: "background.paper" }} />
       </IconButton>
+      Open Profile
       <Dialog
         open={open}
         onClose={() => setOpen(false)}
@@ -41,7 +42,7 @@ const ProfileDialog = (props: Props) => {
               marginLeft: "8px",
               paddingTop: "12px",
             }}>
-            {user?.displayName}
+            {user?.displayName}'s Profile
           </Typography>
           <IconButton onClick={() => setOpen(false)} sx={{ display: { sm: "none" } }}>
             <Close />
@@ -52,7 +53,14 @@ const ProfileDialog = (props: Props) => {
           flexDirection: "column",
           gap: "1rem",
         }}>
-
+          Friend Code: {user?.friendCode?.username}#{user?.friendCode?.tag}
+          Server: {user?.server}
+          Level: {user?.level}
+          Onboard: {user?.onboard}
+          Assistant: {user?.assistant}
+          Support Units: {user?.support?.map(s => <span>{s.opID}</span>)}
+          Discord: {social?.discord?.username}#{social?.discord?.tag}
+          Reddit: {social?.reddit}
         </DialogContent>
       </Dialog>
     </>

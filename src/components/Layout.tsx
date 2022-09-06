@@ -10,10 +10,11 @@ import createEmotionCache from '../util/createEmotionCache';
 interface Props {
   tab: keyof typeof config.tabs;
   page: string;
+  header?: React.ReactNode;
   children?: React.ReactNode;
 }
 const Layout = (props: Props) => {
-  const { children, tab, page } = props;
+  const { children, header, tab, page } = props;
   const { siteTitle, tabs } = config;
   const { title: tabTitle, description: tabDescription, pages } = tabs[tab];
   const { title: pageTitle, description: pageDescription } = pages[page as keyof typeof pages] ?? {};
@@ -76,26 +77,29 @@ const Layout = (props: Props) => {
           >
             <Toolbar
               variant="dense"
-              sx={{
-              }}
             >
-              <IconButton
-                aria-label="toggle navbar"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{
-                  display: {
-                    xl: "none",
-                  },
-                }}
-              >
-                <MenuIcon sx={{ color: "background.paper" }} />
-              </IconButton>
-              <Box component="span" sx={{ verticalAlign: "bottom" }}>
-                <Typography component="h2" variant="h5" noWrap sx={{ display: "inline", verticalAlign: "baseline", }}>
-                  {pageTitle}
-                </Typography>
-              </Box>
+              {header
+                ??
+                <>
+                  <IconButton
+                    aria-label="toggle navbar"
+                    edge="start"
+                    onClick={handleDrawerToggle}
+                    sx={{
+                      display: {
+                        xl: "none",
+                      },
+                    }}
+                  >
+                    <MenuIcon sx={{ color: "background.paper" }} />
+                  </IconButton>
+                  <Box component="span" sx={{ verticalAlign: "bottom" }}>
+                    <Typography component="h2" variant="h5" noWrap sx={{ display: "inline", verticalAlign: "baseline", }}>
+                      {pageTitle}
+                    </Typography>
+                  </Box>
+                </>
+              }
             </Toolbar>
           </AppBar>
           <Container
