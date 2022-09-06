@@ -31,13 +31,12 @@ const Settings: NextPage = () => {
           flexDirection: "column",
           gap: "12px 6px",
           maxWidth: "sm",
-          justifySelf: "center",
           "& *:before": {
             border: "none",
             borderStyle: "none !important",
           },
           "& .MuiFilledInput-root": {
-            borderRadius: "2px",
+            borderRadius: "4px",
           },
         }}>
           <UpdateUsername user={user} />
