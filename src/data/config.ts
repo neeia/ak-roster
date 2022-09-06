@@ -12,6 +12,10 @@ const config = {
           title: "Input",
           description: "Enter data about owned operators.",
         },
+        "/batch": {
+          title: "Batch Edit",
+          description: "Enter data about owned operators.",
+        },
         "/view": {
           title: "Collection",
           description: "View a summary of operator data.",
@@ -42,11 +46,6 @@ const config = {
           title: "Lookup",
           description: "Look up people",
         },
-        "/headhunt": {
-          title: "Headhunt",
-          description: "Look up units",
-          requireLogin: true,
-        }
       }
     },
   },
