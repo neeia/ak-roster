@@ -22,7 +22,6 @@ const OperatorButton = React.memo((props: Props) => {
   const [n, t] = op.name.split(" the ");
   const name = t ?? n;
   const width = getTextWidth(name, JSON.stringify(appTheme.typography.caption).replace(/[\{\}]+/g, "")) * WIDTH_TO_PX;
-  const [selected, setSelected] = React.useState(false);
 
   const nameComponent =
     <Typography
@@ -51,38 +50,34 @@ const OperatorButton = React.memo((props: Props) => {
   const imgUrl = `/img/avatars/${op.id}.png`;
 
   return (
-    <Box
+    <Button
       className={op.owned ? "" : "unowned"}
-    >
-      <Button
-        onClick={() => {
-          setSelected(!selected);
-          onClick(op.id);
-        }}>
-        <Box
-          className={op.owned ? "" : "unowned"}
-          sx={{
-            height: "calc(4rem + 3px)",
-            width: "4rem",
-            gridArea: "1 / 1",
-            borderBottom: `3px solid ${rarityColors[op.rarity]}`,
-          }}
-        >
-          <Image src={imgUrl} height="128px" width="128px" alt="" />
-        </Box>
-        <Box sx={{
+      onClick={() => {
+        onClick(op.id);
+      }}>
+      <Box
+        className={op.owned ? "" : "unowned"}
+        sx={{
+          height: "calc(4rem + 3px)",
+          width: "4rem",
           gridArea: "1 / 1",
-          textAlign: "left",
-          alignSelf: "start",
-          zIndex: 1,
-        }}>
-          {op.favorite
-            ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
-            : ""}
-        </Box>
-        {opName}
-      </Button>
-    </Box>
+          borderBottom: `3px solid ${rarityColors[op.rarity]}`,
+        }}
+      >
+        <Image src={imgUrl} height="128px" width="128px" alt="" />
+      </Box>
+      <Box sx={{
+        gridArea: "1 / 1",
+        textAlign: "left",
+        alignSelf: "start",
+        zIndex: 1,
+      }}>
+        {op.favorite
+          ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
+          : ""}
+      </Box>
+      {opName}
+    </Button>
   )
 });
 OperatorButton.displayName = "OperatorButton";

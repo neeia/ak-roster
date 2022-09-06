@@ -5,6 +5,7 @@ import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
 import operatorJson from "../../data/operators.json";
 import useOperators from "../../util/useOperators";
+import { isUndefined } from "util";
 
 interface Props {
   onClick: (opId: string) => void;
@@ -14,7 +15,7 @@ interface Props {
 }
 
 const OperatorSelector = React.memo((props: Props) => {
-  const { onClick, filter, sort } = props;
+  const { onClick, filter, sort, toggleGroup } = props;
 
   const [operators] = useOperators();
   const defineFilter = filter ?? (() => true);
@@ -37,6 +38,7 @@ const OperatorSelector = React.memo((props: Props) => {
           return <Box
             component="li"
             key={op.id}
+            className={isUndefined(toggleGroup) ? undefined : toggleGroup.includes(op.id) ? "toggled" : "untoggled"}
             sx={{
               listStyleType: "none",
               display: !defineFilter(operatorJson[op.id as keyof typeof operatorJson], op) ? "none" : ""
