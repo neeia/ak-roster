@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { Box, Button, ButtonGroup, FormControlLabel, IconButton, Switch, Typography } from "@mui/material";
+import { Box, Button, FormControlLabel, Switch } from "@mui/material";
 import dynamic from "next/dynamic";
 import Layout from "../../components/Layout";
 import PopOp from "../../components/profile/PopOp";
-import { useFilter, useSort } from "../../util/useSSF";
 import { Operator, OpJsonObj } from "../../types/operator";
 import useLocalStorage from "../../util/useLocalStorage";
 import { AccountInfo } from "../../types/doctor";
+import { Edit, FormatPaint } from "@mui/icons-material";
+import useOperators from "../../util/useOperators";
+import usePresets from "../../util/usePresets";
 
 const EditPreset = dynamic(
   () => import("../../components/batch/EditPreset"),
@@ -27,13 +29,8 @@ const Batch: NextPage = () => {
     setSelectGroup(_ => selectGroup.includes(id) ? [...filteredQueue] : [...filteredQueue, id]);
   }
 
-  const handleEditPreset = (id: string) => {
+  const handleSelectPreset = (id: string) => {
     setPreset(id);
-    setEditOpen(true);
-  };
-  const handleApplyPreset = (id: string) => {
-    setPreset(id);
-    setApplyOpen(true);
   };
 
   const [safeMode, setSafeMode] = useState<boolean>(true);
@@ -50,6 +47,14 @@ const Batch: NextPage = () => {
     setIsCN(doctor.server === "CN");
   }, [doctor.server]);
 
+  const [presets] = usePresets();
+  const [, , applyBatch] = useOperators();
+  const handleApplyBatch = () => {
+    const presetOp = presets[preset];
+    applyBatch(presetOp, selectGroup, safeMode);
+    setSelectGroup([]);
+    setApplyOpen(false);
+  }
 
   return (
     <Layout
@@ -62,7 +67,7 @@ const Batch: NextPage = () => {
         gap: "12px 6px",
         maxWidth: "sm",
       }}>
-        Edit Presets
+        Select Preset
         <Box sx={{
           display: "grid",
           gridArea: "box",
@@ -84,11 +89,20 @@ const Batch: NextPage = () => {
             height: "100%",
             width: "100%"
           },
+          "& .selected": {
+            opacity: 1,
+            boxShadow: 0,
+            borderBottomWidth: "0.25rem",
+            borderBottomColor: "primary.main",
+            borderBottomStyle: "solid",
+            backgroundColor: "info.light",
+          },
+          "& .unselected": {
+            opacity: 0.75,
+          },
         }}>
-          <PresetSelector onClick={handleEditPreset} />
-          <EditPreset open={editOpen} onClose={() => setEditOpen(false)} presetID={preset} />
+          <PresetSelector onClick={handleSelectPreset} selectedPreset={preset} />
         </Box>
-        Apply Presets
         <Box sx={{
           display: "grid",
           gridArea: "box",
@@ -98,20 +112,25 @@ const Batch: NextPage = () => {
           gap: { xs: 0.5, sm: 1 },
           margin: 0,
           padding: 0,
-          "& .MuiTypography-root": {
-            color: "text.primary",
-            letterSpacing: "normal",
-            textTransform: "none",
-            pointerEvents: "none",
-          },
           "& .MuiButton-root": {
+            display: "flex",
+            flexDirection: "column",
+            padding: 1,
             boxShadow: 2,
             backgroundColor: { xs: "info.dark", sm: "info.main" },
             height: "100%",
             width: "100%"
           },
         }}>
-          <PresetSelector onClick={handleApplyPreset} />
+          <Button disabled={!preset} onClick={() => setEditOpen(true)}>
+            <Edit fontSize="large" />
+            Edit
+          </Button>
+          <Button disabled={!preset} onClick={() => setApplyOpen(true)}>
+            <FormatPaint fontSize="large" />
+            Apply
+          </Button>
+          <EditPreset open={editOpen} onClose={() => setEditOpen(false)} presetID={preset} />
           <PopOp
             title={selectGroup?.length ? `${selectGroup.length} selected` : "Apply to..."}
             open={applyOpen}
@@ -133,10 +152,10 @@ const Batch: NextPage = () => {
               label="Prevent Downgrades"
               sx={{ marginLeft: 1, marginRight: "auto" }}
             />
-            <Button>
+            <Button onClick={() => { setApplyOpen(false); setSelectGroup([]); }}>
               Cancel
             </Button>
-            <Button>
+            <Button onClick={handleApplyBatch}>
               Confirm
             </Button>
           </PopOp>
