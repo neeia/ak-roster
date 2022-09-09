@@ -2,14 +2,11 @@ import React from "react";
 import { Operator } from "../../../types/operator";
 import { Box, Button } from "@mui/material";
 import { HorizontalRule, KeyboardArrowDownSharp, KeyboardArrowUpSharp } from "@mui/icons-material";
+import { changeSkillLevel } from "../../../util/changeOperator";
 
 interface Props {
   op: Operator;
-  onChange: (
-    operatorId: string,
-    property: string,
-    value: number | boolean
-  ) => void;
+  onChange: (operatorID: string, newOperator: Operator) => void;
 }
 const SkillLevel = (props: Props) => {
   const { op, onChange } = props;
@@ -18,7 +15,7 @@ const SkillLevel = (props: Props) => {
   const nextSkillLevel = op.skillLevel < 4 ? 4 : 7;
 
   function updateRank(rank: number) {
-    onChange(op.id, "skillLevel", rank);
+    onChange(op.id, changeSkillLevel(op, rank));
   };
 
   const rankButton = (rank: number) => (
