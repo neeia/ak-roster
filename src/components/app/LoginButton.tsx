@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Box, Button, Checkbox, Dialog, DialogContent, DialogTitle, Divider, FormControlLabel, IconButton, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { CloseOutlined } from "@mui/icons-material";
-import { browserLocalPersistence, browserSessionPersistence, createUserWithEmailAndPassword, getAuth, setPersistence } from "firebase/auth";
+import { browserLocalPersistence, browserSessionPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 import PasswordTextField from "./PasswordTextField";
-import { FirebaseError } from "firebase/app";
-import { authErrors } from "../util/authErrors";
+import ResetPassword from "./ResetPassword";
+import useSync from "../../util/useSync";
 
 interface Props {
   open: boolean;
@@ -12,7 +12,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const RegisterButton = ((props: Props) => {
+const LoginButton = ((props: Props) => {
   const { open, onClose, children } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -21,10 +21,11 @@ const RegisterButton = ((props: Props) => {
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [repeat, setRepeat] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(true);
+  const [resetOpen, setResetOpen] = useState<boolean>(false);
+  const [safeSyncAll] = useSync();
 
-  function handleRegister(e: React.MouseEvent<HTMLButtonElement>): void {
+  function handleLogin(e: React.MouseEvent<HTMLButtonElement>): void {
     e.preventDefault();
     if (!email) {
       setError("No email given.");
@@ -34,20 +35,17 @@ const RegisterButton = ((props: Props) => {
       setError("No password given.");
       return;
     }
-    if (password !== repeat) {
-      setError("Passwords must match.");
-      return;
-    }
-    createUserWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         if (userCredential != null && userCredential.user != null) {
           // Signed in
           setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
+          safeSyncAll(userCredential.user);
           setError("");
           onClose();
         }
-      }).catch((error: FirebaseError) => {
-        setError(authErrors[error.code.split("/")[1] as keyof typeof authErrors]);
+      }).catch(() => {
+        setError("Failed to authenticate.");
       })
   };
 
@@ -65,27 +63,29 @@ const RegisterButton = ((props: Props) => {
         justifyContent: "space-between"
       }}>
         <Typography variant="h2" component="span">
-          Register
+          Log In
         </Typography>
         <IconButton onClick={onClose}>
           <CloseOutlined />
         </IconButton>
       </DialogTitle>
       <DialogContent>
-        <Box sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "12px 6px",
-          "& .MuiFormHelperText-root": {
-            mt: 1,
-            lineHeight: 1
-          }
-        }}>
+        <Box
+          component="form"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px 6px",
+            "& .MuiFormHelperText-root": {
+              mt: 1,
+              lineHeight: 1
+            }
+          }}
+        >
           <TextField
             id="Enter Email"
             label="Email"
             value={email}
-            helperText="Your email is used for authentication and is hidden to other users."
             onChange={(e) => {
               setEmail(e.target.value);
               setError("");
@@ -100,31 +100,21 @@ const RegisterButton = ((props: Props) => {
               setPassword(e.target.value);
               setError("");
             }}
-            ariaId="reg-pass"
-          />
-          <PasswordTextField
-            id="Repeat Password"
-            label="Repeat Password"
-            value={repeat}
-            onChange={(e) => {
-              setRepeat(e.target.value);
-              setError("");
-            }}
-            ariaId="reg-rep"
+            ariaId="logn-pass"
           />
           <FormControlLabel control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />} label="Remember Me" />
           <Divider />
-          <Box sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center"
-          }}>
-            <Button type="submit" onClick={handleRegister}>
-              Enter
+          <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <Button type="submit" onClick={handleLogin}>
+              Log In
             </Button>
             {error}
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", }}>
+            <Button onClick={() => setResetOpen(true)} sx={{ color: "text.secondary" }}>
+              Forgot Password?
+            </Button>
+            <ResetPassword open={resetOpen} onClose={() => setResetOpen(false)} email={email} />
             {children}
           </Box>
         </Box>
@@ -132,4 +122,4 @@ const RegisterButton = ((props: Props) => {
     </Dialog>
   );
 });
-export default RegisterButton;
+export default LoginButton;

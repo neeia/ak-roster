@@ -1,13 +1,17 @@
-import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch, ManageAccounts } from "@mui/icons-material";
+import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch, ManageAccounts, Launch } from "@mui/icons-material";
 import { Box, Button, Collapse, Divider, Drawer, Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import { getAuth, onAuthStateChanged, signOut, User } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 import config from "../data/config";
 import { getUserStatus } from "../util/getUserStatus";
 import initFirebase from "../util/initFirebase";
-import LoginButton from "./LoginButton";
-import RegisterButton from "./RegisterButton";
+import useSync from "../util/useSync";
+import DiscordInvite from "./app/DiscordInvite";
+import LoginButton from "./app/LoginButton";
+import PatchNotes from "./app/PatchNotes";
+import RegisterButton from "./app/RegisterButton";
 
 
 const DRAWER_WIDTH_PX = 220;
@@ -58,14 +62,17 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
   initFirebase();
   const [user, setUser] = useState<User | null>();
   useEffect(() => {
+    const db = getDatabase();
     getUserStatus().then((user) => {
       setUser(user);
     })
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
+      if (user) set(ref(db, `users/${user.uid}/time/`), Date.now());
       setUser(user);
     });
   }, []);
+  const [safeSyncAll] = useSync();
 
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
@@ -90,13 +97,19 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
         {/*<Offset />*/}
       </Typography>
       <Divider />
-      <Box sx={{ display: user ? "none" : "grid", gridTemplateColumns: "1fr 1fr", gap: "4px", m: "4px" }}>
-        <Button onClick={() => setLogin(true)}>
-          Log In
-        </Button>
-        <Button onClick={() => setRegister(true)}>
-          Register
-        </Button>
+      <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px", m: "4px" }}>
+        {!user
+          ?
+          <>
+            <Button onClick={() => setLogin(true)}>
+              Log In
+            </Button>
+            <Button onClick={() => setRegister(true)}>
+              Register
+            </Button>
+          </>
+          : null
+        }
         <LoginButton open={login} onClose={() => setLogin(false)}>
           <Button
             onClick={() => {
@@ -119,14 +132,18 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
             Log In Instead
           </Button>
         </RegisterButton>
-      </Box>
-      <Box sx={{ display: user ? "grid" : "none", gridTemplateColumns: "1fr 1fr", gap: "4px", m: "4px" }}>
-        <Button onClick={() => { signOut(getAuth()) }}>
-          Sync Data
-        </Button>
-        <Button onClick={() => { signOut(getAuth()) }}>
-          Log Out
-        </Button>
+        {user
+          ?
+          <>
+            <Button onClick={() => { if (user) safeSyncAll(user); }}>
+              Sync Data
+            </Button>
+            <Button onClick={() => { signOut(getAuth()); }}>
+              Log Out
+            </Button>
+          </>
+          : null
+        }
       </Box>
       <Divider />
       <List>
@@ -191,6 +208,9 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
           </ListItemTab>
         ))}
       </List>
+      <Divider sx={{ marginTop: "auto", mb: 1 }} />
+      <PatchNotes />
+      <DiscordInvite />
     </>
   );
 

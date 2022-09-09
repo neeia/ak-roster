@@ -1,7 +1,7 @@
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { User } from "firebase/auth";
 import { getDatabase, ref, remove, set } from "firebase/database";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { AccountInfo } from "../../types/doctor";
 import useLocalStorage from "../../util/useLocalStorage";
 

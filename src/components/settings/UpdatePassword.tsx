@@ -3,8 +3,8 @@ import { FirebaseError } from "firebase/app";
 import { EmailAuthProvider, reauthenticateWithCredential, updatePassword, User } from "firebase/auth";
 import React, { useState } from "react";
 import { authErrors } from "../../util/authErrors";
-import PasswordTextField from "../PasswordTextField";
-import ResetPassword from "../ResetPassword";
+import PasswordTextField from "../app/PasswordTextField";
+import ResetPassword from "../app/ResetPassword";
 
 
 interface Props {
