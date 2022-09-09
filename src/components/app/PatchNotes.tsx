@@ -51,25 +51,34 @@ const PatchNotes = () => {
           </p>
           <Box>
             General
-            We're excited to bring you a fresh coat of paint, powered by MUI v5. This means better performance,
-            better accessibility, and faster updates. There's lots more cool stuff coming, too, so stay tuned.
+            <ul>
+              <li>Entirely rebuilt UI, powered by MUI v5</li>
+              <li>Better performance, better accessibility, and faster updates</li>
+            </ul>
           </Box>
           <Box>
             Profiles
-            There are no bad operators, only bad Doctors - that's you! This patch adds the new profile feature,
-            which lets you share your in-game info with your fellow Doctors. You can check out the profiles of
-            others by looking up their page. Finally, if you're not ready to put everything on display yet, you
-            can lock access to your data by setting your account mode to private.
+            <ul>
+              <li>Share in-game account info with other Doctors</li>
+              <li>Prevent other users from seeing your data by going private</li>
+            </ul>
+          </Box>
+          <Box>
+            Smarter Data Management
+            <ul>
+              <li>No more manual saving - changes uploaded in real time</li>
+              <li>Easily update your roster from multiple devices</li>
+              <li>Data automatically translates from v1 to v2</li>
+            </ul>
           </Box>
           <Box>
             Miscellaneous Changes
             <ul>
               <li>Unowned operators can now be favorited</li>
+              <li>Operator pool updated for latest CN patch</li>
               <li>Added an easter egg</li>
             </ul>
           </Box>
-          - smarter data management / saving
-          - support unit searching
         </DialogContent>
       </Dialog>
     </>
