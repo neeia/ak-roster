@@ -41,6 +41,7 @@ const OperatorBlock = (props: Props) => {
           fontSize: { xs: "7px", sm: "9px" },
           lineHeight: { xs: "6px", sm: "8px" },
           marginLeft: "1px",
+          color: isMaxKrooster(op) ? "background.paper" : "text.main"
         }}>
           {splitName[1]}
         </Box>
@@ -48,6 +49,7 @@ const OperatorBlock = (props: Props) => {
           fontSize: { xs: "11px", sm: "12px" },
           lineHeight: { xs: "11px", sm: "12px" },
           marginLeft: "1px",
+          color: isMaxKrooster(op) ? "background.paper" : "text.main"
         }}>
           {splitName[0]}
         </Box>
@@ -299,11 +301,12 @@ const OperatorBlock = (props: Props) => {
       gridTemplateAreas: `"name fav" "img img"`,
       gridTemplateRows: "auto 1fr",
       gridTemplateColumns: "1fr auto",
-      backgroundColor: op.favorite ? "error.dark" : "info.main",
+      backgroundColor: op.favorite ? isMaxKrooster(op) ? "primary.dark" : "error.dark" : "info.main",
       boxShadow: 1,
       padding: { xs: "4px 8px 4px 6px", sm: "6px 10px 8px 10px" },
       margin: { xs: "2px 4px 4px 10px", sm: "2px 16px 10px 12px" },
-      opacity: op.owned ? 1 : 0.5
+      opacity: op.owned ? 1 : 0.5,
+      borderRadius: "4px",
     }}>
       {opName}
       <Favorite
@@ -335,3 +338,7 @@ const OperatorBlock = (props: Props) => {
   );
 }
 export default OperatorBlock;
+
+function isMaxKrooster(op: Operator) {
+  return op.id === "char_1021_kroos2" && op.potential === 6 && op.level === 80 && op.mastery.every(v => v === 3);
+}
