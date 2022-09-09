@@ -3,7 +3,7 @@ import { FirebaseError } from "firebase/app";
 import { EmailAuthProvider, reauthenticateWithCredential, updateEmail, User } from "firebase/auth";
 import React, { useState } from "react";
 import { authErrors } from "../../util/authErrors";
-import PasswordTextField from "../PasswordTextField";
+import PasswordTextField from "../app/PasswordTextField";
 
 interface Props {
   user: User;

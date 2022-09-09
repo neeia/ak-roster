@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Box, Button, Checkbox, Dialog, DialogContent, DialogTitle, Divider, FormControlLabel, IconButton, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { CloseOutlined } from "@mui/icons-material";
-import { browserLocalPersistence, browserSessionPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
+import { browserLocalPersistence, browserSessionPersistence, createUserWithEmailAndPassword, getAuth, setPersistence } from "firebase/auth";
 import PasswordTextField from "./PasswordTextField";
-import ResetPassword from "./ResetPassword";
+import { FirebaseError } from "firebase/app";
+import { authErrors } from "../../util/authErrors";
 
 interface Props {
   open: boolean;
@@ -11,7 +12,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const LoginButton = ((props: Props) => {
+const RegisterButton = ((props: Props) => {
   const { open, onClose, children } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -21,9 +22,8 @@ const LoginButton = ((props: Props) => {
   const [error, setError] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(true);
-  const [resetOpen, setResetOpen] = useState<boolean>(false);
 
-  function handleLogin(e: React.MouseEvent<HTMLButtonElement>): void {
+  function handleRegister(e: React.MouseEvent<HTMLButtonElement>): void {
     e.preventDefault();
     if (!email) {
       setError("No email given.");
@@ -33,7 +33,7 @@ const LoginButton = ((props: Props) => {
       setError("No password given.");
       return;
     }
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         if (userCredential != null && userCredential.user != null) {
           // Signed in
@@ -41,8 +41,8 @@ const LoginButton = ((props: Props) => {
           setError("");
           onClose();
         }
-      }).catch(() => {
-        setError("Failed to authenticate.");
+      }).catch((error: FirebaseError) => {
+        setError(authErrors[error.code.split("/")[1] as keyof typeof authErrors]);
       })
   };
 
@@ -60,29 +60,27 @@ const LoginButton = ((props: Props) => {
         justifyContent: "space-between"
       }}>
         <Typography variant="h2" component="span">
-          Log In
+          Register
         </Typography>
         <IconButton onClick={onClose}>
           <CloseOutlined />
         </IconButton>
       </DialogTitle>
       <DialogContent>
-        <Box
-          component="form"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "12px 6px",
-            "& .MuiFormHelperText-root": {
-              mt: 1,
-              lineHeight: 1
-            }
-          }}
-        >
+        <Box sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "12px 6px",
+          "& .MuiFormHelperText-root": {
+            mt: 1,
+            lineHeight: 1
+          }
+        }}>
           <TextField
             id="Enter Email"
             label="Email"
             value={email}
+            helperText="Your email is used for authentication and is hidden to other users."
             onChange={(e) => {
               setEmail(e.target.value);
               setError("");
@@ -97,21 +95,21 @@ const LoginButton = ((props: Props) => {
               setPassword(e.target.value);
               setError("");
             }}
-            ariaId="logn-pass"
+            ariaId="reg-pass"
           />
           <FormControlLabel control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />} label="Remember Me" />
           <Divider />
-          <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <Button type="submit" onClick={handleLogin}>
-              Log In
+          <Box sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center"
+          }}>
+            <Button type="submit" onClick={handleRegister}>
+              Enter
             </Button>
             {error}
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", }}>
-            <Button onClick={() => setResetOpen(true)} sx={{ color: "text.secondary" }}>
-              Forgot Password?
-            </Button>
-            <ResetPassword open={resetOpen} onClose={() => setResetOpen(false)} email={email} />
             {children}
           </Box>
         </Box>
@@ -119,4 +117,4 @@ const LoginButton = ((props: Props) => {
     </Dialog>
   );
 });
-export default LoginButton;
+export default RegisterButton;
