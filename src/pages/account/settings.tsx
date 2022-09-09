@@ -8,6 +8,7 @@ import { getUserStatus } from "../../util/getUserStatus";
 import UpdateUsername from "../../components/settings/UpdateUsername";
 import UpdateEmail from "../../components/settings/UpdateEmail";
 import UpdatePassword from "../../components/settings/UpdatePassword";
+import Data from "../../components/settings/Data";
 
 const Settings: NextPage = () => {
   initFirebase();
@@ -40,6 +41,8 @@ const Settings: NextPage = () => {
           },
         }}>
           <UpdateUsername user={user} />
+          <Divider />
+          <Data user={user} />
           <Divider />
           <UpdateEmail user={user} />
           <Divider />
