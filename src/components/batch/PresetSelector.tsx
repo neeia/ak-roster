@@ -8,10 +8,11 @@ import usePresets from "../../util/usePresets";
 
 interface Props {
   onClick: (opId: string) => void;
+  selectedPreset?: string;
 }
 
 const PresetSelector = (props: Props) => {
-  const { onClick } = props;
+  const { onClick, selectedPreset } = props;
 
   const [presets] = usePresets();
 
@@ -29,7 +30,7 @@ const PresetSelector = (props: Props) => {
               listStyleType: "none",
             }}>
             <Button
-              className={preset.owned ? "" : "unowned"}
+              className={preset.id === selectedPreset ? "selected" : selectedPreset ? "unselected" : ""}
               onClick={() => {
                 onClick(preset.id);
               }}>
