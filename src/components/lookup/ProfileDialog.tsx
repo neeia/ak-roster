@@ -74,7 +74,7 @@ const ProfileDialog = (props: Props) => {
               }
             }}
           >
-            {user?.displayName}<span className="mobileHide">'s Profile</span>
+            {user?.displayName}<span className="mobileHide">&apos;s Profile</span>
           </Typography>
           <Typography
             component="div"
@@ -120,7 +120,7 @@ const ProfileDialog = (props: Props) => {
                     intermediate += "_1";
                   }
                   const opInfo = operatorJson[op.id as keyof typeof operatorJson];
-                  return <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+                  return <Box key={s.opID} sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
                     <Box
                       component="img"
                       key={op.name}

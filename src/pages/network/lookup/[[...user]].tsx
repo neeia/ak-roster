@@ -51,7 +51,7 @@ const Lookup: NextPage = () => {
       setUsername(searchUser);
       search();
     }
-  }, [query.user])
+  }, [query.user, search])
 
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
     { key: "Level", desc: true },
@@ -66,7 +66,7 @@ const Lookup: NextPage = () => {
     <Layout
       tab="/network"
       page="/lookup"
-      header={roster && doctor
+      header={roster
         ? <>
           <IconButton
             aria-label="Back to lookup"
@@ -76,9 +76,12 @@ const Lookup: NextPage = () => {
             <ArrowBack sx={{ color: "background.paper" }} />
           </IconButton>
           <Typography variant="h5" sx={{ lineHeight: "1rem", mr: 1.5 }}>
-            {doctor.displayName}
+            {doctor?.displayName ?? username}
           </Typography>
-          <ProfileDialog roster={roster} social={social} user={doctor} />
+          {doctor
+            ? <ProfileDialog roster={roster} social={social} user={doctor} />
+            : null
+          }
         </>
         : null
       }
