@@ -14,7 +14,6 @@ import SkillLevel from "./EditPieces/SkillLevel";
 import useOperators from "../../util/useOperators";
 import ExtLink from "./EditPieces/ExtLink";
 import { Close } from "@mui/icons-material";
-import Image from "next/image";
 
 interface Props {
   opId: string;

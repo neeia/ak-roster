@@ -1,7 +1,5 @@
 import React from "react";
-import { OpJsonObj } from "../../types/operator";
-import sg0 from "../../data/sg0.json";
-import { Box, Dialog, DialogContent, DialogTitle, IconButton, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Dialog, DialogContent, DialogTitle, IconButton, TextField, useMediaQuery, useTheme } from "@mui/material";
 import EditRow from "../input/EditRow";
 import General from "../input/EditPieces/General";
 import Potential from "../input/EditPieces/Potential";

@@ -4,12 +4,10 @@ import { Box, ButtonGroup, IconButton } from "@mui/material";
 import dynamic from "next/dynamic";
 import Layout from "../../components/Layout";
 import { Operator } from "../../types/operator";
-import classList from "../../data/classList";
 import { ModeEdit } from "@mui/icons-material";
 import SortDialog from "../../components/collate/SortDialog";
 import FilterDialog from "../../components/collate/FilterDialog";
 import SearchDialog from "../../components/collate/SearchDialog";
-import HelpDialog from "../../components/view/HelpDialog";
 import useOperators from "../../util/useOperators";
 import { useSort, useFilter } from "../../util/useSSF";
 
@@ -75,7 +73,6 @@ const View: NextPage = () => {
             clearFilters={clearFilters}
           />
           <SearchDialog setSearch={setSearchName} />
-          <HelpDialog />
         </ButtonGroup>
         <Box sx={{
           display: "flex",
