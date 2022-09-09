@@ -124,7 +124,7 @@ function useOperators() {
     repair(operators, setOperators);
   }, [])
 
-  return [operators, onChange, applyBatch] as const
+  return [operators, onChange, applyBatch, setOperators] as const
 }
 
 export default useOperators;
