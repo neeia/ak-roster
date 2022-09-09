@@ -66,7 +66,7 @@ const Lookup: NextPage = () => {
     <Layout
       tab="/network"
       page="/lookup"
-      header={doctor
+      header={roster && doctor
         ? <>
           <IconButton
             aria-label="Back to lookup"
@@ -78,7 +78,7 @@ const Lookup: NextPage = () => {
           <Typography variant="h5" sx={{ lineHeight: "1rem", mr: 1.5 }}>
             {doctor.displayName}
           </Typography>
-          <ProfileDialog social={social} user={doctor} />
+          <ProfileDialog roster={roster} social={social} user={doctor} />
         </>
         : null
       }
