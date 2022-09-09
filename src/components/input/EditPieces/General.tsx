@@ -2,14 +2,11 @@ import React from "react";
 import { Operator } from "../../../types/operator";
 import { Box, Button } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { changeFavorite, changeOwned } from "../../../util/changeOperator";
 
 interface Props {
   op: Operator;
-  onChange: (
-    operatorId: string,
-    property: string,
-    value: number | boolean
-  ) => void;
+  onChange: (operatorID: string, newOperator: Operator) => void;
 }
 const General = ((props: Props) => {
   const { op, onChange } = props;
@@ -24,14 +21,13 @@ const General = ((props: Props) => {
     }}>
       <Button
         className={op.owned ? "active" : ""}
-        onClick={() => onChange(op.id, "owned", !op.owned)}
+        onClick={() => onChange(op.id, changeOwned(op, !op.owned))}
       >
         Own
       </Button>
       <Button
         className={op.favorite ? "active" : "inactive"}
-        onClick={() => onChange(op.id, "favorite", !op.favorite)}
-        disabled={!op.owned}
+        onClick={() => onChange(op.id, changeFavorite(op, !op.favorite))}
       >
         {op.favorite
           ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />

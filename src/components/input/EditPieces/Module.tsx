@@ -2,18 +2,13 @@ import React from "react";
 import { Operator, OpJsonModule, OpJsonObj } from "../../../types/operator";
 import operatorJson from "../../../data/operators.json";
 import { Box, Button, Typography } from "@mui/material";
-import { MODULE_REQ_BY_RARITY } from "../../../util/changeOperator";
+import { changeModule, MODULE_REQ_BY_RARITY } from "../../../util/changeOperator";
 import useLocalStorage from "../../../util/useLocalStorage";
 import { AccountInfo } from "../../../types/doctor";
 
 interface Props {
   op: Operator;
-  onChange: (
-    operatorId: string,
-    property: string,
-    value: number,
-    index: number
-  ) => void;
+  onChange: (operatorID: string, newOperator: Operator) => void;
 }
 const Module = ((props: Props) => {
   const { op, onChange } = props;
@@ -82,7 +77,7 @@ const Module = ((props: Props) => {
                   minWidth: 0,
                   backgroundColor: "background.default",
                 }}
-                onClick={() => onChange(op.id, "module", j, i)}
+                onClick={() => onChange(op.id, changeModule(op, i, j))}
                 disabled={disabled}
               >
                 <Box component="img"

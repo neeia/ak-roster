@@ -1,16 +1,12 @@
 import React from "react";
 import { Operator } from "../../../types/operator";
 import { Box, Button, TextField } from "@mui/material";
-import { MAX_LEVEL_BY_RARITY } from "../../../util/changeOperator";
+import { changeLevel, MAX_LEVEL_BY_RARITY } from "../../../util/changeOperator";
 import { HorizontalRule, KeyboardArrowDownSharp, KeyboardArrowUpSharp, KeyboardDoubleArrowLeftSharp, KeyboardDoubleArrowRightSharp } from "@mui/icons-material";
 
 interface Props {
   op: Operator;
-  onChange: (
-    operatorId: string,
-    property: string,
-    value: number | boolean
-  ) => void;
+  onChange: (operatorID: string, newOperator: Operator) => void;
 }
 const Level = (props: Props) => {
   const { op, onChange } = props;
@@ -18,11 +14,11 @@ const Level = (props: Props) => {
   const [levelField, setLevelField] = React.useState<string>(op.level.toString());
   function updateLevel(lvl: string | number) {
     if (typeof lvl === "number") {
-      onChange(op.id, "level", lvl);
+      onChange(op.id, changeLevel(op, lvl));
       setLevelField(Math.max(Math.min(lvl, MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]), 1).toString());
     }
     else if (parseInt(lvl)) {
-      onChange(op.id, "level", parseInt(lvl));
+      onChange(op.id, changeLevel(op, parseInt(lvl)));
       setLevelField(Math.max(Math.min(parseInt(lvl), MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]), 1).toString());
     }
     else {
