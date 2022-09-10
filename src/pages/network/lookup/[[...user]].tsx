@@ -28,9 +28,8 @@ const Lookup: NextPage = () => {
   const [doctor, setDoctor] = useState<AccountInfo>();
   const [social, setSocial] = useState<SocialInfo>();
 
-  const search = React.useCallback(() => {
-    const checkUser = "phonebook/" + username.toLowerCase();
-    get(child(ref(db), checkUser)).then((s1) => {
+  const search = (s: string) => {
+    get(child(ref(db), `phonebook/${s.toLowerCase()}`)).then((s1) => {
       if (s1.exists()) {
         const checkUserData = "users/" + s1.val();
         get(child(ref(db), checkUserData)).then((s2) => {
@@ -44,14 +43,15 @@ const Lookup: NextPage = () => {
         })
       }
     })
-  }, [db, username]);
+  };
   useEffect(() => {
     const searchUser = isArray(query.user) ? query.user[0] : query.user;
     if (searchUser) {
       setUsername(searchUser);
-      search();
+      search(searchUser);
     }
-  }, [query.user, search])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query.user])
 
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
     { key: "Level", desc: true },
@@ -104,7 +104,7 @@ const Lookup: NextPage = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton type="submit" onClick={e => { e.preventDefault(); search(); }}>
+                  <IconButton type="submit" onClick={e => { e.preventDefault(); search(username); }}>
                     <Search />
                   </IconButton>
                 </InputAdornment>
