@@ -19,34 +19,35 @@ export const safeMerge = (a: Operator, b: Operator): Operator => {
     level: a.promotion > b.promotion
       ? a.level : Math.max(a.level, b.level),
     skillLevel: Math.max(a.skillLevel, b.skillLevel),
-    mastery: a.mastery.map((value, index) =>
+    mastery: a.mastery && a.mastery.length ? a.mastery.map((value, index) =>
       !b.mastery || !b.mastery[index] || value > b.mastery[index]
-        ? value : b.mastery[index]),
-    module: a.module.map((value, index) =>
+        ? value : b.mastery[index]) : b.mastery ?? [],
+    module: a.module && a.module.length ? a.module.map((value, index) =>
       !b.module || !b.module[index] || value > b.module[index]
-        ? value : b.module[index])
+        ? value : b.module[index]) : b.module ?? []
   };
 }
 
 function useSync() {
-  const [operators, onChange, applyBatch] = useOperators();
+  const [operators, , , setOperators] = useOperators();
   const db = getDatabase();
 
   const safeSyncAll = (user: User) => {
     const rosterPath = `users/${user.uid}/roster/`;
     get(ref(db, rosterPath)).then(s1 => {
       if (s1.exists()) {
+        const ops = { ...operators }
         let v1: Record<string, Operator> = s1.val();
         repair(v1, v => v1 = v);
         Object.keys(operatorJson).forEach(opID => {
-          const safeMerged = safeMerge(operators[opID], v1[opID]);
-          operators[opID] = safeMerged;
+          const safeMerged = safeMerge(ops[opID], v1[opID]);
+          ops[opID] = safeMerged;
           set(ref(db, `${rosterPath}/${opID}/`), safeMerged);
         })
+        setOperators(ops);
       }
     })
   }
-
 
   return [safeSyncAll] as const
 }
