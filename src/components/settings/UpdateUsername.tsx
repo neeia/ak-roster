@@ -107,7 +107,7 @@ const UpdateUsername = ((props: Props) => {
       <TextField
         id="Share Link"
         label="Share Link"
-        value={`https://krooster.com/u/${user.displayName}`}
+        value={`https://www.krooster.com/u/${user.displayName}`}
         variant="standard"
         disabled
         InputProps={{
