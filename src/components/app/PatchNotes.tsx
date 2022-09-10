@@ -35,7 +35,7 @@ const PatchNotes = () => {
               marginLeft: "8px",
               paddingTop: "12px",
             }}>
-            Patch 2.0.0 Notes
+            Patch 2.0.0
           </Typography>
           <IconButton onClick={() => setOpen(false)} sx={{ display: { sm: "none" } }}>
             <Close />
