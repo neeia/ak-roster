@@ -1,12 +1,9 @@
 import React from "react";
-import { Box, Button, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 
 const DiscordInvite = () => {
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const [open, setOpen] = React.useState(false);
   return (
     <Button
       sx={{
