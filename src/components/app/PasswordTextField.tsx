@@ -4,7 +4,6 @@ import React, { useState } from "react";
 
 
 interface Props {
-  id: string;
   label: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -12,13 +11,12 @@ interface Props {
 }
 
 const PasswordTextField = ((props: Props) => {
-  const { id, label, value, onChange, ariaId } = props;
+  const { label, value, onChange, ariaId } = props;
 
   const [showPW, setShowPW] = useState<boolean>(false);
 
   return (
     <TextField
-      id={id}
       label={label}
       value={value}
       onChange={onChange}

@@ -4,7 +4,6 @@ import { CloseOutlined } from "@mui/icons-material";
 import { browserLocalPersistence, browserSessionPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 import PasswordTextField from "./PasswordTextField";
 import ResetPassword from "./ResetPassword";
-import useSync from "../../util/useSync";
 
 interface Props {
   open: boolean;
@@ -23,7 +22,6 @@ const LoginButton = ((props: Props) => {
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(true);
   const [resetOpen, setResetOpen] = useState<boolean>(false);
-  const [safeSyncAll] = useSync();
 
   function handleLogin(e: React.MouseEvent<HTMLButtonElement>): void {
     e.preventDefault();
@@ -40,7 +38,6 @@ const LoginButton = ((props: Props) => {
         if (userCredential != null && userCredential.user != null) {
           // Signed in
           setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
-          safeSyncAll(userCredential.user);
           setError("");
           onClose();
         }
@@ -83,7 +80,6 @@ const LoginButton = ((props: Props) => {
           }}
         >
           <TextField
-            id="Enter Email"
             label="Email"
             value={email}
             onChange={(e) => {
@@ -93,7 +89,6 @@ const LoginButton = ((props: Props) => {
             variant="filled"
           />
           <PasswordTextField
-            id="Password"
             label="Password"
             value={password}
             onChange={(e) => {
