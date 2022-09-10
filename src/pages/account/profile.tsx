@@ -23,8 +23,8 @@ const Profile: NextPage = () => {
     getUserStatus().then((user) => {
       setUser(user);
     })
-    onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    onAuthStateChanged(auth, (newUser) => {
+      setUser(newUser);
     });
   }, []);
 

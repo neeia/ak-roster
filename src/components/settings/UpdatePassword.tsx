@@ -50,7 +50,6 @@ const UpdatePassword = ((props: Props) => {
     <>
       Update Password
       <PasswordTextField
-        id="Current Password"
         label="Current Password"
         value={password}
         onChange={(e) => {
@@ -60,7 +59,6 @@ const UpdatePassword = ((props: Props) => {
         ariaId="upw-cur"
       />
       <PasswordTextField
-        id="Enter New Password"
         label="New Password"
         value={newPassword}
         onChange={(e) => {
@@ -70,7 +68,6 @@ const UpdatePassword = ((props: Props) => {
         ariaId="upw-ne1"
       />
       <PasswordTextField
-        id="Repeat Password"
         label="Repeat Password"
         value={repeatPassword}
         onChange={(e) => {

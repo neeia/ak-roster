@@ -21,12 +21,12 @@ interface Props {
   onClose: () => void;
 }
 
-const EditOperator = React.memo((props: Props) => {
+const EditOperator = (props: Props) => {
   const { opId, open, onClose } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const [operators, onChange, applyBatch] = useOperators();
+  const [operators, onChange] = useOperators();
 
   const op = operators[opId];
   if (!op) return null;
@@ -163,6 +163,5 @@ const EditOperator = React.memo((props: Props) => {
       </DialogContent>
     </Dialog>
   );
-});
-EditOperator.displayName = "EditOperator";
+}
 export default EditOperator;

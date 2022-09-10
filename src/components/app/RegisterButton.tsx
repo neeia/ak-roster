@@ -77,7 +77,6 @@ const RegisterButton = ((props: Props) => {
           }
         }}>
           <TextField
-            id="Enter Email"
             label="Email"
             value={email}
             helperText="Your email is used for authentication and is hidden to other users."
@@ -88,7 +87,6 @@ const RegisterButton = ((props: Props) => {
             variant="filled"
           />
           <PasswordTextField
-            id="Password"
             label="Password"
             value={password}
             onChange={(e) => {

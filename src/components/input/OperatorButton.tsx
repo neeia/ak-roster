@@ -5,6 +5,7 @@ import { rarityColors } from "../../styles/rarityColors";
 import { Favorite } from "@mui/icons-material";
 import getTextWidth from "../../styles/getTextWidth";
 import appTheme from "../../styles/theme/appTheme";
+import Image from "next/image";
 
 const WIDTH_TO_PX = 10 / 7;
 const LONG_CUTOFF = 75;
@@ -63,7 +64,7 @@ const OperatorButton = React.memo((props: Props) => {
           borderBottom: `3px solid ${rarityColors[op.rarity]}`,
         }}
       >
-        <Box component="img" src={imgUrl} height="100%" width="100%" alt="" />
+        <Image src={imgUrl} height="128px" width="128px" alt="" />
       </Box>
       <Box sx={{
         gridArea: "1 / 1",

@@ -14,7 +14,7 @@ interface Props {
   toggleGroup?: string[];
 }
 
-const OperatorSelector = React.memo((props: Props) => {
+const OperatorSelector = (props: Props) => {
   const { onClick, filter, sort, toggleGroup } = props;
 
   const [operators] = useOperators();
@@ -48,6 +48,5 @@ const OperatorSelector = React.memo((props: Props) => {
         })
       }
     </Box>)
-});
-OperatorSelector.displayName = "OperatorSelector";
+}
 export default OperatorSelector;

@@ -2,8 +2,6 @@ import React from "react";
 import { Operator, OpJsonObj } from '../../types/operator';
 import classList from "../../data/classList";
 import { Box, Button, Typography } from "@mui/material";
-import operatorJson from "../../data/operators.json";
-import { isUndefined } from "util";
 import usePresets from "../../util/usePresets";
 
 interface Props {

@@ -45,14 +45,12 @@ const UpdateEmail = ((props: Props) => {
     <>
       Update Email
       <TextField
-        id="Current Email"
         label="Current Email"
         value={user?.email ?? "Not Logged In"}
         variant="standard"
         disabled
       />
       <TextField
-        id="Enter New Email"
         label="New Email"
         value={newEmail}
         onChange={(e) => {
@@ -62,7 +60,6 @@ const UpdateEmail = ((props: Props) => {
         variant="filled"
       />
       <PasswordTextField
-        id="Enter Password"
         label="Password"
         value={password}
         onChange={(e) => {
