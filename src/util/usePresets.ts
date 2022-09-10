@@ -28,10 +28,6 @@ function usePresets() {
     });
   }
 
-  useEffect(() => {
-    repair(presets, setPresets);
-  }, [])
-
   return [presets, onChange, rename] as const
 }
 
