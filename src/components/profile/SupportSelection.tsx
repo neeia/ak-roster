@@ -67,6 +67,17 @@ const SupportSelection = ((props: Props) => {
           gridTemplateColumns: "auto 1fr 1fr 1fr",
           gridTemplateRows: "auto 1fr 1fr 1fr",
           gap: "0.5rem 1rem",
+          "& .inactive": {
+            opacity: 0.75,
+          },
+          "& .active": {
+            opacity: 1,
+            boxShadow: 0,
+            borderBottomWidth: "0.25rem",
+            borderBottomColor: "primary.main",
+            borderBottomStyle: "solid",
+            backgroundColor: "info.light",
+          },
         }}
       >
         Support Units
