@@ -37,7 +37,7 @@ function convertLegacy([_, op]: [any, LegacyOperator]): [string, Operator] {
 }
 
 export function repair(ops: Record<string, Operator>, setOps: (v: Record<string, Operator>) => void) {
-  const rooster = { ...ops }
+  var rooster = { ...ops }
   Object.entries(operatorJson).forEach((props: [opId: string, opJ: OpJsonObj]) => {
     const [opId, opJsonItem] = props;
     const op = rooster[opId];
@@ -48,10 +48,14 @@ export function repair(ops: Record<string, Operator>, setOps: (v: Record<string,
     }
     // check for outdated operators to redefine
     else if (isUndefined(op.class)) {
-      const newOps = Object.fromEntries(Object.entries(rooster).map(convertLegacy));
-      setOps(newOps);
+      rooster = Object.fromEntries(Object.entries(rooster).map(convertLegacy));
+    }
+    else {
+      if (isUndefined(op.mastery)) op.mastery = [];
+      if (isUndefined(op.module)) op.module = [];
     }
   })
+  setOps(rooster);
 }
 
 function useOperators() {
