@@ -63,7 +63,7 @@ const OperatorButton = React.memo((props: Props) => {
           borderBottom: `3px solid ${rarityColors[op.rarity]}`,
         }}
       >
-        <Box component="img" src={imgUrl} height="128px" width="128px" alt="" />
+        <Box component="img" src={imgUrl} height="100%" width="100%" alt="" />
       </Box>
       <Box sx={{
         gridArea: "1 / 1",
