@@ -1,12 +1,14 @@
 import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch, ManageAccounts, Launch } from "@mui/icons-material";
 import { Box, Button, Collapse, Divider, Drawer, Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import { getAuth, onAuthStateChanged, signOut, User } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import { get, getDatabase, ref, set } from "firebase/database";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 import config from "../data/config";
+import { AccountInfo } from "../types/doctor";
 import { getUserStatus } from "../util/getUserStatus";
 import initFirebase from "../util/initFirebase";
+import useLocalStorage from "../util/useLocalStorage";
 import useSync from "../util/useSync";
 import DiscordInvite from "./app/DiscordInvite";
 import LoginButton from "./app/LoginButton";
@@ -59,6 +61,10 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
   const { title: currentTab, pages } = tabs[tab as keyof typeof tabs];
   const { title: currentPage } = pages[page as keyof typeof pages] ?? {};
 
+  const [safeSyncAll] = useSync();
+  const [, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
+  const [, setSocial] = useLocalStorage<AccountInfo>("connections", {});
+
   initFirebase();
   const [user, setUser] = useState<User | null>();
   useEffect(() => {
@@ -68,11 +74,23 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
     })
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-      if (user) set(ref(db, `users/${user.uid}/time/`), Date.now());
+      if (user) {
+        safeSyncAll(user);
+        set(ref(db, `users/${user.uid}/time/`), Date.now());
+        get(ref(db, `users/${user.uid}/info/`)).then((s1) => {
+          if (s1.exists()) {
+            setDoctor(s1.val());
+          }
+        })
+        get(ref(db, `users/${user.uid}/connections/`)).then((s1) => {
+          if (s1.exists()) {
+            setSocial(s1.val());
+          }
+        })
+      }
       setUser(user);
     });
   }, []);
-  const [safeSyncAll] = useSync();
 
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
@@ -135,7 +153,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
         {user
           ?
           <>
-            <Button onClick={() => { if (user) safeSyncAll(user); }}>
+            <Button onClick={() => { if (user) safeSyncAll(user); window.location.reload(); }}>
               Sync Data
             </Button>
             <Button onClick={() => { signOut(getAuth()); }}>
