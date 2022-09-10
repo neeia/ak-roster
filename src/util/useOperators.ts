@@ -48,7 +48,7 @@ export function repair(ops: Record<string, Operator>, setOps: (v: Record<string,
     }
     // check for outdated operators to redefine
     else if (isUndefined(op.class)) {
-      rooster = Object.fromEntries(Object.entries(rooster).map(convertLegacy));
+      rooster = Object.fromEntries(Object.entries(rooster).filter(([key, value]) => value.id.startsWith("char_")).map(convertLegacy));
     }
     else {
       if (isUndefined(op.mastery)) op.mastery = [];
