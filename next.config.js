@@ -5,15 +5,15 @@ const withOffline = require("next-offline");
 const nextConfig = {
   //reactStrictMode: true,
   productionBrowserSourceMaps: true,
-  //async redirects() {
-  //  return [
-  //    {
-  //      source: '/u/:user*',
-  //      destination: '/network/lookup/:user*',
-  //      permanent: false,
-  //    },
-  //  ]
-  //},
+  async redirects() {
+    return [
+      {
+        source: '/u/:user*',
+        destination: '/network/lookup/:user*',
+        permanent: false,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig;
