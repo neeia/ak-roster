@@ -17,7 +17,7 @@ interface Props {
 
 const SupportSelection = ((props: Props) => {
   const { user } = props;
-  const [operators, onChange, applyBatch] = useOperators();
+  const [operators] = useOperators();
   const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
 
   const db = getDatabase();
@@ -77,7 +77,7 @@ const SupportSelection = ((props: Props) => {
           const op = operators[supps[i]?.opID ?? undefined];
           const opInfo = op ? operatorJson[op.id as keyof typeof operatorJson] : undefined;
           return (
-            <Box display="contents" key={op.id}>
+            <Box display="contents" key={i}>
               <OpSelectionButton
                 op={op}
                 onClick={() => {
