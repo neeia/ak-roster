@@ -203,6 +203,7 @@ const SupportSelection = ((props: Props) => {
         })}
       </Box>
       <PopOp
+        operators={operators}
         open={open}
         onClose={() => setOpen(false)}
         title="Set Support"

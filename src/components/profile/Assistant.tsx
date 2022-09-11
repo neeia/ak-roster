@@ -51,6 +51,7 @@ const Assistant = ((props: Props) => {
         clear={clear}
       />
       <PopOp
+        operators={operators}
         open={open}
         onClose={() => setOpen(false)}
         title="Set Assistant"

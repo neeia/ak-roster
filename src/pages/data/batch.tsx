@@ -48,7 +48,7 @@ const Batch: NextPage = () => {
   }, [doctor.server]);
 
   const [presets] = usePresets();
-  const [, , applyBatch] = useOperators();
+  const [operators, , applyBatch] = useOperators();
   const handleApplyBatch = () => {
     const presetOp = presets[preset];
     applyBatch(presetOp, selectGroup, safeMode);
@@ -132,6 +132,7 @@ const Batch: NextPage = () => {
           </Button>
           <EditPreset open={editOpen} onClose={() => setEditOpen(false)} presetID={preset} />
           <PopOp
+            operators={operators}
             title={selectGroup?.length ? `${selectGroup.length} selected` : "Apply to..."}
             open={applyOpen}
             onClose={() => { setApplyOpen(false); }}
