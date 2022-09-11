@@ -164,4 +164,5 @@ const EditOperator = React.memo((props: Props) => {
     </Dialog>
   );
 });
+EditOperator.displayName = "EditOperator"
 export default EditOperator;
