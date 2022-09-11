@@ -7,6 +7,7 @@ import SearchDialog from "../../components/collate/SearchDialog";
 import FilterDialog from "../../components/collate/FilterDialog";
 import SortDialog from "../../components/collate/SortDialog";
 import { useSort, useFilter } from "../../util/useSSF";
+import useOperators from "../../util/useOperators";
 
 const EditOperator = dynamic(
   () => import("../../components/input/EditOperator"),
@@ -25,6 +26,7 @@ const Input: NextPage = () => {
     setEditOpen(true);
   };
 
+  const [operators, onChange] = useOperators();
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
     { key: "Rarity", desc: true },
   ]);
@@ -111,11 +113,18 @@ const Input: NextPage = () => {
           },
         }}>
           <OperatorSelector
+            operators={operators}
             onClick={handleSelectOp}
             sort={sortFunction}
             filter={filterFunction}
           />
-          <EditOperator opId={opId} open={editOpen} onClose={() => setEditOpen(false)} />
+          <EditOperator
+            operators={operators}
+            onChange={onChange}
+            opId={opId}
+            open={editOpen}
+            onClose={() => setEditOpen(false)}
+          />
         </Box>
       </Box>
     </Layout>

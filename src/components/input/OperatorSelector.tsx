@@ -4,20 +4,19 @@ import classList from "../../data/classList";
 import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
 import operatorJson from "../../data/operators.json";
-import useOperators from "../../util/useOperators";
 import { isUndefined } from "util";
 
 interface Props {
+  operators: Record<string, Operator>;
   onClick: (opId: string) => void;
   filter?: (opInfo: OpJsonObj, op: Operator) => boolean;
   sort?: (opA: Operator, opB: Operator) => number;
   toggleGroup?: string[];
 }
 
-const OperatorSelector = (props: Props) => {
-  const { onClick, filter, sort, toggleGroup } = props;
+const OperatorSelector = React.memo((props: Props) => {
+  const { operators, onClick, filter, sort, toggleGroup } = props;
 
-  const [operators] = useOperators();
   const defineFilter = filter ?? (() => true);
 
   const ps = sort ?? (() => 0)
@@ -48,5 +47,5 @@ const OperatorSelector = (props: Props) => {
         })
       }
     </Box>)
-}
+});
 export default OperatorSelector;
