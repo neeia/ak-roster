@@ -48,4 +48,5 @@ const OperatorSelector = React.memo((props: Props) => {
       }
     </Box>)
 });
+OperatorSelector.displayName = "OperatorSelector"
 export default OperatorSelector;

@@ -90,6 +90,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
       }
       setUser(user);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [login, setLogin] = useState(false);
