@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Operator, OpJsonObj } from '../../types/operator';
 import { Box, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { CloseOutlined } from "@mui/icons-material";
@@ -9,6 +9,7 @@ interface Props {
   onClose: () => void;
   title: string;
   onClick: (opId: string) => void;
+  operators: Record<string, Operator>;
   filter?: (opInfo: OpJsonObj, op: Operator) => boolean;
   sort?: (opA: Operator, opB: Operator) => number;
   toggleGroup?: string[];
@@ -17,7 +18,7 @@ interface Props {
 }
 
 const PopOp = (props: Props) => {
-  const { open, onClose, title, onClick, filter, sort, toggleGroup, sticky, children } = props;
+  const { operators, open, onClose, title, onClick, filter, sort, toggleGroup, sticky, children } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -83,6 +84,7 @@ const PopOp = (props: Props) => {
               },
             }}>
             <OperatorSelector
+              operators={operators}
               onClick={(opId: string) => {
                 onClick(opId);
                 if (!sticky) onClose();
