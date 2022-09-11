@@ -16,7 +16,7 @@ interface Props {
   onClick: (opId: string) => void;
 }
 
-const OperatorButton = (props: Props) => {
+const OperatorButton = React.memo((props: Props) => {
   const { op, onClick } = props;
 
   const [n, t] = op.name.split(" the ");
@@ -79,5 +79,6 @@ const OperatorButton = (props: Props) => {
       {opName}
     </Button>
   )
-}
+});
+OperatorButton.displayName="OperatorButton"
 export default OperatorButton;

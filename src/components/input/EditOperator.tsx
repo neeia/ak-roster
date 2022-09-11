@@ -1,5 +1,5 @@
 import React from "react";
-import { OpJsonObj } from "../../types/operator";
+import { Operator, OpJsonObj } from "../../types/operator";
 import operatorJson from "../../data/operators.json";
 import sg0 from "../../data/sg0.json";
 import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
@@ -16,17 +16,17 @@ import ExtLink from "./EditPieces/ExtLink";
 import { Close } from "@mui/icons-material";
 
 interface Props {
+  operators: Record<string, Operator>;
+  onChange: (opID: string, op: Operator) => void;
   opId: string;
   open: boolean;
   onClose: () => void;
 }
 
-const EditOperator = (props: Props) => {
-  const { opId, open, onClose } = props;
+const EditOperator = React.memo((props: Props) => {
+  const { operators, onChange, opId, open, onClose } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
-  const [operators, onChange] = useOperators();
 
   const op = operators[opId];
   if (!op) return null;
@@ -163,5 +163,5 @@ const EditOperator = (props: Props) => {
       </DialogContent>
     </Dialog>
   );
-}
+});
 export default EditOperator;
