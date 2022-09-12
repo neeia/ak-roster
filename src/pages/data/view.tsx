@@ -57,9 +57,6 @@ const View: NextPage = () => {
               sm: 0
             },
           }}>
-          <IconButton onClick={() => { }} aria-label="Edit" >
-            <ModeEdit fontSize="large" color="primary" />
-          </IconButton>
           <SortDialog
             sortFns={sortFunctions}
             sortQueue={sortQueue}
