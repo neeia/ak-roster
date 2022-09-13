@@ -102,35 +102,38 @@ const Level = (props: Props) => {
         }
       }}>
         {m1}
-        <Box sx={{ display: "grid", }}><TextField
-          variant="outlined"
-          size="small"
-          margin="none"
-          value={op.owned ? (levelField === "" ? levelField : op.level) : ""}
-          error={levelField === ""}
-          onChange={(e) => updateLevel(e.target.value)}
-          sx={{
-            width: "56px",
-            gridArea: "1 / 1",
-            '& .MuiInputBase-input': {
-              py: "0.5rem",
-              fontSize: "1.5rem",
-              textAlign: "center",
-            }
-          }}
-          disabled={!op.owned}
-          inputProps={{
-            inputMode: 'numeric',
-            pattern: '[0-9]*'
-          }}
-        />
+        <Box sx={{ position: "relative" }}>
+          <TextField
+            variant="outlined"
+            size="small"
+            margin="none"
+            value={op.owned ? (levelField === "" ? levelField : op.level) : ""}
+            error={levelField === ""}
+            onChange={(e) => updateLevel(e.target.value)}
+            sx={{
+              width: "56px",
+              '& .MuiInputBase-input': {
+                py: "0.5rem",
+                fontSize: "1.5rem",
+                textAlign: "center",
+              }
+            }}
+            disabled={!op.owned}
+            inputProps={{
+              inputMode: 'numeric',
+              pattern: '[0-9]*'
+            }}
+          />
           {op.owned ? ""
             : <HorizontalRule
               className={"Mui-disabled"}
               sx={{
-                gridArea: "1 / 1",
-                width: "100%",
-                alignSelf: "center"
+                position: "absolute",
+                margin: "auto",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
               }}
             />}
         </Box>

@@ -74,7 +74,7 @@ const SkillLevel = (props: Props) => {
         >
           <KeyboardArrowDownSharp fontSize="large" />
         </Button>
-        <Box sx={{ display: "grid", "& > *": { gridArea: "1 / 1", width: "3.75rem" } }}>
+        <Box sx={{ position: "relative", "& > *": { width: "3.75rem" } }}>
           <Box
             component="img"
             src={`/img/rank/bg.png`}
@@ -89,8 +89,12 @@ const SkillLevel = (props: Props) => {
             : <HorizontalRule
               className={!op.owned ? "Mui-disabled" : ""}
               sx={{
-                alignSelf: "center",
-                width: "100%"
+                position: "absolute",
+                margin: "auto",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
               }}
             />}
         </Box>
