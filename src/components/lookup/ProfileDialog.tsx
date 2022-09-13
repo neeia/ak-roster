@@ -35,7 +35,7 @@ const ProfileDialog = (props: Props) => {
           sx: {
             overflow: "visible",
             maxHeight: "75%",
-            alignSelf: {xs: "end", sm: "inherit"},
+            alignSelf: { xs: "end", sm: "inherit" },
           }
         }}
       >
@@ -110,7 +110,7 @@ const ProfileDialog = (props: Props) => {
               <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
                 Support
               </Divider>
-              <Box sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2 }}>
+              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 {user?.support?.map(s => {
                   const op = roster[s.opID]
                   let intermediate = s.opID;
@@ -128,15 +128,15 @@ const ProfileDialog = (props: Props) => {
                       sx={{
                         gridColumn: "span 2",
                         mx: "auto",
-                        width: "100%",
-                        height: "100%",
+                        width: "6rem",
+                        height: "6rem",
                       }}
                     />
                     <Box
                       component="img"
                       sx={{
-                        width: "100%",
-                        height: "100%",
+                        width: "3rem",
+                        height: "3rem",
                       }}
                       src={`/img/skills/${opInfo.skills[s.opSkill].iconId ?? opInfo.skills[s.opSkill].skillId}.png`}
                       alt={`Skill ${s.opSkill + 1}`}
@@ -145,10 +145,9 @@ const ProfileDialog = (props: Props) => {
                       display: "grid",
                       "& > *": {
                         gridArea: "1 / 1",
-                        width: "100%",
-                        height: "100%",
+                        width: "3rem",
+                        height: "3rem",
                       },
-                      minWidth: 0,
                     }}>
                       <Box component="img"
                         src={`/img/rank/bg.png`}
