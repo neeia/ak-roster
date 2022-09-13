@@ -24,6 +24,7 @@ const Lookup: NextPage = () => {
   initFirebase();
   const db = getDatabase();
   const [username, setUsername] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [roster, setRoster] = useState<Record<string, Operator>>();
   const [doctor, setDoctor] = useState<AccountInfo>();
   const [social, setSocial] = useState<SocialInfo>();
@@ -41,6 +42,8 @@ const Lookup: NextPage = () => {
             setSocial(v.connections);
           }
         })
+      } else {
+        setError("User could not be found.");
       }
     })
   };
@@ -50,7 +53,7 @@ const Lookup: NextPage = () => {
       setUsername(searchUser);
       search(searchUser);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query.user])
 
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
@@ -100,6 +103,7 @@ const Lookup: NextPage = () => {
             autoComplete="off"
             placeholder="Find a user..."
             value={username}
+            helperText={error}
             onChange={e => setUsername(e.target.value)}
             InputProps={{
               endAdornment: (
