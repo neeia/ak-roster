@@ -102,7 +102,7 @@ const Level = (props: Props) => {
         }
       }}>
         {m1}
-        <Box sx={{ position: "relative" }}>
+        <Box sx={{ display: "grid" }}>
           <TextField
             variant="outlined"
             size="small"
@@ -112,6 +112,7 @@ const Level = (props: Props) => {
             onChange={(e) => updateLevel(e.target.value)}
             sx={{
               width: "56px",
+              gridArea: "1 / 1",
               '& .MuiInputBase-input': {
                 py: "0.5rem",
                 fontSize: "1.5rem",
@@ -124,18 +125,6 @@ const Level = (props: Props) => {
               pattern: '[0-9]*'
             }}
           />
-          {op.owned ? ""
-            : <HorizontalRule
-              className={"Mui-disabled"}
-              sx={{
-                position: "absolute",
-                margin: "auto",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-              }}
-            />}
         </Box>
         {p1}
       </Box>
