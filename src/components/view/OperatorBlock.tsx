@@ -32,7 +32,7 @@ const OperatorBlock = (props: Props) => {
   if (op.name.includes(" (")) {
     const name = op.name.split(" (");
     const title = name[1].split(")");
-    splitName = [name, title]
+    splitName = [name[0], title]
   }
   if (splitName) {
     opName = (
