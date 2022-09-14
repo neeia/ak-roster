@@ -17,6 +17,7 @@ const CollectionContainer = dynamic(
 );
 const View: NextPage = () => {
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
+    { key: "Favorite", desc: true },
     { key: "Level", desc: true },
     { key: "Rarity", desc: true },
   ]);
