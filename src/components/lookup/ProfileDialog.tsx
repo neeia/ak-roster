@@ -20,10 +20,12 @@ const ProfileDialog = (props: Props) => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <IconButton onClick={() => { setOpen(true); }} aria-label="Filter">
-        <BadgeOutlined sx={{ color: "background.paper" }} />
-      </IconButton>
-      Open Profile
+      <Button onClick={() => { setOpen(true); }} aria-label="Filter">
+        <BadgeOutlined sx={{ color: "background.paper", mr: 1 }} />
+        <Typography variant="h6" textTransform="none" color="background.paper">
+          Open Profile
+        </Typography>
+      </Button>
       <Dialog
         open={open}
         onClose={() => setOpen(false)}
