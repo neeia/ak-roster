@@ -1272,7 +1272,14 @@
         "skillName": "Cold Resistance"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "父亲的袍子",
+        "moduleId": "uniequip_002_yak",
+        "typeName": "PRO-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_150_snakek": {
     "id": "char_150_snakek",
@@ -1293,7 +1300,14 @@
         "skillName": "Shell Defense"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "超强棒球套装",
+        "moduleId": "uniequip_002_snakek",
+        "typeName": "PRO-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_381_bubble": {
     "id": "char_381_bubble",
@@ -1314,7 +1328,14 @@
         "skillName": "'Beaten Up'"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "泡泡闪光必杀剑",
+        "moduleId": "uniequip_002_bubble",
+        "typeName": "PRO-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_196_sunbr": {
     "id": "char_196_sunbr",
@@ -3223,7 +3244,14 @@
         "skillName": "Magnetic Hammer"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "作战靴",
+        "moduleId": "uniequip_002_moeshd",
+        "typeName": "PRO-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_325_bison": {
     "id": "char_325_bison",
@@ -3244,7 +3272,14 @@
         "skillName": "Intensified Defense"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "“一路以来”",
+        "moduleId": "uniequip_002_bison",
+        "typeName": "PRO-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_163_hpsts": {
     "id": "char_163_hpsts",
@@ -3370,7 +3405,14 @@
         "skillName": "Group Camouflage"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "人气角色贴纸",
+        "moduleId": "uniequip_002_zebra",
+        "typeName": "PRO-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_431_ashlok": {
     "id": "char_431_ashlok",
@@ -3717,6 +3759,34 @@
       {
         "moduleName": "外骨骼装备",
         "moduleId": "uniequip_002_glacus",
+        "typeName": "DEC-X",
+        "isCnOnly": true
+      }
+    ]
+  },
+  "char_4032_provs": {
+    "id": "char_4032_provs",
+    "name": "Proviso",
+    "cnName": "但书",
+    "rarity": 5,
+    "class": "Supporter",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_provs_1",
+        "iconId": null,
+        "skillName": "纠纷起诉"
+      },
+      {
+        "skillId": "skchr_provs_2",
+        "iconId": null,
+        "skillName": "致胜立论"
+      }
+    ],
+    "modules": [
+      {
+        "moduleName": "黛丝特的毕业礼",
+        "moduleId": "uniequip_002_provs",
         "typeName": "DEC-X",
         "isCnOnly": true
       }
@@ -4794,6 +4864,12 @@
         "moduleId": "uniequip_002_ebnhlz",
         "typeName": "MSC-X",
         "isCnOnly": true
+      },
+      {
+        "moduleName": "“乐理阐释者”",
+        "moduleId": "uniequip_003_ebnhlz",
+        "typeName": "MSC-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -5378,7 +5454,14 @@
         "skillName": "Saw of Strength"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "友人们的赠礼",
+        "moduleId": "uniequip_002_hsguma",
+        "typeName": "PRO-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_202_demkni": {
     "id": "char_202_demkni",
@@ -5470,7 +5553,14 @@
         "skillName": "Iron Defense"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "混沌阵列",
+        "moduleId": "uniequip_002_nian",
+        "typeName": "PRO-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_311_mudrok": {
     "id": "char_311_mudrok",
@@ -5527,6 +5617,12 @@
         "moduleName": "祖玛玛的工具箱",
         "moduleId": "uniequip_002_zumama",
         "typeName": "HES-X",
+        "isCnOnly": true
+      },
+      {
+        "moduleName": "“小小的丑东西”",
+        "moduleId": "uniequip_003_zumama",
+        "typeName": "HES-Y",
         "isCnOnly": true
       }
     ]
@@ -5876,6 +5972,32 @@
         "isCnOnly": false
       }
     ]
+  },
+  "char_4064_mlynar": {
+    "id": "char_4064_mlynar",
+    "name": "Młynar",
+    "cnName": "玛恩纳",
+    "rarity": 6,
+    "class": "Guard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_mlynar_1",
+        "iconId": null,
+        "skillName": "未声张的怒火"
+      },
+      {
+        "skillId": "skchr_mlynar_2",
+        "iconId": null,
+        "skillName": "未宽解的悲哀"
+      },
+      {
+        "skillId": "skchr_mlynar_3",
+        "iconId": null,
+        "skillName": "未照耀的荣光"
+      }
+    ],
+    "modules": []
   },
   "char_230_savage": {
     "id": "char_230_savage",

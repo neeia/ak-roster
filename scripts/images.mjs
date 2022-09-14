@@ -3,39 +3,39 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const ACESHIP_ROOT = path.join(__dirname, "../../AN-EN-Tags");
+const ACESHIP_ROOT = path.join(__dirname, "../../Arknight-Images");
 
 
 /**@type {Array<{ sourceDir: string, destDir: string, replace?: (filename: string) => string, filter?: (filename: string) => boolean}} */
 const tasks = [
   {
-    sourceDir: path.join(ACESHIP_ROOT, "img/skills"),
+    sourceDir: path.join(ACESHIP_ROOT, "skills"),
     destDir: "public\\img\\skills",
     filter: (filename) => filename.endsWith(".png"),
     replace: (filename) => filename.replace(/^skill_icon_/, ""),
   },
   {
-    sourceDir: path.join(ACESHIP_ROOT, "img/avatars"),
+    sourceDir: path.join(ACESHIP_ROOT, "avatars"),
     destDir: "public\\img\\avatars",
     filter: (filename) => /^char_[^_]+_[^_]+(_\d+\+?)?\.png$/.test(filename),
   },
   {
-    sourceDir: path.join(ACESHIP_ROOT, "img/equip/icon"),
+    sourceDir: path.join(ACESHIP_ROOT, "equip/icon"),
     destDir: "public\\img\\equip",
     filter: (filename) => filename.endsWith(".png"),
   },
   {
-    sourceDir: path.join(ACESHIP_ROOT, "img/equip/stage"),
+    sourceDir: path.join(ACESHIP_ROOT, "equip/stage"),
     destDir: "public\\img\\equip",
     filter: (filename) => filename.endsWith(".png"),
   },
   {
-    sourceDir: path.join(ACESHIP_ROOT, "img/equip/type"),
+    sourceDir: path.join(ACESHIP_ROOT, "equip/type"),
     destDir: "public\\img\\equip",
     filter: (filename) => filename.endsWith(".png"),
   },
   //{
-  //  sourceDir: `${ACESHIP_ROOT}/img/items`,
+  //  sourceDir: `${ACESHIP_ROOT}/items`,
   //  destDir: "public\\img\\items",
   //  filter: (filename) => filename.endsWith(".png"),
   //},
