@@ -1,9 +1,10 @@
 import React from "react";
-import { Box } from "@mui/material";
-import { Operator } from "../../types/operator";
+import { Box, Typography } from "@mui/material";
+import { Operator, OpJsonObj } from "../../types/operator";
 import { Favorite } from "@mui/icons-material";
 import { rarityColors } from "../../styles/rarityColors";
 import { getNumSkills, MAX_LEVEL_BY_RARITY } from "../../util/changeOperator";
+import operatorJson from "../../data/operators.json";
 
 interface Props {
   op: Operator;
@@ -231,8 +232,9 @@ const OperatorBlock = (props: Props) => {
       )}
     </Box>
 
+  const opInfo: OpJsonObj = operatorJson[op.id as keyof typeof operatorJson]
   const opModuleUrls: string[] = op.module.map((lvl: number, n: number) =>
-    lvl > 0 ? `/img/equip/uniequip_00${n + 2}_${op.id.split("_")[2]}.png` : ""
+    lvl > 0 ? `/img/equip/${opInfo.modules[n].typeName}.png` : ""
   );
   const moduleBlock =
     <Box sx={{
@@ -274,7 +276,7 @@ const OperatorBlock = (props: Props) => {
               alt={`Module ${n + 1}`}
             />
             {op.module[n] > 1
-              ? <Box
+              ? <Typography
                 zIndex={3}
                 component="abbr"
                 title={`Stage ${op.module[n]}`}
@@ -290,7 +292,7 @@ const OperatorBlock = (props: Props) => {
                 }}
               >
                 {op.module[n]}
-              </Box> : null}
+              </Typography> : null}
           </Box>
           : null)}
     </Box>
