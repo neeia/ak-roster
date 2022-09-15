@@ -1,9 +1,10 @@
-import { CloudDownloadOutlined, CloudUploadOutlined, FileDownloadOutlined } from "@mui/icons-material";
+import { CloudDownloadOutlined, CloudSyncOutlined, CloudUploadOutlined, FileDownloadOutlined } from "@mui/icons-material";
 import { Box, Button } from "@mui/material";
 import { User } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
 import React from "react";
 import useOperators from "../../util/useOperators";
+import useSync from "../../util/useSync";
 
 
 interface Props {
@@ -13,8 +14,12 @@ interface Props {
 const Data = ((props: Props) => {
   const { user } = props;
   const db = getDatabase();
+  const [safeSyncAll] = useSync();
   const [operators, , , setOperators] = useOperators();
 
+  const syncData = () => {
+    safeSyncAll(user);
+  }
   const forceSave = () => {
     set(ref(db, `users/${user.uid}/roster/`), operators);
   }
@@ -38,6 +43,10 @@ const Data = ((props: Props) => {
           flexDirection: "column",
         }
       }}>
+        <Button onClick={syncData}>
+          <CloudSyncOutlined fontSize="large" />
+          Sync Data
+        </Button>
         <Button onClick={forceSave}>
           <CloudUploadOutlined fontSize="large" />
           Force Save
