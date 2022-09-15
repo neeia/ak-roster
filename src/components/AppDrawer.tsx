@@ -61,7 +61,6 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
   const { title: currentTab, pages } = tabs[tab as keyof typeof tabs];
   const { title: currentPage } = pages[page as keyof typeof pages] ?? {};
 
-  const [safeSyncAll] = useSync();
   const [, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
   const [, setSocial] = useLocalStorage<AccountInfo>("connections", {});
 
@@ -75,7 +74,6 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        safeSyncAll(user);
         set(ref(db, `users/${user.uid}/time/`), Date.now());
         get(ref(db, `users/${user.uid}/info/`)).then((s1) => {
           if (s1.exists()) {
@@ -152,15 +150,9 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
           </Button>
         </RegisterButton>
         {user
-          ?
-          <>
-            <Button onClick={() => { if (user) safeSyncAll(user); window.location.reload(); }}>
-              Sync Data
-            </Button>
-            <Button onClick={() => { signOut(getAuth()); }}>
-              Log Out
-            </Button>
-          </>
+          ? <Button sx={{ gridColumn: "span 2" }} onClick={() => { signOut(getAuth()); }}>
+            Log Out
+          </Button>
           : null
         }
       </Box>
