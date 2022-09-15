@@ -234,7 +234,7 @@ const OperatorBlock = (props: Props) => {
 
   const opInfo: OpJsonObj = operatorJson[op.id as keyof typeof operatorJson]
   const opModuleUrls: string[] = op.module.map((lvl: number, n: number) =>
-    lvl > 0 ? `/img/equip/${opInfo.modules[n].typeName}.png` : ""
+    lvl > 0 ? `/img/equip/${opInfo.modules[n].typeName.toLowerCase()}.png` : ""
   );
   const moduleBlock =
     <Box sx={{
