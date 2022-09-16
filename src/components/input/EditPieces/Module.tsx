@@ -24,7 +24,7 @@ const Module = ((props: Props) => {
       justifyContent: "center",
       gap: "4px",
     }}>
-      {opInfo.modules.filter(mod => hideCN && !mod.isCnOnly).map((module: OpJsonModule, i: number) => {
+      {opInfo.modules.filter(mod => !hideCN || !mod.isCnOnly).map((module: OpJsonModule, i: number) => {
         const disabled = !op.owned || op.level < MODULE_REQ_BY_RARITY[op.rarity] || op.promotion < 2;
         return (
           <Box
