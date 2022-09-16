@@ -12,7 +12,7 @@ const PatchNotes = () => {
     <>
       <Button onClick={() => { setOpen(true); }} aria-label="Filter">
         <Typography variant="caption2">
-          V2.0.0 - View Patch Notes
+          V2.0 - View Patch Notes
         </Typography>
       </Button>
       <Dialog
