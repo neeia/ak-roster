@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { Box, ButtonGroup } from "@mui/material";
 import dynamic from "next/dynamic";
@@ -8,6 +8,9 @@ import FilterDialog from "../../components/collate/FilterDialog";
 import SortDialog from "../../components/collate/SortDialog";
 import { useSort, useFilter } from "../../util/useSSF";
 import useOperators from "../../util/useOperators";
+import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { getUserStatus } from "../../util/getUserStatus";
+import { safeSyncAll } from "../../util/useSync";
 
 const EditOperator = dynamic(
   () => import("../../components/input/EditOperator"),
@@ -26,7 +29,7 @@ const Input: NextPage = () => {
     setEditOpen(true);
   };
 
-  const [operators, onChange] = useOperators();
+  const [operators, onChange, , setOperators] = useOperators();
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
     { key: "Rarity", desc: true },
   ]);
@@ -36,6 +39,7 @@ const Input: NextPage = () => {
     <Layout
       tab="/data"
       page="/input"
+      onLogin={(user: User) => { safeSyncAll(user, operators, setOperators) }}
     >
       <Box sx={{
         display: "grid",

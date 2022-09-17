@@ -9,7 +9,6 @@ import { AccountInfo } from "../types/doctor";
 import { getUserStatus } from "../util/getUserStatus";
 import initFirebase from "../util/initFirebase";
 import useLocalStorage from "../util/useLocalStorage";
-import useSync from "../util/useSync";
 import DiscordInvite from "./app/DiscordInvite";
 import LoginButton from "./app/LoginButton";
 import PatchNotes from "./app/PatchNotes";
@@ -53,10 +52,11 @@ interface Props {
   page: string;
   open: boolean;
   onDrawerToggle: () => void;
+  onLogin?: (user: User) => void;
 }
 
 const AppDrawer: React.FC<Props> = React.memo((props) => {
-  const { tab, page, open, onDrawerToggle } = props;
+  const { tab, page, open, onDrawerToggle, onLogin } = props;
   const { siteTitle, siteUrl, tabs } = config;
   const { title: currentTab, pages } = tabs[tab as keyof typeof tabs];
   const { title: currentPage } = pages[page as keyof typeof pages] ?? {};
