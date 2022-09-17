@@ -11,7 +11,6 @@ import Mastery from "./EditPieces/Mastery";
 import Module from "./EditPieces/Module";
 import Level from "./EditPieces/Level";
 import SkillLevel from "./EditPieces/SkillLevel";
-import useOperators from "../../util/useOperators";
 import ExtLink from "./EditPieces/ExtLink";
 import { Close } from "@mui/icons-material";
 
