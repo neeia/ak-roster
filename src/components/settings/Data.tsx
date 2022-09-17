@@ -4,7 +4,7 @@ import { User } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
 import React from "react";
 import useOperators from "../../util/useOperators";
-import useSync from "../../util/useSync";
+import { safeSyncAll } from "../../util/useSync";
 
 
 interface Props {
@@ -14,11 +14,10 @@ interface Props {
 const Data = ((props: Props) => {
   const { user } = props;
   const db = getDatabase();
-  const [safeSyncAll] = useSync();
   const [operators, , , setOperators] = useOperators();
 
   const syncData = () => {
-    safeSyncAll(user);
+    safeSyncAll(user, operators, setOperators);
   }
   const forceSave = () => {
     set(ref(db, `users/${user.uid}/roster/`), operators);

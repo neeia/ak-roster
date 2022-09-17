@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, Checkbox, Dialog, DialogContent, DialogTitle, Divider, FormControlLabel, IconButton, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { CloseOutlined } from "@mui/icons-material";
-import { browserLocalPersistence, browserSessionPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
+import { browserLocalPersistence, browserSessionPersistence, getAuth, setPersistence, signInWithEmailAndPassword, User } from "firebase/auth";
 import PasswordTextField from "./PasswordTextField";
 import ResetPassword from "./ResetPassword";
 
@@ -9,10 +9,11 @@ interface Props {
   open: boolean;
   onClose: () => void;
   children?: React.ReactNode;
+  onLogin?: (user: User) => void;
 }
 
 const LoginButton = ((props: Props) => {
-  const { open, onClose, children } = props;
+  const { open, onClose, children, onLogin } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const auth = getAuth();
@@ -40,6 +41,7 @@ const LoginButton = ((props: Props) => {
           setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
           setError("");
           onClose();
+          onLogin?.(userCredential.user);
         }
       }).catch(() => {
         setError("Failed to authenticate.");

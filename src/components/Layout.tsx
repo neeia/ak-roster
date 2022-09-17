@@ -7,14 +7,17 @@ import AppDrawer from "./AppDrawer";
 import appTheme from "../styles/theme/appTheme";
 import { CacheProvider } from '@emotion/react';
 import createEmotionCache from '../util/createEmotionCache';
+import { User } from "firebase/auth";
+
 interface Props {
   tab: keyof typeof config.tabs;
   page: string;
   header?: React.ReactNode;
   children?: React.ReactNode;
+  onLogin?: (user: User) => void;
 }
 const Layout = (props: Props) => {
-  const { children, header, tab, page } = props;
+  const { children, header, tab, page, onLogin } = props;
   const { siteTitle, tabs } = config;
   const { title: tabTitle, description: tabDescription, pages } = tabs[tab];
   const { title: pageTitle, description: pageDescription } = pages[page as keyof typeof pages] ?? {};
@@ -69,6 +72,7 @@ const Layout = (props: Props) => {
             page={page}
             open={drawerOpen}
             onDrawerToggle={handleDrawerToggle}
+            onLogin={onLogin}
           />
           <AppBar
             position="sticky"

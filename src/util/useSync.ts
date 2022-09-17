@@ -2,7 +2,7 @@ import { User } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
 import { Operator } from "../types/operator";
 import operatorJson from "../data/operators.json";
-import useOperators, { repair } from "./useOperators";
+import { repair } from "./useOperators";
 
 export const safeMerge = (a: Operator, b: Operator): Operator => {
   if (!a) return b;
@@ -28,28 +28,20 @@ export const safeMerge = (a: Operator, b: Operator): Operator => {
   };
 }
 
-function useSync() {
-  const [operators, , , setOperators] = useOperators();
+export const safeSyncAll = (user: User, operators: Record<string, Operator>, setOperators: (ops: Record<string, Operator>) => void) => {
   const db = getDatabase();
-
-  const safeSyncAll = (user: User) => {
-    const rosterPath = `users/${user.uid}/roster/`;
-    get(ref(db, rosterPath)).then(s1 => {
-      if (s1.exists()) {
-        const ops = { ...operators }
-        let v1: Record<string, Operator> = s1.val();
-        repair(v1, v => v1 = v);
-        Object.keys(operatorJson).forEach(opID => {
-          const safeMerged = safeMerge(ops[opID], v1[opID]);
-          ops[opID] = safeMerged;
-          set(ref(db, `${rosterPath}/${opID}/`), safeMerged);
-        })
-        setOperators(ops);
-      }
-    })
-  }
-
-  return [safeSyncAll] as const
+  const rosterPath = `users/${user.uid}/roster/`;
+  get(ref(db, rosterPath)).then(s1 => {
+    if (s1.exists()) {
+      const ops = { ...operators }
+      let v1: Record<string, Operator> = s1.val();
+      repair(v1, v => v1 = v);
+      Object.keys(operatorJson).forEach(opID => {
+        const safeMerged = safeMerge(ops[opID], v1[opID]);
+        ops[opID] = safeMerged;
+        set(ref(db, `${rosterPath}/${opID}/`), safeMerged);
+      })
+      setOperators(ops);
+    }
+  })
 }
-
-export default useSync;
