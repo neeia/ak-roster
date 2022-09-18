@@ -5,6 +5,7 @@ import { AccountInfo } from "../../types/doctor";
 import { SocialInfo } from "../../types/social";
 import { Operator } from "../../types/operator";
 import operatorJson from "../../data/operators.json";
+import { isObject } from "util";
 
 interface Props {
   roster: Record<string, Operator>;
@@ -17,6 +18,12 @@ const ProfileDialog = (props: Props) => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
+  if (user && user.support && isObject(user.support)) {
+    Object.values(user.support).forEach((v, n) => {
+      user.support = [];
+      user.support[n] = v;
+    })
+  }
   const [open, setOpen] = React.useState(false);
   return (
     <>
@@ -172,8 +179,7 @@ const ProfileDialog = (props: Props) => {
                       )}
                     </Box>
                   </Box>
-                }
-                )}
+                })}
               </Box>
             </Box>
             <Box>
