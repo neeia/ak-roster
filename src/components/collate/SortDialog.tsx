@@ -54,7 +54,7 @@ const SortDialog = (props: Props) => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <IconButton onClick={() => { setOpen(true); }} aria-label="Filter">
+      <IconButton onClick={() => { setOpen(true); }} aria-label="Sort">
         <Tune fontSize="large" color="primary" />
       </IconButton>
       <Dialog
