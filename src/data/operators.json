@@ -371,10 +371,10 @@
     ],
     "modules": [
       {
-        "moduleName": "占卜师旅行套装",
+        "moduleName": "Travel Kit for the Fortune-Teller",
         "moduleId": "uniequip_002_fmout",
         "typeName": "SPC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -399,10 +399,10 @@
     ],
     "modules": [
       {
-        "moduleName": "新的开始",
+        "moduleName": "New Beginning",
         "moduleId": "uniequip_002_greyy",
         "typeName": "SPC-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -616,10 +616,10 @@
     ],
     "modules": [
       {
-        "moduleName": "手里剑",
+        "moduleName": "Shuriken",
         "moduleId": "uniequip_002_yuki",
         "typeName": "ART-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -1025,6 +1025,27 @@
         "skillId": "skchr_spikes_2",
         "iconId": null,
         "skillName": "Deadly Prank"
+      }
+    ],
+    "modules": []
+  },
+  "char_4067_lolxh": {
+    "id": "char_4067_lolxh",
+    "name": "Luo Xiaohei",
+    "cnName": "罗小黑",
+    "rarity": 4,
+    "class": "Guard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_lolxh_1",
+        "iconId": null,
+        "skillName": "掠光尾影"
+      },
+      {
+        "skillId": "skchr_lolxh_2",
+        "iconId": null,
+        "skillName": "碎金为刃"
       }
     ],
     "modules": []
@@ -2338,10 +2359,10 @@
     ],
     "modules": [
       {
-        "moduleName": "无名的身份牌",
+        "moduleName": "Tag of Nameless",
         "moduleId": "uniequip_002_meteo",
         "typeName": "ART-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -2366,10 +2387,10 @@
     ],
     "modules": [
       {
-        "moduleName": "“灵魂共鸣”",
+        "moduleName": "'Soul Resonance'",
         "moduleId": "uniequip_002_sesa",
         "typeName": "ART-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -2504,10 +2525,10 @@
     ],
     "modules": [
       {
-        "moduleName": "阻燃处理方案",
+        "moduleName": "Fire Retardant Treatment",
         "moduleId": "uniequip_002_skfire",
         "typeName": "SPC-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -2609,10 +2630,10 @@
     ],
     "modules": [
       {
-        "moduleName": "传承与开拓",
+        "moduleName": "Inheritance and Development",
         "moduleId": "uniequip_002_lionhd",
         "typeName": "SPC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -2686,10 +2707,10 @@
     ],
     "modules": [
       {
-        "moduleName": "萨卡兹的刀",
+        "moduleName": "Sarkaz's Knife",
         "moduleId": "uniequip_002_lava2",
         "typeName": "SPC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -4001,17 +4022,17 @@
     "cnName": "见行者",
     "rarity": 5,
     "class": "Specialist",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_forcer_1",
         "iconId": null,
-        "skillName": "护身射击"
+        "skillName": "Deterring Shot"
       },
       {
         "skillId": "skchr_forcer_2",
         "iconId": null,
-        "skillName": "惊爆射击"
+        "skillName": "Staggering Shot"
       }
     ],
     "modules": []
@@ -4092,17 +4113,17 @@
     "cnName": "风丸",
     "rarity": 5,
     "class": "Specialist",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_kazema_1",
         "iconId": null,
-        "skillName": "纸艺·迅击"
+        "skillName": "Origami Art - Swift Strike"
       },
       {
         "skillId": "skchr_kazema_2",
         "iconId": null,
-        "skillName": "纸艺·双影"
+        "skillName": "Origami Art - Twin Shadows"
       }
     ],
     "modules": [
@@ -4344,10 +4365,10 @@
     ],
     "modules": [
       {
-        "moduleName": "佣兵的行囊",
+        "moduleName": "Mercenary's Bag",
         "moduleId": "uniequip_002_cqbw",
         "typeName": "ART-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -4357,30 +4378,30 @@
     "cnName": "菲亚梅塔",
     "rarity": 6,
     "class": "Sniper",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_phenxi_1",
         "iconId": null,
-        "skillName": "“你须直面”"
+        "skillName": "'Provocate'"
       },
       {
         "skillId": "skchr_phenxi_2",
         "iconId": null,
-        "skillName": "“你须愧悔”"
+        "skillName": "'Paenitete'"
       },
       {
         "skillId": "skchr_phenxi_3",
         "iconId": null,
-        "skillName": "“你须偿还”"
+        "skillName": "'Reponite'"
       }
     ],
     "modules": [
       {
-        "moduleName": "“律外”特种弹药配给组",
+        "moduleName": "'Out-Law' Special Ammunition Surplus",
         "moduleId": "uniequip_002_phenxi",
         "typeName": "ART-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -4651,10 +4672,10 @@
     ],
     "modules": [
       {
-        "moduleName": "锁与匙之家",
+        "moduleName": "Home of 'Black Lock' and 'White Key'",
         "moduleId": "uniequip_002_mostma",
         "typeName": "SPC-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -4736,10 +4757,10 @@
     ],
     "modules": [
       {
-        "moduleName": "无题长卷",
+        "moduleName": "Untitled Scroll",
         "moduleId": "uniequip_002_dusk",
         "typeName": "SPC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
