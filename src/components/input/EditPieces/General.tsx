@@ -28,6 +28,7 @@ const General = ((props: Props) => {
       <Button
         className={op.favorite ? "active" : "inactive"}
         onClick={() => onChange(op.id, changeFavorite(op, !op.favorite))}
+        aria-label="favorite"
       >
         {op.favorite
           ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />

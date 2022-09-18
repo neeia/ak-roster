@@ -32,7 +32,7 @@ const Potential = ((props: Props) => {
           <Box component="img"
             width="32px"
             src={`/img/potential/${i + 1}.png`}
-            alt={`Potential ${i + 1} Button`}
+            alt={`Potential ${i + 1}`}
           />
         </IconButton>
       )}
