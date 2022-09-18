@@ -2,6 +2,9 @@
 This is a collection and progress tracker for [Arknights](https://www.arknights.global/), a game developed by Hypergryph.
 The site is available at [krooster.com](https://krooster.com/).
 
+## Tech
+Krooster is developed with NextJS in Typescript. The UI is built on customized MUI components. Data managed by Google Firebase, auth & rtdb.
+
 ## License
 BSD0
 
