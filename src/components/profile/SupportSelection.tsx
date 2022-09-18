@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { User } from "firebase/auth";
 import { getDatabase, ref, remove, set } from "firebase/database";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Operator, OpJsonObj } from "../../types/operator";
 import { getNumSkills } from "../../util/changeOperator";
 import useOperators from "../../util/useOperators";
@@ -10,6 +10,7 @@ import PopOp from "./PopOp";
 import useLocalStorage from "../../util/useLocalStorage";
 import { AccountInfo, OperatorSkillSlot } from "../../types/doctor";
 import OpSelectionButton from "./OpSelectionButton";
+import { isObject } from "util";
 
 interface Props {
   user: User;
@@ -23,6 +24,15 @@ const SupportSelection = ((props: Props) => {
   const db = getDatabase();
 
   const [supps, setSupps] = useState<OperatorSkillSlot[]>(doctor.support ?? []);
+  useEffect(() => {
+    if (doctor && doctor.support && isObject(doctor.support)) {
+      Object.values(doctor.support).forEach((v, n) => {
+        doctor.support = [];
+        doctor.support[n] = v;
+      })
+    }
+  }, [])
+
   const [index, setIndex] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
   const setSupp = (value: string) => {
