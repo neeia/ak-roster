@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import type { NextPage } from "next";
 import { Box, ButtonGroup } from "@mui/material";
 import dynamic from "next/dynamic";
@@ -8,8 +8,7 @@ import FilterDialog from "../../components/collate/FilterDialog";
 import SortDialog from "../../components/collate/SortDialog";
 import { useSort, useFilter } from "../../util/useSSF";
 import useOperators from "../../util/useOperators";
-import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import { getUserStatus } from "../../util/getUserStatus";
+import { User } from "firebase/auth";
 import { safeSyncAll } from "../../util/useSync";
 
 const EditOperator = dynamic(
