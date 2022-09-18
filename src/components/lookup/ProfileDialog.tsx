@@ -19,10 +19,7 @@ const ProfileDialog = (props: Props) => {
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   if (user && user.support && isObject(user.support)) {
-    Object.values(user.support).forEach((v, n) => {
-      user.support = [];
-      user.support[n] = v;
-    })
+    user.support = Object.values(user.support);
   }
   const [open, setOpen] = React.useState(false);
   return (

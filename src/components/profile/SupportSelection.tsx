@@ -31,7 +31,7 @@ const SupportSelection = ((props: Props) => {
         doctor.support[n] = v;
       })
     }
-  }, [])
+  }, [doctor])
 
   const [index, setIndex] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
