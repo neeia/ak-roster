@@ -26,10 +26,10 @@ const SupportSelection = ((props: Props) => {
   const [supps, setSupps] = useState<OperatorSkillSlot[]>(doctor.support ?? []);
   useEffect(() => {
     if (doctor && doctor.support && isObject(doctor.support)) {
-      Object.values(doctor.support).forEach((v, n) => {
-        doctor.support = [];
-        doctor.support[n] = v;
+      doctor.support = Object.values(doctor.support).map(v => {
+        return v;
       })
+      setSupps(doctor.support);
     }
   }, [doctor])
 
