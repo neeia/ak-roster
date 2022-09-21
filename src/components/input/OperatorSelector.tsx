@@ -3,8 +3,8 @@ import { Operator, OpJsonObj } from '../../types/operator';
 import classList from "../../data/classList";
 import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
-import operatorJson from "../../data/operators.json";
 import { isUndefined } from "util";
+import operatorJson from "../../data/operators.json";
 
 interface Props {
   operators: Record<string, Operator>;
@@ -34,16 +34,14 @@ const OperatorSelector = React.memo((props: Props) => {
       {Object.values(operators)
         .sort(sortComparator)
         .map((op: Operator) => {
-          return <Box
-            component="li"
+          const className = isUndefined(toggleGroup) ? undefined : toggleGroup.includes(op.id) ? "toggled" : "untoggled"
+            + " " + !defineFilter(operatorJson[op.id as keyof typeof operatorJson], op) ? "hidden" : "";
+          return <OperatorButton
             key={op.id}
-            className={isUndefined(toggleGroup) ? undefined : toggleGroup.includes(op.id) ? "toggled" : "untoggled"}
-            sx={{
-              listStyleType: "none",
-              display: !defineFilter(operatorJson[op.id as keyof typeof operatorJson], op) ? "none" : ""
-            }}>
-            <OperatorButton op={operators[op.id]} onClick={onClick} />
-          </Box>
+            op={operators[op.id]}
+            onClick={onClick}
+            className={className}
+          />
         })
       }
     </Box>)

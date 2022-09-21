@@ -6,7 +6,6 @@ import { Favorite } from "@mui/icons-material";
 import getTextWidth from "../../styles/getTextWidth";
 import appTheme from "../../styles/theme/appTheme";
 import Image from "next/image";
-
 const WIDTH_TO_PX = 10 / 7;
 const LONG_CUTOFF = 75;
 const LONGER_CUTOFF = 95;
@@ -14,10 +13,11 @@ const LONGER_CUTOFF = 95;
 interface Props {
   op: Operator;
   onClick: (opId: string) => void;
+  className?: string;
 }
 
 const OperatorButton = React.memo((props: Props) => {
-  const { op, onClick } = props;
+  const { op, onClick, className } = props;
 
   const [n, t] = op.name.split(" the ");
   const name = t ?? n;
@@ -50,35 +50,42 @@ const OperatorButton = React.memo((props: Props) => {
   const imgUrl = `/img/avatars/${op.id}.png`;
 
   return (
-    <Button
-      className={op.owned ? "" : "unowned"}
-      onClick={() => {
-        onClick(op.id);
+    <Box
+      component="li"
+      className={className}
+      sx={{
+        listStyleType: "none",
       }}>
-      <Box
+      <Button
         className={op.owned ? "" : "unowned"}
-        sx={{
-          height: "calc(4rem + 3px)",
-          width: "4rem",
+        onClick={() => {
+          onClick(op.id);
+        }}>
+        <Box
+          className={op.owned ? "" : "unowned"}
+          sx={{
+            height: "calc(4rem + 3px)",
+            width: "4rem",
+            gridArea: "1 / 1",
+            borderBottom: `3px solid ${rarityColors[op.rarity]}`,
+          }}
+        >
+          <Image src={imgUrl} height="128px" width="128px" alt="" />
+        </Box>
+        <Box sx={{
           gridArea: "1 / 1",
-          borderBottom: `3px solid ${rarityColors[op.rarity]}`,
-        }}
-      >
-        <Image src={imgUrl} height="128px" width="128px" alt="" />
-      </Box>
-      <Box sx={{
-        gridArea: "1 / 1",
-        textAlign: "left",
-        alignSelf: "start",
-        zIndex: 1,
-      }}>
-        {op.favorite
-          ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
-          : ""}
-      </Box>
-      {opName}
-    </Button>
+          textAlign: "left",
+          alignSelf: "start",
+          zIndex: 1,
+        }}>
+          {op.favorite
+            ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
+            : ""}
+        </Box>
+        {opName}
+      </Button>
+    </Box>
   )
 });
-OperatorButton.displayName="OperatorButton"
+OperatorButton.displayName = "OperatorButton"
 export default OperatorButton;
