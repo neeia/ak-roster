@@ -59,7 +59,7 @@ const Level = (props: Props) => {
   );
   const p10 = (
     <Button
-      onClick={() => updateLevel(op.level + 10)}
+      onClick={() => updateLevel(!(op.level - 1) ? 10 : op.level + 10)}
       disabled={!op.owned || op.level >= MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]}
     >
       <KeyboardDoubleArrowRightSharp fontSize="large" />
