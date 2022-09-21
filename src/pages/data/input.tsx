@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import type { NextPage } from "next";
 import { Box, ButtonGroup } from "@mui/material";
 import dynamic from "next/dynamic";
@@ -23,10 +23,10 @@ const Input: NextPage = () => {
   const [opId, setOpId] = React.useState("");
   const [editOpen, setEditOpen] = React.useState(false);
 
-  const handleSelectOp = (id: string) => {
+  const handleSelectOp = useCallback((id: string) => {
     setOpId(id);
     setEditOpen(true);
-  };
+  }, []);
 
   const [operators, onChange, , setOperators] = useOperators();
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
