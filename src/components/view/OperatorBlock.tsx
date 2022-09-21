@@ -86,7 +86,7 @@ const OperatorBlock = (props: Props) => {
       }}>
         <svg width="100%" height="100%">
           <rect x="0" y="0" width="100%" height="100%"
-            fill="#323232" fillOpacity="0.85" stroke="#666666" strokeWidth={2} />
+            fill="#121212" fillOpacity="0.85" stroke="#666666" strokeOpacity="0.85" strokeWidth={1.5} />
         </svg>
       </Box>
       <Box
