@@ -34,7 +34,7 @@ const RegisterButton = ((props: Props) => {
       setError("No password given.");
       return;
     }
-    createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email.trim(), password)
       .then((userCredential) => {
         if (userCredential != null && userCredential.user != null) {
           // Signed in

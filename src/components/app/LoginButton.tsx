@@ -34,7 +34,7 @@ const LoginButton = ((props: Props) => {
       setError("No password given.");
       return;
     }
-    signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email.trim(), password)
       .then((userCredential) => {
         if (userCredential != null && userCredential.user != null) {
           // Signed in
