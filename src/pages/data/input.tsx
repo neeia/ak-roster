@@ -114,6 +114,9 @@ const Input: NextPage = () => {
           "& .unowned": {
             opacity: 0.75
           },
+          "& .hidden": {
+            display: "none"
+          },
         }}>
           <OperatorSelector
             operators={operators}
