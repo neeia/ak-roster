@@ -34,8 +34,8 @@ const OperatorSelector = React.memo((props: Props) => {
       {Object.values(operators)
         .sort(sortComparator)
         .map((op: Operator) => {
-          const className = isUndefined(toggleGroup) ? undefined : toggleGroup.includes(op.id) ? "toggled" : "untoggled"
-            + " " + !defineFilter(operatorJson[op.id as keyof typeof operatorJson], op) ? "hidden" : "";
+          const className = !defineFilter(operatorJson[op.id as keyof typeof operatorJson], op) ? "hidden" : ""
+            + " " + (isUndefined(toggleGroup) ? undefined : toggleGroup.includes(op.id) ? "toggled" : "untoggled");
           return <OperatorButton
             key={op.id}
             op={operators[op.id]}

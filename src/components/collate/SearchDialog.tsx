@@ -1,12 +1,12 @@
 import { Clear, Search } from "@mui/icons-material";
 import { Dialog, IconButton, InputAdornment, TextField } from "@mui/material";
-import React from "react";
+import React, { memo } from "react";
 
 interface Props {
   setSearch: (search: string) => void;
 }
 
-const SearchDialog = (props: Props) => {
+const SearchDialog = memo((props: Props) => {
   const { setSearch } = props;
   const [searchText, setSearchText] = React.useState("")
   const [open, setOpen] = React.useState(false);
@@ -77,5 +77,6 @@ const SearchDialog = (props: Props) => {
         </form>
       </Dialog>
     </>);
-}
+});
+SearchDialog.displayName = "SearchDialog";
 export default SearchDialog;

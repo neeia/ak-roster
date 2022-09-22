@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { FilterFunction } from "../../types/filter";
 import ClassFilter from "./filter/ClassFilter";
@@ -19,7 +19,7 @@ interface Props {
   removeFilter: (property: string, key: string) => void;
 }
 
-const FilterDialog = (props: Props) => {
+const FilterDialog = memo((props: Props) => {
   const { filter, clearFilters, addFilter, removeFilter } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -219,5 +219,6 @@ const FilterDialog = (props: Props) => {
       </Dialog>
     </>
   );
-}
+});
+FilterDialog.displayName = "FilterDialog";
 export default FilterDialog;
