@@ -1153,7 +1153,14 @@
         "skillName": "Medic Field"
       }
     ],
-    "modules": []
+    "modules": [      
+      {
+        "moduleName": "“生命的短暂”",
+        "moduleId": "uniequip_002_myrrh",
+        "typeName": "PHY-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_187_ccheal": {
     "id": "char_187_ccheal",
@@ -1174,7 +1181,14 @@
         "skillName": "Vitality Restoration - Wide Range"
       }
     ],
-    "modules": []
+    "modules": [      
+      {
+        "moduleName": "“请遵医嘱”",
+        "moduleId": "uniequip_002_ccheal",
+        "typeName": "PHY-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_298_susuro": {
     "id": "char_298_susuro",
@@ -1195,7 +1209,14 @@
         "skillName": "Deep Healing"
       }
     ],
-    "modules": []
+    "modules": [      
+      {
+        "moduleName": "医不自治",
+        "moduleId": "uniequip_002_susuro",
+        "typeName": "PHY-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_181_flower": {
     "id": "char_181_flower",
@@ -2156,6 +2177,27 @@
     ],
     "modules": []
   },
+    "char_4066_highmo": {
+    "id": "char_4066_highmo",
+    "name": "Highmore",
+    "cnName": "海沫",
+    "rarity": 5,
+    "class": "Guard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_highmo_1",
+        "iconId": null,
+        "skillName": "回首，断舍"
+      },
+      {
+        "skillId": "skchr_highmo_2",
+        "iconId": null,
+        "skillName": "泡影，殆尽"
+      }
+    ],
+    "modules": []
+  },
   "char_421_crow": {
     "id": "char_421_crow",
     "name": "La Pluma",
@@ -2873,7 +2915,14 @@
         "skillName": "Medical Drone"
       }
     ],
-    "modules": []
+    "modules": [      
+      {
+        "moduleName": "紧急防卫程序",
+        "moduleId": "uniequip_002_silent",
+        "typeName": "PHY-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_171_bldsk": {
     "id": "char_171_bldsk",
@@ -2894,7 +2943,14 @@
         "skillName": "Unstable Plasma"
       }
     ],
-    "modules": []
+    "modules": [      
+      {
+        "moduleName": "应急储备",
+        "moduleId": "uniequip_002_bldsk",
+        "typeName": "PHY-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_345_folnic": {
     "id": "char_345_folnic",
@@ -2915,7 +2971,14 @@
         "skillName": "Compound Drug Shell"
       }
     ],
-    "modules": []
+    "modules": [      
+      {
+        "moduleName": "母亲的领巾",
+        "moduleId": "uniequip_002_folnic",
+        "typeName": "PHY-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_348_ceylon": {
     "id": "char_348_ceylon",
@@ -2992,7 +3055,14 @@
         "skillName": "Cardiac Stimulant"
       }
     ],
-    "modules": []
+    "modules": [      
+      {
+        "moduleName": "集水装置",
+        "moduleId": "uniequip_002_tuye",
+        "typeName": "PHY-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_473_mberry": {
     "id": "char_473_mberry",
@@ -4761,6 +4831,12 @@
         "moduleId": "uniequip_002_dusk",
         "typeName": "SPC-X",
         "isCnOnly": false
+      },
+      {
+        "moduleName": "“终夜无寐”",
+        "moduleId": "uniequip_003_dusk",
+        "typeName": "SPC-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -4949,6 +5025,12 @@
         "moduleName": "重力校准模块",
         "moduleId": "uniequip_002_aglina",
         "typeName": "DEC-Y",
+        "isCnOnly": true
+      },
+      {
+        "moduleName": "实验用反重力模块",
+        "moduleId": "uniequip_003_aglina",
+        "typeName": "DEC-X",
         "isCnOnly": true
       }
     ]
@@ -5357,7 +5439,14 @@
         "skillName": "Creed Field"
       }
     ],
-    "modules": []
+    "modules": [      
+      {
+        "moduleName": "干枯剑鞘",
+        "moduleId": "uniequip_002_shining",
+        "typeName": "PHY-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_179_cgbird": {
     "id": "char_179_cgbird",
@@ -5416,7 +5505,14 @@
         "skillName": "Command: Meltdown"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "Mon2tr",
+        "moduleId": "uniequip_002_kalts",
+        "typeName": "PHY-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_4042_lumen": {
     "id": "char_4042_lumen",
