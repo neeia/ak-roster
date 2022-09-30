@@ -59,7 +59,7 @@ const UpdateUsername = ((props: Props) => {
     const checkUser = "phonebook/" + newUsername.toLowerCase();
     setErrorUsername("Checking...");
     get(child(ref(db), checkUser)).then((snapshot) => {
-      if (snapshot.exists()) {
+      if (snapshot.exists() && snapshot.val() !== user.uid) {
         setErrorUsername("That username is taken.")
       } else {
         setErrorUsername("Saving...");
@@ -71,7 +71,7 @@ const UpdateUsername = ((props: Props) => {
             setCopiedLink(false);
             get(child(ref(db), checkUser)).then((newSnapshot) => {
               if (!newSnapshot) {
-                setErrorUsername("Something went wrong!");
+                setErrorUsername("Something went wrong.");
                 return;
               }
               updateDisplayName(newUsername);
@@ -88,7 +88,6 @@ const UpdateUsername = ((props: Props) => {
     set(ref(db, "users/" + (user.uid) + "/info/displayName"), s)
     setErrorUsername("Saved.");
     updateProfile(user, { displayName: s });
-    window.location.reload();
   }
 
   return (
@@ -97,7 +96,7 @@ const UpdateUsername = ((props: Props) => {
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <TextField
           label="Current Username"
-          value={user?.displayName || "No Username Set"}
+          value={doctor?.displayName || "No Username Set"}
           variant="standard"
           disabled
         />
@@ -105,7 +104,7 @@ const UpdateUsername = ((props: Props) => {
       </Box>
       <TextField
         label="Share Link"
-        value={`https://www.krooster.com/u/${user.displayName}`}
+        value={`https://www.krooster.com/u/${doctor.displayName}`}
         variant="standard"
         disabled
         InputProps={{
@@ -116,7 +115,7 @@ const UpdateUsername = ((props: Props) => {
               </Typography>
               <IconButton
                 aria-labelledby="copy-label"
-                onClick={() => { setCopiedLink(true); navigator.clipboard.writeText(`https://krooster.com/u/${user.displayName}`); }}
+                onClick={() => { setCopiedLink(true); navigator.clipboard.writeText(`https://krooster.com/u/${doctor.displayName}`); }}
               >
                 {copyLink
                   ? <InventoryOutlined height="1rem" />
@@ -137,7 +136,7 @@ const UpdateUsername = ((props: Props) => {
         variant="filled"
       />
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Button onClick={tryUsername}>
+        <Button onClick={tryUsername} disabled={newUsername === user.displayName}>
           Change Name
         </Button>
         {errorUsername}
