@@ -2,21 +2,25 @@ import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { Box, Button, FormControlLabel, Switch } from "@mui/material";
 import dynamic from "next/dynamic";
-import Layout from "../../components/Layout";
-import PopOp from "../../components/profile/PopOp";
-import { Operator, OpJsonObj } from "../../types/operator";
-import useLocalStorage from "../../util/useLocalStorage";
-import { AccountInfo } from "../../types/doctor";
+import Layout from "components/Layout";
+import PopOp from "components/profile/PopOp";
+import { Operator, OpJsonObj } from "types/operator";
+import useLocalStorage from "util/useLocalStorage";
+import { AccountInfo } from "types/doctor";
 import { Edit, FormatPaint } from "@mui/icons-material";
-import useOperators from "../../util/useOperators";
-import usePresets from "../../util/usePresets";
+import useOperators from "util/useOperators";
+import usePresets from "util/usePresets";
+import { safeMerge } from "util/useSync";
+import { set, ref, getDatabase } from "firebase/database";
+import { changeOwned, changeFavorite, changePotential, changePromotion, changeLevel, changeSkillLevel, changeMastery, changeModule } from "util/changeOperator";
+import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 
 const EditPreset = dynamic(
-  () => import("../../components/batch/EditPreset"),
+  () => import("components/batch/EditPreset"),
   { ssr: false }
 );
 const PresetSelector = dynamic(
-  () => import("../../components/batch/PresetSelector"),
+  () => import("components/batch/PresetSelector"),
   { ssr: false }
 );
 const Batch: NextPage = () => {
@@ -47,8 +51,53 @@ const Batch: NextPage = () => {
     setIsCN(doctor.server === "CN");
   }, [doctor.server]);
 
+  const db = getDatabase();
+  const [user, setUser] = useState<User | null>();
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+  }, []);
   const [presets] = usePresets();
-  const [operators, , applyBatch] = useOperators();
+  const [operators, setOperators] = useOperators();
+  const applyBatch = React.useCallback(
+    (source: Operator, target: string[], safeMode?: boolean) => {
+      setOperators(
+        (oldOperators: Record<string, Operator>): Record<string, Operator> => {
+          const copyOperators = { ...oldOperators };
+          target.forEach((opID: string) => {
+            var op = { ...copyOperators[opID] };
+            var copySource = { ...source }
+            if (safeMode) {
+              copySource = safeMerge(source, op);
+            }
+
+            op = changeOwned(op, copySource.owned);
+            op = changeFavorite(op, copySource.favorite);
+            op = changePotential(op, copySource.potential);
+            op = changePromotion(op, copySource.promotion);
+            op = changeLevel(op, copySource.level);
+            op = changeSkillLevel(op, copySource.skillLevel);
+            copySource.mastery.forEach((value, index) => {
+              op = changeMastery(op, index, value);
+            })
+            copySource.module.forEach((value, index) => {
+              op = changeModule(op, index, value);
+            })
+
+            copyOperators[opID] = op;
+            if (user) {
+              set(ref(db, `users/${user.uid}/roster/${opID}`), op);
+            }
+          })
+          return copyOperators;
+        }
+      );
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [user, setOperators]
+  );
   const handleApplyBatch = () => {
     const presetOp = presets[preset];
     applyBatch(presetOp, selectGroup, safeMode);
@@ -100,6 +149,9 @@ const Batch: NextPage = () => {
           "& .unselected": {
             opacity: 0.75,
           },
+          "& .hidden": {
+            display: "none",
+          }
         }}>
           <PresetSelector onClick={handleSelectPreset} selectedPreset={preset} />
         </Box>

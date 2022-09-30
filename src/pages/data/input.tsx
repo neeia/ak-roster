@@ -1,44 +1,63 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { Box, ButtonGroup } from "@mui/material";
 import dynamic from "next/dynamic";
-import Layout from "../../components/Layout";
-import SearchDialog from "../../components/collate/SearchDialog";
-import FilterDialog from "../../components/collate/FilterDialog";
-import SortDialog from "../../components/collate/SortDialog";
-import { useSort, useFilter } from "../../util/useSSF";
-import useOperators from "../../util/useOperators";
-import { User } from "firebase/auth";
-import { safeSyncAll } from "../../util/useSync";
+import { Box, ButtonGroup } from "@mui/material";
+import Layout from "components/Layout";
+import SearchDialog from "components/collate/SearchDialog";
+import FilterDialog from "components/collate/FilterDialog";
+import SortDialog from "components/collate/SortDialog";
+import { useSort, useFilter } from "util/useSSF";
+import { safeSyncAll } from "util/useSync";
+import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
+import { Operator } from "types/operator";
+import useOperators from "util/useOperators";
 
 const EditOperator = dynamic(
-  () => import("../../components/input/EditOperator"),
+  () => import("components/input/EditOperator"),
   { ssr: false }
 );
 const OperatorSelector = dynamic(
-  () => import("../../components/input/OperatorSelector"),
+  () => import("components/input/OperatorSelector"),
   { ssr: false }
 );
 const Input: NextPage = () => {
+
+  const [operators, setOperators] = useOperators();
+
   const [opId, setOpId] = React.useState("");
   const [editOpen, setEditOpen] = React.useState(false);
-
   const handleSelectOp = useCallback((id: string) => {
     setOpId(id);
     setEditOpen(true);
   }, []);
 
-  const [operators, onChange, , setOperators] = useOperators();
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
     { key: "Rarity", desc: true },
   ]);
   const [, setSearchName, filter, addFilter, removeFilter, clearFilters, filterFunction] = useFilter();
 
+  const db = getDatabase();
+  const onChange = (op: Operator) => {
+    const copyOperators = { ...operators };
+    copyOperators[op.id] = { ...op };
+    if (user) {
+      set(ref(db, `users/${user.uid}/roster/${op.id}`), op);
+    }
+    setOperators(copyOperators);
+  };
+  const [user, setUser] = useState<User | null>();
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+  }, []);
+
   return (
     <Layout
       tab="/data"
       page="/input"
-      onLogin={(user: User) => { safeSyncAll(user, operators, setOperators) }}
     >
       <Box sx={{
         display: "grid",
@@ -125,9 +144,8 @@ const Input: NextPage = () => {
             filter={filterFunction}
           />
           <EditOperator
-            operators={operators}
             onChange={onChange}
-            opId={opId}
+            op={operators[opId]}
             open={editOpen}
             onClose={() => setEditOpen(false)}
           />

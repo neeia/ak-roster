@@ -1,7 +1,7 @@
 import React from "react";
-import { Operator } from "../../../types/operator";
+import { Operator } from "types/operator";
 import { Box, IconButton } from "@mui/material";
-import { changePromotion, MAX_PROMOTION_BY_RARITY } from "../../../util/changeOperator";
+import { changePromotion, MAX_PROMOTION_BY_RARITY } from "util/changeOperator";
 
 const br = (opRarity: number, pot: number) => {
   const r = 4;
@@ -12,7 +12,7 @@ const br = (opRarity: number, pot: number) => {
 
 interface Props {
   op: Operator;
-  onChange: (operatorID: string, newOperator: Operator) => void;
+  onChange: (newOperator: Operator) => void;
 }
 const Promotion = ((props: Props) => {
   const { op, onChange } = props;
@@ -25,7 +25,7 @@ const Promotion = ((props: Props) => {
         <IconButton
           sx={{ borderRadius: br(op.rarity, i) }}
           className={op.promotion === i ? "active" : "inactive"}
-          onClick={() => onChange(op.id, changePromotion(op, i))}
+          onClick={() => onChange(changePromotion(op, i))}
           disabled={!op.owned}
           key={`pro${i + 1}`}
         >

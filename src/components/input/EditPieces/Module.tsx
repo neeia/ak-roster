@@ -8,7 +8,7 @@ import { AccountInfo } from "../../../types/doctor";
 
 interface Props {
   op: Operator;
-  onChange: (operatorID: string, newOperator: Operator) => void;
+  onChange: (newOperator: Operator) => void;
 }
 const Module = ((props: Props) => {
   const { op, onChange } = props;
@@ -77,7 +77,7 @@ const Module = ((props: Props) => {
                   minWidth: 0,
                   backgroundColor: "background.default",
                 }}
-                onClick={() => onChange(op.id, changeModule(op, i, j))}
+                onClick={() => onChange(changeModule(op, i, j))}
                 disabled={disabled}
               >
                 <Box component="img"

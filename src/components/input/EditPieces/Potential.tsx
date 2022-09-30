@@ -1,7 +1,7 @@
 import React from "react";
-import { Operator } from "../../../types/operator";
+import { Operator } from "types/operator";
 import { Box, IconButton } from "@mui/material";
-import { changePotential, getMaxPotentialById } from "../../../util/changeOperator";
+import { changePotential, getMaxPotentialById } from "util/changeOperator";
 
 const br = (op: string, pot: number) => {
   const r = 4;
@@ -12,7 +12,7 @@ const br = (op: string, pot: number) => {
 
 interface Props {
   op: Operator;
-  onChange: (operatorID: string, newOperator: Operator) => void;
+  onChange: (newOperator: Operator) => void;
 }
 const Potential = ((props: Props) => {
   const { op, onChange } = props;
@@ -25,7 +25,7 @@ const Potential = ((props: Props) => {
         <IconButton
           sx={{ borderRadius: br(op.id, i) }}
           className={op.potential === i + 1 ? "active" : "inactive"}
-          onClick={() => onChange(op.id, changePotential(op, i + 1))}
+          onClick={() => onChange(changePotential(op, i + 1))}
           disabled={!op.owned}
           key={`pot${i + 1}`}
         >

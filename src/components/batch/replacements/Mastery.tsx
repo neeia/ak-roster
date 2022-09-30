@@ -5,7 +5,7 @@ import { changeMastery } from "../../../util/changeOperator";
 
 interface Props {
   op: Operator;
-  onChange: (operatorId: string, newOperator: Operator) => void;
+  onChange: (newOperator: Operator) => void;
 }
 const Mastery = ((props: Props) => {
   const { op, onChange } = props;
@@ -49,7 +49,7 @@ const Mastery = ((props: Props) => {
                   p: 0.5,
                   minWidth: 0,
                 }}
-                onClick={() => onChange(op.id, changeMastery(op, i, j))}
+                onClick={() => onChange(changeMastery(op, i, j))}
                 disabled={disabled}
               >
                 <Box component="img"
