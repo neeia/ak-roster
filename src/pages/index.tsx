@@ -75,6 +75,7 @@ const Kofi = memo(() => {
     </Link>
   )
 })
+Kofi.displayName = "Ko-fi";
 
 const Home: NextPage = () => {
   const clientSideEmotionCache = createEmotionCache();
