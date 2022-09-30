@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { defaultOperatorObject, Operator, OpJsonObj, LegacyOperator, } from '../types/operator';
-import operatorJson from "../data/operators.json";
+import operatorJson from "data/operators.json";
 import useLocalStorage from './useLocalStorage';
 import { isUndefined } from "util";
-import { changeFavorite, changeLevel, changeMastery, changeModule, changeOwned, changePotential, changePromotion, changeSkillLevel } from "./changeOperator";
-import { safeMerge } from "./useSync";
-import initFirebase from "./initFirebase";
-import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import { getUserStatus } from "./getUserStatus";
-import { getDatabase, ref, set } from "firebase/database";
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { safeSyncAll } from "./useSync";
 
 // Converts a LegacyOperator into an Operator
 function convertLegacy([_, op]: [any, LegacyOperator]): [string, Operator] {
@@ -43,16 +38,18 @@ export function repair(ops: Record<string, Operator>, setOps: (v: Record<string,
     const op = rooster[opId];
 
     // check for missing operators to repair
-    if (!op || !op.name || !op.id) {
+    if (!op || !op.name || !op.id || op.id !== opId) {
       if (opJsonItem) rooster[opId] = defaultOperatorObject([opId, opJsonItem])[1];
     }
     // check for outdated operators to redefine
-    else if (isUndefined(op.class)) {
-      rooster = Object.fromEntries(Object.entries(rooster).filter(([key, value]) => value.id.startsWith("char_")).map(convertLegacy));
-    }
     else {
-      if (isUndefined(op.mastery)) op.mastery = [];
-      if (isUndefined(op.module)) op.module = [];
+      if (isUndefined(op.class)) {
+        rooster = Object.fromEntries(Object.entries(rooster).filter(([key, value]) => value.id.startsWith("char_")).map(convertLegacy));
+      }
+      else {
+        if (isUndefined(op.mastery)) op.mastery = [];
+        if (isUndefined(op.module)) op.module = [];
+      }
     }
   })
   setOps(rooster);
@@ -62,73 +59,13 @@ function useOperators() {
   const [operators, setOperators] = useLocalStorage<Record<string, Operator>>("operators", Object.fromEntries(
     Object.entries(operatorJson).map(defaultOperatorObject)
   ));
-  initFirebase();
-  const db = getDatabase();
-  const [user, setUser] = useState<User | null>();
-  useEffect(() => {
-    getUserStatus().then((user) => {
-      setUser(user);
-    })
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      setUser(user);
-    });
-  }, []);
-
-  const onChange = (operatorID: string, newOperator: Operator) => {
-    setOperators(
-      (oldOperators: Record<string, Operator>): Record<string, Operator> => {
-        const copyOperators = { ...oldOperators };
-        copyOperators[operatorID] = { ...newOperator };
-        if (user) {
-          set(ref(db, `users/${user.uid}/roster/${newOperator.id}`), newOperator);
-        }
-        return copyOperators;
-      }
-    );
-  }
-  const applyBatch = React.useCallback(
-    (source: Operator, target: string[], safeMode?: boolean) => {
-      setOperators(
-        (oldOperators: Record<string, Operator>): Record<string, Operator> => {
-          const copyOperators = { ...oldOperators };
-          target.forEach((opID: string) => {
-            var op = { ...copyOperators[opID] };
-            var copySource = { ...source }
-            if (safeMode) {
-              copySource = safeMerge(source, op);
-            }
-
-            op = changeOwned(op, copySource.owned);
-            op = changeFavorite(op, copySource.favorite);
-            op = changePotential(op, copySource.potential);
-            op = changePromotion(op, copySource.promotion);
-            op = changeLevel(op, copySource.level);
-            op = changeSkillLevel(op, copySource.skillLevel);
-            copySource.mastery.forEach((value, index) => {
-              op = changeMastery(op, index, value);
-            })
-            copySource.module.forEach((value, index) => {
-              op = changeModule(op, index, value);
-            })
-
-            copyOperators[opID] = op;
-            if (user) {
-              set(ref(db, `users/${user.uid}/roster/${opID}`), op);
-            }
-          })
-          return copyOperators;
-        }
-      );
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [user, setOperators]
-  );
   useEffect(() => {
     repair(operators, setOperators);
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) safeSyncAll(user, operators, setOperators);
+    });
   }, [])
-
-  return [operators, onChange, applyBatch, setOperators] as const
+  return [operators, setOperators] as const
 }
-
 export default useOperators;

@@ -3,18 +3,19 @@ import { Box, Button } from "@mui/material";
 import { User } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
 import React from "react";
-import useOperators from "../../util/useOperators";
+import { Operator } from "../../types/operator";
 import { safeSyncAll } from "../../util/useSync";
 
 
 interface Props {
   user: User;
+  operators: Record<string, Operator>;
+  setOperators: (ops: Record<string, Operator>) => void;
 }
 
 const Data = ((props: Props) => {
-  const { user } = props;
+  const { user, operators, setOperators } = props;
   const db = getDatabase();
-  const [operators, , , setOperators] = useOperators();
 
   const syncData = () => {
     safeSyncAll(user, operators, setOperators);

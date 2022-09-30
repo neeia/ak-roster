@@ -1,6 +1,6 @@
 import React from "react";
-import { Operator, OpJsonObj } from "../../types/operator";
-import operatorJson from "../../data/operators.json";
+import { Operator, OpJsonObj } from "types/operator";
+import operatorJson from "data/operators.json";
 import sg0 from "../../data/sg0.json";
 import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import EditRow from "./EditRow";
@@ -15,20 +15,19 @@ import ExtLink from "./EditPieces/ExtLink";
 import { Close } from "@mui/icons-material";
 
 interface Props {
-  operators: Record<string, Operator>;
-  onChange: (opID: string, op: Operator) => void;
-  opId: string;
+  op?: Operator;
+  onChange: (op: Operator) => void;
   open: boolean;
   onClose: () => void;
 }
 
 const EditOperator = React.memo((props: Props) => {
-  const { operators, onChange, opId, open, onClose } = props;
+  const { op, onChange,open, onClose } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const op = operators[opId];
   if (!op) return null;
+  const opId = op.id;
   const opInfo: OpJsonObj = operatorJson[opId as keyof typeof operatorJson];
 
   let intermediate = opId;

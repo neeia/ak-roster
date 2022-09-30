@@ -2,23 +2,20 @@
 import type { NextPage } from "next";
 import { Box, Divider } from "@mui/material";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
-import Layout from "../../components/Layout";
-import initFirebase from "../../util/initFirebase";
-import { getUserStatus } from "../../util/getUserStatus";
-import UpdateUsername from "../../components/settings/UpdateUsername";
-import UpdateEmail from "../../components/settings/UpdateEmail";
-import UpdatePassword from "../../components/settings/UpdatePassword";
-import Data from "../../components/settings/Data";
+import Layout from "components/Layout";
+import UpdateUsername from "components/settings/UpdateUsername";
+import UpdateEmail from "components/settings/UpdateEmail";
+import UpdatePassword from "components/settings/UpdatePassword";
+import Data from "components/settings/Data";
+import useOperators from "util/useOperators";
 
 const Settings: NextPage = () => {
-  initFirebase();
+
+  const [operators, setOperators] = useOperators();
 
   const [user, setUser] = useState<User | null>();
   useEffect(() => {
     const auth = getAuth();
-    getUserStatus().then((user) => {
-      setUser(user);
-    })
     onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
@@ -42,7 +39,7 @@ const Settings: NextPage = () => {
         }}>
           <UpdateUsername user={user} />
           <Divider />
-          <Data user={user} />
+          <Data user={user} operators={operators} setOperators={setOperators} />
           <Divider />
           <UpdateEmail user={user} />
           <Divider />

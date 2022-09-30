@@ -8,11 +8,11 @@ function usePresets() {
     [...Array(6)].map(defaultPresetObject)
   ));
 
-  const onChange = (presetID: string, newOperator: Operator) => {
+  const onChange = (preset: Operator) => {
     setPresets(
       (oldOperators: Record<string, Operator>): Record<string, Operator> => {
         const copyOperators = { ...oldOperators };
-        copyOperators[presetID] = { ...newOperator };
+        copyOperators[preset.id] = { ...preset };
         return copyOperators;
       }
     );
