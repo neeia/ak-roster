@@ -7,7 +7,6 @@ import React, { useEffect, useState } from "react";
 import config from "../data/config";
 import { AccountInfo } from "../types/doctor";
 import { getUserStatus } from "../util/getUserStatus";
-import initFirebase from "../util/initFirebase";
 import useLocalStorage from "../util/useLocalStorage";
 import DiscordInvite from "./app/DiscordInvite";
 import LoginButton from "./app/LoginButton";
@@ -64,7 +63,6 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
   const [, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
   const [, setSocial] = useLocalStorage<AccountInfo>("connections", {});
 
-  initFirebase();
   const [user, setUser] = useState<User | null>();
   useEffect(() => {
     const db = getDatabase();

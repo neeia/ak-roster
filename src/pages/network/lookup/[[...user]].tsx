@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { Box, ButtonGroup, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import Layout from "../../../components/Layout";
-import initFirebase from "../../../util/initFirebase";
 import { ArrowBack, Search } from "@mui/icons-material";
 import { child, get, getDatabase, ref } from "firebase/database";
 import { useRouter } from "next/router";
@@ -21,7 +20,6 @@ import { SocialInfo } from "../../../types/social";
 
 const Lookup: NextPage = () => {
   const { query } = useRouter();
-  initFirebase();
   const db = getDatabase();
   const [username, setUsername] = useState<string>("");
   const [error, setError] = useState<string>("");

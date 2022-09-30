@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { Box, Divider } from "@mui/material";
 import Layout from "../../components/Layout";
-import initFirebase from "../../util/initFirebase";
 import { getUserStatus } from "../../util/getUserStatus";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import SupportSelection from "../../components/profile/SupportSelection";
@@ -15,7 +14,6 @@ import Discord from "../../components/profile/Discord";
 import Reddit from "../../components/profile/Reddit";
 
 const Profile: NextPage = () => {
-  initFirebase();
 
   const [user, setUser] = useState<User | null>();
   useEffect(() => {
