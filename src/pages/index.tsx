@@ -8,12 +8,10 @@ import appTheme from '../styles/theme/appTheme'
 import createEmotionCache from '../util/createEmotionCache'
 import DiscordEmbed from '../components/index/DiscordEmbed'
 import GitHubEmbed from '../components/index/GitHubEmbed'
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { LockClockOutlined } from '@mui/icons-material'
 
-const Home: NextPage = () => {
-  const clientSideEmotionCache = createEmotionCache();
-
+const Kofi = memo(() => {
   const [seconds, setSeconds] = useState(60);
   useEffect(() => {
     let myInterval = setInterval(() => {
@@ -26,6 +24,60 @@ const Home: NextPage = () => {
     }, 1000);
     return () => clearInterval(myInterval);
   }, [seconds]);
+  return (
+    <Link
+      sx={{
+        backgroundColor: "#FF5E5B",
+        mt: 2,
+        display: "block",
+        width: "30%",
+        minWidth: "min-content",
+        height: "min-content",
+        borderRadius: "4px",
+        boxShadow: 1,
+        position: "relative",
+        mb: 6,
+      }}
+      onClick={() => window.open("https://ko-fi.com/neeia", "_blank", "noreferrer noopener")}
+      title="Open Ko-fi"
+      component="button"
+      disabled={seconds > 0}
+    >
+      {seconds
+        ? <Box sx={{
+          position: "absolute",
+          backgroundColor: "rgba(0,0,0,0.7)",
+          width: "100%",
+          height: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          display: "flex",
+          gap: 1
+        }}>
+          <LockClockOutlined />
+          <Typography variant="button">
+            {seconds}
+          </Typography>
+        </Box>
+        : null
+      }
+      <Box sx={{
+        ml: 1.5,
+        mr: 2,
+        mt: 1.5,
+        mb: 1,
+        ":hover": {
+          filter: "brightness(120%)"
+        },
+      }} component="img" width="131px" height="37px"
+        src="/img/ext/kofi.png" alt="Ko-fi icon" loading="lazy"
+      />
+    </Link>
+  )
+})
+
+const Home: NextPage = () => {
+  const clientSideEmotionCache = createEmotionCache();
 
   return (
     <CacheProvider value={clientSideEmotionCache}>
@@ -206,54 +258,7 @@ const Home: NextPage = () => {
                   If you like what I do and have money to spare, you should donate it to a charity.
                   But if you really want to, then you can also support the site.
                 </Typography>
-                <Link
-                  sx={{
-                    backgroundColor: "#FF5E5B",
-                    mt: 2,
-                    display: "block",
-                    width: "30%",
-                    minWidth: "min-content",
-                    height: "min-content",
-                    borderRadius: "4px",
-                    boxShadow: 1,
-                    position: "relative",
-                    mb: 6,
-                  }}
-                  onClick={() => window.open("https://ko-fi.com/neeia", "_blank", "noreferrer noopener")}
-                  title="Open Ko-fi"
-                  component="button"
-                  disabled={seconds > 0}
-                >
-                  {seconds
-                    ? <Box sx={{
-                      position: "absolute",
-                      backgroundColor: "rgba(0,0,0,0.7)",
-                      width: "100%",
-                      height: "100%",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      display: "flex",
-                      gap: 1
-                    }}>
-                      <LockClockOutlined />
-                      <Typography variant="button">
-                        {seconds}
-                      </Typography>
-                    </Box>
-                    : null
-                  }
-                  <Box sx={{
-                    ml: 1.5,
-                    mr: 2,
-                    mt: 1.5,
-                    mb: 1,
-                    ":hover": {
-                      filter: "brightness(120%)"
-                    },
-                  }} component="img" width="131px" height="37px"
-                    src="/img/ext/kofi.png" alt="Ko-fi icon" loading="lazy"
-                  />
-                </Link>
+                <Kofi />
               </Box>
             </Box>
           </Container>
