@@ -35,7 +35,7 @@ const PatchNotes = () => {
               marginLeft: "8px",
               paddingTop: "12px",
             }}>
-            Patch 2.0
+            Patch 2.1
           </Typography>
           <IconButton onClick={() => setOpen(false)} sx={{ display: { sm: "none" } }}>
             <Close />
@@ -46,37 +46,19 @@ const PatchNotes = () => {
           flexDirection: "column",
           gap: "1rem",
         }}>
-          <p>
-            Krooster has been updated with a whole new look and a whole lot of new features!
-          </p>
           <Box>
-            General
+            Edit from View
             <ul>
-              <li>Entirely rebuilt UI, powered by MUI v5</li>
-              <li>Better performance, better accessibility, and faster updates</li>
+              <li>You can now open the operator editor from the view tab</li>
+              <li>Provides smoother UX for finding and correcting mistakes</li>
+              <li>Try it out by going to View, and clicking on the pencil icon</li>
             </ul>
           </Box>
           <Box>
-            Profiles
+            Bugfixes
             <ul>
-              <li>Share in-game account info with other Doctors</li>
-              <li>Prevent other users from seeing your data by going private</li>
-            </ul>
-          </Box>
-          <Box>
-            Smarter Data Management
-            <ul>
-              <li>No more manual saving - changes uploaded in real time</li>
-              <li>Easily update your roster from multiple devices</li>
-              <li>Data automatically translates from v1 to v2</li>
-            </ul>
-          </Box>
-          <Box>
-            Miscellaneous Changes
-            <ul>
-              <li>Unowned operators can now be favorited</li>
-              <li>Operator pool updated for latest CN patch</li>
-              <li>Added an easter egg</li>
+              <li>Fixed an issue causing usernames to not appear properly</li>
+              <li>Fixed an issue causing the first slot of support units to include 6* units</li>
             </ul>
           </Box>
         </DialogContent>
