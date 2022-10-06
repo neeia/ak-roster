@@ -115,7 +115,7 @@ const UpdateUsername = ((props: Props) => {
               </Typography>
               <IconButton
                 aria-labelledby="copy-label"
-                onClick={() => { setCopiedLink(true); navigator.clipboard.writeText(`https://krooster.com/u/${doctor.displayName}`); }}
+                onClick={() => { setCopiedLink(true); navigator.clipboard.writeText(`https://krooster.com/u/${user?.displayName || doctor?.displayName}`); }}
               >
                 {copyLink
                   ? <InventoryOutlined height="1rem" />
