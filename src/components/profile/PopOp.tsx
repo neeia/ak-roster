@@ -82,6 +82,9 @@ const PopOp = (props: Props) => {
               },
               "& .toggled": {
               },
+              "& .hidden": {
+                display: "none",
+              },
             }}>
             <OperatorSelector
               operators={operators}
