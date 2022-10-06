@@ -1,4 +1,4 @@
-export interface AccountInfo {
+﻿export interface AccountInfo {
   displayName?: string;
   friendCode?: FriendCode;
   server?: string;
@@ -7,6 +7,12 @@ export interface AccountInfo {
   assistant?: string;
   level?: number;
   onboard?: Date;
+  team?: Team[];
+}
+
+export interface Team {
+  name: string;
+  ops: OperatorSkillSlot[];
 }
 
 export interface OperatorSkillSlot {
@@ -19,4 +25,4 @@ export interface FriendCode {
   tag?: string;
 }
 
-export const servers = ["EN", "CN", "JP", "KR", "TW"];
+export const servers = ["EN", "官服", "B服", "JP", "KR", "TW"];
