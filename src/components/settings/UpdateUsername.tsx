@@ -96,7 +96,7 @@ const UpdateUsername = ((props: Props) => {
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <TextField
           label="Current Username"
-          value={doctor?.displayName || "No Username Set"}
+          value={user?.displayName || doctor?.displayName || "No Username Set"}
           variant="standard"
           disabled
         />
@@ -104,7 +104,7 @@ const UpdateUsername = ((props: Props) => {
       </Box>
       <TextField
         label="Share Link"
-        value={`https://www.krooster.com/u/${doctor.displayName}`}
+        value={`https://www.krooster.com/u/${user?.displayName || doctor?.displayName}`}
         variant="standard"
         disabled
         InputProps={{
