@@ -7,7 +7,6 @@ import SearchDialog from "components/collate/SearchDialog";
 import FilterDialog from "components/collate/FilterDialog";
 import SortDialog from "components/collate/SortDialog";
 import { useSort, useFilter } from "util/useSSF";
-import { safeSyncAll } from "util/useSync";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 import { Operator } from "types/operator";
