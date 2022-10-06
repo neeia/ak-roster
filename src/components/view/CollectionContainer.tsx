@@ -4,15 +4,18 @@ import classList from "../../data/classList";
 import { Box } from "@mui/material";
 import operatorJson from "../../data/operators.json";
 import OperatorBlock from "./OperatorBlock";
+import EditWrapper from "./EditWrapper";
 
 interface Props {
   operators: Record<string, Operator>;
   filter?: (opInfo: OpJsonObj, op: Operator) => boolean;
   sort?: (opA: Operator, opB: Operator) => number;
+  editMode?: boolean;
+  onClick?: (opId: string) => void;
 }
 
 const CollectionContainer = (props: Props) => {
-  const { operators, filter, sort } = props;
+  const { operators, filter, sort, editMode, onClick } = props;
 
   const defineFilter = filter ?? (() => true);
 
@@ -38,7 +41,9 @@ const CollectionContainer = (props: Props) => {
               listStyleType: "none",
               display: !defineFilter(operatorJson[op.id as keyof typeof operatorJson], op) ? "none" : ""
             }}>
-            <OperatorBlock op={op} />
+            <EditWrapper editMode={editMode} onClick={() => onClick && onClick(op.id)}>
+              <OperatorBlock op={op} />
+            </EditWrapper>
           </Box>
         })
       }
