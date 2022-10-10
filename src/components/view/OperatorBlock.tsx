@@ -116,7 +116,7 @@ const OperatorBlock = (props: Props) => {
       loading="lazy"
       src={`/img/elite/${op.promotion}_s_box.png`}
       height="100%"
-      alt={``}
+      alt={`Elite ${op.promotion}`}
     />
 
   const levelSx = {
@@ -219,7 +219,7 @@ const OperatorBlock = (props: Props) => {
               component="img"
               loading="lazy"
               src={`/img/rank/${op.skillLevel}.png`}
-              alt={`Level ${op.skillLevel}`}
+              alt={`Rank ${op.skillLevel}`}
             />
             : <Box
               component="img"
@@ -252,10 +252,10 @@ const OperatorBlock = (props: Props) => {
             key={n}
             sx={{
               display: "grid",
+              width: { xs: "24px", sm: "32px" },
               "& > *": {
                 gridArea: "1 / 1",
-                width: { xs: "24px", sm: "32px" },
-                height: { xs: "24px", sm: "32px" },
+                width: "100%",
               },
               "& .frame": {
                 opacity: "0.75",
@@ -326,6 +326,7 @@ const OperatorBlock = (props: Props) => {
         component="img"
         src={`/img/avatars/${intermediate}.png`}
         loading="lazy"
+        alt=""
         sx={{
           gridArea: "img",
           height: { xs: "84px", sm: "124px" },
