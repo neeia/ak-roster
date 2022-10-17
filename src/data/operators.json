@@ -567,6 +567,27 @@
       }
     ]
   },
+    "char_4062_totter": {
+    "id": "char_4062_totter",
+    "name": "Totter",
+    "cnName": "铅踝",
+    "rarity": 4,
+    "class": "Sniper",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_totter_1",
+        "iconId": null,
+        "skillName": "Pierce the Sun"
+      },
+      {
+        "skillId": "skchr_totter_2",
+        "iconId": null,
+        "skillName": "Breaking Rainbow"
+      }
+    ],
+    "modules": []
+  },
   "char_133_mm": {
     "id": "char_133_mm",
     "name": "May",
@@ -2114,6 +2135,27 @@
     ],
     "modules": []
   },
+    "char_157_dagda": {
+    "id": "char_157_dagda",
+    "name": "Dagda",
+    "cnName": "达格达",
+    "rarity": 5,
+    "class": "Guard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_dagda_1",
+        "iconId": null,
+        "skillName": "Counter Technique"
+      },
+      {
+        "skillId": "skchr_dagda_2",
+        "iconId": null,
+        "skillName": "Precise Hunting"
+      }
+    ],
+    "modules": []
+  },
   "char_274_astesi": {
     "id": "char_274_astesi",
     "name": "Astesia",
@@ -3035,6 +3077,27 @@
         "isCnOnly": true
       }
     ]
+  },
+    "char_4071_peper": {
+    "id": "char_4071_peper",
+    "name": "Paprika",
+    "cnName": "明椒",
+    "rarity": 5,
+    "class": "Medic",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skcom_heal_rage[3]",
+        "iconId": null,
+        "skillName": "Protective Combat·Type γ"
+      },
+      {
+        "skillId": "skchr_peper_2",
+        "iconId": null,
+        "skillName": "Comradeship"
+      }
+    ],
+    "modules": []
   },
   "char_402_tuye": {
     "id": "char_402_tuye",
@@ -5165,6 +5228,32 @@
         "isCnOnly": false
       }
     ]
+  },
+  "char_4072_ironmn": {
+    "id": "char_4072_ironmn",
+    "name": "Stainless",
+    "cnName": "白铁",
+    "rarity": 6,
+    "class": "Supporter",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_ironmn_1",
+        "iconId": null,
+        "skillName": "Extreme Firepower"
+      },
+      {
+        "skillId": "skchr_ironmn_2",
+        "iconId": null,
+        "skillName": "Efficient Resupply"
+      },
+      {
+        "skillId": "skchr_ironmn_3",
+        "iconId": null,
+        "skillName": "Feist's Metal Crab·Prototype"
+      }
+    ],
+    "modules": []
   },
   "char_250_phatom": {
     "id": "char_250_phatom",
