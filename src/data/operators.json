@@ -700,6 +700,27 @@
       }
     ]
   },
+  "char_4062_totter": {
+    "id": "char_4062_totter",
+    "name": "Totter",
+    "cnName": "铅踝",
+    "rarity": 4,
+    "class": "Sniper",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_totter_1",
+        "iconId": null,
+        "skillName": "贯日"
+      },
+      {
+        "skillId": "skchr_totter_2",
+        "iconId": null,
+        "skillName": "破虹"
+      }
+    ],
+    "modules": []
+  },
   "char_198_blackd": {
     "id": "char_198_blackd",
     "name": "Courier",
@@ -1974,6 +1995,27 @@
     ],
     "modules": []
   },
+  "char_157_dagda": {
+    "id": "char_157_dagda",
+    "name": "Dagda",
+    "cnName": "达格达",
+    "rarity": 5,
+    "class": "Guard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_dagda_1",
+        "iconId": null,
+        "skillName": "反制技巧"
+      },
+      {
+        "skillId": "skchr_dagda_2",
+        "iconId": null,
+        "skillName": "精准捕杀"
+      }
+    ],
+    "modules": []
+  },
   "char_140_whitew": {
     "id": "char_140_whitew",
     "name": "Lappland",
@@ -3123,6 +3165,27 @@
         "skillId": "skchr_hbisc2_2",
         "iconId": null,
         "skillName": "抚业之触"
+      }
+    ],
+    "modules": []
+  },
+  "char_4071_peper": {
+    "id": "char_4071_peper",
+    "name": "Paprika",
+    "cnName": "明椒",
+    "rarity": 5,
+    "class": "Medic",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skcom_heal_rage[3]",
+        "iconId": null,
+        "skillName": "掩护作战·γ型"
+      },
+      {
+        "skillId": "skchr_peper_2",
+        "iconId": null,
+        "skillName": "同伴意识"
       }
     ],
     "modules": []
@@ -5165,6 +5228,32 @@
         "isCnOnly": false
       }
     ]
+  },
+  "char_4072_ironmn": {
+    "id": "char_4072_ironmn",
+    "name": "Stainless",
+    "cnName": "白铁",
+    "rarity": 6,
+    "class": "Supporter",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_ironmn_1",
+        "iconId": null,
+        "skillName": "极致火力"
+      },
+      {
+        "skillId": "skchr_ironmn_2",
+        "iconId": null,
+        "skillName": "高效补给"
+      },
+      {
+        "skillId": "skchr_ironmn_3",
+        "iconId": null,
+        "skillName": "铁钳号·原型机"
+      }
+    ],
+    "modules": []
   },
   "char_250_phatom": {
     "id": "char_250_phatom",
