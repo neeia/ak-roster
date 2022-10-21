@@ -693,10 +693,10 @@
     ],
     "modules": [
       {
-        "moduleName": "“自由、洋葱圈和我”",
+        "moduleName": "'Freedom, Onion Rings, and Me'",
         "moduleId": "uniequip_002_acdrop",
         "typeName": "ARC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -1301,17 +1301,17 @@
     "cnName": "褐果",
     "rarity": 4,
     "class": "Medic",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_chnut_1",
         "iconId": null,
-        "skillName": "积微成著"
+        "skillName": "Little by Little"
       },
       {
         "skillId": "skchr_chnut_2",
         "iconId": null,
-        "skillName": "厚土迸发"
+        "skillName": "Rising Earth"
       }
     ],
     "modules": []
@@ -1498,10 +1498,10 @@
     ],
     "modules": [
       {
-        "moduleName": "待确认的申请表",
+        "moduleName": "Application Forms, To Be Confirmed",
         "moduleId": "uniequip_002_skgoat",
         "typeName": "DEC-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -1526,10 +1526,10 @@
     ],
     "modules": [
       {
-        "moduleName": "“不谢的苗圃”",
+        "moduleName": "'Amaranthine Nursery'",
         "moduleId": "uniequip_002_podego",
         "typeName": "DEC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -2846,17 +2846,17 @@
     "cnName": "洛洛",
     "rarity": 5,
     "class": "Caster",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skcom_magic_rage[3]",
         "iconId": null,
-        "skillName": "战术咏唱·γ型"
+        "skillName": "Tactical Chant γ"
       },
       {
         "skillId": "skchr_rockr_2",
         "iconId": null,
-        "skillName": "自负此轭"
+        "skillName": "Willing Burden"
       }
     ],
     "modules": []
@@ -3638,10 +3638,10 @@
     ],
     "modules": [
       {
-        "moduleName": "尾巴养护套装",
+        "moduleName": "Tail-Care Suit",
         "moduleId": "uniequip_002_prove",
         "typeName": "ARC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -3883,10 +3883,10 @@
     ],
     "modules": [
       {
-        "moduleName": "读书笔记",
+        "moduleName": "Reading Notes",
         "moduleId": "uniequip_002_glassb",
         "typeName": "DEC-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -3911,10 +3911,10 @@
     ],
     "modules": [
       {
-        "moduleName": "外骨骼装备",
+        "moduleName": "Powered Exoskeleton",
         "moduleId": "uniequip_002_glacus",
         "typeName": "DEC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -3994,17 +3994,17 @@
     "cnName": "海蒂",
     "rarity": 5,
     "class": "Supporter",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_heidi_1",
         "iconId": null,
-        "skillName": "虚构故事·怒士"
+        "skillName": "Tale of Fiction: A Warrior's Anger"
       },
       {
         "skillId": "skchr_heidi_2",
         "iconId": null,
-        "skillName": "虚构故事·锈城"
+        "skillName": "Tale of Fiction: Rust"
       }
     ],
     "modules": []
@@ -4393,10 +4393,10 @@
     ],
     "modules": [
       {
-        "moduleName": "定制弩配件套装",
+        "moduleName": "Customized Crossbow Accessory Suit",
         "moduleId": "uniequip_002_shwaz",
         "typeName": "ARC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -5085,10 +5085,10 @@
     ],
     "modules": [
       {
-        "moduleName": "重力校准模块",
+        "moduleName": "Gravity Calibration Module",
         "moduleId": "uniequip_002_aglina",
         "typeName": "DEC-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "实验用反重力模块",
@@ -5124,10 +5124,10 @@
     ],
     "modules": [
       {
-        "moduleName": "怀中御守",
+        "moduleName": "Pocket Omamori",
         "moduleId": "uniequip_002_lisa",
         "typeName": "DEC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -5839,22 +5839,22 @@
     "cnName": "号角",
     "rarity": 6,
     "class": "Defender",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_horn_1",
         "iconId": null,
-        "skillName": "照明榴弹"
+        "skillName": "Flare Grenade"
       },
       {
         "skillId": "skchr_horn_2",
         "iconId": null,
-        "skillName": "暴风号令"
+        "skillName": "Tempest Command"
       },
       {
         "skillId": "skchr_horn_3",
         "iconId": null,
-        "skillName": "终极防线"
+        "skillName": "Ultimate Line of Defense"
       }
     ],
     "modules": []
