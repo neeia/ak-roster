@@ -40,8 +40,7 @@ const SupportSelection = ((props: Props) => {
     const d = { ...doctor };
     s[index] = { opID: value, opSkill: 0 };
     setSupps(s);
-    d.support = supps;
-    d.support[index] = s[index];
+    d.support = s;
     setDoctor(d);
     set(ref(db, `users/${user.uid}/info/support/${index}`), s[index]);
   };
@@ -50,8 +49,7 @@ const SupportSelection = ((props: Props) => {
     const d = { ...doctor };
     s[target] = { opID: s[target].opID, opSkill: value };
     setSupps(s);
-    d.support = supps;
-    d.support[target] = s[target]
+    d.support = s;
     setDoctor(d);
     set(ref(db, `users/${user.uid}/info/support/${target}/opSkill/`), value);
   };
