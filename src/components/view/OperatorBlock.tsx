@@ -8,11 +8,14 @@ import operatorJson from "../../data/operators.json";
 
 interface Props {
   op: Operator;
+  nobg?: boolean;
+  skill?: number;
 }
 
 const OperatorBlock = (props: Props) => {
-  const { op } = props;
+  const { op, nobg, skill } = props;
 
+  const opInfo: OpJsonObj = operatorJson[op.id as keyof typeof operatorJson];
   let intermediate = op.id;
   if (op.promotion === 2) {
     intermediate += "_2";
@@ -42,7 +45,7 @@ const OperatorBlock = (props: Props) => {
           fontSize: { xs: "7px", sm: "9px" },
           lineHeight: { xs: "6px", sm: "8px" },
           marginLeft: "1px",
-          color: isMaxKrooster(op) ? "background.paper" : "text.main"
+          color: !nobg && isMaxKrooster(op) ? "background.paper" : "text.main"
         }}>
           {splitName[1]}
         </Box>
@@ -50,7 +53,7 @@ const OperatorBlock = (props: Props) => {
           fontSize: { xs: "11px", sm: "12px" },
           lineHeight: { xs: "11px", sm: "12px" },
           marginLeft: "1px",
-          color: isMaxKrooster(op) ? "background.paper" : "text.main"
+          color: !nobg && isMaxKrooster(op) ? "background.paper" : "text.main"
         }}>
           {splitName[0]}
         </Box>
@@ -202,14 +205,32 @@ const OperatorBlock = (props: Props) => {
             display: op.promotion >= n ? "grid" : "none",
             marginLeft: { xs: "0px", sm: `${4 * n}px` },
             "& > img": {
+              height: { xs: "16px", sm: "24px" },
+            },
+            "& .stack": {
               gridRow: 1,
               gridColumn: 1,
-              height: { xs: "16px", sm: "24px" },
               opacity: 0.95,
             },
-          }}>
+          }}
+        >
+          {n === skill
+            ? <Box
+              component="img"
+              className={op.promotion < n ? "Mui-disabled" : ""}
+              sx={{
+                gridRow: 1,
+                gridColumn: 1,
+                transform: "translateX(-100%)",
+              }}
+              src={`/img/skills/${opInfo.skills[n].iconId ?? opInfo.skills[n].skillId}.png`}
+              alt={`Skill ${n + 1}`}
+            />
+            : null
+          }
           <Box
             component="img"
+            className="stack"
             loading="lazy"
             src={`/img/rank/bg.png`}
             alt={``}
@@ -217,22 +238,23 @@ const OperatorBlock = (props: Props) => {
           {(!op.mastery[n] || op.mastery[n] === 0
             ? <Box
               component="img"
+              className="stack"
               loading="lazy"
               src={`/img/rank/${op.skillLevel}.png`}
               alt={`Rank ${op.skillLevel}`}
             />
             : <Box
               component="img"
+              className="stack"
               loading="lazy"
               src={`/img/rank/m-${op.mastery[n]}.png`}
-              alt={`Mastery Level ${op.mastery[n]}`}
+              alt={`Mastery ${op.mastery[n]}`}
             />
           )}
         </Box>
       )}
     </Box>
 
-  const opInfo: OpJsonObj = operatorJson[op.id as keyof typeof operatorJson]
   const opModuleUrls: string[] = op.module.map((lvl: number, n: number) =>
     lvl > 0 ? `/img/equip/${opInfo.modules[n].typeName.toLowerCase()}.png` : ""
   );
@@ -303,7 +325,11 @@ const OperatorBlock = (props: Props) => {
       gridTemplateAreas: `"name fav" "img img"`,
       gridTemplateRows: "auto 1fr",
       gridTemplateColumns: "1fr auto",
-      backgroundColor: op.favorite ? isMaxKrooster(op) ? "primary.dark" : "error.dark" : "info.main",
+      backgroundColor: nobg ? "info.main"
+        : op.favorite
+          ? isMaxKrooster(op)
+            ? "primary.dark" : "error.dark"
+          : "info.main",
       boxShadow: 1,
       padding: { xs: "4px 8px 4px 6px", sm: "6px 10px 8px 10px" },
       margin: { xs: "2px 4px 4px 10px", sm: "2px 16px 10px 12px" },

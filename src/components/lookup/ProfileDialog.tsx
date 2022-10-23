@@ -6,6 +6,7 @@ import { SocialInfo } from "../../types/social";
 import { Operator } from "../../types/operator";
 import operatorJson from "../../data/operators.json";
 import { isObject } from "util";
+import OperatorBlock from "../view/OperatorBlock";
 
 interface Props {
   roster: Record<string, Operator>;
@@ -111,71 +112,25 @@ const ProfileDialog = (props: Props) => {
           flexDirection: "column",
           gap: 1,
         }}>
-          <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "3fr 2fr" }, columnGap: "2rem", justifyContent: "center", color: "text.secondary" }}>
+          <Box sx={{
+            columnGap: "2rem",
+            justifyContent: "center",
+            "& .MuiDivider-wrapper": {
+              color: "text.secondary"
+            }
+          }}>
             <Box>
               <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
                 Support
               </Divider>
-              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Box sx={{
+                display: "flex", justifyContent: "space-around", color: "text.main"
+              }}>
                 {user?.support?.map(s => {
+                  if (!s.opID) return null;
+                  if (!s.opSkill) s.opSkill = 0;
                   const op = roster[s.opID]
-                  let intermediate = s.opID;
-                  if (op.promotion === 2) {
-                    intermediate += "_2";
-                  } else if (op.promotion === 1 && op.name === "Amiya") {
-                    intermediate += "_1";
-                  }
-                  const opInfo = operatorJson[op.id as keyof typeof operatorJson];
-                  return <Box key={s.opID} sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-                    <Box
-                      component="img"
-                      key={op.name}
-                      src={`/img/avatars/${intermediate}.png`}
-                      sx={{
-                        gridColumn: "span 2",
-                        mx: "auto",
-                        width: "6rem",
-                        height: "6rem",
-                      }}
-                    />
-                    <Box
-                      component="img"
-                      sx={{
-                        width: "3rem",
-                        height: "3rem",
-                      }}
-                      src={`/img/skills/${opInfo.skills[s.opSkill].iconId ?? opInfo.skills[s.opSkill].skillId}.png`}
-                      alt={`Skill ${s.opSkill + 1}`}
-                    />
-                    <Box sx={{
-                      display: "grid",
-                      "& > *": {
-                        gridArea: "1 / 1",
-                        width: "3rem",
-                        height: "3rem",
-                      },
-                    }}>
-                      <Box component="img"
-                        src={`/img/rank/bg.png`}
-                        loading="lazy"
-                        alt={""}
-                      />
-                      {(!op.mastery[s.opSkill] || op.mastery[s.opSkill] === 0
-                        ? <Box
-                          component="img"
-                          loading="lazy"
-                          src={`/img/rank/${op.skillLevel}.png`}
-                          alt={`Level ${op.skillLevel}`}
-                        />
-                        : <Box
-                          component="img"
-                          loading="lazy"
-                          src={`/img/rank/m-${op.mastery[s.opSkill]}.png`}
-                          alt={`Mastery Level ${op.mastery[s.opSkill]}`}
-                        />
-                      )}
-                    </Box>
-                  </Box>
+                  return <OperatorBlock key={op.id} op={op} nobg skill={s.opSkill} />
                 })}
               </Box>
             </Box>
@@ -183,7 +138,13 @@ const ProfileDialog = (props: Props) => {
               <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
                 Socials
               </Divider>
-              <Box sx={{ display: "grid", gridTemplateColumns: { xs: "auto 1fr auto 1fr", sm: "auto 1fr" }, gap: 1, alignItems: "center", height: "min-content", pl: 1 }}>
+              <Box sx={{
+                display: "grid",
+                gridTemplateColumns: "auto 1fr auto 1fr",
+                gap: 1,
+                alignItems: "center",
+                height: "min-content", pl: 1
+              }}>
                 <Box sx={{ borderRadius: "50%", width: "1.5rem", height: "1.5rem", opacity: "0.65" }}
                   component="img"
                   src="/img/ext/icon_clyde_white_RGB.svg"
