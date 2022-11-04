@@ -4,18 +4,28 @@ import { fileURLToPath } from "url";
 
 import enSkinTable from "./ArknightsGameData/en_US/gamedata/excel/skin_table.json" assert { type: "json" };
 import cnSkinTable from "./ArknightsGameData/zh_CN/gamedata/excel/skin_table.json" assert { type: "json" };
+import cnCharacterTable from "./ArknightsGameData/zh_CN/gamedata/excel/character_table.json" assert { type: "json" };
+
+const isOperator = (charId) => {
+  const operator = cnCharacterTable[charId];
+  return (
+    operator.profession !== "TOKEN" &&
+    operator.profession !== "TRAP" &&
+    !operator.isNotObtainable
+  );
+};
 
 const createSkinsJson = () => {
   const skinObj = {};
 
   [...Object.values(cnSkinTable.charSkins)].forEach(skin => {
+    if (!isOperator(skin.charId)) return;
     const enSkin = enSkinTable.charSkins[skin.skinId];
     skinObj[skin.charId] ??= [];
     skinObj[skin.charId].push({
-      op: skin.charId,
       skinId: skin.skinId,
       skinName: (enSkin && enSkin.displaySkin.skinName) ?? skin.displaySkin.skinName,
-      sortId: skin.sortId,
+      sortId: skin.displaySkin.sortId,
     });
   })
 
