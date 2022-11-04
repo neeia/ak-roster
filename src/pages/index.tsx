@@ -256,8 +256,7 @@ const Home: NextPage = () => {
                   Support Krooster
                 </Typography>
                 <Typography variant="body1">
-                  If you like what I do and have money to spare, you should donate it to a charity.
-                  But if you really want to, then you can also support the site.
+                  If you like what I do and have money to spare, then you can help contribute to server costs.
                 </Typography>
                 <Kofi />
               </Box>
