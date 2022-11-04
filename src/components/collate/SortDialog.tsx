@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Button, ButtonBase, Dialog, DialogContent, DialogTitle, Divider, IconButton, MenuItem, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { Close, DragHandle, FilterAltOutlined, NorthEast, PlaylistAdd, SouthEast, Tune } from "@mui/icons-material";
-import { SortFunction, SortListItem } from "../../types/sort";
+import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, MenuItem, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Close, DragHandle, NorthEast, PlaylistAdd, Sort, SouthEast } from "@mui/icons-material";
+import { SortFunction, SortListItem } from "types/sort";
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 
 
@@ -55,7 +55,7 @@ const SortDialog = (props: Props) => {
   return (
     <>
       <IconButton onClick={() => { setOpen(true); }} aria-label="Sort">
-        <Tune fontSize="large" color="primary" />
+        <Sort fontSize="large" color="primary" />
       </IconButton>
       <Dialog
         open={open}
