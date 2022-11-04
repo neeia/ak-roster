@@ -6,6 +6,8 @@ import { Favorite } from "@mui/icons-material";
 import getTextWidth from "../../styles/getTextWidth";
 import appTheme from "../../styles/theme/appTheme";
 import Image from "next/image";
+import { isUndefined } from "util";
+
 const WIDTH_TO_PX = 10 / 7;
 const LONG_CUTOFF = 75;
 const LONGER_CUTOFF = 95;
@@ -13,11 +15,12 @@ const LONGER_CUTOFF = 95;
 interface Props {
   op: Operator;
   onClick: (opId: string) => void;
-  className?: string;
+  hidden?: boolean;
+  toggled?: boolean;
 }
 
 const OperatorButton = React.memo((props: Props) => {
-  const { op, onClick, className } = props;
+  const { op, onClick, hidden, toggled } = props;
 
   const [n, t] = op.name.split(" the ");
   const name = t ?? n;
@@ -53,14 +56,15 @@ const OperatorButton = React.memo((props: Props) => {
     <Box
       component="li"
       sx={{
+        display: hidden ? "none" : "",
         listStyleType: "none",
       }}>
       <Button
-        className={className + (op.owned ? "" : "unowned")}
-        onClick={() => {
-          onClick(op.id);
-        }}>
+        className={isUndefined(toggled) ? op.owned ? "" : "unowned" : toggled ? "toggled" : "untoggled"}
+        onClick={() => onClick(op.id)}
+      >
         <Box
+          className={toggled || op.owned ? "" : "unowned"}
           sx={{
             height: "calc(4rem + 3px)",
             width: "4rem",
