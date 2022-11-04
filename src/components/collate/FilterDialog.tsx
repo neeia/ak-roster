@@ -11,6 +11,23 @@ import { Close, FilterAltOutlined } from "@mui/icons-material";
 import { Operator, OpJsonObj } from "../../types/operator";
 import { AccountInfo } from "../../types/doctor";
 import useLocalStorage from "../../util/useLocalStorage";
+import SelFilter from "./filter/SelFilter";
+
+const sixSel = ["Exusiai", "Siege", "Ifrit", "Eyjafjalla", "Angelina", "Shining",
+  "Nightingale", "Hoshiguma", "Saria", "SilverAsh", "Skadi", "Ch'en", "Schwarz",
+  "Hellagur", "Magallan", "Mostima", "Blaze", "Aak", "Ceobe", "Bagpipe", "Phantom",
+  "Weedy", "Rosa", "Suzuran", "Thorns", "Eunectes", "Surtr", "Blemishine", "Mudrock",
+  "Mountain", "Archetto", "Saga", "Passenger", "Kal'tsit", "Carnelian", "Pallas",
+  "Mizuki", "Saileach", "Fartooth"];
+
+const fiveSel = ["Ptilopsis", "Zima", "Texas", "Franka", "Lappland", "Specter",
+  "Blue Poison", "Platinum", "Meteorite", "Skyfire", "Mayer", "Silence", "Warfarin",
+  "Nearl", "Projekt Red", "Liskarm", "Croissant", "Provence", "Firewatch", "Cliffheart",
+  "Pramanix", "Istina", "Sora", "Manticore", "FEater", "Nightmare", "Glaucus", "Swire",
+  "Astesia", "Executor", "Waai Fu", "Reed", "Broca", "GreyThroat", "Hung", "Leizi",
+  "Sesa", "Shamare", "Elysium"];
+
+const sel = [fiveSel, sixSel];
 
 interface Props {
   filter: Record<string, Record<string, FilterFunction>>;
@@ -114,6 +131,28 @@ const FilterDialog = memo((props: Props) => {
     }
   }
 
+  const five = filter["sel"] && !!filter["sel"]["five"]
+  const six = filter["sel"] && !!filter["sel"]["six"]
+  const toggleFive = () => {
+    const filterKey = "sel";
+    if (five) {
+      removeFilter(filterKey, "five");
+    }
+    else {
+      addFilter(filterKey, "five", (op) => fiveSel.includes(op.name));
+    }
+  }
+  const toggleSix = () => {
+    const filterKey = "sel";
+    if (six) {
+      removeFilter(filterKey, "six");
+    }
+    else {
+      addFilter(filterKey, "six", (op) => sixSel.includes(op.name));
+    }
+  }
+
+
   const [doctor] = useLocalStorage<AccountInfo>("doctor", {});
   useEffect(() => {
     const filterKey = "cn";
@@ -210,6 +249,14 @@ const FilterDialog = memo((props: Props) => {
               cnMod={cnMod}
               toggleEN={toggleENMod}
               toggleCN={toggleCNMod}
+            />
+          </Box>
+          <Box>
+            <SelFilter
+              five={five}
+              six={six}
+              toggleFive={toggleFive}
+              toggleSix={toggleSix}
             />
           </Box>
           <Button onClick={clearFilters}>

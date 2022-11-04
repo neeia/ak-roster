@@ -24,14 +24,14 @@ const OwnedFilter = (props: Props) => {
           sx={{ borderRadius: `${r}px 0px 0px ${r}px` }}
           onClick={() => toggleFilter(true)}
         >
-          <Check htmlColor="lightgreen" />
+          <Check color="success" />
         </IconButton>
         <IconButton
           className={ownedFilter === false ? "active" : "inactive"}
           sx={{ borderRadius: `0px ${r}px ${r}px 0px` }}
           onClick={() => toggleFilter(false)}
         >
-          <Clear htmlColor="red" />
+          <Clear color="error" />
         </IconButton>
       </Box>
     </Box>);
