@@ -1,5138 +1,4037 @@
 {
   "char_285_medic2": [
     {
-      "op": "char_285_medic2",
       "skinId": "char_285_medic2#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_285_medic2",
       "skinId": "char_285_medic2@boc#4",
-      "skinName": "Shore Rescue Modification"
+      "skinName": "Shore Rescue Modification",
+      "sortId": 177
     }
   ],
   "char_286_cast3": [
     {
-      "op": "char_286_cast3",
       "skinId": "char_286_cast3#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_286_cast3",
       "skinId": "char_286_cast3@summer#1",
-      "skinName": "SUM019.ver"
+      "skinName": "SUM019.ver",
+      "sortId": 79
     }
   ],
   "char_376_therex": [
     {
-      "op": "char_376_therex",
       "skinId": "char_376_therex#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_4000_jnight": [
     {
-      "op": "char_4000_jnight",
       "skinId": "char_4000_jnight#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_502_nblade": [
     {
-      "op": "char_502_nblade",
       "skinId": "char_502_nblade#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_500_noirc": [
     {
-      "op": "char_500_noirc",
       "skinId": "char_500_noirc#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_503_rang": [
     {
-      "op": "char_503_rang",
       "skinId": "char_503_rang#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_501_durin": [
     {
-      "op": "char_501_durin",
       "skinId": "char_501_durin#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_009_12fce": [
     {
-      "op": "char_009_12fce",
       "skinId": "char_009_12fce#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_123_fang": [
     {
-      "op": "char_123_fang",
       "skinId": "char_123_fang#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_123_fang",
       "skinId": "char_123_fang@winter#1",
-      "skinName": "Cruciata"
+      "skinName": "Cruciata",
+      "sortId": 123
     }
   ],
   "char_240_wyvern": [
     {
-      "op": "char_240_wyvern",
       "skinId": "char_240_wyvern#1",
-      "skinName": null
-    }
-  ],
-  "char_504_rguard": [
-    {
-      "op": "char_504_rguard",
-      "skinId": "char_504_rguard#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_192_falco": [
     {
-      "op": "char_192_falco",
       "skinId": "char_192_falco#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_208_melan": [
     {
-      "op": "char_208_melan",
       "skinId": "char_208_melan#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_208_melan",
       "skinId": "char_208_melan@epoque#1",
-      "skinName": "Letters from Wessex"
+      "skinName": "Letters from Wessex",
+      "sortId": 11
     }
   ],
   "char_281_popka": [
     {
-      "op": "char_281_popka",
       "skinId": "char_281_popka#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_209_ardign": [
     {
-      "op": "char_209_ardign",
       "skinId": "char_209_ardign#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_209_ardign",
       "skinId": "char_209_ardign@snow#1",
-      "skinName": "Cheerful Guardian"
+      "skinName": "Cheerful Guardian",
+      "sortId": 131
     }
   ],
   "char_122_beagle": [
     {
-      "op": "char_122_beagle",
       "skinId": "char_122_beagle#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_122_beagle",
       "skinId": "char_122_beagle@boc#1",
-      "skinName": "Dreadnaught"
-    }
-  ],
-  "char_514_rdfend": [
-    {
-      "op": "char_514_rdfend",
-      "skinId": "char_514_rdfend#1",
-      "skinName": null
+      "skinName": "Dreadnaught",
+      "sortId": 166
     }
   ],
   "char_284_spot": [
     {
-      "op": "char_284_spot",
       "skinId": "char_284_spot#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_284_spot",
       "skinId": "char_284_spot@boc#3",
-      "skinName": "Professional"
+      "skinName": "Professional",
+      "sortId": 173
     }
   ],
   "char_124_kroos": [
     {
-      "op": "char_124_kroos",
       "skinId": "char_124_kroos#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_124_kroos",
       "skinId": "char_124_kroos@witch#1",
-      "skinName": "the mag"
+      "skinName": "the mag",
+      "sortId": 112
     }
   ],
   "char_211_adnach": [
     {
-      "op": "char_211_adnach",
       "skinId": "char_211_adnach#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_211_adnach",
       "skinId": "char_211_adnach@sale#5",
-      "skinName": "无痕行者"
-    }
-  ],
-  "char_507_rsnipe": [
-    {
-      "op": "char_507_rsnipe",
-      "skinId": "char_507_rsnipe#1",
-      "skinName": null
+      "skinName": "无痕行者",
+      "sortId": 8
     }
   ],
   "char_121_lava": [
     {
-      "op": "char_121_lava",
       "skinId": "char_121_lava#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_120_hibisc": [
     {
-      "op": "char_120_hibisc",
       "skinId": "char_120_hibisc#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_120_hibisc",
       "skinId": "char_120_hibisc@nian#1",
-      "skinName": "Night Watcher"
+      "skinName": "Night Watcher",
+      "sortId": 50
     }
   ],
   "char_212_ansel": [
     {
-      "op": "char_212_ansel",
       "skinId": "char_212_ansel#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_212_ansel",
       "skinId": "char_212_ansel@summer#1",
-      "skinName": "Casual Vacation HDm06"
-    }
-  ],
-  "char_506_rmedic": [
-    {
-      "op": "char_506_rmedic",
-      "skinId": "char_506_rmedic#1",
-      "skinName": null
+      "skinName": "Casual Vacation HDm06",
+      "sortId": 74
     }
   ],
   "char_210_stward": [
     {
-      "op": "char_210_stward",
       "skinId": "char_210_stward#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_210_stward",
       "skinId": "char_210_stward@sale#6",
-      "skinName": "风雪邀请"
-    }
-  ],
-  "char_505_rcast": [
-    {
-      "op": "char_505_rcast",
-      "skinId": "char_505_rcast#1",
-      "skinName": null
+      "skinName": "风雪邀请",
+      "sortId": 9
     }
   ],
   "char_278_orchid": [
     {
-      "op": "char_278_orchid",
       "skinId": "char_278_orchid#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_141_nights": [
     {
-      "op": "char_141_nights",
       "skinId": "char_141_nights#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_141_nights",
       "skinId": "char_141_nights#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_109_fmout": [
     {
-      "op": "char_109_fmout",
       "skinId": "char_109_fmout#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_109_fmout",
       "skinId": "char_109_fmout#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_109_fmout",
       "skinId": "char_109_fmout@epoque#2",
-      "skinName": "Unknown Journey"
+      "skinName": "Unknown Journey",
+      "sortId": 12
     }
   ],
   "char_253_greyy": [
     {
-      "op": "char_253_greyy",
       "skinId": "char_253_greyy#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_253_greyy",
       "skinId": "char_253_greyy#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_253_greyy",
       "skinId": "char_253_greyy@epoque#8",
-      "skinName": "Eggcellent Craftsman"
+      "skinName": "Eggcellent Craftsman",
+      "sortId": 24
     }
   ],
   "char_328_cammou": [
     {
-      "op": "char_328_cammou",
       "skinId": "char_328_cammou#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_328_cammou",
       "skinId": "char_328_cammou#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_328_cammou",
       "skinId": "char_328_cammou@witch#2",
-      "skinName": "Grave Thief"
+      "skinName": "Grave Thief",
+      "sortId": 116
     }
   ],
   "char_469_indigo": [
     {
-      "op": "char_469_indigo",
       "skinId": "char_469_indigo#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_469_indigo",
       "skinId": "char_469_indigo#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_469_indigo",
       "skinId": "char_469_indigo@nian#7",
-      "skinName": "Serene Day"
+      "skinName": "Serene Day",
+      "sortId": 64
     }
   ],
   "char_4004_pudd": [
     {
-      "op": "char_4004_pudd",
       "skinId": "char_4004_pudd#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4004_pudd",
       "skinId": "char_4004_pudd#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_235_jesica": [
     {
-      "op": "char_235_jesica",
       "skinId": "char_235_jesica#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_235_jesica",
       "skinId": "char_235_jesica#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_235_jesica",
       "skinId": "char_235_jesica@nian#2",
-      "skinName": "Clivia"
+      "skinName": "Clivia",
+      "sortId": 54
     },
     {
-      "op": "char_235_jesica",
       "skinId": "char_235_jesica@wild#2",
-      "skinName": "Ash"
+      "skinName": "Ash",
+      "sortId": 145
     },
     {
-      "op": "char_235_jesica",
       "skinId": "char_235_jesica@sweep#1",
-      "skinName": "Iron Block"
+      "skinName": "Iron Block",
+      "sortId": 154
     }
   ],
   "char_126_shotst": [
     {
-      "op": "char_126_shotst",
       "skinId": "char_126_shotst#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_126_shotst",
       "skinId": "char_126_shotst#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_126_shotst",
       "skinId": "char_126_shotst@epoque#10",
-      "skinName": "Bard's Holiday"
+      "skinName": "Bard's Holiday",
+      "sortId": 29
     }
   ],
   "char_190_clour": [
     {
-      "op": "char_190_clour",
       "skinId": "char_190_clour#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_190_clour",
       "skinId": "char_190_clour#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_133_mm": [
     {
-      "op": "char_133_mm",
       "skinId": "char_133_mm#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_133_mm",
       "skinId": "char_133_mm#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_118_yuki": [
     {
-      "op": "char_118_yuki",
       "skinId": "char_118_yuki#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_118_yuki",
       "skinId": "char_118_yuki#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_118_yuki",
       "skinId": "char_118_yuki@boc#2",
-      "skinName": "Wind of Breaking Blade"
+      "skinName": "Wind of Breaking Blade",
+      "sortId": 168
     }
   ],
   "char_440_pinecn": [
     {
-      "op": "char_440_pinecn",
       "skinId": "char_440_pinecn#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_440_pinecn",
       "skinId": "char_440_pinecn#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_440_pinecn",
       "skinId": "char_440_pinecn@shining#1",
-      "skinName": "Sing a Song"
+      "skinName": "Sing a Song",
+      "sortId": 208
     }
   ],
   "char_302_glaze": [
     {
-      "op": "char_302_glaze",
       "skinId": "char_302_glaze#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_302_glaze",
       "skinId": "char_302_glaze#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_366_acdrop": [
     {
-      "op": "char_366_acdrop",
       "skinId": "char_366_acdrop#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_366_acdrop",
       "skinId": "char_366_acdrop#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4062_totter": [
     {
-      "op": "char_4062_totter",
       "skinId": "char_4062_totter#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4062_totter",
       "skinId": "char_4062_totter#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_198_blackd": [
     {
-      "op": "char_198_blackd",
       "skinId": "char_198_blackd#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_198_blackd",
       "skinId": "char_198_blackd#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_198_blackd",
       "skinId": "char_198_blackd@winter#1",
-      "skinName": "New Routes"
+      "skinName": "New Routes",
+      "sortId": 122
     },
     {
-      "op": "char_198_blackd",
       "skinId": "char_198_blackd@as#1",
-      "skinName": "Speechless Sound"
+      "skinName": "Speechless Sound",
+      "sortId": 196
     }
   ],
   "char_149_scave": [
     {
-      "op": "char_149_scave",
       "skinId": "char_149_scave#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_149_scave",
       "skinId": "char_149_scave#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_149_scave",
       "skinId": "char_149_scave@striker#2",
-      "skinName": "Survive"
+      "skinName": "Survive",
+      "sortId": 194
     }
   ],
   "char_290_vigna": [
     {
-      "op": "char_290_vigna",
       "skinId": "char_290_vigna#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_290_vigna",
       "skinId": "char_290_vigna#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_290_vigna",
       "skinId": "char_290_vigna@summer#1",
-      "skinName": "Casual Vacation HD01"
+      "skinName": "Casual Vacation HD01",
+      "sortId": 73
     },
     {
-      "op": "char_290_vigna",
       "skinId": "char_290_vigna@as#1",
-      "skinName": "Black Wave"
+      "skinName": "Black Wave",
+      "sortId": 197
     }
   ],
   "char_151_myrtle": [
     {
-      "op": "char_151_myrtle",
       "skinId": "char_151_myrtle#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_151_myrtle",
       "skinId": "char_151_myrtle#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_151_myrtle",
       "skinId": "char_151_myrtle@epoque#12",
-      "skinName": "Light Gold Celebration"
+      "skinName": "Light Gold Celebration",
+      "sortId": 31
     }
   ],
   "char_452_bstalk": [
     {
-      "op": "char_452_bstalk",
       "skinId": "char_452_bstalk#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_452_bstalk",
       "skinId": "char_452_bstalk#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_452_bstalk",
       "skinId": "char_452_bstalk@snow#4",
-      "skinName": "Gift Uncompleted"
+      "skinName": "Gift Uncompleted",
+      "sortId": 138
     }
   ],
   "char_130_doberm": [
     {
-      "op": "char_130_doberm",
       "skinId": "char_130_doberm#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_130_doberm",
       "skinId": "char_130_doberm#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_130_doberm",
       "skinId": "char_130_doberm@epoque#7",
-      "skinName": "Lieutenant"
+      "skinName": "Lieutenant",
+      "sortId": 22
     }
   ],
   "char_289_gyuki": [
     {
-      "op": "char_289_gyuki",
       "skinId": "char_289_gyuki#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_289_gyuki",
       "skinId": "char_289_gyuki#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_159_peacok": [
     {
-      "op": "char_159_peacok",
       "skinId": "char_159_peacok#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_159_peacok",
       "skinId": "char_159_peacok#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_159_peacok",
       "skinId": "char_159_peacok@game#1",
-      "skinName": "超级断罪朋友"
+      "skinName": "超级断罪朋友",
+      "sortId": 209
     }
   ],
   "char_193_frostl": [
     {
-      "op": "char_193_frostl",
       "skinId": "char_193_frostl#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_193_frostl",
       "skinId": "char_193_frostl#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_193_frostl",
       "skinId": "char_193_frostl@boc#4",
-      "skinName": "Breaking the Ice"
+      "skinName": "Breaking the Ice",
+      "sortId": 178
     }
   ],
   "char_127_estell": [
     {
-      "op": "char_127_estell",
       "skinId": "char_127_estell#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_127_estell",
       "skinId": "char_127_estell#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_185_frncat": [
     {
-      "op": "char_185_frncat",
       "skinId": "char_185_frncat#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_185_frncat",
       "skinId": "char_185_frncat#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_301_cutter": [
     {
-      "op": "char_301_cutter",
       "skinId": "char_301_cutter#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_301_cutter",
       "skinId": "char_301_cutter#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_337_utage": [
     {
-      "op": "char_337_utage",
       "skinId": "char_337_utage#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_337_utage",
       "skinId": "char_337_utage#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_337_utage",
       "skinId": "char_337_utage@epoque#15",
-      "skinName": "伪装"
+      "skinName": "伪装",
+      "sortId": 39
     },
     {
-      "op": "char_337_utage",
       "skinId": "char_337_utage@summer#4",
-      "skinName": "Summer Flowers FA661"
+      "skinName": "Summer Flowers FA661",
+      "sortId": 88
     }
   ],
   "char_271_spikes": [
     {
-      "op": "char_271_spikes",
       "skinId": "char_271_spikes#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_271_spikes",
       "skinId": "char_271_spikes#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_271_spikes",
       "skinId": "char_271_spikes@winter#2",
-      "skinName": "Casual"
+      "skinName": "Casual",
+      "sortId": 125
     }
   ],
   "char_4067_lolxh": [
     {
-      "op": "char_4067_lolxh",
       "skinId": "char_4067_lolxh#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4067_lolxh",
       "skinId": "char_4067_lolxh#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4063_quartz": [
     {
-      "op": "char_4063_quartz",
       "skinId": "char_4063_quartz#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4063_quartz",
       "skinId": "char_4063_quartz#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_237_gravel": [
     {
-      "op": "char_237_gravel",
       "skinId": "char_237_gravel#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_237_gravel",
       "skinId": "char_237_gravel#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_237_gravel",
       "skinId": "char_237_gravel@winter#2",
-      "skinName": "Modeling Night"
+      "skinName": "Modeling Night",
+      "sortId": 126
     }
   ],
   "char_272_strong": [
     {
-      "op": "char_272_strong",
       "skinId": "char_272_strong#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_272_strong",
       "skinId": "char_272_strong#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_272_strong",
       "skinId": "char_272_strong@summer#6",
-      "skinName": "Beach Guard GT002"
+      "skinName": "Beach Guard GT002",
+      "sortId": 96
     }
   ],
   "char_236_rope": [
     {
-      "op": "char_236_rope",
       "skinId": "char_236_rope#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_236_rope",
       "skinId": "char_236_rope#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_236_rope",
       "skinId": "char_236_rope@summer#2",
-      "skinName": "Summer Flowers FA008"
+      "skinName": "Summer Flowers FA008",
+      "sortId": 81
     },
     {
-      "op": "char_236_rope",
       "skinId": "char_236_rope@witch#1",
-      "skinName": "Imp's House"
+      "skinName": "Imp's House",
+      "sortId": 111
     }
   ],
   "char_117_myrrh": [
     {
-      "op": "char_117_myrrh",
       "skinId": "char_117_myrrh#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_117_myrrh",
       "skinId": "char_117_myrrh#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_117_myrrh",
       "skinId": "char_117_myrrh@wild#1",
-      "skinName": "Bitter Herbs"
+      "skinName": "Bitter Herbs",
+      "sortId": 141
     }
   ],
   "char_187_ccheal": [
     {
-      "op": "char_187_ccheal",
       "skinId": "char_187_ccheal#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_187_ccheal",
       "skinId": "char_187_ccheal#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_187_ccheal",
       "skinId": "char_187_ccheal@epoque#2",
-      "skinName": "Combat Medic"
+      "skinName": "Combat Medic",
+      "sortId": 13
     }
   ],
   "char_298_susuro": [
     {
-      "op": "char_298_susuro",
       "skinId": "char_298_susuro#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_298_susuro",
       "skinId": "char_298_susuro#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_298_susuro",
       "skinId": "char_298_susuro@summer#6",
-      "skinName": "Summer Flower FA026"
+      "skinName": "Summer Flower FA026",
+      "sortId": 92
     }
   ],
   "char_181_flower": [
     {
-      "op": "char_181_flower",
       "skinId": "char_181_flower#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_181_flower",
       "skinId": "char_181_flower#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_181_flower",
       "skinId": "char_181_flower@daily#1",
-      "skinName": "Species Plantarum"
+      "skinName": "Species Plantarum",
+      "sortId": 3
     },
     {
-      "op": "char_181_flower",
       "skinId": "char_181_flower@epoque#9",
-      "skinName": "Leisurely Afternoon"
+      "skinName": "Leisurely Afternoon",
+      "sortId": 27
     }
   ],
   "char_385_finlpp": [
     {
-      "op": "char_385_finlpp",
       "skinId": "char_385_finlpp#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_385_finlpp",
       "skinId": "char_385_finlpp#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4041_chnut": [
     {
-      "op": "char_4041_chnut",
       "skinId": "char_4041_chnut#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4041_chnut",
       "skinId": "char_4041_chnut#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_199_yak": [
     {
-      "op": "char_199_yak",
       "skinId": "char_199_yak#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_199_yak",
       "skinId": "char_199_yak#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_199_yak",
       "skinId": "char_199_yak@summer#1",
-      "skinName": "Beach Guard GT.001"
+      "skinName": "Beach Guard GT.001",
+      "sortId": 78
     }
   ],
   "char_150_snakek": [
     {
-      "op": "char_150_snakek",
       "skinId": "char_150_snakek#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_150_snakek",
       "skinId": "char_150_snakek#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_150_snakek",
       "skinId": "char_150_snakek@wild#1",
-      "skinName": "Quadrangle"
+      "skinName": "Quadrangle",
+      "sortId": 142
     }
   ],
   "char_381_bubble": [
     {
-      "op": "char_381_bubble",
       "skinId": "char_381_bubble#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_381_bubble",
       "skinId": "char_381_bubble#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_196_sunbr": [
     {
-      "op": "char_196_sunbr",
       "skinId": "char_196_sunbr#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_196_sunbr",
       "skinId": "char_196_sunbr#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_196_sunbr",
       "skinId": "char_196_sunbr@summer#1",
-      "skinName": "Summer Flowers FA011"
+      "skinName": "Summer Flowers FA011",
+      "sortId": 77
     }
   ],
   "char_260_durnar": [
     {
-      "op": "char_260_durnar",
       "skinId": "char_260_durnar#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_260_durnar",
       "skinId": "char_260_durnar#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_110_deepcl": [
     {
-      "op": "char_110_deepcl",
       "skinId": "char_110_deepcl#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_110_deepcl",
       "skinId": "char_110_deepcl#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_183_skgoat": [
     {
-      "op": "char_183_skgoat",
       "skinId": "char_183_skgoat#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_183_skgoat",
       "skinId": "char_183_skgoat#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_258_podego": [
     {
-      "op": "char_258_podego",
       "skinId": "char_258_podego#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_258_podego",
       "skinId": "char_258_podego#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_258_podego",
       "skinId": "char_258_podego@epoque#9",
-      "skinName": "Wake Up From a Nap"
+      "skinName": "Wake Up From a Nap",
+      "sortId": 28
     }
   ],
   "char_484_robrta": [
     {
-      "op": "char_484_robrta",
       "skinId": "char_484_robrta#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_484_robrta",
       "skinId": "char_484_robrta#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_484_robrta",
       "skinId": "char_484_robrta@summer#10",
-      "skinName": "夏卉 FA374"
+      "skinName": "夏卉 FA374",
+      "sortId": 104
     }
   ],
   "char_355_ethan": [
     {
-      "op": "char_355_ethan",
       "skinId": "char_355_ethan#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_355_ethan",
       "skinId": "char_355_ethan#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_355_ethan",
       "skinId": "char_355_ethan@epoque#7",
-      "skinName": "Infiltrator"
+      "skinName": "Infiltrator",
+      "sortId": 23
     }
   ],
   "char_277_sqrrel": [
     {
-      "op": "char_277_sqrrel",
       "skinId": "char_277_sqrrel#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_277_sqrrel",
       "skinId": "char_277_sqrrel#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_277_sqrrel",
       "skinId": "char_277_sqrrel@ghost#1",
-      "skinName": "Cleansweeper in the Castle"
+      "skinName": "Cleansweeper in the Castle",
+      "sortId": 186
     }
   ],
   "char_128_plosis": [
     {
-      "op": "char_128_plosis",
       "skinId": "char_128_plosis#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_128_plosis",
       "skinId": "char_128_plosis#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_128_plosis",
       "skinId": "char_128_plosis@epoque#3",
-      "skinName": "Serenity"
+      "skinName": "Serenity",
+      "sortId": 14
     }
   ],
   "char_275_breeze": [
     {
-      "op": "char_275_breeze",
       "skinId": "char_275_breeze#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_275_breeze",
       "skinId": "char_275_breeze#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_115_headbr": [
     {
-      "op": "char_115_headbr",
       "skinId": "char_115_headbr#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_115_headbr",
       "skinId": "char_115_headbr#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_115_headbr",
       "skinId": "char_115_headbr@marthe#2",
-      "skinName": "Ready to Go"
+      "skinName": "Ready to Go",
+      "sortId": 106
     },
     {
-      "op": "char_115_headbr",
       "skinId": "char_115_headbr@it#1",
-      "skinName": "Ursus IO79"
+      "skinName": "Ursus IO79",
+      "sortId": 203
     }
   ],
   "char_102_texas": [
     {
-      "op": "char_102_texas",
       "skinId": "char_102_texas#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_102_texas",
       "skinId": "char_102_texas#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_102_texas",
       "skinId": "char_102_texas@epoque#7",
-      "skinName": "Willpower"
+      "skinName": "Willpower",
+      "sortId": 21
     },
     {
-      "op": "char_102_texas",
       "skinId": "char_102_texas@winter#1",
-      "skinName": "Winter Messenger"
+      "skinName": "Winter Messenger",
+      "sortId": 120
     }
   ],
   "char_349_chiave": [
     {
-      "op": "char_349_chiave",
       "skinId": "char_349_chiave#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_349_chiave",
       "skinId": "char_349_chiave#2",
-      "skinName": null
-    }
-  ],
-  "char_513_apionr": [
-    {
-      "op": "char_513_apionr",
-      "skinId": "char_513_apionr#1",
-      "skinName": null
-    },
-    {
-      "op": "char_513_apionr",
-      "skinId": "char_513_apionr#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_261_sddrag": [
     {
-      "op": "char_261_sddrag",
       "skinId": "char_261_sddrag#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_261_sddrag",
       "skinId": "char_261_sddrag#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_261_sddrag",
       "skinId": "char_261_sddrag@ambienceSynesthesia#2",
-      "skinName": "Emerald Holiday"
+      "skinName": "Emerald Holiday",
+      "sortId": 200
     }
   ],
   "char_496_wildmn": [
     {
-      "op": "char_496_wildmn",
       "skinId": "char_496_wildmn#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_496_wildmn",
       "skinId": "char_496_wildmn#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_496_wildmn",
       "skinId": "char_496_wildmn@epoque#16",
-      "skinName": "正义缔造者"
+      "skinName": "正义缔造者",
+      "sortId": 42
     }
   ],
   "char_401_elysm": [
     {
-      "op": "char_401_elysm",
       "skinId": "char_401_elysm#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_401_elysm",
       "skinId": "char_401_elysm#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_401_elysm",
       "skinId": "char_401_elysm@summer#9",
-      "skinName": "灿阳朝露 SDm11"
+      "skinName": "灿阳朝露 SDm11",
+      "sortId": 103
     },
     {
-      "op": "char_401_elysm",
       "skinId": "char_401_elysm@snow#2",
-      "skinName": "Snowy Echo"
+      "skinName": "Snowy Echo",
+      "sortId": 133
     }
   ],
   "char_476_blkngt": [
     {
-      "op": "char_476_blkngt",
       "skinId": "char_476_blkngt#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_476_blkngt",
       "skinId": "char_476_blkngt#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_476_blkngt",
       "skinId": "char_476_blkngt@summer#8",
-      "skinName": "夏卉 FA641"
+      "skinName": "夏卉 FA641",
+      "sortId": 100
     }
   ],
   "char_497_ctable": [
     {
-      "op": "char_497_ctable",
       "skinId": "char_497_ctable#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_497_ctable",
       "skinId": "char_497_ctable#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_308_swire": [
     {
-      "op": "char_308_swire",
       "skinId": "char_308_swire#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_308_swire",
       "skinId": "char_308_swire#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_308_swire",
       "skinId": "char_308_swire@nian#2",
-      "skinName": "Honor and Splendor"
+      "skinName": "Honor and Splendor",
+      "sortId": 52
     }
   ],
   "char_265_sophia": [
     {
-      "op": "char_265_sophia",
       "skinId": "char_265_sophia#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_265_sophia",
       "skinId": "char_265_sophia#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_265_sophia",
       "skinId": "char_265_sophia@epoque#11",
-      "skinName": "Glory Purple"
+      "skinName": "Glory Purple",
+      "sortId": 30
     }
   ],
   "char_106_franka": [
     {
-      "op": "char_106_franka",
       "skinId": "char_106_franka#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_106_franka",
       "skinId": "char_106_franka#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_131_flameb": [
     {
-      "op": "char_131_flameb",
       "skinId": "char_131_flameb#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_131_flameb",
       "skinId": "char_131_flameb#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_131_flameb",
       "skinId": "char_131_flameb@summer#8",
-      "skinName": "悠然假日 HDm04"
-    }
-  ],
-  "char_508_aguard": [
-    {
-      "op": "char_508_aguard",
-      "skinId": "char_508_aguard#1",
-      "skinName": null
+      "skinName": "悠然假日 HDm04",
+      "sortId": 99
     }
   ],
   "char_155_tiger": [
     {
-      "op": "char_155_tiger",
       "skinId": "char_155_tiger#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_155_tiger",
       "skinId": "char_155_tiger#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_155_tiger",
       "skinId": "char_155_tiger@striker#2",
-      "skinName": "Valiant General"
+      "skinName": "Valiant General",
+      "sortId": 193
     }
   ],
   "char_415_flint": [
     {
-      "op": "char_415_flint",
       "skinId": "char_415_flint#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_415_flint",
       "skinId": "char_415_flint#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_415_flint",
       "skinId": "char_415_flint@boc#3",
-      "skinName": "Gorgeous Flower"
+      "skinName": "Gorgeous Flower",
+      "sortId": 172
     }
   ],
   "char_157_dagda": [
     {
-      "op": "char_157_dagda",
       "skinId": "char_157_dagda#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_157_dagda",
       "skinId": "char_157_dagda#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_140_whitew": [
     {
-      "op": "char_140_whitew",
       "skinId": "char_140_whitew#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_140_whitew",
       "skinId": "char_140_whitew#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_140_whitew",
       "skinId": "char_140_whitew@boc#1",
-      "skinName": "Refined Horrormare"
+      "skinName": "Refined Horrormare",
+      "sortId": 162
     }
   ],
   "char_294_ayer": [
     {
-      "op": "char_294_ayer",
       "skinId": "char_294_ayer#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_294_ayer",
       "skinId": "char_294_ayer#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_294_ayer",
       "skinId": "char_294_ayer@boc#3",
-      "skinName": "Tested One"
+      "skinName": "Tested One",
+      "sortId": 171
     }
   ],
   "char_252_bibeak": [
     {
-      "op": "char_252_bibeak",
       "skinId": "char_252_bibeak#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_252_bibeak",
       "skinId": "char_252_bibeak#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_252_bibeak",
       "skinId": "char_252_bibeak@winter#2",
-      "skinName": "Soft Wool"
+      "skinName": "Soft Wool",
+      "sortId": 124
     }
   ],
   "char_459_tachak": [
     {
-      "op": "char_459_tachak",
       "skinId": "char_459_tachak#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_459_tachak",
       "skinId": "char_459_tachak#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_459_tachak",
       "skinId": "char_459_tachak@rainbow6#1",
-      "skinName": "Lord"
+      "skinName": "Lord",
+      "sortId": 189
     }
   ],
   "char_143_ghost": [
     {
-      "op": "char_143_ghost",
       "skinId": "char_143_ghost#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_143_ghost",
       "skinId": "char_143_ghost#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_143_ghost",
       "skinId": "char_143_ghost@winter#1",
-      "skinName": "Undercurrent"
+      "skinName": "Undercurrent",
+      "sortId": 121
     }
   ],
   "char_356_broca": [
     {
-      "op": "char_356_broca",
       "skinId": "char_356_broca#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_356_broca",
       "skinId": "char_356_broca#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_356_broca",
       "skinId": "char_356_broca@marthe#4",
-      "skinName": "组间休息"
+      "skinName": "组间休息",
+      "sortId": 108
     }
   ],
   "char_274_astesi": [
     {
-      "op": "char_274_astesi",
       "skinId": "char_274_astesi#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_274_astesi",
       "skinId": "char_274_astesi#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_274_astesi",
       "skinId": "char_274_astesi@epoque#5",
-      "skinName": "Starseeker"
+      "skinName": "Starseeker",
+      "sortId": 18
     },
     {
-      "op": "char_274_astesi",
       "skinId": "char_274_astesi@shining#1",
-      "skinName": "Frlibe on the Palace"
+      "skinName": "Frlibe on the Palace",
+      "sortId": 207
     }
   ],
   "char_333_sidero": [
     {
-      "op": "char_333_sidero",
       "skinId": "char_333_sidero#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_333_sidero",
       "skinId": "char_333_sidero#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_333_sidero",
       "skinId": "char_333_sidero@summer#6",
-      "skinName": "Light Breeze LB03"
+      "skinName": "Light Breeze LB03",
+      "sortId": 95
     }
   ],
   "char_475_akafyu": [
     {
-      "op": "char_475_akafyu",
       "skinId": "char_475_akafyu#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_475_akafyu",
       "skinId": "char_475_akafyu#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_475_akafyu",
       "skinId": "char_475_akafyu@epoque#15",
-      "skinName": "心性"
+      "skinName": "心性",
+      "sortId": 41
     }
   ],
   "char_421_crow": [
     {
-      "op": "char_421_crow",
       "skinId": "char_421_crow#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_421_crow",
       "skinId": "char_421_crow#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_421_crow",
       "skinId": "char_421_crow@summer#9",
-      "skinName": "夏卉 FA210"
+      "skinName": "夏卉 FA210",
+      "sortId": 102
     }
   ],
   "char_4066_highmo": [
     {
-      "op": "char_4066_highmo",
       "skinId": "char_4066_highmo#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4066_highmo",
       "skinId": "char_4066_highmo#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_486_takila": [
     {
-      "op": "char_486_takila",
       "skinId": "char_486_takila#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_486_takila",
       "skinId": "char_486_takila#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_486_takila",
       "skinId": "char_486_takila@ambienceSynesthesia#2",
-      "skinName": "Cardwinner"
+      "skinName": "Cardwinner",
+      "sortId": 199
     }
   ],
   "char_129_bluep": [
     {
-      "op": "char_129_bluep",
       "skinId": "char_129_bluep#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_129_bluep",
       "skinId": "char_129_bluep#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_129_bluep",
       "skinId": "char_129_bluep@marthe#3",
-      "skinName": "Shoal Beat"
+      "skinName": "Shoal Beat",
+      "sortId": 107
     }
   ],
   "char_204_platnm": [
     {
-      "op": "char_204_platnm",
       "skinId": "char_204_platnm#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_204_platnm",
       "skinId": "char_204_platnm#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_204_platnm",
       "skinId": "char_204_platnm@summer#3",
-      "skinName": "Shimmering Dew SD05"
+      "skinName": "Shimmering Dew SD05",
+      "sortId": 84
     }
   ],
   "char_367_swllow": [
     {
-      "op": "char_367_swllow",
       "skinId": "char_367_swllow#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_367_swllow",
       "skinId": "char_367_swllow#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_367_swllow",
       "skinId": "char_367_swllow@boc#1",
-      "skinName": "Homecoming"
-    }
-  ],
-  "char_511_asnipe": [
-    {
-      "op": "char_511_asnipe",
-      "skinId": "char_511_asnipe#1",
-      "skinName": null
+      "skinName": "Homecoming",
+      "sortId": 164
     }
   ],
   "char_365_aprl": [
     {
-      "op": "char_365_aprl",
       "skinId": "char_365_aprl#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_365_aprl",
       "skinId": "char_365_aprl#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_365_aprl",
       "skinId": "char_365_aprl@wild#3",
-      "skinName": "Faraway Gaze"
+      "skinName": "Faraway Gaze",
+      "sortId": 148
     }
   ],
   "char_1021_kroos2": [
     {
-      "op": "char_1021_kroos2",
       "skinId": "char_1021_kroos2#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_1021_kroos2",
       "skinId": "char_1021_kroos2#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_219_meteo": [
     {
-      "op": "char_219_meteo",
       "skinId": "char_219_meteo#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_219_meteo",
       "skinId": "char_219_meteo#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_219_meteo",
       "skinId": "char_219_meteo@sweep#1",
-      "skinName": "Graphite"
+      "skinName": "Graphite",
+      "sortId": 152
     }
   ],
   "char_379_sesa": [
     {
-      "op": "char_379_sesa",
       "skinId": "char_379_sesa#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_379_sesa",
       "skinId": "char_379_sesa#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_279_excu": [
     {
-      "op": "char_279_excu",
       "skinId": "char_279_excu#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_279_excu",
       "skinId": "char_279_excu#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_279_excu",
       "skinId": "char_279_excu@boc#1",
-      "skinName": "Titleless Code"
+      "skinName": "Titleless Code",
+      "sortId": 163
     }
   ],
   "char_346_aosta": [
     {
-      "op": "char_346_aosta",
       "skinId": "char_346_aosta#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_346_aosta",
       "skinId": "char_346_aosta#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_346_aosta",
       "skinId": "char_346_aosta@game#2",
-      "skinName": "光铳调试员"
+      "skinName": "光铳调试员",
+      "sortId": 211
     }
   ],
   "char_002_amiya": [
     {
-      "op": "char_002_amiya",
       "skinId": "char_002_amiya#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_002_amiya",
       "skinId": "char_002_amiya#1+",
-      "skinName": null
+      "skinName": null,
+      "sortId": -2
     },
     {
-      "op": "char_002_amiya",
       "skinId": "char_002_amiya#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_002_amiya",
       "skinId": "char_002_amiya@winter#1",
-      "skinName": "Newsgirl"
+      "skinName": "Newsgirl",
+      "sortId": 2
     },
     {
-      "op": "char_002_amiya",
       "skinId": "char_002_amiya@epoque#4",
-      "skinName": "Fresh Fastener"
+      "skinName": "Fresh Fastener",
+      "sortId": 4
     },
     {
-      "op": "char_002_amiya",
       "skinId": "char_002_amiya@test#1",
-      "skinName": "播种者"
+      "skinName": "播种者",
+      "sortId": 6
     },
     {
-      "op": "char_002_amiya",
       "skinId": "char_1001_amiya2#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_405_absin": [
     {
-      "op": "char_405_absin",
       "skinId": "char_405_absin#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_405_absin",
       "skinId": "char_405_absin#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_411_tomimi": [
     {
-      "op": "char_411_tomimi",
       "skinId": "char_411_tomimi#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_411_tomimi",
       "skinId": "char_411_tomimi#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_411_tomimi",
       "skinId": "char_411_tomimi@summer#5",
-      "skinName": "Silent Night DN04"
+      "skinName": "Silent Night DN04",
+      "sortId": 91
     }
   ],
   "char_466_qanik": [
     {
-      "op": "char_466_qanik",
       "skinId": "char_466_qanik#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_466_qanik",
       "skinId": "char_466_qanik#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_166_skfire": [
     {
-      "op": "char_166_skfire",
       "skinId": "char_166_skfire#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_166_skfire",
       "skinId": "char_166_skfire#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_166_skfire",
       "skinId": "char_166_skfire@summer#1",
-      "skinName": "Temperature Difference RT.RX01"
-    }
-  ],
-  "char_509_acast": [
-    {
-      "op": "char_509_acast",
-      "skinId": "char_509_acast#1",
-      "skinName": null
+      "skinName": "Temperature Difference RT.RX01",
+      "sortId": 72
     }
   ],
   "char_306_leizi": [
     {
-      "op": "char_306_leizi",
       "skinId": "char_306_leizi#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_306_leizi",
       "skinId": "char_306_leizi#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_135_halo": [
     {
-      "op": "char_135_halo",
       "skinId": "char_135_halo#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_135_halo",
       "skinId": "char_135_halo#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_344_beewax": [
     {
-      "op": "char_344_beewax",
       "skinId": "char_344_beewax#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_344_beewax",
       "skinId": "char_344_beewax#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_344_beewax",
       "skinId": "char_344_beewax@epoque#9",
-      "skinName": "Weißer Sand"
+      "skinName": "Weißer Sand",
+      "sortId": 25
     }
   ],
   "char_373_lionhd": [
     {
-      "op": "char_373_lionhd",
       "skinId": "char_373_lionhd#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_373_lionhd",
       "skinId": "char_373_lionhd#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_373_lionhd",
       "skinId": "char_373_lionhd@snow#3",
-      "skinName": "Hope Cruise"
+      "skinName": "Hope Cruise",
+      "sortId": 136
     },
     {
-      "op": "char_373_lionhd",
       "skinId": "char_373_lionhd@wild#3",
-      "skinName": "Finder in the Rough"
+      "skinName": "Finder in the Rough",
+      "sortId": 147
     }
   ],
   "char_388_mint": [
     {
-      "op": "char_388_mint",
       "skinId": "char_388_mint#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_388_mint",
       "skinId": "char_388_mint#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_338_iris": [
     {
-      "op": "char_338_iris",
       "skinId": "char_338_iris#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_338_iris",
       "skinId": "char_338_iris#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_338_iris",
       "skinId": "char_338_iris@witch#3",
-      "skinName": "镜中来访"
+      "skinName": "镜中来访",
+      "sortId": 118
     }
   ],
   "char_1011_lava2": [
     {
-      "op": "char_1011_lava2",
       "skinId": "char_1011_lava2#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_1011_lava2",
       "skinId": "char_1011_lava2#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_1011_lava2",
       "skinId": "char_1011_lava2@nian#6",
-      "skinName": "Dusk Wisteria"
+      "skinName": "Dusk Wisteria",
+      "sortId": 60
     }
   ],
   "char_489_serum": [
     {
-      "op": "char_489_serum",
       "skinId": "char_489_serum#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_489_serum",
       "skinId": "char_489_serum#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4013_kjera": [
     {
-      "op": "char_4013_kjera",
       "skinId": "char_4013_kjera#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4013_kjera",
       "skinId": "char_4013_kjera#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4040_rockr": [
     {
-      "op": "char_4040_rockr",
       "skinId": "char_4040_rockr#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4040_rockr",
       "skinId": "char_4040_rockr#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_4040_rockr",
       "skinId": "char_4040_rockr@lxh#1",
-      "skinName": "欢唱之前"
+      "skinName": "欢唱之前",
+      "sortId": 205
     }
   ],
   "char_4054_malist": [
     {
-      "op": "char_4054_malist",
       "skinId": "char_4054_malist#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4054_malist",
       "skinId": "char_4054_malist#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_242_otter": [
     {
-      "op": "char_242_otter",
       "skinId": "char_242_otter#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_242_otter",
       "skinId": "char_242_otter#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_242_otter",
       "skinId": "char_242_otter@ghost#1",
-      "skinName": "Visionblazer in the Courtyard"
+      "skinName": "Visionblazer in the Courtyard",
+      "sortId": 184
     }
   ],
   "char_336_folivo": [
     {
-      "op": "char_336_folivo",
       "skinId": "char_336_folivo#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_336_folivo",
       "skinId": "char_336_folivo#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_108_silent": [
     {
-      "op": "char_108_silent",
       "skinId": "char_108_silent#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_108_silent",
       "skinId": "char_108_silent#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_108_silent",
       "skinId": "char_108_silent@winter#2",
-      "skinName": "Frosted Breath"
+      "skinName": "Frosted Breath",
+      "sortId": 127
     },
     {
-      "op": "char_108_silent",
       "skinId": "char_108_silent@sweep#1",
-      "skinName": "Lacquer"
+      "skinName": "Lacquer",
+      "sortId": 153
     }
   ],
   "char_171_bldsk": [
     {
-      "op": "char_171_bldsk",
       "skinId": "char_171_bldsk#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_171_bldsk",
       "skinId": "char_171_bldsk#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_171_bldsk",
       "skinId": "char_171_bldsk@summer#7",
-      "skinName": "Casual Vacation HD31"
+      "skinName": "Casual Vacation HD31",
+      "sortId": 97
     },
     {
-      "op": "char_171_bldsk",
       "skinId": "char_171_bldsk@witch#1",
-      "skinName": "the feast"
+      "skinName": "the feast",
+      "sortId": 110
     }
   ],
   "char_345_folnic": [
     {
-      "op": "char_345_folnic",
       "skinId": "char_345_folnic#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_345_folnic",
       "skinId": "char_345_folnic#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_345_folnic",
       "skinId": "char_345_folnic@wild#4",
-      "skinName": "Lasting Arrowroot"
-    }
-  ],
-  "char_510_amedic": [
-    {
-      "op": "char_510_amedic",
-      "skinId": "char_510_amedic#1",
-      "skinName": null
+      "skinName": "Lasting Arrowroot",
+      "sortId": 149
     }
   ],
   "char_348_ceylon": [
     {
-      "op": "char_348_ceylon",
       "skinId": "char_348_ceylon#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_348_ceylon",
       "skinId": "char_348_ceylon#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_436_whispr": [
     {
-      "op": "char_436_whispr",
       "skinId": "char_436_whispr#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_436_whispr",
       "skinId": "char_436_whispr#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_436_whispr",
       "skinId": "char_436_whispr@nian#4",
-      "skinName": "Tremble Cold"
+      "skinName": "Tremble Cold",
+      "sortId": 58
     }
   ],
   "char_402_tuye": [
     {
-      "op": "char_402_tuye",
       "skinId": "char_402_tuye#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_402_tuye",
       "skinId": "char_402_tuye#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_402_tuye",
       "skinId": "char_402_tuye@epoque#14",
-      "skinName": "Cultivate Vegetation"
+      "skinName": "Cultivate Vegetation",
+      "sortId": 38
     }
   ],
   "char_473_mberry": [
     {
-      "op": "char_473_mberry",
       "skinId": "char_473_mberry#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_473_mberry",
       "skinId": "char_473_mberry#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_473_mberry",
       "skinId": "char_473_mberry@epoque#14",
-      "skinName": "Plant Crude Drug"
+      "skinName": "Plant Crude Drug",
+      "sortId": 37
     }
   ],
   "char_449_glider": [
     {
-      "op": "char_449_glider",
       "skinId": "char_449_glider#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_449_glider",
       "skinId": "char_449_glider#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_449_glider",
       "skinId": "char_449_glider@epoque#17",
-      "skinName": "荒野之后"
+      "skinName": "荒野之后",
+      "sortId": 46
     }
   ],
   "char_1024_hbisc2": [
     {
-      "op": "char_1024_hbisc2",
       "skinId": "char_1024_hbisc2#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_1024_hbisc2",
       "skinId": "char_1024_hbisc2#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4071_peper": [
     {
-      "op": "char_4071_peper",
       "skinId": "char_4071_peper#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4071_peper",
       "skinId": "char_4071_peper#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_148_nearl": [
     {
-      "op": "char_148_nearl",
       "skinId": "char_148_nearl#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_148_nearl",
       "skinId": "char_148_nearl#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_148_nearl",
       "skinId": "char_148_nearl@summer#2",
-      "skinName": "Shimmering Dew SD01"
+      "skinName": "Shimmering Dew SD01",
+      "sortId": 80
     }
   ],
   "char_226_hmau": [
     {
-      "op": "char_226_hmau",
       "skinId": "char_226_hmau#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_226_hmau",
       "skinId": "char_226_hmau#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_226_hmau",
       "skinId": "char_226_hmau@nian#4",
-      "skinName": "Just A Driver"
+      "skinName": "Just A Driver",
+      "sortId": 57
     }
   ],
   "char_144_red": [
     {
-      "op": "char_144_red",
       "skinId": "char_144_red#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_144_red",
       "skinId": "char_144_red#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_144_red",
       "skinId": "char_144_red@summer#6",
-      "skinName": "Light Breeze LB01"
+      "skinName": "Light Breeze LB01",
+      "sortId": 93
     }
   ],
   "char_243_waaifu": [
     {
-      "op": "char_243_waaifu",
       "skinId": "char_243_waaifu#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_243_waaifu",
       "skinId": "char_243_waaifu#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_243_waaifu",
       "skinId": "char_243_waaifu@whirlwind#2",
-      "skinName": "Wild Flower of Street"
+      "skinName": "Wild Flower of Street",
+      "sortId": 67
     }
   ],
   "char_214_kafka": [
     {
-      "op": "char_214_kafka",
       "skinId": "char_214_kafka#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_214_kafka",
       "skinId": "char_214_kafka#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_214_kafka",
       "skinId": "char_214_kafka@snow#3",
-      "skinName": "Cardboard Fairy"
+      "skinName": "Cardboard Fairy",
+      "sortId": 137
     }
   ],
   "char_455_nothin": [
     {
-      "op": "char_455_nothin",
       "skinId": "char_455_nothin#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_455_nothin",
       "skinId": "char_455_nothin#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_455_nothin",
       "skinId": "char_455_nothin@nian#7",
-      "skinName": "Pale Rising Moon"
+      "skinName": "Pale Rising Moon",
+      "sortId": 62
     }
   ],
   "char_107_liskam": [
     {
-      "op": "char_107_liskam",
       "skinId": "char_107_liskam#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_107_liskam",
       "skinId": "char_107_liskam#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_107_liskam",
       "skinId": "char_107_liskam@nian#2",
-      "skinName": "Spring Vouivre"
+      "skinName": "Spring Vouivre",
+      "sortId": 53
     },
     {
-      "op": "char_107_liskam",
       "skinId": "char_107_liskam@striker#1",
-      "skinName": "Overload"
+      "skinName": "Overload",
+      "sortId": 191
     }
   ],
   "char_201_moeshd": [
     {
-      "op": "char_201_moeshd",
       "skinId": "char_201_moeshd#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_201_moeshd",
       "skinId": "char_201_moeshd#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_201_moeshd",
       "skinId": "char_201_moeshd@summer#4",
-      "skinName": "Seeker SK03"
+      "skinName": "Seeker SK03",
+      "sortId": 87
     },
     {
-      "op": "char_201_moeshd",
       "skinId": "char_201_moeshd@kfc#1",
-      "skinName": "清晨七点"
+      "skinName": "清晨七点",
+      "sortId": 158
     }
   ],
   "char_325_bison": [
     {
-      "op": "char_325_bison",
       "skinId": "char_325_bison#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_325_bison",
       "skinId": "char_325_bison#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_163_hpsts": [
     {
-      "op": "char_163_hpsts",
       "skinId": "char_163_hpsts#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_163_hpsts",
       "skinId": "char_163_hpsts#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_378_asbest": [
     {
-      "op": "char_378_asbest",
       "skinId": "char_378_asbest#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_378_asbest",
       "skinId": "char_378_asbest#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_378_asbest",
       "skinId": "char_378_asbest@whirlwind#3",
-      "skinName": "Glen Sonata"
-    }
-  ],
-  "char_512_aprot": [
-    {
-      "op": "char_512_aprot",
-      "skinId": "char_512_aprot#1",
-      "skinName": null
+      "skinName": "Glen Sonata",
+      "sortId": 69
     }
   ],
   "char_4025_aprot2": [
     {
-      "op": "char_4025_aprot2",
       "skinId": "char_4025_aprot2#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4025_aprot2",
       "skinId": "char_4025_aprot2#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4047_pianst": [
     {
-      "op": "char_4047_pianst",
       "skinId": "char_4047_pianst#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4047_pianst",
       "skinId": "char_4047_pianst#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_457_blitz": [
     {
-      "op": "char_457_blitz",
       "skinId": "char_457_blitz#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_457_blitz",
       "skinId": "char_457_blitz#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_304_zebra": [
     {
-      "op": "char_304_zebra",
       "skinId": "char_304_zebra#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_304_zebra",
       "skinId": "char_304_zebra#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_304_zebra",
       "skinId": "char_304_zebra@wild#6",
-      "skinName": "Tranquil Moss"
+      "skinName": "Tranquil Moss",
+      "sortId": 151
     }
   ],
   "char_431_ashlok": [
     {
-      "op": "char_431_ashlok",
       "skinId": "char_431_ashlok#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_431_ashlok",
       "skinId": "char_431_ashlok#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_422_aurora": [
     {
-      "op": "char_422_aurora",
       "skinId": "char_422_aurora#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_422_aurora",
       "skinId": "char_422_aurora#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_422_aurora",
       "skinId": "char_422_aurora@boc#4",
-      "skinName": "Polar Catcher"
+      "skinName": "Polar Catcher",
+      "sortId": 176
     }
   ],
   "char_145_prove": [
     {
-      "op": "char_145_prove",
       "skinId": "char_145_prove#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_145_prove",
       "skinId": "char_145_prove#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_145_prove",
       "skinId": "char_145_prove@summer#3",
-      "skinName": "Casual Vacation HD08"
+      "skinName": "Casual Vacation HD08",
+      "sortId": 83
     },
     {
-      "op": "char_145_prove",
       "skinId": "char_145_prove@wild#5",
-      "skinName": "Wasteland Walker"
+      "skinName": "Wasteland Walker",
+      "sortId": 150
     }
   ],
   "char_158_milu": [
     {
-      "op": "char_158_milu",
       "skinId": "char_158_milu#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_158_milu",
       "skinId": "char_158_milu#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_158_milu",
       "skinId": "char_158_milu@snow#2",
-      "skinName": "Snowywatch"
+      "skinName": "Snowywatch",
+      "sortId": 134
     },
     {
-      "op": "char_158_milu",
       "skinId": "char_158_milu@wild#2",
-      "skinName": "Wilted Cypress"
+      "skinName": "Wilted Cypress",
+      "sortId": 144
     }
   ],
   "char_218_cuttle": [
     {
-      "op": "char_218_cuttle",
       "skinId": "char_218_cuttle#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_218_cuttle",
       "skinId": "char_218_cuttle#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_218_cuttle",
       "skinId": "char_218_cuttle@epoque#12",
-      "skinName": "Silent Arrow"
+      "skinName": "Silent Arrow",
+      "sortId": 34
     }
   ],
   "char_4014_lunacu": [
     {
-      "op": "char_4014_lunacu",
       "skinId": "char_4014_lunacu#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4014_lunacu",
       "skinId": "char_4014_lunacu#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_363_toddi": [
     {
-      "op": "char_363_toddi",
       "skinId": "char_363_toddi#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_363_toddi",
       "skinId": "char_363_toddi#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4043_erato": [
     {
-      "op": "char_4043_erato",
       "skinId": "char_4043_erato#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4043_erato",
       "skinId": "char_4043_erato#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_1027_greyy2": [
     {
-      "op": "char_1027_greyy2",
       "skinId": "char_1027_greyy2#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_1027_greyy2",
       "skinId": "char_1027_greyy2#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_173_slchan": [
     {
-      "op": "char_173_slchan",
       "skinId": "char_173_slchan#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_173_slchan",
       "skinId": "char_173_slchan#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_173_slchan",
       "skinId": "char_173_slchan@wild#1",
-      "skinName": "Lone Climber"
+      "skinName": "Lone Climber",
+      "sortId": 140
     },
     {
-      "op": "char_173_slchan",
       "skinId": "char_173_slchan@wwf#1",
-      "skinName": "Highlands Visitor"
+      "skinName": "Highlands Visitor",
+      "sortId": 159
     }
   ],
   "char_383_snsant": [
     {
-      "op": "char_383_snsant",
       "skinId": "char_383_snsant#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_383_snsant",
       "skinId": "char_383_snsant#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_383_snsant",
       "skinId": "char_383_snsant@witch#2",
-      "skinName": "Fated Hero"
+      "skinName": "Fated Hero",
+      "sortId": 115
     }
   ],
   "char_174_slbell": [
     {
-      "op": "char_174_slbell",
       "skinId": "char_174_slbell#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_174_slbell",
       "skinId": "char_174_slbell#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_174_slbell",
       "skinId": "char_174_slbell@snow#1",
-      "skinName": "Caster's Frost"
+      "skinName": "Caster's Frost",
+      "sortId": 130
     }
   ],
   "char_254_vodfox": [
     {
-      "op": "char_254_vodfox",
       "skinId": "char_254_vodfox#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_254_vodfox",
       "skinId": "char_254_vodfox#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_254_vodfox",
       "skinId": "char_254_vodfox@witch#2",
-      "skinName": "Echo of the Horrorlair"
+      "skinName": "Echo of the Horrorlair",
+      "sortId": 114
     }
   ],
   "char_195_glassb": [
     {
-      "op": "char_195_glassb",
       "skinId": "char_195_glassb#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_195_glassb",
       "skinId": "char_195_glassb#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_195_glassb",
       "skinId": "char_195_glassb@kitchen#1",
-      "skinName": "Bibliosmia"
+      "skinName": "Bibliosmia",
+      "sortId": 181
     }
   ],
   "char_326_glacus": [
     {
-      "op": "char_326_glacus",
       "skinId": "char_326_glacus#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_326_glacus",
       "skinId": "char_326_glacus#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_326_glacus",
       "skinId": "char_326_glacus@ghost#1",
-      "skinName": "Exterminator in the Square"
+      "skinName": "Exterminator in the Square",
+      "sortId": 185
     }
   ],
   "char_4032_provs": [
     {
-      "op": "char_4032_provs",
       "skinId": "char_4032_provs#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4032_provs",
       "skinId": "char_4032_provs#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_433_windft": [
     {
-      "op": "char_433_windft",
       "skinId": "char_433_windft#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_433_windft",
       "skinId": "char_433_windft#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_101_sora": [
     {
-      "op": "char_101_sora",
       "skinId": "char_101_sora#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_101_sora",
       "skinId": "char_101_sora#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_101_sora",
       "skinId": "char_101_sora@epoque#17",
-      "skinName": "如歌"
+      "skinName": "如歌",
+      "sortId": 47
     },
     {
-      "op": "char_101_sora",
       "skinId": "char_101_sora@summer#1",
-      "skinName": "Summer Flowers FA361"
+      "skinName": "Summer Flowers FA361",
+      "sortId": 76
     }
   ],
   "char_4045_heidi": [
     {
-      "op": "char_4045_heidi",
       "skinId": "char_4045_heidi#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4045_heidi",
       "skinId": "char_4045_heidi#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_343_tknogi": [
     {
-      "op": "char_343_tknogi",
       "skinId": "char_343_tknogi#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_343_tknogi",
       "skinId": "char_343_tknogi#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_343_tknogi",
       "skinId": "char_343_tknogi@epoque#9",
-      "skinName": "Londinium Style Miko"
+      "skinName": "Londinium Style Miko",
+      "sortId": 26
     }
   ],
   "char_4019_ncdeer": [
     {
-      "op": "char_4019_ncdeer",
       "skinId": "char_4019_ncdeer#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4019_ncdeer",
       "skinId": "char_4019_ncdeer#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_492_quercu": [
     {
-      "op": "char_492_quercu",
       "skinId": "char_492_quercu#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_492_quercu",
       "skinId": "char_492_quercu#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_492_quercu",
       "skinId": "char_492_quercu@epoque#17",
-      "skinName": "遥乡之径"
+      "skinName": "遥乡之径",
+      "sortId": 48
     }
   ],
   "char_215_mantic": [
     {
-      "op": "char_215_mantic",
       "skinId": "char_215_mantic#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_215_mantic",
       "skinId": "char_215_mantic#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_215_mantic",
       "skinId": "char_215_mantic@epoque#4",
-      "skinName": "Invisible Dirge"
+      "skinName": "Invisible Dirge",
+      "sortId": 15
     }
   ],
   "char_478_kirara": [
     {
-      "op": "char_478_kirara",
       "skinId": "char_478_kirara#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_478_kirara",
       "skinId": "char_478_kirara#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_478_kirara",
       "skinId": "char_478_kirara@game#2",
-      "skinName": "前沿玩家"
+      "skinName": "前沿玩家",
+      "sortId": 212
     }
   ],
   "char_241_panda": [
     {
-      "op": "char_241_panda",
       "skinId": "char_241_panda#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_241_panda",
       "skinId": "char_241_panda#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_241_panda",
       "skinId": "char_241_panda@nian#7",
-      "skinName": "Gourmet"
+      "skinName": "Gourmet",
+      "sortId": 63
     },
     {
-      "op": "char_241_panda",
       "skinId": "char_241_panda@marthe#1",
-      "skinName": "Dojo Star"
+      "skinName": "Dojo Star",
+      "sortId": 105
     }
   ],
   "char_4036_forcer": [
     {
-      "op": "char_4036_forcer",
       "skinId": "char_4036_forcer#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4036_forcer",
       "skinId": "char_4036_forcer#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_451_robin": [
     {
-      "op": "char_451_robin",
       "skinId": "char_451_robin#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_451_robin",
       "skinId": "char_451_robin#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_451_robin",
       "skinId": "char_451_robin@epoque#13",
-      "skinName": "Gift of Wild"
+      "skinName": "Gift of Wild",
+      "sortId": 35
     }
   ],
   "char_458_rfrost": [
     {
-      "op": "char_458_rfrost",
       "skinId": "char_458_rfrost#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_458_rfrost",
       "skinId": "char_458_rfrost#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_369_bena": [
     {
-      "op": "char_369_bena",
       "skinId": "char_369_bena#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_369_bena",
       "skinId": "char_369_bena#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4016_kazema": [
     {
-      "op": "char_4016_kazema",
       "skinId": "char_4016_kazema#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4016_kazema",
       "skinId": "char_4016_kazema#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_4016_kazema",
       "skinId": "char_4016_kazema@witch#3",
-      "skinName": "幻影轻悄"
+      "skinName": "幻影轻悄",
+      "sortId": 119
     }
   ],
   "char_103_angel": [
     {
-      "op": "char_103_angel",
       "skinId": "char_103_angel#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_103_angel",
       "skinId": "char_103_angel#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_103_angel",
       "skinId": "char_103_angel@wild#1",
-      "skinName": "Wild Operation"
+      "skinName": "Wild Operation",
+      "sortId": 139
     },
     {
-      "op": "char_103_angel",
       "skinId": "char_103_angel@kfc#1",
-      "skinName": "城市骑手"
+      "skinName": "城市骑手",
+      "sortId": 156
     }
   ],
   "char_332_archet": [
     {
-      "op": "char_332_archet",
       "skinId": "char_332_archet#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_332_archet",
       "skinId": "char_332_archet#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_332_archet",
       "skinId": "char_332_archet@shining#1",
-      "skinName": "Publicity Strategy"
+      "skinName": "Publicity Strategy",
+      "sortId": 206
     }
   ],
   "char_456_ash": [
     {
-      "op": "char_456_ash",
       "skinId": "char_456_ash#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_456_ash",
       "skinId": "char_456_ash#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_456_ash",
       "skinId": "char_456_ash@rainbow6#1",
-      "skinName": "Ranger"
+      "skinName": "Ranger",
+      "sortId": 188
     }
   ],
   "char_340_shwaz": [
     {
-      "op": "char_340_shwaz",
       "skinId": "char_340_shwaz#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_340_shwaz",
       "skinId": "char_340_shwaz#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_340_shwaz",
       "skinId": "char_340_shwaz@snow#1",
-      "skinName": "Presents"
+      "skinName": "Presents",
+      "sortId": 128
     },
     {
-      "op": "char_340_shwaz",
       "skinId": "char_340_shwaz@striker#1",
-      "skinName": "Skyline"
+      "skinName": "Skyline",
+      "sortId": 190
     }
   ],
   "char_4055_bgsnow": [
     {
-      "op": "char_4055_bgsnow",
       "skinId": "char_4055_bgsnow#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4055_bgsnow",
       "skinId": "char_4055_bgsnow#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_430_fartth": [
     {
-      "op": "char_430_fartth",
       "skinId": "char_430_fartth#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_430_fartth",
       "skinId": "char_430_fartth#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_113_cqbw": [
     {
-      "op": "char_113_cqbw",
       "skinId": "char_113_cqbw#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_113_cqbw",
       "skinId": "char_113_cqbw#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_113_cqbw",
       "skinId": "char_113_cqbw@epoque#7",
-      "skinName": "Fugue"
+      "skinName": "Fugue",
+      "sortId": 20
     }
   ],
   "char_300_phenxi": [
     {
-      "op": "char_300_phenxi",
       "skinId": "char_300_phenxi#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_300_phenxi",
       "skinId": "char_300_phenxi#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_197_poca": [
     {
-      "op": "char_197_poca",
       "skinId": "char_197_poca#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_197_poca",
       "skinId": "char_197_poca#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_197_poca",
       "skinId": "char_197_poca@epoque#12",
-      "skinName": "Masterpiece"
+      "skinName": "Masterpiece",
+      "sortId": 33
     }
   ],
   "char_391_rosmon": [
     {
-      "op": "char_391_rosmon",
       "skinId": "char_391_rosmon#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_391_rosmon",
       "skinId": "char_391_rosmon#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_391_rosmon",
       "skinId": "char_391_rosmon@epoque#17",
-      "skinName": "拥抱新生"
+      "skinName": "拥抱新生",
+      "sortId": 45
     }
   ],
   "char_1013_chen2": [
     {
-      "op": "char_1013_chen2",
       "skinId": "char_1013_chen2#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_1013_chen2",
       "skinId": "char_1013_chen2#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_112_siege": [
     {
-      "op": "char_112_siege",
       "skinId": "char_112_siege#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_112_siege",
       "skinId": "char_112_siege#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_112_siege",
       "skinId": "char_112_siege@wild#2",
-      "skinName": "Legacy"
+      "skinName": "Legacy",
+      "sortId": 143
     },
     {
-      "op": "char_112_siege",
       "skinId": "char_112_siege@striker#2",
-      "skinName": "City Destroyer"
+      "skinName": "City Destroyer",
+      "sortId": 192
     }
   ],
   "char_222_bpipe": [
     {
-      "op": "char_222_bpipe",
       "skinId": "char_222_bpipe#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_222_bpipe",
       "skinId": "char_222_bpipe#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_222_bpipe",
       "skinId": "char_222_bpipe@race#1",
-      "skinName": "Queen, No.1"
+      "skinName": "Queen, No.1",
+      "sortId": 187
     }
   ],
   "char_362_saga": [
     {
-      "op": "char_362_saga",
       "skinId": "char_362_saga#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_362_saga",
       "skinId": "char_362_saga#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_479_sleach": [
     {
-      "op": "char_479_sleach",
       "skinId": "char_479_sleach#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_479_sleach",
       "skinId": "char_479_sleach#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_479_sleach",
       "skinId": "char_479_sleach@epoque#14",
-      "skinName": "Appreciate Fragrance"
+      "skinName": "Appreciate Fragrance",
+      "sortId": 36
     }
   ],
   "char_420_flamtl": [
     {
-      "op": "char_420_flamtl",
       "skinId": "char_420_flamtl#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_420_flamtl",
       "skinId": "char_420_flamtl#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_420_flamtl",
       "skinId": "char_420_flamtl@game#2",
-      "skinName": "小健将"
+      "skinName": "小健将",
+      "sortId": 210
     }
   ],
   "char_427_vigil": [
     {
-      "op": "char_427_vigil",
       "skinId": "char_427_vigil#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_427_vigil",
       "skinId": "char_427_vigil#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_134_ifrit": [
     {
-      "op": "char_134_ifrit",
       "skinId": "char_134_ifrit#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_134_ifrit",
       "skinId": "char_134_ifrit#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_134_ifrit",
       "skinId": "char_134_ifrit@summer#1",
-      "skinName": "Sunburn SS.SP"
+      "skinName": "Sunburn SS.SP",
+      "sortId": 75
     },
     {
-      "op": "char_134_ifrit",
       "skinId": "char_134_ifrit@kfc#1",
-      "skinName": "儿童派对"
+      "skinName": "儿童派对",
+      "sortId": 157
     }
   ],
   "char_213_mostma": [
     {
-      "op": "char_213_mostma",
       "skinId": "char_213_mostma#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_213_mostma",
       "skinId": "char_213_mostma#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_213_mostma",
       "skinId": "char_213_mostma@epoque#5",
-      "skinName": "Spellbreaker"
+      "skinName": "Spellbreaker",
+      "sortId": 17
     }
   ],
   "char_180_amgoat": [
     {
-      "op": "char_180_amgoat",
       "skinId": "char_180_amgoat#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_180_amgoat",
       "skinId": "char_180_amgoat#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_180_amgoat",
       "skinId": "char_180_amgoat@summer#5",
-      "skinName": "Summer Flower FA018"
+      "skinName": "Summer Flower FA018",
+      "sortId": 89
     }
   ],
   "char_2013_cerber": [
     {
-      "op": "char_2013_cerber",
       "skinId": "char_2013_cerber#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_2013_cerber",
       "skinId": "char_2013_cerber#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_2013_cerber",
       "skinId": "char_2013_cerber@whirlwind#2",
-      "skinName": "Unfettered"
+      "skinName": "Unfettered",
+      "sortId": 66
     },
     {
-      "op": "char_2013_cerber",
       "skinId": "char_2013_cerber@summer#4",
-      "skinName": "Summer Flowers FA333"
+      "skinName": "Summer Flowers FA333",
+      "sortId": 86
     }
   ],
   "char_2015_dusk": [
     {
-      "op": "char_2015_dusk",
       "skinId": "char_2015_dusk#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_2015_dusk",
       "skinId": "char_2015_dusk#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_2015_dusk",
       "skinId": "char_2015_dusk@nian#7",
-      "skinName": "Everything Is a Miracle"
+      "skinName": "Everything Is a Miracle",
+      "sortId": 61
     }
   ],
   "char_472_pasngr": [
     {
-      "op": "char_472_pasngr",
       "skinId": "char_472_pasngr#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_472_pasngr",
       "skinId": "char_472_pasngr#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_472_pasngr",
       "skinId": "char_472_pasngr@epoque#17",
-      "skinName": "今昔须臾之梦"
+      "skinName": "今昔须臾之梦",
+      "sortId": 43
     }
   ],
   "char_426_billro": [
     {
-      "op": "char_426_billro",
       "skinId": "char_426_billro#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_426_billro",
       "skinId": "char_426_billro#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_426_billro",
       "skinId": "char_426_billro@summer#8",
-      "skinName": "灿阳朝露 SD08"
+      "skinName": "灿阳朝露 SD08",
+      "sortId": 98
     },
     {
-      "op": "char_426_billro",
       "skinId": "char_426_billro@snow#3",
-      "skinName": "Hohenlohe Chillysand"
+      "skinName": "Hohenlohe Chillysand",
+      "sortId": 135
     }
   ],
   "char_377_gdglow": [
     {
-      "op": "char_377_gdglow",
       "skinId": "char_377_gdglow#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_377_gdglow",
       "skinId": "char_377_gdglow#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4046_ebnhlz": [
     {
-      "op": "char_4046_ebnhlz",
       "skinId": "char_4046_ebnhlz#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4046_ebnhlz",
       "skinId": "char_4046_ebnhlz#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_206_gnosis": [
     {
-      "op": "char_206_gnosis",
       "skinId": "char_206_gnosis#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_206_gnosis",
       "skinId": "char_206_gnosis#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_206_gnosis",
       "skinId": "char_206_gnosis@boc#4",
-      "skinName": "Forerunner"
+      "skinName": "Forerunner",
+      "sortId": 175
     }
   ],
   "char_291_aglina": [
     {
-      "op": "char_291_aglina",
       "skinId": "char_291_aglina#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_291_aglina",
       "skinId": "char_291_aglina#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_291_aglina",
       "skinId": "char_291_aglina@summer#5",
-      "skinName": "Summer Flower FA017"
+      "skinName": "Summer Flower FA017",
+      "sortId": 90
     },
     {
-      "op": "char_291_aglina",
       "skinId": "char_291_aglina@boc#1",
-      "skinName": "Distinguished Visitor"
+      "skinName": "Distinguished Visitor",
+      "sortId": 161
     }
   ],
   "char_358_lisa": [
     {
-      "op": "char_358_lisa",
       "skinId": "char_358_lisa#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_358_lisa",
       "skinId": "char_358_lisa#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_358_lisa",
       "skinId": "char_358_lisa@wild#3",
-      "skinName": "Lostlands Flowering"
+      "skinName": "Lostlands Flowering",
+      "sortId": 146
     },
     {
-      "op": "char_358_lisa",
       "skinId": "char_358_lisa@lxh#1",
-      "skinName": "春之颂"
+      "skinName": "春之颂",
+      "sortId": 204
     }
   ],
   "char_248_mgllan": [
     {
-      "op": "char_248_mgllan",
       "skinId": "char_248_mgllan#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_248_mgllan",
       "skinId": "char_248_mgllan#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_248_mgllan",
       "skinId": "char_248_mgllan@kitchen#1",
-      "skinName": "Shaved-Ice Memories"
+      "skinName": "Shaved-Ice Memories",
+      "sortId": 180
     }
   ],
   "char_1012_skadi2": [
     {
-      "op": "char_1012_skadi2",
       "skinId": "char_1012_skadi2#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_1012_skadi2",
       "skinId": "char_1012_skadi2#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_1012_skadi2",
       "skinId": "char_1012_skadi2@boc#4",
-      "skinName": "Sublimation"
+      "skinName": "Sublimation",
+      "sortId": 174
     }
   ],
   "char_2023_ling": [
     {
-      "op": "char_2023_ling",
       "skinId": "char_2023_ling#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_2023_ling",
       "skinId": "char_2023_ling#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4072_ironmn": [
     {
-      "op": "char_4072_ironmn",
       "skinId": "char_4072_ironmn#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4072_ironmn",
       "skinId": "char_4072_ironmn#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_250_phatom": [
     {
-      "op": "char_250_phatom",
       "skinId": "char_250_phatom#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_250_phatom",
       "skinId": "char_250_phatom#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_250_phatom",
       "skinId": "char_250_phatom@sale#4",
-      "skinName": "Focus"
+      "skinName": "Focus",
+      "sortId": 7
     },
     {
-      "op": "char_250_phatom",
       "skinId": "char_250_phatom@ghost#1",
-      "skinName": "Dream Within a Dreammare"
+      "skinName": "Dream Within a Dreammare",
+      "sortId": 183
     }
   ],
   "char_1028_texas2": [
     {
-      "op": "char_1028_texas2",
       "skinId": "char_1028_texas2#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_1028_texas2",
       "skinId": "char_1028_texas2#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_322_lmlee": [
     {
-      "op": "char_322_lmlee",
       "skinId": "char_322_lmlee#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_322_lmlee",
       "skinId": "char_322_lmlee#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_322_lmlee",
       "skinId": "char_322_lmlee@witch#3",
-      "skinName": "手到牌来"
+      "skinName": "手到牌来",
+      "sortId": 117
     }
   ],
   "char_400_weedy": [
     {
-      "op": "char_400_weedy",
       "skinId": "char_400_weedy#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_400_weedy",
       "skinId": "char_400_weedy#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_400_weedy",
       "skinId": "char_400_weedy@snow#2",
-      "skinName": "Candy Cape"
+      "skinName": "Candy Cape",
+      "sortId": 132
     }
   ],
   "char_225_haak": [
     {
-      "op": "char_225_haak",
       "skinId": "char_225_haak#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_225_haak",
       "skinId": "char_225_haak#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_225_haak",
       "skinId": "char_225_haak@nian#4",
-      "skinName": "Doctor of Faces"
+      "skinName": "Doctor of Faces",
+      "sortId": 56
     },
     {
-      "op": "char_225_haak",
       "skinId": "char_225_haak@nian#5",
-      "skinName": "Healing Hand, Evil Heart"
+      "skinName": "Healing Hand, Evil Heart",
+      "sortId": 59
     }
   ],
   "char_474_glady": [
     {
-      "op": "char_474_glady",
       "skinId": "char_474_glady#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_474_glady",
       "skinId": "char_474_glady#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_474_glady",
       "skinId": "char_474_glady@boc#5",
-      "skinName": "返航"
+      "skinName": "返航",
+      "sortId": 179
     }
   ],
   "char_437_mizuki": [
     {
-      "op": "char_437_mizuki",
       "skinId": "char_437_mizuki#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_437_mizuki",
       "skinId": "char_437_mizuki#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_1023_ghost2": [
     {
-      "op": "char_1023_ghost2",
       "skinId": "char_1023_ghost2#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_1023_ghost2",
       "skinId": "char_1023_ghost2#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4048_doroth": [
     {
-      "op": "char_4048_doroth",
       "skinId": "char_4048_doroth#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4048_doroth",
       "skinId": "char_4048_doroth#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_147_shining": [
     {
-      "op": "char_147_shining",
       "skinId": "char_147_shining#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_147_shining",
       "skinId": "char_147_shining#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_147_shining",
       "skinId": "char_147_shining@summer#1",
-      "skinName": "Silent Night DN02"
+      "skinName": "Silent Night DN02",
+      "sortId": 71
     }
   ],
   "char_179_cgbird": [
     {
-      "op": "char_179_cgbird",
       "skinId": "char_179_cgbird#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_179_cgbird",
       "skinId": "char_179_cgbird#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_179_cgbird",
       "skinId": "char_179_cgbird@witch#1",
-      "skinName": "an elegy"
+      "skinName": "an elegy",
+      "sortId": 109
     }
   ],
   "char_003_kalts": [
     {
-      "op": "char_003_kalts",
       "skinId": "char_003_kalts#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_003_kalts",
       "skinId": "char_003_kalts#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_4042_lumen": [
     {
-      "op": "char_4042_lumen",
       "skinId": "char_4042_lumen#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4042_lumen",
       "skinId": "char_4042_lumen#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_136_hsguma": [
     {
-      "op": "char_136_hsguma",
       "skinId": "char_136_hsguma#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_136_hsguma",
       "skinId": "char_136_hsguma#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_136_hsguma",
       "skinId": "char_136_hsguma@nian#3",
-      "skinName": "Ronin Huntress"
+      "skinName": "Ronin Huntress",
+      "sortId": 65
     }
   ],
   "char_202_demkni": [
     {
-      "op": "char_202_demkni",
       "skinId": "char_202_demkni#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_202_demkni",
       "skinId": "char_202_demkni#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_202_demkni",
       "skinId": "char_202_demkni@test#1",
-      "skinName": "The Law"
+      "skinName": "The Law",
+      "sortId": 5
     },
     {
-      "op": "char_202_demkni",
       "skinId": "char_202_demkni@boc#1",
-      "skinName": "Stronghold"
+      "skinName": "Stronghold",
+      "sortId": 160
     }
   ],
   "char_423_blemsh": [
     {
-      "op": "char_423_blemsh",
       "skinId": "char_423_blemsh#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_423_blemsh",
       "skinId": "char_423_blemsh#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_423_blemsh",
       "skinId": "char_423_blemsh@witch#2",
-      "skinName": "Moon Catastrborn"
+      "skinName": "Moon Catastrborn",
+      "sortId": 113
     }
   ],
   "char_2014_nian": [
     {
-      "op": "char_2014_nian",
       "skinId": "char_2014_nian#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_2014_nian",
       "skinId": "char_2014_nian#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_2014_nian",
       "skinId": "char_2014_nian@nian#4",
-      "skinName": "Unfettered Freedom"
+      "skinName": "Unfettered Freedom",
+      "sortId": 55
     }
   ],
   "char_311_mudrok": [
     {
-      "op": "char_311_mudrok",
       "skinId": "char_311_mudrok#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_311_mudrok",
       "skinId": "char_311_mudrok#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_311_mudrok",
       "skinId": "char_311_mudrok@summer#6",
-      "skinName": "Silent Night DN06"
+      "skinName": "Silent Night DN06",
+      "sortId": 94
     },
     {
-      "op": "char_311_mudrok",
       "skinId": "char_311_mudrok@ambienceSynesthesia#2",
-      "skinName": "Obsidian"
+      "skinName": "Obsidian",
+      "sortId": 198
     }
   ],
   "char_4065_judge": [
     {
-      "op": "char_4065_judge",
       "skinId": "char_4065_judge#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4065_judge",
       "skinId": "char_4065_judge#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_416_zumama": [
     {
-      "op": "char_416_zumama",
       "skinId": "char_416_zumama#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_416_zumama",
       "skinId": "char_416_zumama#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_416_zumama",
       "skinId": "char_416_zumama@boc#3",
-      "skinName": "Forgemaster"
+      "skinName": "Forgemaster",
+      "sortId": 170
     }
   ],
   "char_4039_horn": [
     {
-      "op": "char_4039_horn",
       "skinId": "char_4039_horn#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4039_horn",
       "skinId": "char_4039_horn#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_264_f12yin": [
     {
-      "op": "char_264_f12yin",
       "skinId": "char_264_f12yin#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_264_f12yin",
       "skinId": "char_264_f12yin#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_264_f12yin",
       "skinId": "char_264_f12yin@epoque#15",
-      "skinName": "读者"
+      "skinName": "读者",
+      "sortId": 40
     },
     {
-      "op": "char_264_f12yin",
       "skinId": "char_264_f12yin@boc#3",
-      "skinName": "Dark Cloud"
+      "skinName": "Dark Cloud",
+      "sortId": 169
     }
   ],
   "char_172_svrash": [
     {
-      "op": "char_172_svrash",
       "skinId": "char_172_svrash#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_172_svrash",
       "skinId": "char_172_svrash#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_172_svrash",
       "skinId": "char_172_svrash@summer#4",
-      "skinName": "Seeker SKm01"
+      "skinName": "Seeker SKm01",
+      "sortId": 85
     },
     {
-      "op": "char_172_svrash",
       "skinId": "char_172_svrash@snow#1",
-      "skinName": "York's Bise"
+      "skinName": "York's Bise",
+      "sortId": 129
     }
   ],
   "char_293_thorns": [
     {
-      "op": "char_293_thorns",
       "skinId": "char_293_thorns#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_293_thorns",
       "skinId": "char_293_thorns#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_293_thorns",
       "skinId": "char_293_thorns@it#1",
-      "skinName": "Cómodo"
+      "skinName": "Cómodo",
+      "sortId": 201
     }
   ],
   "char_010_chen": [
     {
-      "op": "char_010_chen",
       "skinId": "char_010_chen#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_010_chen",
       "skinId": "char_010_chen#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_010_chen",
       "skinId": "char_010_chen@nian#2",
-      "skinName": "Ageless Afterglow"
+      "skinName": "Ageless Afterglow",
+      "sortId": 51
     }
   ],
   "char_4009_irene": [
     {
-      "op": "char_4009_irene",
       "skinId": "char_4009_irene#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4009_irene",
       "skinId": "char_4009_irene#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_017_huang": [
     {
-      "op": "char_017_huang",
       "skinId": "char_017_huang#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_017_huang",
       "skinId": "char_017_huang#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_017_huang",
       "skinId": "char_017_huang@as#1",
-      "skinName": "Burst Feline"
+      "skinName": "Burst Feline",
+      "sortId": 195
     }
   ],
   "char_1026_gvial2": [
     {
-      "op": "char_1026_gvial2",
       "skinId": "char_1026_gvial2#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_1026_gvial2",
       "skinId": "char_1026_gvial2#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_350_surtr": [
     {
-      "op": "char_350_surtr",
       "skinId": "char_350_surtr#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_350_surtr",
       "skinId": "char_350_surtr#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_350_surtr",
       "skinId": "char_350_surtr@summer#9",
-      "skinName": "缤纷奇境 CW03"
+      "skinName": "缤纷奇境 CW03",
+      "sortId": 101
     },
     {
-      "op": "char_350_surtr",
       "skinId": "char_350_surtr@it#1",
-      "skinName": "Liberté//Échec"
+      "skinName": "Liberté//Échec",
+      "sortId": 202
     }
   ],
   "char_188_helage": [
     {
-      "op": "char_188_helage",
       "skinId": "char_188_helage#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_188_helage",
       "skinId": "char_188_helage#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_188_helage",
       "skinId": "char_188_helage@boc#2",
-      "skinName": "Octopath Illusion"
+      "skinName": "Octopath Illusion",
+      "sortId": 167
     }
   ],
   "char_485_pallas": [
     {
-      "op": "char_485_pallas",
       "skinId": "char_485_pallas#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_485_pallas",
       "skinId": "char_485_pallas#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_485_pallas",
       "skinId": "char_485_pallas@epoque#12",
-      "skinName": "Heritage"
+      "skinName": "Heritage",
+      "sortId": 32
     }
   ],
   "char_1014_nearl2": [
     {
-      "op": "char_1014_nearl2",
       "skinId": "char_1014_nearl2#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_1014_nearl2",
       "skinId": "char_1014_nearl2#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_1014_nearl2",
       "skinId": "char_1014_nearl2@epoque#17",
-      "skinName": "复现荣光"
+      "skinName": "复现荣光",
+      "sortId": 44
     }
   ],
   "char_4064_mlynar": [
     {
-      "op": "char_4064_mlynar",
       "skinId": "char_4064_mlynar#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_4064_mlynar",
       "skinId": "char_4064_mlynar#2",
-      "skinName": null
-    }
-  ],
-  "token_10000_silent_healrb": [
-    {
-      "op": "token_10000_silent_healrb",
-      "skinId": "token_10000_silent_healrb#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10000_silent_healrb",
-      "skinId": "token_10000_silent_healrb_winter#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10000_silent_healrb",
-      "skinId": "token_10000_silent_healrb_sweep#1",
-      "skinName": null
-    }
-  ],
-  "token_10001_deepcl_tentac": [
-    {
-      "op": "token_10001_deepcl_tentac",
-      "skinId": "token_10001_deepcl_tentac#1",
-      "skinName": null
-    }
-  ],
-  "token_10002_kalts_mon3tr": [
-    {
-      "op": "token_10002_kalts_mon3tr",
-      "skinId": "token_10002_kalts_mon3tr#1",
-      "skinName": null
-    }
-  ],
-  "token_10003_cgbird_bird": [
-    {
-      "op": "token_10003_cgbird_bird",
-      "skinId": "token_10003_cgbird_bird#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10003_cgbird_bird",
-      "skinId": "token_10003_cgbird_bird_witch#1",
-      "skinName": null
-    }
-  ],
-  "token_10004_otter_motter": [
-    {
-      "op": "token_10004_otter_motter",
-      "skinId": "token_10004_otter_motter#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10004_otter_motter",
-      "skinId": "token_10004_otter_motter_ghost#1",
-      "skinName": null
-    }
-  ],
-  "token_10005_mgllan_drone1": [
-    {
-      "op": "token_10005_mgllan_drone1",
-      "skinId": "token_10005_mgllan_drone1#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10005_mgllan_drone1",
-      "skinId": "token_10005_mgllan_drone1_kitchen#1",
-      "skinName": null
-    }
-  ],
-  "token_10005_mgllan_drone2": [
-    {
-      "op": "token_10005_mgllan_drone2",
-      "skinId": "token_10005_mgllan_drone2#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10005_mgllan_drone2",
-      "skinId": "token_10005_mgllan_drone2_kitchen#1",
-      "skinName": null
-    }
-  ],
-  "token_10005_mgllan_drone3": [
-    {
-      "op": "token_10005_mgllan_drone3",
-      "skinId": "token_10005_mgllan_drone3#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10005_mgllan_drone3",
-      "skinId": "token_10005_mgllan_drone3_kitchen#1",
-      "skinName": null
-    }
-  ],
-  "token_10006_vodfox_doll": [
-    {
-      "op": "token_10006_vodfox_doll",
-      "skinId": "token_10006_vodfox_doll#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10006_vodfox_doll",
-      "skinId": "token_10006_vodfox_doll_witch#2",
-      "skinName": null
-    }
-  ],
-  "token_10007_phatom_twin": [
-    {
-      "op": "token_10007_phatom_twin",
-      "skinId": "token_10007_phatom_twin#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10007_phatom_twin",
-      "skinId": "token_10007_phatom_twin_sale#4",
-      "skinName": null
-    },
-    {
-      "op": "token_10007_phatom_twin",
-      "skinId": "token_10007_phatom_twin_ghost#1",
-      "skinName": null
-    }
-  ],
-  "token_10008_cqbw_box": [
-    {
-      "op": "token_10008_cqbw_box",
-      "skinId": "token_10008_cqbw_box#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10008_cqbw_box",
-      "skinId": "token_10008_cqbw_box_epoque#7",
-      "skinName": null
-    }
-  ],
-  "token_10009_weedy_cannon": [
-    {
-      "op": "token_10009_weedy_cannon",
-      "skinId": "token_10009_weedy_cannon#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10009_weedy_cannon",
-      "skinId": "token_10009_weedy_cannon_snow#2",
-      "skinName": null
-    }
-  ],
-  "token_10010_folivo_car": [
-    {
-      "op": "token_10010_folivo_car",
-      "skinId": "token_10010_folivo_car#1",
-      "skinName": null
-    }
-  ],
-  "token_10011_beewax_oblisk": [
-    {
-      "op": "token_10011_beewax_oblisk",
-      "skinId": "token_10011_beewax_oblisk#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10011_beewax_oblisk",
-      "skinId": "token_10011_beewax_oblisk_epoque#9",
-      "skinName": null
-    }
-  ],
-  "token_10012_rosmon_shield": [
-    {
-      "op": "token_10012_rosmon_shield",
-      "skinId": "token_10012_rosmon_shield#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10012_rosmon_shield",
-      "skinId": "token_10012_rosmon_shield#2",
-      "skinName": null
-    },
-    {
-      "op": "token_10012_rosmon_shield",
-      "skinId": "token_10012_rosmon_shield_epoque#17",
-      "skinName": null
-    }
-  ],
-  "token_10013_robin_mine": [
-    {
-      "op": "token_10013_robin_mine",
-      "skinId": "token_10013_robin_mine#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10013_robin_mine",
-      "skinId": "token_10013_robin_mine_epoque#13",
-      "skinName": null
-    }
-  ],
-  "token_10014_bstalk_crab": [
-    {
-      "op": "token_10014_bstalk_crab",
-      "skinId": "token_10014_bstalk_crab#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10014_bstalk_crab",
-      "skinId": "token_10014_bstalk_crab_snow#4",
-      "skinName": null
-    }
-  ],
-  "token_10015_dusk_drgn": [
-    {
-      "op": "token_10015_dusk_drgn",
-      "skinId": "token_10015_dusk_drgn#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10015_dusk_drgn",
-      "skinId": "token_10015_dusk_drgn#2",
-      "skinName": null
-    },
-    {
-      "op": "token_10015_dusk_drgn",
-      "skinId": "token_10015_dusk_drgn_nian#7",
-      "skinName": null
-    }
-  ],
-  "token_10016_rfrost_mine": [
-    {
-      "op": "token_10016_rfrost_mine",
-      "skinId": "token_10016_rfrost_mine#1",
-      "skinName": null
-    }
-  ],
-  "token_10017_skadi2_dedant": [
-    {
-      "op": "token_10017_skadi2_dedant",
-      "skinId": "token_10017_skadi2_dedant#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10017_skadi2_dedant",
-      "skinId": "token_10017_skadi2_dedant_boc#4",
-      "skinName": null
-    }
-  ],
-  "token_10018_robrta_mach": [
-    {
-      "op": "token_10018_robrta_mach",
-      "skinId": "token_10018_robrta_mach#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10018_robrta_mach",
-      "skinId": "token_10018_robrta_mach_summer#10",
-      "skinName": null
-    }
-  ],
-  "token_10019_nearl2_sword": [
-    {
-      "op": "token_10019_nearl2_sword",
-      "skinId": "token_10019_nearl2_sword#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10019_nearl2_sword",
-      "skinId": "token_10019_nearl2_sword#2",
-      "skinName": null
-    },
-    {
-      "op": "token_10019_nearl2_sword",
-      "skinId": "token_10019_nearl2_sword_epoque#17",
-      "skinName": null
-    }
-  ],
-  "token_10020_ling_soul1": [
-    {
-      "op": "token_10020_ling_soul1",
-      "skinId": "token_10020_ling_soul1#1",
-      "skinName": null
-    }
-  ],
-  "token_10020_ling_soul2": [
-    {
-      "op": "token_10020_ling_soul2",
-      "skinId": "token_10020_ling_soul2#1",
-      "skinName": null
-    }
-  ],
-  "token_10020_ling_soul3": [
-    {
-      "op": "token_10020_ling_soul3",
-      "skinId": "token_10020_ling_soul3#1",
-      "skinName": null
-    }
-  ],
-  "token_10021_blkngt_hypnos": [
-    {
-      "op": "token_10021_blkngt_hypnos",
-      "skinId": "token_10021_blkngt_hypnos#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10021_blkngt_hypnos",
-      "skinId": "token_10021_blkngt_hypnos_summer#8",
-      "skinName": null
-    }
-  ],
-  "token_10022_kazema_shadow": [
-    {
-      "op": "token_10022_kazema_shadow",
-      "skinId": "token_10022_kazema_shadow#1",
-      "skinName": null
-    },
-    {
-      "op": "token_10022_kazema_shadow",
-      "skinId": "token_10022_kazema_shadow#2",
-      "skinName": null
-    },
-    {
-      "op": "token_10022_kazema_shadow",
-      "skinId": "token_10022_kazema_shadow_witch#3",
-      "skinName": null
-    }
-  ],
-  "token_10023_windft_wrench": [
-    {
-      "op": "token_10023_windft_wrench",
-      "skinId": "token_10023_windft_wrench#1",
-      "skinName": null
-    }
-  ],
-  "token_10024_ebnhlz_rcube": [
-    {
-      "op": "token_10024_ebnhlz_rcube",
-      "skinId": "token_10024_ebnhlz_rcube#1",
-      "skinName": null
-    }
-  ],
-  "token_10025_doroth_recttp": [
-    {
-      "op": "token_10025_doroth_recttp",
-      "skinId": "token_10025_doroth_recttp#1",
-      "skinName": null
-    }
-  ],
-  "token_10026_bgsnow_subbow": [
-    {
-      "op": "token_10026_bgsnow_subbow",
-      "skinId": "token_10026_bgsnow_subbow#1",
-      "skinName": null
-    }
-  ],
-  "token_10027_ironmn_pile1": [
-    {
-      "op": "token_10027_ironmn_pile1",
-      "skinId": "token_10027_ironmn_pile1#1",
-      "skinName": null
-    }
-  ],
-  "token_10027_ironmn_pile2": [
-    {
-      "op": "token_10027_ironmn_pile2",
-      "skinId": "token_10027_ironmn_pile2#1",
-      "skinName": null
-    }
-  ],
-  "token_10027_ironmn_pile3": [
-    {
-      "op": "token_10027_ironmn_pile3",
-      "skinId": "token_10027_ironmn_pile3#1",
-      "skinName": null
-    }
-  ],
-  "token_10028_vigil_wolf": [
-    {
-      "op": "token_10028_vigil_wolf",
-      "skinId": "token_10028_vigil_wolf#1",
-      "skinName": null
-    }
-  ],
-  "trap_001_crate": [
-    {
-      "op": "trap_001_crate",
-      "skinId": "trap_001_crate#1",
-      "skinName": null
-    }
-  ],
-  "trap_002_emp": [
-    {
-      "op": "trap_002_emp",
-      "skinId": "trap_002_emp#1",
-      "skinName": null
-    }
-  ],
-  "trap_003_gate": [
-    {
-      "op": "trap_003_gate",
-      "skinId": "trap_003_gate#1",
-      "skinName": null
-    }
-  ],
-  "trap_005_sensor": [
-    {
-      "op": "trap_005_sensor",
-      "skinId": "trap_005_sensor#1",
-      "skinName": null
-    }
-  ],
-  "trap_006_antidr": [
-    {
-      "op": "trap_006_antidr",
-      "skinId": "trap_006_antidr#1",
-      "skinName": null
-    }
-  ],
-  "trap_007_ballis": [
-    {
-      "op": "trap_007_ballis",
-      "skinId": "trap_007_ballis#1",
-      "skinName": null
-    }
-  ],
-  "trap_008_farm": [
-    {
-      "op": "trap_008_farm",
-      "skinId": "trap_008_farm#1",
-      "skinName": null
-    }
-  ],
-  "trap_009_battery": [
-    {
-      "op": "trap_009_battery",
-      "skinId": "trap_009_battery#1",
-      "skinName": null
-    }
-  ],
-  "trap_010_frosts": [
-    {
-      "op": "trap_010_frosts",
-      "skinId": "trap_010_frosts#1",
-      "skinName": null
-    }
-  ],
-  "trap_011_ore": [
-    {
-      "op": "trap_011_ore",
-      "skinId": "trap_011_ore#1",
-      "skinName": null
-    }
-  ],
-  "trap_012_mine": [
-    {
-      "op": "trap_012_mine",
-      "skinId": "trap_012_mine#1",
-      "skinName": null
-    }
-  ],
-  "trap_013_blower": [
-    {
-      "op": "trap_013_blower",
-      "skinId": "trap_013_blower#1",
-      "skinName": null
-    }
-  ],
-  "trap_014_tower": [
-    {
-      "op": "trap_014_tower",
-      "skinId": "trap_014_tower#1",
-      "skinName": null
-    }
-  ],
-  "trap_015_tree": [
-    {
-      "op": "trap_015_tree",
-      "skinId": "trap_015_tree#1",
-      "skinName": null
-    }
-  ],
-  "trap_016_peon": [
-    {
-      "op": "trap_016_peon",
-      "skinId": "trap_016_peon#1",
-      "skinName": null
-    }
-  ],
-  "trap_018_bomb": [
-    {
-      "op": "trap_018_bomb",
-      "skinId": "trap_018_bomb#1",
-      "skinName": null
-    }
-  ],
-  "trap_019_electric": [
-    {
-      "op": "trap_019_electric",
-      "skinId": "trap_019_electric#1",
-      "skinName": null
-    }
-  ],
-  "trap_020_roadblock": [
-    {
-      "op": "trap_020_roadblock",
-      "skinId": "trap_020_roadblock#1",
-      "skinName": null
-    }
-  ],
-  "trap_021_flame": [
-    {
-      "op": "trap_021_flame",
-      "skinId": "trap_021_flame#1",
-      "skinName": null
-    }
-  ],
-  "trap_022_frosts_friend": [
-    {
-      "op": "trap_022_frosts_friend",
-      "skinId": "trap_022_frosts_friend#1",
-      "skinName": null
-    }
-  ],
-  "trap_023_ore_friend": [
-    {
-      "op": "trap_023_ore_friend",
-      "skinId": "trap_023_ore_friend#1",
-      "skinName": null
-    }
-  ],
-  "trap_024_npcsld": [
-    {
-      "op": "trap_024_npcsld",
-      "skinId": "trap_024_npcsld#1",
-      "skinName": null
-    }
-  ],
-  "trap_025_prison": [
-    {
-      "op": "trap_025_prison",
-      "skinId": "trap_025_prison#1",
-      "skinName": null
-    }
-  ],
-  "trap_026_inverter": [
-    {
-      "op": "trap_026_inverter",
-      "skinId": "trap_026_inverter#1",
-      "skinName": null
-    }
-  ],
-  "trap_027_stone": [
-    {
-      "op": "trap_027_stone",
-      "skinId": "trap_027_stone#1",
-      "skinName": null
-    }
-  ],
-  "trap_028_cannon": [
-    {
-      "op": "trap_028_cannon",
-      "skinId": "trap_028_cannon#1",
-      "skinName": null
-    }
-  ],
-  "trap_029_poison": [
-    {
-      "op": "trap_029_poison",
-      "skinId": "trap_029_poison#1",
-      "skinName": null
-    }
-  ],
-  "trap_030_factory": [
-    {
-      "op": "trap_030_factory",
-      "skinId": "trap_030_factory#1",
-      "skinName": null
-    }
-  ],
-  "trap_031_sleep": [
-    {
-      "op": "trap_031_sleep",
-      "skinId": "trap_031_sleep#1",
-      "skinName": null
-    }
-  ],
-  "trap_032_mound": [
-    {
-      "op": "trap_032_mound",
-      "skinId": "trap_032_mound#1",
-      "skinName": null
-    }
-  ],
-  "trap_033_sbomb": [
-    {
-      "op": "trap_033_sbomb",
-      "skinId": "trap_033_sbomb#1",
-      "skinName": null
-    }
-  ],
-  "trap_034_machst": [
-    {
-      "op": "trap_034_machst",
-      "skinId": "trap_034_machst#1",
-      "skinName": null
-    }
-  ],
-  "trap_035_emperor": [
-    {
-      "op": "trap_035_emperor",
-      "skinId": "trap_035_emperor#1",
-      "skinName": null
-    }
-  ],
-  "trap_036_storm": [
-    {
-      "op": "trap_036_storm",
-      "skinId": "trap_036_storm#1",
-      "skinName": null
-    }
-  ],
-  "trap_037_airsup": [
-    {
-      "op": "trap_037_airsup",
-      "skinId": "trap_037_airsup#1",
-      "skinName": null
-    }
-  ],
-  "trap_038_dsbell": [
-    {
-      "op": "trap_038_dsbell",
-      "skinId": "trap_038_dsbell#1",
-      "skinName": null
-    }
-  ],
-  "trap_039_dstnta": [
-    {
-      "op": "trap_039_dstnta",
-      "skinId": "trap_039_dstnta#1",
-      "skinName": null
-    }
-  ],
-  "trap_040_canoe": [
-    {
-      "op": "trap_040_canoe",
-      "skinId": "trap_040_canoe#1",
-      "skinName": null
-    }
-  ],
-  "trap_041_fcanon": [
-    {
-      "op": "trap_041_fcanon",
-      "skinId": "trap_041_fcanon#1",
-      "skinName": null
-    }
-  ],
-  "trap_042_tidectrl": [
-    {
-      "op": "trap_042_tidectrl",
-      "skinId": "trap_042_tidectrl#1",
-      "skinName": null
-    }
-  ],
-  "trap_043_dupilr": [
-    {
-      "op": "trap_043_dupilr",
-      "skinId": "trap_043_dupilr#1",
-      "skinName": null
-    }
-  ],
-  "trap_044_duruin": [
-    {
-      "op": "trap_044_duruin",
-      "skinId": "trap_044_duruin#1",
-      "skinName": null
-    }
-  ],
-  "trap_045_dublst": [
-    {
-      "op": "trap_045_dublst",
-      "skinId": "trap_045_dublst#1",
-      "skinName": null
-    }
-  ],
-  "trap_046_oxygen": [
-    {
-      "op": "trap_046_oxygen",
-      "skinId": "trap_046_oxygen#1",
-      "skinName": null
-    }
-  ],
-  "trap_048_neonlamp": [
-    {
-      "op": "trap_048_neonlamp",
-      "skinId": "trap_048_neonlamp#1",
-      "skinName": null
-    }
-  ],
-  "trap_049_candle": [
-    {
-      "op": "trap_049_candle",
-      "skinId": "trap_049_candle#1",
-      "skinName": null
-    }
-  ],
-  "trap_050_blizzard": [
-    {
-      "op": "trap_050_blizzard",
-      "skinId": "trap_050_blizzard#1",
-      "skinName": null
-    }
-  ],
-  "trap_051_vultres": [
-    {
-      "op": "trap_051_vultres",
-      "skinId": "trap_051_vultres#1",
-      "skinName": null
-    }
-  ],
-  "trap_052_slowfd": [
-    {
-      "op": "trap_052_slowfd",
-      "skinId": "trap_052_slowfd#1",
-      "skinName": null
-    }
-  ],
-  "trap_053_airbomb": [
-    {
-      "op": "trap_053_airbomb",
-      "skinId": "trap_053_airbomb#1",
-      "skinName": null
-    }
-  ],
-  "trap_054_dancdol": [
-    {
-      "op": "trap_054_dancdol",
-      "skinId": "trap_054_dancdol#1",
-      "skinName": null
-    }
-  ],
-  "trap_055_tileblock": [
-    {
-      "op": "trap_055_tileblock",
-      "skinId": "trap_055_tileblock#1",
-      "skinName": null
-    }
-  ],
-  "trap_056_sfsuifire": [
-    {
-      "op": "trap_056_sfsuifire",
-      "skinId": "trap_056_sfsuifire#1",
-      "skinName": null
-    }
-  ],
-  "trap_057_wpnsts": [
-    {
-      "op": "trap_057_wpnsts",
-      "skinId": "trap_057_wpnsts#1",
-      "skinName": null
-    }
-  ],
-  "trap_058_gunctrl": [
-    {
-      "op": "trap_058_gunctrl",
-      "skinId": "trap_058_gunctrl#1",
-      "skinName": null
-    }
-  ],
-  "trap_059_peacokfool": [
-    {
-      "op": "trap_059_peacokfool",
-      "skinId": "trap_059_peacokfool#1",
-      "skinName": null
-    }
-  ],
-  "trap_060_bouncy": [
-    {
-      "op": "trap_060_bouncy",
-      "skinId": "trap_060_bouncy#1",
-      "skinName": null
-    }
-  ],
-  "trap_061_creep": [
-    {
-      "op": "trap_061_creep",
-      "skinId": "trap_061_creep#1",
-      "skinName": null
-    }
-  ],
-  "trap_062_magicstart": [
-    {
-      "op": "trap_062_magicstart",
-      "skinId": "trap_062_magicstart#1",
-      "skinName": null
-    }
-  ],
-  "trap_063_magicturn": [
-    {
-      "op": "trap_063_magicturn",
-      "skinId": "trap_063_magicturn#1",
-      "skinName": null
-    }
-  ],
-  "trap_064_magiccircle": [
-    {
-      "op": "trap_064_magiccircle",
-      "skinId": "trap_064_magiccircle#1",
-      "skinName": null
-    }
-  ],
-  "trap_069_buffcard": [
-    {
-      "op": "trap_069_buffcard",
-      "skinId": "trap_069_buffcard#1",
-      "skinName": null
-    }
-  ],
-  "trap_070_supplycard": [
-    {
-      "op": "trap_070_supplycard",
-      "skinId": "trap_070_supplycard#1",
-      "skinName": null
-    }
-  ],
-  "trap_071_recyclecard": [
-    {
-      "op": "trap_071_recyclecard",
-      "skinId": "trap_071_recyclecard#1",
-      "skinName": null
-    }
-  ],
-  "trap_072_revivecard": [
-    {
-      "op": "trap_072_revivecard",
-      "skinId": "trap_072_revivecard#1",
-      "skinName": null
-    }
-  ],
-  "trap_073_btauntcard": [
-    {
-      "op": "trap_073_btauntcard",
-      "skinId": "trap_073_btauntcard#1",
-      "skinName": null
-    }
-  ],
-  "trap_074_bbombcard": [
-    {
-      "op": "trap_074_bbombcard",
-      "skinId": "trap_074_bbombcard#1",
-      "skinName": null
-    }
-  ],
-  "trap_082_salecard": [
-    {
-      "op": "trap_082_salecard",
-      "skinId": "trap_082_salecard#1",
-      "skinName": null
-    }
-  ],
-  "trap_075_bgarmn": [
-    {
-      "op": "trap_075_bgarmn",
-      "skinId": "trap_075_bgarmn#1",
-      "skinName": null
-    }
-  ],
-  "trap_076_bgarms": [
-    {
-      "op": "trap_076_bgarms",
-      "skinId": "trap_076_bgarms#1",
-      "skinName": null
-    }
-  ],
-  "trap_077_rmtarmn": [
-    {
-      "op": "trap_077_rmtarmn",
-      "skinId": "trap_077_rmtarmn#1",
-      "skinName": null
-    }
-  ],
-  "trap_078_rmtarms": [
-    {
-      "op": "trap_078_rmtarms",
-      "skinId": "trap_078_rmtarms#1",
-      "skinName": null
-    }
-  ],
-  "trap_080_garage": [
-    {
-      "op": "trap_080_garage",
-      "skinId": "trap_080_garage#1",
-      "skinName": null
-    }
-  ],
-  "trap_081_turngear": [
-    {
-      "op": "trap_081_turngear",
-      "skinId": "trap_081_turngear#1",
-      "skinName": null
-    }
-  ],
-  "trap_085_paras": [
-    {
-      "op": "trap_085_paras",
-      "skinId": "trap_085_paras#1",
-      "skinName": null
-    }
-  ],
-  "trap_090_recodr": [
-    {
-      "op": "trap_090_recodr",
-      "skinId": "trap_090_recodr#1",
-      "skinName": null
-    }
-  ],
-  "trap_091_brctrl": [
-    {
-      "op": "trap_091_brctrl",
-      "skinId": "trap_091_brctrl#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_230_savage": [
     {
-      "op": "char_230_savage",
       "skinId": "char_230_savage#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_230_savage",
       "skinId": "char_230_savage#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     }
   ],
   "char_282_catap": [
     {
-      "op": "char_282_catap",
       "skinId": "char_282_catap#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     }
   ],
   "char_283_midn": [
     {
-      "op": "char_283_midn",
       "skinId": "char_283_midn#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_283_midn",
       "skinId": "char_283_midn@boc#1",
-      "skinName": "Seventh Night's Awakened"
+      "skinName": "Seventh Night's Awakened",
+      "sortId": 165
     }
   ],
   "char_137_brownb": [
     {
-      "op": "char_137_brownb",
       "skinId": "char_137_brownb#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_137_brownb",
       "skinId": "char_137_brownb#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_137_brownb",
       "skinId": "char_137_brownb@kitchen#1",
-      "skinName": "Honey Pilferer"
+      "skinName": "Honey Pilferer",
+      "sortId": 182
     }
   ],
   "char_347_jaksel": [
     {
-      "op": "char_347_jaksel",
       "skinId": "char_347_jaksel#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_347_jaksel",
       "skinId": "char_347_jaksel#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_347_jaksel",
       "skinId": "char_347_jaksel@whirlwind#2",
-      "skinName": "Take a Leap"
+      "skinName": "Take a Leap",
+      "sortId": 68
     }
   ],
   "char_164_nightm": [
     {
-      "op": "char_164_nightm",
       "skinId": "char_164_nightm#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_164_nightm",
       "skinId": "char_164_nightm#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_164_nightm",
       "skinId": "char_164_nightm@epoque#5",
-      "skinName": "Light and Shadow"
+      "skinName": "Light and Shadow",
+      "sortId": 16
     }
   ],
   "char_220_grani": [
     {
-      "op": "char_220_grani",
       "skinId": "char_220_grani#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_220_grani",
       "skinId": "char_220_grani#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_220_grani",
       "skinId": "char_220_grani@epoque#6",
-      "skinName": "Miraculous Moment"
+      "skinName": "Miraculous Moment",
+      "sortId": 19
     }
   ],
   "char_263_skadi": [
     {
-      "op": "char_263_skadi",
       "skinId": "char_263_skadi#1",
-      "skinName": null
+      "skinName": null,
+      "sortId": -3
     },
     {
-      "op": "char_263_skadi",
       "skinId": "char_263_skadi#2",
-      "skinName": null
+      "skinName": null,
+      "sortId": -1
     },
     {
-      "op": "char_263_skadi",
       "skinId": "char_263_skadi@summer#3",
-      "skinName": "Waverider WR04"
-    }
-  ],
-  "trap_065_normbox": [
-    {
-      "op": "trap_065_normbox",
-      "skinId": "trap_065_normbox#1",
-      "skinName": null
-    }
-  ],
-  "trap_066_rarebox": [
-    {
-      "op": "trap_066_rarebox",
-      "skinId": "trap_066_rarebox#1",
-      "skinName": null
-    }
-  ],
-  "trap_068_badbox": [
-    {
-      "op": "trap_068_badbox",
-      "skinId": "trap_068_badbox#1",
-      "skinName": null
-    }
-  ],
-  "trap_083_bunker": [
-    {
-      "op": "trap_083_bunker",
-      "skinId": "trap_083_bunker#1",
-      "skinName": null
-    }
-  ],
-  "trap_084_aidkit": [
-    {
-      "op": "trap_084_aidkit",
-      "skinId": "trap_084_aidkit#1",
-      "skinName": null
-    }
-  ],
-  "trap_079_allydonq": [
-    {
-      "op": "trap_079_allydonq",
-      "skinId": "trap_079_allydonq#1",
-      "skinName": null
-    }
-  ],
-  "trap_067_dice": [
-    {
-      "op": "trap_067_dice",
-      "skinId": "trap_067_dice#1",
-      "skinName": null
-    }
-  ],
-  "trap_088_dice2": [
-    {
-      "op": "trap_088_dice2",
-      "skinId": "trap_088_dice2#1",
-      "skinName": null
-    }
-  ],
-  "trap_089_dice3": [
-    {
-      "op": "trap_089_dice3",
-      "skinId": "trap_089_dice3#1",
-      "skinName": null
-    }
-  ],
-  "trap_093_tbattbc": [
-    {
-      "op": "trap_093_tbattbc",
-      "skinId": "trap_093_tbattbc#1",
-      "skinName": null
-    }
-  ],
-  "trap_094_tbpsnc": [
-    {
-      "op": "trap_094_tbpsnc",
-      "skinId": "trap_094_tbpsnc#1",
-      "skinName": null
-    }
-  ],
-  "trap_095_tbsmmc": [
-    {
-      "op": "trap_095_tbsmmc",
-      "skinId": "trap_095_tbsmmc#1",
-      "skinName": null
-    }
-  ],
-  "trap_086_larva": [
-    {
-      "op": "trap_086_larva",
-      "skinId": "trap_086_larva#1",
-      "skinName": null
-    }
-  ],
-  "trap_087_allady": [
-    {
-      "op": "trap_087_allady",
-      "skinId": "trap_087_allady#1",
-      "skinName": null
-    }
-  ],
-  "trap_092_vgctrl": [
-    {
-      "op": "trap_092_vgctrl",
-      "skinId": "trap_092_vgctrl#1",
-      "skinName": null
+      "skinName": "Waverider WR04",
+      "sortId": 82
     }
   ]
 }
