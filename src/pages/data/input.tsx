@@ -110,8 +110,8 @@ const Input: NextPage = () => {
     setSelectGroup(_ => selectGroup.includes(id) ? [...filteredQueue] : [...filteredQueue, id]);
   }
   const selectOp = useCallback((id: string) => {
-      setOpId(id);
-      setEditOpen(true);
+    setOpId(id);
+    setEditOpen(true);
   }, []);
 
   const handleSelectOp = batch ? toggleOp : selectOp;
@@ -274,6 +274,7 @@ const Input: NextPage = () => {
             opacity: 0.5
           },
           "& .toggled": {
+            opacity: 1,
           },
         }}>
           <OperatorSelector
