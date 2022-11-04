@@ -84,7 +84,7 @@ const View: NextPage = () => {
               width: { xs: "1.5rem", sm: "2.5rem" },
             },
             "& .selected": {
-              backgroundColor: "rgba(255, 255, 255, 0.25)"
+              backgroundColor: "rgba(255, 255, 255, 0.15)"
             },
             justifyContent: "space-around",
             height: "min-content",
