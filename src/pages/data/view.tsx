@@ -94,9 +94,6 @@ const View: NextPage = () => {
               sm: 0
             },
           }}>
-          <IconButton className={editMode ? "selected" : ""} onClick={() => setEditMode(!editMode)} aria-label="Edit" >
-            <ModeEdit fontSize="large" color="primary" />
-          </IconButton>
           <SortDialog
             sortFns={sortFunctions}
             sortQueue={sortQueue}
@@ -110,6 +107,9 @@ const View: NextPage = () => {
             clearFilters={clearFilters}
           />
           <SearchDialog setSearch={setSearchName} />
+          <IconButton className={editMode ? "selected" : ""} onClick={() => setEditMode(!editMode)} aria-label="Edit" >
+            <ModeEdit fontSize="large" color="primary" />
+          </IconButton>
         </ButtonGroup>
         <Box sx={{
           display: "flex",

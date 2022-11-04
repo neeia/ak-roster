@@ -152,14 +152,6 @@ const FilterDialog = memo((props: Props) => {
     }
   }
 
-
-  const [doctor] = useLocalStorage<AccountInfo>("doctor", {});
-  useEffect(() => {
-    const filterKey = "cn";
-    if (doctor.server !== "CN") addFilter(filterKey, "EN", (_, opInfo: OpJsonObj) => !opInfo.isCnOnly);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const [open, setOpen] = React.useState(false);
   return (
     <>
