@@ -11,6 +11,14 @@ export interface Operator {
   skillLevel: number;
   mastery: number[];
   module: number[];
+  skin?: string;
+}
+
+export interface Skin {
+  op: string;
+  skinId: string;
+  skinName: string;
+  sortId: number;
 }
 
 export interface OpJsonObj {

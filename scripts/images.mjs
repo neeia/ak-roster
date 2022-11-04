@@ -17,7 +17,7 @@ const tasks = [
   {
     sourceDir: path.join(ACESHIP_ROOT, "avatars"),
     destDir: "public\\img\\avatars",
-    filter: (filename) => /^char_[^_]+_[^_]+(_\d+\+?)?\.png$/.test(filename),
+    filter: (filename) => /^char_.*\.png$/.test(filename),
   },
   {
     sourceDir: path.join(ACESHIP_ROOT, "equip/icon"),
