@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
-import { Box, ButtonGroup, Divider, FormControlLabel, IconButton, Switch, Typography } from "@mui/material";
+import { Box, ButtonGroup, Divider, IconButton, Typography } from "@mui/material";
 import Layout from "components/Layout";
 import SearchDialog from "components/collate/SearchDialog";
 import FilterDialog from "components/collate/FilterDialog";
@@ -13,10 +13,12 @@ import { Operator, OpJsonObj } from "types/operator";
 import useOperators from "util/useOperators";
 import BatchDialog from "components/batch/BatchDialog";
 import { safeMerge } from "util/useSync";
-import { changeOwned, changeFavorite, changePotential, changePromotion, changeLevel, changeSkillLevel, changeMastery, changeModule } from "util/changeOperator";
+import { changeOwned, changeFavorite, changePotential, changePromotion, changeLevel, changeSkillLevel, changeMastery } from "util/changeOperator";
 import usePresets from "util/usePresets";
-import { ArrowBack, Check, Clear, Close } from "@mui/icons-material";
+import { ArrowBack, Check, Clear } from "@mui/icons-material";
 import EditPreset from "components/batch/EditPreset";
+import { AccountInfo, isCN } from "types/doctor";
+import useLocalStorage from "util/useLocalStorage";
 
 const EditOperator = dynamic(
   () => import("components/input/EditOperator"),
@@ -40,6 +42,13 @@ const Input: NextPage = () => {
     { key: "Rarity", desc: true },
   ]);
   const [, setSearchName, filter, addFilter, removeFilter, clearFilters, filterFunction] = useFilter();
+
+  const [doctor] = useLocalStorage<AccountInfo>("doctor", {});
+  useEffect(() => {
+    const filterKey = "cn";
+    if (!(doctor && doctor.server && isCN(doctor.server))) addFilter(filterKey, "EN", (_, opInfo: OpJsonObj) => !opInfo.isCnOnly);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const db = getDatabase();
   const onChange = (op: Operator) => {

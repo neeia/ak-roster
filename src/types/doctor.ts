@@ -26,3 +26,7 @@ export interface FriendCode {
 }
 
 export const servers = ["EN", "官服", "B服", "JP", "KR", "TW"];
+
+export function isCN(server: string): boolean {
+  return !["EN", "JP", "KR", "TW"].includes(server);
+}
