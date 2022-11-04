@@ -35,7 +35,7 @@ const PatchNotes = () => {
               marginLeft: "8px",
               paddingTop: "12px",
             }}>
-            Patch 2.1
+            Patch 2.2
           </Typography>
           <IconButton onClick={() => setOpen(false)} sx={{ display: { sm: "none" } }}>
             <Close />
@@ -52,6 +52,14 @@ const PatchNotes = () => {
               <li>The batch edit page has been returned to the input page</li>
               <li>Functionally unchanged, but now allows for sort & filter</li>
               <li>Performance of making batch changes improved</li>
+            </ul>
+          </Box>
+          <Box>
+            Stultifera Navis
+            <ul>
+              <li>A new filter has been added for the new 6* selector</li>
+              <li>Can be mixed with other filters and on any page</li>
+              <li>Filter will remain until selector expires</li>
             </ul>
           </Box>
         </DialogContent>
