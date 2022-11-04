@@ -15,12 +15,11 @@ const SelFilter = (props: Props) => {
     <Box display="flex" flexDirection="column" width="100%">
       <Box>
         <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
-          Stulifera Navis
+          Stultifera Navis
         </Divider>
       </Box>
       <Box
         display="grid"
-        gridTemplateColumns="repeat(2, 1fr)"
         width="100%"
         sx={{
           "& .MuiIconButton-root": {
@@ -31,13 +30,6 @@ const SelFilter = (props: Props) => {
           }
         }}
       >
-        <IconButton
-          className={five ? "active" : "inactive"}
-          sx={{ borderRadius: `${r}px 0px 0px ${r}px` }}
-          onClick={() => toggleFive()}
-        >
-          <Box component="img" src="/img/misc/v5.png" />
-        </IconButton>
         <IconButton
           className={six ? "active" : "inactive"}
           sx={{ borderRadius: `0px ${r}px ${r}px 0px` }}
