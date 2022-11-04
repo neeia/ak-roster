@@ -52,17 +52,15 @@ const OperatorButton = React.memo((props: Props) => {
   return (
     <Box
       component="li"
-      className={className}
       sx={{
         listStyleType: "none",
       }}>
       <Button
-        className={op.owned ? "" : "unowned"}
+        className={className + (op.owned ? "" : "unowned")}
         onClick={() => {
           onClick(op.id);
         }}>
         <Box
-          className={op.owned ? "" : "unowned"}
           sx={{
             height: "calc(4rem + 3px)",
             width: "4rem",
