@@ -3,14 +3,19 @@ import { Operator, OpJsonModule, OpJsonObj } from "../../../types/operator";
 import operatorJson from "../../../data/operators.json";
 import { Box, Button, Typography } from "@mui/material";
 import { changeModule, MODULE_REQ_BY_RARITY } from "../../../util/changeOperator";
+import useLocalStorage from "../../../util/useLocalStorage";
+import { AccountInfo } from "../../../types/doctor";
 
 interface Props {
   op: Operator;
   onChange: (newOperator: Operator) => void;
 }
-const Module = ((props: Props) => {
+const Skins = ((props: Props) => {
   const { op, onChange } = props;
   const opInfo: OpJsonObj = operatorJson[op.id as keyof typeof operatorJson];
+
+  const [doctor] = useLocalStorage<AccountInfo>("doctor", {});
+  const hideCN = doctor.server !== "CN";
 
   return (
     <Box sx={{
@@ -19,7 +24,7 @@ const Module = ((props: Props) => {
       justifyContent: "center",
       gap: "4px",
     }}>
-      {opInfo.modules.map((module: OpJsonModule, i: number) => {
+      {opInfo.modules.filter(mod => !hideCN || !mod.isCnOnly).map((module: OpJsonModule, i: number) => {
         const disabled = !op.owned || op.level < MODULE_REQ_BY_RARITY[op.rarity] || op.promotion < 2;
         return (
           <Box
@@ -88,4 +93,4 @@ const Module = ((props: Props) => {
     </Box>
   )
 })
-export default Module;
+export default Skins;

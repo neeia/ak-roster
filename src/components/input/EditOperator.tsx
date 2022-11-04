@@ -1,6 +1,7 @@
 import React from "react";
-import { Operator, OpJsonObj } from "types/operator";
+import { Operator, OpJsonObj, Skin } from "types/operator";
 import operatorJson from "data/operators.json";
+import skinJson from "data/skins.json";
 import sg0 from "data/sg0.json";
 import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import EditRow from "./EditRow";
@@ -13,6 +14,7 @@ import Level from "./EditPieces/Level";
 import SkillLevel from "./EditPieces/SkillLevel";
 import ExtLink from "./EditPieces/ExtLink";
 import { Close } from "@mui/icons-material";
+import Skins from "./EditPieces/Skins";
 
 interface Props {
   op?: Operator;
@@ -22,12 +24,13 @@ interface Props {
 }
 
 const EditOperator = React.memo((props: Props) => {
-  const { op, onChange,open, onClose } = props;
+  const { op, onChange, open, onClose } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   if (!op) return null;
   const opId = op.id;
+  const opSkins: Skin[] = skinJson[opId as keyof typeof skinJson];
   const opInfo: OpJsonObj = operatorJson[opId as keyof typeof operatorJson];
 
   let intermediate = opId;
@@ -171,13 +174,25 @@ const EditOperator = React.memo((props: Props) => {
           />
           : null
         }
-        {opInfo.modules.length !== 0
-          ? <EditRow
-            titleR="Modules"
-            childrenR={<Module op={op} onChange={onChange} />}
-          />
-          : null
-        }
+        <EditRow
+          titleL={opSkins.length > 1 
+            ? "Outfits"
+            : undefined
+          }
+          titleR={opInfo.modules.length !== 0
+            ? "Modules"
+            : undefined
+          }
+          childrenL={
+            opSkins.length > 1
+              ? <Skins op={op} onChange={onChange} />
+              : undefined
+          }
+          childrenR={opInfo.modules.length !== 0
+            ? <Module op={op} onChange={onChange} />
+            : undefined
+          }
+        />
       </DialogContent>
     </Dialog>
   );

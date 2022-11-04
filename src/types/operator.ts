@@ -15,9 +15,8 @@ export interface Operator {
 }
 
 export interface Skin {
-  op: string;
   skinId: string;
-  skinName: string;
+  skinName: string | null;
   sortId: number;
 }
 
