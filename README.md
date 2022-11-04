@@ -11,6 +11,14 @@ yarn install
 yarn start
 ```
 
+## Updating
+Clone [Arknight-Images](https://github.com/Aceship/Arknight-Images.git) as a sibling directory of ak-roster
+```shell
+yarn update:operators
+yarn update:images
+yarn update:skins
+```
+
 ## License
 BSD0
 
