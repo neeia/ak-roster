@@ -148,7 +148,8 @@ const EditOperator = React.memo((props: Props) => {
         "& .Mui-disabled": {
           opacity: 0.25,
           boxShadow: 0,
-        },}}>
+        },
+      }}>
         <EditRow
           titleL="General"
           titleR="Potential"
