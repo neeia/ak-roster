@@ -24,10 +24,6 @@ export const sortFunctions: Record<string, SortFunction> = {
     fn: (a: Operator, b: Operator): number => +b.favorite - +a.favorite,
     dfDesc: true,
   },
-  //"Class": {
-  //  fn: (a: Operator, b: Operator): number => classList.indexOf(b.class) - classList.indexOf(a.class),
-  //  dfDesc: false,
-  //},
 }
 
 export function useFilter(initFilter?: Record<string, Record<string, FilterFunction>>) {
