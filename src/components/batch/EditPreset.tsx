@@ -72,6 +72,21 @@ const EditPreset = React.memo((props: Props) => {
           backgroundColor: "info.main",
           boxShadow: 1,
         },
+        "& .inactive": {
+          opacity: 0.75,
+        },
+        "& .active": {
+          opacity: 1,
+          boxShadow: 0,
+          borderBottomWidth: "0.25rem",
+          borderBottomColor: "primary.main",
+          borderBottomStyle: "solid",
+          backgroundColor: "info.light",
+        },
+        "& .Mui-disabled": {
+          opacity: 0.25,
+          boxShadow: 0,
+        },
       }}>
         <EditRow
           titleL="General"
