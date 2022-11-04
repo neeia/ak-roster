@@ -7,23 +7,22 @@ import Promotion from "../input/EditPieces/Promotion";
 import Mastery from "./replacements/Mastery";
 import Level from "../input/EditPieces/Level";
 import SkillLevel from "../input/EditPieces/SkillLevel";
-import usePresets from "../../util/usePresets";
 import { Close } from "@mui/icons-material";
+import { Operator } from "types/operator";
 
 interface Props {
-  presetID: string;
+  preset: Operator;
   open: boolean;
   onClose: () => void;
+  onChange: (op: Operator) => void;
+  rename: (id: string, name: string) => void;
 }
 
 const EditPreset = React.memo((props: Props) => {
-  const { presetID, open, onClose } = props;
+  const { preset, open, onClose, onChange, rename } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const [presets, onChange, rename] = usePresets();
-
-  const preset = presets[presetID];
   if (!preset) return null;
 
   const name = (
@@ -67,7 +66,13 @@ const EditPreset = React.memo((props: Props) => {
           <Close />
         </IconButton>
       </DialogTitle>
-      <DialogContent>
+      <DialogContent sx={{
+        "& .MuiButtonBase-root": {
+          border: "unset",
+          backgroundColor: "info.main",
+          boxShadow: 1,
+        },
+      }}>
         <EditRow
           titleL="General"
           titleR="Potential"

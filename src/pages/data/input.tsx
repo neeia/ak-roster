@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
-import { Box, ButtonGroup } from "@mui/material";
+import { Box, ButtonGroup, Divider, FormControlLabel, IconButton, Switch, Typography } from "@mui/material";
 import Layout from "components/Layout";
 import SearchDialog from "components/collate/SearchDialog";
 import FilterDialog from "components/collate/FilterDialog";
@@ -9,8 +9,14 @@ import SortDialog from "components/collate/SortDialog";
 import { useSort, useFilter } from "util/useSSF";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
-import { Operator } from "types/operator";
+import { Operator, OpJsonObj } from "types/operator";
 import useOperators from "util/useOperators";
+import BatchDialog from "components/batch/BatchDialog";
+import { safeMerge } from "util/useSync";
+import { changeOwned, changeFavorite, changePotential, changePromotion, changeLevel, changeSkillLevel, changeMastery, changeModule } from "util/changeOperator";
+import usePresets from "util/usePresets";
+import { ArrowBack, Check, Clear, Close } from "@mui/icons-material";
+import EditPreset from "components/batch/EditPreset";
 
 const EditOperator = dynamic(
   () => import("components/input/EditOperator"),
@@ -23,13 +29,12 @@ const OperatorSelector = dynamic(
 const Input: NextPage = () => {
 
   const [operators, setOperators] = useOperators();
+  const [presets, changePreset, rename] = usePresets();
+  const [batch, setBatch] = useState(false);
+  const [preset, setPreset] = useState("");
 
   const [opId, setOpId] = React.useState("");
   const [editOpen, setEditOpen] = React.useState(false);
-  const handleSelectOp = useCallback((id: string) => {
-    setOpId(id);
-    setEditOpen(true);
-  }, []);
 
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
     { key: "Rarity", desc: true },
@@ -53,10 +58,84 @@ const Input: NextPage = () => {
     });
   }, []);
 
+
+  const applyBatch = React.useCallback(
+    (source: Operator, target: string[], safeMode?: boolean) => {
+      setOperators(
+        (oldOperators: Record<string, Operator>): Record<string, Operator> => {
+          const copyOperators = { ...oldOperators };
+          target.forEach((opID: string) => {
+            var op = { ...copyOperators[opID] };
+            var copySource = { ...source }
+            if (safeMode) {
+              copySource = safeMerge(source, op);
+            }
+
+            op = changeOwned(op, copySource.owned);
+            op = changeFavorite(op, copySource.favorite);
+            op = changePotential(op, copySource.potential);
+            op = changePromotion(op, copySource.promotion);
+            op = changeLevel(op, copySource.level);
+            op = changeSkillLevel(op, copySource.skillLevel);
+            copySource.mastery.forEach((value, index) => {
+              op = changeMastery(op, index, value);
+            })
+
+            copyOperators[opID] = op;
+            if (user) {
+              set(ref(db, `users/${user.uid}/roster/${opID}`), op);
+            }
+          })
+          return copyOperators;
+        }
+      );
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [user, setOperators]
+  );
+  const handleCancelBatch = () => {
+    setBatch(false);
+    setSelectGroup([]);
+  }
+  const handleApplyBatch = () => {
+    const presetOp = presets[preset];
+    setBatch(false);
+    applyBatch(presetOp, selectGroup);
+    setSelectGroup([]);
+  }
+
+  const [selectGroup, setSelectGroup] = useState<string[]>([]);
+  const toggleOp = (id: string) => {
+    const filteredQueue = selectGroup.filter(li => li !== id);
+    setSelectGroup(_ => selectGroup.includes(id) ? [...filteredQueue] : [...filteredQueue, id]);
+  }
+  const selectOp = useCallback((id: string) => {
+      setOpId(id);
+      setEditOpen(true);
+  }, []);
+
+  const handleSelectOp = batch ? toggleOp : selectOp;
+
+  const [editPresetOpen, setEditPresetOpen] = useState(false);
   return (
     <Layout
       tab="/data"
       page="/input"
+      header={batch
+        ? <>
+          <IconButton
+            aria-label="Cancel batch"
+            edge="start"
+            onClick={() => setBatch(false)}
+          >
+            <ArrowBack sx={{ color: "background.paper" }} />
+          </IconButton>
+          <Typography variant="h5" sx={{ lineHeight: "1rem", mr: 1.5 }}>
+            Applying: {presets[preset].name}
+          </Typography>
+        </>
+        : null
+      }
     >
       <Box sx={{
         display: "grid",
@@ -66,11 +145,13 @@ const Input: NextPage = () => {
       }}>
         <ButtonGroup sx={{
           gridArea: "ctrl",
-          flexDirection: { xs: "row", sm: "column" },
+          display: "grid",
+          gridTemplateRows: { xs: "1fr auto", sm: "repeat(6, auto)" },
+          gridTemplateColumns: { xs: "repeat(4, auto)", sm: "1fr", },
           position: "sticky",
           top: 64,
           zIndex: 10,
-          gap: 1,
+          gap: { xs: 0, sm: 1 },
           "& .MuiIconButton-root": {
             height: "min-content",
           },
@@ -86,7 +167,10 @@ const Input: NextPage = () => {
           },
           "& .Mui-disabled": {
             opacity: 0.5,
-          }
+          },
+          "& .selected": {
+            backgroundColor: "rgba(255, 255, 255, 0.25)"
+          },
         }}>
           <SortDialog
             sortFns={sortFunctions}
@@ -100,7 +184,58 @@ const Input: NextPage = () => {
             removeFilter={removeFilter}
             clearFilters={clearFilters}
           />
+          {batch
+            ? <Box sx={{
+              display: { xs: "none", sm: "inherit" },
+              position: "absolute",
+              gridArea: "4 / 1 / span 5 / 1",
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(255, 255, 255, 0.15)",
+              borderRadius: "2rem",
+              boxShadow: 1,
+            }}>
+            </Box>
+            : null
+          }
           <SearchDialog setSearch={setSearchName} />
+          <BatchDialog
+            preset={preset}
+            editOpen={() => setEditPresetOpen(true)}
+            selectPreset={setPreset}
+            applyPreset={() => setBatch(true)}
+          />
+          <EditPreset
+            open={editPresetOpen}
+            onClose={() => setEditPresetOpen(false)}
+            preset={presets[preset]}
+            onChange={changePreset}
+            rename={rename}
+          />
+          {batch
+            ? <>
+              <Divider sx={{ display: { xs: "none", sm: "inherit" } }} />
+              <Typography
+                component="span"
+                variant="caption"
+                sx={{
+                  marginBottom: -1,
+                  width: "min-content",
+                  height: "min-content",
+                  margin: "auto"
+                }}
+              >
+                Apply
+              </Typography>
+              <IconButton onClick={handleApplyBatch} aria-label="Apply batch">
+                <Check color="success" />
+              </IconButton>
+              <IconButton onClick={handleCancelBatch} aria-label="Cancel batch">
+                <Clear color="error" />
+              </IconButton>
+            </>
+            : null
+          }
         </ButtonGroup>
         <Box sx={{
           display: "grid",
@@ -135,12 +270,18 @@ const Input: NextPage = () => {
           "& .hidden": {
             display: "none"
           },
+          "& .untoggled": {
+            opacity: 0.5
+          },
+          "& .toggled": {
+          },
         }}>
           <OperatorSelector
             operators={operators}
             onClick={handleSelectOp}
             sort={sortFunction}
             filter={filterFunction}
+            toggleGroup={batch ? selectGroup : undefined}
           />
           <EditOperator
             onChange={onChange}
