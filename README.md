@@ -5,6 +5,12 @@ The site is available at [krooster.com](https://krooster.com/).
 ## Tech
 Krooster is developed with NextJS in Typescript. The UI is built on customized MUI components. Data managed by Google Firebase, auth & rtdb.
 
+## Run
+```shell
+yarn install
+yarn start
+```
+
 ## License
 BSD0
 
