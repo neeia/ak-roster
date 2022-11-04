@@ -235,7 +235,7 @@ const OperatorBlock = (props: Props) => {
             src={`/img/rank/bg.png`}
             alt={``}
           />
-          {(!op.mastery[n] || op.mastery[n] === 0
+          {(!op.mastery || !op.mastery[n] || op.mastery[n] === 0
             ? <Box
               component="img"
               className="stack"
