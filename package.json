@@ -9,7 +9,8 @@
     "lint": "next lint",
     "server": "yarn next:build && NODE_ENV=production node server.js",
     "update:operators": "git submodule update --remote && node ./scripts/operators.mjs",
-    "update:images": "node ./scripts/images.mjs"
+    "update:images": "node ./scripts/images.mjs",
+    "update:skins": "node ./scripts/skins.mjs"
   },
   "dependencies": {
     "@emotion/cache": "^11.9.3",
