@@ -38,7 +38,7 @@ const OperatorSelector = React.memo((props: Props) => {
             + " " + (isUndefined(toggleGroup) ? undefined : toggleGroup.includes(op.id) ? "toggled" : "untoggled");
           return <OperatorButton
             key={op.id}
-            op={operators[op.id]}
+            op={op}
             onClick={onClick}
             className={className}
           />
