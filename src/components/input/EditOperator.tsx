@@ -1,7 +1,7 @@
 import React from "react";
 import { Operator, OpJsonObj } from "types/operator";
 import operatorJson from "data/operators.json";
-import sg0 from "../../data/sg0.json";
+import sg0 from "data/sg0.json";
 import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import EditRow from "./EditRow";
 import General from "./EditPieces/General";
@@ -129,7 +129,26 @@ const EditOperator = React.memo((props: Props) => {
           <Close />
         </IconButton>
       </DialogTitle>
-      <DialogContent>
+      <DialogContent sx={{
+        "& .MuiButtonBase-root": {
+          backgroundColor: "info.main",
+          boxShadow: 1,
+        },
+        "& .inactive": {
+          opacity: 0.75,
+        },
+        "& .active": {
+          opacity: 1,
+          boxShadow: 0,
+          borderBottomWidth: "0.25rem",
+          borderBottomColor: "primary.main",
+          borderBottomStyle: "solid",
+          backgroundColor: "info.light",
+        },
+        "& .Mui-disabled": {
+          opacity: 0.25,
+          boxShadow: 0,
+        },}}>
         <EditRow
           titleL="General"
           titleR="Potential"

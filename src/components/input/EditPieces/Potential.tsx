@@ -20,6 +20,13 @@ const Potential = ((props: Props) => {
     <Box sx={{
       display: "flex",
       justifyContent: "center",
+      borderRadius: 1,
+      width: "min-content",
+      mx: "auto",
+      boxShadow: 1,
+      "& .MuiButtonBase-root": {
+        boxShadow: 0,
+      },
     }}>
       {[...Array(getMaxPotentialById(op.id))].map((_, i) =>
         <IconButton

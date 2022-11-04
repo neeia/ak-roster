@@ -14,25 +14,6 @@ const EditRow = (props: Props) => {
       display: "grid",
       gridTemplateColumns: "repeat(11, 1fr)",
       gap: "1rem",
-      "& .MuiButtonBase-root": {
-        boxShadow: 1,
-        backgroundColor: "info.main",
-      },
-      "& .inactive": {
-        opacity: 0.75,
-      },
-      "& .active": {
-        opacity: 1,
-        boxShadow: 0,
-        borderBottomWidth: "0.25rem",
-        borderBottomColor: "primary.main",
-        borderBottomStyle: "solid",
-        backgroundColor: "info.light",
-      },
-      "& .Mui-disabled": {
-        opacity: 0.25,
-        boxShadow: 0,
-      },
     }}>
       <Box sx={{
         gridColumn: {

@@ -20,6 +20,13 @@ const Promotion = ((props: Props) => {
     <Box sx={{
       display: "flex",
       justifyContent: "center",
+      borderRadius: 1,
+      width: "min-content",
+      mx: "auto",
+      boxShadow: 1,
+      "& .MuiButtonBase-root": {
+        boxShadow: 0,
+      },
     }}>
       {[...Array(MAX_PROMOTION_BY_RARITY[op.rarity] + 1)].map((_, i) =>
         <IconButton
