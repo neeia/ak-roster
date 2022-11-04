@@ -740,7 +740,14 @@
         "skillName": "Command - Defense"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "耐低温通讯设备",
+        "moduleId": "uniequip_002_blackd",
+        "typeName": "SOL-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_149_scave": {
     "id": "char_149_scave",
@@ -761,7 +768,14 @@
         "skillName": "Command - Attack"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "“专属餐具”",
+        "moduleId": "uniequip_002_scave",
+        "typeName": "SOL-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_290_vigna": {
     "id": "char_290_vigna",
@@ -1071,6 +1085,27 @@
     ],
     "modules": []
   },
+  "char_4063_quartz": {
+    "id": "char_4063_quartz",
+    "name": "Quartz",
+    "cnName": "石英",
+    "rarity": 4,
+    "class": "Guard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[2]",
+        "iconId": null,
+        "skillName": "攻击力强化·β型"
+      },
+      {
+        "skillId": "skchr_quartz_2",
+        "iconId": null,
+        "skillName": "全力相搏"
+      }
+    ],
+    "modules": []
+  },
   "char_237_gravel": {
     "id": "char_237_gravel",
     "name": "Gravel",
@@ -1288,10 +1323,10 @@
     ],
     "modules": [
       {
-        "moduleName": "“江河之韵”",
+        "moduleName": "'The River's Lingering Charm'",
         "moduleId": "uniequip_002_finlpp",
         "typeName": "WAH-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -1678,7 +1713,14 @@
         "skillName": "Ursus's Roar"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "冬将军的毕业礼物",
+        "moduleId": "uniequip_002_headbr",
+        "typeName": "SOL-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_102_texas": {
     "id": "char_102_texas",
@@ -1699,7 +1741,14 @@
         "skillName": "Sword Rain"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "外勤私人补给包",
+        "moduleId": "uniequip_002_texas",
+        "typeName": "SOL-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_349_chiave": {
     "id": "char_349_chiave",
@@ -1720,7 +1769,14 @@
         "skillName": "Blazing Wire Stripper"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "自制千斤顶",
+        "moduleId": "uniequip_002_chiave",
+        "typeName": "SOL-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_261_sddrag": {
     "id": "char_261_sddrag",
@@ -2588,6 +2644,27 @@
     ],
     "modules": []
   },
+  "char_466_qanik": {
+    "id": "char_466_qanik",
+    "name": "Qanipalaat",
+    "cnName": "雪绒",
+    "rarity": 5,
+    "class": "Caster",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_qanik_1",
+        "iconId": null,
+        "skillName": "冻风"
+      },
+      {
+        "skillId": "skchr_qanik_2",
+        "iconId": null,
+        "skillName": "坠雪"
+      }
+    ],
+    "modules": []
+  },
   "char_166_skfire": {
     "id": "char_166_skfire",
     "name": "Skyfire",
@@ -3043,10 +3120,10 @@
     ],
     "modules": [
       {
-        "moduleName": "野外考察套装",
+        "moduleName": "Field Research Equipment",
         "moduleId": "uniequip_002_ceylon",
         "typeName": "WAH-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -3071,10 +3148,10 @@
     ],
     "modules": [
       {
-        "moduleName": "古朴的急救箱",
+        "moduleName": "A Quaint First-Aid Kit",
         "moduleId": "uniequip_002_whispr",
         "typeName": "WAH-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -3610,10 +3687,10 @@
     ],
     "modules": [
       {
-        "moduleName": "盾用摄制模块",
+        "moduleName": "Shield Photography Module",
         "moduleId": "uniequip_002_aurora",
         "typeName": "HES-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -3698,6 +3775,34 @@
         "moduleId": "uniequip_002_cuttle",
         "typeName": "DEA-X",
         "isCnOnly": false
+      }
+    ]
+  },
+  "char_4014_lunacu": {
+    "id": "char_4014_lunacu",
+    "name": "Lunacub",
+    "cnName": "子月",
+    "rarity": 5,
+    "class": "Sniper",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_lunacu_1",
+        "iconId": null,
+        "skillName": "狩猎时刻"
+      },
+      {
+        "skillId": "skchr_lunacu_2",
+        "iconId": null,
+        "skillName": "伏击之影"
+      }
+    ],
+    "modules": [
+      {
+        "moduleName": "“移动的窝”",
+        "moduleId": "uniequip_002_lunacu",
+        "typeName": "DEA-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -3952,17 +4057,17 @@
     "cnName": "掠风",
     "rarity": 5,
     "class": "Supporter",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_windft_1",
         "iconId": null,
-        "skillName": "此身为筑"
+        "skillName": "Machine Rapport"
       },
       {
         "skillId": "skchr_windft_2",
         "iconId": null,
-        "skillName": "此身为源"
+        "skillName": "Energy Rapport"
       }
     ],
     "modules": []
@@ -4233,10 +4338,10 @@
     ],
     "modules": [
       {
-        "moduleName": "《乔弗瑞古今童话集》精装本",
+        "moduleName": "The Jeffreys Collection of Fairytales New and Old, Hardback Edition",
         "moduleId": "uniequip_002_bena",
         "typeName": "PUM-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -4261,10 +4366,10 @@
     ],
     "modules": [
       {
-        "moduleName": "旧物",
+        "moduleName": "An Old Thing",
         "moduleId": "uniequip_002_kazema",
         "typeName": "PUM-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -4397,6 +4502,12 @@
         "moduleId": "uniequip_002_shwaz",
         "typeName": "ARC-X",
         "isCnOnly": false
+      },
+      {
+        "moduleName": "老剃刀",
+        "moduleId": "uniequip_003_shwaz",
+        "typeName": "ARC-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -4640,7 +4751,14 @@
         "skillName": "Skull Breaker"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "“糖果盒”",
+        "moduleId": "uniequip_002_siege",
+        "typeName": "SOL-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_222_bpipe": {
     "id": "char_222_bpipe",
@@ -4699,7 +4817,14 @@
         "skillName": "Fierce Glare"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "身向云泥",
+        "moduleId": "uniequip_002_saga",
+        "typeName": "SOL-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_479_sleach": {
     "id": "char_479_sleach",
@@ -4749,6 +4874,39 @@
         "skillId": "skchr_flamtl_3",
         "iconId": null,
         "skillName": "Flameheart"
+      }
+    ],
+    "modules": [
+      {
+        "moduleName": "红松的起点",
+        "moduleId": "uniequip_002_flamtl",
+        "typeName": "SOL-Y",
+        "isCnOnly": true
+      }
+    ]
+  },
+  "char_427_vigil": {
+    "id": "char_427_vigil",
+    "name": "Vigil",
+    "cnName": "伺夜",
+    "rarity": 6,
+    "class": "Vanguard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_vigil_1",
+        "iconId": null,
+        "skillName": "领袖的呼唤"
+      },
+      {
+        "skillId": "skchr_vigil_2",
+        "iconId": null,
+        "skillName": "领袖的馈赠"
+      },
+      {
+        "skillId": "skchr_vigil_3",
+        "iconId": null,
+        "skillName": "领袖的尊严"
       }
     ],
     "modules": []
@@ -5288,6 +5446,39 @@
       }
     ]
   },
+  "char_1028_texas2": {
+    "id": "char_1028_texas2",
+    "name": "Texas the Omertosa",
+    "cnName": "缄默德克萨斯",
+    "rarity": 6,
+    "class": "Specialist",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_texas2_1",
+        "iconId": null,
+        "skillName": "细雨无声"
+      },
+      {
+        "skillId": "skchr_texas2_2",
+        "iconId": null,
+        "skillName": "阵雨连绵"
+      },
+      {
+        "skillId": "skchr_texas2_3",
+        "iconId": null,
+        "skillName": "剑雨滂沱"
+      }
+    ],
+    "modules": [
+      {
+        "moduleName": "蓝莓与黑巧",
+        "moduleId": "uniequip_002_texas2",
+        "typeName": "EXE-Y",
+        "isCnOnly": true
+      }
+    ]
+  },
   "char_322_lmlee": {
     "id": "char_322_lmlee",
     "name": "Lee",
@@ -5445,30 +5636,30 @@
     "cnName": "归溟幽灵鲨",
     "rarity": 6,
     "class": "Specialist",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_ghost2_1",
         "iconId": null,
-        "skillName": "生存的技巧"
+        "skillName": "The Skill to Survive"
       },
       {
         "skillId": "skchr_ghost2_2",
         "iconId": null,
-        "skillName": "生存的渴望"
+        "skillName": "The Thirst to Survive"
       },
       {
         "skillId": "skchr_ghost2_3",
         "iconId": null,
-        "skillName": "生存的重压"
+        "skillName": "The Pressure to Survive"
       }
     ],
     "modules": [
       {
-        "moduleName": "“唱片”收藏箱",
+        "moduleName": "'Vinyl Record' Box",
         "moduleId": "uniequip_002_ghost2",
         "typeName": "PUM-X",
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "未竟之美",
@@ -5609,30 +5800,30 @@
     "cnName": "流明",
     "rarity": 6,
     "class": "Medic",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_lumen_1",
         "iconId": null,
-        "skillName": "沐雨"
+        "skillName": "In Drizzle, Privation"
       },
       {
         "skillId": "skchr_lumen_2",
         "iconId": null,
-        "skillName": "沛霖"
+        "skillName": "In Downpour, Grace"
       },
       {
         "skillId": "skchr_lumen_3",
         "iconId": null,
-        "skillName": "灯火不灭"
+        "skillName": "This Lantern Undying"
       }
     ],
     "modules": [
       {
-        "moduleName": "纯铜单筒望远镜",
+        "moduleName": "Spyglass",
         "moduleId": "uniequip_002_lumen",
         "typeName": "WAH-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -5665,6 +5856,12 @@
         "moduleName": "友人们的赠礼",
         "moduleId": "uniequip_002_hsguma",
         "typeName": "PRO-Y",
+        "isCnOnly": true
+      },
+      {
+        "moduleName": "护身符",
+        "moduleId": "uniequip_003_hsguma",
+        "typeName": "PRO-X",
         "isCnOnly": true
       }
     ]
@@ -5794,6 +5991,32 @@
     ],
     "modules": []
   },
+  "char_4065_judge": {
+    "id": "char_4065_judge",
+    "name": "Penance",
+    "cnName": "斥罪",
+    "rarity": 6,
+    "class": "Defender",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_judge_1",
+        "iconId": null,
+        "skillName": "一锤定音"
+      },
+      {
+        "skillId": "skchr_judge_2",
+        "iconId": null,
+        "skillName": "坚心苦修"
+      },
+      {
+        "skillId": "skchr_judge_3",
+        "iconId": null,
+        "skillName": "披荆斩棘"
+      }
+    ],
+    "modules": []
+  },
   "char_416_zumama": {
     "id": "char_416_zumama",
     "name": "Eunectes",
@@ -5820,10 +6043,10 @@
     ],
     "modules": [
       {
-        "moduleName": "祖玛玛的工具箱",
+        "moduleName": "Zumama's Tool Box",
         "moduleId": "uniequip_002_zumama",
         "typeName": "HES-X",
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "“小小的丑东西”",
@@ -5976,30 +6199,30 @@
     "cnName": "艾丽妮",
     "rarity": 6,
     "class": "Guard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_irene_1",
         "iconId": null,
-        "skillName": "起风"
+        "skillName": "Gust"
       },
       {
         "skillId": "skchr_irene_2",
         "iconId": null,
-        "skillName": "裂潮"
+        "skillName": "Shattertide"
       },
       {
         "skillId": "skchr_irene_3",
         "iconId": null,
-        "skillName": "判决"
+        "skillName": "Judgment"
       }
     ],
     "modules": [
       {
-        "moduleName": "厚重的经卷",
+        "moduleName": "Liber Sacer",
         "moduleId": "uniequip_002_irene",
         "typeName": "SWO-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
