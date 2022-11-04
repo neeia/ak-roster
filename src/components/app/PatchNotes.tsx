@@ -12,7 +12,7 @@ const PatchNotes = () => {
     <>
       <Button onClick={() => { setOpen(true); }} aria-label="Filter">
         <Typography variant="caption2">
-          V2.1 - View Patch Notes
+          V2.2 - View Patch Notes
         </Typography>
       </Button>
       <Dialog
@@ -47,18 +47,11 @@ const PatchNotes = () => {
           gap: "1rem",
         }}>
           <Box>
-            Edit from View
+            Batch Mode
             <ul>
-              <li>You can now open the operator editor from the view tab</li>
-              <li>Provides smoother UX for finding and correcting mistakes</li>
-              <li>Try it out by going to View, and clicking on the pencil icon</li>
-            </ul>
-          </Box>
-          <Box>
-            Bugfixes
-            <ul>
-              <li>Fixed an issue causing usernames to not appear properly</li>
-              <li>Fixed an issue causing the first slot of support units to include 6* units</li>
+              <li>The batch edit page has been returned to the input page</li>
+              <li>Functionally unchanged, but now allows for sort & filter</li>
+              <li>Performance of making batch changes improved</li>
             </ul>
           </Box>
         </DialogContent>
