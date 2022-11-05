@@ -61,10 +61,6 @@ function useOperators() {
   ));
   useEffect(() => {
     repair(operators, setOperators);
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) safeSyncAll(user, operators, setOperators);
-    });
   }, [])
   return [operators, setOperators] as const
 }
