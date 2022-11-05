@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Box, Button, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Dialog, DialogContent, DialogTitle, IconButton, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Close, Edit, FormatPaint, FormatPaintOutlined } from "@mui/icons-material";
 import PresetSelector from "./PresetSelector";
 
@@ -17,9 +17,18 @@ const BatchDialog = memo((props: Props) => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <IconButton onClick={() => { setOpen(true); }} aria-label="Open Batch Options">
-        <FormatPaintOutlined fontSize="large" color="primary" />
-      </IconButton>
+      <Tooltip title="Batch Edit" arrow describeChild>
+        <IconButton
+          onClick={() => { setOpen(true); }}
+          aria-label="Open Batch Options"
+          sx={{ display: "flex", flexDirection: "column" }}
+        >
+          <FormatPaintOutlined fontSize="large" color="primary" />
+          <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
+            Batch
+          </Typography>
+        </IconButton>
+      </Tooltip>
       <Dialog
         open={open}
         onClose={() => setOpen(false)}

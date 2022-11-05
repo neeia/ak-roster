@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, MenuItem, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, MenuItem, TextField, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Close, DragHandle, NorthEast, PlaylistAdd, Sort, SouthEast } from "@mui/icons-material";
 import { SortFunction, SortListItem } from "types/sort";
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
@@ -54,9 +54,18 @@ const SortDialog = (props: Props) => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <IconButton onClick={() => { setOpen(true); }} aria-label="Sort">
-        <Sort fontSize="large" color="primary" />
-      </IconButton>
+      <Tooltip title="Sort" arrow describeChild>
+        <IconButton
+          onClick={() => { setOpen(true); }}
+          aria-label="Sort"
+          sx={{ display: "flex", flexDirection: "column" }}
+        >
+          <Sort fontSize="large" color="primary" />
+          <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
+            Sort
+          </Typography>
+        </IconButton>
+      </Tooltip>
       <Dialog
         open={open}
         onClose={() => setOpen(false)}

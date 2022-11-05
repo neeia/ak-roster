@@ -1,5 +1,5 @@
 import { Clear, Search } from "@mui/icons-material";
-import { Dialog, IconButton, InputAdornment, TextField } from "@mui/material";
+import { Dialog, IconButton, InputAdornment, TextField, Tooltip, Typography } from "@mui/material";
 import React, { memo } from "react";
 
 interface Props {
@@ -20,9 +20,17 @@ const SearchDialog = memo((props: Props) => {
 
   return (
     <>
-      <IconButton onClick={() => setOpen(!open)} aria-label="Search" >
-        <Search fontSize="large" color="primary" />
-      </IconButton>
+      <Tooltip title="Search" arrow describeChild>
+        <IconButton
+          onClick={() => setOpen(!open)}
+          aria-label="Search"
+          sx={{ display: "flex", flexDirection: "column" }}>
+          <Search fontSize="large" color="primary" />
+          <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
+            Search
+          </Typography>
+        </IconButton>
+      </Tooltip>
       <Dialog
         disableEnforceFocus
         disableScrollLock
