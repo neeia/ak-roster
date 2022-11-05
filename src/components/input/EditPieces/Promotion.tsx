@@ -23,7 +23,7 @@ const Promotion = ((props: Props) => {
       borderRadius: 1,
       width: "min-content",
       mx: "auto",
-      boxShadow: 1,
+      boxShadow: +op.owned,
       "& .MuiButtonBase-root": {
         boxShadow: 0,
       },
