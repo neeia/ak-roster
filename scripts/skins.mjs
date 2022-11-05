@@ -25,6 +25,7 @@ const createSkinsJson = () => {
     skinObj[skin.charId].push({
       skinId: skin.skinId,
       skinName: (enSkin && enSkin.displaySkin.skinName) ?? skin.displaySkin.skinName,
+      avatarId: skin.avatarId,
       sortId: skin.displaySkin.sortId,
     });
   })

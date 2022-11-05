@@ -39,7 +39,7 @@ const EditOperator = React.memo((props: Props) => {
   } else if (op.promotion === 1 && op.name === "Amiya") {
     intermediate += "_1";
   }
-  const imgUrl = `/img/avatars/${intermediate}.png`;
+  const imgUrl = `/img/avatars/${op.skin ?? intermediate}.png`;
 
   const opSplit = op.name.split(" the ");
   const name = (
@@ -110,10 +110,7 @@ const EditOperator = React.memo((props: Props) => {
         gridTemplateColumns: "auto 1fr auto",
         alignItems: "center",
         paddingBottom: "12px",
-        boxShadow: {
-          xs: 1,
-          sm: 0
-        },
+        boxShadow: 1,
       }}>
         <Box
           component="img"
@@ -175,7 +172,7 @@ const EditOperator = React.memo((props: Props) => {
           : null
         }
         <EditRow
-          titleL={opSkins.length > 1 
+          titleL={opSkins && opSkins.length > 1
             ? "Outfits"
             : undefined
           }
@@ -183,8 +180,7 @@ const EditOperator = React.memo((props: Props) => {
             ? "Modules"
             : undefined
           }
-          childrenL={
-            opSkins.length > 1
+          childrenL={opSkins && opSkins.length > 1
               ? <Skins op={op} onChange={onChange} />
               : undefined
           }
