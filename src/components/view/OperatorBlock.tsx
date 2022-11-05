@@ -350,7 +350,7 @@ const OperatorBlock = (props: Props) => {
       />
       <Box
         component="img"
-        src={`/img/avatars/${intermediate}.png`}
+        src={`/img/avatars/${op.skin ?? intermediate}.png`}
         loading="lazy"
         alt=""
         sx={{

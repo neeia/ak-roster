@@ -17,6 +17,7 @@ export interface Operator {
 export interface Skin {
   skinId: string;
   skinName: string | null;
+  avatarId: string;
   sortId: number;
 }
 

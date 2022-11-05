@@ -50,7 +50,7 @@ const OperatorButton = React.memo((props: Props) => {
       </Box>
   )
 
-  const imgUrl = `/img/avatars/${op.id}.png`;
+  const imgUrl = `/img/avatars/${op.skin ?? op.id}.png`;
 
   return (
     <Box

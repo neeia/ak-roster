@@ -28,6 +28,7 @@ export const getMaxPotentialById = (opId: string) => {
   switch (opId) {
     case "char_159_peacok":
     case "char_4019_ncdeer":
+    case "char_4067_lolxh":
       return 1;
     case "char_230_savage":
       return 4;
@@ -114,5 +115,11 @@ export const changeModule = (op: Operator, index: number, value: number) => {
   if (op.promotion === 2 && op.level >= MODULE_REQ_BY_RARITY[op.rarity]) {
     op.module[index ?? 0] = +value;
   }
+  return op;
+}
+
+export const changeSkin = (op: Operator, value: string) => {
+  if (!op.owned) return op;
+  op.skin = value === op.skin ? undefined : value;
   return op;
 }

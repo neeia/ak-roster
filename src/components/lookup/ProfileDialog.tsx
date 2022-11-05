@@ -60,7 +60,7 @@ const ProfileDialog = (props: Props) => {
                 } else if (op.promotion === 1 && op.name === "Amiya") {
                   intermediate += "_1";
                 }
-                return `/img/avatars/${intermediate}.png`;
+                return `/img/avatars/${op.skin ?? intermediate}.png`;
               })(user?.assistant)}
               sx={{
                 mx: "auto",
