@@ -14,7 +14,7 @@ const Mastery = ((props: Props) => {
     <Box sx={{
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
+      alignItems: "center",
       gap: "4px",
     }}>
       {[...Array(3)].map((_, i) => {
@@ -24,6 +24,8 @@ const Mastery = ((props: Props) => {
             key={`maB${i}`}
             sx={{
               display: "grid",
+              width: "max-content",
+              gap: "0rem 1rem",
               gridTemplateColumns: "repeat(4, 1fr)",
               gridTemplateRows: "auto 1fr",
               justifyItems: "center",

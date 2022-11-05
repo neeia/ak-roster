@@ -16,7 +16,7 @@ const Module = ((props: Props) => {
     <Box sx={{
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
+      alignItems: "center",
       gap: "4px",
     }}>
       {opInfo.modules.map((module: OpJsonModule, i: number) => {
@@ -26,6 +26,8 @@ const Module = ((props: Props) => {
             key={`maB${i}`}
             sx={{
               display: "grid",
+              width: "max-content",
+              gap: "0rem 1rem",
               gridTemplateAreas: `"icon name name name name"
                       "icon m m m m"`,
               gridTemplateColumns: "auto repeat(4, 1fr)",
