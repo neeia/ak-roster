@@ -24,7 +24,8 @@ export const safeMerge = (a: Operator, b: Operator): Operator => {
         ? value : b.mastery[index]) : b.mastery ?? [],
     module: a.module && a.module.length ? a.module.map((value, index) =>
       !b.module || !b.module[index] || value > b.module[index]
-        ? value : b.module[index]) : b.module ?? []
+        ? value : b.module[index]) : b.module ?? [],
+    skin: a.skin || b.skin,
   };
 }
 
