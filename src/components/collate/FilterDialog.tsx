@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from "react";
-import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { FilterFunction } from "../../types/filter";
 import ClassFilter from "./filter/ClassFilter";
 import OwnedFilter from "./filter/OwnedFilter";
@@ -155,9 +155,18 @@ const FilterDialog = memo((props: Props) => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <IconButton onClick={() => { setOpen(true); }} aria-label="Filter">
-        <FilterAltOutlined fontSize="large" color="primary" />
-      </IconButton>
+      <Tooltip title="Filter" arrow describeChild>
+        <IconButton
+          onClick={() => { setOpen(true); }}
+          aria-label="Filter"
+          sx={{ display: "flex", flexDirection: "column" }}
+        >
+          <FilterAltOutlined fontSize="large" color="primary" />
+          <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
+            Filter
+          </Typography>
+        </IconButton>
+      </Tooltip>
       <Dialog
         open={open}
         onClose={() => setOpen(false)}

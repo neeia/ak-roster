@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { Box, ButtonGroup, IconButton } from "@mui/material";
+import { Box, ButtonGroup, IconButton, Tooltip, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import Layout from "components/Layout";
 import { Operator } from "types/operator";
@@ -107,9 +107,18 @@ const View: NextPage = () => {
             clearFilters={clearFilters}
           />
           <SearchDialog setSearch={setSearchName} />
-          <IconButton className={editMode ? "selected" : ""} onClick={() => setEditMode(!editMode)} aria-label="Edit" >
-            <ModeEdit fontSize="large" color="primary" />
-          </IconButton>
+          <Tooltip title="Edit Mode" arrow describeChild>
+            <IconButton
+              className={editMode ? "selected" : ""}
+              onClick={() => setEditMode(!editMode)}
+              aria-label="Edit Mode"
+              sx={{ display: "flex", flexDirection: "column" }} >
+              <ModeEdit fontSize="large" color="primary" />
+              <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
+                Edit Mode
+              </Typography>
+            </IconButton>
+          </Tooltip>
         </ButtonGroup>
         <Box sx={{
           display: "flex",
