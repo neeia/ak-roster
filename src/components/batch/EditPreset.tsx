@@ -78,7 +78,7 @@ const EditPreset = React.memo((props: Props) => {
         "& .active": {
           opacity: 1,
           boxShadow: 0,
-          borderBottomWidth: "0.25rem",
+          borderBottomWidth: "0.25rem 0px 0px 0px !important",
           borderBottomColor: "primary.main",
           borderBottomStyle: "solid",
           backgroundColor: "info.light",
