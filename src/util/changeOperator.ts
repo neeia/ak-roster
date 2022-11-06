@@ -120,6 +120,7 @@ export const changeModule = (op: Operator, index: number, value: number) => {
 
 export const changeSkin = (op: Operator, value: string) => {
   if (!op.owned) return op;
-  op.skin = value === op.skin ? undefined : value;
+  if (value === op.skin) delete op.skin;
+  else op.skin = value;
   return op;
 }
