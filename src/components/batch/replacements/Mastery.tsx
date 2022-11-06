@@ -39,7 +39,7 @@ const Mastery = ((props: Props) => {
                 mb: -0.25,
                 zIndex: 1
               }}>
-              Skill {i}
+              Skill {i+1}
             </Typography>
             {[...Array(4)].map((_, j) =>
               <Button
