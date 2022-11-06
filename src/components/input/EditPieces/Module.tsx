@@ -40,8 +40,11 @@ const Module = ((props: Props) => {
               sx={{
                 textAlign: "center",
                 gridArea: "name",
-                mb: -0.25,
-                zIndex: 1
+                zIndex: 1,
+                width: "fit-content",
+                maxWidth: "16rem",
+                lineHeight: "1.1",
+                overflowWrap: "break-word",
               }}>
               {module.moduleName}
             </Typography>
