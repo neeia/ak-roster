@@ -10,7 +10,7 @@ function imgUrl(op: Operator) {
   } else if (op && op.promotion === 1 && op.name === "Amiya") {
     intermediate += "_1";
   }
-  return `/img/avatars/${intermediate}.png`;
+  return `/img/avatars/${op.skin ?? intermediate}.png`;
 }
 
 interface Props {
