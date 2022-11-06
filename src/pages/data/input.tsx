@@ -114,16 +114,21 @@ const Input: NextPage = () => {
   }
 
   const [selectGroup, setSelectGroup] = useState<string[]>([]);
-  const toggleOp = (id: string) => {
-    const filteredQueue = selectGroup.filter(li => li !== id);
-    setSelectGroup(_ => selectGroup.includes(id) ? [...filteredQueue] : [...filteredQueue, id]);
-  }
+  const toggleOp = useCallback((id: string) => {
+    setSelectGroup((old) => {
+      return old.includes(id) ?
+        old.filter((li) => li !== id) : [...old, id]
+    });
+  }, [])
   const selectOp = useCallback((id: string) => {
     setOpId(id);
     setEditOpen(true);
   }, []);
 
-  const handleSelectOp = batch ? toggleOp : selectOp;
+  const handleSelectOp = useCallback((id: string) => {
+    // const toggleOp, const selectOp...
+    return batch ? toggleOp(id) : selectOp(id);
+  }, [batch]);
 
   const [editPresetOpen, setEditPresetOpen] = useState(false);
   return (
