@@ -137,7 +137,7 @@ const Recruit: NextPage = () => {
   useEffect(() => {
     setShowPotentials(_showPotentials);
     setCompact(_compact);
-  })
+  }, [])
 
   return (
     <Layout tab="/tools" page="/recruit">
