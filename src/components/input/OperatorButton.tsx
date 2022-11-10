@@ -17,10 +17,12 @@ interface Props {
   onClick: (opId: string) => void;
   hidden?: boolean;
   toggled?: boolean;
+  img?: string;
+  alt?: string;
 }
 
 const OperatorButton = React.memo((props: Props) => {
-  const { op, onClick, hidden, toggled } = props;
+  const { op, onClick, hidden, toggled, img, alt } = props;
 
   const [n, t] = op.name.split(" the ");
   const name = t ?? n;
@@ -38,16 +40,10 @@ const OperatorButton = React.memo((props: Props) => {
   // Process operator name
   let opName = (
     t
-      ? <Box
-        component="abbr"
-        title={op.name}
-      >
+      ? <abbr title={op.name}>
         {nameComponent}
-      </Box>
-      : <Box
-      >
-        {nameComponent}
-      </Box>
+      </abbr>
+      : nameComponent
   )
 
   const imgUrl = `/img/avatars/${op.skin ?? op.id}.png`;
@@ -84,7 +80,21 @@ const OperatorButton = React.memo((props: Props) => {
             ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
             : ""}
         </Box>
-        {opName}
+        <Box sx={{ gridArea: "2 / 1 / 2 / span 2" }}>
+          {opName}
+        </Box>
+        {img &&
+          <Box
+            className={toggled || op.owned ? "" : "unowned"}
+            sx={{
+              height: "calc(2rem + 3px)",
+              width: "2rem",
+              gridArea: "1 / 2",
+            }}
+          >
+            <Image src={img} height="128px" width="128px" alt={alt ?? ""} />
+          </Box>
+        }
       </Button>
     </Box>
   )

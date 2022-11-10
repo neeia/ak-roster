@@ -128,7 +128,7 @@ const Input: NextPage = () => {
   const handleSelectOp = useCallback((id: string) => {
     // const toggleOp, const selectOp...
     return batch ? toggleOp(id) : selectOp(id);
-  }, [batch]);
+  }, [batch, toggleOp, selectOp]);
 
   const [editPresetOpen, setEditPresetOpen] = useState(false);
   return (
@@ -276,7 +276,6 @@ const Input: NextPage = () => {
             backgroundColor: { xs: "info.dark", sm: "info.main" },
             width: "100%",
             height: "min-content",
-            ":hover": { brightness: 1.1 }
           },
           "& .unowned": {
             opacity: 0.75

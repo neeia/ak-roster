@@ -1,12 +1,12 @@
 import React from "react";
-import { Box, Button, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Dialog, DialogContent, DialogTitle, IconButton, Link, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Close } from "@mui/icons-material";
-
+import NextLink from "next/link";
 
 const PatchNotes = () => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const ver = "2.3";
+  const ver = "2.4";
 
   const [open, setOpen] = React.useState(false);
   return (
@@ -50,6 +50,16 @@ const PatchNotes = () => {
             my: 0,
           }
         }}>
+          <Box>
+            Tools
+            <ul>
+              <li>Ported three existing tools with help from <Link href="https://samidare.io/">Samidare</Link></li>
+              <li><NextLink href="/tools/recruit" passHref><Link>Recruitment calculator</Link></NextLink> shows you the best tags to take</li>
+              <ul><li>You can also see operators potentials to help you decide</li></ul>
+              <li><NextLink href="/tools/rateup" passHref><Link>Headhunting</Link></NextLink> lets you calculate your chances on future banners</li>
+              <li><NextLink href="/tools/level" passHref><Link>Level Costs</Link></NextLink> shows the EXP and LMD cost of raising operator levels</li>
+            </ul>
+          </Box>
           <Box>
             Batch Mode
             <ul>
