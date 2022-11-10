@@ -44,6 +44,24 @@ const config = {
         },
       }
     },
+    "/tools": {
+      title: "Tools",
+      description: "Eat sami",
+      pages: {
+        "/recruit": {
+          title: "Recruitment",
+          description: "akhrrecruit",
+        },
+        "/rateup": {
+          title: "Headhunting",
+          description: "Make changes to account details.",
+        },
+        "/level": {
+          title: "Level Costs",
+          description: "Make changes to account details.",
+        }
+      }
+    },
   },
 };
 export default config;

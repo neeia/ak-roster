@@ -34,11 +34,11 @@ const tasks = [
     destDir: "public\\img\\equip",
     filter: (filename) => filename.endsWith(".png"),
   },
-  //{
-  //  sourceDir: `${ACESHIP_ROOT}/items`,
-  //  destDir: "public\\img\\items",
-  //  filter: (filename) => filename.endsWith(".png"),
-  //},
+  {
+    sourceDir: `${ACESHIP_ROOT}/items`,
+    destDir: "public\\img\\items",
+    filter: (filename) => filename.endsWith(".png"),
+  },
 ];
 
 const upload = async (existingFilePaths, task) => {
