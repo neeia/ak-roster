@@ -1,4 +1,4 @@
-import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch, ManageAccounts, Launch } from "@mui/icons-material";
+import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch, ManageAccounts, Launch, Construction } from "@mui/icons-material";
 import { Box, Button, Collapse, Divider, Drawer, Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import { getAuth, onAuthStateChanged, signOut, User } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
@@ -19,6 +19,7 @@ const ICON_BY_PATH = [
   <Description key="d" height="1.5rem" />,
   <ManageAccounts key="a" height="1.5rem" />,
   <PersonSearch key="c" height="1.5rem" />,
+  <Construction key="t" height="1.5rem" />,
 ];
 
 interface ConfigPage {
