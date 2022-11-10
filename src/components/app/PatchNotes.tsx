@@ -55,7 +55,7 @@ const PatchNotes = () => {
             <ul>
               <li>Ported three existing tools with help from <Link href="https://samidare.io/">Samidare</Link></li>
               <li><NextLink href="/tools/recruit" passHref><Link>Recruitment calculator</Link></NextLink> shows you the best tags to take</li>
-              <ul><li>You can also see operators' potentials to help you decide</li></ul>
+              <ul><li>You can also see operators potentials to help you decide</li></ul>
               <li><NextLink href="/tools/rateup" passHref><Link>Headhunting</Link></NextLink> lets you calculate your chances on future banners</li>
               <li><NextLink href="/tools/level" passHref><Link>Level Costs</Link></NextLink> shows the EXP and LMD cost of raising operator levels</li>
             </ul>
