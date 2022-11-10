@@ -220,7 +220,28 @@ const Level: NextPage = () => {
               <Typography component="h3" variant="h5" gutterBottom>
                 Select Rarity
               </Typography>
-              <Box sx={{ display: "grid", gridTemplateColumns: { xs: "repeat(3, 1fr)", sm: "repeat(6, 1fr)" }, width: "100%", rowGap: 1 }}>
+              <Box sx={{
+                display: "grid",
+                gridTemplateColumns: {
+                  xs: "repeat(3, 1fr)",
+                  sm: "repeat(6, 1fr)"
+                },
+                width: "100%",
+                rowGap: 1,
+                "& .inactive": {
+                  opacity: 0.9,
+                  py: "0.6rem",
+                },
+                "& .active": {
+                  opacity: 1,
+                  boxShadow: 0,
+                  pt: "0.6rem",
+                  borderBottomWidth: "0.25rem",
+                  borderBottomColor: "primary.main",
+                  borderBottomStyle: "solid",
+                  backgroundColor: "info.light",
+                },
+              }}>
                 {[...Array(6)].map((_, i) => (
                   <IconButton
                     key={i}
