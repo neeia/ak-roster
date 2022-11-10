@@ -17,14 +17,17 @@ const Level = (props: Props) => {
       onChange(changeLevel(op, lvl));
       setLevelField(Math.max(Math.min(lvl, MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]), 1).toString());
     }
-    else if (parseInt(lvl)) {
-      onChange(changeLevel(op, parseInt(lvl)));
-      setLevelField(Math.max(Math.min(parseInt(lvl), MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]), 1).toString());
+    else if (parseInt(lvl, 10)) {
+      onChange(changeLevel(op, parseInt(lvl, 10)));
+      setLevelField(Math.max(Math.min(parseInt(lvl, 10), MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]), 1).toString());
     }
     else {
       setLevelField("");
     }
   };
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) =>
+    e.target.select();
+
   const min = (
     <Button
       onClick={() => updateLevel(1)}
@@ -119,6 +122,7 @@ const Level = (props: Props) => {
                 textAlign: "center",
               }
             }}
+            onFocus={handleFocus}
             disabled={!op.owned}
             inputProps={{
               inputMode: 'numeric',
