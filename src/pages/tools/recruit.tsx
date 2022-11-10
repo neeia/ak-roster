@@ -23,6 +23,7 @@ import RecruitableOperatorChip from "components/recruit/RecruitableOperatorChip"
 import classList from "../../data/classList";
 import OperatorButton from "../../components/input/OperatorButton";
 import useOperators from "../../util/useOperators";
+import useLocalStorage from "../../util/useLocalStorage";
 
 const TAGS_BY_CATEGORY = {
   Rarity: ["Top Operator", "Senior Operator", "Starter", "Robot"],
@@ -131,6 +132,12 @@ const Recruit: NextPage = () => {
   const [roster] = useOperators();
   const [showPotentials, setShowPotentials] = useState(false);
   const [compact, setCompact] = useState(true);
+  const [_showPotentials, _setShowPotentials] = useLocalStorage("recruitShowPotential", false);
+  const [_compact, _setCompact] = useLocalStorage("recruitCompactMode", true);
+  useEffect(() => {
+    setShowPotentials(_showPotentials);
+    setCompact(_compact);
+  })
 
   return (
     <Layout tab="/tools" page="/recruit">
@@ -208,18 +215,18 @@ const Recruit: NextPage = () => {
               <FormControlLabel
                 control={<Checkbox
                   checked={showPotentials}
-                  onChange={(e) => setShowPotentials(e.target.checked)}
+                  onChange={(e) => { setShowPotentials(e.target.checked); _setShowPotentials(e.target.checked); }}
                 />}
-                label="Potential"
+                label="Show Potentials"
               />
             </Box>
             <Box sx={{ pt: 1 }}>
               <FormControlLabel
                 control={<Checkbox
                   checked={compact}
-                  onChange={(e) => setCompact(e.target.checked)}
+                  onChange={(e) => { setCompact(e.target.checked); _setCompact(e.target.checked); }}
                 />}
-                label="Dense"
+                label="Dense Mode"
               />
             </Box>
           </Box>
