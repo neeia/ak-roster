@@ -276,7 +276,6 @@ const Input: NextPage = () => {
             backgroundColor: { xs: "info.dark", sm: "info.main" },
             width: "100%",
             height: "min-content",
-            ":hover": { brightness: 1.1 }
           },
           "& .unowned": {
             opacity: 0.75
