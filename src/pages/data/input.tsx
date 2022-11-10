@@ -128,7 +128,7 @@ const Input: NextPage = () => {
   const handleSelectOp = useCallback((id: string) => {
     // const toggleOp, const selectOp...
     return batch ? toggleOp(id) : selectOp(id);
-  }, [batch]);
+  }, [batch, toggleOp, selectOp]);
 
   const [editPresetOpen, setEditPresetOpen] = useState(false);
   return (

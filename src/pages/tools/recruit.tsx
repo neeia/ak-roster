@@ -105,7 +105,7 @@ const Recruit: NextPage = () => {
       setResultPaddingTop(0);
     }
   }, [isOpen]);
-  
+
   const handleTagsChanged = (
     _: unknown,
     selectedOptions: {
@@ -346,6 +346,7 @@ const Recruit: NextPage = () => {
                   >
                     {!isServer() && operators.map((operator) => (
                       <OperatorButton op={roster[operator.id]} onClick={() => { }}
+                        key={operator.id}
                         img={showPotentials && roster[operator.id].potential
                           ? `/img/potential/${roster[operator.id].potential}.png`
                           : undefined}
