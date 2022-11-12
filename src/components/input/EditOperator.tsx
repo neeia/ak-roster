@@ -15,6 +15,7 @@ import SkillLevel from "./EditPieces/SkillLevel";
 import ExtLink from "./EditPieces/ExtLink";
 import { Close } from "@mui/icons-material";
 import Skins from "./EditPieces/Skins";
+import Image from "next/image";
 
 interface Props {
   op?: Operator;
@@ -79,17 +80,17 @@ const EditOperator = React.memo((props: Props) => {
       flexDirection: "column"
     }}>
       <ExtLink href={`https://aceship.github.io/AN-EN-Tags/akhrchars.html?opname=${op.name}`} label="ACE" title="Aceship">
-        <Box component="img" src={`/img/ext/aceship.png`} width={iconWidth} alt="" />
+        <Image src={`/img/ext/aceship.png`} width={iconWidth} height={iconWidth} alt="" />
       </ExtLink>
       <ExtLink href={`https://gamepress.gg/arknights/operator/${op.name.replace(/( the )|[ !@#$%^&*(),.]/g, "-")}`} label="GP" title="Gamepress">
-        <Box component="img" src={`/img/ext/gp.png`} width={iconWidth} alt="" />
+        <Image src={`/img/ext/gp.png`} width={iconWidth} height={iconWidth} alt="" />
       </ExtLink>
       <ExtLink href={`http://prts.wiki/w/${encodeURIComponent(opInfo.cnName)}`} label="PRTS">
-        <Box component="img" src={`/img/ext/prts.png`} width={iconWidth} alt="" />
+        <Image src={`/img/ext/prts.png`} width={iconWidth} height={iconWidth} alt="" />
       </ExtLink>
       {opId in sg0
         ? <ExtLink href={`https://sanitygone.help/operators/${op.name.toLowerCase().replace(/ /g, "-")}`} label="S;G" title="Sanity;Gone">
-          <Box component="img" src={`/img/ext/sg0.png`} width={iconWidth} alt="" />
+          <Image src={`/img/ext/sg0.png`} width={iconWidth} height={iconWidth} alt="" />
         </ExtLink>
         : null
       }
