@@ -83,7 +83,7 @@ const Recruit: NextPage = () => {
   const [resultPaddingTop, setResultPaddingTop] = useState(0);
   const popperRef = useRef<Instance>(null);
 
-  const activeTagCombinations = getTagCombinations(activeTags
+  const activeTagCombinations = getTagCombinations([...activeTags]
     .sort((a, b) => a.value.localeCompare(b.value))
     .map(tag => tag.value));
   const matchingOperators = useMemo(
