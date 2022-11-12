@@ -127,7 +127,7 @@ const ProfileDialog = (props: Props) => {
                 display: "flex", justifyContent: "space-around", color: "text.main"
               }}>
                 {user?.support?.map(s => {
-                  if (!s.opID) return null;
+                  if (!s || !s.opID) return null;
                   if (!s.opSkill) s.opSkill = 0;
                   const op = roster[s.opID]
                   return <OperatorBlock key={op.id} op={op} nobg skill={s.opSkill} />

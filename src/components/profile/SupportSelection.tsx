@@ -23,7 +23,7 @@ const SupportSelection = ((props: Props) => {
 
   const db = getDatabase();
 
-  const [supps, setSupps] = useState<OperatorSkillSlot[]>(doctor.support ?? []);
+  const [supps, setSupps] = useState<(OperatorSkillSlot | undefined)[]>(doctor.support ?? []);
   useEffect(() => {
     if (doctor && doctor.support && isObject(doctor.support)) {
       doctor.support = Object.values(doctor.support).map(v => {
@@ -47,7 +47,7 @@ const SupportSelection = ((props: Props) => {
   const setSkill = (target: number, value: number) => {
     const s = [...supps];
     const d = { ...doctor };
-    s[target] = { opID: s[target].opID, opSkill: value };
+    s[target]!.opSkill = value;
     setSupps(s);
     d.support = s;
     setDoctor(d);
@@ -59,9 +59,9 @@ const SupportSelection = ((props: Props) => {
     delete s[target];
     setSupps(s);
     d.support = supps;
-    delete d.support[target]
+    d.support[target] = undefined;
     setDoctor(d);
-    remove(ref(db, `users/${user.uid}/info/support/${index}`));
+    remove(ref(db, `users/${user.uid}/info/support/${target}`));
   };
 
   const filter = (op: OpJsonObj) => operators[op.id]?.owned && !supps.find((v) => !v || v.opID === op.id) && (index ? true : op.rarity < 6);
@@ -93,7 +93,7 @@ const SupportSelection = ((props: Props) => {
           Skills
         </Box>
         {[...Array(3)].map((_, i) => {
-          const op = operators[supps[i]?.opID ?? undefined];
+          const op = operators[supps[i]?.opID ?? ""];
           const opInfo = op ? operatorJson[op.id as keyof typeof operatorJson] : undefined;
           return (
             <Box display="contents" key={i}>
@@ -108,9 +108,9 @@ const SupportSelection = ((props: Props) => {
               {(op
                 ? [...Array(3)].map((_, k) => {
                   if (k < getNumSkills(op)) {
-                    return (opInfo
+                    return (opInfo && supps[i]
                       ? <Button
-                        className={supps[i].opSkill === k ? "active" : ""}
+                        className={supps[i]!.opSkill === k ? "active" : ""}
                         key={`op-${i}-sk-${k}`}
                         onClick={() => setSkill(i, k)}
                         disabled={op.promotion < k}

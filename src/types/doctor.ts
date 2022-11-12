@@ -3,7 +3,7 @@
   friendCode?: FriendCode;
   server?: string;
   private?: boolean;
-  support?: OperatorSkillSlot[];
+  support?: (OperatorSkillSlot | undefined)[];
   assistant?: string;
   level?: number;
   onboard?: Date;
