@@ -1,10 +1,10 @@
 import React from "react";
-import { Operator } from "../../types/operator";
+import { Operator } from "types/operator";
 import { Box, Button, Typography } from "@mui/material";
-import { rarityColors } from "../../styles/rarityColors";
+import { rarityColors } from "styles/rarityColors";
 import { Favorite } from "@mui/icons-material";
-import getTextWidth from "../../styles/getTextWidth";
-import appTheme from "../../styles/theme/appTheme";
+import getTextWidth from "styles/getTextWidth";
+import appTheme from "styles/theme/appTheme";
 import Image from "next/image";
 import { isUndefined } from "util";
 
