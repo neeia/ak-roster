@@ -21,6 +21,17 @@ const ProfileDialog = (props: Props) => {
   if (user && user.support && isObject(user.support)) {
     user.support = Object.values(user.support);
   }
+  const getImgSrc = ((opId: string) => {
+    const op = roster[opId]
+    let intermediate = opId;
+    if (op.promotion === 2) {
+      intermediate += "_2";
+    } else if (op.promotion === 1 && op.name === "Amiya") {
+      intermediate += "_1";
+    }
+    return `/img/avatars/${op.skin ?? intermediate}.png`;
+  });
+
   const [open, setOpen] = React.useState(false);
   return (
     <>
@@ -51,16 +62,7 @@ const ProfileDialog = (props: Props) => {
         }}>
           {user?.assistant
             ? <Box component="img"
-              src={((opId: string) => {
-                const op = roster[opId]
-                let intermediate = opId;
-                if (op.promotion === 2) {
-                  intermediate += "_2";
-                } else if (op.promotion === 1 && op.name === "Amiya") {
-                  intermediate += "_1";
-                }
-                return `/img/avatars/${op.skin ?? intermediate}.png`;
-              })(user?.assistant)}
+              src={getImgSrc(user?.assistant)}
               sx={{
                 mx: "auto",
                 width: "144px",

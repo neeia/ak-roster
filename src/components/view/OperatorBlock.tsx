@@ -5,6 +5,7 @@ import { Favorite } from "@mui/icons-material";
 import { rarityColors } from "../../styles/rarityColors";
 import { getNumSkills, MAX_LEVEL_BY_RARITY } from "../../util/changeOperator";
 import operatorJson from "../../data/operators.json";
+import Image from "next/image";
 
 interface Props {
   op: Operator;
@@ -349,17 +350,15 @@ const OperatorBlock = (props: Props) => {
         }}
       />
       <Box
-        component="img"
-        src={`/img/avatars/${op.skin ?? intermediate}.png`}
-        loading="lazy"
-        alt=""
         sx={{
           gridArea: "img",
           height: { xs: "84px", sm: "124px" },
           width: { xs: "80px", sm: "120px" },
           borderBottom: `4px solid ${rarityColors[op.rarity]}`,
         }}
-      />
+      >
+        <Image src={`/img/avatars/${op.skin ?? intermediate}.png`} height="128px" width="128px" alt="" />
+      </Box>
       {levelBubble}
       {skillBlock}
       {op.module ? moduleBlock : ""}
