@@ -1,10 +1,9 @@
 import React from "react";
-import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, MenuItem, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { BadgeOutlined, Close, Reddit } from "@mui/icons-material";
-import { AccountInfo } from "../../types/doctor";
-import { SocialInfo } from "../../types/social";
-import { Operator } from "../../types/operator";
-import operatorJson from "../../data/operators.json";
+import { AccountInfo } from "types/doctor";
+import { SocialInfo } from "types/social";
+import { Operator } from "types/operator";
 import { isObject } from "util";
 import OperatorBlock from "../view/OperatorBlock";
 
