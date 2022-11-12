@@ -94,8 +94,6 @@ const OperatorBlock = (props: Props) => {
         </svg>
       </Box>
       <Box
-        component="img"
-        loading="lazy"
         sx={{
           gridArea: "potential",
           width: { xs: "16px", sm: "24px" },
@@ -103,10 +101,10 @@ const OperatorBlock = (props: Props) => {
           alignSelf: "center",
           justifySelf: "center",
         }}
-        src={`/img/potential/${op.potential}.png`}
-        alt={`Potential ${op.potential}`}
-      />
-    </Box >
+      >
+        <Image src={`/img/potential/${op.potential}.png`} height="48px" width="48px" alt={`Potential ${op.potential}`} />
+      </Box>
+    </Box>
 
   const promotionBlock =
     <Box
@@ -116,12 +114,9 @@ const OperatorBlock = (props: Props) => {
         marginBottom: { xs: "2px", sm: "2px" },
         marginLeft: { xs: "-4px", sm: "-6px" },
       }}
-      component="img"
-      loading="lazy"
-      src={`/img/elite/${op.promotion}_s_box.png`}
-      height="100%"
-      alt={`Elite ${op.promotion}`}
-    />
+    >
+      <Image src={`/img/elite/${op.promotion}_s_box.png`} height="64px" width="64px" alt={`Elite ${op.promotion}`} />
+    </Box >
 
   const levelSx = {
     gridArea: "level",
@@ -183,6 +178,7 @@ const OperatorBlock = (props: Props) => {
       marginBottom: "-8px",
       display: "grid",
       gridTemplateAreas: `"potential" "elite" "level"`,
+      zIndex: 1,
     }}>
       {op.potential > 1 ? potentialBlock : null}
       {op.promotion > 0 ? promotionBlock : null}
@@ -205,52 +201,31 @@ const OperatorBlock = (props: Props) => {
           sx={{
             display: op.promotion >= n ? "grid" : "none",
             marginLeft: { xs: "0px", sm: `${4 * n}px` },
-            "& > img": {
-              height: { xs: "16px", sm: "24px" },
-            },
             "& .stack": {
               gridRow: 1,
               gridColumn: 1,
               opacity: 0.95,
+              width: { xs: "16px", sm: "24px" },
+              height: { xs: "16px", sm: "24px" },
             },
           }}
         >
           {n === skill
-            ? <Box
-              component="img"
-              className={op.promotion < n ? "Mui-disabled" : ""}
-              sx={{
-                gridRow: 1,
-                gridColumn: 1,
-                transform: "translateX(-100%)",
-              }}
-              src={`/img/skills/${opInfo.skills[n].iconId ?? opInfo.skills[n].skillId}.png`}
-              alt={`Skill ${n + 1}`}
-            />
+            ? <Box className="stack" sx={{ transform: "translateX(-100%)" }}>
+              <Image src={`/img/skills/${opInfo.skills[n].iconId ?? opInfo.skills[n].skillId}.png`} height="64px" width="64px" alt={`Skill ${n + 1}`} />
+            </Box>
             : null
           }
-          <Box
-            component="img"
-            className="stack"
-            loading="lazy"
-            src={`/img/rank/bg.png`}
-            alt={``}
-          />
+          <Box className="stack">
+            <Image src={`/img/rank/bg.png`} height="64px" width="64px" alt={`Skill ${n + 1}`} />
+          </Box>
           {(!op.mastery || !op.mastery[n] || op.mastery[n] === 0
-            ? <Box
-              component="img"
-              className="stack"
-              loading="lazy"
-              src={`/img/rank/${op.skillLevel}.png`}
-              alt={`Rank ${op.skillLevel}`}
-            />
-            : <Box
-              component="img"
-              className="stack"
-              loading="lazy"
-              src={`/img/rank/m-${op.mastery[n]}.png`}
-              alt={`Mastery ${op.mastery[n]}`}
-            />
+            ? <Box className="stack">
+              <Image src={`/img/rank/${op.skillLevel}.png`} height="64px" width="64px" alt={`Rank ${op.skillLevel}`} />
+            </Box>
+            : <Box className="stack">
+              <Image src={`/img/rank/m-${op.mastery[n]}.png`} height="64px" width="64px" alt={`Mastery ${op.mastery[n]}`} />
+            </Box>
           )}
         </Box>
       )}
@@ -291,13 +266,9 @@ const OperatorBlock = (props: Props) => {
               zIndex={1}
               className="frame"
             />
-            <Box
-              component="img"
-              loading="lazy"
-              zIndex={2}
-              src={url}
-              alt={`Module ${n + 1}`}
-            />
+            <Box zIndex={2} sx={{ display: "inherit" }}>
+              <Image src={url} height="64px" width="64px" alt={`Module ${n + 1}`} />
+            </Box>
             {op.module[n] > 1
               ? <Typography
                 zIndex={3}
@@ -357,7 +328,7 @@ const OperatorBlock = (props: Props) => {
           borderBottom: `4px solid ${rarityColors[op.rarity]}`,
         }}
       >
-        <Image src={`/img/avatars/${op.skin ?? intermediate}.png`} height="128px" width="128px" alt="" />
+        <Image src={`/img/avatars/${op.skin ?? intermediate}.png`} height="256px" width="256px" alt="" />
       </Box>
       {levelBubble}
       {skillBlock}
