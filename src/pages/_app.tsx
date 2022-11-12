@@ -6,6 +6,7 @@ import createEmotionCache from 'util/createEmotionCache';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { CacheProvider } from '@emotion/react';
 import { getApps, initializeApp } from 'firebase/app';
+import { Analytics } from '@vercel/analytics/react';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDjpt2G4GFQjYbPT5Mrj6L2meeWEnsCEgU",
@@ -29,6 +30,7 @@ const MyApp = (props: AppProps) => {
       <ThemeProvider theme={appTheme}>
         <CssBaseline />
         <Component {...pageProps} />
+        <Analytics />
       </ThemeProvider>
     </CacheProvider>
   );
