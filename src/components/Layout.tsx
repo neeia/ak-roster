@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { AppBar, Box, Container, IconButton, Toolbar, Typography } from "@mui/material";
 import Head from "next/head";
-import config from "../data/config";
+import config from "data/config";
 import MenuIcon from '@mui/icons-material/Menu';
 import AppDrawer from "./AppDrawer";
 import { User } from "firebase/auth";

@@ -1,10 +1,10 @@
 import React from "react";
-import { Operator, OpJsonObj } from '../../types/operator';
-import classList from "../../data/classList";
+import { Operator, OpJsonObj } from 'types/operator';
+import classList from "data/classList";
 import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
 import { isUndefined } from "util";
-import operatorJson from "../../data/operators.json";
+import operatorJson from "data/operators.json";
 
 interface Props {
   operators: Record<string, Operator>;

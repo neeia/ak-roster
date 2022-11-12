@@ -1,8 +1,9 @@
 import React from "react";
 import { Operator } from "types/operator";
 import { Box, Button } from "@mui/material";
-import { HorizontalRule, KeyboardArrowDownSharp, KeyboardArrowUpSharp } from "@mui/icons-material";
+import { KeyboardArrowDownSharp, KeyboardArrowUpSharp } from "@mui/icons-material";
 import { changeSkillLevel } from "util/changeOperator";
+import Image from "next/image";
 
 interface Props {
   op: Operator;
