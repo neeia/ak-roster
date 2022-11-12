@@ -6,6 +6,7 @@ import { SocialInfo } from "types/social";
 import { Operator } from "types/operator";
 import { isObject } from "util";
 import OperatorBlock from "../view/OperatorBlock";
+import Image from "next/image";
 
 interface Props {
   roster: Record<string, Operator>;
@@ -61,15 +62,14 @@ const ProfileDialog = (props: Props) => {
           flexDirection: "column",
         }}>
           {user?.assistant
-            ? <Box component="img"
-              src={getImgSrc(user?.assistant)}
-              sx={{
-                mx: "auto",
-                width: "144px",
-                transform: "translateY(-50%)",
-                marginBottom: "-72px"
-              }}
-            />
+            ? <Box sx={{
+              mx: "auto",
+              width: "144px",
+              transform: "translateY(-50%)",
+              marginBottom: "-72px"
+            }}>
+              <Image src={getImgSrc(user?.assistant)} height="240px" width="240px" alt="" />
+            </Box>
             : null
           }
           <Typography
