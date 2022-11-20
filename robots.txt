@@ -1,2 +1,2 @@
 User-agent: Googlebot-Image
-Disallow: /img/*.jpg
+Disallow: /img/*
