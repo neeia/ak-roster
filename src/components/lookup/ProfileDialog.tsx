@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, Link, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { BadgeOutlined, Close, Reddit } from "@mui/icons-material";
 import { AccountInfo } from "types/doctor";
 import { SocialInfo } from "types/social";
@@ -153,7 +153,7 @@ const ProfileDialog = (props: Props) => {
                   loading="lazy"
                 />
                 {social?.discord?.username}#{social?.discord?.tag}
-                <Reddit /> {social?.reddit}
+                <Reddit /> {social && social.reddit && <Link href={`https://reddit.com/u/${social.reddit}`} rel="noreferrer">{social.reddit}</Link>}
               </Box>
             </Box>
           </Box>
