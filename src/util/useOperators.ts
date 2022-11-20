@@ -3,8 +3,6 @@ import { defaultOperatorObject, Operator, OpJsonObj, LegacyOperator, } from '../
 import operatorJson from "data/operators.json";
 import useLocalStorage from './useLocalStorage';
 import { isUndefined } from "util";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { safeSyncAll } from "./useSync";
 
 // Converts a LegacyOperator into an Operator
 function convertLegacy([_, op]: [any, LegacyOperator]): [string, Operator] {

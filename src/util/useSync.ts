@@ -1,7 +1,7 @@
 import { User } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
-import { Operator } from "../types/operator";
-import operatorJson from "../data/operators.json";
+import { Operator } from "types/operator";
+import operatorJson from "data/operators.json";
 import { repair } from "./useOperators";
 
 export const safeMerge = (a: Operator, b: Operator): Operator => {
