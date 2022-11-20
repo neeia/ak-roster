@@ -231,9 +231,9 @@ const OperatorBlock = (props: Props) => {
       )}
     </Box>
 
-  const opModuleUrls: string[] = op.module.map((lvl: number, n: number) =>
+  const opModuleUrls: string[] = op.module ? op.module.map((lvl: number, n: number) =>
     lvl > 0 ? `/img/equip/${opInfo.modules[n].typeName.toLowerCase()}.png` : ""
-  );
+  ) : [];
   const moduleBlock =
     <Box sx={{
       gridArea: "img",
