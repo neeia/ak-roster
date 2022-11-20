@@ -39,15 +39,15 @@ export function repair(ops: Record<string, Operator>, setOps: (v: Record<string,
     if (!op || !op.name || !op.id || op.id !== opId) {
       if (opJsonItem) rooster[opId] = defaultOperatorObject([opId, opJsonItem])[1];
     }
+  })
+  Object.entries(rooster).forEach(([opId, op]) => {
     // check for outdated operators to redefine
+    if (isUndefined(op.class)) {
+      rooster = Object.fromEntries(Object.entries(rooster).filter(([key, value]) => value.id.startsWith("char_")).map(convertLegacy));
+    }
     else {
-      if (isUndefined(op.class)) {
-        rooster = Object.fromEntries(Object.entries(rooster).filter(([key, value]) => value.id.startsWith("char_")).map(convertLegacy));
-      }
-      else {
-        if (isUndefined(op.mastery)) op.mastery = [];
-        if (isUndefined(op.module)) op.module = [];
-      }
+      if (isUndefined(op.mastery)) op.mastery = [];
+      if (isUndefined(op.module)) op.module = [];
     }
   })
   setOps(rooster);
