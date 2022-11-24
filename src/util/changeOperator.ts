@@ -566,6 +566,7 @@ export const COST_BY_RARITY = {
     ]
   ],
   "eliteLmdCost": [
+    [-1, -1],
     [
       -1,
       -1

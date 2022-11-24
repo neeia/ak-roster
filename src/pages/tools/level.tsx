@@ -43,7 +43,7 @@ const levelingCost = (
       const eliteStartingLevel = elite === startingElite ? startingLevel : 1;
       const eliteTargetLevel = elite === targetElite
         ? targetLevel
-        : MAX_LEVEL_BY_RARITY[rarity - 1][elite];
+        : MAX_LEVEL_BY_RARITY[rarity][elite];
       const exp = COST_BY_RARITY.expCostByElite[elite]
         .slice(eliteStartingLevel - 1, eliteTargetLevel - 1)
         .reduce((a, b) => a + b, 0);
@@ -52,7 +52,7 @@ const levelingCost = (
         .reduce((a, b) => a + b, 0);
       const eliteLmd = elite === startingElite
         ? 0
-        : COST_BY_RARITY.eliteLmdCost[rarity - 1][elite - 1];
+        : COST_BY_RARITY.eliteLmdCost[rarity][elite - 1];
       return {
         exp,
         lmd: levelingLmd + eliteLmd,
@@ -141,12 +141,14 @@ const Level: NextPage = () => {
       setTargetLevel(1);
       _setTargetLevel("1");
     }
-    const ms = maxLevel(rarity, Math.min(startingElite, newMaxElite));
+    const ms = maxLevel(rar, Math.min(startingElite, newMaxElite));
     if (startingLevel > ms) {
       setStartingLevel(ms);
       _setStartingLevel(ms.toString());
     }
-    const mt = maxLevel(rarity, Math.min(targetElite, newMaxElite));
+    console.log(rar);
+    const mt = maxLevel(rar, Math.min(targetElite, newMaxElite));
+    console.log(mt);
     if (targetLevel > mt) {
       setTargetLevel(mt);
       _setTargetLevel(mt.toString());
