@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { Box, ButtonGroup, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
-import Layout from "../../../components/Layout";
+import Layout from "components/Layout";
 import { ArrowBack, Search } from "@mui/icons-material";
 import { child, get, getDatabase, ref } from "firebase/database";
 import { useRouter } from "next/router";
 import { isArray } from "util";
-import CollectionContainer from "../../../components/view/CollectionContainer";
-import { Operator } from "../../../types/operator";
-import SearchDialog from "../../../components/collate/SearchDialog";
-import FilterDialog from "../../../components/collate/FilterDialog";
-import SortDialog from "../../../components/collate/SortDialog";
-import { useFilter, useSort } from "../../../util/useSSF";
-import { repair } from "../../../util/useOperators";
-import ProfileDialog from "../../../components/lookup/ProfileDialog";
-import { AccountInfo } from "../../../types/doctor";
-import { SocialInfo } from "../../../types/social";
+import CollectionContainer from "components/view/CollectionContainer";
+import { Operator } from "types/operator";
+import SearchDialog from "components/collate/SearchDialog";
+import FilterDialog from "components/collate/FilterDialog";
+import SortDialog from "components/collate/SortDialog";
+import { useFilter, useSort } from "util/useSSF";
+import { repair } from "util/useOperators";
+import ProfileDialog from "components/lookup/ProfileDialog";
+import { AccountInfo } from "types/doctor";
+import { SocialInfo } from "types/social";
 
 
 const Lookup: NextPage = () => {
