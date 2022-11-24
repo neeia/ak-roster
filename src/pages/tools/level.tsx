@@ -146,9 +146,7 @@ const Level: NextPage = () => {
       setStartingLevel(ms);
       _setStartingLevel(ms.toString());
     }
-    console.log(rar);
     const mt = maxLevel(rar, Math.min(targetElite, newMaxElite));
-    console.log(mt);
     if (targetLevel > mt) {
       setTargetLevel(mt);
       _setTargetLevel(mt.toString());
