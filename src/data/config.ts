@@ -6,7 +6,7 @@ const config = {
   tabs: {
     "/data": {
       title: "Data",
-      description: "Data things",
+      description: "Input and Review Data",
       pages: {
         "/input": {
           title: "Input",
@@ -20,11 +20,11 @@ const config = {
     },
     "/account": {
       title: "Account",
-      description: "Account for things",
+      description: "Modify Account Details",
       pages: {
         "/profile": {
           title: "Profile",
-          description: "Pro files",
+          description: "Share your in-game Doctor information.",
           requireLogin: true,
         },
         "/settings": {
@@ -36,29 +36,29 @@ const config = {
     },
     "/network": {
       title: "Network",
-      description: "Networking opportunites",
+      description: "Krooster Community",
       pages: {
         "/lookup": {
           title: "Lookup",
-          description: "Look up people",
+          description: "Find other users.",
         },
       }
     },
     "/tools": {
       title: "Tools",
-      description: "Eat sami",
+      description: "Calculators and Tools",
       pages: {
         "/recruit": {
           title: "Recruitment",
-          description: "akhrrecruit",
+          description: "See what pool of operators are available from your tags in Recruitment.",
         },
         "/rateup": {
           title: "Headhunting",
-          description: "Make changes to account details.",
+          description: "Calculate the probability of pulling operators on a gacha banner.",
         },
         "/level": {
           title: "Level Costs",
-          description: "Make changes to account details.",
+          description: "Calculate LMD and EXP costs to level operators.",
         }
       }
     },
