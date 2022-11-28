@@ -293,7 +293,7 @@ const Recruit: NextPage = () => {
                         borderRadius: "50% 0% 0% 40%",
                       },
                       "& .rarity-6": {
-                        backgroundColor: "#f96601",
+                        backgroundColor: "#F9751A",
                       },
                       "& .rarity-5": {
                         backgroundColor: "#fbae02",
@@ -313,7 +313,9 @@ const Recruit: NextPage = () => {
                     }}
                   >
                     {!isServer() && operators.map((operator) => (
-                      <RecruitableOperatorChip key={operator.id} {...operator} {...roster[operator.id]}
+                      <RecruitableOperatorChip key={operator.id}
+                        {...operator}
+                        {...roster[operator.id]}
                         img={showPotentials && roster[operator.id].potential
                           ? `/img/potential/${roster[operator.id].potential}.png`
                           : undefined}
