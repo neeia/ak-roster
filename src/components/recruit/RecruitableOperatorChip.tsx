@@ -34,12 +34,15 @@ const RecruitableOperatorChip: React.FC<RecruitableOperator & { img?: string, al
                   {name}
                 </Typography>
                 {img &&
-                  <Image
-                    src={img}
-                    width={24}
-                    height={24}
-                    alt={alt ?? ""}
-                  />
+                  <>
+                    <Divider orientation="vertical" />
+                    <Image
+                      src={img}
+                      width={24}
+                      height={24}
+                      alt={alt ?? ""}
+                    />
+                  </>
                 }
               </Box>}
           />
