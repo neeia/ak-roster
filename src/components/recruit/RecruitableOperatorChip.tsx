@@ -5,7 +5,7 @@ import { RecruitableOperator } from "types/recruit";
 
 const RecruitableOperatorChip: React.FC<RecruitableOperator & { img?: string, alt?: string }> = React.memo(
   (props) => {
-    const { id, tags, rarity, name, img, alt } = props;
+    const { id, tags, rarity, name, potential, img, alt } = props;
     return (
       <>
         <Tooltip
@@ -29,13 +29,21 @@ const RecruitableOperatorChip: React.FC<RecruitableOperator & { img?: string, al
               </Box>
             }
             label={
-              <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, mr: -0.5 }}>
+              <Box sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 0.5,
+                mr: -0.5,
+                "& img": {
+                  filter: potential ? `drop-shadow(0px 0px 2px rgba(${`${(1 - potential/3) * 255 + 127.5},`.repeat(3)} 0.35))` : undefined,
+                }
+              }}>
                 <Typography component="span">
                   {name}
                 </Typography>
                 {img &&
                   <>
-                    <Divider orientation="vertical" />
+                    <Divider orientation="vertical" flexItem />
                     <Image
                       src={img}
                       width={24}
