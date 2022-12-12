@@ -20,10 +20,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import recruitmentJson from "data/recruitment.json";
 import Layout from "components/Layout";
 import RecruitableOperatorChip from "components/recruit/RecruitableOperatorChip";
-import classList from "../../data/classList";
-import OperatorButton from "../../components/input/OperatorButton";
-import useOperators from "../../util/useOperators";
-import useLocalStorage from "../../util/useLocalStorage";
+import classList from "data/classList";
+import OperatorButton from "components/input/OperatorButton";
+import useOperators from "util/useOperators";
+import useLocalStorage from "util/useLocalStorage";
 
 const TAGS_BY_CATEGORY = {
   Rarity: ["Top Operator", "Senior Operator", "Starter", "Robot"],
