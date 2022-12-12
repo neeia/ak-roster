@@ -3833,17 +3833,17 @@
     "cnName": "埃拉托",
     "rarity": 5,
     "class": "Sniper",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_erato_1",
         "iconId": null,
-        "skillName": "安眠旋律"
+        "skillName": "Lullaby's Meter"
       },
       {
         "skillId": "skchr_erato_2",
         "iconId": null,
-        "skillName": "英雄赞歌"
+        "skillName": "Heroes' Paean"
       }
     ],
     "modules": []
