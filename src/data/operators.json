@@ -719,7 +719,14 @@
         "skillName": "破虹"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "雪花球",
+        "moduleId": "uniequip_002_totter",
+        "typeName": "SIE-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_198_blackd": {
     "id": "char_198_blackd",
@@ -1041,7 +1048,14 @@
         "skillName": "Descending Strike - Earth Splitter"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "翻盖手机",
+        "moduleId": "uniequip_002_utage",
+        "typeName": "MUS-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_271_spikes": {
     "id": "char_271_spikes",
@@ -1897,6 +1911,27 @@
     ],
     "modules": []
   },
+  "char_4017_puzzle": {
+    "id": "char_4017_puzzle",
+    "name": "Puzzle",
+    "cnName": "谜图",
+    "rarity": 5,
+    "class": "Vanguard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_puzzle_1",
+        "iconId": null,
+        "skillName": "关键线索"
+      },
+      {
+        "skillId": "skchr_puzzle_2",
+        "iconId": null,
+        "skillName": "疑点追踪"
+      }
+    ],
+    "modules": []
+  },
   "char_308_swire": {
     "id": "char_308_swire",
     "name": "Swire",
@@ -2273,7 +2308,14 @@
         "skillName": "Nobukage-ryu - Juumonji Masaru"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "武将甲胄",
+        "moduleId": "uniequip_002_akafyu",
+        "typeName": "MUS-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_421_crow": {
     "id": "char_421_crow",
@@ -2842,6 +2884,34 @@
       {
         "moduleName": "梦之城堡立体书",
         "moduleId": "uniequip_002_iris",
+        "typeName": "MSC-X",
+        "isCnOnly": true
+      }
+    ]
+  },
+  "char_297_hamoni": {
+    "id": "char_297_hamoni",
+    "name": "Harmonie",
+    "cnName": "和弦",
+    "rarity": 5,
+    "class": "Caster",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_hamoni_1",
+        "iconId": null,
+        "skillName": "轻巧舞步"
+      },
+      {
+        "skillId": "skchr_hamoni_2",
+        "iconId": null,
+        "skillName": "沉溺之灾"
+      }
+    ],
+    "modules": [
+      {
+        "moduleName": "情报人员资料夹",
+        "moduleId": "uniequip_002_hamoni",
         "typeName": "MSC-X",
         "isCnOnly": true
       }
@@ -3825,7 +3895,14 @@
         "skillName": "Portable Fortcracker Arrows"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "弩箭调试箱",
+        "moduleId": "uniequip_002_toddi",
+        "typeName": "SIE-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_4043_erato": {
     "id": "char_4043_erato",
@@ -3846,7 +3923,14 @@
         "skillName": "Heroes' Paean"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "改弦更张",
+        "moduleId": "uniequip_002_erato",
+        "typeName": "SIE-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_1027_greyy2": {
     "id": "char_1027_greyy2",
@@ -4436,6 +4520,12 @@
         "moduleId": "uniequip_002_archet",
         "typeName": "MAR-Y",
         "isCnOnly": true
+      },
+      {
+        "moduleName": "旧日重现",
+        "moduleId": "uniequip_003_archet",
+        "typeName": "MAR-X",
+        "isCnOnly": true
       }
     ]
   },
@@ -4673,7 +4763,14 @@
         "skillName": "Avalanche Breaker"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "攻城器械训练装置",
+        "moduleId": "uniequip_002_poca",
+        "typeName": "SIE-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_391_rosmon": {
     "id": "char_391_rosmon",
@@ -5627,6 +5724,12 @@
         "moduleId": "uniequip_002_mizuki",
         "typeName": "AMB-X",
         "isCnOnly": true
+      },
+      {
+        "moduleName": "深蓝之籽",
+        "moduleId": "uniequip_003_mizuki",
+        "typeName": "AMB-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -5826,6 +5929,32 @@
         "isCnOnly": false
       }
     ]
+  },
+  "char_1020_reed2": {
+    "id": "char_1020_reed2",
+    "name": "Reed The Flame Shadow",
+    "cnName": "焰影苇草",
+    "rarity": 6,
+    "class": "Medic",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skcom_quickattack[3]",
+        "iconId": null,
+        "skillName": "迅捷打击·γ型"
+      },
+      {
+        "skillId": "skchr_reed2_2",
+        "iconId": null,
+        "skillName": "枯荣共息"
+      },
+      {
+        "skillId": "skchr_reed2_3",
+        "iconId": null,
+        "skillName": "生命火种"
+      }
+    ],
+    "modules": []
   },
   "char_136_hsguma": {
     "id": "char_136_hsguma",
@@ -6328,7 +6457,14 @@
         "skillName": "Full Moon"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "藏锋",
+        "moduleId": "uniequip_002_helage",
+        "typeName": "MUS-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_485_pallas": {
     "id": "char_485_pallas",
