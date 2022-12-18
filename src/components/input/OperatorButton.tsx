@@ -24,7 +24,7 @@ interface Props {
 const OperatorButton = React.memo((props: Props) => {
   const { op, onClick, hidden, toggled, img, alt } = props;
 
-  const [n, t] = op.name.split(" the ");
+  const [n, t] = op.name.split(/ [Tt]he /g);
   const name = t ?? n;
   const width = getTextWidth(name, JSON.stringify(appTheme.typography.caption).replace(/[\{\}]+/g, "")) * WIDTH_TO_PX;
 
