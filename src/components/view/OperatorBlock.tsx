@@ -24,53 +24,38 @@ const OperatorBlock = (props: Props) => {
     intermediate += "_1";
   }
 
-  const reg = /( the )|\(/g;
-  const nameSplitTitle = op.name.split(reg);
-  const name = nameSplitTitle.length > 1 ? nameSplitTitle[2].split(")")[0] : nameSplitTitle[0];
+  const reg = /( [Tt]he )|\(/g;
+  const splitName = op.name.replace(/\)$/, '').split(reg);
+  if (splitName.length > 1) console.log(splitName)
+  const name = splitName.length > 1 ? splitName[2].split(")")[0] : splitName[0];
   const nameIsLong = name.split(" ").length > 1 && name.length > 11;
 
-  let opName;
-  let splitName;
-  if (op.name.includes(" the ")) {
-    splitName = op.name.split(" the ");
-  }
-  if (op.name.includes(" (")) {
-    const name = op.name.split(" (");
-    const title = name[1].split(")");
-    splitName = [name[0], title]
-  }
-  if (splitName) {
-    opName = (
-      <span>
+  const opName = (
+    <Box sx={{
+      marginLeft: "1px",
+      color: !nobg && isMaxKrooster(op) ? "background.paper" : "text.primary",
+      "& > div.opName": {
+        fontSize: { xs: nameIsLong ? "9px" : "12px", sm: nameIsLong ? "12px" : "14px" },
+        lineHeight: { xs: "17px", sm: "20px" },
+      },
+      "& > div + div.opName": {
+        fontSize: { xs: "11px", sm: "12px" },
+        lineHeight:{ xs: "11px", sm: "12px" },
+      }
+    }}>
+      {splitName[2] &&
         <Box sx={{
           fontSize: { xs: "7px", sm: "9px" },
           lineHeight: { xs: "6px", sm: "8px" },
-          marginLeft: "1px",
-          color: !nobg && isMaxKrooster(op) ? "background.paper" : "text.main"
         }}>
-          {splitName[1]}
+          {splitName[2]}
         </Box>
-        <Box sx={{
-          fontSize: { xs: "11px", sm: "12px" },
-          lineHeight: { xs: "11px", sm: "12px" },
-          marginLeft: "1px",
-          color: !nobg && isMaxKrooster(op) ? "background.paper" : "text.main"
-        }}>
-          {splitName[0]}
-        </Box>
-      </span>
-    )
-  } else {
-    opName = (
-      <Box sx={{
-        fontSize: { xs: nameIsLong ? "9px" : "12px", sm: nameIsLong ? "12px" : "14px" },
-        lineHeight: { xs: "17px", sm: "20px" },
-        marginLeft: "1px",
-      }}>
-        {op.name}
+      }
+      <Box className="opName">
+        {splitName[0]}
       </Box>
-    )
-  }
+    </Box>
+  )
 
   const potentialBlock =
     <Box sx={{
