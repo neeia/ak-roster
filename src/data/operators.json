@@ -448,10 +448,10 @@
     ],
     "modules": [
       {
-        "moduleName": "法杖保养套装",
+        "moduleName": "Staff Maintenance Kit",
         "moduleId": "uniequip_002_indigo",
         "typeName": "MSC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -1470,10 +1470,10 @@
     ],
     "modules": [
       {
-        "moduleName": "蜜糖馅饼礼包",
+        "moduleName": "Медовые Пряники",
         "moduleId": "uniequip_002_sunbr",
         "typeName": "GUA-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -2882,10 +2882,10 @@
     ],
     "modules": [
       {
-        "moduleName": "梦之城堡立体书",
+        "moduleName": "Castle Pop-Up Book",
         "moduleId": "uniequip_002_iris",
         "typeName": "MSC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -3301,17 +3301,17 @@
     "cnName": "濯尘芙蓉",
     "rarity": 5,
     "class": "Medic",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
-        "skillName": "攻击力强化·γ型"
+        "skillName": "ATK Up γ"
       },
       {
         "skillId": "skchr_hbisc2_2",
         "iconId": null,
-        "skillName": "抚业之触"
+        "skillName": "Nurturing Touch"
       }
     ],
     "modules": []
@@ -3358,10 +3358,10 @@
     ],
     "modules": [
       {
-        "moduleName": "改良骑士盾牌",
+        "moduleName": "Improved Knight Shield",
         "moduleId": "uniequip_002_nearl",
         "typeName": "GUA-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -3386,10 +3386,10 @@
     ],
     "modules": [
       {
-        "moduleName": "八点档情景剧录像带",
+        "moduleName": "Popular Sitcom Tapes",
         "moduleId": "uniequip_002_hmau",
         "typeName": "GUA-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -3651,17 +3651,17 @@
     "cnName": "车尔尼",
     "rarity": 5,
     "class": "Defender",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_pianst_1",
         "iconId": null,
-        "skillName": "纷飞十指"
+        "skillName": "Fingerfertigkeit"
       },
       {
         "skillId": "skchr_pianst_2",
         "iconId": null,
-        "skillName": "曲惊四座"
+        "skillName": "Meisterwerk"
       }
     ],
     "modules": []
@@ -5190,10 +5190,10 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "王权金币",
+        "moduleName": "Gold of Crowns",
         "moduleId": "uniequip_003_pasngr",
         "typeName": "CHA-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -5255,30 +5255,30 @@
     "cnName": "黑键",
     "rarity": 6,
     "class": "Caster",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_ebnhlz_1",
         "iconId": null,
-        "skillName": "渐快急板"
+        "skillName": "Quickening Presto"
       },
       {
         "skillId": "skchr_ebnhlz_2",
         "iconId": null,
-        "skillName": "荒芜回响"
+        "skillName": "Desolate Echoes"
       },
       {
         "skillId": "skchr_ebnhlz_3",
         "iconId": null,
-        "skillName": "寂静之声"
+        "skillName": "Sound of Silence"
       }
     ],
     "modules": [
       {
-        "moduleName": "源石骰子收纳盒",
+        "moduleName": "Originium Dice Case",
         "moduleId": "uniequip_002_ebnhlz",
         "typeName": "MSC-X",
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "“乐理阐释者”",
@@ -6021,10 +6021,10 @@
     ],
     "modules": [
       {
-        "moduleName": "闲置的拳击手套",
+        "moduleName": "Unused Boxing Gloves",
         "moduleId": "uniequip_002_demkni",
         "typeName": "GUA-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -6054,10 +6054,10 @@
     ],
     "modules": [
       {
-        "moduleName": "工匠团的回响",
+        "moduleName": "Echo of Craftsman's Guild",
         "moduleId": "uniequip_002_blemsh",
         "typeName": "GUA-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -6740,10 +6740,10 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "往日残梦",
+        "moduleName": "No Ending to This Dream",
         "moduleId": "uniequip_003_skadi",
         "typeName": "DRE-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
