@@ -40,7 +40,7 @@ const OperatorBlock = (props: Props) => {
       },
       "& > div + div.opName": {
         fontSize: { xs: "11px", sm: "12px" },
-        lineHeight:{ xs: "11px", sm: "12px" },
+        lineHeight: { xs: "11px", sm: "12px" },
       }
     }}>
       {splitName[2] &&
@@ -216,9 +216,15 @@ const OperatorBlock = (props: Props) => {
       )}
     </Box>
 
-  const opModuleUrls: string[] = op.module ? op.module.map((lvl: number, n: number) =>
-    lvl > 0 ? `/img/equip/${opInfo.modules[n].typeName.toLowerCase()}.png` : ""
-  ) : [];
+  const opModuleUrls = op.module ? op.module
+    .filter(lvl => lvl > 0)
+    .map((_, n: number) => {
+      return {
+        typeName: opInfo.modules[n].typeName,
+        url: `/img/equip/${opInfo.modules[n].typeName.toLowerCase()}.png`
+      }
+    }
+    ) : [];
   const moduleBlock =
     <Box sx={{
       gridArea: "img",
@@ -229,7 +235,7 @@ const OperatorBlock = (props: Props) => {
       marginRight: { xs: "-12px", sm: "-16px" },
       gap: { xs: "2px", sm: "4px" },
     }}>
-      {opModuleUrls.map((url: string, n: number) =>
+      {opModuleUrls.map(({ typeName, url }, n: number) =>
         url
           ? <Box
             key={n}
@@ -244,7 +250,7 @@ const OperatorBlock = (props: Props) => {
                 opacity: "0.75",
                 backgroundColor: "info.main",
                 border: "1px solid #808080",
-              }
+              },
             }}
           >
             <Box
@@ -252,7 +258,7 @@ const OperatorBlock = (props: Props) => {
               className="frame"
             />
             <Box zIndex={2} sx={{ display: "inherit" }}>
-              <Image src={url} height="64px" width="64px" alt={`Module ${n + 1}`} />
+              <Image src={url} height="64px" width="64px" alt={typeName} />
             </Box>
             {op.module[n] > 1
               ? <Typography
@@ -260,16 +266,23 @@ const OperatorBlock = (props: Props) => {
                 component="abbr"
                 title={`Stage ${op.module[n]}`}
                 sx={{
+                  display: "flex",
+                  justifySelf: "end",
+                  alignSelf: "end",
+                  width: "min-content !important",
+                  height: "min-content",
+                  lineHeight: 1.25,
                   textDecoration: "none",
                   border: "none",
-                  fontSize: { xs: "1rem", sm: "1.5rem" },
-                  fontWeight: 900,
-                  textAlign: "right",
+                  fontSize: { xs: "0.9rem", sm: "1.1rem" },
                   color: "text.primary",
-                  WebkitTextFillColor: "white",
-                  WebkitTextStroke: "1px black",
+                  backgroundColor: "rgba(0,0,0,0.8)",
+                  borderRadius: 999,
+                  marginRight: "-25%",
+                  marginBottom: "-25%",
                 }}
               >
+                {typeName.slice(-1)}
                 {op.module[n]}
               </Typography> : null}
           </Box>
