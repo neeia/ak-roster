@@ -238,6 +238,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -660,6 +674,17 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
+          "Ranged",
+          "Supporter",
           "Senior Operator"
         ]
       }
@@ -1173,6 +1198,17 @@
         ]
       },
       {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_123_fang",
         "name": "Fang",
         "rarity": 3,
@@ -1500,6 +1536,17 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
+          "Ranged",
+          "Supporter",
           "Senior Operator"
         ]
       },
@@ -2162,6 +2209,17 @@
         ]
       },
       {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_208_melan",
         "name": "Melantha",
         "rarity": 3,
@@ -2696,6 +2754,17 @@
         "tags": [
           "Slow",
           "Crowd-Control",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
           "Ranged",
           "Supporter",
           "Senior Operator"
@@ -3495,6 +3564,17 @@
         ]
       },
       {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_211_adnach",
         "name": "Adnachiel",
         "rarity": 3,
@@ -3608,6 +3688,17 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
+          "Ranged",
+          "Supporter",
           "Senior Operator"
         ]
       },
@@ -4030,6 +4121,17 @@
         ]
       },
       {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_376_therex",
         "name": "Thermal-EX",
         "rarity": 1,
@@ -4042,8 +4144,7 @@
       }
     ],
     "guarantees": [
-      5,
-      1
+      4
     ]
   },
   "Shift": {
@@ -4743,6 +4844,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -4869,6 +4984,20 @@
           "DPS",
           "Melee",
           "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
           "Top Operator",
           "Senior Operator"
         ]
@@ -5261,6 +5390,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -5396,6 +5539,20 @@
           "Crowd-Control",
           "Ranged",
           "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
           "Top Operator",
           "Senior Operator"
         ]
@@ -5615,6 +5772,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -5674,6 +5845,31 @@
           "Support",
           "Melee",
           "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Fast-Redeploy,Top Operator": {
+    "tags": [
+      "Fast-Redeploy",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
           "Top Operator",
           "Senior Operator"
         ]
@@ -6368,6 +6564,17 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6819,6 +7026,17 @@
         "tags": [
           "Slow",
           "Crowd-Control",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
           "Ranged",
           "Supporter",
           "Senior Operator"
@@ -7302,6 +7520,17 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
+          "Ranged",
+          "Supporter",
           "Senior Operator"
         ]
       }
@@ -8455,6 +8684,17 @@
         ]
       },
       {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_208_melan",
         "name": "Melantha",
         "rarity": 3,
@@ -9121,6 +9361,17 @@
         ]
       },
       {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_192_falco",
         "name": "Plume",
         "rarity": 3,
@@ -9442,6 +9693,17 @@
     ],
     "operators": [
       {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_376_therex",
         "name": "Thermal-EX",
         "rarity": 1,
@@ -9454,7 +9716,7 @@
       }
     ],
     "guarantees": [
-      1
+      4
     ]
   },
   "Melee,Shift": {
@@ -10231,6 +10493,17 @@
         ]
       },
       {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_183_skgoat",
         "name": "Earthspirit",
         "rarity": 4,
@@ -10618,6 +10891,17 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
+          "Ranged",
+          "Supporter",
           "Senior Operator"
         ]
       },
@@ -11609,6 +11893,17 @@
         ]
       },
       {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_208_melan",
         "name": "Melantha",
         "rarity": 3,
@@ -11653,6 +11948,28 @@
     ],
     "guarantees": [
       5
+    ]
+  },
+  "Guard,Nuker": {
+    "tags": [
+      "Guard",
+      "Nuker"
+    ],
+    "operators": [
+      {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
     ]
   },
   "Guard,Slow": {
@@ -12691,6 +13008,17 @@
           "Supporter",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -13440,10 +13768,21 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
       }
     ],
     "guarantees": [
-      5
+      4
     ]
   },
   "DPS,Shift": {
@@ -14026,6 +14365,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -14422,6 +14775,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -14561,6 +14928,20 @@
           "Crowd-Control",
           "Ranged",
           "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
           "Top Operator",
           "Senior Operator"
         ]
@@ -14782,6 +15163,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -14843,6 +15238,32 @@
           "Support",
           "Melee",
           "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Fast-Redeploy,Senior Operator,Top Operator": {
+    "tags": [
+      "Fast-Redeploy",
+      "Senior Operator",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
           "Top Operator",
           "Senior Operator"
         ]
@@ -15228,6 +15649,32 @@
       6
     ]
   },
+  "Melee,Specialist,Top Operator": {
+    "tags": [
+      "Melee",
+      "Specialist",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
   "Melee,Top Operator,Vanguard": {
     "tags": [
       "Melee",
@@ -15257,6 +15704,32 @@
           "DPS",
           "Melee",
           "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Crowd-Control,Melee,Top Operator": {
+    "tags": [
+      "Crowd-Control",
+      "Melee",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
           "Top Operator",
           "Senior Operator"
         ]
@@ -15414,6 +15887,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -15450,6 +15937,32 @@
           "Support",
           "Melee",
           "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Fast-Redeploy,Melee,Top Operator": {
+    "tags": [
+      "Fast-Redeploy",
+      "Melee",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
           "Top Operator",
           "Senior Operator"
         ]
@@ -16659,6 +17172,32 @@
       6
     ]
   },
+  "Crowd-Control,Specialist,Top Operator": {
+    "tags": [
+      "Crowd-Control",
+      "Specialist",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
   "DPS,Specialist,Top Operator": {
     "tags": [
       "DPS",
@@ -16674,6 +17213,46 @@
           "Support",
           "DPS",
           "Ranged",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Fast-Redeploy,Specialist,Top Operator": {
+    "tags": [
+      "Fast-Redeploy",
+      "Specialist",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
           "Specialist",
           "Top Operator",
           "Senior Operator"
@@ -16959,6 +17538,46 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Crowd-Control,Fast-Redeploy,Top Operator": {
+    "tags": [
+      "Crowd-Control",
+      "Fast-Redeploy",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -17045,6 +17664,32 @@
           "DPS",
           "Melee",
           "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "DPS,Fast-Redeploy,Top Operator": {
+    "tags": [
+      "DPS",
+      "Fast-Redeploy",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_250_phatom",
+        "name": "Phantom",
+        "rarity": 6,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "DPS",
+          "Melee",
+          "Specialist",
           "Top Operator",
           "Senior Operator"
         ]
@@ -18433,6 +19078,17 @@
           "Supporter",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18665,6 +19321,17 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
+          "Ranged",
+          "Supporter",
           "Senior Operator"
         ]
       }
@@ -19859,6 +20526,17 @@
       {
         "id": "char_174_slbell",
         "name": "Pramanix",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
         "rarity": 5,
         "tags": [
           "Debuff",
@@ -21489,6 +22167,17 @@
         ]
       },
       {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_208_melan",
         "name": "Melantha",
         "rarity": 3,
@@ -21534,6 +22223,29 @@
     ],
     "guarantees": [
       5
+    ]
+  },
+  "Guard,Melee,Nuker": {
+    "tags": [
+      "Guard",
+      "Melee",
+      "Nuker"
+    ],
+    "operators": [
+      {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
     ]
   },
   "Guard,Melee,Slow": {
@@ -22476,6 +23188,29 @@
     ],
     "guarantees": [
       5
+    ]
+  },
+  "DPS,Melee,Nuker": {
+    "tags": [
+      "DPS",
+      "Melee",
+      "Nuker"
+    ],
+    "operators": [
+      {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
     ]
   },
   "DPS,Melee,Shift": {
@@ -23605,6 +24340,17 @@
           "Supporter",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_254_vodfox",
+        "name": "Shamare",
+        "rarity": 5,
+        "tags": [
+          "Debuff",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -24410,6 +25156,29 @@
     ],
     "guarantees": [
       5
+    ]
+  },
+  "DPS,Guard,Nuker": {
+    "tags": [
+      "DPS",
+      "Guard",
+      "Nuker"
+    ],
+    "operators": [
+      {
+        "id": "char_301_cutter",
+        "name": "Cutter",
+        "rarity": 4,
+        "tags": [
+          "Nuker",
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
     ]
   },
   "DPS,Guard,Slow": {
