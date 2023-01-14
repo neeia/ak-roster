@@ -40,7 +40,7 @@ export const safeSyncAll = (user: User, operators: Record<string, Operator>, set
       Object.keys(operatorJson).forEach(opID => {
         const safeMerged = safeMerge(ops[opID], v1[opID]);
         ops[opID] = safeMerged;
-        set(ref(db, `${rosterPath}/${opID}/`), safeMerged);
+        set(ref(db, `${rosterPath}/${opID}/`), JSON.parse(JSON.stringify(safeMerged)));
       })
       setOperators(ops);
     }
