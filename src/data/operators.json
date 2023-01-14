@@ -1197,10 +1197,10 @@
     ],
     "modules": [
       {
-        "moduleName": "铁皮首饰盒",
+        "moduleName": "Tin Casket",
         "moduleId": "uniequip_002_rope",
         "typeName": "HOK-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -1624,10 +1624,10 @@
     ],
     "modules": [
       {
-        "moduleName": "超级喷漆套装",
+        "moduleName": "Super Spray Paint Suit",
         "moduleId": "uniequip_002_ethan",
         "typeName": "AMB-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -1896,17 +1896,17 @@
     "cnName": "晓歌",
     "rarity": 5,
     "class": "Vanguard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_ctable_1",
         "iconId": null,
-        "skillName": "观火"
+        "skillName": "Penetrating Gaze"
       },
       {
         "skillId": "skchr_ctable_2",
         "iconId": null,
-        "skillName": "浮光"
+        "skillName": "Specular Reflection"
       }
     ],
     "modules": []
@@ -3014,17 +3014,17 @@
     "cnName": "至简",
     "rarity": 5,
     "class": "Caster",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skcom_quickattack[3]",
         "iconId": null,
-        "skillName": "迅捷打击·γ型"
+        "skillName": "Swift Strike γ"
       },
       {
         "skillId": "skchr_malist_2",
         "iconId": null,
-        "skillName": "神工意匠"
+        "skillName": "Prodigious Craftsmanship"
       }
     ],
     "modules": []
@@ -3974,10 +3974,10 @@
     ],
     "modules": [
       {
-        "moduleName": "“凌绝顶”",
+        "moduleName": "'Reach the Top'",
         "moduleId": "uniequip_002_slchan",
         "typeName": "HOK-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -4002,10 +4002,10 @@
     ],
     "modules": [
       {
-        "moduleName": "雪雉的宝贝存钱罐",
+        "moduleName": "Snowsant's Precious Money Bank",
         "moduleId": "uniequip_002_snsant",
         "typeName": "HOK-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -4282,10 +4282,10 @@
     ],
     "modules": [
       {
-        "moduleName": "训练用尾部防护套装",
+        "moduleName": "Tail-Protection Training Tool",
         "moduleId": "uniequip_002_mantic",
         "typeName": "AMB-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -4310,10 +4310,10 @@
     ],
     "modules": [
       {
-        "moduleName": "《闹闹生存挑战3 联机版》",
+        "moduleName": "We Will Survive 3 Online",
         "moduleId": "uniequip_002_kirara",
         "typeName": "AMB-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -4607,30 +4607,30 @@
     "cnName": "鸿雪",
     "rarity": 6,
     "class": "Sniper",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_bgsnow_1",
         "iconId": null,
-        "skillName": "抑扬格"
+        "skillName": "Iamb"
       },
       {
         "skillId": "skchr_bgsnow_2",
         "iconId": null,
-        "skillName": "点题"
+        "skillName": "Précis"
       },
       {
         "skillId": "skchr_bgsnow_3",
         "iconId": null,
-        "skillName": "锐笔速写"
+        "skillName": "Opprobrium"
       }
     ],
     "modules": [
       {
-        "moduleName": "打字机色带",
+        "moduleName": "Typewriter Ribbon",
         "moduleId": "uniequip_002_bgsnow",
         "typeName": "ARC-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -4666,10 +4666,10 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "支持者来信",
+        "moduleName": "Fan Letters",
         "moduleId": "uniequip_003_fartth",
         "typeName": "DEA-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -5687,10 +5687,10 @@
     ],
     "modules": [
       {
-        "moduleName": "执政官手镜",
+        "moduleName": "Consul's Handmirror",
         "moduleId": "uniequip_002_glady",
         "typeName": "HOK-X",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -5720,10 +5720,10 @@
     ],
     "modules": [
       {
-        "moduleName": "使者之约",
+        "moduleName": "Entreaty of the Herald",
         "moduleId": "uniequip_002_mizuki",
         "typeName": "AMB-X",
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "深蓝之籽",
@@ -5765,10 +5765,10 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "未竟之美",
+        "moduleName": "The Beauty in the Incomplete",
         "moduleId": "uniequip_003_ghost2",
         "typeName": "PUM-Y",
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ]
   },
@@ -6387,22 +6387,22 @@
     "cnName": "百炼嘉维尔",
     "rarity": 6,
     "class": "Guard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_gvial2_1",
         "iconId": null,
-        "skillName": "精准痛击"
+        "skillName": "Precise Thrashing"
       },
       {
         "skillId": "skchr_gvial2_2",
         "iconId": null,
-        "skillName": "链锯强袭"
+        "skillName": "Chainsaw Assault"
       },
       {
         "skillId": "skchr_gvial2_3",
         "iconId": null,
-        "skillName": "丛林之魂"
+        "skillName": "Soul of the Jungle"
       }
     ],
     "modules": []
