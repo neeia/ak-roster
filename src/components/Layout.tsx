@@ -40,7 +40,6 @@ const Layout = memo((props: Props) => {
         <meta
           key="description"
           name="description"
-          property="og:description"
           content={pageDescription}
         />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
