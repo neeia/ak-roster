@@ -9,8 +9,6 @@ import PromotionFilter from "./filter/PromotionFilter";
 import ModuleFilter from "./filter/ModuleFilter";
 import { Close, FilterAltOutlined } from "@mui/icons-material";
 import { Operator, OpJsonObj } from "../../types/operator";
-import { AccountInfo } from "../../types/doctor";
-import useLocalStorage from "../../util/useLocalStorage";
 import SelFilter from "./filter/SelFilter";
 
 const sixSel = ["Exusiai", "Siege", "Ifrit", "Eyjafjalla", "Angelina", "Shining",

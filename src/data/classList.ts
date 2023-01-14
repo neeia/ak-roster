@@ -1,11 +1,11 @@
 const classList = [
+  "Vanguard",
   "Guard",
-  "Sniper",
   "Defender",
+  "Sniper",
+  "Caster",
   "Medic",
   "Supporter",
-  "Caster",
   "Specialist",
-  "Vanguard",
 ]
 export default classList;
