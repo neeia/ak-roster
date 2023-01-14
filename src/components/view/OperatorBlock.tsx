@@ -260,8 +260,7 @@ const OperatorBlock = (props: Props) => {
             <Box zIndex={2} sx={{ display: "inherit" }}>
               <Image src={url} height="64px" width="64px" alt={typeName} />
             </Box>
-            {op.module[n] > 1
-              ? <Typography
+            <Typography
                 zIndex={3}
                 component="abbr"
                 title={`Stage ${op.module[n]}`}
@@ -278,13 +277,13 @@ const OperatorBlock = (props: Props) => {
                   color: "text.primary",
                   backgroundColor: "rgba(0,0,0,0.8)",
                   borderRadius: 999,
-                  marginRight: "-25%",
+                  marginRight: "-10%",
                   marginBottom: "-25%",
                 }}
               >
                 {typeName.slice(-1)}
-                {op.module[n]}
-              </Typography> : null}
+                {op.module[n] > 1 && op.module[n]}
+              </Typography>
           </Box>
           : null)}
     </Box>
