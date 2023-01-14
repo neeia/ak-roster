@@ -15,7 +15,7 @@ const SelFilter = (props: Props) => {
     <Box display="flex" flexDirection="column" width="100%">
       <Box>
         <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
-          Stultifera Navis
+          Ideal City
         </Divider>
       </Box>
       <Box
@@ -31,11 +31,11 @@ const SelFilter = (props: Props) => {
         }}
       >
         <IconButton
-          className={six ? "active" : "inactive"}
+          className={five ? "active" : "inactive"}
           sx={{ borderRadius: `0px ${r}px ${r}px 0px` }}
-          onClick={() => toggleSix()}
+          onClick={() => toggleFive()}
         >
-          <Box component="img" src="/img/misc/v6.png" />
+          <Box component="img" src="/img/misc/v5.png" />
         </IconButton>
       </Box>
     </Box>);

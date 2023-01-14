@@ -25,7 +25,9 @@ const fiveSel = ["Ptilopsis", "Zima", "Texas", "Franka", "Lappland", "Specter",
   "Nearl", "Projekt Red", "Liskarm", "Croissant", "Provence", "Firewatch", "Cliffheart",
   "Pramanix", "Istina", "Sora", "Manticore", "FEater", "Nightmare", "Glaucus", "Swire",
   "Astesia", "Executor", "Waai Fu", "Reed", "Broca", "GreyThroat", "Hung", "Leizi",
-  "Sesa", "Shamare", "Elysium"];
+  "Sesa", "Shamare", "Elysium", "Asbestos", "Tsukinogi", "Leonhardt", "Ayerscarpe",
+  "Beeswax", "Chiave", "Andreana", "Flint", "April", "Aosta", "Whisperain", "Kafka",
+  "Iris", "Mr. Nothing", "Toddifons"];
 
 const sel = [fiveSel, sixSel];
 
