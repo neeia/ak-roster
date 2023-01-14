@@ -217,14 +217,16 @@ const OperatorBlock = (props: Props) => {
     </Box>
 
   const opModuleUrls = op.module ? op.module
-    .filter(lvl => lvl > 0)
-    .map((_, n: number) => {
+    .map((mod, n: number) => {
       return {
         typeName: opInfo.modules[n].typeName,
-        url: `/img/equip/${opInfo.modules[n].typeName.toLowerCase()}.png`
+        url: `/img/equip/${opInfo.modules[n].typeName.toLowerCase()}.png`,
+        index: n,
+        mod
       }
-    }
-    ) : [];
+    })
+    .filter(({ mod }) => mod > 0)
+    : [];
   const moduleBlock =
     <Box sx={{
       gridArea: "img",
@@ -235,57 +237,56 @@ const OperatorBlock = (props: Props) => {
       marginRight: { xs: "-12px", sm: "-16px" },
       gap: { xs: "2px", sm: "4px" },
     }}>
-      {opModuleUrls.map(({ typeName, url }, n: number) =>
-        url
-          ? <Box
-            key={n}
+      {opModuleUrls.map(({ typeName, url, index }, n: number) =>
+        <Box
+          key={n}
+          sx={{
+            display: "grid",
+            width: { xs: "24px", sm: "32px" },
+            "& > *": {
+              gridArea: "1 / 1",
+              width: "100%",
+            },
+            "& .frame": {
+              opacity: "0.75",
+              backgroundColor: "info.main",
+              border: "1px solid #808080",
+            },
+          }}
+        >
+          <Box
+            zIndex={1}
+            className="frame"
+          />
+          <Box zIndex={2} sx={{ display: "inherit" }}>
+            <Image src={url} height="64px" width="64px" alt={typeName} />
+          </Box>
+          <Typography
+            zIndex={3}
+            component="abbr"
+            title={`Stage ${op.module[index]}`}
             sx={{
-              display: "grid",
-              width: { xs: "24px", sm: "32px" },
-              "& > *": {
-                gridArea: "1 / 1",
-                width: "100%",
-              },
-              "& .frame": {
-                opacity: "0.75",
-                backgroundColor: "info.main",
-                border: "1px solid #808080",
-              },
+              display: "flex",
+              justifySelf: "end",
+              alignSelf: "end",
+              width: "min-content !important",
+              height: "min-content",
+              lineHeight: 1.25,
+              textDecoration: "none",
+              border: "none",
+              fontSize: { xs: "0.9rem", sm: "1.1rem" },
+              color: "text.primary",
+              backgroundColor: "rgba(0,0,0,0.8)",
+              borderRadius: 999,
+              marginRight: "-10%",
+              marginBottom: "-25%",
             }}
           >
-            <Box
-              zIndex={1}
-              className="frame"
-            />
-            <Box zIndex={2} sx={{ display: "inherit" }}>
-              <Image src={url} height="64px" width="64px" alt={typeName} />
-            </Box>
-            <Typography
-                zIndex={3}
-                component="abbr"
-                title={`Stage ${op.module[n]}`}
-                sx={{
-                  display: "flex",
-                  justifySelf: "end",
-                  alignSelf: "end",
-                  width: "min-content !important",
-                  height: "min-content",
-                  lineHeight: 1.25,
-                  textDecoration: "none",
-                  border: "none",
-                  fontSize: { xs: "0.9rem", sm: "1.1rem" },
-                  color: "text.primary",
-                  backgroundColor: "rgba(0,0,0,0.8)",
-                  borderRadius: 999,
-                  marginRight: "-10%",
-                  marginBottom: "-25%",
-                }}
-              >
-                {typeName.slice(-1)}
-                {op.module[n] > 1 && op.module[n]}
-              </Typography>
-          </Box>
-          : null)}
+            {typeName.slice(-1)}
+            {op.module[index] > 1 && op.module[index]}
+          </Typography>
+        </Box>
+      )}
     </Box>
 
   return (
