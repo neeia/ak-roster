@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { defaultOperatorObject, Operator, OpJsonObj, LegacyOperator, } from '../types/operator';
 import operatorJson from "data/operators.json";
 import useLocalStorage from './useLocalStorage';
-import { isUndefined } from "util";
 
 // Converts a LegacyOperator into an Operator
 function convertLegacy([_, op]: [any, LegacyOperator]): [string, Operator] {
@@ -39,18 +38,23 @@ export function repair(ops: Record<string, Operator>, setOps: (v: Record<string,
     if (!op || !op.name || !op.id || op.id !== opId) {
       if (opJsonItem) rooster[opId] = defaultOperatorObject([opId, opJsonItem])[1];
     }
+    if (op.name !== opJsonItem.name) {
+      rooster[opId].name = opJsonItem.name;
+    }
   })
+  
   Object.entries(rooster).forEach(([opId, op]) => {
     // check for outdated operators to redefine
-    if (isUndefined(op.class)) {
+    if (op.class === undefined) {
       rooster[opId] = convertLegacy([, op])[1];
     }
     else {
-      if (isUndefined(op.mastery)) op.mastery = [];
-      if (isUndefined(op.module)) op.module = [];
+      if (op.mastery === undefined) op.mastery = [];
+      if (op.module === undefined) op.module = [];
     }
   })
   setOps(rooster);
+
 }
 
 function useOperators() {
