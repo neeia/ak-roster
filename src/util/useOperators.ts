@@ -38,7 +38,7 @@ export function repair(ops: Record<string, Operator>, setOps: (v: Record<string,
     if (!op || !op.name || !op.id || op.id !== opId) {
       if (opJsonItem) rooster[opId] = defaultOperatorObject([opId, opJsonItem])[1];
     }
-    if (op.name !== opJsonItem.name) {
+    else if (op.name !== opJsonItem.name) {
       rooster[opId].name = opJsonItem.name;
     }
   })
