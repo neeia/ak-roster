@@ -2,6 +2,7 @@ import React from "react";
 import { Box, IconButton } from "@mui/material";
 import { Operator } from "../../types/operator";
 import { Backspace, PersonAddAlt1 } from "@mui/icons-material";
+import Image from "next/image";
 
 function imgUrl(op: Operator) {
   let intermediate = op?.id ?? "";
@@ -25,19 +26,23 @@ const OpSelectionButton = (props: Props) => {
   return (op
     ? <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", height: "min-content" }}>
       <Box
-        component="img"
         sx={{
           borderRadius: "2px 0px 0px 2px",
           backgroundColor: "info.main",
           gridRow: "span 2",
+          position: "relative",
           width: {
             xs: "4rem",
             sm: "6rem"
-          }
+          },
         }}
-        src={imgUrl(op)}
-        alt={op.name}
-      />
+      >
+        <Image
+          src={imgUrl(op)}
+          layout="fill"
+          alt={op.name}
+        />
+      </Box>
       <IconButton
         aria-label="Clear Operator"
         sx={{

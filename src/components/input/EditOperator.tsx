@@ -114,16 +114,20 @@ const EditOperator = React.memo((props: Props) => {
         boxShadow: 1,
       }}>
         <Box
-          component="img"
           sx={{
+            height: {
+              xs: "4rem",
+              sm: "6rem"
+            },
             width: {
               xs: "4rem",
               sm: "6rem"
-            }
+            },
+            position: "relative",
           }}
-          src={imgUrl}
-          alt=""
-        />
+        >
+          <Image src={imgUrl} layout="fill" alt="" />
+        </Box>
         {name}
         {links}
         <IconButton onClick={onClose} sx={{ display: { sm: "none" } }}>
@@ -134,6 +138,10 @@ const EditOperator = React.memo((props: Props) => {
         "& .MuiButtonBase-root": {
           backgroundColor: "info.main",
           boxShadow: 1,
+          transition: "background-color 0.1s",
+          "&:hover": {
+            backgroundColor: "rgba(255, 212, 64, 0.1)",
+          }
         },
         "& .inactive": {
           opacity: 0.75,
@@ -182,8 +190,8 @@ const EditOperator = React.memo((props: Props) => {
             : undefined
           }
           childrenL={opSkins && opSkins.length > 1
-              ? <Skins op={op} onChange={onChange} />
-              : undefined
+            ? <Skins op={op} onChange={onChange} />
+            : undefined
           }
           childrenR={opInfo.modules.length !== 0
             ? <Module op={op} onChange={onChange} />

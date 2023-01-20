@@ -26,19 +26,23 @@ const SkillLevel = (props: Props) => {
       disabled={!op.owned || op.skillLevel === rank || rank > [4, 7, 7][op.promotion]}
     >
       <Box
-        sx={{ gridArea: "1 / 1" }}
-        component="img"
-        width="2.5rem"
-        src={`/img/rank/bg.png`}
-        alt={""}
-      />
-      <Box
-        sx={{ gridArea: "1 / 1" }}
-        component="img"
-        width="2.5rem"
-        src={`/img/rank/${rank}.png`}
-        alt={`Rank ${rank}`}
-      />
+        sx={{
+          width: "40px",
+          height: "40px",
+          position: "relative",
+        }}
+      >
+        <Image
+          src={`/img/rank/bg.png`}
+          layout="fill"
+          alt={""}
+        />
+        <Image
+          src={`/img/rank/${rank}.png`}
+          layout="fill"
+          alt={`Rank ${rank}`}
+        />
+      </Box>
     </Button>
   );
 
@@ -75,16 +79,21 @@ const SkillLevel = (props: Props) => {
         >
           <KeyboardArrowDownSharp fontSize="large" />
         </Button>
-        <Box sx={{ display: "grid", "& > *": { gridArea: "1 / 1", width: "3.75rem" } }}>
-          <Box
-            component="img"
+        <Box sx={{
+          display: "grid",
+          width: "64px",
+          height: "64px",
+          position: "relative",
+        }}>
+          <Image
             src={`/img/rank/bg.png`}
+            layout="fill"
             alt={""}
           />
           {op.owned
-            ? <Box
-              component="img"
+            ? <Image
               src={`/img/rank/${op.skillLevel}.png`}
+              layout="fill"
               alt={`Rank ${op.skillLevel}`}
             />
             : null}

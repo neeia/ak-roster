@@ -56,7 +56,7 @@ const OperatorButton = React.memo((props: Props) => {
         listStyleType: "none",
       }}>
       <Button
-        className={isUndefined(toggled) ? op.owned ? "" : "unowned" : toggled ? "toggled" : "untoggled"}
+        className={!toggled ? op.owned ? "" : "unowned" : toggled ? "toggled" : "untoggled"}
         onClick={() => onClick(op.id)}
       >
         <Box
@@ -90,9 +90,10 @@ const OperatorButton = React.memo((props: Props) => {
               height: "calc(2rem + 3px)",
               width: "2rem",
               gridArea: "1 / 2",
+              position: "relative",
             }}
           >
-            <Image src={img} height="128px" width="128px" alt={alt ?? ""} />
+            <Image src={img} layout="fill" alt={alt ?? ""} />
           </Box>
         }
       </Button>
