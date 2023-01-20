@@ -11,6 +11,7 @@ import cnCharacterTable from "./ArknightsGameData/zh_CN/gamedata/excel/character
 import cnSkillTable from "./ArknightsGameData/zh_CN/gamedata/excel/skill_table.json" assert { type: "json" };
 import cnUniequipTable from "./ArknightsGameData/zh_CN/gamedata/excel/uniequip_table.json" assert { type: "json" };
 import createSkinsJson from "./skins.mjs";
+import uploadAllImages from "./images.mjs";
 
 const enPatchCharacters = enCharacterPatchTable.patchChars;
 const cnPatchCharacters = cnCharacterPatchTable.patchChars;
@@ -142,4 +143,5 @@ export default createOperatorsJson;
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   createOperatorsJson();
   createSkinsJson();
+  uploadAllImages();
 }

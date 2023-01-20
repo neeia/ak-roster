@@ -348,7 +348,14 @@
         "skillName": "Crimson Eyes"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "女巫的帽子",
+        "moduleId": "uniequip_002_nights",
+        "typeName": "CCR-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_109_fmout": {
     "id": "char_109_fmout",
@@ -2576,6 +2583,34 @@
       }
     ]
   },
+  "char_4078_bdhkgt": {
+    "id": "char_4078_bdhkgt",
+    "name": "Jieyun",
+    "cnName": "截云",
+    "rarity": 5,
+    "class": "Sniper",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_bdhkgt_1",
+        "iconId": null,
+        "skillName": "探前路"
+      },
+      {
+        "skillId": "skchr_bdhkgt_2",
+        "iconId": null,
+        "skillName": "掷旧尘"
+      }
+    ],
+    "modules": [
+      {
+        "moduleName": "小石头",
+        "moduleId": "uniequip_002_bdhkgt",
+        "typeName": "ART-Y",
+        "isCnOnly": true
+      }
+    ]
+  },
   "char_279_excu": {
     "id": "char_279_excu",
     "name": "Executor",
@@ -2642,7 +2677,14 @@
         "skillName": "Chimera"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "DWDB-221E",
+        "moduleId": "uniequip_002_amiya",
+        "typeName": "CCR-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_405_absin": {
     "id": "char_405_absin",
@@ -2663,7 +2705,14 @@
         "skillName": "Ultimatum"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "“监护者”单兵通讯单元",
+        "moduleId": "uniequip_002_absin",
+        "typeName": "CCR-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_411_tomimi": {
     "id": "char_411_tomimi",
@@ -2684,7 +2733,14 @@
         "skillName": "Gavial's Protection Plan"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "损坏的尾尾佳",
+        "moduleId": "uniequip_002_tomimi",
+        "typeName": "CCR-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_466_qanik": {
     "id": "char_466_qanik",
@@ -2705,7 +2761,14 @@
         "skillName": "坠雪"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "自制登山杖",
+        "moduleId": "uniequip_002_qanik",
+        "typeName": "CCR-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_166_skfire": {
     "id": "char_166_skfire",
@@ -3736,6 +3799,27 @@
     ],
     "modules": []
   },
+  "char_493_firwhl": {
+    "id": "char_493_firwhl",
+    "name": "Firewhistle",
+    "cnName": "火哨",
+    "rarity": 5,
+    "class": "Defender",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_firwhl_1",
+        "iconId": null,
+        "skillName": "野火"
+      },
+      {
+        "skillId": "skchr_firwhl_2",
+        "iconId": null,
+        "skillName": "焦土"
+      }
+    ],
+    "modules": []
+  },
   "char_422_aurora": {
     "id": "char_422_aurora",
     "name": "Aurora",
@@ -4603,7 +4687,7 @@
   },
   "char_4055_bgsnow": {
     "id": "char_4055_bgsnow",
-    "name": "Pozëmka",
+    "name": "Позёмка",
     "cnName": "鸿雪",
     "rarity": 6,
     "class": "Sniper",
@@ -5091,7 +5175,14 @@
         "skillName": "Volcano"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "“错过的声音”",
+        "moduleId": "uniequip_002_amgoat",
+        "typeName": "CCR-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_2013_cerber": {
     "id": "char_2013_cerber",
@@ -5117,7 +5208,14 @@
         "skillName": "'Really Heavy Spear'"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "“很干的面包”",
+        "moduleId": "uniequip_002_cerber",
+        "typeName": "CCR-X",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_2015_dusk": {
     "id": "char_2015_dusk",
@@ -5219,6 +5317,32 @@
         "skillId": "skchr_billro_3",
         "iconId": null,
         "skillName": "Mark of Gluttony"
+      }
+    ],
+    "modules": []
+  },
+  "char_4080_lin": {
+    "id": "char_4080_lin",
+    "name": "Lin",
+    "cnName": "林",
+    "rarity": 6,
+    "class": "Caster",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_lin_1",
+        "iconId": null,
+        "skillName": "玲珑"
+      },
+      {
+        "skillId": "skchr_lin_2",
+        "iconId": null,
+        "skillName": "荫庇"
+      },
+      {
+        "skillId": "skchr_lin_3",
+        "iconId": null,
+        "skillName": "流光乍裂"
       }
     ],
     "modules": []
@@ -5927,6 +6051,12 @@
         "moduleId": "uniequip_002_lumen",
         "typeName": "WAH-X",
         "isCnOnly": false
+      },
+      {
+        "moduleName": "“幸运”",
+        "moduleId": "uniequip_003_lumen",
+        "typeName": "WAH-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -6025,6 +6155,12 @@
         "moduleId": "uniequip_002_demkni",
         "typeName": "GUA-X",
         "isCnOnly": false
+      },
+      {
+        "moduleName": "科技新星",
+        "moduleId": "uniequip_003_demkni",
+        "typeName": "GUA-Y",
+        "isCnOnly": true
       }
     ]
   },
@@ -6233,6 +6369,32 @@
         "skillId": "skchr_f12yin_3",
         "iconId": null,
         "skillName": "Earth-Shattering Smash"
+      }
+    ],
+    "modules": []
+  },
+  "char_2024_chyue": {
+    "id": "char_2024_chyue",
+    "name": "Chongyue",
+    "cnName": "重岳",
+    "rarity": 6,
+    "class": "Guard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_chyue_1",
+        "iconId": null,
+        "skillName": "冲盈"
+      },
+      {
+        "skillId": "skchr_chyue_2",
+        "iconId": null,
+        "skillName": "拂尘"
+      },
+      {
+        "skillId": "skchr_chyue_3",
+        "iconId": null,
+        "skillName": "我无"
       }
     ],
     "modules": []
@@ -6678,7 +6840,14 @@
         "skillName": "Night Phantom"
       }
     ],
-    "modules": []
+    "modules": [
+      {
+        "moduleName": "“两生花”",
+        "moduleId": "uniequip_002_nightm",
+        "typeName": "CCR-Y",
+        "isCnOnly": true
+      }
+    ]
   },
   "char_220_grani": {
     "id": "char_220_grani",
