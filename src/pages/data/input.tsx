@@ -276,6 +276,10 @@ const Input: NextPage = () => {
             backgroundColor: { xs: "info.dark", sm: "info.main" },
             width: "100%",
             height: "min-content",
+            transition: "background-color 0.05s",
+            "&:hover": {
+              backgroundColor: "rgba(255, 212, 64, 0.15)",
+            }
           },
           "& .unowned": {
             opacity: 0.75
