@@ -2,6 +2,7 @@ import React from "react";
 import { Operator } from "types/operator";
 import { Box, IconButton } from "@mui/material";
 import { changePotential, getMaxPotentialById } from "util/changeOperator";
+import Image from "next/image";
 
 const br = (op: string, pot: number) => {
   const r = 4;
@@ -21,7 +22,7 @@ const Potential = ((props: Props) => {
       display: "flex",
       justifyContent: "center",
       borderRadius: 1,
-      width: "min-content",
+      width: "fit-content",
       mx: "auto",
       boxShadow: +op.owned,
       "& .MuiButtonBase-root": {
@@ -30,17 +31,25 @@ const Potential = ((props: Props) => {
     }}>
       {[...Array(getMaxPotentialById(op.id))].map((_, i) =>
         <IconButton
-          sx={{ borderRadius: br(op.id, i) }}
+          sx={{
+            borderRadius: br(op.id, i),
+          }}
           className={op.potential === i + 1 ? "active" : "inactive"}
           onClick={() => onChange(changePotential(op, i + 1))}
           disabled={!op.owned}
           key={`pot${i + 1}`}
         >
-          <Box component="img"
-            width="32px"
-            src={`/img/potential/${i + 1}.png`}
-            alt={`Potential ${i + 1}`}
-          />
+          <Box sx={{
+            width: "32px",
+            height: "32px",
+            position: "relative",
+          }}>
+            <Image
+              layout="fill"
+              src={`/img/potential/${i + 1}.png`}
+              alt={`Potential ${i + 1}`}
+            />
+          </Box>
         </IconButton>
       )}
     </Box>

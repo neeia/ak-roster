@@ -24,9 +24,8 @@ const OperatorBlock = (props: Props) => {
     intermediate += "_1";
   }
 
-  const reg = /( [Tt]he )|\(/g;
+  const reg = /( the )|\(/gi;
   const splitName = op.name.replace(/\)$/, '').split(reg);
-  if (splitName.length > 1) console.log(splitName)
   const name = splitName.length > 1 ? splitName[2].split(")")[0] : splitName[0];
   const nameIsLong = name.split(" ").length > 1 && name.length > 11;
 
@@ -85,9 +84,10 @@ const OperatorBlock = (props: Props) => {
           height: { xs: "16px", sm: "24px" },
           alignSelf: "center",
           justifySelf: "center",
+          position: "relative",
         }}
       >
-        <Image src={`/img/potential/${op.potential}.png`} height="48px" width="48px" alt={`Potential ${op.potential}`} />
+        <Image src={`/img/potential/${op.potential}.png`} layout="fill" alt={`Potential ${op.potential}`} />
       </Box>
     </Box>
 
@@ -98,9 +98,10 @@ const OperatorBlock = (props: Props) => {
         height: { xs: "20px", sm: "32px" },
         marginBottom: { xs: "2px", sm: "2px" },
         marginLeft: { xs: "-4px", sm: "-6px" },
+        position: "relative",
       }}
     >
-      <Image src={`/img/elite/${op.promotion}_s_box.png`} height="64px" width="64px" alt={`Elite ${op.promotion}`} />
+      <Image src={`/img/elite/${op.promotion}_s_box.png`} layout="fill" alt={`Elite ${op.promotion}`} />
     </Box >
 
   const levelSx = {
@@ -189,27 +190,23 @@ const OperatorBlock = (props: Props) => {
             "& .stack": {
               gridRow: 1,
               gridColumn: 1,
-              opacity: 0.95,
+              opacity: skill === undefined || n === skill ? 0.95 : 0.25,
+              boxShadow: skill !== undefined && n === skill ? "-2px 0px #ffd440" : "",
               width: { xs: "16px", sm: "24px" },
               height: { xs: "16px", sm: "24px" },
+              position: "relative"
             },
           }}
         >
-          {n === skill
-            ? <Box className="stack" sx={{ transform: "translateX(-100%)" }}>
-              <Image src={`/img/skills/${opInfo.skills[n].iconId ?? opInfo.skills[n].skillId}.png`} height="64px" width="64px" alt={`Skill ${n + 1}`} />
-            </Box>
-            : null
-          }
           <Box className="stack">
-            <Image src={`/img/rank/bg.png`} height="64px" width="64px" alt={`Skill ${n + 1}`} />
+            <Image src={`/img/rank/bg.png`} layout="fill" alt={`Skill ${n + 1}`} />
           </Box>
           {(!op.mastery || !op.mastery[n] || op.mastery[n] === 0
             ? <Box className="stack">
-              <Image src={`/img/rank/${op.skillLevel}.png`} height="64px" width="64px" alt={`Rank ${op.skillLevel}`} />
+              <Image src={`/img/rank/${op.skillLevel}.png`} layout="fill" alt={`Rank ${op.skillLevel}`} />
             </Box>
             : <Box className="stack">
-              <Image src={`/img/rank/m-${op.mastery[n]}.png`} height="64px" width="64px" alt={`Mastery ${op.mastery[n]}`} />
+              <Image src={`/img/rank/m-${op.mastery[n]}.png`} layout="fill" alt={`Mastery ${op.mastery[n]}`} />
             </Box>
           )}
         </Box>
@@ -324,9 +321,10 @@ const OperatorBlock = (props: Props) => {
           height: { xs: "84px", sm: "124px" },
           width: { xs: "80px", sm: "120px" },
           borderBottom: `4px solid ${rarityColors[op.rarity]}`,
+          position: "relative"
         }}
       >
-        <Image src={`/img/avatars/${op.skin ?? intermediate}.png`} height="256px" width="256px" alt="" />
+        <Image src={`/img/avatars/${op.skin ?? intermediate}.png`} layout="fill" alt="" />
       </Box>
       {levelBubble}
       {skillBlock}

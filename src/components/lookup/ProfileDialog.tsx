@@ -78,7 +78,7 @@ const ProfileDialog = (props: Props) => {
             sx={{
               marginLeft: "8px",
               "& .mobileHide": {
-                display: { xs: "none", sm: "" }
+                display: { xs: "none", sm: "inline" }
               }
             }}
           >
@@ -146,12 +146,13 @@ const ProfileDialog = (props: Props) => {
                 alignItems: "center",
                 height: "min-content", pl: 1
               }}>
-                <Box sx={{ borderRadius: "50%", width: "1.5rem", height: "1.5rem", opacity: "0.65" }}
-                  component="img"
-                  src="/img/ext/icon_clyde_white_RGB.svg"
-                  alt="Discord"
-                  loading="lazy"
-                />
+                <Box sx={{ width: "24px", height: "24px", position: "relative" }}>
+                  <Image
+                    src="/img/ext/icon_clyde_white_RGB.svg"
+                    layout="fill"
+                    alt="Discord"
+                  />
+                </Box>
                 {social?.discord?.username}#{social?.discord?.tag}
                 <Reddit /> {social && social.reddit && <Link href={`https://reddit.com/u/${social.reddit}`} rel="noreferrer">{social.reddit}</Link>}
               </Box>

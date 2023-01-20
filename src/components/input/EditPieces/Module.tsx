@@ -3,6 +3,7 @@ import { Operator, OpJsonModule, OpJsonObj } from "../../../types/operator";
 import operatorJson from "../../../data/operators.json";
 import { Box, Button, Typography } from "@mui/material";
 import { changeModule, MODULE_REQ_BY_RARITY } from "../../../util/changeOperator";
+import Image from "next/image";
 
 interface Props {
   op: Operator;
@@ -80,8 +81,9 @@ const Module = ((props: Props) => {
                 onClick={() => onChange(changeModule(op, i, j))}
                 disabled={disabled}
               >
-                <Box component="img"
+                <Image
                   width="32px"
+                  height="32px"
                   src={`/img/equip/img_stg${j}.png`}
                   alt={`Module ${j}`}
                 />

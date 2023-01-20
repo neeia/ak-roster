@@ -11,6 +11,7 @@ import useLocalStorage from "../../util/useLocalStorage";
 import { AccountInfo, OperatorSkillSlot } from "../../types/doctor";
 import OpSelectionButton from "./OpSelectionButton";
 import { isObject } from "util";
+import Image from "next/image";
 
 interface Props {
   user: User;
@@ -125,10 +126,9 @@ const SupportSelection = ((props: Props) => {
                           display: "flex",
                           alignItems: "center",
                           mt: 0.5,
-                          gap: 1
+                          gap: 1,
                         }}>
                           <Box
-                            component="img"
                             sx={{
                               height: {
                                 xs: "2.5rem",
@@ -138,38 +138,39 @@ const SupportSelection = ((props: Props) => {
                                 xs: "2.5rem",
                                 sm: "3rem",
                               },
+                              position: "relative",
                             }}
-                            src={`/img/skills/${opInfo.skills[k].iconId ?? opInfo.skills[k].skillId}.png`}
-                            alt={`Skill ${k + 1}`}
-                          />
+                          >
+                            <Image
+                              src={`/img/skills/${opInfo.skills[k].iconId ?? opInfo.skills[k].skillId}.png`}
+                              layout="fill"
+                              alt={`Skill ${k + 1}`}
+                            />
+                          </Box>
                           <Box sx={{
                             display: {
                               xs: "none",
                               sm: "grid",
                             },
-                            "& > *": {
-                              gridArea: "1 / 1",
-                              width: "36px",
-                              height: "35px",
-                            },
+                            width: "36px",
+                            height: "35px",
+                            position: "relative",
                             minWidth: 0,
                           }}>
-                            <Box component="img"
+                            <Image
                               src={`/img/rank/bg.png`}
-                              loading="lazy"
+                              layout="fill"
                               alt={""}
                             />
                             {(!op.mastery[k] || op.mastery[k] === 0
-                              ? <Box
-                                component="img"
-                                loading="lazy"
+                              ? <Image
                                 src={`/img/rank/${op.skillLevel}.png`}
+                                layout="fill"
                                 alt={`Level ${op.skillLevel}`}
                               />
-                              : <Box
-                                component="img"
-                                loading="lazy"
+                              : <Image
                                 src={`/img/rank/m-${op.mastery[k]}.png`}
+                                layout="fill"
                                 alt={`Mastery Level ${op.mastery[k]}`}
                               />
                             )}
