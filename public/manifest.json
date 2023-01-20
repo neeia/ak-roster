@@ -5,9 +5,9 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#212121",
-  "theme_color": "#fbc02d",
+  "theme_color": "#ffd440",
   "orientation": "portrait-primary",
-  "version": "2.4.8",
+  "version": "2.4.9",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
