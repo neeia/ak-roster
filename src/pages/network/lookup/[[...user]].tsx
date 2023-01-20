@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { Box, ButtonGroup, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import Layout from "components/Layout";
 import { ArrowBack, Search } from "@mui/icons-material";
 import { child, get, getDatabase, ref } from "firebase/database";
 import { useRouter } from "next/router";
-import { isArray } from "util";
 import CollectionContainer from "components/view/CollectionContainer";
 import { Operator } from "types/operator";
 import SearchDialog from "components/collate/SearchDialog";
@@ -46,7 +45,7 @@ const Lookup: NextPage = () => {
     })
   };
   useEffect(() => {
-    const searchUser = isArray(query.user) ? query.user[0] : query.user;
+    const searchUser = Array.isArray(query.user) ? query.user[0] : query.user;
     if (searchUser) {
       setUsername(searchUser);
       search(searchUser);
