@@ -1,5 +1,5 @@
 ﻿import { CacheProvider } from '@emotion/react'
-import { Box, Container, CssBaseline, Divider, Link, ThemeProvider, Typography } from '@mui/material'
+import { Box, Container, CssBaseline, Divider, IconButton, InputAdornment, Link, TextField, ThemeProvider, Typography } from '@mui/material'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import NextLink from 'next/link'
@@ -9,7 +9,7 @@ import createEmotionCache from '../util/createEmotionCache'
 import DiscordEmbed from '../components/index/DiscordEmbed'
 import GitHubEmbed from '../components/index/GitHubEmbed'
 import { memo, useEffect, useState } from 'react'
-import { LockClockOutlined } from '@mui/icons-material'
+import { LockClockOutlined, Search } from '@mui/icons-material'
 import Image from 'next/image'
 
 const Kofi = memo(() => {
@@ -66,6 +66,12 @@ Kofi.displayName = "Ko-fi";
 
 const Home: NextPage = () => {
   const clientSideEmotionCache = createEmotionCache();
+
+  const [username, setUsername] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const search = (s: string) => {
+    window.location.href = `/u/${s}`
+  };
 
   return (
     <CacheProvider value={clientSideEmotionCache}>
@@ -150,39 +156,71 @@ const Home: NextPage = () => {
                 <Typography variant="body1" sx={{ display: { xs: "none", sm: "block" } }}>
                   Want to show off your roster to your friends? Flex on the world? Need to find that one support unit to beat CC? Krooster lets you do all that, and more.
                 </Typography>
-                <Typography variant="body1" sx={{ fontSize: { xs: "1rem", sm: "1rem" } }}>
+                <Typography variant="body1">
                   You can get started without even making an account. And the best part? It&apos;s totally free. No ads, no paywall, and entirely open-source.
                 </Typography>
-                <NextLink
-                  href="/data/input/"
-                  passHref
-                >
-                  <Link
-                    sx={{
-                      backgroundColor: "primary.main",
-                      mt: 2,
-                      display: "block",
-                      width: "100%",
-                      maxWidth: "12rem",
-                      px: 2,
-                      py: 1.5,
-                      color: "background.default",
-                      ":hover": {
-                        bgcolor: "primary.main",
-                        filter: "brightness(110%)"
-                      },
-                      borderRadius: "4px",
-                      fontSize: "1.25rem",
-                      textAlign: "center",
-                      verticalAlign: "middle",
-                      boxShadow: 1,
-                      alignSelf: { xs: "center", sm: "start" },
-                    }}
-                    variant="button"
+                <Box sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: { xs: "column", sm: "row" },
+                  gap: 2,
+                  mt: 2
+                }}>
+                  <NextLink
+                    href="/data/input/"
+                    passHref
                   >
-                    Get Started
-                  </Link>
-                </NextLink>
+                    <Link
+                      sx={{
+                        backgroundColor: "primary.main",
+                        display: "block",
+                        width: "100%",
+                        maxWidth: "12rem",
+                        px: 2,
+                        py: 1.5,
+                        color: "background.default",
+                        ":hover": {
+                          bgcolor: "primary.main",
+                          filter: "brightness(110%)"
+                        },
+                        borderRadius: "4px",
+                        fontSize: "1.25rem",
+                        textAlign: "center",
+                        verticalAlign: "middle",
+                        boxShadow: 1,
+                        alignSelf: { xs: "center", sm: "start" },
+                      }}
+                      variant="button"
+                    >
+                      Get Started
+                    </Link>
+                  </NextLink>
+                  <Box component="form" sx={{
+                    display: { xs: "flex", sm: "contents" },
+                    alignItems: "center",
+                    flexDirection: { xs: "column", sm: "row" },
+                    gap: 1,
+                  }}>
+                    or
+                    <TextField
+                      autoFocus
+                      autoComplete="off"
+                      placeholder="Find a user..."
+                      value={username}
+                      helperText={error}
+                      onChange={e => setUsername(e.target.value)}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton type="submit" onClick={e => { e.preventDefault(); search(username); }}>
+                              <Search />
+                            </IconButton>
+                          </InputAdornment>
+                        )
+                      }}
+                    />
+                  </Box>
+                </Box>
               </Box>
               <Box
                 boxShadow={2}
@@ -192,6 +230,62 @@ const Home: NextPage = () => {
                 sx={{ maxWidth: "100%", maxHeight: "auto", order: { xs: -1, sm: -1 } }}
                 alt="A screenshot of a user's collection."
               />
+            </Box>
+            <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column", pt: 2.5 }} >
+              <Typography variant="h2" sx={{ fontSize: { xs: "1.25rem", sm: "1.5rem" } }}>
+                Tools? Calculators? We got that.
+              </Typography>
+              <Box sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 2,
+                mt: 1,
+                "& a": {
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "90px",
+                  height: "90px",
+                  px: 0.5,
+                  py: 1,
+                  backgroundColor: "#323232",
+                  ":hover": {
+                    filter: "brightness(120%)"
+                  },
+                  borderRadius: "4px",
+                  fontSize: "1.25rem",
+                  textAlign: "center",
+                  verticalAlign: "middle",
+                  boxShadow: 1,
+                  position: "relative",
+                }
+              }}>
+                <NextLink
+                  href="/tools/recruit/"
+                  passHref
+                >
+                  <Link>
+                    <Image src="/img/items/TKT_RECRUIT.png" width="75px" height="80px" />
+                  </Link>
+                </NextLink>
+                <NextLink
+                  href="/tools/rateup/"
+                  passHref
+                >
+                  <Link>
+                    <Image src="/img/items/TKT_GACHA.png" width="90px" height="71px" />
+                  </Link>
+                </NextLink>
+                <NextLink
+                  href="/tools/level/"
+                  passHref
+                >
+                  <Link>
+                    <Image src="/img/items/sprite_exp_card_t4.png" width="90px" height="71px" />
+                  </Link>
+                </NextLink>
+              </Box>
             </Box>
             <Divider />
             <Box sx={{
