@@ -50,11 +50,11 @@ const Module = ((props: Props) => {
               {module.moduleName}
             </Typography>
             <Box sx={{ gridArea: "icon", display: "flex", flexDirection: "column", alignItems: "center", }}>
-              <Box
+              <Image
                 className={disabled ? "Mui-disabled" : ""}
-                component="img"
                 width="48px"
-                src={`/img/equip/${module.moduleId}.png`}
+                height="48px"
+                src={`/img/equip/${opInfo.modules[i].typeName.toLowerCase()}.png`}
                 alt={`Module ${i + 1}`}
               />
               <Typography
