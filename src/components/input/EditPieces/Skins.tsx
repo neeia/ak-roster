@@ -29,13 +29,7 @@ const Skins = ((props: Props) => {
               onClick={() => onChange(changeSkin(op, skin.avatarId.replace('#', "%23")))}
               disabled={disabled}
             >
-              <Box
-                width="48px"
-                height="48px"
-                position="relative"
-              >
-                <Image src={`/img/avatars/${skin.avatarId.replace('#', "%23")}.png`} layout="fill" alt={skin.skinName ?? ""} />
-              </Box>
+              <Image src={`/img/avatars/${skin.avatarId.replace('#', "%23")}.png`} width="48px" height="48px" alt={skin.skinName ?? ""} />
             </Button>
           </Tooltip>
         );
