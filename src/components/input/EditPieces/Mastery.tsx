@@ -3,6 +3,7 @@ import { Operator, OpJsonObj } from "types/operator";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import operatorJson from "data/operators.json";
 import { changeMastery, getNumSkills } from "util/changeOperator";
+import Image from "next/image";
 
 interface Props {
   op: Operator;
@@ -70,13 +71,15 @@ const Mastery = ((props: Props) => {
                 onClick={() => onChange(changeMastery(op, i, j))}
                 disabled={disabled}
               >
-                <Box component="img"
+                <Image
                   width="32px"
+                  height="32px"
                   src={`/img/rank/bg.png`}
                   alt={""}
                 />
-                <Box component="img"
+                <Image
                   width="32px"
+                  height="32px"
                   src={`/img/rank/m-${j}.png`}
                   alt={`Mastery ${j}`}
                 />
