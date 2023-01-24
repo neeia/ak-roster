@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, Typography } from "@mui/material";
+import Image from "next/image";
 
 
 const DiscordInvite = () => {
@@ -23,7 +24,7 @@ const DiscordInvite = () => {
       target="_blank"
       rel="noreferrer noopener"
     >
-      <Box sx={{ borderRadius: "50%", width: "1.25rem", height: "1.25rem" }} component="img" src="/img/ext/icon_clyde_white_RGB.svg" alt="Discord" loading="lazy" />
+      <Image width="20px" height="20px" src="/img/ext/icon_clyde_white_RGB.svg" alt="Discord" loading="lazy" />
       <Typography variant="caption2" sx={{ textAlign: "center" }}>
         Join the Discord!
       </Typography>

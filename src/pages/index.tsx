@@ -10,6 +10,7 @@ import DiscordEmbed from '../components/index/DiscordEmbed'
 import GitHubEmbed from '../components/index/GitHubEmbed'
 import { memo, useEffect, useState } from 'react'
 import { LockClockOutlined } from '@mui/icons-material'
+import Image from 'next/image'
 
 const Kofi = memo(() => {
   const [seconds, setSeconds] = useState(60);
@@ -28,7 +29,6 @@ const Kofi = memo(() => {
     <Link
       sx={{
         backgroundColor: "#FF5E5B",
-        mt: 2,
         display: "block",
         width: "30%",
         minWidth: "min-content",
@@ -37,40 +37,27 @@ const Kofi = memo(() => {
         boxShadow: 1,
         position: "relative",
         mb: 6,
+        mt: 2,
+        pl: 1.5,
+        pr: 2,
+        pt: 1.5,
+        pb: 1,
+        boxSizing: "border-box",
+        ":hover": {
+          filter: "brightness(120%)"
+        },
       }}
       onClick={() => window.open("https://ko-fi.com/neeia", "_blank", "noreferrer noopener")}
       title="Open Ko-fi"
       component="button"
-      disabled={seconds > 0}
     >
-      {seconds
-        ? <Box sx={{
-          position: "absolute",
-          backgroundColor: "rgba(0,0,0,0.7)",
-          width: "100%",
-          height: "100%",
-          alignItems: "center",
-          justifyContent: "center",
-          display: "flex",
-          gap: 1
-        }}>
-          <LockClockOutlined />
-          <Typography variant="button">
-            {seconds}
-          </Typography>
-        </Box>
-        : null
-      }
-      <Box sx={{
-        ml: 1.5,
-        mr: 2,
-        mt: 1.5,
-        mb: 1,
-        ":hover": {
-          filter: "brightness(120%)"
-        },
-      }} component="img" width="131px" height="37px"
-        src="/img/ext/kofi.png" alt="Ko-fi icon" loading="lazy"
+      <Image
+        className="icon"
+        width="131px"
+        height="37px"
+        src="/img/ext/kofi.png"
+        alt="Ko-fi icon"
+        loading="lazy"
       />
     </Link>
   )
@@ -198,7 +185,7 @@ const Home: NextPage = () => {
                 </NextLink>
               </Box>
               <Box
-                boxShadow={10}
+                boxShadow={2}
                 component="img"
                 src="/res/CollectionSample.webp"
                 width="495px"
