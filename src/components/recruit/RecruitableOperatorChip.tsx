@@ -55,7 +55,7 @@ const RecruitableOperatorChip = React.memo((props: Props) => {
                 </Box>
               }
             </Box>
-            {showPotentials &&
+            {showPotentials && (op.potential > 0) &&
               <>
                 <Divider orientation="vertical" flexItem />
                 <Image src={`/img/potential/${op.potential}.png`}
