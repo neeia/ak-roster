@@ -24,13 +24,15 @@ const Skins = ((props: Props) => {
         const disabled = !op.owned || (skin.sortId === -1 && op.promotion < 2) || (skin.sortId === -2 && op.promotion < 1);
         return (
           <Tooltip title={skin.skinName ?? `Default Elite ${skin.sortId + 3}`} arrow describeChild key={`skn${i}`}>
-            <Button
-              className={op.skin === skin.avatarId.replace('#', "%23") ? "active" : "inactive"}
-              onClick={() => onChange(changeSkin(op, skin.avatarId.replace('#', "%23")))}
-              disabled={disabled}
-            >
-              <Image src={`/img/avatars/${skin.avatarId.replace('#', "%23")}.png`} width="48px" height="48px" alt={skin.skinName ?? ""} />
-            </Button>
+            <span>
+              <Button
+                className={op.skin === skin.avatarId.replace('#', "%23") ? "active" : "inactive"}
+                onClick={() => onChange(changeSkin(op, skin.avatarId.replace('#', "%23")))}
+                disabled={disabled}
+              >
+                <Image src={`/img/avatars/${skin.avatarId.replace('#', "%23")}.png`} width="48px" height="48px" alt={skin.skinName ?? ""} />
+              </Button>
+            </span>
           </Tooltip>
         );
       })}
