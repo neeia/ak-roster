@@ -90,7 +90,7 @@ const View: NextPage = () => {
             height: "min-content",
             backgroundColor: { xs: "info.main", sm: "transparent" },
             boxShadow: {
-              xs: 5,
+              xs: 1,
               sm: 0
             },
           }}>
