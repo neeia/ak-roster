@@ -21,9 +21,9 @@ import recruitmentJson from "data/recruitment.json";
 import Layout from "components/Layout";
 import RecruitableOperatorChip from "components/recruit/RecruitableOperatorChip";
 import classList from "data/classList";
-import OperatorButton from "components/input/OperatorButton";
 import useOperators from "util/useOperators";
 import useLocalStorage from "util/useLocalStorage";
+import RecruitableOperatorCard from "components/recruit/RecruitableOperatorCard";
 
 const TAGS_BY_CATEGORY = {
   Rarity: ["Top Operator", "Senior Operator", "Starter", "Robot"],
@@ -132,11 +132,14 @@ const Recruit: NextPage = () => {
   const [roster] = useOperators();
   const [showPotentials, setShowPotentials] = useState(false);
   const [compact, setCompact] = useState(true);
+  const [bonuses, setBonuses] = useState(false);
   const [_showPotentials, _setShowPotentials] = useLocalStorage("recruitShowPotential", false);
   const [_compact, _setCompact] = useLocalStorage("recruitCompactMode", true);
+  const [_bonuses, _setBonuses] = useLocalStorage("recruitShowBonuses", false);
   useEffect(() => {
     setShowPotentials(_showPotentials);
     setCompact(_compact);
+    setBonuses(_bonuses)
   }, [])
 
   return (
@@ -210,25 +213,34 @@ const Recruit: NextPage = () => {
           )}
         />
         <div style={{ paddingTop: resultPaddingTop }}>
-          <Box sx={{ display: "flex" }}>
-            <Box sx={{ pt: 1 }}>
-              <FormControlLabel
-                control={<Checkbox
-                  checked={showPotentials}
-                  onChange={(e) => { setShowPotentials(e.target.checked); _setShowPotentials(e.target.checked); }}
-                />}
-                label="Show Potentials"
-              />
-            </Box>
-            <Box sx={{ pt: 1 }}>
-              <FormControlLabel
-                control={<Checkbox
-                  checked={compact}
-                  onChange={(e) => { setCompact(e.target.checked); _setCompact(e.target.checked); }}
-                />}
-                label="Dense Mode"
-              />
-            </Box>
+          <Box sx={{
+            display: "flex",
+            paddingTop: 1,
+            "& span": {
+              lineHeight: 1.1
+            }
+          }}>
+            <FormControlLabel
+              control={<Checkbox
+                checked={showPotentials}
+                onChange={(e) => { setShowPotentials(e.target.checked); _setShowPotentials(e.target.checked); }}
+              />}
+              label="Show Potentials"
+            />
+            <FormControlLabel
+              control={<Checkbox
+                checked={compact}
+                onChange={(e) => { setCompact(e.target.checked); _setCompact(e.target.checked); }}
+              />}
+              label="Compact Mode"
+            />
+            <FormControlLabel
+              control={<Checkbox
+                checked={bonuses}
+                onChange={(e) => { setBonuses(e.target.checked); _setBonuses(e.target.checked); }}
+              />}
+              label="Next Upgrade"
+            />
           </Box>
           {matchingOperators
             .sort(
@@ -286,9 +298,6 @@ const Recruit: NextPage = () => {
                     sx={{
                       ...chipContainerStyles,
                       fontSize: (theme) => theme.typography.body1.fontSize,
-                      "& *": {
-                        color: "#000000",
-                      },
                       "& img": {
                         borderRadius: "50% 0% 0% 40%",
                       },
@@ -312,15 +321,15 @@ const Recruit: NextPage = () => {
                       },
                     }}
                   >
-                    {!isServer() && operators.map((operator) => (
-                      <RecruitableOperatorChip key={operator.id}
-                        {...operator}
-                        {...roster[operator.id]}
-                        img={showPotentials && roster[operator.id].potential
-                          ? `/img/potential/${roster[operator.id].potential}.png`
-                          : undefined}
-                      />
-                    ))}
+                    {!isServer() && operators
+                      .sort((a, b) => showPotentials ? roster[a.id].potential - roster[b.id].potential : 0)
+                      .map((operator) => (
+                        <RecruitableOperatorChip key={operator.id}
+                          op={roster[operator.id]}
+                          showPotentials={showPotentials}
+                          showBonus={bonuses}
+                        />
+                      ))}
                   </Grid>
                   : <Grid item xs={12} sm={9}
                     sx={{
@@ -342,25 +351,22 @@ const Recruit: NextPage = () => {
                         pointerEvents: "none",
                         flexDirection: "column",
                         mx: "-1rem",
+                        textAlign: "center",
                       },
-                      "& .MuiButton-root": {
-                        display: "grid",
-                        boxShadow: 2,
-                        backgroundColor: { xs: "info.dark", sm: "info.main" },
-                        width: "100%",
-                        height: "min-content",
-                        justifyContent: "center",
-                      },
+                      "& .max-pot": {
+                        opacity: 0.75
+                      }
                     }}
                   >
-                    {!isServer() && operators.map((operator) => (
-                      <OperatorButton op={roster[operator.id]} onClick={() => { }}
-                        key={operator.id}
-                        img={showPotentials && roster[operator.id].potential
-                          ? `/img/potential/${roster[operator.id].potential}.png`
-                          : undefined}
-                      />
-                    ))}
+                    {!isServer() && [...operators]
+                      .sort((a, b) => showPotentials ? roster[a.id].potential - roster[b.id].potential : 0)
+                      .map((operator) => (
+                        <RecruitableOperatorCard op={roster[operator.id]}
+                          key={operator.id}
+                          showPotentials={showPotentials}
+                          showBonus={bonuses}
+                        />
+                      ))}
                   </Grid>
                 }
               </Grid>

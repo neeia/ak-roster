@@ -30,6 +30,7 @@ export interface OpJsonObj {
   isCnOnly: boolean;
   skills: OpJsonSkill[];
   modules: OpJsonModule[];
+  potentials: string[];
 }
 
 export interface OpJsonSkill {
