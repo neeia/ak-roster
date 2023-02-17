@@ -33,6 +33,7 @@ const operatorNameOverride = {
   Зима: "Zima",
   Истина: "Istina",
   Роса: "Rosa",
+  Позёмка: "Pozëmka",
 };
 function getOperatorName(operatorId) {
   if (operatorId === "char_1001_amiya2") {
@@ -116,6 +117,8 @@ const createOperatorsJson = () => {
         })
       }
 
+      const potentials = (enCharacterTable[id] ?? operator).potentialRanks.map(r => r.description);
+
       const outputOperator = {
         id,
         name: getOperatorName(id),
@@ -125,6 +128,7 @@ const createOperatorsJson = () => {
         isCnOnly,
         skills,
         modules,
+        potentials
       };
       return [id, outputOperator];
     })

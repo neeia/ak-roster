@@ -7,7 +7,14 @@
     "class": "Medic",
     "isCnOnly": false,
     "skills": [],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent"
+    ]
   },
   "char_286_cast3": {
     "id": "char_286_cast3",
@@ -17,7 +24,14 @@
     "class": "Guard",
     "isCnOnly": false,
     "skills": [],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent"
+    ]
   },
   "char_376_therex": {
     "id": "char_376_therex",
@@ -27,7 +41,14 @@
     "class": "Specialist",
     "isCnOnly": false,
     "skills": [],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent"
+    ]
   },
   "char_4000_jnight": {
     "id": "char_4000_jnight",
@@ -37,7 +58,14 @@
     "class": "Sniper",
     "isCnOnly": false,
     "skills": [],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent"
+    ]
   },
   "char_502_nblade": {
     "id": "char_502_nblade",
@@ -47,7 +75,14 @@
     "class": "Vanguard",
     "isCnOnly": false,
     "skills": [],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -5 sec",
+      "ATK +9",
+      "ATK +9",
+      "DP Cost -1"
+    ]
   },
   "char_500_noirc": {
     "id": "char_500_noirc",
@@ -57,7 +92,14 @@
     "class": "Defender",
     "isCnOnly": false,
     "skills": [],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Max HP +45",
+      "Redeployment Time -5 sec",
+      "Max HP +45",
+      "DP Cost -1"
+    ]
   },
   "char_503_rang": {
     "id": "char_503_rang",
@@ -67,7 +109,14 @@
     "class": "Sniper",
     "isCnOnly": false,
     "skills": [],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "ASPD +6",
+      "ASPD +6",
+      "Redeployment Time -5 sec",
+      "DP Cost -1"
+    ]
   },
   "char_501_durin": {
     "id": "char_501_durin",
@@ -77,7 +126,14 @@
     "class": "Caster",
     "isCnOnly": false,
     "skills": [],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Max HP +50",
+      "Redeployment Time -5 sec",
+      "Max HP +50",
+      "DP Cost -1"
+    ]
   },
   "char_009_12fce": {
     "id": "char_009_12fce",
@@ -87,7 +143,14 @@
     "class": "Caster",
     "isCnOnly": false,
     "skills": [],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "ATK +12",
+      "Redeployment Time -5 sec",
+      "ATK +12",
+      "DP Cost -1"
+    ]
   },
   "char_123_fang": {
     "id": "char_123_fang",
@@ -103,7 +166,14 @@
         "skillName": "Charge α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +20",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_240_wyvern": {
     "id": "char_240_wyvern",
@@ -119,7 +189,14 @@
         "skillName": "Command - Reinforcement"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +20",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_192_falco": {
     "id": "char_192_falco",
@@ -135,7 +212,14 @@
         "skillName": "Swift Strike α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +21",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_208_melan": {
     "id": "char_208_melan",
@@ -151,7 +235,14 @@
         "skillName": "ATK Up α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_281_popka": {
     "id": "char_281_popka",
@@ -167,7 +258,14 @@
         "skillName": "ATK Up α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_209_ardign": {
     "id": "char_209_ardign",
@@ -183,7 +281,14 @@
         "skillName": "Regeneration α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +200",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_122_beagle": {
     "id": "char_122_beagle",
@@ -199,7 +304,14 @@
         "skillName": "DEF Up α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +28",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_284_spot": {
     "id": "char_284_spot",
@@ -215,7 +327,14 @@
         "skillName": "Secondary Healing Mode"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +24",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_124_kroos": {
     "id": "char_124_kroos",
@@ -231,7 +350,14 @@
         "skillName": "Double Tap - Auto"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +21",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_211_adnach": {
     "id": "char_211_adnach",
@@ -247,7 +373,14 @@
         "skillName": "ATK Up α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_121_lava": {
     "id": "char_121_lava",
@@ -263,7 +396,14 @@
         "skillName": "Tactical Chant α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +8",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_120_hibisc": {
     "id": "char_120_hibisc",
@@ -279,7 +419,14 @@
         "skillName": "Healing Up α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +18",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_212_ansel": {
     "id": "char_212_ansel",
@@ -295,7 +442,14 @@
         "skillName": "Healing Range Up"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +20",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_210_stward": {
     "id": "char_210_stward",
@@ -311,7 +465,14 @@
         "skillName": "Power Strike α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_278_orchid": {
     "id": "char_278_orchid",
@@ -327,7 +488,14 @@
         "skillName": "Swift Strike α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +19",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_141_nights": {
     "id": "char_141_nights",
@@ -355,6 +523,13 @@
         "typeName": "CCR-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +100",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_109_fmout": {
@@ -383,6 +558,13 @@
         "typeName": "SPC-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +27",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_253_greyy": {
@@ -411,6 +593,13 @@
         "typeName": "SPC-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +6",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_328_cammou": {
@@ -432,7 +621,14 @@
         "skillName": "Synchronized Attack"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +6",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_469_indigo": {
     "id": "char_469_indigo",
@@ -460,6 +656,13 @@
         "typeName": "MSC-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +36",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_4004_pudd": {
@@ -488,6 +691,13 @@
         "typeName": "CHA-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_235_jesica": {
@@ -516,6 +726,13 @@
         "typeName": "MAR-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_126_shotst": {
@@ -544,6 +761,13 @@
         "typeName": "MAR-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_190_clour": {
@@ -572,6 +796,13 @@
         "typeName": "MAR-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_133_mm": {
@@ -600,6 +831,13 @@
         "typeName": "MAR-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_118_yuki": {
@@ -628,6 +866,13 @@
         "typeName": "ART-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_440_pinecn": {
@@ -649,7 +894,14 @@
         "skillName": "Electrical Overcharge"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +28",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_302_glaze": {
     "id": "char_302_glaze",
@@ -677,6 +929,13 @@
         "typeName": "DEA-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +6",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_366_acdrop": {
@@ -705,6 +964,13 @@
         "typeName": "ARC-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "Redeployment Time -4 sec",
+      "DP Cost -1"
     ]
   },
   "char_4062_totter": {
@@ -733,6 +999,13 @@
         "typeName": "SIE-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+32",
+      "天赋效果增强",
+      "部署费用-1"
     ]
   },
   "char_198_blackd": {
@@ -761,6 +1034,13 @@
         "typeName": "SOL-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +23",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_149_scave": {
@@ -789,6 +1069,13 @@
         "typeName": "SOL-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_290_vigna": {
@@ -817,6 +1104,13 @@
         "typeName": "CHG-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_151_myrtle": {
@@ -838,7 +1132,14 @@
         "skillName": "Healing Wings"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +22",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_452_bstalk": {
     "id": "char_452_bstalk",
@@ -859,7 +1160,14 @@
         "skillName": "'Everyone Together!'"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +8",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_130_doberm": {
     "id": "char_130_doberm",
@@ -887,6 +1195,13 @@
         "typeName": "INS-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +150",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_289_gyuki": {
@@ -915,6 +1230,13 @@
         "typeName": "DRE-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +180",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_159_peacok": {
@@ -943,7 +1265,8 @@
         "typeName": "DRE-X",
         "isCnOnly": false
       }
-    ]
+    ],
+    "potentials": []
   },
   "char_193_frostl": {
     "id": "char_193_frostl",
@@ -964,7 +1287,14 @@
         "skillName": "Ice Tomahawk"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +8",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_127_estell": {
     "id": "char_127_estell",
@@ -985,7 +1315,14 @@
         "skillName": "Sacrificial Strike"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +200",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_185_frncat": {
     "id": "char_185_frncat",
@@ -1006,7 +1343,14 @@
         "skillName": "Fury"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +26",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_301_cutter": {
     "id": "char_301_cutter",
@@ -1034,6 +1378,13 @@
         "typeName": "SWO-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +21",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_337_utage": {
@@ -1062,6 +1413,13 @@
         "typeName": "MUS-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_271_spikes": {
@@ -1083,7 +1441,14 @@
         "skillName": "Deadly Prank"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +18",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_4067_lolxh": {
     "id": "char_4067_lolxh",
@@ -1104,7 +1469,8 @@
         "skillName": "碎金为刃"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": []
   },
   "char_4063_quartz": {
     "id": "char_4063_quartz",
@@ -1125,7 +1491,14 @@
         "skillName": "全力相搏"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+35",
+      "天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_237_gravel": {
     "id": "char_237_gravel",
@@ -1153,6 +1526,13 @@
         "typeName": "EXE-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Max HP +160",
+      "Redeployment Time -2 sec",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_272_strong": {
@@ -1181,6 +1561,13 @@
         "typeName": "MER-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -3 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_236_rope": {
@@ -1209,6 +1596,13 @@
         "typeName": "HOK-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +22",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_117_myrrh": {
@@ -1237,6 +1631,13 @@
         "typeName": "PHY-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_187_ccheal": {
@@ -1265,6 +1666,13 @@
         "typeName": "PHY-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_298_susuro": {
@@ -1293,6 +1701,13 @@
         "typeName": "PHY-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_181_flower": {
@@ -1321,6 +1736,13 @@
         "typeName": "RIN-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +19",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_385_finlpp": {
@@ -1349,6 +1771,13 @@
         "typeName": "WAH-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_4041_chnut": {
@@ -1370,7 +1799,14 @@
         "skillName": "Rising Earth"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +15",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_199_yak": {
     "id": "char_199_yak",
@@ -1398,6 +1834,13 @@
         "typeName": "PRO-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +250",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_150_snakek": {
@@ -1426,6 +1869,13 @@
         "typeName": "PRO-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +27",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_381_bubble": {
@@ -1454,6 +1904,13 @@
         "typeName": "PRO-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +25",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_196_sunbr": {
@@ -1482,6 +1939,13 @@
         "typeName": "GUA-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +21",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_260_durnar": {
@@ -1503,7 +1967,14 @@
         "skillName": "Shielded Counterattack"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "DEF +20",
+      "DP Cost -1"
+    ]
   },
   "char_110_deepcl": {
     "id": "char_110_deepcl",
@@ -1531,6 +2002,13 @@
         "typeName": "SUM-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +8",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_183_skgoat": {
@@ -1559,6 +2037,13 @@
         "typeName": "DEC-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +21",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_258_podego": {
@@ -1587,6 +2072,13 @@
         "typeName": "DEC-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +21",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_484_robrta": {
@@ -1608,7 +2100,14 @@
         "skillName": "Full Auto Modeler"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +35",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_355_ethan": {
     "id": "char_355_ethan",
@@ -1636,6 +2135,13 @@
         "typeName": "AMB-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +150",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_277_sqrrel": {
@@ -1657,7 +2163,14 @@
         "skillName": "High-Pressure Water Cannon"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +140",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_128_plosis": {
     "id": "char_128_plosis",
@@ -1685,6 +2198,13 @@
         "typeName": "RIN-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +21",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_275_breeze": {
@@ -1713,6 +2233,13 @@
         "typeName": "RIN-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +20",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_115_headbr": {
@@ -1741,6 +2268,13 @@
         "typeName": "SOL-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +24",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_102_texas": {
@@ -1769,6 +2303,13 @@
         "typeName": "SOL-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_349_chiave": {
@@ -1797,6 +2338,13 @@
         "typeName": "SOL-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_261_sddrag": {
@@ -1825,6 +2373,13 @@
         "typeName": "CHG-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_496_wildmn": {
@@ -1853,6 +2408,13 @@
         "typeName": "CHG-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1"
     ]
   },
   "char_401_elysm": {
@@ -1874,7 +2436,14 @@
         "skillName": "Monitor"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +23",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_476_blkngt": {
     "id": "char_476_blkngt",
@@ -1895,7 +2464,14 @@
         "skillName": "Peaceful Slumber"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +8",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_497_ctable": {
     "id": "char_497_ctable",
@@ -1916,7 +2492,14 @@
         "skillName": "Specular Reflection"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +5",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_4017_puzzle": {
     "id": "char_4017_puzzle",
@@ -1937,7 +2520,14 @@
         "skillName": "疑点追踪"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "攻击速度+5",
+      "部署费用-1",
+      "天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_308_swire": {
     "id": "char_308_swire",
@@ -1965,6 +2555,13 @@
         "typeName": "INS-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +26",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_265_sophia": {
@@ -1993,6 +2590,13 @@
         "typeName": "INS-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_106_franka": {
@@ -2021,6 +2625,13 @@
         "typeName": "DRE-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_131_flameb": {
@@ -2049,6 +2660,13 @@
         "typeName": "DRE-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_155_tiger": {
@@ -2070,7 +2688,14 @@
         "skillName": "Sundered Soul"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_415_flint": {
     "id": "char_415_flint",
@@ -2091,7 +2716,14 @@
         "skillName": "Display of Might"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_157_dagda": {
     "id": "char_157_dagda",
@@ -2112,7 +2744,14 @@
         "skillName": "精准捕杀"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-10秒",
+      "部署费用-1",
+      "攻击力+24",
+      "部署费用-1"
+    ]
   },
   "char_140_whitew": {
     "id": "char_140_whitew",
@@ -2133,7 +2772,14 @@
         "skillName": "Wolf Spirit"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_294_ayer": {
     "id": "char_294_ayer",
@@ -2154,7 +2800,42 @@
         "skillName": "Activate Phase Blades"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +26",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
+  },
+  "char_4083_chimes": {
+    "id": "char_4083_chimes",
+    "name": "Wind Chimes",
+    "cnName": "铎铃",
+    "rarity": 5,
+    "class": "Guard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skcom_atk_up[3]",
+        "iconId": null,
+        "skillName": "攻击力强化·γ型"
+      },
+      {
+        "skillId": "skchr_chimes_2",
+        "iconId": null,
+        "skillName": "乡心无改"
+      }
+    ],
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+40",
+      "天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_252_bibeak": {
     "id": "char_252_bibeak",
@@ -2182,6 +2863,13 @@
         "typeName": "SWO-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +22",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_459_tachak": {
@@ -2210,6 +2898,13 @@
         "typeName": "SWO-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_143_ghost": {
@@ -2231,7 +2926,14 @@
         "skillName": "Bone Fracture"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +27",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_356_broca": {
     "id": "char_356_broca",
@@ -2252,7 +2954,14 @@
         "skillName": "High-Voltage Current"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +28",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_274_astesi": {
     "id": "char_274_astesi",
@@ -2273,7 +2982,14 @@
         "skillName": "Astral Sword"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +23",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_333_sidero": {
     "id": "char_333_sidero",
@@ -2294,7 +3010,14 @@
         "skillName": "Restorative Surge"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_475_akafyu": {
     "id": "char_475_akafyu",
@@ -2322,6 +3045,13 @@
         "typeName": "MUS-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +23",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_421_crow": {
@@ -2343,7 +3073,14 @@
         "skillName": "Reap"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +25",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_4066_highmo": {
     "id": "char_4066_highmo",
@@ -2364,7 +3101,14 @@
         "skillName": "泡影，殆尽"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "生命上限+160",
+      "第一天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_486_takila": {
     "id": "char_486_takila",
@@ -2385,7 +3129,14 @@
         "skillName": "Esoteric Bladework"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_129_bluep": {
     "id": "char_129_bluep",
@@ -2413,6 +3164,13 @@
         "typeName": "MAR-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_204_platnm": {
@@ -2441,6 +3199,13 @@
         "typeName": "MAR-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_367_swllow": {
@@ -2469,6 +3234,13 @@
         "typeName": "MAR-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_365_aprl": {
@@ -2497,6 +3269,13 @@
         "typeName": "MAR-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_1021_kroos2": {
@@ -2525,6 +3304,13 @@
         "typeName": "MAR-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_219_meteo": {
@@ -2553,6 +3339,13 @@
         "typeName": "ART-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +35",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_379_sesa": {
@@ -2581,6 +3374,13 @@
         "typeName": "ART-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +33",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_4078_bdhkgt": {
@@ -2609,6 +3409,13 @@
         "typeName": "ART-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-10秒",
+      "部署费用-1",
+      "天赋效果增强",
+      "部署费用-1"
     ]
   },
   "char_279_excu": {
@@ -2630,7 +3437,14 @@
         "skillName": "Final Journey"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +29",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_346_aosta": {
     "id": "char_346_aosta",
@@ -2651,7 +3465,14 @@
         "skillName": "Shadow Nails"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +26",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_002_amiya": {
     "id": "char_002_amiya",
@@ -2684,6 +3505,13 @@
         "typeName": "CCR-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "Max HP +200",
+      "DP Cost -1",
+      "ATK +30",
+      "DP Cost -1",
+      "Improves Talent"
     ]
   },
   "char_405_absin": {
@@ -2712,6 +3540,13 @@
         "typeName": "CCR-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_411_tomimi": {
@@ -2740,6 +3575,13 @@
         "typeName": "CCR-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_466_qanik": {
@@ -2768,6 +3610,13 @@
         "typeName": "CCR-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+26",
+      "天赋效果增强",
+      "部署费用-1"
     ]
   },
   "char_166_skfire": {
@@ -2796,6 +3645,13 @@
         "typeName": "SPC-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +33",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_306_leizi": {
@@ -2824,6 +3680,13 @@
         "typeName": "CHA-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +28",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_135_halo": {
@@ -2852,6 +3715,13 @@
         "typeName": "CHA-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-10秒",
+      "部署费用-1",
+      "攻击力+28",
+      "部署费用-1"
     ]
   },
   "char_344_beewax": {
@@ -2873,7 +3743,14 @@
         "skillName": "Guardian Obelisk"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_373_lionhd": {
     "id": "char_373_lionhd",
@@ -2901,6 +3778,13 @@
         "typeName": "SPC-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +32",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_388_mint": {
@@ -2922,7 +3806,14 @@
         "skillName": "Swirling Vortex"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_338_iris": {
     "id": "char_338_iris",
@@ -2950,6 +3841,13 @@
         "typeName": "MSC-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +45",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_297_hamoni": {
@@ -2978,6 +3876,13 @@
         "typeName": "MSC-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+45",
+      "天赋效果增强",
+      "部署费用-1"
     ]
   },
   "char_1011_lava2": {
@@ -3006,6 +3911,13 @@
         "typeName": "SPC-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_489_serum": {
@@ -3027,7 +3939,14 @@
         "skillName": "Conductive Corrosive Blast"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +33",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_4013_kjera": {
     "id": "char_4013_kjera",
@@ -3048,7 +3967,14 @@
         "skillName": "Unrestrained Heart"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_4040_rockr": {
     "id": "char_4040_rockr",
@@ -3069,7 +3995,14 @@
         "skillName": "Willing Burden"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_4054_malist": {
     "id": "char_4054_malist",
@@ -3090,7 +4023,14 @@
         "skillName": "Prodigious Craftsmanship"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_242_otter": {
     "id": "char_242_otter",
@@ -3118,6 +4058,13 @@
         "typeName": "SUM-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "RES +8",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_336_folivo": {
@@ -3146,6 +4093,13 @@
         "typeName": "SUM-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "RES +8",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_108_silent": {
@@ -3174,6 +4128,13 @@
         "typeName": "PHY-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_171_bldsk": {
@@ -3202,6 +4163,13 @@
         "typeName": "PHY-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +27",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_345_folnic": {
@@ -3230,6 +4198,13 @@
         "typeName": "PHY-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_348_ceylon": {
@@ -3258,6 +4233,13 @@
         "typeName": "WAH-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_436_whispr": {
@@ -3286,6 +4268,13 @@
         "typeName": "WAH-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_402_tuye": {
@@ -3314,6 +4303,13 @@
         "typeName": "PHY-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_473_mberry": {
@@ -3335,7 +4331,14 @@
         "skillName": "Safe Zone"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +19",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_449_glider": {
     "id": "char_449_glider",
@@ -3356,7 +4359,14 @@
         "skillName": "Rouse"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +19",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_1024_hbisc2": {
     "id": "char_1024_hbisc2",
@@ -3377,7 +4387,14 @@
         "skillName": "Nurturing Touch"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +22",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_4071_peper": {
     "id": "char_4071_peper",
@@ -3398,7 +4415,14 @@
         "skillName": "同伴意识"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+24",
+      "天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_148_nearl": {
     "id": "char_148_nearl",
@@ -3426,6 +4450,13 @@
         "typeName": "GUA-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +25",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_226_hmau": {
@@ -3454,6 +4485,13 @@
         "typeName": "GUA-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +25",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_144_red": {
@@ -3482,6 +4520,13 @@
         "typeName": "EXE-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "ATK +20",
+      "Redeployment Time -2 sec",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_243_waaifu": {
@@ -3510,6 +4555,13 @@
         "typeName": "EXE-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "DEF +19",
+      "Redeployment Time -2 sec",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_214_kafka": {
@@ -3538,6 +4590,13 @@
         "typeName": "EXE-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Max HP +150",
+      "Redeployment Time -2 sec",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_455_nothin": {
@@ -3566,6 +4625,13 @@
         "typeName": "MER-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -3 sec",
+      "ATK +25",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_107_liskam": {
@@ -3587,7 +4653,14 @@
         "skillName": "Counter Arc"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +27",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_201_moeshd": {
     "id": "char_201_moeshd",
@@ -3615,6 +4688,13 @@
         "typeName": "PRO-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +26",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_325_bison": {
@@ -3643,6 +4723,13 @@
         "typeName": "PRO-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_163_hpsts": {
@@ -3664,7 +4751,14 @@
         "skillName": "Combat Mode"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +250",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_378_asbest": {
     "id": "char_378_asbest",
@@ -3685,7 +4779,14 @@
         "skillName": "Thermal Power Mode"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +210",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_4025_aprot2": {
     "id": "char_4025_aprot2",
@@ -3706,7 +4807,14 @@
         "skillName": "Carnival of Self-Immolation"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves Second Talent",
+      "DP Cost -1"
+    ]
   },
   "char_4047_pianst": {
     "id": "char_4047_pianst",
@@ -3727,7 +4835,14 @@
         "skillName": "Meisterwerk"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_457_blitz": {
     "id": "char_457_blitz",
@@ -3748,7 +4863,14 @@
         "skillName": "Shield Bash"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
   },
   "char_304_zebra": {
     "id": "char_304_zebra",
@@ -3776,6 +4898,13 @@
         "typeName": "PRO-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_431_ashlok": {
@@ -3797,7 +4926,14 @@
         "skillName": "Focused Bombardment"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +32",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
   },
   "char_493_firwhl": {
     "id": "char_493_firwhl",
@@ -3818,7 +4954,14 @@
         "skillName": "焦土"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+32",
+      "第一天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_422_aurora": {
     "id": "char_422_aurora",
@@ -3846,6 +4989,13 @@
         "typeName": "HES-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +27",
+      "Improves First Talent",
+      "DP Cost -1"
     ]
   },
   "char_145_prove": {
@@ -3874,6 +5024,13 @@
         "typeName": "ARC-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_158_milu": {
@@ -3902,6 +5059,13 @@
         "typeName": "DEA-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +35",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_218_cuttle": {
@@ -3930,6 +5094,13 @@
         "typeName": "DEA-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +35",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_4014_lunacu": {
@@ -3958,6 +5129,13 @@
         "typeName": "DEA-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+35",
+      "再部署时间-6秒",
+      "部署费用-1"
     ]
   },
   "char_363_toddi": {
@@ -3986,6 +5164,13 @@
         "typeName": "SIE-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +34",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_4043_erato": {
@@ -4014,6 +5199,13 @@
         "typeName": "SIE-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +34",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ]
   },
   "char_1027_greyy2": {
@@ -4035,7 +5227,14 @@
         "skillName": "晨曦信标"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+32",
+      "再部署时间-6秒",
+      "部署费用-1"
+    ]
   },
   "char_173_slchan": {
     "id": "char_173_slchan",
@@ -4063,6 +5262,13 @@
         "typeName": "HOK-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +8",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_383_snsant": {
@@ -4091,6 +5297,13 @@
         "typeName": "HOK-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_174_slbell": {
@@ -4112,7 +5325,14 @@
         "skillName": "Natural Deterrent"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "RES +8",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_254_vodfox": {
     "id": "char_254_vodfox",
@@ -4133,7 +5353,14 @@
         "skillName": "Cursed Doll"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "RES +8",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_195_glassb": {
     "id": "char_195_glassb",
@@ -4161,6 +5388,13 @@
         "typeName": "DEC-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_326_glacus": {
@@ -4189,6 +5423,13 @@
         "typeName": "DEC-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_4032_provs": {
@@ -4217,6 +5458,13 @@
         "typeName": "DEC-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+23",
+      "天赋效果增强",
+      "部署费用-1"
     ]
   },
   "char_433_windft": {
@@ -4238,7 +5486,14 @@
         "skillName": "Energy Rapport"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_101_sora": {
     "id": "char_101_sora",
@@ -4259,7 +5514,14 @@
         "skillName": "Hymn of Battle"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +140",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_4045_heidi": {
     "id": "char_4045_heidi",
@@ -4280,7 +5542,14 @@
         "skillName": "Tale of Fiction: Rust"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
   },
   "char_343_tknogi": {
     "id": "char_343_tknogi",
@@ -4301,7 +5570,14 @@
         "skillName": "Forest's Embrace"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +160",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_4019_ncdeer": {
     "id": "char_4019_ncdeer",
@@ -4322,7 +5598,8 @@
         "skillName": "Return to the Immortal Mountain"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": []
   },
   "char_492_quercu": {
     "id": "char_492_quercu",
@@ -4343,7 +5620,14 @@
         "skillName": "Echo of Life"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +160",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_215_mantic": {
     "id": "char_215_mantic",
@@ -4371,6 +5655,13 @@
         "typeName": "AMB-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_478_kirara": {
@@ -4399,6 +5690,13 @@
         "typeName": "AMB-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_241_panda": {
@@ -4420,7 +5718,14 @@
         "skillName": "Destructive Fist"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +8",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_4036_forcer": {
     "id": "char_4036_forcer",
@@ -4441,7 +5746,14 @@
         "skillName": "Staggering Shot"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_451_robin": {
     "id": "char_451_robin",
@@ -4462,7 +5774,14 @@
         "skillName": "Launching 'Clip'"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_458_rfrost": {
     "id": "char_458_rfrost",
@@ -4483,7 +5802,14 @@
         "skillName": "Incapacitated Prey"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_369_bena": {
     "id": "char_369_bena",
@@ -4511,6 +5837,13 @@
         "typeName": "PUM-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_4016_kazema": {
@@ -4539,6 +5872,13 @@
         "typeName": "PUM-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +27",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_103_angel": {
@@ -4572,6 +5912,13 @@
         "typeName": "MAR-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +27",
+      "DP Cost -1",
+      "Improves Second Talent"
     ]
   },
   "char_332_archet": {
@@ -4611,6 +5958,13 @@
         "typeName": "MAR-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +27",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_456_ash": {
@@ -4644,6 +5998,13 @@
         "typeName": "MAR-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +27",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_340_shwaz": {
@@ -4683,11 +6044,18 @@
         "typeName": "ARC-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "DP Cost -1",
+      "Improves Second Talent"
     ]
   },
   "char_4055_bgsnow": {
     "id": "char_4055_bgsnow",
-    "name": "Позёмка",
+    "name": "Pozëmka",
     "cnName": "鸿雪",
     "rarity": 6,
     "class": "Sniper",
@@ -4716,6 +6084,13 @@
         "typeName": "ARC-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_430_fartth": {
@@ -4755,6 +6130,13 @@
         "typeName": "DEA-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +40",
+      "Improves First Talent",
+      "DP Cost -1"
     ]
   },
   "char_113_cqbw": {
@@ -4788,6 +6170,13 @@
         "typeName": "ART-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +35",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_300_phenxi": {
@@ -4821,6 +6210,13 @@
         "typeName": "ART-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +35",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_197_poca": {
@@ -4854,6 +6250,13 @@
         "typeName": "SIE-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +34",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_391_rosmon": {
@@ -4880,7 +6283,14 @@
         "skillName": "'As You Wish'"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +32",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
   },
   "char_1013_chen2": {
     "id": "char_1013_chen2",
@@ -4906,7 +6316,14 @@
         "skillName": "'Holiday Storm'"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +33",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
   },
   "char_112_siege": {
     "id": "char_112_siege",
@@ -4939,6 +6356,13 @@
         "typeName": "SOL-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves First Talent",
+      "DP Cost -1"
     ]
   },
   "char_222_bpipe": {
@@ -4972,6 +6396,13 @@
         "typeName": "CHG-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +25",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_362_saga": {
@@ -5005,6 +6436,13 @@
         "typeName": "SOL-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_479_sleach": {
@@ -5031,7 +6469,14 @@
         "skillName": "Glorious Banner"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
   },
   "char_420_flamtl": {
     "id": "char_420_flamtl",
@@ -5064,6 +6509,13 @@
         "typeName": "SOL-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_427_vigil": {
@@ -5090,7 +6542,14 @@
         "skillName": "领袖的尊严"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-10秒",
+      "部署费用-1",
+      "第二天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_134_ifrit": {
     "id": "char_134_ifrit",
@@ -5116,7 +6575,14 @@
         "skillName": "Scorched Earth"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +35",
+      "DP Cost -1",
+      "Improves Second Talent"
+    ]
   },
   "char_213_mostma": {
     "id": "char_213_mostma",
@@ -5149,6 +6615,13 @@
         "typeName": "SPC-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +34",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_180_amgoat": {
@@ -5182,6 +6655,13 @@
         "typeName": "CCR-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +27",
+      "DP Cost -1",
+      "Improves First Talent"
     ]
   },
   "char_2013_cerber": {
@@ -5215,6 +6695,13 @@
         "typeName": "CCR-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +27",
+      "Improves First Talent",
+      "DP Cost -1"
     ]
   },
   "char_2015_dusk": {
@@ -5254,6 +6741,13 @@
         "typeName": "SPC-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +34",
+      "Improves First Talent",
+      "DP Cost -1"
     ]
   },
   "char_472_pasngr": {
@@ -5293,6 +6787,13 @@
         "typeName": "CHA-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +32",
+      "DP Cost -1",
+      "Improves First Talent"
     ]
   },
   "char_426_billro": {
@@ -5319,7 +6820,14 @@
         "skillName": "Mark of Gluttony"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +34",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
   },
   "char_4080_lin": {
     "id": "char_4080_lin",
@@ -5345,7 +6853,14 @@
         "skillName": "流光乍裂"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "第二天赋效果增强",
+      "攻击力+34",
+      "第一天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_377_gdglow": {
     "id": "char_377_gdglow",
@@ -5371,7 +6886,14 @@
         "skillName": "Crystalline Shine"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +25",
+      "DP Cost -1",
+      "Improves Second Talent"
+    ]
   },
   "char_4046_ebnhlz": {
     "id": "char_4046_ebnhlz",
@@ -5410,6 +6932,13 @@
         "typeName": "MSC-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +52",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_206_gnosis": {
@@ -5436,7 +6965,14 @@
         "skillName": "Hypothermia"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +33",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
   },
   "char_291_aglina": {
     "id": "char_291_aglina",
@@ -5475,6 +7011,13 @@
         "typeName": "DEC-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +25",
+      "DP Cost -1",
+      "Improves First Talent"
     ]
   },
   "char_358_lisa": {
@@ -5508,6 +7051,13 @@
         "typeName": "DEC-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_248_mgllan": {
@@ -5547,6 +7097,13 @@
         "typeName": "SUM-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_1012_skadi2": {
@@ -5573,7 +7130,14 @@
         "skillName": "'The Tide Surges, The Tide Recedes'"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -6 sec",
+      "ATK +27",
+      "Improves Second Talent",
+      "DP Cost -1"
+    ]
   },
   "char_2023_ling": {
     "id": "char_2023_ling",
@@ -5606,6 +7170,13 @@
         "typeName": "SUM-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_4072_ironmn": {
@@ -5632,7 +7203,14 @@
         "skillName": "铁钳号·原型机"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-6秒",
+      "攻击力+25",
+      "第二天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_250_phatom": {
     "id": "char_250_phatom",
@@ -5665,6 +7243,13 @@
         "typeName": "EXE-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "ATK +22",
+      "Redeployment Time -2 sec",
+      "Max HP +130",
+      "DP Cost -1"
     ]
   },
   "char_1028_texas2": {
@@ -5698,6 +7283,13 @@
         "typeName": "EXE-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "部署费用-1",
+      "攻击力+22",
+      "再部署时间-2秒",
+      "第二天赋效果增强",
+      "部署费用-1"
     ]
   },
   "char_322_lmlee": {
@@ -5731,6 +7323,13 @@
         "typeName": "MER-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "Improves First Talent",
+      "DP Cost -1"
     ]
   },
   "char_400_weedy": {
@@ -5757,7 +7356,14 @@
         "skillName": "Liquid Nitrogen Cannon"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +8",
+      "Max HP +140",
+      "DP Cost -1"
+    ]
   },
   "char_225_haak": {
     "id": "char_225_haak",
@@ -5783,7 +7389,14 @@
         "skillName": "Durian-Flavored Stimpack"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +150",
+      "Improves Second Talent",
+      "DP Cost -1"
+    ]
   },
   "char_474_glady": {
     "id": "char_474_glady",
@@ -5816,6 +7429,13 @@
         "typeName": "HOK-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_437_mizuki": {
@@ -5855,6 +7475,13 @@
         "typeName": "AMB-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +32",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_1023_ghost2": {
@@ -5894,6 +7521,13 @@
         "typeName": "PUM-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +33",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_4048_doroth": {
@@ -5920,7 +7554,14 @@
         "skillName": "高速共振排障"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "第一天赋效果增强",
+      "攻击力+27",
+      "第二天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_147_shining": {
     "id": "char_147_shining",
@@ -5953,6 +7594,13 @@
         "typeName": "PHY-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Improves Second Talent",
+      "DEF +25",
+      "DP Cost -1",
+      "Improves First Talent"
     ]
   },
   "char_179_cgbird": {
@@ -5986,6 +7634,13 @@
         "typeName": "RIN-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "RES +10",
+      "Improves First Talent",
+      "DP Cost -1"
     ]
   },
   "char_003_kalts": {
@@ -6019,6 +7674,13 @@
         "typeName": "PHY-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_4042_lumen": {
@@ -6058,6 +7720,13 @@
         "typeName": "WAH-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_1020_reed2": {
@@ -6084,7 +7753,14 @@
         "skillName": "生命火种"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "第一天赋效果增强",
+      "攻击力+26",
+      "部署费用-1",
+      "第二天赋效果增强"
+    ]
   },
   "char_136_hsguma": {
     "id": "char_136_hsguma",
@@ -6123,6 +7799,13 @@
         "typeName": "PRO-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Improves First Talent",
+      "DEF +30",
+      "DP Cost -1",
+      "Improves Second Talent"
     ]
   },
   "char_202_demkni": {
@@ -6162,6 +7845,13 @@
         "typeName": "GUA-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +27",
+      "Improves First Talent",
+      "DP Cost -1"
     ]
   },
   "char_423_blemsh": {
@@ -6195,6 +7885,13 @@
         "typeName": "GUA-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +26",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_2014_nian": {
@@ -6228,6 +7925,13 @@
         "typeName": "PRO-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "ATK +24",
+      "DEF +30",
+      "Improves First Talent",
+      "DP Cost -1"
     ]
   },
   "char_311_mudrok": {
@@ -6254,7 +7958,14 @@
         "skillName": "Bloodline of Desecrated Earth"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +29",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
   },
   "char_4065_judge": {
     "id": "char_4065_judge",
@@ -6280,7 +7991,14 @@
         "skillName": "披荆斩棘"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "第一天赋效果增强",
+      "攻击力+28",
+      "第二天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_416_zumama": {
     "id": "char_416_zumama",
@@ -6319,6 +8037,13 @@
         "typeName": "HES-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +27",
+      "Improves First Talent",
+      "DP Cost -1"
     ]
   },
   "char_4039_horn": {
@@ -6345,7 +8070,14 @@
         "skillName": "Ultimate Line of Defense"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +30",
+      "Improves Second Talent",
+      "DP Cost -1"
+    ]
   },
   "char_264_f12yin": {
     "id": "char_264_f12yin",
@@ -6371,7 +8103,14 @@
         "skillName": "Earth-Shattering Smash"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
   },
   "char_2024_chyue": {
     "id": "char_2024_chyue",
@@ -6397,7 +8136,14 @@
         "skillName": "我无"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+24",
+      "第一天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_172_svrash": {
     "id": "char_172_svrash",
@@ -6423,7 +8169,14 @@
         "skillName": "Truesilver Slash"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +26",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
   },
   "char_293_thorns": {
     "id": "char_293_thorns",
@@ -6449,7 +8202,47 @@
         "skillName": "Destreza"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +26",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
+  },
+  "char_4082_qiubai": {
+    "id": "char_4082_qiubai",
+    "name": "Qiubai",
+    "cnName": "仇白",
+    "rarity": 6,
+    "class": "Guard",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_qiubai_1",
+        "iconId": null,
+        "skillName": "留羽"
+      },
+      {
+        "skillId": "skchr_qiubai_2",
+        "iconId": null,
+        "skillName": "承影"
+      },
+      {
+        "skillId": "skchr_qiubai_3",
+        "iconId": null,
+        "skillName": "问雪"
+      }
+    ],
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "第二天赋效果增强",
+      "攻击力+26",
+      "第一天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_010_chen": {
     "id": "char_010_chen",
@@ -6482,6 +8275,13 @@
         "typeName": "SWO-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_4009_irene": {
@@ -6515,6 +8315,13 @@
         "typeName": "SWO-Y",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_017_huang": {
@@ -6541,7 +8348,14 @@
         "skillName": "Boiling Burst"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +28",
+      "Improves Second Talent",
+      "DP Cost -1"
+    ]
   },
   "char_1026_gvial2": {
     "id": "char_1026_gvial2",
@@ -6567,7 +8381,14 @@
         "skillName": "Soul of the Jungle"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +28",
+      "Improves Second Talent",
+      "DP Cost -1"
+    ]
   },
   "char_350_surtr": {
     "id": "char_350_surtr",
@@ -6593,7 +8414,14 @@
         "skillName": "Twilight"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +28",
+      "Improves First Talent",
+      "DP Cost -1"
+    ]
   },
   "char_188_helage": {
     "id": "char_188_helage",
@@ -6626,6 +8454,13 @@
         "typeName": "MUS-X",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +26",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_485_pallas": {
@@ -6665,6 +8500,13 @@
         "typeName": "INS-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_1014_nearl2": {
@@ -6698,6 +8540,13 @@
         "typeName": "DRE-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +35",
+      "Improves Second Talent",
+      "DP Cost -1"
     ]
   },
   "char_4064_mlynar": {
@@ -6724,7 +8573,14 @@
         "skillName": "未照耀的荣光"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "第一天赋效果增强",
+      "攻击力+25",
+      "第二天赋效果增强",
+      "部署费用-1"
+    ]
   },
   "char_230_savage": {
     "id": "char_230_savage",
@@ -6745,7 +8601,12 @@
         "skillName": "Precise Blast"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "ATK +35",
+      "Max HP +250",
+      "DEF +35"
+    ]
   },
   "char_282_catap": {
     "id": "char_282_catap",
@@ -6761,7 +8622,14 @@
         "skillName": "Blast Range Up α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +27",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
+    ]
   },
   "char_283_midn": {
     "id": "char_283_midn",
@@ -6777,7 +8645,14 @@
         "skillName": "Enchant Weapon α"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +22",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_137_brownb": {
     "id": "char_137_brownb",
@@ -6798,7 +8673,14 @@
         "skillName": "Soaring Fists"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +180",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_347_jaksel": {
     "id": "char_347_jaksel",
@@ -6819,7 +8701,14 @@
         "skillName": "Pay Close Attention!"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +21",
+      "Improves Talent",
+      "DP Cost -1"
+    ]
   },
   "char_164_nightm": {
     "id": "char_164_nightm",
@@ -6847,6 +8736,13 @@
         "typeName": "CCR-Y",
         "isCnOnly": true
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +26",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_220_grani": {
@@ -6875,6 +8771,13 @@
         "typeName": "CHG-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ]
   },
   "char_263_skadi": {
@@ -6914,6 +8817,13 @@
         "typeName": "DRE-X",
         "isCnOnly": false
       }
+    ],
+    "potentials": [
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +33",
+      "Improves First Talent",
+      "DP Cost -1"
     ]
   },
   "char_1001_amiya2": {
@@ -6935,6 +8845,13 @@
         "skillName": "Ying Xiao - Shadowless"
       }
     ],
-    "modules": []
+    "modules": [],
+    "potentials": [
+      "生命上限+200",
+      "部署费用-1",
+      "攻击力+28",
+      "部署费用-1",
+      "防御力+22"
+    ]
   }
 }
