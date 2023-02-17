@@ -757,6 +757,12 @@
       "skinName": null,
       "avatarId": "char_185_frncat_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_185_frncat@wild#7",
+      "skinName": "营地炊烟",
+      "avatarId": "char_185_frncat_wild#7",
+      "sortId": 168
     }
   ],
   "char_301_cutter": [
@@ -1127,6 +1133,12 @@
       "skinName": null,
       "avatarId": "char_110_deepcl_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_110_deepcl@winter#3",
+      "skinName": "绘声绘影",
+      "avatarId": "char_110_deepcl_winter#3",
+      "sortId": 137
     }
   ],
   "char_183_skgoat": [
@@ -1617,6 +1629,20 @@
       "sortId": 188
     }
   ],
+  "char_4083_chimes": [
+    {
+      "skinId": "char_4083_chimes#1",
+      "skinName": null,
+      "avatarId": "char_4083_chimes",
+      "sortId": -3
+    },
+    {
+      "skinId": "char_4083_chimes#2",
+      "skinName": null,
+      "avatarId": "char_4083_chimes_2",
+      "sortId": -1
+    }
+  ],
   "char_252_bibeak": [
     {
       "skinId": "char_252_bibeak#1",
@@ -1692,7 +1718,7 @@
     },
     {
       "skinId": "char_356_broca@marthe#4",
-      "skinName": "组间休息",
+      "skinName": "Rest Between Sets",
       "avatarId": "char_356_broca_marthe#4",
       "sortId": 117
     }
@@ -3169,6 +3195,12 @@
       "skinName": null,
       "avatarId": "char_4032_provs_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4032_provs@wild#7",
+      "skinName": "秋高气爽",
+      "avatarId": "char_4032_provs_wild#7",
+      "sortId": 167
     }
   ],
   "char_433_windft": [
@@ -3297,6 +3329,12 @@
       "skinName": "Invisible Dirge",
       "avatarId": "char_215_mantic_epoque#4",
       "sortId": 16
+    },
+    {
+      "skinId": "char_215_mantic@epoque#19",
+      "skinName": "面纱之下",
+      "avatarId": "char_215_mantic_epoque#19",
+      "sortId": 52
     }
   ],
   "char_478_kirara": [
@@ -3531,6 +3569,12 @@
       "skinName": null,
       "avatarId": "char_4055_bgsnow_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4055_bgsnow@wild#7",
+      "skinName": "字句中的雪原",
+      "avatarId": "char_4055_bgsnow_wild#7",
+      "sortId": 166
     }
   ],
   "char_430_fartth": [
@@ -4603,6 +4647,20 @@
       "sortId": 218
     }
   ],
+  "char_4082_qiubai": [
+    {
+      "skinId": "char_4082_qiubai#1",
+      "skinName": null,
+      "avatarId": "char_4082_qiubai",
+      "sortId": -3
+    },
+    {
+      "skinId": "char_4082_qiubai#2",
+      "skinName": null,
+      "avatarId": "char_4082_qiubai_2",
+      "sortId": -1
+    }
+  ],
   "char_010_chen": [
     {
       "skinId": "char_010_chen#1",
@@ -4735,6 +4793,12 @@
       "skinName": "Heritage",
       "avatarId": "char_485_pallas_epoque#12",
       "sortId": 33
+    },
+    {
+      "skinId": "char_485_pallas@epoque#19",
+      "skinName": "山川的酿造",
+      "avatarId": "char_485_pallas_epoque#19",
+      "sortId": 51
     }
   ],
   "char_1014_nearl2": [

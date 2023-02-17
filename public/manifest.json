@@ -7,7 +7,7 @@
   "background_color": "#272727",
   "theme_color": "#ffd440",
   "orientation": "portrait-primary",
-  "version": "2.4.10",
+  "version": "2.5.0",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
