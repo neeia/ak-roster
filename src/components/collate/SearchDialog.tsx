@@ -1,6 +1,6 @@
 import { Clear, Search } from "@mui/icons-material";
 import { Dialog, IconButton, InputAdornment, TextField, Tooltip, Typography } from "@mui/material";
-import React, { memo } from "react";
+import React, { memo, useCallback, useEffect } from "react";
 
 interface Props {
   setSearch: (search: string) => void;
@@ -18,6 +18,21 @@ const SearchDialog = memo((props: Props) => {
   const search = (e: React.MouseEvent<HTMLButtonElement>) => { e.preventDefault(); setSearch(searchText); };
   const clear = (e: React.MouseEvent<HTMLButtonElement>) => { e.preventDefault(); setSearchText(""); setSearch(""); };
 
+  const checkSearch = useCallback((event: KeyboardEvent) => {
+    if (event.ctrlKey && event.key === "f") {
+      event.preventDefault();
+      setOpen(o => !o);
+    }
+  }, []);
+  
+  useEffect(() => {
+    window.addEventListener('keydown', checkSearch);
+
+    return () => {
+      window.removeEventListener('keydown', checkSearch);
+    }
+  }, []);
+  
   return (
     <>
       <Tooltip title="Search" arrow describeChild>
