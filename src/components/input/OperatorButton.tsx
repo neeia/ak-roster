@@ -6,7 +6,6 @@ import { Favorite } from "@mui/icons-material";
 import getTextWidth from "styles/getTextWidth";
 import appTheme from "styles/theme/appTheme";
 import Image from "next/image";
-import { isUndefined } from "util";
 
 const WIDTH_TO_PX = 10 / 7;
 const LONG_CUTOFF = 75;
