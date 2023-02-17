@@ -24,7 +24,10 @@ export function getPotentialBonus(op: Operator) {
     case 4:
     case 5:
       let bonus = potentials[potential - 1];
-      if (bonus === "Improves First Talent") {
+      if (bonus === "Improves Talent") {
+        bonus = "⇧ Talent";
+      }
+      else if (bonus === "Improves First Talent") {
         bonus = "⇧ Talent 1";
       }
       else if (bonus === "Improves Second Talent") {

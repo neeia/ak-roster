@@ -321,8 +321,8 @@ const Recruit: NextPage = () => {
                       },
                     }}
                   >
-                    {!isServer() && operators
-                      .sort((a, b) => showPotentials ? roster[a.id].potential - roster[b.id].potential : 0)
+                    {!isServer() && [...operators]
+                      .sort((a, b) => a.rarity - b.rarity || showPotentials ? roster[a.id].potential - roster[b.id].potential : 0)
                       .map((operator) => (
                         <RecruitableOperatorChip key={operator.id}
                           op={roster[operator.id]}
@@ -359,7 +359,7 @@ const Recruit: NextPage = () => {
                     }}
                   >
                     {!isServer() && [...operators]
-                      .sort((a, b) => showPotentials ? roster[a.id].potential - roster[b.id].potential : 0)
+                      .sort((a, b) => a.rarity - b.rarity || showPotentials ? roster[a.id].potential - roster[b.id].potential : 0)
                       .map((operator) => (
                         <RecruitableOperatorCard op={roster[operator.id]}
                           key={operator.id}
