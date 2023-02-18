@@ -2,7 +2,7 @@ import React from "react";
 import { Dialog, DialogContent, DialogTitle, IconButton, TextField, useMediaQuery, useTheme } from "@mui/material";
 import EditRow from "../input/EditRow";
 import General from "../input/EditPieces/General";
-import Potential from "../input/EditPieces/Potential";
+import Potential from "./replacements/Potential";
 import Promotion from "../input/EditPieces/Promotion";
 import Mastery from "./replacements/Mastery";
 import Level from "../input/EditPieces/Level";
