@@ -36,6 +36,7 @@ const Potential = ((props: Props) => {
           className={op.potential === i + 1 ? "active" : "inactive"}
           onClick={() => onChange(changePotential(op, i + 1))}
           disabled={!op.owned}
+          key={`pot${i + 1}`}
         >
           <Box sx={{
             width: "32px",
