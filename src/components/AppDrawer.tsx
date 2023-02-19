@@ -12,6 +12,7 @@ import DiscordInvite from "./app/DiscordInvite";
 import LoginButton from "./app/LoginButton";
 import PatchNotes from "./app/PatchNotes";
 import RegisterButton from "./app/RegisterButton";
+import Image from "next/image";
 
 
 const DRAWER_WIDTH_PX = 220;
@@ -20,6 +21,7 @@ const ICON_BY_PATH = [
   <ManageAccounts key="a" height="1.5rem" />,
   <PersonSearch key="c" height="1.5rem" />,
   <Construction key="t" height="1.5rem" />,
+  <Image key="p" src="/img/icons/rock.svg" width={24} height={24} />
 ];
 
 interface ConfigPage {
