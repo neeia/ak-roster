@@ -13,18 +13,6 @@ import { LockClockOutlined, Search } from '@mui/icons-material'
 import Image from 'next/image'
 
 const Kofi = memo(() => {
-  const [seconds, setSeconds] = useState(60);
-  useEffect(() => {
-    let myInterval = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      }
-      if (seconds === 0) {
-        clearInterval(myInterval)
-      }
-    }, 1000);
-    return () => clearInterval(myInterval);
-  }, [seconds]);
   return (
     <Link
       sx={{
