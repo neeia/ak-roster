@@ -1,3 +1,5 @@
+import { EliteGoal, MasteryGoal, ModuleGoal, SkillLevelGoal } from "./goal";
+
 export interface Operator {
   id: string;
   name: string;
@@ -31,19 +33,22 @@ export interface OpJsonObj {
   skills: OpJsonSkill[];
   modules: OpJsonModule[];
   potentials: string[];
+  skillLevels: SkillLevelGoal[];
+  elite: EliteGoal[];
 }
 
 export interface OpJsonSkill {
   skillId: string;
   iconId: string | null;
   skillName: string;
+  masteries: MasteryGoal[];
 }
 
 export interface OpJsonModule {
   moduleName: string;
   moduleId: string;
   typeName: string;
-  isCnOnly: boolean;
+  stages: ModuleGoal[];
 }
 
 export interface LegacyOperator {
