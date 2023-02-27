@@ -1,6 +1,6 @@
 {
   "name": "ak-roster-next",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "private": true,
   "scripts": {
     "start": "start http://localhost:3000/ & next dev",
@@ -11,6 +11,7 @@
     "update:operators": "git submodule update --remote && node ./scripts/operators.mjs",
     "update:images": "node ./scripts/images.mjs",
     "update:skins": "node ./scripts/skins.mjs",
+    "update:items": "node ./scripts/items.mjs",
     "update:recruit": "node ./scripts/recruit.mjs"
   },
   "dependencies": {
@@ -21,15 +22,22 @@
     "@fontsource/roboto": "^4.5.7",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.0",
+    "@reduxjs/toolkit": "^1.9.3",
+    "@types/lodash": "^4.14.191",
     "@types/react-beautiful-dnd": "^13.1.2",
+    "@types/react-window": "^1.8.5",
     "@types/sprintf-js": "^1.1.2",
     "@vercel/analytics": "^0.1.4",
     "firebase": "^9.9.1",
     "js-combinatorics": "^2.1.1",
+    "localforage": "^1.10.0",
+    "lodash": "^4.17.21",
     "next": "12.2.2",
     "react": "18.2.0",
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "18.2.0",
+    "react-window": "^1.8.8",
+    "redux-persist": "^6.0.0",
     "sharp": "^0.30.7",
     "sprintf-js": "^1.1.2"
   },
