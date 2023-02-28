@@ -49,15 +49,15 @@ const config = {
       description: "Calculators and Tools",
       pages: {
         "/recruit": {
-          title: "Recruitment Calculator",
+          title: "Recruitment",
           description: "See what pool of operators are available from your tags in Recruitment.",
         },
         "/rateup": {
-          title: "Pull Probability Calculator",
+          title: "Headhunting",
           description: "Calculate the probability of pulling operators on a gacha banner.",
         },
         "/level": {
-          title: "Level Cost Calculator",
+          title: "Level Costs",
           description: "Calculate LMD and EXP costs to level operators.",
         }
       }
