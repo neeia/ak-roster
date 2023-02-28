@@ -1,5 +1,5 @@
-import DeleteGoalIcon from "@mui/icons-material/Cancel";
-import CompleteGoalIcon from "@mui/icons-material/Check";
+import DeleteGoalIcon from "@mui/icons-material/CloseRounded";
+import CompleteGoalIcon from "@mui/icons-material/Upload";
 import {
   Box,
   Button,
@@ -168,22 +168,11 @@ const PlannerGoalCard = React.forwardRef<HTMLLIElement, Props>((props, ref) => {
           backgroundColor: (theme) => theme.palette.background.paper,
         }}
       >
-        <GoalCardButton
-          aria-label={`Delete goal: ${goalLabel}`}
-          onClick={() => onGoalDeleted(goal)}
-          sx={{
-            color: "#ccc",
-            "&:hover": {
-              backgroundColor: (theme) => theme.palette.error.dark,
-            },
-          }}
-        >
-          <DeleteGoalIcon />
-        </GoalCardButton>
         <Tooltip
           arrow
           describeChild
-          title="Mark this goal as completed and deduct its materials from your depot"
+          title="Complete Goal"
+          placement="left"
         >
           <GoalCardButton
             aria-label={`Complete goal: ${goalLabel}`}
@@ -198,6 +187,18 @@ const PlannerGoalCard = React.forwardRef<HTMLLIElement, Props>((props, ref) => {
             <CompleteGoalIcon />
           </GoalCardButton>
         </Tooltip>
+        <GoalCardButton
+          aria-label={`Delete goal: ${goalLabel}`}
+          onClick={() => onGoalDeleted(goal)}
+          sx={{
+            color: "#ccc",
+            "&:hover": {
+              backgroundColor: (theme) => theme.palette.error.dark,
+            },
+          }}
+        >
+          <DeleteGoalIcon />
+        </GoalCardButton>
       </ButtonGroup>
     </Paper>
   );
