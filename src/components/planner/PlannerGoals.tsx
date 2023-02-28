@@ -21,7 +21,11 @@ import { PlannerGoal } from "types/goal";
 
 import PlannerGoalCard from "./PlannerGoalCard";
 
-const OperatorGoals: React.FC = () => {
+interface Props {
+  onCompleteGoal: (goal: PlannerGoal) => void;
+}
+
+const OperatorGoals: React.FC<Props> = ({ onCompleteGoal }) => {
   const dispatch = useAppDispatch();
   const goals = useAppSelector(selectGoals);
 
@@ -31,6 +35,7 @@ const OperatorGoals: React.FC = () => {
 
   const handleGoalCompleted = (goal: PlannerGoal) => {
     dispatch(completeGoal(goal));
+    onCompleteGoal(goal)
   };
 
   const handleClearAll = () => {
