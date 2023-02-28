@@ -146,7 +146,6 @@ const OuterElementType = React.forwardRef<HTMLDivElement>((props, ref) => {
 });
 OuterElementType.displayName = "OuterElementType";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function useResetCache(data: any) {
   const ref = React.useRef<VariableSizeList>(null);
   React.useEffect(() => {

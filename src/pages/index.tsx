@@ -254,7 +254,7 @@ const Home: NextPage = () => {
                   passHref
                 >
                   <Link>
-                    <Image src="/img/items/TKT_RECRUIT.png" width="75px" height="80px" />
+                    <Image src="/img/items/TKT_RECRUIT.png" width="75px" height="80px" alt="Recruitment" />
                   </Link>
                 </NextLink>
                 <NextLink
@@ -262,7 +262,7 @@ const Home: NextPage = () => {
                   passHref
                 >
                   <Link>
-                    <Image src="/img/items/TKT_GACHA.png" width="90px" height="71px" />
+                    <Image src="/img/items/TKT_GACHA.png" width="90px" height="71px" alt="Headhunting" />
                   </Link>
                 </NextLink>
                 <NextLink
@@ -270,7 +270,7 @@ const Home: NextPage = () => {
                   passHref
                 >
                   <Link>
-                    <Image src="/img/items/sprite_exp_card_t4.png" width="90px" height="71px" />
+                    <Image src="/img/items/sprite_exp_card_t4.png" width="90px" height="71px" alt="Leveling" />
                   </Link>
                 </NextLink>
               </Box>

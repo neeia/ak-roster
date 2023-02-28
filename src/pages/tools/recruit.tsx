@@ -140,6 +140,7 @@ const Recruit: NextPage = () => {
     setShowPotentials(_showPotentials);
     setCompact(_compact);
     setBonuses(_bonuses)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
