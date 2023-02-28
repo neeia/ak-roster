@@ -55,7 +55,7 @@ const PatchNotes = () => {
             <ul>
               <li>Ported the Arknights operator planner from <Link href="https://samidare.io/">Samidare</Link></li>
               <li><NextLink href="/planner/goals" passHref><Link>Goals</Link></NextLink> helps you calculate your future material spending</li>
-              <li>Completing a goal automatically updates your collection so you don't have to worry about it</li>
+              <li>Completing a goal automatically updates your collection so you don&apos;t have to worry about it</li>
             </ul>
           </Box>
         </DialogContent>

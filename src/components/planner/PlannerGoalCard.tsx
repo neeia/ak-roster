@@ -64,10 +64,10 @@ const PlannerGoalCard = React.forwardRef<HTMLLIElement, Props>((props, ref) => {
           : `S${skillNumber} M${goal.masteryLevel}`;
       }
       case OperatorGoalCategory.Module: {
-        const module = operator.modules.find(
+        const mod = operator.modules.find(
           (m) => m.moduleId === goal.moduleId
         )!;
-        return `Module ${module.typeName} Stage ${goal.moduleLevel}`;
+        return `Module ${mod.typeName} Stage ${goal.moduleLevel}`;
       }
     }
   })();

@@ -67,7 +67,7 @@ const GoalSelect: React.FC<Props> = (props) => {
       presets.unshift("Everything");
     }
     return presets;
-  }, [operator]);
+  }, [operator, opData]);
 
   const goalNameToGoal = (goalName: string): PlannerGoal => {
     if (operator == null) {
@@ -260,7 +260,7 @@ const GoalSelect: React.FC<Props> = (props) => {
     const moduleGoals = operator.modules.flatMap((module, i) => module.stages
       .filter((_, j) => !opData || (opData.module[i] ?? 0) < j + 1)
     );
-    const module =
+    const mod =
       moduleGoals.length > 0
         ? moduleGoals.map((goal) => (
           <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
@@ -287,9 +287,9 @@ const GoalSelect: React.FC<Props> = (props) => {
         : [];
 
     const options = [...presets];
-    if (module != null) {
+    if (mod != null) {
       options.push(<Divider key="1" />);
-      options.push(...module);
+      options.push(...mod);
     }
     if (elite?.length) {
       options.push(<Divider key="1" />);
