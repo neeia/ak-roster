@@ -209,6 +209,7 @@ const createOperatorsJson = () => {
             moduleId: cnModuleData.uniEquipId,
             typeName,
             stages,
+            isCnOnly: enModuleData === undefined
           };
         });
       }

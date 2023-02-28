@@ -2253,7 +2253,8 @@
             "name": "Module CCR-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -2608,7 +2609,8 @@
             "name": "Module SPC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -2963,7 +2965,8 @@
             "name": "Module SPC-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -3600,7 +3603,8 @@
             "name": "Module MSC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -3955,7 +3959,8 @@
             "name": "Module CHA-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -4310,7 +4315,8 @@
             "name": "Module MAR-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -4665,7 +4671,8 @@
             "name": "Module MAR-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -5020,7 +5027,8 @@
             "name": "Module MAR-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -5375,7 +5383,8 @@
             "name": "Module MAR-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -5730,7 +5739,8 @@
             "name": "Module ART-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -6367,7 +6377,8 @@
             "name": "Module DEA-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -6722,7 +6733,8 @@
             "name": "Module ARC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -7077,7 +7089,8 @@
             "name": "Module SIE-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -7432,7 +7445,8 @@
             "name": "Module SOL-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -7787,7 +7801,8 @@
             "name": "Module SOL-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -8142,7 +8157,8 @@
             "name": "Module CHG-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -9061,7 +9077,8 @@
             "name": "Module INS-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -9416,7 +9433,8 @@
             "name": "Module DRE-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -9771,7 +9789,8 @@
             "name": "Module DRE-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [],
@@ -10966,7 +10985,8 @@
             "name": "Module SWO-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -11321,7 +11341,8 @@
             "name": "Module MUS-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -12516,7 +12537,8 @@
             "name": "Module EXE-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -12871,7 +12893,8 @@
             "name": "Module MER-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -13226,7 +13249,8 @@
             "name": "Module HOK-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -13581,7 +13605,8 @@
             "name": "Module PHY-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -13936,7 +13961,8 @@
             "name": "Module PHY-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -14291,7 +14317,8 @@
             "name": "Module PHY-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -14646,7 +14673,8 @@
             "name": "Module RIN-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -15001,7 +15029,8 @@
             "name": "Module WAH-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -15638,7 +15667,8 @@
             "name": "Module PRO-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -15993,7 +16023,8 @@
             "name": "Module PRO-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -16348,7 +16379,8 @@
             "name": "Module PRO-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -16703,7 +16735,8 @@
             "name": "Module GUA-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -17340,7 +17373,8 @@
             "name": "Module SUM-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -17695,7 +17729,8 @@
             "name": "Module DEC-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -18050,7 +18085,8 @@
             "name": "Module DEC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -18687,7 +18723,8 @@
             "name": "Module AMB-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -19324,7 +19361,8 @@
             "name": "Module RIN-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -19683,7 +19721,8 @@
             "name": "Module RIN-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -20042,7 +20081,8 @@
             "name": "Module SOL-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -20401,7 +20441,8 @@
             "name": "Module SOL-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -20760,7 +20801,8 @@
             "name": "Module SOL-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -21119,7 +21161,8 @@
             "name": "Module CHG-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -21478,7 +21521,8 @@
             "name": "Module CHG-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -22981,7 +23025,8 @@
             "name": "Module INS-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -23340,7 +23385,8 @@
             "name": "Module INS-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -23699,7 +23745,8 @@
             "name": "Module DRE-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -24058,7 +24105,8 @@
             "name": "Module DRE-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -26133,7 +26181,8 @@
             "name": "Module SWO-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -26492,7 +26541,8 @@
             "name": "Module SWO-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -27995,7 +28045,8 @@
             "name": "Module MUS-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -29212,7 +29263,8 @@
             "name": "Module MAR-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -29571,7 +29623,8 @@
             "name": "Module MAR-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -29930,7 +29983,8 @@
             "name": "Module MAR-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -30289,7 +30343,8 @@
             "name": "Module MAR-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -30648,7 +30703,8 @@
             "name": "Module MAR-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -31007,7 +31063,8 @@
             "name": "Module ART-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -31366,7 +31423,8 @@
             "name": "Module ART-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -31725,7 +31783,8 @@
             "name": "Module ART-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -32720,7 +32779,8 @@
             "name": "Module CCR-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -33079,7 +33139,8 @@
             "name": "Module CCR-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -33438,7 +33499,8 @@
             "name": "Module CCR-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -33797,7 +33859,8 @@
             "name": "Module CCR-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -34156,7 +34219,8 @@
             "name": "Module SPC-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -34515,7 +34579,8 @@
             "name": "Module CHA-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -34874,7 +34939,8 @@
             "name": "Module CHA-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -35519,7 +35585,8 @@
             "name": "Module SPC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -36164,7 +36231,8 @@
             "name": "Module MSC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -36523,7 +36591,8 @@
             "name": "Module MSC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -36882,7 +36951,8 @@
             "name": "Module SPC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -38385,7 +38455,8 @@
             "name": "Module SUM-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -38744,7 +38815,8 @@
             "name": "Module SUM-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -39103,7 +39175,8 @@
             "name": "Module PHY-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -39462,7 +39535,8 @@
             "name": "Module PHY-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -39821,7 +39895,8 @@
             "name": "Module PHY-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -40180,7 +40255,8 @@
             "name": "Module WAH-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -40539,7 +40615,8 @@
             "name": "Module WAH-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -40898,7 +40975,8 @@
             "name": "Module PHY-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -42401,7 +42479,8 @@
             "name": "Module GUA-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -42760,7 +42839,8 @@
             "name": "Module GUA-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -43119,7 +43199,8 @@
             "name": "Module EXE-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -43478,7 +43559,8 @@
             "name": "Module EXE-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -43837,7 +43919,8 @@
             "name": "Module EXE-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -44196,7 +44279,8 @@
             "name": "Module MER-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -44841,7 +44925,8 @@
             "name": "Module PRO-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -45200,7 +45285,8 @@
             "name": "Module PRO-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -46989,7 +47075,8 @@
             "name": "Module PRO-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -47920,7 +48007,8 @@
             "name": "Module HES-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -48279,7 +48367,8 @@
             "name": "Module ARC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -48638,7 +48727,8 @@
             "name": "Module DEA-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -48997,7 +49087,8 @@
             "name": "Module DEA-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -49356,7 +49447,8 @@
             "name": "Module DEA-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -49715,7 +49807,8 @@
             "name": "Module SIE-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -50074,7 +50167,8 @@
             "name": "Module SIE-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -50719,7 +50813,8 @@
             "name": "Module HOK-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -51078,7 +51173,8 @@
             "name": "Module HOK-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -52009,7 +52105,8 @@
             "name": "Module DEC-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -52368,7 +52465,8 @@
             "name": "Module DEC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -52727,7 +52825,8 @@
             "name": "Module DEC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -54796,7 +54895,8 @@
             "name": "Module AMB-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -55155,7 +55255,8 @@
             "name": "Module AMB-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -56658,7 +56759,8 @@
             "name": "Module PUM-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -57017,7 +57119,8 @@
             "name": "Module PUM-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -57440,7 +57543,8 @@
             "name": "Module MAR-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -57871,7 +57975,8 @@
             "name": "Module MAR-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       },
       {
         "moduleName": "旧日重现",
@@ -57943,7 +58048,8 @@
             "name": "Module MAR-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -58374,7 +58480,8 @@
             "name": "Module MAR-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -58805,7 +58912,8 @@
             "name": "Module ARC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "老剃刀",
@@ -58877,7 +58985,8 @@
             "name": "Module ARC-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -59308,7 +59417,8 @@
             "name": "Module ARC-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -59739,7 +59849,8 @@
             "name": "Module DEA-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "Fan Letters",
@@ -59811,7 +59922,8 @@
             "name": "Module DEA-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -60242,7 +60354,8 @@
             "name": "Module ART-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -60673,7 +60786,8 @@
             "name": "Module ART-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -61104,7 +61218,8 @@
             "name": "Module SIE-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -62251,7 +62366,8 @@
             "name": "Module SOL-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -62682,7 +62798,8 @@
             "name": "Module CHG-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -63113,7 +63230,8 @@
             "name": "Module SOL-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -63902,7 +64020,8 @@
             "name": "Module SOL-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -65049,7 +65168,8 @@
             "name": "Module SPC-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -65480,7 +65600,8 @@
             "name": "Module CCR-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -65911,7 +66032,8 @@
             "name": "Module CCR-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -66342,7 +66464,8 @@
             "name": "Module SPC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "“终夜无寐”",
@@ -66414,7 +66537,8 @@
             "name": "Module SPC-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -66845,7 +66969,8 @@
             "name": "Module CHA-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "Gold of Crowns",
@@ -66917,7 +67042,8 @@
             "name": "Module CHA-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -68422,7 +68548,8 @@
             "name": "Module MSC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "“乐理阐释者”",
@@ -68494,7 +68621,8 @@
             "name": "Module MSC-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -69283,7 +69411,8 @@
             "name": "Module DEC-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "实验用反重力模块",
@@ -69355,7 +69484,8 @@
             "name": "Module DEC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -69786,7 +69916,8 @@
             "name": "Module DEC-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -70217,7 +70348,8 @@
             "name": "Module SUM-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "教学用龙腾无人机",
@@ -70289,7 +70421,8 @@
             "name": "Module SUM-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -71078,7 +71211,8 @@
             "name": "Module SUM-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -71867,7 +72001,8 @@
             "name": "Module EXE-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -72298,7 +72433,8 @@
             "name": "Module EXE-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -72729,7 +72865,8 @@
             "name": "Module MER-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -73876,7 +74013,8 @@
             "name": "Module HOK-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -74307,7 +74445,8 @@
             "name": "Module AMB-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "深蓝之籽",
@@ -74379,7 +74518,8 @@
             "name": "Module AMB-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -74810,7 +74950,8 @@
             "name": "Module PUM-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "The Beauty in the Incomplete",
@@ -74882,7 +75023,8 @@
             "name": "Module PUM-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -75671,7 +75813,8 @@
             "name": "Module PHY-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -76102,7 +76245,8 @@
             "name": "Module RIN-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -76533,7 +76677,8 @@
             "name": "Module PHY-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -76964,7 +77109,8 @@
             "name": "Module WAH-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "“幸运”",
@@ -77036,7 +77182,8 @@
             "name": "Module WAH-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -77825,7 +77972,8 @@
             "name": "Module PRO-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       },
       {
         "moduleName": "护身符",
@@ -77897,7 +78045,8 @@
             "name": "Module PRO-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -78328,7 +78477,8 @@
             "name": "Module GUA-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "科技新星",
@@ -78400,7 +78550,8 @@
             "name": "Module GUA-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -78831,7 +78982,8 @@
             "name": "Module GUA-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -79262,7 +79414,8 @@
             "name": "Module PRO-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -80409,7 +80562,8 @@
             "name": "Module HES-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "“小小的丑东西”",
@@ -80481,7 +80635,8 @@
             "name": "Module HES-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -83060,7 +83215,8 @@
             "name": "Module SWO-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -83491,7 +83647,8 @@
             "name": "Module SWO-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -84996,7 +85153,8 @@
             "name": "Module MUS-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -85427,7 +85585,8 @@
             "name": "Module INS-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "“赫里亚之辉”",
@@ -85499,7 +85658,8 @@
             "name": "Module INS-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -85930,7 +86090,8 @@
             "name": "Module DRE-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -87753,7 +87914,8 @@
             "name": "Module CCR-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -88112,7 +88274,8 @@
             "name": "Module CHG-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -88535,7 +88698,8 @@
             "name": "Module DRE-Y Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       },
       {
         "moduleName": "No Ending to This Dream",
@@ -88607,7 +88771,8 @@
             "name": "Module DRE-X Stage 3",
             "category": 3
           }
-        ]
+        ],
+        "isCnOnly": false
       }
     ],
     "potentials": [
