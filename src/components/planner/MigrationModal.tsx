@@ -1,5 +1,5 @@
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
-import { Box, Button, Dialog, DialogContent, DialogTitle, TextField } from "@mui/material";
+import { Box, Button, ButtonGroup, Dialog, DialogContent, DialogTitle, TextField } from "@mui/material";
 import { useState } from "react";
 import * as lz from "util/lz-string";
 import { addGoals } from "store/goalsSlice";
@@ -28,7 +28,10 @@ const MigrationModal: React.FC<Props> = ({ open, onClose, onSubmit }) => {
           value={text}
           onChange={e => setText(e.target.value)}
         />
-        <Button onClick={() => onSubmit(text)}>Submit</Button>
+        <Box sx={{ display: "flex", justifyContent: "end", width: "100%", }}>
+          <Button onClick={() => { onClose(); }}>Cancel</Button>
+          <Button onClick={() => { onSubmit(text); onClose(); }}>Submit</Button>
+        </Box>
       </DialogContent>
     </Dialog>
   );
