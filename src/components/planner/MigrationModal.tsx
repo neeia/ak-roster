@@ -1,6 +1,13 @@
 import { Box, Button, Dialog, DialogContent, DialogTitle, TextField } from "@mui/material";
 import { useState } from "react";
 
+/*
+  This modal contains a text box, cancel, and submit buttons
+  It only appears if the client is unable to read from the clipboard.
+  Currently, that should just be Firefox.
+  The user should paste their clipboard into the box, and then click submit.
+*/
+
 interface Props {
   open: boolean;
   onClose: () => void;
