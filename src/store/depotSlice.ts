@@ -7,13 +7,15 @@ import getGoalIngredients from "util/getGoalIngredients";
 import { completeGoal } from "./goalsActions";
 import type { RootState } from "./store";
 
+export type StockState = { [itemId: string]: number };
+
 interface SetStockPayload {
   itemId: string;
   newQuantity: number;
 }
 
 export interface DepotState {
-  stock: { [itemId: string]: number };
+  stock: StockState;
   crafting: { [itemId: string]: boolean };
 }
 
