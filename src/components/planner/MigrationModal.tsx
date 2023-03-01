@@ -1,8 +1,5 @@
-import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
-import { Box, Button, ButtonGroup, Dialog, DialogContent, DialogTitle, TextField } from "@mui/material";
+import { Box, Button, Dialog, DialogContent, DialogTitle, TextField } from "@mui/material";
 import { useState } from "react";
-import * as lz from "util/lz-string";
-import { addGoals } from "store/goalsSlice";
 
 interface Props {
   open: boolean;
