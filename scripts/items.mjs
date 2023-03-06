@@ -5,19 +5,57 @@ import { fileURLToPath } from "url";
 import axios from "axios";
 import puppeteer from "puppeteer";
 
+import enItemTable from "./ArknightsGameData/en_US/gamedata/excel/item_table.json" assert { type: "json" };
 import enStageData from "./ArknightsGameData/en_US/gamedata/excel/stage_table.json" assert { type: "json" };
 import cnBuildingData from "./ArknightsGameData/zh_CN/gamedata/excel/building_data.json" assert { type: "json" };
 import cnItemTable from "./ArknightsGameData/zh_CN/gamedata/excel/item_table.json" assert { type: "json" };
 import cnStageData from "./ArknightsGameData/zh_CN/gamedata/excel/stage_table.json" assert { type: "json" };
-import {
-  getEnglishItemName,
-  DATA_OUTPUT_DIRECTORY,
-  gameDataCostToIngredient,
-  convertLMDCostToLMDItem,
-} from "./shared.mjs";
+
+const unofficialItemNameTranslations = {
+  mod_update_token_1: "Supplementary Data Bar",
+  mod_update_token_2: "Supplementary Data Instrument",
+  30155: "Sintered Core Crystals",
+  31063: "Transmuted Salt Cluster",
+  31064: "Transmuted Salt Block",
+};
+
+const getEnglishItemName = (itemId) => {
+  const enEntry = enItems[itemId];
+  const cnName = cnItems[itemId].name;
+  let name = enEntry?.name;
+  if (name == null) {
+    const unofficialName = unofficialItemNameTranslations[itemId];
+    if (unofficialName != null) {
+      console.log(
+        `Using unofficial item name translation for ID '${itemId}' => '${unofficialName}'`
+      );
+      name = unofficialName;
+    } else if (cnName != null) {
+      console.warn(`No item name translation found for ID '${itemId}'`);
+      name = cnName;
+    } else {
+      throw new Error(`Couldn't find item name for ID '${itemId}'`);
+    }
+  }
+  return name;
+};
+
+const gameDataCostToIngredient = (cost) => {
+  const { id, count } = cost;
+  return {
+    id,
+    quantity: count,
+  };
+};
+
+const convertLMDCostToLMDItem = (cost) => ({
+  id: "4001",
+  quantity: cost,
+});
 
 const enStageTable = enStageData.stages;
 const cnStageTable = cnStageData.stages;
+const enItems = enItemTable.items;
 const cnItems = cnItemTable.items;
 const { workshopFormulas, manufactFormulas: manufactureFormulas } =
   cnBuildingData;
@@ -243,8 +281,8 @@ const createItemsJson = async () => {
           if (
             stages.leastSanity != null &&
             mostEfficientStage.itemSanityCost <=
-              stages.leastSanity.itemSanityCost *
-                EFFICIENT_STAGE_MAX_ITEM_SANITY_COST_MULTIPLIER
+            stages.leastSanity.itemSanityCost *
+            EFFICIENT_STAGE_MAX_ITEM_SANITY_COST_MULTIPLIER
           ) {
             stages.mostEfficient = mostEfficientStage;
             // if the least sanity stage and the most efficient stage are the same,
@@ -268,7 +306,9 @@ const createItemsJson = async () => {
     })
   );
 
-  const itemsJsonPath = path.join(DATA_OUTPUT_DIRECTORY, "items.json");
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const itemsJsonPath = path.join(__dirname, "..", "src", "data", "items.json");
   fs.writeFileSync(itemsJsonPath, JSON.stringify(itemsJson, null, 2));
   console.log(`items: wrote ${itemsJsonPath}`);
 
@@ -278,8 +318,7 @@ const createItemsJson = async () => {
     ),
     ...ADDITIONAL_ITEM_NAME_TO_ID_ENTRIES,
   };
-  const itemNameToIdJsonPath = path.join(
-    DATA_OUTPUT_DIRECTORY,
+  const itemNameToIdJsonPath = path.join(__dirname, "..", "src", "data",
     "item-name-to-id.json"
   );
   fs.writeFileSync(itemNameToIdJsonPath, JSON.stringify(itemNameToId, null, 2));
