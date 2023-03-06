@@ -52,7 +52,7 @@ const PatchNotes = () => {
         }}>
           <Box>
             <h2>Planner - March 5, 2023</h2>
-            <p>Hey, it's Neia.</p>
+            <p>Hey, it&apos;s Neia.</p>
             <p>
               The long-awaited <Link href="https://samidare.io/">Samidare</Link> operator planner has arrived!
               The <NextLink href="/planner/goals" passHref><Link>goals</Link></NextLink> page is now available
