@@ -200,7 +200,7 @@ const Home: NextPage = () => {
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">
-                            <IconButton type="submit" onClick={e => { e.preventDefault(); search(username); }}>
+                            <IconButton type="submit" aria-label="search" onClick={e => { e.preventDefault(); search(username); }}>
                               <Search />
                             </IconButton>
                           </InputAdornment>
