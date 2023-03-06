@@ -13,7 +13,7 @@ import useOperators from "util/useOperators";
 import operatorsJson from "data/operators.json";
 import { useRouter } from "next/router";
 import * as lz from "util/lz-string";
-import { addStock, DepotState, setCrafting } from "store/depotSlice";
+import { DepotState, setCrafting, setStock } from "store/depotSlice";
 import { captureMessage } from "@sentry/nextjs";
 
 const MaterialsNeeded = dynamic(
@@ -37,8 +37,8 @@ const Goals: NextPage = () => {
   function parseText(text: string) {
     try {
       const { goals, depot }: { goals: GoalsState, depot: DepotState } = JSON.parse(lz.decompressFromEncodedURIComponent(text) ?? "");
-      Object.entries(depot.stock).forEach(([itemId, amount]) => {
-        dispatch(addStock({ itemId, amount }));
+      Object.entries(depot.stock).forEach(([itemId, newQuantity]) => {
+        dispatch(setStock({ itemId, newQuantity }));
       })
       Object.entries(depot.crafting).forEach(([itemId, isCrafting]) => {
         dispatch(setCrafting({ itemId, isCrafting }))
