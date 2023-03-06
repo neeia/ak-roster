@@ -80,6 +80,40 @@ function professionToClass(profession) {
   }
 }
 
+const convertLMDCostToLMDItem = (cost) => ({
+  id: "4001",
+  quantity: cost,
+});
+
+const getEliteLMDCost = (rarity, eliteLevel) => {
+  let quantity = -1;
+  if (rarity === 3) {
+    quantity = 10000;
+  } else if (rarity === 4) {
+    quantity = eliteLevel === 2 ? 60000 : 15000;
+  } else if (rarity === 5) {
+    quantity = eliteLevel === 2 ? 120000 : 20000;
+  } else if (rarity === 6) {
+    quantity = eliteLevel === 2 ? 180000 : 30000;
+  }
+  return convertLMDCostToLMDItem(quantity);
+};
+
+const gameDataCostToIngredient = (cost) => {
+  const { id, count } = cost;
+  return {
+    id,
+    quantity: count,
+  };
+};
+
+const OperatorGoalCategory = {
+  Elite: 0,
+  Mastery: 1,
+  SkillLevel: 2,
+  Module: 3,
+};
+
 const createOperatorsJson = () => {
   const operatorsJson = Object.fromEntries(
     [
@@ -88,19 +122,69 @@ const createOperatorsJson = () => {
     ].map(([id, operator]) => {
       const rarity = operator.rarity + 1;
       const isCnOnly = enCharacterTable[id] == null && enPatchCharacters[id] == null;
+      const isPatchCharacter = cnPatchCharacters[id] != null;
 
-      const skills = operator.skills
-        .filter(
-          ({ skillId }) => skillId != null
-        )
-        .map(({ skillId } ) => {
-          const skillTable = isCnOnly ? cnSkillTable : enSkillTable;
-          return {
-            skillId: skillId,
-            iconId: skillTable[skillId].iconId,
-            skillName: skillTable[skillId].levels[0].name,
-          };
-        });
+      const elite = isPatchCharacter
+        ? []
+        : operator.phases
+          .filter(({ evolveCost }) => evolveCost != null)
+          .map(({ evolveCost }, i) => {
+            const ingredients = evolveCost.map(gameDataCostToIngredient);
+            ingredients.unshift(getEliteLMDCost(rarity, i + 1));
+            // [0] points to E1, [1] points to E2, so add 1
+            return {
+              eliteLevel: i + 1,
+              ingredients,
+              name: `Elite ${i + 1}`,
+              category: OperatorGoalCategory.Elite,
+            };
+          });
+
+      const skillLevels = isPatchCharacter
+        ? []
+        : operator.allSkillLvlup
+          .filter(({ lvlUpCost }) => lvlUpCost != null)
+          .map((skillLevelEntry, i) => {
+            const cost = skillLevelEntry.lvlUpCost;
+            const ingredients = cost.map(gameDataCostToIngredient);
+            return {
+              // we want to return the result of a skillup,
+              // and since [0] points to skill level 1 -> 2, we add 2
+              skillLevel: i + 2,
+              ingredients,
+              name: `Skill Level ${i + 2}`,
+              category: OperatorGoalCategory.SkillLevel,
+            };
+          });
+
+      const skills = isPatchCharacter
+        ? []
+        : operator.skills
+          .filter(
+            ({ skillId, levelUpCostCond }) =>
+              skillId != null &&
+              // require that all mastery levels have a levelUpCost defined
+              !levelUpCostCond.find(({ levelUpCost }) => levelUpCost == null)
+          )
+          .map(({ skillId, levelUpCostCond }, i) => {
+            const masteries = levelUpCostCond.map(({ levelUpCost }, j) => {
+              const ingredients = levelUpCost.map(gameDataCostToIngredient);
+              return {
+                masteryLevel: j + 1,
+                ingredients,
+                name: `Skill ${i + 1} Mastery ${j + 1}`,
+                category: OperatorGoalCategory.Mastery,
+              };
+            });
+
+            const skillTable = isCnOnly ? cnSkillTable : enSkillTable;
+            return {
+              skillId: skillId,
+              iconId: skillTable[skillId].iconId,
+              skillName: skillTable[skillId].levels[0].name,
+              masteries,
+            };
+          });
 
       let modules = [];
       if (cnCharEquip[id] != null) {
@@ -108,13 +192,26 @@ const createOperatorsJson = () => {
         modules = cnCharEquip[id].map((modName) => {
           const cnModuleData = cnEquipDict[modName];
           const enModuleData = enEquipDict[modName];
+          const typeName =
+            cnModuleData.typeName1 + "-" + cnModuleData.typeName2;
+          const stages = [...Array(3)].map((_, modLevel) => {
+            return {
+              moduleLevel: modLevel + 1,
+              ingredients: cnModuleData.itemCost[`${modLevel + 1}`].map(
+                gameDataCostToIngredient
+              ),
+              name: `Module ${typeName} Stage ${modLevel + 1}`,
+              category: OperatorGoalCategory.Module,
+            };
+          });
           return {
             moduleName: enModuleData?.uniEquipName ?? cnModuleData.uniEquipName,
             moduleId: cnModuleData.uniEquipId,
-            typeName: cnModuleData.typeName1 + '-' + cnModuleData.typeName2,
+            typeName,
+            stages,
             isCnOnly: enModuleData === undefined
-          }
-        })
+          };
+        });
       }
 
       const potentials = (enCharacterTable[id] ?? operator).potentialRanks.map(r => r.description);
@@ -128,7 +225,9 @@ const createOperatorsJson = () => {
         isCnOnly,
         skills,
         modules,
-        potentials
+        potentials,
+        skillLevels,
+        elite
       };
       return [id, outputOperator];
     })

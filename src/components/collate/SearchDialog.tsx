@@ -31,6 +31,7 @@ const SearchDialog = memo((props: Props) => {
     return () => {
       window.removeEventListener('keydown', checkSearch);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   return (

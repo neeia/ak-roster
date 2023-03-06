@@ -62,6 +62,16 @@ const config = {
         }
       }
     },
+    "/planner": {
+      title: "Planner",
+      description: "Material calculator",
+      pages: {
+        "/goals": {
+          title: "Goals",
+          description: "Set goals for operators and calculate material costs.",
+        },
+      }
+    },
   },
 };
 export default config;

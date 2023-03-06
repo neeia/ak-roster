@@ -6,7 +6,7 @@ import NextLink from "next/link";
 const PatchNotes = () => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const ver = "2.4";
+  const ver = "2.6";
 
   const [open, setOpen] = React.useState(false);
   return (
@@ -51,38 +51,17 @@ const PatchNotes = () => {
           }
         }}>
           <Box>
-            Tools
-            <ul>
-              <li>Ported three existing tools with help from <Link href="https://samidare.io/">Samidare</Link></li>
-              <li><NextLink href="/tools/recruit" passHref><Link>Recruitment calculator</Link></NextLink> shows you the best tags to take</li>
-              <ul><li>You can also see operators potentials to help you decide</li></ul>
-              <li><NextLink href="/tools/rateup" passHref><Link>Headhunting</Link></NextLink> lets you calculate your chances on future banners</li>
-              <li><NextLink href="/tools/level" passHref><Link>Level Costs</Link></NextLink> shows the EXP and LMD cost of raising operator levels</li>
-            </ul>
-          </Box>
-          <Box>
-            Batch Mode
-            <ul>
-              <li>The batch edit page has been returned to the input page</li>
-              <li>Functionally unchanged, but now allows for sort & filter</li>
-              <li>Performance of making batch changes improved</li>
-            </ul>
-          </Box>
-          <Box>
-            Stultifera Navis
-            <ul>
-              <li>A new filter has been added for the new 6* selector</li>
-              <li>Can be mixed with other filters and on any page</li>
-              <li>Filter will remain until selector expires</li>
-            </ul>
-          </Box>
-          <Box>
-            Skins
-            <ul>
-              <li>You can now choose skins for operators from the input page</li>
-              <li>Skins replace their portraits in all places they appear</li>
-              <li>Skins gated by promotion will require their respective promotions</li>
-            </ul>
+            <h2>Planner - March 5, 2023</h2>
+            <p>Hey, it&apos;s Neia.</p>
+            <p>
+              The long-awaited <Link href="https://samidare.io/">Samidare</Link> operator planner has arrived!
+              The <NextLink href="/planner/goals" passHref><Link>goals</Link></NextLink> page is now available
+              and ready for use. Here, you can select goals, keep track of your depot, and when you complete goals,
+              your changes will automatically update your roster.
+            </p>
+            <p>
+              As always, thanks for using Krooster. I&apos;ll keep working hard to bring you more exciting updates, so stay tuned!
+            </p>
           </Box>
         </DialogContent>
       </Dialog>

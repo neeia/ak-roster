@@ -200,7 +200,7 @@
     },
     {
       "skinId": "char_211_adnach@sale#5",
-      "skinName": "无痕行者",
+      "skinName": "Traceless Walker",
       "avatarId": "char_211_adnach_sale#5",
       "sortId": 8
     }
@@ -3395,6 +3395,12 @@
       "skinName": null,
       "avatarId": "char_4036_forcer_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4036_forcer@epoque#20",
+      "skinName": "拾翼",
+      "avatarId": "char_4036_forcer_epoque#20",
+      "sortId": 53
     }
   ],
   "char_451_robin": [
@@ -3477,6 +3483,12 @@
       "skinName": null,
       "avatarId": "char_103_angel_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_103_angel@sale#8",
+      "skinName": "Midnight Delivery",
+      "avatarId": "char_103_angel_sale#8",
+      "sortId": 11
     },
     {
       "skinId": "char_103_angel@wild#1",
