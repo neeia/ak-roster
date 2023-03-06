@@ -34,7 +34,8 @@ const Potential = ((props: Props) => {
       {[...Array(getMaxPotentialById(op.id))].map((_, i) =>
         <Tooltip title={i === 0 ? "Base" : potBonuses[i - 1]}
           arrow
-          key={`pot${i + 1}`}>
+          key={`pot${i + 1}`}
+        >
           <IconButton
             sx={{
               borderRadius: br(op.id, i),
