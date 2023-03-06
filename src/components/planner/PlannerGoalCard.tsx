@@ -164,7 +164,8 @@ const PlannerGoalCard = React.forwardRef<HTMLLIElement, Props>((props, ref) => {
         orientation="vertical"
         variant="contained"
         sx={{
-          display: "flex",
+          display: "grid",
+          gridTemplateRows: "10fr 9fr",
           backgroundColor: (theme) => theme.palette.background.paper,
         }}
       >
@@ -180,7 +181,7 @@ const PlannerGoalCard = React.forwardRef<HTMLLIElement, Props>((props, ref) => {
             sx={{
               color: "#fff",
               "&:hover": {
-                backgroundColor: (theme) => theme.palette.success.dark,
+                backgroundColor: (theme) => theme.palette.success.main,
               },
             }}
           >
@@ -193,7 +194,7 @@ const PlannerGoalCard = React.forwardRef<HTMLLIElement, Props>((props, ref) => {
           sx={{
             color: "#ccc",
             "&:hover": {
-              backgroundColor: (theme) => theme.palette.error.dark,
+              backgroundColor: (theme) => theme.palette.error.main,
             },
           }}
         >
