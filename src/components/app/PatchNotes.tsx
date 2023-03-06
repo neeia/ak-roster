@@ -51,13 +51,17 @@ const PatchNotes = () => {
           }
         }}>
           <Box>
-            Planner
-            <ul>
-              <li>Ported the Arknights operator planner from <Link href="https://samidare.io/">Samidare</Link></li>
-              <li><NextLink href="/planner/goals" passHref><Link>Goals</Link></NextLink> helps you calculate your future material spending</li>
-              <li>Completing a goal automatically updates your collection so you don&apos;t have to worry about it</li>
-              <li><Link href="https://samidare.io/arknights/planner?migrate=1" rel="noopener">Import your data</Link> from Samidare.io automatically</li>
-            </ul>
+            <h2>Planner - March 5, 2023</h2>
+            <p>Hey, it's Neia.</p>
+            <p>
+              The long-awaited <Link href="https://samidare.io/">Samidare</Link> operator planner has arrived!
+              The <NextLink href="/planner/goals" passHref><Link>goals</Link></NextLink> page is now available
+              and ready for use. Here, you can select goals, keep track of your depot, and when you complete goals,
+              your changes will automatically update your roster.
+            </p>
+            <p>
+              As always, thanks for using Krooster. I&apos;ll keep working hard to bring you more exciting updates, so stay tuned!
+            </p>
           </Box>
         </DialogContent>
       </Dialog>
