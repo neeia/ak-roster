@@ -497,7 +497,7 @@
       "mostEfficient": {
         "stageSanityCost": 30,
         "stageName": "CA-5",
-        "itemSanityCost": 19.98,
+        "itemSanityCost": 19.99,
         "dropRate": 1.5
       }
     }
@@ -533,8 +533,8 @@
       "leastSanity": {
         "stageSanityCost": 12,
         "stageName": "S2-5",
-        "itemSanityCost": 3.23,
-        "dropRate": 3.72
+        "itemSanityCost": 3.22,
+        "dropRate": 3.73
       }
     }
   },
@@ -610,7 +610,7 @@
       "leastSanity": {
         "stageSanityCost": 12,
         "stageName": "S2-6",
-        "itemSanityCost": 4.84,
+        "itemSanityCost": 4.85,
         "dropRate": 2.48
       }
     }
@@ -636,7 +636,7 @@
       "leastSanity": {
         "stageSanityCost": 15,
         "stageName": "S3-1",
-        "itemSanityCost": 9.79,
+        "itemSanityCost": 9.82,
         "dropRate": 1.53
       }
     }
@@ -662,14 +662,14 @@
       "leastSanity": {
         "stageSanityCost": 12,
         "stageName": "2-5",
-        "itemSanityCost": 32.62,
+        "itemSanityCost": 32.58,
         "dropRate": 0.37
       },
       "mostEfficient": {
         "stageSanityCost": 21,
         "stageName": "10-10",
-        "itemSanityCost": 46.18,
-        "dropRate": 0.45
+        "itemSanityCost": 45.81,
+        "dropRate": 0.46
       }
     }
   },
@@ -710,7 +710,7 @@
         "stageSanityCost": 12,
         "stageName": "S2-7",
         "itemSanityCost": 4.77,
-        "dropRate": 2.52
+        "dropRate": 2.51
       }
     }
   },
@@ -735,7 +735,7 @@
       "leastSanity": {
         "stageSanityCost": 15,
         "stageName": "S3-2",
-        "itemSanityCost": 9.83,
+        "itemSanityCost": 9.82,
         "dropRate": 1.53
       }
     }
@@ -761,7 +761,7 @@
       "leastSanity": {
         "stageSanityCost": 18,
         "stageName": "7-4",
-        "itemSanityCost": 32.38,
+        "itemSanityCost": 32.4,
         "dropRate": 0.56
       }
     }
@@ -802,8 +802,8 @@
       "leastSanity": {
         "stageSanityCost": 12,
         "stageName": "S2-8",
-        "itemSanityCost": 6.11,
-        "dropRate": 1.96
+        "itemSanityCost": 6.09,
+        "dropRate": 1.97
       }
     }
   },
@@ -828,7 +828,7 @@
       "leastSanity": {
         "stageSanityCost": 15,
         "stageName": "S3-3",
-        "itemSanityCost": 12.32,
+        "itemSanityCost": 12.33,
         "dropRate": 1.22
       }
     }
@@ -854,14 +854,14 @@
       "leastSanity": {
         "stageSanityCost": 24,
         "stageName": "10-11",
-        "itemSanityCost": 52.26,
+        "itemSanityCost": 52.5,
         "dropRate": 0.46
       },
       "mostEfficient": {
         "stageSanityCost": 18,
         "stageName": "5-5",
-        "itemSanityCost": 61.04,
-        "dropRate": 0.29
+        "itemSanityCost": 60.97,
+        "dropRate": 0.3
       }
     }
   },
@@ -927,7 +927,7 @@
       "leastSanity": {
         "stageSanityCost": 15,
         "stageName": "3-7",
-        "itemSanityCost": 12.26,
+        "itemSanityCost": 12.29,
         "dropRate": 1.22
       }
     }
@@ -953,7 +953,7 @@
       "mostEfficient": {
         "stageSanityCost": 21,
         "stageName": "10-4",
-        "itemSanityCost": 38.79,
+        "itemSanityCost": 38.72,
         "dropRate": 0.54
       }
     }
@@ -1020,13 +1020,13 @@
       "leastSanity": {
         "stageSanityCost": 15,
         "stageName": "S3-4",
-        "itemSanityCost": 16.34,
+        "itemSanityCost": 16.33,
         "dropRate": 0.92
       },
       "mostEfficient": {
         "stageSanityCost": 21,
         "stageName": "10-4",
-        "itemSanityCost": 44.51,
+        "itemSanityCost": 44.61,
         "dropRate": 0.47
       }
     }
@@ -1049,12 +1049,6 @@
     ],
     "yield": 1,
     "stages": {
-      "leastSanity": {
-        "stageSanityCost": 18,
-        "stageName": "9-10",
-        "itemSanityCost": 54.11,
-        "dropRate": 0.33
-      },
       "mostEfficient": {
         "stageSanityCost": 18,
         "stageName": "7-15",
@@ -1099,13 +1093,13 @@
       "leastSanity": {
         "stageSanityCost": 21,
         "stageName": "6-11",
-        "itemSanityCost": 42.75,
+        "itemSanityCost": 42.58,
         "dropRate": 0.49
       },
       "mostEfficient": {
         "stageSanityCost": 18,
         "stageName": "4-4",
-        "itemSanityCost": 49.11,
+        "itemSanityCost": 49.29,
         "dropRate": 0.37
       }
     }
@@ -1146,13 +1140,13 @@
       "leastSanity": {
         "stageSanityCost": 21,
         "stageName": "10-16",
-        "itemSanityCost": 38.22,
+        "itemSanityCost": 38.24,
         "dropRate": 0.55
       },
       "mostEfficient": {
         "stageSanityCost": 24,
         "stageName": "10-7",
-        "itemSanityCost": 55.85,
+        "itemSanityCost": 55.89,
         "dropRate": 0.43
       }
     }
@@ -1193,13 +1187,13 @@
       "leastSanity": {
         "stageSanityCost": 18,
         "stageName": "9-16",
-        "itemSanityCost": 46,
+        "itemSanityCost": 45.79,
         "dropRate": 0.39
       },
       "mostEfficient": {
         "stageSanityCost": 21,
         "stageName": "4-8",
-        "itemSanityCost": 61.48,
+        "itemSanityCost": 61.54,
         "dropRate": 0.34
       }
     }
@@ -1240,13 +1234,13 @@
       "leastSanity": {
         "stageSanityCost": 18,
         "stageName": "R8-9",
-        "itemSanityCost": 52.53,
+        "itemSanityCost": 52.64,
         "dropRate": 0.34
       },
       "mostEfficient": {
         "stageSanityCost": 21,
         "stageName": "4-9",
-        "itemSanityCost": 71.96,
+        "itemSanityCost": 72.06,
         "dropRate": 0.29
       }
     }
@@ -1413,13 +1407,13 @@
       "leastSanity": {
         "stageSanityCost": 18,
         "stageName": "R8-8",
-        "itemSanityCost": 58.63,
-        "dropRate": 0.31
+        "itemSanityCost": 59.49,
+        "dropRate": 0.3
       },
       "mostEfficient": {
         "stageSanityCost": 21,
         "stageName": "JT8-2",
-        "itemSanityCost": 63.17,
+        "itemSanityCost": 63.16,
         "dropRate": 0.33
       }
     }
@@ -1460,13 +1454,13 @@
       "leastSanity": {
         "stageSanityCost": 15,
         "stageName": "S3-6",
-        "itemSanityCost": 37.99,
+        "itemSanityCost": 38.16,
         "dropRate": 0.39
       },
       "mostEfficient": {
         "stageSanityCost": 21,
         "stageName": "10-14",
-        "itemSanityCost": 52.97,
+        "itemSanityCost": 53.03,
         "dropRate": 0.4
       }
     }
@@ -1507,14 +1501,14 @@
       "leastSanity": {
         "stageSanityCost": 21,
         "stageName": "9-14",
-        "itemSanityCost": 37.4,
-        "dropRate": 0.56
+        "itemSanityCost": 36.97,
+        "dropRate": 0.57
       },
       "mostEfficient": {
         "stageSanityCost": 21,
         "stageName": "R8-11",
-        "itemSanityCost": 38.24,
-        "dropRate": 0.55
+        "itemSanityCost": 37.56,
+        "dropRate": 0.56
       }
     }
   },
@@ -1560,7 +1554,7 @@
       "mostEfficient": {
         "stageSanityCost": 18,
         "stageName": "9-4",
-        "itemSanityCost": 64.46,
+        "itemSanityCost": 64.53,
         "dropRate": 0.28
       }
     }
@@ -1601,8 +1595,8 @@
       "mostEfficient": {
         "stageSanityCost": 24,
         "stageName": "10-17",
-        "itemSanityCost": 45.86,
-        "dropRate": 0.52
+        "itemSanityCost": 45.48,
+        "dropRate": 0.53
       }
     }
   },
@@ -1642,14 +1636,8 @@
       "leastSanity": {
         "stageSanityCost": 21,
         "stageName": "S4-9",
-        "itemSanityCost": 987,
-        "dropRate": 0.02
-      },
-      "mostEfficient": {
-        "stageSanityCost": 18,
-        "stageName": "JT8-3",
-        "itemSanityCost": 1643.63,
-        "dropRate": 0.01
+        "itemSanityCost": 328.13,
+        "dropRate": 0.06
       }
     }
   },
