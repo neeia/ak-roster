@@ -2,7 +2,6 @@ import { Grid } from "@mui/material";
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-
 import GoalSelect from "components/planner/GoalSelect";
 import Layout from "components/Layout";
 import OperatorSearch from "components/planner/OperatorSearch";
@@ -14,8 +13,8 @@ import useOperators from "util/useOperators";
 import operatorsJson from "data/operators.json";
 import { useRouter } from "next/router";
 import * as lz from "util/lz-string";
-import MigrationModal from "components/planner/MigrationModal";
-import { addStock, StockState } from "store/depotSlice";
+import { addStock, DepotState, setCrafting } from "store/depotSlice";
+import { captureMessage } from "@sentry/nextjs";
 
 const MaterialsNeeded = dynamic(
   () => import("components/planner/MaterialsNeeded"),
@@ -29,7 +28,6 @@ const Goals: NextPage = () => {
   const [operator, setOperator] = useState<OpJsonObj | null>(null);
   const dispatch = useAppDispatch();
   const [operators, setOperators] = useOperators();
-  const [migration, setMigration] = useState(false);
 
   const handleGoalsAdded = (newGoals: PlannerGoal[]) => {
     dispatch(addGoals(newGoals));
@@ -38,33 +36,26 @@ const Goals: NextPage = () => {
 
   function parseText(text: string) {
     try {
-      if (text.startsWith("kr-")) {
-        const { goals, stock }: { goals: GoalsState, stock: StockState } = JSON.parse(lz.decompressFromBase64(text.substring(3)) ?? "");
-        Object.entries(stock).forEach(([itemId, amount]) => {
-          dispatch(addStock({ itemId, amount }));
-        })
-        dispatch(addGoals(goals));
-      }
+      const { goals, depot }: { goals: GoalsState, depot: DepotState } = JSON.parse(lz.decompressFromEncodedURIComponent(text) ?? "");
+      Object.entries(depot.stock).forEach(([itemId, amount]) => {
+        dispatch(addStock({ itemId, amount }));
+      })
+      Object.entries(depot.crafting).forEach(([itemId, isCrafting]) => {
+        dispatch(setCrafting({ itemId, isCrafting }))
+      })
+      dispatch(addGoals(goals));
     }
     catch (e) {
-      // invalid json, this was probably an accident...
-      // let's just do nothing
+      captureMessage("Error while migrating planner data: " + e);
     }
   }
 
   const router = useRouter();
   useEffect(() => {
-    if (router.query.d) {
+    if (router.query.migrate && !Array.isArray(router.query.migrate)) {
+      const data = router.query.migrate;
       router.replace('/planner/goals', undefined, { shallow: true });
-      try {
-        navigator.clipboard.readText().then(text => {
-          parseText(text);
-        })
-      }
-      catch (e) {
-        // clipboard not supported
-        setMigration(true);
-      }
+      parseText(data);
     }
   }, [router])
 
@@ -137,7 +128,6 @@ const Goals: NextPage = () => {
           <PlannerGoals onCompleteGoal={handleGoalComplete} />
         </Grid>
       </Grid>
-      <MigrationModal open={migration} onClose={() => setMigration(false)} onSubmit={parseText} />
     </Layout>
   );
 };
