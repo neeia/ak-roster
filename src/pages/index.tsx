@@ -13,18 +13,6 @@ import { LockClockOutlined, Search } from '@mui/icons-material'
 import Image from 'next/image'
 
 const Kofi = memo(() => {
-  const [seconds, setSeconds] = useState(60);
-  useEffect(() => {
-    let myInterval = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      }
-      if (seconds === 0) {
-        clearInterval(myInterval)
-      }
-    }, 1000);
-    return () => clearInterval(myInterval);
-  }, [seconds]);
   return (
     <Link
       sx={{
@@ -282,7 +270,7 @@ const Home: NextPage = () => {
                   passHref
                 >
                   <Link>
-                    <Image src="/img/items/sprite_exp_card_t4.png" width="90px" height="71px" alt="Experience" />
+                    <Image src="/img/items/sprite_exp_card_t4.png" width="90px" height="71px" alt="Leveling" />
                   </Link>
                 </NextLink>
               </Box>

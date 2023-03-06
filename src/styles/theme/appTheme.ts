@@ -32,7 +32,7 @@ const appTheme = createTheme({
     success: {
       main: "#90EE90",
       light: yellow[700],
-      dark: yellow[700],
+      dark: "green",
     },
     background: {
       default: "#272727",

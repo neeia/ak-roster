@@ -1,7 +1,7 @@
 import React from "react";
-import { Operator, OpJsonModule, OpJsonObj, Skin } from "../../../types/operator";
+import { Operator, Skin } from "../../../types/operator";
 import skinJson from "data/skins.json";
-import { Box, Button, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Tooltip } from "@mui/material";
 import { changeSkin } from "../../../util/changeOperator";
 import Image from "next/image";
 

@@ -7,6 +7,9 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { CacheProvider } from '@emotion/react';
 import { getApps, initializeApp } from 'firebase/app';
 import { Analytics } from '@vercel/analytics/react';
+import { Provider as ReduxProvider } from "react-redux";
+import { persistor, store } from 'store/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDjpt2G4GFQjYbPT5Mrj6L2meeWEnsCEgU",
@@ -26,13 +29,17 @@ const MyApp = (props: AppProps) => {
 
   const clientSideEmotionCache = createEmotionCache();
   return (
-    <CacheProvider value={clientSideEmotionCache}>
-      <ThemeProvider theme={appTheme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-        <Analytics />
-      </ThemeProvider>
-    </CacheProvider>
+    <ReduxProvider store={store}>
+      <CacheProvider value={clientSideEmotionCache}>
+        <ThemeProvider theme={appTheme}>
+          <CssBaseline />
+          <Analytics />
+          <PersistGate loading={null} persistor={persistor}>
+            {() => <Component {...pageProps} />}
+          </PersistGate>
+        </ThemeProvider>
+      </CacheProvider>
+    </ReduxProvider>
   );
 };
 
