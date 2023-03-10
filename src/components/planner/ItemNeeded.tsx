@@ -152,37 +152,48 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
           hideIncrementDecrementButtons
             ? {}
             : {
-                startAdornment: (
-                  <InputAdornment position="start" sx={{ mr: 0 }}>
-                    <IconButton
-                      size="small"
-                      aria-label="Remove 1 from owned amount"
-                      edge="start"
-                      disabled={owned === 0}
-                      onClick={() => onDecrement(itemId)}
-                    >
-                      <RemoveCircleIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-                endAdornment: (
-                  <InputAdornment position="end" sx={{ ml: 0 }}>
-                    <IconButton
-                      size="small"
-                      aria-label="Add 1 to owned amount"
-                      edge="end"
-                      onClick={() => onIncrement(itemId)}
-                    >
-                      <AddCircleIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-                sx: {
-                  px: "5px",
-                  borderBottomLeftRadius: 0,
-                  borderBottomRightRadius: 0,
+              startAdornment: (
+                <InputAdornment position="start" sx={{ mr: 0 }}>
+                  <IconButton
+                    size="small"
+                    aria-label="Remove 1 from owned amount"
+                    edge="start"
+                    disabled={owned === 0}
+                    onClick={() => onDecrement(itemId)}
+                  >
+                    <RemoveCircleIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end" sx={{ ml: 0 }}>
+                  <IconButton
+                    size="small"
+                    aria-label="Add 1 to owned amount"
+                    edge="end"
+                    onClick={() => onIncrement(itemId)}
+                  >
+                    <AddCircleIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+              sx: {
+                px: "5px",
+                borderBottomLeftRadius: 0,
+                borderBottomRightRadius: 0,
+                "& input[type=number]": {
+                  "-moz-appearance": "textfield"
                 },
-              }
+                "& input[type=number]::-webkit-outer-spin-button": {
+                  "-webkit-appearance": "none",
+                  margin: 0
+                },
+                "& input[type=number]::-webkit-inner-spin-button": {
+                  "-webkit-appearance": "none",
+                  margin: 0
+                }
+              },
+            }
         }
       />
       <Box minWidth={126} height={31}>
