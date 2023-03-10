@@ -203,11 +203,15 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
             color="secondary"
             fullWidth
             sx={{
-              mt: "-1px",
+              gap: "1px",
               "& > button": {
                 borderTopLeftRadius: 0,
                 borderTopRightRadius: 0,
+                boxSizing: "border-box",
               },
+              "& > .MuiButtonGroup-grouped:not(:last-of-type)": {
+                borderRightColor: "rgba(251, 192, 45, 0.5)",
+              }
             }}
           >
             <Button
