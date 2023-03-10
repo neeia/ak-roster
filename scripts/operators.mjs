@@ -157,34 +157,32 @@ const createOperatorsJson = () => {
             };
           });
 
-      const skills = isPatchCharacter
-        ? []
-        : operator.skills
-          .filter(
-            ({ skillId, levelUpCostCond }) =>
-              skillId != null &&
-              // require that all mastery levels have a levelUpCost defined
-              !levelUpCostCond.find(({ levelUpCost }) => levelUpCost == null)
-          )
-          .map(({ skillId, levelUpCostCond }, i) => {
-            const masteries = levelUpCostCond.map(({ levelUpCost }, j) => {
-              const ingredients = levelUpCost.map(gameDataCostToIngredient);
-              return {
-                masteryLevel: j + 1,
-                ingredients,
-                name: `Skill ${i + 1} Mastery ${j + 1}`,
-                category: OperatorGoalCategory.Mastery,
-              };
-            });
-
-            const skillTable = isCnOnly ? cnSkillTable : enSkillTable;
+      const skills = operator.skills
+        .filter(
+          ({ skillId, levelUpCostCond }) =>
+            skillId != null &&
+            // require that all mastery levels have a levelUpCost defined
+            !levelUpCostCond.find(({ levelUpCost }) => levelUpCost == null)
+        )
+        .map(({ skillId, levelUpCostCond }, i) => {
+          const masteries = levelUpCostCond.map(({ levelUpCost }, j) => {
+            const ingredients = levelUpCost.map(gameDataCostToIngredient);
             return {
-              skillId: skillId,
-              iconId: skillTable[skillId].iconId,
-              skillName: skillTable[skillId].levels[0].name,
-              masteries,
+              masteryLevel: j + 1,
+              ingredients,
+              name: `Skill ${i + 1} Mastery ${j + 1}`,
+              category: OperatorGoalCategory.Mastery,
             };
           });
+
+          const skillTable = isCnOnly ? cnSkillTable : enSkillTable;
+          return {
+            skillId: skillId,
+            iconId: skillTable[skillId].iconId,
+            skillName: skillTable[skillId].levels[0].name,
+            masteries,
+          };
+        });
 
       let modules = [];
       if (cnCharEquip[id] != null) {
