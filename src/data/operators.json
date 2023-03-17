@@ -4265,7 +4265,7 @@
     ],
     "modules": [
       {
-        "moduleName": "杰西卡的订单",
+        "moduleName": "Jessica's Order",
         "moduleId": "uniequip_002_jesica",
         "typeName": "MAR-Y",
         "stages": [
@@ -4335,7 +4335,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -4621,7 +4621,7 @@
     ],
     "modules": [
       {
-        "moduleName": "猎刀",
+        "moduleName": "Hunter's Knife",
         "moduleId": "uniequip_002_shotst",
         "typeName": "MAR-X",
         "stages": [
@@ -4691,7 +4691,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -4977,7 +4977,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“不落”",
+        "moduleName": "'Still Alive'",
         "moduleId": "uniequip_002_clour",
         "typeName": "MAR-X",
         "stages": [
@@ -5047,7 +5047,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -5333,7 +5333,7 @@
     ],
     "modules": [
       {
-        "moduleName": "新手侦探礼包",
+        "moduleName": "Novice Detective's Gift Bag",
         "moduleId": "uniequip_002_mm",
         "typeName": "MAR-X",
         "stages": [
@@ -5403,7 +5403,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -29647,7 +29647,7 @@
     ],
     "modules": [
       {
-        "moduleName": "标准比色卡",
+        "moduleName": "Standard Color Chart",
         "moduleId": "uniequip_002_bluep",
         "typeName": "MAR-Y",
         "stages": [
@@ -29717,7 +29717,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -30007,7 +30007,7 @@
     ],
     "modules": [
       {
-        "moduleName": "独自旅行套装",
+        "moduleName": "Solo Travel Kit",
         "moduleId": "uniequip_002_platnm",
         "typeName": "MAR-X",
         "stages": [
@@ -30077,7 +30077,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -30367,7 +30367,7 @@
     ],
     "modules": [
       {
-        "moduleName": "母爱的倒影",
+        "moduleName": "Reflection of a Mother's Love",
         "moduleId": "uniequip_002_swllow",
         "typeName": "MAR-Y",
         "stages": [
@@ -30437,7 +30437,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -30727,7 +30727,7 @@
     ],
     "modules": [
       {
-        "moduleName": "高保真通讯耳机",
+        "moduleName": "Hi-Fi Headset",
         "moduleId": "uniequip_002_aprl",
         "typeName": "MAR-Y",
         "stages": [
@@ -30797,7 +30797,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -31087,7 +31087,7 @@
     ],
     "modules": [
       {
-        "moduleName": "真心的话和想冒的险",
+        "moduleName": "Truth or Dare",
         "moduleId": "uniequip_002_kroos2",
         "typeName": "MAR-X",
         "stages": [
@@ -31157,7 +31157,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -35190,12 +35190,12 @@
     "cnName": "星源",
     "rarity": 5,
     "class": "Caster",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_halo_1",
         "iconId": null,
-        "skillName": "双端导流",
+        "skillName": "Double Diversion",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -35259,7 +35259,7 @@
       {
         "skillId": "skchr_halo_2",
         "iconId": null,
-        "skillName": "星束交汇",
+        "skillName": "Starlight Intersection",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -35323,7 +35323,7 @@
     ],
     "modules": [
       {
-        "moduleName": "未组装的钟表",
+        "moduleName": "Unassembled Clock",
         "moduleId": "uniequip_002_halo",
         "typeName": "CHA-Y",
         "stages": [
@@ -35393,15 +35393,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "攻击力+28",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "ATK +28",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -50852,12 +50852,12 @@
     "cnName": "承曦格雷伊",
     "rarity": 5,
     "class": "Sniper",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skcom_quickattack[3]",
         "iconId": null,
-        "skillName": "迅捷打击·γ型",
+        "skillName": "Swift Strike γ",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -50921,7 +50921,7 @@
       {
         "skillId": "skchr_greyy2_2",
         "iconId": null,
-        "skillName": "晨曦信标",
+        "skillName": "Beacon of Dawn",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -50985,11 +50985,11 @@
     ],
     "modules": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+32",
-      "再部署时间-6秒",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +32",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -58149,7 +58149,7 @@
     ],
     "modules": [
       {
-        "moduleName": "能天使的杰作",
+        "moduleName": "Exusiai's Surprise",
         "moduleId": "uniequip_002_angel",
         "typeName": "MAR-X",
         "stages": [
@@ -58219,7 +58219,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -58581,7 +58581,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“明天的种子”",
+        "moduleName": "'Seeds of Tomorrow'",
         "moduleId": "uniequip_002_archet",
         "typeName": "MAR-Y",
         "stages": [
@@ -58651,7 +58651,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "旧日重现",
@@ -59086,7 +59086,7 @@
     ],
     "modules": [
       {
-        "moduleName": "破墙榴弹战术收纳包",
+        "moduleName": "Tactical Breaching Round Pack",
         "moduleId": "uniequip_002_ash",
         "typeName": "MAR-Y",
         "stages": [
@@ -59156,7 +59156,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -71174,7 +71174,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "教学用龙腾无人机",
+        "moduleName": "Instructional Soaring Dragon Drone",
         "moduleId": "uniequip_003_mgllan",
         "typeName": "SUM-Y",
         "stages": [
@@ -71244,7 +71244,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -76517,12 +76517,12 @@
     "cnName": "多萝西",
     "rarity": 6,
     "class": "Specialist",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_doroth_1",
         "iconId": null,
-        "skillName": "危险目标清除",
+        "skillName": "Dangerous Entity Removal",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -76586,7 +76586,7 @@
       {
         "skillId": "skchr_doroth_2",
         "iconId": null,
-        "skillName": "流沙区域生成",
+        "skillName": "Quicksand Generation",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -76650,7 +76650,7 @@
       {
         "skillId": "skchr_doroth_3",
         "iconId": null,
-        "skillName": "高速共振排障",
+        "skillName": "High-speed Resonating Troubleshooter",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -76714,11 +76714,11 @@
     ],
     "modules": [],
     "potentials": [
-      "部署费用-1",
-      "第一天赋效果增强",
-      "攻击力+27",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +27",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -86990,7 +86990,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“赫里亚之辉”",
+        "moduleName": "'Light of Heria'",
         "moduleId": "uniequip_003_pallas",
         "typeName": "INS-Y",
         "stages": [
@@ -87060,7 +87060,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
