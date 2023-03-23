@@ -80,7 +80,7 @@ const Lookup: NextPage = () => {
             {doctor?.displayName ?? username}
           </Typography>
           {doctor
-            ? <ProfileDialog roster={roster} social={social} user={doctor} />
+            ? <ProfileDialog roster={roster} social={social} user={doctor} username={username} />
             : null
           }
         </>

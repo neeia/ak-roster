@@ -11,10 +11,11 @@ interface Props {
   roster: Record<string, Operator>;
   user?: AccountInfo;
   social?: SocialInfo;
+  username: string;
 }
 
 const ProfileDialog = (props: Props) => {
-  const { roster, user, social } = props;
+  const { roster, user, social, username } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -81,7 +82,7 @@ const ProfileDialog = (props: Props) => {
               }
             }}
           >
-            {user?.displayName}<span className="mobileHide">&apos;s Profile</span>
+            {user?.displayName ?? username}<span className="mobileHide">&apos;s Profile</span>
           </Typography>
           <Typography
             component="div"
