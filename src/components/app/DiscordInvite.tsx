@@ -17,6 +17,7 @@ const DiscordInvite = () => {
         textDecoration: "none",
         padding: "6px 8px",
         mb: 1,
+        py: "4px"
       }}
       href="https://discord.gg/qx8hJGvTwc"
       component="a"

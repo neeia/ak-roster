@@ -104,23 +104,37 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
 
   const drawerContent = (
     <>
-      <Typography
-        component="h1"
-        variant="h4"
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "48px"
-        }}
+      <NextLink
+        href={`/`}
       >
-        <NextLink
-          href={`/`}
-        >
-          {siteTitle}
-        </NextLink>
-        {/*<Offset />*/}
-      </Typography>
+        <a>
+          <Typography
+            component="h1"
+            variant="h4"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              WebkitTextStroke: "1.5px #121212",
+              fontWeight: 700,
+              fontSize: "2.5rem",
+              marginBottom: 1,
+              letterSpacing: "-2px"
+            }}
+          >
+            <Box sx={{
+              display: "block",
+              mx: "auto",
+              marginBottom: "-1.1em",
+              zIndex: -1,
+            }}>
+              <Image src="/res/krooster.png" width="160" height="172" />
+            </Box>
+            {siteTitle}
+          </Typography>
+        </a>
+      </NextLink>
       <Divider />
       <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px", m: "4px" }}>
         {!user
@@ -227,7 +241,10 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
           </ListItemTab>
         ))}
       </List>
-      <Divider sx={{ marginTop: "auto", mb: 1 }} />
+      <Box sx={{ marginTop: "auto", textAlign: "center", pb: "4px", fontSize: "0.875rem", fontStyle: "italic" }}>
+        Title Art from <Link href="http://linktr.ee/Jellyfishyu" target="_blank" rel="noreferrer noopener">@Jellyfishyu</Link>
+      </Box>
+      <Divider sx={{ mb: 1 }} />
       <PatchNotes />
       <DiscordInvite />
     </>

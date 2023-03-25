@@ -11,7 +11,7 @@ const PatchNotes = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <Button onClick={() => { setOpen(true); }} aria-label="Filter">
+      <Button onClick={() => { setOpen(true); }} aria-label="Filter" sx={{ py: "4px" }}>
         <Typography variant="caption2">
           V{ver} - View Patch Notes
         </Typography>
