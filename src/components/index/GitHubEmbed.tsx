@@ -11,7 +11,7 @@ const cons = [
     login: "neeia",
     avatar: "/img/ext/neia.png",
     dark: true,
-    color: "#967bb6"
+    color: "#4b444b"
   },
   {
     name: "Samidare☔️",
