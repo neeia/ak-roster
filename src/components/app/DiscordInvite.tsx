@@ -25,7 +25,7 @@ const DiscordInvite = () => {
       target="_blank"
       rel="noreferrer noopener"
     >
-      <Image width="20px" height="20px" src="/img/ext/icon_clyde_white_RGB.svg" alt="Discord" loading="lazy" />
+      <Image width="20" height="20" src="/img/ext/icon_clyde_white_RGB.svg" alt="Discord" loading="lazy" />
       <Typography variant="caption2" sx={{ textAlign: "center" }}>
         Join the Discord!
       </Typography>

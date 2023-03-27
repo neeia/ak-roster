@@ -55,6 +55,7 @@
     "eslint-config-next": "^13.2.4",
     "express": "^4.18.1",
     "next-offline": "^5.0.5",
+    "prettier": "^2.8.7",
     "supabase": "^1.45.2",
     "typescript": "5.0.2"
   }

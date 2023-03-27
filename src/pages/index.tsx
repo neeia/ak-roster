@@ -1,16 +1,27 @@
-﻿import { CacheProvider } from '@emotion/react'
-import { Box, Container, CssBaseline, Divider, IconButton, InputAdornment, Link, TextField, ThemeProvider, Typography } from '@mui/material'
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import NextLink from 'next/link'
-import config from '../data/config'
-import appTheme from '../styles/theme/appTheme'
-import createEmotionCache from '../util/createEmotionCache'
-import DiscordEmbed from '../components/index/DiscordEmbed'
-import GitHubEmbed from '../components/index/GitHubEmbed'
-import { memo, useEffect, useState } from 'react'
-import { LockClockOutlined, Search } from '@mui/icons-material'
-import Image from 'next/image'
+﻿import { CacheProvider } from "@emotion/react";
+import {
+  Box,
+  Container,
+  CssBaseline,
+  Divider,
+  IconButton,
+  InputAdornment,
+  Link,
+  TextField,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
+import type { NextPage } from "next";
+import Head from "next/head";
+import NextLink from "next/link";
+import config from "../data/config";
+import appTheme from "../styles/theme/appTheme";
+import createEmotionCache from "../util/createEmotionCache";
+import DiscordEmbed from "../components/index/DiscordEmbed";
+import GitHubEmbed from "../components/index/GitHubEmbed";
+import { memo, useEffect, useState } from "react";
+import { LockClockOutlined, Search } from "@mui/icons-material";
+import Image from "next/image";
 
 const Kofi = memo(() => {
   return (
@@ -32,24 +43,26 @@ const Kofi = memo(() => {
         pb: 1,
         boxSizing: "border-box",
         ":hover": {
-          filter: "brightness(120%)"
+          filter: "brightness(120%)",
         },
       }}
-      onClick={() => window.open("https://ko-fi.com/neeia", "_blank", "noreferrer noopener")}
+      onClick={() =>
+        window.open("https://ko-fi.com/neeia", "_blank", "noreferrer noopener")
+      }
       title="Open Ko-fi"
       component="button"
     >
       <Image
         className="icon"
-        width="131px"
-        height="37px"
+        width="131"
+        height="37"
         src="/img/ext/kofi.png"
         alt="Ko-fi icon"
         loading="lazy"
       />
     </Link>
-  )
-})
+  );
+});
 Kofi.displayName = "Ko-fi";
 
 const Home: NextPage = () => {
@@ -58,7 +71,7 @@ const Home: NextPage = () => {
   const [username, setUsername] = useState<string>("");
   const [error, setError] = useState<string>("");
   const search = (s: string) => {
-    window.location.href = `/u/${s}`
+    window.location.href = `/u/${s}`;
   };
 
   return (
@@ -67,97 +80,136 @@ const Home: NextPage = () => {
         <CssBaseline />
         <Head>
           <title>Krooster</title>
-          <meta
-            key="url"
-            property="og:url"
-            content={config.siteUrl}
-          />
-          <meta
-            key="title"
-            property="og:title"
-            content="Arknights Roster" />
+          <meta key="url" property="og:url" content={config.siteUrl} />
+          <meta key="title" property="og:title" content="Arknights Roster" />
           <meta
             key="description"
             name="description"
             property="og:description"
             content="A collection and progress tracker for Arknights, a game developed by Hypergryph."
           />
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
           <link rel="manifest" href="/manifest.json" />
           <meta name="theme-color" content="#fbc02d" />
         </Head>
-        <Box component="main" sx={{
-          display: "flex",
-          flexDirection: "column",
-          "& em": {
-            color: "primary.main",
-            fontStyle: "normal",
-          }
-        }}>
-          <Box sx={{
-            backgroundColor: "background.paper",
-            backgroundImage: "url(/res/kroos2banner.webp)",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
+        <Box
+          component="main"
+          sx={{
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: { xs: "105px", sm: "220px" },
-            overflow: "hidden",
-          }}>
-            <Box sx={{
-              position: "relative",
-              "::before": {
-                content: '""',
-                position: "absolute",
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0,
-                margin: "auto",
-                width: "calc(100% - 0.5rem)",
-                height: "calc(100% - 1rem)",
-                backgroundColor: "rgba(0, 0, 0, 0.5)",
-                filter: "blur(2rem)",
-              }
-            }}>
-              <Typography variant="h1" position="relative" textAlign="center" sx={{ fontSize: { xs: "2rem", sm: "4rem" } }}>
+            flexDirection: "column",
+            "& em": {
+              color: "primary.main",
+              fontStyle: "normal",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              backgroundColor: "background.paper",
+              backgroundImage: "url(/res/kroos2banner.webp)",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: { xs: "105px", sm: "220px" },
+              overflow: "hidden",
+            }}
+          >
+            <Box
+              sx={{
+                position: "relative",
+                "::before": {
+                  content: '""',
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  margin: "auto",
+                  width: "calc(100% - 0.5rem)",
+                  height: "calc(100% - 1rem)",
+                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                  filter: "blur(2rem)",
+                },
+              }}
+            >
+              <Typography
+                variant="h1"
+                position="relative"
+                textAlign="center"
+                sx={{ fontSize: { xs: "2rem", sm: "4rem" } }}
+              >
                 Ar<em>k</em>nights <em>Rooster</em>
               </Typography>
             </Box>
           </Box>
-          <Container sx={{
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            py: { xs: 1, sm: 6 },
-            gap: 6,
-          }}>
-            <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "2.5fr 3fr" }, gap: "4%" }}>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pt: 1 }} >
-                <Typography variant="h2" sx={{ fontSize: { xs: "1.75rem", sm: "2rem" } }}>
-                  Share your entire collection with the world <em>instantly.</em>
+          <Container
+            sx={{
+              height: "100vh",
+              display: "flex",
+              flexDirection: "column",
+              py: { xs: 1, sm: 6 },
+              gap: 6,
+            }}
+          >
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: { xs: "1fr", sm: "2.5fr 3fr" },
+                gap: "4%",
+              }}
+            >
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: 1, pt: 1 }}
+              >
+                <Typography
+                  variant="h2"
+                  sx={{ fontSize: { xs: "1.75rem", sm: "2rem" } }}
+                >
+                  Share your entire collection with the world{" "}
+                  <em>instantly.</em>
                 </Typography>
-                <Typography variant="body1" sx={{ display: { xs: "none", sm: "block" } }}>
-                  Want to show off your roster to your friends? Flex on the world? Need to find that one support unit to beat CC? Krooster lets you do all that, and more.
+                <Typography
+                  variant="body1"
+                  sx={{ display: { xs: "none", sm: "block" } }}
+                >
+                  Want to show off your roster to your friends? Flex on the
+                  world? Need to find that one support unit to beat CC? Krooster
+                  lets you do all that, and more.
                 </Typography>
                 <Typography variant="body1">
-                  You can get started without even making an account. And the best part? It&apos;s totally free. No ads, no paywall, and entirely open-source.
+                  You can get started without even making an account. And the
+                  best part? It&apos;s totally free. No ads, no paywall, and
+                  entirely open-source.
                 </Typography>
-                <Box sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: { xs: "column", sm: "row" },
-                  gap: 2,
-                  mt: 2
-                }}>
-                  <NextLink
-                    href="/data/input/"
-                    passHref
-                  >
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: { xs: "column", sm: "row" },
+                    gap: 2,
+                    mt: 2,
+                  }}
+                >
+                  <NextLink href="/data/input/" passHref>
                     <Link
                       sx={{
                         backgroundColor: "primary.main",
@@ -169,7 +221,7 @@ const Home: NextPage = () => {
                         color: "background.default",
                         ":hover": {
                           bgcolor: "primary.main",
-                          filter: "brightness(110%)"
+                          filter: "brightness(110%)",
                         },
                         borderRadius: "4px",
                         fontSize: "1.25rem",
@@ -183,12 +235,15 @@ const Home: NextPage = () => {
                       Get Started
                     </Link>
                   </NextLink>
-                  <Box component="form" sx={{
-                    display: { xs: "flex", sm: "contents" },
-                    alignItems: "center",
-                    flexDirection: { xs: "column", sm: "row" },
-                    gap: 1,
-                  }}>
+                  <Box
+                    component="form"
+                    sx={{
+                      display: { xs: "flex", sm: "contents" },
+                      alignItems: "center",
+                      flexDirection: { xs: "column", sm: "row" },
+                      gap: 1,
+                    }}
+                  >
                     or
                     <TextField
                       autoFocus
@@ -196,15 +251,22 @@ const Home: NextPage = () => {
                       placeholder="Find a user..."
                       value={username}
                       helperText={error}
-                      onChange={e => setUsername(e.target.value)}
+                      onChange={(e) => setUsername(e.target.value)}
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">
-                            <IconButton type="submit" aria-label="search" onClick={e => { e.preventDefault(); search(username); }}>
+                            <IconButton
+                              type="submit"
+                              aria-label="search"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                search(username);
+                              }}
+                            >
                               <Search />
                             </IconButton>
                           </InputAdornment>
-                        )
+                        ),
                       }}
                     />
                   </Box>
@@ -214,95 +276,129 @@ const Home: NextPage = () => {
                 boxShadow={2}
                 component="img"
                 src="/res/CollectionSample.webp"
-                width="495px"
-                sx={{ maxWidth: "100%", maxHeight: "auto", order: { xs: -1, sm: -1 } }}
+                width="495"
+                sx={{
+                  maxWidth: "100%",
+                  maxHeight: "auto",
+                  order: { xs: -1, sm: -1 },
+                }}
                 alt="A screenshot of a user's collection."
               />
             </Box>
-            <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column", pt: 2.5 }} >
-              <Typography variant="h2" sx={{ fontSize: { xs: "1.25rem", sm: "1.5rem" } }}>
-                Tools? Calculators? We got that.
-              </Typography>
-              <Box sx={{
+            <Box
+              sx={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
-                gap: 2,
-                mt: 1,
-                "& a": {
+                flexDirection: "column",
+                pt: 2.5,
+              }}
+            >
+              <Typography
+                variant="h2"
+                sx={{ fontSize: { xs: "1.25rem", sm: "1.5rem" } }}
+              >
+                Tools? Calculators? We got that.
+              </Typography>
+              <Box
+                sx={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  width: "90px",
-                  height: "90px",
-                  px: 0.5,
-                  py: 1,
-                  backgroundColor: "#323232",
-                  ":hover": {
-                    filter: "brightness(120%)"
+                  gap: 2,
+                  mt: 1,
+                  "& a": {
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "90px",
+                    height: "90px",
+                    px: 0.5,
+                    py: 1,
+                    backgroundColor: "#323232",
+                    ":hover": {
+                      filter: "brightness(120%)",
+                    },
+                    borderRadius: "4px",
+                    fontSize: "1.25rem",
+                    textAlign: "center",
+                    verticalAlign: "middle",
+                    boxShadow: 1,
+                    position: "relative",
                   },
-                  borderRadius: "4px",
-                  fontSize: "1.25rem",
-                  textAlign: "center",
-                  verticalAlign: "middle",
-                  boxShadow: 1,
-                  position: "relative",
-                }
-              }}>
-                <NextLink
-                  href="/tools/recruit/"
-                  passHref
-                >
+                }}
+              >
+                <NextLink href="/tools/recruit/" passHref>
                   <Link>
-                    <Image src="/img/items/TKT_RECRUIT.png" width="75px" height="80px" alt="Recruitment" />
+                    <Image
+                      src="/img/items/TKT_RECRUIT.png"
+                      width="75"
+                      height="80"
+                      alt="Recruitment"
+                    />
                   </Link>
                 </NextLink>
-                <NextLink
-                  href="/tools/rateup/"
-                  passHref
-                >
+                <NextLink href="/tools/rateup/" passHref>
                   <Link>
-                    <Image src="/img/items/TKT_GACHA.png" width="90px" height="71px" alt="Headhunting" />
+                    <Image
+                      src="/img/items/TKT_GACHA.png"
+                      width="90"
+                      height="71"
+                      alt="Headhunting"
+                    />
                   </Link>
                 </NextLink>
-                <NextLink
-                  href="/tools/level/"
-                  passHref
-                >
+                <NextLink href="/tools/level/" passHref>
                   <Link>
-                    <Image src="/img/items/sprite_exp_card_t4.png" width="90px" height="71px" alt="Leveling" />
+                    <Image
+                      src="/img/items/sprite_exp_card_t4.png"
+                      width="90"
+                      height="71"
+                      alt="Leveling"
+                    />
                   </Link>
                 </NextLink>
               </Box>
             </Box>
             <Divider />
-            <Box sx={{
-              display: "grid",
-              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
-              gap: "8%",
-              "& .block": {
-                display: "flex",
-                flexDirection: "column",
-                gap: 1,
-                pt: 1
-              },
-            }}>
-              <Box sx={{ display: "flex", flexDirection: "column", gridRow: "span 2", gap: 1, pt: 1 }} >
-                <Typography variant="h2">
-                  Development
-                </Typography>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+                gap: "8%",
+                "& .block": {
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 1,
+                  pt: 1,
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gridRow: "span 2",
+                  gap: 1,
+                  pt: 1,
+                }}
+              >
+                <Typography variant="h2">Development</Typography>
                 <Typography variant="body1">
-                  Krooster is open-source - that means anyone can contribute. Visit the repository below, or check out our contributors.
+                  Krooster is open-source - that means anyone can contribute.
+                  Visit the repository below, or check out our contributors.
                 </Typography>
-                <Box component="dl" sx={{
-                  display: "grid",
-                  gridTemplateColumns: "auto 1fr",
-                  gap: "0px 1rem",
-                  m: 0,
-                  "dd": {
+                <Box
+                  component="dl"
+                  sx={{
+                    display: "grid",
+                    gridTemplateColumns: "auto 1fr",
+                    gap: "0px 1rem",
                     m: 0,
-                  }
-                }}>
+                    dd: {
+                      m: 0,
+                    },
+                  }}
+                >
                   <dt>Framework</dt>
                   <dd>NextJS, React</dd>
                   <dt>Interface</dt>
@@ -311,21 +407,21 @@ const Home: NextPage = () => {
                 <GitHubEmbed />
               </Box>
               <Box className="block">
-                <Typography variant="h2">
-                  Discord
-                </Typography>
+                <Typography variant="h2">Discord</Typography>
                 <Typography variant="body1">
-                  Your feedback is appreciated - every bit helps make Krooster better for everyone.
-                  To make requests and keep up with the latest changes, join the Discord server.
+                  Your feedback is appreciated - every bit helps make Krooster
+                  better for everyone. To make requests and keep up with the
+                  latest changes, join the Discord server.
                 </Typography>
                 <DiscordEmbed />
               </Box>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pt: 1 }} >
-                <Typography variant="h2">
-                  Support Krooster
-                </Typography>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: 1, pt: 1 }}
+              >
+                <Typography variant="h2">Support Krooster</Typography>
                 <Typography variant="body1">
-                  If you like what I do and have money to spare, then you can help contribute to server costs.
+                  If you like what I do and have money to spare, then you can
+                  help contribute to server costs.
                 </Typography>
                 <Kofi />
               </Box>
@@ -334,7 +430,7 @@ const Home: NextPage = () => {
         </Box>
       </ThemeProvider>
     </CacheProvider>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
