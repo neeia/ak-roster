@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Box, Divider, Link, Typography } from "@mui/material";
-import NextLink from 'next/link'
 
 const DISC_BLURPLE = "#5865F2";
 const DISC_API = "https://discord.com/api/guilds/970485224624508979/widget.json";

@@ -19,51 +19,9 @@ import appTheme from "../styles/theme/appTheme";
 import createEmotionCache from "../util/createEmotionCache";
 import DiscordEmbed from "../components/index/DiscordEmbed";
 import GitHubEmbed from "../components/index/GitHubEmbed";
-import { memo, useEffect, useState } from "react";
+import { useState } from "react";
 import { LockClockOutlined, Search } from "@mui/icons-material";
 import Image from "next/image";
-
-const Kofi = memo(() => {
-  return (
-    <Link
-      sx={{
-        backgroundColor: "#FF5E5B",
-        display: "block",
-        width: "30%",
-        minWidth: "min-content",
-        height: "min-content",
-        borderRadius: "4px",
-        boxShadow: 1,
-        position: "relative",
-        mb: 6,
-        mt: 2,
-        pl: 1.5,
-        pr: 2,
-        pt: 1.5,
-        pb: 1,
-        boxSizing: "border-box",
-        ":hover": {
-          filter: "brightness(120%)",
-        },
-      }}
-      onClick={() =>
-        window.open("https://ko-fi.com/neeia", "_blank", "noreferrer noopener")
-      }
-      title="Open Ko-fi"
-      component="button"
-    >
-      <Image
-        className="icon"
-        width="131"
-        height="37"
-        src="/img/ext/kofi.png"
-        alt="Ko-fi icon"
-        loading="lazy"
-      />
-    </Link>
-  );
-});
-Kofi.displayName = "Ko-fi";
 
 const Home: NextPage = () => {
   const clientSideEmotionCache = createEmotionCache();
@@ -209,7 +167,7 @@ const Home: NextPage = () => {
                     mt: 2,
                   }}
                 >
-                  <NextLink href="/data/input/" passHref>
+                  <NextLink href="/data/input/" passHref legacyBehavior>
                     <Link
                       sx={{
                         backgroundColor: "primary.main",
@@ -327,7 +285,7 @@ const Home: NextPage = () => {
                   },
                 }}
               >
-                <NextLink href="/tools/recruit/" passHref>
+                <NextLink href="/tools/recruit/" passHref legacyBehavior>
                   <Link>
                     <Image
                       src="/img/items/TKT_RECRUIT.png"
@@ -337,7 +295,7 @@ const Home: NextPage = () => {
                     />
                   </Link>
                 </NextLink>
-                <NextLink href="/tools/rateup/" passHref>
+                <NextLink href="/tools/rateup/" passHref legacyBehavior>
                   <Link>
                     <Image
                       src="/img/items/TKT_GACHA.png"
@@ -347,7 +305,7 @@ const Home: NextPage = () => {
                     />
                   </Link>
                 </NextLink>
-                <NextLink href="/tools/level/" passHref>
+                <NextLink href="/tools/level/" passHref legacyBehavior>
                   <Link>
                     <Image
                       src="/img/items/sprite_exp_card_t4.png"
@@ -423,7 +381,42 @@ const Home: NextPage = () => {
                   If you like what I do and have money to spare, then you can
                   help contribute to server costs.
                 </Typography>
-                <Kofi />
+                <Link
+                  sx={{
+                    backgroundColor: "#FF5E5B",
+                    display: "block",
+                    width: "30%",
+                    minWidth: "min-content",
+                    height: "min-content",
+                    borderRadius: "4px",
+                    boxShadow: 1,
+                    position: "relative",
+                    mb: 6,
+                    mt: 2,
+                    pl: 1.5,
+                    pr: 2,
+                    pt: 1.5,
+                    pb: 1,
+                    boxSizing: "border-box",
+                    ":hover": {
+                      filter: "brightness(120%)",
+                    },
+                  }}
+                  onClick={() =>
+                    window.open("https://ko-fi.com/neeia", "_blank", "noreferrer noopener")
+                  }
+                  title="Open Ko-fi"
+                  component="button"
+                >
+                  <Image
+                    className="icon"
+                    width="131"
+                    height="37"
+                    src="/img/ext/kofi.png"
+                    alt="Ko-fi icon"
+                    loading="lazy"
+                  />
+                </Link>
               </Box>
             </Box>
           </Container>
