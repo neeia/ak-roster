@@ -1,5 +1,5 @@
 import React from "react";
-import { Operator, OpJsonObj } from '../../types/operator';
+import { Operator, OperatorData } from '../../types/operator';
 import classList from "../../data/classList";
 import { Box, Button, Typography } from "@mui/material";
 import usePresets from "../../util/usePresets";

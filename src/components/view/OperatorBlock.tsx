@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { Operator, OpJsonObj } from "../../types/operator";
+import { Operator, OperatorData } from "../../types/operator";
 import { Favorite } from "@mui/icons-material";
 import { rarityColors } from "../../styles/rarityColors";
 import { getNumSkills, MAX_LEVEL_BY_RARITY } from "../../util/changeOperator";
@@ -16,11 +16,11 @@ interface Props {
 const OperatorBlock = (props: Props) => {
   const { op, nobg, skill } = props;
 
-  const opInfo: OpJsonObj = operatorJson[op.id as keyof typeof operatorJson];
+  const opInfo: OperatorData = operatorJson[op.id as keyof typeof operatorJson];
   let intermediate = op.id;
-  if (op.promotion === 2) {
+  if (op.elite === 2) {
     intermediate += "_2";
-  } else if (op.promotion === 1 && op.name === "Amiya") {
+  } else if (op.elite === 1 && op.name === "Amiya") {
     intermediate += "_1";
   }
 
@@ -101,7 +101,7 @@ const OperatorBlock = (props: Props) => {
         position: "relative",
       }}
     >
-      <Image src={`/img/elite/${op.promotion}_s_box.png`} layout="fill" alt={`Elite ${op.promotion}`} />
+      <Image src={`/img/elite/${op.elite}_s_box.png`} layout="fill" alt={`Elite ${op.elite}`} />
     </Box >
 
   const levelSx = {
@@ -167,8 +167,8 @@ const OperatorBlock = (props: Props) => {
       zIndex: 1,
     }}>
       {op.potential > 1 ? potentialBlock : null}
-      {op.promotion > 0 ? promotionBlock : null}
-      {op.promotion > 0 || op.level > 1 ? levelBlock : null}
+      {op.elite > 0 ? promotionBlock : null}
+      {op.elite > 0 || op.level > 1 ? levelBlock : null}
     </Box >
 
   const skillBlock =
@@ -176,7 +176,7 @@ const OperatorBlock = (props: Props) => {
       gridArea: "img",
       marginTop: "4px",
       marginRight: { xs: "-14px", sm: "-24px" },
-      display: op.skillLevel > 1 ? "flex" : "none",
+      display: op.rank > 1 ? "flex" : "none",
       flexDirection: "column",
       justifySelf: "end",
       gap: "2px",
@@ -185,7 +185,7 @@ const OperatorBlock = (props: Props) => {
         <Box
           key={n}
           sx={{
-            display: op.promotion >= n ? "grid" : "none",
+            display: op.elite >= n ? "grid" : "none",
             marginLeft: { xs: "0px", sm: `${4 * n}px` },
             "& .stack": {
               gridRow: 1,
@@ -201,19 +201,19 @@ const OperatorBlock = (props: Props) => {
           <Box className="stack">
             <Image src={`/img/rank/bg.png`} layout="fill" alt={`Skill ${n + 1}`} />
           </Box>
-          {(!op.mastery || !op.mastery[n] || op.mastery[n] === 0
+          {(!op.masteries || !op.masteries[n] || op.masteries[n] === 0
             ? <Box className="stack">
-              <Image src={`/img/rank/${op.skillLevel}.png`} layout="fill" alt={`Rank ${op.skillLevel}`} />
+              <Image src={`/img/rank/${op.rank}.png`} layout="fill" alt={`Rank ${op.rank}`} />
             </Box>
             : <Box className="stack">
-              <Image src={`/img/rank/m-${op.mastery[n]}.png`} layout="fill" alt={`Mastery ${op.mastery[n]}`} />
+              <Image src={`/img/rank/m-${op.masteries[n]}.png`} layout="fill" alt={`Mastery ${op.masteries[n]}`} />
             </Box>
           )}
         </Box>
       )}
     </Box>
 
-  const opModuleUrls = op.module ? op.module
+  const opModuleUrls = op.modules ? op.modules
     .map((mod, n: number) => {
       return {
         typeName: opInfo.modules[n].typeName,
@@ -261,7 +261,7 @@ const OperatorBlock = (props: Props) => {
           <Typography
             zIndex={3}
             component="abbr"
-            title={`Stage ${op.module[index]}`}
+            title={`Stage ${op.modules[index]}`}
             sx={{
               display: "flex",
               justifySelf: "end",
@@ -280,7 +280,7 @@ const OperatorBlock = (props: Props) => {
             }}
           >
             {typeName.slice(-1)}
-            {op.module[index] > 1 && op.module[index]}
+            {op.modules[index] > 1 && op.modules[index]}
           </Typography>
         </Box>
       )}
@@ -328,12 +328,12 @@ const OperatorBlock = (props: Props) => {
       </Box>
       {levelBubble}
       {skillBlock}
-      {op.module ? moduleBlock : ""}
+      {op.modules ? moduleBlock : ""}
     </Box>
   );
 }
 export default OperatorBlock;
 
 function isMaxKrooster(op: Operator) {
-  return op.id === "char_1021_kroos2" && op.potential === 6 && op.level === 80 && op.mastery.every(v => v === 3);
+  return op.id === "char_1021_kroos2" && op.potential === 6 && op.level === 80 && op.masteries.every(v => v === 3);
 }

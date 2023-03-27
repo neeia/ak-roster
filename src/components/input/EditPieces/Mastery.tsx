@@ -1,8 +1,8 @@
 import React from "react";
-import { Operator, OpJsonObj } from "types/operator";
-import { Box, Button, IconButton, Typography } from "@mui/material";
+import { Operator, OperatorData } from "types/operator";
+import { Box, Button, Typography } from "@mui/material";
 import operatorJson from "data/operators.json";
-import { changeMastery, getNumSkills } from "util/changeOperator";
+import { changeMastery } from "util/changeOperator";
 import Image from "next/image";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 const Mastery = ((props: Props) => {
   const { op, onChange } = props;
-  const opInfo: OpJsonObj = operatorJson[op.id as keyof typeof operatorJson];
+  const opInfo: OperatorData = operatorJson[op.id as keyof typeof operatorJson];
 
   return (
     <Box sx={{
@@ -21,7 +21,7 @@ const Mastery = ((props: Props) => {
       gap: "4px",
     }}>
       {[...Array(getNumSkills(op))].map((_, i) => {
-        const disabled = !op.owned || op.skillLevel < 7 || op.promotion < 2;
+        const disabled = !op.potential || op.rank < 7 || op.elite < 2;
         return (
           <Box
             key={`maB${i}`}
@@ -49,7 +49,7 @@ const Mastery = ((props: Props) => {
             {opInfo !== undefined
               ? <Box
                 component="img"
-                className={op.promotion < i ? "Mui-disabled" : ""}
+                className={op.elite < i ? "Mui-disabled" : ""}
                 sx={{ gridArea: "icon" }}
                 width="48px"
                 src={`/img/skills/${opInfo.skills[i].iconId ?? opInfo.skills[i].skillId}.png`}
@@ -58,7 +58,7 @@ const Mastery = ((props: Props) => {
               : ""}
             {[...Array(4)].map((_, j) =>
               <Button
-                className={!disabled && (op.mastery && op.mastery[i] ? op.mastery[i] === j : j === 0) ? "active" : "inactive"}
+                className={!disabled && (op.masteries && op.masteries[i] ? op.masteries[i] === j : j === 0) ? "active" : "inactive"}
                 key={`mastery${j}Button`}
                 sx={{
                   gridRow: 2,

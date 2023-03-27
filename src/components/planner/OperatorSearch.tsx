@@ -15,7 +15,7 @@ import React, { useCallback } from "react";
 import { VariableSizeList, ListChildComponentProps } from "react-window";
 
 import operatorsJson from "data/operators.json";
-import { OpJsonObj } from "types/operator";
+import { OperatorData } from "types/operator";
 
 const normalizeOperatorName = (operatorName: string) =>
   operatorName.toLowerCase().replace(/['"]/g, "").replace("ł", "l");
@@ -29,15 +29,15 @@ const operatorNormalizedNames = Object.fromEntries(
 );
 
 interface Props {
-  value: OpJsonObj | null;
-  onChange: (value: OpJsonObj | null) => void;
+  value: OperatorData | null;
+  onChange: (value: OperatorData | null) => void;
 }
 
 const OperatorSearch: React.FC<Props> = (props) => {
   const { value, onChange } = props;
 
   const filterOptions = useCallback(
-    (operators: OpJsonObj[], { inputValue }: FilterOptionsState<OpJsonObj>) => {
+    (operators: OperatorData[], { inputValue }: FilterOptionsState<OperatorData>) => {
       const normalizedInput = normalizeOperatorName(inputValue);
       return operators.filter((op) =>
         operatorNormalizedNames[op.name].includes(normalizedInput)
@@ -47,11 +47,11 @@ const OperatorSearch: React.FC<Props> = (props) => {
   );
 
   return (
-    <Autocomplete<OpJsonObj>
+    <Autocomplete<OperatorData>
       autoComplete
       autoHighlight
       value={value}
-      onChange={(_: unknown, newValue: OpJsonObj | null) => onChange(newValue)}
+      onChange={(_: unknown, newValue: OperatorData | null) => onChange(newValue)}
       PopperComponent={StyledPopper}
       ListboxComponent={ListboxComponent}
       options={operators}

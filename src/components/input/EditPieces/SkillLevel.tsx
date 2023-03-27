@@ -12,8 +12,8 @@ interface Props {
 const SkillLevel = (props: Props) => {
   const { op, onChange } = props;
 
-  const previousSkillLevel = op.skillLevel > 4 ? 4 : 1;
-  const nextSkillLevel = op.skillLevel < 4 ? 4 : 7;
+  const previousSkillLevel = op.rank > 4 ? 4 : 1;
+  const nextSkillLevel = op.rank < 4 ? 4 : 7;
 
   function updateRank(rank: number) {
     onChange(changeSkillLevel(op, rank));
@@ -23,7 +23,7 @@ const SkillLevel = (props: Props) => {
     <Button
       aria-label={`Skill Rank to ${rank}`}
       onClick={() => updateRank(rank)}
-      disabled={!op.owned || op.skillLevel === rank || rank > [4, 7, 7][op.promotion]}
+      disabled={!op.owned || op.rank === rank || rank > [4, 7, 7][op.elite]}
     >
       <Box
         sx={{
@@ -74,8 +74,8 @@ const SkillLevel = (props: Props) => {
         <Button
           aria-label="Lower Skill Rank"
           sx={{ display: { xs: "none", sm: "" }, }}
-          onClick={() => updateRank(op.skillLevel - 1)}
-          disabled={!op.owned || op.skillLevel === 1}
+          onClick={() => updateRank(op.rank - 1)}
+          disabled={!op.owned || op.rank === 1}
         >
           <KeyboardArrowDownSharp fontSize="large" />
         </Button>
@@ -92,17 +92,17 @@ const SkillLevel = (props: Props) => {
           />
           {op.owned
             ? <Image
-              src={`/img/rank/${op.skillLevel}.png`}
+              src={`/img/rank/${op.rank}.png`}
               layout="fill"
-              alt={`Rank ${op.skillLevel}`}
+              alt={`Rank ${op.rank}`}
             />
             : null}
         </Box>
         <Button
           aria-label="Raise Skill Rank"
           sx={{ display: { xs: "none", sm: "" }, }}
-          onClick={() => updateRank(op.skillLevel + 1)}
-          disabled={!op.owned || op.skillLevel === [4, 7, 7][op.promotion]}
+          onClick={() => updateRank(op.rank + 1)}
+          disabled={!op.owned || op.rank === [4, 7, 7][op.elite]}
         >
           <KeyboardArrowUpSharp fontSize="large" />
         </Button>

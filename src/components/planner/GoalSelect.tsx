@@ -16,7 +16,7 @@ import { styled } from "@mui/system";
 import { useEffect, useMemo, useState } from "react";
 
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
-import { Operator, OpJsonObj } from "types/operator";
+import { Operator, OperatorData } from "types/operator";
 
 const GoalMenuCheckboxItem = styled(MenuItem)(({ theme }) => ({
   height: "50px",
@@ -36,7 +36,7 @@ const moduleGoalRegex = /Module (?<typeName>\S+) Stage (?<moduleLevel>\d)/;
 
 interface Props {
   opData: Operator | null;
-  operator: OpJsonObj | null;
+  operator: OperatorData | null;
   onGoalsAdded: (goals: PlannerGoal[]) => void;
 }
 
@@ -54,13 +54,13 @@ const GoalSelect: React.FC<Props> = (props) => {
     }
     const presets = [];
     if (operator.elite.length > 0 && operator.skillLevels.length === 6) {
-      if (!opData || (opData.promotion < 1 && opData.skillLevel < 7))
+      if (!opData || (opData.elite < 1 && opData.rank < 7))
         presets.push("Elite 1 Skill Level 7");
     }
     operator.skills.forEach((skill, i) => {
       if (skill.masteries.length === 3) {
-        if (!opData || !opData.mastery[i] || opData.mastery[i] < 3)
-          presets.push(`Skill ${i + 1} Mastery ${(opData?.mastery[i] ?? 0) + 1} → 3`);
+        if (!opData || !opData.masteries[i] || opData.masteries[i] < 3)
+          presets.push(`Skill ${i + 1} Mastery ${(opData?.masteries[i] ?? 0) + 1} → 3`);
       }
     });
     if (presets.length > 0) {
@@ -179,22 +179,22 @@ const GoalSelect: React.FC<Props> = (props) => {
           break;
         case "Everything": {
           operator!.elite?.forEach((_, i) => {
-            if (!opData || opData.promotion < i + 1)
+            if (!opData || opData.elite < i + 1)
               newSpecificGoals.add(`Elite ${i + 1}`);
           });
           operator!.skillLevels?.forEach((_, i) => {
-            if (!opData || opData.skillLevel < i + 2)
+            if (!opData || opData.rank < i + 2)
               newSpecificGoals.add(`Skill Level ${i + 2}`);
           });
           operator!.skills?.forEach((_, i) => {
             operator!.skills[i].masteries.forEach((_, j) => {
-              if (!opData || !opData.mastery[i] || opData.mastery[i] < j + 1)
+              if (!opData || !opData.masteries[i] || opData.masteries[i] < j + 1)
                 newSpecificGoals.add(`Skill ${i + 1} Mastery ${j + 1}`);
             });
           });
           operator!.modules?.forEach((module, i) => {
             module.stages.forEach((_, j) => {
-              if (!opData || !opData.module[i] || opData.module[i] < j + 1)
+              if (!opData || !opData.modules[i] || opData.modules[i] < j + 1)
               newSpecificGoals.add(`Module ${module.typeName} Stage ${j + 1}`);
             });
           });
@@ -219,7 +219,7 @@ const GoalSelect: React.FC<Props> = (props) => {
 
     const elite =
       operator.elite.length > 0
-        ? operator.elite.filter((_, i) => !opData || opData.promotion < i + 1).map((goal) => (
+        ? operator.elite.filter((_, i) => !opData || opData.elite < i + 1).map((goal) => (
           <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
             <Checkbox
               checked={selectedGoalNames.indexOf(goal.name) > -1}
@@ -231,7 +231,7 @@ const GoalSelect: React.FC<Props> = (props) => {
         : null;
     const skillLevel =
       operator.skillLevels.length > 0
-        ? operator.skillLevels.filter((_, i) => !opData || opData.skillLevel < i + 2).map((goal) => (
+        ? operator.skillLevels.filter((_, i) => !opData || opData.rank < i + 2).map((goal) => (
           <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
             <Checkbox
               checked={selectedGoalNames.indexOf(goal.name) > -1}
@@ -242,7 +242,7 @@ const GoalSelect: React.FC<Props> = (props) => {
         ))
         : null;
     const masteryGoals = operator.skills.flatMap((skill, i) => skill.masteries
-      .filter((_, j) => !opData || (opData.mastery[i] ?? 0) < j + 1)
+      .filter((_, j) => !opData || (opData.masteries[i] ?? 0) < j + 1)
     );
     const mastery =
       masteryGoals.length > 0
@@ -258,7 +258,7 @@ const GoalSelect: React.FC<Props> = (props) => {
         : null;
 
     const moduleGoals = operator.modules.flatMap((module, i) => module.stages
-      .filter((_, j) => !opData || (opData.module[i] ?? 0) < j + 1)
+      .filter((_, j) => !opData || (opData.modules[i] ?? 0) < j + 1)
     );
     const mod =
       moduleGoals.length > 0

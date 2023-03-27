@@ -18,7 +18,7 @@ import operatorsJson from "data/operators.json";
 
 import ItemStack from "./ItemStack";
 import OperatorGoalIconography from "./OperatorGoalIconography";
-import { OpJsonObj } from "types/operator";
+import { OperatorData } from "types/operator";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import getGoalIngredients from "util/getGoalIngredients";
 
@@ -46,7 +46,7 @@ const PlannerGoalCard = React.forwardRef<HTMLLIElement, Props>((props, ref) => {
   const isXLScreen = useMediaQuery(theme.breakpoints.up("xl"));
   const operatorIconSize = isXSScreen ? 32 : 48;
 
-  const operator: OpJsonObj =
+  const operator: OperatorData =
     operatorsJson[goal.operatorId as keyof typeof operatorsJson];
   const [_, appellation] = operator.name.split(" the ");
 

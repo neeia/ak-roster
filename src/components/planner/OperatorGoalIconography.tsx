@@ -3,14 +3,14 @@ import clsx from "clsx";
 import Image from "next/image";
 
 import operatorsJson from "data/operators.json";
-import { OpJsonObj } from "types/operator";
+import { OperatorData } from "types/operator";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 interface Props {
   goal: PlannerGoal;
 }
 
 const OperatorGoalIconography: React.FC<Props> = ({ goal }) => {
-  const operator: OpJsonObj =
+  const operator: OperatorData =
     operatorsJson[goal.operatorId as keyof typeof operatorsJson];
 
   let icon = null;

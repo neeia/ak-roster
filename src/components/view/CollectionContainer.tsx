@@ -1,5 +1,5 @@
 import React from "react";
-import { Operator, OpJsonObj } from 'types/operator';
+import { Operator, OperatorData } from 'types/operator';
 import classList from "data/classList";
 import { Box } from "@mui/material";
 import operatorJson from "data/operators.json";
@@ -8,7 +8,7 @@ import EditWrapper from "./EditWrapper";
 
 interface Props {
   operators: Record<string, Operator>;
-  filter?: (opInfo: OpJsonObj, op: Operator) => boolean;
+  filter?: (opInfo: OperatorData, op: Operator) => boolean;
   sort?: (opA: Operator, opB: Operator) => number;
   editMode?: boolean;
   onClick?: (opId: string) => void;

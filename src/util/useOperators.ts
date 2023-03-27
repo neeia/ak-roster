@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { defaultOperatorObject, Operator, OpJsonObj, LegacyOperator, } from '../types/operator';
+import { defaultOperatorObject, Operator, OperatorData, OperatorV1, } from '../types/operator';
 import operatorJson from "data/operators.json";
 import useLocalStorage from './useLocalStorage';
 
 // Converts a LegacyOperator into an Operator
-function convertLegacy([_, op]: [any, LegacyOperator]): [string, Operator] {
+function convertLegacy([_, op]: [any, OperatorV1]): [string, Operator] {
   const newMastery = [];
   if (op.skill1Mastery) newMastery[0] = op.skill1Mastery;
   if (op.skill2Mastery) newMastery[1] = op.skill2Mastery;
@@ -18,19 +18,19 @@ function convertLegacy([_, op]: [any, LegacyOperator]): [string, Operator] {
       rarity: op.rarity,
       class: operatorJson[op.id as keyof typeof operatorJson].class,
       potential: op.potential,
-      promotion: op.promotion,
+      elite: op.promotion,
       owned: op.owned,
       level: op.level,
-      skillLevel: op.skillLevel,
-      mastery: newMastery,
-      module: op.module ?? [],
+      rank: op.skillLevel,
+      masteries: newMastery,
+      modules: op.module ?? [],
     },
   ];
 }
 
 export function repair(ops: Record<string, Operator>, setOps: (v: Record<string, Operator>) => void) {
   var rooster = { ...ops }
-  Object.entries(operatorJson).forEach((props: [opId: string, opJ: OpJsonObj]) => {
+  Object.entries(operatorJson).forEach((props: [opId: string, opJ: OperatorData]) => {
     const [opId, opJsonItem] = props;
     const op = rooster[opId];
 
@@ -49,8 +49,8 @@ export function repair(ops: Record<string, Operator>, setOps: (v: Record<string,
       rooster[opId] = convertLegacy([, op])[1];
     }
     else {
-      if (op.mastery === undefined) op.mastery = [];
-      if (op.module === undefined) op.module = [];
+      if (op.masteries === undefined) op.masteries = [];
+      if (op.modules === undefined) op.modules = [];
     }
   })
   setOps(rooster);

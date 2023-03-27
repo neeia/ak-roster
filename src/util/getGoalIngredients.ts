@@ -1,10 +1,10 @@
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import { Ingredient } from "types/item";
-import { OpJsonObj } from "types/operator";
+import { OperatorData } from "types/operator";
 import operatorsJson from "../data/operators.json";
 
 const getGoalIngredients = (goal: PlannerGoal): Ingredient[] => {
-  const operator: OpJsonObj =
+  const operator: OperatorData =
     operatorsJson[goal.operatorId as keyof typeof operatorsJson];
   switch (goal.category) {
     case OperatorGoalCategory.Elite:

@@ -1,5 +1,5 @@
 import React from "react";
-import { Operator, OpJsonObj } from 'types/operator';
+import { Operator, OperatorData } from 'types/operator';
 import classList from "data/classList";
 import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
@@ -9,7 +9,7 @@ import operatorJson from "data/operators.json";
 interface Props {
   operators: Record<string, Operator>;
   onClick: (opId: string) => void;
-  filter?: (opInfo: OpJsonObj, op: Operator) => boolean;
+  filter?: (opInfo: OperatorData, op: Operator) => boolean;
   sort?: (opA: Operator, opB: Operator) => number;
   toggleGroup?: string[];
 }

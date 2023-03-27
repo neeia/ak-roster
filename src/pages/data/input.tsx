@@ -9,7 +9,7 @@ import SortDialog from "components/collate/SortDialog";
 import { useSort, useFilter } from "util/useSSF";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
-import { Operator, OpJsonObj } from "types/operator";
+import { Operator, OperatorData } from "types/operator";
 import useOperators from "util/useOperators";
 import BatchDialog from "components/batch/BatchDialog";
 import { safeMerge } from "util/useSync";
@@ -46,7 +46,7 @@ const Input: NextPage = () => {
   const [doctor] = useLocalStorage<AccountInfo>("doctor", {});
   useEffect(() => {
     const filterKey = "cn";
-    if (!(doctor && doctor.server && isCN(doctor.server))) addFilter(filterKey, "EN", (_, opInfo: OpJsonObj) => !opInfo.isCnOnly);
+    if (!(doctor && doctor.server && isCN(doctor.server))) addFilter(filterKey, "EN", (_, opInfo: OperatorData) => !opInfo.isCnOnly);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -83,10 +83,10 @@ const Input: NextPage = () => {
             op = changeOwned(op, copySource.owned);
             op = changeFavorite(op, copySource.favorite);
             op = changePotential(op, copySource.potential);
-            op = changePromotion(op, copySource.promotion);
+            op = changePromotion(op, copySource.elite);
             op = changeLevel(op, copySource.level);
-            op = changeSkillLevel(op, copySource.skillLevel);
-            copySource.mastery.forEach((value, index) => {
+            op = changeSkillLevel(op, copySource.rank);
+            copySource.masteries.forEach((value, index) => {
               op = changeMastery(op, index, value);
             })
 

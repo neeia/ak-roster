@@ -1,5 +1,5 @@
 import React from "react";
-import { Operator, OpJsonModule, OpJsonObj } from "../../../types/operator";
+import { Operator, ModuleData, OperatorData } from "../../../types/operator";
 import operatorJson from "../../../data/operators.json";
 import { Box, Button, Typography } from "@mui/material";
 import { changeModule, MODULE_REQ_BY_RARITY } from "../../../util/changeOperator";
@@ -11,7 +11,7 @@ interface Props {
 }
 const Module = ((props: Props) => {
   const { op, onChange } = props;
-  const opInfo: OpJsonObj = operatorJson[op.id as keyof typeof operatorJson];
+  const opInfo: OperatorData = operatorJson[op.id as keyof typeof operatorJson];
 
   return (
     <Box sx={{
@@ -20,8 +20,8 @@ const Module = ((props: Props) => {
       alignItems: "center",
       gap: "4px",
     }}>
-      {opInfo.modules.map((module: OpJsonModule, i: number) => {
-        const disabled = !op.owned || op.level < MODULE_REQ_BY_RARITY[op.rarity] || op.promotion < 2;
+      {opInfo.modules.map((module: ModuleData, i: number) => {
+        const disabled = !op.owned || op.level < MODULE_REQ_BY_RARITY[op.rarity] || op.elite < 2;
         return (
           <Box
             key={`maB${i}`}
@@ -68,7 +68,7 @@ const Module = ((props: Props) => {
             </Box>
             {[...Array(4)].map((_, j) =>
               <Button
-                className={!disabled && (op.module && op.module[i] ? op.module[i] === j : j === 0) ? "active" : "inactive"}
+                className={!disabled && (op.modules && op.modules[i] ? op.modules[i] === j : j === 0) ? "active" : "inactive"}
                 key={`mod${j}Button`}
                 sx={{
                   gridRow: 2,

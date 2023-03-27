@@ -31,7 +31,7 @@ const Promotion = ((props: Props) => {
       {[...Array(MAX_PROMOTION_BY_RARITY[op.rarity] + 1)].map((_, i) =>
         <IconButton
           sx={{ borderRadius: br(op.rarity, i) }}
-          className={op.promotion === i ? "active" : "inactive"}
+          className={op.elite === i ? "active" : "inactive"}
           onClick={() => onChange(changePromotion(op, i))}
           disabled={!op.owned}
           key={`pro${i + 1}`}

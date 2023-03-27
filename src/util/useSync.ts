@@ -15,16 +15,16 @@ export const safeMerge = (a: Operator, b: Operator): Operator => {
     rarity: a.rarity,
     class: a.class,
     potential: Math.max(a.potential, b.potential),
-    promotion: Math.max(a.promotion, b.promotion),
-    level: a.promotion > b.promotion
+    elite: Math.max(a.elite, b.elite),
+    level: a.elite > b.elite
       ? a.level : Math.max(a.level, b.level),
-    skillLevel: Math.max(a.skillLevel, b.skillLevel),
-    mastery: a.mastery && a.mastery.length ? a.mastery.map((value, index) =>
-      !b.mastery || !b.mastery[index] || value > b.mastery[index]
-        ? value : b.mastery[index]) : b.mastery ?? [],
-    module: a.module && a.module.length ? a.module.map((value, index) =>
-      !b.module || !b.module[index] || value > b.module[index]
-        ? value : b.module[index]) : b.module ?? [],
+    rank: Math.max(a.rank, b.rank),
+    masteries: a.masteries && a.masteries.length ? a.masteries.map((value, index) =>
+      !b.masteries || !b.masteries[index] || value > b.masteries[index]
+        ? value : b.masteries[index]) : b.masteries ?? [],
+    modules: a.modules && a.modules.length ? a.modules.map((value, index) =>
+      !b.modules || !b.modules[index] || value > b.modules[index]
+        ? value : b.modules[index]) : b.modules ?? [],
     skin: a.skin || b.skin,
   };
 }

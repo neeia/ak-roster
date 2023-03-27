@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { FilterFunction } from "../types/filter";
-import { Operator, OpJsonObj } from "../types/operator";
+import { Operator, OperatorData } from "../types/operator";
 import { SortFunction, SortListItem } from "../types/sort";
 
 export const sortFunctions: Record<string, SortFunction> = {
@@ -9,7 +9,7 @@ export const sortFunctions: Record<string, SortFunction> = {
     dfDesc: false,
   },
   "Level": {
-    fn: (a: Operator, b: Operator): number => b.promotion - a.promotion || b.level - a.level,
+    fn: (a: Operator, b: Operator): number => b.elite - a.elite || b.level - a.level,
     dfDesc: true,
   },
   "Rarity": {
@@ -53,7 +53,7 @@ export function useFilter(initFilter?: Record<string, Record<string, FilterFunct
     const newFilter = {};
     _setFilter(newFilter);
   }, []);
-  const filterFunction = useCallback((opInfo: OpJsonObj, op: Operator) => {
+  const filterFunction = useCallback((opInfo: OperatorData, op: Operator) => {
     if (!opInfo || !op) return false;
     const filterFunctions = Object.values(filter)
       .map(v1 => Object.keys(v1).length === 0 || Object.values(v1).some(v2 => v2(op, opInfo)));

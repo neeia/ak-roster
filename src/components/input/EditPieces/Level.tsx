@@ -15,11 +15,11 @@ const Level = (props: Props) => {
   function updateLevel(lvl: string | number) {
     if (typeof lvl === "number") {
       onChange(changeLevel(op, lvl));
-      setLevelField(Math.max(Math.min(lvl, MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]), 1).toString());
+      setLevelField(Math.max(Math.min(lvl, MAX_LEVEL_BY_RARITY[op.rarity][op.elite]), 1).toString());
     }
     else if (parseInt(lvl, 10)) {
       onChange(changeLevel(op, parseInt(lvl, 10)));
-      setLevelField(Math.max(Math.min(parseInt(lvl, 10), MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]), 1).toString());
+      setLevelField(Math.max(Math.min(parseInt(lvl, 10), MAX_LEVEL_BY_RARITY[op.rarity][op.elite]), 1).toString());
     }
     else {
       setLevelField("");
@@ -55,7 +55,7 @@ const Level = (props: Props) => {
   const p1 = (
     <Button
       onClick={() => updateLevel(op.level + 1)}
-      disabled={!op.owned || op.level >= MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]}
+      disabled={!op.owned || op.level >= MAX_LEVEL_BY_RARITY[op.rarity][op.elite]}
     >
       <KeyboardArrowUpSharp fontSize="large" />
     </Button>
@@ -63,15 +63,15 @@ const Level = (props: Props) => {
   const p10 = (
     <Button
       onClick={() => updateLevel(!(op.level - 1) ? 10 : op.level + 10)}
-      disabled={!op.owned || op.level >= MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]}
+      disabled={!op.owned || op.level >= MAX_LEVEL_BY_RARITY[op.rarity][op.elite]}
     >
       <KeyboardDoubleArrowRightSharp fontSize="large" />
     </Button>
   );
   const max = (
     <Button
-      onClick={() => updateLevel(MAX_LEVEL_BY_RARITY[op.rarity][op.promotion])}
-      disabled={!op.owned || op.level >= MAX_LEVEL_BY_RARITY[op.rarity][op.promotion]}
+      onClick={() => updateLevel(MAX_LEVEL_BY_RARITY[op.rarity][op.elite])}
+      disabled={!op.owned || op.level >= MAX_LEVEL_BY_RARITY[op.rarity][op.elite]}
     >
       Max
     </Button>

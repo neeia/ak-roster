@@ -11,22 +11,23 @@ interface Props {
   roster: Record<string, Operator>;
   user?: AccountInfo;
   social?: SocialInfo;
+  username?: string;
 }
 
 const ProfileDialog = (props: Props) => {
-  const { roster, user, social } = props;
+  const { roster, user, social, username } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  if (user && user.support && !Array.isArray(user.support)) {
-    user.support = Object.values(user.support);
+  if (user && user.supports && !Array.isArray(user.supports)) {
+    user.supports = Object.values(user.supports);
   }
   const getImgSrc = ((opId: string) => {
     const op = roster[opId]
     let intermediate = opId;
-    if (op.promotion === 2) {
+    if (op.elite === 2) {
       intermediate += "_2";
-    } else if (op.promotion === 1 && op.name === "Amiya") {
+    } else if (op.elite === 1 && op.name === "Amiya") {
       intermediate += "_1";
     }
     return `/img/avatars/${op.skin ?? intermediate}.png`;
@@ -81,7 +82,7 @@ const ProfileDialog = (props: Props) => {
               }
             }}
           >
-            {user?.displayName}<span className="mobileHide">&apos;s Profile</span>
+            {user?.displayName ?? username}<span className="mobileHide">&apos;s Profile</span>
           </Typography>
           <Typography
             component="div"
@@ -126,7 +127,7 @@ const ProfileDialog = (props: Props) => {
               <Box sx={{
                 display: "flex", justifyContent: "space-around", color: "text.main"
               }}>
-                {user?.support?.map(s => {
+                {user?.supports?.map(s => {
                   if (!s || !s.opID) return null;
                   if (!s.opSkill) s.opSkill = 0;
                   const op = roster[s.opID]

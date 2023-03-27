@@ -21,7 +21,7 @@ const Skins = ((props: Props) => {
       gap: "4px",
     }}>
       {opSkins.sort((a, b) => a.sortId - b.sortId).map((skin: Skin, i: number) => {
-        const disabled = !op.owned || (skin.sortId === -1 && op.promotion < 2) || (skin.sortId === -2 && op.promotion < 1);
+        const disabled = !op.owned || (skin.sortId === -1 && op.elite < 2) || (skin.sortId === -2 && op.elite < 1);
         return (
           <Tooltip title={skin.skinName ?? `Default Elite ${skin.sortId + 3}`} arrow describeChild key={`skn${i}`}>
             <span>

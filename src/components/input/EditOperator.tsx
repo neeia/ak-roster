@@ -1,5 +1,5 @@
 import React from "react";
-import { Operator, OpJsonObj, Skin } from "types/operator";
+import { Operator, OperatorData, Skin } from "types/operator";
 import operatorJson from "data/operators.json";
 import skinJson from "data/skins.json";
 import sg0 from "data/sg0.json";
@@ -32,12 +32,12 @@ const EditOperator = React.memo((props: Props) => {
   if (!op) return null;
   const opId = op.id;
   const opSkins: Skin[] = skinJson[opId as keyof typeof skinJson];
-  const opInfo: OpJsonObj = operatorJson[opId as keyof typeof operatorJson];
+  const opInfo: OperatorData = operatorJson[opId as keyof typeof operatorJson];
 
   let intermediate = opId;
-  if (op.promotion === 2) {
+  if (op.elite === 2) {
     intermediate += "_2";
-  } else if (op.promotion === 1 && op.name === "Amiya") {
+  } else if (op.elite === 1 && op.name === "Amiya") {
     intermediate += "_1";
   }
   const imgUrl = `/img/avatars/${op.skin ?? intermediate}.png`;

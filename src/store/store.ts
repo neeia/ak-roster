@@ -20,7 +20,7 @@ import goalsReducer from "./goalsSlice";
 import storage from "./storage";
 import userReducer from "./userSlice";
 import { OperatorGoalCategory } from "types/goal";
-import { OpJsonObj } from "types/operator";
+import { OperatorData } from "types/operator";
 
 const migrations: MigrationManifest = {
   2: (state) => {
@@ -31,7 +31,7 @@ const migrations: MigrationManifest = {
           if (goal.category === OperatorGoalCategory.Module) {
             goal.moduleLevel ??= 1;
             if (goal.moduleId == null) {
-              const op: OpJsonObj =
+              const op: OperatorData =
                 operatorsJson[goal.operatorId as keyof typeof operatorsJson];
               const firstModule = op.modules[0];
               if (firstModule == null) {

@@ -18,7 +18,7 @@ const Mastery = ((props: Props) => {
       gap: "4px",
     }}>
       {[...Array(3)].map((_, i) => {
-        const disabled = !op.owned || op.skillLevel < 7 || op.promotion < 2;
+        const disabled = !op.owned || op.rank < 7 || op.elite < 2;
         return (
           <Box
             key={`maB${i}`}
@@ -43,7 +43,7 @@ const Mastery = ((props: Props) => {
             </Typography>
             {[...Array(4)].map((_, j) =>
               <Button
-                className={!disabled && (op.mastery && op.mastery[i] ? op.mastery[i] === j : j === 0) ? "active" : "inactive"}
+                className={!disabled && (op.masteries && op.masteries[i] ? op.masteries[i] === j : j === 0) ? "active" : "inactive"}
                 key={`mastery${j}Button`}
                 sx={{
                   display: "grid",

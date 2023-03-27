@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { User } from "firebase/auth";
 import { getDatabase, ref, remove, set } from "firebase/database";
 import React, { useCallback, useState } from "react";
-import { Operator, OpJsonObj } from "../../types/operator";
+import { Operator, OperatorData } from "../../types/operator";
 import useOperators from "../../util/useOperators";
 import PopOp from "./PopOp";
 import useLocalStorage from "../../util/useLocalStorage";
@@ -37,7 +37,7 @@ const Assistant = ((props: Props) => {
     remove(ref(db, `users/${user.uid}/info/assistant/`));
   };
 
-  const filter = (op: OpJsonObj) => operators[op.id]?.owned;
+  const filter = (op: OperatorData) => operators[op.id]?.owned;
   const sort = (a: Operator, b: Operator) => a.name.localeCompare(b.name);
 
   return (

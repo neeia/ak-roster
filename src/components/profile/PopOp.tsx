@@ -1,5 +1,5 @@
 import React from "react";
-import { Operator, OpJsonObj } from '../../types/operator';
+import { Operator, OperatorData } from '../../types/operator';
 import { Box, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { CloseOutlined } from "@mui/icons-material";
 import OperatorSelector from "../input/OperatorSelector";
@@ -10,7 +10,7 @@ interface Props {
   title: string;
   onClick: (opId: string) => void;
   operators: Record<string, Operator>;
-  filter?: (opInfo: OpJsonObj, op: Operator) => boolean;
+  filter?: (opInfo: OperatorData, op: Operator) => boolean;
   sort?: (opA: Operator, opB: Operator) => number;
   toggleGroup?: string[];
   sticky?: boolean;

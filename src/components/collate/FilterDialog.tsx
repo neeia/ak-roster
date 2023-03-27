@@ -8,7 +8,7 @@ import ServerFilter from "./filter/ServerFilter";
 import PromotionFilter from "./filter/PromotionFilter";
 import ModuleFilter from "./filter/ModuleFilter";
 import { Close, FilterAltOutlined } from "@mui/icons-material";
-import { Operator, OpJsonObj } from "../../types/operator";
+import { Operator, OperatorData } from "../../types/operator";
 import SelFilter from "./filter/SelFilter";
 
 const sixSel = ["Exusiai", "Siege", "Ifrit", "Eyjafjalla", "Angelina", "Shining",
@@ -93,7 +93,7 @@ const FilterDialog = memo((props: Props) => {
     if (eliteFilter.includes(value)) {
       removeFilter(filterKey, value.toString());
     } else {
-      addFilter(filterKey, value.toString(), (op: Operator) => op.promotion === value);
+      addFilter(filterKey, value.toString(), (op: Operator) => op.elite === value);
       nr.push(value);
     }
   }
@@ -118,7 +118,7 @@ const FilterDialog = memo((props: Props) => {
       removeFilter(filterKey, "EN");
     }
     else {
-      addFilter(filterKey, "EN", (_, opInfo: OpJsonObj) => !opInfo.isCnOnly);
+      addFilter(filterKey, "EN", (_, opInfo: OperatorData) => !opInfo.isCnOnly);
     }
   }
   const toggleCN = () => {
@@ -127,7 +127,7 @@ const FilterDialog = memo((props: Props) => {
       removeFilter(filterKey, "CN");
     }
     else {
-      addFilter(filterKey, "CN", (_, opInfo: OpJsonObj) => opInfo.isCnOnly);
+      addFilter(filterKey, "CN", (_, opInfo: OperatorData) => opInfo.isCnOnly);
     }
   }
 

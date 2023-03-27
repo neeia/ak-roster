@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import GoalSelect from "components/planner/GoalSelect";
 import Layout from "components/Layout";
 import OperatorSearch from "components/planner/OperatorSearch";
-import { OpJsonObj } from "types/operator";
+import { OperatorData } from "types/operator";
 import { useAppDispatch } from "store/hooks";
 import { addGoals, GoalsState } from "store/goalsSlice";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
@@ -25,7 +25,7 @@ const PlannerGoals = dynamic(() => import("components/planner/PlannerGoals"), {
 });
 
 const Goals: NextPage = () => {
-  const [operator, setOperator] = useState<OpJsonObj | null>(null);
+  const [operator, setOperator] = useState<OperatorData | null>(null);
   const dispatch = useAppDispatch();
   const [operators, setOperators] = useOperators();
 
@@ -62,24 +62,24 @@ const Goals: NextPage = () => {
   const handleGoalComplete = (goal: PlannerGoal) => {
     setOperators((ops) => {
       const op = ops[goal.operatorId];
-      const opData: OpJsonObj =
+      const opData: OperatorData =
         operatorsJson[goal.operatorId as keyof typeof operatorsJson];
       switch (goal.category) {
         case OperatorGoalCategory.Elite:
-          ops[goal.operatorId].promotion = Math.max(goal.eliteLevel, op.promotion);
+          ops[goal.operatorId].elite = Math.max(goal.eliteLevel, op.elite);
           break;
         case OperatorGoalCategory.SkillLevel:
-          ops[goal.operatorId].skillLevel = Math.max(goal.skillLevel, op.skillLevel);
+          ops[goal.operatorId].rank = Math.max(goal.skillLevel, op.rank);
           break;
         case OperatorGoalCategory.Mastery:
           const skillIndex = opData.skills.findIndex((sk) => sk.skillId === goal.skillId);
-          ops[goal.operatorId].mastery[skillIndex] = Math.max(goal.masteryLevel, op.mastery[skillIndex]);
+          ops[goal.operatorId].masteries[skillIndex] = Math.max(goal.masteryLevel, op.masteries[skillIndex]);
           break;
         case OperatorGoalCategory.Module:
           const moduleIndex = opData.modules.findIndex(
             (m) => m.moduleId === goal.moduleId
           )!;
-          ops[goal.operatorId].module[moduleIndex] = Math.max(goal.moduleLevel, op.mastery[moduleIndex]);
+          ops[goal.operatorId].modules[moduleIndex] = Math.max(goal.moduleLevel, op.masteries[moduleIndex]);
           break;
       }
       return ops;

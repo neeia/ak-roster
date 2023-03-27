@@ -6,9 +6,9 @@ import Image from "next/image";
 
 function imgUrl(op: Operator) {
   let intermediate = op?.id ?? "";
-  if (op && op.promotion === 2) {
+  if (op && op.elite === 2) {
     intermediate += "_2";
-  } else if (op && op.promotion === 1 && op.name === "Amiya") {
+  } else if (op && op.elite === 1 && op.name === "Amiya") {
     intermediate += "_1";
   }
   return `/img/avatars/${op.skin ?? intermediate}.png`;

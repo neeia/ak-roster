@@ -2,7 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { User } from "firebase/auth";
 import { getDatabase, ref, remove, set } from "firebase/database";
 import React, { useCallback, useEffect, useState } from "react";
-import { Operator, OpJsonObj } from "../../types/operator";
+import { Operator, OperatorData } from "../../types/operator";
 import { getNumSkills } from "../../util/changeOperator";
 import useOperators from "../../util/useOperators";
 import operatorJson from "../../data/operators.json";
@@ -24,13 +24,13 @@ const SupportSelection = ((props: Props) => {
 
   const db = getDatabase();
 
-  const [supps, setSupps] = useState<(OperatorSkillSlot | undefined)[]>(doctor.support ?? []);
+  const [supps, setSupps] = useState<(OperatorSkillSlot | undefined)[]>(doctor.supports ?? []);
   useEffect(() => {
-    if (doctor && doctor.support && isObject(doctor.support)) {
-      doctor.support = Object.values(doctor.support).map(v => {
+    if (doctor && doctor.supports && isObject(doctor.supports)) {
+      doctor.supports = Object.values(doctor.supports).map(v => {
         return v;
       })
-      setSupps(doctor.support);
+      setSupps(doctor.supports);
     }
   }, [doctor])
 
@@ -41,7 +41,7 @@ const SupportSelection = ((props: Props) => {
     const d = { ...doctor };
     s[index] = { opID: value, opSkill: 0 };
     setSupps(s);
-    d.support = s;
+    d.supports = s;
     setDoctor(d);
     set(ref(db, `users/${user.uid}/info/support/${index}`), s[index]);
   };
@@ -50,7 +50,7 @@ const SupportSelection = ((props: Props) => {
     const d = { ...doctor };
     s[target]!.opSkill = value;
     setSupps(s);
-    d.support = s;
+    d.supports = s;
     setDoctor(d);
     set(ref(db, `users/${user.uid}/info/support/${target}/opSkill/`), value);
   };
@@ -59,14 +59,14 @@ const SupportSelection = ((props: Props) => {
     const d = { ...doctor };
     delete s[target];
     setSupps(s);
-    d.support = supps;
-    d.support[target] = undefined;
+    d.supports = supps;
+    d.supports[target] = undefined;
     setDoctor(d);
     remove(ref(db, `users/${user.uid}/info/support/${target}`));
   };
 
-  const filter = (op: OpJsonObj) => operators[op.id]?.owned && !supps.find((v) => !v || v.opID === op.id) && (index ? true : op.rarity < 6);
-  const sort = (a: Operator, b: Operator) => b.promotion - a.promotion || b.level - a.level || b.rarity - a.rarity;
+  const filter = (op: OperatorData) => operators[op.id]?.owned && !supps.find((v) => !v || v.opID === op.id) && (index ? true : op.rarity < 6);
+  const sort = (a: Operator, b: Operator) => b.elite - a.elite || b.level - a.level || b.rarity - a.rarity;
 
   return (
     <>
@@ -114,7 +114,7 @@ const SupportSelection = ((props: Props) => {
                         className={supps[i]!.opSkill === k ? "active" : ""}
                         key={`op-${i}-sk-${k}`}
                         onClick={() => setSkill(i, k)}
-                        disabled={op.promotion < k}
+                        disabled={op.elite < k}
                         sx={{
                           display: "flex",
                           flexDirection: "column",
@@ -162,16 +162,16 @@ const SupportSelection = ((props: Props) => {
                               layout="fill"
                               alt={""}
                             />
-                            {(!op.mastery[k] || op.mastery[k] === 0
+                            {(!op.masteries[k] || op.masteries[k] === 0
                               ? <Image
-                                src={`/img/rank/${op.skillLevel}.png`}
+                                src={`/img/rank/${op.rank}.png`}
                                 layout="fill"
-                                alt={`Level ${op.skillLevel}`}
+                                alt={`Level ${op.rank}`}
                               />
                               : <Image
-                                src={`/img/rank/m-${op.mastery[k]}.png`}
+                                src={`/img/rank/m-${op.masteries[k]}.png`}
                                 layout="fill"
-                                alt={`Mastery Level ${op.mastery[k]}`}
+                                alt={`Mastery Level ${op.masteries[k]}`}
                               />
                             )}
                           </Box>
