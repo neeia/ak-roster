@@ -11,7 +11,7 @@ interface Props {
 }
 const Module = ((props: Props) => {
   const { op, onChange } = props;
-  const opInfo: OperatorData = operatorJson[op.id as keyof typeof operatorJson];
+  const opData: OperatorData = operatorJson[op.id as keyof typeof operatorJson];
 
   return (
     <Box sx={{
@@ -20,8 +20,8 @@ const Module = ((props: Props) => {
       alignItems: "center",
       gap: "4px",
     }}>
-      {opInfo.modules.map((module: ModuleData, i: number) => {
-        const disabled = !op.owned || op.level < MODULE_REQ_BY_RARITY[op.rarity] || op.elite < 2;
+      {opData.modules.map((module: ModuleData, i: number) => {
+        const disabled = !op.potential || op.level < MODULE_REQ_BY_RARITY[opData.rarity] || op.elite < 2;
         return (
           <Box
             key={`maB${i}`}
@@ -52,9 +52,9 @@ const Module = ((props: Props) => {
             <Box sx={{ gridArea: "icon", display: "flex", flexDirection: "column", alignItems: "center", }}>
               <Image
                 className={disabled ? "Mui-disabled" : ""}
-                width="48px"
-                height="48px"
-                src={`/img/equip/${opInfo.modules[i].typeName.toLowerCase()}.png`}
+                width={48}
+                height={48}
+                src={`/img/equip/${opData.modules[i].typeName.toLowerCase()}.png`}
                 alt={`Module ${i + 1}`}
               />
               <Typography
@@ -82,8 +82,8 @@ const Module = ((props: Props) => {
                 disabled={disabled}
               >
                 <Image
-                  width="32px"
-                  height="32px"
+                  width={32}
+                  height={32}
                   src={`/img/equip/img_stg${j}.png`}
                   alt={`Module ${j}`}
                 />

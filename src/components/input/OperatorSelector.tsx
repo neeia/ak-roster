@@ -3,7 +3,6 @@ import { Operator, OperatorData } from 'types/operator';
 import classList from "data/classList";
 import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
-import { isUndefined } from "util";
 import operatorJson from "data/operators.json";
 
 interface Props {
@@ -21,9 +20,11 @@ const OperatorSelector = React.memo((props: Props) => {
 
   const ps = sort ?? (() => 0)
   function sortComparator(a: Operator, b: Operator) {
+    const opDataA = operatorJson[a.id as keyof typeof operatorJson];
+    const opDataB = operatorJson[b.id as keyof typeof operatorJson];
     return ps(a, b) ||
-      classList.indexOf(a.class) - classList.indexOf(b.class) ||
-      a.name.localeCompare(b.name)
+      classList.indexOf(opDataA.class) - classList.indexOf(opDataB.class) ||
+      opDataA.name.localeCompare(opDataB.name)
   }
 
   // Operator Selector Component
@@ -38,9 +39,9 @@ const OperatorSelector = React.memo((props: Props) => {
           op={op}
           onClick={onClick}
           hidden={!defineFilter(operatorJson[op.id as keyof typeof operatorJson], op)}
-          toggled={isUndefined(toggleGroup) ? undefined : toggleGroup.includes(op.id)}
+          toggled={toggleGroup ? toggleGroup.includes(op.id) : undefined}
         />
-      )}
+        )}
     </Box>)
 });
 OperatorSelector.displayName = "OperatorSelector"

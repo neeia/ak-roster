@@ -32,17 +32,17 @@ const EditOperator = React.memo((props: Props) => {
   if (!op) return null;
   const opId = op.id;
   const opSkins: Skin[] = skinJson[opId as keyof typeof skinJson];
-  const opInfo: OperatorData = operatorJson[opId as keyof typeof operatorJson];
+  const opData: OperatorData = operatorJson[opId as keyof typeof operatorJson];
 
   let intermediate = opId;
   if (op.elite === 2) {
     intermediate += "_2";
-  } else if (op.elite === 1 && op.name === "Amiya") {
+  } else if (op.elite === 1 && opData.name === "Amiya") {
     intermediate += "_1";
   }
   const imgUrl = `/img/avatars/${op.skin ?? intermediate}.png`;
 
-  const opSplit = op.name.split(" the ");
+  const opSplit = opData.name.split(" the ");
   const name = (
     <Typography
       component="div"
@@ -79,17 +79,17 @@ const EditOperator = React.memo((props: Props) => {
       },
       flexDirection: "column"
     }}>
-      <ExtLink href={`https://aceship.github.io/AN-EN-Tags/akhrchars.html?opname=${op.name}`} label="ACE" title="Aceship">
+      <ExtLink href={`https://aceship.github.io/AN-EN-Tags/akhrchars.html?opname=${opData.name}`} label="ACE" title="Aceship">
         <Image src={`/img/ext/aceship.png`} width={iconWidth} height={iconWidth} alt="" />
       </ExtLink>
-      <ExtLink href={`https://gamepress.gg/arknights/operator/${op.name.replace(/( the )|[ !@#$%^&*(),.]/g, "-")}`} label="GP" title="Gamepress">
+      <ExtLink href={`https://gamepress.gg/arknights/operator/${opData.name.replace(/( the )|[ !@#$%^&*(),.]/g, "-")}`} label="GP" title="Gamepress">
         <Image src={`/img/ext/gp.png`} width={iconWidth} height={iconWidth} alt="" />
       </ExtLink>
-      <ExtLink href={`http://prts.wiki/w/${encodeURIComponent(opInfo.cnName)}`} label="PRTS">
+      <ExtLink href={`http://prts.wiki/w/${encodeURIComponent(opData.cnName)}`} label="PRTS">
         <Image src={`/img/ext/prts.png`} width={iconWidth} height={iconWidth} alt="" />
       </ExtLink>
       {opId in sg0
-        ? <ExtLink href={`https://sanitygone.help/operators/${op.name.toLowerCase().replace(/ /g, "-")}`} label="S;G" title="Sanity;Gone">
+        ? <ExtLink href={`https://sanitygone.help/operators/${opData.name.toLowerCase().replace(/ /g, "-")}`} label="S;G" title="Sanity;Gone">
           <Image src={`/img/ext/sg0.png`} width={iconWidth} height={iconWidth} alt="" />
         </ExtLink>
         : null
@@ -171,7 +171,7 @@ const EditOperator = React.memo((props: Props) => {
           childrenL={<Promotion op={op} onChange={onChange} />}
           childrenR={<Level op={op} onChange={onChange} />}
         />
-        {opInfo.skills.length !== 0
+        {opData.skills.length !== 0
           ? <EditRow
             titleL="Skill Rank"
             titleR="Masteries"
@@ -185,7 +185,7 @@ const EditOperator = React.memo((props: Props) => {
             ? "Outfits"
             : undefined
           }
-          titleR={opInfo.modules.length !== 0
+          titleR={opData.modules.length !== 0
             ? "Modules"
             : undefined
           }
@@ -193,7 +193,7 @@ const EditOperator = React.memo((props: Props) => {
             ? <Skins op={op} onChange={onChange} />
             : undefined
           }
-          childrenR={opInfo.modules.length !== 0
+          childrenR={opData.modules.length !== 0
             ? <Module op={op} onChange={onChange} />
             : undefined
           }

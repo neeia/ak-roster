@@ -80,7 +80,7 @@ const Input: NextPage = () => {
               copySource = safeMerge(source, op);
             }
 
-            op = changeOwned(op, copySource.owned);
+            op = changeOwned(op, copySource.potential > 0);
             op = changeFavorite(op, copySource.favorite);
             op = changePotential(op, copySource.potential);
             op = changePromotion(op, copySource.elite);
@@ -219,13 +219,14 @@ const Input: NextPage = () => {
             selectPreset={setPreset}
             applyPreset={() => setBatch(true)}
           />
-          <EditPreset
+          {/* TODO: Put presets back in */}
+          {/* <EditPreset
             open={editPresetOpen}
             onClose={() => setEditPresetOpen(false)}
             preset={presets[preset]}
             onChange={changePreset}
             rename={rename}
-          />
+          /> */}
           {batch
             ? <>
               <Divider sx={{ display: { xs: "none", sm: "inherit" } }} />

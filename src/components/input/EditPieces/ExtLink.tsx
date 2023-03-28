@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Link } from "@mui/material";
 
 interface Props {
   href: string;
@@ -10,20 +10,21 @@ interface Props {
 const ExtLink = (props: Props) => {
   const { href, label, title, children } = props;
   return (
-    <Button
+    <Link href={href}
       sx={{
         px: 1,
         py: 0,
         justifyContent: "end",
         gap: 1
       }}
-      onClick={() => window.open(href, "_blank", "noreferrer noopener")}
+      target="_blank"
+      rel="noreferrer noopener"
     >
       <Box sx={{ textDecoration: "none" }} component="abbr" title={title}>
         {label}
       </Box>
       {children}
-    </Button>
+    </Link>
   );
 }
 export default ExtLink;

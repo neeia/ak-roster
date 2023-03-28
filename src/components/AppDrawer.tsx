@@ -133,7 +133,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
 
   const drawerContent = (
     <>
-      <NextLink href={`/`} passHref>
+      <NextLink href={`/`}>
         <Typography
           component="h1"
           variant="h4"
@@ -253,23 +253,22 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
                       }}
                       disabled={pg.requireLogin && !user}
                     >
-                      <NextLink href={`${tabPath}${pagePath}`} passHref>
-                        <Link
-                          sx={{
-                            display: "block",
-                            width: "100%",
-                            px: 2,
-                            py: 1.5,
-                            ...(currentPage === pg.title && {
-                              color: "background.paper",
-                              fontWeight: "bold",
-                            }),
-                          }}
-                          variant="body2"
-                        >
-                          {pg.title}
-                        </Link>
-                      </NextLink>
+                      <Link component={NextLink}
+                        href={`${tabPath}${pagePath}`}
+                        sx={{
+                          display: "block",
+                          width: "100%",
+                          px: 2,
+                          py: 1.5,
+                          ...(currentPage === pg.title && {
+                            color: "background.paper",
+                            fontWeight: "bold",
+                          }),
+                        }}
+                        variant="body2"
+                      >
+                        {pg.title}
+                      </Link>
                     </ListItemButton>
                   </ListItem>
                 )

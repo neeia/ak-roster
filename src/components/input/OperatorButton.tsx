@@ -6,6 +6,7 @@ import { Favorite } from "@mui/icons-material";
 import getTextWidth from "styles/getTextWidth";
 import appTheme from "styles/theme/appTheme";
 import Image from "next/image";
+import operatorJson from "data/operators.json";
 
 const WIDTH_TO_PX = 10 / 7;
 const LONG_CUTOFF = 75;
@@ -22,8 +23,9 @@ interface Props {
 
 const OperatorButton = React.memo((props: Props) => {
   const { op, onClick, hidden, toggled, img, alt } = props;
+  const opData = operatorJson[op.id as keyof typeof operatorJson];
 
-  const [n, t] = op.name.split(/ [Tt]he /g);
+  const [n, t] = opData.name.split(/ [Tt]he /g);
   const name = t ?? n;
   const width = getTextWidth(name, JSON.stringify(appTheme.typography.caption).replace(/[\{\}]+/g, "")) * WIDTH_TO_PX;
 
@@ -39,7 +41,7 @@ const OperatorButton = React.memo((props: Props) => {
   // Process operator name
   let opName = (
     t
-      ? <abbr title={op.name}>
+      ? <abbr title={opData.name}>
         {nameComponent}
       </abbr>
       : nameComponent
@@ -55,19 +57,20 @@ const OperatorButton = React.memo((props: Props) => {
         listStyleType: "none",
       }}>
       <Button
-        className={!toggled ? op.owned ? "" : "unowned" : toggled ? "toggled" : "untoggled"}
+        className={!toggled ? op.potential ? "" : "unowned" : toggled ? "toggled" : "untoggled"}
         onClick={() => onClick(op.id)}
       >
         <Box
-          className={toggled || op.owned ? "" : "unowned"}
+          className={toggled || op.potential ? "" : "unowned"}
           sx={{
             height: "calc(4rem + 3px)",
             width: "4rem",
             gridArea: "1 / 1",
-            borderBottom: `3px solid ${rarityColors[op.rarity]}`,
+            borderBottom: `3px solid ${rarityColors[opData.rarity]}`,
+            position: "relative"
           }}
         >
-          <Image src={imgUrl} height="128px" width="128px" alt="" />
+          <Image src={imgUrl} layout="fill" alt="" />
         </Box>
         <Box sx={{
           gridArea: "1 / 1",
@@ -84,7 +87,7 @@ const OperatorButton = React.memo((props: Props) => {
         </Box>
         {img &&
           <Box
-            className={toggled || op.owned ? "" : "unowned"}
+            className={toggled || op.potential ? "" : "unowned"}
             sx={{
               height: "calc(2rem + 3px)",
               width: "2rem",

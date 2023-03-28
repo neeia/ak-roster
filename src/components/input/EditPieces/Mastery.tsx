@@ -11,7 +11,7 @@ interface Props {
 }
 const Mastery = ((props: Props) => {
   const { op, onChange } = props;
-  const opInfo: OperatorData = operatorJson[op.id as keyof typeof operatorJson];
+  const opData: OperatorData = operatorJson[op.id as keyof typeof operatorJson];
 
   return (
     <Box sx={{
@@ -20,7 +20,7 @@ const Mastery = ((props: Props) => {
       alignItems: "center",
       gap: "4px",
     }}>
-      {[...Array(getNumSkills(op))].map((_, i) => {
+      {[...Array(opData.skills.length)].map((_, i) => {
         const disabled = !op.potential || op.rank < 7 || op.elite < 2;
         return (
           <Box
@@ -44,15 +44,15 @@ const Mastery = ((props: Props) => {
                 mb: -0.25,
                 zIndex: 1
               }}>
-              {opInfo.skills[i].skillName}
+              {opData.skills[i].skillName}
             </Typography>
-            {opInfo !== undefined
+            {opData !== undefined
               ? <Box
                 component="img"
                 className={op.elite < i ? "Mui-disabled" : ""}
                 sx={{ gridArea: "icon" }}
                 width="48px"
-                src={`/img/skills/${opInfo.skills[i].iconId ?? opInfo.skills[i].skillId}.png`}
+                src={`/img/skills/${opData.skills[i].iconId ?? opData.skills[i].skillId}.png`}
                 alt={`Skill ${i + 1}`}
               />
               : ""}
@@ -72,14 +72,14 @@ const Mastery = ((props: Props) => {
                 disabled={disabled}
               >
                 <Image
-                  width="32px"
-                  height="32px"
+                  width={32}
+                  height={32}
                   src={`/img/rank/bg.png`}
                   alt={""}
                 />
                 <Image
-                  width="32px"
-                  height="32px"
+                  width={32}
+                  height={32}
                   src={`/img/rank/m-${j}.png`}
                   alt={`Mastery ${j}`}
                 />

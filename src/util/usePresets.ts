@@ -1,16 +1,14 @@
-import { useEffect } from "react";
-import { Operator, defaultPresetObject } from '../types/operator';
+import { Preset, defaultPresetObject } from '../types/operator';
 import useLocalStorage from './useLocalStorage';
-import { repair } from "./useOperators";
 
 function usePresets() {
-  const [presets, setPresets] = useLocalStorage<Record<string, Operator>>("presets", Object.fromEntries(
+  const [presets, setPresets] = useLocalStorage<Record<string, Preset>>("presets", Object.fromEntries(
     [...Array(6)].map(defaultPresetObject)
   ));
 
-  const onChange = (preset: Operator) => {
+  const onChange = (preset: Preset) => {
     setPresets(
-      (oldOperators: Record<string, Operator>): Record<string, Operator> => {
+      (oldOperators: Record<string, Preset>): Record<string, Preset> => {
         const copyOperators = { ...oldOperators };
         copyOperators[preset.id] = { ...preset };
         return copyOperators;
@@ -19,7 +17,7 @@ function usePresets() {
   }
 
   const rename = (presetID: string, value: string) => {
-    setPresets((oldOperators: Record<string, Operator>): Record<string, Operator> => {
+    setPresets((oldOperators: Record<string, Preset>): Record<string, Preset> => {
       const copyOperators = { ...oldOperators };
       const copyOperatorData = { ...copyOperators[presetID] };
       copyOperatorData.name = value;
