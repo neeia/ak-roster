@@ -88,12 +88,14 @@ const SkillLevel = (props: Props) => {
           <Image
             src={`/img/rank/bg.png`}
             layout="fill"
+            sizes="64px"
             alt={""}
           />
           {op.potential
             ? <Image
               src={`/img/rank/${op.rank}.png`}
               layout="fill"
+              sizes="64px"
               alt={`Rank ${op.rank}`}
             />
             : null}

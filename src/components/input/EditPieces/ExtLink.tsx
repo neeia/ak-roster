@@ -12,10 +12,10 @@ const ExtLink = (props: Props) => {
   return (
     <Link href={href}
       sx={{
-        px: 1,
-        py: 0,
+        display: "flex",
         justifyContent: "end",
-        gap: 1
+        gap: 1,
+        textDecoration: "none"
       }}
       target="_blank"
       rel="noreferrer noopener"

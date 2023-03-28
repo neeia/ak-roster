@@ -26,7 +26,7 @@ const Potential = ((props: Props) => {
       borderRadius: 1,
       width: "fit-content",
       mx: "auto",
-      boxShadow: +op.owned,
+      boxShadow: op.potential && 1,
       "& .MuiButtonBase-root": {
         boxShadow: 0,
       },
@@ -42,19 +42,14 @@ const Potential = ((props: Props) => {
             }}
             className={op.potential === i + 1 ? "active" : "inactive"}
             onClick={() => onChange(changePotential(op, i + 1))}
-            disabled={!op.owned}
+            disabled={!op.potential}
           >
-            <Box sx={{
-              width: "32px",
-              height: "32px",
-              position: "relative",
-            }}>
-              <Image
-                layout="fill"
-                src={`/img/potential/${i + 1}.png`}
-                alt={`Potential ${i + 1}`}
-              />
-            </Box>
+            <Image
+              width={32}
+              height={32}
+              src={`/img/potential/${i + 1}.png`}
+              alt={`Potential ${i + 1}`}
+            />
           </IconButton>
         </Tooltip>
       )}

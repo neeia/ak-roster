@@ -70,7 +70,7 @@ const OperatorButton = React.memo((props: Props) => {
             position: "relative"
           }}
         >
-          <Image src={imgUrl} layout="fill" alt="" />
+          <Image src={imgUrl} width={64} height={64} alt="" />
         </Box>
         <Box sx={{
           gridArea: "1 / 1",
@@ -95,7 +95,7 @@ const OperatorButton = React.memo((props: Props) => {
               position: "relative",
             }}
           >
-            <Image src={img} layout="fill" alt={alt ?? ""} />
+            <Image src={img} width={32} height={32} alt={alt ?? ""} />
           </Box>
         }
       </Button>

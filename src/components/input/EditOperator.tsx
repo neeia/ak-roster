@@ -85,7 +85,7 @@ const EditOperator = React.memo((props: Props) => {
       <ExtLink href={`https://gamepress.gg/arknights/operator/${opData.name.replace(/( the )|[ !@#$%^&*(),.]/g, "-")}`} label="GP" title="Gamepress">
         <Image src={`/img/ext/gp.png`} width={iconWidth} height={iconWidth} alt="" />
       </ExtLink>
-      <ExtLink href={`http://prts.wiki/w/${encodeURIComponent(opData.cnName)}`} label="PRTS">
+      <ExtLink href={`http://prts.wiki/w/${encodeURIComponent(opData.cnName)}`} label="PRTS" title="PRTS Wiki">
         <Image src={`/img/ext/prts.png`} width={iconWidth} height={iconWidth} alt="" />
       </ExtLink>
       {opId in sg0

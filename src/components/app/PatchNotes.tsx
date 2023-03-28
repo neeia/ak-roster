@@ -55,7 +55,7 @@ const PatchNotes = () => {
             <p>Hey, it&apos;s Neia.</p>
             <p>
               The long-awaited <Link href="https://samidare.io/">Samidare</Link> operator planner has arrived!
-              The <NextLink href="/planner/goals" passHref><Link>goals</Link></NextLink> page is now available
+              The <Link component={NextLink} href="/planner/goals">goals</Link> page is now available
               and ready for use. Here, you can select goals, keep track of your depot, and when you complete goals,
               your changes will automatically update your roster.
             </p>

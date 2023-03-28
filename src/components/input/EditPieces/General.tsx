@@ -20,8 +20,8 @@ const General = ((props: Props) => {
       }
     }}>
       <Button
-        className={op.owned ? "active" : ""}
-        onClick={() => onChange(changeOwned(op, !op.owned))}
+        className={op.potential ? "active" : ""}
+        onClick={() => onChange(changeOwned(op, !op.potential))}
       >
         Own
       </Button>
