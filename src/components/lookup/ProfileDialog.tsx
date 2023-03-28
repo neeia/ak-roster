@@ -27,7 +27,7 @@ const ProfileDialog = (props: Props) => {
     let intermediate = opId;
     if (op.elite === 2) {
       intermediate += "_2";
-    } else if (op.elite === 1 && op.name === "Amiya") {
+    } else if (op.elite === 1 && op.id === "char_002_amiya") {
       intermediate += "_1";
     }
     return `/img/avatars/${op.skin ?? intermediate}.png`;
@@ -68,7 +68,7 @@ const ProfileDialog = (props: Props) => {
               transform: "translateY(-50%)",
               marginBottom: "-72px"
             }}>
-              <Image src={getImgSrc(user?.assistant)} height="240px" width="240px" alt="" />
+              <Image src={getImgSrc(user?.assistant)} height={240} width={240} alt="" />
             </Box>
             : null
           }
@@ -146,13 +146,12 @@ const ProfileDialog = (props: Props) => {
                 alignItems: "center",
                 height: "min-content", pl: 1
               }}>
-                <Box sx={{ width: "24px", height: "24px", position: "relative" }}>
-                  <Image
-                    src="/img/ext/icon_clyde_white_RGB.svg"
-                    layout="fill"
-                    alt="Discord"
-                  />
-                </Box>
+                <Image
+                  src="/img/ext/icon_clyde_white_RGB.svg"
+                  width={24}
+                  height={24}
+                  alt="Discord"
+                />
                 {social?.discord?.username}#{social?.discord?.tag}
                 <Reddit /> {social && social.reddit && <Link href={`https://reddit.com/u/${social.reddit}`} rel="noreferrer">{social.reddit}</Link>}
               </Box>

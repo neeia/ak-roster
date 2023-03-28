@@ -21,9 +21,11 @@ const CollectionContainer = (props: Props) => {
 
   const defineSort = sort ?? (() => 0)
   function sortComparator(a: Operator, b: Operator) {
+    const opDataA = operatorJson[a.id as keyof typeof operatorJson];
+    const opDataB = operatorJson[b.id as keyof typeof operatorJson];
     return defineSort(a, b) ||
-      classList.indexOf(a.class) - classList.indexOf(b.class) ||
-      a.name.localeCompare(b.name)
+      classList.indexOf(opDataA.class) - classList.indexOf(opDataB.class) ||
+      opDataA.name.localeCompare(opDataB.name)
   }
 
   // Operator Selector Component

@@ -29,7 +29,7 @@ const View: NextPage = () => {
   ]);
   const [, setSearchName, filter, addFilter, removeFilter, clearFilters, filterFunction] = useFilter(
     {
-      "owned": { "owned": (op: Operator) => op.owned }
+      "owned": { "owned": (op: Operator) => op.potential > 0 }
     });
 
   const [opId, setOpId] = React.useState("");

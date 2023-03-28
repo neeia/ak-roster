@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { Operator, OperatorData } from "../../types/operator";
 import { Favorite } from "@mui/icons-material";
 import { rarityColors } from "../../styles/rarityColors";
-import { getNumSkills, MAX_LEVEL_BY_RARITY } from "../../util/changeOperator";
+import { MAX_LEVEL_BY_RARITY } from "../../util/changeOperator";
 import operatorJson from "../../data/operators.json";
 import Image from "next/image";
 
@@ -16,16 +16,16 @@ interface Props {
 const OperatorBlock = (props: Props) => {
   const { op, nobg, skill } = props;
 
-  const opInfo: OperatorData = operatorJson[op.id as keyof typeof operatorJson];
+  const opData: OperatorData = operatorJson[op.id as keyof typeof operatorJson];
   let intermediate = op.id;
   if (op.elite === 2) {
     intermediate += "_2";
-  } else if (op.elite === 1 && op.name === "Amiya") {
+  } else if (op.elite === 1 && opData.name === "Amiya") {
     intermediate += "_1";
   }
 
   const reg = /( the )|\(/gi;
-  const splitName = op.name.replace(/\)$/, '').split(reg);
+  const splitName = opData.name.replace(/\)$/, '').split(reg);
   const name = splitName.length > 1 ? splitName[2].split(")")[0] : splitName[0];
   const nameIsLong = name.split(" ").length > 1 && name.length > 11;
 
@@ -56,6 +56,7 @@ const OperatorBlock = (props: Props) => {
     </Box>
   )
 
+  const iconSizes = "(max-width: 768px) 16px, 24px";
   const potentialBlock =
     <Box sx={{
       display: "grid",
@@ -87,7 +88,7 @@ const OperatorBlock = (props: Props) => {
           position: "relative",
         }}
       >
-        <Image src={`/img/potential/${op.potential}.png`} layout="fill" alt={`Potential ${op.potential}`} />
+        <Image src={`/img/potential/${op.potential}.png`} fill sizes={iconSizes} alt={`Potential ${op.potential}`} />
       </Box>
     </Box>
 
@@ -101,7 +102,7 @@ const OperatorBlock = (props: Props) => {
         position: "relative",
       }}
     >
-      <Image src={`/img/elite/${op.elite}_s_box.png`} layout="fill" alt={`Elite ${op.elite}`} />
+      <Image src={`/img/elite/${op.elite}_s_box.png`} fill sizes="(max-width: 768px) 20px, 32px" alt={`Elite ${op.elite}`} />
     </Box >
 
   const levelSx = {
@@ -122,7 +123,7 @@ const OperatorBlock = (props: Props) => {
         <svg width="100%" height="100%">
           <circle cx="50%" cy="50%" r="45%"
             fill="#323232" fillOpacity="0.95" strokeWidth="2"
-            stroke={op.level === MAX_LEVEL_BY_RARITY[op.rarity][2] ? "#f7d98b" : "#808080"} />
+            stroke={op.level === MAX_LEVEL_BY_RARITY[opData.rarity][2] ? "#f7d98b" : "#808080"} />
         </svg>
       </Box>
       <Box sx={{
@@ -181,7 +182,7 @@ const OperatorBlock = (props: Props) => {
       justifySelf: "end",
       gap: "2px",
     }}>
-      {[...Array(getNumSkills(op))].map((_, n: number) =>
+      {[...Array(opData.skills.length)].map((_, n: number) =>
         <Box
           key={n}
           sx={{
@@ -199,14 +200,26 @@ const OperatorBlock = (props: Props) => {
           }}
         >
           <Box className="stack">
-            <Image src={`/img/rank/bg.png`} layout="fill" alt={`Skill ${n + 1}`} />
+            <Image src={`/img/rank/bg.png`}
+              fill
+              sizes={iconSizes}
+              alt={`Skill ${n + 1}`}
+            />
           </Box>
           {(!op.masteries || !op.masteries[n] || op.masteries[n] === 0
             ? <Box className="stack">
-              <Image src={`/img/rank/${op.rank}.png`} layout="fill" alt={`Rank ${op.rank}`} />
+              <Image src={`/img/rank/${op.rank}.png`}
+                fill
+                sizes={iconSizes}
+                alt={`Rank ${op.rank}`}
+              />
             </Box>
             : <Box className="stack">
-              <Image src={`/img/rank/m-${op.masteries[n]}.png`} layout="fill" alt={`Mastery ${op.masteries[n]}`} />
+              <Image src={`/img/rank/m-${op.masteries[n]}.png`}
+                fill
+                sizes={iconSizes}
+                alt={`Mastery ${op.masteries[n]}`}
+              />
             </Box>
           )}
         </Box>
@@ -216,8 +229,8 @@ const OperatorBlock = (props: Props) => {
   const opModuleUrls = op.modules ? op.modules
     .map((mod, n: number) => {
       return {
-        typeName: opInfo.modules[n].typeName,
-        url: `/img/equip/${opInfo.modules[n].typeName.toLowerCase()}.png`,
+        typeName: opData.modules[n].typeName,
+        url: `/img/equip/${opData.modules[n].typeName.toLowerCase()}.png`,
         index: n,
         mod
       }
@@ -256,7 +269,7 @@ const OperatorBlock = (props: Props) => {
             className="frame"
           />
           <Box zIndex={2} sx={{ display: "inherit" }}>
-            <Image src={url} height="64px" width="64px" alt={typeName} />
+            <Image src={url} height={64} width={64} alt={typeName} />
           </Box>
           <Typography
             zIndex={3}
@@ -300,7 +313,7 @@ const OperatorBlock = (props: Props) => {
       boxShadow: 1,
       padding: { xs: "4px 8px 4px 6px", sm: "6px 10px 8px 10px" },
       margin: { xs: "2px 4px 4px 10px", sm: "2px 16px 10px 12px" },
-      opacity: op.owned ? 1 : 0.5,
+      opacity: op.potential ? 1 : 0.5,
       borderRadius: "4px",
     }}>
       {opName}
@@ -320,11 +333,15 @@ const OperatorBlock = (props: Props) => {
           gridArea: "img",
           height: { xs: "84px", sm: "124px" },
           width: { xs: "80px", sm: "120px" },
-          borderBottom: `4px solid ${rarityColors[op.rarity]}`,
+          borderBottom: `4px solid ${rarityColors[opData.rarity]}`,
           position: "relative"
         }}
       >
-        <Image src={`/img/avatars/${op.skin ?? intermediate}.png`} layout="fill" alt="" />
+        <Image src={`/img/avatars/${op.skin ?? intermediate}.png`}
+          fill
+          sizes="(max-width: 768px) 80px, 120px"
+          alt=""
+        />
       </Box>
       {levelBubble}
       {skillBlock}
