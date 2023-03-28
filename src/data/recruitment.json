@@ -11471,10 +11471,10 @@
       4
     ]
   },
-  "DPS,Defender": {
+  "Defender,DPS": {
     "tags": [
-      "DPS",
-      "Defender"
+      "Defender",
+      "DPS"
     ],
     "operators": [
       {
@@ -13646,10 +13646,10 @@
       5
     ]
   },
-  "DPS,Debuff": {
+  "Debuff,DPS": {
     "tags": [
-      "DPS",
-      "Debuff"
+      "Debuff",
+      "DPS"
     ],
     "operators": [
       {
@@ -13679,10 +13679,10 @@
       4
     ]
   },
-  "DPS,Defense": {
+  "Defense,DPS": {
     "tags": [
-      "DPS",
-      "Defense"
+      "Defense",
+      "DPS"
     ],
     "operators": [
       {
@@ -16766,10 +16766,10 @@
       6
     ]
   },
-  "DPS,Defender,Top Operator": {
+  "Defender,DPS,Top Operator": {
     "tags": [
-      "DPS",
       "Defender",
+      "DPS",
       "Top Operator"
     ],
     "operators": [
@@ -17648,10 +17648,10 @@
       6
     ]
   },
-  "DPS,Defense,Top Operator": {
+  "Defense,DPS,Top Operator": {
     "tags": [
-      "DPS",
       "Defense",
+      "DPS",
       "Top Operator"
     ],
     "operators": [
@@ -19619,10 +19619,10 @@
       5
     ]
   },
-  "DPS,Defender,Senior Operator": {
+  "Defender,DPS,Senior Operator": {
     "tags": [
-      "DPS",
       "Defender",
+      "DPS",
       "Senior Operator"
     ],
     "operators": [
@@ -20946,10 +20946,10 @@
       5
     ]
   },
-  "DPS,Defense,Senior Operator": {
+  "Defense,DPS,Senior Operator": {
     "tags": [
-      "DPS",
       "Defense",
+      "DPS",
       "Senior Operator"
     ],
     "operators": [
@@ -21738,10 +21738,10 @@
       1
     ]
   },
-  "DPS,Defender,Melee": {
+  "Defender,DPS,Melee": {
     "tags": [
-      "DPS",
       "Defender",
+      "DPS",
       "Melee"
     ],
     "operators": [
@@ -23141,10 +23141,10 @@
       5
     ]
   },
-  "DPS,Defense,Melee": {
+  "Defense,DPS,Melee": {
     "tags": [
-      "DPS",
       "Defense",
+      "DPS",
       "Melee"
     ],
     "operators": [
@@ -24553,10 +24553,10 @@
       5
     ]
   },
-  "DPS,Debuff,Ranged": {
+  "Debuff,DPS,Ranged": {
     "tags": [
-      "DPS",
       "Debuff",
+      "DPS",
       "Ranged"
     ],
     "operators": [
@@ -24813,11 +24813,11 @@
       4
     ]
   },
-  "Caster,DPS,Debuff": {
+  "Caster,Debuff,DPS": {
     "tags": [
       "Caster",
-      "DPS",
-      "Debuff"
+      "Debuff",
+      "DPS"
     ],
     "operators": [
       {
@@ -24911,11 +24911,11 @@
       5
     ]
   },
-  "DPS,Defender,Defense": {
+  "Defender,Defense,DPS": {
     "tags": [
-      "DPS",
       "Defender",
-      "Defense"
+      "Defense",
+      "DPS"
     ],
     "operators": [
       {
@@ -24948,10 +24948,10 @@
       5
     ]
   },
-  "DPS,Defender,Survival": {
+  "Defender,DPS,Survival": {
     "tags": [
-      "DPS",
       "Defender",
+      "DPS",
       "Survival"
     ],
     "operators": [
@@ -25134,10 +25134,10 @@
     ],
     "guarantees": []
   },
-  "DPS,Defense,Guard": {
+  "Defense,DPS,Guard": {
     "tags": [
-      "DPS",
       "Defense",
+      "DPS",
       "Guard"
     ],
     "operators": [
@@ -25400,10 +25400,10 @@
       4
     ]
   },
-  "DPS,Debuff,Sniper": {
+  "Debuff,DPS,Sniper": {
     "tags": [
-      "DPS",
       "Debuff",
+      "DPS",
       "Sniper"
     ],
     "operators": [
@@ -25845,10 +25845,10 @@
       5
     ]
   },
-  "DPS,Defense,Survival": {
+  "Defense,DPS,Survival": {
     "tags": [
-      "DPS",
       "Defense",
+      "DPS",
       "Survival"
     ],
     "operators": [

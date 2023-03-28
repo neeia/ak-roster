@@ -168,7 +168,7 @@ const createRecruitmentJson = () => {
           guarantees.push(1);
         }
         return [
-          result.tags,
+          result.tags.sort((a, b) => a.localeCompare(b)),
           {
             ...result,
             guarantees,
