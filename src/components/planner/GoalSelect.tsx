@@ -5,18 +5,23 @@ import {
   Checkbox,
   Divider,
   FormControl,
+  IconButton,
+  InputAdornment,
   InputLabel,
   ListItemText,
   ListSubheader,
   MenuItem,
   Select,
   SelectChangeEvent,
+  TextField,
 } from "@mui/material";
 import { styled } from "@mui/system";
 import { useEffect, useMemo, useState } from "react";
 
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import { Operator, OpJsonObj } from "types/operator";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 const GoalMenuCheckboxItem = styled(MenuItem)(({ theme }) => ({
   height: "50px",
@@ -43,6 +48,7 @@ interface Props {
 const GoalSelect: React.FC<Props> = (props) => {
   const { opData, operator, onGoalsAdded } = props;
   const [selectedGoalNames, setSelectedGoalNames] = useState<string[]>([]);
+  const [goalPriority, setGoalPriority] = useState<number>(1);
 
   useEffect(() => {
     setSelectedGoalNames([]);
@@ -80,6 +86,7 @@ const GoalSelect: React.FC<Props> = (props) => {
       const eliteLevel = Number(goalName.charAt(goalName.length - 1));
       return {
         operatorId: operator.id,
+        priority: goalPriority.toString(),
         category: OperatorGoalCategory.Elite,
         eliteLevel,
       };
@@ -87,6 +94,7 @@ const GoalSelect: React.FC<Props> = (props) => {
       const skillLevel = Number(goalName.charAt(goalName.length - 1));
       return {
         operatorId: operator.id,
+        priority: goalPriority.toString(),
         category: OperatorGoalCategory.SkillLevel,
         skillLevel,
       };
@@ -97,6 +105,7 @@ const GoalSelect: React.FC<Props> = (props) => {
       const { skillId } = operator.skills[skillNumber - 1];
       return {
         operatorId: operator.id,
+        priority: goalPriority.toString(),
         category: OperatorGoalCategory.Mastery,
         skillId,
         masteryLevel,
@@ -110,6 +119,7 @@ const GoalSelect: React.FC<Props> = (props) => {
       )!;
       return {
         operatorId: operator.id,
+        priority: goalPriority.toString(),
         category: OperatorGoalCategory.Module,
         moduleId,
         moduleLevel,
@@ -206,6 +216,18 @@ const GoalSelect: React.FC<Props> = (props) => {
       }
     }
     setSelectedGoalNames([...newSpecificGoals]);
+  };
+
+  const handlePriorityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newPriorityValue = e.target.value;
+    const numberValue = Number(newPriorityValue);
+    if (!Number.isNaN(numberValue)) {
+      setGoalPriority(numberValue);
+    }
+  };
+
+  const handlePriorityButtonClick = (amount: number) =>{
+    setGoalPriority(goalPriority + amount);
   };
 
   const handleAddGoals = () => {
@@ -307,7 +329,7 @@ const GoalSelect: React.FC<Props> = (props) => {
   };
 
   return (
-    <Box display="grid" gridTemplateColumns="1fr auto" columnGap={2}>
+    <Box display="grid" gridTemplateColumns="1fr auto auto" columnGap={2}>
       <FormControl>
         <InputLabel htmlFor="goal-select">Goals</InputLabel>
         <Select
@@ -336,6 +358,66 @@ const GoalSelect: React.FC<Props> = (props) => {
           {renderOptions()}
         </Select>
       </FormControl>
+      <TextField
+          size="medium"
+          label= "Goal Priority"
+          fullWidth
+          value={goalPriority}
+          onFocus={(e) => e.target.select()}
+          onChange={handlePriorityChange}
+          inputProps={{
+            type: "number",
+            min: 0,
+            step: 1,
+            "aria-label": "Goal priority",
+            sx: {
+              textAlign: "center",
+              width: "4ch", // width of 4 "0" characters
+              flexGrow: 1,
+            },
+          }}
+          InputProps={{
+            startAdornment: (
+                <InputAdornment position="start" sx={{ mr: 0 }}>
+                  <IconButton
+                      size="small"
+                      aria-label="Lowers goal priority by 1"
+                      edge="start"
+                      disabled={goalPriority === 0}
+                      onClick={() => handlePriorityButtonClick(-1)}
+                  >
+                    <RemoveCircleIcon />
+                  </IconButton>
+                </InputAdornment>
+            ),
+            endAdornment: (
+                <InputAdornment position="end" sx={{ ml: 0 }}>
+                  <IconButton
+                      size="small"
+                      aria-label="Raise goal priority by 1"
+                      edge="end"
+                      onClick={() => handlePriorityButtonClick(1)}
+                  >
+                    <AddCircleIcon />
+                  </IconButton>
+                </InputAdornment>
+            ),
+            sx: {
+              px: "5px",
+              "& input[type=number]": {
+                "-moz-appearance": "textfield"
+              },
+              "& input[type=number]::-webkit-outer-spin-button": {
+                "-webkit-appearance": "none",
+                margin: 0
+              },
+              "& input[type=number]::-webkit-inner-spin-button": {
+                "-webkit-appearance": "none",
+                margin: 0
+              }
+            },
+          }}
+      />
       <Button
         color="primary"
         variant="contained"

@@ -134,7 +134,7 @@ const PlannerGoalCard = React.forwardRef<HTMLLIElement, Props>((props, ref) => {
           component="span"
           sx={{ fontSize: 20, lineHeight: 1, gridArea: "name", ml: { xs: 0, sm: 1 } }}
         >
-          {appellation ?? operator.name}
+          {appellation ?? operator.name} [{goal.priority}]
         </Typography>
 
         <Box
