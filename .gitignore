@@ -31,6 +31,9 @@ yarn-error.log*
 # Visual Studio cache/options directory
 .vs/
 
+# IntelliJ WebStorm cache/options directory
+.idea/
+
 # vercel
 .vercel
 
