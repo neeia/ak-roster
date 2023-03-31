@@ -49,11 +49,21 @@ const migrations: MigrationManifest = {
         .filter((goal) => Boolean(goal)),
     } as PersistedState;
   },
+  3: (state) => {
+    return {
+      ...state,
+      goals: (state as RootState).goals
+          .map((goal) => {
+            goal.priority ??= "0";
+            return goal;
+          })
+    } as PersistedState;
+  },
 };
 
 const persistConfig = {
   key: "root",
-  version: 2,
+  version: 3,
   storage,
   migrate: createMigrate(migrations, { debug: true }),
 };
