@@ -23,9 +23,10 @@ import PlannerGoalCard from "./PlannerGoalCard";
 
 interface Props {
   onCompleteGoal: (goal: PlannerGoal) => void;
+  priorityList: string[];
 }
 
-const OperatorGoals: React.FC<Props> = ({ onCompleteGoal }) => {
+const OperatorGoals: React.FC<Props> = ({ onCompleteGoal, priorityList }) => {
   const dispatch = useAppDispatch();
   const goals = useAppSelector(selectGoals);
 
@@ -85,7 +86,7 @@ const OperatorGoals: React.FC<Props> = ({ onCompleteGoal }) => {
           {(provided: DroppableProvided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
               <Box component="ul" sx={{ m: 0, p: 0 }}>
-                {goals.map((goal, i) => (
+                {goals.filter(x => priorityList.length == 0 || priorityList.includes(x.priority)).map((goal, i) => (
                   <Draggable key={i} draggableId={`goal-${i}`} index={i}>
                     {(provided: DraggableProvided) => (
                       <PlannerGoalCard
