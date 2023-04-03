@@ -17,6 +17,7 @@ import operatorsJson from "data/operators.json";
 
 import depotReducer from "./depotSlice";
 import goalsReducer from "./goalsSlice";
+import rosterReducer from "./rosterSlice";
 import storage from "./storage";
 import userReducer from "./userSlice";
 import { OperatorGoalCategory } from "types/goal";
@@ -64,6 +65,7 @@ const persistedReducer = persistReducer(
     depot: depotReducer,
     goals: goalsReducer,
     user: userReducer,
+    roster: rosterReducer,
   })
 );
 

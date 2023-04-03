@@ -1,5 +1,5 @@
 import React from "react";
-import { Operator, OperatorData, Skin } from "types/operator";
+import { Operator, OperatorData, OperatorId, Skin } from "types/operator";
 import operatorJson from "data/operators.json";
 import skinJson from "data/skins.json";
 import sg0 from "data/sg0.json";
@@ -16,21 +16,25 @@ import ExtLink from "./EditPieces/ExtLink";
 import { Close } from "@mui/icons-material";
 import Skins from "./EditPieces/Skins";
 import Image from "next/image";
+import { selectRoster } from "store/rosterSlice";
+import { useAppSelector } from "store/hooks";
 
 interface Props {
-  op?: Operator;
-  onChange: (op: Operator) => void;
+  opId?: OperatorId;
   open: boolean;
   onClose: () => void;
 }
 
 const EditOperator = React.memo((props: Props) => {
-  const { op, onChange, open, onClose } = props;
+  const { opId, open, onClose } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const operators = useAppSelector(selectRoster);
 
+  if (!opId) return null;
+  const op = operators[opId];
   if (!op) return null;
-  const opId = op.id;
+
   const opSkins: Skin[] = skinJson[opId as keyof typeof skinJson];
   const opData: OperatorData = operatorJson[opId as keyof typeof operatorJson];
 
@@ -162,21 +166,21 @@ const EditOperator = React.memo((props: Props) => {
         <EditRow
           titleL="General"
           titleR="Potential"
-          childrenL={<General op={op} onChange={onChange} />}
-          childrenR={<Potential op={op} onChange={onChange} />}
+          childrenL={<General op={op} />}
+          childrenR={<Potential op={op} />}
         />
         <EditRow
           titleL="Promotion"
           titleR="Level"
-          childrenL={<Promotion op={op} onChange={onChange} />}
-          childrenR={<Level op={op} onChange={onChange} />}
+          childrenL={<Promotion op={op} />}
+          childrenR={<Level op={op} />}
         />
         {opData.skills.length !== 0
           ? <EditRow
             titleL="Skill Rank"
             titleR="Masteries"
-            childrenL={<SkillLevel op={op} onChange={onChange} />}
-            childrenR={<Mastery op={op} onChange={onChange} />}
+            childrenL={<SkillLevel op={op} />}
+            childrenR={<Mastery op={op} />}
           />
           : null
         }
@@ -190,11 +194,11 @@ const EditOperator = React.memo((props: Props) => {
             : undefined
           }
           childrenL={opSkins && opSkins.length > 1
-            ? <Skins op={op} onChange={onChange} />
+            ? <Skins op={op} />
             : undefined
           }
           childrenR={opData.modules.length !== 0
-            ? <Module op={op} onChange={onChange} />
+            ? <Module op={op} />
             : undefined
           }
         />

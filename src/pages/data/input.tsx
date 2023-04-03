@@ -9,8 +9,7 @@ import SortDialog from "components/collate/SortDialog";
 import { useSort, useFilter } from "util/useSSF";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
-import { Operator, OperatorData } from "types/operator";
-import useOperators from "util/useOperators";
+import { Operator, OperatorData, OperatorId } from "types/operator";
 import BatchDialog from "components/batch/BatchDialog";
 import { safeMerge } from "util/useSync";
 import { changeOwned, changeFavorite, changePotential, changePromotion, changeLevel, changeSkillLevel, changeMastery } from "util/changeOperator";
@@ -19,6 +18,8 @@ import { ArrowBack, Check, Clear } from "@mui/icons-material";
 import EditPreset from "components/batch/EditPreset";
 import { AccountInfo, isCN } from "types/doctor";
 import useLocalStorage from "util/useLocalStorage";
+import { selectRoster } from "store/rosterSlice";
+import { useAppDispatch, useAppSelector } from "store/hooks";
 
 const EditOperator = dynamic(
   () => import("components/input/EditOperator"),
@@ -29,13 +30,14 @@ const OperatorSelector = dynamic(
   { ssr: false }
 );
 const Input: NextPage = () => {
+  const dispatch = useAppDispatch();
+  const operators = useAppSelector(selectRoster);
 
-  const [operators, setOperators] = useOperators();
   const [presets, changePreset, rename] = usePresets();
   const [batch, setBatch] = useState(false);
   const [preset, setPreset] = useState("");
 
-  const [opId, setOpId] = React.useState("");
+  const [opId, setOpId] = React.useState<OperatorId>();
   const [editOpen, setEditOpen] = React.useState(false);
 
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
@@ -51,14 +53,6 @@ const Input: NextPage = () => {
   }, []);
 
   const db = getDatabase();
-  const onChange = (op: Operator) => {
-    const copyOperators = { ...operators };
-    copyOperators[op.id] = { ...op };
-    if (user) {
-      set(ref(db, `users/${user.uid}/roster/${op.id}`), op);
-    }
-    setOperators(copyOperators);
-  };
   const [user, setUser] = useState<User | null>();
   useEffect(() => {
     const auth = getAuth();
@@ -296,15 +290,13 @@ const Input: NextPage = () => {
           },
         }}>
           <OperatorSelector
-            operators={operators}
             onClick={handleSelectOp}
             sort={sortFunction}
             filter={filterFunction}
             toggleGroup={batch ? selectGroup : undefined}
           />
           <EditOperator
-            onChange={onChange}
-            op={operators[opId]}
+            opId={opId}
             open={editOpen}
             onClose={() => setEditOpen(false)}
           />

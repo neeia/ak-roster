@@ -620,6 +620,21 @@ export function minMax(min: number, value: number, max: number) {
   return Math.min(Math.max(value, min), max);
 }
 
+
+// Converts an opJson entry into an Operator
+export function defaultOperatorObject(op: OperatorData): Operator {
+  return {
+    id: op.id as any,
+    favorite: false,
+    potential: 0,
+    elite: -1,
+    level: 0,
+    rank: 0,
+    masteries: [],
+    modules: []
+  };
+}
+
 // Make changes to an operator, ensuring nothing becomes invalid
 export const changeOwned = (op: Operator, value: boolean) => {
   op.potential = +value;
