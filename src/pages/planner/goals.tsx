@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import {Grid, Select, MenuItem, InputLabel, FormControl, SelectChangeEvent} from "@mui/material";
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
@@ -6,8 +6,8 @@ import GoalSelect from "components/planner/GoalSelect";
 import Layout from "components/Layout";
 import OperatorSearch from "components/planner/OperatorSearch";
 import { OpJsonObj } from "types/operator";
-import { useAppDispatch } from "store/hooks";
-import { addGoals, GoalsState } from "store/goalsSlice";
+import { useAppDispatch, useAppSelector} from "store/hooks";
+import { addGoals, GoalsState, selectGoals} from "store/goalsSlice";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import useOperators from "util/useOperators";
 import operatorsJson from "data/operators.json";
@@ -28,6 +28,9 @@ const Goals: NextPage = () => {
   const [operator, setOperator] = useState<OpJsonObj | null>(null);
   const dispatch = useAppDispatch();
   const [operators, setOperators] = useOperators();
+  const [selectedPriorities, setSelectedPriorities] = useState<string[]>([]);
+
+  const goals = useAppSelector(selectGoals);
 
   const handleGoalsAdded = (newGoals: PlannerGoal[]) => {
     dispatch(addGoals(newGoals));
@@ -86,6 +89,21 @@ const Goals: NextPage = () => {
     })
   }
 
+  const handlePriorityChange = (e: SelectChangeEvent<string[]>) => {
+    const newPriorities = e.target.value;
+    setSelectedPriorities([...newPriorities]);
+  };
+
+  const renderOptions = () =>
+  {
+    return [... new Set([...goals].sort((a,b) => Number(a.priority) - Number(b.priority)).map(x => x.priority))]
+        .map(x => (
+            <MenuItem key={x} value={x}>
+              <em>{x}</em>
+            </MenuItem>
+        ));
+  }
+
   return (
     <Layout tab="/planner" page="/goals">
       <Grid container mt={1} mb={2}>
@@ -119,13 +137,54 @@ const Goals: NextPage = () => {
           <GoalSelect op={operator && operators[operator.id]} opData={operator} onGoalsAdded={handleGoalsAdded} />
         </Grid>
       </Grid>
+      <Grid container mt={1} mb={2}>
+        <Grid  item
+               xs={12}
+               md={4}
+               sx={{
+                 pr: {
+                   xs: 0,
+                   md: 1,
+                 },
+               }}>
+          <FormControl fullWidth>
+            <InputLabel id="priority-filter-label">Filter by priority</InputLabel>
+            <Select
+                id="priority-filter"
+                name="priority-filter"
+                labelId="priority-filter-label"
+                label="Filter by priority"
+                fullWidth
+                multiple
+                value={selectedPriorities}
+                MenuProps={{
+                  anchorOrigin: {
+                    vertical: "bottom",
+                    horizontal: "left",
+                  },
+                  transformOrigin: {
+                    vertical: "top",
+                    horizontal: "left",
+                  },
+                  sx: { "& .MuiList-root": { mr: "25px", width: "100%" } },
+                }}
+                renderValue={(selected) => {
+                    return "Priorities: " + selected.sort((a,b) => Number(a)-Number(b)).join(', ');
+                }}
+                onChange={handlePriorityChange}
+            >
+              {renderOptions()}
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
 
       <Grid container spacing={2}>
         <Grid item xs={12} lg={7}>
-          <MaterialsNeeded />
+          <MaterialsNeeded priorityList={selectedPriorities}/>
         </Grid>
         <Grid item xs={12} lg={5}>
-          <PlannerGoals onCompleteGoal={handleGoalComplete} />
+          <PlannerGoals onCompleteGoal={handleGoalComplete} priorityList={selectedPriorities} />
         </Grid>
       </Grid>
     </Layout>
