@@ -94,6 +94,25 @@
     "skillLevels": [],
     "elite": []
   },
+  "char_4091_ulika": {
+    "id": "char_4091_ulika",
+    "name": "U-Official",
+    "cnName": "U-Official",
+    "rarity": 1,
+    "class": "Supporter",
+    "isCnOnly": true,
+    "skills": [],
+    "modules": [],
+    "potentials": [
+      "天赋效果加强",
+      "天赋效果加强",
+      "天赋效果加强",
+      "天赋效果加强",
+      "天赋效果加强"
+    ],
+    "skillLevels": [],
+    "elite": []
+  },
   "char_502_nblade": {
     "id": "char_502_nblade",
     "name": "Yato",
@@ -11796,12 +11815,12 @@
     "cnName": "罗小黑",
     "rarity": 4,
     "class": "Guard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_lolxh_1",
         "iconId": null,
-        "skillName": "掠光尾影",
+        "skillName": "Tail Afterimage",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -11865,7 +11884,7 @@
       {
         "skillId": "skchr_lolxh_2",
         "iconId": null,
-        "skillName": "碎金为刃",
+        "skillName": "Broken Blade",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -15617,7 +15636,7 @@
     ],
     "modules": [
       {
-        "moduleName": "父亲的袍子",
+        "moduleName": "Father's Robe",
         "moduleId": "uniequip_002_yak",
         "typeName": "PRO-Y",
         "stages": [
@@ -15687,7 +15706,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -15973,7 +15992,7 @@
     ],
     "modules": [
       {
-        "moduleName": "超强棒球套装",
+        "moduleName": "Super Baseball Suit",
         "moduleId": "uniequip_002_snakek",
         "typeName": "PRO-X",
         "stages": [
@@ -16043,7 +16062,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -16329,7 +16348,7 @@
     ],
     "modules": [
       {
-        "moduleName": "泡泡闪光必杀剑",
+        "moduleName": "Bubble's Shining Sword",
         "moduleId": "uniequip_002_bubble",
         "typeName": "PRO-X",
         "stages": [
@@ -16399,7 +16418,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -45383,7 +45402,7 @@
     ],
     "modules": [
       {
-        "moduleName": "作战靴",
+        "moduleName": "Combat Boots",
         "moduleId": "uniequip_002_moeshd",
         "typeName": "PRO-Y",
         "stages": [
@@ -45453,7 +45472,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -45743,7 +45762,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“一路以来”",
+        "moduleName": "'The Journey Thus Far'",
         "moduleId": "uniequip_002_bison",
         "typeName": "PRO-X",
         "stages": [
@@ -45813,7 +45832,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -47533,7 +47552,7 @@
     ],
     "modules": [
       {
-        "moduleName": "人气角色贴纸",
+        "moduleName": "Stickers of a Popular Character",
         "moduleId": "uniequip_002_zebra",
         "typeName": "PRO-Y",
         "stages": [
@@ -47603,7 +47622,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -53150,12 +53169,12 @@
     "cnName": "但书",
     "rarity": 5,
     "class": "Supporter",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_provs_1",
         "iconId": null,
-        "skillName": "纠纷起诉",
+        "skillName": "Dispute Litigation",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -53219,7 +53238,7 @@
       {
         "skillId": "skchr_provs_2",
         "iconId": null,
-        "skillName": "致胜立论",
+        "skillName": "Prevailing Argument",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -53283,7 +53302,7 @@
     ],
     "modules": [
       {
-        "moduleName": "黛丝特的毕业礼",
+        "moduleName": "Deszcz's Graduate Memento",
         "moduleId": "uniequip_002_provs",
         "typeName": "DEC-X",
         "stages": [
@@ -53353,15 +53372,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+23",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -69374,7 +69393,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“乐理阐释者”",
+        "moduleName": "'Theory Expositor'",
         "moduleId": "uniequip_003_ebnhlz",
         "typeName": "MSC-Y",
         "stages": [
@@ -69444,7 +69463,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -79304,7 +79323,7 @@
     ],
     "modules": [
       {
-        "moduleName": "友人们的赠礼",
+        "moduleName": "Gifts From Friends",
         "moduleId": "uniequip_002_hsguma",
         "typeName": "PRO-Y",
         "stages": [
@@ -79374,7 +79393,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "护身符",
@@ -80746,7 +80765,7 @@
     ],
     "modules": [
       {
-        "moduleName": "混沌阵列",
+        "moduleName": "The Array of Chaos",
         "moduleId": "uniequip_002_nian",
         "typeName": "PRO-X",
         "stages": [
@@ -80816,7 +80835,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -81967,7 +81986,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“小小的丑东西”",
+        "moduleName": "'The Little Ugly Thing'",
         "moduleId": "uniequip_003_zumama",
         "typeName": "HES-Y",
         "stages": [
@@ -82037,7 +82056,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -87657,12 +87676,12 @@
     "cnName": "玛恩纳",
     "rarity": 6,
     "class": "Guard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_mlynar_1",
         "iconId": null,
-        "skillName": "未声张的怒火",
+        "skillName": "Unvoiced Anger",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -87726,7 +87745,7 @@
       {
         "skillId": "skchr_mlynar_2",
         "iconId": null,
-        "skillName": "未宽解的悲哀",
+        "skillName": "Unresolved Sorrow",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -87790,7 +87809,7 @@
       {
         "skillId": "skchr_mlynar_3",
         "iconId": null,
-        "skillName": "未照耀的荣光",
+        "skillName": "Unbrilliant Glory",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -87854,11 +87873,11 @@
     ],
     "modules": [],
     "potentials": [
-      "部署费用-1",
-      "第一天赋效果增强",
-      "攻击力+25",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +25",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {

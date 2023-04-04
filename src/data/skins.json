@@ -57,6 +57,14 @@
       "sortId": 227
     }
   ],
+  "char_4091_ulika": [
+    {
+      "skinId": "char_4091_ulika#1",
+      "skinName": null,
+      "avatarId": "char_4091_ulika",
+      "sortId": -3
+    }
+  ],
   "char_502_nblade": [
     {
       "skinId": "char_502_nblade#1",
@@ -720,7 +728,7 @@
     },
     {
       "skinId": "char_159_peacok@game#1",
-      "skinName": "超级断罪朋友",
+      "skinName": "Your Superconvicting Friend",
       "avatarId": "char_159_peacok_game#1",
       "sortId": 231
     }
@@ -808,7 +816,7 @@
     },
     {
       "skinId": "char_337_utage@epoque#15",
-      "skinName": "伪装",
+      "skinName": "Disguise",
       "avatarId": "char_337_utage_epoque#15",
       "sortId": 40
     },
@@ -1804,7 +1812,7 @@
     },
     {
       "skinId": "char_475_akafyu@epoque#15",
-      "skinName": "心性",
+      "skinName": "Temperament",
       "avatarId": "char_475_akafyu_epoque#15",
       "sortId": 42
     }
@@ -2374,7 +2382,7 @@
     },
     {
       "skinId": "char_4040_rockr@lxh#1",
-      "skinName": "欢唱之前",
+      "skinName": "Before Singing",
       "avatarId": "char_4040_rockr_lxh#1",
       "sortId": 226
     }
@@ -4130,7 +4138,7 @@
     },
     {
       "skinId": "char_358_lisa@lxh#1",
-      "skinName": "春之颂",
+      "skinName": "Spring Praise",
       "avatarId": "char_358_lisa_lxh#1",
       "sortId": 225
     }
@@ -4654,7 +4662,7 @@
     },
     {
       "skinId": "char_264_f12yin@epoque#15",
-      "skinName": "读者",
+      "skinName": "Book Reader",
       "avatarId": "char_264_f12yin_epoque#15",
       "sortId": 41
     },
