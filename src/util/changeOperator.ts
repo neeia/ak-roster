@@ -1,5 +1,4 @@
-import { useCallback } from "react";
-import { Operator } from "../types/operator";
+import { Operator } from "types/operator";
 
 export const MAX_LEVEL_BY_RARITY = [
   [0],

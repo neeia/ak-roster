@@ -10,17 +10,32 @@ const cons = [
   {
     name: "Neia",
     login: "neeia",
-    avatar: "/img/ext/neia.png",
+    avatar: "/img/ext/neia.webp",
     dark: true,
-    color: "#967bb6"
+    color: "#4f484d"
   },
   {
     name: "Samidare☔️",
     login: "iansjk",
     avatar: "/img/ext/samidare.webp",
     dark: false,
-    color: "#fff"
-  }
+    color: "#f8f8f8"
+  },
+  {
+    name: "Stinggyray",
+    login: "Stinggyray",
+    avatar: "/img/ext/stinggyray.png",
+    dark: false,
+    color: "#FFCD4C"
+  },
+  {
+    name: "Yesod30",
+    login: "yesod30",
+    avatar: "/img/ext/yesod.gif",
+    dark: true,
+    color: "#384c6a"
+    // color: "#eeddbb"
+  },
 ];
 
 const GitHubEmbed = (() => {
