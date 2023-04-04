@@ -116,7 +116,7 @@ const Goals: NextPage = () => {
             },
           }}
         >
-          <GoalSelect opData={operator && operators[operator.id]} operator={operator} onGoalsAdded={handleGoalsAdded} />
+          <GoalSelect op={operator && operators[operator.id]} opData={operator} onGoalsAdded={handleGoalsAdded} />
         </Grid>
       </Grid>
 
