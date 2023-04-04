@@ -43,7 +43,11 @@ import getGoalIngredients from "util/getGoalIngredients";
 const LMD_ITEM_ID = "4001";
 const EXCLUDE = ["2001", "2002", "2003", "2004", "4001"];
 
-const MaterialsNeeded: React.FC = React.memo(() => {
+interface Props {
+  priorityList: string[];
+}
+
+const MaterialsNeeded: React.FC<Props> = React.memo<Props>(({priorityList}) => {
   const dispatch = useAppDispatch();
   const stock = useAppSelector(selectStock);
   const crafting = useAppSelector(selectCrafting);
@@ -137,7 +141,7 @@ const MaterialsNeeded: React.FC = React.memo(() => {
 
   const materialsNeeded: DepotState["stock"] = {};
   // 1. populate the ingredients required for each goal
-  goals.flatMap(getGoalIngredients).forEach((ingredient: Ingredient) => {
+  goals.filter(x => priorityList.length == 0 || priorityList.includes(x.priority)).flatMap(getGoalIngredients).forEach((ingredient: Ingredient) => {
     materialsNeeded[ingredient.id] =
       (materialsNeeded[ingredient.id] ?? 0) + ingredient.quantity;
   });
