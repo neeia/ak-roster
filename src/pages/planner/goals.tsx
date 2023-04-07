@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import * as lz from "util/lz-string";
 import { DepotState, setCrafting, setStock } from "store/depotSlice";
 import { captureMessage } from "@sentry/nextjs";
+import ExportImportDialog from "../../components/planner/ExportImportDialog";
 
 const MaterialsNeeded = dynamic(
   () => import("components/planner/MaterialsNeeded"),
@@ -176,6 +177,17 @@ const Goals: NextPage = () => {
               {renderOptions()}
             </Select>
           </FormControl>
+        </Grid>
+        <Grid item
+              xs={12}
+              md={4}
+              sx={{
+                pr: {
+                  xs: 0,
+                  md: 1,
+                },
+              }}>
+          <ExportImportDialog/>
         </Grid>
       </Grid>
 
