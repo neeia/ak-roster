@@ -4,53 +4,106 @@ import {
   Dialog,
   DialogContent,
   DialogTitle, FormControl, Grid,
-  IconButton, InputAdornment, InputLabel, MenuItem, Select, SelectChangeEvent, Snackbar, TextField,
+  IconButton, InputAdornment, InputLabel, MenuItem, Select, SelectChangeEvent, Snackbar, Stack, TextField,
   Tooltip,
   Typography,
   useMediaQuery,
   useTheme
 } from "@mui/material";
 import React, {useState} from "react";
-import {Close, ContentCopy, ImportExport} from "@mui/icons-material";
-import {exportToString, SUPPORTED_EXPORT_IMPORT_TYPES} from "../../util/exportImportHelper";
-import {useAppSelector} from "../../store/hooks";
+import {Close, ContentCopy, FileUpload, ImportExport, InfoOutlined} from "@mui/icons-material";
+import {
+  exportToString,
+  importFromString,
+  SUPPORTED_EXPORT_TYPES,
+  SUPPORTED_IMPORT_TYPES
+} from "../../util/exportImportHelper";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {selectGoals} from "../../store/goalsSlice";
-import {selectStock} from "../../store/depotSlice";
+import {selectStock, setStock} from "../../store/depotSlice";
 
 const ExportImportDialog = () => {
 
+  const dispatch = useAppDispatch();
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const [format, setFormat] = useState("");
+  const [exportFormat, setExportFormat] = useState("");
+  const [importFormat, setImportFormat] = useState("");
   const [open, setOpen] = React.useState(false);
   const [copiedSuccessfully, setCopiedSuccessfully] = useState(false);
   const [exportData, setExportData] = React.useState("");
   const [importData, setImportData] = React.useState("");
+  const [importFinished, setImportFinished] = useState(false);
+  const [importErrored, setImportErrored] = useState(false);
+  const [importMessage, setImportMessage] = useState("");
 
   const goals = useAppSelector(selectGoals);
   const stock = useAppSelector(selectStock);
 
 
-  const handleFormatChange = (e: SelectChangeEvent<string>) => {
+  const handleExportFormatChange = (e: SelectChangeEvent<string>) => {
     const selectedFormat = e.target.value;
-    setFormat(selectedFormat);
+    setExportFormat(selectedFormat);
     const data = exportToString(selectedFormat, goals, stock);
     setExportData(data);
   };
 
-  const formatOptions = () =>
+  const handleImportFormatChange = (e: SelectChangeEvent<string>) => {
+    const selectedFormat = e.target.value;
+    setImportFormat(selectedFormat);
+  };
+
+  const handleImportData = () => {
+    const importStatus = importFromString(importFormat, importData);
+    if (importStatus.success)
+    {
+      importStatus.data.forEach(payload => dispatch(setStock(payload)))
+      setImportMessage("Import successful");
+      setImportErrored(false);
+      setImportFinished(true);
+    }
+    else
+    {
+      setImportMessage(importStatus.errorMessage);
+      setImportErrored(true);
+      setImportFinished(true);
+    }
+  };
+
+  const exportFormatOptions = () =>
   {
-    return SUPPORTED_EXPORT_IMPORT_TYPES.flatMap(x => (
-      <MenuItem key={x} value={x}>
-        {x}
+    return SUPPORTED_EXPORT_TYPES.flatMap(x => (
+      <MenuItem key={x.format} value={x.format}>
+        <Stack direction="row" alignItems="center" gap={1}>
+          {x.format}
+          <Tooltip title={x.description} >
+            <InfoOutlined/>
+          </Tooltip>
+        </Stack>
+      </MenuItem>
+    ));
+  }
+
+  const importFormatOptions = () =>
+  {
+    return SUPPORTED_IMPORT_TYPES.flatMap(x => (
+      <MenuItem key={x.format} value={x.format}>
+        <Stack direction="row" alignItems="center" gap={1}>
+          {x.format}
+          <Tooltip title={x.description} >
+            <InfoOutlined/>
+          </Tooltip>
+        </Stack>
       </MenuItem>
     ));
   }
 
   const handleClose = () => {
     setExportData("");
-    setFormat("");
+    setExportFormat("");
+    setImportFormat("");
+    setImportData("");
     setOpen(false)
   };
   const copyToClipboard = () => {
@@ -125,7 +178,8 @@ const ExportImportDialog = () => {
         }}>
           <Grid container spacing={2} mt={1} mb={2}>
             <Grid item
-                  xs = {12}>
+                  xs = {12}
+                  md = {6}>
               <FormControl fullWidth>
                 <InputLabel id="export-format-label">Export format</InputLabel>
                 <Select
@@ -133,7 +187,7 @@ const ExportImportDialog = () => {
                   name="export-format"
                   labelId="export-format-label"
                   label="Export format"
-                  value={format}
+                  value={exportFormat}
                   MenuProps={{
                     anchorOrigin: {
                       vertical: "bottom",
@@ -145,11 +199,55 @@ const ExportImportDialog = () => {
                     },
                     sx: {"& .MuiList-root": {mr: "25px", width: "100%"}},
                   }}
-                  onChange={handleFormatChange}
+                  onChange={handleExportFormatChange}
                 >
-                  {formatOptions()}
+                  {exportFormatOptions()}
                 </Select>
               </FormControl>
+            </Grid>
+            <Grid item
+                  xs = {8}
+                  md = {4}>
+              <FormControl fullWidth>
+                <InputLabel id="import-format-label">Import format</InputLabel>
+                <Select
+                  id="import-format"
+                  name="import-format"
+                  labelId="import-format-label"
+                  label="import format"
+                  value={importFormat}
+                  MenuProps={{
+                    anchorOrigin: {
+                      vertical: "bottom",
+                      horizontal: "left",
+                    },
+                    transformOrigin: {
+                      vertical: "top",
+                      horizontal: "left",
+                    },
+                    sx: {"& .MuiList-root": {mr: "25px", width: "100%"}},
+                  }}
+                  onChange={handleImportFormatChange}
+                >
+                  {importFormatOptions()}
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item
+                  xs={4}
+                  md={2}>
+              <Tooltip title="Importing data OVERRIDE the current one">
+                <span>
+                  <Button variant="outlined"
+                          color="primary"
+                          aria-label="Import data"
+                          startIcon={<FileUpload/>}
+                          disabled={importData == ""}
+                          onClick={handleImportData}>
+                    Import data
+                  </Button>
+                </span>
+              </Tooltip>
             </Grid>
             <Grid item
                   xs = {12}
@@ -167,18 +265,20 @@ const ExportImportDialog = () => {
                         <InputAdornment position="end"
                                         sx={{alignItems: 'flex-end'}}>
                           <Tooltip title="Copy">
+                            <span>
                               <IconButton
-                                        color="primary"
-                                        aria-label="Copy exported data"
-                                        onClick={copyToClipboard}
-                                        edge="end"
-                                        sx={{mr: 0.1}}
-                                        disabled={exportData == ""}>
-                              <ContentCopy/>
-                            </IconButton>
+                                          color="primary"
+                                          aria-label="Copy exported data"
+                                          onClick={copyToClipboard}
+                                          edge="end"
+                                          sx={{mr: 0.1}}
+                                          disabled={exportData == ""}>
+                                <ContentCopy/>
+                              </IconButton>
+                            </span>
                           </Tooltip>
                         </InputAdornment>,
-                    sx:{alignItems: 'flex-end'}
+                    sx:{alignItems: 'flex-end'},
                   }}
                   value={exportData}>
                 </TextField>
@@ -193,7 +293,11 @@ const ExportImportDialog = () => {
                 maxRows={10}
                 id="import-data-input"
                 label="Import data"
-                value={importData}>
+                value={importData}
+                disabled={importFormat == ""}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                  setImportData(event.target.value);
+                }}>
               </TextField>
             </Grid>
           </Grid>
@@ -211,6 +315,20 @@ const ExportImportDialog = () => {
                severity="success"
                onClose={() => setCopiedSuccessfully(false)} >
           Copied to clipboard
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        open={importFinished}
+        autoHideDuration={1500}
+        onClose={() => setImportFinished(false)}>
+        <Alert variant="filled"
+               severity={importErrored ? "error" : "success"}
+               onClose={() => setImportFinished(false)} >
+          {importMessage}
         </Alert>
       </Snackbar>
     </>
