@@ -132,7 +132,7 @@ function exportToPenguinStats(exportData : ExportDataStock) : string{
   return JSON.stringify(data);
 }
 
-export function importFromString(importType: string, data: string) : ImportDataResult
+export async function importFromString(importType: string, data: string, fileList : File[]) : Promise<ImportDataResult>
 {
   switch (importType) {
     case "CSV":
@@ -140,7 +140,7 @@ export function importFromString(importType: string, data: string) : ImportDataR
     case "Penguin-Stats":
       return importFromPenguinStats(data);
     case "Depot Recognition":
-      return importFromImage(data);
+      return importFromImage(fileList);
     default:
       //something went very wrong.
       return {
@@ -237,23 +237,32 @@ function importFromPenguinStats(data: string) : ImportDataResult {
   }
 }
 
-function importFromImage(data: string) : ImportDataResult {
+async function importFromImage(fileList : File[]) : Promise<ImportDataResult> {
   try {
+    const result = await getMaterialsFromImage(fileList)
+    const payloadArray : {itemId: string, newQuantity: number}[] = [];
 
-    getMaterialsFromImage().then();
-
+    for (let i = 0; i < result.length; i++) {
+      const imageResult = result[i];
+      for (const itemId in imageResult) {
+        if (imageResult[itemId] != null)
+        {
+          payloadArray.push({itemId: itemId, newQuantity: imageResult[itemId] as number})
+        }
+      }
+    }
 
     return {
       success: true,
-      errorMessage: "Success",
-      data: []
+      errorMessage: "",
+      data: payloadArray
     }
   }
   catch (e){
     console.log(e)
     return {
       success: false,
-      errorMessage: "Error",
+      errorMessage: "Depot import failed",
       data: []
     }
   }
