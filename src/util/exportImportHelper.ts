@@ -4,6 +4,7 @@ import itemNameToIdJson from "data/item-name-to-id.json";
 import getGoalIngredients from "./getGoalIngredients";
 import {Ingredient, Item} from "../types/item";
 import {StockState} from "../store/depotSlice";
+import {getMaterialsFromImage} from "./getMaterialFromImage";
 
 
 export const SUPPORTED_EXPORT_TYPES : DataShareInfo[] = [
@@ -24,6 +25,10 @@ export const SUPPORTED_IMPORT_TYPES : DataShareInfo[] = [
   {
     format: "Penguin-Stats",
     description: "Penguin-stats format for exporting/importing data"
+  },
+  {
+    format: "Depot Recognition",
+    description: "Recognize depot materials from images"
   }
 ]
 
@@ -127,13 +132,15 @@ function exportToPenguinStats(exportData : ExportDataStock) : string{
   return JSON.stringify(data);
 }
 
-export function importFromString(importType: string, data: string) : ImportDataResult
+export async function importFromString(importType: string, data: string, fileList : File[]) : Promise<ImportDataResult>
 {
   switch (importType) {
     case "CSV":
       return importFromCsv(data);
     case "Penguin-Stats":
       return importFromPenguinStats(data);
+    case "Depot Recognition":
+      return importFromImage(fileList);
     default:
       //something went very wrong.
       return {
@@ -225,6 +232,37 @@ function importFromPenguinStats(data: string) : ImportDataResult {
     return {
       success: false,
       errorMessage: "Failed to parse JSON",
+      data: []
+    }
+  }
+}
+
+async function importFromImage(fileList : File[]) : Promise<ImportDataResult> {
+  try {
+    const result = await getMaterialsFromImage(fileList)
+    const payloadArray : {itemId: string, newQuantity: number}[] = [];
+
+    for (let i = 0; i < result.length; i++) {
+      const imageResult = result[i];
+      for (const itemId in imageResult) {
+        if (imageResult[itemId] != null)
+        {
+          payloadArray.push({itemId: itemId, newQuantity: imageResult[itemId] as number})
+        }
+      }
+    }
+
+    return {
+      success: true,
+      errorMessage: "",
+      data: payloadArray
+    }
+  }
+  catch (e){
+    console.log(e)
+    return {
+      success: false,
+      errorMessage: "Depot import failed",
       data: []
     }
   }
