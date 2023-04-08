@@ -3,8 +3,20 @@ import {
   Button,
   Dialog,
   DialogContent,
-  DialogTitle, FormControl, Grid,
-  IconButton, InputAdornment, InputLabel, MenuItem, Select, SelectChangeEvent, Snackbar, Stack, TextField,
+  DialogTitle,
+  FormControl,
+  Grid,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  List,
+  ListItem,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Snackbar,
+  Stack,
+  TextField,
   Tooltip,
   Typography,
   useMediaQuery,
@@ -37,6 +49,7 @@ const ExportImportDialog = () => {
   const [importFinished, setImportFinished] = useState(false);
   const [importErrored, setImportErrored] = useState(false);
   const [importMessage, setImportMessage] = useState("");
+  const [fileList, setFileList] = useState<File[]>([]);
 
   const goals = useAppSelector(selectGoals);
   const stock = useAppSelector(selectStock);
@@ -54,8 +67,15 @@ const ExportImportDialog = () => {
     setImportFormat(selectedFormat);
   };
 
-  const handleImportData = () => {
-    const importStatus = importFromString(importFormat, importData);
+  const handleImportData = async () => {
+    if (importFormat == "Depot Recognition")
+    {
+      setImportMessage("Analyzing images")
+      setImportErrored(false);
+      setImportFinished(true);
+    }
+    const importStatus = await importFromString(importFormat, importData, fileList);
+
     if (importStatus.success)
     {
       importStatus.data.forEach(payload => dispatch(setStock(payload)))
@@ -104,12 +124,38 @@ const ExportImportDialog = () => {
     setExportFormat("");
     setImportFormat("");
     setImportData("");
-    setOpen(false)
+    setFileList([]);
+    setOpen(false);
   };
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exportData);
     setCopiedSuccessfully(true);
   };
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const inputFiles = e.target.files;
+    if (inputFiles != null && inputFiles.length > 0)
+    {
+      const files = [];
+      for (let i = 0; i < inputFiles.length; i++) {
+        files.push(inputFiles[i]);
+      }
+      const newFiles = files.filter(newFile => !fileList.find(oldFiles => oldFiles.name == newFile.name))
+      setFileList([...fileList, ...newFiles]);
+    }
+  }
+
+  const generateListForFiles = () =>{
+    const listItems = [];
+    for (let i = 0; i < fileList.length; i++) {
+      listItems.push(
+        <ListItem key={fileList[i].name}>
+          {fileList[i].name}
+        </ListItem>
+      );
+    }
+    return listItems;
+  }
 
   return (
     <>
@@ -242,7 +288,7 @@ const ExportImportDialog = () => {
                           color="primary"
                           aria-label="Import data"
                           startIcon={<FileUpload/>}
-                          disabled={importData == ""}
+                          disabled={importData == "" && fileList.length == 0}
                           onClick={handleImportData}>
                     Import data
                   </Button>
@@ -284,21 +330,39 @@ const ExportImportDialog = () => {
                 </TextField>
             </Grid>
             <Grid item
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
                   xs = {12}
                   md = {6}>
-              <TextField
-                fullWidth
-                multiline
-                minRows={10}
-                maxRows={10}
-                id="import-data-input"
-                label="Import data"
-                value={importData}
-                disabled={importFormat == ""}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setImportData(event.target.value);
-                }}>
-              </TextField>
+              {importFormat == "Depot Recognition" ?
+                <Stack spacing={3}>
+                  <Button color="primary" aria-label="upload picture" component="label">
+                    Upload Image
+                    <input hidden multiple accept="image/*" type="file" onChange={handleFileUpload} />
+                    <FileUpload/>
+                  </Button>
+                  <List sx={{maxHeight: "10rem", overflow: "auto"}}>
+                    {
+                      generateListForFiles()
+                    }
+                  </List>
+                </Stack>
+                :
+                <TextField
+                  fullWidth
+                  multiline
+                  minRows={10}
+                  maxRows={10}
+                  id="import-data-input"
+                  label="Import data"
+                  value={importData}
+                  disabled={importFormat == ""}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    setImportData(event.target.value);
+                  }}>
+                </TextField>
+              }
             </Grid>
           </Grid>
         </DialogContent>

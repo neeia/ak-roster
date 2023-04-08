@@ -1,27 +1,25 @@
-import {DeportRecognizer, isTrustedResult, toSimpleTrustedResult} from "@arkntools/depot-recognition";
+import {DeportRecognizer, toSimpleTrustedResult} from "@arkntools/depot-recognition";
 import {sortBy} from "lodash";
 import itemsJson from "data/items.json";
 import {Item} from "../types/item";
 
-export async function getMaterialsFromImage()
+
+export async function getMaterialsFromImage(fileList : File[]) :  Promise<Record<string, number | undefined>[]>
 {
   const items = itemsJson as { [id: string] :  Item };
   const getSortId = (id : string) => items[id].sortId;
   const order = sortBy(Object.keys(items).filter(getSortId), getSortId);
-  // const pkg = await fsPromises.readFile("data/items.zip")
-
-  const [pkg] = await Promise.all(
-    [
-      'https://github.com/arkntools/arknights-toolbox/raw/master/src/assets/pkg/item.pkg',
-    ].map((url) =>
-      fetch(url).then((r) => (r.arrayBuffer()))
-    )
-  );
-
+  // replace the URL with a more stable link
+  const pkg = await fetch('https://raw.githubusercontent.com/yesod30/ak-roster/feature/depot-recognition/src/data/items.zip').then((res) => res.arrayBuffer())
   const dr = new DeportRecognizer({ order, pkg});
-  const { data } = await dr.recognize(
-    'https://github.com/arkntools/depot-recognition/raw/main/test/cases/cn_iphone12_0/image.png'
-  );
-  console.log(data.filter(isTrustedResult)); // full trust result
-  console.log(toSimpleTrustedResult(data)); // simple trust result
+  const result = [];
+  for (let i = 0; i < fileList.length; i++) {
+    const file = fileList[i];
+    const url = URL.createObjectURL(file);
+    const data = (await dr.recognize(url, (step) => console.log(step)) ).data;
+    const simpleData = toSimpleTrustedResult(data);
+    result.push(simpleData);
+    URL.revokeObjectURL(url);
+  }
+  return result;
 }
