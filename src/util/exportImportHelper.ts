@@ -4,6 +4,7 @@ import itemNameToIdJson from "data/item-name-to-id.json";
 import getGoalIngredients from "./getGoalIngredients";
 import {Ingredient, Item} from "../types/item";
 import {StockState} from "../store/depotSlice";
+import {getMaterialsFromImage} from "./getMaterialFromImage";
 
 
 export const SUPPORTED_EXPORT_TYPES : DataShareInfo[] = [
@@ -24,6 +25,10 @@ export const SUPPORTED_IMPORT_TYPES : DataShareInfo[] = [
   {
     format: "Penguin-Stats",
     description: "Penguin-stats format for exporting/importing data"
+  },
+  {
+    format: "Depot Recognition",
+    description: "Recognize depot materials from images"
   }
 ]
 
@@ -134,6 +139,8 @@ export function importFromString(importType: string, data: string) : ImportDataR
       return importFromCsv(data);
     case "Penguin-Stats":
       return importFromPenguinStats(data);
+    case "Depot Recognition":
+      return importFromImage(data);
     default:
       //something went very wrong.
       return {
@@ -225,6 +232,28 @@ function importFromPenguinStats(data: string) : ImportDataResult {
     return {
       success: false,
       errorMessage: "Failed to parse JSON",
+      data: []
+    }
+  }
+}
+
+function importFromImage(data: string) : ImportDataResult {
+  try {
+
+    getMaterialsFromImage().then();
+
+
+    return {
+      success: true,
+      errorMessage: "Success",
+      data: []
+    }
+  }
+  catch (e){
+    console.log(e)
+    return {
+      success: false,
+      errorMessage: "Error",
       data: []
     }
   }
