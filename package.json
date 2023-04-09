@@ -26,6 +26,7 @@
     "@reduxjs/toolkit": "^1.9.3",
     "@sentry/nextjs": "^7.40.0",
     "@vercel/analytics": "^0.1.4",
+    "comlink": "^4.4.1",
     "firebase": "^9.9.1",
     "js-combinatorics": "^2.1.1",
     "localforage": "^1.10.0",
