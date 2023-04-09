@@ -2,9 +2,10 @@ import {DeportRecognizer, toSimpleTrustedResult} from "@arkntools/depot-recognit
 import {sortBy} from "lodash";
 import itemsJson from "data/items.json";
 import {Item} from "../types/item";
+import {expose} from "comlink";
 
 
-export async function getMaterialsFromImage(fileList : File[]) :  Promise<Record<string, number | undefined>[]>
+async function getMaterialsFromImage(fileList : File[]) :  Promise<Record<string, number | undefined>[]>
 {
   const items = itemsJson as { [id: string] :  Item };
   const getSortId = (id : string) => items[id].sortId;
@@ -16,10 +17,20 @@ export async function getMaterialsFromImage(fileList : File[]) :  Promise<Record
   for (let i = 0; i < fileList.length; i++) {
     const file = fileList[i];
     const url = URL.createObjectURL(file);
-    const data = (await dr.recognize(url, (step) => console.log(step)) ).data;
+    const data = (await dr.recognize(url) ).data;
     const simpleData = toSimpleTrustedResult(data);
     result.push(simpleData);
     URL.revokeObjectURL(url);
   }
   return result;
 }
+
+const materialWorker = {
+  getMaterialsFromImage : async (fileList : File[]) =>{
+    return await getMaterialsFromImage(fileList);
+  }
+}
+
+export type MaterialWorker = typeof materialWorker;
+
+expose(materialWorker);

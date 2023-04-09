@@ -4,7 +4,8 @@ import itemNameToIdJson from "data/item-name-to-id.json";
 import getGoalIngredients from "./getGoalIngredients";
 import {Ingredient, Item} from "../types/item";
 import {StockState} from "../store/depotSlice";
-import {getMaterialsFromImage} from "./getMaterialFromImage";
+import {wrap} from "comlink";
+import {MaterialWorker} from "./getMaterialFromImage";
 
 
 export const SUPPORTED_EXPORT_TYPES : DataShareInfo[] = [
@@ -239,7 +240,13 @@ function importFromPenguinStats(data: string) : ImportDataResult {
 
 async function importFromImage(fileList : File[]) : Promise<ImportDataResult> {
   try {
-    const result = await getMaterialsFromImage(fileList)
+    const worker = new Worker(new URL("./getMaterialFromImage.ts", import.meta.url), {
+      name: "depotRecognition",
+    });
+
+    const workerAPI = wrap<MaterialWorker>(worker);
+
+    const result = await workerAPI.getMaterialsFromImage(fileList)
     const payloadArray : {itemId: string, newQuantity: number}[] = [];
 
     for (let i = 0; i < result.length; i++) {
