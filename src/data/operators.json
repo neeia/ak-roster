@@ -6,8 +6,8 @@
     "rarity": 1,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [],
-    "modules": [],
+    "skillData": [],
+    "moduleData": [],
     "potentials": [
       "Improves Talent",
       "Improves Talent",
@@ -25,8 +25,8 @@
     "rarity": 1,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [],
-    "modules": [],
+    "skillData": [],
+    "moduleData": [],
     "potentials": [
       "Improves Talent",
       "Improves Talent",
@@ -44,8 +44,8 @@
     "rarity": 1,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [],
-    "modules": [],
+    "skillData": [],
+    "moduleData": [],
     "potentials": [
       "Improves Talent",
       "Improves Talent",
@@ -63,8 +63,8 @@
     "rarity": 1,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [],
-    "modules": [],
+    "skillData": [],
+    "moduleData": [],
     "potentials": [
       "Improves Talent",
       "Improves Talent",
@@ -82,8 +82,27 @@
     "rarity": 1,
     "class": "Sniper",
     "isCnOnly": true,
-    "skills": [],
-    "modules": [],
+    "skillData": [],
+    "moduleData": [],
+    "potentials": [
+      "天赋效果加强",
+      "天赋效果加强",
+      "天赋效果加强",
+      "天赋效果加强",
+      "天赋效果加强"
+    ],
+    "skillLevels": [],
+    "elite": []
+  },
+  "char_4091_ulika": {
+    "id": "char_4091_ulika",
+    "name": "U-Official",
+    "cnName": "U-Official",
+    "rarity": 1,
+    "class": "Supporter",
+    "isCnOnly": true,
+    "skillData": [],
+    "moduleData": [],
     "potentials": [
       "天赋效果加强",
       "天赋效果加强",
@@ -101,8 +120,8 @@
     "rarity": 2,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [],
-    "modules": [],
+    "skillData": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -5 sec",
@@ -120,8 +139,8 @@
     "rarity": 2,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [],
-    "modules": [],
+    "skillData": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Max HP +45",
@@ -139,8 +158,8 @@
     "rarity": 2,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [],
-    "modules": [],
+    "skillData": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "ASPD +6",
@@ -158,8 +177,8 @@
     "rarity": 2,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [],
-    "modules": [],
+    "skillData": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Max HP +50",
@@ -177,8 +196,8 @@
     "rarity": 2,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [],
-    "modules": [],
+    "skillData": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "ATK +12",
@@ -196,7 +215,7 @@
     "rarity": 3,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_charge_cost[1]",
         "iconId": null,
@@ -204,7 +223,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -321,7 +340,7 @@
     "rarity": 3,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_wyvern_1",
         "iconId": null,
@@ -329,7 +348,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -446,7 +465,7 @@
     "rarity": 3,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_quickattack[1]",
         "iconId": null,
@@ -454,7 +473,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -571,7 +590,7 @@
     "rarity": 3,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[1]",
         "iconId": null,
@@ -579,7 +598,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -696,7 +715,7 @@
     "rarity": 3,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[1]",
         "iconId": null,
@@ -704,7 +723,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -821,7 +840,7 @@
     "rarity": 3,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_heal_self[1]",
         "iconId": null,
@@ -829,7 +848,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -946,7 +965,7 @@
     "rarity": 3,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_def_up[1]",
         "iconId": null,
@@ -954,7 +973,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -1071,7 +1090,7 @@
     "rarity": 3,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_spot_1",
         "iconId": null,
@@ -1079,7 +1098,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -1196,7 +1215,7 @@
     "rarity": 3,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_kroos_1",
         "iconId": null,
@@ -1204,7 +1223,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -1321,7 +1340,7 @@
     "rarity": 3,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[1]",
         "iconId": null,
@@ -1329,7 +1348,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -1446,7 +1465,7 @@
     "rarity": 3,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_magic_rage[1]",
         "iconId": null,
@@ -1454,7 +1473,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -1571,7 +1590,7 @@
     "rarity": 3,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_heal_up[1]",
         "iconId": null,
@@ -1579,7 +1598,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -1696,7 +1715,7 @@
     "rarity": 3,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_range_extend",
         "iconId": null,
@@ -1704,7 +1723,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -1821,7 +1840,7 @@
     "rarity": 3,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_stward_1",
         "iconId": "skcom_powerstrike[1]",
@@ -1829,7 +1848,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -1946,7 +1965,7 @@
     "rarity": 3,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_quickattack[1]",
         "iconId": null,
@@ -1954,7 +1973,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -2071,7 +2090,7 @@
     "rarity": 4,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
         "iconId": null,
@@ -2201,7 +2220,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "女巫的帽子",
         "moduleId": "uniequip_002_nights",
@@ -2427,7 +2446,7 @@
     "rarity": 4,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_magic_rage[2]",
         "iconId": null,
@@ -2557,7 +2576,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Travel Kit for the Fortune-Teller",
         "moduleId": "uniequip_002_fmout",
@@ -2783,7 +2802,7 @@
     "rarity": 4,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_magic_rage[2]",
         "iconId": null,
@@ -2913,7 +2932,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "New Beginning",
         "moduleId": "uniequip_002_greyy",
@@ -3139,7 +3158,7 @@
     "rarity": 4,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
         "iconId": null,
@@ -3269,7 +3288,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -3421,7 +3440,7 @@
     "rarity": 4,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_indigo_1",
         "iconId": null,
@@ -3551,7 +3570,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Staff Maintenance Kit",
         "moduleId": "uniequip_002_indigo",
@@ -3777,7 +3796,7 @@
     "rarity": 4,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_magic_rage[2]",
         "iconId": null,
@@ -3907,7 +3926,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Portable Electrical Measuring Equipment",
         "moduleId": "uniequip_002_pudd",
@@ -4133,7 +4152,7 @@
     "rarity": 4,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_jesica_1",
         "iconId": "skcom_powerstrike[2]",
@@ -4263,7 +4282,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Jessica's Order",
         "moduleId": "uniequip_002_jesica",
@@ -4489,7 +4508,7 @@
     "rarity": 4,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_shotst_1",
         "iconId": null,
@@ -4619,7 +4638,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Hunter's Knife",
         "moduleId": "uniequip_002_shotst",
@@ -4845,7 +4864,7 @@
     "rarity": 4,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
         "iconId": null,
@@ -4975,7 +4994,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Still Alive'",
         "moduleId": "uniequip_002_clour",
@@ -5201,7 +5220,7 @@
     "rarity": 4,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_mm_1",
         "iconId": null,
@@ -5331,7 +5350,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Novice Detective's Gift Bag",
         "moduleId": "uniequip_002_mm",
@@ -5557,7 +5576,7 @@
     "rarity": 4,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_yuki_1",
         "iconId": null,
@@ -5687,7 +5706,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Shuriken",
         "moduleId": "uniequip_002_yuki",
@@ -5913,7 +5932,7 @@
     "rarity": 4,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_pinecn_1",
         "iconId": null,
@@ -6043,7 +6062,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -6195,7 +6214,7 @@
     "rarity": 4,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_glaze_1",
         "iconId": null,
@@ -6325,7 +6344,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Portable Radar Equipment",
         "moduleId": "uniequip_002_glaze",
@@ -6551,7 +6570,7 @@
     "rarity": 4,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_acdrop_1",
         "iconId": null,
@@ -6681,7 +6700,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Freedom, Onion Rings, and Me'",
         "moduleId": "uniequip_002_acdrop",
@@ -6907,7 +6926,7 @@
     "rarity": 4,
     "class": "Sniper",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_totter_1",
         "iconId": null,
@@ -7037,7 +7056,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "雪花球",
         "moduleId": "uniequip_002_totter",
@@ -7263,7 +7282,7 @@
     "rarity": 4,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_charge_cost[2]",
         "iconId": null,
@@ -7393,7 +7412,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "耐低温通讯设备",
         "moduleId": "uniequip_002_blackd",
@@ -7619,7 +7638,7 @@
     "rarity": 4,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_charge_cost[2]",
         "iconId": null,
@@ -7749,7 +7768,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "“专属餐具”",
         "moduleId": "uniequip_002_scave",
@@ -7975,7 +7994,7 @@
     "rarity": 4,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_vigna_1",
         "iconId": "skcom_atk_up[2]",
@@ -8105,7 +8124,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "The Greatrock",
         "moduleId": "uniequip_002_vigna",
@@ -8331,7 +8350,7 @@
     "rarity": 4,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_assist_cost[2]",
         "iconId": null,
@@ -8461,7 +8480,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -8613,7 +8632,7 @@
     "rarity": 4,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_bstalk_1",
         "iconId": null,
@@ -8743,7 +8762,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -8895,7 +8914,7 @@
     "rarity": 4,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_doberm_1",
         "iconId": "skcom_powerstrike[2]",
@@ -9025,7 +9044,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Military Telescope",
         "moduleId": "uniequip_002_doberm",
@@ -9251,7 +9270,7 @@
     "rarity": 4,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_heal_self[2]",
         "iconId": null,
@@ -9381,7 +9400,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Bamboo Ikebana",
         "moduleId": "uniequip_002_gyuki",
@@ -9607,7 +9626,7 @@
     "rarity": 4,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_peacok_1",
         "iconId": null,
@@ -9737,7 +9756,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "The Fist of Conviction",
         "moduleId": "uniequip_002_peacok",
@@ -9957,7 +9976,7 @@
     "rarity": 4,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_frostl_1",
         "iconId": null,
@@ -10087,7 +10106,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -10239,7 +10258,7 @@
     "rarity": 4,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
         "iconId": null,
@@ -10369,7 +10388,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -10521,7 +10540,7 @@
     "rarity": 4,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_frncat_1",
         "iconId": null,
@@ -10651,7 +10670,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -10803,7 +10822,7 @@
     "rarity": 4,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_cutter_1",
         "iconId": null,
@@ -10933,7 +10952,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Replaceable Tool Set",
         "moduleId": "uniequip_002_cutter",
@@ -11159,7 +11178,7 @@
     "rarity": 4,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_utage_1",
         "iconId": null,
@@ -11289,7 +11308,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "翻盖手机",
         "moduleId": "uniequip_002_utage",
@@ -11515,7 +11534,7 @@
     "rarity": 4,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_spikes_1",
         "iconId": null,
@@ -11645,7 +11664,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -11796,12 +11815,12 @@
     "cnName": "罗小黑",
     "rarity": 4,
     "class": "Guard",
-    "isCnOnly": true,
-    "skills": [
+    "isCnOnly": false,
+    "skillData": [
       {
         "skillId": "skchr_lolxh_1",
         "iconId": null,
-        "skillName": "掠光尾影",
+        "skillName": "Tail Afterimage",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -11865,7 +11884,7 @@
       {
         "skillId": "skchr_lolxh_2",
         "iconId": null,
-        "skillName": "碎金为刃",
+        "skillName": "Broken Blade",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -11927,7 +11946,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [],
     "skillLevels": [
       {
@@ -12073,7 +12092,7 @@
     "rarity": 4,
     "class": "Guard",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
         "iconId": null,
@@ -12203,7 +12222,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "再部署时间-4秒",
@@ -12348,6 +12367,288 @@
       }
     ]
   },
+  "char_491_humus": {
+    "id": "char_491_humus",
+    "name": "Humus",
+    "cnName": "休谟斯",
+    "rarity": 4,
+    "class": "Guard",
+    "isCnOnly": true,
+    "skillData": [
+      {
+        "skillId": "skchr_humus_1",
+        "iconId": null,
+        "skillName": "固废切割",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 2
+              },
+              {
+                "id": "31034",
+                "quantity": 1
+              },
+              {
+                "id": "30083",
+                "quantity": 4
+              }
+            ],
+            "name": "Skill 1 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 4
+              },
+              {
+                "id": "31054",
+                "quantity": 2
+              },
+              {
+                "id": "30044",
+                "quantity": 2
+              }
+            ],
+            "name": "Skill 1 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 6
+              },
+              {
+                "id": "30125",
+                "quantity": 2
+              },
+              {
+                "id": "30104",
+                "quantity": 2
+              }
+            ],
+            "name": "Skill 1 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_humus_2",
+        "iconId": null,
+        "skillName": "高效处理",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 2
+              },
+              {
+                "id": "31014",
+                "quantity": 1
+              },
+              {
+                "id": "31053",
+                "quantity": 4
+              }
+            ],
+            "name": "Skill 2 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 4
+              },
+              {
+                "id": "31044",
+                "quantity": 2
+              },
+              {
+                "id": "30054",
+                "quantity": 2
+              }
+            ],
+            "name": "Skill 2 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 6
+              },
+              {
+                "id": "30135",
+                "quantity": 2
+              },
+              {
+                "id": "31034",
+                "quantity": 2
+              }
+            ],
+            "name": "Skill 2 Mastery 3",
+            "category": 1
+          }
+        ]
+      }
+    ],
+    "moduleData": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+35",
+      "天赋效果增强",
+      "部署费用-1"
+    ],
+    "skillLevels": [
+      {
+        "skillLevel": 2,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 2
+          }
+        ],
+        "name": "Skill Level 2",
+        "category": 2
+      },
+      {
+        "skillLevel": 3,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 2
+          },
+          {
+            "id": "30061",
+            "quantity": 2
+          }
+        ],
+        "name": "Skill Level 3",
+        "category": 2
+      },
+      {
+        "skillLevel": 4,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 3
+          },
+          {
+            "id": "30012",
+            "quantity": 2
+          }
+        ],
+        "name": "Skill Level 4",
+        "category": 2
+      },
+      {
+        "skillLevel": 5,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 3
+          },
+          {
+            "id": "30022",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 5",
+        "category": 2
+      },
+      {
+        "skillLevel": 6,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 3
+          },
+          {
+            "id": "30093",
+            "quantity": 2
+          }
+        ],
+        "name": "Skill Level 6",
+        "category": 2
+      },
+      {
+        "skillLevel": 7,
+        "ingredients": [
+          {
+            "id": "3303",
+            "quantity": 4
+          },
+          {
+            "id": "30033",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 7",
+        "category": 2
+      }
+    ],
+    "elite": [
+      {
+        "eliteLevel": 1,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 15000
+          },
+          {
+            "id": "3221",
+            "quantity": 3
+          },
+          {
+            "id": "30012",
+            "quantity": 1
+          },
+          {
+            "id": "30062",
+            "quantity": 1
+          }
+        ],
+        "name": "Elite 1",
+        "category": 0
+      },
+      {
+        "eliteLevel": 2,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 60000
+          },
+          {
+            "id": "3222",
+            "quantity": 5
+          },
+          {
+            "id": "30103",
+            "quantity": 11
+          },
+          {
+            "id": "30023",
+            "quantity": 12
+          }
+        ],
+        "name": "Elite 2",
+        "category": 0
+      }
+    ]
+  },
   "char_237_gravel": {
     "id": "char_237_gravel",
     "name": "Gravel",
@@ -12355,7 +12656,7 @@
     "rarity": 4,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_gravel_1",
         "iconId": null,
@@ -12485,7 +12786,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Covert Action Toolkit",
         "moduleId": "uniequip_002_gravel",
@@ -12711,7 +13012,7 @@
     "rarity": 4,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_strong_1",
         "iconId": null,
@@ -12841,7 +13142,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Steel Tool Set",
         "moduleId": "uniequip_002_strong",
@@ -13067,7 +13368,7 @@
     "rarity": 4,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_rope_1",
         "iconId": null,
@@ -13197,7 +13498,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Tin Casket",
         "moduleId": "uniequip_002_rope",
@@ -13423,7 +13724,7 @@
     "rarity": 4,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_myrrh_1",
         "iconId": null,
@@ -13553,7 +13854,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "“生命的短暂”",
         "moduleId": "uniequip_002_myrrh",
@@ -13779,7 +14080,7 @@
     "rarity": 4,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_ccheal_1",
         "iconId": null,
@@ -13909,7 +14210,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "“请遵医嘱”",
         "moduleId": "uniequip_002_ccheal",
@@ -14135,7 +14436,7 @@
     "rarity": 4,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_heal_up[2]",
         "iconId": null,
@@ -14265,7 +14566,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "医不自治",
         "moduleId": "uniequip_002_susuro",
@@ -14491,7 +14792,7 @@
     "rarity": 4,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_heal_up[2]",
         "iconId": null,
@@ -14621,7 +14922,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Aegean's Kiss'",
         "moduleId": "uniequip_002_flower",
@@ -14847,7 +15148,7 @@
     "rarity": 4,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_finlpp_1",
         "iconId": null,
@@ -14977,7 +15278,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'The River's Lingering Charm'",
         "moduleId": "uniequip_002_finlpp",
@@ -15203,7 +15504,7 @@
     "rarity": 4,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_chnut_1",
         "iconId": null,
@@ -15333,7 +15634,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -15485,7 +15786,7 @@
     "rarity": 4,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_yak_1",
         "iconId": null,
@@ -15615,9 +15916,9 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
-        "moduleName": "父亲的袍子",
+        "moduleName": "Father's Robe",
         "moduleId": "uniequip_002_yak",
         "typeName": "PRO-Y",
         "stages": [
@@ -15687,7 +15988,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -15841,7 +16142,7 @@
     "rarity": 4,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_def_up[2]",
         "iconId": null,
@@ -15971,9 +16272,9 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
-        "moduleName": "超强棒球套装",
+        "moduleName": "Super Baseball Suit",
         "moduleId": "uniequip_002_snakek",
         "typeName": "PRO-X",
         "stages": [
@@ -16043,7 +16344,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -16197,7 +16498,7 @@
     "rarity": 4,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_def_up[2]",
         "iconId": null,
@@ -16327,9 +16628,9 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
-        "moduleName": "泡泡闪光必杀剑",
+        "moduleName": "Bubble's Shining Sword",
         "moduleId": "uniequip_002_bubble",
         "typeName": "PRO-X",
         "stages": [
@@ -16399,7 +16700,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -16553,7 +16854,7 @@
     "rarity": 4,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_sunbr_1",
         "iconId": null,
@@ -16683,7 +16984,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Медовые Пряники",
         "moduleId": "uniequip_002_sunbr",
@@ -16909,7 +17210,7 @@
     "rarity": 4,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
         "iconId": null,
@@ -17039,7 +17340,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -17191,7 +17492,7 @@
     "rarity": 4,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_deepcl_1",
         "iconId": null,
@@ -17321,7 +17622,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Weird Palette",
         "moduleId": "uniequip_002_deepcl",
@@ -17547,7 +17848,7 @@
     "rarity": 4,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
         "iconId": null,
@@ -17677,7 +17978,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Application Forms, To Be Confirmed",
         "moduleId": "uniequip_002_skgoat",
@@ -17903,7 +18204,7 @@
     "rarity": 4,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_podego_1",
         "iconId": null,
@@ -18033,7 +18334,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Amaranthine Nursery'",
         "moduleId": "uniequip_002_podego",
@@ -18259,7 +18560,7 @@
     "rarity": 4,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_robrta_1",
         "iconId": null,
@@ -18389,7 +18690,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -18541,7 +18842,7 @@
     "rarity": 4,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_ethan_1",
         "iconId": null,
@@ -18671,7 +18972,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Super Spray Paint Suit",
         "moduleId": "uniequip_002_ethan",
@@ -18897,7 +19198,7 @@
     "rarity": 4,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_sqrrel_1",
         "iconId": null,
@@ -19027,7 +19328,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "客制化防火服",
         "moduleId": "uniequip_002_sqrrel",
@@ -19253,7 +19554,7 @@
     "rarity": 5,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_heal_up[3]",
         "iconId": null,
@@ -19383,7 +19684,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Medic Environment Analyze System",
         "moduleId": "uniequip_002_plosis",
@@ -19613,7 +19914,7 @@
     "rarity": 5,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_breeze_1",
         "iconId": null,
@@ -19743,7 +20044,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Surgical Instrument Kit",
         "moduleId": "uniequip_002_breeze",
@@ -19973,7 +20274,7 @@
     "rarity": 5,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_charge_cost[3]",
         "iconId": null,
@@ -20103,7 +20404,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "冬将军的毕业礼物",
         "moduleId": "uniequip_002_headbr",
@@ -20333,7 +20634,7 @@
     "rarity": 5,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_charge_cost[3]",
         "iconId": null,
@@ -20463,7 +20764,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "外勤私人补给包",
         "moduleId": "uniequip_002_texas",
@@ -20693,7 +20994,7 @@
     "rarity": 5,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_charge_cost[3]",
         "iconId": null,
@@ -20823,7 +21124,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "自制千斤顶",
         "moduleId": "uniequip_002_chiave",
@@ -21053,7 +21354,7 @@
     "rarity": 5,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
         "iconId": null,
@@ -21183,7 +21484,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Spear Clean Suit",
         "moduleId": "uniequip_002_sddrag",
@@ -21413,7 +21714,7 @@
     "rarity": 5,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_wildmn_1",
         "iconId": null,
@@ -21543,7 +21844,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Spear Replacement Suit",
         "moduleId": "uniequip_002_wildmn",
@@ -21773,7 +22074,7 @@
     "rarity": 5,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_assist_cost[3]",
         "iconId": null,
@@ -21903,7 +22204,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -22059,7 +22360,7 @@
     "rarity": 5,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_blkngt_1",
         "iconId": null,
@@ -22189,7 +22490,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -22345,7 +22646,7 @@
     "rarity": 5,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_ctable_1",
         "iconId": null,
@@ -22475,7 +22776,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -22631,7 +22932,7 @@
     "rarity": 5,
     "class": "Vanguard",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_puzzle_1",
         "iconId": null,
@@ -22761,7 +23062,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "攻击速度+5",
@@ -22917,7 +23218,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_swire_1",
         "iconId": null,
@@ -23047,7 +23348,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Self-defense Lipstick",
         "moduleId": "uniequip_002_swire",
@@ -23277,7 +23578,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_sophia_1",
         "iconId": null,
@@ -23407,7 +23708,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Whipsword Wire.L",
         "moduleId": "uniequip_002_sophia",
@@ -23637,7 +23938,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
         "iconId": null,
@@ -23767,7 +24068,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Cutting-edge Thermite Unit",
         "moduleId": "uniequip_002_franka",
@@ -23997,7 +24298,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_flameb_1",
         "iconId": null,
@@ -24127,7 +24428,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Rusty Broken Blade",
         "moduleId": "uniequip_002_flameb",
@@ -24350,6 +24651,366 @@
       }
     ]
   },
+  "char_154_morgan": {
+    "id": "char_154_morgan",
+    "name": "Morgan",
+    "cnName": "摩根",
+    "rarity": 5,
+    "class": "Guard",
+    "isCnOnly": true,
+    "skillData": [
+      {
+        "skillId": "skchr_morgan_1",
+        "iconId": null,
+        "skillName": "街头好手",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 5
+              },
+              {
+                "id": "30064",
+                "quantity": 2
+              },
+              {
+                "id": "30073",
+                "quantity": 4
+              }
+            ],
+            "name": "Skill 1 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 6
+              },
+              {
+                "id": "30054",
+                "quantity": 3
+              },
+              {
+                "id": "30074",
+                "quantity": 6
+              }
+            ],
+            "name": "Skill 1 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 10
+              },
+              {
+                "id": "30145",
+                "quantity": 4
+              },
+              {
+                "id": "30014",
+                "quantity": 3
+              }
+            ],
+            "name": "Skill 1 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_morgan_2",
+        "iconId": null,
+        "skillName": "无畏招架",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 5
+              },
+              {
+                "id": "31044",
+                "quantity": 3
+              },
+              {
+                "id": "30063",
+                "quantity": 3
+              }
+            ],
+            "name": "Skill 2 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 6
+              },
+              {
+                "id": "31054",
+                "quantity": 3
+              },
+              {
+                "id": "31014",
+                "quantity": 6
+              }
+            ],
+            "name": "Skill 2 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 10
+              },
+              {
+                "id": "30155",
+                "quantity": 4
+              },
+              {
+                "id": "31034",
+                "quantity": 2
+              }
+            ],
+            "name": "Skill 2 Mastery 3",
+            "category": 1
+          }
+        ]
+      }
+    ],
+    "moduleData": [
+      {
+        "moduleName": "“钢铁之心”",
+        "moduleId": "uniequip_002_morgan",
+        "typeName": "DRE-X",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "30034",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 40000
+              }
+            ],
+            "name": "Module DRE-X Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 20
+              },
+              {
+                "id": "31054",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 50000
+              }
+            ],
+            "name": "Module DRE-X Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 8
+              },
+              {
+                "id": "31024",
+                "quantity": 5
+              },
+              {
+                "id": "4001",
+                "quantity": 60000
+              }
+            ],
+            "name": "Module DRE-X Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      }
+    ],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-10秒",
+      "部署费用-1",
+      "第一天赋效果增强",
+      "部署费用-1"
+    ],
+    "skillLevels": [
+      {
+        "skillLevel": 2,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 2",
+        "category": 2
+      },
+      {
+        "skillLevel": 3,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 4
+          },
+          {
+            "id": "30031",
+            "quantity": 7
+          }
+        ],
+        "name": "Skill Level 3",
+        "category": 2
+      },
+      {
+        "skillLevel": 4,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 6
+          },
+          {
+            "id": "30042",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 4",
+        "category": 2
+      },
+      {
+        "skillLevel": 5,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 6
+          },
+          {
+            "id": "30052",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 5",
+        "category": 2
+      },
+      {
+        "skillLevel": 6,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 6
+          },
+          {
+            "id": "30093",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 6",
+        "category": 2
+      },
+      {
+        "skillLevel": 7,
+        "ingredients": [
+          {
+            "id": "3303",
+            "quantity": 6
+          },
+          {
+            "id": "31013",
+            "quantity": 3
+          },
+          {
+            "id": "31033",
+            "quantity": 2
+          }
+        ],
+        "name": "Skill Level 7",
+        "category": 2
+      }
+    ],
+    "elite": [
+      {
+        "eliteLevel": 1,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 20000
+          },
+          {
+            "id": "3221",
+            "quantity": 4
+          },
+          {
+            "id": "30012",
+            "quantity": 6
+          },
+          {
+            "id": "30032",
+            "quantity": 3
+          }
+        ],
+        "name": "Elite 1",
+        "category": 0
+      },
+      {
+        "eliteLevel": 2,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 120000
+          },
+          {
+            "id": "3223",
+            "quantity": 3
+          },
+          {
+            "id": "31054",
+            "quantity": 8
+          },
+          {
+            "id": "31063",
+            "quantity": 11
+          }
+        ],
+        "name": "Elite 2",
+        "category": 0
+      }
+    ]
+  },
   "char_155_tiger": {
     "id": "char_155_tiger",
     "name": "Indra",
@@ -24357,7 +25018,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_tiger_1",
         "iconId": null,
@@ -24487,7 +25148,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -24643,7 +25304,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_flint_1",
         "iconId": null,
@@ -24773,7 +25434,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -24929,7 +25590,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_dagda_1",
         "iconId": null,
@@ -25059,7 +25720,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "再部署时间-10秒",
@@ -25215,7 +25876,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_whitew_1",
         "iconId": null,
@@ -25345,7 +26006,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -25501,7 +26162,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_ayer_1",
         "iconId": null,
@@ -25631,7 +26292,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -25787,7 +26448,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -25917,7 +26578,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "再部署时间-4秒",
@@ -26073,7 +26734,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_bibeak_1",
         "iconId": null,
@@ -26203,7 +26864,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "A Well-Made Shirt",
         "moduleId": "uniequip_002_bibeak",
@@ -26433,7 +27094,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_tachak_1",
         "iconId": null,
@@ -26563,7 +27224,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Machinegun Rack",
         "moduleId": "uniequip_002_tachak",
@@ -26793,7 +27454,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -26923,7 +27584,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -27079,7 +27740,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_broca_1",
         "iconId": null,
@@ -27209,7 +27870,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -27365,7 +28026,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_astesi_1",
         "iconId": null,
@@ -27495,7 +28156,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -27651,7 +28312,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_heal_self[3]",
         "iconId": null,
@@ -27781,7 +28442,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -10 sec",
@@ -27937,7 +28598,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_akafyu_1",
         "iconId": null,
@@ -28067,7 +28728,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "武将甲胄",
         "moduleId": "uniequip_002_akafyu",
@@ -28297,7 +28958,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_noirc2_1",
         "iconId": null,
@@ -28427,7 +29088,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "黑角的随身笔记",
         "moduleId": "uniequip_002_noirc2",
@@ -28657,7 +29318,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_crow_1",
         "iconId": null,
@@ -28787,7 +29448,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -28943,7 +29604,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_highmo_1",
         "iconId": null,
@@ -29073,7 +29734,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "再部署时间-4秒",
@@ -29229,7 +29890,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_takila_1",
         "iconId": null,
@@ -29359,7 +30020,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -10 sec",
@@ -29515,7 +30176,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_bluep_1",
         "iconId": null,
@@ -29645,7 +30306,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Standard Color Chart",
         "moduleId": "uniequip_002_bluep",
@@ -29875,7 +30536,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -30005,7 +30666,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Solo Travel Kit",
         "moduleId": "uniequip_002_platnm",
@@ -30235,7 +30896,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_swllow_1",
         "iconId": null,
@@ -30365,7 +31026,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Reflection of a Mother's Love",
         "moduleId": "uniequip_002_swllow",
@@ -30595,7 +31256,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_aprl_1",
         "iconId": null,
@@ -30725,7 +31386,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Hi-Fi Headset",
         "moduleId": "uniequip_002_aprl",
@@ -30955,7 +31616,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_kroos2_1",
         "iconId": null,
@@ -31085,7 +31746,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Truth or Dare",
         "moduleId": "uniequip_002_kroos2",
@@ -31315,7 +31976,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_meteo_1",
         "iconId": null,
@@ -31445,7 +32106,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Tag of Nameless",
         "moduleId": "uniequip_002_meteo",
@@ -31675,7 +32336,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -31805,7 +32466,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Soul Resonance'",
         "moduleId": "uniequip_002_sesa",
@@ -32035,7 +32696,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_bdhkgt_1",
         "iconId": null,
@@ -32165,7 +32826,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "小石头",
         "moduleId": "uniequip_002_bdhkgt",
@@ -32395,7 +33056,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_excu_1",
         "iconId": null,
@@ -32525,7 +33186,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -32681,7 +33342,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
         "iconId": null,
@@ -32811,7 +33472,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -32967,7 +33628,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_magic_rage[3]",
         "iconId": null,
@@ -33161,7 +33822,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "DWDB-221E",
         "moduleId": "uniequip_002_amiya",
@@ -33391,7 +34052,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_absin_1",
         "iconId": null,
@@ -33521,7 +34182,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "“监护者”单兵通讯单元",
         "moduleId": "uniequip_002_absin",
@@ -33751,7 +34412,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_tomimi_1",
         "iconId": null,
@@ -33881,7 +34542,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "损坏的尾尾佳",
         "moduleId": "uniequip_002_tomimi",
@@ -34111,7 +34772,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_qanik_1",
         "iconId": null,
@@ -34241,7 +34902,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "自制登山杖",
         "moduleId": "uniequip_002_qanik",
@@ -34471,7 +35132,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -34601,7 +35262,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Fire Retardant Treatment",
         "moduleId": "uniequip_002_skfire",
@@ -34831,7 +35492,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -34961,7 +35622,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'All the Thunderlight'",
         "moduleId": "uniequip_002_leizi",
@@ -35191,7 +35852,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_halo_1",
         "iconId": null,
@@ -35321,7 +35982,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Unassembled Clock",
         "moduleId": "uniequip_002_halo",
@@ -35551,7 +36212,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_beewax_1",
         "iconId": null,
@@ -35681,7 +36342,81 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [
+      {
+        "moduleName": "“司祭的祝福”",
+        "moduleId": "uniequip_002_beewax",
+        "typeName": "PLX-X",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "31044",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 40000
+              }
+            ],
+            "name": "Module PLX-X Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 20
+              },
+              {
+                "id": "30084",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 50000
+              }
+            ],
+            "name": "Module PLX-X Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 8
+              },
+              {
+                "id": "31054",
+                "quantity": 5
+              },
+              {
+                "id": "4001",
+                "quantity": 60000
+              }
+            ],
+            "name": "Module PLX-X Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      }
+    ],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -35837,7 +36572,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -35967,7 +36702,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Inheritance and Development",
         "moduleId": "uniequip_002_lionhd",
@@ -36197,7 +36932,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_mint_1",
         "iconId": null,
@@ -36327,7 +37062,81 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [
+      {
+        "moduleName": "注意力保持装置",
+        "moduleId": "uniequip_002_mint",
+        "typeName": "PLX-X",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "31034",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 40000
+              }
+            ],
+            "name": "Module PLX-X Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 20
+              },
+              {
+                "id": "30014",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 50000
+              }
+            ],
+            "name": "Module PLX-X Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 8
+              },
+              {
+                "id": "30084",
+                "quantity": 5
+              },
+              {
+                "id": "4001",
+                "quantity": 60000
+              }
+            ],
+            "name": "Module PLX-X Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      }
+    ],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -10 sec",
@@ -36483,7 +37292,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_iris_1",
         "iconId": null,
@@ -36613,7 +37422,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Castle Pop-Up Book",
         "moduleId": "uniequip_002_iris",
@@ -36843,7 +37652,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_hamoni_1",
         "iconId": null,
@@ -36973,7 +37782,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "情报人员资料夹",
         "moduleId": "uniequip_002_hamoni",
@@ -37203,7 +38012,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_lava2_1",
         "iconId": null,
@@ -37333,7 +38142,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Sarkaz's Knife",
         "moduleId": "uniequip_002_lava2",
@@ -37563,7 +38372,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_serum_1",
         "iconId": null,
@@ -37693,7 +38502,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "无可抹消",
         "moduleId": "uniequip_002_serum",
@@ -37923,7 +38732,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -38053,7 +38862,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -10 sec",
@@ -38209,7 +39018,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_magic_rage[3]",
         "iconId": null,
@@ -38339,7 +39148,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -38495,7 +39304,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
         "iconId": null,
@@ -38625,7 +39434,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -10 sec",
@@ -38781,7 +39590,7 @@
     "rarity": 5,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_otter_1",
         "iconId": null,
@@ -38911,7 +39720,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Meeboo' Control Terminal XP",
         "moduleId": "uniequip_002_otter",
@@ -39141,7 +39950,7 @@
     "rarity": 5,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_folivo_1",
         "iconId": null,
@@ -39271,7 +40080,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Improved Lens.P",
         "moduleId": "uniequip_002_folivo",
@@ -39501,7 +40310,7 @@
     "rarity": 5,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_heal_up[3]",
         "iconId": null,
@@ -39631,7 +40440,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "紧急防卫程序",
         "moduleId": "uniequip_002_silent",
@@ -39861,7 +40670,7 @@
     "rarity": 5,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_bldsk_1",
         "iconId": null,
@@ -39991,7 +40800,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "应急储备",
         "moduleId": "uniequip_002_bldsk",
@@ -40221,7 +41030,7 @@
     "rarity": 5,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_folnic_1",
         "iconId": null,
@@ -40351,7 +41160,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "母亲的领巾",
         "moduleId": "uniequip_002_folnic",
@@ -40581,7 +41390,7 @@
     "rarity": 5,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_ceylon_1",
         "iconId": null,
@@ -40711,7 +41520,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Field Research Equipment",
         "moduleId": "uniequip_002_ceylon",
@@ -40941,7 +41750,7 @@
     "rarity": 5,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_whispr_1",
         "iconId": null,
@@ -41071,7 +41880,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "A Quaint First-Aid Kit",
         "moduleId": "uniequip_002_whispr",
@@ -41301,7 +42110,7 @@
     "rarity": 5,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_tuye_1",
         "iconId": null,
@@ -41431,7 +42240,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "集水装置",
         "moduleId": "uniequip_002_tuye",
@@ -41661,7 +42470,7 @@
     "rarity": 5,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_mberry_1",
         "iconId": null,
@@ -41791,7 +42600,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -41947,7 +42756,7 @@
     "rarity": 5,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_glider_1",
         "iconId": null,
@@ -42077,7 +42886,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -42233,7 +43042,7 @@
     "rarity": 5,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -42363,7 +43172,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -42519,7 +43328,7 @@
     "rarity": 5,
     "class": "Medic",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_heal_rage[3]",
         "iconId": null,
@@ -42649,7 +43458,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "再部署时间-4秒",
@@ -42805,7 +43614,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_nearl_1",
         "iconId": null,
@@ -42935,7 +43744,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Improved Knight Shield",
         "moduleId": "uniequip_002_nearl",
@@ -43165,7 +43974,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_hmau_1",
         "iconId": null,
@@ -43295,7 +44104,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Popular Sitcom Tapes",
         "moduleId": "uniequip_002_hmau",
@@ -43525,7 +44334,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_red_1",
         "iconId": null,
@@ -43655,7 +44464,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Mystery Prop Pack",
         "moduleId": "uniequip_002_red",
@@ -43885,7 +44694,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_waaifu_1",
         "iconId": null,
@@ -44015,7 +44824,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "The Classic of Hung Mei Wing Chun",
         "moduleId": "uniequip_002_waaifu",
@@ -44245,7 +45054,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_kafka_1",
         "iconId": null,
@@ -44375,7 +45184,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Rubik's Cube Pendant",
         "moduleId": "uniequip_002_kafka",
@@ -44605,7 +45414,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_nothin_1",
         "iconId": null,
@@ -44735,7 +45544,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Shelter from the Rain'",
         "moduleId": "uniequip_002_nothin",
@@ -44965,7 +45774,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_liskam_1",
         "iconId": null,
@@ -45095,7 +45904,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -45251,7 +46060,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_moeshd_1",
         "iconId": null,
@@ -45381,9 +46190,9 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
-        "moduleName": "作战靴",
+        "moduleName": "Combat Boots",
         "moduleId": "uniequip_002_moeshd",
         "typeName": "PRO-Y",
         "stages": [
@@ -45453,7 +46262,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -45611,7 +46420,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_def_up[3]",
         "iconId": null,
@@ -45741,9 +46550,9 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
-        "moduleName": "“一路以来”",
+        "moduleName": "'The Journey Thus Far'",
         "moduleId": "uniequip_002_bison",
         "typeName": "PRO-X",
         "stages": [
@@ -45813,7 +46622,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -45971,7 +46780,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_hpsts_1",
         "iconId": null,
@@ -46101,7 +46910,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -46257,7 +47066,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_asbest_1",
         "iconId": null,
@@ -46387,7 +47196,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -46543,7 +47352,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_aprot2_1",
         "iconId": null,
@@ -46673,7 +47482,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -46829,7 +47638,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_pianst_1",
         "iconId": null,
@@ -46959,7 +47768,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -10 sec",
@@ -47115,7 +47924,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_blitz_1",
         "iconId": null,
@@ -47245,7 +48054,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -47401,7 +48210,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_zebra_1",
         "iconId": null,
@@ -47531,9 +48340,9 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
-        "moduleName": "人气角色贴纸",
+        "moduleName": "Stickers of a Popular Character",
         "moduleId": "uniequip_002_zebra",
         "typeName": "PRO-Y",
         "stages": [
@@ -47603,7 +48412,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -47761,7 +48570,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -47891,7 +48700,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -48047,7 +48856,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_firwhl_1",
         "iconId": null,
@@ -48177,7 +48986,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "再部署时间-4秒",
@@ -48333,7 +49142,7 @@
     "rarity": 5,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_aurora_1",
         "iconId": null,
@@ -48463,7 +49272,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Shield Photography Module",
         "moduleId": "uniequip_002_aurora",
@@ -48686,6 +49495,366 @@
       }
     ]
   },
+  "char_464_cement": {
+    "id": "char_464_cement",
+    "name": "Cement",
+    "cnName": "洋灰",
+    "rarity": 5,
+    "class": "Defender",
+    "isCnOnly": true,
+    "skillData": [
+      {
+        "skillId": "skchr_cement_1",
+        "iconId": null,
+        "skillName": "突破矿层",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 5
+              },
+              {
+                "id": "30104",
+                "quantity": 3
+              },
+              {
+                "id": "30023",
+                "quantity": 3
+              }
+            ],
+            "name": "Skill 1 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 6
+              },
+              {
+                "id": "31014",
+                "quantity": 3
+              },
+              {
+                "id": "31024",
+                "quantity": 5
+              }
+            ],
+            "name": "Skill 1 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 10
+              },
+              {
+                "id": "30115",
+                "quantity": 4
+              },
+              {
+                "id": "30074",
+                "quantity": 5
+              }
+            ],
+            "name": "Skill 1 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_cement_2",
+        "iconId": null,
+        "skillName": "结构加固",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 5
+              },
+              {
+                "id": "31064",
+                "quantity": 3
+              },
+              {
+                "id": "30043",
+                "quantity": 2
+              }
+            ],
+            "name": "Skill 2 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 6
+              },
+              {
+                "id": "30044",
+                "quantity": 3
+              },
+              {
+                "id": "31054",
+                "quantity": 5
+              }
+            ],
+            "name": "Skill 2 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 10
+              },
+              {
+                "id": "30135",
+                "quantity": 4
+              },
+              {
+                "id": "31044",
+                "quantity": 4
+              }
+            ],
+            "name": "Skill 2 Mastery 3",
+            "category": 1
+          }
+        ]
+      }
+    ],
+    "moduleData": [
+      {
+        "moduleName": "工程记录仪",
+        "moduleId": "uniequip_002_cement",
+        "typeName": "HES-X",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "30024",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 40000
+              }
+            ],
+            "name": "Module HES-X Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 20
+              },
+              {
+                "id": "31034",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 50000
+              }
+            ],
+            "name": "Module HES-X Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 8
+              },
+              {
+                "id": "30094",
+                "quantity": 5
+              },
+              {
+                "id": "4001",
+                "quantity": 60000
+              }
+            ],
+            "name": "Module HES-X Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      }
+    ],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "防御力+27",
+      "第一天赋效果增强",
+      "部署费用-1"
+    ],
+    "skillLevels": [
+      {
+        "skillLevel": 2,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 2",
+        "category": 2
+      },
+      {
+        "skillLevel": 3,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 4
+          },
+          {
+            "id": "30021",
+            "quantity": 7
+          }
+        ],
+        "name": "Skill Level 3",
+        "category": 2
+      },
+      {
+        "skillLevel": 4,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 6
+          },
+          {
+            "id": "30032",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 4",
+        "category": 2
+      },
+      {
+        "skillLevel": 5,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 6
+          },
+          {
+            "id": "30042",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 5",
+        "category": 2
+      },
+      {
+        "skillLevel": 6,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 6
+          },
+          {
+            "id": "31053",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 6",
+        "category": 2
+      },
+      {
+        "skillLevel": 7,
+        "ingredients": [
+          {
+            "id": "3303",
+            "quantity": 6
+          },
+          {
+            "id": "30093",
+            "quantity": 3
+          },
+          {
+            "id": "30013",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 7",
+        "category": 2
+      }
+    ],
+    "elite": [
+      {
+        "eliteLevel": 1,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 20000
+          },
+          {
+            "id": "3231",
+            "quantity": 4
+          },
+          {
+            "id": "30062",
+            "quantity": 3
+          },
+          {
+            "id": "30052",
+            "quantity": 2
+          }
+        ],
+        "name": "Elite 1",
+        "category": 0
+      },
+      {
+        "eliteLevel": 2,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 120000
+          },
+          {
+            "id": "3233",
+            "quantity": 3
+          },
+          {
+            "id": "30084",
+            "quantity": 7
+          },
+          {
+            "id": "30093",
+            "quantity": 13
+          }
+        ],
+        "name": "Elite 2",
+        "category": 0
+      }
+    ]
+  },
   "char_145_prove": {
     "id": "char_145_prove",
     "name": "Provence",
@@ -48693,7 +49862,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_prove_1",
         "iconId": null,
@@ -48823,7 +49992,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Tail-Care Suit",
         "moduleId": "uniequip_002_prove",
@@ -49053,7 +50222,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_milu_1",
         "iconId": null,
@@ -49183,7 +50352,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Field Sniper Equipment",
         "moduleId": "uniequip_002_milu",
@@ -49413,7 +50582,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -49543,7 +50712,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Gunsmithing Toolkit",
         "moduleId": "uniequip_002_cuttle",
@@ -49773,7 +50942,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_lunacu_1",
         "iconId": null,
@@ -49903,7 +51072,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "“移动的窝”",
         "moduleId": "uniequip_002_lunacu",
@@ -50133,7 +51302,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_toddi_1",
         "iconId": null,
@@ -50263,7 +51432,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "弩箭调试箱",
         "moduleId": "uniequip_002_toddi",
@@ -50493,7 +51662,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_erato_1",
         "iconId": null,
@@ -50623,7 +51792,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "改弦更张",
         "moduleId": "uniequip_002_erato",
@@ -50853,7 +52022,7 @@
     "rarity": 5,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
         "iconId": null,
@@ -50983,7 +52152,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -51139,7 +52308,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_slchan_1",
         "iconId": null,
@@ -51269,7 +52438,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Reach the Top'",
         "moduleId": "uniequip_002_slchan",
@@ -51499,7 +52668,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_snsant_1",
         "iconId": null,
@@ -51629,7 +52798,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Snowsant's Precious Money Bank",
         "moduleId": "uniequip_002_snsant",
@@ -51859,7 +53028,7 @@
     "rarity": 5,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_slbell_1",
         "iconId": null,
@@ -51989,7 +53158,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -52145,7 +53314,7 @@
     "rarity": 5,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_vodfox_1",
         "iconId": null,
@@ -52275,7 +53444,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -52431,7 +53600,7 @@
     "rarity": 5,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_glassb_1",
         "iconId": null,
@@ -52561,7 +53730,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Reading Notes",
         "moduleId": "uniequip_002_glassb",
@@ -52791,7 +53960,7 @@
     "rarity": 5,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_glacus_1",
         "iconId": null,
@@ -52921,7 +54090,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Powered Exoskeleton",
         "moduleId": "uniequip_002_glacus",
@@ -53150,12 +54319,12 @@
     "cnName": "但书",
     "rarity": 5,
     "class": "Supporter",
-    "isCnOnly": true,
-    "skills": [
+    "isCnOnly": false,
+    "skillData": [
       {
         "skillId": "skchr_provs_1",
         "iconId": null,
-        "skillName": "纠纷起诉",
+        "skillName": "Dispute Litigation",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -53219,7 +54388,7 @@
       {
         "skillId": "skchr_provs_2",
         "iconId": null,
-        "skillName": "致胜立论",
+        "skillName": "Prevailing Argument",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -53281,9 +54450,9 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
-        "moduleName": "黛丝特的毕业礼",
+        "moduleName": "Deszcz's Graduate Memento",
         "moduleId": "uniequip_002_provs",
         "typeName": "DEC-X",
         "stages": [
@@ -53353,15 +54522,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+23",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -53511,7 +54680,7 @@
     "rarity": 5,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_windft_1",
         "iconId": null,
@@ -53641,7 +54810,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -53797,7 +54966,7 @@
     "rarity": 5,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_sora_1",
         "iconId": null,
@@ -53927,7 +55096,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -54083,7 +55252,7 @@
     "rarity": 5,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_heidi_1",
         "iconId": null,
@@ -54213,7 +55382,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -10 sec",
@@ -54369,7 +55538,7 @@
     "rarity": 5,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_tknogi_1",
         "iconId": null,
@@ -54499,7 +55668,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -54655,7 +55824,7 @@
     "rarity": 5,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_ncdeer_1",
         "iconId": null,
@@ -54785,7 +55954,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [],
     "skillLevels": [
       {
@@ -54935,7 +56104,7 @@
     "rarity": 5,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_quercu_1",
         "iconId": null,
@@ -55065,7 +56234,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -55221,7 +56390,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_mantic_1",
         "iconId": null,
@@ -55351,7 +56520,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Tail-Protection Training Tool",
         "moduleId": "uniequip_002_mantic",
@@ -55581,7 +56750,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_kirara_1",
         "iconId": null,
@@ -55711,7 +56880,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "We Will Survive 3 Online",
         "moduleId": "uniequip_002_kirara",
@@ -55941,7 +57110,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_panda_1",
         "iconId": null,
@@ -56071,7 +57240,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "尚蜀风味自制辣酱",
         "moduleId": "uniequip_002_panda",
@@ -56301,7 +57470,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_forcer_1",
         "iconId": null,
@@ -56431,7 +57600,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "可执行的幻想",
         "moduleId": "uniequip_002_forcer",
@@ -56661,7 +57830,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_robin_1",
         "iconId": null,
@@ -56791,7 +57960,81 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [
+      {
+        "moduleName": "限量版年历",
+        "moduleId": "uniequip_002_robin",
+        "typeName": "TRP-Y",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "30014",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 40000
+              }
+            ],
+            "name": "Module TRP-Y Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 20
+              },
+              {
+                "id": "30094",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 50000
+              }
+            ],
+            "name": "Module TRP-Y Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 8
+              },
+              {
+                "id": "31014",
+                "quantity": 5
+              },
+              {
+                "id": "4001",
+                "quantity": 60000
+              }
+            ],
+            "name": "Module TRP-Y Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      }
+    ],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -10 sec",
@@ -56947,7 +58190,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_rfrost_1",
         "iconId": null,
@@ -57077,7 +58320,81 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [
+      {
+        "moduleName": "机械式陷阱压力板",
+        "moduleId": "uniequip_002_rfrost",
+        "typeName": "TRP-Y",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "31054",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 40000
+              }
+            ],
+            "name": "Module TRP-Y Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 20
+              },
+              {
+                "id": "30024",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 50000
+              }
+            ],
+            "name": "Module TRP-Y Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 8
+              },
+              {
+                "id": "30044",
+                "quantity": 5
+              },
+              {
+                "id": "4001",
+                "quantity": 60000
+              }
+            ],
+            "name": "Module TRP-Y Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      }
+    ],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -57233,7 +58550,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_bena_1",
         "iconId": null,
@@ -57363,7 +58680,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "The Jeffreys Collection of Fairytales New and Old, Hardback Edition",
         "moduleId": "uniequip_002_bena",
@@ -57593,7 +58910,7 @@
     "rarity": 5,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_kazema_1",
         "iconId": null,
@@ -57723,7 +59040,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "An Old Thing",
         "moduleId": "uniequip_002_kazema",
@@ -57953,7 +59270,7 @@
     "rarity": 6,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_angel_1",
         "iconId": null,
@@ -58147,7 +59464,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Exusiai's Surprise",
         "moduleId": "uniequip_002_angel",
@@ -58385,7 +59702,7 @@
     "rarity": 6,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_archet_1",
         "iconId": null,
@@ -58579,7 +59896,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Seeds of Tomorrow'",
         "moduleId": "uniequip_002_archet",
@@ -58890,7 +60207,7 @@
     "rarity": 6,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_ash_1",
         "iconId": null,
@@ -59084,7 +60401,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Tactical Breaching Round Pack",
         "moduleId": "uniequip_002_ash",
@@ -59322,7 +60639,7 @@
     "rarity": 6,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_shwaz_1",
         "iconId": null,
@@ -59516,7 +60833,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Customized Crossbow Accessory Suit",
         "moduleId": "uniequip_002_shwaz",
@@ -59827,7 +61144,7 @@
     "rarity": 6,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_bgsnow_1",
         "iconId": null,
@@ -60021,7 +61338,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Typewriter Ribbon",
         "moduleId": "uniequip_002_bgsnow",
@@ -60259,7 +61576,7 @@
     "rarity": 6,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
         "iconId": null,
@@ -60453,7 +61770,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "First-show Support Set",
         "moduleId": "uniequip_002_fartth",
@@ -60764,7 +62081,7 @@
     "rarity": 6,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_cqbw_1",
         "iconId": null,
@@ -60958,7 +62275,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Mercenary's Bag",
         "moduleId": "uniequip_002_cqbw",
@@ -61196,7 +62513,7 @@
     "rarity": 6,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_phenxi_1",
         "iconId": null,
@@ -61390,7 +62707,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Out-Law' Special Ammunition Surplus",
         "moduleId": "uniequip_002_phenxi",
@@ -61628,7 +62945,7 @@
     "rarity": 6,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -61822,7 +63139,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "攻城器械训练装置",
         "moduleId": "uniequip_002_poca",
@@ -62060,7 +63377,7 @@
     "rarity": 6,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_rosmon_1",
         "iconId": null,
@@ -62254,7 +63571,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -62418,7 +63735,7 @@
     "rarity": 6,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_chen2_1",
         "iconId": null,
@@ -62612,7 +63929,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -62776,7 +64093,7 @@
     "rarity": 6,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_charge_cost[3]",
         "iconId": null,
@@ -62970,7 +64287,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "“糖果盒”",
         "moduleId": "uniequip_002_siege",
@@ -63281,7 +64598,7 @@
     "rarity": 6,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
         "iconId": null,
@@ -63475,7 +64792,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Piledriver Spear Magazine",
         "moduleId": "uniequip_002_bpipe",
@@ -63713,7 +65030,7 @@
     "rarity": 6,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_charge_cost[3]",
         "iconId": null,
@@ -63907,7 +65224,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "身向云泥",
         "moduleId": "uniequip_002_saga",
@@ -64145,7 +65462,7 @@
     "rarity": 6,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_assist_cost[3]",
         "iconId": null,
@@ -64339,7 +65656,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -64503,7 +65820,7 @@
     "rarity": 6,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_flamtl_1",
         "iconId": null,
@@ -64697,7 +66014,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "红松的起点",
         "moduleId": "uniequip_002_flamtl",
@@ -64935,7 +66252,7 @@
     "rarity": 6,
     "class": "Vanguard",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_vigil_1",
         "iconId": null,
@@ -65129,7 +66446,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "再部署时间-10秒",
@@ -65286,6 +66603,364 @@
       }
     ]
   },
+  "char_4087_ines": {
+    "id": "char_4087_ines",
+    "name": "Ines",
+    "cnName": "伊内丝",
+    "rarity": 6,
+    "class": "Vanguard",
+    "isCnOnly": true,
+    "skillData": [
+      {
+        "skillId": "skchr_ines_1",
+        "iconId": null,
+        "skillName": "淬影突袭",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 8
+              },
+              {
+                "id": "31044",
+                "quantity": 4
+              },
+              {
+                "id": "30063",
+                "quantity": 5
+              }
+            ],
+            "name": "Skill 1 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 12
+              },
+              {
+                "id": "30094",
+                "quantity": 4
+              },
+              {
+                "id": "30084",
+                "quantity": 8
+              }
+            ],
+            "name": "Skill 1 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 15
+              },
+              {
+                "id": "30115",
+                "quantity": 6
+              },
+              {
+                "id": "31064",
+                "quantity": 6
+              }
+            ],
+            "name": "Skill 1 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_ines_2",
+        "iconId": null,
+        "skillName": "暗夜无明",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 8
+              },
+              {
+                "id": "30094",
+                "quantity": 4
+              },
+              {
+                "id": "31033",
+                "quantity": 7
+              }
+            ],
+            "name": "Skill 2 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 12
+              },
+              {
+                "id": "31024",
+                "quantity": 4
+              },
+              {
+                "id": "31014",
+                "quantity": 9
+              }
+            ],
+            "name": "Skill 2 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 15
+              },
+              {
+                "id": "30125",
+                "quantity": 6
+              },
+              {
+                "id": "30054",
+                "quantity": 5
+              }
+            ],
+            "name": "Skill 2 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_ines_3",
+        "iconId": null,
+        "skillName": "独影归途",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 8
+              },
+              {
+                "id": "31054",
+                "quantity": 4
+              },
+              {
+                "id": "30023",
+                "quantity": 8
+              }
+            ],
+            "name": "Skill 3 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 12
+              },
+              {
+                "id": "30064",
+                "quantity": 4
+              },
+              {
+                "id": "30044",
+                "quantity": 5
+              }
+            ],
+            "name": "Skill 3 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 15
+              },
+              {
+                "id": "30135",
+                "quantity": 6
+              },
+              {
+                "id": "31044",
+                "quantity": 6
+              }
+            ],
+            "name": "Skill 3 Mastery 3",
+            "category": 1
+          }
+        ]
+      }
+    ],
+    "moduleData": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击速度+8",
+      "第一天赋效果增强",
+      "部署费用-1"
+    ],
+    "skillLevels": [
+      {
+        "skillLevel": 2,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 5
+          }
+        ],
+        "name": "Skill Level 2",
+        "category": 2
+      },
+      {
+        "skillLevel": 3,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 5
+          },
+          {
+            "id": "30021",
+            "quantity": 5
+          },
+          {
+            "id": "30051",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 3",
+        "category": 2
+      },
+      {
+        "skillLevel": 4,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 8
+          },
+          {
+            "id": "30032",
+            "quantity": 5
+          }
+        ],
+        "name": "Skill Level 4",
+        "category": 2
+      },
+      {
+        "skillLevel": 5,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 8
+          },
+          {
+            "id": "30042",
+            "quantity": 4
+          },
+          {
+            "id": "30022",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 5",
+        "category": 2
+      },
+      {
+        "skillLevel": 6,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 8
+          },
+          {
+            "id": "31023",
+            "quantity": 6
+          }
+        ],
+        "name": "Skill Level 6",
+        "category": 2
+      },
+      {
+        "skillLevel": 7,
+        "ingredients": [
+          {
+            "id": "3303",
+            "quantity": 8
+          },
+          {
+            "id": "31013",
+            "quantity": 5
+          },
+          {
+            "id": "30033",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 7",
+        "category": 2
+      }
+    ],
+    "elite": [
+      {
+        "eliteLevel": 1,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 30000
+          },
+          {
+            "id": "3211",
+            "quantity": 5
+          },
+          {
+            "id": "30012",
+            "quantity": 12
+          },
+          {
+            "id": "30062",
+            "quantity": 3
+          }
+        ],
+        "name": "Elite 1",
+        "category": 0
+      },
+      {
+        "eliteLevel": 2,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 180000
+          },
+          {
+            "id": "3213",
+            "quantity": 4
+          },
+          {
+            "id": "30115",
+            "quantity": 4
+          },
+          {
+            "id": "31034",
+            "quantity": 4
+          }
+        ],
+        "name": "Elite 2",
+        "category": 0
+      }
+    ]
+  },
   "char_134_ifrit": {
     "id": "char_134_ifrit",
     "name": "Ifrit",
@@ -65293,7 +66968,7 @@
     "rarity": 6,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_ifrit_1",
         "iconId": null,
@@ -65487,7 +67162,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "“同熔”",
         "moduleId": "uniequip_002_ifrit",
@@ -65725,7 +67400,7 @@
     "rarity": 6,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -65919,7 +67594,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Home of 'Black Lock' and 'White Key'",
         "moduleId": "uniequip_002_mostma",
@@ -66157,7 +67832,7 @@
     "rarity": 6,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_amgoat_1",
         "iconId": null,
@@ -66351,7 +68026,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "“错过的声音”",
         "moduleId": "uniequip_002_amgoat",
@@ -66589,7 +68264,7 @@
     "rarity": 6,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_cerber_1",
         "iconId": null,
@@ -66783,7 +68458,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "“很干的面包”",
         "moduleId": "uniequip_002_cerber",
@@ -66852,6 +68527,79 @@
               }
             ],
             "name": "Module CCR-X Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      },
+      {
+        "moduleName": "“我打的刀”",
+        "moduleId": "uniequip_003_cerber",
+        "typeName": "CCR-Y",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "30125",
+                "quantity": 2
+              },
+              {
+                "id": "4001",
+                "quantity": 80000
+              }
+            ],
+            "name": "Module CCR-Y Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 60
+              },
+              {
+                "id": "30135",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 100000
+              }
+            ],
+            "name": "Module CCR-Y Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 20
+              },
+              {
+                "id": "30145",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 120000
+              }
+            ],
+            "name": "Module CCR-Y Stage 3",
             "category": 3
           }
         ],
@@ -67021,7 +68769,7 @@
     "rarity": 6,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_dusk_1",
         "iconId": null,
@@ -67215,7 +68963,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Untitled Scroll",
         "moduleId": "uniequip_002_dusk",
@@ -67526,7 +69274,7 @@
     "rarity": 6,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_pasngr_1",
         "iconId": null,
@@ -67720,7 +69468,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Electromagnetic Regulator",
         "moduleId": "uniequip_002_pasngr",
@@ -68031,7 +69779,7 @@
     "rarity": 6,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_billro_1",
         "iconId": null,
@@ -68225,7 +69973,81 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [
+      {
+        "moduleName": "风信子与匕首",
+        "moduleId": "uniequip_002_billro",
+        "typeName": "PLX-X",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "30125",
+                "quantity": 2
+              },
+              {
+                "id": "4001",
+                "quantity": 80000
+              }
+            ],
+            "name": "Module PLX-X Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 60
+              },
+              {
+                "id": "30115",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 100000
+              }
+            ],
+            "name": "Module PLX-X Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 20
+              },
+              {
+                "id": "30135",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 120000
+              }
+            ],
+            "name": "Module PLX-X Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      }
+    ],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -68389,7 +70211,7 @@
     "rarity": 6,
     "class": "Caster",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_lin_1",
         "iconId": null,
@@ -68583,7 +70405,81 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [
+      {
+        "moduleName": "“七窍玲珑”",
+        "moduleId": "uniequip_002_lin",
+        "typeName": "PLX-X",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "30135",
+                "quantity": 2
+              },
+              {
+                "id": "4001",
+                "quantity": 80000
+              }
+            ],
+            "name": "Module PLX-X Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 60
+              },
+              {
+                "id": "30145",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 100000
+              }
+            ],
+            "name": "Module PLX-X Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 20
+              },
+              {
+                "id": "30115",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 120000
+              }
+            ],
+            "name": "Module PLX-X Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      }
+    ],
     "potentials": [
       "部署费用-1",
       "第二天赋效果增强",
@@ -68747,7 +70643,7 @@
     "rarity": 6,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_gdglow_1",
         "iconId": null,
@@ -68941,7 +70837,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Improves First Talent",
@@ -69105,7 +71001,7 @@
     "rarity": 6,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_ebnhlz_1",
         "iconId": null,
@@ -69299,7 +71195,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Originium Dice Case",
         "moduleId": "uniequip_002_ebnhlz",
@@ -69374,7 +71270,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“乐理阐释者”",
+        "moduleName": "'Theory Expositor'",
         "moduleId": "uniequip_003_ebnhlz",
         "typeName": "MSC-Y",
         "stages": [
@@ -69444,7 +71340,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -69610,7 +71506,7 @@
     "rarity": 6,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_gnosis_1",
         "iconId": null,
@@ -69804,7 +71700,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -69968,7 +71864,7 @@
     "rarity": 6,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_aglina_1",
         "iconId": null,
@@ -70162,7 +72058,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Gravity Calibration Module",
         "moduleId": "uniequip_002_aglina",
@@ -70473,7 +72369,7 @@
     "rarity": 6,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_lisa_1",
         "iconId": null,
@@ -70667,7 +72563,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Pocket Omamori",
         "moduleId": "uniequip_002_lisa",
@@ -70905,7 +72801,7 @@
     "rarity": 6,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_mgllan_1",
         "iconId": null,
@@ -71099,7 +72995,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Drone Control Module.P",
         "moduleId": "uniequip_002_mgllan",
@@ -71410,7 +73306,7 @@
     "rarity": 6,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_skadi2_1",
         "iconId": null,
@@ -71604,7 +73500,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -6 sec",
@@ -71768,7 +73664,7 @@
     "rarity": 6,
     "class": "Supporter",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_ling_1",
         "iconId": null,
@@ -71962,7 +73858,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Fond Dream with Poetry",
         "moduleId": "uniequip_002_ling",
@@ -72200,7 +74096,7 @@
     "rarity": 6,
     "class": "Supporter",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_ironmn_1",
         "iconId": null,
@@ -72394,7 +74290,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "再部署时间-6秒",
@@ -72558,7 +74454,7 @@
     "rarity": 6,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_phatom_1",
         "iconId": null,
@@ -72752,7 +74648,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Miss Christine's Felt",
         "moduleId": "uniequip_002_phatom",
@@ -72990,7 +74886,7 @@
     "rarity": 6,
     "class": "Specialist",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_texas2_1",
         "iconId": null,
@@ -73184,7 +75080,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "蓝莓与黑巧",
         "moduleId": "uniequip_002_texas2",
@@ -73422,7 +75318,7 @@
     "rarity": 6,
     "class": "Specialist",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_yato2_1",
         "iconId": null,
@@ -73616,7 +75512,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "训练用木桩",
         "moduleId": "uniequip_002_yato2",
@@ -73854,7 +75750,7 @@
     "rarity": 6,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_lmlee_1",
         "iconId": null,
@@ -74048,7 +75944,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Wandering'",
         "moduleId": "uniequip_002_lmlee",
@@ -74286,7 +76182,7 @@
     "rarity": 6,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_weedy_1",
         "iconId": null,
@@ -74480,7 +76376,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "仿生海龙改型",
         "moduleId": "uniequip_002_weedy",
@@ -74718,7 +76614,7 @@
     "rarity": 6,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_haak_1",
         "iconId": null,
@@ -74912,7 +76808,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -75076,7 +76972,7 @@
     "rarity": 6,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_glady_1",
         "iconId": null,
@@ -75270,7 +77166,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Consul's Handmirror",
         "moduleId": "uniequip_002_glady",
@@ -75508,7 +77404,7 @@
     "rarity": 6,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_mizuki_1",
         "iconId": null,
@@ -75702,7 +77598,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Entreaty of the Herald",
         "moduleId": "uniequip_002_mizuki",
@@ -76013,7 +77909,7 @@
     "rarity": 6,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_ghost2_1",
         "iconId": null,
@@ -76207,7 +78103,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Vinyl Record' Box",
         "moduleId": "uniequip_002_ghost2",
@@ -76518,7 +78414,7 @@
     "rarity": 6,
     "class": "Specialist",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_doroth_1",
         "iconId": null,
@@ -76712,7 +78608,81 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [
+      {
+        "moduleName": "童话书",
+        "moduleId": "uniequip_002_doroth",
+        "typeName": "TRP-Y",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "30145",
+                "quantity": 2
+              },
+              {
+                "id": "4001",
+                "quantity": 80000
+              }
+            ],
+            "name": "Module TRP-Y Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 60
+              },
+              {
+                "id": "30125",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 100000
+              }
+            ],
+            "name": "Module TRP-Y Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 20
+              },
+              {
+                "id": "30135",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 120000
+              }
+            ],
+            "name": "Module TRP-Y Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      }
+    ],
     "potentials": [
       "DP Cost -1",
       "Improves First Talent",
@@ -76876,7 +78846,7 @@
     "rarity": 6,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_shining_1",
         "iconId": null,
@@ -77070,7 +79040,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "干枯剑鞘",
         "moduleId": "uniequip_002_shining",
@@ -77381,7 +79351,7 @@
     "rarity": 6,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_heal_up[3]",
         "iconId": null,
@@ -77575,7 +79545,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Closed Hope'",
         "moduleId": "uniequip_002_cgbird",
@@ -77813,7 +79783,7 @@
     "rarity": 6,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_kalts_1",
         "iconId": null,
@@ -78007,7 +79977,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Mon2tr",
         "moduleId": "uniequip_002_kalts",
@@ -78245,7 +80215,7 @@
     "rarity": 6,
     "class": "Medic",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_lumen_1",
         "iconId": null,
@@ -78439,7 +80409,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Spyglass",
         "moduleId": "uniequip_002_lumen",
@@ -78750,7 +80720,7 @@
     "rarity": 6,
     "class": "Medic",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
         "iconId": null,
@@ -78944,7 +80914,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "第一天赋效果增强",
@@ -79108,7 +81078,7 @@
     "rarity": 6,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_hsguma_1",
         "iconId": null,
@@ -79302,9 +81272,9 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
-        "moduleName": "友人们的赠礼",
+        "moduleName": "Gifts From Friends",
         "moduleId": "uniequip_002_hsguma",
         "typeName": "PRO-Y",
         "stages": [
@@ -79374,7 +81344,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "护身符",
@@ -79613,7 +81583,7 @@
     "rarity": 6,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_demkni_1",
         "iconId": null,
@@ -79807,7 +81777,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Unused Boxing Gloves",
         "moduleId": "uniequip_002_demkni",
@@ -80118,7 +82088,7 @@
     "rarity": 6,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_blemsh_1",
         "iconId": null,
@@ -80312,7 +82282,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Echo of Craftsman's Guild",
         "moduleId": "uniequip_002_blemsh",
@@ -80550,7 +82520,7 @@
     "rarity": 6,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_nian_1",
         "iconId": null,
@@ -80744,9 +82714,9 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
-        "moduleName": "混沌阵列",
+        "moduleName": "The Array of Chaos",
         "moduleId": "uniequip_002_nian",
         "typeName": "PRO-X",
         "stages": [
@@ -80813,6 +82783,79 @@
               }
             ],
             "name": "Module PRO-X Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": false
+      },
+      {
+        "moduleName": "“请勿叩门”",
+        "moduleId": "uniequip_003_nian",
+        "typeName": "PRO-Y",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "30115",
+                "quantity": 2
+              },
+              {
+                "id": "4001",
+                "quantity": 80000
+              }
+            ],
+            "name": "Module PRO-Y Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 60
+              },
+              {
+                "id": "30145",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 100000
+              }
+            ],
+            "name": "Module PRO-Y Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 20
+              },
+              {
+                "id": "30125",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 120000
+              }
+            ],
+            "name": "Module PRO-Y Stage 3",
             "category": 3
           }
         ],
@@ -80982,7 +83025,7 @@
     "rarity": 6,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_def_up[3]",
         "iconId": null,
@@ -81176,7 +83219,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -81340,7 +83383,7 @@
     "rarity": 6,
     "class": "Defender",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_judge_1",
         "iconId": null,
@@ -81534,7 +83577,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "第一天赋效果增强",
@@ -81698,7 +83741,7 @@
     "rarity": 6,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_zumama_1",
         "iconId": null,
@@ -81892,7 +83935,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Zumama's Tool Box",
         "moduleId": "uniequip_002_zumama",
@@ -81967,7 +84010,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“小小的丑东西”",
+        "moduleName": "'The Little Ugly Thing'",
         "moduleId": "uniequip_003_zumama",
         "typeName": "HES-Y",
         "stages": [
@@ -82037,7 +84080,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -82203,7 +84246,7 @@
     "rarity": 6,
     "class": "Defender",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_horn_1",
         "iconId": null,
@@ -82397,7 +84440,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Improves First Talent",
@@ -82561,7 +84604,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_f12yin_1",
         "iconId": null,
@@ -82755,7 +84798,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -82919,7 +84962,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_chyue_1",
         "iconId": null,
@@ -83113,7 +85156,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "再部署时间-4秒",
@@ -83277,7 +85320,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_svrash_1",
         "iconId": "skcom_powerstrike[3]",
@@ -83471,7 +85514,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -83635,7 +85678,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
@@ -83829,7 +85872,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Improves Second Talent",
@@ -83993,7 +86036,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": true,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_qiubai_1",
         "iconId": null,
@@ -84187,7 +86230,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "部署费用-1",
       "第二天赋效果增强",
@@ -84351,7 +86394,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_chen_1",
         "iconId": null,
@@ -84545,7 +86588,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Rhodes Island Standard Combat Sword",
         "moduleId": "uniequip_002_chen",
@@ -84783,7 +86826,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_irene_1",
         "iconId": null,
@@ -84977,7 +87020,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Liber Sacer",
         "moduleId": "uniequip_002_irene",
@@ -85215,7 +87258,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_huang_1",
         "iconId": "skcom_powerstrike[3]",
@@ -85409,7 +87452,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Improves First Talent",
@@ -85573,7 +87616,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_gvial2_1",
         "iconId": null,
@@ -85767,7 +87810,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Improves First Talent",
@@ -85931,7 +87974,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_surtr_1",
         "iconId": null,
@@ -86125,7 +88168,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Improves Second Talent",
@@ -86289,7 +88332,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_helage_1",
         "iconId": null,
@@ -86483,7 +88526,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "藏锋",
         "moduleId": "uniequip_002_helage",
@@ -86721,7 +88764,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_pallas_1",
         "iconId": null,
@@ -86915,7 +88958,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "'Ούρος'",
         "moduleId": "uniequip_002_pallas",
@@ -87226,7 +89269,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_nearl2_1",
         "iconId": null,
@@ -87420,7 +89463,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Blade of Blazing Sun",
         "moduleId": "uniequip_002_nearl2",
@@ -87657,12 +89700,12 @@
     "cnName": "玛恩纳",
     "rarity": 6,
     "class": "Guard",
-    "isCnOnly": true,
-    "skills": [
+    "isCnOnly": false,
+    "skillData": [
       {
         "skillId": "skchr_mlynar_1",
         "iconId": null,
-        "skillName": "未声张的怒火",
+        "skillName": "Unvoiced Anger",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -87726,7 +89769,7 @@
       {
         "skillId": "skchr_mlynar_2",
         "iconId": null,
-        "skillName": "未宽解的悲哀",
+        "skillName": "Unresolved Sorrow",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -87790,7 +89833,7 @@
       {
         "skillId": "skchr_mlynar_3",
         "iconId": null,
-        "skillName": "未照耀的荣光",
+        "skillName": "Unbrilliant Glory",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -87852,13 +89895,13 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "第一天赋效果增强",
-      "攻击力+25",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +25",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -88016,7 +90059,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_savage_1",
         "iconId": "skcom_powerstrike[2]",
@@ -88146,7 +90189,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "ATK +35",
       "Max HP +250",
@@ -88300,7 +90343,7 @@
     "rarity": 3,
     "class": "Sniper",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_catap_1",
         "iconId": "skcom_blowrange_up[1]",
@@ -88308,7 +90351,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -88425,7 +90468,7 @@
     "rarity": 3,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_midn_1",
         "iconId": "skcom_enchant[1]",
@@ -88433,7 +90476,7 @@
         "masteries": []
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -88550,7 +90593,7 @@
     "rarity": 4,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_brownb_1",
         "iconId": null,
@@ -88680,7 +90723,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -88832,7 +90875,7 @@
     "rarity": 4,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_jaksel_1",
         "iconId": null,
@@ -88962,7 +91005,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "DP Cost -1",
       "Redeployment Time -4 sec",
@@ -89114,7 +91157,7 @@
     "rarity": 5,
     "class": "Caster",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_nightm_1",
         "iconId": null,
@@ -89244,7 +91287,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "“两生花”",
         "moduleId": "uniequip_002_nightm",
@@ -89474,7 +91517,7 @@
     "rarity": 5,
     "class": "Vanguard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_def_up[3]",
         "iconId": null,
@@ -89604,7 +91647,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Cavalry Policeman Suit",
         "moduleId": "uniequip_002_grani",
@@ -89834,7 +91877,7 @@
     "rarity": 6,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
         "iconId": null,
@@ -90028,7 +92071,7 @@
         ]
       }
     ],
-    "modules": [
+    "moduleData": [
       {
         "moduleName": "Moist Sword Bag",
         "moduleId": "uniequip_002_skadi",
@@ -90339,7 +92382,7 @@
     "rarity": 5,
     "class": "Guard",
     "isCnOnly": false,
-    "skills": [
+    "skillData": [
       {
         "skillId": "skchr_amiya2_1",
         "iconId": null,
@@ -90469,7 +92512,7 @@
         ]
       }
     ],
-    "modules": [],
+    "moduleData": [],
     "potentials": [
       "生命上限+200",
       "部署费用-1",
