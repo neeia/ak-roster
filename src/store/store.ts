@@ -13,8 +13,6 @@ import {
   PersistedState,
 } from "redux-persist";
 
-import operatorsJson from "data/operators.json";
-
 import depotReducer from "./depotSlice";
 import goalsReducer from "./goalsSlice";
 import rosterReducer from "./rosterSlice";
@@ -22,6 +20,7 @@ import storage from "./storage";
 import userReducer from "./userSlice";
 import { OperatorGoalCategory } from "types/goal";
 import { OperatorData } from "types/operator";
+import operatorJson from "data/operators";
 
 const migrations: MigrationManifest = {
   2: (state) => {
@@ -32,9 +31,8 @@ const migrations: MigrationManifest = {
           if (goal.category === OperatorGoalCategory.Module) {
             goal.moduleLevel ??= 1;
             if (goal.moduleId == null) {
-              const op: OperatorData =
-                operatorsJson[goal.operatorId as keyof typeof operatorsJson];
-              const firstModule = op.modules[0];
+              const op: OperatorData = operatorJson[goal.operatorId];
+              const firstModule = op.moduleData[0];
               if (firstModule == null) {
                 console.warn(
                   "Couldn't find any modules for this operator module goal",

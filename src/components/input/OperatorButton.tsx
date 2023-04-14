@@ -1,12 +1,12 @@
 import React from "react";
-import { Operator } from "types/operator";
+import { Operator, OperatorId } from "types/operator";
 import { Box, Button, Typography } from "@mui/material";
 import { rarityColors } from "styles/rarityColors";
 import { Favorite } from "@mui/icons-material";
 import getTextWidth from "styles/getTextWidth";
 import appTheme from "styles/theme/appTheme";
 import Image from "next/image";
-import operatorJson from "data/operators.json";
+import operatorJson from "data/operators";
 
 const WIDTH_TO_PX = 10 / 7;
 const LONG_CUTOFF = 75;
@@ -14,7 +14,7 @@ const LONGER_CUTOFF = 95;
 
 interface Props {
   op: Operator;
-  onClick: (opId: string) => void;
+  onClick: (opId: OperatorId) => void;
   hidden?: boolean;
   toggled?: boolean;
   img?: string;
@@ -23,7 +23,7 @@ interface Props {
 
 const OperatorButton = React.memo((props: Props) => {
   const { op, onClick, hidden, toggled, img, alt } = props;
-  const opData = operatorJson[op.id as keyof typeof operatorJson];
+  const opData = operatorJson[op.id];
 
   const [n, t] = opData.name.split(/ [Tt]he /g);
   const name = t ?? n;

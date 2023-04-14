@@ -1,8 +1,8 @@
 import React from "react";
-import { Operator, ModuleData, OperatorData } from "../../../types/operator";
-import operatorJson from "../../../data/operators.json";
+import { Operator, ModuleData } from "types/operator";
+import operatorJson from "data/operators";
 import { Box, Button, Typography } from "@mui/material";
-import { changeModule, MODULE_REQ_BY_RARITY } from "../../../util/changeOperator";
+import { changeModule, MODULE_REQ_BY_RARITY } from "util/changeOperator";
 import Image from "next/image";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 const Module = ((props: Props) => {
   const { op, onChange } = props;
-  const opData: OperatorData = operatorJson[op.id as keyof typeof operatorJson];
+  const opData = operatorJson[op.id];
 
   return (
     <Box sx={{
@@ -20,8 +20,8 @@ const Module = ((props: Props) => {
       alignItems: "center",
       gap: "4px",
     }}>
-      {opData.modules.map((module: ModuleData, i: number) => {
-        const disabled = !op.potential || op.level < MODULE_REQ_BY_RARITY[opData.rarity] || op.elite < 2;
+      {opData.moduleData.map((module: ModuleData, i: number) => {
+        const disabled = !op.potential || op.level < MODULE_REQ_BY_RARITY[opData.rarity] || op.promotion < 2;
         return (
           <Box
             key={`maB${i}`}
@@ -54,7 +54,7 @@ const Module = ((props: Props) => {
                 className={disabled ? "Mui-disabled" : ""}
                 width={48}
                 height={48}
-                src={`/img/equip/${opData.modules[i].typeName.toLowerCase()}.png`}
+                src={`/img/equip/${opData.moduleData[i].typeName.toLowerCase()}.png`}
                 alt={`Module ${i + 1}`}
               />
               <Typography
@@ -77,6 +77,7 @@ const Module = ((props: Props) => {
                   p: 0.5,
                   minWidth: 0,
                   backgroundColor: "background.default",
+                  height: "40px",
                 }}
                 onClick={() => onChange(changeModule(op, i, j))}
                 disabled={disabled}

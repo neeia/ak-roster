@@ -3,7 +3,7 @@ import { Operator } from "types/operator";
 import { Box, IconButton, Tooltip } from "@mui/material";
 import { changePotential, getMaxPotentialById } from "util/changeOperator";
 import Image from "next/image";
-import operatorJson from "data/operators.json";
+import operatorJson from "data/operators";
 
 const br = (op: string, pot: number) => {
   const r = 4;
@@ -18,7 +18,8 @@ interface Props {
 }
 const Potential = ((props: Props) => {
   const { op, onChange } = props;
-  const potBonuses = operatorJson[op.id as keyof typeof operatorJson].potentials;
+  
+  const potBonuses = operatorJson[op.id].potentials;
   return (
     <Box sx={{
       display: "flex",
@@ -26,9 +27,10 @@ const Potential = ((props: Props) => {
       borderRadius: 1,
       width: "fit-content",
       mx: "auto",
+      height: "48px",
       boxShadow: op.potential && 1,
       "& .MuiButtonBase-root": {
-        boxShadow: 0,
+        boxShadow: "none !important",
       },
     }}>
       {[...Array(getMaxPotentialById(op.id))].map((_, i) =>

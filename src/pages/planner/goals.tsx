@@ -72,11 +72,11 @@ const Goals: NextPage = () => {
           ops[goal.operatorId].rank = Math.max(goal.skillLevel, op.rank);
           break;
         case OperatorGoalCategory.Mastery:
-          const skillIndex = opData.skills.findIndex((sk) => sk.skillId === goal.skillId);
+          const skillIndex = opData.skillData.findIndex((sk) => sk.skillId === goal.skillId);
           ops[goal.operatorId].masteries[skillIndex] = Math.max(goal.masteryLevel, op.masteries[skillIndex]);
           break;
         case OperatorGoalCategory.Module:
-          const moduleIndex = opData.modules.findIndex(
+          const moduleIndex = opData.moduleData.findIndex(
             (m) => m.moduleId === goal.moduleId
           )!;
           ops[goal.operatorId].modules[moduleIndex] = Math.max(goal.moduleLevel, op.masteries[moduleIndex]);

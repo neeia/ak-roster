@@ -18,7 +18,7 @@ export default function (op: Operator) {
 
   // validate owned
   if (!op.potential) {
-    if (op.elite !== -1) return false;
+    if (op.promotion !== -1) return false;
     if (op.level) return false;
     if (op.rank) return false;
     if (op.skin) return false;
@@ -27,30 +27,30 @@ export default function (op: Operator) {
   }
 
   // validate elite and level
-  if (op.elite < 0) return false;
-  if (op.elite > MAX_PROMOTION_BY_RARITY[opData.rarity]) return false;
+  if (op.promotion < 0) return false;
+  if (op.promotion > MAX_PROMOTION_BY_RARITY[opData.rarity]) return false;
   if (op.level < 1) return false;
-  if (op.level > MAX_LEVEL_BY_RARITY[opData.rarity][op.elite]) return false;
+  if (op.level > MAX_LEVEL_BY_RARITY[opData.rarity][op.promotion]) return false;
 
   // validate rank
   if (op.rank < 1) return false;
   if (opData.rarity < 3 && op.rank !== 1) return false;
-  if (op.elite === 0 && op.rank > 4) return false;
+  if (op.promotion === 0 && op.rank > 4) return false;
   if (op.rank > 7) return false;
 
   // validate masteries
   if (masteries) {
     // min reqs
-    if (op.elite !== 2 || op.rank !== 7) return false;
-    if (op.masteries.length !== opData.skills.length) return false;
+    if (op.promotion !== 2 || op.rank !== 7) return false;
+    if (op.masteries.length !== opData.skillData.length) return false;
     if (op.masteries.filter(n => 0 < n || 3 < n).length) return false;
   }
 
   // validate modules
   if (modules) {
     // check min reqs
-    if (op.elite !== 2 || op.level < MODULE_REQ_BY_RARITY[opData.rarity]) return false;
-    if (op.modules.length !== opData.modules.length) return false;
+    if (op.promotion !== 2 || op.level < MODULE_REQ_BY_RARITY[opData.rarity]) return false;
+    if (op.modules.length !== opData.moduleData.length) return false;
     if (op.modules.filter(n => 0 < n || 3 < n).length) return false;
   }
 

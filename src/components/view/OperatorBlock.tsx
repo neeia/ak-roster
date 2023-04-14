@@ -4,8 +4,8 @@ import { Operator, OperatorData } from "../../types/operator";
 import { Favorite } from "@mui/icons-material";
 import { rarityColors } from "../../styles/rarityColors";
 import { MAX_LEVEL_BY_RARITY } from "../../util/changeOperator";
-import operatorJson from "../../data/operators.json";
 import Image from "next/image";
+import operatorJson from "data/operators";
 
 interface Props {
   op: Operator;
@@ -16,11 +16,11 @@ interface Props {
 const OperatorBlock = (props: Props) => {
   const { op, nobg, skill } = props;
 
-  const opData: OperatorData = operatorJson[op.id as keyof typeof operatorJson];
+  const opData = operatorJson[op.id];
   let intermediate = op.id;
-  if (op.elite === 2) {
+  if (op.promotion === 2) {
     intermediate += "_2";
-  } else if (op.elite === 1 && opData.name === "Amiya") {
+  } else if (op.promotion === 1 && opData.name === "Amiya") {
     intermediate += "_1";
   }
 
@@ -102,7 +102,7 @@ const OperatorBlock = (props: Props) => {
         position: "relative",
       }}
     >
-      <Image src={`/img/elite/${op.elite}_s_box.png`} fill sizes="(max-width: 768px) 20px, 32px" alt={`Elite ${op.elite}`} />
+      <Image src={`/img/elite/${op.promotion}_s_box.png`} fill sizes="(max-width: 768px) 20px, 32px" alt={`Elite ${op.promotion}`} />
     </Box >
 
   const levelSx = {
@@ -168,8 +168,8 @@ const OperatorBlock = (props: Props) => {
       zIndex: 1,
     }}>
       {op.potential > 1 ? potentialBlock : null}
-      {op.elite > 0 ? promotionBlock : null}
-      {op.elite > 0 || op.level > 1 ? levelBlock : null}
+      {op.promotion > 0 ? promotionBlock : null}
+      {op.promotion > 0 || op.level > 1 ? levelBlock : null}
     </Box >
 
   const skillBlock =
@@ -182,11 +182,11 @@ const OperatorBlock = (props: Props) => {
       justifySelf: "end",
       gap: "2px",
     }}>
-      {[...Array(opData.skills.length)].map((_, n: number) =>
+      {[...Array(opData.skillData.length)].map((_, n: number) =>
         <Box
           key={n}
           sx={{
-            display: op.elite >= n ? "grid" : "none",
+            display: op.promotion >= n ? "grid" : "none",
             marginLeft: { xs: "0px", sm: `${4 * n}px` },
             "& .stack": {
               gridRow: 1,
@@ -229,8 +229,8 @@ const OperatorBlock = (props: Props) => {
   const opModuleUrls = op.modules ? op.modules
     .map((mod, n: number) => {
       return {
-        typeName: opData.modules[n].typeName,
-        url: `/img/equip/${opData.modules[n].typeName.toLowerCase()}.png`,
+        typeName: opData.moduleData[n].typeName,
+        url: `/img/equip/${opData.moduleData[n].typeName.toLowerCase()}.png`,
         index: n,
         mod
       }
@@ -252,6 +252,7 @@ const OperatorBlock = (props: Props) => {
           key={n}
           sx={{
             display: "grid",
+            height: { xs: "24px", sm: "32px" },
             width: { xs: "24px", sm: "32px" },
             "& > *": {
               gridArea: "1 / 1",
@@ -262,14 +263,18 @@ const OperatorBlock = (props: Props) => {
               backgroundColor: "info.main",
               border: "1px solid #808080",
             },
+            position: "relative",
           }}
         >
           <Box
             zIndex={1}
             className="frame"
           />
-          <Box zIndex={2} sx={{ display: "inherit" }}>
-            <Image src={url} height={64} width={64} alt={typeName} />
+          <Box zIndex={2} sx={{ "& > img": { objectFit: "contain" } }}>
+            <Image src={url}
+              fill
+              alt={typeName}
+            />
           </Box>
           <Typography
             zIndex={3}

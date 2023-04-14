@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { Box, Divider } from "@mui/material";
-import Layout from "../../components/Layout";
-import { getUserStatus } from "../../util/getUserStatus";
+import Layout from "components/Layout";
+import { getUserStatus } from "util/getUserStatus";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import SupportSelection from "../../components/profile/SupportSelection";
-import Assistant from "../../components/profile/Assistant";
-import FriendID from "../../components/profile/FriendId";
-import Level from "../../components/profile/Level";
-import Server from "../../components/profile/Server";
-import Onboard from "../../components/profile/Onboard";
-import Discord from "../../components/profile/Discord";
-import Reddit from "../../components/profile/Reddit";
+import SupportSelection from "components/profile/SupportSelection";
+import Assistant from "components/profile/Assistant";
+import FriendID from "components/profile/FriendId";
+import Level from "components/profile/Level";
+import Server from "components/profile/Server";
+import Onboard from "components/profile/Onboard";
+import Discord from "components/profile/Discord";
+import Reddit from "components/profile/Reddit";
 
 const Profile: NextPage = () => {
 
@@ -56,8 +56,8 @@ const Profile: NextPage = () => {
             <Onboard user={user} />
           </Box>
           <Divider />
-          <Assistant user={user} />
-          <SupportSelection user={user} />
+          {/* <Assistant user={user} />
+          <SupportSelection user={user} /> */}
           <Divider />
           <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             Connections

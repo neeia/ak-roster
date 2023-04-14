@@ -5,7 +5,7 @@ export interface Operator {
   id: OperatorId;
   favorite: boolean;
   potential: number;
-  elite: number;
+  promotion: number;
   level: number;
   rank: number;
   masteries: number[];
@@ -17,7 +17,7 @@ const opSchema = {
   id: { type: "string" },
   favorite: { type: "boolean" },
   potential: { type: "number" },
-  elite: { type: "number" },
+  promotion: { type: "number" },
   level: { type: "number" },
   rank: { type: "number" },
   masteries: {
@@ -32,7 +32,7 @@ const opSchema = {
       type: "number"
     }
   },
-  skin: { type: "boolean" },
+  skin: { type: "string" },
 }
 
 export const operatorSchema = {
@@ -49,14 +49,14 @@ export interface Skin {
 }
 
 export interface OperatorData {
-  id: string;
+  id: OperatorId;
   name: string;
   cnName: string;
   rarity: number;
   class: string;
   isCnOnly: boolean;
-  skills: SkillData[];
-  modules: ModuleData[];
+  skillData: SkillData[];
+  moduleData: ModuleData[];
   potentials: string[];
   skillLevels: SkillLevelGoal[];
   elite: EliteGoal[];

@@ -1,4 +1,5 @@
 import { Ingredient } from "./item";
+import { OperatorId } from "./operator";
 
 export enum OperatorGoalCategory {
   Elite = 0,
@@ -40,7 +41,7 @@ export type OperatorGoal =
   | EliteGoal;
 
 interface BasePlannerGoal {
-  operatorId: string;
+  operatorId: OperatorId;
   category: OperatorGoalCategory;
 }
 

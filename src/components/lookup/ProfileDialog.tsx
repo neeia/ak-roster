@@ -25,9 +25,9 @@ const ProfileDialog = (props: Props) => {
   const getImgSrc = ((opId: string) => {
     const op = roster[opId]
     let intermediate = opId;
-    if (op.elite === 2) {
+    if (op.promotion === 2) {
       intermediate += "_2";
-    } else if (op.elite === 1 && op.id === "char_002_amiya") {
+    } else if (op.promotion === 1 && op.id === "char_002_amiya") {
       intermediate += "_1";
     }
     return `/img/avatars/${op.skin ?? intermediate}.png`;

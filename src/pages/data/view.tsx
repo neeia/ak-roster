@@ -3,12 +3,11 @@ import type { NextPage } from "next";
 import { Box, ButtonGroup, IconButton, Tooltip, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import Layout from "components/Layout";
-import { Operator } from "types/operator";
+import { Operator, OperatorId } from "types/operator";
 import { ModeEdit } from "@mui/icons-material";
 import SortDialog from "components/collate/SortDialog";
 import FilterDialog from "components/collate/FilterDialog";
 import SearchDialog from "components/collate/SearchDialog";
-import useOperators from "util/useOperators";
 import { useSort, useFilter } from "util/useSSF";
 import { getDatabase, ref, set } from "firebase/database";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
@@ -18,10 +17,11 @@ const EditOperator = dynamic(
   { ssr: false }
 );
 const CollectionContainer = dynamic(
-  () => import("../../components/view/CollectionContainer"),
+  () => import("components/view/CollectionContainer"),
   { ssr: false }
 );
 const View: NextPage = () => {
+
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
     { key: "Favorite", desc: true },
     { key: "Level", desc: true },
@@ -32,23 +32,14 @@ const View: NextPage = () => {
       "owned": { "owned": (op: Operator) => op.potential > 0 }
     });
 
-  const [opId, setOpId] = React.useState("");
+  const [opId, setOpId] = React.useState<OperatorId>();
   const [editOpen, setEditOpen] = React.useState(false);
-  const handleSelectOp = useCallback((id: string) => {
+  const handleSelectOp = useCallback((id: OperatorId) => {
     setOpId(id);
     setEditOpen(true);
   }, []);
 
-  const [operators, setOperators] = useOperators();
   const db = getDatabase();
-  const onChange = (op: Operator) => {
-    const copyOperators = { ...operators };
-    copyOperators[op.id] = { ...op };
-    if (user) {
-      set(ref(db, `users/${user.uid}/roster/${op.id}`), op);
-    }
-    setOperators(copyOperators);
-  };
   const [editMode, setEditMode] = useState(false);
   const [user, setUser] = useState<User | null>();
   useEffect(() => {
@@ -127,15 +118,13 @@ const View: NextPage = () => {
           gap: "12px 6px",
         }}>
           <CollectionContainer
-            operators={operators}
             sort={sortFunction}
             filter={filterFunction}
             editMode={editMode}
             onClick={handleSelectOp}
           />
           <EditOperator
-            onChange={onChange}
-            op={operators[opId]}
+            opId={opId}
             open={editOpen}
             onClose={() => setEditOpen(false)}
           />

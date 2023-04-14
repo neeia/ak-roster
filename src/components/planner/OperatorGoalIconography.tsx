@@ -28,7 +28,7 @@ const OperatorGoalIconography: React.FC<Props> = ({ goal }) => {
       }
       break;
     case OperatorGoalCategory.Mastery: {
-      const skill = operator.skills.find((sk) => sk.skillId === goal.skillId)!;
+      const skill = operator.skillData.find((sk) => sk.skillId === goal.skillId)!;
       icon = (
         <>
           <Image

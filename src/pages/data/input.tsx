@@ -11,8 +11,6 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 import { Operator, OperatorData, OperatorId } from "types/operator";
 import BatchDialog from "components/batch/BatchDialog";
-import { safeMerge } from "util/useSync";
-import { changeOwned, changeFavorite, changePotential, changePromotion, changeLevel, changeSkillLevel, changeMastery } from "util/changeOperator";
 import usePresets from "util/usePresets";
 import { ArrowBack, Check, Clear } from "@mui/icons-material";
 import EditPreset from "components/batch/EditPreset";
@@ -30,9 +28,6 @@ const OperatorSelector = dynamic(
   { ssr: false }
 );
 const Input: NextPage = () => {
-  const dispatch = useAppDispatch();
-  const operators = useAppSelector(selectRoster);
-
   const [presets, changePreset, rename] = usePresets();
   const [batch, setBatch] = useState(false);
   const [preset, setPreset] = useState("");
@@ -62,50 +57,50 @@ const Input: NextPage = () => {
   }, []);
 
 
-  const applyBatch = React.useCallback(
-    (source: Operator, target: string[], safeMode?: boolean) => {
-      setOperators(
-        (oldOperators: Record<string, Operator>): Record<string, Operator> => {
-          const copyOperators = { ...oldOperators };
-          target.forEach((opID: string) => {
-            var op = { ...copyOperators[opID] };
-            var copySource = { ...source }
-            if (safeMode) {
-              copySource = safeMerge(source, op);
-            }
+  // const applyBatch = React.useCallback(
+  //   (source: Operator, target: string[], safeMode?: boolean) => {
+  //     setOperators(
+  //       (oldOperators: Record<string, Operator>): Record<string, Operator> => {
+  //         const copyOperators = { ...oldOperators };
+  //         target.forEach((opID: string) => {
+  //           var op = { ...copyOperators[opID] };
+  //           var copySource = { ...source }
+  //           if (safeMode) {
+  //             copySource = safeMerge(source, op);
+  //           }
 
-            op = changeOwned(op, copySource.potential > 0);
-            op = changeFavorite(op, copySource.favorite);
-            op = changePotential(op, copySource.potential);
-            op = changePromotion(op, copySource.elite);
-            op = changeLevel(op, copySource.level);
-            op = changeSkillLevel(op, copySource.rank);
-            copySource.masteries.forEach((value, index) => {
-              op = changeMastery(op, index, value);
-            })
+  //           op = changeOwned(op, copySource.potential > 0);
+  //           op = changeFavorite(op, copySource.favorite);
+  //           op = changePotential(op, copySource.potential);
+  //           op = changePromotion(op, copySource.elite);
+  //           op = changeLevel(op, copySource.level);
+  //           op = changeSkillLevel(op, copySource.rank);
+  //           copySource.masteries.forEach((value, index) => {
+  //             op = changeMastery(op, index, value);
+  //           })
 
-            copyOperators[opID] = op;
-            if (user) {
-              set(ref(db, `users/${user.uid}/roster/${opID}`), op);
-            }
-          })
-          return copyOperators;
-        }
-      );
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [user, setOperators]
-  );
-  const handleCancelBatch = () => {
-    setBatch(false);
-    setSelectGroup([]);
-  }
-  const handleApplyBatch = () => {
-    const presetOp = presets[preset];
-    setBatch(false);
-    applyBatch(presetOp, selectGroup);
-    setSelectGroup([]);
-  }
+  //           copyOperators[opID] = op;
+  //           if (user) {
+  //             set(ref(db, `users/${user.uid}/roster/${opID}`), op);
+  //           }
+  //         })
+  //         return copyOperators;
+  //       }
+  //     );
+  //   },
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   [user, setOperators]
+  // );
+  // const handleCancelBatch = () => {
+  //   setBatch(false);
+  //   setSelectGroup([]);
+  // }
+  // const handleApplyBatch = () => {
+  //   const presetOp = presets[preset];
+  //   setBatch(false);
+  //   applyBatch(presetOp, selectGroup);
+  //   setSelectGroup([]);
+  // }
 
   const [selectGroup, setSelectGroup] = useState<string[]>([]);
   const toggleOp = useCallback((id: string) => {
@@ -114,17 +109,17 @@ const Input: NextPage = () => {
         old.filter((li) => li !== id) : [...old, id]
     });
   }, [])
-  const selectOp = useCallback((id: string) => {
+  const selectOp = useCallback((id: OperatorId) => {
     setOpId(id);
     setEditOpen(true);
   }, []);
 
-  const handleSelectOp = useCallback((id: string) => {
+  const handleSelectOp = useCallback((id: OperatorId) => {
     // const toggleOp, const selectOp...
     return batch ? toggleOp(id) : selectOp(id);
   }, [batch, toggleOp, selectOp]);
 
-  const [editPresetOpen, setEditPresetOpen] = useState(false);
+  // const [editPresetOpen, setEditPresetOpen] = useState(false);
   return (
     <Layout
       tab="/data"
@@ -207,12 +202,12 @@ const Input: NextPage = () => {
             : null
           }
           <SearchDialog setSearch={setSearchName} />
-          <BatchDialog
+          {/* <BatchDialog
             preset={preset}
             editOpen={() => setEditPresetOpen(true)}
             selectPreset={setPreset}
             applyPreset={() => setBatch(true)}
-          />
+          /> */}
           {/* TODO: Put presets back in */}
           {/* <EditPreset
             open={editPresetOpen}
@@ -221,7 +216,7 @@ const Input: NextPage = () => {
             onChange={changePreset}
             rename={rename}
           /> */}
-          {batch
+          {/* {batch
             ? <>
               <Divider sx={{ display: { xs: "none", sm: "inherit" } }} />
               <Typography
@@ -244,7 +239,7 @@ const Input: NextPage = () => {
               </IconButton>
             </>
             : null
-          }
+          } */}
         </ButtonGroup>
         <Box sx={{
           display: "grid",

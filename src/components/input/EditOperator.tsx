@@ -1,6 +1,5 @@
 import React from "react";
 import { Operator, OperatorData, OperatorId, Skin } from "types/operator";
-import operatorJson from "data/operators.json";
 import skinJson from "data/skins.json";
 import sg0 from "data/sg0.json";
 import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
@@ -16,8 +15,10 @@ import ExtLink from "./EditPieces/ExtLink";
 import { Close } from "@mui/icons-material";
 import Skins from "./EditPieces/Skins";
 import Image from "next/image";
-import { selectRoster } from "store/rosterSlice";
-import { useAppSelector } from "store/hooks";
+import { selectOperator, updateOperator } from "store/rosterSlice";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import operatorJson from "data/operators";
+import { defaultOperatorObject } from "util/changeOperator";
 
 interface Props {
   opId?: OperatorId;
@@ -29,22 +30,24 @@ const EditOperator = React.memo((props: Props) => {
   const { opId, open, onClose } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const operators = useAppSelector(selectRoster);
+  const dispatch = useAppDispatch();
+
+  const onChange = (op: Operator) => {
+    dispatch(updateOperator(op));
+  }
+  const op = useAppSelector(selectOperator(opId));
 
   if (!opId) return null;
-  const op = operators[opId];
-  if (!op) return null;
-
   const opSkins: Skin[] = skinJson[opId as keyof typeof skinJson];
-  const opData: OperatorData = operatorJson[opId as keyof typeof operatorJson];
+  const opData = operatorJson[opId];
 
   let intermediate = opId;
-  if (op.elite === 2) {
+  if (op?.promotion === 2) {
     intermediate += "_2";
-  } else if (op.elite === 1 && opData.name === "Amiya") {
+  } else if (op?.promotion === 1 && opData.name === "Amiya") {
     intermediate += "_1";
   }
-  const imgUrl = `/img/avatars/${op.skin ?? intermediate}.png`;
+  const imgUrl = `/img/avatars/${op?.skin ?? intermediate}.png`;
 
   const opSplit = opData.name.split(" the ");
   const name = (
@@ -101,6 +104,8 @@ const EditOperator = React.memo((props: Props) => {
     </Box>
   )
 
+
+  const editProps = { op: op!, onChange };
   return (
     <Dialog
       open={open}
@@ -166,21 +171,21 @@ const EditOperator = React.memo((props: Props) => {
         <EditRow
           titleL="General"
           titleR="Potential"
-          childrenL={<General op={op} />}
-          childrenR={<Potential op={op} />}
+          childrenL={<General {...editProps} />}
+          childrenR={<Potential {...editProps} />}
         />
         <EditRow
           titleL="Promotion"
           titleR="Level"
-          childrenL={<Promotion op={op} />}
-          childrenR={<Level op={op} />}
+          childrenL={<Promotion {...editProps} />}
+          childrenR={<Level {...editProps} />}
         />
-        {opData.skills.length !== 0
+        {opData.skillData.length !== 0
           ? <EditRow
             titleL="Skill Rank"
             titleR="Masteries"
-            childrenL={<SkillLevel op={op} />}
-            childrenR={<Mastery op={op} />}
+            childrenL={<SkillLevel  {...editProps} />}
+            childrenR={<Mastery  {...editProps} />}
           />
           : null
         }
@@ -189,16 +194,16 @@ const EditOperator = React.memo((props: Props) => {
             ? "Outfits"
             : undefined
           }
-          titleR={opData.modules.length !== 0
+          titleR={opData.moduleData.length !== 0
             ? "Modules"
             : undefined
           }
           childrenL={opSkins && opSkins.length > 1
-            ? <Skins op={op} />
+            ? <Skins {...editProps} />
             : undefined
           }
-          childrenR={opData.modules.length !== 0
-            ? <Module op={op} />
+          childrenR={opData.moduleData.length !== 0
+            ? <Module  {...editProps} />
             : undefined
           }
         />

@@ -18,7 +18,7 @@ function convertLegacy([_, op]: [any, OperatorV1]): [string, Operator] {
       rarity: op.rarity,
       class: operatorJson[op.id as keyof typeof operatorJson].class,
       potential: op.potential,
-      elite: op.promotion,
+      promotion: op.promotion,
       owned: op.owned,
       level: op.level,
       rank: op.skillLevel,

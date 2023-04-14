@@ -14,7 +14,7 @@ function isV2(op: any): boolean {
 // Converts a legacy V1 operator into an Operator
 function convertV1(op: OperatorV1): Operator {
   const opData = operatorJson[op.id];
-  const masteries = opData.skills.map(_ => 0);
+  const masteries = opData.skillData.map(_ => 0);
   if (op.skill1Mastery) masteries[0] = op.skill1Mastery;
   if (op.skill2Mastery) masteries[1] = op.skill2Mastery;
   if (op.skill3Mastery) masteries[2] = op.skill3Mastery;
@@ -22,7 +22,7 @@ function convertV1(op: OperatorV1): Operator {
     id: op.id,
     favorite: op.favorite,
     potential: op.potential,
-    elite: op.promotion,
+    promotion: op.promotion,
     level: op.level,
     rank: op.skillLevel,
     masteries,
@@ -36,7 +36,7 @@ function convertV2(op: OperatorV2): Operator {
     id: op.id,
     favorite: op.favorite,
     potential: op.potential,
-    elite: op.promotion,
+    promotion: op.promotion,
     level: op.level,
     rank: op.skillLevel,
     masteries: op.mastery,

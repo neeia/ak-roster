@@ -1,30 +1,32 @@
 import React from "react";
-import { Operator, OperatorData } from 'types/operator';
+import { Operator, OperatorData, OperatorId } from 'types/operator';
 import classList from "data/classList";
 import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
-import operatorJson from "data/operators.json";
+import { defaultOperatorObject } from "util/changeOperator";
+import { useAppSelector } from "store/hooks";
+import { selectRoster } from "store/rosterSlice";
+import operatorJson from "data/operators";
+import { OpInfo } from "types/sort";
 
 interface Props {
-  operators: Record<string, Operator>;
-  onClick: (opId: string) => void;
+  onClick: (opId: OperatorId) => void;
   filter?: (opInfo: OperatorData, op: Operator) => boolean;
-  sort?: (opA: Operator, opB: Operator) => number;
+  sort?: (opA: OpInfo, opB: OpInfo) => number;
   toggleGroup?: string[];
 }
 
 const OperatorSelector = React.memo((props: Props) => {
-  const { operators, onClick, filter, sort, toggleGroup } = props;
+  const { onClick, filter, sort, toggleGroup } = props;
+  const operators = useAppSelector(selectRoster);
 
   const defineFilter = filter ?? (() => true);
 
   const ps = sort ?? (() => 0)
-  function sortComparator(a: Operator, b: Operator) {
-    const opDataA = operatorJson[a.id as keyof typeof operatorJson];
-    const opDataB = operatorJson[b.id as keyof typeof operatorJson];
+  function sortComparator(a: OpInfo, b: OpInfo) {
     return ps(a, b) ||
-      classList.indexOf(opDataA.class) - classList.indexOf(opDataB.class) ||
-      opDataA.name.localeCompare(opDataB.name)
+      classList.indexOf(a.class) - classList.indexOf(b.class) ||
+      a.name.localeCompare(b.name)
   }
 
   // Operator Selector Component
@@ -32,9 +34,10 @@ const OperatorSelector = React.memo((props: Props) => {
     <Box component="ol" sx={{
       display: "contents",
     }}>
-      {Object.values(operators)
+      {Object.values(operatorJson)
+        .map((op) => ({ ...op, ...(operators[op.id] ?? defaultOperatorObject(op.id)) }))
         .sort(sortComparator)
-        .map((op: Operator) => <OperatorButton
+        .map((op) => <OperatorButton
           key={op.id}
           op={op}
           onClick={onClick}

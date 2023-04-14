@@ -15,8 +15,8 @@ export const safeMerge = (a: Operator, b: Operator): Operator => {
     rarity: a.rarity,
     class: a.class,
     potential: Math.max(a.potential, b.potential),
-    elite: Math.max(a.elite, b.elite),
-    level: a.elite > b.elite
+    promotion: Math.max(a.promotion, b.promotion),
+    level: a.promotion > b.promotion
       ? a.level : Math.max(a.level, b.level),
     rank: Math.max(a.rank, b.rank),
     masteries: a.masteries && a.masteries.length ? a.masteries.map((value, index) =>

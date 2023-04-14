@@ -1,14 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
 import { User } from "firebase/auth";
 import { getDatabase, ref, remove, set } from "firebase/database";
-import React, { useCallback, useEffect, useState } from "react";
-import { Operator, OperatorData } from "../../types/operator";
-import { getNumSkills } from "../../util/changeOperator";
-import useOperators from "../../util/useOperators";
-import operatorJson from "../../data/operators.json";
+import React, { useEffect, useState } from "react";
+import { Operator, OperatorData } from "types/operator";
+import operatorJson from "data/operators";
 import PopOp from "./PopOp";
-import useLocalStorage from "../../util/useLocalStorage";
-import { AccountInfo, OperatorSkillSlot } from "../../types/doctor";
+import useLocalStorage from "util/useLocalStorage";
+import { AccountInfo, OperatorSkillSlot } from "types/doctor";
 import OpSelectionButton from "./OpSelectionButton";
 import { isObject } from "util";
 import Image from "next/image";
@@ -19,14 +17,14 @@ interface Props {
 
 const SupportSelection = ((props: Props) => {
   const { user } = props;
-  const [operators] = useOperators();
   const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
+  const operators = useAppSelector(selectRoster);
 
   const db = getDatabase();
 
   const [supps, setSupps] = useState<(OperatorSkillSlot | undefined)[]>(doctor.supports ?? []);
   useEffect(() => {
-    if (doctor && doctor.supports && isObject(doctor.supports)) {
+    if (doctor?.supports && typeof doctor.supports === "object") {
       doctor.supports = Object.values(doctor.supports).map(v => {
         return v;
       })
@@ -66,7 +64,7 @@ const SupportSelection = ((props: Props) => {
   };
 
   const filter = (op: OperatorData) => operators[op.id]?.owned && !supps.find((v) => !v || v.opID === op.id) && (index ? true : op.rarity < 6);
-  const sort = (a: Operator, b: Operator) => b.elite - a.elite || b.level - a.level || b.rarity - a.rarity;
+  const sort = (a: Operator, b: Operator) => b.promotion - a.promotion || b.level - a.level || b.rarity - a.rarity;
 
   return (
     <>

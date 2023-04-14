@@ -1,7 +1,7 @@
 import React from "react";
 import { Operator, OperatorData } from "types/operator";
 import { Box, Button, Typography } from "@mui/material";
-import operatorJson from "data/operators.json";
+import operatorJson from "data/operators";
 import { changeMastery } from "util/changeOperator";
 import Image from "next/image";
 
@@ -11,7 +11,7 @@ interface Props {
 }
 const Mastery = ((props: Props) => {
   const { op, onChange } = props;
-  const opData: OperatorData = operatorJson[op.id as keyof typeof operatorJson];
+  const opData = operatorJson[op.id];
 
   return (
     <Box sx={{
@@ -20,8 +20,8 @@ const Mastery = ((props: Props) => {
       alignItems: "center",
       gap: "4px",
     }}>
-      {[...Array(opData.skills.length)].map((_, i) => {
-        const disabled = !op.potential || op.rank < 7 || op.elite < 2;
+      {[...Array(opData.skillData.length)].map((_, i) => {
+        const disabled = !op.potential || op.rank < 7 || op.promotion < 2;
         return (
           <Box
             key={`maB${i}`}
@@ -44,15 +44,15 @@ const Mastery = ((props: Props) => {
                 mb: -0.25,
                 zIndex: 1
               }}>
-              {opData.skills[i].skillName}
+              {opData.skillData[i].skillName}
             </Typography>
             {opData !== undefined
               ? <Box
                 component="img"
-                className={op.elite < i ? "Mui-disabled" : ""}
+                className={op.promotion < i ? "Mui-disabled" : ""}
                 sx={{ gridArea: "icon" }}
                 width="48px"
-                src={`/img/skills/${opData.skills[i].iconId ?? opData.skills[i].skillId}.png`}
+                src={`/img/skills/${opData.skillData[i].iconId ?? opData.skillData[i].skillId}.png`}
                 alt={`Skill ${i + 1}`}
               />
               : ""}
@@ -67,6 +67,7 @@ const Mastery = ((props: Props) => {
                   "& > *": { gridArea: "1 / 1" },
                   p: 0.5,
                   minWidth: 0,
+                  height: "40px",
                 }}
                 onClick={() => onChange(changeMastery(op, i, j))}
                 disabled={disabled}

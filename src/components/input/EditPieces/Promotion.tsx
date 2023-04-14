@@ -2,6 +2,7 @@ import React from "react";
 import { Operator } from "types/operator";
 import { Box, IconButton } from "@mui/material";
 import { changePromotion, MAX_PROMOTION_BY_RARITY } from "util/changeOperator";
+import operatorJson from "data/operators";
 
 const br = (opRarity: number, pot: number) => {
   const r = 4;
@@ -16,6 +17,8 @@ interface Props {
 }
 const Promotion = ((props: Props) => {
   const { op, onChange } = props;
+  const rarity = operatorJson[op.id].rarity;
+
   return (
     <Box sx={{
       display: "flex",
@@ -23,17 +26,18 @@ const Promotion = ((props: Props) => {
       borderRadius: 1,
       width: "min-content",
       mx: "auto",
-      boxShadow: +op.owned,
+      height: "48px",
+      boxShadow: op.potential && 1,
       "& .MuiButtonBase-root": {
-        boxShadow: 0,
+        boxShadow: "none !important",
       },
     }}>
-      {[...Array(MAX_PROMOTION_BY_RARITY[op.rarity] + 1)].map((_, i) =>
+      {[...Array(MAX_PROMOTION_BY_RARITY[rarity] + 1)].map((_, i) =>
         <IconButton
-          sx={{ borderRadius: br(op.rarity, i) }}
-          className={op.elite === i ? "active" : "inactive"}
+          sx={{ borderRadius: br(rarity, i) }}
+          className={op.promotion === i ? "active" : "inactive"}
           onClick={() => onChange(changePromotion(op, i))}
-          disabled={!op.owned}
+          disabled={!op.potential}
           key={`pro${i + 1}`}
         >
           <Box component="img"

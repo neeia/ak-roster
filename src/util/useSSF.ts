@@ -1,27 +1,27 @@
 import { useCallback, useState } from "react";
 import { FilterFunction } from "../types/filter";
 import { Operator, OperatorData } from "../types/operator";
-import { SortFunction, SortListItem } from "../types/sort";
+import { OpInfo, SortFunctionData, SortListItem } from "../types/sort";
 
-export const sortFunctions: Record<string, SortFunction> = {
+export const sortFunctions: Record<string, SortFunctionData> = {
   "Name": {
-    fn: (a: Operator, b: Operator): number => b.name.localeCompare(a.name),
+    fn: (a, b): number => b.name.localeCompare(a.name),
     dfDesc: false,
   },
   "Level": {
-    fn: (a: Operator, b: Operator): number => b.elite - a.elite || b.level - a.level,
+    fn: (a, b): number => b.promotion - a.promotion || b.level - a.level,
     dfDesc: true,
   },
   "Rarity": {
-    fn: (a: Operator, b: Operator): number => b.rarity - a.rarity,
+    fn: (a, b): number => b.rarity - a.rarity,
     dfDesc: true,
   },
   "Potential": {
-    fn: (a: Operator, b: Operator): number => b.potential - a.potential,
+    fn: (a, b): number => b.potential - a.potential,
     dfDesc: true,
   },
   "Favorite": {
-    fn: (a: Operator, b: Operator): number => +b.favorite - +a.favorite,
+    fn: (a, b): number => +b.favorite - +a.favorite,
     dfDesc: true,
   },
 }
@@ -82,7 +82,7 @@ export function useSort(initSort?: SortListItem[]) {
     }
   }
 
-  const sortFunction = useCallback((a: Operator, b: Operator) => {
+  const sortFunction = useCallback((a: OpInfo, b: OpInfo) => {
     return sortQueue.map(({ key, desc }) => {
       let compareKey = sortFunctions[key as keyof typeof sortFunctions].fn(a, b);
       return desc ? compareKey : -compareKey;

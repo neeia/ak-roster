@@ -23,7 +23,7 @@ const SkillLevel = (props: Props) => {
     <Button
       aria-label={`Skill Rank to ${rank}`}
       onClick={() => updateRank(rank)}
-      disabled={!op.potential || op.rank === rank || rank > [4, 7, 7][op.elite]}
+      disabled={!op.potential || op.rank === rank || rank > [4, 7, 7][op.promotion]}
     >
       <Box
         sx={{
@@ -33,13 +33,15 @@ const SkillLevel = (props: Props) => {
         }}
       >
         <Image
-          src={`/img/rank/bg.png`}
-          layout="fill"
-          alt={""}
+          src="/img/rank/bg.png"
+          fill
+          sizes="40px"
+          alt=""
         />
         <Image
           src={`/img/rank/${rank}.png`}
-          layout="fill"
+          fill
+          sizes="40px"
           alt={`Rank ${rank}`}
         />
       </Box>
@@ -87,14 +89,14 @@ const SkillLevel = (props: Props) => {
         }}>
           <Image
             src={`/img/rank/bg.png`}
-            layout="fill"
+            fill
             sizes="64px"
             alt={""}
           />
           {op.potential
             ? <Image
               src={`/img/rank/${op.rank}.png`}
-              layout="fill"
+              fill
               sizes="64px"
               alt={`Rank ${op.rank}`}
             />
@@ -104,7 +106,7 @@ const SkillLevel = (props: Props) => {
           aria-label="Raise Skill Rank"
           sx={{ display: { xs: "none", sm: "" }, }}
           onClick={() => updateRank(op.rank + 1)}
-          disabled={!op.potential || op.rank === [4, 7, 7][op.elite]}
+          disabled={!op.potential || op.rank === [4, 7, 7][op.promotion]}
         >
           <KeyboardArrowUpSharp fontSize="large" />
         </Button>

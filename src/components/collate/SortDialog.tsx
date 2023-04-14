@@ -1,12 +1,12 @@
 import React from "react";
 import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, MenuItem, TextField, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Close, DragHandle, NorthEast, PlaylistAdd, Sort, SouthEast } from "@mui/icons-material";
-import { SortFunction, SortListItem } from "types/sort";
+import { SortFunctionData, SortListItem } from "types/sort";
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 
 
 interface Props {
-  sortFns: Record<string, SortFunction>;
+  sortFns: Record<string, SortFunctionData>;
   sortQueue: SortListItem[];
   setSortQueue: (newQueue: SortListItem[]) => void;
   toggleSort: (property: string, value?: boolean) => void;

@@ -60,7 +60,7 @@ const FilterDialog = memo((props: Props) => {
       removeFilter(filterKey, propKey);
     }
     else {
-      addFilter(filterKey, propKey, (_, op) => op.modules.some(mod => !mod.isCnOnly));
+      addFilter(filterKey, propKey, (_, op) => op.moduleData.some(mod => !mod.isCnOnly));
     }
   }
   const toggleCNMod = () => {
@@ -70,7 +70,7 @@ const FilterDialog = memo((props: Props) => {
       removeFilter(filterKey, propKey);
     }
     else {
-      addFilter(filterKey, propKey, (_, op) => op.modules.some(mod => mod.isCnOnly));
+      addFilter(filterKey, propKey, (_, op) => op.moduleData.some(mod => mod.isCnOnly));
     }
   }
 
@@ -93,7 +93,7 @@ const FilterDialog = memo((props: Props) => {
     if (eliteFilter.includes(value)) {
       removeFilter(filterKey, value.toString());
     } else {
-      addFilter(filterKey, value.toString(), (op: Operator) => op.elite === value);
+      addFilter(filterKey, value.toString(), (op: Operator) => op.promotion === value);
       nr.push(value);
     }
   }

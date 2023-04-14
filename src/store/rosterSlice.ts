@@ -6,6 +6,7 @@ import operatorJson from "data/operators.json";
 
 import { completeGoal } from "./goalsActions";
 import type { RootState } from "./store";
+import { defaultOperatorObject } from "util/changeOperator";
 
 export const rosterSlice = createSlice({
   name: "roster",
@@ -17,7 +18,7 @@ export const rosterSlice = createSlice({
         id: opId,
         favorite: false,
         potential: 1,
-        elite: 1,
+        promotion: 0,
         level: 1,
         rank: 1,
         masteries: [],
@@ -25,7 +26,7 @@ export const rosterSlice = createSlice({
       };
     },
     updateOperator: (state, action: PayloadAction<Operator>) => {
-      const op = action.payload
+      const op = action.payload;
       state[op.id] = op;
     },
     deleteOperator: (state, action: PayloadAction<OperatorId>) => {
@@ -39,21 +40,21 @@ export const rosterSlice = createSlice({
       (state, action: PayloadAction<PlannerGoal>) => {
         const goal = action.payload;
         const op = state[goal.operatorId];
-        const opData: OperatorData =
-          operatorJson[goal.operatorId as keyof typeof operatorJson];
+        const opData =
+          operatorJson[goal.operatorId];
         switch (goal.category) {
           case OperatorGoalCategory.Elite:
-            state[op.id].elite = Math.max(goal.eliteLevel, op.elite);
+            state[op.id].promotion = Math.max(goal.eliteLevel, op.promotion);
             break;
           case OperatorGoalCategory.SkillLevel:
             state[op.id].rank = Math.max(goal.skillLevel, op.rank);
             break;
           case OperatorGoalCategory.Mastery:
-            const skillIndex = opData.skills.findIndex((sk) => sk.skillId === goal.skillId);
+            const skillIndex = opData.skillData.findIndex((sk) => sk.skillId === goal.skillId);
             state[op.id].masteries[skillIndex] = Math.max(goal.masteryLevel, op.masteries[skillIndex]);
             break;
           case OperatorGoalCategory.Module:
-            const moduleIndex = opData.modules.findIndex(
+            const moduleIndex = opData.moduleData.findIndex(
               (m) => m.moduleId === goal.moduleId
             )!;
             state[op.id].modules[moduleIndex] = Math.max(goal.moduleLevel, op.masteries[moduleIndex]);
@@ -65,7 +66,8 @@ export const rosterSlice = createSlice({
 });
 
 export const selectRoster = (state: RootState) => state.roster;
+export const selectOperator = (id: OperatorId | undefined) => (state: RootState) => !id ? null : state.roster[id] ?? defaultOperatorObject(id);
 
-export const { addOperator: addOperators, updateOperator: updateOperators, deleteOperator: deleteOperators } = rosterSlice.actions;
+export const { addOperator, updateOperator, deleteOperator } = rosterSlice.actions;
 
 export default rosterSlice.reducer;

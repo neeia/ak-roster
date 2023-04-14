@@ -8,11 +8,12 @@ import { useAppDispatch } from "store/hooks";
 
 interface Props {
   op: Operator;
+  onChange: (newOperator: Operator) => void;
 }
 const General = ((props: Props) => {
-  const { op } = props;
+  const { op, onChange } = props;
   const dispatch = useAppDispatch();
-  
+
   return (
     <Box sx={{
       display: "flex",
@@ -24,13 +25,14 @@ const General = ((props: Props) => {
     }}>
       <Button
         className={op.potential ? "active" : ""}
-        onClick={() => op.potential ? dispatch(deleteOperator([op.id])) : dispatch(addOperator([op.id]))}
+        onClick={() => op.potential ? dispatch(deleteOperator(op.id)) : dispatch(addOperator(op.id))}
       >
         Own
       </Button>
       <Button
         className={op.favorite ? "active" : "inactive"}
         onClick={() => onChange(changeFavorite(op, !op.favorite))}
+        disabled={!op.potential}
         aria-label="favorite"
       >
         {op.favorite

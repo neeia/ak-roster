@@ -54,10 +54,10 @@ const GoalSelect: React.FC<Props> = (props) => {
     }
     const presets = [];
     if (operator.elite.length > 0 && operator.skillLevels.length === 6) {
-      if (!opData || (opData.elite < 1 && opData.rank < 7))
+      if (!opData || (opData.promotion < 1 && opData.rank < 7))
         presets.push("Elite 1 Skill Level 7");
     }
-    operator.skills.forEach((skill, i) => {
+    operator.skillData.forEach((skill, i) => {
       if (skill.masteries.length === 3) {
         if (!opData || !opData.masteries[i] || opData.masteries[i] < 3)
           presets.push(`Skill ${i + 1} Mastery ${(opData?.masteries[i] ?? 0) + 1} → 3`);
@@ -94,7 +94,7 @@ const GoalSelect: React.FC<Props> = (props) => {
       const match = masteryGoalRegex.exec(goalName);
       const skillNumber = Number(match!.groups!.skillNumber);
       const masteryLevel = Number(match!.groups!.masteryLevel);
-      const { skillId } = operator.skills[skillNumber - 1];
+      const { skillId } = operator.skillData[skillNumber - 1];
       return {
         operatorId: operator.id,
         category: OperatorGoalCategory.Mastery,
@@ -105,7 +105,7 @@ const GoalSelect: React.FC<Props> = (props) => {
       const match = moduleGoalRegex.exec(goalName);
       const typeName = match!.groups!.typeName;
       const moduleLevel = Number(match!.groups!.moduleLevel);
-      const { moduleId } = operator.modules.find(
+      const { moduleId } = operator.moduleData.find(
         (module) => module.typeName === typeName
       )!;
       return {
@@ -149,8 +149,8 @@ const GoalSelect: React.FC<Props> = (props) => {
           break;
         case "Skill 1 Mastery 1 → 3":
           if (
-            operator!.skills.length > 0 &&
-            operator!.skills[0].masteries.length > 0
+            operator!.skillData.length > 0 &&
+            operator!.skillData[0].masteries.length > 0
           ) {
             newSpecificGoals.add("Skill 1 Mastery 1");
             newSpecificGoals.add("Skill 1 Mastery 2");
@@ -159,8 +159,8 @@ const GoalSelect: React.FC<Props> = (props) => {
           break;
         case "Skill 2 Mastery 1 → 3":
           if (
-            operator!.skills.length > 1 &&
-            operator!.skills[1].masteries.length > 0
+            operator!.skillData.length > 1 &&
+            operator!.skillData[1].masteries.length > 0
           ) {
             newSpecificGoals.add("Skill 2 Mastery 1");
             newSpecificGoals.add("Skill 2 Mastery 2");
@@ -169,8 +169,8 @@ const GoalSelect: React.FC<Props> = (props) => {
           break;
         case "Skill 3 Mastery 1 → 3":
           if (
-            operator!.skills.length > 2 &&
-            operator!.skills[2].masteries.length > 0
+            operator!.skillData.length > 2 &&
+            operator!.skillData[2].masteries.length > 0
           ) {
             newSpecificGoals.add("Skill 3 Mastery 1");
             newSpecificGoals.add("Skill 3 Mastery 2");
@@ -179,20 +179,20 @@ const GoalSelect: React.FC<Props> = (props) => {
           break;
         case "Everything": {
           operator!.elite?.forEach((_, i) => {
-            if (!opData || opData.elite < i + 1)
+            if (!opData || opData.promotion < i + 1)
               newSpecificGoals.add(`Elite ${i + 1}`);
           });
           operator!.skillLevels?.forEach((_, i) => {
             if (!opData || opData.rank < i + 2)
               newSpecificGoals.add(`Skill Level ${i + 2}`);
           });
-          operator!.skills?.forEach((_, i) => {
-            operator!.skills[i].masteries.forEach((_, j) => {
+          operator!.skillData?.forEach((_, i) => {
+            operator!.skillData[i].masteries.forEach((_, j) => {
               if (!opData || !opData.masteries[i] || opData.masteries[i] < j + 1)
                 newSpecificGoals.add(`Skill ${i + 1} Mastery ${j + 1}`);
             });
           });
-          operator!.modules?.forEach((module, i) => {
+          operator!.moduleData?.forEach((module, i) => {
             module.stages.forEach((_, j) => {
               if (!opData || !opData.modules[i] || opData.modules[i] < j + 1)
               newSpecificGoals.add(`Module ${module.typeName} Stage ${j + 1}`);
@@ -219,7 +219,7 @@ const GoalSelect: React.FC<Props> = (props) => {
 
     const elite =
       operator.elite.length > 0
-        ? operator.elite.filter((_, i) => !opData || opData.elite < i + 1).map((goal) => (
+        ? operator.elite.filter((_, i) => !opData || opData.promotion < i + 1).map((goal) => (
           <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
             <Checkbox
               checked={selectedGoalNames.indexOf(goal.name) > -1}
@@ -241,7 +241,7 @@ const GoalSelect: React.FC<Props> = (props) => {
           </GoalMenuCheckboxItem>
         ))
         : null;
-    const masteryGoals = operator.skills.flatMap((skill, i) => skill.masteries
+    const masteryGoals = operator.skillData.flatMap((skill, i) => skill.masteries
       .filter((_, j) => !opData || (opData.masteries[i] ?? 0) < j + 1)
     );
     const mastery =
@@ -257,7 +257,7 @@ const GoalSelect: React.FC<Props> = (props) => {
         ))
         : null;
 
-    const moduleGoals = operator.modules.flatMap((module, i) => module.stages
+    const moduleGoals = operator.moduleData.flatMap((module, i) => module.stages
       .filter((_, j) => !opData || (opData.modules[i] ?? 0) < j + 1)
     );
     const mod =

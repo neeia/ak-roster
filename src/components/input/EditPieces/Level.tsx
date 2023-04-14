@@ -3,6 +3,7 @@ import { Operator } from "types/operator";
 import { Box, Button, TextField } from "@mui/material";
 import { changeLevel, MAX_LEVEL_BY_RARITY } from "util/changeOperator";
 import { KeyboardArrowDownSharp, KeyboardArrowUpSharp, KeyboardDoubleArrowLeftSharp, KeyboardDoubleArrowRightSharp } from "@mui/icons-material";
+import operatorJson from "data/operators";
 
 interface Props {
   op: Operator;
@@ -10,16 +11,17 @@ interface Props {
 }
 const Level = (props: Props) => {
   const { op, onChange } = props;
-
+  console.log(op)
+  const rarity = operatorJson[op.id].rarity;
   const [levelField, setLevelField] = React.useState<string>(op.level.toString());
   function updateLevel(lvl: string | number) {
     if (typeof lvl === "number") {
       onChange(changeLevel(op, lvl));
-      setLevelField(Math.max(Math.min(lvl, MAX_LEVEL_BY_RARITY[op.rarity][op.elite]), 1).toString());
+      setLevelField(Math.max(Math.min(lvl, MAX_LEVEL_BY_RARITY[rarity][op.promotion]), 1).toString());
     }
     else if (parseInt(lvl, 10)) {
       onChange(changeLevel(op, parseInt(lvl, 10)));
-      setLevelField(Math.max(Math.min(parseInt(lvl, 10), MAX_LEVEL_BY_RARITY[op.rarity][op.elite]), 1).toString());
+      setLevelField(Math.max(Math.min(parseInt(lvl, 10), MAX_LEVEL_BY_RARITY[rarity][op.promotion]), 1).toString());
     }
     else {
       setLevelField("");
@@ -28,54 +30,9 @@ const Level = (props: Props) => {
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) =>
     e.target.select();
 
-  const min = (
-    <Button
-      onClick={() => updateLevel(1)}
-      disabled={!op.owned || op.level === 1}
-    >
-      Min
-    </Button>
-  );
-  const m10 = (
-    <Button
-      onClick={() => updateLevel(op.level - 10)}
-      disabled={!op.owned || op.level === 1}
-    >
-      <KeyboardDoubleArrowLeftSharp fontSize="large" />
-    </Button>
-  );
-  const m1 = (
-    <Button
-      onClick={() => updateLevel(op.level - 1)}
-      disabled={!op.owned || op.level === 1}
-    >
-      <KeyboardArrowDownSharp fontSize="large" />
-    </Button>
-  );
-  const p1 = (
-    <Button
-      onClick={() => updateLevel(op.level + 1)}
-      disabled={!op.owned || op.level >= MAX_LEVEL_BY_RARITY[op.rarity][op.elite]}
-    >
-      <KeyboardArrowUpSharp fontSize="large" />
-    </Button>
-  );
-  const p10 = (
-    <Button
-      onClick={() => updateLevel(!(op.level - 1) ? 10 : op.level + 10)}
-      disabled={!op.owned || op.level >= MAX_LEVEL_BY_RARITY[op.rarity][op.elite]}
-    >
-      <KeyboardDoubleArrowRightSharp fontSize="large" />
-    </Button>
-  );
-  const max = (
-    <Button
-      onClick={() => updateLevel(MAX_LEVEL_BY_RARITY[op.rarity][op.elite])}
-      disabled={!op.owned || op.level >= MAX_LEVEL_BY_RARITY[op.rarity][op.elite]}
-    >
-      Max
-    </Button>
-  );
+  const disableM = !op.potential || op.level === 1;
+
+  const disableP = !op.potential || op.level >= MAX_LEVEL_BY_RARITY[rarity][op.promotion];
 
   return (
     <Box sx={{
@@ -92,8 +49,19 @@ const Level = (props: Props) => {
         height: "56px",
       }
     }}>
-      {min}
-      {m10}
+
+      <Button
+        onClick={() => updateLevel(1)}
+        disabled={disableM}
+      >
+        Min
+      </Button>
+      <Button
+        onClick={() => updateLevel(op.level - 10)}
+        disabled={disableM}
+      >
+        <KeyboardDoubleArrowLeftSharp fontSize="large" />
+      </Button>
       <Box sx={{
         display: "flex",
         flexDirection: "column-reverse",
@@ -104,13 +72,19 @@ const Level = (props: Props) => {
           height: "min-content",
         }
       }}>
-        {m1}
+        <Button
+          onClick={() => updateLevel(op.level - 1)}
+          disabled={disableM}
+        >
+          <KeyboardArrowDownSharp fontSize="large" />
+        </Button>
         <Box sx={{ display: "grid" }}>
           <TextField
             variant="outlined"
             size="small"
             margin="none"
-            value={op.owned ? (levelField === "" ? levelField : op.level) : ""}
+            // Show level if op is owned and level is not deleted 
+            value={op.potential && levelField ? op.level : ""}
             error={levelField === ""}
             onChange={(e) => updateLevel(e.target.value)}
             sx={{
@@ -123,17 +97,32 @@ const Level = (props: Props) => {
               }
             }}
             onFocus={handleFocus}
-            disabled={!op.owned}
+            disabled={!op.potential}
             inputProps={{
               inputMode: 'numeric',
               pattern: '[0-9]*'
             }}
           />
         </Box>
-        {p1}
+        <Button
+          onClick={() => updateLevel(op.level + 1)}
+          disabled={disableP}
+        >
+          <KeyboardArrowUpSharp fontSize="large" />
+        </Button>
       </Box>
-      {p10}
-      {max}
+      <Button
+        onClick={() => updateLevel(!(op.level - 1) ? 10 : op.level + 10)}
+        disabled={disableP}
+      >
+        <KeyboardDoubleArrowRightSharp fontSize="large" />
+      </Button>
+      <Button
+        onClick={() => updateLevel(MAX_LEVEL_BY_RARITY[rarity][op.promotion])}
+        disabled={disableP}
+      >
+        Max
+      </Button>
     </Box>
   )
 }

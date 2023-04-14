@@ -21,9 +21,10 @@ import recruitmentJson from "data/recruitment.json";
 import Layout from "components/Layout";
 import RecruitableOperatorChip from "components/recruit/RecruitableOperatorChip";
 import classList from "data/classList";
-import useOperators from "util/useOperators";
 import useLocalStorage from "util/useLocalStorage";
 import RecruitableOperatorCard from "components/recruit/RecruitableOperatorCard";
+import { useAppSelector } from "store/hooks";
+import { selectRoster } from "store/rosterSlice";
 
 const TAGS_BY_CATEGORY = {
   Rarity: ["Top Operator", "Senior Operator", "Starter", "Robot"],
@@ -74,6 +75,8 @@ interface Tag {
 }
 
 const Recruit: NextPage = () => {
+  const operators = useAppSelector(selectRoster);
+
   const options: Tag[] = Object.entries(TAGS_BY_CATEGORY).flatMap(([type, tagArray]) =>
     tagArray.flatMap((tag) => ({ type, value: tag }))
   );
@@ -86,15 +89,18 @@ const Recruit: NextPage = () => {
   const activeTagCombinations = getTagCombinations([...activeTags]
     .sort((a, b) => a.value.localeCompare(b.value))
     .map(tag => tag.value));
-  const matchingOperators = useMemo(
-    () =>
-      activeTagCombinations
-        .map(
-          (tags) => recruitmentJson[`${tags}` as keyof typeof recruitmentJson]
-        )
-        .filter((result) => result != null),
+
+  const matchingOperators = useMemo(() => activeTagCombinations
+    .map(
+      (tags) => {
+        console.log(`${tags}`)
+        return recruitmentJson[`${tags}` as keyof typeof recruitmentJson]
+      }
+    )
+    .filter((result) => result != null),
     [activeTagCombinations]
   );
+
   useEffect(() => {
     if (inputNode != null) {
       inputNode.focus();
@@ -129,7 +135,6 @@ const Recruit: NextPage = () => {
 
   const isServer = () => typeof window === `undefined`;
 
-  const [roster] = useOperators();
   const [showPotentials, setShowPotentials] = useState(false);
   const [compact, setCompact] = useState(true);
   const [bonuses, setBonuses] = useState(false);
@@ -323,10 +328,10 @@ const Recruit: NextPage = () => {
                     }}
                   >
                     {!isServer() && [...operators]
-                      .sort((a, b) => a.rarity - b.rarity || showPotentials ? roster[a.id].potential - roster[b.id].potential : 0)
+                      .sort((a, b) => a.rarity - b.rarity || showPotentials ? operators[a.id].potential - operators[b.id].potential : 0)
                       .map((operator) => (
                         <RecruitableOperatorChip key={operator.id}
-                          op={roster[operator.id]}
+                          op={operators[operator.id]}
                           showPotentials={showPotentials}
                           showBonus={bonuses}
                         />
@@ -360,9 +365,9 @@ const Recruit: NextPage = () => {
                     }}
                   >
                     {!isServer() && [...operators]
-                      .sort((a, b) => a.rarity - b.rarity || showPotentials ? roster[a.id].potential - roster[b.id].potential : 0)
+                      .sort((a, b) => a.rarity - b.rarity || showPotentials ? operators[a.id].potential - operators[b.id].potential : 0)
                       .map((operator) => (
-                        <RecruitableOperatorCard op={roster[operator.id]}
+                        <RecruitableOperatorCard op={operators[operator.id]}
                           key={operator.id}
                           showPotentials={showPotentials}
                           showBonus={bonuses}
