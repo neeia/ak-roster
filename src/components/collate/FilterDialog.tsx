@@ -1,6 +1,6 @@
-import React, { memo, useEffect, useState } from "react";
-import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { FilterFunction } from "../../types/filter";
+import React, { memo } from "react";
+import { Box, Button, Dialog, DialogContent, DialogTitle, IconButton, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { FilterFunction } from "types/filter";
 import ClassFilter from "./filter/ClassFilter";
 import OwnedFilter from "./filter/OwnedFilter";
 import RarityFilter from "./filter/RarityFilter";
