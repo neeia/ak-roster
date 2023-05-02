@@ -139,8 +139,7 @@ const createOperatorsJson = () => {
               category: OperatorGoalCategory.Elite,
             };
           });
-
-      const skillLevels = isPatchCharacter
+      const skillLevels = isPatchCharacter || !operator.allSkillLvlup
         ? []
         : operator.allSkillLvlup
           .filter(({ lvlUpCost }) => lvlUpCost != null)
@@ -160,7 +159,7 @@ const createOperatorsJson = () => {
       const skills = operator.skills
         .filter(
           ({ skillId, levelUpCostCond }) =>
-            skillId != null &&
+            skillId != null && levelUpCostCond &&
             // require that all mastery levels have a levelUpCost defined
             !levelUpCostCond.find(({ levelUpCost }) => levelUpCost == null)
         )
