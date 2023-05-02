@@ -42,6 +42,7 @@ export type OperatorGoal =
 interface BasePlannerGoal {
   operatorId: string;
   category: OperatorGoalCategory;
+  priority: string;
 }
 
 interface PlannerEliteGoal extends BasePlannerGoal {
