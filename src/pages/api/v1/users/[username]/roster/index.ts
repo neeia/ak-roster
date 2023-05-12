@@ -11,18 +11,8 @@ export default async function (
   res: NextApiResponse
 ) {
   const { username } = req.query as { username: string };
-  const { data, error: fetchError } = await fetchPid(username);
-  if (fetchError) {
-    // Unknown Supabase error?
-    res.status(500).json(fetchError);
-    return;
-  }
-  if (!data || !data.length) {
-    // No user found.
-    res.status(404).json({ code: 404, message: "No such user exists." });
-    return;
-  }
-  const pid = data[0].pid;
+  const pid = await fetchPid(res, username);
+  if (!pid) return;
 
   switch (req.method) {
     case "GET":
