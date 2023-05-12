@@ -107,6 +107,10 @@ const gameDataCostToIngredient = (cost) => {
   };
 };
 
+const gameDataRarityToNumber = (rarity) => {
+  return isNaN(rarity) ? Number.parseInt(rarity.slice(-1)) : rarity + 1;
+}
+
 const OperatorGoalCategory = {
   Elite: 0,
   Mastery: 1,
@@ -120,7 +124,7 @@ const createOperatorsJson = () => {
       ...Object.entries(cnCharacterTable).filter(([opId]) => isOperator(opId)),
       ...Object.entries(cnPatchCharacters),
     ].map(([id, operator]) => {
-      const rarity = operator.rarity + 1;
+      const rarity = gameDataRarityToNumber(operator.rarity);
       const isCnOnly = enCharacterTable[id] == null && enPatchCharacters[id] == null;
       const isPatchCharacter = cnPatchCharacters[id] != null;
 
