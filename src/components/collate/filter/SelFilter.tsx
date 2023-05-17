@@ -15,7 +15,7 @@ const SelFilter = (props: Props) => {
     <Box display="flex" flexDirection="column" width="100%">
       <Box>
         <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
-          IL Siracusano
+          Il Siracusano
         </Divider>
       </Box>
       <Box
