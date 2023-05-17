@@ -1,6 +1,6 @@
 ﻿import { CacheProvider } from "@emotion/react";
 import {
-  Box,
+  Box, Button,
   Container,
   CssBaseline,
   Divider,
@@ -19,18 +19,44 @@ import appTheme from "../styles/theme/appTheme";
 import createEmotionCache from "../util/createEmotionCache";
 import DiscordEmbed from "../components/index/DiscordEmbed";
 import GitHubEmbed from "../components/index/GitHubEmbed";
-import { useState } from "react";
-import { LockClockOutlined, Search } from "@mui/icons-material";
+import React, {useCallback, useEffect, useState} from "react";
+import { Search } from "@mui/icons-material";
 import Image from "next/image";
+import RegisterButton from "../components/app/RegisterButton";
+import LoginButton from "../components/app/LoginButton";
+import {Session} from "@supabase/gotrue-js";
+import {useRouter} from "next/router";
+import supabaseClient from "../util/supabaseClient";
 
 const Home: NextPage = () => {
   const clientSideEmotionCache = createEmotionCache();
+  const [session, setSession] = useState<Session | null>(null);
+  const [login, setLogin] = useState(false);
+  const [register, setRegister] = useState(false);
 
   const [username, setUsername] = useState<string>("");
   const [error, setError] = useState<string>("");
+
+  const router = useRouter();
+
+  const getUser = useCallback(async () => {
+      const {data} = await supabaseClient.auth.getSession();
+      setSession(data.session);
+  }, []);
+
+  useEffect(() => {
+    getUser().then();
+  }, [getUser]);
+
   const search = (s: string) => {
     window.location.href = `/u/${s}`;
   };
+
+  const onLogin = async (session: Session) => {
+    if (session) {
+      router.push("/data/input/");
+    }
+  }
 
   return (
     <CacheProvider value={clientSideEmotionCache}>
@@ -167,6 +193,36 @@ const Home: NextPage = () => {
                     mt: 2,
                   }}
                 >
+                  { (session == null) ? (
+                      <>
+                        <Button color="primary" variant="contained" sx={{ height: "100%", pl: 2, fontSize: "1.25rem",}} onClick={() => setLogin(true)}>Log In</Button>
+                        <Button color="primary" variant="contained" sx={{ height: "100%", pl: 2, fontSize: "1.25rem",}} onClick={() => setRegister(true)}>Register</Button>
+
+                        <LoginButton open={login} onClose={() => setLogin(false)} onLogin={onLogin}>
+                          <Button
+                            onClick={() => {
+                              setRegister(true);
+                              setLogin(false);
+                            }}
+                            sx={{ color: "text.secondary" }}
+                          >
+                            Sign Up Instead
+                          </Button>
+                        </LoginButton>
+                        <RegisterButton open={register} onClose={() => setRegister(false)} onLogin={onLogin}>
+                          <Button
+                            onClick={() => {
+                              setRegister(false);
+                              setLogin(true);
+                            }}
+                            sx={{ color: "text.secondary" }}
+                          >
+                            Log In Instead
+                          </Button>
+                        </RegisterButton>
+                      </>
+                    )
+                    :
                   <NextLink href="/data/input/" passHref legacyBehavior>
                     <Link
                       sx={{
@@ -193,6 +249,7 @@ const Home: NextPage = () => {
                       Get Started
                     </Link>
                   </NextLink>
+                  }
                   <Box
                     component="form"
                     sx={{
