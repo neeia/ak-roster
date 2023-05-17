@@ -11,10 +11,12 @@ const config = {
         "/input": {
           title: "Input",
           description: "Enter data about owned operators.",
+          requireLogin: true,
         },
         "/view": {
           title: "Collection",
           description: "View a summary of operator data.",
+          requireLogin: true,
         }
       }
     },
@@ -69,6 +71,7 @@ const config = {
         "/goals": {
           title: "Goals",
           description: "Set goals for operators and calculate material costs.",
+          requireLogin: true,
         },
       }
     },

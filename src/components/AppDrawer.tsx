@@ -5,8 +5,6 @@ import {
   ExpandMore,
   PersonSearch,
   ManageAccounts,
-  Launch,
-  Construction,
 } from "@mui/icons-material";
 import {
   Box,
@@ -22,19 +20,17 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { getAuth, onAuthStateChanged, signOut, User } from "firebase/auth";
-import { get, getDatabase, ref, set } from "firebase/database";
 import NextLink from "next/link";
-import React, { useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import config from "data/config";
-import { AccountInfo } from "types/doctor";
-import { getUserStatus } from "util/getUserStatus";
-import useLocalStorage from "util/useLocalStorage";
 import DiscordInvite from "./app/DiscordInvite";
 import LoginButton from "./app/LoginButton";
 import PatchNotes from "./app/PatchNotes";
 import RegisterButton from "./app/RegisterButton";
 import Image from "next/image";
+import supabaseClient from "../util/supabaseClient";
+import {Session} from "@supabase/gotrue-js";
+import {useRouter} from "next/router";
 
 const DRAWER_WIDTH_PX = 220;
 const ICON_BY_PATH = [
@@ -90,43 +86,59 @@ interface Props {
   page: string;
   open: boolean;
   onDrawerToggle: () => void;
-  onLogin?: (user: User) => void;
 }
 
 const AppDrawer: React.FC<Props> = React.memo((props) => {
-  const { tab, page, open, onDrawerToggle, onLogin } = props;
+  const { tab, page, open, onDrawerToggle } = props;
   const { siteTitle, siteUrl, tabs } = config;
   const { title: currentTab, pages } = tabs[tab as keyof typeof tabs];
   const { title: currentPage } = pages[page as keyof typeof pages] ?? {};
 
-  const [, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
-  const [, setSocial] = useLocalStorage<AccountInfo>("connections", {});
+  // const [, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
+  // const [, setSocial] = useLocalStorage<AccountInfo>("connections", {});
 
-  const [user, setUser] = useState<User | null>();
-  useEffect(() => {
-    const db = getDatabase();
-    getUserStatus().then((user) => {
-      setUser(user);
-    });
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        set(ref(db, `users/${user.uid}/time/`), Date.now());
-        get(ref(db, `users/${user.uid}/info/`)).then((s1) => {
-          if (s1.exists()) {
-            setDoctor(s1.val());
-          }
-        });
-        get(ref(db, `users/${user.uid}/connections/`)).then((s1) => {
-          if (s1.exists()) {
-            setSocial(s1.val());
-          }
-        });
-      }
-      setUser(user);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  //const [user, setUser] = useState<User | null>();
+  const router = useRouter();
+  const [session, setSession] = useState<Session | null>();
+
+  const getUser = useCallback(async () => {
+    const {data} = await supabaseClient.auth.getSession();
+    setSession(data.session);
   }, []);
+
+  useEffect(() => {
+    getUser().then();
+    // const db = getDatabase();
+    // getUserStatus().then((user) => {
+    //   setUser(user);
+    // });
+    //const auth = getAuth();
+
+    // supabaseClient.auth.onAuthStateChange((event, session) => {
+    //   console.log("event: " + event);
+    // });
+    // onAuthStateChanged(auth, (user) => {
+    //   if (user) {
+    //     set(ref(db, `users/${user.uid}/time/`), Date.now());
+    //     get(ref(db, `users/${user.uid}/info/`)).then((s1) => {
+    //       if (s1.exists()) {
+    //         setDoctor(s1.val());
+    //       }
+    //     });
+    //     get(ref(db, `users/${user.uid}/connections/`)).then((s1) => {
+    //       if (s1.exists()) {
+    //         setSocial(s1.val());
+    //       }
+    //     });
+    //   }
+    //   setUser(user);
+    // });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [getUser]);
+
+  const onLogin = (session: Session) => {
+    setSession(session);
+  }
 
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
@@ -176,13 +188,13 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
           m: "4px",
         }}
       >
-        {!user ? (
+        {!session ? (
           <>
             <Button onClick={() => setLogin(true)}>Log In</Button>
             <Button onClick={() => setRegister(true)}>Register</Button>
           </>
         ) : null}
-        <LoginButton open={login} onClose={() => setLogin(false)}>
+        <LoginButton open={login} onClose={() => setLogin(false)} onLogin={onLogin}>
           <Button
             onClick={() => {
               setRegister(true);
@@ -193,7 +205,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
             Sign Up Instead
           </Button>
         </LoginButton>
-        <RegisterButton open={register} onClose={() => setRegister(false)}>
+        <RegisterButton open={register} onClose={() => setRegister(false)} onLogin={onLogin}>
           <Button
             onClick={() => {
               setRegister(false);
@@ -204,11 +216,12 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
             Log In Instead
           </Button>
         </RegisterButton>
-        {user ? (
+        {session ? (
           <Button
             sx={{ gridColumn: "span 2" }}
-            onClick={() => {
-              signOut(getAuth());
+            onClick={async () => {
+              await supabaseClient.auth.signOut();
+              router.push("/")
             }}
           >
             Log Out
@@ -251,7 +264,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
                           },
                         }),
                       }}
-                      disabled={pg.requireLogin && !user}
+                      disabled={pg.requireLogin && !session}
                     >
                       <Link component={NextLink}
                         href={`${tabPath}${pagePath}`}

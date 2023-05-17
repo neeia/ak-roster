@@ -1,12 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { Database } from 'types/supabase';
 
-const supabase = createClient<Database>(process.env.DB_URL!, process.env.SERVICE_KEY!, {
-  auth: {
-    autoRefreshToken: false,
-    persistSession: false,
-    detectSessionInUrl: false
-  }
-})
+// Use this for server side db call. Service Key can fetch all data, ignoring Row Level Security policies.
+const supabaseServer = createClient<Database>(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, process.env.NEXT_PUBLIC_SUPABASE_SERVICE_KEY!)
 
-export default supabase;
+export default supabaseServer;
