@@ -10,6 +10,11 @@ const withOffline = require("next-offline");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   //reactStrictMode: true,
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false };
+
+    return config;
+  },
   productionBrowserSourceMaps: true,
   async redirects() {
     return [
