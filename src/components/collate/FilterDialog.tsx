@@ -16,7 +16,7 @@ const sixSel = ["Exusiai", "Siege", "Ifrit", "Eyjafjalla", "Angelina", "Shining"
   "Hellagur", "Magallan", "Mostima", "Blaze", "Aak", "Ceobe", "Bagpipe", "Phantom",
   "Weedy", "Rosa", "Suzuran", "Thorns", "Eunectes", "Surtr", "Blemishine", "Mudrock",
   "Mountain", "Archetto", "Saga", "Passenger", "Kal'tsit", "Carnelian", "Pallas",
-  "Mizuki", "Saileach", "Fartooth"];
+  "Mizuki", "Saileach", "Fartooth", "Flametail", "Gnosis", "Lee", "Goldenglow", "Fiammetta", "Horn"];
 
 const fiveSel = ["Ptilopsis", "Zima", "Texas", "Franka", "Lappland", "Specter",
   "Blue Poison", "Platinum", "Meteorite", "Skyfire", "Mayer", "Silence", "Warfarin",
