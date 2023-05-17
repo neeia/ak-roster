@@ -1,30 +1,29 @@
 import React, { useState } from "react";
-import { Box, Button, Checkbox, Dialog, DialogContent, DialogTitle, Divider, FormControlLabel, IconButton, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { CloseOutlined } from "@mui/icons-material";
-import { browserLocalPersistence, browserSessionPersistence, getAuth, setPersistence, signInWithEmailAndPassword, User } from "firebase/auth";
 import PasswordTextField from "./PasswordTextField";
 import ResetPassword from "./ResetPassword";
+import supabaseClient from "../../util/supabaseClient";
+import {Session} from "@supabase/gotrue-js";
 
 interface Props {
   open: boolean;
   onClose: () => void;
   children?: React.ReactNode;
-  onLogin?: (user: User) => void;
+  onLogin?: (session: Session) => void;
 }
 
 const LoginButton = ((props: Props) => {
   const { open, onClose, children, onLogin } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const auth = getAuth();
 
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [rememberMe, setRememberMe] = useState<boolean>(true);
   const [resetOpen, setResetOpen] = useState<boolean>(false);
 
-  function handleLogin(e: React.MouseEvent<HTMLButtonElement>): void {
+  async function handleLogin(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
     e.preventDefault();
     if (!email) {
       setError("No email given.");
@@ -34,19 +33,16 @@ const LoginButton = ((props: Props) => {
       setError("No password given.");
       return;
     }
-    signInWithEmailAndPassword(auth, email.trim(), password)
-      .then((userCredential) => {
-        if (userCredential != null && userCredential.user != null) {
-          // Signed in
-          setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
-          setError("");
-          onClose();
-          onLogin?.(userCredential.user);
-        }
-      }).catch(() => {
-        setError("Failed to authenticate.");
-      })
-  };
+    const {data, error} = await supabaseClient.auth.signInWithPassword({email: email.trim(), password: password});
+    if (error != null)
+    {
+      setError(error.message);
+      return;
+    }
+    setError("");
+    onClose();
+    onLogin?.(data.session!);
+  }
 
   return (
     <Dialog
@@ -99,7 +95,6 @@ const LoginButton = ((props: Props) => {
             }}
             ariaId="logn-pass"
           />
-          <FormControlLabel control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />} label="Remember Me" />
           <Divider />
           <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <Button type="submit" onClick={handleLogin}>

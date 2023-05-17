@@ -4,17 +4,15 @@ import Head from "next/head";
 import config from "data/config";
 import MenuIcon from '@mui/icons-material/Menu';
 import AppDrawer from "./AppDrawer";
-import { User } from "firebase/auth";
 
 interface Props {
   tab: keyof typeof config.tabs;
   page: string;
   header?: React.ReactNode;
   children?: React.ReactNode;
-  onLogin?: (user: User) => void;
 }
 const Layout = memo((props: Props) => {
-  const { children, header, tab, page, onLogin } = props;
+  const { children, header, tab, page} = props;
   const { siteTitle, tabs } = config;
   const { title: tabTitle, description: tabDescription, pages } = tabs[tab];
   const { title: pageTitle, description: pageDescription } = pages[page as keyof typeof pages] ?? {};
@@ -65,7 +63,6 @@ const Layout = memo((props: Props) => {
           page={page}
           open={drawerOpen}
           onDrawerToggle={handleDrawerToggle}
-          onLogin={onLogin}
         />
         <AppBar
           position="sticky"

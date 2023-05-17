@@ -1,6 +1,6 @@
 import { Box, Button, Dialog, DialogContent, DialogTitle, TextField } from "@mui/material";
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import React, { useState } from "react";
+import supabaseClient from "../../util/supabaseClient";
 
 interface Props {
   open: boolean;
@@ -10,18 +10,15 @@ interface Props {
 
 const ResetPassword = ((props: Props) => {
   const { open, onClose, email } = props;
-  const auth = getAuth();
 
   const [resetEmail, setResetEmail] = useState<string>(email ?? "");
   const [errorEmail, setErrorEmail] = useState<string>("");
   const [sentEmail, setSentEmail] = useState<boolean>(false);
 
   function resetPassword() {
-    sendPasswordResetEmail(auth, resetEmail).then(() => {
-      setSentEmail(true);
-    }).catch(() => {
-      console.log("Unknown exception occured when resetting password.")
-    })
+
+    supabaseClient.auth.resetPasswordForEmail(resetEmail).then(() => setSentEmail(true
+    ))
   }
 
   return (

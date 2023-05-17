@@ -29,17 +29,17 @@ const MyApp = (props: AppProps) => {
 
   const clientSideEmotionCache = createEmotionCache();
   return (
-    <ReduxProvider store={store}>
-      <CacheProvider value={clientSideEmotionCache}>
-        <ThemeProvider theme={appTheme}>
-          <CssBaseline />
-          <Analytics />
-          <PersistGate loading={null} persistor={persistor}>
-            {() => <Component {...pageProps} />}
-          </PersistGate>
-        </ThemeProvider>
-      </CacheProvider>
-    </ReduxProvider>
+      <ReduxProvider store={store}>
+        <CacheProvider value={clientSideEmotionCache}>
+          <ThemeProvider theme={appTheme}>
+            <CssBaseline />
+            <Analytics />
+            <PersistGate loading={null} persistor={persistor}>
+              {() => <Component {...pageProps} />}
+            </PersistGate>
+          </ThemeProvider>
+        </CacheProvider>
+      </ReduxProvider>
   );
 };
 
