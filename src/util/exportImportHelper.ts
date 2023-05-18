@@ -77,6 +77,7 @@ export function exportToString(exportType: string, goals: GoalsState, stock: Sto
         owned : stock[stockKey],
       }
     }
+  }
 
   goals.flatMap(getGoalIngredients).forEach((ingredient: Ingredient) => {
     if (ingredient.id in exportData)
@@ -91,7 +92,6 @@ export function exportToString(exportType: string, goals: GoalsState, stock: Sto
       };
     }
   });
-  }
 
   switch (exportType) {
     case "CSV":
