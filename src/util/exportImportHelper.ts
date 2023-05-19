@@ -110,7 +110,10 @@ function exportToCsv(exportData : ExportDataStock) : string{
     const itemData = itemsJson[
       exportDataKey as keyof typeof itemsJson
       ] as Item;
-    dataString += exportDataKey + "," + itemData.name + "," + exportData[exportDataKey].owned + "," + exportData[exportDataKey].needed + "\n";
+    if (itemData)
+    {
+      dataString += exportDataKey + "," + itemData.name + "," + exportData[exportDataKey].owned + "," + exportData[exportDataKey].needed + "\n";
+    }
   }
   return dataString;
 }
@@ -170,7 +173,13 @@ function importFromCsv(data: string) : ImportDataResult{
         case "itemId":
           for (let i = 1; i < rows.length; i++) {
             const row = rows[i].split(",");
-            payloadArray.push({itemId: row[0], newQuantity: parseInt(row[1])});
+            const itemData = itemsJson[
+              row[0] as keyof typeof itemsJson
+              ] as Item;
+            if (itemData)
+            {
+              payloadArray.push({itemId: row[0], newQuantity: parseInt(row[1])});
+            }
           }
           break;
         case "itemName":
@@ -179,7 +188,10 @@ function importFromCsv(data: string) : ImportDataResult{
             const itemName = row[0];
             // @ts-ignore next line gives an error without ts-ignore, but actually works, so we suppress it
             const itemId : string = itemNameToIdJson[itemName];
-            payloadArray.push({itemId: itemId, newQuantity: parseInt(row[1])})
+            if (itemId)
+            {
+              payloadArray.push({itemId: itemId, newQuantity: parseInt(row[1])});
+            }
           }
           break;
         default:
@@ -212,7 +224,13 @@ function importFromPenguinStats(data: string) : ImportDataResult {
     const payloadArray : {itemId: string, newQuantity: number}[] = [];
     if (isPenguinData(penguinData)) {
       penguinData.items.forEach(item => {
-        payloadArray.push({itemId: item.id, newQuantity: item.have});
+        const itemData = itemsJson[
+          item.id as keyof typeof itemsJson
+          ] as Item;
+        if (itemData)
+        {
+          payloadArray.push({itemId: item.id, newQuantity: item.have});
+        }
       });
 
       return {
