@@ -113,6 +113,25 @@
     "skillLevels": [],
     "elite": []
   },
+  "char_4093_frston": {
+    "id": "char_4093_frston",
+    "name": "Friston-3",
+    "cnName": "Friston-3",
+    "rarity": "TIER_11",
+    "class": "Defender",
+    "isCnOnly": true,
+    "skillData": [],
+    "moduleData": [],
+    "potentials": [
+      "天赋效果加强",
+      "天赋效果加强",
+      "天赋效果加强",
+      "天赋效果加强",
+      "天赋效果加强"
+    ],
+    "skillLevels": [],
+    "elite": []
+  },
   "char_502_nblade": {
     "id": "char_502_nblade",
     "name": "Yato",
@@ -7414,7 +7433,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "耐低温通讯设备",
+        "moduleName": "Low Temperature Resistant Communication Equipment",
         "moduleId": "uniequip_002_blackd",
         "typeName": "SOL-X",
         "stages": [
@@ -7484,7 +7503,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -7770,7 +7789,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“专属餐具”",
+        "moduleName": "'Designer Dinnerware'",
         "moduleId": "uniequip_002_scave",
         "typeName": "SOL-X",
         "stages": [
@@ -7840,7 +7859,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -12091,12 +12110,12 @@
     "cnName": "石英",
     "rarity": "TIER_41",
     "class": "Guard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
         "iconId": null,
-        "skillName": "攻击力强化·β型",
+        "skillName": "ATK Up β",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -12160,7 +12179,7 @@
       {
         "skillId": "skchr_quartz_2",
         "iconId": null,
-        "skillName": "全力相搏",
+        "skillName": "All-Out Clash",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -12224,11 +12243,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+35",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +35",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -13856,7 +13875,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“生命的短暂”",
+        "moduleName": "'Brevity of Life'",
         "moduleId": "uniequip_002_myrrh",
         "typeName": "PHY-X",
         "stages": [
@@ -13926,7 +13945,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -14212,7 +14231,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“请遵医嘱”",
+        "moduleName": "'Follow Your Doctor's Orders'",
         "moduleId": "uniequip_002_ccheal",
         "typeName": "PHY-Y",
         "stages": [
@@ -14282,7 +14301,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -14568,7 +14587,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "医不自治",
+        "moduleName": "...Who Heals Not Herself",
         "moduleId": "uniequip_002_susuro",
         "typeName": "PHY-X",
         "stages": [
@@ -14638,7 +14657,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -20406,7 +20425,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "冬将军的毕业礼物",
+        "moduleName": "A Graduation Gift for Генерал Мороз",
         "moduleId": "uniequip_002_headbr",
         "typeName": "SOL-X",
         "stages": [
@@ -20476,7 +20495,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -20766,7 +20785,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "外勤私人补给包",
+        "moduleName": "Private Field Supply Package",
         "moduleId": "uniequip_002_texas",
         "typeName": "SOL-Y",
         "stages": [
@@ -20836,7 +20855,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -21126,7 +21145,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "自制千斤顶",
+        "moduleName": "Homemade Jack",
         "moduleId": "uniequip_002_chiave",
         "typeName": "SOL-Y",
         "stages": [
@@ -21196,7 +21215,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -29603,12 +29622,12 @@
     "cnName": "海沫",
     "rarity": "TIER_51",
     "class": "Guard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_highmo_1",
         "iconId": null,
-        "skillName": "回首，断舍",
+        "skillName": "Surrendrance from Hindsight",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -29672,7 +29691,7 @@
       {
         "skillId": "skchr_highmo_2",
         "iconId": null,
-        "skillName": "泡影，殆尽",
+        "skillName": "Evanescence from Paranoia",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -29736,11 +29755,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "生命上限+160",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +160",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -34771,12 +34790,12 @@
     "cnName": "雪绒",
     "rarity": "TIER_51",
     "class": "Caster",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_qanik_1",
         "iconId": null,
-        "skillName": "冻风",
+        "skillName": "Frigid Wind",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -34840,7 +34859,7 @@
       {
         "skillId": "skchr_qanik_2",
         "iconId": null,
-        "skillName": "坠雪",
+        "skillName": "Falling Snow",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -34978,11 +34997,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+26",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +26",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -40442,7 +40461,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "紧急防卫程序",
+        "moduleName": "Emergency Self-Defense Procedures",
         "moduleId": "uniequip_002_silent",
         "typeName": "PHY-Y",
         "stages": [
@@ -40512,7 +40531,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -40802,7 +40821,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "应急储备",
+        "moduleName": "Emergency Reserves",
         "moduleId": "uniequip_002_bldsk",
         "typeName": "PHY-X",
         "stages": [
@@ -40872,7 +40891,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -41162,7 +41181,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "母亲的领巾",
+        "moduleName": "Mother's Cravat",
         "moduleId": "uniequip_002_folnic",
         "typeName": "PHY-Y",
         "stages": [
@@ -41232,7 +41251,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -42242,7 +42261,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "集水装置",
+        "moduleName": "Water Still Device",
         "moduleId": "uniequip_002_tuye",
         "typeName": "PHY-X",
         "stages": [
@@ -42312,7 +42331,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -51301,12 +51320,12 @@
     "cnName": "子月",
     "rarity": "TIER_51",
     "class": "Sniper",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_lunacu_1",
         "iconId": null,
-        "skillName": "狩猎时刻",
+        "skillName": "Time to Hunt",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -51370,7 +51389,7 @@
       {
         "skillId": "skchr_lunacu_2",
         "iconId": null,
-        "skillName": "伏击之影",
+        "skillName": "Umbral Ambush",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -51434,7 +51453,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“移动的窝”",
+        "moduleName": "'A Hidey-Hole That Moves'",
         "moduleId": "uniequip_002_lunacu",
         "typeName": "DEA-Y",
         "stages": [
@@ -51504,15 +51523,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+35",
-      "再部署时间-6秒",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +35",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -61490,7 +61509,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "老剃刀",
+        "moduleName": "Old Razor",
         "moduleId": "uniequip_003_shwaz",
         "typeName": "ARC-Y",
         "stages": [
@@ -61560,7 +61579,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -65018,7 +65037,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“糖果盒”",
+        "moduleName": "'Candy Box'",
         "moduleId": "uniequip_002_siege",
         "typeName": "SOL-X",
         "stages": [
@@ -65088,7 +65107,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "“初诺”",
@@ -65955,7 +65974,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "身向云泥",
+        "moduleName": "Walk The World",
         "moduleId": "uniequip_002_saga",
         "typeName": "SOL-Y",
         "stages": [
@@ -66025,7 +66044,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -66745,7 +66764,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "红松的起点",
+        "moduleName": "The Origins of Pinus Sylvestris",
         "moduleId": "uniequip_002_flamtl",
         "typeName": "SOL-Y",
         "stages": [
@@ -66815,7 +66834,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -66980,12 +66999,12 @@
     "cnName": "伺夜",
     "rarity": "TIER_61",
     "class": "Vanguard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_vigil_1",
         "iconId": null,
-        "skillName": "领袖的呼唤",
+        "skillName": "Packleader's Call",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -67049,7 +67068,7 @@
       {
         "skillId": "skchr_vigil_2",
         "iconId": null,
-        "skillName": "领袖的馈赠",
+        "skillName": "Packleader's Gift",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -67113,7 +67132,7 @@
       {
         "skillId": "skchr_vigil_3",
         "iconId": null,
-        "skillName": "领袖的尊严",
+        "skillName": "Packleader's Dignity",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -67177,11 +67196,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -70557,7 +70576,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“终夜无寐”",
+        "moduleName": "'All Told, A Sleepless Night'",
         "moduleId": "uniequip_003_dusk",
         "typeName": "SPC-Y",
         "stages": [
@@ -70627,7 +70646,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -73726,7 +73745,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "实验用反重力模块",
+        "moduleName": "Experimental Anti-Gravity Module",
         "moduleId": "uniequip_003_aglina",
         "typeName": "DEC-X",
         "stages": [
@@ -73796,7 +73815,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -76836,12 +76855,12 @@
     "cnName": "缄默德克萨斯",
     "rarity": "TIER_61",
     "class": "Specialist",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_texas2_1",
         "iconId": null,
-        "skillName": "细雨无声",
+        "skillName": "Silent Drizzle",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -76905,7 +76924,7 @@
       {
         "skillId": "skchr_texas2_2",
         "iconId": null,
-        "skillName": "阵雨连绵",
+        "skillName": "Unrelenting Downpour",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -76969,7 +76988,7 @@
       {
         "skillId": "skchr_texas2_3",
         "iconId": null,
-        "skillName": "剑雨滂沱",
+        "skillName": "Torrential Sword Rain",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -77033,7 +77052,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "蓝莓与黑巧",
+        "moduleName": "Blueberry & Dark Chocolate",
         "moduleId": "uniequip_002_texas2",
         "typeName": "EXE-Y",
         "stages": [
@@ -77103,15 +77122,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "攻击力+22",
-      "再部署时间-2秒",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "ATK +22",
+      "Redeployment Time -2 sec",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -80993,7 +81012,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "干枯剑鞘",
+        "moduleName": "Withered Scabbard",
         "moduleId": "uniequip_002_shining",
         "typeName": "PHY-Y",
         "stages": [
@@ -81063,7 +81082,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "“使徒”",
@@ -82000,7 +82019,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "医者",
@@ -83371,7 +83390,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "护身符",
+        "moduleName": "Amulet",
         "moduleId": "uniequip_003_hsguma",
         "typeName": "PRO-X",
         "stages": [
@@ -83441,7 +83460,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -85406,12 +85425,12 @@
     "cnName": "斥罪",
     "rarity": "TIER_61",
     "class": "Defender",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_judge_1",
         "iconId": null,
-        "skillName": "一锤定音",
+        "skillName": "Last Word",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -85475,7 +85494,7 @@
       {
         "skillId": "skchr_judge_2",
         "iconId": null,
-        "skillName": "坚心苦修",
+        "skillName": "Stoic Atonement",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -85539,7 +85558,7 @@
       {
         "skillId": "skchr_judge_3",
         "iconId": null,
-        "skillName": "披荆斩棘",
+        "skillName": "Trial of Thorns",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -85603,11 +85622,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "第一天赋效果增强",
-      "攻击力+28",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +28",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
