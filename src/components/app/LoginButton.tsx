@@ -3,7 +3,7 @@ import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, T
 import { CloseOutlined } from "@mui/icons-material";
 import PasswordTextField from "./PasswordTextField";
 import ResetPassword from "./ResetPassword";
-import supabaseClient from "../../util/supabaseClient";
+import supabaseClient from "util/supabaseClient";
 import {Session} from "@supabase/gotrue-js";
 
 interface Props {
