@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { OperatorSkillSlot } from 'types/doctor';
 import supabase from 'util/api/db';
-import fetchPid from 'util/api/fetchPid';
+import fetchPid from 'util/api/fetchAccount';
 
 export default async function (
   req: NextApiRequest,
