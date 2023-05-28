@@ -41,6 +41,12 @@
       "skinName": null,
       "avatarId": "char_4000_jnight",
       "sortId": -3
+    },
+    {
+      "skinId": "char_4000_jnight@boc#7",
+      "skinName": "竞技之梦改装",
+      "avatarId": "char_4000_jnight_boc#7",
+      "sortId": 210
     }
   ],
   "char_4077_palico": [
@@ -62,6 +68,14 @@
       "skinId": "char_4091_ulika#1",
       "skinName": null,
       "avatarId": "char_4091_ulika",
+      "sortId": -3
+    }
+  ],
+  "char_4093_frston": [
+    {
+      "skinId": "char_4093_frston#1",
+      "skinName": null,
+      "avatarId": "char_4093_frston",
       "sortId": -3
     }
   ],
@@ -2654,7 +2668,7 @@
     },
     {
       "skinId": "char_449_glider@epoque#17",
-      "skinName": "荒野之后",
+      "skinName": "Wildness Behind",
       "avatarId": "char_449_glider_epoque#17",
       "sortId": 47
     }
@@ -3360,7 +3374,7 @@
     },
     {
       "skinId": "char_101_sora@epoque#17",
-      "skinName": "如歌",
+      "skinName": "Melodiosa",
       "avatarId": "char_101_sora_epoque#17",
       "sortId": 48
     },
@@ -3440,7 +3454,7 @@
     },
     {
       "skinId": "char_492_quercu@epoque#17",
-      "skinName": "遥乡之径",
+      "skinName": "Distant Home's Guide",
       "avatarId": "char_492_quercu_epoque#17",
       "sortId": 49
     }
@@ -3806,7 +3820,7 @@
     },
     {
       "skinId": "char_391_rosmon@epoque#17",
-      "skinName": "拥抱新生",
+      "skinName": "Become Anew",
       "avatarId": "char_391_rosmon_epoque#17",
       "sortId": 46
     }
@@ -4114,7 +4128,7 @@
     },
     {
       "skinId": "char_472_pasngr@epoque#17",
-      "skinName": "今昔须臾之梦",
+      "skinName": "Dream In A Moment",
       "avatarId": "char_472_pasngr_epoque#17",
       "sortId": 44
     }
@@ -5080,7 +5094,7 @@
     },
     {
       "skinId": "char_1014_nearl2@epoque#17",
-      "skinName": "复现荣光",
+      "skinName": "Relight",
       "avatarId": "char_1014_nearl2_epoque#17",
       "sortId": 45
     }
