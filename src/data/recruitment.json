@@ -252,6 +252,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -687,6 +701,42 @@
           "Supporter",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1022,6 +1072,30 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Senior Operator"
@@ -1551,6 +1625,18 @@
         ]
       },
       {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_385_finlpp",
         "name": "Purestream",
         "rarity": 4,
@@ -1998,6 +2084,18 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Senior Operator"
@@ -2771,6 +2869,18 @@
         ]
       },
       {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_183_skgoat",
         "name": "Earthspirit",
         "rarity": 4,
@@ -2829,6 +2939,18 @@
         "tags": [
           "DP-Recovery",
           "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
           "Melee",
           "Vanguard",
           "Senior Operator"
@@ -3152,6 +3274,18 @@
         ]
       },
       {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_149_scave",
         "name": "Scavenger",
         "rarity": 4,
@@ -3409,6 +3543,18 @@
           "DPS",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
           "Senior Operator"
         ]
       },
@@ -3802,6 +3948,18 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Senior Operator"
@@ -4421,6 +4579,30 @@
         ]
       },
       {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_385_finlpp",
         "name": "Purestream",
         "rarity": 4,
@@ -4532,6 +4714,18 @@
           "Survival",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
           "Senior Operator"
         ]
       },
@@ -4858,6 +5052,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -4996,6 +5204,20 @@
           "Fast-Redeploy",
           "Crowd-Control",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Top Operator",
@@ -5404,6 +5626,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -5551,6 +5787,20 @@
           "Fast-Redeploy",
           "Crowd-Control",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Top Operator",
@@ -5786,6 +6036,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -5945,6 +6209,31 @@
           "DPS",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Shift,Top Operator": {
+    "tags": [
+      "Shift",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
           "Top Operator",
           "Senior Operator"
         ]
@@ -6356,6 +6645,30 @@
           "Defender",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6575,6 +6888,18 @@
           "Supporter",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6678,6 +7003,18 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Senior Operator"
@@ -7041,6 +7378,18 @@
           "Supporter",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7084,6 +7433,18 @@
         "tags": [
           "DP-Recovery",
           "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
           "Melee",
           "Vanguard",
           "Senior Operator"
@@ -7260,6 +7621,18 @@
         "tags": [
           "DP-Recovery",
           "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
           "Melee",
           "Vanguard",
           "Senior Operator"
@@ -7464,6 +7837,18 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7613,6 +7998,18 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Senior Operator"
@@ -7947,6 +8344,30 @@
           "Guard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8017,6 +8438,18 @@
           "Survival",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
           "Senior Operator"
         ]
       }
@@ -8478,6 +8911,18 @@
         ]
       },
       {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_199_yak",
         "name": "Matterhorn",
         "rarity": 4,
@@ -8896,6 +9341,18 @@
         ]
       },
       {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_149_scave",
         "name": "Scavenger",
         "rarity": 4,
@@ -9105,6 +9562,18 @@
         ]
       },
       {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_149_scave",
         "name": "Scavenger",
         "rarity": 4,
@@ -9271,6 +9740,18 @@
           "DPS",
           "Melee",
           "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
           "Senior Operator"
         ]
       },
@@ -9503,6 +9984,18 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Senior Operator"
@@ -9847,6 +10340,18 @@
           "Support",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
           "Senior Operator"
         ]
       },
@@ -10498,6 +11003,18 @@
         "rarity": 5,
         "tags": [
           "Debuff",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
           "Ranged",
           "Supporter",
           "Senior Operator"
@@ -11248,6 +11765,18 @@
         ]
       },
       {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_385_finlpp",
         "name": "Purestream",
         "rarity": 4,
@@ -11280,6 +11809,18 @@
       "Survival"
     ],
     "operators": [
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      },
       {
         "id": "char_235_jesica",
         "name": "Jessica",
@@ -11501,6 +12042,18 @@
           "Defender",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -11569,6 +12122,18 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Senior Operator"
@@ -13101,6 +13666,52 @@
       5
     ]
   },
+  "Support,Supporter": {
+    "tags": [
+      "Support",
+      "Supporter"
+    ],
+    "operators": [
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "Supporter,Survival": {
+    "tags": [
+      "Supporter",
+      "Survival"
+    ],
+    "operators": [
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
   "Crowd-Control,Vanguard": {
     "tags": [
       "Crowd-Control",
@@ -13161,6 +13772,18 @@
         "tags": [
           "DP-Recovery",
           "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
           "Melee",
           "Vanguard",
           "Senior Operator"
@@ -13318,6 +13941,18 @@
       {
         "id": "char_115_headbr",
         "name": "Zima",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
         "rarity": 5,
         "tags": [
           "DP-Recovery",
@@ -13640,6 +14275,18 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -13719,6 +14366,18 @@
           "Defense",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
           "Senior Operator"
         ]
       }
@@ -14241,6 +14900,29 @@
       5
     ]
   },
+  "Support,Survival": {
+    "tags": [
+      "Support",
+      "Survival"
+    ],
+    "operators": [
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
   "Melee,Senior Operator,Top Operator": {
     "tags": [
       "Melee",
@@ -14374,6 +15056,20 @@
           "Fast-Redeploy",
           "Crowd-Control",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Top Operator",
@@ -14789,6 +15485,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -14940,6 +15650,20 @@
           "Fast-Redeploy",
           "Crowd-Control",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Top Operator",
@@ -15177,6 +15901,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -15341,6 +16079,32 @@
           "DPS",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Senior Operator,Shift,Top Operator": {
+    "tags": [
+      "Senior Operator",
+      "Shift",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
           "Top Operator",
           "Senior Operator"
         ]
@@ -15669,6 +16433,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -15728,6 +16506,20 @@
           "Fast-Redeploy",
           "Crowd-Control",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Top Operator",
@@ -15901,6 +16693,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -16014,6 +16820,32 @@
           "DPS",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Melee,Shift,Top Operator": {
+    "tags": [
+      "Melee",
+      "Shift",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
           "Top Operator",
           "Senior Operator"
         ]
@@ -17192,6 +18024,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -17231,6 +18077,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -17252,6 +18112,32 @@
           "Fast-Redeploy",
           "Crowd-Control",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Shift,Specialist,Top Operator": {
+    "tags": [
+      "Shift",
+      "Specialist",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Top Operator",
@@ -17552,6 +18438,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -17573,6 +18473,32 @@
           "Fast-Redeploy",
           "Crowd-Control",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Crowd-Control,Shift,Top Operator": {
+    "tags": [
+      "Crowd-Control",
+      "Shift",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Top Operator",
@@ -17715,6 +18641,32 @@
           "DPS",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "DPS,Shift,Top Operator": {
+    "tags": [
+      "DPS",
+      "Shift",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_400_weedy",
+        "name": "Weedy",
+        "rarity": 6,
+        "tags": [
+          "Shift",
+          "DPS",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
           "Top Operator",
           "Senior Operator"
         ]
@@ -18050,6 +19002,18 @@
           "Defender",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18242,6 +19206,18 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18362,6 +19338,18 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18471,6 +19459,18 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18576,6 +19576,18 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Senior Operator"
@@ -18758,6 +19770,18 @@
           "Support",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
           "Senior Operator"
         ]
       }
@@ -19085,6 +20109,18 @@
         "rarity": 5,
         "tags": [
           "Debuff",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
           "Ranged",
           "Supporter",
           "Senior Operator"
@@ -19527,6 +20563,42 @@
           "Medic",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "Ranged,Senior Operator,Survival": {
+    "tags": [
+      "Ranged",
+      "Senior Operator",
+      "Survival"
+    ],
+    "operators": [
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19650,6 +20722,18 @@
           "Defender",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19719,6 +20803,18 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Senior Operator"
@@ -20610,6 +21706,54 @@
       5
     ]
   },
+  "Senior Operator,Support,Supporter": {
+    "tags": [
+      "Senior Operator",
+      "Support",
+      "Supporter"
+    ],
+    "operators": [
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "Senior Operator,Supporter,Survival": {
+    "tags": [
+      "Senior Operator",
+      "Supporter",
+      "Survival"
+    ],
+    "operators": [
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
   "Crowd-Control,Senior Operator,Vanguard": {
     "tags": [
       "Crowd-Control",
@@ -20676,6 +21820,18 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20716,6 +21872,18 @@
       {
         "id": "char_115_headbr",
         "name": "Zima",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
         "rarity": 5,
         "tags": [
           "DP-Recovery",
@@ -20940,6 +22108,18 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20987,6 +22167,18 @@
           "Defense",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
           "Senior Operator"
         ]
       }
@@ -21364,6 +22556,30 @@
           "Slow",
           "Melee",
           "Specialist",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "Senior Operator,Support,Survival": {
+    "tags": [
+      "Senior Operator",
+      "Support",
+      "Survival"
+    ],
+    "operators": [
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
           "Senior Operator"
         ]
       }
@@ -21769,6 +22985,18 @@
           "Defender",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -21838,6 +23066,18 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Senior Operator"
@@ -22767,6 +24007,18 @@
         ]
       },
       {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_149_scave",
         "name": "Scavenger",
         "rarity": 4,
@@ -22921,6 +24173,18 @@
       {
         "id": "char_115_headbr",
         "name": "Zima",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
         "rarity": 5,
         "tags": [
           "DP-Recovery",
@@ -23135,6 +24399,18 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -23182,6 +24458,18 @@
           "Defense",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
           "Senior Operator"
         ]
       }
@@ -24435,6 +25723,54 @@
       5
     ]
   },
+  "Ranged,Support,Supporter": {
+    "tags": [
+      "Ranged",
+      "Support",
+      "Supporter"
+    ],
+    "operators": [
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "Ranged,Supporter,Survival": {
+    "tags": [
+      "Ranged",
+      "Supporter",
+      "Survival"
+    ],
+    "operators": [
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
   "AoE,Debuff,Ranged": {
     "tags": [
       "AoE",
@@ -24790,6 +26126,30 @@
       4
     ]
   },
+  "Ranged,Support,Survival": {
+    "tags": [
+      "Ranged",
+      "Support",
+      "Survival"
+    ],
+    "operators": [
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
   "AoE,Caster,Slow": {
     "tags": [
       "AoE",
@@ -24934,6 +26294,18 @@
       {
         "id": "char_107_liskam",
         "name": "Liskarm",
+        "rarity": 5,
+        "tags": [
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_378_asbest",
+        "name": "Asbestos",
         "rarity": 5,
         "tags": [
           "Defense",
@@ -25719,6 +27091,30 @@
       5
     ]
   },
+  "Support,Supporter,Survival": {
+    "tags": [
+      "Support",
+      "Supporter",
+      "Survival"
+    ],
+    "operators": [
+      {
+        "id": "char_343_tknogi",
+        "name": "Tsukinogi",
+        "rarity": 5,
+        "tags": [
+          "Support",
+          "Survival",
+          "Ranged",
+          "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
   "Crowd-Control,DP-Recovery,Vanguard": {
     "tags": [
       "Crowd-Control",
@@ -25831,6 +27227,18 @@
       {
         "id": "char_115_headbr",
         "name": "Zima",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_401_elysm",
+        "name": "Elysium",
         "rarity": 5,
         "tags": [
           "DP-Recovery",
