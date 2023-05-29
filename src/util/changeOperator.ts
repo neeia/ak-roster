@@ -624,12 +624,12 @@ export function minMax(min: number, value: number, max: number) {
 // Converts an opJson entry into an Operator
 export function defaultOperatorObject(id: OperatorId): Operator {
   return {
-    id,
+    op_id: id,
     favorite: false,
     potential: 0,
-    promotion: -1,
+    elite: -1,
     level: 0,
-    rank: 0,
+    skill_level: 0,
     masteries: [],
     modules: []
   };
@@ -638,9 +638,9 @@ export function defaultOperatorObject(id: OperatorId): Operator {
 // Make changes to an operator, ensuring nothing becomes invalid
 export const changeOwned = (op: Operator, value: boolean) => {
   op.potential = +value;
-  op.promotion = +value - 1;
+  op.elite = +value - 1;
   op.level = +value;
-  op.rank = +value;
+  op.skill_level = +value;
   op.masteries = [];
   op.modules = [];
   return op;
@@ -652,16 +652,16 @@ export const changeFavorite = (op: Operator, value: boolean) => {
 
 export const changePotential = (op: Operator, value: number) => {
   if (!op.potential) return op;
-  return { ...op, potential: minMax(1, value, getMaxPotentialById(op.id)) };
+  return { ...op, potential: minMax(1, value, getMaxPotentialById(op.op_id)) };
 }
 
 export const changePromotion = (op: Operator, value: number) => {
   if (!op.potential) return op;
   let copy = { ...op };
-  const opData = operatorJson[copy.id];
-  copy.promotion = minMax(0, value, MAX_PROMOTION_BY_RARITY[opData.rarity])
+  const opData = operatorJson[copy.op_id];
+  copy.elite = minMax(0, value, MAX_PROMOTION_BY_RARITY[opData.rarity])
   copy = changeLevel(copy, copy.level);
-  copy = changeSkillLevel(copy, copy.rank);
+  copy = changeSkillLevel(copy, copy.skill_level);
   if (value !== 2) {
     copy.modules = [];
     copy.masteries = [];
@@ -672,23 +672,23 @@ export const changePromotion = (op: Operator, value: number) => {
 export const changeLevel = (op: Operator, value: number) => {
   if (!op.potential) return op;
   let copy = { ...op };
-  const opData = operatorJson[op.id];
-  copy.level = minMax(1, +value, MAX_LEVEL_BY_RARITY[opData.rarity][copy.promotion]);
+  const opData = operatorJson[op.op_id];
+  copy.level = minMax(1, +value, MAX_LEVEL_BY_RARITY[opData.rarity][copy.elite]);
   if (copy.level < MODULE_REQ_BY_RARITY[opData.rarity]) copy.modules = [];
   return copy;
 }
 
 export const changeSkillLevel = (op: Operator, value: number) => {
   if (!op.potential) return op;
-  const opData = operatorJson[op.id];
+  const opData = operatorJson[op.op_id];
   let copy = { ...op };
 
-  copy.rank = minMax(1, +value, 7);
+  copy.skill_level = minMax(1, +value, 7);
   if (opData.rarity < 3) {
-    copy.rank = 1;
+    copy.skill_level = 1;
   }
-  else if (copy.rank > 4 && copy.promotion === 0) {
-    copy.rank = 4;
+  else if (copy.skill_level > 4 && copy.elite === 0) {
+    copy.skill_level = 4;
   }
   if (value !== 7) {
     copy.masteries = []
@@ -698,10 +698,10 @@ export const changeSkillLevel = (op: Operator, value: number) => {
 
 export const changeMastery = (op: Operator, index: number, value: number) => {
   if (!op.potential) return op;
-  const opData = operatorJson[op.id];
+  const opData = operatorJson[op.op_id];
 
   // Check if masteries are invalid
-  if (op.promotion !== 2 || op.rank !== 7) return op;
+  if (op.elite !== 2 || op.skill_level !== 7) return op;
   if (index > opData.skillData.length) return op;
   const masteries = [...op.masteries];
   masteries[index] = value;
@@ -710,9 +710,9 @@ export const changeMastery = (op: Operator, index: number, value: number) => {
 
 export const changeModule = (op: Operator, index: number, value: number) => {
   if (!op.potential) return op;
-  const opData = operatorJson[op.id as keyof typeof operatorJson];
+  const opData = operatorJson[op.op_id as keyof typeof operatorJson];
 
-  if (op.promotion !== 2) return op;
+  if (op.elite !== 2) return op;
   if (op.level < MODULE_REQ_BY_RARITY[opData.rarity]) return op;
   if (index > opData.moduleData.length) return op;
   const modules = [...op.modules];

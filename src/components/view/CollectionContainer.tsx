@@ -37,13 +37,13 @@ const CollectionContainer = (props: Props) => {
         .map((op) => ({ ...op, ...(operators[op.id] ?? defaultOperatorObject(op.id)) }))
         .sort(sortComparator)
         .map((op: Operator) => {
-          return <Box component="li" key={op.id}
+          return <Box component="li" key={op.op_id}
             sx={{
               listStyleType: "none",
-              display: !defineFilter(operatorJson[op.id], op) ? "none" : ""
+              display: !defineFilter(operatorJson[op.op_id], op) ? "none" : ""
             }}
           >
-            <EditWrapper editMode={editMode} onClick={() => onClick && onClick(op.id)}>
+            <EditWrapper editMode={editMode} onClick={() => onClick && onClick(op.op_id)}>
               <OperatorBlock op={op} />
             </EditWrapper>
           </Box>

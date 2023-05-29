@@ -12,8 +12,8 @@ interface Props {
 const SkillLevel = (props: Props) => {
   const { op, onChange } = props;
 
-  const previousSkillLevel = op.rank > 4 ? 4 : 1;
-  const nextSkillLevel = op.rank < 4 ? 4 : 7;
+  const previousSkillLevel = op.skill_level > 4 ? 4 : 1;
+  const nextSkillLevel = op.skill_level < 4 ? 4 : 7;
 
   function updateRank(rank: number) {
     onChange(changeSkillLevel(op, rank));
@@ -23,7 +23,7 @@ const SkillLevel = (props: Props) => {
     <Button
       aria-label={`Skill Rank to ${rank}`}
       onClick={() => updateRank(rank)}
-      disabled={!op.potential || op.rank === rank || rank > [4, 7, 7][op.promotion]}
+      disabled={!op.potential || op.skill_level === rank || rank > [4, 7, 7][op.elite]}
     >
       <Box
         sx={{
@@ -76,8 +76,8 @@ const SkillLevel = (props: Props) => {
         <Button
           aria-label="Lower Skill Rank"
           sx={{ display: { xs: "none", sm: "" }, }}
-          onClick={() => updateRank(op.rank - 1)}
-          disabled={!op.potential || op.rank === 1}
+          onClick={() => updateRank(op.skill_level - 1)}
+          disabled={!op.potential || op.skill_level === 1}
         >
           <KeyboardArrowDownSharp fontSize="large" />
         </Button>
@@ -95,18 +95,18 @@ const SkillLevel = (props: Props) => {
           />
           {op.potential
             ? <Image
-              src={`/img/rank/${op.rank}.png`}
+              src={`/img/rank/${op.skill_level}.png`}
               fill
               sizes="64px"
-              alt={`Rank ${op.rank}`}
+              alt={`Rank ${op.skill_level}`}
             />
             : null}
         </Box>
         <Button
           aria-label="Raise Skill Rank"
           sx={{ display: { xs: "none", sm: "" }, }}
-          onClick={() => updateRank(op.rank + 1)}
-          disabled={!op.potential || op.rank === [4, 7, 7][op.promotion]}
+          onClick={() => updateRank(op.skill_level + 1)}
+          disabled={!op.potential || op.skill_level === [4, 7, 7][op.elite]}
         >
           <KeyboardArrowUpSharp fontSize="large" />
         </Button>

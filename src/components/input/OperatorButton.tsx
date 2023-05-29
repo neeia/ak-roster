@@ -23,7 +23,7 @@ interface Props {
 
 const OperatorButton = React.memo((props: Props) => {
   const { op, onClick, hidden, toggled, img, alt } = props;
-  const opData = operatorJson[op.id];
+  const opData = operatorJson[op.op_id];
 
   const [n, t] = opData.name.split(/ [Tt]he /g);
   const name = t ?? n;
@@ -47,7 +47,7 @@ const OperatorButton = React.memo((props: Props) => {
       : nameComponent
   )
 
-  const imgUrl = `/img/avatars/${op.skin ?? op.id}.png`;
+  const imgUrl = `/img/avatars/${op.skin ?? op.op_id}.png`;
 
   return (
     <Box
@@ -58,7 +58,7 @@ const OperatorButton = React.memo((props: Props) => {
       }}>
       <Button
         className={!toggled ? op.potential ? "" : "unowned" : toggled ? "toggled" : "untoggled"}
-        onClick={() => onClick(op.id)}
+        onClick={() => onClick(op.op_id)}
       >
         <Box
           className={toggled || op.potential ? "" : "unowned"}

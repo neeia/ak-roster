@@ -9,7 +9,7 @@ export const sortFunctions: Record<string, SortFunctionData> = {
     dfDesc: false,
   },
   "Level": {
-    fn: (a, b): number => b.promotion - a.promotion || b.level - a.level,
+    fn: (a, b): number => b.elite - a.elite || b.level - a.level,
     dfDesc: true,
   },
   "Rarity": {

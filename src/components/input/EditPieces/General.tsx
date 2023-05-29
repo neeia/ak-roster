@@ -25,7 +25,7 @@ const General = ((props: Props) => {
     }}>
       <Button
         className={op.potential ? "active" : ""}
-        onClick={() => op.potential ? dispatch(deleteOperator(op.id)) : dispatch(addOperator(op.id))}
+        onClick={() => op.potential ? dispatch(deleteOperator(op.op_id)) : dispatch(addOperator(op.op_id))}
       >
         Own
       </Button>

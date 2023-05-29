@@ -38,11 +38,11 @@ const OperatorSelector = React.memo((props: Props) => {
         .map((op) => ({ ...op, ...(operators[op.id] ?? defaultOperatorObject(op.id)) }))
         .sort(sortComparator)
         .map((op) => <OperatorButton
-          key={op.id}
+          key={op.op_id}
           op={op}
           onClick={onClick}
-          hidden={!defineFilter(operatorJson[op.id as keyof typeof operatorJson], op)}
-          toggled={toggleGroup ? toggleGroup.includes(op.id) : undefined}
+          hidden={!defineFilter(operatorJson[op.op_id as keyof typeof operatorJson], op)}
+          toggled={toggleGroup ? toggleGroup.includes(op.op_id) : undefined}
         />
         )}
     </Box>)

@@ -93,7 +93,7 @@ const FilterDialog = memo((props: Props) => {
     if (eliteFilter.includes(value)) {
       removeFilter(filterKey, value.toString());
     } else {
-      addFilter(filterKey, value.toString(), (op: Operator) => op.promotion === value);
+      addFilter(filterKey, value.toString(), (op: Operator) => op.elite === value);
       nr.push(value);
     }
   }

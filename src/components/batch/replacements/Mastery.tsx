@@ -18,7 +18,7 @@ const Mastery = ((props: Props) => {
       gap: "4px",
     }}>
       {[...Array(3)].map((_, i) => {
-        const disabled = !op.potential || op.rank < 7 || op.promotion < 2;
+        const disabled = !op.potential || op.skill_level < 7 || op.elite < 2;
         return (
           <Box
             key={`maB${i}`}

@@ -18,7 +18,7 @@ const RecruitableOperatorChip = React.memo((props: Props) => {
         avatar={
           <Box ml={1} mr={-2}>
             <Image
-              src={`/img/avatars/${op.id}.png`}
+              src={`/img/avatars/${op.op_id}.png`}
               width={24}
               height={24}
               className={op.potential === 6 ? "max-pot" : ""}

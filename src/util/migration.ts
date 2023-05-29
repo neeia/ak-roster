@@ -19,12 +19,12 @@ function convertV1(op: OperatorV1): Operator {
   if (op.skill2Mastery) masteries[1] = op.skill2Mastery;
   if (op.skill3Mastery) masteries[2] = op.skill3Mastery;
   return {
-    id: op.id,
+    op_id: op.id,
     favorite: op.favorite,
     potential: op.potential,
-    promotion: op.promotion,
+    elite: op.promotion,
     level: op.level,
-    rank: op.skillLevel,
+    skill_level: op.skillLevel,
     masteries,
     modules: op.module ?? [],
   };
@@ -33,12 +33,12 @@ function convertV1(op: OperatorV1): Operator {
 // Converts a legacy v2 into an Operator
 function convertV2(op: OperatorV2): Operator {
   return {
-    id: op.id,
+    op_id: op.id,
     favorite: op.favorite,
     potential: op.potential,
-    promotion: op.promotion,
+    elite: op.promotion,
     level: op.level,
-    rank: op.skillLevel,
+    skill_level: op.skillLevel,
     masteries: op.mastery,
     modules: op.module ?? [],
   };
