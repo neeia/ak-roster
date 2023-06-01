@@ -11,12 +11,13 @@ const extendedApi = supabaseApi.injectEndpoints({
           .select("op_id, owned, favorite, potential, elite, level, skill_level, masteries, modules, skin")
 
         return { data };
-      }
+      },
+      providesTags: ["operator"]
     }),
-    setOperator: builder.query({
+    setOperator: builder.mutation({
       queryFn: async (op: Operator) => {
         const { data: authData, error: authError } = await supabaseClient.auth.getSession()
-        
+
         // const { data, error } = await supabaseClient
         //   .from("operators")
         //   .upsert({ ...op, op_id: op.id, "skill_level": op.rank })
@@ -33,10 +34,11 @@ const extendedApi = supabaseApi.injectEndpoints({
         // .select("op_id, owned, favorite, potential, elite, level, rank, masteries, modules, skin")
 
         return { data: null };
-      }
+      },
+      invalidatesTags: (_, __, c) => [{ type: "operator", id: c.op_id}]
     })
   }),
   overrideExisting: false,
 })
 
-export const { useGetOperatorsQuery, useSetOperatorQuery } = extendedApi
+export const { useGetOperatorsQuery, useSetOperatorMutation } = extendedApi
