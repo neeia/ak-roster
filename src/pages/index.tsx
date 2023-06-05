@@ -14,19 +14,19 @@ import {
 import type { NextPage } from "next";
 import Head from "next/head";
 import NextLink from "next/link";
-import config from "../data/config";
-import appTheme from "../styles/theme/appTheme";
-import createEmotionCache from "../util/createEmotionCache";
-import DiscordEmbed from "../components/index/DiscordEmbed";
-import GitHubEmbed from "../components/index/GitHubEmbed";
-import React, {useCallback, useEffect, useState} from "react";
+import config from "data/config";
+import appTheme from "styles/theme/appTheme";
+import createEmotionCache from "util/createEmotionCache";
+import DiscordEmbed from "components/index/DiscordEmbed";
+import GitHubEmbed from "components/index/GitHubEmbed";
+import React, { useCallback, useEffect, useState } from "react";
 import { Search } from "@mui/icons-material";
 import Image from "next/image";
-import RegisterButton from "../components/app/RegisterButton";
-import LoginButton from "../components/app/LoginButton";
-import {Session} from "@supabase/gotrue-js";
-import {useRouter} from "next/router";
-import supabaseClient from "../util/supabaseClient";
+import RegisterButton from "components/app/RegisterDialog";
+import LoginButton from "components/app/LoginDialog";
+import { Session } from "@supabase/gotrue-js";
+import { useRouter } from "next/router";
+import supabaseClient from "util/supabaseClient";
 
 const Home: NextPage = () => {
   const clientSideEmotionCache = createEmotionCache();
@@ -40,8 +40,8 @@ const Home: NextPage = () => {
   const router = useRouter();
 
   const getUser = useCallback(async () => {
-      const {data} = await supabaseClient.auth.getSession();
-      setSession(data.session);
+    const { data } = await supabaseClient.auth.getSession();
+    setSession(data.session);
   }, []);
 
   useEffect(() => {
@@ -193,62 +193,86 @@ const Home: NextPage = () => {
                     mt: 2,
                   }}
                 >
-                  { (session == null) ? (
-                      <>
-                        <Button color="primary" variant="contained" sx={{ height: "100%", pl: 2, fontSize: "1.25rem",}} onClick={() => setLogin(true)}>Log In</Button>
-                        <Button color="primary" variant="contained" sx={{ height: "100%", pl: 2, fontSize: "1.25rem",}} onClick={() => setRegister(true)}>Register</Button>
+                  {(session == null) ? (
+                    <>
+                      <Button
+                        color="primary"
+                        variant="contained"
+                        sx={{
+                          height: "100%",
+                          pl: 2,
+                          fontWeight: "bold",
+                          fontSize: "1rem",
+                        }}
+                        onClick={() => setLogin(true)}
+                      >
+                        Log In
+                      </Button>
+                      <Button
+                        color="primary"
+                        variant="contained"
+                        sx={{
+                          height: "100%",
+                          pl: 2,
+                          fontWeight: "bold",
+                          fontSize: "1rem",
+                        }}
+                        onClick={() => setRegister(true)}
+                      >
+                        Register
+                      </Button>
 
-                        <LoginButton open={login} onClose={() => setLogin(false)} onLogin={onLogin}>
-                          <Button
-                            onClick={() => {
-                              setRegister(true);
-                              setLogin(false);
-                            }}
-                            sx={{ color: "text.secondary" }}
-                          >
-                            Sign Up Instead
-                          </Button>
-                        </LoginButton>
-                        <RegisterButton open={register} onClose={() => setRegister(false)} onLogin={onLogin}>
-                          <Button
-                            onClick={() => {
-                              setRegister(false);
-                              setLogin(true);
-                            }}
-                            sx={{ color: "text.secondary" }}
-                          >
-                            Log In Instead
-                          </Button>
-                        </RegisterButton>
-                      </>
-                    )
+                      <LoginButton open={login} onClose={() => setLogin(false)} onLogin={onLogin}>
+                        <Button
+                          onClick={() => {
+                            setRegister(true);
+                            setLogin(false);
+                          }}
+                          sx={{ color: "text.secondary" }}
+                        >
+                          Sign Up Instead
+                        </Button>
+                      </LoginButton>
+                      <RegisterButton open={register} onClose={() => setRegister(false)} onLogin={onLogin}>
+                        <Button
+                          onClick={() => {
+                            setRegister(false);
+                            setLogin(true);
+                          }}
+                          sx={{ color: "text.secondary" }}
+                        >
+                          Log In Instead
+                        </Button>
+                      </RegisterButton>
+                    </>
+                  )
                     :
-                  <NextLink href="/data/input/" passHref legacyBehavior>
-                    <Link
-                      sx={{
-                        backgroundColor: "primary.main",
-                        display: "block",
-                        width: "100%",
-                        maxWidth: "12rem",
-                        px: 2,
-                        py: 1.5,
-                        color: "background.default",
-                        ":hover": {
-                          bgcolor: "primary.main",
-                          filter: "brightness(110%)",
-                        },
-                        borderRadius: "4px",
-                        fontSize: "1.25rem",
-                        textAlign: "center",
-                        verticalAlign: "middle",
-                        boxShadow: 1,
-                        alignSelf: { xs: "center", sm: "start" },
-                      }}
-                      variant="button"
-                    >
-                      Get Started
-                    </Link>
-                  </NextLink>
+                    <NextLink href="/data/input/" passHref legacyBehavior>
+                      <Link
+                        sx={{
+                          backgroundColor: "primary.main",
+                          display: "block",
+                          width: "100%",
+                          maxWidth: "12rem",
+                          px: 2,
+                          py: 1.5,
+                          color: "background.default",
+                          ":hover": {
+                            bgcolor: "primary.main",
+                            filter: "brightness(110%)",
+                          },
+                          borderRadius: "4px",
+                          fontSize: "1.25rem",
+                          textAlign: "center",
+                          verticalAlign: "middle",
+                          boxShadow: 1,
+                          alignSelf: { xs: "center", sm: "start" },
+                        }}
+                        variant="button"
+                      >
+                        Get Started
+                      </Link>
+                    </NextLink>
                   }
                   <Box
                     component="form"
@@ -415,9 +439,11 @@ const Home: NextPage = () => {
                   }}
                 >
                   <dt>Framework</dt>
-                  <dd>NextJS, React</dd>
+                  <dd>NextJS</dd>
                   <dt>Interface</dt>
-                  <dd>MUI v5</dd>
+                  <dd>MUI</dd>
+                  <dt>DB & Auth</dt>
+                  <dd>Supabase Postgres</dd>
                 </Box>
                 <GitHubEmbed />
               </Box>

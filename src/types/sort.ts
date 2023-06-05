@@ -1,4 +1,4 @@
-import { Operator, OperatorData } from "./operator";
+import { OpInfo } from "./operator";
 
 export interface SortListItem {
   key: string;
@@ -11,5 +11,3 @@ export interface SortFunctionData {
   fn: SortFunction;
   dfDesc: boolean;
 }
-
-export type OpInfo = Operator & OperatorData;

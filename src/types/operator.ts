@@ -27,11 +27,11 @@ export interface OperatorData {
   rarity: number;
   class: string;
   isCnOnly: boolean;
-  skillData: SkillData[];
-  moduleData: ModuleData[];
+  skillData?: SkillData[];
+  moduleData?: ModuleData[];
   potentials: string[];
   skillLevels: SkillLevelGoal[];
-  elite: EliteGoal[];
+  eliteLevels: EliteGoal[];
 }
 
 export interface SkillData {
@@ -113,3 +113,4 @@ export function defaultPresetObject(_: any, index: number): [string, Preset] {
 
 
 export type OperatorId = keyof typeof operatorJson;
+export type OpInfo = Operator & OperatorData;

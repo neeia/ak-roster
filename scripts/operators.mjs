@@ -107,6 +107,10 @@ const gameDataCostToIngredient = (cost) => {
   };
 };
 
+const gameDataRarityToNumber = (rarity) => {
+  return isNaN(rarity) ? Number.parseInt(rarity.slice(-1)) : rarity + 1;
+}
+
 const OperatorGoalCategory = {
   Elite: 0,
   Mastery: 1,
@@ -120,11 +124,11 @@ const createOperatorsJson = () => {
       ...Object.entries(cnCharacterTable).filter(([opId]) => isOperator(opId)),
       ...Object.entries(cnPatchCharacters),
     ].map(([id, operator]) => {
-      const rarity = operator.rarity + 1;
+      const rarity = gameDataRarityToNumber(operator.rarity);
       const isCnOnly = enCharacterTable[id] == null && enPatchCharacters[id] == null;
       const isPatchCharacter = cnPatchCharacters[id] != null;
 
-      const elite = isPatchCharacter
+      const eliteLevels = isPatchCharacter
         ? []
         : operator.phases
           .filter(({ evolveCost }) => evolveCost != null)
@@ -139,8 +143,7 @@ const createOperatorsJson = () => {
               category: OperatorGoalCategory.Elite,
             };
           });
-
-      const skillLevels = isPatchCharacter
+      const skillLevels = isPatchCharacter || !operator.allSkillLvlup
         ? []
         : operator.allSkillLvlup
           .filter(({ lvlUpCost }) => lvlUpCost != null)
@@ -157,10 +160,10 @@ const createOperatorsJson = () => {
             };
           });
 
-      const skillData = operator.skills
+      const skills = operator.skills
         .filter(
           ({ skillId, levelUpCostCond }) =>
-            skillId != null &&
+            skillId != null && levelUpCostCond &&
             // require that all mastery levels have a levelUpCost defined
             !levelUpCostCond.find(({ levelUpCost }) => levelUpCost == null)
         )
@@ -184,10 +187,10 @@ const createOperatorsJson = () => {
           };
         });
 
-      let moduleData = [];
+      let modules = [];
       if (cnCharEquip[id] != null) {
         cnCharEquip[id].shift();
-        moduleData = cnCharEquip[id].map((modName) => {
+        modules = cnCharEquip[id].map((modName) => {
           const cnModuleData = cnEquipDict[modName];
           const enModuleData = enEquipDict[modName];
           const typeName =
@@ -221,11 +224,11 @@ const createOperatorsJson = () => {
         rarity,
         class: professionToClass(operator.profession),
         isCnOnly,
-        skillData,
-        moduleData,
+        skills,
+        modules,
         potentials,
         skillLevels,
-        elite
+        eliteLevels
       };
       return [id, outputOperator];
     })

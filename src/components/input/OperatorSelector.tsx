@@ -1,5 +1,5 @@
 import React from "react";
-import { Operator, OperatorData, OperatorId } from 'types/operator';
+import { OpInfo, Operator, OperatorData, OperatorId } from 'types/operator';
 import classList from "data/classList";
 import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
@@ -7,7 +7,6 @@ import { defaultOperatorObject } from "util/changeOperator";
 import { useAppSelector } from "store/hooks";
 import { selectRoster } from "store/rosterSlice";
 import operatorJson from "data/operators";
-import { OpInfo } from "types/sort";
 
 interface Props {
   onClick: (opId: OperatorId) => void;
@@ -29,6 +28,8 @@ const OperatorSelector = React.memo((props: Props) => {
       a.name.localeCompare(b.name)
   }
 
+  const ar: string[] = [];
+
   // Operator Selector Component
   return (
     <Box component="ol" sx={{
@@ -38,7 +39,7 @@ const OperatorSelector = React.memo((props: Props) => {
         .map((op) => ({ ...op, ...(operators[op.id] ?? defaultOperatorObject(op.id)) }))
         .sort(sortComparator)
         .map((op) => <OperatorButton
-          key={op.op_id}
+          key={op.id}
           op={op}
           onClick={onClick}
           hidden={!defineFilter(operatorJson[op.op_id as keyof typeof operatorJson], op)}

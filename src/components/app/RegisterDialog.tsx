@@ -3,7 +3,7 @@ import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, T
 import { CloseOutlined } from "@mui/icons-material";
 import PasswordTextField from "./PasswordTextField";
 import supabaseClient from "../../util/supabaseClient";
-import {Session} from "@supabase/gotrue-js";
+import { Session } from "@supabase/gotrue-js";
 
 interface Props {
   open: boolean;
@@ -31,9 +31,8 @@ const RegisterButton = ((props: Props) => {
       setError("No password given.");
       return;
     }
-    const {data, error} = await supabaseClient.auth.signUp({email: email.trim(), password: password});
-    if (error != null)
-    {
+    const { data, error } = await supabaseClient.auth.signUp({ email: email.trim(), password: password });
+    if (error != null) {
       setError(error.message);
       return;
     }
@@ -64,15 +63,16 @@ const RegisterButton = ((props: Props) => {
         </IconButton>
       </DialogTitle>
       <DialogContent>
-        <Box sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "12px 6px",
-          "& .MuiFormHelperText-root": {
-            mt: 1,
-            lineHeight: 1
-          }
-        }}>
+        <Box component="form"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px 6px",
+            "& .MuiFormHelperText-root": {
+              mt: 1,
+              lineHeight: 1
+            }
+          }}>
           <TextField
             label="Email"
             value={email}
@@ -99,7 +99,7 @@ const RegisterButton = ((props: Props) => {
             alignItems: "center"
           }}>
             <Button type="submit" onClick={handleRegister}>
-              Enter
+              Create Account
             </Button>
             {error}
           </Box>
