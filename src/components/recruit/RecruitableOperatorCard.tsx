@@ -13,7 +13,7 @@ const LONG_CUTOFF = 75;
 const LONGER_CUTOFF = 95;
 
 export function getPotentialBonus(op: Operator) {
-  const { id: opId, potential } = op;
+  const { op_id: opId, potential } = op;
   const { potentials } = operatorJson[opId as keyof typeof operatorJson];
   switch (potential) {
     case 0:
@@ -75,7 +75,7 @@ const RecruitableOperatorCard = React.memo((props: Props) => {
     : nameComponent
   )
 
-  const imgUrl = `/img/avatars/${op.skin ?? op.id}.png`;
+  const imgUrl = `/img/avatars/${op.skin ?? op.op_id}.png`;
 
   return (
     <Box component="li"

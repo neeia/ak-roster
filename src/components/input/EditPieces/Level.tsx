@@ -12,16 +12,16 @@ interface Props {
 const Level = (props: Props) => {
   const { op, onChange } = props;
   console.log(op)
-  const rarity = operatorJson[op.id].rarity;
+  const rarity = operatorJson[op.op_id].rarity;
   const [levelField, setLevelField] = React.useState<string>(op.level.toString());
   function updateLevel(lvl: string | number) {
     if (typeof lvl === "number") {
       onChange(changeLevel(op, lvl));
-      setLevelField(Math.max(Math.min(lvl, MAX_LEVEL_BY_RARITY[rarity][op.promotion]), 1).toString());
+      setLevelField(Math.max(Math.min(lvl, MAX_LEVEL_BY_RARITY[rarity][op.elite]), 1).toString());
     }
     else if (parseInt(lvl, 10)) {
       onChange(changeLevel(op, parseInt(lvl, 10)));
-      setLevelField(Math.max(Math.min(parseInt(lvl, 10), MAX_LEVEL_BY_RARITY[rarity][op.promotion]), 1).toString());
+      setLevelField(Math.max(Math.min(parseInt(lvl, 10), MAX_LEVEL_BY_RARITY[rarity][op.elite]), 1).toString());
     }
     else {
       setLevelField("");
@@ -32,7 +32,7 @@ const Level = (props: Props) => {
 
   const disableM = !op.potential || op.level === 1;
 
-  const disableP = !op.potential || op.level >= MAX_LEVEL_BY_RARITY[rarity][op.promotion];
+  const disableP = !op.potential || op.level >= MAX_LEVEL_BY_RARITY[rarity][op.elite];
 
   return (
     <Box sx={{
@@ -118,7 +118,7 @@ const Level = (props: Props) => {
         <KeyboardDoubleArrowRightSharp fontSize="large" />
       </Button>
       <Button
-        onClick={() => updateLevel(MAX_LEVEL_BY_RARITY[rarity][op.promotion])}
+        onClick={() => updateLevel(MAX_LEVEL_BY_RARITY[rarity][op.elite])}
         disabled={disableP}
       >
         Max

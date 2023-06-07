@@ -11,7 +11,7 @@ interface Props {
 }
 const Module = ((props: Props) => {
   const { op, onChange } = props;
-  const opData = operatorJson[op.id];
+  const opData = operatorJson[op.op_id];
 
   return (
     <Box sx={{
@@ -21,7 +21,7 @@ const Module = ((props: Props) => {
       gap: "4px",
     }}>
       {opData.moduleData.map((module: ModuleData, i: number) => {
-        const disabled = !op.potential || op.level < MODULE_REQ_BY_RARITY[opData.rarity] || op.promotion < 2;
+        const disabled = !op.potential || op.level < MODULE_REQ_BY_RARITY[opData.rarity] || op.elite < 2;
         return (
           <Box
             key={`maB${i}`}

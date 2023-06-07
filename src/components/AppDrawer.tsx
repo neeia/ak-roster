@@ -24,9 +24,9 @@ import NextLink from "next/link";
 import React, {useCallback, useEffect, useState} from "react";
 import config from "data/config";
 import DiscordInvite from "./app/DiscordInvite";
-import LoginButton from "./app/LoginButton";
+import LoginButton from "./app/LoginDialog";
 import PatchNotes from "./app/PatchNotes";
-import RegisterButton from "./app/RegisterButton";
+import RegisterButton from "./app/RegisterDialog";
 import Image from "next/image";
 import supabaseClient from "../util/supabaseClient";
 import {Session} from "@supabase/gotrue-js";
@@ -221,7 +221,6 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
             sx={{ gridColumn: "span 2" }}
             onClick={async () => {
               await supabaseClient.auth.signOut();
-              router.push("/")
             }}
           >
             Log Out

@@ -8,7 +8,7 @@ const getGoalIngredients = (goal: PlannerGoal): Ingredient[] => {
     operatorsJson[goal.operatorId];
   switch (goal.category) {
     case OperatorGoalCategory.Elite:
-      return operator.elite[goal.eliteLevel - 1].ingredients;
+      return operator.eliteLevels[goal.eliteLevel - 1].ingredients;
     case OperatorGoalCategory.SkillLevel:
       return operator.skillLevels[goal.skillLevel - 2].ingredients;
     case OperatorGoalCategory.Mastery: {

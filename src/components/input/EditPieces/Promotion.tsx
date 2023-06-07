@@ -17,7 +17,7 @@ interface Props {
 }
 const Promotion = ((props: Props) => {
   const { op, onChange } = props;
-  const rarity = operatorJson[op.id].rarity;
+  const rarity = operatorJson[op.op_id].rarity;
 
   return (
     <Box sx={{
@@ -35,7 +35,7 @@ const Promotion = ((props: Props) => {
       {[...Array(MAX_PROMOTION_BY_RARITY[rarity] + 1)].map((_, i) =>
         <IconButton
           sx={{ borderRadius: br(rarity, i) }}
-          className={op.promotion === i ? "active" : "inactive"}
+          className={op.elite === i ? "active" : "inactive"}
           onClick={() => onChange(changePromotion(op, i))}
           disabled={!op.potential}
           key={`pro${i + 1}`}

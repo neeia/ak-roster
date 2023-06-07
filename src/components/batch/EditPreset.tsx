@@ -31,7 +31,7 @@ const EditPreset = React.memo((props: Props) => {
       size="small"
       margin="none"
       value={preset.name}
-      onChange={e => rename(preset.id, e.target.value)}
+      onChange={e => rename(preset.op_id, e.target.value)}
       inputProps={{
         sx: {
           paddingTop: "12px",

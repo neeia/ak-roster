@@ -28,10 +28,10 @@ const Potential = ((props: Props) => {
         boxShadow: 0,
       },
     }}>
-      {[...Array(getMaxPotentialById(op.id))].map((_, i) =>
+      {[...Array(getMaxPotentialById(op.op_id))].map((_, i) =>
         <IconButton
           sx={{
-            borderRadius: br(op.id, i),
+            borderRadius: br(op.op_id, i),
           }}
           className={op.potential === i + 1 ? "active" : "inactive"}
           onClick={() => onChange(changePotential(op, i + 1))}

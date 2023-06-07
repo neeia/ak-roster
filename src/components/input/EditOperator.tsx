@@ -42,9 +42,9 @@ const EditOperator = React.memo((props: Props) => {
   const opData = operatorJson[opId];
 
   let intermediate = opId;
-  if (op?.promotion === 2) {
+  if (op?.elite === 2) {
     intermediate += "_2";
-  } else if (op?.promotion === 1 && opData.name === "Amiya") {
+  } else if (op?.elite === 1 && opData.name === "Amiya") {
     intermediate += "_1";
   }
   const imgUrl = `/img/avatars/${op?.skin ?? intermediate}.png`;

@@ -12,16 +12,16 @@ function convertLegacy([_, op]: [any, OperatorV1]): [string, Operator] {
   return [
     op.id,
     {
-      id: op.id,
+      op_id: op.id,
       name: op.name,
       favorite: op.favorite,
       rarity: op.rarity,
       class: operatorJson[op.id as keyof typeof operatorJson].class,
       potential: op.potential,
-      promotion: op.promotion,
+      elite: op.promotion,
       owned: op.owned,
       level: op.level,
-      rank: op.skillLevel,
+      skill_level: op.skillLevel,
       masteries: newMastery,
       modules: op.module ?? [],
     },
@@ -35,7 +35,7 @@ export function repair(ops: Record<string, Operator>, setOps: (v: Record<string,
     const op = rooster[opId];
 
     // check for missing operators to repair
-    if (!op || !op.name || !op.id || op.id !== opId) {
+    if (!op || !op.name || !op.op_id || op.op_id !== opId) {
       if (opJsonItem) rooster[opId] = defaultOperatorObject([opId, opJsonItem])[1];
     }
     else if (op.name !== opJsonItem.name) {

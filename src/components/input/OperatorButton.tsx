@@ -1,5 +1,5 @@
 import React from "react";
-import { Operator, OperatorId } from "types/operator";
+import { OpInfo, Operator, OperatorId } from "types/operator";
 import { Box, Button, Typography } from "@mui/material";
 import { rarityColors } from "styles/rarityColors";
 import { Favorite } from "@mui/icons-material";
@@ -13,7 +13,7 @@ const LONG_CUTOFF = 75;
 const LONGER_CUTOFF = 95;
 
 interface Props {
-  op: Operator;
+  op: OpInfo;
   onClick: (opId: OperatorId) => void;
   hidden?: boolean;
   toggled?: boolean;
@@ -23,9 +23,8 @@ interface Props {
 
 const OperatorButton = React.memo((props: Props) => {
   const { op, onClick, hidden, toggled, img, alt } = props;
-  const opData = operatorJson[op.id];
 
-  const [n, t] = opData.name.split(/ [Tt]he /g);
+  const [n, t] = op.name.split(/ [Tt]he /g);
   const name = t ?? n;
   const width = getTextWidth(name, JSON.stringify(appTheme.typography.caption).replace(/[\{\}]+/g, "")) * WIDTH_TO_PX;
 
@@ -41,13 +40,13 @@ const OperatorButton = React.memo((props: Props) => {
   // Process operator name
   let opName = (
     t
-      ? <abbr title={opData.name}>
+      ? <abbr title={op.name}>
         {nameComponent}
       </abbr>
       : nameComponent
   )
 
-  const imgUrl = `/img/avatars/${op.skin ?? op.id}.png`;
+  const imgUrl = `/img/avatars/${op.skin ?? op.op_id}.png`;
 
   return (
     <Box
@@ -58,7 +57,7 @@ const OperatorButton = React.memo((props: Props) => {
       }}>
       <Button
         className={!toggled ? op.potential ? "" : "unowned" : toggled ? "toggled" : "untoggled"}
-        onClick={() => onClick(op.id)}
+        onClick={() => onClick(op.op_id)}
       >
         <Box
           className={toggled || op.potential ? "" : "unowned"}
@@ -66,7 +65,7 @@ const OperatorButton = React.memo((props: Props) => {
             height: "calc(4rem + 3px)",
             width: "4rem",
             gridArea: "1 / 1",
-            borderBottom: `3px solid ${rarityColors[opData.rarity]}`,
+            borderBottom: `3px solid ${rarityColors[op.rarity]}`,
             position: "relative"
           }}
         >

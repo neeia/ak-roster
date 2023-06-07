@@ -16,11 +16,11 @@ interface Props {
 const OperatorBlock = (props: Props) => {
   const { op, nobg, skill } = props;
 
-  const opData = operatorJson[op.id];
-  let intermediate = op.id;
-  if (op.promotion === 2) {
+  const opData = operatorJson[op.op_id];
+  let intermediate = op.op_id;
+  if (op.elite === 2) {
     intermediate += "_2";
-  } else if (op.promotion === 1 && opData.name === "Amiya") {
+  } else if (op.elite === 1 && opData.name === "Amiya") {
     intermediate += "_1";
   }
 
@@ -102,7 +102,7 @@ const OperatorBlock = (props: Props) => {
         position: "relative",
       }}
     >
-      <Image src={`/img/elite/${op.promotion}_s_box.png`} fill sizes="(max-width: 768px) 20px, 32px" alt={`Elite ${op.promotion}`} />
+      <Image src={`/img/elite/${op.elite}_s_box.png`} fill sizes="(max-width: 768px) 20px, 32px" alt={`Elite ${op.elite}`} />
     </Box >
 
   const levelSx = {
@@ -168,8 +168,8 @@ const OperatorBlock = (props: Props) => {
       zIndex: 1,
     }}>
       {op.potential > 1 ? potentialBlock : null}
-      {op.promotion > 0 ? promotionBlock : null}
-      {op.promotion > 0 || op.level > 1 ? levelBlock : null}
+      {op.elite > 0 ? promotionBlock : null}
+      {op.elite > 0 || op.level > 1 ? levelBlock : null}
     </Box >
 
   const skillBlock =
@@ -177,7 +177,7 @@ const OperatorBlock = (props: Props) => {
       gridArea: "img",
       marginTop: "4px",
       marginRight: { xs: "-14px", sm: "-24px" },
-      display: op.rank > 1 ? "flex" : "none",
+      display: op.skill_level > 1 ? "flex" : "none",
       flexDirection: "column",
       justifySelf: "end",
       gap: "2px",
@@ -186,7 +186,7 @@ const OperatorBlock = (props: Props) => {
         <Box
           key={n}
           sx={{
-            display: op.promotion >= n ? "grid" : "none",
+            display: op.elite >= n ? "grid" : "none",
             marginLeft: { xs: "0px", sm: `${4 * n}px` },
             "& .stack": {
               gridRow: 1,
@@ -208,10 +208,10 @@ const OperatorBlock = (props: Props) => {
           </Box>
           {(!op.masteries || !op.masteries[n] || op.masteries[n] === 0
             ? <Box className="stack">
-              <Image src={`/img/rank/${op.rank}.png`}
+              <Image src={`/img/rank/${op.skill_level}.png`}
                 fill
                 sizes={iconSizes}
-                alt={`Rank ${op.rank}`}
+                alt={`Rank ${op.skill_level}`}
               />
             </Box>
             : <Box className="stack">
@@ -357,5 +357,5 @@ const OperatorBlock = (props: Props) => {
 export default OperatorBlock;
 
 function isMaxKrooster(op: Operator) {
-  return op.id === "char_1021_kroos2" && op.potential === 6 && op.level === 80 && op.masteries.every(v => v === 3);
+  return op.op_id === "char_1021_kroos2" && op.potential === 6 && op.level === 80 && op.masteries.every(v => v === 3);
 }

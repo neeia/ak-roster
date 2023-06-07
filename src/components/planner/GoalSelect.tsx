@@ -53,8 +53,8 @@ const GoalSelect: React.FC<Props> = (props) => {
       return [];
     }
     const presets = [];
-    if (operator.elite.length > 0 && operator.skillLevels.length === 6) {
-      if (!opData || (opData.promotion < 1 && opData.rank < 7))
+    if (operator.eliteLevels.length > 0 && operator.skillLevels.length === 6) {
+      if (!opData || (opData.elite < 1 && opData.skill_level < 7))
         presets.push("Elite 1 Skill Level 7");
     }
     operator.skillData.forEach((skill, i) => {
@@ -135,7 +135,7 @@ const GoalSelect: React.FC<Props> = (props) => {
       switch (preset) {
         case "Elite 1 Skill Level 7":
           if (
-            operator!.elite?.length > 0 &&
+            operator!.eliteLevels?.length > 0 &&
             operator!.skillLevels.length === 6
           ) {
             newSpecificGoals.add("Elite 1");
@@ -178,12 +178,12 @@ const GoalSelect: React.FC<Props> = (props) => {
           }
           break;
         case "Everything": {
-          operator!.elite?.forEach((_, i) => {
-            if (!opData || opData.promotion < i + 1)
+          operator!.eliteLevels?.forEach((_, i) => {
+            if (!opData || opData.elite < i + 1)
               newSpecificGoals.add(`Elite ${i + 1}`);
           });
           operator!.skillLevels?.forEach((_, i) => {
-            if (!opData || opData.rank < i + 2)
+            if (!opData || opData.skill_level < i + 2)
               newSpecificGoals.add(`Skill Level ${i + 2}`);
           });
           operator!.skillData?.forEach((_, i) => {
@@ -218,8 +218,8 @@ const GoalSelect: React.FC<Props> = (props) => {
     }
 
     const elite =
-      operator.elite.length > 0
-        ? operator.elite.filter((_, i) => !opData || opData.promotion < i + 1).map((goal) => (
+      operator.eliteLevels.length > 0
+        ? operator.eliteLevels.filter((_, i) => !opData || opData.elite < i + 1).map((goal) => (
           <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
             <Checkbox
               checked={selectedGoalNames.indexOf(goal.name) > -1}
@@ -231,7 +231,7 @@ const GoalSelect: React.FC<Props> = (props) => {
         : null;
     const skillLevel =
       operator.skillLevels.length > 0
-        ? operator.skillLevels.filter((_, i) => !opData || opData.rank < i + 2).map((goal) => (
+        ? operator.skillLevels.filter((_, i) => !opData || opData.skill_level < i + 2).map((goal) => (
           <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
             <Checkbox
               checked={selectedGoalNames.indexOf(goal.name) > -1}

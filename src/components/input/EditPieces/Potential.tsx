@@ -19,7 +19,7 @@ interface Props {
 const Potential = ((props: Props) => {
   const { op, onChange } = props;
   
-  const potBonuses = operatorJson[op.id].potentials;
+  const potBonuses = operatorJson[op.op_id].potentials;
   return (
     <Box sx={{
       display: "flex",
@@ -33,14 +33,14 @@ const Potential = ((props: Props) => {
         boxShadow: "none !important",
       },
     }}>
-      {[...Array(getMaxPotentialById(op.id))].map((_, i) =>
+      {[...Array(getMaxPotentialById(op.op_id))].map((_, i) =>
         <Tooltip title={i === 0 ? "Base" : potBonuses[i - 1]}
           arrow
           key={`pot${i + 1}`}
         >
           <IconButton
             sx={{
-              borderRadius: br(op.id, i),
+              borderRadius: br(op.op_id, i),
             }}
             className={op.potential === i + 1 ? "active" : "inactive"}
             onClick={() => onChange(changePotential(op, i + 1))}

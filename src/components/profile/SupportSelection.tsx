@@ -64,7 +64,7 @@ const SupportSelection = ((props: Props) => {
   };
 
   const filter = (op: OperatorData) => operators[op.id]?.owned && !supps.find((v) => !v || v.opID === op.id) && (index ? true : op.rarity < 6);
-  const sort = (a: Operator, b: Operator) => b.promotion - a.promotion || b.level - a.level || b.rarity - a.rarity;
+  const sort = (a: Operator, b: Operator) => b.elite - a.elite || b.level - a.level || b.rarity - a.rarity;
 
   return (
     <>

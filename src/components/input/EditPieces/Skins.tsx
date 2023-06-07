@@ -11,7 +11,7 @@ interface Props {
 }
 const Skins = ((props: Props) => {
   const { op, onChange } = props;
-  const opSkins: Skin[] = skinJson[op.id as keyof typeof skinJson];
+  const opSkins: Skin[] = skinJson[op.op_id as keyof typeof skinJson];
 
   return (
     <Box sx={{
@@ -22,7 +22,7 @@ const Skins = ((props: Props) => {
     }}>
       {opSkins.sort((a, b) => a.sortId - b.sortId).map((skin: Skin, i: number) => {
         // sortId -1 is the E2 skin, sortId -2 is Amiya's E1 skin
-        const disabled = !op.potential || (skin.sortId === -1 && op.promotion < 2) || (skin.sortId === -2 && op.promotion < 1);
+        const disabled = !op.potential || (skin.sortId === -1 && op.elite < 2) || (skin.sortId === -2 && op.elite < 1);
         return (
           <Tooltip title={skin.skinName ?? `Default Elite ${skin.sortId + 3}`} arrow describeChild key={`skn${i}`}>
             <span>

@@ -23,14 +23,14 @@ const PresetSelector = (props: Props) => {
         .map((preset: Operator) => {
           return <Box
             component="li"
-            key={preset.id}
+            key={preset.op_id}
             sx={{
               listStyleType: "none",
             }}>
             <Button
-              className={preset.id === selectedPreset ? "selected" : selectedPreset ? "unselected" : ""}
+              className={preset.op_id === selectedPreset ? "selected" : selectedPreset ? "unselected" : ""}
               onClick={() => {
-                onClick(preset.id);
+                onClick(preset.op_id);
               }}>
               <Typography
                 component="div"
