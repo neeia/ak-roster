@@ -160,7 +160,7 @@ const createOperatorsJson = () => {
             };
           });
 
-      const skills = operator.skills
+      const skillData = operator.skills
         .filter(
           ({ skillId, levelUpCostCond }) =>
             skillId != null && levelUpCostCond &&
@@ -187,10 +187,10 @@ const createOperatorsJson = () => {
           };
         });
 
-      let modules = [];
+      let moduleData = [];
       if (cnCharEquip[id] != null) {
         cnCharEquip[id].shift();
-        modules = cnCharEquip[id].map((modName) => {
+        moduleData = cnCharEquip[id].map((modName) => {
           const cnModuleData = cnEquipDict[modName];
           const enModuleData = enEquipDict[modName];
           const typeName =
@@ -224,8 +224,8 @@ const createOperatorsJson = () => {
         rarity,
         class: professionToClass(operator.profession),
         isCnOnly,
-        skills,
-        modules,
+        skillData,
+        moduleData,
         potentials,
         skillLevels,
         eliteLevels
