@@ -1,11 +1,10 @@
 import { ContentPasteOutlined, InventoryOutlined } from "@mui/icons-material";
 import { Box, Button, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
-import { updateProfile, User } from "firebase/auth";
-import { child, get, getDatabase, ref, remove, set } from "firebase/database";
 import React, { useState } from "react";
-import { AccountInfo } from "../../types/doctor";
-import useLocalStorage from "../../util/useLocalStorage";
 import UpdatePrivacy from "./UpdatePrivacy";
+import {AccountData} from "../../types/auth/accountData";
+import { useDisplayNameSetMutation } from "../../store/extendAccount";
+import supabaseClient from "../../util/supabaseClient";
 
 function isAlphaNumeric(str: string) {
   var code, i, len;
@@ -14,7 +13,8 @@ function isAlphaNumeric(str: string) {
     code = str.charCodeAt(i);
     if (!(code > 47 && code < 58) && // numeric (0-9)
       !(code > 64 && code < 91) && // upper alpha (A-Z)
-      !(code > 96 && code < 123)) { // lower alpha (a-z)
+      !(code > 96 && code < 123) && // lower alpha (a-z)
+      !(code == 32)) { // space
       return false;
     }
   }
@@ -22,73 +22,66 @@ function isAlphaNumeric(str: string) {
 };
 
 interface Props {
-  user: User;
+  user: AccountData;
 }
 
 const UpdateUsername = ((props: Props) => {
   const { user } = props;
-  const db = getDatabase();
-  const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
 
-  const [newUsername, setNewUsername] = useState<string>("");
+  const [newDisplayName, setNewDisplayName] = useState<string>("");
   const [errorUsername, setErrorUsername] = useState<string>("");
   const [copyLink, setCopiedLink] = useState<boolean>(false);
 
-  function tryUsername() {
-    if (!user) {
-      setErrorUsername("Not logged in.");
-      return;
-    }
-    if (!newUsername) {
+  const [setDisplayName, result] = useDisplayNameSetMutation();
+  async function tryUsername() {
+
+    let usernameAvailable = false;
+    if (!newDisplayName) {
       setErrorUsername("No username found.");
       return;
     }
-    if (!isAlphaNumeric(newUsername)) {
+    if (!isAlphaNumeric(newDisplayName)) {
       setErrorUsername("Use only [a-z], [0-9].");
       return;
     }
-    if (newUsername.length > 24) {
+    if (newDisplayName.length > 24) {
       setErrorUsername("Use a maximum of 24 characters.");
       return;
     }
-    if (newUsername.toLowerCase() === user.displayName?.toLowerCase()) {
-      updateDisplayName(newUsername);
-      return;
+
+    setErrorUsername("Checking...");
+
+    if (newDisplayName.toLowerCase() === user.display_name?.toLowerCase()) {
+      usernameAvailable = true
+    }
+    else
+    {
+      const username = newDisplayName.toLowerCase().replace(/\s/g, "");
+      const {count, error} = await supabaseClient
+        .from("krooster_accounts")
+        .select('*', { count: "exact", head: true })
+        .ilike("username", username);
+      usernameAvailable = count == 0;
     }
 
-    const checkUser = "phonebook/" + newUsername.toLowerCase();
-    setErrorUsername("Checking...");
-    get(child(ref(db), checkUser)).then((snapshot) => {
-      if (snapshot.exists() && snapshot.val() !== user.uid) {
-        setErrorUsername("That username is taken.")
-      } else {
-        setErrorUsername("Saving...");
-        if (user.displayName) {
-          remove(ref(db, "phonebook/" + user.displayName));
-        }
-        set(ref(db, "phonebook/" + newUsername.toLowerCase()), user.uid).then(() => {
-          set(ref(db, "users/" + (user.uid) + "/username/"), newUsername.toLowerCase()).then(() => {
-            setCopiedLink(false);
-            get(child(ref(db), checkUser)).then((newSnapshot) => {
-              if (!newSnapshot) {
-                setErrorUsername("Something went wrong.");
-                return;
-              }
-              updateDisplayName(newUsername);
-            });
-          });
-        });
+    if (!usernameAvailable)
+    {
+      setErrorUsername("That username is taken.")
+    }
+    else
+    {
+      setErrorUsername("Saving...");
+      await setDisplayName(newDisplayName);
+      if (result.data)
+      {
+        setErrorUsername("Saved.");
       }
-    });
+      else if (result.isError)
+      {
+        setErrorUsername("An unexpected error occurred.");
+      }
+    }
   };
-  const updateDisplayName = (s: string) => {
-    const d = { ...doctor };
-    d.displayName = newUsername;
-    setDoctor(d);
-    set(ref(db, "users/" + (user.uid) + "/info/displayName"), s)
-    setErrorUsername("Saved.");
-    updateProfile(user, { displayName: s });
-  }
 
   return (
     <>
@@ -96,7 +89,7 @@ const UpdateUsername = ((props: Props) => {
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <TextField
           label="Current Username"
-          value={user?.displayName || doctor?.displayName || "No Username Set"}
+          value={user.display_name || "No Username Set"}
           variant="standard"
           disabled
         />
@@ -104,7 +97,7 @@ const UpdateUsername = ((props: Props) => {
       </Box>
       <TextField
         label="Share Link"
-        value={`https://www.krooster.com/u/${user?.displayName || doctor?.displayName}`}
+        value={`https://www.krooster.com/u/${user.username}`}
         variant="standard"
         disabled
         InputProps={{
@@ -115,7 +108,7 @@ const UpdateUsername = ((props: Props) => {
               </Typography>
               <IconButton
                 aria-labelledby="copy-label"
-                onClick={() => { setCopiedLink(true); navigator.clipboard.writeText(`https://krooster.com/u/${user?.displayName || doctor?.displayName}`); }}
+                onClick={() => { setCopiedLink(true); navigator.clipboard.writeText(`https://krooster.com/u/${user.display_name}`); }}
               >
                 {copyLink
                   ? <InventoryOutlined height="1rem" />
@@ -128,15 +121,15 @@ const UpdateUsername = ((props: Props) => {
       />
       <TextField
         label="New Username"
-        value={newUsername}
+        value={newDisplayName}
         onChange={(e) => {
-          setNewUsername(e.target.value);
+          setNewDisplayName(e.target.value);
           setErrorUsername("");
         }}
         variant="filled"
       />
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Button onClick={tryUsername} disabled={newUsername === user.displayName}>
+        <Button onClick={tryUsername} disabled={newDisplayName === user.display_name}>
           Change Name
         </Button>
         {errorUsername}

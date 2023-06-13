@@ -1,44 +1,48 @@
 import { Box, Button, TextField } from "@mui/material";
 import { FirebaseError } from "firebase/app";
 import { EmailAuthProvider, reauthenticateWithCredential, updateEmail, User } from "firebase/auth";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { authErrors } from "../../util/authErrors";
 import PasswordTextField from "../app/PasswordTextField";
+import {AccountData} from "../../types/auth/accountData";
+import supabaseClient from "../../util/supabaseClient";
+import {useSession, useSessionContext, useUser} from "@supabase/auth-helpers-react";
 
 interface Props {
-  user: User;
 }
 
 const UpdateEmail = ((props: Props) => {
-  const { user } = props;
 
+  const [currentEmail, setCurrentEmail ] = useState<string | undefined>("")
   const [newEmail, setNewEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
 
-  function tryEmail() {
-    if (!user) {
-      setError("Not logged in.");
-      return;
+  useEffect( () => {
+    const getSession = async () =>
+    {
+      // refresh session to grab possible new mail
+      await supabaseClient.auth.refreshSession();
+      const {data, error} = await supabaseClient.auth.getSession();
+      if (!error) {
+        setCurrentEmail(data.session?.user.email);
+      }
     }
-    if (!user.email) {
-      setError("Critical error - no email found.");
-      return;
-    }
+    getSession().then();
+  });
+
+  async function tryEmail() {
     if (!newEmail) {
       setError("No email found.");
       return;
     }
-    reauthenticateWithCredential(user, EmailAuthProvider.credential(user.email, password)).then(() => {
-      setError("Checking...")
-      updateEmail(user, newEmail).then(() => {
-        setError("Updated.")
-      }).catch((error: FirebaseError) => {
-        setError(authErrors[error.code.split("/")[1] as keyof typeof authErrors]);
-      })
-    }).catch(() => {
-      setError("Failed to authenticate.");
-    })
+
+    setError("Checking...")
+    const {data, error} = await supabaseClient.auth.updateUser({email: newEmail});
+    if (error) {
+      setError(`Something went wrong: ${error.message}`);
+      return;
+    }
+    setError("Check your e-mails to confirm the e-mail change.")
   }
 
   return (
@@ -46,7 +50,7 @@ const UpdateEmail = ((props: Props) => {
       Update Email
       <TextField
         label="Current Email"
-        value={user?.email ?? "Not Logged In"}
+        value={currentEmail}
         variant="standard"
         disabled
       />
@@ -59,16 +63,7 @@ const UpdateEmail = ((props: Props) => {
         }}
         variant="filled"
       />
-      <PasswordTextField
-        label="Password"
-        value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-          setError("");
-        }}
-        ariaId="email"
-      />
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
         <Button onClick={tryEmail}>
           Change Email
         </Button>
