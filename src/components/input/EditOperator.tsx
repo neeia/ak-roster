@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Operator, OperatorData, OperatorId, Skin } from "types/operator";
 import skinJson from "data/skins.json";
 import sg0 from "data/sg0.json";
@@ -15,33 +15,34 @@ import ExtLink from "./EditPieces/ExtLink";
 import { Close } from "@mui/icons-material";
 import Skins from "./EditPieces/Skins";
 import Image from "next/image";
-import { selectOperator, updateOperator } from "store/rosterSlice";
-import { useAppDispatch, useAppSelector } from "store/hooks";
 import operatorJson from "data/operators";
-import { defaultOperatorObject } from "util/changeOperator";
+import { useRosterUpsertMutation } from "store/extendRoster";
 
 interface Props {
-  opId?: OperatorId;
+  op: Operator;
   open: boolean;
   onClose: () => void;
 }
 
 const EditOperator = React.memo((props: Props) => {
-  const { opId, open, onClose } = props;
+  const { op, open, onClose } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const dispatch = useAppDispatch();
 
-  const onChange = (op: Operator) => {
-    dispatch(updateOperator(op));
+  console.log("EditOperator received:")
+  console.log(op)
+
+  const [upsert, result] = useRosterUpsertMutation();
+
+  const onChange = (o: Operator) => {
+    upsert(o);
+    // setLocal(o);
   }
-  const op = useAppSelector(selectOperator(opId));
 
-  if (!opId) return null;
-  const opSkins: Skin[] = skinJson[opId as keyof typeof skinJson];
-  const opData = operatorJson[opId];
+  const opSkins: Skin[] = skinJson[op.op_id as keyof typeof skinJson];
+  const opData = operatorJson[op.op_id];
 
-  let intermediate = opId;
+  let intermediate = op.op_id;
   if (op?.elite === 2) {
     intermediate += "_2";
   } else if (op?.elite === 1 && opData.name === "Amiya") {
@@ -95,7 +96,7 @@ const EditOperator = React.memo((props: Props) => {
       <ExtLink href={`http://prts.wiki/w/${encodeURIComponent(opData.cnName)}`} label="PRTS" title="PRTS Wiki">
         <Image src={`/img/ext/prts.png`} width={iconWidth} height={iconWidth} alt="" />
       </ExtLink>
-      {opId in sg0
+      {op.op_id in sg0
         ? <ExtLink href={`https://sanitygone.help/operators/${opData.name.toLowerCase().replace(/ /g, "-")}`} label="S;G" title="Sanity;Gone">
           <Image src={`/img/ext/sg0.png`} width={iconWidth} height={iconWidth} alt="" />
         </ExtLink>
@@ -104,8 +105,7 @@ const EditOperator = React.memo((props: Props) => {
     </Box>
   )
 
-
-  const editProps = { op: op!, onChange };
+  const editProps = { op: op, onChange };
   return (
     <Dialog
       open={open}
@@ -135,7 +135,7 @@ const EditOperator = React.memo((props: Props) => {
             position: "relative",
           }}
         >
-          <Image src={imgUrl} layout="fill" alt="" />
+          <Image src={imgUrl} fill sizes="(max-width: 600px) 64px, 96px" alt="" />
         </Box>
         {name}
         {links}
@@ -169,43 +169,47 @@ const EditOperator = React.memo((props: Props) => {
         },
       }}>
         <EditRow
-          titleL="General"
-          titleR="Potential"
-          childrenL={<General {...editProps} />}
-          childrenR={<Potential {...editProps} />}
+          left={{
+            title: "General",
+            body: <General {...editProps} />
+          }}
+          right={{
+            title: "Potential",
+            body: <Potential {...editProps} />
+          }}
         />
         <EditRow
-          titleL="Promotion"
-          titleR="Level"
-          childrenL={<Promotion {...editProps} />}
-          childrenR={<Level {...editProps} />}
+          left={{
+            title: "Promotion",
+            body: <Promotion {...editProps} />
+          }}
+          right={{
+            title: "Level",
+            body: <Level {...editProps} />
+          }}
         />
-        {opData.skillData.length !== 0
+        {opData?.skillData?.length
           ? <EditRow
-            titleL="Skill Rank"
-            titleR="Masteries"
-            childrenL={<SkillLevel  {...editProps} />}
-            childrenR={<Mastery  {...editProps} />}
+            left={{
+              title: "Skill Rank",
+              body: <SkillLevel {...editProps} />
+            }}
+            right={opData.rarity > 3 ? {
+              title: "Masteries",
+              body: <Mastery {...editProps} />
+            } : undefined}
           />
           : null
         }
         <EditRow
-          titleL={opSkins && opSkins.length > 1
-            ? "Outfits"
-            : undefined
-          }
-          titleR={opData.moduleData.length !== 0
-            ? "Modules"
-            : undefined
-          }
-          childrenL={opSkins && opSkins.length > 1
-            ? <Skins {...editProps} />
-            : undefined
-          }
-          childrenR={opData.moduleData.length !== 0
-            ? <Module  {...editProps} />
-            : undefined
-          }
+          left={opSkins && opSkins.length > 1 ? {
+            title: "Outfits",
+            body: <Skins {...editProps} />
+          } : undefined}
+          right={opData?.moduleData?.length ? {
+            title: "Modules",
+            body: <Module {...editProps} />
+          } : undefined}
         />
       </DialogContent>
     </Dialog>

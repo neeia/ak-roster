@@ -1,23 +1,31 @@
 import React, { useCallback, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
-import { Box, ButtonGroup, Divider, IconButton, Typography } from "@mui/material";
+import { Box, ButtonGroup, IconButton, Typography } from "@mui/material";
 import Layout from "components/Layout";
 import SearchDialog from "components/collate/SearchDialog";
 import FilterDialog from "components/collate/FilterDialog";
 import SortDialog from "components/collate/SortDialog";
 import { useSort, useFilter } from "util/useSSF";
-import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
-import { Operator, OperatorData, OperatorId } from "types/operator";
-import BatchDialog from "components/batch/BatchDialog";
+import { OperatorData, OperatorId } from "types/operator";
 import usePresets from "util/usePresets";
-import { ArrowBack, Check, Clear } from "@mui/icons-material";
-import EditPreset from "components/batch/EditPreset";
+import { ArrowBack } from "@mui/icons-material";
 import { AccountInfo, isCN } from "types/doctor";
 import useLocalStorage from "util/useLocalStorage";
-import { selectRoster } from "store/rosterSlice";
-import { useAppDispatch, useAppSelector } from "store/hooks";
+import supabaseClient from "util/supabaseClient";
+import { Session } from "@supabase/supabase-js";
+import { keyframes } from '@mui/system';
+import { useRosterGetQuery } from "store/extendRoster";
+import { defaultOperatorObject } from "util/changeOperator";
+
+const shimmer = keyframes`
+  0% {
+      background-position: -120px 0;
+  }
+  100% {
+      background-position: 120px 0;
+  }
+`;
 
 const EditOperator = dynamic(
   () => import("components/input/EditOperator"),
@@ -28,11 +36,14 @@ const OperatorSelector = dynamic(
   { ssr: false }
 );
 const Input: NextPage = () => {
+
+  const { data: operators, error, isSuccess } = useRosterGetQuery(undefined);
+
   const [presets, changePreset, rename] = usePresets();
   const [batch, setBatch] = useState(false);
   const [preset, setPreset] = useState("");
 
-  const [opId, setOpId] = React.useState<OperatorId>();
+  const [opId, setOpId] = React.useState<OperatorId>("char_002_amiya");
   const [editOpen, setEditOpen] = React.useState(false);
 
   const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
@@ -47,12 +58,10 @@ const Input: NextPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const db = getDatabase();
-  const [user, setUser] = useState<User | null>();
+  const [session, setSession] = useState<Session | null>(null);
   useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    supabaseClient.auth.getSession().then(({ data }) => {
+      setSession(data.session);
     });
   }, []);
 
@@ -250,27 +259,6 @@ const Input: NextPage = () => {
           gap: { xs: 0.5, sm: 1 },
           margin: 0,
           padding: 0,
-          "& .MuiTypography-root": {
-            display: "flex",
-            lineHeight: "1.25rem",
-            color: "text.primary",
-            letterSpacing: "normal",
-            textTransform: "none",
-            pointerEvents: "none",
-            flexDirection: "column",
-            mx: "-1rem",
-          },
-          "& .MuiButton-root": {
-            display: "grid",
-            boxShadow: 2,
-            backgroundColor: { xs: "info.dark", sm: "info.main" },
-            width: "100%",
-            height: "min-content",
-            transition: "background-color 0.05s",
-            "&:hover": {
-              backgroundColor: "rgba(255, 212, 64, 0.15)",
-            }
-          },
           "& .unowned": {
             opacity: 0.75
           },
@@ -283,15 +271,24 @@ const Input: NextPage = () => {
           "& .toggled": {
             opacity: 1,
           },
+          "& > .loading button": {
+            background: "linear-gradient(95deg, #333 8%, #3a3a3a 44%, #333 80%)",
+            backgroundSize: "120px 100%",
+            animation: `${shimmer} 2s infinite linear`,
+            "& *": {
+              opacity: "0",
+            },
+          }
         }}>
           <OperatorSelector
+            operators={operators ?? {}}
             onClick={handleSelectOp}
             sort={sortFunction}
             filter={filterFunction}
             toggleGroup={batch ? selectGroup : undefined}
           />
           <EditOperator
-            opId={opId}
+            op={operators?.[opId] ?? defaultOperatorObject(opId)}
             open={editOpen}
             onClose={() => setEditOpen(false)}
           />

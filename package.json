@@ -28,10 +28,8 @@
     "@supabase/auth-helpers-react": "^0.3.1",
     "@supabase/supabase-js": "^2.12.1",
     "@vercel/analytics": "^0.1.11",
-    "ajv-formats": "^2.1.1",
     "firebase": "^9.22.0",
     "js-combinatorics": "^2.1.1",
-    "localforage": "^1.10.0",
     "lodash": "^4.17.21",
     "next": "^13.2.4",
     "puppeteer": "^19.8.0",
@@ -39,8 +37,6 @@
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^18.2.0",
     "react-window": "^1.8.8",
-    "redux-persist": "^6.0.0",
-    "sharp": "^0.32.0",
     "sprintf-js": "^1.1.2"
   },
   "devDependencies": {

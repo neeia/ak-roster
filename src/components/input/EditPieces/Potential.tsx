@@ -18,7 +18,7 @@ interface Props {
 }
 const Potential = ((props: Props) => {
   const { op, onChange } = props;
-  
+
   const potBonuses = operatorJson[op.op_id].potentials;
   return (
     <Box sx={{
@@ -38,21 +38,23 @@ const Potential = ((props: Props) => {
           arrow
           key={`pot${i + 1}`}
         >
-          <IconButton
-            sx={{
-              borderRadius: br(op.op_id, i),
-            }}
-            className={op.potential === i + 1 ? "active" : "inactive"}
-            onClick={() => onChange(changePotential(op, i + 1))}
-            disabled={!op.potential}
-          >
-            <Image
-              width={32}
-              height={32}
-              src={`/img/potential/${i + 1}.png`}
-              alt={`Potential ${i + 1}`}
-            />
-          </IconButton>
+          <span>
+            <IconButton
+              sx={{
+                borderRadius: br(op.op_id, i),
+              }}
+              className={op.potential === i + 1 ? "active" : "inactive"}
+              onClick={() => onChange(changePotential(op, i + 1))}
+              disabled={!op.potential}
+            >
+              <Image
+                width={32}
+                height={32}
+                src={`/img/potential/${i + 1}.png`}
+                alt={`Potential ${i + 1}`}
+              />
+            </IconButton>
+          </span>
         </Tooltip>
       )}
     </Box>
