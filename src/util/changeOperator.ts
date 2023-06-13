@@ -637,13 +637,14 @@ export function defaultOperatorObject(id: OperatorId): Operator {
 
 // Make changes to an operator, ensuring nothing becomes invalid
 export const changeOwned = (op: Operator, value: boolean) => {
-  op.potential = +value;
-  op.elite = +value - 1;
-  op.level = +value;
-  op.skill_level = +value;
-  op.masteries = [];
-  op.modules = [];
-  return op;
+  let copy = { ...op };
+  copy.potential = +value;
+  copy.elite = +value - 1;
+  copy.level = +value;
+  copy.skill_level = +value;
+  copy.masteries = [];
+  copy.modules = [];
+  return copy;
 }
 
 export const changeFavorite = (op: Operator, value: boolean) => {
@@ -702,7 +703,7 @@ export const changeMastery = (op: Operator, index: number, value: number) => {
 
   // Check if masteries are invalid
   if (op.elite !== 2 || op.skill_level !== 7) return op;
-  if (index > opData.skillData.length) return op;
+  if (opData.skillData && index > opData.skillData.length) return op;
   const masteries = [...op.masteries];
   masteries[index] = value;
   return { ...op, masteries };
@@ -714,7 +715,7 @@ export const changeModule = (op: Operator, index: number, value: number) => {
 
   if (op.elite !== 2) return op;
   if (op.level < MODULE_REQ_BY_RARITY[opData.rarity]) return op;
-  if (index > opData.moduleData.length) return op;
+  if (opData.moduleData && index > opData.moduleData.length) return op;
   const modules = [...op.modules];
   modules[index] = value;
   return { ...op, modules };

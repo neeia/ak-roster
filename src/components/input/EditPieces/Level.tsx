@@ -11,7 +11,7 @@ interface Props {
 }
 const Level = (props: Props) => {
   const { op, onChange } = props;
-  console.log(op)
+  
   const rarity = operatorJson[op.op_id].rarity;
   const [levelField, setLevelField] = React.useState<string>(op.level.toString());
   function updateLevel(lvl: string | number) {

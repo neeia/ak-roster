@@ -1,8 +1,8 @@
 import React from "react";
-import { Operator, Skin } from "../../../types/operator";
+import { Operator, Skin } from "types/operator";
 import skinJson from "data/skins.json";
 import { Box, Button, Tooltip } from "@mui/material";
-import { changeSkin } from "../../../util/changeOperator";
+import { changeSkin } from "util/changeOperator";
 import Image from "next/image";
 
 interface Props {
@@ -24,7 +24,7 @@ const Skins = ((props: Props) => {
         // sortId -1 is the E2 skin, sortId -2 is Amiya's E1 skin
         const disabled = !op.potential || (skin.sortId === -1 && op.elite < 2) || (skin.sortId === -2 && op.elite < 1);
         return (
-          <Tooltip title={skin.skinName ?? `Default Elite ${skin.sortId + 3}`} arrow describeChild key={`skn${i}`}>
+          <Tooltip title={skin.skinName ?? `Default Elite ${skin.sortId + 3}`} arrow describeChild key={`${op.op_id}-skn${i}`}>
             <span>
               <Button
                 fullWidth

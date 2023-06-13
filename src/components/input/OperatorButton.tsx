@@ -31,11 +31,29 @@ const OperatorButton = React.memo((props: Props) => {
   const nameComponent =
     <Typography
       component="div"
+      sx={{
+        pointerEvents: "none",
+        height: "1.25rem",
+      }}
       variant={width > LONG_CUTOFF ? width > LONGER_CUTOFF ? "caption3" : "caption2" : "caption"}
     >
-      {width > LONGER_CUTOFF && name.includes(" ")
-        ? name.split(" ").map((s: string) => <Box key={s} sx={{ lineHeight: 1, }}>{s}</Box>)
-        : name}
+      <Box sx={{
+        position: "absolute",
+        width: "100%",
+        lineHeight: 1,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        letterSpacing: "normal",
+        textTransform: "none",
+        color: "text.primary",
+        bottom: 4,
+        left: 0,
+        right: 0,
+        height: "1.25rem",
+      }}>
+        {name}
+      </Box>
     </Typography>
   // Process operator name
   let opName = (
@@ -58,6 +76,18 @@ const OperatorButton = React.memo((props: Props) => {
       <Button
         className={!toggled ? op.potential ? "" : "unowned" : toggled ? "toggled" : "untoggled"}
         onClick={() => onClick(op.op_id)}
+        sx={{
+          display: "grid",
+          boxShadow: 2,
+          backgroundColor: { xs: "info.dark", sm: "info.main" },
+          width: "100%",
+          height: "min-content",
+          transition: "background-color 0.05s",
+          position: "relative",
+          "&:hover": {
+            backgroundColor: "rgba(255, 212, 64, 0.15)",
+          }
+        }}
       >
         <Box
           className={toggled || op.potential ? "" : "unowned"}

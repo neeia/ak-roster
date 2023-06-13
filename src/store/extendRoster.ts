@@ -1,33 +1,57 @@
+import operatorJson from 'data/operators';
 import { supabaseApi } from './apiSlice'
 import { Operator, OperatorId } from 'types/operator';
+import Roster from 'types/operators/roster';
 import supabaseClient from 'util/supabaseClient';
+import { defaultOperatorObject } from 'util/changeOperator';
 
-const extendedApi = supabaseApi.injectEndpoints({
+export const rosterApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({
-    rosterGet: builder.query({
-      queryFn: async () => {
+    rosterGet: builder.query<Roster, void>({
+      async queryFn() {
         const user_id = (await supabaseClient.auth.getSession()).data.session?.user.id;
-        if (!user_id) return { data: null };
+        if (!user_id) return { data: {} };
 
         const { data, error } = await supabaseClient
           .from("operators")
-          .select("op_id, owned, favorite, potential, elite, level, skill_level, masteries, modules, skin")
+          .select("op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin")
           .match({ user_id })
 
-        return { data };
+        if (!data) return { data: {} };
+
+        const acc: Roster = {};
+        data.forEach(o => o.op_id in operatorJson ? acc[o.op_id] = o as Operator : null);
+        return { data: acc };
       },
       providesTags: ["operator"]
     }),
     rosterUpsert: builder.mutation({
-      queryFn: async (op: Operator | Operator[]) => {
-        const user_id = (await supabaseClient.auth.getSession()).data.session?.user.id;
-        if (!user_id) return { data: null };
-
+      async queryFn(op: Operator | Operator[]) {
         const { data, error } = await supabaseClient
           .from("operators")
           .upsert(op)
-          .select("op_id, owned, favorite, potential, elite, level, rank, masteries, modules, skin");
+          .select("op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin");
+
         return { data };
+      },
+      async onQueryStarted(op: Operator | Operator[], { dispatch, queryFulfilled }) {
+        console.log("Query started:")
+        console.log(op)
+        const patchResult = dispatch(
+          rosterApi.util.updateQueryData('rosterGet', undefined, (draft) => {
+            const ops: Roster = Object.fromEntries(
+              (Array.isArray(op) ? op : [op]).map(o => [o.op_id, o])
+            );
+            Object.assign(draft, ops)
+          })
+        );
+        try {
+          await queryFulfilled;
+          console.log("Query finished:")
+          console.log(op)
+        } catch {
+          patchResult.undo();
+        }
       },
       invalidatesTags: (_, __, c) => Array.isArray(c) ? c.map(op => ({ type: "operator", id: op.op_id })) : [{ type: "operator", id: c.op_id }]
     }),
@@ -45,6 +69,7 @@ const extendedApi = supabaseApi.injectEndpoints({
             .from("operators")
             .delete()
             .match({ op_id })
+
         return { data };
       },
       invalidatesTags: (_, __, c) => Array.isArray(c) ? c.map(op => ({ type: "operator", id: op })) : [{ type: "operator", id: c }]
@@ -53,4 +78,4 @@ const extendedApi = supabaseApi.injectEndpoints({
   overrideExisting: false,
 })
 
-export const { useRosterGetQuery, useRosterUpsertMutation } = extendedApi
+export const { useRosterGetQuery, useRosterUpsertMutation, useRosterDeleteMutation } = rosterApi;

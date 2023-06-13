@@ -3,7 +3,6 @@ import { Operator } from "types/operator";
 import { Box, Button } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { changeFavorite, changeOwned } from "util/changeOperator";
-import { addOperator, deleteOperator } from "store/rosterSlice";
 import { useAppDispatch } from "store/hooks";
 
 interface Props {
@@ -12,8 +11,7 @@ interface Props {
 }
 const General = ((props: Props) => {
   const { op, onChange } = props;
-  const dispatch = useAppDispatch();
-
+  
   return (
     <Box sx={{
       display: "flex",
@@ -25,7 +23,7 @@ const General = ((props: Props) => {
     }}>
       <Button
         className={op.potential ? "active" : ""}
-        onClick={() => op.potential ? dispatch(deleteOperator(op.op_id)) : dispatch(addOperator(op.op_id))}
+        onClick={() => onChange(changeOwned(op, !op.potential))}
       >
         Own
       </Button>

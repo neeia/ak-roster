@@ -4,11 +4,12 @@ import classList from "data/classList";
 import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
 import { defaultOperatorObject } from "util/changeOperator";
-import { useAppSelector } from "store/hooks";
-import { selectRoster } from "store/rosterSlice";
 import operatorJson from "data/operators";
+import { useRosterGetQuery } from "store/extendRoster";
+import Roster from "types/operators/roster";
 
 interface Props {
+  operators: Roster;
   onClick: (opId: OperatorId) => void;
   filter?: (opInfo: OperatorData, op: Operator) => boolean;
   sort?: (opA: OpInfo, opB: OpInfo) => number;
@@ -16,8 +17,7 @@ interface Props {
 }
 
 const OperatorSelector = React.memo((props: Props) => {
-  const { onClick, filter, sort, toggleGroup } = props;
-  const operators = useAppSelector(selectRoster);
+  const { operators, onClick, filter, sort, toggleGroup } = props;
 
   const defineFilter = filter ?? (() => true);
 
@@ -27,8 +27,6 @@ const OperatorSelector = React.memo((props: Props) => {
       classList.indexOf(a.class) - classList.indexOf(b.class) ||
       a.name.localeCompare(b.name)
   }
-
-  const ar: string[] = [];
 
   // Operator Selector Component
   return (

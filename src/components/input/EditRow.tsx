@@ -2,13 +2,12 @@ import React from "react";
 import { Box, Divider } from "@mui/material";
 
 interface Props {
-  titleL?: string;
-  titleR?: string;
-  childrenL?: React.ReactNode;
-  childrenR?: React.ReactNode;
+  left?: { title: string, body: React.ReactNode };
+  right?: { title: string, body: React.ReactNode };
 }
 const EditRow = (props: Props) => {
-  const { titleL, titleR, childrenL, childrenR } = props
+  const { left, right } = props;
+
   return (
     <Box sx={{
       display: "grid",
@@ -26,20 +25,20 @@ const EditRow = (props: Props) => {
           sm: "repeat(12, 1fr)"
         }
       }}>
-        {childrenL
+        {left
           ?
           <>
             <Box sx={{
               gridColumn: "span 12",
             }}>
               <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
-                {titleL}
+                {left.title}
               </Divider>
             </Box>
             <Box sx={{
               gridColumn: "span 12",
             }}>
-              {childrenL}
+              {left.body}
             </Box>
           </>
           : ""}
@@ -55,20 +54,20 @@ const EditRow = (props: Props) => {
           sm: "repeat(12, 1fr)"
         }
       }}>
-        {childrenR
+        {right
           ?
           <>
             <Box sx={{
               gridColumn: "span 12",
             }}>
               <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
-                {titleR}
+                {right.title}
               </Divider>
             </Box>
             <Box sx={{
               gridColumn: "span 12",
             }}>
-              {childrenR}
+              {right.body}
             </Box>
           </>
           : ""}
