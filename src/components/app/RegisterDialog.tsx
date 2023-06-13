@@ -36,10 +36,7 @@ const RegisterButton = ((props: Props) => {
       setError(error.message);
       return;
     }
-
-    setError("");
-    onClose();
-    onLogin?.(data.session!);
+    setError("Check your mail to confirm your registration.");
   }
 
   return (
