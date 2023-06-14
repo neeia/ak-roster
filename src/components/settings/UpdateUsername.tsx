@@ -71,15 +71,13 @@ const UpdateUsername = ((props: Props) => {
     else
     {
       setErrorUsername("Saving...");
-      await setDisplayName(newDisplayName);
-      if (result.data)
-      {
-        setErrorUsername("Saved.");
-      }
-      else if (result.isError)
+      setDisplayName(newDisplayName);
+      if (result.isError)
       {
         setErrorUsername("An unexpected error occurred.");
+        return;
       }
+        setErrorUsername("Saved.");
     }
   };
 
@@ -89,7 +87,7 @@ const UpdateUsername = ((props: Props) => {
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <TextField
           label="Current Username"
-          value={user.display_name || "No Username Set"}
+          value={user.display_name ?? "No Username Set"}
           variant="standard"
           disabled
         />
@@ -97,7 +95,7 @@ const UpdateUsername = ((props: Props) => {
       </Box>
       <TextField
         label="Share Link"
-        value={`https://www.krooster.com/u/${user.username}`}
+        value={user.username ? `https://www.krooster.com/u/${user.username}` : "---"}
         variant="standard"
         disabled
         InputProps={{

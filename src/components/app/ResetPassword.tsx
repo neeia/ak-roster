@@ -20,7 +20,7 @@ const ResetPassword = ((props: Props) => {
     {
       const {data, error} = await supabaseClient.auth.getSession();
       if (!error) {
-        setResetEmail(data.session!.user.email!);
+        setResetEmail(data.session?.user.email ?? "");
       }
     }
     getSession().then();

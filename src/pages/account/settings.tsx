@@ -8,6 +8,7 @@ import UpdateEmail from "components/settings/UpdateEmail";
 import UpdatePassword from "components/settings/UpdatePassword";
 import Data from "components/settings/Data";
 import {useAccountGetQuery} from "store/extendAccount";
+import {AccountData} from "../../types/auth/accountData";
 
 const Settings: NextPage = () => {
 
