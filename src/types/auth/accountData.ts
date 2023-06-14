@@ -2,7 +2,7 @@ import {Json} from "../supabase";
 
 export interface AccountData {
   assistant: string | null
-  discordcode: Json | null
+  discordcode: string | null
   display_name: string | null
   friendcode: Json | null
   lastmodified: string

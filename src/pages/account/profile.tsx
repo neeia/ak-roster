@@ -12,23 +12,15 @@ import Server from "components/profile/Server";
 import Onboard from "components/profile/Onboard";
 import Discord from "components/profile/Discord";
 import Reddit from "components/profile/Reddit";
+import {useAccountGetQuery} from "../../store/extendAccount";
 
 const Profile: NextPage = () => {
 
-  const [user, setUser] = useState<User | null>();
-  useEffect(() => {
-    const auth = getAuth();
-    getUserStatus().then((user) => {
-      setUser(user);
-    })
-    onAuthStateChanged(auth, (newUser) => {
-      setUser(newUser);
-    });
-  }, []);
+  const { data: account, isLoading} = useAccountGetQuery();
 
   return (
     <Layout tab="/account" page="/profile">
-      {!user ? "" :
+      {isLoading ? "" :
         <Box sx={{
           display: "flex",
           flexDirection: "column",
@@ -48,12 +40,12 @@ const Profile: NextPage = () => {
           },
         }}>
           <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 1 }}>
-            <FriendID user={user} />
-            <Server user={user} />
+            <FriendID user={account!} />
+            <Server user={account!} />
           </Box>
           <Box sx={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 1 }}>
-            <Level user={user} />
-            <Onboard user={user} />
+            <Level user={account!} />
+            <Onboard user={account!} />
           </Box>
           <Divider />
           {/* <Assistant user={user} />
@@ -61,8 +53,8 @@ const Profile: NextPage = () => {
           <Divider />
           <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             Connections
-            <Discord user={user} />
-            <Reddit user={user} />
+            <Discord user={account!} />
+            <Reddit user={account!} />
           </Box>
         </Box>}
     </Layout>

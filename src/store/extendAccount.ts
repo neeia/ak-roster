@@ -103,23 +103,13 @@ const extendedApi = supabaseApi.injectEndpoints({
       invalidatesTags: ["account"],
     }),
     onboardSet: builder.mutation<boolean, string | null>({
-      queryFn: async (level : string) => {
+      queryFn: async (onboard : string) => {
         //update requires a WHERE clause, so we can use the user_id for it
         const userId = (await supabaseClient.auth.getSession()).data.session?.user.id;
 
-        let levelNumber : number | null;
-        if (level || level === "")
-        {
-          levelNumber = null;
-        }
-        else
-        {
-          levelNumber = parseInt(level);
-        }
-
         const {data, error} = await supabaseClient
           .from("krooster_accounts")
-          .update({level: levelNumber})
+          .update({onboard: onboard})
           .eq('user_id', userId)
 
         return !error ? { data: true} : {data: false};

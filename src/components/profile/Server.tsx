@@ -4,24 +4,23 @@ import { getDatabase, ref, set } from "firebase/database";
 import React, { useState } from "react";
 import useLocalStorage from "util/useLocalStorage";
 import { AccountInfo, servers } from "types/doctor";
+import {AccountData} from "../../types/auth/accountData";
+import {useFriendCodeSetMutation, useServerSetMutation} from "../../store/extendAccount";
 
 interface Props {
-  user: User;
+  user: AccountData;
 }
 
 const Server = ((props: Props) => {
   const { user } = props;
-  const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
 
-  const db = getDatabase();
+  const [server, _setServer] = useState<string>(user.server ?? "");
 
-  const [server, _setServer] = useState<string>(doctor.server ?? "");
+  const [setServerTrigger] = useServerSetMutation();
+
   const setServer = (value: string) => {
-    const d = { ...doctor };
     _setServer(value);
-    d.server = value;
-    setDoctor(d);
-    set(ref(db, `users/${user.uid}/info/server/`), value);
+    setServerTrigger(value);
   };
 
   return (
