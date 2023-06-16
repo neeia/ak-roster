@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import type { NextPage } from "next";
 import { Box, Divider } from "@mui/material";
 import Layout from "components/Layout";
-import { getUserStatus } from "util/getUserStatus";
-import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import SupportSelection from "components/profile/SupportSelection";
 import Assistant from "components/profile/Assistant";
 import FriendID from "components/profile/FriendId";
@@ -48,8 +46,8 @@ const Profile: NextPage = () => {
             <Onboard user={account!} />
           </Box>
           <Divider />
-          {/* <Assistant user={user} />
-          <SupportSelection user={user} /> */}
+          <Assistant user={account!} />
+          <SupportSelection />
           <Divider />
           <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             Connections

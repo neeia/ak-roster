@@ -1,15 +1,13 @@
 import {supabaseApi} from "./apiSlice";
 import supabaseClient from 'util/supabaseClient';
 import {AccountData} from "../types/auth/accountData";
-import {Operator} from "../types/operator";
-import {Json} from "../types/supabase";
 
 const extendedApi = supabaseApi.injectEndpoints({
   endpoints: (builder ) => ({
     accountGet: builder.query<AccountData, void>({
       queryFn: async () => {
         const userId = (await supabaseClient.auth.getSession()).data.session?.user.id;
-        const {data, error} = await supabaseClient
+        const {data} = await supabaseClient
           .from("krooster_accounts")
           .select()
           .eq('user_id', userId)
@@ -24,7 +22,7 @@ const extendedApi = supabaseApi.injectEndpoints({
         // update requires a WHERE clause, so we can use the user_id for it
         const userId = (await supabaseClient.auth.getSession()).data.session?.user.id;
 
-        const {data, error} = await supabaseClient
+        const {data} = await supabaseClient
           .from("krooster_accounts")
           .update({private: isPrivate})
           .eq('user_id', userId)
@@ -41,7 +39,7 @@ const extendedApi = supabaseApi.injectEndpoints({
 
         const username = displayName.toLowerCase().replace(/\s/g, "");
 
-        const {data, error} = await supabaseClient
+        const {error} = await supabaseClient
           .from("krooster_accounts")
           .update({display_name: displayName, username: username})
           .eq('user_id', userId)
@@ -55,7 +53,7 @@ const extendedApi = supabaseApi.injectEndpoints({
         //update requires a WHERE clause, so we can use the user_id for it
         const userId = (await supabaseClient.auth.getSession()).data.session?.user.id;
 
-        const {data, error} = await supabaseClient
+        const {error} = await supabaseClient
           .from("krooster_accounts")
           .update({friendcode: friendCode})
           .eq('user_id', userId)
@@ -69,7 +67,7 @@ const extendedApi = supabaseApi.injectEndpoints({
         //update requires a WHERE clause, so we can use the user_id for it
         const userId = (await supabaseClient.auth.getSession()).data.session?.user.id;
 
-        const {data, error} = await supabaseClient
+        const {error} = await supabaseClient
           .from("krooster_accounts")
           .update({server: server})
           .eq('user_id', userId)
@@ -93,7 +91,7 @@ const extendedApi = supabaseApi.injectEndpoints({
           levelNumber = parseInt(level);
         }
 
-        const {data, error} = await supabaseClient
+        const {error} = await supabaseClient
           .from("krooster_accounts")
           .update({level: levelNumber})
           .eq('user_id', userId)
@@ -107,7 +105,7 @@ const extendedApi = supabaseApi.injectEndpoints({
         //update requires a WHERE clause, so we can use the user_id for it
         const userId = (await supabaseClient.auth.getSession()).data.session?.user.id;
 
-        const {data, error} = await supabaseClient
+        const {error} = await supabaseClient
           .from("krooster_accounts")
           .update({onboard: onboard})
           .eq('user_id', userId)
@@ -121,7 +119,7 @@ const extendedApi = supabaseApi.injectEndpoints({
         //update requires a WHERE clause, so we can use the user_id for it
         const userId = (await supabaseClient.auth.getSession()).data.session?.user.id;
 
-        const {data, error} = await supabaseClient
+        const {error} = await supabaseClient
           .from("krooster_accounts")
           .update({discordcode: discordUsername})
           .eq('user_id', userId)
@@ -135,9 +133,24 @@ const extendedApi = supabaseApi.injectEndpoints({
         //update requires a WHERE clause, so we can use the user_id for it
         const userId = (await supabaseClient.auth.getSession()).data.session?.user.id;
 
-        const {data, error} = await supabaseClient
+        const {error} = await supabaseClient
           .from("krooster_accounts")
           .update({reddituser: redditUsername})
+          .eq('user_id', userId)
+
+        return !error ? { data: true} : {data: false};
+      },
+      invalidatesTags: ["account"],
+    })
+    ,
+    assistantSet: builder.mutation<boolean, string | null>({
+      queryFn: async (assistant : string | null) => {
+        //update requires a WHERE clause, so we can use the user_id for it
+        const userId = (await supabaseClient.auth.getSession()).data.session?.user.id;
+
+        const {error} = await supabaseClient
+          .from("krooster_accounts")
+          .update({assistant: assistant})
           .eq('user_id', userId)
 
         return !error ? { data: true} : {data: false};
@@ -148,4 +161,4 @@ const extendedApi = supabaseApi.injectEndpoints({
   overrideExisting: false,
 })
 
-export const { useAccountGetQuery, useAccountPrivateSetMutation, useDisplayNameSetMutation, useFriendCodeSetMutation, useServerSetMutation, useLevelSetMutation, useOnboardSetMutation, useDiscordSetMutation, useRedditSetMutation} = extendedApi
+export const { useAccountGetQuery, useAccountPrivateSetMutation, useDisplayNameSetMutation, useFriendCodeSetMutation, useServerSetMutation, useLevelSetMutation, useOnboardSetMutation, useDiscordSetMutation, useRedditSetMutation, useAssistantSetMutation} = extendedApi
