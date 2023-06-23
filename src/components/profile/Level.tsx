@@ -4,6 +4,9 @@ import { getDatabase, ref, remove, set } from "firebase/database";
 import React, { useCallback, useState } from "react";
 import useLocalStorage from "../../util/useLocalStorage";
 import { AccountInfo } from "../../types/doctor";
+import {AccountData} from "../../types/auth/accountData";
+import {debounce} from "lodash";
+import {useFriendCodeSetMutation, useLevelSetMutation} from "../../store/extendAccount";
 
 function parse(n: string, min?: number, max?: number): string {
   if (parseInt(n)) {
@@ -16,30 +19,20 @@ function parse(n: string, min?: number, max?: number): string {
 };
 
 interface Props {
-  user: User;
+  user: AccountData;
 }
 
 const Level = ((props: Props) => {
   const { user } = props;
-  const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
 
-  const db = getDatabase();
-
-  const [level, _setLevel] = useState<string>(doctor.level?.toString() ?? "");
+  const [level, _setLevel] = useState<string>(user.level?.toString() ?? "");
+  const [setLevelTrigger] = useLevelSetMutation();
   const setLevel = (value: string) => {
-    const d = { ...doctor };
     _setLevel(value);
-    if (value === "") {
-      delete d.level
-      setDoctor(d);
-      remove(ref(db, `users/${user.uid}/info/level/`));
-    } else {
-      const l = parseInt(value);
-      d.level = l;
-      setDoctor(d);
-      set(ref(db, `users/${user.uid}/info/level/`), l);
-    }
+    setLevelDebounced(value);
   };
+
+  const setLevelDebounced = useCallback(debounce((newLevel) => setLevelTrigger(newLevel),300), []);
 
   return (
     <TextField

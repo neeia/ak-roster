@@ -1,37 +1,40 @@
 import { Box, InputAdornment, TextField } from "@mui/material";
 import { User } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
-import React, { useState } from "react";
+import React, {useCallback, useState} from "react";
 import useLocalStorage from "../../util/useLocalStorage";
 import { AccountInfo } from "../../types/doctor";
+import {AccountData} from "../../types/auth/accountData";
+import {Json} from "../../types/supabase";
+import {useFriendCodeSetMutation} from "../../store/extendAccount";
+import {debounce} from "lodash";
 
 interface Props {
-  user: User;
+  user: AccountData;
 }
 
 const FriendID = ((props: Props) => {
   const { user } = props;
-  const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
 
-  const db = getDatabase();
+  const [friendUsername, _setFriendUsername] = useState<string>(((user.friendcode as { [key: string]: Json })?.username as string) ?? "");
+  const [friendTag, _setFriendTag] = useState<string>(((user.friendcode as { [key: string]: Json })?.tag as string) ?? "");
 
-  const [friendUsername, _setFriendUsername] = useState<string>(doctor.friendCode?.username ?? "");
-  const [friendTag, _setFriendTag] = useState<string>(doctor.friendCode?.tag?.toString() ?? "");
+  const [setFriendCode] = useFriendCodeSetMutation();
+
   const setFriendUsername = (s: string) => {
-    const d = { ...doctor };
     _setFriendUsername(s);
-    d.friendCode = { username: s, tag: friendTag };
-    setDoctor(d);
-    set(ref(db, `users/${user.uid}/info/friendCode/username`), s);
+    setFriendCodeDebounced(friendUsername, friendTag);
   }
   const setFriendTag = (s: string) => {
     const ns = s.replace(/\D/g, "");
-    const d = { ...doctor };
     _setFriendTag(ns);
-    d.friendCode = { username: friendUsername, tag: ns };
-    setDoctor(d);
-    set(ref(db, `users/${user.uid}/info/friendCode/tag`), ns);
+    setFriendCodeDebounced(friendUsername, friendTag);
   }
+
+  const setFriendCodeDebounced = useCallback(debounce((username, tag) => {
+    const friendCode = {username: username, tag: tag};
+    setFriendCode(friendCode);},
+    300), []);
 
   return (
     <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto" }}>

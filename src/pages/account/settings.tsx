@@ -7,23 +7,16 @@ import UpdateUsername from "components/settings/UpdateUsername";
 import UpdateEmail from "components/settings/UpdateEmail";
 import UpdatePassword from "components/settings/UpdatePassword";
 import Data from "components/settings/Data";
-import useOperators from "util/useOperators";
+import {useAccountGetQuery} from "store/extendAccount";
+import {AccountData} from "../../types/auth/accountData";
 
 const Settings: NextPage = () => {
 
-  const [operators, setOperators] = useOperators();
-
-  const [user, setUser] = useState<User | null>();
-  useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      setUser(user);
-    });
-  }, []);
+  const { data: account, isLoading} = useAccountGetQuery();
 
   return (
     <Layout tab="/account" page="/settings">
-      {!user ? "" :
+      {isLoading ? "" :
         <Box sx={{
           display: "flex",
           flexDirection: "column",
@@ -37,13 +30,13 @@ const Settings: NextPage = () => {
             borderRadius: "4px",
           },
         }}>
-          <UpdateUsername user={user} />
+          <UpdateUsername user={account!} />
           <Divider />
-          <Data user={user} operators={operators} setOperators={setOperators} />
+          {/*<Data user={user} operators={operators} setOperators={setOperators} />*/}
           <Divider />
-          <UpdateEmail user={user} />
+          <UpdateEmail />
           <Divider />
-          <UpdatePassword user={user} />
+          <UpdatePassword user={account!} />
         </Box>}
     </Layout>
   );

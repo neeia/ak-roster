@@ -1,72 +1,53 @@
 import { Box, Button, Typography } from "@mui/material";
-import { User } from "firebase/auth";
-import { getDatabase, ref, remove, set } from "firebase/database";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Operator, OperatorData } from "types/operator";
 import operatorJson from "data/operators";
 import PopOp from "./PopOp";
-import useLocalStorage from "util/useLocalStorage";
-import { AccountInfo, OperatorSkillSlot } from "types/doctor";
 import OpSelectionButton from "./OpSelectionButton";
-import { isObject } from "util";
 import Image from "next/image";
+import {useRosterGetQuery} from "../../store/extendRoster";
+import {
+  useSupportRemoveMutation,
+  useSupportSetMutation,
+  useSupportsGetQuery,
+  useSupportSkillSetMutation
+} from "../../store/extendSupports";
+import {OperatorSupport} from "../../types/operators/supports";
 
-interface Props {
-  user: User;
-}
+const SupportSelection = (() => {
 
-const SupportSelection = ((props: Props) => {
-  const { user } = props;
-  const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
-  const operators = useAppSelector(selectRoster);
+  const {data: operators, isLoading: isLoadingOperators} = useRosterGetQuery();
+  const {data: supports, isLoading: isLoadingSupport} = useSupportsGetQuery();
 
-  const db = getDatabase();
-
-  const [supps, setSupps] = useState<(OperatorSkillSlot | undefined)[]>(doctor.supports ?? []);
-  useEffect(() => {
-    if (doctor?.supports && typeof doctor.supports === "object") {
-      doctor.supports = Object.values(doctor.supports).map(v => {
-        return v;
-      })
-      setSupps(doctor.supports);
-    }
-  }, [doctor])
+  const [setSupport] = useSupportSetMutation();
+  const [setSupportSkill] = useSupportSkillSetMutation();
+  const [removeSupport] = useSupportRemoveMutation();
 
   const [index, setIndex] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
+
   const setSupp = (value: string) => {
-    const s = [...supps];
-    const d = { ...doctor };
-    s[index] = { opID: value, opSkill: 0 };
-    setSupps(s);
-    d.supports = s;
-    setDoctor(d);
-    set(ref(db, `users/${user.uid}/info/support/${index}`), s[index]);
+    //TODO module selection not implemented yet
+    //const opInfo = operatorJson[value as keyof typeof operatorJson];
+    const support :OperatorSupport = {
+      module: null,
+      op_id: value,
+      skill: 0,
+      slot: index
+    }
+    setSupport(support);
   };
-  const setSkill = (target: number, value: number) => {
-    const s = [...supps];
-    const d = { ...doctor };
-    s[target]!.opSkill = value;
-    setSupps(s);
-    d.supports = s;
-    setDoctor(d);
-    set(ref(db, `users/${user.uid}/info/support/${target}/opSkill/`), value);
+  const setSkill = (supportSlot: number, skillSlot: number) => {
+    setSupportSkill({supportSlot, skillSlot});
   };
-  const clearSupp = (target: number) => {
-    const s = [...supps];
-    const d = { ...doctor };
-    delete s[target];
-    setSupps(s);
-    d.supports = supps;
-    d.supports[target] = undefined;
-    setDoctor(d);
-    remove(ref(db, `users/${user.uid}/info/support/${target}`));
+  const clearSupp = (supportSlot: number) => {
+    removeSupport(supportSlot);
   };
 
-  const filter = (op: OperatorData) => operators[op.id]?.owned && !supps.find((v) => !v || v.opID === op.id) && (index ? true : op.rarity < 6);
-  const sort = (a: Operator, b: Operator) => b.elite - a.elite || b.level - a.level || b.rarity - a.rarity;
+  const filter = (op: OperatorData) => operators![op.id] != null && !supports!.find((v) => !v || v.op_id === op.id) && (index ? true : op.rarity < 6);
+  const sort = (a: Operator, b: Operator) => b.elite - a.elite || b.level - a.level;
 
-  return (
+  return ( isLoadingOperators || isLoadingSupport ? null :
     <>
       <Box
         sx={{
@@ -92,8 +73,9 @@ const SupportSelection = ((props: Props) => {
           Skills
         </Box>
         {[...Array(3)].map((_, i) => {
-          const op = operators[supps[i]?.opID ?? ""];
-          const opInfo = op ? operatorJson[op.id as keyof typeof operatorJson] : undefined;
+          const support = supports!.filter(support => support.slot === i)[0];
+          const op = operators![support?.op_id ??  ""];
+          const opInfo = op ? operatorJson[op.op_id as keyof typeof operatorJson] : undefined;
           return (
             <Box display="contents" key={i}>
               <OpSelectionButton
@@ -106,10 +88,10 @@ const SupportSelection = ((props: Props) => {
               />
               {(op
                 ? [...Array(3)].map((_, k) => {
-                  if (k < getNumSkills(op)) {
-                    return (opInfo && supps[i]
+                  if (k < (opInfo?.skillData?.length ?? 0)) {
+                    return (opInfo && support
                       ? <Button
-                        className={supps[i]!.opSkill === k ? "active" : ""}
+                        className={support.skill === k ? "active" : ""}
                         key={`op-${i}-sk-${k}`}
                         onClick={() => setSkill(i, k)}
                         disabled={op.elite < k}
@@ -140,8 +122,8 @@ const SupportSelection = ((props: Props) => {
                             }}
                           >
                             <Image
-                              src={`/img/skills/${opInfo.skills[k].iconId ?? opInfo.skills[k].skillId}.png`}
-                              layout="fill"
+                              src={`/img/skills/${opInfo.skillData?.[k].iconId ?? opInfo.skillData?.[k].skillId}.png`}
+                              fill
                               alt={`Skill ${k + 1}`}
                             />
                           </Box>
@@ -157,18 +139,18 @@ const SupportSelection = ((props: Props) => {
                           }}>
                             <Image
                               src={`/img/rank/bg.png`}
-                              layout="fill"
+                              fill
                               alt={""}
                             />
                             {(!op.masteries[k] || op.masteries[k] === 0
                               ? <Image
-                                src={`/img/rank/${op.rank}.png`}
-                                layout="fill"
-                                alt={`Level ${op.rank}`}
+                                src={`/img/rank/${op.skill_level}.png`}
+                                fill
+                                alt={`Level ${op.skill_level}`}
                               />
                               : <Image
                                 src={`/img/rank/m-${op.masteries[k]}.png`}
-                                layout="fill"
+                                fill
                                 alt={`Mastery Level ${op.masteries[k]}`}
                               />
                             )}
@@ -190,7 +172,7 @@ const SupportSelection = ((props: Props) => {
                             color: "text.primary"
                           }}
                         >
-                          {opInfo.skills[k].skillName}
+                          {opInfo.skillData![k].skillName}
                         </Typography>
                       </Button>
                       : <div key={`button-op-${i}-err-${k}`}>Error</div>
@@ -210,7 +192,7 @@ const SupportSelection = ((props: Props) => {
         })}
       </Box>
       <PopOp
-        operators={operators}
+        operators={operators!}
         open={open}
         onClose={() => setOpen(false)}
         title="Set Support"
