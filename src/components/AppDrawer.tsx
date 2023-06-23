@@ -170,7 +170,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
             }}
           >
             <Image
-              src="/res/krooster.png"
+              src="/res/title/celebration.png"
               width="160"
               height="172"
               alt="Krooster"
