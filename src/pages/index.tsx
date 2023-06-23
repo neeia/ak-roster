@@ -24,9 +24,9 @@ import { Search } from "@mui/icons-material";
 import Image from "next/image";
 import RegisterButton from "components/app/RegisterDialog";
 import LoginButton from "components/app/LoginDialog";
-import { Session } from "@supabase/gotrue-js";
 import { useRouter } from "next/router";
 import supabaseClient from "util/supabaseClient";
+import { Session } from "@supabase/supabase-js";
 
 const Home: NextPage = () => {
   const clientSideEmotionCache = createEmotionCache();
