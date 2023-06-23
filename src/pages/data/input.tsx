@@ -288,7 +288,7 @@ const Input: NextPage = () => {
             toggleGroup={batch ? selectGroup : undefined}
           />
           <EditOperator
-            op={operators?.[opId] ?? defaultOperatorObject(opId)}
+            op_id={opId}
             open={editOpen}
             onClose={() => setEditOpen(false)}
           />
