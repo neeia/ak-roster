@@ -12,12 +12,12 @@ export const rosterApi = supabaseApi.injectEndpoints({
         const user_id = (await supabaseClient.auth.getSession()).data.session?.user.id;
         if (!user_id) return { data: {} };
 
-        const { data, error } = await supabaseClient
+        const { data } = await supabaseClient
           .from("operators")
           .select("op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin")
           .match({ user_id })
 
-        if (!data) return { data: {} };
+        if (!data || data.length == 0) return { data: {} };
 
         const acc: Roster = {};
         data.forEach(o => o.op_id in operatorJson ? acc[o.op_id] = o as Operator : null);
@@ -27,7 +27,7 @@ export const rosterApi = supabaseApi.injectEndpoints({
     }),
     rosterUpsert: builder.mutation({
       async queryFn(op: Operator | Operator[]) {
-        const { data, error } = await supabaseClient
+        const { data } = await supabaseClient
           .from("operators")
           .upsert(op)
           .select("op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin");
@@ -60,7 +60,7 @@ export const rosterApi = supabaseApi.injectEndpoints({
         const user_id = (await supabaseClient.auth.getSession()).data.session?.user.id;
         if (!user_id) return { data: null };
 
-        const { data, error } = Array.isArray(op_id)
+        const { data } = Array.isArray(op_id)
           ? await supabaseClient
             .from("operators")
             .delete()

@@ -221,6 +221,8 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
             sx={{ gridColumn: "span 2" }}
             onClick={async () => {
               await supabaseClient.auth.signOut();
+              //needed to redirect after logout
+              await router.push("/")
             }}
           >
             Log Out

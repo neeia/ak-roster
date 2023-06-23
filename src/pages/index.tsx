@@ -19,7 +19,7 @@ import appTheme from "styles/theme/appTheme";
 import createEmotionCache from "util/createEmotionCache";
 import DiscordEmbed from "components/index/DiscordEmbed";
 import GitHubEmbed from "components/index/GitHubEmbed";
-import React, { useCallback, useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import { Search } from "@mui/icons-material";
 import Image from "next/image";
 import RegisterButton from "components/app/RegisterDialog";

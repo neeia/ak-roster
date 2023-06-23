@@ -3,7 +3,7 @@ import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, T
 import { CloseOutlined } from "@mui/icons-material";
 import PasswordTextField from "./PasswordTextField";
 import supabaseClient from "../../util/supabaseClient";
-import { Session } from "@supabase/gotrue-js";
+import {Session} from "@supabase/gotrue-js";
 
 interface Props {
   open: boolean;
@@ -36,10 +36,7 @@ const RegisterButton = ((props: Props) => {
       setError(error.message);
       return;
     }
-
-    setError("");
-    onClose();
-    onLogin?.(data.session!);
+    setError("Check your mail to confirm your registration.");
   }
 
   return (

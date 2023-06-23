@@ -1,31 +1,24 @@
 import { Checkbox, FormControlLabel } from "@mui/material";
-import { User } from "firebase/auth";
-import { getDatabase, ref, remove, set } from "firebase/database";
-import React, { useState } from "react";
-import { AccountInfo } from "../../types/doctor";
-import useLocalStorage from "../../util/useLocalStorage";
+import React, {useCallback, useState} from "react";
+import {AccountData} from "../../types/auth/accountData";
+import {useAccountPrivateSetMutation} from "../../store/extendAccount";
+import {debounce} from "lodash";
 
 
 interface Props {
-  user: User;
+  user: AccountData;
 }
 
 const UpdatePrivacy = ((props: Props) => {
   const { user } = props;
-  const db = getDatabase();
-  const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
+  const [setPrivate, ] = useAccountPrivateSetMutation();
 
-  const [isPublic, _setPublic] = useState<boolean>(!doctor.private);
+  const [isPublic, _setPublic] = useState<boolean>(!user.private);
+
+  const setPrivateDebounced = useCallback(debounce(setPrivate, 300), []);
   const setSecret = (value: boolean) => {
-    const d = { ...doctor };
     _setPublic(value);
-    d.private = !value;
-    setDoctor(d);
-    if (value) {
-      remove(ref(db, `users/${user.uid}/info/private/`));
-    } else {
-      set(ref(db, `users/${user.uid}/info/private/`), true);
-    }
+    setPrivateDebounced(!value);
   }
 
   return (

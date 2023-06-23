@@ -4,26 +4,26 @@ import { getDatabase, ref, set } from "firebase/database";
 import React, { useCallback, useState } from "react";
 import useLocalStorage from "../../util/useLocalStorage";
 import { AccountInfo } from "../../types/doctor";
+import {AccountData} from "../../types/auth/accountData";
+import {debounce} from "lodash";
+import {useLevelSetMutation, useOnboardSetMutation} from "../../store/extendAccount";
 
 interface Props {
-  user: User;
+  user: AccountData;
 }
 
 const Onboard = ((props: Props) => {
   const { user } = props;
-  const [doctor, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
 
-  const db = getDatabase();
+  const [onboard, _setOnboard] = useState<string | null>(user.onboard);
+  const [setOnboardTrigger] = useOnboardSetMutation();
 
-  const [onboard, _setOnboard] = useState<Date | undefined>(doctor.onboard);
-  const setServer = (value: string) => {
-    const d = { ...doctor };
-    const date = value as unknown as Date;
-    _setOnboard(date);
-    d.onboard = date;
-    setDoctor(d);
-    set(ref(db, `users/${user.uid}/info/onboard/`), date);
+  const setOnboard = (value: string) => {
+    _setOnboard(value);
+    setOnboardDebounced(value);
   };
+
+  const setOnboardDebounced = useCallback(debounce((date) => setOnboardTrigger(date),300), []);
 
   return (
     <TextField
@@ -33,7 +33,7 @@ const Onboard = ((props: Props) => {
       variant="filled"
       value={onboard}
       onChange={(e) => {
-        setServer(e.target.value);
+        setOnboard(e.target.value);
       }}
       sx={{ colorScheme: "dark" }}
       InputLabelProps={{ shrink: true }}

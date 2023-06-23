@@ -1,14 +1,17 @@
 import { Box, Button, TextField } from "@mui/material";
 import { FirebaseError } from "firebase/app";
 import { EmailAuthProvider, reauthenticateWithCredential, updatePassword, User } from "firebase/auth";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { authErrors } from "../../util/authErrors";
 import PasswordTextField from "../app/PasswordTextField";
 import ResetPassword from "../app/ResetPassword";
+import {AccountData} from "../../types/auth/accountData";
+import supabaseClient from "../../util/supabaseClient";
+import {useSession} from "@supabase/auth-helpers-react";
 
 
 interface Props {
-  user: User;
+  user: AccountData;
 }
 
 const UpdatePassword = ((props: Props) => {
@@ -21,29 +24,22 @@ const UpdatePassword = ((props: Props) => {
 
   const [resetOpen, setResetOpen] = useState<boolean>(false);
 
-  function tryPassword() {
-    if (!user) {
-      setErrorPassword("Not logged in.");
-      return;
-    }
-    if (!user.email) {
-      setErrorPassword("Critical error - no email found.");
-      return;
-    }
+  async function tryPassword() {
     if (!newPassword) {
-      setErrorPassword("No email found.");
+      setErrorPassword("No new password found.");
       return;
     }
-    reauthenticateWithCredential(user, EmailAuthProvider.credential(user.email, password)).then(() => {
-      setErrorPassword("Checking...")
-      updatePassword(user, newPassword).then(() => {
-        setErrorPassword("Updated.")
-      }).catch((error: FirebaseError) => {
-        setErrorPassword(authErrors[error.code.split("/")[1] as keyof typeof authErrors]);
-      })
-    }).catch(() => {
-      setErrorPassword("Failed to authenticate.");
-    })
+
+    setErrorPassword("Checking...")
+    const {data, error} = await supabaseClient.auth.updateUser({password: newPassword})
+
+    if (error)
+    {
+      setErrorPassword(`Something went wrong: ${error.message}`);
+      return;
+    }
+    setErrorPassword("Updated.")
+
   }
 
   return (
@@ -86,7 +82,7 @@ const UpdatePassword = ((props: Props) => {
         <Button onClick={() => setResetOpen(true)}>
           Forgot Password?
         </Button>
-        <ResetPassword open={resetOpen} onClose={() => setResetOpen(false)} email={user?.email ?? ""} />
+        <ResetPassword open={resetOpen} onClose={() => setResetOpen(false)}/>
       </Box>
     </>);
 });
