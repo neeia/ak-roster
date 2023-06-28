@@ -16,21 +16,25 @@ import { Close } from "@mui/icons-material";
 import Skins from "./EditPieces/Skins";
 import Image from "next/image";
 import operatorJson from "data/operators";
-import { useRosterUpsertMutation } from "store/extendRoster";
+import { useRosterGetQuery, useRosterUpsertMutation } from "store/extendRoster";
+import { defaultOperatorObject } from "util/changeOperator";
 
 interface Props {
-  op: Operator;
+  op_id: OperatorId;
   open: boolean;
   onClose: () => void;
 }
 
 const EditOperator = React.memo((props: Props) => {
-  const { op, open, onClose } = props;
+  const { op_id, open, onClose } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  console.log("EditOperator received:")
-  console.log(op)
+  const { op } = useRosterGetQuery(undefined, {
+    selectFromResult: ({ data }) => ({
+      op: data?.[op_id] ?? defaultOperatorObject(op_id),
+    }),
+  })
 
   const [upsert, result] = useRosterUpsertMutation();
 
