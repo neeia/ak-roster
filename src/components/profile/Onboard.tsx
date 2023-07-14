@@ -15,7 +15,7 @@ interface Props {
 const Onboard = ((props: Props) => {
   const { user } = props;
 
-  const [onboard, _setOnboard] = useState<string | null>(user.onboard);
+  const [onboard, _setOnboard] = useState<string>(user.onboard ?? "");
   const [setOnboardTrigger] = useOnboardSetMutation();
 
   const setOnboard = (value: string) => {

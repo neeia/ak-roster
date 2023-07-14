@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import type { NextPage } from "next";
-import { Box, Divider } from "@mui/material";
+import {Box, Button, Divider, TextField} from "@mui/material";
 import Layout from "components/Layout";
 import SupportSelection from "components/profile/SupportSelection";
 import Assistant from "components/profile/Assistant";
@@ -11,10 +11,24 @@ import Onboard from "components/profile/Onboard";
 import Discord from "components/profile/Discord";
 import Reddit from "components/profile/Reddit";
 import {useAccountGetQuery} from "../../store/extendAccount";
+import {sendTokenToMail} from "../../util/hgApi/yostarAuth";
 
 const Profile: NextPage = () => {
 
+  const [email, setEmail] = useState("");
+  const [code, setCode] = useState("");
+
   const { data: account, isLoading} = useAccountGetQuery();
+
+
+  const sendCode = async () => {
+    const result = await fetch(`/api/arknights/sendAuthMail?mail=${email}`);
+  };
+
+  const login = async () => {
+    const result = await fetch(`/api/arknights/getData?mail=${email}&code=${code}`);
+
+  };
 
   return (
     <Layout tab="/account" page="/profile">
@@ -48,6 +62,25 @@ const Profile: NextPage = () => {
           <Divider />
           <Assistant user={account!} />
           <SupportSelection />
+          <Divider />
+          <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <TextField id="Mail" sx={{
+              "& .MuiFilledInput-root": {
+                borderRadius: "2px 0px 0px 2px",
+              },
+            }}
+                       variant="filled" label="Mail" value={email}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setEmail(event.target.value);}}/>
+            <Button variant="outlined" onClick={event => sendCode()}> Send mail</Button>
+            <TextField id="Code" sx={{
+              "& .MuiFilledInput-root": {
+                borderRadius: "2px 0px 0px 2px",
+              },
+            }}
+                       variant="filled" label="Code" value={code}
+                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setCode(event.target.value);}}/>
+            <Button variant="outlined" onClick={event => login()}> Login</Button>
+          </Box>
           <Divider />
           <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             Connections
