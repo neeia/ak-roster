@@ -266,6 +266,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -737,6 +750,18 @@
           "Supporter",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -811,6 +836,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -822,6 +848,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -833,6 +860,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -844,6 +872,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -1391,6 +1420,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -1402,6 +1432,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -1637,6 +1668,18 @@
         ]
       },
       {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_385_finlpp",
         "name": "Purestream",
         "rarity": 4,
@@ -1785,6 +1828,17 @@
         ]
       },
       {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
+          "Ranged",
+          "Supporter"
+        ]
+      },
+      {
         "id": "char_211_adnach",
         "name": "Adnachiel",
         "rarity": 3,
@@ -1899,6 +1953,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -1910,6 +1965,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -1943,6 +1999,18 @@
         "rarity": 5,
         "tags": [
           "DPS",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
           "Ranged",
           "Caster",
           "Senior Operator"
@@ -2354,6 +2422,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -2469,6 +2538,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -2684,6 +2754,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -2794,6 +2865,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -2886,6 +2958,17 @@
         "rarity": 4,
         "tags": [
           "Slow",
+          "Ranged",
+          "Supporter"
+        ]
+      },
+      {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
           "Ranged",
           "Supporter"
         ]
@@ -3094,6 +3177,18 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       },
@@ -4217,6 +4312,17 @@
         ]
       },
       {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
+          "Ranged",
+          "Supporter"
+        ]
+      },
+      {
         "id": "char_120_hibisc",
         "name": "Hibiscus",
         "rarity": 3,
@@ -4252,6 +4358,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -4279,6 +4386,18 @@
         ]
       },
       {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_301_cutter",
         "name": "Cutter",
         "rarity": 4,
@@ -4294,6 +4413,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -4491,6 +4611,17 @@
         ]
       },
       {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
+          "Ranged",
+          "Supporter"
+        ]
+      },
+      {
         "id": "char_278_orchid",
         "name": "Orchid",
         "rarity": 3,
@@ -4629,6 +4760,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -4640,6 +4772,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -5066,6 +5199,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -5351,6 +5497,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -5588,6 +5747,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -5803,6 +5975,19 @@
           "Crowd-Control",
           "Melee",
           "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
           "Top Operator",
           "Senior Operator"
         ]
@@ -6047,6 +6232,19 @@
           "Crowd-Control",
           "Melee",
           "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
           "Top Operator",
           "Senior Operator"
         ]
@@ -6900,6 +7098,18 @@
           "Supporter",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6931,6 +7141,18 @@
         "rarity": 5,
         "tags": [
           "DPS",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
           "Ranged",
           "Caster",
           "Senior Operator"
@@ -7517,6 +7739,18 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -8155,6 +8389,18 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8623,6 +8869,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -8634,6 +8881,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -8656,6 +8904,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -8667,6 +8916,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -8689,6 +8939,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -8711,6 +8962,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -8733,6 +8985,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -8755,6 +9008,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -8777,6 +9031,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -8799,6 +9054,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -8821,6 +9077,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -8832,6 +9089,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -9176,6 +9434,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -9287,6 +9546,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -10201,6 +10461,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -10371,6 +10632,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -10532,6 +10794,18 @@
         "rarity": 5,
         "tags": [
           "DPS",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
           "Ranged",
           "Caster",
           "Senior Operator"
@@ -10719,6 +10993,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -10935,6 +11210,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -11031,6 +11307,17 @@
         ]
       },
       {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
+          "Ranged",
+          "Supporter"
+        ]
+      },
+      {
         "id": "char_278_orchid",
         "name": "Orchid",
         "rarity": 3,
@@ -11081,6 +11368,18 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       },
@@ -11545,6 +11844,17 @@
         ]
       },
       {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
+          "Ranged",
+          "Supporter"
+        ]
+      },
+      {
         "id": "char_120_hibisc",
         "name": "Hibiscus",
         "rarity": 3,
@@ -11569,6 +11879,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -11593,6 +11904,18 @@
           "Nuker",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -11699,6 +12022,17 @@
         ]
       },
       {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
+          "Ranged",
+          "Supporter"
+        ]
+      },
+      {
         "id": "char_278_orchid",
         "name": "Orchid",
         "rarity": 3,
@@ -11792,6 +12126,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -11843,6 +12178,18 @@
       "Caster"
     ],
     "operators": [
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
       {
         "id": "char_109_fmout",
         "name": "Gitano",
@@ -11967,6 +12314,29 @@
           "DPS",
           "Healing",
           "Slow",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "Caster,Nuker": {
+    "tags": [
+      "Caster",
+      "Nuker"
+    ],
+    "operators": [
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
           "Ranged",
           "Caster",
           "Senior Operator"
@@ -12593,6 +12963,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -12811,6 +13182,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -13194,6 +13566,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -13387,6 +13760,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -13590,6 +13964,28 @@
       5
     ]
   },
+  "Healing,Supporter": {
+    "tags": [
+      "Healing",
+      "Supporter"
+    ],
+    "operators": [
+      {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
+          "Ranged",
+          "Supporter"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
+    ]
+  },
   "Slow,Supporter": {
     "tags": [
       "Slow",
@@ -13626,6 +14022,17 @@
         "rarity": 4,
         "tags": [
           "Slow",
+          "Ranged",
+          "Supporter"
+        ]
+      },
+      {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
           "Ranged",
           "Supporter"
         ]
@@ -13994,6 +14401,29 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "AoE,Nuker": {
+    "tags": [
+      "AoE",
+      "Nuker"
+    ],
+    "operators": [
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -14825,10 +15255,21 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
+          "Ranged",
+          "Supporter"
+        ]
       }
     ],
     "guarantees": [
-      5
+      4
     ]
   },
   "Healing,Support": {
@@ -15204,6 +15645,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -15446,6 +15900,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -15666,6 +16133,19 @@
           "Crowd-Control",
           "Melee",
           "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
           "Top Operator",
           "Senior Operator"
         ]
@@ -15912,6 +16392,19 @@
           "Crowd-Control",
           "Melee",
           "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
           "Top Operator",
           "Senior Operator"
         ]
@@ -17065,6 +17558,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -17194,6 +17700,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -17267,6 +17786,19 @@
           "Crowd-Control",
           "Ranged",
           "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
           "Top Operator",
           "Senior Operator"
         ]
@@ -17968,6 +18500,31 @@
       6
     ]
   },
+  "Crowd-Control,Sniper,Top Operator": {
+    "tags": [
+      "Crowd-Control",
+      "Sniper",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
   "DPS,Sniper,Top Operator": {
     "tags": [
       "DPS",
@@ -17993,6 +18550,19 @@
         "rarity": 6,
         "tags": [
           "DPS",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
           "Ranged",
           "Sniper",
           "Top Operator",
@@ -18449,6 +19019,19 @@
           "Crowd-Control",
           "Melee",
           "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_197_poca",
+        "name": "Rosa",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Sniper",
           "Top Operator",
           "Senior Operator"
         ]
@@ -19893,6 +20476,18 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20170,6 +20765,18 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -20454,6 +21061,18 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20605,6 +21224,30 @@
       5
     ]
   },
+  "AoE,Caster,Senior Operator": {
+    "tags": [
+      "AoE",
+      "Caster",
+      "Senior Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
   "Caster,DPS,Senior Operator": {
     "tags": [
       "Caster",
@@ -20656,6 +21299,30 @@
           "DPS",
           "Healing",
           "Slow",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "Caster,Nuker,Senior Operator": {
+    "tags": [
+      "Caster",
+      "Nuker",
+      "Senior Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
           "Ranged",
           "Caster",
           "Senior Operator"
@@ -21934,6 +22601,30 @@
       5
     ]
   },
+  "AoE,Nuker,Senior Operator": {
+    "tags": [
+      "AoE",
+      "Nuker",
+      "Senior Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
   "AoE,Senior Operator,Survival": {
     "tags": [
       "AoE",
@@ -22690,6 +23381,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -22713,6 +23405,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -22736,6 +23429,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -22759,6 +23453,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -22782,6 +23477,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -22805,6 +23501,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -22828,6 +23525,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -22851,6 +23549,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -22874,6 +23573,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -22897,6 +23597,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -22920,6 +23621,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -22943,6 +23645,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -23546,6 +24249,7 @@
         "name": "Castle-3",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Melee",
           "Guard",
@@ -23824,6 +24528,7 @@
         "name": "Thermal-EX",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Nuker",
           "Melee",
           "Specialist",
@@ -24847,6 +25552,18 @@
     ],
     "operators": [
       {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_109_fmout",
         "name": "Gitano",
         "rarity": 4,
@@ -24973,6 +25690,30 @@
           "DPS",
           "Healing",
           "Slow",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "Caster,Nuker,Ranged": {
+    "tags": [
+      "Caster",
+      "Nuker",
+      "Ranged"
+    ],
+    "operators": [
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
           "Ranged",
           "Caster",
           "Senior Operator"
@@ -25127,6 +25868,7 @@
         "name": "Lancet-2",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Healing",
           "Ranged",
           "Medic",
@@ -25517,6 +26259,7 @@
         "name": "'Justice Knight'",
         "rarity": 1,
         "tags": [
+          "Robot",
           "Support",
           "Ranged",
           "Sniper",
@@ -25645,6 +26388,29 @@
       5
     ]
   },
+  "Healing,Ranged,Supporter": {
+    "tags": [
+      "Healing",
+      "Ranged",
+      "Supporter"
+    ],
+    "operators": [
+      {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
+          "Ranged",
+          "Supporter"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
+    ]
+  },
   "Ranged,Slow,Supporter": {
     "tags": [
       "Ranged",
@@ -25682,6 +26448,17 @@
         "rarity": 4,
         "tags": [
           "Slow",
+          "Ranged",
+          "Supporter"
+        ]
+      },
+      {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
           "Ranged",
           "Supporter"
         ]
@@ -25799,6 +26576,30 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "AoE,Nuker,Ranged": {
+    "tags": [
+      "AoE",
+      "Nuker",
+      "Ranged"
+    ],
+    "operators": [
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -26073,10 +26874,21 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
+          "Ranged",
+          "Supporter"
+        ]
       }
     ],
     "guarantees": [
-      5
+      4
     ]
   },
   "Healing,Ranged,Support": {
@@ -26142,6 +26954,30 @@
           "Survival",
           "Ranged",
           "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "AoE,Caster,Nuker": {
+    "tags": [
+      "AoE",
+      "Caster",
+      "Nuker"
+    ],
+    "operators": [
+      {
+        "id": "char_373_lionhd",
+        "name": "Leonhardt",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Nuker",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -27089,6 +27925,29 @@
     ],
     "guarantees": [
       5
+    ]
+  },
+  "Healing,Slow,Supporter": {
+    "tags": [
+      "Healing",
+      "Slow",
+      "Supporter"
+    ],
+    "operators": [
+      {
+        "id": "char_258_podego",
+        "name": "Podenco",
+        "rarity": 4,
+        "tags": [
+          "Slow",
+          "Healing",
+          "Ranged",
+          "Supporter"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
     ]
   },
   "Support,Supporter,Survival": {
