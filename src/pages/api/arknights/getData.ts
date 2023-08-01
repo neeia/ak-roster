@@ -7,11 +7,12 @@ export default async function (
 ) {
   const {mail, code} = req.query as {mail: string, code: string};
   const data = await getGameData(mail, code);
-  // if (data)
-  // {
-  //   res.status(500);
-  //   return;
-  // }
-  res.status(200);
-  //res.status(success ? 200 : 500);
+  if (data)
+  {
+    res.status(200).json(data);
+  }
+  else
+  {
+    res.status(500);
+  }
 }
