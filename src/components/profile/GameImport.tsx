@@ -18,8 +18,9 @@ const GameImport = (() => {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
-  const [rememberLogin, setRememberLogin] = useState(false);
   const [hasToken, setHasToken] = useState(localStorage.getItem("token") != null)
+  const [rememberLogin, setRememberLogin] = useState(localStorage.getItem("token") != null);
+
 
   const [upsertRoster] = useRosterUpsertMutation();
   const [setSupport] = useSupportSetMutation();
@@ -81,6 +82,11 @@ const GameImport = (() => {
     if (rememberLogin) {
       localStorage.setItem("token", JSON.stringify(userData.tokenData));
       setHasToken(true);
+    }
+    else
+    {
+      localStorage.removeItem("token");
+      setHasToken(false);
     }
 
     //TODO import the other data.
