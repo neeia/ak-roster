@@ -30,7 +30,7 @@ const SupportSelection = (() => {
     //TODO module selection not implemented yet
     //const opInfo = operatorJson[value as keyof typeof operatorJson];
     const support :OperatorSupport = {
-      module: null,
+      module: {},
       op_id: value,
       skill: 0,
       slot: index

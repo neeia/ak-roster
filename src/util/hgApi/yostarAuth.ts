@@ -1,6 +1,6 @@
 import {
   AccessToken, ApiServer, ArknightsServer, channelIds, Distributor, LoginSecret,
-  networkConfigUrls, PlayerData,
+  networkConfigUrls, PlayerData, TokenData,
   U8Token, UserData,
   VersionInfo,
   YostarAuthData, yostarPassportUrls, YostarServer,
@@ -8,9 +8,6 @@ import {
 } from "../../types/arknightsApiTypes/apiTypes";
 import { randomUUID } from 'crypto';
 import * as crypto from "crypto";
-import {string} from "prop-types";
-import * as fs from "fs";
-import {validateNamespace} from "@firebase/util";
 import {Dictionary} from "@reduxjs/toolkit";
 
 const sendCodeEndpoint = "/account/yostar_auth_request";
@@ -55,9 +52,10 @@ const getGameData = async function (mail: string, code: string): Promise<UserDat
   const server = "en";
   const distributor = "yostar";
 
+  //deviceId2 and 3 can be empty strings for yostar global
   const deviceId1 = randomUUID();
-  const deviceId2 = getMiddleRandomDeviceId();
-  const deviceId3 = randomUUID();
+  const deviceId2 = "";//getMiddleRandomDeviceId();
+  const deviceId3 = "";//randomUUID();
 
   const networkConfig = await getNetworkConfig(server);
 
@@ -68,28 +66,68 @@ const getGameData = async function (mail: string, code: string): Promise<UserDat
     const yostarToken = await getYostarToken(mail, yostarAuthData.yostar_uid, yostarAuthData.yostar_token, deviceId1, server);
     if (yostarToken)
     {
-      console.log("getting access token")
-      const accessToken = await getAccessToken(yostarToken.uid, yostarToken.token, deviceId1, server);
-      if (accessToken)
-      {
-        console.log("getting u8 token")
-        const u8Token = await getU8Token(yostarToken.uid, accessToken.accessToken, deviceId1, deviceId2, deviceId3, distributor, networkConfig);
-        if (u8Token)
-        {
-          console.log("getting login secret")
-          const loginSecret = await getLoginSecret(u8Token.token, u8Token.uid, deviceId1, deviceId2, deviceId3, networkConfig);
-          if (loginSecret)
-          {
-            console.log("getting user data")
-            const data = await getData(loginSecret.secret, loginSecret.uid, networkConfig);
-            console.log("user data got succesfully")
-            return data;
-          }
-        }
-      }
+      return getGameDataWithTokenInternal(yostarToken, deviceId1, deviceId2, deviceId3, distributor, server, networkConfig);
     }
   }
   console.log("something went wrong")
+  return null;
+}
+
+const getGameDataWithToken = async function (tokenData: TokenData): Promise<UserData | null>
+{
+  console.log("starting to get game data with starting token")
+  const server = "en";
+  const distributor = "yostar";
+
+  //deviceId2 and 3 can be empty strings for yostar global
+  const deviceId1 = randomUUID();
+  const deviceId2 = "";//getMiddleRandomDeviceId();
+  const deviceId3 = "";//randomUUID();
+
+  const networkConfig = await getNetworkConfig(server);
+
+  return getGameDataWithTokenInternal(tokenData.token, tokenData.deviceId, deviceId2, deviceId3, distributor, server, networkConfig);
+}
+
+/**
+ * Gets an account data, with a given Yostar token. Skips the steps for getting a Yostar Token. Reference source: {@link https://github.com/thesadru/ArkPRTS/blob/master/arkprts/auth.py}
+ * @param yostarToken - a saved yostar token
+ * @param deviceId1 - randomly generated uuid of a device, originally paired with the yostar token
+ * @param deviceId2 - randomly generated uuid of a device, originally paired with the yostar token
+ * @param deviceId3 - randomly generated uuid of a device, originally paired with the yostar token
+ * @param distributor - server distributor
+ * @param server - yostar server of the account
+ * @param networkConfig - the network config dictionary from {@link getNetworkConfig}
+ * @return {Promise<UserData | null>} - the account {@link UserData} if the request was successful, otherwise null
+ */
+const getGameDataWithTokenInternal = async function (yostarToken: YostarToken, deviceId1: string, deviceId2: string, deviceId3: string, distributor: Distributor, server: YostarServer, networkConfig:  Dictionary<string>): Promise<UserData | null>
+{
+  console.log("getting access token")
+  const accessToken = await getAccessToken(yostarToken.uid, yostarToken.token, deviceId1, server);
+  if (accessToken)
+  {
+    console.log("getting u8 token")
+    const u8Token = await getU8Token(yostarToken.uid, accessToken.accessToken, deviceId1, deviceId2, deviceId3, distributor, networkConfig);
+    if (u8Token)
+    {
+      console.log("getting login secret")
+      const loginSecret = await getLoginSecret(u8Token.token, u8Token.uid, deviceId1, deviceId2, deviceId3, networkConfig);
+      if (loginSecret)
+      {
+        console.log("getting user data")
+        const data = await getData(loginSecret.secret, loginSecret.uid, networkConfig);
+        console.log("user data got succesfully")
+        if (data)
+        {
+          data.tokenData = {
+            token: yostarToken,
+            deviceId: deviceId1,
+          }
+        }
+        return data;
+      }
+    }
+  }
   return null;
 }
 
@@ -381,4 +419,4 @@ function generateU8Sign(data: any) : string {
   return hmac.update(query).digest('hex').toLowerCase();
 }
 
-export {sendTokenToMail, getGameData};
+export {sendTokenToMail, getGameData, getGameDataWithToken};
