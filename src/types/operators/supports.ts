@@ -1,5 +1,5 @@
 export interface OperatorSupport {
-  module: number | null
+  module: { [key: string]: number | undefined } | null
   op_id: string
   skill: number
   slot: number

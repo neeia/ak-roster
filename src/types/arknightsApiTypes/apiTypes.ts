@@ -77,7 +77,14 @@ export interface UserData
   status: StatusData,
   troop: RosterData,
   social: SocialData,
-  inventory: Dictionary<number>
+  inventory: Dictionary<number>,
+  tokenData: TokenData,
+}
+
+export interface TokenData
+{
+  deviceId: string,
+  token: YostarToken,
 }
 
 export interface StatusData
@@ -120,6 +127,7 @@ export interface CharachterData
 export interface ModuleData
 {
   level: number,
+  locked: number,
 }
 
 export interface SkillData

@@ -3,7 +3,7 @@ export type Json =
   | number
   | boolean
   | null
-  | { [key: string]: Json }
+  | { [key: string]: Json | undefined }
   | Json[]
 
 export interface Database {
@@ -40,7 +40,7 @@ export interface Database {
           group_name: string
           level: number | null
           masteries: number[] | null
-          modules: number[] | null
+          modules: Json | null
           op_id: string
           skill_level: number
           user_id: string
@@ -50,7 +50,7 @@ export interface Database {
           group_name: string
           level?: number | null
           masteries?: number[] | null
-          modules?: number[] | null
+          modules?: Json | null
           op_id: string
           skill_level: number
           user_id?: string
@@ -60,7 +60,7 @@ export interface Database {
           group_name?: string
           level?: number | null
           masteries?: number[] | null
-          modules?: number[] | null
+          modules?: Json | null
           op_id?: string
           skill_level?: number
           user_id?: string
@@ -160,7 +160,7 @@ export interface Database {
           favorite: boolean
           level: number
           masteries: number[] | null
-          modules: number[] | null
+          modules: Json | null
           op_id: string
           potential: number
           skill_level: number
@@ -172,7 +172,7 @@ export interface Database {
           favorite: boolean
           level: number
           masteries?: number[] | null
-          modules?: number[] | null
+          modules?: Json | null
           op_id: string
           potential: number
           skill_level: number
@@ -184,7 +184,7 @@ export interface Database {
           favorite?: boolean
           level?: number
           masteries?: number[] | null
-          modules?: number[] | null
+          modules?: Json | null
           op_id?: string
           potential?: number
           skill_level?: number
@@ -231,25 +231,32 @@ export interface Database {
           skill_level?: number | null
           user_id?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "presets_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "krooster_accounts"
+            referencedColumns: ["user_id"]
+          }
+        ]
       }
       supports: {
         Row: {
-          module: number | null
+          module: Json | null
           op_id: string
           skill: number
           slot: number
           user_id: string
         }
         Insert: {
-          module?: number | null
+          module?: Json | null
           op_id: string
           skill: number
           slot: number
           user_id?: string
         }
         Update: {
-          module?: number | null
+          module?: Json | null
           op_id?: string
           skill?: number
           slot?: number

@@ -9,7 +9,7 @@ export interface Operator {
   level: number;
   skill_level: number;
   masteries: number[];
-  modules: number[];
+  modules: { [key: string]: number | undefined } | null;
   skin?: string;
 }
 
