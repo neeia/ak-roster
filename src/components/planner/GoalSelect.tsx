@@ -148,7 +148,7 @@ const GoalSelect: React.FC<Props> = (props) => {
             opData!.elite?.length > 0 &&
             opData!.skillLevels.length === 6
           ) {
-            if (!op?.promotion) newSpecificGoals.add("Elite 1");
+            if (op!.promotion < 1) newSpecificGoals.add("Elite 1");
             let r = op?.skillLevel ?? 1;
             for (let rank = Math.max(r, 2); rank <= 7; rank++) {
               newSpecificGoals.add(`Skill Level ${rank}`);
