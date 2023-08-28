@@ -106,7 +106,7 @@ const SupportSelection = ((props: Props) => {
                 }}
                 clear={() => { clearSupp(i) }}
               />
-              {(op && opInfo?.skills
+              {(op && opInfo?.skills?.length
                 ? [...Array(3)].map((_, k) => {
                   if (k < getNumSkills(op)) {
                     return (opInfo && supps[i]
