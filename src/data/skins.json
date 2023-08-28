@@ -820,7 +820,7 @@
     },
     {
       "skinId": "char_185_frncat@wild#7",
-      "skinName": "营地炊烟",
+      "skinName": "Campfire Cooking Smoke",
       "avatarId": "char_185_frncat_wild#7",
       "sortId": 192
     }
@@ -1216,7 +1216,7 @@
     },
     {
       "skinId": "char_110_deepcl@winter#3",
-      "skinName": "绘声绘影",
+      "skinName": "Melodic Portrayal",
       "avatarId": "char_110_deepcl_winter#3",
       "sortId": 161
     }
@@ -1516,7 +1516,7 @@
     },
     {
       "skinId": "char_476_blkngt@nian#8",
-      "skinName": "枝头馥",
+      "skinName": "Fragrance From the Branches",
       "avatarId": "char_476_blkngt_nian#8",
       "sortId": 80
     },
@@ -2683,6 +2683,12 @@
       "skinName": null,
       "avatarId": "char_348_ceylon_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_348_ceylon@summer#13",
+      "skinName": "悠然假日 HD49",
+      "avatarId": "char_348_ceylon_summer#13",
+      "sortId": 135
     }
   ],
   "char_436_whispr": [
@@ -3259,6 +3265,12 @@
       "skinName": null,
       "avatarId": "char_4014_lunacu_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4014_lunacu@yun#1",
+      "skinName": "棠云巧梦",
+      "avatarId": "char_4014_lunacu_yun#1",
+      "sortId": 267
     }
   ],
   "char_363_toddi": [
@@ -3470,7 +3482,7 @@
     },
     {
       "skinId": "char_4032_provs@wild#7",
-      "skinName": "秋高气爽",
+      "skinName": "High Autumn",
       "avatarId": "char_4032_provs_wild#7",
       "sortId": 191
     }
@@ -3624,7 +3636,7 @@
     },
     {
       "skinId": "char_215_mantic@epoque#19",
-      "skinName": "面纱之下",
+      "skinName": "Under A Veil",
       "avatarId": "char_215_mantic_epoque#19",
       "sortId": 54
     }
@@ -3876,7 +3888,7 @@
     },
     {
       "skinId": "char_4055_bgsnow@wild#7",
-      "skinName": "字句中的雪原",
+      "skinName": "Snowy Plains in Words",
       "avatarId": "char_4055_bgsnow_wild#7",
       "sortId": 190
     }
