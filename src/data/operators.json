@@ -12540,12 +12540,12 @@
     "cnName": "休谟斯",
     "rarity": 4,
     "class": "Guard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_humus_1",
         "iconId": null,
-        "skillName": "固废切割",
+        "skillName": "Solid Waste Cutting",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -12609,7 +12609,7 @@
       {
         "skillId": "skchr_humus_2",
         "iconId": null,
-        "skillName": "高效处理",
+        "skillName": "Efficient Processing",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -12747,11 +12747,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+35",
-      "天赋效果增强",
-      "部署费用-1"
+      "Deployment Cost -1",
+      "Redeployment Cooldown -4",
+      "Attack Power +35",
+      "Improves Talent",
+      "Deployment Cost -1"
     ],
     "skillLevels": [
       {
@@ -26122,12 +26122,12 @@
     "cnName": "摩根",
     "rarity": 5,
     "class": "Guard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_morgan_1",
         "iconId": null,
-        "skillName": "街头好手",
+        "skillName": "Professional Street Fighter",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -26191,7 +26191,7 @@
       {
         "skillId": "skchr_morgan_2",
         "iconId": null,
-        "skillName": "无畏招架",
+        "skillName": "Dauntless Resistance",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -26255,7 +26255,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“钢铁之心”",
+        "moduleName": "“Iron Heart”",
         "moduleId": "uniequip_002_morgan",
         "typeName": "DRE-X",
         "stages": [
@@ -26325,15 +26325,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "Deployment Cost -1",
+      "Redeployment Cooldown -10",
+      "Deployment Cost -1",
+      "Improves First Talent",
+      "Deployment Cost -1"
     ],
     "skillLevels": [
       {
@@ -38465,7 +38465,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“司祭的祝福”",
+        "moduleName": "“Beeswax's Blessing”",
         "moduleId": "uniequip_002_beewax",
         "typeName": "PLX-X",
         "stages": [
@@ -38535,7 +38535,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -39545,7 +39545,7 @@
     ],
     "modules": [
       {
-        "moduleName": "注意力保持装置",
+        "moduleName": "Attention-holding Device",
         "moduleId": "uniequip_002_mint",
         "typeName": "PLX-X",
         "stages": [
@@ -39615,7 +39615,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -52776,12 +52776,12 @@
     "cnName": "洋灰",
     "rarity": 5,
     "class": "Defender",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_cement_1",
         "iconId": null,
-        "skillName": "突破矿层",
+        "skillName": "Stratum Groundbreaker",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -52845,7 +52845,7 @@
       {
         "skillId": "skchr_cement_2",
         "iconId": null,
-        "skillName": "结构加固",
+        "skillName": "Structural Support",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -52909,7 +52909,7 @@
     ],
     "modules": [
       {
-        "moduleName": "工程记录仪",
+        "moduleName": "Engineering Recorder",
         "moduleId": "uniequip_002_cement",
         "typeName": "HES-X",
         "stages": [
@@ -52979,15 +52979,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "防御力+27",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "Deployment Cost -1",
+      "Redeployment Cooldown -4",
+      "Defense +27",
+      "Improves First Talent",
+      "Deployment Cost -1"
     ],
     "skillLevels": [
       {
@@ -53496,12 +53496,12 @@
     "cnName": "玫拉",
     "rarity": 5,
     "class": "Sniper",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_melnte_1",
         "iconId": null,
-        "skillName": "饱和脉冲",
+        "skillName": "Saturated Pulse",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -53565,7 +53565,7 @@
       {
         "skillId": "skchr_melnte_2",
         "iconId": null,
-        "skillName": "临界爆发",
+        "skillName": "Critical Burst",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -53629,7 +53629,7 @@
     ],
     "modules": [
       {
-        "moduleName": "香薰耳坠",
+        "moduleName": "Fragrance Earrings",
         "moduleId": "uniequip_002_melnte",
         "typeName": "ARC-Y",
         "stages": [
@@ -53699,15 +53699,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+30",
-      "天赋效果增强",
-      "部署费用-1"
+      "Deployment Cost -1",
+      "Redeployment Cooldown -4",
+      "Attack Power +30",
+      "Improves Talent",
+      "Deployment Cost -1"
     ],
     "skillLevels": [
       {
@@ -55789,7 +55789,7 @@
     ],
     "modules": [
       {
-        "moduleName": "新型电控设备技术原型",
+        "moduleName": "Experimental ECU Prototype",
         "moduleId": "uniequip_002_greyy2",
         "typeName": "BOM-X",
         "stages": [
@@ -55859,7 +55859,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -57875,7 +57875,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“续针”",
+        "moduleName": "'Knitting of a Future'",
         "moduleId": "uniequip_002_slbell",
         "typeName": "UMD-X",
         "stages": [
@@ -57945,7 +57945,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -58235,7 +58235,7 @@
     ],
     "modules": [
       {
-        "moduleName": "布艺苹果",
+        "moduleName": "Fabric Apples",
         "moduleId": "uniequip_002_vodfox",
         "typeName": "UMD-X",
         "stages": [
@@ -58305,7 +58305,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -63407,7 +63407,7 @@
     ],
     "modules": [
       {
-        "moduleName": "限量版年历",
+        "moduleName": "Calendar the Limited Edition",
         "moduleId": "uniequip_002_robin",
         "typeName": "TRP-Y",
         "stages": [
@@ -63477,7 +63477,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -63767,7 +63767,7 @@
     ],
     "modules": [
       {
-        "moduleName": "机械式陷阱压力板",
+        "moduleName": "Metallic Spring Loaded Trap",
         "moduleId": "uniequip_002_rfrost",
         "typeName": "TRP-Y",
         "stages": [
@@ -63837,7 +63837,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -67795,7 +67795,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "刺棱钝刃",
+        "moduleName": "Lost Dull Knife",
         "moduleId": "uniequip_003_cqbw",
         "typeName": "ART-Y",
         "stages": [
@@ -67865,7 +67865,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -69596,7 +69596,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“记事”",
+        "moduleName": "'Notes'",
         "moduleId": "uniequip_002_rosmon",
         "typeName": "BOM-X",
         "stages": [
@@ -69666,7 +69666,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -72926,12 +72926,12 @@
     "cnName": "缪尔赛思",
     "rarity": 6,
     "class": "Vanguard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_mlyss_1",
         "iconId": null,
-        "skillName": "渐进性润化",
+        "skillName": "Progressive Moisturization",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -72995,7 +72995,7 @@
       {
         "skillId": "skchr_mlyss_2",
         "iconId": null,
-        "skillName": "生态耦合",
+        "skillName": "Ecological Interaction",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -73059,7 +73059,7 @@
       {
         "skillId": "skchr_mlyss_3",
         "iconId": null,
-        "skillName": "浅层非熵适应",
+        "skillName": "Superficial Regulation",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -73123,11 +73123,11 @@
     ],
     "modules": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+25",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "Deployment Cost -1",
+      "Redeployment Cooldown -4",
+      "Attack Power +25",
+      "Improves Second Talent",
+      "Deployment Cost -1"
     ],
     "skillLevels": [
       {
@@ -73284,12 +73284,12 @@
     "cnName": "伊内丝",
     "rarity": 6,
     "class": "Vanguard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_ines_1",
         "iconId": null,
-        "skillName": "淬影突袭",
+        "skillName": "Shadow Raid",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -73353,7 +73353,7 @@
       {
         "skillId": "skchr_ines_2",
         "iconId": null,
-        "skillName": "暗夜无明",
+        "skillName": "Murky Night",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -73417,7 +73417,7 @@
       {
         "skillId": "skchr_ines_3",
         "iconId": null,
-        "skillName": "独影归途",
+        "skillName": "Solitary Return",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -73481,11 +73481,11 @@
     ],
     "modules": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击速度+8",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "Deployment Cost -1",
+      "Redeployment Cooldown -4",
+      "Attack Speed +8",
+      "Improves First Talent",
+      "Deployment Cost -1"
     ],
     "skillLevels": [
       {
@@ -75208,7 +75208,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“我打的刀”",
+        "moduleName": "'Knife, I Made'",
         "moduleId": "uniequip_003_cerber",
         "typeName": "CCR-Y",
         "stages": [
@@ -75278,7 +75278,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -75443,12 +75443,12 @@
     "cnName": "霍尔海雅",
     "rarity": 6,
     "class": "Caster",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_heyak_1",
         "iconId": null,
-        "skillName": "但为求索",
+        "skillName": "In Search of Reason",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -75512,7 +75512,7 @@
       {
         "skillId": "skchr_heyak_2",
         "iconId": null,
-        "skillName": "群星逶迤",
+        "skillName": "Meandering Stars",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -75576,7 +75576,7 @@
       {
         "skillId": "skchr_heyak_3",
         "iconId": null,
-        "skillName": "博览者的狂语",
+        "skillName": "Well-Read Ravings",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -75640,7 +75640,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“图书馆”",
+        "moduleName": "'Bibliotheca'",
         "moduleId": "uniequip_002_heyak",
         "typeName": "CCR-X",
         "stages": [
@@ -75710,15 +75710,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+27",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "Deployment Cost -1",
+      "Redeployment Cooldown -4",
+      "Attack Power +27",
+      "Improves First Talent",
+      "Deployment Cost -1"
     ],
     "skillLevels": [
       {
@@ -77082,7 +77082,7 @@
     ],
     "modules": [
       {
-        "moduleName": "风信子与匕首",
+        "moduleName": "Hyacinth and Dagger",
         "moduleId": "uniequip_002_billro",
         "typeName": "PLX-X",
         "stages": [
@@ -77152,7 +77152,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -77514,7 +77514,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“七窍玲珑”",
+        "moduleName": "'Exquisite Heart'",
         "moduleId": "uniequip_002_lin",
         "typeName": "PLX-X",
         "stages": [
@@ -77584,7 +77584,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -78882,7 +78882,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“誓言”",
+        "moduleName": "'Vow'",
         "moduleId": "uniequip_002_gnosis",
         "typeName": "UMD-X",
         "stages": [
@@ -78952,7 +78952,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -80917,12 +80917,12 @@
     "cnName": "淬羽赫默",
     "rarity": 6,
     "class": "Supporter",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_slent2_1",
         "iconId": null,
-        "skillName": "进取之心",
+        "skillName": "Go-Getter",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -80986,7 +80986,7 @@
       {
         "skillId": "skchr_slent2_2",
         "iconId": null,
-        "skillName": "俯瞰视界",
+        "skillName": "Overlooking Vision",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -81050,7 +81050,7 @@
       {
         "skillId": "skchr_slent2_3",
         "iconId": null,
-        "skillName": "无畏者协议",
+        "skillName": "Dreadnought Protocol",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -81188,11 +81188,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "Deployment Cost -1",
+      "Redeployment Cooldown -10",
+      "Deployment Cost -1",
+      "Improves Second Talent",
+      "Deployment Cost -1"
     ],
     "skillLevels": [
       {
@@ -86949,7 +86949,7 @@
     ],
     "modules": [
       {
-        "moduleName": "童话书",
+        "moduleName": "Story Book",
         "moduleId": "uniequip_002_doroth",
         "typeName": "TRP-Y",
         "stages": [
@@ -87019,7 +87019,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -88391,7 +88391,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "医者",
+        "moduleName": "Panacea",
         "moduleId": "uniequip_003_kalts",
         "typeName": "PHY-Y",
         "stages": [
@@ -88461,7 +88461,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -91632,7 +91632,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“请勿叩门”",
+        "moduleName": "'Don't Disturb'",
         "moduleId": "uniequip_003_nian",
         "typeName": "PRO-Y",
         "stages": [
@@ -91702,7 +91702,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
