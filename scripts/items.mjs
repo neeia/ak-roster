@@ -40,6 +40,33 @@ const getEnglishItemName = (itemId) => {
   return name;
 };
 
+const getTierFromRarity = (rarity) => {
+  let tier = 1;
+  switch (rarity) {
+    case "TIER_1":
+      tier = 1;
+      break;
+    case "TIER_2":
+      tier = 2;
+      break;
+    case "TIER_3":
+      tier = 3;
+      break;
+    case "TIER_4":
+      tier = 4;
+      break;
+    case "TIER_5":
+      tier = 5;
+      break;
+    case "TIER_6":
+      tier = 6;
+      break;
+    default:
+      throw new Error(`Couldn't find conversion for rarity '${rarity}'`);
+  }
+  return tier;
+};
+
 const gameDataCostToIngredient = (cost) => {
   const { id, count } = cost;
   return {
@@ -76,6 +103,7 @@ const isPlannerItem = (itemId) => {
     itemId === "4001" || // LMD
     (entry.classifyType === "MATERIAL" &&
       !itemId.startsWith("p_char_") && // character-specific potential tokens
+      !itemId.startsWith("class_p_char_") && // character-specific potential tokens 2
       !itemId.startsWith("tier") && // generic potential tokens
       !itemId.startsWith("voucher_full_")) // vouchers for event welfare ops like Flamebringer
   );
@@ -223,7 +251,7 @@ const createItemsJson = async () => {
         id: itemId,
         name: getEnglishItemName(itemId),
         iconId: item.iconId,
-        tier: item.rarity + 1,
+        tier: getTierFromRarity(item.rarity),
         sortId: item.sortId,
       };
 

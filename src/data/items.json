@@ -528,7 +528,7 @@
     "name": "Orirock",
     "iconId": "MTL_SL_G1",
     "tier": 1,
-    "sortId": 100029,
+    "sortId": 100033,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 12,
@@ -543,7 +543,7 @@
     "name": "Orirock Cube",
     "iconId": "MTL_SL_G2",
     "tier": 2,
-    "sortId": 100028,
+    "sortId": 100032,
     "ingredients": [
       {
         "id": "4001",
@@ -569,7 +569,7 @@
     "name": "Orirock Cluster",
     "iconId": "MTL_SL_G3",
     "tier": 3,
-    "sortId": 100027,
+    "sortId": 100031,
     "ingredients": [
       {
         "id": "4001",
@@ -587,7 +587,7 @@
     "name": "Orirock Concentration",
     "iconId": "MTL_SL_G4",
     "tier": 4,
-    "sortId": 100026,
+    "sortId": 100030,
     "ingredients": [
       {
         "id": "4001",
@@ -605,7 +605,7 @@
     "name": "Sugar Substitute",
     "iconId": "MTL_SL_STRG1",
     "tier": 1,
-    "sortId": 100041,
+    "sortId": 100045,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 12,
@@ -620,7 +620,7 @@
     "name": "Sugar",
     "iconId": "MTL_SL_STRG2",
     "tier": 2,
-    "sortId": 100040,
+    "sortId": 100044,
     "ingredients": [
       {
         "id": "4001",
@@ -646,7 +646,7 @@
     "name": "Sugar Pack",
     "iconId": "MTL_SL_STRG3",
     "tier": 3,
-    "sortId": 100039,
+    "sortId": 100043,
     "ingredients": [
       {
         "id": "4001",
@@ -678,7 +678,7 @@
     "name": "Sugar Lump",
     "iconId": "MTL_SL_STRG4",
     "tier": 4,
-    "sortId": 100038,
+    "sortId": 100042,
     "ingredients": [
       {
         "id": "4001",
@@ -704,7 +704,7 @@
     "name": "Ester",
     "iconId": "MTL_SL_RUSH1",
     "tier": 1,
-    "sortId": 100037,
+    "sortId": 100041,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 12,
@@ -719,7 +719,7 @@
     "name": "Polyester",
     "iconId": "MTL_SL_RUSH2",
     "tier": 2,
-    "sortId": 100036,
+    "sortId": 100040,
     "ingredients": [
       {
         "id": "4001",
@@ -745,7 +745,7 @@
     "name": "Polyester Pack",
     "iconId": "MTL_SL_RUSH3",
     "tier": 3,
-    "sortId": 100035,
+    "sortId": 100039,
     "ingredients": [
       {
         "id": "4001",
@@ -771,7 +771,7 @@
     "name": "Polyester Lump",
     "iconId": "MTL_SL_RUSH4",
     "tier": 4,
-    "sortId": 100034,
+    "sortId": 100038,
     "ingredients": [
       {
         "id": "4001",
@@ -797,7 +797,7 @@
     "name": "Oriron Shard",
     "iconId": "MTL_SL_IRON1",
     "tier": 1,
-    "sortId": 100045,
+    "sortId": 100049,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 12,
@@ -812,7 +812,7 @@
     "name": "Oriron",
     "iconId": "MTL_SL_IRON2",
     "tier": 2,
-    "sortId": 100044,
+    "sortId": 100048,
     "ingredients": [
       {
         "id": "4001",
@@ -838,7 +838,7 @@
     "name": "Oriron Cluster",
     "iconId": "MTL_SL_IRON3",
     "tier": 3,
-    "sortId": 100043,
+    "sortId": 100047,
     "ingredients": [
       {
         "id": "4001",
@@ -870,7 +870,7 @@
     "name": "Oriron Block",
     "iconId": "MTL_SL_IRON4",
     "tier": 4,
-    "sortId": 100042,
+    "sortId": 100046,
     "ingredients": [
       {
         "id": "4001",
@@ -896,7 +896,7 @@
     "name": "Diketon",
     "iconId": "MTL_SL_KETONE1",
     "tier": 1,
-    "sortId": 100049,
+    "sortId": 100053,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 12,
@@ -911,7 +911,7 @@
     "name": "Polyketon",
     "iconId": "MTL_SL_KETONE2",
     "tier": 2,
-    "sortId": 100048,
+    "sortId": 100052,
     "ingredients": [
       {
         "id": "4001",
@@ -937,7 +937,7 @@
     "name": "Aketon",
     "iconId": "MTL_SL_KETONE3",
     "tier": 3,
-    "sortId": 100047,
+    "sortId": 100051,
     "ingredients": [
       {
         "id": "4001",
@@ -963,7 +963,7 @@
     "name": "Keton Colloid",
     "iconId": "MTL_SL_KETONE4",
     "tier": 4,
-    "sortId": 100046,
+    "sortId": 100050,
     "ingredients": [
       {
         "id": "4001",
@@ -989,7 +989,7 @@
     "name": "Damaged Device",
     "iconId": "MTL_SL_BOSS1",
     "tier": 1,
-    "sortId": 100033,
+    "sortId": 100037,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 12,
@@ -1004,7 +1004,7 @@
     "name": "Device",
     "iconId": "MTL_SL_BOSS2",
     "tier": 2,
-    "sortId": 100032,
+    "sortId": 100036,
     "ingredients": [
       {
         "id": "4001",
@@ -1036,7 +1036,7 @@
     "name": "Integrated Device",
     "iconId": "MTL_SL_BOSS3",
     "tier": 3,
-    "sortId": 100031,
+    "sortId": 100035,
     "ingredients": [
       {
         "id": "4001",
@@ -1062,7 +1062,7 @@
     "name": "Optimized Device",
     "iconId": "MTL_SL_BOSS4",
     "tier": 4,
-    "sortId": 100030,
+    "sortId": 100034,
     "ingredients": [
       {
         "id": "4001",
@@ -1088,7 +1088,7 @@
     "name": "Loxic Kohl",
     "iconId": "MTL_SL_ALCOHOL1",
     "tier": 3,
-    "sortId": 100019,
+    "sortId": 100023,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 21,
@@ -1109,7 +1109,7 @@
     "name": "White Horse Kohl",
     "iconId": "MTL_SL_ALCOHOL2",
     "tier": 4,
-    "sortId": 100018,
+    "sortId": 100022,
     "ingredients": [
       {
         "id": "4001",
@@ -1135,7 +1135,7 @@
     "name": "Manganese Ore",
     "iconId": "MTL_SL_MANGANESE1",
     "tier": 3,
-    "sortId": 100021,
+    "sortId": 100025,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 21,
@@ -1156,7 +1156,7 @@
     "name": "Manganese Trihydrate",
     "iconId": "MTL_SL_MANGANESE2",
     "tier": 4,
-    "sortId": 100020,
+    "sortId": 100024,
     "ingredients": [
       {
         "id": "4001",
@@ -1182,7 +1182,7 @@
     "name": "Grindstone",
     "iconId": "MTL_SL_PG1",
     "tier": 3,
-    "sortId": 100023,
+    "sortId": 100027,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 18,
@@ -1203,7 +1203,7 @@
     "name": "Grindstone Pentahydrate",
     "iconId": "MTL_SL_PG2",
     "tier": 4,
-    "sortId": 100022,
+    "sortId": 100026,
     "ingredients": [
       {
         "id": "4001",
@@ -1229,7 +1229,7 @@
     "name": "RMA70-12",
     "iconId": "MTL_SL_RMA7012",
     "tier": 3,
-    "sortId": 100025,
+    "sortId": 100029,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 18,
@@ -1250,7 +1250,7 @@
     "name": "RMA70-24",
     "iconId": "MTL_SL_RMA7024",
     "tier": 4,
-    "sortId": 100024,
+    "sortId": 100028,
     "ingredients": [
       {
         "id": "4001",
@@ -1373,7 +1373,7 @@
   },
   "30155": {
     "id": "30155",
-    "name": "Sintered Core Crystals",
+    "name": "Nucleic Crystal Sinter",
     "iconId": "MTL_SL_SHJ",
     "tier": 5,
     "sortId": 100001,
@@ -1402,7 +1402,7 @@
     "name": "Coagulating Gel",
     "iconId": "MTL_SL_PGEL3",
     "tier": 3,
-    "sortId": 100017,
+    "sortId": 100021,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 18,
@@ -1423,7 +1423,7 @@
     "name": "Polymerized Gel",
     "iconId": "MTL_SL_PGEL4",
     "tier": 4,
-    "sortId": 100016,
+    "sortId": 100020,
     "ingredients": [
       {
         "id": "4001",
@@ -1449,7 +1449,7 @@
     "name": "Incandescent Alloy",
     "iconId": "MTL_SL_IAM3",
     "tier": 3,
-    "sortId": 100015,
+    "sortId": 100019,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 15,
@@ -1470,7 +1470,7 @@
     "name": "Incandescent Alloy Block",
     "iconId": "MTL_SL_IAM4",
     "tier": 4,
-    "sortId": 100014,
+    "sortId": 100018,
     "ingredients": [
       {
         "id": "4001",
@@ -1496,7 +1496,7 @@
     "name": "Crystalline Component",
     "iconId": "MTL_SL_OC3",
     "tier": 3,
-    "sortId": 100013,
+    "sortId": 100017,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 21,
@@ -1517,7 +1517,7 @@
     "name": "Crystalline Circuit",
     "iconId": "MTL_SL_OC4",
     "tier": 4,
-    "sortId": 100012,
+    "sortId": 100016,
     "ingredients": [
       {
         "id": "4001",
@@ -1543,7 +1543,7 @@
     "name": "Semi-Synthetic Solvent",
     "iconId": "MTL_SL_SS",
     "tier": 3,
-    "sortId": 100011,
+    "sortId": 100015,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 21,
@@ -1564,7 +1564,7 @@
     "name": "Refined Solvent",
     "iconId": "MTL_SL_RS",
     "tier": 4,
-    "sortId": 100010,
+    "sortId": 100014,
     "ingredients": [
       {
         "id": "4001",
@@ -1590,7 +1590,7 @@
     "name": "Compound Cutting Fluid",
     "iconId": "MTL_SL_CCF",
     "tier": 3,
-    "sortId": 100009,
+    "sortId": 100013,
     "stages": {
       "mostEfficient": {
         "stageSanityCost": 24,
@@ -1605,7 +1605,7 @@
     "name": "Cutting Fluid Solution",
     "iconId": "MTL_SL_PLCF",
     "tier": 4,
-    "sortId": 100008,
+    "sortId": 100012,
     "ingredients": [
       {
         "id": "4001",
@@ -1628,10 +1628,10 @@
   },
   "31063": {
     "id": "31063",
-    "name": "Transmuted Salt Cluster",
+    "name": "Transmuted Salt",
     "iconId": "MTL_SL_ZY",
     "tier": 3,
-    "sortId": 100007,
+    "sortId": 100011,
     "stages": {
       "leastSanity": {
         "stageSanityCost": 21,
@@ -1643,10 +1643,10 @@
   },
   "31064": {
     "id": "31064",
-    "name": "Transmuted Salt Block",
+    "name": "Transmuted Salt Agglomerate",
     "iconId": "MTL_SL_ZYK",
     "tier": 4,
-    "sortId": 100006,
+    "sortId": 100010,
     "ingredients": [
       {
         "id": "4001",
@@ -1662,6 +1662,72 @@
       },
       {
         "id": "30023",
+        "quantity": 1
+      }
+    ],
+    "yield": 1
+  },
+  "31073": {
+    "id": "31073",
+    "name": "褐素纤维",
+    "iconId": "MTL_SL_XW",
+    "tier": 3,
+    "sortId": 100009
+  },
+  "31074": {
+    "id": "31074",
+    "name": "固化纤维板",
+    "iconId": "MTL_SL_XWB",
+    "tier": 4,
+    "sortId": 100008,
+    "ingredients": [
+      {
+        "id": "4001",
+        "quantity": 300
+      },
+      {
+        "id": "31073",
+        "quantity": 1
+      },
+      {
+        "id": "30033",
+        "quantity": 2
+      },
+      {
+        "id": "30013",
+        "quantity": 1
+      }
+    ],
+    "yield": 1
+  },
+  "31083": {
+    "id": "31083",
+    "name": "环烃聚质",
+    "iconId": "MTL_SL_HT",
+    "tier": 3,
+    "sortId": 100007
+  },
+  "31084": {
+    "id": "31084",
+    "name": "环烃预制体",
+    "iconId": "MTL_SL_HTT",
+    "tier": 4,
+    "sortId": 100006,
+    "ingredients": [
+      {
+        "id": "4001",
+        "quantity": 300
+      },
+      {
+        "id": "31083",
+        "quantity": 1
+      },
+      {
+        "id": "31073",
+        "quantity": 1
+      },
+      {
+        "id": "31063",
         "quantity": 1
       }
     ],
