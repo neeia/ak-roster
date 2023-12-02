@@ -279,6 +279,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+	  {
+        "id": "char_358_lisa",
+        "name": "Suzuran",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+		  "Support",
+          "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -762,6 +776,18 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1127,6 +1153,18 @@
           "DPS",
           "Melee",
           "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       },
@@ -1839,6 +1877,17 @@
         ]
       },
       {
+        "id": "char_328_cammou",
+        "name": "Click",
+        "rarity": 4,
+        "tags": [
+          "Caster",
+          "Crowd-Control",
+          "Ranged",
+          "DPS"
+        ]
+      },
+      {
         "id": "char_211_adnach",
         "name": "Adnachiel",
         "rarity": 3,
@@ -2046,6 +2095,17 @@
           "Slow",
           "Ranged",
           "Caster"
+        ]
+      },
+      {
+        "id": "char_328_cammou",
+        "name": "Click",
+        "rarity": 4,
+        "tags": [
+          "Caster",
+          "Crowd-Control",
+          "Ranged",
+          "DPS"
         ]
       },
       {
@@ -2294,6 +2354,18 @@
         "tags": [
           "AoE",
           "Survival",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -3193,6 +3265,18 @@
         ]
       },
       {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_127_estell",
         "name": "Estelle",
         "rarity": 4,
@@ -3320,6 +3404,17 @@
           "Ranged",
           "Supporter",
           "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_328_cammou",
+        "name": "Click",
+        "rarity": 4,
+        "tags": [
+          "Caster",
+          "Crowd-Control",
+          "Ranged",
+          "DPS"
         ]
       }
     ],
@@ -3654,6 +3749,18 @@
         ]
       },
       {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_141_nights",
         "name": "Haze",
         "rarity": 4,
@@ -3813,6 +3920,17 @@
           "DPS",
           "Melee",
           "Guard"
+        ]
+      },
+      {
+        "id": "char_328_cammou",
+        "name": "Click",
+        "rarity": 4,
+        "tags": [
+          "Caster",
+          "Crowd-Control",
+          "Ranged",
+          "DPS"
         ]
       },
       {
@@ -5212,6 +5330,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+	  {
+        "id": "char_358_lisa",
+        "name": "Suzuran",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+		  "Support",
+          "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -5507,6 +5639,20 @@
           "Crowd-Control",
           "Ranged",
           "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+	  {
+        "id": "char_358_lisa",
+        "name": "Suzuran",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+		  "Support",
+          "Supporter",
           "Top Operator",
           "Senior Operator"
         ]
@@ -5833,6 +5979,20 @@
           "Slow",
           "DPS",
           "Ranged",
+          "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+	  {
+        "id": "char_358_lisa",
+        "name": "Suzuran",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+		  "Support",
           "Supporter",
           "Top Operator",
           "Senior Operator"
@@ -6248,6 +6408,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+	  {
+        "id": "char_358_lisa",
+        "name": "Suzuran",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+		  "Support",
+          "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6460,6 +6634,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+	  {
+        "id": "char_358_lisa",
+        "name": "Suzuran",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+		  "Support",
+          "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6562,6 +6750,20 @@
           "DPS",
           "Ranged",
           "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+	  {
+        "id": "char_358_lisa",
+        "name": "Suzuran",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+		  "Support",
+          "Supporter",
           "Top Operator",
           "Senior Operator"
         ]
@@ -6865,6 +7067,18 @@
           "DPS",
           "Melee",
           "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       }
@@ -9312,6 +9526,18 @@
         ]
       },
       {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_127_estell",
         "name": "Estelle",
         "rarity": 4,
@@ -9720,6 +9946,18 @@
         ]
       },
       {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_127_estell",
         "name": "Estelle",
         "rarity": 4,
@@ -10012,6 +10250,18 @@
           "DPS",
           "Melee",
           "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       },
@@ -12758,6 +13008,18 @@
         "tags": [
           "DPS",
           "Defense",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -18074,6 +18336,7 @@
           "Senior Operator"
         ]
       }
+	  
     ],
     "guarantees": [
       6
@@ -19669,6 +19932,18 @@
           "Guard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19807,6 +20082,135 @@
       5
     ]
   },
+    "DPS,AoE": {
+    "tags": [
+      "AoE",
+      "DPS"
+     
+    ],
+    "operators": [
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      }
+
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+    "DPS,AoE,Senior Operator": {
+    "tags": [
+      "AoE",
+      "DPS",
+	  "Senior Operator"
+     
+    ],
+    "operators": [
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      }
+
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+    "DPS,AoE,Melee": {
+    "tags": [
+      "AoE",
+      "DPS",
+	  "Melee"
+     
+    ],
+    "operators": [
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      }
+
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+    "DPS,AoE,Guard": {
+    "tags": [
+      "AoE",
+      "DPS",
+	  "Guard"
+     
+    ],
+    "operators": [
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      }
+
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+    "DPS,AoE": {
+    "tags": [
+      "AoE",
+      "DPS"
+     
+    ],
+    "operators": [
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      }
+
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  
   "AoE,Melee,Senior Operator": {
     "tags": [
       "AoE",
@@ -19833,6 +20237,18 @@
         "tags": [
           "AoE",
           "Survival",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -20052,6 +20468,18 @@
           "DPS",
           "Melee",
           "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_294_ayer",
+        "name": "Ayerscarpe",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       }
