@@ -260,16 +260,6 @@ const Input: NextPage = () => {
           gap: { xs: 0.5, sm: 1 },
           margin: 0,
           padding: 0,
-          "& .MuiTypography-root": {
-            display: "flex",
-            lineHeight: "1.25rem",
-            color: "text.primary",
-            letterSpacing: "normal",
-            textTransform: "none",
-            pointerEvents: "none",
-            flexDirection: "column",
-            mx: "-1rem",
-          },
           "& .MuiButton-root": {
             display: "grid",
             boxShadow: 2,

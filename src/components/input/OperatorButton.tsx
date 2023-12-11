@@ -31,10 +31,21 @@ const OperatorButton = React.memo((props: Props) => {
     <Typography
       component="div"
       variant={width > LONG_CUTOFF ? width > LONGER_CUTOFF ? "caption3" : "caption2" : "caption"}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        maxWidth: "calc(100% + 1rem)",
+        height: 20,
+        lineHeight: 1,
+        color: "text.primary",
+        letterSpacing: "normal",
+        textTransform: "none",
+        pointerEvents: "none",
+        flexDirection: "column",
+        mx: "-0.5rem",
+      }}
     >
-      {width > LONGER_CUTOFF && name.includes(" ")
-        ? name.split(" ").map((s: string) => <Box key={s} sx={{ lineHeight: 1, }}>{s}</Box>)
-        : name}
+      {name}
     </Typography>
   // Process operator name
   let opName = (
