@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import enItemTable from "./ArknightsGameData/en_US/gamedata/excel/item_table.json" assert { type: "json" };
+import enItemTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/item_table.json" assert { type: "json" };
 import cnBuildingData from "./ArknightsGameData/zh_CN/gamedata/excel/building_data.json" assert { type: "json" };
 import cnItemTable from "./ArknightsGameData/zh_CN/gamedata/excel/item_table.json" assert { type: "json" };
 
