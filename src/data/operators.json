@@ -13103,11 +13103,11 @@
       }
     ],
     "potentials": [
-      "DP Cost -1",
-      "Redeployment Time -4 sec",
-      "ATK +35",
-      "Improves Talent",
-      "DP Cost -1"
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+35",
+      "天赋效果增强",
+      "部署费用-1"
     ],
     "skillLevels": [
       {
@@ -26611,7 +26611,7 @@
     ],
     "modules": [
       {
-        "moduleName": "'Iron Heart'",
+        "moduleName": "“钢铁之心”",
         "moduleId": "uniequip_002_morgan",
         "typeName": "DRE-X",
         "stages": [
@@ -26685,11 +26685,11 @@
       }
     ],
     "potentials": [
-      "DP Cost -1",
-      "Redeployment Time -10 sec",
-      "DP Cost -1",
-      "Improves First Talent",
-      "DP Cost -1"
+      "部署费用-1",
+      "再部署时间-10秒",
+      "部署费用-1",
+      "第一天赋效果增强",
+      "部署费用-1"
     ],
     "skillLevels": [
       {
@@ -39107,7 +39107,7 @@
     ],
     "modules": [
       {
-        "moduleName": "'Beeswax's Blessing'",
+        "moduleName": "“司祭的祝福”",
         "moduleId": "uniequip_002_beewax",
         "typeName": "PLX-X",
         "stages": [
@@ -55001,11 +55001,11 @@
       }
     ],
     "potentials": [
-      "DP Cost -1",
-      "Redeployment Time -4 sec",
-      "DEF +27",
-      "Improves First Talent",
-      "DP Cost -1"
+      "部署费用-1",
+      "再部署时间-4秒",
+      "防御力+27",
+      "第一天赋效果增强",
+      "部署费用-1"
     ],
     "skillLevels": [
       {
@@ -55721,11 +55721,11 @@
       }
     ],
     "potentials": [
-      "DP Cost -1",
-      "Redeployment Time -4 sec",
-      "ATK +30",
-      "Improves Talent",
-      "DP Cost -1"
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+30",
+      "天赋效果增强",
+      "部署费用-1"
     ],
     "skillLevels": [
       {
@@ -75214,11 +75214,11 @@
     ],
     "modules": [],
     "potentials": [
-      "DP Cost -1",
-      "Redeployment Time -4 sec",
-      "ATK +25",
-      "Improves Second Talent",
-      "DP Cost -1"
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+25",
+      "第二天赋效果增强",
+      "部署费用-1"
     ],
     "skillLevels": [
       {
@@ -75572,11 +75572,11 @@
     ],
     "modules": [],
     "potentials": [
-      "DP Cost -1",
-      "Redeployment Time -4 sec",
-      "ASPD +8",
-      "Improves First Talent",
-      "DP Cost -1"
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击速度+8",
+      "第一天赋效果增强",
+      "部署费用-1"
     ],
     "skillLevels": [
       {
@@ -77805,11 +77805,11 @@
       }
     ],
     "potentials": [
-      "DP Cost -1",
-      "Redeployment Time -4 sec",
-      "ATK +27",
-      "Improves First Talent",
-      "DP Cost -1"
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+27",
+      "第一天赋效果增强",
+      "部署费用-1"
     ],
     "skillLevels": [
       {
@@ -79240,79 +79240,6 @@
               }
             ],
             "name": "Module PLX-X Stage 3",
-            "category": 3
-          }
-        ],
-        "isCnOnly": false
-      },
-      {
-        "moduleName": "乡音",
-        "moduleId": "uniequip_003_billro",
-        "typeName": "PLX-Y",
-        "stages": [
-          {
-            "moduleLevel": 1,
-            "ingredients": [
-              {
-                "id": "mod_unlock_token",
-                "quantity": 4
-              },
-              {
-                "id": "30145",
-                "quantity": 2
-              },
-              {
-                "id": "4001",
-                "quantity": 80000
-              }
-            ],
-            "name": "Module PLX-Y Stage 1",
-            "category": 3
-          },
-          {
-            "moduleLevel": 2,
-            "ingredients": [
-              {
-                "id": "mod_unlock_token",
-                "quantity": 4
-              },
-              {
-                "id": "mod_update_token_1",
-                "quantity": 60
-              },
-              {
-                "id": "30125",
-                "quantity": 3
-              },
-              {
-                "id": "4001",
-                "quantity": 100000
-              }
-            ],
-            "name": "Module PLX-Y Stage 2",
-            "category": 3
-          },
-          {
-            "moduleLevel": 3,
-            "ingredients": [
-              {
-                "id": "mod_unlock_token",
-                "quantity": 4
-              },
-              {
-                "id": "mod_update_token_2",
-                "quantity": 20
-              },
-              {
-                "id": "30135",
-                "quantity": 4
-              },
-              {
-                "id": "4001",
-                "quantity": 120000
-              }
-            ],
-            "name": "Module PLX-Y Stage 3",
             "category": 3
           }
         ],
@@ -83499,11 +83426,11 @@
       }
     ],
     "potentials": [
-      "DP Cost -1",
-      "Redeployment Time -10 sec",
-      "DP Cost -1",
-      "Improves Second Talent",
-      "DP Cost -1"
+      "部署费用-1",
+      "再部署时间-10秒",
+      "部署费用-1",
+      "第二天赋效果增强",
+      "部署费用-1"
     ],
     "skillLevels": [
       {
