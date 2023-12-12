@@ -8,7 +8,7 @@ import appTheme from "styles/theme/appTheme";
 import Image from "next/image";
 
 const WIDTH_TO_PX = 10 / 7;
-const LONG_CUTOFF = 75;
+const LONG_CUTOFF = 72;
 const LONGER_CUTOFF = 95;
 
 interface Props {
@@ -27,26 +27,25 @@ const OperatorButton = React.memo((props: Props) => {
   const name = t ?? n;
   const width = getTextWidth(name, JSON.stringify(appTheme.typography.caption).replace(/[\{\}]+/g, "")) * WIDTH_TO_PX;
 
-  const nameComponent =
-    <Typography
-      component="div"
-      variant={width > LONG_CUTOFF ? width > LONGER_CUTOFF ? "caption3" : "caption2" : "caption"}
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        maxWidth: "calc(100% + 1rem)",
-        height: 20,
-        lineHeight: 1,
-        color: "text.primary",
-        letterSpacing: "normal",
-        textTransform: "none",
-        pointerEvents: "none",
-        flexDirection: "column",
-        mx: "-0.5rem",
-      }}
-    >
-      {name}
-    </Typography>
+  const nameComponent = <Typography component="div"
+    variant={width > LONG_CUTOFF ? width > LONGER_CUTOFF ? "caption3" : "caption2" : "caption"}
+    sx={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      maxWidth: "calc(100% + 1rem)",
+      height: 20,
+      lineHeight: 1,
+      color: "text.primary",
+      letterSpacing: "normal",
+      textTransform: "none",
+      flexDirection: "column",
+      mx: -0.5,
+    }}
+  >
+    {name}
+  </Typography>
+
   // Process operator name
   let opName = (
     t
@@ -66,7 +65,7 @@ const OperatorButton = React.memo((props: Props) => {
         listStyleType: "none",
       }}>
       <Button
-        className={!toggled ? op.owned ? "" : "unowned" : toggled ? "toggled" : "untoggled"}
+        className={toggled === undefined ? op.owned ? "" : "unowned" : toggled ? "toggled" : "untoggled"}
         onClick={() => onClick(op.id)}
       >
         <Box
