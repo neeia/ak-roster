@@ -293,6 +293,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -788,6 +801,42 @@
           "Guard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1181,6 +1230,18 @@
         ]
       },
       {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_127_estell",
         "name": "Estelle",
         "rarity": 4,
@@ -1359,6 +1420,17 @@
           "DPS",
           "Melee",
           "Guard"
+        ]
+      },
+      {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist"
         ]
       },
       {
@@ -1742,6 +1814,30 @@
         ]
       },
       {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_385_finlpp",
         "name": "Purestream",
         "rarity": 4,
@@ -2084,6 +2180,18 @@
         "tags": [
           "AoE",
           "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
           "Ranged",
           "Caster",
           "Senior Operator"
@@ -2753,6 +2861,18 @@
         ]
       },
       {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_235_jesica",
         "name": "Jessica",
         "rarity": 4,
@@ -2969,6 +3089,17 @@
         ]
       },
       {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist"
+        ]
+      },
+      {
         "id": "char_376_therex",
         "name": "Thermal-EX",
         "rarity": 1,
@@ -3148,6 +3279,18 @@
         ]
       },
       {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_149_scave",
         "name": "Scavenger",
         "rarity": 4,
@@ -3309,6 +3452,18 @@
           "AoE",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       },
@@ -3506,6 +3661,18 @@
         "tags": [
           "DP-Recovery",
           "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
           "Melee",
           "Vanguard",
           "Senior Operator"
@@ -3797,6 +3964,30 @@
         ]
       },
       {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_141_nights",
         "name": "Haze",
         "rarity": 4,
@@ -3967,6 +4158,17 @@
           "Crowd-Control",
           "Ranged",
           "Caster"
+        ]
+      },
+      {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist"
         ]
       },
       {
@@ -4215,6 +4417,18 @@
         ]
       },
       {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_237_gravel",
         "name": "Gravel",
         "rarity": 4,
@@ -4328,6 +4542,17 @@
         "tags": [
           "Fast-Redeploy",
           "Defense",
+          "Melee",
+          "Specialist"
+        ]
+      },
+      {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist"
         ]
@@ -4708,6 +4933,18 @@
           "Crowd-Control",
           "Ranged",
           "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       },
@@ -5392,6 +5629,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -5546,6 +5796,19 @@
           "Crowd-Control",
           "Melee",
           "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -5864,6 +6127,19 @@
         "tags": [
           "DPS",
           "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
           "Melee",
           "Guard",
           "Top Operator",
@@ -6470,6 +6746,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6529,6 +6818,19 @@
           "Support",
           "Melee",
           "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -7129,6 +7431,18 @@
           "Guard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7372,6 +7686,30 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7415,6 +7753,18 @@
         "tags": [
           "AoE",
           "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
           "Ranged",
           "Caster",
           "Senior Operator"
@@ -7734,6 +8084,18 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7945,6 +8307,18 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8037,6 +8411,18 @@
           "AoE",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -8153,6 +8539,18 @@
         "tags": [
           "DP-Recovery",
           "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
           "Melee",
           "Vanguard",
           "Senior Operator"
@@ -8381,6 +8779,30 @@
           "Guard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8544,6 +8966,18 @@
           "DPS",
           "Melee",
           "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -8804,6 +9238,18 @@
           "Crowd-Control",
           "Ranged",
           "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       }
@@ -9922,6 +10368,17 @@
         ]
       },
       {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist"
+        ]
+      },
+      {
         "id": "char_376_therex",
         "name": "Thermal-EX",
         "rarity": 1,
@@ -9987,6 +10444,18 @@
         "tags": [
           "DP-Recovery",
           "Support",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
           "Melee",
           "Vanguard",
           "Senior Operator"
@@ -10226,6 +10695,18 @@
         ]
       },
       {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_149_scave",
         "name": "Scavenger",
         "rarity": 4,
@@ -10420,6 +10901,18 @@
         ]
       },
       {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_149_scave",
         "name": "Scavenger",
         "rarity": 4,
@@ -10514,6 +11007,17 @@
           "DPS",
           "Melee",
           "Guard"
+        ]
+      },
+      {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist"
         ]
       },
       {
@@ -10780,6 +11284,17 @@
         "tags": [
           "Fast-Redeploy",
           "Defense",
+          "Melee",
+          "Specialist"
+        ]
+      },
+      {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist"
         ]
@@ -11228,6 +11743,18 @@
         ]
       },
       {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_141_nights",
         "name": "Haze",
         "rarity": 4,
@@ -11528,6 +12055,18 @@
         ]
       },
       {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_235_jesica",
         "name": "Jessica",
         "rarity": 4,
@@ -11811,6 +12350,18 @@
         ]
       },
       {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_109_fmout",
         "name": "Gitano",
         "rarity": 4,
@@ -12010,6 +12561,18 @@
         ]
       },
       {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_141_nights",
         "name": "Haze",
         "rarity": 4,
@@ -12195,6 +12758,29 @@
     ],
     "guarantees": [
       4
+    ]
+  },
+  "Defense,Ranged": {
+    "tags": [
+      "Defense",
+      "Ranged"
+    ],
+    "operators": [
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
     ]
   },
   "Healing,Ranged": {
@@ -12413,6 +12999,18 @@
           "Crowd-Control",
           "Ranged",
           "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       },
@@ -12640,6 +13238,18 @@
         ]
       },
       {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_109_fmout",
         "name": "Gitano",
         "rarity": 4,
@@ -12780,6 +13390,29 @@
     ],
     "guarantees": [
       4
+    ]
+  },
+  "Caster,Defense": {
+    "tags": [
+      "Caster",
+      "Defense"
+    ],
+    "operators": [
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
     ]
   },
   "Caster,Healing": {
@@ -13884,6 +14517,18 @@
         ]
       },
       {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_235_jesica",
         "name": "Jessica",
         "rarity": 4,
@@ -14036,6 +14681,18 @@
     ],
     "operators": [
       {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_118_yuki",
         "name": "Shirayuki",
         "rarity": 4,
@@ -14170,10 +14827,21 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist"
+        ]
       }
     ],
     "guarantees": [
-      5
+      4
     ]
   },
   "Debuff,Specialist": {
@@ -14258,6 +14926,17 @@
         "tags": [
           "Fast-Redeploy",
           "Defense",
+          "Melee",
+          "Specialist"
+        ]
+      },
+      {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist"
         ]
@@ -14715,6 +15394,18 @@
         ]
       },
       {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_149_scave",
         "name": "Scavenger",
         "rarity": 4,
@@ -14790,6 +15481,18 @@
       {
         "id": "char_261_sddrag",
         "name": "Reed",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
         "rarity": 5,
         "tags": [
           "DP-Recovery",
@@ -14942,6 +15645,29 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "AoE,Defense": {
+    "tags": [
+      "AoE",
+      "Defense"
+    ],
+    "operators": [
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -15194,6 +15920,18 @@
         ]
       },
       {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_149_scave",
         "name": "Scavenger",
         "rarity": 4,
@@ -15379,6 +16117,28 @@
       5
     ]
   },
+  "DPS,Fast-Redeploy": {
+    "tags": [
+      "DPS",
+      "Fast-Redeploy"
+    ],
+    "operators": [
+      {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
+    ]
+  },
   "DPS,Healing": {
     "tags": [
       "DPS",
@@ -15488,6 +16248,18 @@
           "Slow",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       },
@@ -16079,6 +16851,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -16398,6 +17183,19 @@
         "tags": [
           "DPS",
           "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
           "Melee",
           "Guard",
           "Top Operator",
@@ -17013,6 +17811,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -17074,6 +17885,19 @@
           "Support",
           "Melee",
           "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -17533,6 +18357,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -17833,6 +18670,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -17869,6 +18719,19 @@
           "Support",
           "Melee",
           "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -19006,6 +19869,44 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Defense,Guard,Top Operator": {
+    "tags": [
+      "Defense",
+      "Guard",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19907,6 +20808,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_293_thorns",
+        "name": "Thorns",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Defense",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20586,6 +21500,18 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20730,6 +21656,18 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20861,6 +21799,18 @@
           "AoE",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
           "Senior Operator"
         ]
       }
@@ -21297,6 +22247,18 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -21447,6 +22409,18 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -21584,6 +22558,18 @@
         "tags": [
           "AoE",
           "Nuker",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
           "Ranged",
           "Caster",
           "Senior Operator"
@@ -21728,6 +22714,18 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -21784,6 +22782,30 @@
           "Debuff",
           "Ranged",
           "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "Defense,Ranged,Senior Operator": {
+    "tags": [
+      "Defense",
+      "Ranged",
+      "Senior Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -21931,6 +22953,18 @@
           "Supporter",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22051,6 +23085,18 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22083,6 +23129,30 @@
         "rarity": 5,
         "tags": [
           "DPS",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "Caster,Defense,Senior Operator": {
+    "tags": [
+      "Caster",
+      "Defense",
+      "Senior Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
           "Ranged",
           "Caster",
           "Senior Operator"
@@ -22782,6 +23852,18 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22838,6 +23920,30 @@
         "tags": [
           "DPS",
           "Nuker",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "Senior Operator,Slow,Sniper": {
+    "tags": [
+      "Senior Operator",
+      "Slow",
+      "Sniper"
+    ],
+    "operators": [
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
           "Ranged",
           "Sniper",
           "Senior Operator"
@@ -23332,6 +24438,18 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -23348,6 +24466,18 @@
       {
         "id": "char_261_sddrag",
         "name": "Reed",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
         "rarity": 5,
         "tags": [
           "DP-Recovery",
@@ -23450,6 +24580,30 @@
           "Debuff",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "AoE,Defense,Senior Operator": {
+    "tags": [
+      "AoE",
+      "Defense",
+      "Senior Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -23624,6 +24778,18 @@
       {
         "id": "char_261_sddrag",
         "name": "Reed",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
         "rarity": 5,
         "tags": [
           "DP-Recovery",
@@ -23837,6 +25003,18 @@
           "Slow",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       }
@@ -25381,10 +26559,21 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist"
+        ]
       }
     ],
     "guarantees": [
-      5
+      4
     ]
   },
   "Debuff,Melee,Specialist": {
@@ -25472,6 +26661,17 @@
         "tags": [
           "Fast-Redeploy",
           "Defense",
+          "Melee",
+          "Specialist"
+        ]
+      },
+      {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist"
         ]
@@ -25689,6 +26889,18 @@
         ]
       },
       {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_149_scave",
         "name": "Scavenger",
         "rarity": 4,
@@ -25765,6 +26977,18 @@
       {
         "id": "char_261_sddrag",
         "name": "Reed",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
         "rarity": 5,
         "tags": [
           "DP-Recovery",
@@ -26017,6 +27241,18 @@
         ]
       },
       {
+        "id": "char_349_chiave",
+        "name": "Chiave",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_149_scave",
         "name": "Scavenger",
         "rarity": 4,
@@ -26170,6 +27406,29 @@
     ],
     "guarantees": [
       5
+    ]
+  },
+  "DPS,Fast-Redeploy,Melee": {
+    "tags": [
+      "DPS",
+      "Fast-Redeploy",
+      "Melee"
+    ],
+    "operators": [
+      {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
     ]
   },
   "DPS,Melee,Nuker": {
@@ -26553,6 +27812,18 @@
         ]
       },
       {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_109_fmout",
         "name": "Gitano",
         "rarity": 4,
@@ -26696,6 +27967,30 @@
     ],
     "guarantees": [
       4
+    ]
+  },
+  "Caster,Defense,Ranged": {
+    "tags": [
+      "Caster",
+      "Defense",
+      "Ranged"
+    ],
+    "operators": [
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
     ]
   },
   "Caster,Healing,Ranged": {
@@ -27078,6 +28373,18 @@
         ]
       },
       {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_235_jesica",
         "name": "Jessica",
         "rarity": 4,
@@ -27232,6 +28539,18 @@
       "Sniper"
     ],
     "operators": [
+      {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
       {
         "id": "char_118_yuki",
         "name": "Shirayuki",
@@ -27607,6 +28926,30 @@
       5
     ]
   },
+  "AoE,Defense,Ranged": {
+    "tags": [
+      "AoE",
+      "Defense",
+      "Ranged"
+    ],
+    "operators": [
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
   "AoE,Nuker,Ranged": {
     "tags": [
       "AoE",
@@ -27852,6 +29195,18 @@
         ]
       },
       {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_133_mm",
         "name": "May",
         "rarity": 4,
@@ -28000,6 +29355,30 @@
           "Survival",
           "Ranged",
           "Supporter",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
+  "AoE,Caster,Defense": {
+    "tags": [
+      "AoE",
+      "Caster",
+      "Defense"
+    ],
+    "operators": [
+      {
+        "id": "char_344_beewax",
+        "name": "Beeswax",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -28756,6 +30135,18 @@
     ],
     "operators": [
       {
+        "id": "char_218_cuttle",
+        "name": "Andreana",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Slow",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_133_mm",
         "name": "May",
         "rarity": 4,
@@ -28827,6 +30218,29 @@
     ],
     "guarantees": [
       5
+    ]
+  },
+  "DPS,Fast-Redeploy,Specialist": {
+    "tags": [
+      "DPS",
+      "Fast-Redeploy",
+      "Specialist"
+    ],
+    "operators": [
+      {
+        "id": "char_272_strong",
+        "name": "Jaye",
+        "rarity": 4,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
     ]
   },
   "DPS,Shift,Specialist": {
@@ -29101,6 +30515,18 @@
       {
         "id": "char_261_sddrag",
         "name": "Reed",
+        "rarity": 5,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_349_chiave",
+        "name": "Chiave",
         "rarity": 5,
         "tags": [
           "DP-Recovery",
