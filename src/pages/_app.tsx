@@ -1,9 +1,9 @@
 import React from 'react';
 import 'styles/globals.css';
 import { AppProps } from 'next/app';
-import appTheme from "styles/theme/appTheme";
+import createTheme from "styles/theme/appTheme";
 import createEmotionCache from 'util/createEmotionCache';
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import { CacheProvider } from '@emotion/react';
 import { getApps, initializeApp } from 'firebase/app';
 import { Analytics } from '@vercel/analytics/react';
@@ -26,11 +26,19 @@ const MyApp = (props: AppProps) => {
 
   if (!getApps().length) initializeApp(firebaseConfig);
 
+
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+  const theme = React.useMemo(
+    () => createTheme(prefersDarkMode ? 'dark' : 'light'),
+    [prefersDarkMode],
+  );
+
   const clientSideEmotionCache = createEmotionCache();
   return (
     <ReduxProvider store={store}>
       <CacheProvider value={clientSideEmotionCache}>
-        <ThemeProvider theme={appTheme}>
+        <ThemeProvider theme={theme}>
           <CssBaseline />
           <Analytics />
           <Component {...pageProps} />

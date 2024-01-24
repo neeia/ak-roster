@@ -3,7 +3,7 @@ import { Box, Link, Typography } from "@mui/material";
 import manifest from "../../../public/manifest.json"
 import { OpenInNew } from "@mui/icons-material";
 
-const GITH_COLOR = "#50505a";
+const GITH_COLOR = "#50505A";
 const repo = "https://github.com/neeia/ak-roster-next";
 const cons = [
   {
@@ -62,7 +62,7 @@ const GitHubEmbed = (() => {
         </Box>
         <OpenInNew fontSize="small" />
       </Link>
-      <Typography variant="h5" component="h3" sx={{ pt: 3, pb: 1 }}>
+      {/* <Typography variant="h5" component="h3" sx={{ pt: 3, pb: 1 }}>
         Contributors:
       </Typography>
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
@@ -101,7 +101,7 @@ const GitHubEmbed = (() => {
             </Box>
           </Link>
         )}
-      </Box>
+      </Box> */}
     </Box>
   );
 });

@@ -1,9 +1,9 @@
 import { grey, red, yellow } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
-const appTheme = createTheme({
+const appTheme = (mode: "light" | "dark") => createTheme({
   palette: {
-    mode: 'dark',
+    mode,
     primary: {
       main: "#ffd440",
       light: "#fed480",
@@ -35,7 +35,7 @@ const appTheme = createTheme({
       dark: "green",
     },
     background: {
-      default: "#272727",
+      default: "#212121",
       paper: "#121212",
     },
     text: {

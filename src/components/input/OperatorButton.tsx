@@ -26,7 +26,13 @@ const OperatorButton = React.memo((props: Props) => {
 
   const [n, t] = op.name.split(/ [Tt]he /g);
   const name = t ?? n;
-  const width = getTextWidth(name, JSON.stringify(appTheme.typography.caption).replace(/[\{\}]+/g, "")) * WIDTH_TO_PX;
+  const width = getTextWidth(name, JSON.stringify({
+    margin: 0,
+    fontFamily: `"Roboto","Helvetica","Arial", sans-serif`,
+    fontWeight: 400,
+    fontSize: "0.875rem",
+    lineHeight: 1.66,
+  }).replace(/[\{\}]+/g, "")) * WIDTH_TO_PX;
 
   const nameComponent =
     <Typography

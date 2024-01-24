@@ -58,12 +58,12 @@ const Input: NextPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [session, setSession] = useState<Session | null>(null);
-  useEffect(() => {
-    supabaseClient.auth.getSession().then(({ data }) => {
-      setSession(data.session);
-    });
-  }, []);
+  // const [session, setSession] = useState<Session | null>(null);
+  // useEffect(() => {
+  //   supabaseClient.auth.getSession().then(({ data }) => {
+  //     setSession(data.session);
+  //   });
+  // }, []);
 
 
   // const applyBatch = React.useCallback(

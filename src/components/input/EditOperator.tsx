@@ -94,14 +94,14 @@ const EditOperator = React.memo((props: Props) => {
       <ExtLink href={`https://aceship.github.io/AN-EN-Tags/akhrchars.html?opname=${opData.name}`} label="ACE" title="Aceship">
         <Image src={`/img/ext/aceship.png`} width={iconWidth} height={iconWidth} alt="" />
       </ExtLink>
-      <ExtLink href={`https://gamepress.gg/arknights/operator/${opData.name.replace(/( the )|[ !@#$%^&*(),.]/g, "-")}`} label="GP" title="Gamepress">
+      <ExtLink href={`https://gamepress.gg/arknights/operator/${opData.name.replace(/( the )|[ !@#$%^&*(),.]/g, "-").replace("'", "")}`} label="GP" title="Gamepress">
         <Image src={`/img/ext/gp.png`} width={iconWidth} height={iconWidth} alt="" />
       </ExtLink>
       <ExtLink href={`http://prts.wiki/w/${encodeURIComponent(opData.cnName)}`} label="PRTS" title="PRTS Wiki">
         <Image src={`/img/ext/prts.png`} width={iconWidth} height={iconWidth} alt="" />
       </ExtLink>
       {op.op_id in sg0
-        ? <ExtLink href={`https://sanitygone.help/operators/${opData.name.toLowerCase().replace(/ /g, "-")}`} label="S;G" title="Sanity;Gone">
+        ? <ExtLink href={`https://sanitygone.help/operators/${opData.name.toLowerCase().replace(/ /g, "-").replace("'", "")}`} label="S;G" title="Sanity;Gone">
           <Image src={`/img/ext/sg0.png`} width={iconWidth} height={iconWidth} alt="" />
         </ExtLink>
         : null
