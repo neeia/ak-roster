@@ -283,6 +283,12 @@
       "sortId": -3
     },
     {
+      "skinId": "char_212_ansel@epoque#29",
+      "skinName": "晚间咖啡店",
+      "avatarId": "char_212_ansel_epoque#29",
+      "sortId": 290
+    },
+    {
       "skinId": "char_212_ansel@summer#1",
       "skinName": "Casual Vacation HDm06",
       "avatarId": "char_212_ansel_summer#1",
@@ -718,7 +724,7 @@
     },
     {
       "skinId": "char_151_myrtle@summer#12",
-      "skinName": "夏卉 FA062",
+      "skinName": "Summer Flowers FA062",
       "avatarId": "char_151_myrtle_summer#12",
       "sortId": 142
     }
@@ -1134,7 +1140,7 @@
     },
     {
       "skinId": "char_4041_chnut@summer#12",
-      "skinName": "悠然假日 HDm57",
+      "skinName": "Holiday HDm57",
       "avatarId": "char_4041_chnut_summer#12",
       "sortId": 143
     }
@@ -1259,6 +1265,12 @@
       "skinName": null,
       "avatarId": "char_183_skgoat_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_183_skgoat@epoque#30",
+      "skinName": "主修领域",
+      "avatarId": "char_183_skgoat_epoque#30",
+      "sortId": 294
     }
   ],
   "char_258_podego": [
@@ -1599,6 +1611,12 @@
       "skinName": null,
       "avatarId": "char_4017_puzzle_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4017_puzzle@epoque#29",
+      "skinName": "碎片之间",
+      "avatarId": "char_4017_puzzle_epoque#29",
+      "sortId": 291
     }
   ],
   "char_308_swire": [
@@ -2217,6 +2235,12 @@
       "skinName": null,
       "avatarId": "char_4078_bdhkgt_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4078_bdhkgt@yun#2",
+      "skinName": "伴青莲",
+      "avatarId": "char_4078_bdhkgt_yun#2",
+      "sortId": 295
     }
   ],
   "char_279_excu": [
@@ -2513,6 +2537,12 @@
       "skinName": "Tsukiyoi",
       "avatarId": "char_388_mint_epoque#22",
       "sortId": 58
+    },
+    {
+      "skinId": "char_388_mint@epoque#30",
+      "skinName": "私人书房",
+      "avatarId": "char_388_mint_epoque#30",
+      "sortId": 293
     }
   ],
   "char_338_iris": [
@@ -2674,6 +2704,20 @@
       "skinId": "char_499_kaitou#2",
       "skinName": null,
       "avatarId": "char_499_kaitou_2",
+      "sortId": -1
+    }
+  ],
+  "char_4081_warmy": [
+    {
+      "skinId": "char_4081_warmy#1",
+      "skinName": null,
+      "avatarId": "char_4081_warmy",
+      "sortId": -3
+    },
+    {
+      "skinId": "char_4081_warmy#2",
+      "skinName": null,
+      "avatarId": "char_4081_warmy_2",
       "sortId": -1
     }
   ],
@@ -2958,7 +3002,7 @@
     },
     {
       "skinId": "char_4071_peper@whirlwind#5",
-      "skinName": "来路",
+      "skinName": "The Road to Here",
       "avatarId": "char_4071_peper_whirlwind#5",
       "sortId": 100
     }
@@ -3212,7 +3256,7 @@
     },
     {
       "skinId": "char_4025_aprot2@whirlwind#5",
-      "skinName": "结果",
+      "skinName": "The Fruition",
       "avatarId": "char_4025_aprot2_whirlwind#5",
       "sortId": 99
     }
@@ -3232,7 +3276,7 @@
     },
     {
       "skinId": "char_4047_pianst@wild#8",
-      "skinName": "荒野寻音",
+      "skinName": "Freeland Tuneseeker",
       "avatarId": "char_4047_pianst_wild#8",
       "sortId": 203
     }
@@ -4126,7 +4170,7 @@
     },
     {
       "skinId": "char_430_fartth@whirlwind#5",
-      "skinName": "捉风",
+      "skinName": "Hear the Wind Sing",
       "avatarId": "char_430_fartth_whirlwind#5",
       "sortId": 98
     }
@@ -4251,6 +4295,20 @@
       "sortId": 235
     }
   ],
+  "char_4117_ray": [
+    {
+      "skinId": "char_4117_ray#1",
+      "skinName": null,
+      "avatarId": "char_4117_ray",
+      "sortId": -3
+    },
+    {
+      "skinId": "char_4117_ray#2",
+      "skinName": null,
+      "avatarId": "char_4117_ray_2",
+      "sortId": -1
+    }
+  ],
   "char_112_siege": [
     {
       "skinId": "char_112_siege#1",
@@ -4318,7 +4376,7 @@
     },
     {
       "skinId": "char_362_saga@sale#9",
-      "skinName": "彼有",
+      "skinName": "There They Be",
       "avatarId": "char_362_saga_sale#9",
       "sortId": 12
     }
@@ -4618,7 +4676,7 @@
     },
     {
       "skinId": "char_377_gdglow@summer#12",
-      "skinName": "夏卉 FA394",
+      "skinName": "Summer Flowers FA394",
       "avatarId": "char_377_gdglow_summer#12",
       "sortId": 141
     },
@@ -5167,6 +5225,12 @@
       "skinName": null,
       "avatarId": "char_1020_reed2_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_1020_reed2@epoque#30",
+      "skinName": "博物",
+      "avatarId": "char_1020_reed2_epoque#30",
+      "sortId": 292
     }
   ],
   "char_136_hsguma": [
@@ -5564,7 +5628,7 @@
     },
     {
       "skinId": "char_1026_gvial2@summer#12",
-      "skinName": "悠然假日 HD26",
+      "skinName": "Holiday HD26",
       "avatarId": "char_1026_gvial2_summer#12",
       "sortId": 140
     }

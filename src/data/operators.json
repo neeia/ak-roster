@@ -10839,7 +10839,7 @@
     ],
     "modules": [
       {
-        "moduleName": "荒野地的饯别礼",
+        "moduleName": "Farewell Gifts from the Wildlands",
         "moduleId": "uniequip_002_estell",
         "typeName": "CEN-Y",
         "stages": [
@@ -10909,7 +10909,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -13029,7 +13029,7 @@
     ],
     "modules": [
       {
-        "moduleName": "恶地奇异工具套组",
+        "moduleName": "Badlands Exotic Toolkit",
         "moduleId": "uniequip_002_humus",
         "typeName": "REA-X",
         "stages": [
@@ -13099,15 +13099,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+35",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +35",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -19289,7 +19289,7 @@
     ],
     "modules": [
       {
-        "moduleName": "半自动造型工具套组",
+        "moduleName": "Semi-Auto Stylist Toolkit",
         "moduleId": "uniequip_002_robrta",
         "typeName": "CRA-X",
         "stages": [
@@ -19359,7 +19359,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -22380,12 +22380,12 @@
     "cnName": "青枳",
     "rarity": 5,
     "class": "Vanguard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skcom_charge_cost[3]",
         "iconId": null,
-        "skillName": "冲锋号令·γ型",
+        "skillName": "Charge γ",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -22449,7 +22449,7 @@
       {
         "skillId": "skchr_buildr_2",
         "iconId": null,
-        "skillName": "工程者之愿",
+        "skillName": "Engineer's Wish",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -22513,7 +22513,7 @@
     ],
     "modules": [
       {
-        "moduleName": "寻乡人的启明星",
+        "moduleName": "The Morning Star of the Homeseeker",
         "moduleId": "uniequip_002_buildr",
         "typeName": "SOL-X",
         "stages": [
@@ -22583,15 +22583,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "防御力+24",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +24",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -25398,12 +25398,12 @@
     "cnName": "苍苔",
     "rarity": 5,
     "class": "Guard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_bryota_1",
         "iconId": "skcom_powerstrike[2]",
-        "skillName": "强力击·β型",
+        "skillName": "Power Strike β",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -25467,7 +25467,7 @@
       {
         "skillId": "skchr_bryota_2",
         "iconId": null,
-        "skillName": "土石的恒心",
+        "skillName": "Earthen Tenacity",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -25531,7 +25531,7 @@
     ],
     "modules": [
       {
-        "moduleName": "餐后好时光",
+        "moduleName": "Sobremesa",
         "moduleId": "uniequip_002_bryota",
         "typeName": "INS-X",
         "stages": [
@@ -25601,15 +25601,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -26611,7 +26611,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“钢铁之心”",
+        "moduleName": "'Iron Heart'",
         "moduleId": "uniequip_002_morgan",
         "typeName": "DRE-X",
         "stages": [
@@ -26685,11 +26685,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -29693,7 +29693,7 @@
     ],
     "modules": [
       {
-        "moduleName": "幽明烛光",
+        "moduleName": "Dim Candlelight",
         "moduleId": "uniequip_002_ghost",
         "typeName": "CEN-X",
         "stages": [
@@ -29763,7 +29763,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -30053,7 +30053,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“兄弟”",
+        "moduleName": "'Buddies'",
         "moduleId": "uniequip_002_broca",
         "typeName": "CEN-X",
         "stages": [
@@ -30123,7 +30123,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -31705,7 +31705,7 @@
     ],
     "modules": [
       {
-        "moduleName": "水蓝色黎明",
+        "moduleName": "Aqua Blue Dawn",
         "moduleId": "uniequip_002_crow",
         "typeName": "REA-X",
         "stages": [
@@ -31775,7 +31775,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -32065,7 +32065,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“启航”",
+        "moduleName": "'Weighing Anchor'",
         "moduleId": "uniequip_002_highmo",
         "typeName": "REA-X",
         "stages": [
@@ -32135,7 +32135,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -34378,12 +34378,12 @@
     "cnName": "隐现",
     "rarity": 5,
     "class": "Sniper",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_inside_1",
         "iconId": null,
-        "skillName": "“不惹麻烦”",
+        "skillName": "'Don't Invite Trouble'",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -34447,7 +34447,7 @@
       {
         "skillId": "skchr_inside_2",
         "iconId": null,
-        "skillName": "“解决麻烦”",
+        "skillName": "'Problem Solver'",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -34511,7 +34511,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“最初的惊喜”",
+        "moduleName": "'The First Surprise'",
         "moduleId": "uniequip_002_inside",
         "typeName": "MAR-X",
         "stages": [
@@ -34581,15 +34581,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "攻击力+23",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "ATK +23",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -39107,7 +39107,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“司祭的祝福”",
+        "moduleName": "'Beeswax's Blessing'",
         "moduleId": "uniequip_002_beewax",
         "typeName": "PLX-X",
         "stages": [
@@ -43567,6 +43567,292 @@
           {
             "id": "30083",
             "quantity": 15
+          }
+        ],
+        "name": "Elite 2",
+        "category": 0
+      }
+    ]
+  },
+  "char_4081_warmy": {
+    "id": "char_4081_warmy",
+    "name": "Warmy",
+    "cnName": "温米",
+    "rarity": 5,
+    "class": "Caster",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_warmy_1",
+        "iconId": null,
+        "skillName": "炎炎火焰",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 5
+              },
+              {
+                "id": "31074",
+                "quantity": 3
+              },
+              {
+                "id": "31043",
+                "quantity": 3
+              }
+            ],
+            "name": "Skill 1 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 6
+              },
+              {
+                "id": "31014",
+                "quantity": 3
+              },
+              {
+                "id": "30094",
+                "quantity": 6
+              }
+            ],
+            "name": "Skill 1 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 10
+              },
+              {
+                "id": "30145",
+                "quantity": 4
+              },
+              {
+                "id": "30084",
+                "quantity": 3
+              }
+            ],
+            "name": "Skill 1 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_warmy_2",
+        "iconId": null,
+        "skillName": "滔滔热流",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 5
+              },
+              {
+                "id": "30044",
+                "quantity": 3
+              },
+              {
+                "id": "30083",
+                "quantity": 1
+              }
+            ],
+            "name": "Skill 2 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 6
+              },
+              {
+                "id": "31084",
+                "quantity": 3
+              },
+              {
+                "id": "31074",
+                "quantity": 5
+              }
+            ],
+            "name": "Skill 2 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 10
+              },
+              {
+                "id": "30155",
+                "quantity": 4
+              },
+              {
+                "id": "30064",
+                "quantity": 2
+              }
+            ],
+            "name": "Skill 2 Mastery 3",
+            "category": 1
+          }
+        ]
+      }
+    ],
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+25",
+      "天赋效果增强",
+      "部署费用-1"
+    ],
+    "skillLevels": [
+      {
+        "skillLevel": 2,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 2",
+        "category": 2
+      },
+      {
+        "skillLevel": 3,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 4
+          },
+          {
+            "id": "30061",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 3",
+        "category": 2
+      },
+      {
+        "skillLevel": 4,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 6
+          },
+          {
+            "id": "30012",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 4",
+        "category": 2
+      },
+      {
+        "skillLevel": 5,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 6
+          },
+          {
+            "id": "30022",
+            "quantity": 5
+          }
+        ],
+        "name": "Skill Level 5",
+        "category": 2
+      },
+      {
+        "skillLevel": 6,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 6
+          },
+          {
+            "id": "31063",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 6",
+        "category": 2
+      },
+      {
+        "skillLevel": 7,
+        "ingredients": [
+          {
+            "id": "3303",
+            "quantity": 6
+          },
+          {
+            "id": "30013",
+            "quantity": 3
+          },
+          {
+            "id": "31033",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 7",
+        "category": 2
+      }
+    ],
+    "elite": [
+      {
+        "eliteLevel": 1,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 20000
+          },
+          {
+            "id": "3251",
+            "quantity": 4
+          },
+          {
+            "id": "30042",
+            "quantity": 4
+          },
+          {
+            "id": "30022",
+            "quantity": 3
+          }
+        ],
+        "name": "Elite 1",
+        "category": 0
+      },
+      {
+        "eliteLevel": 2,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 120000
+          },
+          {
+            "id": "3253",
+            "quantity": 3
+          },
+          {
+            "id": "30094",
+            "quantity": 6
+          },
+          {
+            "id": "31033",
+            "quantity": 19
           }
         ],
         "name": "Elite 2",
@@ -55001,11 +55287,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "防御力+27",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +27",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -55721,11 +56007,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+30",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -58320,12 +58606,12 @@
     "cnName": "空构",
     "rarity": 5,
     "class": "Specialist",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_spuria_1",
         "iconId": null,
-        "skillName": "见机行事",
+        "skillName": "Seize the Moment",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -58389,7 +58675,7 @@
       {
         "skillId": "skchr_spuria_2",
         "iconId": null,
-        "skillName": "临场铳械改装",
+        "skillName": "On-the-Fly Weapon Modding",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -58453,7 +58739,7 @@
     ],
     "modules": [
       {
-        "moduleName": "无人机喷涂套装",
+        "moduleName": "Drone Spraying Kit",
         "moduleId": "uniequip_002_spuria",
         "typeName": "GEE-X",
         "stages": [
@@ -58523,15 +58809,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+24",
-      "再部署时间-6秒",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -61693,7 +61979,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“灵机一动”",
+        "moduleName": "'A Bright Idea Occurs'",
         "moduleId": "uniequip_002_windft",
         "typeName": "CRA-X",
         "stages": [
@@ -61763,7 +62049,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -72201,6 +72487,364 @@
       }
     ]
   },
+  "char_4117_ray": {
+    "id": "char_4117_ray",
+    "name": "Ray",
+    "cnName": "莱伊",
+    "rarity": 6,
+    "class": "Sniper",
+    "isCnOnly": true,
+    "skills": [
+      {
+        "skillId": "skchr_ray_1",
+        "iconId": null,
+        "skillName": "脱身矢",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 8
+              },
+              {
+                "id": "30064",
+                "quantity": 3
+              },
+              {
+                "id": "31013",
+                "quantity": 4
+              }
+            ],
+            "name": "Skill 1 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 12
+              },
+              {
+                "id": "31044",
+                "quantity": 4
+              },
+              {
+                "id": "30094",
+                "quantity": 8
+              }
+            ],
+            "name": "Skill 1 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 15
+              },
+              {
+                "id": "30145",
+                "quantity": 6
+              },
+              {
+                "id": "31064",
+                "quantity": 4
+              }
+            ],
+            "name": "Skill 1 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_ray_2",
+        "iconId": null,
+        "skillName": "广域警觉",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 8
+              },
+              {
+                "id": "30104",
+                "quantity": 4
+              },
+              {
+                "id": "31043",
+                "quantity": 4
+              }
+            ],
+            "name": "Skill 2 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 12
+              },
+              {
+                "id": "30064",
+                "quantity": 4
+              },
+              {
+                "id": "30084",
+                "quantity": 6
+              }
+            ],
+            "name": "Skill 2 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 15
+              },
+              {
+                "id": "30155",
+                "quantity": 6
+              },
+              {
+                "id": "30014",
+                "quantity": 5
+              }
+            ],
+            "name": "Skill 2 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_ray_3",
+        "iconId": null,
+        "skillName": "“得见光芒”",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 8
+              },
+              {
+                "id": "30074",
+                "quantity": 4
+              },
+              {
+                "id": "30063",
+                "quantity": 6
+              }
+            ],
+            "name": "Skill 3 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 12
+              },
+              {
+                "id": "31084",
+                "quantity": 4
+              },
+              {
+                "id": "30104",
+                "quantity": 7
+              }
+            ],
+            "name": "Skill 3 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 15
+              },
+              {
+                "id": "30115",
+                "quantity": 6
+              },
+              {
+                "id": "31024",
+                "quantity": 6
+              }
+            ],
+            "name": "Skill 3 Mastery 3",
+            "category": 1
+          }
+        ]
+      }
+    ],
+    "modules": [],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+37",
+      "第二天赋效果增强",
+      "部署费用-1"
+    ],
+    "skillLevels": [
+      {
+        "skillLevel": 2,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 5
+          }
+        ],
+        "name": "Skill Level 2",
+        "category": 2
+      },
+      {
+        "skillLevel": 3,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 5
+          },
+          {
+            "id": "30041",
+            "quantity": 5
+          },
+          {
+            "id": "30021",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 3",
+        "category": 2
+      },
+      {
+        "skillLevel": 4,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 8
+          },
+          {
+            "id": "30052",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 4",
+        "category": 2
+      },
+      {
+        "skillLevel": 5,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 8
+          },
+          {
+            "id": "30062",
+            "quantity": 3
+          },
+          {
+            "id": "30032",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 5",
+        "category": 2
+      },
+      {
+        "skillLevel": 6,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 8
+          },
+          {
+            "id": "30053",
+            "quantity": 6
+          }
+        ],
+        "name": "Skill Level 6",
+        "category": 2
+      },
+      {
+        "skillLevel": 7,
+        "ingredients": [
+          {
+            "id": "3303",
+            "quantity": 8
+          },
+          {
+            "id": "31033",
+            "quantity": 6
+          },
+          {
+            "id": "30083",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 7",
+        "category": 2
+      }
+    ],
+    "elite": [
+      {
+        "eliteLevel": 1,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 30000
+          },
+          {
+            "id": "3241",
+            "quantity": 5
+          },
+          {
+            "id": "30032",
+            "quantity": 8
+          },
+          {
+            "id": "30042",
+            "quantity": 4
+          }
+        ],
+        "name": "Elite 1",
+        "category": 0
+      },
+      {
+        "eliteLevel": 2,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 180000
+          },
+          {
+            "id": "3243",
+            "quantity": 4
+          },
+          {
+            "id": "30125",
+            "quantity": 4
+          },
+          {
+            "id": "30014",
+            "quantity": 8
+          }
+        ],
+        "name": "Elite 2",
+        "category": 0
+      }
+    ]
+  },
   "char_112_siege": {
     "id": "char_112_siege",
     "name": "Siege",
@@ -74424,7 +75068,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "她们的未来",
+        "moduleName": "Their Future",
         "moduleId": "uniequip_003_flamtl",
         "typeName": "SOL-X",
         "stages": [
@@ -74494,7 +75138,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -75214,11 +75858,11 @@
     ],
     "modules": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+25",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -75572,11 +76216,11 @@
     ],
     "modules": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击速度+8",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +8",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -77805,11 +78449,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+27",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +27",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -79240,6 +79884,79 @@
               }
             ],
             "name": "Module PLX-X Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": false
+      },
+      {
+        "moduleName": "乡音",
+        "moduleId": "uniequip_003_billro",
+        "typeName": "PLX-Y",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "30145",
+                "quantity": 2
+              },
+              {
+                "id": "4001",
+                "quantity": 80000
+              }
+            ],
+            "name": "Module PLX-Y Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 60
+              },
+              {
+                "id": "30125",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 100000
+              }
+            ],
+            "name": "Module PLX-Y Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 20
+              },
+              {
+                "id": "30135",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 120000
+              }
+            ],
+            "name": "Module PLX-Y Stage 3",
             "category": 3
           }
         ],
@@ -83426,11 +84143,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -84216,7 +84933,7 @@
     ],
     "modules": [
       {
-        "moduleName": "铁钳号·爬行者",
+        "moduleName": "FMC-Crawler",
         "moduleId": "uniequip_002_ironmn",
         "typeName": "CRA-X",
         "stages": [
@@ -84286,7 +85003,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -86683,12 +87400,12 @@
     "cnName": "琳琅诗怀雅",
     "rarity": 6,
     "class": "Specialist",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_swire2_1",
         "iconId": null,
-        "skillName": "仗义疏财",
+        "skillName": "Loyalty and Generosity",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -86752,7 +87469,7 @@
       {
         "skillId": "skchr_swire2_2",
         "iconId": null,
-        "skillName": "“见面礼”",
+        "skillName": "'Courtesy Gift'",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -86816,7 +87533,7 @@
       {
         "skillId": "skchr_swire2_3",
         "iconId": null,
-        "skillName": "千金一掷",
+        "skillName": "Lavish and Prodigal",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -86880,7 +87597,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“金币辉煌”",
+        "moduleName": "'Be Resplendent and Outstanding'",
         "moduleId": "uniequip_002_swire2",
         "typeName": "MER-X",
         "stages": [
@@ -86950,15 +87667,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "第二天赋效果增强",
-      "攻击力+30",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +30",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -87817,7 +88534,7 @@
     ],
     "modules": [
       {
-        "moduleName": "什锦果味医用箱",
+        "moduleName": "Mixed-Fruit Medical Caddy",
         "moduleId": "uniequip_002_haak",
         "typeName": "GEE-X",
         "stages": [
@@ -87887,7 +88604,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -91873,12 +92590,12 @@
     "cnName": "纯烬艾雅法拉",
     "rarity": 6,
     "class": "Medic",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_agoat2_1",
         "iconId": null,
-        "skillName": "无声润物",
+        "skillName": "Soundless Sustenance",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -91942,7 +92659,7 @@
       {
         "skillId": "skchr_agoat2_2",
         "iconId": null,
-        "skillName": "云霭荫佑",
+        "skillName": "Cloudmist Shelter",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -92006,7 +92723,7 @@
       {
         "skillId": "skchr_agoat2_3",
         "iconId": null,
-        "skillName": "火山回响",
+        "skillName": "Volcanic Echoes",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -92070,11 +92787,11 @@
     ],
     "modules": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+23",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -93943,7 +94660,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“长骑”",
+        "moduleName": "'Knight Primus'",
         "moduleId": "uniequip_003_blemsh",
         "typeName": "GUA-X",
         "stages": [
@@ -94013,7 +94730,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -100556,7 +101273,7 @@
     ],
     "modules": [
       {
-        "moduleName": "过载的武器与过热的心脏",
+        "moduleName": "Overloaded Weapons, Overheated Heart",
         "moduleId": "uniequip_002_huang",
         "typeName": "CEN-X",
         "stages": [
@@ -100626,7 +101343,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -100988,7 +101705,7 @@
     ],
     "modules": [
       {
-        "moduleName": "嘉维尔的折磨",
+        "moduleName": "The Binding of Gavial",
         "moduleId": "uniequip_002_gvial2",
         "typeName": "CEN-X",
         "stages": [
@@ -101058,7 +101775,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -103886,12 +104603,12 @@
     "cnName": "圣约送葬人",
     "rarity": 6,
     "class": "Guard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_excu2_1",
         "iconId": null,
-        "skillName": "遗嘱执行",
+        "skillName": "Testament Exacted",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -103955,7 +104672,7 @@
       {
         "skillId": "skchr_excu2_2",
         "iconId": null,
-        "skillName": "近身铳斗",
+        "skillName": "Close Combat",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -104019,7 +104736,7 @@
       {
         "skillId": "skchr_excu2_3",
         "iconId": null,
-        "skillName": "圣约决裁",
+        "skillName": "Damnatus Ex Foedere",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -104083,7 +104800,7 @@
     ],
     "modules": [
       {
-        "moduleName": "待解答",
+        "moduleName": "Unanswered",
         "moduleId": "uniequip_002_excu2",
         "typeName": "REA-X",
         "stages": [
@@ -104153,15 +104870,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "防御力+22",
-      "攻击力+26",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "DEF +22",
+      "ATK +26",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -104809,7 +105526,7 @@
     ],
     "modules": [
       {
-        "moduleName": "未竟的旅程",
+        "moduleName": "Hit the Road",
         "moduleId": "uniequip_002_savage",
         "typeName": "CEN-X",
         "stages": [
@@ -104879,7 +105596,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
