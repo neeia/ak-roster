@@ -70,7 +70,12 @@ const Goals: NextPage = () => {
         operatorsJson[goal.operatorId as keyof typeof operatorsJson];
       switch (goal.category) {
         case OperatorGoalCategory.Elite:
+          const prevPromotion = ops[goal.operatorId].promotion;
           ops[goal.operatorId].promotion = Math.max(goal.eliteLevel, op.promotion);
+          // reset Operator level
+          if (goal.eliteLevel > prevPromotion) {
+            ops[goal.operatorId].level = 1;
+          }
           break;
         case OperatorGoalCategory.SkillLevel:
           ops[goal.operatorId].skillLevel = Math.max(goal.skillLevel, op.skillLevel);
