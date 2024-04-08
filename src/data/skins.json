@@ -147,6 +147,12 @@
       "skinName": null,
       "avatarId": "char_192_falco",
       "sortId": -3
+    },
+    {
+      "skinId": "char_192_falco@marthe#6",
+      "skinName": "从容时刻",
+      "avatarId": "char_192_falco_marthe#6",
+      "sortId": 162
     }
   ],
   "char_208_melan": [
@@ -180,7 +186,7 @@
     },
     {
       "skinId": "char_209_ardign@epoque#26",
-      "skinName": "晴日",
+      "skinName": "Sunny Day",
       "avatarId": "char_209_ardign_epoque#26",
       "sortId": 65
     },
@@ -1748,7 +1754,7 @@
     },
     {
       "skinId": "char_106_franka@ncg#1",
-      "skinName": "林虹之间",
+      "skinName": "Rainforest, Me, Rainbow",
       "avatarId": "char_106_franka_ncg#1",
       "sortId": 289
     }
@@ -4992,7 +4998,7 @@
     },
     {
       "skinId": "char_2023_ling@ncg#1",
-      "skinName": "崖高梦远",
+      "skinName": "Towering is Cliff of Nostalgia",
       "avatarId": "char_2023_ling_ncg#1",
       "sortId": 287
     }
@@ -5692,7 +5698,7 @@
     },
     {
       "skinId": "char_4082_qiubai@ncg#1",
-      "skinName": "霜林醉",
+      "skinName": "Wine-flushed is Woods of Rime",
       "avatarId": "char_4082_qiubai_ncg#1",
       "sortId": 288
     }
