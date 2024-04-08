@@ -100,15 +100,15 @@
     "cnName": "U-Official",
     "rarity": 1,
     "class": "Supporter",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [],
     "modules": [],
     "potentials": [
-      "天赋效果加强",
-      "天赋效果加强",
-      "天赋效果加强",
-      "天赋效果加强",
-      "天赋效果加强"
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent"
     ],
     "skillLevels": [],
     "elite": []
@@ -60130,12 +60130,12 @@
     "cnName": "冰酿",
     "rarity": 5,
     "class": "Sniper",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skcom_atk_up[3]",
         "iconId": null,
-        "skillName": "攻击力强化·γ型",
+        "skillName": "ATK Up γ",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -60199,7 +60199,7 @@
       {
         "skillId": "skchr_coldst_2",
         "iconId": null,
-        "skillName": "酣醉之夜",
+        "skillName": "Party Night",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -60263,11 +60263,11 @@
     ],
     "modules": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -61496,12 +61496,12 @@
     "cnName": "杏仁",
     "rarity": 5,
     "class": "Specialist",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_almond_1",
         "iconId": null,
-        "skillName": "磁力抓取",
+        "skillName": "Magnetic Grab",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -61565,7 +61565,7 @@
       {
         "skillId": "skchr_almond_2",
         "iconId": null,
-        "skillName": "强力牵引",
+        "skillName": "Power Traction",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -61629,7 +61629,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“毕业设计”",
+        "moduleName": "'Capstone Project'",
         "moduleId": "uniequip_002_almond",
         "typeName": "HOK-X",
         "stages": [
@@ -61699,15 +61699,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "防御力+20",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +20",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -65081,7 +65081,7 @@
     ],
     "modules": [
       {
-        "moduleName": "胧夜微明",
+        "moduleName": "Rouya Bimei",
         "moduleId": "uniequip_002_tknogi",
         "typeName": "BLS-X",
         "stages": [
@@ -65151,7 +65151,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -65441,7 +65441,7 @@
     ],
     "modules": [
       {
-        "moduleName": "“仙药”",
+        "moduleName": "'Elixir'",
         "moduleId": "uniequip_002_ncdeer",
         "typeName": "BLS-X",
         "stages": [
@@ -65511,7 +65511,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [],
@@ -65795,7 +65795,7 @@
     ],
     "modules": [
       {
-        "moduleName": "锈枝",
+        "moduleName": "Rusty Stick",
         "moduleId": "uniequip_002_quercu",
         "typeName": "BLS-X",
         "stages": [
@@ -65865,7 +65865,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -76734,7 +76734,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "何处寻驮？",
+        "moduleName": "Where to Find the Burdenbeast?",
         "moduleId": "uniequip_003_saga",
         "typeName": "SOL-X",
         "stages": [
@@ -76804,7 +76804,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -86672,7 +86672,7 @@
     ],
     "modules": [
       {
-        "moduleName": "难得清醒",
+        "moduleName": "Hard to Keep Awake",
         "moduleId": "uniequip_002_slent2",
         "typeName": "BLS-X",
         "stages": [
@@ -86742,7 +86742,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -100668,12 +100668,12 @@
     "cnName": "涤火杰西卡",
     "rarity": 6,
     "class": "Defender",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skills": [
       {
         "skillId": "skchr_jesca2_1",
         "iconId": null,
-        "skillName": "坚守阵线",
+        "skillName": "Hold the Line",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -100737,7 +100737,7 @@
       {
         "skillId": "skchr_jesca2_2",
         "iconId": null,
-        "skillName": "掩蔽护卫",
+        "skillName": "Covered Defense",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -100801,7 +100801,7 @@
       {
         "skillId": "skchr_jesca2_3",
         "iconId": null,
-        "skillName": "饱和迸射",
+        "skillName": "Saturation Burst",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -100939,11 +100939,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "第一天赋效果增强",
-      "攻击力+28",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +28",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -103666,7 +103666,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "往昔时光",
+        "moduleName": "Good Old School Days",
         "moduleId": "uniequip_003_chen",
         "typeName": "SWO-Y",
         "stages": [
@@ -103736,7 +103736,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
