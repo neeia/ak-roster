@@ -42,7 +42,7 @@ export function repair(ops: Record<string, Operator>, setOps: (v: Record<string,
       rooster[opId].name = opJsonItem.name;
     }
   })
-  
+
   Object.entries(rooster).forEach(([opId, op]) => {
     // check for outdated operators to redefine
     if (op.class === undefined) {
@@ -51,6 +51,13 @@ export function repair(ops: Record<string, Operator>, setOps: (v: Record<string,
     else {
       if (op.mastery === undefined) op.mastery = [];
       if (op.module === undefined) op.module = [];
+    }
+    if (op.module && !Array.isArray(op.module)) {
+      const mod: number[] = [];
+      Object.entries(op.module as Record<number, number>).forEach(([a, b]) => {
+        mod[parseInt(a)] = b;
+      })
+      op.module = mod;
     }
   })
   setOps(rooster);

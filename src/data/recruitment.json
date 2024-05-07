@@ -306,6 +306,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -837,6 +851,17 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1238,6 +1263,17 @@
           "DPS",
           "Melee",
           "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       },
@@ -2008,6 +2044,16 @@
         ]
       },
       {
+        "id": "char_366_acdrop",
+        "name": "Aciddrop",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
         "id": "char_211_adnach",
         "name": "Adnachiel",
         "rarity": 3,
@@ -2516,6 +2562,17 @@
         ]
       },
       {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_127_estell",
         "name": "Estelle",
         "rarity": 4,
@@ -2933,6 +2990,16 @@
         "tags": [
           "DPS",
           "Slow",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
+        "id": "char_366_acdrop",
+        "name": "Aciddrop",
+        "rarity": 4,
+        "tags": [
+          "DPS",
           "Ranged",
           "Sniper"
         ]
@@ -3988,6 +4055,17 @@
         ]
       },
       {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_141_nights",
         "name": "Haze",
         "rarity": 4,
@@ -4169,6 +4247,16 @@
           "DPS",
           "Melee",
           "Specialist"
+        ]
+      },
+      {
+        "id": "char_366_acdrop",
+        "name": "Aciddrop",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper"
         ]
       },
       {
@@ -5642,6 +5730,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -5809,6 +5911,20 @@
           "Defense",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
           "Top Operator",
           "Senior Operator"
         ]
@@ -6051,6 +6167,20 @@
           "Defense",
           "Healing",
           "Support",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
           "Melee",
           "Defender",
           "Top Operator",
@@ -6759,6 +6889,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6831,6 +6975,20 @@
           "Defense",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
           "Top Operator",
           "Senior Operator"
         ]
@@ -7167,6 +7325,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7441,6 +7613,17 @@
           "DPS",
           "Melee",
           "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       }
@@ -7932,6 +8115,17 @@
         "tags": [
           "DPS",
           "AoE",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -8801,6 +8995,17 @@
           "DPS",
           "Melee",
           "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       }
@@ -10138,6 +10343,17 @@
         ]
       },
       {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_127_estell",
         "name": "Estelle",
         "rarity": 4,
@@ -10909,6 +11125,17 @@
           "DPS",
           "Melee",
           "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       },
@@ -12132,6 +12359,16 @@
         ]
       },
       {
+        "id": "char_366_acdrop",
+        "name": "Aciddrop",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
         "id": "char_211_adnach",
         "name": "Adnachiel",
         "rarity": 3,
@@ -12646,6 +12883,16 @@
           "Crowd-Control",
           "Ranged",
           "Caster"
+        ]
+      },
+      {
+        "id": "char_366_acdrop",
+        "name": "Aciddrop",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper"
         ]
       },
       {
@@ -13915,6 +14162,17 @@
         ]
       },
       {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_130_doberm",
         "name": "Dobermann",
         "rarity": 4,
@@ -14578,6 +14836,16 @@
         "tags": [
           "DPS",
           "Slow",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
+        "id": "char_366_acdrop",
+        "name": "Aciddrop",
+        "rarity": 4,
+        "tags": [
+          "DPS",
           "Ranged",
           "Sniper"
         ]
@@ -16864,6 +17132,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -17106,6 +17388,20 @@
           "Defense",
           "Healing",
           "Support",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
           "Melee",
           "Defender",
           "Top Operator",
@@ -17824,6 +18120,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -17898,6 +18208,20 @@
           "Defense",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
           "Top Operator",
           "Senior Operator"
         ]
@@ -18241,6 +18565,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18275,6 +18613,20 @@
           "Defense",
           "Healing",
           "Support",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
           "Melee",
           "Defender",
           "Top Operator",
@@ -18683,6 +19035,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18732,6 +19098,20 @@
           "Defense",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
           "Top Operator",
           "Senior Operator"
         ]
@@ -18925,6 +19305,20 @@
           "Survival",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
           "Top Operator",
           "Senior Operator"
         ]
@@ -19701,6 +20095,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19735,6 +20143,20 @@
           "Defense",
           "Healing",
           "Support",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
           "Melee",
           "Defender",
           "Top Operator",
@@ -19787,6 +20209,32 @@
           "Defense",
           "Healing",
           "Support",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Defender,Survival,Top Operator": {
+    "tags": [
+      "Defender",
+      "Survival",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
           "Melee",
           "Defender",
           "Top Operator",
@@ -20821,6 +21269,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -21055,6 +21517,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -21102,6 +21578,32 @@
           "Defense",
           "Healing",
           "Support",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Defense,Survival,Top Operator": {
+    "tags": [
+      "Defense",
+      "Survival",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_416_zumama",
+        "name": "Eunectes",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Defense",
           "Melee",
           "Defender",
           "Top Operator",
@@ -21364,6 +21866,17 @@
         "tags": [
           "DPS",
           "AoE",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -21811,6 +22324,17 @@
           "DPS",
           "Melee",
           "Vanguard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       }
@@ -23554,6 +24078,17 @@
         "tags": [
           "DPS",
           "AoE",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -26189,6 +26724,17 @@
         ]
       },
       {
+        "id": "char_415_flint",
+        "name": "Flint",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_130_doberm",
         "name": "Dobermann",
         "rarity": 4,
@@ -28434,6 +28980,16 @@
         "tags": [
           "DPS",
           "Slow",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
+        "id": "char_366_acdrop",
+        "name": "Aciddrop",
+        "rarity": 4,
+        "tags": [
+          "DPS",
           "Ranged",
           "Sniper"
         ]
