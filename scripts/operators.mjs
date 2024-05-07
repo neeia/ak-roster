@@ -39,6 +39,9 @@ function getOperatorName(operatorId) {
   if (operatorId === "char_1001_amiya2") {
     return "Amiya (Guard)";
   }
+  if (operatorId === "char_1037_amiya3") {
+    return "Amiya (Medic)";
+  }
   const entry = cnCharacterTable[operatorId];
   if (entry == null) {
     throw new Error(`No such operator: "${operatorId}"`);
@@ -51,6 +54,9 @@ function getOperatorName(operatorId) {
 function getCNOperatorName(operatorId) {
   if (operatorId === "char_1001_amiya2") {
     return "阿米娅(近卫)";
+  }
+  else if (operatorId === "char_1037_amiya3") {
+    return "阿米娅(治疗)";
   }
   const entry = cnCharacterTable[operatorId];
   if (entry == null) {

@@ -1301,14 +1301,14 @@
   },
   "31073": {
     "id": "31073",
-    "name": "褐素纤维",
+    "name": "Fuscous Fiber",
     "iconId": "MTL_SL_XW",
     "tier": 3,
     "sortId": 100009
   },
   "31074": {
     "id": "31074",
-    "name": "固化纤维板",
+    "name": "Solidified Fiber Board",
     "iconId": "MTL_SL_XWB",
     "tier": 4,
     "sortId": 100008,
@@ -1334,14 +1334,14 @@
   },
   "31083": {
     "id": "31083",
-    "name": "环烃聚质",
+    "name": "Aggregate Cyclicene",
     "iconId": "MTL_SL_HT",
     "tier": 3,
     "sortId": 100007
   },
   "31084": {
     "id": "31084",
-    "name": "环烃预制体",
+    "name": "Cyclicene Prefab",
     "iconId": "MTL_SL_HTT",
     "tier": 4,
     "sortId": 100006,

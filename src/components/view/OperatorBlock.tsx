@@ -213,6 +213,12 @@ const OperatorBlock = (props: Props) => {
       )}
     </Box>
 
+  let mod: number[] = [];
+  if (op.module && !Array.isArray(op.module)) {
+    Object.entries(op.module as Record<number, number>).forEach(([a, b]) => {
+      mod[parseInt(a)] = b;
+    }) 
+  } else mod = op.module;
   const opModuleUrls = op.module ? op.module
     .map((mod, n: number) => {
       return {
