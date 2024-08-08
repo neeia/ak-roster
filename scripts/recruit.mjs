@@ -78,7 +78,7 @@ const { recruitDetail } = gachaTable;
 
 const createRecruitmentJson = () => {
   const operatorNameToId = Object.fromEntries(
-    Object.entries(characterTable).map(([id, opData]) => [opData.name, id])
+    Object.entries(characterTable).filter(([id]) => !id.startsWith("trap")).map(([id, opData]) => [opData.name, id])
   );
 
   const recruitmentStrings = recruitDetail
