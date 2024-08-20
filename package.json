@@ -1,6 +1,6 @@
 {
   "name": "ak-roster-next",
-  "version": "2.6.13",
+  "version": "2.6.14",
   "private": true,
   "scripts": {
     "start": "start http://localhost:3000/ & next dev",
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@arkntools/depot-recognition": "^1.6.1",
+    "@datadog/browser-rum": "^5.23.3",
     "@emotion/cache": "^11.9.3",
     "@emotion/react": "^11.9.3",
     "@emotion/server": "^11.4.0",
