@@ -10,7 +10,6 @@ import { Analytics } from '@vercel/analytics/react';
 import { Provider as ReduxProvider } from "react-redux";
 import { persistor, store } from 'store/store';
 import { PersistGate } from 'redux-persist/integration/react';
-import DatadogInit from 'components/Datadog';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDjpt2G4GFQjYbPT5Mrj6L2meeWEnsCEgU",
@@ -35,7 +34,6 @@ const MyApp = (props: AppProps) => {
         <ThemeProvider theme={appTheme}>
           <CssBaseline />
           <Analytics />
-          <DatadogInit />
           <PersistGate loading={null} persistor={persistor}>
             {() => <Component {...pageProps} />}
           </PersistGate>
