@@ -1,21 +1,21 @@
 import React, { useState } from "react";
-import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, ButtonBase, Dialog, DialogContent, DialogTitle, Divider, IconButton, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { CloseOutlined } from "@mui/icons-material";
 import PasswordTextField from "./PasswordTextField";
-import supabaseClient from "../../util/supabaseClient";
-import {Session} from "@supabase/gotrue-js";
+import supabase from "supabase/supabaseClient";
+import { DISCORD_BLURPLE } from "styles/theme/appTheme";
+import Image from "next/image";
 
 interface Props {
   open: boolean;
   onClose: () => void;
   children?: React.ReactNode;
-  onLogin?: (session: Session) => void;
 }
 
-const RegisterButton = ((props: Props) => {
-  const { open, onClose, children, onLogin } = props;
+const RegisterForm = ((props: Props) => {
+  const { open, onClose, children } = props;
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const fullScreen = !useMediaQuery(theme.breakpoints.up('sm'));
 
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -31,12 +31,18 @@ const RegisterButton = ((props: Props) => {
       setError("No password given.");
       return;
     }
-    const { data, error } = await supabaseClient.auth.signUp({ email: email.trim(), password: password });
+    const { error } = await supabase.auth.signUp({ email: email.trim(), password: password });
     if (error != null) {
       setError(error.message);
       return;
     }
     setError("Check your mail to confirm your registration.");
+  }
+
+  async function signInWithDiscord() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'discord',
+    });
   }
 
   return (
@@ -45,16 +51,23 @@ const RegisterButton = ((props: Props) => {
       onClose={onClose}
       fullScreen={fullScreen}
       fullWidth
-      maxWidth="sm"
+      maxWidth="xs"
+      PaperProps={{
+        sx: {
+          backgroundImage: "none"
+        }
+      }}
     >
       <DialogTitle sx={{
-        paddingBottom: "12px",
         display: "flex",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
       }}>
-        <Typography variant="h2" component="span">
+        <Box component="span" sx={{
+          fontSize: "1.5rem",
+          p: 1,
+        }}>
           Register
-        </Typography>
+        </Box>
         <IconButton onClick={onClose}>
           <CloseOutlined />
         </IconButton>
@@ -64,21 +77,46 @@ const RegisterButton = ((props: Props) => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: "12px 6px",
+            gap: 2,
             "& .MuiFormHelperText-root": {
               mt: 1,
               lineHeight: 1
             }
           }}>
+          <ButtonBase
+            sx={{
+              width: "100%",
+              height: "100%",
+              fontSize: "1rem",
+              backgroundColor: DISCORD_BLURPLE,
+              display: "flex",
+              gap: 1,
+              p: 2,
+              borderRadius: 1,
+              transition: "filter 0.1s",
+              ":hover": { filter: "brightness(110%)" },
+            }}
+            onClick={signInWithDiscord}
+          >
+            <Image
+              src="/img/assets/discord.svg"
+              width="24"
+              height="18"
+              alt=""
+            />
+            Continue with Discord
+          </ButtonBase>
+          <Divider>or</Divider>
           <TextField
             label="Email"
             value={email}
-            helperText="Your email is used for authentication and is hidden to other users."
+            helperText="Your email will be hidden from other users."
             onChange={(e) => {
               setEmail(e.target.value);
               setError("");
             }}
-            variant="filled"
+            variant="outlined"
+            sx={{ mb: 1 }}
           />
           <PasswordTextField
             label="Password"
@@ -89,23 +127,29 @@ const RegisterButton = ((props: Props) => {
             }}
             ariaId="reg-pass"
           />
-          <Divider />
           <Box sx={{
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center"
+            flexDirection: "column",
+            alignItems: "end",
+            gap: 2,
           }}>
-            <Button type="submit" onClick={handleRegister}>
+            {error}
+            <Button
+              type="submit"
+              onClick={handleRegister}
+              color="primary"
+              variant="contained"
+              sx={{
+                p: "8px 16px",
+                borderRadius: 1,
+              }}
+            >
               Create Account
             </Button>
-            {error}
-          </Box>
-          <Box sx={{ display: "flex", flexDirection: "column", }}>
-            {children}
           </Box>
         </Box>
       </DialogContent>
     </Dialog>
   );
 });
-export default RegisterButton;
+export default RegisterForm;

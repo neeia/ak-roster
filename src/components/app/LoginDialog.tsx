@@ -3,18 +3,16 @@ import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, T
 import { CloseOutlined } from "@mui/icons-material";
 import PasswordTextField from "./PasswordTextField";
 import ResetPassword from "./ResetPassword";
-import supabaseClient from "util/supabaseClient";
-import {Session} from "@supabase/gotrue-js";
+import supabase from "supabase/supabaseClient";
 
 interface Props {
   open: boolean;
   onClose: () => void;
   children?: React.ReactNode;
-  onLogin?: (session: Session) => void;
 }
 
-const LoginButton = ((props: Props) => {
-  const { open, onClose, children, onLogin } = props;
+const LoginForm = ((props: Props) => {
+  const { open, onClose, children } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -33,7 +31,7 @@ const LoginButton = ((props: Props) => {
       setError("No password given.");
       return;
     }
-    const {data, error} = await supabaseClient.auth.signInWithPassword({email: email.trim(), password: password});
+    const {data, error} = await supabase.auth.signInWithPassword({email: email.trim(), password: password});
     if (error != null)
     {
       setError(error.message);
@@ -41,7 +39,6 @@ const LoginButton = ((props: Props) => {
     }
     setError("");
     onClose();
-    onLogin?.(data.session!);
   }
 
   return (
@@ -114,4 +111,4 @@ const LoginButton = ((props: Props) => {
     </Dialog>
   );
 });
-export default LoginButton;
+export default LoginForm;

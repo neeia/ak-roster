@@ -3,21 +3,21 @@ import type { NextPage } from "next";
 import { Box, ButtonGroup, IconButton, Tooltip, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import Layout from "components/Layout";
-import { Operator, OperatorId } from "types/operator";
+import { Operator } from "types/operator";
 import { ModeEdit } from "@mui/icons-material";
-import SortDialog from "components/collate/SortDialog";
-import FilterDialog from "components/collate/FilterDialog";
-import SearchDialog from "components/collate/SearchDialog";
+import SortDialog from "components/data/collate/SortDialog";
+import FilterDialog from "components/data/collate/FilterDialog";
+import SearchDialog from "components/data/collate/SearchDialog";
 import { useSort, useFilter } from "util/useSSF";
 import { getDatabase, ref, set } from "firebase/database";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 
 const EditOperator = dynamic(
-  () => import("components/input/EditOperator"),
+  () => import("components/data/input/EditOperator"),
   { ssr: false }
 );
 const CollectionContainer = dynamic(
-  () => import("components/view/CollectionContainer"),
+  () => import("components/data/view/CollectionContainer"),
   { ssr: false }
 );
 const View: NextPage = () => {
@@ -32,9 +32,9 @@ const View: NextPage = () => {
       "owned": { "owned": (op: Operator) => op.potential > 0 }
     });
 
-  const [opId, setOpId] = React.useState<OperatorId>();
+  const [opId, setOpId] = React.useState<string>();
   const [editOpen, setEditOpen] = React.useState(false);
-  const handleSelectOp = useCallback((id: OperatorId) => {
+  const handleSelectOp = useCallback((id: string) => {
     setOpId(id);
     setEditOpen(true);
   }, []);

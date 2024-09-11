@@ -1,22 +1,23 @@
-import React, { memo } from "react";
-import { AppBar, Box, Container, IconButton, Toolbar, Typography } from "@mui/material";
-import Head from "next/head";
+import React from "react";
+import { AppBar, Box, Container, IconButton, Theme, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import config from "data/config";
 import MenuIcon from '@mui/icons-material/Menu';
 import AppDrawer from "./AppDrawer";
+import Head from "./app/Head";
+import { server } from "util/server";
+import createTheme, { brand } from "styles/theme/appTheme";
 
 interface Props {
-  tab: keyof typeof config.tabs;
+  tab: string;
   page: string;
   header?: React.ReactNode;
   children?: React.ReactNode;
 }
-const Layout = memo((props: Props) => {
-  const { children, header, tab, page} = props;
-  const { siteTitle, tabs } = config;
-  const { title: tabTitle, description: tabDescription, pages } = tabs[tab];
-  const { title: pageTitle, description: pageDescription } = pages[page as keyof typeof pages] ?? {};
-  const title = `${pageTitle} - ${siteTitle}`
+const Layout = React.memo((props: Props) => {
+  const { page, tab, children, header } = props;
+  const { siteTitle, siteDescription, tabs } = config;
+
+  const { title, description } = tabs[tab].pages[page];
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const handleDrawerToggle = React.useCallback(() => {
@@ -24,28 +25,8 @@ const Layout = memo((props: Props) => {
   }, []);
 
   return (
-    <>
-      <Head>
-        <title>{title}</title>
-        <meta
-          key="url"
-          property="og:url"
-          content={`${config.siteUrl}${page}`}
-        />
-        <meta key="title"
-          property="og:title"
-          content={pageTitle} />
-        <meta
-          key="description"
-          name="description"
-          content={pageDescription}
-        />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#fbc02d" />
-      </Head>
+    <ThemeProvider theme={createTheme(brand[tab])}>
+      <Head title={title} url={`${server}${tab ?? ""}${page}`} description={description ?? siteDescription} />
       <Box
         display="grid"
         height="100%"
@@ -75,11 +56,12 @@ const Layout = memo((props: Props) => {
             {header
               ??
               <>
-                <IconButton
-                  aria-label="toggle navbar"
+                <IconButton color="inherit"
+                  aria-label="navigation menu"
                   edge="start"
                   onClick={handleDrawerToggle}
                   sx={{
+                    mr: 2,
                     display: {
                       xl: "none",
                     },
@@ -89,7 +71,7 @@ const Layout = memo((props: Props) => {
                 </IconButton>
                 <Box component="span" sx={{ verticalAlign: "bottom" }}>
                   <Typography component="h2" variant="h5" noWrap sx={{ display: "inline", verticalAlign: "baseline", }}>
-                    {pageTitle}
+                    {title}
                   </Typography>
                 </Box>
               </>
@@ -104,7 +86,7 @@ const Layout = memo((props: Props) => {
           {children}
         </Container>
       </Box>
-    </>
+    </ThemeProvider>
   )
 });
 Layout.displayName = "Layout";

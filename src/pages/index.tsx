@@ -1,459 +1,317 @@
 ﻿import {
-  Box, Button,
+  Alert,
+  Box,
+  Button,
+  CircularProgress,
   Container,
-  Divider,
   IconButton,
-  IconProps,
-  Input,
   InputAdornment,
-  Link,
-  SvgIconProps,
+  Paper,
+  SxProps,
+  TextField,
   Typography,
 } from "@mui/material";
 import type { NextPage } from "next";
-import Head from "next/head";
-import NextLink from "next/link";
 import config from "data/config";
-import appTheme from "styles/theme/appTheme";
-import createEmotionCache from "util/createEmotionCache";
-import React, { useCallback, useEffect, useState } from "react";
-import { Apps, Badge, Bookmark, BookmarkAdd, Forum, Functions, Groups, Hub, Inventory2, Search } from "@mui/icons-material";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import RegisterButton from "components/app/RegisterDialog";
-import LoginButton from "components/app/LoginDialog";
-import { useRouter } from "next/router";
-import supabaseClient from "util/supabaseClient";
-import { Session } from "@supabase/supabase-js";
-import Logo from "components/app/Logo";
-import HomeNavItem from "components/index/HomeNavItem";
-import HomeNavSection from "components/index/HomeNavSection";
-import HomeNavItemExt from "components/index/HomeNavItemExt";
+import supabase from "supabase/supabaseClient";
+import { getLogoUrl } from "components/app/Logo";
+import HomeNavItem from "components/landing/HomeNavItem";
+import HomeNavSection from "components/landing/HomeNavSection";
+import { brand, DISCORD_BLURPLE, GITHUB_DARK, KOFI_BLUE } from "styles/theme/appTheme";
+import { Edit, LockPerson, Search, Settings } from "@mui/icons-material";
+import JumpTo from "components/base/JumpTo";
+import { SessionContext } from "pages/_app";
+import Link from "components/base/Link";
+import Head from "components/app/Head";
+import AccountContextMenu from "components/app/AccountContextMenu";
+import { useAccountGetQuery, useAccountUpdateMutation } from "store/extendAccount";
+import { skipToken } from "@reduxjs/toolkit/query";
+import { server } from "util/server";
+import randomName from "util/randomName";
+
+const authFrame: SxProps = {
+  display: "flex",
+  gap: 2,
+  width: "100%",
+  maxWidth: "sm",
+  minHeight: 80,
+  borderRadius: 1,
+  p: 2,
+}
 
 const Home: NextPage = () => {
-  const [session, setSession] = useState<Session | null>(null);
-  const [login, setLogin] = useState(false);
-  const [register, setRegister] = useState(false);
+  const [searchText, setSearchText] = useState<string>("");
+  const [username, setUsername] = useState<string | null>();
+  const [randomUsername, setRandomUsername] = useState<boolean>(false);
 
-  const [username, setUsername] = useState<string>("");
-
-  const router = useRouter();
-
-  const getUser = useCallback(async () => {
-    const { data } = await supabaseClient.auth.getSession();
-    setSession(data.session);
-  }, []);
-
-  useEffect(() => {
-    getUser().then();
-  }, [getUser]);
+  const [errors, setErrors] = useState<string[]>([]);
 
   const search = (s: string) => {
     window.location.href = `/u/${s}`;
   };
 
-  const onLogin = async (session: Session) => {
-    if (session) {
-      router.push("/data/input/");
+  const logoBasePath = useRef(`/assets/title/${getLogoUrl()}`);
+
+  const session = useContext(SessionContext);
+
+  const { data: accountData } = useAccountGetQuery(session ? { user_id: session.user.id } : skipToken);
+
+  useEffect(() => {
+    if (session && accountData) {
+      if (accountData.display_name) {
+        setUsername(accountData.display_name);
+      }
+      else if (!accountData.display_name) {
+        const genName = randomName();
+        const [trigger, out] = useAccountUpdateMutation();
+        trigger({ user_id: session.user.id, username: genName, display_name: genName, private: false, });
+      }
     }
-  }
+  }, [accountData])
 
-
-  // TODO: are the providers even necessary?
   return (
-    <>
-      <Head>
-        <title>Krooster</title>
-        <meta key="url" property="og:url" content={config.siteUrl} />
-        <meta key="title" property="og:title" content="Arknights Roster" />
-        <meta
-          key="description"
-          name="description"
-          property="og:description"
-          content="A collection and progress tracker for Arknights, a game developed by Hypergryph."
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#fbc02d" />
-      </Head>
-      <Box
-        component="main"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          "& em": {
-            color: "primary.main",
-            fontStyle: "normal",
-          },
-        }}
-      >
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Logo size={24} subtitle horizontal />
+    <Head title="Krooster" url={server} description={config.siteDescription}>
+      <Box component="main" sx={{
+        minHeight: "100dvh",
+        backgroundColor: "background.paper",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 4,
+        p: 2,
+      }}>
+        <JumpTo target="search">
+          jump to search
+        </JumpTo>
+        <Box component="h1" display="flex" m={0}>
+          <Box component="img"
+            alt="Krooster - Arknights Roster"
+            sx={{
+              height: "16rem",
+              content: {
+                xs: `url(${logoBasePath.current}-v.png)`,
+                sm: `url(${logoBasePath.current}-h.png)`,
+              },
+            }}
+          />
         </Box>
-        {/* here we have links of all the things people can do with krooster */}
-        {/* divided into logged in and not logged in sections */}
 
-        <Container component="nav" sx={{
-          
+        {(session === null) ? (
+          <Paper elevation={2} sx={{
+            ...authFrame,
+            alignItems: "center",
+          }}>
+            <Button component={Link} href="/register"
+              variant="contained"
+              sx={{
+                ":hover": { backgroundColor: "primary.light" },
+                width: "100%",
+                height: "100%",
+                fontSize: "1rem",
+              }}
+            >
+              New User
+            </Button>
+            <span>
+              or
+            </span>
+            <Button component={Link} href="/login"
+              variant="outlined"
+              sx={{
+                width: "100%",
+                height: "100%",
+                fontSize: "1rem",
+              }}>
+              Sign In
+            </Button>
+          </Paper>
+        )
+          :
+          <Paper elevation={2} sx={{
+            ...authFrame,
+            flexDirection: "column",
+          }}>
+            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <Typography sx={{ color: "text.secondary" }}>Signed in as</Typography>
+                <Box sx={{ display: "flex", gap: 1 }}>
+                  {username ?? <CircularProgress size={24} />}
+                </Box>
+              </Box>
+              <AccountContextMenu />
+            </Box>
+            {randomUsername && <Alert
+              severity="info"
+              onClose={() => setRandomUsername(false)}
+            >
+              You have been assigned a random username. Change it in the settings!
+            </Alert>
+            }
+            {errors.map((err, i) => (
+              <Alert key={i}
+                severity="error"
+                onClose={() => { setErrors([...errors.slice(0, i), ...errors.slice(i + 1)]) }}
+              >
+                {err}
+              </Alert>
+            ))}
+          </Paper>
+        }
+
+        <Box component="nav" sx={{
+          width: "100%",
+          maxWidth: "40rem",
+          mt: 8
         }}>
           <Box component="ul"
             sx={{
               display: "flex",
               flexDirection: "column",
-              gap: "16px",
+              gap: 4,
               m: 0,
               p: 0,
             }}
           >
             <HomeNavSection
               title="Data"
-              color="#FFD440"
-              src="data.png"
-              backgroundPosition="right -230px top -72px"
-              backgroundSize="700px"
-              decoration={(props: SvgIconProps) => <Groups {...props} />}
+              color={brand["/data"]}
+              src="data"
             >
-              <HomeNavItem href="/data/overview/">
-                Overview
-              </HomeNavItem>
-              <HomeNavItem href="/data/operators/"
-                icon={<Apps />}
+              <Alert severity="warning" variant="outlined"
+                icon={
+                  <LockPerson />
+                }
+                sx={{
+                  display: session ? "none" : "flex",
+                  alignItems: "center",
+                  width: "100%",
+                }}
               >
-                Operators
+                You must be logged in to access these features.
+              </Alert>
+              <HomeNavItem disabled={!session} href={"/data/input"}>
+                Roster
               </HomeNavItem>
-              <HomeNavItem href="/data/profile/"
-                icon={<Badge />}
-              >
+              <HomeNavItem disabled={!session} href={"/data/view"}>
+                Collection
+              </HomeNavItem>
+              <HomeNavItem disabled={!session} href={"/data/planner"} icon={
+                <Image key="p" src="/img/icons/rock.svg" alt="" width={24} height={24} />
+              }>
+                Planner
+              </HomeNavItem>
+              <HomeNavItem disabled={!session} href={"/data/profile"}>
                 Profile
               </HomeNavItem>
             </HomeNavSection>
             <HomeNavSection
-              title="Network" color="#E440FF"
-              src="network.png"
-              backgroundPosition="right -285px top -125px"
-              backgroundSize="875px"
-              decoration={(props: SvgIconProps) => <Hub {...props} />}
+              title="Network"
+              color={brand["/network"]}
+              src="network"
             >
-              <Input
-                autoComplete="off"
-                placeholder="Lookup"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                sx={{
-                  height: "2em",
-                  width: "24ch",
-                }}
-                endAdornment={(
-                  <InputAdornment position="end">
-                    <IconButton
-                      type="submit"
-                      aria-label="search"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        search(username);
-                      }}
-                    >
-                      <Search />
-                    </IconButton>
-                  </InputAdornment>
-                )}
-              />
-              <HomeNavItem href="/network/lookup/">
-                Headhunting
+              <Box component="li" display="flex">
+                <TextField id="search"
+                  autoComplete="off"
+                  label="Find a user..."
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
+                  size="small"
+                  InputProps={{
+                    sx: { width: "240px", pr: 0.5 },
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          type="submit"
+                          aria-label="search"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            search(searchText);
+                          }}
+                        >
+                          <Search fontSize="small" />
+                        </IconButton>
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              </Box>
+              <HomeNavItem href={"/network/findafriend"} >
+                Support Search
               </HomeNavItem>
             </HomeNavSection>
             <HomeNavSection
               title="Tools"
-              color="#9F40FF"
-              src="tools.png"
-              backgroundPosition="right -240px top -46px"
-              backgroundSize="720px"
-              decoration={(props: SvgIconProps) => <Functions {...props} />}
+              color={brand["/tools"]}
+              src="tools"
             >
-              <HomeNavItem href="/tools/recruit/"
-                icon={
-                  <Image
-                    src="/img/items/TKT_RECRUIT.png"
-                    width="18"
-                    height="20"
-                    alt="Recruitment"
-                  />}
-              >
+              <HomeNavItem href={"/tools/recruit"} >
                 Recruitment
               </HomeNavItem>
-              <HomeNavItem href="/tools/rateup/">
-                <Image
-                  src="/img/items/TKT_GACHA.png"
-                  width="25"
-                  height="20"
-                  alt="Headhunting"
-                />
-                Rolling
+              <HomeNavItem href={"/tools/rateup"} >
+                Headhunting
               </HomeNavItem>
-              <HomeNavItem href="/tools/rateup/">
-                <Image
-                  src="/img/items/sprite_exp_card_t4.png"
-                  width="25"
-                  height="20"
-                  alt="Leveling"
-                />
+              <HomeNavItem href={"/tools/level"} >
                 Level Costs
               </HomeNavItem>
             </HomeNavSection>
             <HomeNavSection
-              title="Planner"
-              color="#FF6E40"
-              src="planner.png"
-              backgroundPosition="right -340px top -92px"
-              backgroundSize="900px"
-              decoration={(props: SvgIconProps) => <Bookmark {...props} />}
-            >
-              <HomeNavItem href="/planner/goals/"
-                icon={<BookmarkAdd />}
-              >
-                Goals
-              </HomeNavItem>
-              <HomeNavItem href="/planner/depot/"
-                icon={<Inventory2 />}
-              >
-                Depot
-              </HomeNavItem>
-            </HomeNavSection>
-            <HomeNavSection
               title="Community"
-              color="#6640FF"
-              src="community.png"
-              backgroundPosition="right -300px top -90px"
-              backgroundSize="800px"
-              decoration={(props: SvgIconProps) => <Forum {...props} />}
+              color={brand["/community"]}
+              src="community"
             >
-              <HomeNavItemExt
+              <HomeNavItem external
                 href="https://discord.gg/qx8hJGvTwc"
-                target="_blank"
-                rel="noreferrer noopener"
                 title="Join our Discord!"
-                backgroundColor="#5865F2"
-              >
-                <Image src="/img/assets/discord.svg"
-                  width="131"
-                  height="25"
-                  alt=""
-                />
-              </HomeNavItemExt>
-              <HomeNavItemExt
-                href="https://github.com/neeia/ak-roster"
-                target="_blank"
-                rel="noreferrer noopener"
-                title="Help develop Krooster!"
-                backgroundColor="#50505A"
+                sx={{
+                  backgroundColor: DISCORD_BLURPLE
+                }}
               >
                 <Image
-                  className="icon"
-                  width="25"
-                  height="25"
+                  src="/img/assets/discord.svg"
+                  width="20"
+                  height="15"
+                  alt=""
+                />
+                Discord
+              </HomeNavItem>
+              <HomeNavItem external
+                href="https://github.com/neeia/ak-roster"
+                title="For developers!"
+                sx={{
+                  backgroundColor: GITHUB_DARK
+                }}
+              >
+                <Image
+                  width="18"
+                  height="18"
                   src="/img/assets/github-1.png"
                   alt=""
                 />
-                <Image
-                  className="icon"
-                  width="61"
-                  height="25"
-                  src="/img/assets/github-2.png"
-                  alt=""
-                />
-              </HomeNavItemExt>
-              <HomeNavItemExt
+                GitHub
+              </HomeNavItem>
+              <HomeNavItem external
                 href="https://ko-fi.com/neeia"
-                target="_blank"
-                rel="noreferrer noopener"
-                title="Support the dev!"
-                backgroundColor="#FF5E5B"
-              >
-                <Image
-                  className="icon"
-                  width="85"
-                  height="25"
-                  src="/img/assets/kofi.png"
-                  alt="Ko-fi"
-                />
-              </HomeNavItemExt>
-            </HomeNavSection>
-          </Box>
-        </Container>
-
-        <Container
-          sx={{
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            py: { xs: 1, sm: 6 },
-            gap: 6,
-          }}
-        >
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: { xs: "1fr", sm: "2.5fr 3fr" },
-              gap: "4%",
-            }}
-          >
-            <Box
-              sx={{ display: "flex", flexDirection: "column", gap: 1, pt: 1 }}
-            >
-              <Typography
-                variant="h2"
-                sx={{ fontSize: { xs: "1.75rem", sm: "2rem" } }}
-              >
-                Share your entire collection with the world{" "}
-                <em>instantly.</em>
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{ display: { xs: "none", sm: "block" } }}
-              >
-                Want to show off your roster to your friends? Flex on the
-                world? Need to find that one support unit to beat CC? Krooster
-                lets you do all that, and more.
-              </Typography>
-              <Typography variant="body1">
-                You can get started without even making an account. And the
-                best part? It&apos;s totally free. No ads, no paywall, and
-                entirely open-source.
-              </Typography>
-              <Box
+                title="Support Krooster!"
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: { xs: "column", sm: "row" },
-                  gap: 2,
-                  mt: 2,
+                  backgroundColor: KOFI_BLUE
                 }}
               >
-                {(session == null) ? (
-                  <>
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      sx={{
-                        height: "100%",
-                        pl: 2,
-                        fontWeight: "bold",
-                        fontSize: "1rem",
-                      }}
-                      onClick={() => setLogin(true)}
-                    >
-                      Log In
-                    </Button>
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      sx={{
-                        height: "100%",
-                        pl: 2,
-                        fontWeight: "bold",
-                        fontSize: "1rem",
-                      }}
-                      onClick={() => setRegister(true)}
-                    >
-                      Register
-                    </Button>
-
-                    <LoginButton open={login} onClose={() => setLogin(false)} onLogin={onLogin}>
-                      <Button
-                        onClick={() => {
-                          setRegister(true);
-                          setLogin(false);
-                        }}
-                        sx={{ color: "text.secondary" }}
-                      >
-                        Sign Up Instead
-                      </Button>
-                    </LoginButton>
-                    <RegisterButton open={register} onClose={() => setRegister(false)} onLogin={onLogin}>
-                      <Button
-                        onClick={() => {
-                          setRegister(false);
-                          setLogin(true);
-                        }}
-                        sx={{ color: "text.secondary" }}
-                      >
-                        Log In Instead
-                      </Button>
-                    </RegisterButton>
-                  </>
-                )
-                  :
-                  <NextLink href="/data/input/" passHref legacyBehavior>
-                    <Link
-                      sx={{
-                        backgroundColor: "primary.main",
-                        display: "block",
-                        width: "100%",
-                        maxWidth: "12rem",
-                        px: 2,
-                        py: 1.5,
-                        color: "background.default",
-                        ":hover": {
-                          bgcolor: "primary.main",
-                          filter: "brightness(110%)",
-                        },
-                        borderRadius: "4px",
-                        fontSize: "1.25rem",
-                        textAlign: "center",
-                        verticalAlign: "middle",
-                        boxShadow: 1,
-                        alignSelf: { xs: "center", sm: "start" },
-                      }}
-                      variant="button"
-                    >
-                      Get Started
-                    </Link>
-                  </NextLink>
-                }
-                <Box
-                  component="form"
-                  sx={{
-                    display: { xs: "flex", sm: "contents" },
-                    alignItems: "center",
-                    flexDirection: { xs: "column", sm: "row" },
-                    gap: 1,
-                  }}
-                >
-                  or
-                </Box>
-              </Box>
-            </Box>
-            <Box
-              boxShadow={2}
-              component="img"
-              src="/res/CollectionSample.webp"
-              width="495"
-              sx={{
-                maxWidth: "100%",
-                maxHeight: "auto",
-                order: { xs: -1, sm: -1 },
-              }}
-              alt="A screenshot of a user's collection."
-            />
+                <Image
+                  className="icon"
+                  width="24"
+                  height="16"
+                  src="/img/assets/ko-fi.png"
+                  alt="Ko-fi"
+                />
+                Donations
+              </HomeNavItem>
+            </HomeNavSection>
           </Box>
-        </Container>
-      </Box>
-    </>
+        </Box>
+      </Box >
+    </Head>
   );
 };
 

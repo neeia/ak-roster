@@ -18,6 +18,7 @@ import { sprintf } from "sprintf-js";
 
 import Layout from "components/Layout";
 import { minMax } from "../../util/changeOperator";
+import Board from "components/base/Board";
 
 const MAX_PULL_COUNT = 2000;
 
@@ -179,15 +180,7 @@ const Rateup: NextPage = () => {
       <Box display="flex" justifyContent="center">
         <Grid container spacing={2} sx={{ maxWidth: "800px" }}>
           <Grid item xs={12}>
-            <Paper
-              elevation={2}
-              sx={{
-                p: [2, 2, 3, 3],
-              }}
-            >
-              <Typography component="h3" variant="h5" mb={2}>
-                Data
-              </Typography>
+            <Board title="Data">
               <Grid container spacing={2} sx={{ maxWidth: "800px" }}>
                 <Grid item xs={6} sm={3}>
                   <TextField
@@ -252,19 +245,11 @@ const Rateup: NextPage = () => {
                   </FormControl>
                 </Grid>
               </Grid>
-            </Paper>
+            </Board>
           </Grid>
 
           <Grid item xs={12}>
-            <Paper
-              elevation={2}
-              sx={{
-                p: [2, 2, 3, 3],
-              }}
-            >
-              <Typography component="h3" variant="h5" gutterBottom>
-                Probabilities
-              </Typography>
+            <Board title="Probabilities">
               <Grid container alignItems="center">
                 <Grid item xs={8}>
                   <Typography variant="body1">
@@ -307,8 +292,8 @@ const Rateup: NextPage = () => {
                   </>
                 )}
               </Grid>
-              <Divider sx={{ mt: 1, mb: 2 }} />
-              <Grid container alignItems="center" sx={{ mt: 2 }}>
+              <Divider />
+              <Grid container alignItems="center">
                 {[...Array(7).keys()].map((i) => (
                   <React.Fragment key={i}>
                     <Grid item xs={8}>
@@ -334,7 +319,7 @@ const Rateup: NextPage = () => {
                   </React.Fragment>
                 ))}
               </Grid>
-            </Paper>
+            </Board>
             {bannerType === "limited" && (
               <Typography variant="caption" sx={{ display: "block", mt: 2 }}>
                 * Parametric system is not factored into these probabilities

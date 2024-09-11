@@ -1,6 +1,6 @@
 import { Box, Button, Dialog, DialogContent, DialogTitle, TextField } from "@mui/material";
 import React, {useEffect, useState} from "react";
-import supabaseClient from "../../util/supabaseClient";
+import supabase from "../../supabase/supabaseClient";
 
 interface Props {
   open: boolean;
@@ -18,7 +18,7 @@ const ResetPassword = ((props: Props) => {
   useEffect( () => {
     const getSession = async () =>
     {
-      const {data, error} = await supabaseClient.auth.getSession();
+      const {data, error} = await supabase.auth.getSession();
       if (!error) {
         setResetEmail(data.session?.user.email ?? "");
       }
@@ -28,7 +28,7 @@ const ResetPassword = ((props: Props) => {
 
   function resetPassword() {
 
-    supabaseClient.auth.resetPasswordForEmail(resetEmail).then(() => setSentEmail(true
+    supabase.auth.resetPasswordForEmail(resetEmail).then(() => setSentEmail(true
     ))
   }
 

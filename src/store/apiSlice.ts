@@ -5,3 +5,5 @@ export const supabaseApi = createApi({
   endpoints: () => ({}),
   tagTypes: ["operator", "account", "supports" ]
 })
+
+export type UID = { user_id: string };

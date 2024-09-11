@@ -1,0 +1,41 @@
+{
+  "adjectives": [
+    "able", "agile", "alert", "alive", "amaze", 
+    "angel", "apt", "awe", "best", "bliss",
+    "bold", "brave", "bright", "calm", "charm",
+    "clean", "clear", "cool", "cute", "dear",
+    "eager", "elate", "epic", "fair", "faith",
+    "fine", "fresh", "fun", "glad", "glow",
+    "good", "grace", "grand", "happy", "honest",
+    "humor", "ideal", "jolly", "joy", "just",
+    "keen", "kind", "lively", "loved", "lucky",
+    "magic", "merry", "moral", "neat", "noble",
+    "peace", "perky", "plush", "prime", "proud",
+    "quick", "radiant", "ready", "real", "rich",
+    "right", "sharp", "shine", "sleek", "smart",
+    "smile", "solid", "sound", "spark", "spicy",
+    "suave", "sweet", "swift", "tidy", "tough",
+    "true", "trusty", "upbeat", "vivid", "warm",
+    "wealth", "witty", "wise", "worthy", "zesty"
+  ],
+  "animals": [
+    "alpaca", "ant", "bison", "bee", "beetle",
+    "bird", "bunny", "camel", "carp", "cat",
+    "cheetah", "chicken", "clam", "cobra", "cod",
+    "cougar", "crab", "crane", "crow", "deer",
+    "dingo", "dove", "duck", "eagle", "eel",
+    "egret", "elephant", "finch", "fish", "fowl",
+    "fox", "frog", "gecko", "gibbon", "goat",
+    "goose", "gorilla", "guppy", "heron", "horse",
+    "hen", "iguana", "jackal", "jaguar", "koala",
+    "lamb", "lemur", "leopard", "lizard", "llama",
+    "lynx", "mole", "moose", "mouse", "newt",
+    "orca", "otter", "owl", "panda", "parrot",
+    "peacock", "pelican", "penguin", "pigeon",
+    "pony", "quail", "rabbit", "rainbow", "ram",
+    "rat", "raven", "robin", "rooster", "sheep",
+    "sloth", "snail", "snake", "sparrow", "squid",
+    "swan", "tiger", "toad", "trout", "tuna",
+    "wombat", "yak", "zebra"
+  ]
+}

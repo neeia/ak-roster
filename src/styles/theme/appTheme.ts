@@ -1,66 +1,172 @@
-import { grey, red, yellow } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
-const appTheme = (mode: "light" | "dark") => createTheme({
+declare module '@mui/material/styles' {
+  interface Theme {
+    status: {
+      danger: string;
+    };
+  }
+  // allow configuration using `createTheme`
+  interface ThemeOptions {
+    status?: {
+      danger?: string;
+    };
+  }
+}
+
+const neutral = {
+  50: "#F2F2F2",
+  100: "#E3E3E3",
+  200: "#C7C7C7",
+  300: "#ADADAD",
+  400: "#919191",
+  500: "#707070",
+  600: "#595959",
+  700: "#303030",
+  800: "#212121",
+  900: "#121212",
+  950: "#0D0D0D"
+};
+
+export const DISCORD_BLURPLE = "#5865F2";
+export const GITHUB_LIGHT = "#FAFBFC";
+export const GITHUB_DARK = "#24292E";
+export const KOFI_BLUE = "#29ABE0";
+
+export const brand: Record<string, string> = {
+  DEFAULT: "#FFD440",
+  "/data": "#FFD440",
+  "/network": "#FF8FD1",
+  "/tools": "#E399FF",
+  "/community": "#949DF9",
+  // "0": "#FF6E40",
+}
+
+const appTheme = (brandColor: string) => createTheme({
+  // breakpoints: {
+  //   unit: "rem",
+  //   values: {
+  //     xs: 0,
+  //     sm: 40,
+  //     md: 55,
+  //     lg: 75,
+  //     xl: 96,
+  //   },
+  // },
   palette: {
-    mode,
+    mode: "dark",
     primary: {
-      main: "#ffd440",
-      light: "#fed480",
-      dark: "#fbc02d",
-    },
-    secondary: {
-      main: yellow[700],
-      light: yellow[700],
-      dark: yellow[700],
-    },
-    error: {
-      main: red[500],
-      light: red[500],
-      dark: "#362122",
-    },
-    warning: {
-      main: yellow[700],
-      light: yellow[700],
-      dark: yellow[700],
-    },
-    info: {
-      main: "#303030",
-      light: "#363635",
-      dark: "#292928",
-    },
-    success: {
-      main: "#90EE90",
-      light: yellow[700],
-      dark: "green",
-    },
-    background: {
-      default: "#212121",
-      paper: "#121212",
+      main: brandColor,
     },
     text: {
-      primary: '#fff',
-      secondary: grey[400],
+      primary: neutral[50],
+      secondary: neutral[200],
+    },
+    background: {
+      default: neutral[800],
+      paper: neutral[900],
+      light: neutral[700],
+    },
+    grey: neutral
+  },
+  components: {
+    MuiAlert: {
+      defaultProps: {
+        variant: "outlined"
+      }
+    },
+    MuiAutocomplete: {
+      styleOverrides: {
+        listbox: {
+          "& .MuiAutocomplete-option": {
+            minHeight: "40px",
+            padding: "8px 16px",
+            backgroundColor: neutral[700],
+            borderRadius: "9999px",
+            display: "flex",
+            gap: "8px",
+            alignItems: "center",
+            lineHeight: "1"
+          },
+        },
+      }
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          paddingRight: "32px",
+          paddingLeft: "16px"
+        }
+      }
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+        }
+      }
+    },
+    MuiToggleButtonGroup: {
+      defaultProps: {
+        color: "primary",
+      },
+      styleOverrides: {
+        root: {
+          backgroundColor: neutral[800],
+        }
+      }
+    },
+    MuiToggleButton: {
+      styleOverrides: {
+        root: {
+          "&.Mui-selected": {
+            borderBottomStyle: "solid",
+            borderBottomWidth: "0.25rem",
+            borderBottomColor: brandColor,
+          }
+        },
+      }
+    },
+    MuiLink: {
+      defaultProps: {
+        color: "inherit",
+        underline: "hover",
+        fontFamily: `"Lato", sans-serif`,
+      },
+      styleOverrides: {
+        root: {
+          "&[aria-disabled='true']": {
+            color: neutral[300],
+            opacity: 0.8,
+            pointerEvents: "none",
+          },
+        }
+      }
+    },
+    MuiPaper: {
+      defaultProps: {
+        elevation: 0
+      }
     }
   },
   typography: {
+    allVariants: {
+      fontFamily: `"Lato", sans-serif`,
+    },
     caption: {
       margin: 0,
-      fontFamily: `"Roboto","Helvetica","Arial", sans-serif`,
       fontWeight: 400,
       fontSize: "0.875rem",
       lineHeight: 1.66,
     },
     caption2: {
       margin: 0,
-      fontFamily: `"Roboto","Helvetica","Arial", sans-serif`,
       fontWeight: 400,
       fontSize: "0.675rem",
       lineHeight: 1.66,
     },
     caption3: {
       margin: 0,
-      fontFamily: `"Roboto","Helvetica","Arial", sans-serif`,
       fontWeight: 400,
       fontSize: "0.6rem",
     },
@@ -68,7 +174,14 @@ const appTheme = (mode: "light" | "dark") => createTheme({
       fontSize: "4rem",
     },
     h2: {
-      fontSize: "2.5rem",
+      fontSize: "2rem",
+    },
+    h3: {
+      fontSize: "1rem",
+      lineHeight: 1,
+      fontWeight: "normal",
+      color: neutral[200],
+      marginLeft: "8px",
     },
     h4: {
       fontWeight: "normal",
@@ -84,7 +197,12 @@ const appTheme = (mode: "light" | "dark") => createTheme({
 
 export default appTheme;
 
+
 declare module '@mui/material/styles' {
+  interface TypeBackground {
+    light: string;
+  }
+
   interface TypographyVariants {
     caption2: React.CSSProperties;
     caption3: React.CSSProperties;
@@ -105,3 +223,11 @@ declare module '@mui/material/Typography' {
   }
 }
 
+export const interactive = {
+  transition: "filter 0.1s",
+  ":hover": { filter: "brightness(110%)" },
+}
+
+export const focused = {
+  boxShadow: "inset 0px 0px 0px 2px white"
+}

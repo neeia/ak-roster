@@ -56,3 +56,14 @@ export function repair(ops: Record<string, Operator>, setOps: (v: Record<string,
   setOps(rooster);
 
 }
+
+function useOperators() {
+  const [operators, setOperators] = useLocalStorage<Record<string, Operator>>("operators", Object.fromEntries(
+    Object.entries(operatorJson).map(defaultOperatorObject)
+  ));
+  useEffect(() => {
+    repair(operators, setOperators);
+  }, [])
+  return [operators, setOperators] as const
+}
+export default useOperators;

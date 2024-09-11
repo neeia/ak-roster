@@ -2,29 +2,37 @@
   Autocomplete,
   TextField,
   Grid,
-  Chip,
   SxProps,
   Theme,
-  Popper,
   Container,
   Box,
   Paper,
   Checkbox,
   FormControlLabel,
+  Typography,
+  Popper,
+  Collapse,
+  IconButton,
 } from "@mui/material";
 import { Instance } from "@popperjs/core";
 import { Combination } from "js-combinatorics";
 import { NextPage } from "next";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import recruitmentJson from "data/recruitment.json";
 import Layout from "components/Layout";
-import RecruitableOperatorChip from "components/recruit/RecruitableOperatorChip";
 import classList from "data/classList";
 import useLocalStorage from "util/useLocalStorage";
 import RecruitableOperatorCard from "components/recruit/RecruitableOperatorCard";
-import { useAppSelector } from "store/hooks";
-import { selectRoster } from "store/rosterSlice";
+import { rosterApi, useRosterGetQuery } from "store/extendRoster";
+import { SessionContext } from "pages/_app";
+import { skipToken } from "@reduxjs/toolkit/query";
+import { defaultOperatorObject } from "util/changeOperator";
+import Board from "components/base/Board";
+import Chip from "components/base/Chip";
+import Image from "components/base/Image";
+import { focused } from "styles/theme/appTheme";
+import { ZoomOutMap } from "@mui/icons-material";
 
 const TAGS_BY_CATEGORY = {
   Rarity: ["Top Operator", "Senior Operator", "Starter", "Robot"],
@@ -57,6 +65,13 @@ const TAGS_BY_CATEGORY = {
   ],
 };
 
+const chipContainerStyles: SxProps<Theme> = {
+  display: "flex",
+  alignItems: "center",
+  gap: 1,
+  flexWrap: "wrap",
+};
+
 function getTagCombinations(activeTags: string[]) {
   if (activeTags.length === 0) {
     return [];
@@ -74,44 +89,30 @@ interface Tag {
   value: string;
 }
 
+const options: Tag[] = Object.entries(TAGS_BY_CATEGORY).flatMap(([type, tagArray]) =>
+  tagArray.flatMap((tag) => ({ type, value: tag }))
+);
+
 const Recruit: NextPage = () => {
-  const operators = useAppSelector(selectRoster);
+  const session = useContext(SessionContext);
+  const { data: roster } = useRosterGetQuery(session ? { user_id: session.user.id } : skipToken);
 
-  const options: Tag[] = Object.entries(TAGS_BY_CATEGORY).flatMap(([type, tagArray]) =>
-    tagArray.flatMap((tag) => ({ type, value: tag }))
-  );
   const [activeTags, setActiveTags] = useState<Tag[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
   const [inputNode, setInputNode] = useState<HTMLInputElement | null>(null);
-  const [resultPaddingTop, setResultPaddingTop] = useState(0);
-  const popperRef = useRef<Instance>(null);
-
-  const activeTagCombinations = getTagCombinations([...activeTags]
-    .sort((a, b) => a.value.localeCompare(b.value))
-    .map(tag => tag.value));
-
-  const matchingOperators = useMemo(() => activeTagCombinations
-    .map(
-      (tags) => {
-        console.log(`${tags}`)
-        return recruitmentJson[`${tags}` as keyof typeof recruitmentJson]
-      }
-    )
-    .filter((result) => result != null),
-    [activeTagCombinations]
-  );
-
   useEffect(() => {
     if (inputNode != null) {
       inputNode.focus();
     }
   }, [inputNode]);
 
-  useEffect(() => {
-    if (!isOpen) {
-      setResultPaddingTop(0);
-    }
-  }, [isOpen]);
+  const matchingOperators = useMemo(() => getTagCombinations([...activeTags]
+    .sort((a, b) => a.value.localeCompare(b.value))
+    .map(tag => tag.value)
+  )
+    .map((tags) => recruitmentJson[`${tags}` as keyof typeof recruitmentJson])
+    .filter((result) => result != null),
+    [activeTags]
+  );
 
   const handleTagsChanged = (
     _: unknown,
@@ -123,107 +124,111 @@ const Recruit: NextPage = () => {
     if (selectedOptions.length <= 5) {
       setActiveTags(selectedOptions);
     }
-    setIsOpen(selectedOptions.length !== 5);
   };
 
-  const chipContainerStyles: SxProps<Theme> = {
-    display: "flex",
-    alignItems: "center",
-    gap: (theme) => theme.spacing(1),
-    flexWrap: "wrap",
-  };
 
   const isServer = () => typeof window === `undefined`;
 
+  const [open, setOpen] = useState(true);
+
   const [showPotentials, setShowPotentials] = useState(false);
-  const [compact, setCompact] = useState(true);
   const [bonuses, setBonuses] = useState(false);
   const [_showPotentials, _setShowPotentials] = useLocalStorage("recruitShowPotential", false);
-  const [_compact, _setCompact] = useLocalStorage("recruitCompactMode", true);
   const [_bonuses, _setBonuses] = useLocalStorage("recruitShowBonuses", false);
   useEffect(() => {
     setShowPotentials(_showPotentials);
-    setCompact(_compact);
     setBonuses(_bonuses)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  console.log("asdf")
+
   return (
     <Layout tab="/tools" page="/recruit">
-      <Container maxWidth="md">
-        <Autocomplete
-          options={options}
-          multiple
-          autoHighlight
-          openOnFocus
-          open={isOpen}
-          onOpen={() => setIsOpen(true)}
-          onClose={() => setIsOpen(false)}
-          groupBy={(option) => option.type}
-          getOptionLabel={(option) => option.value}
-          disableCloseOnSelect
-          value={activeTags}
-          onChange={handleTagsChanged}
-          isOptionEqualToValue={(option, value) => option.value === value.value}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Available recruitment tags"
-              inputRef={setInputNode}
-            />
-          )}
-          renderOption={(props, option) =>
-            <Box
-              {...props}
-              component="li"
-            >
-              {classList.includes(option.value)
-                ? <Box component="img" sx={{ width: "2.5rem", height: "2.5rem" }} src={`/img/classes/class_${option.value.toLowerCase()}.png`} alt={option.value} />
-                : option.value}
-            </Box>
-          }
-          PaperComponent={(props) => (
-            <Paper
-              {...props}
-              sx={{
-                "& .MuiAutocomplete-groupUl": {
+      <Box sx={{ display: "flex", gap: "32px", justifyContent: "center", }}>
+        <Board title="Tags" TitleAction={<IconButton onClick={() => setOpen(o => !o)}><ZoomOutMap /></IconButton>} sx={{
+          maxWidth: "sm",
+          "&:focus-within .MuiAutocomplete-option.Mui-focused": {
+            ...focused
+          },
+        }}>
+          <Collapse collapsedSize="0px" in={open}>
+            <Autocomplete multiple options={options} value={activeTags}
+              open
+              autoHighlight
+              disableCloseOnSelect
+              disablePortal
+              groupBy={(option) => option.type}
+              getOptionLabel={(option) => option.value}
+              isOptionEqualToValue={(option, value) => option.value === value.value}
+              onChange={handleTagsChanged}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  InputProps={{ ...params.InputProps, endAdornment: null }}
+                  label="Selected tags"
+                  inputRef={setInputNode}
+                />
+              )}
+              renderGroup={(params) =>
+                <Box component="li" key={params.key}>
+                  <Typography variant="h3" className="MuiAutocomplete-groupLabel" sx={{ mb: "8px" }}>
+                    {params.group}
+                  </Typography>
+                  <Box component="ul"
+                    className="MuiAutocomplete-groupUl"
+                    sx={{
+                      p: 0,
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "8px 16px"
+                    }}
+                  >
+                    {params.children}
+                  </Box>
+                </Box>
+              }
+              renderOption={(props, option) =>
+                <Box {...props} component="li">
+                  {classList.includes(option.value)
+                    ? <Image sx={{ width: "1.5rem", height: "1.5rem" }} src={`/img/classes/class_${option.value.toLowerCase()}.png`} alt={option.value}></Image>
+                    : null}
+                  {option.value}
+                </Box>
+              }
+              ListboxProps={{
+                sx: {
                   display: "flex",
-                  flexWrap: "wrap",
-                },
-                "& .MuiAutocomplete-listbox": {
+                  flexDirection: "column",
+                  gap: "24px",
                   padding: 0,
-                },
-                "& .MuiAutocomplete-option": {
-                  px: "16px !important",
+                  height: "max-contents",
+                  maxHeight: "none",
+                  my: 2,
                 }
               }}
-            >
-            </Paper>
-          )}
-          PopperComponent={(props) => (
-            <Popper
-              {...props}
-              popperRef={popperRef}
-              modifiers={[
-                {
-                  name: "sizeObserver",
-                  enabled: true,
-                  phase: "read",
-                  fn: (data) => {
-                    setResultPaddingTop(data.state.rects.popper.height);
-                  },
-                },
-              ]}
-              sx={{ zIndex: "1000 !important" }}
+              PopperComponent={(props) => (
+                <Popper {...props} sx={{
+                  position: "static !important",
+                  height: "max-content !important",
+                  transform: "none !important",
+                  width: "100% !important",
+                  zIndex: "0 !important",
+                }} />
+              )}
             />
-          )}
-        />
-        <div style={{ paddingTop: resultPaddingTop }}>
+          </Collapse>
+        </Board>
+        <Board title="Results" sx={{
+          maxWidth: "md",
+          "&:focus-within .MuiAutocomplete-option.Mui-focused": {
+            ...focused
+          },
+        }}>
           <Box sx={{
             display: "flex",
-            paddingTop: 1,
             "& span": {
-              lineHeight: 1.1
+              lineHeight: 1.1,
             }
           }}>
             <FormControlLabel
@@ -232,13 +237,6 @@ const Recruit: NextPage = () => {
                 onChange={(e) => { setShowPotentials(e.target.checked); _setShowPotentials(e.target.checked); }}
               />}
               label="Show Potentials"
-            />
-            <FormControlLabel
-              control={<Checkbox
-                checked={compact}
-                onChange={(e) => { setCompact(e.target.checked); _setCompact(e.target.checked); }}
-              />}
-              label="Compact Mode"
             />
             <FormControlLabel
               control={<Checkbox
@@ -262,123 +260,76 @@ const Recruit: NextPage = () => {
                 ) || tagSetB.length - tagSetA.length
             )
             .map(({ tags, operators, guarantees }) => (
-              <Grid
-                container
-                key={tags.join(",")}
-                spacing={2}
+              <Box key={tags.join(",")}
                 sx={{
-                  my: 2,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
                   "& ~ &": {
-                    pt: 2,
                     borderTop: "1px solid #4d4d4d",
                   },
                 }}
               >
-                <Grid
-                  item
-                  xs={12}
-                  sm={3}
-                  sx={[
-                    chipContainerStyles,
-                    {
-                      justifyContent: {
-                        xs: "center",
-                        sm: "flex-end",
-                      },
-                    },
-                  ]}
-                >
+                <Box sx={chipContainerStyles}>
                   {guarantees.map((guaranteedRarity) => (
                     <Chip
                       key={`guaranteed${guaranteedRarity}`}
-                      label={`${guaranteedRarity}★`}
                       sx={{ background: "#fff", color: "#000" }}
-                    />
+                    >
+                      {`${guaranteedRarity}★`}
+                    </Chip>
                   ))}
                   {tags.map((tag) => (
-                    <Chip key={tag} label={tag} />
+                    <Chip key={tag}>
+                      {tag}
+                    </Chip>
                   ))}
+                </Box>
+                <Grid item xs={12}
+                  sx={{
+                    ...chipContainerStyles,
+                    display: "grid",
+                    gridArea: "box",
+                    gridTemplateColumns: `repeat(auto-fill, minmax(${showPotentials ? "108px" : "80px"}, 1fr))`,
+                    gridTemplateRows: "min-content",
+                    justifyContent: "center",
+                    gap: { xs: 0.5, sm: 1 },
+                    margin: 0,
+                    padding: 0,
+                    "& .MuiTypography-root": {
+                      display: "flex",
+                      lineHeight: "1.25rem",
+                      color: "text.primary",
+                      letterSpacing: "normal",
+                      textTransform: "none",
+                      pointerEvents: "none",
+                      flexDirection: "column",
+                      mx: "-1rem",
+                      textAlign: "center",
+                    },
+                    "& .max-pot": {
+                      opacity: 0.75
+                    }
+                  }}
+                >
+                  {!isServer() && [...operators]
+                    .sort((a, b) => (a.rarity - b.rarity)
+                      || (roster
+                        ? (a.id in roster ? roster[a.id].potential : 0)
+                        - (b.id in roster ? roster[b.id].potential : 0)
+                        : 0))
+                    .map((operator) => (
+                      <RecruitableOperatorCard op={roster?.[operator.id] ?? defaultOperatorObject(operator.id)}
+                        key={operator.id}
+                        showPotentials={showPotentials}
+                        showBonus={bonuses}
+                      />
+                    ))}
                 </Grid>
-                {compact
-                  ? <Grid item xs={12} sm={9}
-                    sx={{
-                      ...chipContainerStyles,
-                      fontSize: (theme) => theme.typography.body1.fontSize,
-                      "& img": {
-                        borderRadius: "50% 0% 0% 40%",
-                      },
-                      "& .rarity-6": {
-                        backgroundColor: "#F9751A",
-                      },
-                      "& .rarity-5": {
-                        backgroundColor: "#fbae02",
-                      },
-                      "& .rarity-4": {
-                        backgroundColor: "#dbb1db",
-                      },
-                      "& .rarity-3": {
-                        backgroundColor: "#00b2f6",
-                      },
-                      "& .rarity-2": {
-                        backgroundColor: "#dce537",
-                      },
-                      "& .rarity-1": {
-                        backgroundColor: "#9f9f9f",
-                      },
-                    }}
-                  >
-                    {!isServer() && [...operators]
-                      .sort((a, b) => a.rarity - b.rarity || showPotentials ? operators[a.id].potential - operators[b.id].potential : 0)
-                      .map((operator) => (
-                        <RecruitableOperatorChip key={operator.id}
-                          op={operators[operator.id]}
-                          showPotentials={showPotentials}
-                          showBonus={bonuses}
-                        />
-                      ))}
-                  </Grid>
-                  : <Grid item xs={12} sm={9}
-                    sx={{
-                      ...chipContainerStyles,
-                      display: "grid",
-                      gridArea: "box",
-                      gridTemplateColumns: `repeat(auto-fill, minmax(${showPotentials ? "108px" : "80px"}, 1fr))`,
-                      gridTemplateRows: "min-content",
-                      justifyContent: "center",
-                      gap: { xs: 0.5, sm: 1 },
-                      margin: 0,
-                      padding: 0,
-                      "& .MuiTypography-root": {
-                        display: "flex",
-                        lineHeight: "1.25rem",
-                        color: "text.primary",
-                        letterSpacing: "normal",
-                        textTransform: "none",
-                        pointerEvents: "none",
-                        flexDirection: "column",
-                        mx: "-1rem",
-                        textAlign: "center",
-                      },
-                      "& .max-pot": {
-                        opacity: 0.75
-                      }
-                    }}
-                  >
-                    {!isServer() && [...operators]
-                      .sort((a, b) => a.rarity - b.rarity || showPotentials ? operators[a.id].potential - operators[b.id].potential : 0)
-                      .map((operator) => (
-                        <RecruitableOperatorCard op={operators[operator.id]}
-                          key={operator.id}
-                          showPotentials={showPotentials}
-                          showBonus={bonuses}
-                        />
-                      ))}
-                  </Grid>
-                }
-              </Grid>
+              </Box>
             ))}
-        </div>
-      </Container>
+        </Board>
+      </Box>
     </Layout>
   );
 };

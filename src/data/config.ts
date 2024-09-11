@@ -1,54 +1,45 @@
-const config = {
+const config: SiteCfg = {
   siteTitle: "Krooster",
-  siteUrl: "https://krooster.com/",
   siteDescription:
     "A collection and progress tracker for Arknights, a game developed by Hypergryph.",
   tabs: {
     "/data": {
       title: "Data",
-      description: "Input and Review Data",
+      requireLogin: true,
       pages: {
         "/input": {
           title: "Input",
-          description: "Enter data about owned operators.",
-          requireLogin: true,
+          description: "Enter data of owned operators.",
         },
         "/view": {
           title: "Collection",
           description: "View a summary of operator data.",
-          requireLogin: true,
-        }
-      }
-    },
-    "/account": {
-      title: "Account",
-      description: "Modify Account Details",
-      pages: {
+        },
         "/profile": {
           title: "Profile",
           description: "Share your in-game Doctor information.",
-          requireLogin: true,
         },
-        "/settings": {
-          title: "Settings",
-          description: "Make changes to account details.",
-          requireLogin: true,
-        }
+        "/planner": {
+          title: "Planner",
+          description: "Set goals for operators and calculate material costs.",
+        },
       }
     },
     "/network": {
       title: "Network",
-      description: "Krooster Community",
       pages: {
         "/lookup": {
           title: "Lookup",
           description: "Find other users.",
         },
+        "/support": {
+          title: "Support Search",
+          description: "Find support units to add as friends.",
+        },
       }
     },
     "/tools": {
       title: "Tools",
-      description: "Calculators and Tools",
       pages: {
         "/recruit": {
           title: "Recruitment",
@@ -64,17 +55,45 @@ const config = {
         }
       }
     },
-    "/planner": {
-      title: "Planner",
-      description: "Material calculator",
+    "": {
+      title: "",
+      exclude: true,
       pages: {
-        "/goals": {
-          title: "Goals",
-          description: "Set goals for operators and calculate material costs.",
+        "/settings": {
+          title: "Settings",
+          description: "Change your account settings.",
           requireLogin: true,
+          noIndex: true,
+        },
+        "/login": {
+          title: "Login",
+          description: "Log in to Krooster.",
+        },
+        "/register": {
+          title: "Register",
+          description: "Sign up for a Krooster account!",
         },
       }
     },
+
   },
 };
 export default config;
+
+type SiteCfg = {
+  siteTitle: string;
+  siteDescription: string;
+  tabs: Record<string, SiteTab>;
+}
+type SiteTab = {
+  title: string;
+  requireLogin?: boolean;
+  pages: Record<string, SiteNode>;
+  exclude?: boolean;
+}
+type SiteNode = {
+  title: string;
+  description: string;
+  requireLogin?: boolean;
+  noIndex?: boolean;
+}

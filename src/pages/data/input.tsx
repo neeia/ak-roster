@@ -3,20 +3,19 @@ import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { Box, ButtonGroup, IconButton, Typography } from "@mui/material";
 import Layout from "components/Layout";
-import SearchDialog from "components/collate/SearchDialog";
-import FilterDialog from "components/collate/FilterDialog";
-import SortDialog from "components/collate/SortDialog";
+import SearchDialog from "components/data/collate/SearchDialog";
+import FilterDialog from "components/data/collate/FilterDialog";
+import SortDialog from "components/data/collate/SortDialog";
 import { useSort, useFilter } from "util/useSSF";
-import { OperatorData, OperatorId } from "types/operator";
+import { Operator, OperatorData, OperatorId } from "types/operator";
 import usePresets from "util/usePresets";
 import { ArrowBack } from "@mui/icons-material";
 import { AccountInfo, isCN } from "types/doctor";
 import useLocalStorage from "util/useLocalStorage";
-import supabaseClient from "util/supabaseClient";
+import supabase from "supabase/supabaseClient";
 import { Session } from "@supabase/supabase-js";
 import { keyframes } from '@mui/system';
-import { useRosterGetQuery } from "store/extendRoster";
-import { defaultOperatorObject } from "util/changeOperator";
+import useOperators from "util/useOperators";
 
 const shimmer = keyframes`
   0% {
@@ -28,17 +27,17 @@ const shimmer = keyframes`
 `;
 
 const EditOperator = dynamic(
-  () => import("components/input/EditOperator"),
+  () => import("components/data/input/EditOperator"),
   { ssr: false }
 );
 const OperatorSelector = dynamic(
-  () => import("components/input/OperatorSelector"),
+  () => import("components/data/input/OperatorSelector"),
   { ssr: false }
 );
+
 const Input: NextPage = () => {
 
-  const { data: operators, error, isSuccess } = useRosterGetQuery(undefined);
-
+  const [operators, setOperators] = useOperators();
   const [presets, changePreset, rename] = usePresets();
   const [batch, setBatch] = useState(false);
   const [preset, setPreset] = useState("");
@@ -58,13 +57,21 @@ const Input: NextPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // const [session, setSession] = useState<Session | null>(null);
-  // useEffect(() => {
-  //   supabaseClient.auth.getSession().then(({ data }) => {
-  //     setSession(data.session);
-  //   });
-  // }, []);
+  const [session, setSession] = useState<Session | null>(null);
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      setSession(data.session);
+    });
+  }, []);
+  
+  const onChange = (op: Operator) => {
+    const copyOperators = { ...operators };
+    copyOperators[op.op_id] = { ...op };
+    if (session) {
 
+    }
+    setOperators(copyOperators);
+  };
 
   // const applyBatch = React.useCallback(
   //   (source: Operator, target: string[], safeMode?: boolean) => {
@@ -288,7 +295,8 @@ const Input: NextPage = () => {
             toggleGroup={batch ? selectGroup : undefined}
           />
           <EditOperator
-            op_id={opId}
+            op={operators[opId]}
+            changeOperator={onChange}
             open={editOpen}
             onClose={() => setEditOpen(false)}
           />

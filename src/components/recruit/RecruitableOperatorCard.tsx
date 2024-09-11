@@ -6,7 +6,7 @@ import { Favorite } from "@mui/icons-material";
 import getTextWidth from "styles/getTextWidth";
 import appTheme from "styles/theme/appTheme";
 import Image from "next/image";
-import operatorJson from "data/operators.json";
+import operatorJson from "data/operators";
 
 const WIDTH_TO_PX = 10 / 7;
 const LONG_CUTOFF = 75;
@@ -54,9 +54,9 @@ interface Props {
 const RecruitableOperatorCard = React.memo((props: Props) => {
   const { op, showPotentials, showBonus } = props;
 
-  const [n, t] = op.name.split(/ [Tt]he /g);
+  const [n, t] = operatorJson[op.op_id].name.split(/ [Tt]he /g);
   const name = t ?? n;
-  const width = getTextWidth(name, JSON.stringify(appTheme.typography.caption).replace(/[\{\}]+/g, "")) * WIDTH_TO_PX;
+  const width = getTextWidth(name, JSON.stringify(appTheme("#ffffff").typography.caption).replace(/[\{\}]+/g, "")) * WIDTH_TO_PX;
 
   const nameComponent =
     <Typography
@@ -69,7 +69,7 @@ const RecruitableOperatorCard = React.memo((props: Props) => {
     </Typography>
   // Process operator name
   let opName = (t
-    ? <abbr title={op.name}>
+    ? <abbr title={operatorJson[op.op_id].name}>
       {nameComponent}
     </abbr>
     : nameComponent
@@ -83,7 +83,8 @@ const RecruitableOperatorCard = React.memo((props: Props) => {
         listStyleType: "none",
         display: "grid",
         boxShadow: 2,
-        backgroundColor: { xs: "info.dark", sm: "info.main" },
+        borderRadius: "4px",
+        backgroundColor: "background.light",
         width: "100%",
         height: "min-content",
         justifyContent: "center",
@@ -96,7 +97,7 @@ const RecruitableOperatorCard = React.memo((props: Props) => {
           height: "calc(4rem + 3px)",
           width: "4rem",
           gridArea: "1 / 1",
-          borderBottom: `3px solid ${rarityColors[op.rarity]}`,
+          borderBottom: `3px solid ${rarityColors[operatorJson[op.op_id].rarity]}`,
           position: "relative",
         }}
       >

@@ -4,7 +4,7 @@
   "description": "Roster tracker for Arknights, a game developed by Hypergryph.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#272727",
+  "background_color": "#121212",
   "theme_color": "#ffd440",
   "orientation": "portrait-primary",
   "version": "2.6.2",

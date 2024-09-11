@@ -9,10 +9,10 @@ import {
 import {
   Box,
   Button,
+  CircularProgress,
   Collapse,
   Divider,
   Drawer,
-  Link,
   List,
   ListItem,
   ListItemButton,
@@ -21,21 +21,24 @@ import {
   Typography,
 } from "@mui/material";
 import NextLink from "next/link";
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import config from "data/config";
 import DiscordInvite from "./app/DiscordInvite";
-import LoginButton from "./app/LoginDialog";
-import PatchNotes from "./app/PatchNotes";
-import RegisterButton from "./app/RegisterDialog";
-import Image from "next/image";
-import supabaseClient from "../util/supabaseClient";
-import {Session} from "@supabase/gotrue-js";
-import {useRouter} from "next/router";
+import LoginForm from "./app/LoginDialog";
+import RegisterForm from "./app/RegisterDialog";
+import { useRouter } from "next/router";
+import Logo from "./app/Logo";
+import AccountContextMenu from "./app/AccountContextMenu";
+import { SessionContext } from "pages/_app";
+import { skipToken } from "@reduxjs/toolkit/query";
+import { useAccountGetQuery, useAccountUpdateMutation } from "store/extendAccount";
+import { interactive } from "styles/theme/appTheme";
+import Link from "./base/Link";
+import randomName from "util/randomName";
 
 const DRAWER_WIDTH_PX = 220;
 const ICON_BY_PATH = [
   <Description key="d" height="1.5rem" />,
-  <ManageAccounts key="a" height="1.5rem" />,
   <PersonSearch key="c" height="1.5rem" />,
   <svg
     key="0"
@@ -51,7 +54,6 @@ const ICON_BY_PATH = [
       m4 0v2h2v-2h-2m4 0v2h2v-2h-2m-8 4v2h2v-2H7m4 0v2h2v-2h-2m4 0v2h2v-2h-2Z"
     />
   </svg>,
-  <Image key="p" src="/img/icons/rock.svg" alt="" width={24} height={24} />,
 ];
 
 interface ConfigPage {
@@ -88,231 +90,168 @@ interface Props {
   onDrawerToggle: () => void;
 }
 
-const AppDrawer: React.FC<Props> = React.memo((props) => {
+const AppDrawer = React.memo((props: Props) => {
   const { tab, page, open, onDrawerToggle } = props;
-  const { siteTitle, siteUrl, tabs } = config;
-  const { title: currentTab, pages } = tabs[tab as keyof typeof tabs];
-  const { title: currentPage } = pages[page as keyof typeof pages] ?? {};
+  const { tabs } = config;
+  const { title: currentTab, pages, requireLogin: r1 } = tabs[tab];
+  const { title: currentPage, requireLogin: r2 } = pages[page];
+  const requireLogin = r1 || r2;
 
-  // const [, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
-  // const [, setSocial] = useLocalStorage<AccountInfo>("connections", {});
-
-  //const [user, setUser] = useState<User | null>();
-  const router = useRouter();
-  const [session, setSession] = useState<Session | null>();
-
-  const getUser = useCallback(async () => {
-    const {data} = await supabaseClient.auth.getSession();
-    setSession(data.session);
-  }, []);
-
+  const session = useContext(SessionContext);
+  const [username, setUsername] = useState<string | null>();
+  const { data: accountData, isSuccess } = useAccountGetQuery(session ? { user_id: session.user.id } : skipToken);
   useEffect(() => {
-    getUser().then();
-    // const db = getDatabase();
-    // getUserStatus().then((user) => {
-    //   setUser(user);
-    // });
-    //const auth = getAuth();
+    if (session && accountData) {
+      if (accountData.display_name) {
+        setUsername(accountData.display_name);
+      }
+      else if (!accountData.display_name) {
+        const genName = randomName();
+        const [trigger, out] = useAccountUpdateMutation();
+        trigger({ user_id: session.user.id, username: genName, display_name: genName, private: false, });
+      }
+    }
+    if (!session && requireLogin) router.push("/");
+  }, [accountData])
 
-    // supabaseClient.auth.onAuthStateChange((event, session) => {
-    //   console.log("event: " + event);
-    // });
-    // onAuthStateChanged(auth, (user) => {
-    //   if (user) {
-    //     set(ref(db, `users/${user.uid}/time/`), Date.now());
-    //     get(ref(db, `users/${user.uid}/info/`)).then((s1) => {
-    //       if (s1.exists()) {
-    //         setDoctor(s1.val());
-    //       }
-    //     });
-    //     get(ref(db, `users/${user.uid}/connections/`)).then((s1) => {
-    //       if (s1.exists()) {
-    //         setSocial(s1.val());
-    //       }
-    //     });
-    //   }
-    //   setUser(user);
-    // });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getUser]);
-
-  const onLogin = (session: Session) => {
-    setSession(session);
-  }
+  const router = useRouter();
 
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
 
   const drawerContent = (
-    <>
-      <NextLink href={`/`}>
-        <Typography
-          component="h1"
-          variant="h4"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            WebkitTextStroke: "1.5px #121212",
-            fontWeight: 700,
-            fontSize: "2.5rem",
-            marginBottom: 1,
-            letterSpacing: "-2px",
-          }}
-        >
-          <Box
-            sx={{
-              display: "block",
-              mx: "auto",
-              marginBottom: "-1.1em",
-              zIndex: -1,
-            }}
-          >
-            <Image
-              src="/res/title/celebration.png"
-              width="160"
-              height="172"
-              alt="Krooster"
-            />
-          </Box>
-          {siteTitle}
-        </Typography>
-      </NextLink>
+    <Box sx={{ height: "100%", maxHeight: "100%", overflow: "hidden", display: "flex", flexDirection: "column", gap: "16px", py: "16px" }}>
+      <Logo hideSubtitle
+        sx={{ width: "100%", height: "200px", }}
+        LinkProps={{ sx: { position: "relative" } }}
+      >
+        <Typography sx={{ position: "absolute", fontSize: "0.625rem", lineHeight: 0, bottom: 7.5, right: 8, }}>3.0</Typography>
+      </Logo>
       <Divider />
       <Box
         sx={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          display: "flex",
+          flexDirection: "column",
           gap: "4px",
-          m: "4px",
         }}
       >
         {!session ? (
-          <>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "4px",
+            }}
+          >
             <Button onClick={() => setLogin(true)}>Log In</Button>
             <Button onClick={() => setRegister(true)}>Register</Button>
-          </>
+          </Box>
         ) : null}
-        <LoginButton open={login} onClose={() => setLogin(false)} onLogin={onLogin}>
-          <Button
-            onClick={() => {
-              setRegister(true);
-              setLogin(false);
-            }}
-            sx={{ color: "text.secondary" }}
-          >
-            Sign Up Instead
-          </Button>
-        </LoginButton>
-        <RegisterButton open={register} onClose={() => setRegister(false)} onLogin={onLogin}>
-          <Button
-            onClick={() => {
-              setRegister(false);
-              setLogin(true);
-            }}
-            sx={{ color: "text.secondary" }}
-          >
-            Log In Instead
-          </Button>
-        </RegisterButton>
+        <LoginForm open={login} onClose={() => setLogin(false)} />
+        <RegisterForm open={register} onClose={() => setRegister(false)} />
         {session ? (
-          <Button
-            sx={{ gridColumn: "span 2" }}
-            onClick={async () => {
-              await supabaseClient.auth.signOut();
-              //needed to redirect after logout
-              await router.push("/")
-            }}
-          >
-            Log Out
-          </Button>
+          <>
+            <Box sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+              width: "100%",
+              maxWidth: "600px",
+              backgroundColor: "background.paper",
+              borderRadius: 1,
+              px: 2,
+            }}>
+              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <Box sx={{ display: "flex", flexDirection: "column" }}>
+                  <Typography sx={{ fontSize: "0.875rem", color: "text.secondary" }}>Signed in as</Typography>
+                  <Box sx={{ display: "flex", gap: 1 }}>
+                    {username ?? <CircularProgress size={24} />}
+                  </Box>
+                </Box>
+                <AccountContextMenu />
+              </Box>
+            </Box>
+          </>
         ) : null}
       </Box>
       <Divider />
-      <List>
-        {Object.entries(tabs).map(
-          ([tabPath, { title: tabTitle, pages }], i: number) => (
-            <ListItemTab
-              key={i}
-              tabTitle={tabTitle}
-              startOpen={tabTitle === currentTab}
-              icon={ICON_BY_PATH[i]}
-            >
-              {Object.entries(pages).map(
-                ([pagePath, pg]: [string, ConfigPage]) => (
-                  <ListItem
-                    key={pg.title}
-                    sx={{
-                      p: 0,
-                      "& .Mui-focusVisible": {
-                        color: "#fff",
-                      },
-                    }}
-                  >
-                    <ListItemIcon sx={{ minWidth: 0, pr: 1, pl: 3 }}>
-                      <ArrowRight height="1.5rem" />
-                    </ListItemIcon>
-                    <ListItemButton
-                      tabIndex={-1}
+      <List sx={{
+        height: "100%",
+        overflowY: "auto",
+        scrollbarColor: "#6b6b6b transparent",
+        scrollbarWidth: "thin",
+        '*::-webkit-scrollbar': {
+          width: "12px"
+        },
+        '*::-webkit-scrollbar-track': {
+          background: "transparent",
+        },
+        '*::-webkit-scrollbar-thumb': {
+          backgroundColor: "#6b6b6b",
+          borderRadius: 4,
+          border: "transparent",
+          outline: "transparent",
+        },
+      }}>
+        {Object.entries(tabs)
+          .filter(([_, { exclude }]) => !exclude)
+          .map(
+            ([tabPath, { title: tabTitle, pages }], i: number) => (
+              <ListItemTab
+                key={i}
+                tabTitle={tabTitle}
+                startOpen={tabTitle === currentTab}
+                icon={ICON_BY_PATH[i]}
+              >
+                {Object.entries(pages).map(
+                  ([pagePath, pg]: [string, ConfigPage]) => (
+                    <ListItem key={pg.title}
+                      disablePadding
                       sx={{
-                        p: 0,
                         ...(currentPage === pg.title && {
-                          bgcolor: "primary.main",
-                          ":hover": {
-                            bgcolor: "primary.main",
-                            filter: "brightness(110%)",
-                          },
+                          borderLeftWidth: "8px",
+                          borderLeftStyle: "solid",
+                          borderColor: "primary.main",
+                          fontWeight: "bold",
                         }),
                       }}
-                      disabled={pg.requireLogin && !session}
                     >
-                      <Link component={NextLink}
-                        href={`${tabPath}${pagePath}`}
+                      <ListItemButton component="a" href={`${tabPath}${pagePath}`}
                         sx={{
-                          display: "block",
-                          width: "100%",
-                          px: 2,
-                          py: 1.5,
-                          ...(currentPage === pg.title && {
-                            color: "background.paper",
-                            fontWeight: "bold",
-                          }),
+                          p: 0,
+                          ...(currentPage === pg.title && interactive),
                         }}
-                        variant="body2"
                       >
-                        {pg.title}
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                )
-              )}
-            </ListItemTab>
-          )
-        )}
+                        <ListItemIcon sx={{ minWidth: 0, pr: 1, pl: 3 }}>
+                          <ArrowRight height="1.5rem" />
+                        </ListItemIcon>
+                        <ListItemText
+                          sx={{
+                            display: "block",
+                            width: "100%",
+                            px: 1,
+                            py: 2,
+                            m: 0,
+                          }}
+                          primaryTypographyProps={{
+                            sx: {
+                              fontSize: "1rem",
+                              lineHeight: 1,
+                            }
+                          }}
+                          primary={pg.title}
+                        />
+                      </ListItemButton>
+                    </ListItem>
+                  )
+                )}
+              </ListItemTab>
+            )
+          )}
       </List>
-      <Box
-        sx={{
-          marginTop: "auto",
-          textAlign: "center",
-          pb: "4px",
-          fontSize: "0.875rem",
-          fontStyle: "italic",
-        }}
-      >
-        Title Art from{" "}
-        <Link
-          href="http://linktr.ee/Jellyfishyu"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          @Jellyfishyu
-        </Link>
-      </Box>
-      <Divider sx={{ mb: 1 }} />
-      <PatchNotes />
+      <Divider />
       <DiscordInvite />
-    </>
+    </Box>
   );
 
   return (

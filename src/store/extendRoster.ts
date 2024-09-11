@@ -1,18 +1,16 @@
 import operatorJson from 'data/operators';
-import { supabaseApi } from './apiSlice'
-import { Operator, OperatorId } from 'types/operator';
+import { supabaseApi, UID } from './apiSlice'
+import { Operator } from 'types/operator';
 import Roster from 'types/operators/roster';
-import supabaseClient from 'util/supabaseClient';
+import supabase from 'supabase/supabaseClient';
 import { defaultOperatorObject } from 'util/changeOperator';
 
 export const rosterApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({
-    rosterGet: builder.query<Roster, void>({
-      async queryFn() {
-        const user_id = (await supabaseClient.auth.getSession()).data.session?.user.id;
-        if (!user_id) return { data: {} };
+    rosterGet: builder.query<Roster, UID>({
+      async queryFn({ user_id }) {
 
-        const { data } = await supabaseClient
+        const { data } = await supabase
           .from("operators")
           .select("op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin")
           .match({ user_id })
@@ -26,46 +24,40 @@ export const rosterApi = supabaseApi.injectEndpoints({
       providesTags: ["operator"]
     }),
     rosterUpsert: builder.mutation({
-      async queryFn(op: Operator | Operator[]) {
-        const { data } = await supabaseClient
+      async queryFn(q: UID & (Operator | Operator[])) {
+        const { user_id, ...op } = q;
+        const { data } = await supabase
           .from("operators")
-          .upsert(op)
+          .upsert(([] as Operator[]).concat(op))
           .select("op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin");
 
         return { data };
       },
-      async onQueryStarted(op: Operator | Operator[], { dispatch, queryFulfilled }) {
-        console.log("Query started:")
-        console.log(op)
+      async onQueryStarted(q: UID & (Operator | Operator[]), { dispatch, queryFulfilled }) {
+        const { user_id, ...op } = q;
         const patchResult = dispatch(
-          rosterApi.util.updateQueryData('rosterGet', undefined, (draft) => {
+          rosterApi.util.updateQueryData('rosterGet', { user_id }, (draft) => {
             const ops: Roster = Object.fromEntries(
-              (Array.isArray(op) ? op : [op]).map(o => [o.op_id, o])
+              ([] as Operator[]).concat(op).map(o => [o.op_id, o])
             );
             Object.assign(draft, ops)
           })
         );
-        try {
-          await queryFulfilled;
-          console.log("Query finished:")
-          console.log(op)
-        } catch {
-          patchResult.undo();
-        }
+        queryFulfilled.catch(patchResult.undo);
       },
       invalidatesTags: (_, __, c) => Array.isArray(c) ? c.map(op => ({ type: "operator", id: op.op_id })) : [{ type: "operator", id: c.op_id }]
     }),
     rosterDelete: builder.mutation({
-      queryFn: async (op_id: OperatorId | OperatorId[]) => {
-        const user_id = (await supabaseClient.auth.getSession()).data.session?.user.id;
+      queryFn: async (op_id: string | string[]) => {
+        const user_id = (await supabase.auth.getSession()).data.session?.user.id;
         if (!user_id) return { data: null };
 
         const { data } = Array.isArray(op_id)
-          ? await supabaseClient
+          ? await supabase
             .from("operators")
             .delete()
             .in("op_id", op_id)
-          : await supabaseClient
+          : await supabase
             .from("operators")
             .delete()
             .match({ op_id })

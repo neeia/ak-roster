@@ -1,3 +1,12 @@
-const dev = process.env.NODE_ENV !== 'production';
+const url = (env: string | undefined) => {
+  switch (env) {
+    case "production":
+      return "https://www.krooster.com";
+    case "preview":
+      return "ak-roster-git-v3-neeia.vercel.app";
+    default:
+      return "http://localhost:3000";
+  }
+}
 
-export const server = dev ? 'http://localhost:3000' : 'https://www.krooster.com';
+export const server = url(process.env.NODE_ENV);

@@ -1,4 +1,4 @@
-import { Operator, OperatorData, OperatorId } from "types/operator";
+import { Operator, OperatorData } from "types/operator";
 import operatorJson from "data/operators";
 
 // Utility exports
@@ -610,7 +610,7 @@ export const getMaxPotentialById = (opId: string) => {
     case "char_4067_lolxh":
       return 1;
     case "char_230_savage":
-      return 4;
+      return 5;
     default:
       return 6;
   }
@@ -620,18 +620,20 @@ export function minMax(min: number, value: number, max: number) {
   return Math.min(Math.max(value, min), max);
 }
 
-
-// Converts an opJson entry into an Operator
-export function defaultOperatorObject(id: OperatorId): Operator {
+// Converts an opId entry into an Operator
+export function defaultOperatorObject(id: string): Operator {
   return {
     op_id: id,
     favorite: false,
-    potential: 0,
-    elite: -1,
-    level: 0,
-    skill_level: 0,
-    masteries: [],
-    modules: []
+    potential: 1,
+    elite: 0,
+    level: 1,
+    skill_level: 1,
+    masteries: new Array(operatorJson[id].skillData?.length ?? 0).fill(0),
+    modules: operatorJson[id].moduleData?.reduce((acc: Record<string, number>, cur) => {
+      acc[cur.moduleId] = 0;
+      return acc;
+    }, {}) ?? {}
   };
 }
 
@@ -642,8 +644,8 @@ export const changeOwned = (op: Operator, value: boolean) => {
   copy.elite = +value - 1;
   copy.level = +value;
   copy.skill_level = +value;
-  copy.masteries = [];
-  copy.modules = [];
+  copy.masteries.fill(0);
+  copy.modules = resetModules(copy.modules);
   return copy;
 }
 
@@ -664,8 +666,8 @@ export const changePromotion = (op: Operator, value: number) => {
   copy = changeLevel(copy, copy.level);
   copy = changeSkillLevel(copy, copy.skill_level);
   if (value !== 2) {
-    copy.modules = [];
-    copy.masteries = [];
+    copy.modules = resetModules(copy.modules);
+    copy.masteries.fill(0);
   }
   return copy;
 }
@@ -675,7 +677,7 @@ export const changeLevel = (op: Operator, value: number) => {
   let copy = { ...op };
   const opData = operatorJson[op.op_id];
   copy.level = minMax(1, +value, MAX_LEVEL_BY_RARITY[opData.rarity][copy.elite]);
-  if (copy.level < MODULE_REQ_BY_RARITY[opData.rarity]) copy.modules = [];
+  if (copy.level < MODULE_REQ_BY_RARITY[opData.rarity]) copy.modules = resetModules(copy.modules);
   return copy;
 }
 
@@ -692,7 +694,7 @@ export const changeSkillLevel = (op: Operator, value: number) => {
     copy.skill_level = 4;
   }
   if (value !== 7) {
-    copy.masteries = []
+    copy.masteries.fill(0);
   }
   return copy;
 }
@@ -716,9 +718,15 @@ export const changeModule = (op: Operator, index: number, value: number) => {
   if (op.elite !== 2) return op;
   if (op.level < MODULE_REQ_BY_RARITY[opData.rarity]) return op;
   if (opData.moduleData && index > opData.moduleData.length) return op;
-  const modules = [...op.modules];
+  const modules = { ...op.modules };
   modules[index] = value;
   return { ...op, modules };
+}
+
+const resetModules = (modules: Record<string, number>) => {
+  const copy = { ...modules };
+  Object.keys(copy).forEach((id) => copy[id] = 0)
+  return copy;
 }
 
 export const changeSkin = (op: Operator, value: string) => {

@@ -1,15 +1,15 @@
 import { EliteGoal, MasteryGoal, ModuleGoal, SkillLevelGoal } from "./goal";
-import operatorJson from "data/operators.json";
+import operatorJson from "data/operators";
 
 export interface Operator {
-  op_id: OperatorId;
+  op_id: string;
   favorite: boolean;
   potential: number;
   elite: number;
   level: number;
   skill_level: number;
   masteries: number[];
-  modules: { [key: string]: number | undefined } | null;
+  modules: Record<string, number>;
   skin?: string;
 }
 
@@ -21,7 +21,7 @@ export interface Skin {
 }
 
 export interface OperatorData {
-  id: OperatorId;
+  id: string;
   name: string;
   cnName: string;
   rarity: number;
@@ -50,7 +50,7 @@ export interface ModuleData {
 }
 
 export interface OperatorV2 {
-  id: OperatorId;
+  id: string;
   name: string;
   favorite: boolean;
   rarity: number;
@@ -66,7 +66,7 @@ export interface OperatorV2 {
 }
 
 export interface OperatorV1 {
-  id: OperatorId;
+  id: string;
   name: string;
   favorite: boolean;
   rarity: number;
@@ -90,7 +90,6 @@ export interface Preset {
   level: number;
   rank: number;
   masteries: number[];
-  modules: number[];
 }
 
 // Generates a preset with the given index
@@ -105,12 +104,9 @@ export function defaultPresetObject(_: any, index: number): [string, Preset] {
       elite: -1,
       level: 0,
       rank: 0,
-      masteries: [],
-      modules: []
+      masteries: []
     },
   ];
 }
 
-
-export type OperatorId = keyof typeof operatorJson;
 export type OpInfo = Operator & OperatorData;

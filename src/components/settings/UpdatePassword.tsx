@@ -6,7 +6,7 @@ import { authErrors } from "../../util/authErrors";
 import PasswordTextField from "../app/PasswordTextField";
 import ResetPassword from "../app/ResetPassword";
 import {AccountData} from "../../types/auth/accountData";
-import supabaseClient from "../../util/supabaseClient";
+import supabase from "../../supabase/supabaseClient";
 import {useSession} from "@supabase/auth-helpers-react";
 
 
@@ -31,7 +31,7 @@ const UpdatePassword = ((props: Props) => {
     }
 
     setErrorPassword("Checking...")
-    const {data, error} = await supabaseClient.auth.updateUser({password: newPassword})
+    const {data, error} = await supabase.auth.updateUser({password: newPassword})
 
     if (error)
     {

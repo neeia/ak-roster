@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import UpdatePrivacy from "./UpdatePrivacy";
 import {AccountData} from "../../types/auth/accountData";
 import { useDisplayNameSetMutation } from "../../store/extendAccount";
-import supabaseClient from "../../util/supabaseClient";
+import supabase from "../../supabase/supabaseClient";
 
 function isAlphaNumeric(str: string) {
   var code, i, len;
@@ -57,7 +57,7 @@ const UpdateUsername = ((props: Props) => {
     else
     {
       const username = newDisplayName.toLowerCase().replace(/\s/g, "");
-      const {count, error} = await supabaseClient
+      const {count, error} = await supabase
         .from("krooster_accounts")
         .select('*', { count: "exact", head: true })
         .ilike("username", username);

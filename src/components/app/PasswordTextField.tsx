@@ -1,17 +1,15 @@
 import { VisibilityOffOutlined, VisibilityOutlined } from "@mui/icons-material";
-import { IconButton, InputAdornment, TextField, Typography } from "@mui/material";
+import { IconButton, InputAdornment, OutlinedTextFieldProps, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 
 
-interface Props {
-  label: string;
+interface Props extends Omit<OutlinedTextFieldProps, "variant"> {
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   ariaId: string;
 }
 
 const PasswordTextField = ((props: Props) => {
-  const { label, value, onChange, ariaId } = props;
+  const { label, value, onChange, ariaId, ...rest } = props;
 
   const [showPW, setShowPW] = useState<boolean>(false);
 
@@ -20,28 +18,24 @@ const PasswordTextField = ((props: Props) => {
       label={label}
       value={value}
       onChange={onChange}
-      helperText={showPW ? value : ""}
-      type="password"
-      variant="filled"
+      type={showPW ? "" : "password"}
+      variant="outlined"
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
-            <Typography id={`show-pw-${ariaId}`}>
-              {showPW ? "Hide" : "Show"}
-            </Typography>
             <IconButton
-              aria-labelledby={`show-pw-${ariaId}`}
               tabIndex={-1}
               onClick={() => setShowPW(!showPW)}
             >
               {showPW
-                ? <VisibilityOffOutlined height="1rem" />
-                : <VisibilityOutlined height="1rem" />
+                ? <VisibilityOffOutlined fontSize="small" />
+                : <VisibilityOutlined fontSize="small" />
               }
             </IconButton>
           </InputAdornment>
         )
       }}
+      {...rest}
     />);
 });
 

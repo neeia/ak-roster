@@ -5,7 +5,7 @@ import React, {useEffect, useState} from "react";
 import { authErrors } from "../../util/authErrors";
 import PasswordTextField from "../app/PasswordTextField";
 import {AccountData} from "../../types/auth/accountData";
-import supabaseClient from "../../util/supabaseClient";
+import supabase from "../../supabase/supabaseClient";
 import {useSession, useSessionContext, useUser} from "@supabase/auth-helpers-react";
 
 interface Props {
@@ -21,8 +21,8 @@ const UpdateEmail = ((props: Props) => {
     const getSession = async () =>
     {
       // refresh session to grab possible new mail
-      await supabaseClient.auth.refreshSession();
-      const {data, error} = await supabaseClient.auth.getSession();
+      await supabase.auth.refreshSession();
+      const {data, error} = await supabase.auth.getSession();
       if (!error) {
         setCurrentEmail(data.session?.user.email);
       }
@@ -37,7 +37,7 @@ const UpdateEmail = ((props: Props) => {
     }
 
     setError("Checking...")
-    const {data, error} = await supabaseClient.auth.updateUser({email: newEmail});
+    const {data, error} = await supabase.auth.updateUser({email: newEmail});
     if (error) {
       setError(`Something went wrong: ${error.message}`);
       return;

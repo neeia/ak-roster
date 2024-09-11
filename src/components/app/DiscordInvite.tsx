@@ -1,35 +1,40 @@
 import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Link } from "@mui/material";
 import Image from "next/image";
+import { DISCORD_BLURPLE } from "styles/theme/appTheme";
 
 
 const DiscordInvite = () => {
 
   return (
-    <Button
+    <Link
       sx={{
-        boxShadow: 1,
-        width: "100%",
+        backgroundColor: DISCORD_BLURPLE,
+        borderRadius: 1,
+        mx: 2,
+        transition: "filter 0.1s",
+        ":hover": { filter: "brightness(110%)" },
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        lineHeight: "0",
         gap: 1,
         textDecoration: "none",
-        padding: "6px 8px",
-        mb: 1,
-        py: "4px"
+        padding: "12px 12px",
       }}
       href="https://discord.gg/qx8hJGvTwc"
-      component="a"
       title="Join Krooster"
       target="_blank"
       rel="noreferrer noopener"
     >
-      <Image width="20" height="20" src="/img/ext/icon_clyde_white_RGB.svg" alt="Discord" loading="lazy" />
-      <Typography variant="caption2" sx={{ textAlign: "center" }}>
-        Join the Discord!
-      </Typography>
-    </Button>
+      <Image
+        src="/img/assets/discord.svg"
+        width="20"
+        height="15"
+        alt=""
+      />
+      Join the Discord!
+    </Link>
   );
 }
 export default DiscordInvite;
