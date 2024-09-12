@@ -16,7 +16,7 @@ const extendedApi = supabaseApi.injectEndpoints({
       },
       providesTags: ["account"],
     }),
-    CurrentAccountGet: builder.query<AccountData, void>({
+    currentAccountGet: builder.query<AccountData, void>({
       async queryFn() {
 
         const {data: session} = await supabase.auth.getSession();
@@ -43,10 +43,13 @@ const extendedApi = supabaseApi.injectEndpoints({
           .select()
           .single();
 
-        console.log(error?.details)
-        console.log(error?.hint)
-        console.log(error?.message)
-        console.log(error?.code)
+        if (error)
+        {
+          console.log(error?.details)
+          console.log(error?.hint)
+          console.log(error?.message)
+          console.log(error?.code)
+        }
         return { data } as { data: AccountData };
       },
       invalidatesTags: ["account"],

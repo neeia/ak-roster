@@ -1,5 +1,3 @@
-import {Dictionary} from "@reduxjs/toolkit";
-
 export type ApiServer = "en" | "jp" | "cn" | "kr";
 export type YostarServer = "en" | "jp" | "kr";
 export type ArknightsServer = "en" | "jp" | "kr" | "cn" | "bili" | "tw";
@@ -77,7 +75,7 @@ export interface UserData
   status: StatusData,
   troop: RosterData,
   social: SocialData,
-  inventory: Dictionary<number>,
+  inventory: {[id: string]: number | undefined},
   tokenData: TokenData,
 }
 
@@ -98,7 +96,7 @@ export interface StatusData
 
 export interface RosterData
 {
-  chars: Dictionary<CharachterData>,
+  chars: {[id: string]: CharachterData | undefined},
 }
 
 export interface CharachterData
@@ -116,7 +114,7 @@ export interface CharachterData
   defaultSkillIndex : number,
   skills: SkillData[],
   currentEquip: string | null,
-  equip: Dictionary<ModuleData>,
+  equip: {[id: string]: ModuleData | undefined},
   starMark: number,
   //this is just for amiya
   currentTmpl: string,

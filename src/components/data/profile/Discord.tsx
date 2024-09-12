@@ -1,7 +1,7 @@
 import { Box, InputAdornment, TextField } from "@mui/material";
 import React, {useCallback, useState} from "react";
 import AccountData from "types/auth/accountData";
-import useDiscordSetMutation from "store/extendAccount";
+import {useAccountUpdateMutation} from "store/extendAccount";
 import {debounce} from "lodash";
 
 interface Props {
@@ -12,14 +12,14 @@ const Discord = ((props: Props) => {
   const { user } = props;
 
   const [discordUsername, _setDiscordUsername] = useState<string>(user.discordcode ?? "");
-  const [setDiscordTrigger] = useDiscordSetMutation();
+  const [accountUpdateTrigger] = useAccountUpdateMutation();
 
   const setDiscordUsername = (s: string) => {
     _setDiscordUsername(s);
     setDiscordDebounced(s);
   }
 
-  const setDiscordDebounced = useCallback(debounce((username) => setDiscordTrigger(username),300), []);
+  const setDiscordDebounced = useCallback(debounce((username) => accountUpdateTrigger({user_id: user.user_id, private: user.private, discordcode: username  }),300), []);
 
 
   return (

@@ -19,19 +19,19 @@ const FriendID = ((props: Props) => {
 
   const setFriendUsername = (s: string) => {
     _setFriendUsername(s);
-    setFriendCodeDebounced(friendUsername, friendTag);
+    setFriendCodeDebounced(s, friendTag);
   }
   const setFriendTag = (s: string) => {
     const ns = s.replace(/\D/g, "");
     _setFriendTag(ns);
-    setFriendCodeDebounced(friendUsername, friendTag);
+    setFriendCodeDebounced(friendUsername, ns);
   }
 
   const setFriendCodeDebounced = useCallback(debounce((username, tag) => {
       const friendCode = { username: username, tag: tag };
       accountUpdateTrigger({user_id: user.user_id, private: false, friendcode: friendCode});
       },
-    300), [friendUsername, friendTag]);
+    500), []);
 
   return (
     <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto" }}>
