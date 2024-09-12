@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import { Operator, OperatorData } from "types/operator";
 import PopOp from "./PopOp";
 import OpSelectionButton from "./OpSelectionButton";
-import {AccountData} from "../../types/auth/accountData";
-import {useRosterGetQuery} from "../../store/extendRoster";
-import {useAssistantSetMutation} from "../../store/extendAccount";
+import AccountData from "types/auth/accountData";
+// import {useRosterCurrentGetQuery} from "store/extendRoster";
+import {useAccountUpdateMutation} from "store/extendAccount";
+import supabase from "supabase/supabaseClient";
 
 interface Props {
   user: AccountData;
@@ -14,19 +15,21 @@ interface Props {
 const Assistant = ((props: Props) => {
   const { user } = props;
 
-  const {data: operators, isLoading} = useRosterGetQuery();
+  // const {data: operators, isLoading} = useRosterCurrentGetQuery();
 
-  const [assistant, _setAssistant] = useState<string>(user.assistant ?? "");
+  const [assistant, _setAssistant] = useState<string>(user?.assistant ?? "");
   const [open, setOpen] = useState<boolean>(false);
-  const [setAssistantTrigger] = useAssistantSetMutation();
+  const [accountUpdateTrigger] = useAccountUpdateMutation();
 
   const setAssistant = (value: string) => {
     _setAssistant(value);
-    setAssistantTrigger(value);
+    user.assistant = value;
+    accountUpdateTrigger(user);
   };
   const clear = () => {
     _setAssistant("");
-    setAssistantTrigger(null);
+    user.assistant = null;
+    accountUpdateTrigger(user);
   };
 
   const filter = (op: OperatorData) => operators![op.id] != null;

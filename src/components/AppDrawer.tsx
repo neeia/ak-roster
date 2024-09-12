@@ -96,6 +96,7 @@ const AppDrawer = React.memo((props: Props) => {
   const { title: currentTab, pages, requireLogin: r1 } = tabs[tab];
   const { title: currentPage, requireLogin: r2 } = pages[page];
   const requireLogin = r1 || r2;
+  const [trigger, out] = useAccountUpdateMutation();
 
   const session = useContext(SessionContext);
   const [username, setUsername] = useState<string | null>();
@@ -107,7 +108,6 @@ const AppDrawer = React.memo((props: Props) => {
       }
       else if (!accountData.display_name) {
         const genName = randomName();
-        const [trigger, out] = useAccountUpdateMutation();
         trigger({ user_id: session.user.id, username: genName, display_name: genName, private: false, });
       }
     }

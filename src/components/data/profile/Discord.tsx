@@ -1,11 +1,7 @@
 import { Box, InputAdornment, TextField } from "@mui/material";
-import { User } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
 import React, {useCallback, useState} from "react";
-import useLocalStorage from "../../util/useLocalStorage";
-import { SocialInfo } from "../../types/social";
-import {AccountData} from "../../types/auth/accountData";
-import {useDiscordSetMutation, useOnboardSetMutation} from "../../store/extendAccount";
+import AccountData from "types/auth/accountData";
+import useDiscordSetMutation from "store/extendAccount";
 import {debounce} from "lodash";
 
 interface Props {

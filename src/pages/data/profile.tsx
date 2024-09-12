@@ -1,19 +1,21 @@
-import React, {useState} from "react";
+import React, { useContext, useState } from "react";
 import type { NextPage } from "next";
 import {Box, Button, Divider, TextField} from "@mui/material";
 import Layout from "components/Layout";
-import SupportSelection from "components/profile/SupportSelection";
-import Assistant from "components/profile/Assistant";
-import FriendID from "components/profile/FriendId";
-import Level from "components/profile/Level";
-import Server from "components/profile/Server";
-import Onboard from "components/profile/Onboard";
-import Discord from "components/profile/Discord";
-import Reddit from "components/profile/Reddit";
-import {useAccountGetQuery} from "store/extendAccount";
-import {sendTokenToMail} from "util/hgApi/yostarAuth";
+import SupportSelection from "components/data/profile/SupportSelection";
+import Assistant from "components/data/profile/Assistant";
+import FriendID from "components/data/profile/FriendId";
+import Level from "components/data/profile/Level";
+import Server from "components/data/profile/Server";
+import Onboard from "components/data/profile/Onboard";
+import Discord from "components/data/profile/Discord";
+import Reddit from "components/data/profile/Reddit";
+import { useAccountGetQuery, useCurrentAccountGetQuery } from "store/extendAccount";
 import {UserData} from "types/arknightsApiTypes/apiTypes";
-import GameImport from "components/profile/GameImport";
+import GameImport from "components/data/profile/GameImport";
+import supabase from "supabase/supabaseClient";
+import { skipToken } from "@reduxjs/toolkit/query";
+import { SessionContext } from "pages/_app";
 
 const Profile: NextPage = () => {
 
@@ -21,7 +23,7 @@ const Profile: NextPage = () => {
   const [code, setCode] = useState("");
   const [status, setStatus] = useState("");
 
-  const { data: account, isLoading} = useAccountGetQuery();
+  const { data: account , isLoading} = useCurrentAccountGetQuery();
 
 
   const sendCode = async () => {
@@ -49,7 +51,7 @@ const Profile: NextPage = () => {
   };
 
   return (
-    <Layout tab="/account" page="/profile">
+    <Layout tab="/data" page="/profile">
       {isLoading ? "" :
         <Box sx={{
           display: "flex",
@@ -71,22 +73,22 @@ const Profile: NextPage = () => {
         }}>
           <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 1 }}>
             <FriendID user={account!} />
-            <Server user={account!} />
+            {/*<Server user={account!} />*/}
           </Box>
           <Box sx={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 1 }}>
-            <Level user={account!} />
-            <Onboard user={account!} />
+            {/*<Level user={account!} />*/}
+            {/*<Onboard user={account!} />*/}
           </Box>
           <Divider />
-          <Assistant user={account!} />
-          <SupportSelection />
+          {/*<Assistant user={account!} />*/}
+          {/*<SupportSelection />*/}
           <Divider />
-          <GameImport/>
+          {/*<GameImport/>*/}
           <Divider />
           <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             Connections
-            <Discord user={account!} />
-            <Reddit user={account!} />
+            {/*<Discord user={account!} />*/}
+            {/*<Reddit user={account!} />*/}
           </Box>
         </Box>}
     </Layout>

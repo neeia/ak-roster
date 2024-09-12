@@ -1,13 +1,13 @@
-import {AccountData} from "../../types/auth/accountData";
-import {TokenData, UserData} from "../../types/arknightsApiTypes/apiTypes";
+import AccountData from "types/auth/accountData";
+import {TokenData, UserData} from "types/arknightsApiTypes/apiTypes";
 import React, {useState} from "react";
 import {Box, Button, Checkbox, FormControlLabel, TextField} from "@mui/material";
-import {useRosterUpsertMutation} from "../../store/extendRoster";
-import {Operator, OperatorId, Skin} from "../../types/operator";
-import {OperatorSupport} from "../../types/operators/supports";
-import {useSupportSetMutation} from "../../store/extendSupports";
-import {useAssistantSetMutation, useFriendCodeSetMutation, useLevelSetMutation} from "../../store/extendAccount";
-import skinJson from "../../data/skins.json";
+import {useRosterUpsertMutation} from "store/extendRoster";
+import {Operator, Skin} from "types/operator";
+import {OperatorSupport} from "types/operators/supports";
+import {useSupportSetMutation} from "store/extendSupports";
+import {useAssistantSetMutation, useFriendCodeSetMutation, useLevelSetMutation} from "store/extendAccount";
+import skinJson from "data/skins.json";
 
 interface Props {
   user: AccountData;
