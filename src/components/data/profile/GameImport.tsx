@@ -1,19 +1,20 @@
-import {AccountData} from "../../types/auth/accountData";
-import {TokenData, UserData} from "../../types/arknightsApiTypes/apiTypes";
-import React, {useState} from "react";
-import {Box, Button, Checkbox, FormControlLabel, TextField} from "@mui/material";
-import {useRosterUpsertMutation} from "../../store/extendRoster";
-import {Operator, OperatorId, Skin} from "../../types/operator";
-import {OperatorSupport} from "../../types/operators/supports";
-import {useSupportSetMutation} from "../../store/extendSupports";
-import {useAssistantSetMutation, useFriendCodeSetMutation, useLevelSetMutation} from "../../store/extendAccount";
-import skinJson from "../../data/skins.json";
+import AccountData from "types/auth/accountData";
+import { UserData } from "types/arknightsApiTypes/apiTypes";
+import React, { useState } from "react";
+import { Box, Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
+import { useRosterUpsertMutation } from "store/extendRoster";
+import { Operator, Skin } from "types/operator";
+import { OperatorSupport } from "types/operators/supports";
+import { useSupportSetMutation } from "store/extendSupports";
+import { useAccountUpdateMutation } from "store/extendAccount";
+import skinJson from "data/skins.json";
 
 interface Props {
   user: AccountData;
 }
 
-const GameImport = (() => {
+const GameImport = ((props: Props) => {
+  const { user } = props;
 
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
@@ -24,10 +25,7 @@ const GameImport = (() => {
 
   const [upsertRoster] = useRosterUpsertMutation();
   const [setSupport] = useSupportSetMutation();
-  const [setFriendCode] = useFriendCodeSetMutation();
-  const [setLevelTrigger] = useLevelSetMutation();
-  const [setAssistantTrigger] = useAssistantSetMutation();
-  
+  const [accountUpdateTrigger] = useAccountUpdateMutation();
   const sendCode = async () => {
     const result = await fetch(`/api/arknights/sendAuthMail?mail=${email}`);
     if (result.ok)
@@ -93,8 +91,8 @@ const GameImport = (() => {
     //Update the profile data
     const profileData = userData.status;
     const friendCode = {username: profileData.nickName, tag: profileData.nickNumber};
-    setFriendCode(friendCode);
-    setLevelTrigger(profileData.level.toString());
+    accountUpdateTrigger({user_id: user.user_id, private: user.private, friendcode: friendCode });
+    accountUpdateTrigger({user_id: user.user_id, private: user.private, level: profileData.level });
 
     //Update roster data
     const roster = userData.troop.chars;
@@ -102,21 +100,25 @@ const GameImport = (() => {
     for (let key in roster) {
       let value = roster[key]!;
       //first module is the default one, we can skip.
-      let supportModules : { [key: string]: number | undefined} = {};
+      let supportModules : Record<string, number> = {};
       Object.entries(value.equip).slice(1).filter(([moduleKey, moduleValue]) => moduleValue!.locked == 0).forEach(([moduleKey, moduleValue]) => supportModules[moduleKey] = moduleValue!.level);
 
       let masteries = value.skills.map((skill) => skill.specializeLevel);
       let skin = value.skin as string | undefined;
       const opSkins: Skin[] = skinJson[value.charId as keyof typeof skinJson];
       //convert to aceship format
-      if (skin)
+      if (opSkins && skin)
       {
-        skin = opSkins.filter(x => x.skinId == skin)[0].avatarId;
-        skin = skin.replace('#', "%23")
+        const matches = opSkins.filter(x => x.skinId == skin);
+        if (matches.length > 0)
+        {
+          skin = matches[0].avatarId
+          skin = skin.replace('#', "%23")
+        }
       }
 
       let operator: Operator = {
-        op_id: value.charId as OperatorId,
+        op_id: value.charId,
         elite: value.evolvePhase,
         level: value.level,
         potential: value.potentialRank,
@@ -131,7 +133,7 @@ const GameImport = (() => {
     upsertRoster(operators);
 
     //Update secretary
-    setAssistantTrigger(profileData.secretary);
+    accountUpdateTrigger({user_id: user.user_id, private: user.private, assistant: profileData.secretary });
 
     //Update support data
     const supportsData = userData.social.assistCharList;
@@ -145,8 +147,7 @@ const GameImport = (() => {
       let supportModule : { [key: string]: number | undefined} = {};
       if (supportModuleName)
       {
-        let supportModuleLevel = roster[charInstanceId]!.equip[supportModuleName]!.level;
-        supportModule[supportModuleName] = supportModuleLevel;
+        supportModule[supportModuleName] = roster[charInstanceId]!.equip[supportModuleName]!.level;
       }
 
       let support :OperatorSupport = {

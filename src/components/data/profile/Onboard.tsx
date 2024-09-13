@@ -1,12 +1,8 @@
 import { TextField } from "@mui/material";
-import { User } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
 import React, { useCallback, useState } from "react";
-import useLocalStorage from "../../util/useLocalStorage";
-import { AccountInfo } from "../../types/doctor";
-import {AccountData} from "../../types/auth/accountData";
+import AccountData from "types/auth/accountData";
 import {debounce} from "lodash";
-import {useLevelSetMutation, useOnboardSetMutation} from "../../store/extendAccount";
+import {useAccountUpdateMutation} from "store/extendAccount";
 
 interface Props {
   user: AccountData;
@@ -16,14 +12,17 @@ const Onboard = ((props: Props) => {
   const { user } = props;
 
   const [onboard, _setOnboard] = useState<string>(user.onboard ?? "");
-  const [setOnboardTrigger] = useOnboardSetMutation();
+  const [accountUpdateTrigger] = useAccountUpdateMutation();
 
   const setOnboard = (value: string) => {
     _setOnboard(value);
-    setOnboardDebounced(value);
+    if (value)
+    {
+      setOnboardDebounced(value);
+    }
   };
 
-  const setOnboardDebounced = useCallback(debounce((date) => setOnboardTrigger(date),300), []);
+  const setOnboardDebounced = useCallback(debounce((date) => accountUpdateTrigger({user_id: user.user_id, private: user.private, onboard: date }),500), []);
 
   return (
     <TextField

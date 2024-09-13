@@ -1,13 +1,9 @@
 import { Box, InputAdornment, TextField } from "@mui/material";
-import { User } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
-import React, {useCallback, useState} from "react";
-import useLocalStorage from "../../util/useLocalStorage";
-import { AccountInfo } from "../../types/doctor";
-import {AccountData} from "../../types/auth/accountData";
-import {Json} from "../../types/supabase";
-import {useFriendCodeSetMutation} from "../../store/extendAccount";
-import {debounce} from "lodash";
+import React, { useCallback, useState } from "react";
+import AccountData from "types/auth/accountData";
+import { Json } from "types/supabase";
+import { useAccountUpdateMutation } from "store/extendAccount";
+import { debounce } from "lodash";
 
 interface Props {
   user: AccountData;
@@ -19,22 +15,23 @@ const FriendID = ((props: Props) => {
   const [friendUsername, _setFriendUsername] = useState<string>(((user.friendcode as { [key: string]: Json })?.username as string) ?? "");
   const [friendTag, _setFriendTag] = useState<string>(((user.friendcode as { [key: string]: Json })?.tag as string) ?? "");
 
-  const [setFriendCode] = useFriendCodeSetMutation();
+  const [accountUpdateTrigger] = useAccountUpdateMutation();
 
   const setFriendUsername = (s: string) => {
     _setFriendUsername(s);
-    setFriendCodeDebounced(friendUsername, friendTag);
+    setFriendCodeDebounced(s, friendTag);
   }
   const setFriendTag = (s: string) => {
     const ns = s.replace(/\D/g, "");
     _setFriendTag(ns);
-    setFriendCodeDebounced(friendUsername, friendTag);
+    setFriendCodeDebounced(friendUsername, ns);
   }
 
   const setFriendCodeDebounced = useCallback(debounce((username, tag) => {
-    const friendCode = {username: username, tag: tag};
-    setFriendCode(friendCode);},
-    300), []);
+      const friendCode = { username: username, tag: tag };
+      accountUpdateTrigger({user_id: user.user_id, private: false, friendcode: friendCode});
+      },
+    500), []);
 
   return (
     <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto" }}>

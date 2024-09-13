@@ -4,6 +4,7 @@ import AccountData from "types/auth/accountData";
 import { Operator } from "types/operator";
 import { Json } from "../types/supabase";
 import { OperatorSupport } from "../types/operators/supports";
+import supabase from "supabase/supabaseClient";
 
 
 const extendedApi = supabaseApi.injectEndpoints({
@@ -19,12 +20,31 @@ const extendedApi = supabaseApi.injectEndpoints({
       },
       providesTags: ["supports"],
     }),
-    supportSet: builder.mutation<boolean, OperatorSupport & UID>({
-      queryFn: async (support: OperatorSupport & UID) => {
+    currentSupportsGet: builder.query<OperatorSupport[], void>({
+      queryFn: async () => {
+
+        const {data: session} = await supabase.auth.getSession();
+        const user_id = session.session?.user.id ?? "";
+
+        const { data, error } = await supabaseClient
+          .from("supports")
+          .select()
+          .eq('user_id', user_id)
+
+        return { data: data as OperatorSupport[] };
+      },
+      providesTags: ["supports"],
+    }),
+    supportSet: builder.mutation<boolean, OperatorSupport>({
+      queryFn: async (support: OperatorSupport) => {
+
+        const {data: session} = await supabase.auth.getSession();
+        const user_id = session.session?.user.id ?? "";
+
         const { data, error } = await supabaseClient
           .from("supports")
           .upsert(support)
-          .eq('user_id', support.user_id)
+          .eq('user_id', user_id)
           .select()
           .single();
         return { data: !!error };
@@ -58,4 +78,4 @@ const extendedApi = supabaseApi.injectEndpoints({
   overrideExisting: false,
 })
 
-export const { useSupportsGetQuery, useSupportSetMutation, useSupportSkillSetMutation, useSupportRemoveMutation } = extendedApi
+export const { useSupportsGetQuery, useCurrentSupportsGetQuery, useSupportSetMutation, useSupportSkillSetMutation, useSupportRemoveMutation } = extendedApi

@@ -23,9 +23,28 @@ export const rosterApi = supabaseApi.injectEndpoints({
       },
       providesTags: ["operator"]
     }),
+    currentRosterGet: builder.query<Roster, void>({
+      async queryFn() {
+
+        const {data: session} = await supabase.auth.getSession();
+        const user_id = session.session?.user.id ?? "";
+
+        const { data } = await supabase
+          .from("operators")
+          .select("op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin")
+          .match({ user_id })
+
+        if (!data || data.length == 0) return { data: {} };
+
+        const acc: Roster = {};
+        data.forEach(o => o.op_id in operatorJson ? acc[o.op_id] = o as Operator : null);
+        return { data: acc };
+      },
+      providesTags: ["operator"]
+    }),
     rosterUpsert: builder.mutation({
-      async queryFn(q: UID & (Operator | Operator[])) {
-        const { user_id, ...op } = q;
+      async queryFn(op: (Operator | Operator[])) {
+
         const { data } = await supabase
           .from("operators")
           .upsert(([] as Operator[]).concat(op))
@@ -70,4 +89,4 @@ export const rosterApi = supabaseApi.injectEndpoints({
   overrideExisting: false,
 })
 
-export const { useRosterGetQuery, useRosterUpsertMutation, useRosterDeleteMutation } = rosterApi;
+export const { useRosterGetQuery, useCurrentRosterGetQuery, useRosterUpsertMutation, useRosterDeleteMutation } = rosterApi;

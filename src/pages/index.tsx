@@ -45,6 +45,7 @@ const Home: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");
   const [username, setUsername] = useState<string | null>();
   const [randomUsername, setRandomUsername] = useState<boolean>(false);
+  const [trigger, out] = useAccountUpdateMutation();
 
   const [errors, setErrors] = useState<string[]>([]);
 
@@ -65,7 +66,6 @@ const Home: NextPage = () => {
       }
       else if (!accountData.display_name) {
         const genName = randomName();
-        const [trigger, out] = useAccountUpdateMutation();
         trigger({ user_id: session.user.id, username: genName, display_name: genName, private: false, });
       }
     }

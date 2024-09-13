@@ -5,19 +5,19 @@ import operatorJson from "data/operators";
 import PopOp from "./PopOp";
 import OpSelectionButton from "./OpSelectionButton";
 import Image from "next/image";
-import {useRosterGetQuery} from "../../store/extendRoster";
+import {useCurrentRosterGetQuery} from "store/extendRoster";
 import {
   useSupportRemoveMutation,
   useSupportSetMutation,
-  useSupportsGetQuery,
+  useCurrentSupportsGetQuery,
   useSupportSkillSetMutation
-} from "../../store/extendSupports";
-import {OperatorSupport} from "../../types/operators/supports";
+} from "store/extendSupports";
+import {OperatorSupport} from "types/operators/supports";
 
 const SupportSelection = (() => {
 
-  const {data: operators, isLoading: isLoadingOperators} = useRosterGetQuery();
-  const {data: supports, isLoading: isLoadingSupport} = useSupportsGetQuery();
+  const {data: operators, isLoading: isLoadingOperators} = useCurrentRosterGetQuery();
+  const {data: supports, isLoading: isLoadingSupport} = useCurrentSupportsGetQuery();
 
   const [setSupport] = useSupportSetMutation();
   const [setSupportSkill] = useSupportSkillSetMutation();

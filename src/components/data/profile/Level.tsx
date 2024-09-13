@@ -1,12 +1,8 @@
 import { TextField } from "@mui/material";
-import { User } from "firebase/auth";
-import { getDatabase, ref, remove, set } from "firebase/database";
 import React, { useCallback, useState } from "react";
-import useLocalStorage from "../../util/useLocalStorage";
-import { AccountInfo } from "../../types/doctor";
-import {AccountData} from "../../types/auth/accountData";
+import AccountData from "types/auth/accountData";
 import {debounce} from "lodash";
-import {useFriendCodeSetMutation, useLevelSetMutation} from "../../store/extendAccount";
+import {useAccountUpdateMutation} from "store/extendAccount";
 
 function parse(n: string, min?: number, max?: number): string {
   if (parseInt(n)) {
@@ -26,13 +22,13 @@ const Level = ((props: Props) => {
   const { user } = props;
 
   const [level, _setLevel] = useState<string>(user.level?.toString() ?? "");
-  const [setLevelTrigger] = useLevelSetMutation();
+  const [accountUpdateTrigger] = useAccountUpdateMutation();
   const setLevel = (value: string) => {
     _setLevel(value);
     setLevelDebounced(value);
   };
 
-  const setLevelDebounced = useCallback(debounce((newLevel) => setLevelTrigger(newLevel),300), []);
+  const setLevelDebounced = useCallback(debounce((newLevel) => accountUpdateTrigger({user_id: user.user_id, private: user.private, level: newLevel }),500), []);
 
   return (
     <TextField
