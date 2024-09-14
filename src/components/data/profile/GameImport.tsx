@@ -16,7 +16,6 @@ interface Props {
 }
 
 const EXCLUDED_ITEMS = ["2001", "2002", "2003", "2004", "4001"];
-
 const GameImport = ((props: Props) => {
   const { user } = props;
 
@@ -31,6 +30,7 @@ const GameImport = ((props: Props) => {
   const [setSupport] = useSupportSetMutation();
   const [accountUpdateTrigger] = useAccountUpdateMutation();
   const [depotUpdateTrigger] = useDepotUpdateMutation();
+  
   const sendCode = async () => {
     const result = await fetch(`/api/arknights/sendAuthMail?mail=${email}`);
     if (result.ok)
