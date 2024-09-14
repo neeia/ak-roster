@@ -3,15 +3,15 @@ import { SxProps, ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps } from
 import Image from "components/base/Image";
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
-  value: number;
-  maxPromotion: number;
+  value?: number;
+  minPromotion? : number;
+  maxPromotion?: number;
   onChange: (promotion: number) => void;
   disabled?: boolean;
   size?: number;
-  sx?: SxProps;
 }
 const PromotionSelector = ((props: Props) => {
-  const { value, maxPromotion, onChange, sx, disabled, size = 32, ...rest } = props;
+  const { value, minPromotion, maxPromotion, onChange, disabled, size = 32 } = props;
 
   return (
     <ToggleButtonGroup value={value}
@@ -23,13 +23,11 @@ const PromotionSelector = ((props: Props) => {
         borderRadius: 1,
         width: "min-content",
         height: "48px",
-        ...sx,
       }}
-      {...rest}
     >
-      {[...Array(maxPromotion + 1)].map((_, i) =>
+      {[...Array(maxPromotion ? maxPromotion + 1 : 3)].map((_, i) =>
         <ToggleButton
-          disabled={disabled}
+          disabled={disabled || (i < (minPromotion ?? 0))}
           key={i}
           value={i}
           aria-label={`elite ${i}`}

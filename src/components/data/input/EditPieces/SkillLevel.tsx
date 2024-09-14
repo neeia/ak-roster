@@ -6,24 +6,26 @@ import { changeSkillLevel } from "util/changeOperator";
 import Image from "next/image";
 
 interface Props {
-  op: Operator;
-  onChange: (newOperator: Operator) => void;
+  skillLevel?: number;
+  minSkillLevel?: number,
+  eliteLevel? : number,
+  onChange: (skillLevel: number) => void;
 }
 const SkillLevel = (props: Props) => {
-  const { op, onChange } = props;
+  const { skillLevel, minSkillLevel, eliteLevel, onChange } = props;
 
-  const previousSkillLevel = op.skill_level > 4 ? 4 : 1;
-  const nextSkillLevel = op.skill_level < 4 ? 4 : 7;
+  const previousSkillLevel = (skillLevel ?? 0) > 4 ? 4 : 1;
+  const nextSkillLevel = (skillLevel ?? 0) < 4 ? 4 : 7;
 
   function updateRank(rank: number) {
-    onChange(changeSkillLevel(op, rank));
-  };
+    onChange(rank);
+  }
 
   const rankButton = (rank: number) => (
     <Button
       aria-label={`Skill Rank to ${rank}`}
       onClick={() => updateRank(rank)}
-      disabled={!op.potential || op.skill_level === rank || rank > [4, 7, 7][op.elite]}
+      disabled={!skillLevel || skillLevel === rank || rank > [4, 7, 7][eliteLevel ?? 0] || rank < (minSkillLevel ?? 0)}
     >
       <Box
         sx={{
@@ -76,8 +78,8 @@ const SkillLevel = (props: Props) => {
         <Button
           aria-label="Lower Skill Rank"
           sx={{ display: { xs: "none", sm: "" }, }}
-          onClick={() => updateRank(op.skill_level - 1)}
-          disabled={!op.potential || op.skill_level === 1}
+          onClick={() => updateRank(skillLevel! - 1)}
+          disabled={!skillLevel || skillLevel === 1 || skillLevel === minSkillLevel}
         >
           <KeyboardArrowDownSharp fontSize="large" />
         </Button>
@@ -93,20 +95,20 @@ const SkillLevel = (props: Props) => {
             sizes="64px"
             alt={""}
           />
-          {op.potential
+          {skillLevel
             ? <Image
-              src={`/img/rank/${op.skill_level}.png`}
+              src={`/img/rank/${skillLevel}.png`}
               fill
               sizes="64px"
-              alt={`Rank ${op.skill_level}`}
+              alt={`Rank ${skillLevel}`}
             />
             : null}
         </Box>
         <Button
           aria-label="Raise Skill Rank"
           sx={{ display: { xs: "none", sm: "" }, }}
-          onClick={() => updateRank(op.skill_level + 1)}
-          disabled={!op.potential || op.skill_level === [4, 7, 7][op.elite]}
+          onClick={() => updateRank(skillLevel! + 1)}
+          disabled={!skillLevel || skillLevel === [4, 7, 7][eliteLevel ?? 0]}
         >
           <KeyboardArrowUpSharp fontSize="large" />
         </Button>

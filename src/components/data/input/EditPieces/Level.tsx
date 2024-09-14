@@ -6,33 +6,41 @@ import { KeyboardArrowDownSharp, KeyboardArrowUpSharp, KeyboardDoubleArrowLeftSh
 import operatorJson from "data/operators";
 
 interface Props {
-  op: Operator;
-  onChange: (newOperator: Operator) => void;
+  level?: number;
+  minLevel?: number;
+  eliteLevel?: number;
+  operatorRarity?: number;
+  onChange: (level: number) => void;
 }
 const Level = (props: Props) => {
-  const { op, onChange } = props;
-  
-  const rarity = operatorJson[op.op_id].rarity;
-  const [levelField, setLevelField] = React.useState<string>(op.level.toString());
+  const { level, minLevel, eliteLevel, operatorRarity, onChange } = props;
+
+  const [levelField, setLevelField] = React.useState<string>(level?.toString() ?? "1");
+
   function updateLevel(lvl: string | number) {
     if (typeof lvl === "number") {
-      onChange(changeLevel(op, lvl));
-      setLevelField(Math.max(Math.min(lvl, MAX_LEVEL_BY_RARITY[rarity][op.elite]), 1).toString());
+      let parsedLevel = Math.max(Math.min(lvl, MAX_LEVEL_BY_RARITY[operatorRarity ?? 0][eliteLevel ?? 0]), 1)
+      parsedLevel = Math.max(parsedLevel, minLevel!);
+      onChange(parsedLevel);
+      setLevelField(parsedLevel.toString());
     }
     else if (parseInt(lvl, 10)) {
-      onChange(changeLevel(op, parseInt(lvl, 10)));
-      setLevelField(Math.max(Math.min(parseInt(lvl, 10), MAX_LEVEL_BY_RARITY[rarity][op.elite]), 1).toString());
+      let parsedLevel = Math.max(Math.min(parseInt(lvl, 10), MAX_LEVEL_BY_RARITY[operatorRarity ?? 0][eliteLevel ?? 0]), 1)
+      parsedLevel = Math.max(parsedLevel, minLevel!);
+      onChange(parsedLevel);
+      setLevelField(parsedLevel.toString());
     }
     else {
       setLevelField("");
     }
-  };
+  }
+
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) =>
     e.target.select();
 
-  const disableM = !op.potential || op.level === 1;
+  const disableM = !level || level === 1 || level === minLevel;
 
-  const disableP = !op.potential || op.level >= MAX_LEVEL_BY_RARITY[rarity][op.elite];
+  const disableP = !level || level >= MAX_LEVEL_BY_RARITY[operatorRarity ?? 0][eliteLevel ?? 0];
 
   return (
     <Box sx={{
@@ -57,7 +65,7 @@ const Level = (props: Props) => {
         Min
       </Button>
       <Button
-        onClick={() => updateLevel(op.level - 10)}
+        onClick={() => updateLevel(level! - 10)}
         disabled={disableM}
       >
         <KeyboardDoubleArrowLeftSharp fontSize="large" />
@@ -73,7 +81,7 @@ const Level = (props: Props) => {
         }
       }}>
         <Button
-          onClick={() => updateLevel(op.level - 1)}
+          onClick={() => updateLevel(level! - 1)}
           disabled={disableM}
         >
           <KeyboardArrowDownSharp fontSize="large" />
@@ -84,7 +92,7 @@ const Level = (props: Props) => {
             size="small"
             margin="none"
             // Show level if op is owned and level is not deleted 
-            value={op.potential && levelField ? op.level : ""}
+            value={level && levelField ? level : ""}
             error={levelField === ""}
             onChange={(e) => updateLevel(e.target.value)}
             sx={{
@@ -97,7 +105,7 @@ const Level = (props: Props) => {
               }
             }}
             onFocus={handleFocus}
-            disabled={!op.potential}
+            disabled={!level}
             inputProps={{
               inputMode: 'numeric',
               pattern: '[0-9]*'
@@ -105,20 +113,20 @@ const Level = (props: Props) => {
           />
         </Box>
         <Button
-          onClick={() => updateLevel(op.level + 1)}
+          onClick={() => updateLevel(level! + 1)}
           disabled={disableP}
         >
           <KeyboardArrowUpSharp fontSize="large" />
         </Button>
       </Box>
       <Button
-        onClick={() => updateLevel(!(op.level - 1) ? 10 : op.level + 10)}
+        onClick={() => updateLevel(!(level! - 1) ? 10 : level! + 10)}
         disabled={disableP}
       >
         <KeyboardDoubleArrowRightSharp fontSize="large" />
       </Button>
       <Button
-        onClick={() => updateLevel(MAX_LEVEL_BY_RARITY[rarity][op.elite])}
+        onClick={() => updateLevel(MAX_LEVEL_BY_RARITY[operatorRarity ?? 0][eliteLevel ?? 0])}
         disabled={disableP}
       >
         Max

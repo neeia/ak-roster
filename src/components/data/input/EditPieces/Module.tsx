@@ -6,12 +6,17 @@ import { changeModule, MODULE_REQ_BY_RARITY } from "util/changeOperator";
 import Image from "next/image";
 
 interface Props {
-  op: Operator;
-  onChange: (newOperator: Operator) => void;
+  modules?: Record<string, number>,
+  minModules? : Record<string, number>,
+  opId?: string;
+  opLevel? : number;
+  eliteLevel? : number;
+  onChange: (moduleName: string, newMasteryLevel: number) => void;
 }
 const Module = ((props: Props) => {
-  const { op, onChange } = props;
-  const opData = operatorJson[op.op_id];
+  const {modules, minModules, opId, opLevel, eliteLevel, onChange } = props;
+  const opData = opId ? operatorJson[opId] : undefined;
+
 
   return (
     <Box sx={{
@@ -20,11 +25,11 @@ const Module = ((props: Props) => {
       alignItems: "center",
       gap: "4px",
     }}>
-      {opData.moduleData.map((module: ModuleData, i: number) => {
-        const disabled = !op.potential || op.level < MODULE_REQ_BY_RARITY[opData.rarity] || op.elite < 2;
+      {opData?.moduleData?.map((module: ModuleData, moduleNumber: number) => {
+        const disabled = !opId || (opLevel ?? 0) < MODULE_REQ_BY_RARITY[opData.rarity] || (eliteLevel ?? 0) < 2;
         return (
           <Box
-            key={`maB${i}`}
+            key={`maB${moduleNumber}`}
             sx={{
               display: "grid",
               width: "max-content",
@@ -54,8 +59,8 @@ const Module = ((props: Props) => {
                 className={disabled ? "Mui-disabled" : ""}
                 width={48}
                 height={48}
-                src={`/img/equip/${opData.moduleData[i].typeName.toLowerCase()}.png`}
-                alt={`Module ${i + 1}`}
+                src={`/img/equip/${opData!.moduleData![moduleNumber].typeName.toLowerCase()}.png`}
+                alt={`Module ${moduleNumber + 1}`}
               />
               <Typography
                 variant="caption3"
@@ -66,27 +71,27 @@ const Module = ((props: Props) => {
                 {module.typeName}
               </Typography>
             </Box>
-            {[...Array(4)].map((_, j) =>
+            {[...Array(4)].map((_, moduleLevel) =>
               <Button
-                className={!disabled && (op.modules && op.modules[i] ? op.modules[i] === j : j === 0) ? "active" : "inactive"}
-                key={`mod${j}Button`}
+                className={!disabled && (modules && modules[module.moduleName] ? modules[module.moduleName] === moduleLevel : moduleLevel === 0) ? "active" : "inactive"}
+                key={`mod${moduleLevel}Button`}
                 sx={{
                   gridRow: 2,
-                  gridColumn: j + 2,
+                  gridColumn: moduleLevel + 2,
                   display: "grid",
                   p: 0.5,
                   minWidth: 0,
                   backgroundColor: "background.default",
                   height: "40px",
                 }}
-                onClick={() => onChange(changeModule(op, i, j))}
+                onClick={() => onChange(opData!.moduleData![moduleNumber].moduleName, moduleLevel)}
                 disabled={disabled}
               >
                 <Image
                   width={32}
                   height={32}
-                  src={`/img/equip/img_stg${j}.png`}
-                  alt={`Module ${j}`}
+                  src={`/img/equip/img_stg${moduleLevel}.png`}
+                  alt={`Module ${moduleLevel}`}
                 />
               </Button>
             )}

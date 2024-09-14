@@ -14,6 +14,8 @@ import {
 import React, { ElementType, useEffect, useState } from "react";
 
 import items from "../../data/items.json";
+import { useAppSelector } from "store/hooks";
+import { selectPreference, UserPreference } from "store/userSlice";
 
 import CraftingIcon from "./CraftingIcon";
 import ItemStack, { ItemStackProps } from "./ItemStack";
@@ -51,7 +53,9 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
   const isCraftable = Boolean(item.ingredients);
   const isComplete = owned >= quantity;
   const [rawValue, setRawValue] = useState<string>("");
-  const hideIncrementDecrementButtons = false;
+  const hideIncrementDecrementButtons = useAppSelector((state) =>
+    selectPreference(state, UserPreference.HIDE_INCREMENT_DECREMENT_BUTTONS)
+  );
 
   useEffect(() => {
     setRawValue(`${owned}`);

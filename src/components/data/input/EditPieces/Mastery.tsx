@@ -6,12 +6,16 @@ import { changeMastery } from "util/changeOperator";
 import Image from "next/image";
 
 interface Props {
-  op: Operator;
-  onChange: (newOperator: Operator) => void;
+  masteries: number[],
+  minMasteries?: number[],
+  opId?: string,
+  skillLevel?: number,
+  eliteLevel?: number,
+  onChange: (skillNumber: number, newMasteryLevel: number) => void;
 }
 const Mastery = ((props: Props) => {
-  const { op, onChange } = props;
-  const opData = operatorJson[op.op_id];
+  const {masteries, minMasteries, opId, skillLevel, eliteLevel, onChange } = props;
+  const opData = opId ? operatorJson[opId] : undefined;
 
   return (
     <Box sx={{
@@ -20,11 +24,11 @@ const Mastery = ((props: Props) => {
       alignItems: "center",
       gap: "4px",
     }}>
-      {[...Array(opData.skillData.length)].map((_, i) => {
-        const disabled = !op.potential || op.skill_level < 7 || op.elite < 2;
+      {[...Array(opData?.skillData?.length ?? 0)].map((_, skillNumber) => {
+        const disabled = !opId || !skillLevel || skillLevel < 7 || !eliteLevel || eliteLevel < 2;
         return (
           <Box
-            key={`maB${i}`}
+            key={`maB${skillNumber}`}
             sx={{
               display: "grid",
               width: "max-content",
@@ -44,33 +48,33 @@ const Mastery = ((props: Props) => {
                 mb: -0.25,
                 zIndex: 1
               }}>
-              {opData.skillData[i].skillName}
+              {opData!.skillData![skillNumber].skillName}
             </Typography>
-            {opData !== undefined
+            {!opData
               ? <Box
                 component="img"
-                className={op.elite < i ? "Mui-disabled" : ""}
+                className={eliteLevel! < skillNumber ? "Mui-disabled" : ""}
                 sx={{ gridArea: "icon" }}
                 width="48px"
-                src={`/img/skills/${opData.skillData[i].iconId ?? opData.skillData[i].skillId}.png`}
-                alt={`Skill ${i + 1}`}
+                src={`/img/skills/${opData!.skillData![skillNumber].iconId ?? opData!.skillData![skillNumber].skillId}.png`}
+                alt={`Skill ${skillNumber + 1}`}
               />
               : ""}
-            {[...Array(4)].map((_, j) =>
+            {[...Array(4)].map((_, masteryLevel) =>
               <Button
-                className={!disabled && (op.masteries && op.masteries[i] ? op.masteries[i] === j : j === 0) ? "active" : "inactive"}
-                key={`mastery${j}Button`}
+                className={!disabled && (masteries && masteries[skillNumber] ? masteries[skillNumber] === masteryLevel : masteryLevel === 0) ? "active" : "inactive"}
+                key={`mastery${masteryLevel}Button`}
                 sx={{
                   gridRow: 2,
-                  gridColumn: j + 2,
+                  gridColumn: masteryLevel + 2,
                   display: "grid",
                   "& > *": { gridArea: "1 / 1" },
                   p: 0.5,
                   minWidth: 0,
                   height: "40px",
                 }}
-                onClick={() => onChange(changeMastery(op, i, j))}
-                disabled={disabled}
+                onClick={() => onChange(skillNumber, masteryLevel)}
+                disabled={disabled || masteryLevel < (minMasteries ? minMasteries[skillNumber] : 0)}
               >
                 <Image
                   width={32}
@@ -81,8 +85,8 @@ const Mastery = ((props: Props) => {
                 <Image
                   width={32}
                   height={32}
-                  src={`/img/rank/m-${j}.png`}
-                  alt={`Mastery ${j}`}
+                  src={`/img/rank/m-${masteryLevel}.png`}
+                  alt={`Mastery ${masteryLevel}`}
                 />
               </Button>
             )}

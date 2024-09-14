@@ -8,11 +8,14 @@ import { OperatorSupport } from "types/operators/supports";
 import { useSupportSetMutation } from "store/extendSupports";
 import { useAccountUpdateMutation } from "store/extendAccount";
 import skinJson from "data/skins.json";
+import { DepotDataInsert } from "../../../types/auth/depotData";
+import { useDepotUpdateMutation } from "../../../store/extendDepot";
 
 interface Props {
   user: AccountData;
 }
 
+const EXCLUDED_ITEMS = ["2001", "2002", "2003", "2004", "4001"];
 const GameImport = ((props: Props) => {
   const { user } = props;
 
@@ -26,6 +29,8 @@ const GameImport = ((props: Props) => {
   const [upsertRoster] = useRosterUpsertMutation();
   const [setSupport] = useSupportSetMutation();
   const [accountUpdateTrigger] = useAccountUpdateMutation();
+  const [depotUpdateTrigger] = useDepotUpdateMutation();
+  
   const sendCode = async () => {
     const result = await fetch(`/api/arknights/sendAuthMail?mail=${email}`);
     if (result.ok)
@@ -121,7 +126,7 @@ const GameImport = ((props: Props) => {
         op_id: value.charId,
         elite: value.evolvePhase,
         level: value.level,
-        potential: value.potentialRank,
+        potential: value.potentialRank + 1,
         skill_level: value.mainSkillLvl,
         favorite: value.starMark == 1,
         skin: skin,
@@ -158,6 +163,19 @@ const GameImport = ((props: Props) => {
       }
       setSupport(support);
     }
+
+    //Update depot
+    const depot = userData.inventory;
+    const depotData: DepotDataInsert[] = [];
+    for (let key in depot) {
+      if (!EXCLUDED_ITEMS.includes(key))
+      {
+        let value = depot[key]!
+        let item : DepotDataInsert = {material_id: key, stock: value}
+        depotData.push(item);
+      }
+    }
+    depotUpdateTrigger(depotData);
 
     setError("Data imported.");
   }

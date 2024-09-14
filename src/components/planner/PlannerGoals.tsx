@@ -1,111 +1,124 @@
 import ClearAllIcon from "@mui/icons-material/ClearAll";
-import { Box, Button, Paper, Typography } from "@mui/material";
-import {
-  DragDropContext,
-  Draggable,
-  DraggableProvided,
-  Droppable,
-  DroppableProvided,
-  DropResult,
-} from "react-beautiful-dnd";
-
-import { completeGoal } from "store/goalsActions";
-import {
-  clearAllGoals,
-  deleteGoal,
-  selectGoals,
-  reorderGoal,
-} from "store/goalsSlice";
-import { useAppDispatch, useAppSelector } from "store/hooks";
+import AddIcon from '@mui/icons-material/Add';
+import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
+import {  Button, Grid, IconButton, InputAdornment, Paper, TextField, Typography } from "@mui/material";
 import { PlannerGoal } from "types/goal";
+import { Search } from "@mui/icons-material";
+import React, { useState } from "react";
+import { useGoalsDeleteAllMutation, useGoalsGetQuery, useGoalsUpdateMutation } from "store/extendGoals";
+import EditOperator from "../data/input/EditOperator";
+import PlannerGoalAdd from "./PlannerGoalAdd";
 
-import PlannerGoalCard from "./PlannerGoalCard";
+const OperatorGoals: React.FC = () => {
 
-interface Props {
-  onCompleteGoal: (goal: PlannerGoal) => void;
-}
+  const {data: goals} = useGoalsGetQuery();
+  const [goalsUpdateTrigger] = useGoalsUpdateMutation();
+  const [goalsDeleteAllTrigger] = useGoalsDeleteAllMutation();
 
-const OperatorGoals: React.FC<Props> = ({ onCompleteGoal }) => {
-  const dispatch = useAppDispatch();
-  const goals = useAppSelector(selectGoals);
+  const [addGoalOpen, setAddGoalOpen] = useState<boolean>(false);
 
   const handleGoalDeleted = (goal: PlannerGoal) => {
-    dispatch(deleteGoal(goal));
   };
 
   const handleGoalCompleted = (goal: PlannerGoal) => {
-    dispatch(completeGoal(goal));
-    onCompleteGoal(goal)
+
   };
 
   const handleClearAll = () => {
-    dispatch(clearAllGoals());
-  };
-
-  const handleDragEnd = (result: DropResult) => {
-    if (!result.destination) {
-      return;
+    if (goals && goals.length > 0)
+    {
+      goalsDeleteAllTrigger();
     }
-
-    const source = result.source;
-    const destination = result.destination;
-    dispatch(
-      reorderGoal({
-        oldIndex: source.index,
-        newIndex: destination.index,
-      })
-    );
   };
+
+  const handleAddGoal = () => {
+    setAddGoalOpen(true);
+  }
 
   return (
     <section>
       <Paper
         sx={{
-          display: "grid",
           mb: 1,
           p: 2,
-          gridTemplateColumns: "1fr auto",
         }}
       >
-        <Typography component="h3" variant="h5">
-          Operator goals
-        </Typography>
-        <Button
-          onClick={handleClearAll}
-          startIcon={<ClearAllIcon />}
-          variant="outlined"
-          color="secondary"
+        <Grid container columnGap={1}
+              sx={{
+                justifyContent: "space-between",
+                alignItems: "center",
+                mb: 2,
+              }}
         >
-          Clear All
-        </Button>
+          <Grid item xs={7}>
+            <Typography component="h3" variant="h5">
+              Goals
+            </Typography>
+          </Grid>
+          <Grid item
+          >
+            <Button
+              onClick={handleAddGoal}
+              startIcon={< AddIcon/>}
+              variant="contained"
+              color="primary"
+            >
+              New Goal
+            </Button>
+          </Grid>
+          <Grid item >
+            <Button
+              onClick={handleClearAll}
+              startIcon={<ClearAllIcon />}
+              variant="outlined"
+              color="secondary"
+            >
+              Clear All
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid container columnGap={1}
+              sx={{
+                alignItems: "center",
+              }}>
+          <Grid item >
+            <IconButton size="large">
+              <FilterAltOutlinedIcon fontSize="inherit" />
+            </IconButton>
+          </Grid>
+          <Grid item flexGrow="1">
+            <TextField id="search"
+             autoComplete="off"
+             label="Search..."
+             // value={searchText}
+             // onChange={(e) => setSearchText(e.target.value)}
+             size="small"
+             fullWidth={true}
+             InputProps={{
+               sx: { pr: 0.5 },
+               endAdornment: (
+                 <InputAdornment position="end">
+                   <IconButton
+                     type="submit"
+                     aria-label="search"
+                     onClick={(e) => {
+                       e.preventDefault();
+                       // search(searchText);
+                     }}
+                   >
+                     <Search fontSize="small" />
+                   </IconButton>
+                 </InputAdornment>
+               )
+             }}
+            />
+          </Grid>
+        </Grid>
       </Paper>
-
-      <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId="goal-list">
-          {(provided: DroppableProvided) => (
-            <div {...provided.droppableProps} ref={provided.innerRef}>
-              <Box component="ul" sx={{ m: 0, p: 0 }}>
-                {goals.map((goal, i) => (
-                  <Draggable key={i} draggableId={`goal-${i}`} index={i}>
-                    {(provided: DraggableProvided) => (
-                      <PlannerGoalCard
-                        key={i}
-                        goal={goal}
-                        onGoalDeleted={handleGoalDeleted}
-                        onGoalCompleted={handleGoalCompleted}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
-                      />
-                    )}
-                  </Draggable>
-                ))}
-              </Box>
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+      <PlannerGoalAdd
+        open={addGoalOpen}
+        onClose={() => setAddGoalOpen(false)}
+      />
     </section>
   );
 };
