@@ -43,13 +43,6 @@ const extendedApi = supabaseApi.injectEndpoints({
           .select()
           .single();
 
-        if (error)
-        {
-          console.log(error?.details)
-          console.log(error?.hint)
-          console.log(error?.message)
-          console.log(error?.code)
-        }
         return { data } as { data: AccountData };
       },
       invalidatesTags: ["account"],
