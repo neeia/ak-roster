@@ -30,7 +30,7 @@ const GameImport = ((props: Props) => {
   const [setSupport] = useSupportSetMutation();
   const [accountUpdateTrigger] = useAccountUpdateMutation();
   const [depotUpdateTrigger] = useDepotUpdateMutation();
-  
+
   const sendCode = async () => {
     const result = await fetch(`/api/arknights/sendAuthMail?mail=${email}`);
     if (result.ok)
