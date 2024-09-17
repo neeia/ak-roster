@@ -2,10 +2,7 @@ import { Grid } from "@mui/material";
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import Layout from "components/Layout";
-import { GoalsState } from "store/goalsSlice";
 import { PlannerGoal } from "types/goal";
-import * as lz from "util/lz-string";
-import { DepotState } from "store/depotSlice";
 
 const MaterialsNeeded = dynamic(() => import("components/planner/MaterialsNeeded"), {
   ssr: false
@@ -19,22 +16,6 @@ const Goals: NextPage = () => {
   const handleGoalsAdded = (newGoals: PlannerGoal[]) => {
 
   };
-
-  function parseText(text: string) {
-    try {
-      const { goals, depot }: { goals: GoalsState, depot: DepotState } = JSON.parse(lz.decompressFromEncodedURIComponent(text) ?? "");
-      Object.entries(depot.stock).forEach(([itemId, newQuantity]) => {
-        //TODO set stock
-      })
-      Object.entries(depot.crafting).forEach(([itemId, isCrafting]) => {
-        //TODO set crafting
-      })
-      //TODO add goals
-    }
-    catch (e) {
-      console.log("Error while migrating planner data: " + e);
-    }
-  }
 
   return (
     <Layout tab="/data" page="/planner">

@@ -61,7 +61,7 @@ const PlannerGoalAdd = (props: Props) => {
     }
   };
 
-  const onSelectedOperatorChange = (newOp: OperatorData | null) => {
+  const onSelectedOperatorChange = ((newOp: OperatorData | null) => {
     setSelectedOperatorData(newOp)
     if (roster && newOp) {
       const accountOp: Operator | null = roster[newOp.id] ?? null;
@@ -80,11 +80,11 @@ const PlannerGoalAdd = (props: Props) => {
       setMasteries([]);
       setModules(undefined);
     }
-  };
+  });
 
-  const onPromotionChange = useCallback((elite: number) => {
+  const onPromotionChange = (elite: number) => {
     setEliteLevel(elite);
-  }, []);
+  };
 
   const onPromotionClearClick = useCallback(() => {
     if (accountOperator) {
@@ -95,9 +95,9 @@ const PlannerGoalAdd = (props: Props) => {
     }
   }, [accountOperator]);
 
-  const onLevelChange = useCallback((level: number) => {
+  const onLevelChange = (level: number) => {
     setLevel(level);
-  }, []);
+  }
 
   const onLevelClearClick = useCallback(() => {
     if (accountOperator) {
@@ -108,9 +108,9 @@ const PlannerGoalAdd = (props: Props) => {
     }
   }, [accountOperator]);
 
-  const onSkillLevelChange = useCallback((level: number) => {
+  const onSkillLevelChange = (level: number) => {
     setSkillLevel(level);
-  }, []);
+  }
 
   const onSkillLevelClearClick = useCallback(() => {
     if (accountOperator) {
@@ -142,10 +142,10 @@ const PlannerGoalAdd = (props: Props) => {
     }
   }, [accountOperator]);
 
-  const onModuleChange = useCallback((moduleName: string, newModuleLevel: number) => {
+  const onModuleChange = useCallback((moduleId: string, newModuleLevel: number) => {
 
     const newModules = { ...modules };
-    newModules[moduleName] = newModuleLevel;
+    newModules[moduleId] = newModuleLevel;
     setModules(newModules);
   }, [modules]);
 
@@ -205,13 +205,13 @@ const PlannerGoalAdd = (props: Props) => {
         const allModuleGoals: Record<string, number> = {};
         setEliteLevel(2);
         setSkillLevel(7);
-        newMasteries = accountOperator!.masteries.map((masteryLevel) => {
+        newMasteries = accountOperator!.masteries.map((_) => {
           return 3;
         });
         setMasteries(newMasteries)
         if (allModules) {
           for (const moduleData of allModules) {
-            allModuleGoals[moduleData.moduleName] = 3;
+            allModuleGoals[moduleData.moduleId] = 3;
           }
           setModules(allModuleGoals);
           setLevel(moduleLevelRequirement)
@@ -236,7 +236,7 @@ const PlannerGoalAdd = (props: Props) => {
         });
         setMasteries(newMasteries)
         break;
-      case "Skill 1 Mastery 1 → 3":
+      case "Skill 1 Mastery 3":
         setEliteLevel(2);
         setSkillLevel(7);
         newMasteries = masteries.map((masteryLevel, index) => {
@@ -249,7 +249,7 @@ const PlannerGoalAdd = (props: Props) => {
         });
         setMasteries(newMasteries)
         break;
-      case "Skill 2 Mastery 1 → 3":
+      case "Skill 2 Mastery 3":
         setEliteLevel(2);
         setSkillLevel(7);
         newMasteries = masteries.map((masteryLevel, index) => {
@@ -262,7 +262,7 @@ const PlannerGoalAdd = (props: Props) => {
         });
         setMasteries(newMasteries)
         break;
-      case "Skill 3 Mastery 1 → 3":
+      case "Skill 3 Mastery 3":
         setEliteLevel(2);
         setSkillLevel(7);
         newMasteries = masteries.map((masteryLevel, index) => {
@@ -324,6 +324,17 @@ const PlannerGoalAdd = (props: Props) => {
             opacity: 0.25,
             boxShadow: 0,
           },
+          "& .inactive": {
+            opacity: 0.75,
+          },
+          "& .active": {
+            opacity: 1,
+            boxShadow: 0,
+            borderBottomWidth: "0.25rem 0px 0px 0px !important",
+            borderBottomColor: "primary.main",
+            borderBottomStyle: "solid",
+            backgroundColor: "primary.light",
+          }
         }}>
           <Box sx={{ gridColumn: "1 / -1", display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: 2, pt: 2 }}>
             <OperatorSearch

@@ -37,9 +37,21 @@ const extendedApi = supabaseApi.injectEndpoints({
         },
         invalidatesTags: ["groups"]
       }),
+      groupsDelete: builder.mutation<boolean, string >({
+        async queryFn( groupName: string ) {
+
+          const { error } = await supabase
+            .from("groups")
+            .delete()
+            .eq("group_name", groupName)
+
+          return { data: !!error}
+        },
+        invalidatesTags: ["groups"]
+      }),
     }
   ),
   overrideExisting: false,
 })
 
-export const { useGroupsGetQuery, useGroupsUpdateMutation,  } = extendedApi
+export const { useGroupsGetQuery, useGroupsUpdateMutation, useGroupsDeleteMutation } = extendedApi

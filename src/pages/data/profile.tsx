@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
 import type { NextPage } from "next";
-import {Box, Button, Divider, TextField} from "@mui/material";
+import {Box, Divider} from "@mui/material";
 import Layout from "components/Layout";
 import SupportSelection from "components/data/profile/SupportSelection";
 import Assistant from "components/data/profile/Assistant";

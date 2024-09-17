@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Operator, OperatorData } from "types/operator";
 import { Box, Button, Typography } from "@mui/material";
 import operatorJson from "data/operators";
@@ -13,7 +13,7 @@ interface Props {
   eliteLevel?: number,
   onChange: (skillNumber: number, newMasteryLevel: number) => void;
 }
-const Mastery = ((props: Props) => {
+const Mastery = memo((props: Props) => {
   const {masteries, minMasteries, opId, skillLevel, eliteLevel, onChange } = props;
   const opData = opId ? operatorJson[opId] : undefined;
 
@@ -96,4 +96,5 @@ const Mastery = ((props: Props) => {
     </Box>
   )
 })
+Mastery.displayName = "Mastery";
 export default Mastery;

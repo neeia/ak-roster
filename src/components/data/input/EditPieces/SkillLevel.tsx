@@ -1,7 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import { Box, Button } from "@mui/material";
 import { KeyboardArrowDownSharp, KeyboardArrowUpSharp } from "@mui/icons-material";
 import Image from "components/base/Image";
+import Module from "./Module";
 
 interface Props {
   skillLevel?: number;
@@ -10,7 +11,7 @@ interface Props {
   disabled?: boolean;
   onChange: (skillLevel: number) => void;
 }
-const SelectSkillLevel = (props: Props) => {
+const SelectSkillLevel = memo((props: Props) => {
   const { skillLevel = 1, minSkillLevel = 1, maxSkillLevel = 4, disabled, onChange } = props;
 
   const previousSkillLevel = (skillLevel ?? 0) > 4 ? 4 : 1;
@@ -102,5 +103,6 @@ const SelectSkillLevel = (props: Props) => {
       {rankButton(nextSkillLevel)}
     </Box>
   )
-}
+})
+SelectSkillLevel.displayName = "SelectSkillLevel";
 export default SelectSkillLevel;
