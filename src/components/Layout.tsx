@@ -78,7 +78,7 @@ const Layout = React.memo((props: Props) => {
             }
           </Toolbar>
         </AppBar>
-        <Container
+        <Container id="app-main"
           component="main"
           maxWidth="xl"
           sx={{ gridArea: "main", p: { xs: 1, sm: 2 }, position: "relative" }}

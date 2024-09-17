@@ -16,7 +16,7 @@ const HomeNavItem = ((props: Props) => {
     <Box component="li" display="flex">
       <Link href={href} sx={{
         ...interactive,
-        backgroundColor: "grey.700",
+        backgroundColor: "background.light",
         display: "flex",
         alignItems: "center",
         gap: 1,

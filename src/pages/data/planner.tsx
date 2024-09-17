@@ -1,23 +1,15 @@
 import { Grid } from "@mui/material";
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
-import GoalSelect from "components/planner/GoalSelect";
 import Layout from "components/Layout";
-import OperatorSearch from "components/planner/OperatorSearch";
-import { OperatorData } from "types/operator";
-import { useAppDispatch } from "store/hooks";
-import { addGoals, GoalsState } from "store/goalsSlice";
-import { OperatorGoalCategory, PlannerGoal } from "types/goal";
-import operatorsJson from "data/operators.json";
-import { useRouter } from "next/router";
+import { GoalsState } from "store/goalsSlice";
+import { PlannerGoal } from "types/goal";
 import * as lz from "util/lz-string";
-import { DepotState, setCrafting, setStock } from "store/depotSlice";
+import { DepotState } from "store/depotSlice";
 
-const MaterialsNeeded = dynamic(
-  () => import("components/planner/MaterialsNeeded"),
-  { ssr: false }
-);
+const MaterialsNeeded = dynamic(() => import("components/planner/MaterialsNeeded"), {
+  ssr: false
+});
 const PlannerGoals = dynamic(() => import("components/planner/PlannerGoals"), {
   ssr: false,
 });
@@ -51,7 +43,7 @@ const Goals: NextPage = () => {
           {/*<MaterialsNeeded />*/}
         </Grid>
         <Grid item xs={12} lg={6}>
-          <PlannerGoals/>
+          <PlannerGoals />
         </Grid>
       </Grid>
     </Layout>

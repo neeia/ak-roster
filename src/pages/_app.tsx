@@ -9,7 +9,7 @@ import { getApps, initializeApp } from 'firebase/app';
 import { Analytics } from '@vercel/analytics/react';
 import { Lato } from "next/font/google";
 import supabase from 'supabase/supabaseClient';
-import { Session } from '@supabase/supabase-js';
+import { User } from '@supabase/supabase-js';
 import { Provider as ReduxProvider } from "react-redux";
 import { store } from 'store/store';
 
@@ -29,27 +29,27 @@ const lato = Lato({
   weight: ['100', '300', '400', '700', '900']
 });
 
-export const SessionContext = React.createContext<Session | null>(null);
+export const UserContext = React.createContext<User | null>(null);
 
 const MyApp = (props: AppProps) => {
   const { Component, pageProps } = props;
 
   if (!getApps().length) initializeApp(firebaseConfig);
 
-  const [session, setSession] = React.useState<Session | null>(null)
+  const [user, setUser] = React.useState<User | null>(null)
 
   React.useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        if (event === 'SIGNED_OUT') {
-          setSession(null)
-        } else if (session) {
-          setSession(session)
+      (event, newSession) => {
+        if (!newSession) setUser(null);
+        else if (!user) setUser(newSession.user);
+        else if (newSession.user.id !== user.id) {
+          setUser(newSession.user);
         }
       })
 
-    return () => subscription.unsubscribe()
-  }, [])
+    return subscription.unsubscribe
+  }, [user])
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
@@ -61,7 +61,7 @@ const MyApp = (props: AppProps) => {
   const clientSideEmotionCache = createEmotionCache();
   return (
     <ReduxProvider store={store}>
-      <SessionContext.Provider value={session}>
+      <UserContext.Provider value={user}>
         <CacheProvider value={clientSideEmotionCache}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
@@ -71,7 +71,7 @@ const MyApp = (props: AppProps) => {
             </div>
           </ThemeProvider>
         </CacheProvider>
-      </SessionContext.Provider>
+      </UserContext.Provider>
     </ReduxProvider>
   );
 };

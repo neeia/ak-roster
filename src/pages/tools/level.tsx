@@ -3,8 +3,6 @@ import {
   Container,
   SxProps,
   TextField,
-  ToggleButton,
-  ToggleButtonGroup,
   Typography,
 } from "@mui/material";
 import { NextPage } from "next";
@@ -13,9 +11,7 @@ import { memo, useState } from "react";
 
 import { COST_BY_RARITY, MAX_LEVEL_BY_RARITY, minMax } from "util/changeOperator";
 import Layout from "components/Layout";
-import { rarityColors } from "styles/rarityColors";
-import { Star } from "@mui/icons-material";
-import PromotionSelector from "components/data/input/EditPieces/PromotionSelector";
+import SelectPromotion from "components/data/input/EditPieces/Promotion";
 import Board from "components/base/Board";
 import SelectRarity from "components/data/input/EditPieces/Rarity";
 
@@ -216,7 +212,7 @@ const Level: NextPage = () => {
                 Start
               </Typography>
               <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: "min-content" }}>
-                <PromotionSelector
+                <SelectPromotion
                   value={startingElite}
                   maxPromotion={maxElite(rarity)}
                   onChange={handleChangeStartingElite}
@@ -241,7 +237,7 @@ const Level: NextPage = () => {
                 End
               </Typography>
               <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: "min-content" }}>
-                <PromotionSelector
+                <SelectPromotion
                   value={targetElite}
                   maxPromotion={maxElite(rarity)}
                   onChange={handleChangeTargetElite}

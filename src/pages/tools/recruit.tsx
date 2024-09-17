@@ -24,15 +24,15 @@ import Layout from "components/Layout";
 import classList from "data/classList";
 import useLocalStorage from "util/useLocalStorage";
 import RecruitableOperatorCard from "components/recruit/RecruitableOperatorCard";
-import { rosterApi, useRosterGetQuery } from "store/extendRoster";
-import { SessionContext } from "pages/_app";
+import { useCurrentRosterGetQuery, useRosterGetQuery } from "store/extendRoster";
+import { UserContext } from "pages/_app";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { defaultOperatorObject } from "util/changeOperator";
 import Board from "components/base/Board";
 import Chip from "components/base/Chip";
 import Image from "components/base/Image";
 import { focused } from "styles/theme/appTheme";
-import { ZoomOutMap } from "@mui/icons-material";
+import { ZoomInMap, ZoomOutMap } from "@mui/icons-material";
 
 const TAGS_BY_CATEGORY = {
   Rarity: ["Top Operator", "Senior Operator", "Starter", "Robot"],
@@ -94,8 +94,8 @@ const options: Tag[] = Object.entries(TAGS_BY_CATEGORY).flatMap(([type, tagArray
 );
 
 const Recruit: NextPage = () => {
-  const session = useContext(SessionContext);
-  const { data: roster } = useRosterGetQuery(session ? { user_id: session.user.id } : skipToken);
+  const user = useContext(UserContext);
+  const { data: roster } = useCurrentRosterGetQuery();
 
   const [activeTags, setActiveTags] = useState<Tag[]>([]);
   const [inputNode, setInputNode] = useState<HTMLInputElement | null>(null);
@@ -141,17 +141,26 @@ const Recruit: NextPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log("asdf")
 
   return (
     <Layout tab="/tools" page="/recruit">
-      <Box sx={{ display: "flex", gap: "32px", justifyContent: "center", }}>
-        <Board title="Tags" TitleAction={<IconButton onClick={() => setOpen(o => !o)}><ZoomOutMap /></IconButton>} sx={{
-          maxWidth: "sm",
-          "&:focus-within .MuiAutocomplete-option.Mui-focused": {
-            ...focused
-          },
-        }}>
+      <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, gap: "32px", justifyContent: "center", }}>
+        <Board title="Tags"
+          TitleAction={<IconButton onClick={() => setOpen(o => !o)}>
+            {open
+              ? <ZoomInMap />
+              : <ZoomOutMap />
+            }
+          </IconButton>}
+          sx={{
+            width: open ? "100%" : "25%",
+            height: "min-content",
+            transition: "width 0.25s",
+            maxWidth: { xs: "100%", md: "sm" },
+            "&:focus-within .MuiAutocomplete-option.Mui-focused": {
+              ...focused
+            },
+          }}>
           <Collapse collapsedSize="0px" in={open}>
             <Autocomplete multiple options={options} value={activeTags}
               open
@@ -205,6 +214,16 @@ const Recruit: NextPage = () => {
                   height: "max-contents",
                   maxHeight: "none",
                   my: 2,
+                  "& .MuiAutocomplete-option": {
+                    minHeight: "40px",
+                    padding: "8px 16px",
+                    backgroundColor: "background.light",
+                    borderRadius: "9999px",
+                    display: "flex",
+                    gap: "8px",
+                    alignItems: "center",
+                    lineHeight: "1"
+                  },
                 }
               }}
               PopperComponent={(props) => (
@@ -232,16 +251,16 @@ const Recruit: NextPage = () => {
             }
           }}>
             <FormControlLabel
-              control={<Checkbox
-                checked={showPotentials}
+              control={<Checkbox checked={showPotentials}
                 onChange={(e) => { setShowPotentials(e.target.checked); _setShowPotentials(e.target.checked); }}
+                disabled={!user}
               />}
               label="Show Potentials"
             />
             <FormControlLabel
-              control={<Checkbox
-                checked={bonuses}
+              control={<Checkbox checked={bonuses}
                 onChange={(e) => { setBonuses(e.target.checked); _setBonuses(e.target.checked); }}
+                disabled={!user}
               />}
               label="Next Upgrade"
             />
@@ -267,6 +286,7 @@ const Recruit: NextPage = () => {
                   gap: 2,
                   "& ~ &": {
                     borderTop: "1px solid #4d4d4d",
+                    pt: 2,
                   },
                 }}
               >

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { Link as MuiLink, LinkProps as MuiLinkProps } from "@mui/material";
 import NextLink from "next/link";
 
@@ -7,7 +7,7 @@ export interface LinkProps extends MuiLinkProps {
   disabled?: boolean;
   external?: boolean;
 }
-const Link = (props: LinkProps) => {
+const Link = forwardRef<HTMLAnchorElement, LinkProps>((props: LinkProps, ref) => {
   const { href, disabled, external, children, ...rest } = props;
 
   if (external) {
@@ -26,7 +26,7 @@ const Link = (props: LinkProps) => {
   else {
     return (
       <NextLink href={href} passHref legacyBehavior>
-        <MuiLink
+        <MuiLink ref={ref}
           aria-disabled={disabled}
           tabIndex={disabled ? -1 : 0}
           {...rest}
@@ -36,5 +36,5 @@ const Link = (props: LinkProps) => {
       </NextLink>
     );
   }
-}
+})
 export default Link;

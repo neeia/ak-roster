@@ -20,8 +20,7 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import NextLink from "next/link";
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import config from "data/config";
 import DiscordInvite from "./app/DiscordInvite";
 import LoginForm from "./app/LoginDialog";
@@ -29,12 +28,12 @@ import RegisterForm from "./app/RegisterDialog";
 import { useRouter } from "next/router";
 import Logo from "./app/Logo";
 import AccountContextMenu from "./app/AccountContextMenu";
-import { SessionContext } from "pages/_app";
+import { UserContext } from "pages/_app";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { useAccountGetQuery, useAccountUpdateMutation } from "store/extendAccount";
 import { interactive } from "styles/theme/appTheme";
-import Link from "./base/Link";
 import randomName from "util/randomName";
+import JumpTo from "./base/JumpTo";
 
 const DRAWER_WIDTH_PX = 220;
 const ICON_BY_PATH = [
@@ -98,20 +97,20 @@ const AppDrawer = React.memo((props: Props) => {
   const requireLogin = r1 || r2;
   const [trigger, out] = useAccountUpdateMutation();
 
-  const session = useContext(SessionContext);
+  const user = useContext(UserContext);
   const [username, setUsername] = useState<string | null>();
-  const { data: accountData, isSuccess } = useAccountGetQuery(session ? { user_id: session.user.id } : skipToken);
+  const { data: accountData, isSuccess } = useAccountGetQuery(user ? { user_id: user.id } : skipToken);
   useEffect(() => {
-    if (session && accountData) {
+    if (user && accountData) {
       if (accountData.display_name) {
         setUsername(accountData.display_name);
       }
       else if (!accountData.display_name) {
         const genName = randomName();
-        trigger({ user_id: session.user.id, username: genName, display_name: genName, private: false, });
+        trigger({ user_id: user.id, username: genName, display_name: genName, private: false, });
       }
     }
-    if (!session && requireLogin) router.push("/");
+    if (!user && requireLogin) router.push("/");
   }, [accountData])
 
   const router = useRouter();
@@ -121,6 +120,12 @@ const AppDrawer = React.memo((props: Props) => {
 
   const drawerContent = (
     <Box sx={{ height: "100%", maxHeight: "100%", overflow: "hidden", display: "flex", flexDirection: "column", gap: "16px", py: "16px" }}>
+      <JumpTo onClick={() => {
+        const main = document.getElementById("app-main");
+        if (!main) return;
+        const el = findFirstFocusableElement(main);
+        if (el) (el as HTMLElement).focus();
+      }}>skip to main content</JumpTo>
       <Logo hideSubtitle
         sx={{ width: "100%", height: "200px", }}
         LinkProps={{ sx: { position: "relative" } }}
@@ -135,12 +140,13 @@ const AppDrawer = React.memo((props: Props) => {
           gap: "4px",
         }}
       >
-        {!session ? (
+        {!user ? (
           <Box
             sx={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
               gap: "4px",
+              mx: "8px"
             }}
           >
             <Button onClick={() => setLogin(true)}>Log In</Button>
@@ -149,7 +155,7 @@ const AppDrawer = React.memo((props: Props) => {
         ) : null}
         <LoginForm open={login} onClose={() => setLogin(false)} />
         <RegisterForm open={register} onClose={() => setRegister(false)} />
-        {session ? (
+        {user ? (
           <>
             <Box sx={{
               display: "flex",
@@ -308,3 +314,26 @@ const AppDrawer = React.memo((props: Props) => {
 
 AppDrawer.displayName = "AppDrawer";
 export default AppDrawer;
+
+
+const findFirstFocusableElement = (container: HTMLElement) => {
+  return Array.from(container.getElementsByTagName("*")).find(isFocusable);
+};
+
+const isFocusable = (item: any) => {
+  if (item.tabIndex < 0) {
+    return false;
+  }
+  switch (item.tagName) {
+    case "A":
+      return !!item.href;
+    case "INPUT":
+      return item.type !== "hidden" && !item.disabled;
+    case "SELECT":
+    case "TEXTAREA":
+    case "BUTTON":
+      return !item.disabled;
+    default:
+      return false;
+  }
+};

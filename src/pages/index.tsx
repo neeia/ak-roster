@@ -3,7 +3,6 @@
   Box,
   Button,
   CircularProgress,
-  Container,
   IconButton,
   InputAdornment,
   Paper,
@@ -15,14 +14,13 @@ import type { NextPage } from "next";
 import config from "data/config";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import supabase from "supabase/supabaseClient";
 import { getLogoUrl } from "components/app/Logo";
 import HomeNavItem from "components/landing/HomeNavItem";
 import HomeNavSection from "components/landing/HomeNavSection";
 import { brand, DISCORD_BLURPLE, GITHUB_DARK, KOFI_BLUE } from "styles/theme/appTheme";
-import { Edit, LockPerson, Search, Settings } from "@mui/icons-material";
+import { LockPerson, Search } from "@mui/icons-material";
 import JumpTo from "components/base/JumpTo";
-import { SessionContext } from "pages/_app";
+import { UserContext } from "pages/_app";
 import Link from "components/base/Link";
 import Head from "components/app/Head";
 import AccountContextMenu from "components/app/AccountContextMenu";
@@ -55,18 +53,18 @@ const Home: NextPage = () => {
 
   const logoBasePath = useRef(`/assets/title/${getLogoUrl()}`);
 
-  const session = useContext(SessionContext);
+  const user = useContext(UserContext);
 
-  const { data: accountData } = useAccountGetQuery(session ? { user_id: session.user.id } : skipToken);
+  const { data: accountData } = useAccountGetQuery(user ? { user_id: user.id } : skipToken);
 
   useEffect(() => {
-    if (session && accountData) {
+    if (user && accountData) {
       if (accountData.display_name) {
         setUsername(accountData.display_name);
       }
       else if (!accountData.display_name) {
         const genName = randomName();
-        trigger({ user_id: session.user.id, username: genName, display_name: genName, private: false, });
+        trigger({ user_id: user.id, username: genName, display_name: genName, private: false, });
       }
     }
   }, [accountData])
@@ -82,7 +80,7 @@ const Home: NextPage = () => {
         gap: 4,
         p: 2,
       }}>
-        <JumpTo target="search">
+        <JumpTo href="search">
           jump to search
         </JumpTo>
         <Box component="h1" display="flex" m={0}>
@@ -98,7 +96,7 @@ const Home: NextPage = () => {
           />
         </Box>
 
-        {(session === null) ? (
+        {(user === null) ? (
           <Paper elevation={2} sx={{
             ...authFrame,
             alignItems: "center",
@@ -184,25 +182,25 @@ const Home: NextPage = () => {
                   <LockPerson />
                 }
                 sx={{
-                  display: session ? "none" : "flex",
+                  display: user ? "none" : "flex",
                   alignItems: "center",
                   width: "100%",
                 }}
               >
                 You must be logged in to access these features.
               </Alert>
-              <HomeNavItem disabled={!session} href={"/data/input"}>
+              <HomeNavItem disabled={!user} href={"/data/input"}>
                 Roster
               </HomeNavItem>
-              <HomeNavItem disabled={!session} href={"/data/view"}>
+              <HomeNavItem disabled={!user} href={"/data/view"}>
                 Collection
               </HomeNavItem>
-              <HomeNavItem disabled={!session} href={"/data/planner"} icon={
+              <HomeNavItem disabled={!user} href={"/data/planner"} icon={
                 <Image key="p" src="/img/icons/rock.svg" alt="" width={24} height={24} />
               }>
                 Planner
               </HomeNavItem>
-              <HomeNavItem disabled={!session} href={"/data/profile"}>
+              <HomeNavItem disabled={!user} href={"/data/profile"}>
                 Profile
               </HomeNavItem>
             </HomeNavSection>
