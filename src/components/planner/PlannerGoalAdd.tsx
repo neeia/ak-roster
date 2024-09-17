@@ -324,6 +324,17 @@ const PlannerGoalAdd = (props: Props) => {
             opacity: 0.25,
             boxShadow: 0,
           },
+          "& .inactive": {
+            opacity: 0.75,
+          },
+          "& .active": {
+            opacity: 1,
+            boxShadow: 0,
+            borderBottomWidth: "0.25rem 0px 0px 0px !important",
+            borderBottomColor: "primary.main",
+            borderBottomStyle: "solid",
+            backgroundColor: "primary.light",
+          }
         }}>
           <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: 2, pt: 2 }}>
             <OperatorSearch sx={{ width: "100%", maxWidth: "40ch" }}
