@@ -1,5 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
-import PromotionSelector from "../data/input/EditPieces/PromotionSelector";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 
 interface Props {

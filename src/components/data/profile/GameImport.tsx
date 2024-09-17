@@ -8,8 +8,8 @@ import { OperatorSupport } from "types/operators/supports";
 import { useSupportSetMutation } from "store/extendSupports";
 import { useAccountUpdateMutation } from "store/extendAccount";
 import skinJson from "data/skins.json";
-import { DepotDataInsert } from "../../../types/auth/depotData";
-import { useDepotUpdateMutation } from "../../../store/extendDepot";
+import { useDepotUpdateMutation } from "store/extendDepot";
+import { DepotDataInsert } from "types/depotData";
 
 interface Props {
   user: AccountData;

@@ -163,5 +163,5 @@ const SelectLevel = memo((props: Props) => {
     </Box>
   )
 })
-Level.displayName = "Level";
+SelectLevel.displayName = "SelectLevel";
 export default SelectLevel;

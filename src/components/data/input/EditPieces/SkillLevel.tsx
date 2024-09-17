@@ -104,5 +104,5 @@ const SelectSkillLevel = memo((props: Props) => {
     </Box>
   )
 })
-SkillLevel.displayName = "SkillLevel";
+SelectSkillLevel.displayName = "SelectSkillLevel";
 export default SelectSkillLevel;

@@ -8,7 +8,6 @@ import {
 } from "../../types/arknightsApiTypes/apiTypes";
 import { randomUUID } from 'crypto';
 import * as crypto from "crypto";
-import {Dictionary} from "@reduxjs/toolkit";
 
 const sendCodeEndpoint = "/account/yostar_auth_request";
 const submitCodeEndpoint = "/account/yostar_auth_submit";
@@ -100,7 +99,7 @@ const getGameDataWithToken = async function (tokenData: TokenData): Promise<User
  * @param networkConfig - the network config dictionary from {@link getNetworkConfig}
  * @return {Promise<UserData | null>} - the account {@link UserData} if the request was successful, otherwise null
  */
-const getGameDataWithTokenInternal = async function (yostarToken: YostarToken, deviceId1: string, deviceId2: string, deviceId3: string, distributor: Distributor, server: YostarServer, networkConfig:  Dictionary<string>): Promise<UserData | null>
+const getGameDataWithTokenInternal = async function (yostarToken: YostarToken, deviceId1: string, deviceId2: string, deviceId3: string, distributor: Distributor, server: YostarServer, networkConfig: Record<string,string>): Promise<UserData | null>
 {
   console.log("getting access token")
   const accessToken = await getAccessToken(yostarToken.uid, yostarToken.token, deviceId1, server);
@@ -239,7 +238,7 @@ async function getAccessToken(yostarTokenUid: string, yostarToken: string, devic
  * @param networkConfig - the network config dictionary from {@link getNetworkConfig}
  * @return {Promise<U8Token | null>} - the {@link U8Token}, containing token and uid, if the request was successful, otherwise null
  */
-async function getU8Token(yostarTokenUid: string, accessToken: string, deviceId1: string, deviceId2: string, deviceId3: string, distributor: Distributor, networkConfig: Dictionary<string>) : Promise<U8Token | null>
+async function getU8Token(yostarTokenUid: string, accessToken: string, deviceId1: string, deviceId2: string, deviceId3: string, distributor: Distributor, networkConfig: Record<string,string>) : Promise<U8Token | null>
 {
   const u8Url = networkConfig["u8"];
   const channelId = channelIds[distributor];
@@ -286,7 +285,7 @@ async function getU8Token(yostarTokenUid: string, accessToken: string, deviceId1
  * @param networkConfig - the network config dictionary from {@link getNetworkConfig}
  * @return {Promise<LoginSecret | null>} - the {@link LoginSecret}, containing secret and uid, if the request was successful, otherwise null
  */
-async function getLoginSecret(u8Token: string, u8Uid: string, deviceId1: string, deviceId2: string, deviceId3: string, networkConfig: Dictionary<string>) : Promise<LoginSecret | null>
+async function getLoginSecret(u8Token: string, u8Uid: string, deviceId1: string, deviceId2: string, deviceId3: string, networkConfig: Record<string,string>) : Promise<LoginSecret | null>
 {
   const gsUrl = networkConfig["gs"];
   const versionConfig = await getVersionConfig(networkConfig);
@@ -330,7 +329,7 @@ async function getLoginSecret(u8Token: string, u8Uid: string, deviceId1: string,
  * @param networkConfig - the network config dictionary from {@link getNetworkConfig}
  * @return {Promise<UserData | null>} - the {@link UserData} if the request was successful, otherwise null
  */
-async function getData(loginSecret: string, loginUid: string, networkConfig: Dictionary<string>) : Promise<UserData | null>
+async function getData(loginSecret: string, loginUid: string, networkConfig: Record<string,string>) : Promise<UserData | null>
 {
   const gsUrl = networkConfig["gs"];
   const dataBody = {platform: 1};
@@ -363,7 +362,7 @@ async function getData(loginSecret: string, loginUid: string, networkConfig: Dic
  * @return {Promise<any>} - returns the server URLs
  *
  */
-async function getNetworkConfig (server: ArknightsServer): Promise<Dictionary<string>> {
+async function getNetworkConfig (server: ArknightsServer): Promise<Record<string,string>> {
   const networkConfigUrl = networkConfigUrls[server];
 
   const networkResponse = await fetch(networkConfigUrl, {
@@ -371,7 +370,7 @@ async function getNetworkConfig (server: ArknightsServer): Promise<Dictionary<st
   }).then((res) => res.json());
   const content = networkResponse["content"] as string;
   const jsonContent = JSON.parse(content);
-  const networkConfig = jsonContent["configs"][jsonContent["funcVer"]]["network"] as Dictionary<string>;
+  const networkConfig = jsonContent["configs"][jsonContent["funcVer"]]["network"] as Record<string,string>;
   return networkConfig;
 }
 
@@ -380,7 +379,7 @@ async function getNetworkConfig (server: ArknightsServer): Promise<Dictionary<st
  * @param networkConfig - the dictionary of the network configuration for the server
  * @return {Promise<VersionInfo>} - returns the VersionInfo from the server
  */
-async function getVersionConfig(networkConfig : Dictionary<string>) : Promise<VersionInfo>
+async function getVersionConfig(networkConfig : Record<string,string>) : Promise<VersionInfo>
 {
   const hvUrl = networkConfig["hv"];
   const hvUrlFormatted = hvUrl!.replace("{0}", "Android")

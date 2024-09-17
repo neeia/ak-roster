@@ -2,24 +2,8 @@ import ClearAllIcon from "@mui/icons-material/ClearAll";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  InputAdornment,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
-import AddIcon from '@mui/icons-material/Add';
-import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import { Button, Grid, IconButton, InputAdornment, TextField } from "@mui/material";
-import { PlannerGoal } from "types/goal";
 import { Search } from "@mui/icons-material";
 import React, { useCallback, useState } from "react";
 import {
