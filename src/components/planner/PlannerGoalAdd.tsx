@@ -61,7 +61,7 @@ const PlannerGoalAdd = (props: Props) => {
     }
   };
 
-  const onSelectedOperatorChange = (newOp: OperatorData | null) => {
+  const onSelectedOperatorChange = ((newOp: OperatorData | null) => {
     setSelectedOperatorData(newOp)
     if (roster && newOp) {
       const accountOp: Operator | null = roster[newOp.id] ?? null;
@@ -80,11 +80,11 @@ const PlannerGoalAdd = (props: Props) => {
       setMasteries([]);
       setModules(undefined);
     }
-  };
+  });
 
-  const onPromotionChange = useCallback((elite: number) => {
+  const onPromotionChange = (elite: number) => {
     setEliteLevel(elite);
-  }, []);
+  };
 
   const onPromotionClearClick = useCallback(() => {
     if (accountOperator) {
@@ -95,9 +95,9 @@ const PlannerGoalAdd = (props: Props) => {
     }
   }, [accountOperator]);
 
-  const onLevelChange = useCallback((level: number) => {
+  const onLevelChange = (level: number) => {
     setLevel(level);
-  }, []);
+  }
 
   const onLevelClearClick = useCallback(() => {
     if (accountOperator) {
@@ -108,9 +108,9 @@ const PlannerGoalAdd = (props: Props) => {
     }
   }, [accountOperator]);
 
-  const onSkillLevelChange = useCallback((level: number) => {
+  const onSkillLevelChange = (level: number) => {
     setSkillLevel(level);
-  }, []);
+  }
 
   const onSkillLevelClearClick = useCallback(() => {
     if (accountOperator) {
@@ -142,10 +142,10 @@ const PlannerGoalAdd = (props: Props) => {
     }
   }, [accountOperator]);
 
-  const onModuleChange = useCallback((moduleName: string, newModuleLevel: number) => {
+  const onModuleChange = useCallback((moduleId: string, newModuleLevel: number) => {
 
     const newModules = { ...modules };
-    newModules[moduleName] = newModuleLevel;
+    newModules[moduleId] = newModuleLevel;
     setModules(newModules);
   }, [modules]);
 
@@ -205,13 +205,13 @@ const PlannerGoalAdd = (props: Props) => {
         const allModuleGoals: Record<string, number> = {};
         setEliteLevel(2);
         setSkillLevel(7);
-        newMasteries = accountOperator!.masteries.map((masteryLevel) => {
+        newMasteries = accountOperator!.masteries.map((_) => {
           return 3;
         });
         setMasteries(newMasteries)
         if (allModules) {
           for (const moduleData of allModules) {
-            allModuleGoals[moduleData.moduleName] = 3;
+            allModuleGoals[moduleData.moduleId] = 3;
           }
           setModules(allModuleGoals);
           setLevel(moduleLevelRequirement)

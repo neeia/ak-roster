@@ -12,12 +12,12 @@ const getGoalIngredients = (goal: PlannerGoal): Ingredient[] => {
     case OperatorGoalCategory.SkillLevel:
       return operator.skillLevels[goal.skillLevel - 2].ingredients;
     case OperatorGoalCategory.Mastery: {
-      const skill = operator.skillData.find((sk) => sk.skillId === goal.skillId)!;
-      return skill.masteries[goal.masteryLevel - 1].ingredients;
+      const skill = operator.skillData?.find((sk) => sk.skillId === goal.skillId)!;
+      return skill?.masteries[goal.masteryLevel - 1].ingredients ?? [];
     }
     case OperatorGoalCategory.Module:
-      return operator.moduleData.find((mod) => mod.moduleId === goal.moduleId)!
-        .stages[goal.moduleLevel - 1].ingredients;
+      return operator.moduleData?.find((mod) => mod.moduleId === goal.moduleId)!
+        .stages[goal.moduleLevel - 1].ingredients ?? [];
   }
 };
 export default getGoalIngredients;

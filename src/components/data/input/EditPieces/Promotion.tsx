@@ -1,6 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import { SxProps, ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps } from "@mui/material";
 import Image from "components/base/Image";
+import SkillLevel from "./SkillLevel";
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   value?: number;
@@ -10,7 +11,7 @@ interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   disabled?: boolean;
   size?: number;
 }
-const SelectPromotion = ((props: Props) => {
+const SelectPromotion = memo((props: Props) => {
   const { value, minPromotion, maxPromotion, onChange, disabled, size = 32 } = props;
 
   return (
@@ -43,4 +44,5 @@ const SelectPromotion = ((props: Props) => {
     </ToggleButtonGroup>
   )
 })
+PromotionSelector.displayName = "PromotionSelector";
 export default SelectPromotion;

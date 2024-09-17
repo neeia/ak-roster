@@ -70,7 +70,7 @@ const ItemInfoPopover: React.FC<Props> = React.memo((props) => {
               width={48}
               height={48}
               alt=""
-              objectFit="contain"
+              style={{objectFit: "contain"}}
             />
             {item.name}
           </Typography>

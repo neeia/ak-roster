@@ -1,9 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import { Operator, ModuleData } from "types/operator";
 import operatorJson from "data/operators";
 import { Box, Button, Typography } from "@mui/material";
 import { changeModule, MODULE_REQ_BY_RARITY } from "util/changeOperator";
 import Image from "next/image";
+import Mastery from "./Mastery";
 
 interface Props {
   modules?: Record<string, number>,
@@ -11,12 +12,11 @@ interface Props {
   opId?: string;
   opLevel? : number;
   eliteLevel? : number;
-  onChange: (moduleName: string, newMasteryLevel: number) => void;
+  onChange: (moduleId: string, newMasteryLevel: number) => void;
 }
-const Module = ((props: Props) => {
+const Module = memo((props: Props) => {
   const {modules, minModules, opId, opLevel, eliteLevel, onChange } = props;
   const opData = opId ? operatorJson[opId] : undefined;
-
 
   return (
     <Box sx={{
@@ -52,7 +52,7 @@ const Module = ((props: Props) => {
                 lineHeight: "1.1",
                 overflowWrap: "break-word",
               }}>
-              {module.moduleName}
+              {`${module.typeName} (${module.moduleName})`}
             </Typography>
             <Box sx={{ gridArea: "icon", display: "flex", flexDirection: "column", alignItems: "center", }}>
               <Image
@@ -73,7 +73,7 @@ const Module = ((props: Props) => {
             </Box>
             {[...Array(4)].map((_, moduleLevel) =>
               <Button
-                className={!disabled && (modules && modules[module.moduleName] ? modules[module.moduleName] === moduleLevel : moduleLevel === 0) ? "active" : "inactive"}
+                className={moduleLevel === (modules && modules[module.moduleId] ? modules[module.moduleId] :  0) ? "active" : "inactive"}
                 key={`mod${moduleLevel}Button`}
                 sx={{
                   gridRow: 2,
@@ -84,8 +84,8 @@ const Module = ((props: Props) => {
                   backgroundColor: "background.default",
                   height: "40px",
                 }}
-                onClick={() => onChange(opData!.moduleData![moduleNumber].moduleName, moduleLevel)}
-                disabled={disabled}
+                onClick={() => onChange(opData!.moduleData![moduleNumber].moduleId, moduleLevel)}
+                disabled={disabled || moduleLevel < (minModules ? minModules[module.moduleId] : 0)}
               >
                 <Image
                   width={32}
@@ -101,4 +101,5 @@ const Module = ((props: Props) => {
     </Box>
   )
 })
+Module.displayName = "Module";
 export default Module;

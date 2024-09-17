@@ -1,7 +1,18 @@
 import DeleteGoalIcon from "@mui/icons-material/CloseRounded";
 import CompleteGoalIcon from "@mui/icons-material/Upload";
-import { Box, Button, ButtonGroup, Paper, styled, Tooltip, useMediaQuery, useTheme } from "@mui/material";
-import React, { memo, useCallback } from "react";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Paper,
+  styled,
+  Tooltip,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import Image from "next/image";
+import React from "react";
 
 import operatorsJson from "data/operators.json";
 
@@ -14,8 +25,12 @@ import getGoalIngredients from "util/getGoalIngredients";
 const GoalCardButton = styled(Button)(({ theme }) => ({
   padding: theme.spacing(0.75),
   flexGrow: 1,
-  backgroundColor: theme.palette.background.default,
-  borderRadius: "0px",
+  backgroundColor: theme.palette.background.paper,
+  "&:first-of-type": { borderTopLeftRadius: 0 },
+  "&:last-of-type": { borderBottomLeftRadius: 0 },
+  "&.MuiButtonGroup-grouped:not(:last-of-type)": {
+    borderColor: "rgba(255, 255, 255, 0.2)",
+  },
 }));
 
 interface Props {
@@ -24,7 +39,7 @@ interface Props {
   onGoalCompleted: (goal: PlannerGoal) => void;
 }
 
-const PlannerGoalCard = memo((props : Props) => {
+const PlannerGoalCard = React.forwardRef<HTMLLIElement, Props>((props, ref) => {
   const { goal, onGoalDeleted, onGoalCompleted, ...rest } = props;
   const theme = useTheme();
   const isXSScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -35,7 +50,7 @@ const PlannerGoalCard = memo((props : Props) => {
     operatorsJson[goal.operatorId as keyof typeof operatorsJson];
   const [_, appellation] = operator.name.split(" the ");
 
-  const goalName = useCallback(() => {
+  const goalName = (() => {
     switch (goal.category) {
       case OperatorGoalCategory.Elite:
         return `Elite ${goal.eliteLevel}`;
@@ -43,20 +58,19 @@ const PlannerGoalCard = memo((props : Props) => {
         return `${isXLScreen ? "Skill Level" : "Sk.Lv."} ${goal.skillLevel}`;
       case OperatorGoalCategory.Mastery: {
         const skillNumber =
-          operator.skillData!.findIndex((sk) => sk.skillId === goal.skillId) + 1;
+          operator.skillData.findIndex((sk) => sk.skillId === goal.skillId) + 1;
         return isXLScreen
           ? `Skill ${skillNumber} Mastery ${goal.masteryLevel}`
           : `S${skillNumber} M${goal.masteryLevel}`;
       }
       case OperatorGoalCategory.Module: {
-        const mod = operator.moduleData!.find(
+        const mod = operator.moduleData.find(
           (m) => m.moduleId === goal.moduleId
         )!;
-        return `${mod.typeName} (${mod.moduleName}) Stage ${goal.moduleLevel}`;
+        return `Module ${mod.typeName} Stage ${goal.moduleLevel}`;
       }
     }
-  },[goal, isXLScreen, operator.moduleData, operator.skillData]);
-
+  })();
   const goalLabel = `${operator.name} ${goalName}`;
 
   const ingredients = getGoalIngredients(goal);
@@ -64,20 +78,17 @@ const PlannerGoalCard = memo((props : Props) => {
   return (
     <Paper
       component="li"
+      elevation={3}
       sx={{
-        borderTop: "solid 2px",
-        borderColor: (theme) => theme.palette.background.light,
-        "&:last-of-type": { borderBottom: "solid 2px",
-          borderColor: (theme) => theme.palette.background.light,},
         display: "grid",
+        mb: 1,
         gridTemplateColumns: "1fr auto",
-        borderRadius: "0px",
       }}
+      ref={ref}
       {...rest}
     >
       <Paper
         sx={{
-          backgroundColor: "background.default",
           display: "grid",
           p: 1,
           pb: {
@@ -87,33 +98,53 @@ const PlannerGoalCard = memo((props : Props) => {
           alignItems: "center",
           gridTemplateAreas: {
             xs: `
-              'icon goalname'
-              'icon mats'
+              'icon name goalname'
+              'mats mats mats'
             `,
             sm: `
+              'icon name     mats'
               'icon goalname mats'
             `,
           },
           gridTemplateRows: "1fr auto",
           gridTemplateColumns: {
-            xs: `auto 1fr`,
-            xl: `auto 1fr`,
+            xs: `${operatorIconSize}px auto 1fr`,
+            xl: `${operatorIconSize}px 200px 1fr`,
           },
-          columnGap: 3,
+          columnGap: 1,
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
+          borderRight: "1px solid rgba(255, 255, 255, 0.2)",
+          "& .operator-avatar": {
+            borderRadius: "0 0 0 40%",
+          }
         }}
       >
+        <Box gridArea="icon" display="flex">
+          <Image
+            src={`/img/avatars/${operator.id}.png`}
+            width={operatorIconSize}
+            height={operatorIconSize}
+            alt=""
+            className="operator-avatar"
+          />
+        </Box>
+
+        <Typography
+          component="span"
+          sx={{ fontSize: 20, lineHeight: 1, gridArea: "name", ml: { xs: 0, sm: 1 } }}
+        >
+          {appellation ?? operator.name}
+        </Typography>
+
         <Box
-          gridArea="icon"
+          gridArea="goalname"
           display="flex"
           alignItems="center"
           ml={{ xs: 0, sm: 1 }}
         >
           {!isXSScreen && <OperatorGoalIconography goal={goal} />}
-        </Box>
-
-        <Box
-          gridArea="goalname">
-          {goalName()}
+          {goalName}
         </Box>
 
         <Box gridArea="mats" display="flex" justifyContent="space-evenly">
@@ -131,9 +162,11 @@ const PlannerGoalCard = memo((props : Props) => {
 
       <ButtonGroup
         orientation="vertical"
+        variant="contained"
         sx={{
           display: "grid",
           gridTemplateRows: "10fr 9fr",
+          backgroundColor: (theme) => theme.palette.background.paper,
         }}
       >
         <Tooltip
@@ -146,12 +179,8 @@ const PlannerGoalCard = memo((props : Props) => {
             aria-label={`Complete goal: ${goalLabel}`}
             onClick={() => onGoalCompleted(goal)}
             sx={{
-              borderWidth: "0 0 1px 2px",
-              borderColor: (theme) => theme.palette.background.light,
               color: "#fff",
               "&:hover": {
-                borderWidth: "1px 0 0 2px",
-                borderColor: (theme) => theme.palette.background.light,
                 backgroundColor: (theme) => theme.palette.success.main,
               },
             }}
@@ -163,12 +192,8 @@ const PlannerGoalCard = memo((props : Props) => {
           aria-label={`Delete goal: ${goalLabel}`}
           onClick={() => onGoalDeleted(goal)}
           sx={{
-            borderWidth: "1px 0 0 2px",
-            borderColor: (theme) => theme.palette.background.light,
             color: "#ccc",
             "&:hover": {
-              borderWidth: "1px 0 0 2px",
-              borderColor: (theme) => theme.palette.background.light,
               backgroundColor: (theme) => theme.palette.error.main,
             },
           }}

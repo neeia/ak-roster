@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import { minMax } from "util/changeOperator";
 import { KeyboardArrowDownSharp, KeyboardArrowUpSharp, KeyboardDoubleArrowLeftSharp, KeyboardDoubleArrowRightSharp } from "@mui/icons-material";
@@ -10,7 +10,7 @@ interface Props {
   disabled?: boolean;
   onChange: (level: number) => void;
 }
-const SelectLevel = (props: Props) => {
+const SelectLevel = memo((props: Props) => {
   const { value: level = 1, min: minLevel = 1, max: maxLevel = 30, disabled, onChange } = props;
 
   const [levelField, setLevelField] = React.useState<string>(level.toString());
@@ -162,5 +162,6 @@ const SelectLevel = (props: Props) => {
       </Box>
     </Box>
   )
-}
+})
+Level.displayName = "Level";
 export default SelectLevel;
