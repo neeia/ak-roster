@@ -17,6 +17,7 @@ import { rarityColors } from "styles/rarityColors";
 import { Star } from "@mui/icons-material";
 import PromotionSelector from "components/data/input/EditPieces/PromotionSelector";
 import Board from "components/base/Board";
+import SelectRarity from "components/data/input/EditPieces/Rarity";
 
 interface LevelingCost {
   exp: number;
@@ -115,8 +116,7 @@ const Level: NextPage = () => {
   const startingLevelHelpText = `Max ${maxStartingLevel}`;
   const targetLevelHelpText = `Max ${maxTargetLevel}`;
 
-  const handleChangeRarity = (_: unknown, rar: number) => {
-    if (rar == null) return;
+  const handleChangeRarity = (rar: number) => {
     setRarity(rar);
     const newMaxElite = maxElite(rar);
     if (startingElite > newMaxElite) {
@@ -204,24 +204,7 @@ const Level: NextPage = () => {
             <Typography variant="h3" id="rarity" gutterBottom>
               Rarity
             </Typography>
-            <ToggleButtonGroup exclusive value={rarity}
-              aria-labelledby="rarity"
-              onChange={handleChangeRarity}
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "repeat(6, 1fr)",
-              }}
-            >
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <ToggleButton key={i} value={i}
-                  sx={{
-                    color: rarityColors[i],
-                  }}
-                >
-                  {i} <Star fontSize="small" />
-                </ToggleButton>
-              ))}
-            </ToggleButtonGroup>
+            <SelectRarity value={rarity} onChange={handleChangeRarity} />
           </Box>
           {/* Elite / Lvl */}
           <Box
