@@ -1,137 +1,166 @@
 import React from "react";
-import { Operator } from "types/operator";
 import { Box, Button, TextField } from "@mui/material";
-import { changeLevel, MAX_LEVEL_BY_RARITY } from "util/changeOperator";
+import { minMax } from "util/changeOperator";
 import { KeyboardArrowDownSharp, KeyboardArrowUpSharp, KeyboardDoubleArrowLeftSharp, KeyboardDoubleArrowRightSharp } from "@mui/icons-material";
-import operatorJson from "data/operators";
 
 interface Props {
-  level?: number;
-  minLevel?: number;
-  eliteLevel?: number;
-  operatorRarity?: number;
+  value?: number;
+  min?: number;
+  max?: number;
+  disabled?: boolean;
   onChange: (level: number) => void;
 }
-const Level = (props: Props) => {
-  const { level, minLevel, eliteLevel, operatorRarity, onChange } = props;
+const SelectLevel = (props: Props) => {
+  const { value: level = 1, min: minLevel = 1, max: maxLevel = 30, disabled, onChange } = props;
 
-  const [levelField, setLevelField] = React.useState<string>(level?.toString() ?? "1");
+  const [levelField, setLevelField] = React.useState<string>(level.toString());
 
   function updateLevel(lvl: string | number) {
+    let parsedLevel = null;
     if (typeof lvl === "number") {
-      let parsedLevel = Math.max(Math.min(lvl, MAX_LEVEL_BY_RARITY[operatorRarity ?? 0][eliteLevel ?? 0]), 1)
-      parsedLevel = Math.max(parsedLevel, minLevel!);
-      onChange(parsedLevel);
-      setLevelField(parsedLevel.toString());
+      parsedLevel = minMax(minLevel, lvl, maxLevel)
     }
     else if (parseInt(lvl, 10)) {
-      let parsedLevel = Math.max(Math.min(parseInt(lvl, 10), MAX_LEVEL_BY_RARITY[operatorRarity ?? 0][eliteLevel ?? 0]), 1)
-      parsedLevel = Math.max(parsedLevel, minLevel!);
-      onChange(parsedLevel);
-      setLevelField(parsedLevel.toString());
+      parsedLevel = minMax(minLevel, parseInt(lvl, 10), maxLevel);
     }
     else {
       setLevelField("");
+      return;
+    }
+
+    onChange(parsedLevel);
+    setLevelField(parsedLevel.toString());
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent) {
+    switch (e.key) {
+      case "ArrowUp":
+        updateLevel(level + 1);
+        break;
+      case "ArrowDown":
+        updateLevel(level - 1);
+        break;
+      case "ArrowRight":
+        updateLevel(level + 10);
+        break;
+      case "ArrowLeft":
+        updateLevel(level - 10);
+        break;
+      case "Home":
+        updateLevel(minLevel);
+        break;
+      case "End":
+        updateLevel(maxLevel);
+        break;
+      default:
+        return;
     }
   }
 
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) =>
-    e.target.select();
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => e.target.select();
 
-  const disableM = !level || level === 1 || level === minLevel;
+  const disableDown = disabled || level <= minLevel;
 
-  const disableP = !level || level >= MAX_LEVEL_BY_RARITY[operatorRarity ?? 0][eliteLevel ?? 0];
+  const disableUp = disabled || level >= maxLevel;
 
   return (
     <Box sx={{
-      display: "grid",
-      gridTemplateColumns: "1fr repeat(3, auto) 1fr",
+      width: "100%",
+      height: "min-content",
+      display: "flex",
+      flexWrap: { xs: "wrap", sm: "nowrap" },
       alignItems: "center",
-      gap: "4px",
-      "& .MuiButton-root": {
-        display: "grid",
-        p: 0.5,
-        minWidth: 0,
-        lineHeight: 0.5,
-        color: "#ffffff",
-        height: "56px",
-      }
+      gap: 2,
     }}>
-
-      <Button
-        onClick={() => updateLevel(1)}
-        disabled={disableM}
-      >
-        Min
-      </Button>
-      <Button
-        onClick={() => updateLevel(level! - 10)}
-        disabled={disableM}
-      >
-        <KeyboardDoubleArrowLeftSharp fontSize="large" />
-      </Button>
       <Box sx={{
+        flexGrow: 1,
+        height: "min-content",
         display: "flex",
-        flexDirection: "column-reverse",
-        gap: "2px",
+        alignItems: "center",
+        gap: "4px",
         "& .MuiButton-root": {
-          display: "grid",
-          p: 0,
-          height: "min-content",
+          p: 0
         }
       }}>
-        <Button
-          onClick={() => updateLevel(level! - 1)}
-          disabled={disableM}
+        <Button sx={{ flexGrow: 1 }}
+          onClick={() => updateLevel(level - 10)}
+          disabled={disableDown}
         >
-          <KeyboardArrowDownSharp fontSize="large" />
+          <KeyboardDoubleArrowLeftSharp fontSize="large" />
         </Button>
-        <Box sx={{ display: "grid" }}>
+        <Box sx={{
+          display: "flex",
+          flexDirection: "column-reverse",
+          gap: "4px",
+          "& .MuiButton-root": {
+            display: "flex",
+            p: 0,
+            height: "32px",
+          }
+        }}>
+          <Button
+            onClick={() => updateLevel(level - 1)}
+            disabled={disableDown}
+          >
+            <KeyboardArrowDownSharp fontSize="large" />
+          </Button>
           <TextField
             variant="outlined"
             size="small"
             margin="none"
             // Show level if op is owned and level is not deleted 
-            value={level && levelField ? level : ""}
+            value={disabled || levelField ? level : ""}
             error={levelField === ""}
             onChange={(e) => updateLevel(e.target.value)}
+            onKeyDown={handleKeyDown}
             sx={{
-              width: "56px",
               gridArea: "1 / 1",
-              '& .MuiInputBase-input': {
-                py: "0.5rem",
+              width: "56px",
+              height: "48px",
+              '& .MuiInputBase-root': {
+                height: "100%",
                 fontSize: "1.5rem",
+              },
+              '& .MuiInputBase-input': {
                 textAlign: "center",
               }
             }}
             onFocus={handleFocus}
-            disabled={!level}
+            disabled={disabled}
             inputProps={{
               inputMode: 'numeric',
-              pattern: '[0-9]*'
+              pattern: '[0-9]*',
             }}
           />
+          <Button
+            onClick={() => updateLevel(level + 1)}
+            disabled={disableUp}
+          >
+            <KeyboardArrowUpSharp fontSize="large" />
+          </Button>
         </Box>
-        <Button
-          onClick={() => updateLevel(level! + 1)}
-          disabled={disableP}
+        <Button sx={{ flexGrow: 1 }}
+          onClick={() => updateLevel(level === 0 ? 10 : level + 10)}
+          disabled={disableUp}
         >
-          <KeyboardArrowUpSharp fontSize="large" />
+          <KeyboardDoubleArrowRightSharp fontSize="large" />
         </Button>
       </Box>
-      <Button
-        onClick={() => updateLevel(!(level! - 1) ? 10 : level! + 10)}
-        disabled={disableP}
-      >
-        <KeyboardDoubleArrowRightSharp fontSize="large" />
-      </Button>
-      <Button
-        onClick={() => updateLevel(MAX_LEVEL_BY_RARITY[operatorRarity ?? 0][eliteLevel ?? 0])}
-        disabled={disableP}
-      >
-        Max
-      </Button>
+      <Box sx={{ flexBasis: { xs: "100%", sm: "auto" }, height: { xs: "48px", sm: "100%" }, display: "flex", flexDirection: { xs: "row", sm: "column" }, gap: 1 }}>
+        <Button sx={{ flexGrow: 1 }}
+          onClick={() => updateLevel(maxLevel)}
+          disabled={disableUp}
+        >
+          Max
+        </Button>
+        <Button sx={{ flexGrow: 1 }}
+          onClick={() => updateLevel(minLevel)}
+          disabled={disableDown}
+        >
+          Min
+        </Button>
+      </Box>
     </Box>
   )
 }
-export default Level;
+export default SelectLevel;

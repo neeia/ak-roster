@@ -1,18 +1,17 @@
 import React from "react";
-import { Operator } from "types/operator";
 import { Box, Button } from "@mui/material";
 import { KeyboardArrowDownSharp, KeyboardArrowUpSharp } from "@mui/icons-material";
-import { changeSkillLevel } from "util/changeOperator";
-import Image from "next/image";
+import Image from "components/base/Image";
 
 interface Props {
   skillLevel?: number;
   minSkillLevel?: number,
-  eliteLevel? : number,
+  maxSkillLevel?: number,
+  disabled?: boolean;
   onChange: (skillLevel: number) => void;
 }
-const SkillLevel = (props: Props) => {
-  const { skillLevel, minSkillLevel, eliteLevel, onChange } = props;
+const SelectSkillLevel = (props: Props) => {
+  const { skillLevel = 1, minSkillLevel = 1, maxSkillLevel = 4, disabled, onChange } = props;
 
   const previousSkillLevel = (skillLevel ?? 0) > 4 ? 4 : 1;
   const nextSkillLevel = (skillLevel ?? 0) < 4 ? 4 : 7;
@@ -22,38 +21,25 @@ const SkillLevel = (props: Props) => {
   }
 
   const rankButton = (rank: number) => (
-    <Button
+    <Button sx={{ width: "fit-content" }}
       aria-label={`Skill Rank to ${rank}`}
       onClick={() => updateRank(rank)}
-      disabled={!skillLevel || skillLevel === rank || rank > [4, 7, 7][eliteLevel ?? 0] || rank < (minSkillLevel ?? 0)}
+      disabled={disabled || skillLevel === rank || rank > maxSkillLevel || rank < minSkillLevel}
     >
-      <Box
-        sx={{
-          width: "40px",
-          height: "40px",
-          position: "relative",
-        }}
-      >
-        <Image
-          src="/img/rank/bg.png"
-          fill
-          sizes="40px"
-          alt=""
-        />
-        <Image
-          src={`/img/rank/${rank}.png`}
-          fill
-          sizes="40px"
-          alt={`Rank ${rank}`}
-        />
-      </Box>
+      <Image sx={{
+        width: "40px",
+        height: "40px",
+      }}
+        src={`/img/rank/${rank}.png`}
+        sizes="40px"
+        alt={`Rank ${rank}`}
+      />
     </Button>
   );
 
   return (
     <Box sx={{
-      display: "grid",
-      gridTemplateColumns: "1fr auto 1fr",
+      display: "flex",
       alignItems: "center",
       gap: "4px",
       "& .MuiButton-root": {
@@ -79,26 +65,26 @@ const SkillLevel = (props: Props) => {
           aria-label="Lower Skill Rank"
           sx={{ display: { xs: "none", sm: "" }, }}
           onClick={() => updateRank(skillLevel! - 1)}
-          disabled={!skillLevel || skillLevel === 1 || skillLevel === minSkillLevel}
+          disabled={disabled || skillLevel === 1 || skillLevel === minSkillLevel}
         >
           <KeyboardArrowDownSharp fontSize="large" />
         </Button>
+
         <Box sx={{
           display: "grid",
           width: "64px",
           height: "64px",
           position: "relative",
+          opacity: disabled ? 0.5 : 1,
         }}>
-          <Image
+          <Image sx={{ display: "contents" }}
             src={`/img/rank/bg.png`}
-            fill
             sizes="64px"
-            alt={""}
+            alt=""
           />
           {skillLevel
-            ? <Image
+            ? <Image sx={{ display: "contents" }}
               src={`/img/rank/${skillLevel}.png`}
-              fill
               sizes="64px"
               alt={`Rank ${skillLevel}`}
             />
@@ -108,7 +94,7 @@ const SkillLevel = (props: Props) => {
           aria-label="Raise Skill Rank"
           sx={{ display: { xs: "none", sm: "" }, }}
           onClick={() => updateRank(skillLevel! + 1)}
-          disabled={!skillLevel || skillLevel === [4, 7, 7][eliteLevel ?? 0]}
+          disabled={disabled || skillLevel === maxSkillLevel}
         >
           <KeyboardArrowUpSharp fontSize="large" />
         </Button>
@@ -117,4 +103,4 @@ const SkillLevel = (props: Props) => {
     </Box>
   )
 }
-export default SkillLevel;
+export default SelectSkillLevel;

@@ -4,17 +4,18 @@ import Image from "components/base/Image";
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   value?: number;
-  minPromotion? : number;
+  minPromotion?: number;
   maxPromotion?: number;
   onChange: (promotion: number) => void;
   disabled?: boolean;
   size?: number;
 }
-const PromotionSelector = ((props: Props) => {
+const SelectPromotion = ((props: Props) => {
   const { value, minPromotion, maxPromotion, onChange, disabled, size = 32 } = props;
 
   return (
-    <ToggleButtonGroup value={value}
+    <ToggleButtonGroup value={value} className={disabled ? "Mui-disabled" : ""}
+      disabled={disabled}
       exclusive
       onChange={(_, i) => { if (i !== null) onChange(i) }}
       sx={{
@@ -27,7 +28,7 @@ const PromotionSelector = ((props: Props) => {
     >
       {[...Array(maxPromotion ? maxPromotion + 1 : 3)].map((_, i) =>
         <ToggleButton
-          disabled={disabled || (i < (minPromotion ?? 0))}
+          disabled={(i < (minPromotion ?? 0))}
           key={i}
           value={i}
           aria-label={`elite ${i}`}
@@ -42,4 +43,4 @@ const PromotionSelector = ((props: Props) => {
     </ToggleButtonGroup>
   )
 })
-export default PromotionSelector;
+export default SelectPromotion;

@@ -6,7 +6,7 @@ import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMed
 import EditRow from "./EditRow";
 import General from "./EditPieces/General";
 import Potential from "./EditPieces/Potential";
-import PromotionSelector from "./EditPieces/PromotionSelector";
+import SelectPromotion from "./EditPieces/Promotion";
 import Mastery from "./EditPieces/Mastery";
 import Module from "./EditPieces/Module";
 import Level from "./EditPieces/Level";
@@ -28,7 +28,7 @@ interface Props {
 const EditOperator = React.memo((props: Props) => {
   const { op, changeOperator: onChange, open, onClose } = props;
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const fullScreen = !useMediaQuery(theme.breakpoints.up('sm'));
 
   if (!op) return null;
   const opSkins: Skin[] = skinJson[op.op_id as keyof typeof skinJson];
@@ -104,7 +104,7 @@ const EditOperator = React.memo((props: Props) => {
       onClose={onClose}
       fullScreen={fullScreen}
     >
-      <DialogTitle sx={{
+      <DialogTitle variant="h2" sx={{
         alignSelf: "start",
         textAlign: "left",
         width: "100%",
@@ -112,7 +112,6 @@ const EditOperator = React.memo((props: Props) => {
         gridTemplateColumns: "auto 1fr auto",
         alignItems: "center",
         paddingBottom: "12px",
-        boxShadow: 1,
       }}>
         <Box
           sx={{
@@ -173,7 +172,7 @@ const EditOperator = React.memo((props: Props) => {
         <EditRow
           left={{
             title: "Promotion",
-            body: <PromotionSelector
+            body: <SelectPromotion
               value={op.elite}
               maxPromotion={MAX_PROMOTION_BY_RARITY[opData.rarity]}
               onChange={(i: number) => onChange(changePromotion(op, i))}

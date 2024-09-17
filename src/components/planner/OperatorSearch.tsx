@@ -33,7 +33,7 @@ interface Props {
   onChange: (value: OperatorData | null) => void;
 }
 
-const OperatorSearch: React.FC<Props> = (props) => {
+const OperatorSearch = (props: Props) => {
   const { value, onChange } = props;
 
   const filterOptions = useCallback(
@@ -47,10 +47,9 @@ const OperatorSearch: React.FC<Props> = (props) => {
   );
 
   return (
-    <Autocomplete<OperatorData>
+    <Autocomplete<OperatorData> value={value}
       autoComplete
       autoHighlight
-      value={value}
       onChange={(_: unknown, newValue: OperatorData | null) => onChange(newValue)}
       PopperComponent={StyledPopper}
       ListboxComponent={ListboxComponent}

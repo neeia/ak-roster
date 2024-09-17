@@ -75,21 +75,26 @@ const appTheme = (brandColor: string) => createTheme({
         variant: "outlined"
       }
     },
-    MuiAutocomplete: {
+    MuiButton: {
+      defaultProps: {
+        variant: "neutral"
+      },
       styleOverrides: {
-        listbox: {
-          "& .MuiAutocomplete-option": {
-            minHeight: "40px",
-            padding: "8px 16px",
+        root: {
+          textTransform: "none",
+          minWidth: 0,
+        }
+      },
+      variants: [
+        {
+          props: { variant: "neutral" },
+          style: {
+            color: neutral[50],
             backgroundColor: neutral[700],
-            borderRadius: "9999px",
-            display: "flex",
-            gap: "8px",
-            alignItems: "center",
-            lineHeight: "1"
-          },
-        },
-      }
+            ...interactive,
+          }
+        }
+      ]
     },
     MuiMenuItem: {
       styleOverrides: {
@@ -99,31 +104,28 @@ const appTheme = (brandColor: string) => createTheme({
         }
       }
     },
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: "none",
-        }
-      }
-    },
     MuiToggleButtonGroup: {
       defaultProps: {
         color: "primary",
       },
       styleOverrides: {
         root: {
-          backgroundColor: neutral[800],
+          backgroundColor: neutral[700],
         }
       }
     },
     MuiToggleButton: {
       styleOverrides: {
         root: {
-          "&.Mui-selected": {
-            borderBottomStyle: "solid",
-            borderBottomWidth: "0.25rem",
-            borderBottomColor: brandColor,
-          }
+          "&:not(._):not(._):not(._)": {
+            border: "none",
+            margin: 0,
+            "&.Mui-selected": {
+              borderBottomStyle: "solid",
+              borderBottomWidth: "0.25rem",
+              borderBottomColor: brandColor,
+            },
+          },
         },
       }
     },
@@ -199,6 +201,7 @@ export default appTheme;
 
 
 declare module '@mui/material/styles' {
+
   interface TypeBackground {
     light: string;
   }
@@ -215,6 +218,12 @@ declare module '@mui/material/styles' {
   }
 }
 
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    neutral: true;
+  }
+}
+
 // Update the Typography's variant prop options
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
@@ -224,7 +233,7 @@ declare module '@mui/material/Typography' {
 }
 
 export const interactive = {
-  transition: "filter 0.1s",
+  transition: "filter 0.1s, background-color 0.1s",
   ":hover": { filter: "brightness(110%)" },
 }
 

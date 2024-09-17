@@ -1,17 +1,17 @@
 import ClearAllIcon from "@mui/icons-material/ClearAll";
 import AddIcon from '@mui/icons-material/Add';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
-import {  Button, Grid, IconButton, InputAdornment, Paper, TextField, Typography } from "@mui/material";
+import { Button, Grid, IconButton, InputAdornment, TextField } from "@mui/material";
 import { PlannerGoal } from "types/goal";
 import { Search } from "@mui/icons-material";
 import React, { useState } from "react";
 import { useGoalsDeleteAllMutation, useGoalsGetQuery, useGoalsUpdateMutation } from "store/extendGoals";
-import EditOperator from "../data/input/EditOperator";
 import PlannerGoalAdd from "./PlannerGoalAdd";
+import Board from "components/base/Board";
 
-const OperatorGoals: React.FC = () => {
+const OperatorGoals = () => {
 
-  const {data: goals} = useGoalsGetQuery();
+  const { data: goals } = useGoalsGetQuery();
   const [goalsUpdateTrigger] = useGoalsUpdateMutation();
   const [goalsDeleteAllTrigger] = useGoalsDeleteAllMutation();
 
@@ -25,8 +25,7 @@ const OperatorGoals: React.FC = () => {
   };
 
   const handleClearAll = () => {
-    if (goals && goals.length > 0)
-    {
+    if (goals && goals.length > 0) {
       goalsDeleteAllTrigger();
     }
   };
@@ -36,51 +35,35 @@ const OperatorGoals: React.FC = () => {
   }
 
   return (
-    <section>
-      <Paper
+    <>
+      <Board title="Goals" TitleAction={
+        <Button
+          onClick={handleAddGoal}
+          startIcon={< AddIcon />}
+          variant="contained"
+          color="primary"
+        >
+          New Goal
+        </Button>
+      }
         sx={{
           mb: 1,
           p: 2,
         }}
       >
-        <Grid container columnGap={1}
-              sx={{
-                justifyContent: "space-between",
-                alignItems: "center",
-                mb: 2,
-              }}
+        {/* TODO: add settings button, move clear all to there w/ confirmation dialog */}
+        <Button
+          onClick={handleClearAll}
+          startIcon={<ClearAllIcon />}
+          variant="outlined"
+          color="error"
         >
-          <Grid item xs={7}>
-            <Typography component="h3" variant="h5">
-              Goals
-            </Typography>
-          </Grid>
-          <Grid item
-          >
-            <Button
-              onClick={handleAddGoal}
-              startIcon={< AddIcon/>}
-              variant="contained"
-              color="primary"
-            >
-              New Goal
-            </Button>
-          </Grid>
-          <Grid item >
-            <Button
-              onClick={handleClearAll}
-              startIcon={<ClearAllIcon />}
-              variant="outlined"
-              color="secondary"
-            >
-              Clear All
-            </Button>
-          </Grid>
-        </Grid>
+          Clear All
+        </Button>
         <Grid container columnGap={1}
-              sx={{
-                alignItems: "center",
-              }}>
+          sx={{
+            alignItems: "center",
+          }}>
           <Grid item >
             <IconButton size="large">
               <FilterAltOutlinedIcon fontSize="inherit" />
@@ -88,38 +71,38 @@ const OperatorGoals: React.FC = () => {
           </Grid>
           <Grid item flexGrow="1">
             <TextField id="search"
-             autoComplete="off"
-             label="Search..."
-             // value={searchText}
-             // onChange={(e) => setSearchText(e.target.value)}
-             size="small"
-             fullWidth={true}
-             InputProps={{
-               sx: { pr: 0.5 },
-               endAdornment: (
-                 <InputAdornment position="end">
-                   <IconButton
-                     type="submit"
-                     aria-label="search"
-                     onClick={(e) => {
-                       e.preventDefault();
-                       // search(searchText);
-                     }}
-                   >
-                     <Search fontSize="small" />
-                   </IconButton>
-                 </InputAdornment>
-               )
-             }}
+              autoComplete="off"
+              label="Search..."
+              // value={searchText}
+              // onChange={(e) => setSearchText(e.target.value)}
+              size="small"
+              fullWidth={true}
+              InputProps={{
+                sx: { pr: 0.5 },
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      type="submit"
+                      aria-label="search"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        // search(searchText);
+                      }}
+                    >
+                      <Search fontSize="small" />
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
             />
           </Grid>
         </Grid>
-      </Paper>
+      </Board>
       <PlannerGoalAdd
         open={addGoalOpen}
         onClose={() => setAddGoalOpen(false)}
       />
-    </section>
+    </>
   );
 };
 export default OperatorGoals;

@@ -3,10 +3,10 @@ import { Dialog, DialogContent, DialogTitle, IconButton, TextField, useMediaQuer
 import EditRow from "../input/EditRow";
 import General from "../input/EditPieces/General";
 import Potential from "./replacements/Potential";
-import PromotionSelector from "../input/EditPieces/PromotionSelector";
+import SelectPromotion from "../input/EditPieces/Promotion";
 import Mastery from "./replacements/Mastery";
-import Level from "../input/EditPieces/Level";
-import SkillLevel from "../input/EditPieces/SkillLevel";
+import SelectLevel from "../input/EditPieces/Level";
+import SelectSkillLevel from "../input/EditPieces/SkillLevel";
 import { Close } from "@mui/icons-material";
 import { Operator } from "types/operator";
 
@@ -97,13 +97,13 @@ const EditPreset = React.memo((props: Props) => {
         <EditRow
           titleL="Promotion"
           titleR="Level"
-          childrenL={<PromotionSelector op={preset} onChange={onChange} />}
-          childrenR={<Level op={preset} onChange={onChange} />}
+          childrenL={<SelectPromotion op={preset} onChange={onChange} />}
+          childrenR={<SelectLevel op={preset} onChange={onChange} />}
         />
         <EditRow
           titleL="Skill Rank"
           titleR="Masteries"
-          childrenL={<SkillLevel op={preset} onChange={onChange} />}
+          childrenL={<SelectSkillLevel op={preset} onChange={onChange} />}
           childrenR={<Mastery op={preset} onChange={onChange} />}
         />
       </DialogContent>
