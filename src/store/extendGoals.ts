@@ -23,11 +23,11 @@ const extendedApi = supabaseApi.injectEndpoints({
       goalsUpdate: builder.mutation<GoalData[], GoalDataInsert[] >({
         async queryFn( goalDataInsert ) {
 
-          const { data } = await supabase
+          const { data , error} = await supabase
             .from("goals")
             .upsert(goalDataInsert)
             .select()
-
+          console.log(error)
           return { data } as { data: GoalData[] };
         },
         invalidatesTags: ["goals"]
@@ -42,6 +42,22 @@ const extendedApi = supabaseApi.injectEndpoints({
             .from("goals")
             .delete()
             .eq("user_id", user_id)
+
+          return { data: !!error}
+        },
+        invalidatesTags: ["goals"]
+      }),
+      goalsDeleteAllFromGroup: builder.mutation<boolean, string >({
+        async queryFn( groupName: string ) {
+
+          const {data: session} = await supabase.auth.getSession();
+          const user_id = session.session?.user.id ?? "";
+
+          const { error} = await supabase
+            .from("goals")
+            .delete()
+            .eq("user_id", user_id)
+            .eq("group_name", groupName)
 
           return { data: !!error}
         },
@@ -70,4 +86,4 @@ const extendedApi = supabaseApi.injectEndpoints({
   overrideExisting: false,
 })
 
-export const { useGoalsGetQuery, useGoalsUpdateMutation, useGoalsDeleteAllMutation, useGoalsDeleteOneMutation } = extendedApi
+export const { useGoalsGetQuery, useGoalsUpdateMutation, useGoalsDeleteAllMutation, useGoalsDeleteAllFromGroupMutation, useGoalsDeleteOneMutation } = extendedApi

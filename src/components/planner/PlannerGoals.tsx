@@ -1,5 +1,4 @@
 import ClearAllIcon from "@mui/icons-material/ClearAll";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
@@ -16,10 +15,12 @@ import PlannerGoalAdd from "./PlannerGoalAdd";
 import operatorJson from "../../data/operators";
 import GoalGroup from "./GoalGroup";
 import Board from "components/base/Board";
+import { useGroupsGetQuery } from "../../store/extendGroups";
 
 const OperatorGoals = () => {
 
   const { data: goals , isLoading: areGoalsLoading} = useGoalsGetQuery();
+  const { data: groups} = useGroupsGetQuery();
   const [goalsDeleteAllTrigger] = useGoalsDeleteAllMutation();
   const [goalsUpdateTrigger] = useGoalsUpdateMutation();
   const [goalsDeleteOneTrigger] = useGoalsDeleteOneMutation();
@@ -33,6 +34,9 @@ const OperatorGoals = () => {
       const {user_id, ...goalUpdate} = goal;
 
       switch (plannerGoal.category) {
+        case OperatorGoalCategory.Elite:
+          goalUpdate.elite = null;
+          break;
         case OperatorGoalCategory.Mastery:
           const skillId = plannerGoal.skillId;
           const skillIndex = opData.skillData?.findIndex(x => x.skillId === skillId)!;
@@ -62,14 +66,21 @@ const OperatorGoals = () => {
           goalUpdate.skill_level = null;
           break;
       }
-    if (!goalUpdate.masteries && !goalUpdate.elite && !goalUpdate.modules && !goalUpdate.skill_level)
-    {
+    if (!goalUpdate.masteries && !goalUpdate.elite && !goalUpdate.modules && !goalUpdate.skill_level) {
       goalsDeleteOneTrigger(goalUpdate);
     }
-      //TODO check if there are still goals left. if there aren't, delete the row
-    goalsUpdateTrigger([goalUpdate]);
+    else {
+      goalsUpdateTrigger([goalUpdate]);
+    }
   }, [goals, goalsDeleteOneTrigger, goalsUpdateTrigger]);
 
+  const createGoalGroups = () => {
+    const groupedGoals = Object.groupBy(goals!, goal => goal.group_name);
+    return groups!.map((groupName, index) =>
+      (
+        <GoalGroup key={groupName} groupName={groupName} operatorGoals={groupedGoals[groupName]} onGoalDeleted={onPlannerGoalCardGoalDeleted} defaultExpanded={index == 0}/>
+    ))
+  }
 
   const handleClearAll = () => {
     if (goals && goals.length > 0) {
@@ -144,9 +155,12 @@ const OperatorGoals = () => {
             />
           </Grid>
         </Grid>
-          {!areGoalsLoading && goals && Object.entries(Object.groupBy(goals, goal => goal.group_name)).map(([groupName, operatorGoals]) =>(
-            <GoalGroup key={groupName} groupName={groupName} operatorGoals={operatorGoals!} onGoalDeleted={onPlannerGoalCardGoalDeleted}/>
-          ))}
+          { goals &&
+            createGoalGroups()
+          //   !areGoalsLoading && goals && Object.entries(Object.groupBy(goals, goal => goal.group_name)).map(([groupName, operatorGoals], index) =>(
+          //   <GoalGroup key={groupName} groupName={groupName} operatorGoals={operatorGoals!} onGoalDeleted={onPlannerGoalCardGoalDeleted} defaultExpanded={index == 0}/>
+          // ))
+          }
       </Board>
       <PlannerGoalAdd
         open={addGoalOpen}

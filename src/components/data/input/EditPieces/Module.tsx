@@ -59,7 +59,7 @@ const Module = memo((props: Props) => {
                 className={disabled ? "Mui-disabled" : ""}
                 width={48}
                 height={48}
-                src={`/img/equip/${opData!.moduleData![moduleNumber].typeName.toLowerCase()}.png`}
+                src={`/img/equip/${opData!.moduleData![moduleNumber].moduleId}.png`}
                 alt={`Module ${moduleNumber + 1}`}
               />
               <Typography

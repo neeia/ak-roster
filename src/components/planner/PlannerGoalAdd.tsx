@@ -236,7 +236,7 @@ const PlannerGoalAdd = (props: Props) => {
         });
         setMasteries(newMasteries)
         break;
-      case "Skill 1 Mastery 1 → 3":
+      case "Skill 1 Mastery 3":
         setEliteLevel(2);
         setSkillLevel(7);
         newMasteries = masteries.map((masteryLevel, index) => {
@@ -249,7 +249,7 @@ const PlannerGoalAdd = (props: Props) => {
         });
         setMasteries(newMasteries)
         break;
-      case "Skill 2 Mastery 1 → 3":
+      case "Skill 2 Mastery 3":
         setEliteLevel(2);
         setSkillLevel(7);
         newMasteries = masteries.map((masteryLevel, index) => {
@@ -262,7 +262,7 @@ const PlannerGoalAdd = (props: Props) => {
         });
         setMasteries(newMasteries)
         break;
-      case "Skill 3 Mastery 1 → 3":
+      case "Skill 3 Mastery 3":
         setEliteLevel(2);
         setSkillLevel(7);
         newMasteries = masteries.map((masteryLevel, index) => {
@@ -324,6 +324,17 @@ const PlannerGoalAdd = (props: Props) => {
             opacity: 0.25,
             boxShadow: 0,
           },
+          "& .inactive": {
+            opacity: 0.75,
+          },
+          "& .active": {
+            opacity: 1,
+            boxShadow: 0,
+            borderBottomWidth: "0.25rem 0px 0px 0px !important",
+            borderBottomColor: "primary.main",
+            borderBottomStyle: "solid",
+            backgroundColor: "primary.light",
+          }
         }}>
           <Box sx={{ gridColumn: "1 / -1", display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: 2, pt: 2 }}>
             <OperatorSearch

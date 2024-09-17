@@ -1,4 +1,14 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, IconButton, Typography } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box, Button,
+  Dialog, DialogActions, DialogContent,
+  DialogTitle,
+  IconButton, Menu, MenuItem,
+  Typography,
+} from "@mui/material";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
@@ -7,95 +17,170 @@ import PlannerGoalCard from "./PlannerGoalCard";
 import React, { memo, useCallback, useState } from "react";
 import operatorJson from "../../data/operators";
 import GoalData, { getGoalString, getPlannerGoals } from "../../types/goalData";
-import { OperatorData } from "../../types/operator";
-import { OperatorGoalCategory, PlannerGoal } from "../../types/goal";
+import { PlannerGoal } from "../../types/goal";
+import { OperatorGoals } from "./OperatorGoals";
+import { useGoalsDeleteAllFromGroupMutation } from "../../store/extendGoals";
+import { useGroupsDeleteMutation } from "../../store/extendGroups";
 
 interface Props {
-  operatorGoals: GoalData[];
+  operatorGoals: GoalData[] | undefined;
   groupName: string;
   onGoalDeleted : (plannerGoal: PlannerGoal) => void;
+  defaultExpanded: boolean;
 }
 
 const GoalGroup = memo((props : Props) => {
-  const {operatorGoals, groupName, onGoalDeleted} = props;
+  const {operatorGoals, groupName, onGoalDeleted, defaultExpanded} = props;
 
-  const [expanded, setExpanded] = useState<boolean>(true);
+  const [expanded, setExpanded] = useState<boolean>(defaultExpanded);
+  const [deleteGroupGoalsOpen, setDeleteGroupGoalsOpen] = useState<boolean>(false);
+  const [deleteGroupOpen, setDeleteGroupOpen] = useState<boolean>(false);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const isMenuOpen = Boolean(anchorEl);
+
+  const [goalsDeleteAllFromGroupTrigger] = useGoalsDeleteAllFromGroupMutation();
+  const [groupsDeleteTrigger] = useGroupsDeleteMutation();
+
+  const onDeleteFromGroupsClick = useCallback(() => {
+    goalsDeleteAllFromGroupTrigger(groupName);
+    setDeleteGroupGoalsOpen(false);
+  }, [goalsDeleteAllFromGroupTrigger, groupName]);
+
+  const onDeleteGroupClick = useCallback(() => {
+    groupsDeleteTrigger(groupName)
+    setDeleteGroupGoalsOpen(false);
+  }, [groupName, groupsDeleteTrigger]);
+
+  const handleMoreButtonClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      setAnchorEl(e.currentTarget);
+    },
+    []
+  );
+
+  const handleMoreMenuClose = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setAnchorEl(null);
+  }, []);
+
+  const handleDeleteGroupButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    handleMoreMenuClose(e)
+    setDeleteGroupOpen(true);
+  }, [handleMoreMenuClose]);
+
+  const handleDeleteGroupGoalsButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    handleMoreMenuClose(e)
+    setDeleteGroupGoalsOpen(true)
+  }, [handleMoreMenuClose]);
 
   return (
-    <Accordion onChange={(_, expanded) => setExpanded(expanded)} sx={{mt: "20px"}} disableGutters elevation={0} defaultExpanded>
-      <AccordionSummary>
-        <Box sx={{display: "flex", flexDirection: "column", width: "100%"}}>
-          <Box sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            mb: 2,
-          }}>
-            <IconButton>
-              <MoreHorizIcon/>
-            </IconButton>
-            <Typography textAlign="center" variant="h5" sx={{flexGrow: "1"}}>{groupName}</Typography>
-              {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-          </Box>
-          {!expanded &&
+    <>
+      <Accordion onChange={(_, expanded) => setExpanded(expanded)} disableGutters elevation={0} defaultExpanded={defaultExpanded} sx={{ '&:before': {
+          display: 'none',
+        }}}>
+        <AccordionSummary>
+          <Box sx={{display: "flex", flexDirection: "column", width: "100%",
+           }}>
             <Box sx={{
               display: "flex",
               flexDirection: "row",
-              backgroundColor: "background.default",
-              padding: 2,
+              alignItems: "center",
             }}>
-              {
-                operatorGoals.map((operatorGoal) => {
-              const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
-              return (<Box sx={{"&:not(:first-of-type)": { marginLeft: -2 },}} key={operatorGoal.op_id}>
-                        <Image src={imgUrl} width={64} height={64} alt=""/>
-                      </Box>)
-              })}
+              <IconButton
+
+                id="more-button"
+                onClick={handleMoreButtonClick}>
+                <MoreHorizIcon/>
+              </IconButton>
+              <Menu
+                onClick={(e) => e.stopPropagation()}
+                anchorEl={anchorEl}
+                open={isMenuOpen}
+                onClose={handleMoreMenuClose}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+
+              >
+                <MenuItem disabled={!operatorGoals}>
+                  <Typography onClick={handleDeleteGroupGoalsButtonClick} color={theme => theme.palette.error.light}>Delete goals</Typography>
+                </MenuItem>
+                <MenuItem disabled={groupName == "Default"}>
+                  <Typography onClick={handleDeleteGroupButtonClick} color={theme => theme.palette.error.light}>Delete group</Typography>
+                </MenuItem>
+              </Menu>
+              <Typography textAlign="center" variant="h5" sx={{flexGrow: "1"}}>{groupName}</Typography>
+                {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </Box>
-          }
-        </Box>
-      </AccordionSummary>
-      <AccordionDetails>
-        {
-          operatorGoals && operatorGoals.map((operatorGoal) => {
-           const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
-           const opData = operatorJson[operatorGoal.op_id];
-
-            return (
-              <Accordion key={operatorGoal.op_id} sx={{
+            {!expanded && operatorGoals &&
+              <Box sx={{
+                display: "flex",
+                flexDirection: "row",
                 backgroundColor: "background.default",
-                mb: 2,
+                padding: 1,
               }}>
-                <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-                  <Box sx={{
-                    display: "grid",
-                    gridTemplateColumns: "auto 1fr",
-                    gridTemplateRows: "1fr 1fr",
-                    columnGap: "20px",
-                    gridTemplateAreas:`
-                        "opImage opName"
-                        "opImage goals"`,
-                    alignItems: "end",
-                  }}>
-                    <Box sx={{gridArea: "opImage"}}>
-                      <Image src={imgUrl} width={64} height={64} alt="" />
-                    </Box>
-                    <Typography variant="h5" sx={{gridArea: "opName"}}>{opData.name}</Typography>
-                    <Typography sx={{gridArea: "goals"}}>{getGoalString(operatorGoal, opData)}</Typography>
-                  </Box>
-                </AccordionSummary>
-                <AccordionDetails sx={{padding: "0"}}>
-                  {
-                    getPlannerGoals(operatorGoal, opData).map((plannerGoal, index) => (
-                      <PlannerGoalCard key={index} goal={plannerGoal} onGoalDeleted={onGoalDeleted} onGoalCompleted={() => {}}/>
-                    ))
-                  }
-                </AccordionDetails>
-              </Accordion>
-            )})}
-      </AccordionDetails>
-    </Accordion>
-
+                {
+                  operatorGoals.map((operatorGoal) => {
+                const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
+                return (<Box sx={{"&:not(:first-of-type)": { marginLeft: -2 },}} key={operatorGoal.op_id}>
+                          <Image src={imgUrl} width={64} height={64} alt=""/>
+                        </Box>)
+                })}
+              </Box>
+            }
+          </Box>
+        </AccordionSummary>
+        <AccordionDetails>
+          {
+            operatorGoals && operatorGoals.map((operatorGoal) => {
+              return (
+                <OperatorGoals key={operatorGoal.op_id} operatorGoal={operatorGoal} onGoalDeleted={onGoalDeleted}/>
+              )})}
+        </AccordionDetails>
+      </Accordion>
+      <Dialog
+        open={deleteGroupGoalsOpen}
+      >
+        <DialogTitle>
+          <Typography>
+            Delete goal group
+          </Typography>
+        </DialogTitle>
+        <DialogContent>
+          <Typography>
+            Do you want to delete all the goals in the group?
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button variant={"contained"} onClick={() => setDeleteGroupGoalsOpen(false)}>Cancel</Button>
+          <Button variant={"contained"} color={"error"} onClick={onDeleteFromGroupsClick}>Delete</Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={deleteGroupOpen}
+      >
+        <DialogTitle>
+          <Typography>
+            Delete group
+          </Typography>
+        </DialogTitle>
+        <DialogContent>
+          <Typography>
+            Do you want to delete the group and all the goals in it?
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button variant={"contained"} onClick={() => setDeleteGroupOpen(false)}>Cancel</Button>
+          <Button variant={"contained"} color={"error"} onClick={onDeleteGroupClick}>Delete</Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 });
 GoalGroup.displayName = "GoalGroup";
