@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Box, Container, IconButton, Theme, ThemeProvider, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Container, IconButton, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import config from "data/config";
 import MenuIcon from '@mui/icons-material/Menu';
 import AppDrawer from "./AppDrawer";

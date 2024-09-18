@@ -7,26 +7,10 @@ import { defaultOperatorObject } from 'util/changeOperator';
 
 export const rosterApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({
-    rosterGet: builder.query<Roster, UID>({
-      async queryFn({ user_id }) {
-
-        const { data } = await supabase
-          .from("operators")
-          .select("op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin")
-          .match({ user_id })
-
-        if (!data || data.length == 0) return { data: {} };
-
-        const acc: Roster = {};
-        data.forEach(o => o.op_id in operatorJson ? acc[o.op_id] = o as Operator : null);
-        return { data: acc };
-      },
-      providesTags: ["operator"]
-    }),
-    currentRosterGet: builder.query<Roster, void>({
+    rosterGet: builder.query<Roster, void>({
       async queryFn() {
 
-        const {data: session} = await supabase.auth.getSession();
+        const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
         const { data } = await supabase
@@ -52,10 +36,10 @@ export const rosterApi = supabaseApi.injectEndpoints({
 
         return { data };
       },
-      async onQueryStarted(q: UID & (Operator | Operator[]), { dispatch, queryFulfilled }) {
-        const { user_id, ...op } = q;
+      async onQueryStarted(op: UID & (Operator | Operator[]), { dispatch, queryFulfilled }) {
+
         const patchResult = dispatch(
-          rosterApi.util.updateQueryData('rosterGet', { user_id }, (draft) => {
+          rosterApi.util.updateQueryData('rosterGet', undefined, (draft) => {
             const ops: Roster = Object.fromEntries(
               ([] as Operator[]).concat(op).map(o => [o.op_id, o])
             );
@@ -89,4 +73,4 @@ export const rosterApi = supabaseApi.injectEndpoints({
   overrideExisting: false,
 })
 
-export const { useRosterGetQuery, useCurrentRosterGetQuery, useRosterUpsertMutation, useRosterDeleteMutation } = rosterApi;
+export const { useRosterGetQuery, useRosterUpsertMutation, useRosterDeleteMutation } = rosterApi;

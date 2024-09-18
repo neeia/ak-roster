@@ -17,15 +17,6 @@ import { Session } from "@supabase/supabase-js";
 import { keyframes } from '@mui/system';
 import useOperators from "util/useOperators";
 
-const shimmer = keyframes`
-  0% {
-      background-position: -120px 0;
-  }
-  100% {
-      background-position: 120px 0;
-  }
-`;
-
 const EditOperator = dynamic(
   () => import("components/data/input/EditOperator"),
   { ssr: false }
@@ -278,14 +269,6 @@ const Input: NextPage = () => {
           "& .toggled": {
             opacity: 1,
           },
-          "& > .loading button": {
-            background: "linear-gradient(95deg, #333 8%, #3a3a3a 44%, #333 80%)",
-            backgroundSize: "120px 100%",
-            animation: `${shimmer} 2s infinite linear`,
-            "& *": {
-              opacity: "0",
-            },
-          }
         }}>
           <OperatorSelector
             operators={operators ?? {}}

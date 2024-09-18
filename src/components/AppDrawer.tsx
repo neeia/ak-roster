@@ -98,7 +98,7 @@ const AppDrawer = React.memo((props: Props) => {
 
   const user = useContext(UserContext);
   const [username, setUsername] = useState<string | null>();
-  const { data: accountData, isSuccess } = useAccountGetQuery(user ? { user_id: user.id } : skipToken);
+  const { data: accountData } = useAccountGetQuery();
   useEffect(() => {
     if (user && accountData) {
       if (accountData.display_name) {

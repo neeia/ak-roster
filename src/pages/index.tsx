@@ -2,10 +2,10 @@
   Alert,
   Box,
   Button,
-  CircularProgress,
   IconButton,
   InputAdornment,
   Paper,
+  Skeleton,
   SxProps,
   TextField,
   Typography,
@@ -52,10 +52,9 @@ const Home: NextPage = () => {
   };
 
   const logoBasePath = useRef(`/assets/title/${getLogoUrl()}`);
-
+  
   const user = useContext(UserContext);
-
-  const { data: accountData } = useAccountGetQuery(user ? { user_id: user.id } : skipToken);
+  const { data: accountData } = useAccountGetQuery();
 
   useEffect(() => {
     if (user && accountData) {
@@ -73,9 +72,9 @@ const Home: NextPage = () => {
     <Head title="Krooster" url={server} description={config.siteDescription}>
       <Box component="main" sx={{
         minHeight: "100dvh",
-        backgroundColor: "background.paper",
         display: "flex",
         flexDirection: "column",
+        backgroundColor: "background.paper",
         alignItems: "center",
         gap: 4,
         p: 2,
@@ -96,8 +95,8 @@ const Home: NextPage = () => {
           />
         </Box>
 
-        {(user === null) ? (
-          <Paper elevation={2} sx={{
+        {(user === null)
+          ? <Paper elevation={2} sx={{
             ...authFrame,
             alignItems: "center",
           }}>
@@ -125,17 +124,15 @@ const Home: NextPage = () => {
               Sign In
             </Button>
           </Paper>
-        )
-          :
-          <Paper elevation={2} sx={{
+          : <Paper elevation={2} sx={{
             ...authFrame,
             flexDirection: "column",
           }}>
-            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Box sx={{ display: "flex", gap: "16px", alignItems: "center" }}>
+              <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
                 <Typography sx={{ color: "text.secondary" }}>Signed in as</Typography>
-                <Box sx={{ display: "flex", gap: 1 }}>
-                  {username ?? <CircularProgress size={24} />}
+                <Box sx={{ width: "100%", }}>
+                  {username ?? <Skeleton variant="text" />}
                 </Box>
               </Box>
               <AccountContextMenu />

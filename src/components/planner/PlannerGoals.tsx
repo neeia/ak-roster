@@ -12,15 +12,15 @@ import {
   useGoalsUpdateMutation,
 } from "store/extendGoals";
 import PlannerGoalAdd from "./PlannerGoalAdd";
-import operatorJson from "../../data/operators";
+import operatorJson from "data/operators";
 import GoalGroup from "./GoalGroup";
 import Board from "components/base/Board";
-import { useGroupsGetQuery } from "../../store/extendGroups";
+import { useGroupsGetQuery } from "store/extendGroups";
 
 const OperatorGoals = () => {
 
-  const { data: goals , isLoading: areGoalsLoading} = useGoalsGetQuery();
-  const { data: groups} = useGroupsGetQuery();
+  const { data: goals, isLoading: areGoalsLoading } = useGoalsGetQuery();
+  const { data: groups } = useGroupsGetQuery();
   const [goalsDeleteAllTrigger] = useGoalsDeleteAllMutation();
   const [goalsUpdateTrigger] = useGoalsUpdateMutation();
   const [goalsDeleteOneTrigger] = useGoalsDeleteOneMutation();
@@ -28,44 +28,42 @@ const OperatorGoals = () => {
   const [addGoalOpen, setAddGoalOpen] = useState<boolean>(false);
 
   const onPlannerGoalCardGoalDeleted = useCallback((plannerGoal: PlannerGoal) => {
-      const opId = plannerGoal.operatorId;
-      const opData = operatorJson[opId];
-      const goal = goals!.find(x => x.op_id === opId)!;
-      const {user_id, ...goalUpdate} = goal;
+    const opId = plannerGoal.operatorId;
+    const opData = operatorJson[opId];
+    // TODO: There should probably be some sort of failsafe if goals is undefined
+    const goal = goals!.find(x => x.op_id === opId)!;
+    const { user_id, ...goalUpdate } = goal;
 
-      switch (plannerGoal.category) {
-        case OperatorGoalCategory.Elite:
-          goalUpdate.elite = null;
-          break;
-        case OperatorGoalCategory.Mastery:
-          const skillId = plannerGoal.skillId;
-          const skillIndex = opData.skillData?.findIndex(x => x.skillId === skillId)!;
-          goalUpdate.masteries = [...goal.masteries!];
-          goalUpdate.masteries![skillIndex] = 0;
-          if (!goalUpdate.masteries!.some((x) => x > 0))
-          {
-            goalUpdate.masteries= null;
+    switch (plannerGoal.category) {
+      case OperatorGoalCategory.Elite:
+        goalUpdate.elite = null;
+        break;
+      case OperatorGoalCategory.Mastery:
+        const skillId = plannerGoal.skillId;
+        const skillIndex = opData.skillData?.findIndex(x => x.skillId === skillId)!;
+        goalUpdate.masteries = [...goal.masteries!];
+        goalUpdate.masteries![skillIndex] = 0;
+        if (!goalUpdate.masteries!.some((x) => x > 0)) {
+          goalUpdate.masteries = null;
+        }
+        break;
+      case OperatorGoalCategory.Module:
+        const moduleId = plannerGoal.moduleId;
+        const updatedModules: Record<string, number> = {}
+        Object.entries(goalUpdate.modules!).forEach(([goalModuleId, goalModulevel]) => {
+          if (goalModuleId != moduleId) {
+            updatedModules[goalModuleId] = goalModulevel;
           }
-          break;
-        case OperatorGoalCategory.Module:
-          const moduleId = plannerGoal.moduleId;
-          const updatedModules : Record<string,number>= {}
-          Object.entries(goalUpdate.modules!).forEach(([goalModuleId, goalModulevel]) => {
-            if (goalModuleId != moduleId)
-            {
-              updatedModules[goalModuleId] = goalModulevel;
-            }
-          })
-          goalUpdate.modules = updatedModules;
-          if (Object.entries(updatedModules).length == 0)
-          {
-            goalUpdate.modules = null;
-          }
-          break;
-        case OperatorGoalCategory.SkillLevel:
-          goalUpdate.skill_level = null;
-          break;
-      }
+        })
+        goalUpdate.modules = updatedModules;
+        if (Object.entries(updatedModules).length == 0) {
+          goalUpdate.modules = null;
+        }
+        break;
+      case OperatorGoalCategory.SkillLevel:
+        goalUpdate.skill_level = null;
+        break;
+    }
     if (!goalUpdate.masteries && !goalUpdate.elite && !goalUpdate.modules && !goalUpdate.skill_level) {
       goalsDeleteOneTrigger(goalUpdate);
     }
@@ -77,8 +75,8 @@ const OperatorGoals = () => {
   const createGoalGroups = () => {
     const groupedGoals = Object.groupBy(goals!, goal => goal.group_name);
     return groups!.map((groupName, index) =>
-      (
-        <GoalGroup key={groupName} groupName={groupName} operatorGoals={groupedGoals[groupName]} onGoalDeleted={onPlannerGoalCardGoalDeleted} defaultExpanded={index == 0}/>
+    (
+      <GoalGroup key={groupName} groupName={groupName} operatorGoals={groupedGoals[groupName]} onGoalDeleted={onPlannerGoalCardGoalDeleted} defaultExpanded={index == 0} />
     ))
   }
 
@@ -155,12 +153,12 @@ const OperatorGoals = () => {
             />
           </Grid>
         </Grid>
-          { goals &&
-            createGoalGroups()
+        {goals &&
+          createGoalGroups()
           //   !areGoalsLoading && goals && Object.entries(Object.groupBy(goals, goal => goal.group_name)).map(([groupName, operatorGoals], index) =>(
           //   <GoalGroup key={groupName} groupName={groupName} operatorGoals={operatorGoals!} onGoalDeleted={onPlannerGoalCardGoalDeleted} defaultExpanded={index == 0}/>
           // ))
-          }
+        }
       </Board>
       <PlannerGoalAdd
         open={addGoalOpen}

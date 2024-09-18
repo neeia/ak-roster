@@ -1,6 +1,6 @@
 import {
   Box,
-  Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid,
+  Button, Collapse, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid,
   IconButton, InputLabel, MenuItem, Select, SelectChangeEvent, SxProps, Typography,
   useMediaQuery, useTheme,
 } from "@mui/material";
@@ -8,7 +8,7 @@ import React, { useCallback, useState } from "react";
 import OperatorSearch from "./OperatorSearch";
 import { Operator, OperatorData } from "types/operator";
 import { Close } from "@mui/icons-material";
-import { useCurrentRosterGetQuery } from "store/extendRoster";
+import { useRosterGetQuery } from "store/extendRoster";
 import { useGroupsGetQuery } from "store/extendGroups";
 import Chip from "../base/Chip";
 import SelectPromotion from "../data/input/EditPieces/Promotion";
@@ -34,13 +34,13 @@ const PlannerGoalAdd = (props: Props) => {
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up('sm'));
 
-  const { data: roster } = useCurrentRosterGetQuery();
+  const { data: roster } = useRosterGetQuery();
   const { data: goalGroups } = useGroupsGetQuery();
   const [goalsUpdateTrigger] = useGoalsUpdateMutation();
 
 
   const [selectedOperatorData, setSelectedOperatorData] = useState<OperatorData | null>(null);
-  const [accountOperator, setAccountOperator] = useState<Operator | null>(null);
+  const [currentOperator, setCurrentOperator] = useState<Operator | null>(null);
   const [selectedGroup, setSelectedGroup] = useState<string>("Default");
   const [openGroupDialog, setOpenGroupDialog] = React.useState<boolean>(false);
 
@@ -65,7 +65,7 @@ const PlannerGoalAdd = (props: Props) => {
     setSelectedOperatorData(newOp)
     if (roster && newOp) {
       const accountOp: Operator | null = roster[newOp.id] ?? null;
-      setAccountOperator(accountOp);
+      setCurrentOperator(accountOp);
       setEliteLevel(accountOp?.elite);
       setLevel(accountOp?.level);
       setSkillLevel(accountOp?.skill_level);
@@ -73,7 +73,7 @@ const PlannerGoalAdd = (props: Props) => {
       setModules(accountOp?.modules)
     }
     else {
-      setAccountOperator(null);
+      setCurrentOperator(null);
       setEliteLevel(undefined);
       setLevel(undefined);
       setSkillLevel(undefined);
@@ -87,39 +87,39 @@ const PlannerGoalAdd = (props: Props) => {
   };
 
   const onPromotionClearClick = useCallback(() => {
-    if (accountOperator) {
-      setEliteLevel(accountOperator.elite);
+    if (currentOperator) {
+      setEliteLevel(currentOperator.elite);
     }
     else {
       setEliteLevel(undefined);
     }
-  }, [accountOperator]);
+  }, [currentOperator]);
 
   const onLevelChange = (level: number) => {
     setLevel(level);
   }
 
   const onLevelClearClick = useCallback(() => {
-    if (accountOperator) {
-      setLevel(accountOperator.level);
+    if (currentOperator) {
+      setLevel(currentOperator.level);
     }
     else {
       setLevel(undefined);
     }
-  }, [accountOperator]);
+  }, [currentOperator]);
 
   const onSkillLevelChange = (level: number) => {
     setSkillLevel(level);
   }
 
   const onSkillLevelClearClick = useCallback(() => {
-    if (accountOperator) {
-      setSkillLevel(accountOperator.skill_level);
+    if (currentOperator) {
+      setSkillLevel(currentOperator.skill_level);
     }
     else {
       setSkillLevel(undefined);
     }
-  }, [accountOperator]);
+  }, [currentOperator]);
 
   const onMasteryChange = useCallback((skillNumber: number, newMasteryLevel: number) => {
     const newMasteries = masteries.map((masteryLevel, index) => {
@@ -134,13 +134,13 @@ const PlannerGoalAdd = (props: Props) => {
   }, [masteries]);
 
   const onMasteryClearClick = useCallback(() => {
-    if (accountOperator) {
-      setMasteries(accountOperator.masteries);
+    if (currentOperator) {
+      setMasteries(currentOperator.masteries);
     }
     else {
       setMasteries([]);
     }
-  }, [accountOperator]);
+  }, [currentOperator]);
 
   const onModuleChange = useCallback((moduleId: string, newModuleLevel: number) => {
 
@@ -150,21 +150,21 @@ const PlannerGoalAdd = (props: Props) => {
   }, [modules]);
 
   const onModuleClearClick = useCallback(() => {
-    if (accountOperator) {
-      setModules(accountOperator.modules);
+    if (currentOperator) {
+      setModules(currentOperator.modules);
     }
     else {
       setModules(undefined);
     }
-  }, [accountOperator]);
+  }, [currentOperator]);
 
   const handleGoalAddDialogClose = useCallback((shouldAddGoal: boolean) => {
-    if (shouldAddGoal && accountOperator) {
-      const eliteGoal = (eliteLevel && eliteLevel > accountOperator?.elite) ? eliteLevel : null;
-      const levelGoal = (level && level > accountOperator?.level) ? level : null;
-      const modulesGoal = !_.isEqual(modules, accountOperator.modules) ? modules : null;
-      const masteriesGoal = masteries.toString() != accountOperator.masteries.toString() ? masteries : null;
-      const skillLevelGoal = (skillLevel && skillLevel > accountOperator?.skill_level) ? skillLevel : 0;
+    if (shouldAddGoal && currentOperator) {
+      const eliteGoal = (eliteLevel && eliteLevel > currentOperator?.elite) ? eliteLevel : null;
+      const levelGoal = (level && level > currentOperator?.level) ? level : null;
+      const modulesGoal = !_.isEqual(modules, currentOperator.modules) ? modules : null;
+      const masteriesGoal = masteries.toString() != currentOperator.masteries.toString() ? masteries : null;
+      const skillLevelGoal = (skillLevel && skillLevel > currentOperator?.skill_level) ? skillLevel : 0;
 
       if (eliteGoal || levelGoal || modulesGoal || masteriesGoal || skillLevelGoal) {
         const goalData: GoalDataInsert = {
@@ -172,7 +172,7 @@ const PlannerGoalAdd = (props: Props) => {
           level: levelGoal,
           modules: modulesGoal,
           masteries: masteriesGoal,
-          op_id: accountOperator.op_id,
+          op_id: currentOperator.op_id,
           skill_level: skillLevelGoal,
           group_name: selectedGroup,
         }
@@ -181,31 +181,31 @@ const PlannerGoalAdd = (props: Props) => {
     }
     onClose();
     setSelectedOperatorData(null)
-    setAccountOperator(null);
+    setCurrentOperator(null);
     setEliteLevel(undefined);
     setLevel(undefined);
     setSkillLevel(undefined);
     setMasteries([]);
     setModules(undefined);
-  }, [accountOperator, onClose, eliteLevel, level, modules, masteries, skillLevel, selectedGroup, goalsUpdateTrigger]);
+  }, [currentOperator, onClose, eliteLevel, level, modules, masteries, skillLevel, selectedGroup, goalsUpdateTrigger]);
 
   const handleShortcuts = useCallback((shortcut: string) => {
     let newMasteries = [];
     const moduleLevelRequirement = MODULE_REQ_BY_RARITY[selectedOperatorData!.rarity];
     switch (shortcut) {
       case "Nothing":
-        setEliteLevel(accountOperator!.elite);
-        setLevel(accountOperator!.level);
-        setSkillLevel(accountOperator!.skill_level);
-        setMasteries(accountOperator!.masteries);
-        setModules(accountOperator!.modules)
+        setEliteLevel(currentOperator!.elite);
+        setLevel(currentOperator!.level);
+        setSkillLevel(currentOperator!.skill_level);
+        setMasteries(currentOperator!.masteries);
+        setModules(currentOperator!.modules)
         break;
       case "Everything":
         const allModules = selectedOperatorData!.moduleData;
         const allModuleGoals: Record<string, number> = {};
         setEliteLevel(2);
         setSkillLevel(7);
-        newMasteries = accountOperator!.masteries.map((_) => {
+        newMasteries = currentOperator!.masteries.map((_) => {
           return 3;
         });
         setMasteries(newMasteries)
@@ -231,7 +231,7 @@ const PlannerGoalAdd = (props: Props) => {
       case "All Skill Masteries 1 → 3":
         setEliteLevel(2);
         setSkillLevel(7);
-        newMasteries = accountOperator!.masteries.map((_) => {
+        newMasteries = currentOperator!.masteries.map((_) => {
           return 3
         });
         setMasteries(newMasteries)
@@ -276,7 +276,7 @@ const PlannerGoalAdd = (props: Props) => {
         setMasteries(newMasteries)
         break;
     }
-  }, [accountOperator, masteries, selectedOperatorData])
+  }, [currentOperator, masteries, selectedOperatorData])
 
   const sectionSx: SxProps = {
     width: "100%",
@@ -324,24 +324,13 @@ const PlannerGoalAdd = (props: Props) => {
             opacity: 0.25,
             boxShadow: 0,
           },
-          "& .inactive": {
-            opacity: 0.75,
-          },
-          "& .active": {
-            opacity: 1,
-            boxShadow: 0,
-            borderBottomWidth: "0.25rem 0px 0px 0px !important",
-            borderBottomColor: "primary.main",
-            borderBottomStyle: "solid",
-            backgroundColor: "primary.light",
-          }
         }}>
           <Box sx={{ gridColumn: "1 / -1", display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: 2, pt: 2 }}>
-            <OperatorSearch
+            <OperatorSearch sx={{ width: "100%", maxWidth: "40ch" }}
               value={selectedOperatorData}
               onChange={(newOp) => onSelectedOperatorChange(newOp)}
             />
-            <FormControl>
+            <FormControl sx={{ flexGrow: 1 }}>
               <InputLabel>Goal Group</InputLabel>
               <Select
                 value={selectedGroup}
@@ -370,7 +359,7 @@ const PlannerGoalAdd = (props: Props) => {
             onClick={onPromotionClearClick}
           >
             <SelectPromotion
-              minPromotion={accountOperator?.elite}
+              minPromotion={currentOperator?.elite}
               maxPromotion={selectedOperatorData?.eliteLevels.length}
               value={eliteLevel}
               disabled={!selectedOperatorData}
@@ -383,7 +372,7 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectLevel
               disabled={!selectedOperatorData}
               value={level}
-              min={accountOperator?.level}
+              min={currentOperator?.level}
               max={(selectedOperatorData && eliteLevel) ? MAX_LEVEL_BY_RARITY[selectedOperatorData.rarity][eliteLevel] : undefined}
               onChange={onLevelChange}
             />
@@ -394,7 +383,7 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectSkillLevel
               disabled={!selectedOperatorData}
               skillLevel={skillLevel}
-              minSkillLevel={accountOperator?.skill_level}
+              minSkillLevel={currentOperator?.skill_level}
               maxSkillLevel={[4, 7, 7][eliteLevel ?? 0]}
               onChange={onSkillLevelChange}
             />
@@ -405,10 +394,10 @@ const PlannerGoalAdd = (props: Props) => {
             >
               <Mastery
                 masteries={masteries}
-                opId={accountOperator?.op_id}
+                opId={currentOperator?.op_id}
                 skillLevel={skillLevel}
                 eliteLevel={eliteLevel}
-                minMasteries={accountOperator?.masteries}
+                minMasteries={currentOperator?.masteries}
                 onChange={onMasteryChange}
               />
             </SelectGroup>
@@ -420,10 +409,10 @@ const PlannerGoalAdd = (props: Props) => {
           >
             <Module
               modules={modules}
-              opId={accountOperator?.op_id}
+              opId={currentOperator?.op_id}
               opLevel={level}
               eliteLevel={eliteLevel}
-              minModules={accountOperator?.modules}
+              minModules={currentOperator?.modules}
               onChange={onModuleChange}
             />
           </SelectGroup>

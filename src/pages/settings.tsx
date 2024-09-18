@@ -1,18 +1,15 @@
 ﻿import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { Box, Divider } from "@mui/material";
-import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import Layout from "components/Layout";
 import UpdateUsername from "components/settings/UpdateUsername";
 import UpdateEmail from "components/settings/UpdateEmail";
 import UpdatePassword from "components/settings/UpdatePassword";
-import Data from "components/settings/Data";
-import {useAccountGetQuery} from "store/extendAccount";
-import {AccountData} from "../../types/auth/accountData";
+import { useAccountGetQuery } from "store/extendAccount";
 
 const Settings: NextPage = () => {
 
-  const { data: account, isLoading} = useAccountGetQuery();
+  const { data: account, isLoading } = useAccountGetQuery();
 
   return (
     <Layout tab="/account" page="/settings">

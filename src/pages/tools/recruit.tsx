@@ -24,7 +24,7 @@ import Layout from "components/Layout";
 import classList from "data/classList";
 import useLocalStorage from "util/useLocalStorage";
 import RecruitableOperatorCard from "components/recruit/RecruitableOperatorCard";
-import { useCurrentRosterGetQuery, useRosterGetQuery } from "store/extendRoster";
+import { useRosterGetQuery } from "store/extendRoster";
 import { UserContext } from "pages/_app";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { defaultOperatorObject } from "util/changeOperator";
@@ -95,7 +95,7 @@ const options: Tag[] = Object.entries(TAGS_BY_CATEGORY).flatMap(([type, tagArray
 
 const Recruit: NextPage = () => {
   const user = useContext(UserContext);
-  const { data: roster } = useCurrentRosterGetQuery();
+  const { data: roster } = useRosterGetQuery();
 
   const [activeTags, setActiveTags] = useState<Tag[]>([]);
   const [inputNode, setInputNode] = useState<HTMLInputElement | null>(null);

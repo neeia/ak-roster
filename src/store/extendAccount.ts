@@ -4,7 +4,7 @@ import AccountData, { AccountDataInsert } from "types/auth/accountData";
 
 const extendedApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({
-    accountGet: builder.query<AccountData, UID>({
+    accountGetById: builder.query<AccountData, UID>({
       async queryFn({ user_id }) {
         const { data } = await supabase
           .from("krooster_accounts")
@@ -16,10 +16,10 @@ const extendedApi = supabaseApi.injectEndpoints({
       },
       providesTags: ["account"],
     }),
-    currentAccountGet: builder.query<AccountData, void>({
+    accountGet: builder.query<AccountData, void>({
       async queryFn() {
 
-        const {data: session} = await supabase.auth.getSession();
+        const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
         const { data } = await supabase
@@ -51,4 +51,4 @@ const extendedApi = supabaseApi.injectEndpoints({
   overrideExisting: false,
 })
 
-export const { useAccountGetQuery, useCurrentAccountGetQuery, useAccountUpdateMutation } = extendedApi
+export const { useAccountGetQuery, useAccountUpdateMutation } = extendedApi

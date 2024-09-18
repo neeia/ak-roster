@@ -2,6 +2,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {
   Autocomplete,
   autocompleteClasses,
+  AutocompleteProps,
   Box,
   FilterOptionsState,
   InputAdornment,
@@ -16,6 +17,7 @@ import { VariableSizeList, ListChildComponentProps } from "react-window";
 
 import operatorsJson from "data/operators.json";
 import { OperatorData } from "types/operator";
+import SomePartial from "types/somePartial";
 
 const normalizeOperatorName = (operatorName: string) =>
   operatorName.toLowerCase().replace(/['"]/g, "").replace("ł", "l");
@@ -28,13 +30,13 @@ const operatorNormalizedNames = Object.fromEntries(
   operators.map((op) => [op.name, normalizeOperatorName(op.name)])
 );
 
-interface Props {
+interface Props extends Omit<SomePartial<AutocompleteProps<OperatorData, false, false, false>, "renderInput">, "onChange" | "options"> {
   value: OperatorData | null;
   onChange: (value: OperatorData | null) => void;
 }
 
 const OperatorSearch = (props: Props) => {
-  const { value, onChange } = props;
+  const { value, onChange, sx, ...rest } = props;
 
   const filterOptions = useCallback(
     (operators: OperatorData[], { inputValue }: FilterOptionsState<OperatorData>) => {
@@ -93,7 +95,9 @@ const OperatorSearch = (props: Props) => {
       filterOptions={filterOptions}
       sx={{
         flexGrow: 1,
+        ...sx
       }}
+      {...rest}
     />
   );
 };

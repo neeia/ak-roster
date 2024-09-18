@@ -1,32 +1,17 @@
 import { supabaseApi, UID } from "./apiSlice";
-import supabaseClient from 'supabase/supabaseClient';
-import AccountData from "types/auth/accountData";
-import { Operator } from "types/operator";
-import { Json } from "../types/supabase";
+import supabase from 'supabase/supabaseClient';
 import { OperatorSupport } from "../types/operators/supports";
-import supabase from "supabase/supabaseClient";
 
 
 const extendedApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({
-    supportsGet: builder.query<OperatorSupport[], UID>({
-      queryFn: async ({ user_id }) => {
-        const { data, error } = await supabaseClient
-          .from("supports")
-          .select()
-          .eq('user_id', user_id)
-
-        return { data: data as OperatorSupport[] };
-      },
-      providesTags: ["supports"],
-    }),
-    currentSupportsGet: builder.query<OperatorSupport[], void>({
+    supportsGet: builder.query<OperatorSupport[], void>({
       queryFn: async () => {
 
-        const {data: session} = await supabase.auth.getSession();
+        const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
-        const { data, error } = await supabaseClient
+        const { data, error } = await supabase
           .from("supports")
           .select()
           .eq('user_id', user_id)
@@ -38,10 +23,10 @@ const extendedApi = supabaseApi.injectEndpoints({
     supportSet: builder.mutation<boolean, OperatorSupport>({
       queryFn: async (support: OperatorSupport) => {
 
-        const {data: session} = await supabase.auth.getSession();
+        const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
-        const { data, error } = await supabaseClient
+        const { data, error } = await supabase
           .from("supports")
           .upsert(support)
           .eq('user_id', user_id)
@@ -53,7 +38,7 @@ const extendedApi = supabaseApi.injectEndpoints({
     }),
     supportSkillSet: builder.mutation<boolean, { supportSlot: number, skillSlot: number }>({
       queryFn: async ({ supportSlot, skillSlot }) => {
-        const { data, error } = await supabaseClient
+        const { data, error } = await supabase
           .from("supports")
           .update({ skill: skillSlot })
           .eq('slot', supportSlot)
@@ -65,7 +50,7 @@ const extendedApi = supabaseApi.injectEndpoints({
     }),
     supportRemove: builder.mutation<boolean, number>({
       queryFn: async (slot: number) => {
-        const { error } = await supabaseClient
+        const { error } = await supabase
           .from("supports")
           .delete()
           .eq('slot', slot)
@@ -78,4 +63,4 @@ const extendedApi = supabaseApi.injectEndpoints({
   overrideExisting: false,
 })
 
-export const { useSupportsGetQuery, useCurrentSupportsGetQuery, useSupportSetMutation, useSupportSkillSetMutation, useSupportRemoveMutation } = extendedApi
+export const { useSupportsGetQuery, useSupportSetMutation, useSupportSkillSetMutation, useSupportRemoveMutation } = extendedApi

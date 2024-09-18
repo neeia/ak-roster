@@ -41,7 +41,7 @@ const SelectLevel = memo((props: Props) => {
         updateLevel(level - 1);
         break;
       case "ArrowRight":
-        updateLevel(level + 10);
+        updateLevel(level === 1 ? 10 : level + 10);
         break;
       case "ArrowLeft":
         updateLevel(level - 10);
@@ -140,7 +140,7 @@ const SelectLevel = memo((props: Props) => {
           </Button>
         </Box>
         <Button sx={{ flexGrow: 1 }}
-          onClick={() => updateLevel(level === 0 ? 10 : level + 10)}
+          onClick={() => updateLevel(level === 1 ? 10 : level + 10)}
           disabled={disableUp}
         >
           <KeyboardDoubleArrowRightSharp fontSize="large" />
