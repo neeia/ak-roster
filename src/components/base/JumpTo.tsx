@@ -2,13 +2,12 @@ import React from "react";
 import { Link, LinkProps as MuiLinkProps } from "@mui/material";
 
 export interface LinkProps extends MuiLinkProps {
-  component?: string;
 }
 const JumpTo = (props: LinkProps) => {
   const { href, children, ...rest } = props;
 
   return (
-    <Link onClick={(e) => {
+    <Link component={href ? "a" : "button"} onClick={(e: React.MouseEvent) => {
       e.preventDefault();
       if (href) document.getElementById(href)?.focus();
     }} sx={{

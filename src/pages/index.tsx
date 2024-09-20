@@ -28,6 +28,7 @@ import { useAccountGetQuery, useAccountUpdateMutation } from "store/extendAccoun
 import { skipToken } from "@reduxjs/toolkit/query";
 import { server } from "util/server";
 import randomName from "util/randomName";
+import AccountWidget from "components/app/AccountWidget";
 
 const authFrame: SxProps = {
   display: "flex",
@@ -52,7 +53,7 @@ const Home: NextPage = () => {
   };
 
   const logoBasePath = useRef(`/assets/title/${getLogoUrl()}`);
-  
+
   const user = useContext(UserContext);
   const { data: accountData } = useAccountGetQuery();
 
@@ -128,15 +129,7 @@ const Home: NextPage = () => {
             ...authFrame,
             flexDirection: "column",
           }}>
-            <Box sx={{ display: "flex", gap: "16px", alignItems: "center" }}>
-              <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
-                <Typography sx={{ color: "text.secondary" }}>Signed in as</Typography>
-                <Box sx={{ width: "100%", }}>
-                  {username ?? <Skeleton variant="text" />}
-                </Box>
-              </Box>
-              <AccountContextMenu />
-            </Box>
+            <AccountWidget sx={{ p: 0 }} username={username} />
             {randomUsername && <Alert
               severity="info"
               onClose={() => setRandomUsername(false)}

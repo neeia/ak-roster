@@ -33,6 +33,7 @@ import { useAccountGetQuery, useAccountUpdateMutation } from "store/extendAccoun
 import { interactive } from "styles/theme/appTheme";
 import randomName from "util/randomName";
 import JumpTo from "./base/JumpTo";
+import AccountWidget from "./app/AccountWidget";
 
 const DRAWER_WIDTH_PX = 220;
 const ICON_BY_PATH = [
@@ -124,7 +125,9 @@ const AppDrawer = React.memo((props: Props) => {
         if (!main) return;
         const el = findFirstFocusableElement(main);
         if (el) (el as HTMLElement).focus();
-      }}>skip to main content</JumpTo>
+      }}>
+        skip to main content
+      </JumpTo>
       <Logo hideSubtitle
         sx={{ width: "100%", height: "200px", }}
         LinkProps={{ sx: { position: "relative" } }}
@@ -139,8 +142,8 @@ const AppDrawer = React.memo((props: Props) => {
           gap: "4px",
         }}
       >
-        {!user ? (
-          <Box
+        {!user
+          ? <Box
             sx={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
@@ -151,33 +154,14 @@ const AppDrawer = React.memo((props: Props) => {
             <Button onClick={() => setLogin(true)}>Log In</Button>
             <Button onClick={() => setRegister(true)}>Register</Button>
           </Box>
-        ) : null}
+          : null
+        }
         <LoginForm open={login} onClose={() => setLogin(false)} />
         <RegisterForm open={register} onClose={() => setRegister(false)} />
-        {user ? (
-          <>
-            <Box sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-              width: "100%",
-              maxWidth: "600px",
-              backgroundColor: "background.paper",
-              borderRadius: 1,
-              px: 2,
-            }}>
-              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <Box sx={{ display: "flex", flexDirection: "column" }}>
-                  <Typography sx={{ fontSize: "0.875rem", color: "text.secondary" }}>Signed in as</Typography>
-                  <Box sx={{ display: "flex", gap: 1 }}>
-                    {username ?? <CircularProgress size={24} />}
-                  </Box>
-                </Box>
-                <AccountContextMenu />
-              </Box>
-            </Box>
-          </>
-        ) : null}
+        {user
+          ? <AccountWidget username={username} />
+          : null
+        }
       </Box>
       <Divider />
       <List sx={{
