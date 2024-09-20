@@ -7,7 +7,7 @@ const JumpTo = (props: LinkProps) => {
   const { href, children, ...rest } = props;
 
   return (
-    <Link component={href ? "a" : "button"} onClick={(e: React.MouseEvent) => {
+    <Link href={href} component={href ? "a" : "button"} onClick={(e: React.MouseEvent) => {
       e.preventDefault();
       if (href) document.getElementById(href)?.focus();
     }} sx={{
