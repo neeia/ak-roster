@@ -12,7 +12,7 @@
 } from "@mui/material";
 import type { NextPage } from "next";
 import config from "data/config";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { getLogoUrl } from "components/app/Logo";
 import HomeNavItem from "components/landing/HomeNavItem";
@@ -48,9 +48,9 @@ const Home: NextPage = () => {
 
   const [errors, setErrors] = useState<string[]>([]);
 
-  const search = (s: string) => {
+  const search = useCallback((s: string) => {
     window.location.href = `/u/${s}`;
-  };
+  }, []);
 
   const logoBasePath = useRef(`/assets/title/${getLogoUrl()}`);
 

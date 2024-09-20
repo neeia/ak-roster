@@ -17,13 +17,11 @@ const HomeNavSection = ((props: Props) => {
       display: "block",
       borderLeft: `8px solid ${color}`,
       pt: 1,
-      "&:hover .ava-deco": {
-        transform: "scale(1.02)",
-        filter: `drop-shadow(-4px -2px 0px ${color}) drop-shadow(2px 4px 0.5px ${color})`
-      },
-      "&:focus-within .ava-deco": {
-        transform: "scale(1.02)",
-        filter: `drop-shadow(-4px -2px 0px ${color}) drop-shadow(2px 4px 0.5px ${color})`
+      "&:hover, &:focus-within": {
+        "& .ava-deco": {
+          transform: "scale(1.02)",
+          filter: `drop-shadow(4px -2px 0px ${color})`
+        },
       },
     }}>
       <ThemeProvider
