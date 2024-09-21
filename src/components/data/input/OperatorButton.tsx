@@ -4,12 +4,10 @@ import { Box, Button, Typography } from "@mui/material";
 import { rarityColors } from "styles/rarityColors";
 import { Favorite } from "@mui/icons-material";
 import getTextWidth from "styles/getTextWidth";
-import appTheme from "styles/theme/appTheme";
 import Image from "next/image";
-import operatorJson from "data/operators";
 
 const WIDTH_TO_PX = 10 / 7;
-const LONG_CUTOFF = 75;
+const LONG_CUTOFF = 77;
 const LONGER_CUTOFF = 95;
 
 interface Props {
@@ -85,7 +83,6 @@ const OperatorButton = React.memo((props: Props) => {
         sx={{
           display: "grid",
           boxShadow: 2,
-          backgroundColor: { xs: "info.dark", sm: "info.main" },
           width: "100%",
           height: "min-content",
           transition: "background-color 0.05s",

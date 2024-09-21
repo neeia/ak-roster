@@ -1,5 +1,16 @@
 import { Box, BoxProps, Button, Typography } from "@mui/material";
 import React from "react";
+import Level from "./Level";
+import General from "./General";
+import Mastery from "./Mastery";
+import Module from "./Module";
+import Potential from "./Potential";
+import Rarity from "./Rarity";
+import FromTo from "./FromTo";
+import Skins from "./Skins";
+import SkillLevel from "./SkillLevel";
+import Promotion from "./Promotion";
+import attachSubComponents from "util/subcomponent";
 
 interface Props extends Omit<BoxProps, "onClick"> {
   title?: string,
@@ -14,9 +25,12 @@ const SelectGroup = (props: Props) => {
     <Box
       sx={{
         width: "100%",
+        backgroundColor: "background.default",
+        borderRadius: 1,
         display: "flex",
         flexDirection: "column",
         gap: "8px",
+        p: 2,
         ...sx
       }}
       {...rest}
@@ -32,7 +46,7 @@ const SelectGroup = (props: Props) => {
         {label &&
           <Button variant="text" onClick={onClick} sx={{
             color: "text.secondary",
-            p: 0, 
+            p: 0,
           }}>
             {label}
           </Button>
@@ -43,4 +57,8 @@ const SelectGroup = (props: Props) => {
   );
 };
 
-export default SelectGroup;
+const Select = attachSubComponents("SelectGroup", SelectGroup, {
+  General, Potential, Promotion, Level, 
+})
+
+export default Select;

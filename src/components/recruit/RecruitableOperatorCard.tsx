@@ -9,7 +9,7 @@ import Image from "next/image";
 import operatorJson from "data/operators";
 
 const WIDTH_TO_PX = 10 / 7;
-const LONG_CUTOFF = 75;
+const LONG_CUTOFF = 77;
 const LONGER_CUTOFF = 95;
 
 export function getPotentialBonus(op: Operator) {

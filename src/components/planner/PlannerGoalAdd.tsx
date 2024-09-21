@@ -11,13 +11,13 @@ import { Close } from "@mui/icons-material";
 import { useRosterGetQuery } from "store/extendRoster";
 import { useGroupsGetQuery } from "store/extendGroups";
 import Chip from "../base/Chip";
-import SelectPromotion from "../data/input/EditPieces/Promotion";
-import SelectGroup from "../data/input/EditPieces/ClearableComponent";
-import SelectLevel from "../data/input/EditPieces/Level";
-import SelectSkillLevel from "../data/input/EditPieces/SkillLevel";
+import Promotion from "../data/input/Select/Promotion";
+import SelectGroup from "../data/input/Select/SelectGroup";
+import Level from "../data/input/Select/Level";
+import SkillLevel from "../data/input/Select/SkillLevel";
 import AddGroupDialog from "./AddGroupDialog";
-import Mastery from "../data/input/EditPieces/Mastery";
-import Module from "../data/input/EditPieces/Module";
+import Mastery from "../data/input/Select/Mastery";
+import Module from "../data/input/Select/Module";
 import { GoalDataInsert } from "types/goalData";
 import { useGoalsUpdateMutation } from "store/extendGoals";
 import _ from "lodash";
@@ -317,15 +317,15 @@ const PlannerGoalAdd = (props: Props) => {
         </DialogTitle>
         <DialogContent sx={{
           p: 2,
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          display: "flex",
+          flexDirection: "column",
           gap: 2,
           "& .Mui-disabled": {
             opacity: 0.25,
             boxShadow: 0,
           },
         }}>
-          <Box sx={{ gridColumn: "1 / -1", display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: 2, pt: 2 }}>
+          <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: 2, pt: 2 }}>
             <OperatorSearch sx={{ width: "100%", maxWidth: "40ch" }}
               value={selectedOperatorData}
               onChange={(newOp) => onSelectedOperatorChange(newOp)}
@@ -339,14 +339,14 @@ const PlannerGoalAdd = (props: Props) => {
                 fullWidth
                 sx={selectedGroup === "Default" ? { color: "text.secondary" } : undefined}
               >
-                <MenuItem value="Default" sx={{ color: "text.secondary" }}>(none)</MenuItem>
+                <MenuItem value="Default" sx={{ color: "text.secondary" }}>Default (none)</MenuItem>
                 <MenuItem value={"Add new..."}>Add new...</MenuItem>
-                {goalGroups ? goalGroups.map((group) => (
+                {goalGroups ? goalGroups.filter(s => s !== "Default").map((group) => (
                   <MenuItem value={group} key={group}>{group}</MenuItem>)) : null}
               </Select>
             </FormControl>
           </Box>
-          <SelectGroup title="Shortcuts" label="HIDE" sx={{ gridColumn: "1 / -1" }}>
+          <SelectGroup title="Shortcuts" label="HIDE">
             <Box component="ul" sx={{ display: "flex", flexWrap: "wrap", m: 0, p: 0, gap: 2 }}>
               {SHORTCUTS.map((shortcut) => (
                 <Box component="li" key={shortcut} sx={{ display: "contents" }}>
@@ -358,9 +358,9 @@ const PlannerGoalAdd = (props: Props) => {
           <SelectGroup title={"Promotion"} label="CLEAR"
             onClick={onPromotionClearClick}
           >
-            <SelectPromotion
-              minPromotion={currentOperator?.elite}
-              maxPromotion={selectedOperatorData?.eliteLevels.length}
+            <Promotion
+              min={currentOperator?.elite}
+              max={selectedOperatorData?.eliteLevels.length}
               value={eliteLevel}
               disabled={!selectedOperatorData}
               onChange={onPromotionChange}
@@ -369,7 +369,7 @@ const PlannerGoalAdd = (props: Props) => {
           <SelectGroup title={"Level"} label="CLEAR"
             onClick={onLevelClearClick}
           >
-            <SelectLevel
+            <Level
               disabled={!selectedOperatorData}
               value={level}
               min={currentOperator?.level}
@@ -380,7 +380,7 @@ const PlannerGoalAdd = (props: Props) => {
           <SelectGroup title={"Skill Rank"} label="CLEAR"
             onClick={onSkillLevelClearClick}
           >
-            <SelectSkillLevel
+            <SkillLevel
               disabled={!selectedOperatorData}
               skillLevel={skillLevel}
               minSkillLevel={currentOperator?.skill_level}
@@ -388,22 +388,18 @@ const PlannerGoalAdd = (props: Props) => {
               onChange={onSkillLevelChange}
             />
           </SelectGroup>
-          <Grid container>
-            <SelectGroup title={"Mastery"} label="CLEAR"
-              onClick={onMasteryClearClick}
-            >
-              <Mastery
-                masteries={masteries}
-                opId={currentOperator?.op_id}
-                skillLevel={skillLevel}
-                eliteLevel={eliteLevel}
-                minMasteries={currentOperator?.masteries}
-                onChange={onMasteryChange}
-              />
-            </SelectGroup>
-
-          </Grid>
-          <div />
+          <SelectGroup title={"Mastery"} label="CLEAR"
+            onClick={onMasteryClearClick}
+          >
+            <Mastery
+              masteries={masteries}
+              opId={currentOperator?.op_id}
+              skillLevel={skillLevel}
+              eliteLevel={eliteLevel}
+              minMasteries={currentOperator?.masteries}
+              onChange={onMasteryChange}
+            />
+          </SelectGroup>
           <SelectGroup title="Module" label="CLEAR"
             onClick={onModuleClearClick}
           >

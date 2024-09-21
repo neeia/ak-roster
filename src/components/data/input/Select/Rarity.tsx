@@ -7,7 +7,7 @@ interface Props extends Omit<ToggleButtonGroupProps, "onChange"> {
   value: number;
   onChange: (rarity: number) => void;
 }
-const SelectRarity = ((props: Props) => {
+const Rarity = ((props: Props) => {
   const { value, onChange, sx, ...rest } = props;
 
   return (
@@ -36,4 +36,4 @@ const SelectRarity = ((props: Props) => {
     </ToggleButtonGroup>
   )
 })
-export default SelectRarity;
+export default Rarity;

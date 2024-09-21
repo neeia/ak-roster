@@ -1,5 +1,5 @@
 import React from "react";
-import { OpInfo, Operator, OperatorData, OperatorId } from 'types/operator';
+import { OpInfo, Operator, OperatorData } from 'types/operator';
 import classList from "data/classList";
 import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
@@ -8,13 +8,12 @@ import Roster from "types/operators/roster";
 
 interface Props {
   operators: Roster;
-  onClick: (opId: OperatorId) => void;
+  onClick: (opId: string) => void;
   filter?: (opInfo: OperatorData, op: Operator) => boolean;
   sort?: (opA: OpInfo, opB: OpInfo) => number;
-  toggleGroup?: string[];
 }
 
-function nullOperator(id: OperatorId): Operator {
+function nullOperator(id: string): Operator {
   return {
     op_id: id,
     favorite: false,
@@ -29,7 +28,7 @@ function nullOperator(id: OperatorId): Operator {
 
 
 const OperatorSelector = React.memo((props: Props) => {
-  const { operators, onClick, filter, sort, toggleGroup } = props;
+  const { operators, onClick, filter, sort } = props;
 
   const defineFilter = filter ?? (() => true);
 
@@ -48,12 +47,10 @@ const OperatorSelector = React.memo((props: Props) => {
       {Object.values(operatorJson)
         .map((op) => ({ ...op, ...(operators[op.id] ?? nullOperator(op.id)) }))
         .sort(sortComparator)
-        .map((op) => <OperatorButton
-          key={op.id}
+        .map((op) => <OperatorButton key={op.id}
           op={op}
           onClick={onClick}
           hidden={!defineFilter(operatorJson[op.op_id as keyof typeof operatorJson], op)}
-          toggled={toggleGroup ? toggleGroup.includes(op.op_id) : undefined}
         />
         )}
     </Box>)

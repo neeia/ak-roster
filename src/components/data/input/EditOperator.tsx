@@ -4,16 +4,16 @@ import skinJson from "data/skins.json";
 import sg0 from "data/sg0.json";
 import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import EditRow from "./EditRow";
-import General from "./EditPieces/General";
-import Potential from "./EditPieces/Potential";
-import SelectPromotion from "./EditPieces/Promotion";
-import Mastery from "./EditPieces/Mastery";
-import Module from "./EditPieces/Module";
-import Level from "./EditPieces/Level";
-import SkillLevel from "./EditPieces/SkillLevel";
-import ExtLink from "./EditPieces/ExtLink";
+import General from "./Select/General";
+import Potential from "./Select/Potential";
+import Promotion from "./Select/Promotion";
+import Mastery from "./Select/Mastery";
+import Module from "./Select/Module";
+import Level from "./Select/Level";
+import SkillLevel from "./Select/SkillLevel";
+import ExtLink from "./Select/ExtLink";
 import { Close } from "@mui/icons-material";
-import Skins from "./EditPieces/Skins";
+import Skins from "./Select/Skins";
 import Image from "next/image";
 import operatorJson from "data/operators";
 import { changePromotion, defaultOperatorObject, MAX_PROMOTION_BY_RARITY } from "util/changeOperator";
@@ -172,9 +172,9 @@ const EditOperator = React.memo((props: Props) => {
         <EditRow
           left={{
             title: "Promotion",
-            body: <SelectPromotion
+            body: <Promotion
               value={op.elite}
-              maxPromotion={MAX_PROMOTION_BY_RARITY[opData.rarity]}
+              max={MAX_PROMOTION_BY_RARITY[opData.rarity]}
               onChange={(i: number) => onChange(changePromotion(op, i))}
               disabled={op.potential > 0}
             />

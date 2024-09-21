@@ -1,23 +1,21 @@
 ﻿import {
   Autocomplete,
   TextField,
-  Grid,
   SxProps,
   Theme,
-  Container,
   Box,
-  Paper,
   Checkbox,
   FormControlLabel,
   Typography,
   Popper,
   Collapse,
   IconButton,
+  Alert,
+  Divider,
 } from "@mui/material";
-import { Instance } from "@popperjs/core";
 import { Combination } from "js-combinatorics";
 import { NextPage } from "next";
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 
 import recruitmentJson from "data/recruitment.json";
 import Layout from "components/Layout";
@@ -26,13 +24,12 @@ import useLocalStorage from "util/useLocalStorage";
 import RecruitableOperatorCard from "components/recruit/RecruitableOperatorCard";
 import { useRosterGetQuery } from "store/extendRoster";
 import { UserContext } from "pages/_app";
-import { skipToken } from "@reduxjs/toolkit/query";
 import { defaultOperatorObject } from "util/changeOperator";
 import Board from "components/base/Board";
 import Chip from "components/base/Chip";
 import Image from "components/base/Image";
 import { focused } from "styles/theme/appTheme";
-import { ZoomInMap, ZoomOutMap } from "@mui/icons-material";
+import { Clear, Close, ZoomInMap, ZoomOutMap } from "@mui/icons-material";
 
 const TAGS_BY_CATEGORY = {
   Rarity: ["Top Operator", "Senior Operator", "Starter", "Robot"],
@@ -122,6 +119,9 @@ const Recruit: NextPage = () => {
     }[]
   ) => {
     if (selectedOptions.length <= 5) {
+      if (inputNode != null) {
+        inputNode.focus();
+      }
       setActiveTags(selectedOptions);
     }
   };
@@ -153,7 +153,7 @@ const Recruit: NextPage = () => {
             }
           </IconButton>}
           sx={{
-            width: open ? "100%" : "25%",
+            width: { xs: "100%", md: open ? "100%" : "320px" },
             height: "min-content",
             transition: "width 0.25s",
             maxWidth: { xs: "100%", md: "sm" },
@@ -161,25 +161,38 @@ const Recruit: NextPage = () => {
               ...focused
             },
           }}>
-          <Collapse collapsedSize="0px" in={open}>
-            <Autocomplete multiple options={options} value={activeTags}
-              open
-              autoHighlight
-              disableCloseOnSelect
-              disablePortal
-              groupBy={(option) => option.type}
-              getOptionLabel={(option) => option.value}
-              isOptionEqualToValue={(option, value) => option.value === value.value}
-              onChange={handleTagsChanged}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  InputProps={{ ...params.InputProps, endAdornment: null }}
-                  label="Selected tags"
-                  inputRef={setInputNode}
-                />
-              )}
-              renderGroup={(params) =>
+          <Autocomplete multiple options={options} value={activeTags}
+            open={open}
+            autoHighlight
+            disableCloseOnSelect
+            disablePortal
+            groupBy={(option) => option.type}
+            getOptionLabel={(option) => option.value}
+            isOptionEqualToValue={(option, value) => option.value === value.value}
+            onChange={handleTagsChanged}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                slotProps={{
+                  input:
+                  {
+                    ...params.InputProps,
+                    sx: {
+                      pr: "48px !important"
+                    },
+                    endAdornment: (
+                      <IconButton sx={{ position: "absolute", right: 8, top: 8 }} >
+                        <Close fontSize="small" />
+                      </IconButton>
+                    ),
+                  }
+                }}
+                label="Selected tags"
+                inputRef={setInputNode}
+              />
+            )}
+            renderGroup={(params) =>
+              <Collapse collapsedSize="0px" in={open}>
                 <Box component="li" key={params.key}>
                   <Typography variant="h3" className="MuiAutocomplete-groupLabel" sx={{ mb: "8px" }}>
                     {params.group}
@@ -196,56 +209,58 @@ const Recruit: NextPage = () => {
                     {params.children}
                   </Box>
                 </Box>
-              }
-              renderOption={(props, option) =>
-                <Box {...props} component="li">
-                  {classList.includes(option.value)
-                    ? <Image sx={{ width: "1.5rem", height: "1.5rem" }} src={`/img/classes/class_${option.value.toLowerCase()}.png`} alt={option.value}></Image>
-                    : null}
-                  {option.value}
-                </Box>
-              }
-              ListboxProps={{
-                sx: {
+              </Collapse>
+            }
+            renderOption={(props, option) =>
+              <Box {...props} component="li">
+                {classList.includes(option.value)
+                  ? <Image sx={{ width: "1.5rem", height: "1.5rem" }} src={`/img/classes/class_${option.value.toLowerCase()}.png`} alt={option.value}></Image>
+                  : null}
+                {option.value}
+              </Box>
+            }
+            ListboxProps={{
+              sx: {
+                display: "flex",
+                flexDirection: "column",
+                gap: "24px",
+                padding: 0,
+                height: "max-contents",
+                maxHeight: "none",
+                my: 2,
+                "& .MuiAutocomplete-option": {
+                  minHeight: "40px",
+                  padding: "8px 16px",
+                  backgroundColor: "background.light",
+                  borderRadius: "9999px",
                   display: "flex",
-                  flexDirection: "column",
-                  gap: "24px",
-                  padding: 0,
-                  height: "max-contents",
-                  maxHeight: "none",
-                  my: 2,
-                  "& .MuiAutocomplete-option": {
-                    minHeight: "40px",
-                    padding: "8px 16px",
-                    backgroundColor: "background.light",
-                    borderRadius: "9999px",
-                    display: "flex",
-                    gap: "8px",
-                    alignItems: "center",
-                    lineHeight: "1"
-                  },
-                }
-              }}
-              PopperComponent={(props) => (
-                <Popper {...props} sx={{
-                  position: "static !important",
-                  height: "max-content !important",
-                  transform: "none !important",
-                  width: "100% !important",
-                  zIndex: "0 !important",
-                }} />
-              )}
-            />
-          </Collapse>
+                  gap: "8px",
+                  alignItems: "center",
+                  lineHeight: "1"
+                },
+              }
+            }}
+            PopperComponent={(props) => (
+              <Popper {...props} sx={{
+                position: "static !important",
+                height: "max-content !important",
+                transform: "none !important",
+                width: "100% !important",
+                zIndex: "0 !important",
+              }} />
+            )}
+          />
         </Board>
         <Board title="Results" sx={{
           maxWidth: "md",
+          height: "min-content",
           "&:focus-within .MuiAutocomplete-option.Mui-focused": {
             ...focused
           },
         }}>
           <Box sx={{
             display: "flex",
+            gap: 2,
             "& span": {
               lineHeight: 1.1,
             }
@@ -265,6 +280,10 @@ const Recruit: NextPage = () => {
               label="Next Upgrade"
             />
           </Box>
+          <Divider />
+          {activeTags.length === 0
+            && <Alert severity="info">Select at least one tag to see results.</Alert>
+          }
           {matchingOperators
             .sort(
               (
@@ -305,32 +324,31 @@ const Recruit: NextPage = () => {
                     </Chip>
                   ))}
                 </Box>
-                <Grid item xs={12}
-                  sx={{
-                    ...chipContainerStyles,
-                    display: "grid",
-                    gridArea: "box",
-                    gridTemplateColumns: `repeat(auto-fill, minmax(${showPotentials ? "108px" : "80px"}, 1fr))`,
-                    gridTemplateRows: "min-content",
-                    justifyContent: "center",
-                    gap: { xs: 0.5, sm: 1 },
-                    margin: 0,
-                    padding: 0,
-                    "& .MuiTypography-root": {
-                      display: "flex",
-                      lineHeight: "1.25rem",
-                      color: "text.primary",
-                      letterSpacing: "normal",
-                      textTransform: "none",
-                      pointerEvents: "none",
-                      flexDirection: "column",
-                      mx: "-1rem",
-                      textAlign: "center",
-                    },
-                    "& .max-pot": {
-                      opacity: 0.75
-                    }
-                  }}
+                <Box sx={{
+                  ...chipContainerStyles,
+                  display: "grid",
+                  gridArea: "box",
+                  gridTemplateColumns: `repeat(auto-fill, minmax(${showPotentials ? "108px" : "80px"}, 1fr))`,
+                  gridTemplateRows: "min-content",
+                  justifyContent: "center",
+                  gap: { xs: 0.5, sm: 1 },
+                  margin: 0,
+                  padding: 0,
+                  "& .MuiTypography-root": {
+                    display: "flex",
+                    lineHeight: "1.25rem",
+                    color: "text.primary",
+                    letterSpacing: "normal",
+                    textTransform: "none",
+                    pointerEvents: "none",
+                    flexDirection: "column",
+                    mx: "-1rem",
+                    textAlign: "center",
+                  },
+                  "& .max-pot": {
+                    opacity: 0.75
+                  }
+                }}
                 >
                   {!isServer() && [...operators]
                     .sort((a, b) => (a.rarity - b.rarity)
@@ -345,7 +363,7 @@ const Recruit: NextPage = () => {
                         showBonus={bonuses}
                       />
                     ))}
-                </Grid>
+                </Box>
               </Box>
             ))}
         </Board>

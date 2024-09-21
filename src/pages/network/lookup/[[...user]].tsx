@@ -5,11 +5,11 @@ import Layout from "components/Layout";
 import { ArrowBack, Search } from "@mui/icons-material";
 import { child, get, getDatabase, ref } from "firebase/database";
 import { useRouter } from "next/router";
-import CollectionContainer from "components/view/CollectionContainer";
+import CollectionContainer from "components/data/view/CollectionContainer";
 import { Operator } from "types/operator";
-import SearchDialog from "components/collate/SearchDialog";
-import FilterDialog from "components/collate/FilterDialog";
-import SortDialog from "components/collate/SortDialog";
+import SearchDialog from "components/data/collate/SearchDialog";
+import FilterDialog from "components/data/collate/FilterDialog";
+import SortDialog from "components/data/collate/SortDialog";
 import { useFilter, useSort } from "util/useSSF";
 import { repair } from "util/useOperators";
 import ProfileDialog from "components/lookup/ProfileDialog";
@@ -60,7 +60,7 @@ const Lookup: NextPage = () => {
   ]);
   const [, setSearchName, filter, addFilter, removeFilter, clearFilters, filterFunction] = useFilter(
     {
-      "owned": { "owned": (op: Operator) => op.owned }
+      "owned": { "owned": (op: Operator) => !!op }
     });
 
   return (

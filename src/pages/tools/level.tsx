@@ -11,9 +11,9 @@ import { memo, useState } from "react";
 
 import { COST_BY_RARITY, MAX_LEVEL_BY_RARITY, minMax } from "util/changeOperator";
 import Layout from "components/Layout";
-import SelectPromotion from "components/data/input/EditPieces/Promotion";
+import Promotion from "components/data/input/Select/Promotion";
 import Board from "components/base/Board";
-import SelectRarity from "components/data/input/EditPieces/Rarity";
+import Rarity from "components/data/input/Select/Rarity";
 
 interface LevelingCost {
   exp: number;
@@ -200,7 +200,7 @@ const Level: NextPage = () => {
             <Typography variant="h3" id="rarity" gutterBottom>
               Rarity
             </Typography>
-            <SelectRarity value={rarity} onChange={handleChangeRarity} />
+            <Rarity value={rarity} onChange={handleChangeRarity} />
           </Box>
           {/* Elite / Lvl */}
           <Box
@@ -212,9 +212,9 @@ const Level: NextPage = () => {
                 Start
               </Typography>
               <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: "min-content" }}>
-                <SelectPromotion
+                <Promotion
                   value={startingElite}
-                  maxPromotion={maxElite(rarity)}
+                  max={maxElite(rarity)}
                   onChange={handleChangeStartingElite}
                 />
                 <TextField id="starting-level"
@@ -237,9 +237,9 @@ const Level: NextPage = () => {
                 End
               </Typography>
               <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: "min-content" }}>
-                <SelectPromotion
+                <Promotion
                   value={targetElite}
-                  maxPromotion={maxElite(rarity)}
+                  max={maxElite(rarity)}
                   onChange={handleChangeTargetElite}
                 />
                 <TextField id="target-level"

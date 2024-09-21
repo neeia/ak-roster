@@ -96,6 +96,11 @@ const appTheme = (brandColor: string) => createTheme({
         }
       ]
     },
+    MuiDialog: {
+      defaultProps: {
+        scroll: "body",
+      }
+    },
     MuiMenuItem: {
       styleOverrides: {
         root: {
@@ -108,15 +113,11 @@ const appTheme = (brandColor: string) => createTheme({
       defaultProps: {
         color: "primary",
       },
-      styleOverrides: {
-        root: {
-          backgroundColor: neutral[700],
-        }
-      }
     },
     MuiToggleButton: {
       styleOverrides: {
         root: {
+          backgroundColor: neutral[700],
           "&:not(._):not(._):not(._)": {
             border: "none",
             margin: 0,
@@ -239,4 +240,10 @@ export const interactive = {
 
 export const focused = {
   boxShadow: "inset 0px 0px 0px 2px white"
+}
+
+export const skillBackground = {
+  backgroundImage: "url(/img/rank/bg.png)",
+  backgroundSize: "contain",
+  backgroundRepeat: "no-repeat",
 }
