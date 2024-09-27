@@ -1,6 +1,7 @@
-import React, { memo } from "react";
+import React, { memo, useContext } from "react";
 import { ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps, Tooltip } from "@mui/material";
 import Image from "next/image";
+import { DisabledContext } from "./SelectGroup";
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   value?: number;
@@ -11,7 +12,9 @@ interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   bonuses?: string;
 }
 const Potential = memo((props: Props) => {
-  const { value, min = 1, max = 6, onChange, disabled = false, size = 32, bonuses, sx, ...rest } = props;
+  const { value, min = 1, max = 6, onChange, disabled: _disabled = false, size = 32, bonuses, sx, ...rest } = props;
+
+  const disabled = useContext(DisabledContext) || _disabled;
 
   return (
     <ToggleButtonGroup exclusive value={value}

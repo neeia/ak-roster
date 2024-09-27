@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, BoxProps, LinkProps, Typography } from "@mui/material";
 import Link from "components/base/Link";
-import Image from "components/base/Image";
+import Image from "next/image";
 
 export const getLogoUrl = () => {
   const date = new Date();
@@ -22,9 +22,10 @@ interface Props extends BoxProps {
   LinkProps?: LinkProps;
   full?: boolean;
   hideSubtitle?: boolean;
+  sizes?: string;
 }
 const Logo = (props: Props) => {
-  const { LinkProps, full, hideSubtitle, children, ...rest } = props;
+  const { LinkProps, full, hideSubtitle, children, sizes, ...rest } = props;
 
   const suffix = (full ? "-h" : (hideSubtitle ? "" : "-v"))
 
@@ -32,11 +33,13 @@ const Logo = (props: Props) => {
     <Link href="/" title="Krooster"
       {...LinkProps}
     >
-      <Image
-        src={`/assets/title/${getLogoUrl()}${suffix}.png`}
-        alt="Krooster - Arknights Roster"
-        {...rest}
-      />
+      <Box position="relative" {...rest}>
+        <Image alt="Krooster - Arknights Roster"
+          src={`/assets/title/${getLogoUrl()}${suffix}.png`}
+          fill
+          sizes={sizes}
+        />
+      </Box>
       {children}
     </Link>
   );

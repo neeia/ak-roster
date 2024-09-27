@@ -1,93 +1,54 @@
-import React, { memo } from "react";
-import { Box, Button } from "@mui/material";
-import { KeyboardArrowDownSharp, KeyboardArrowUpSharp } from "@mui/icons-material";
-import Image from "components/base/Image";
-import { skillBackground } from "styles/theme/appTheme";
+import React, { memo, useContext } from "react";
+import { ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps } from "@mui/material";
+import { DisabledContext } from "./SelectGroup";
+import Image from "next/image";
 
-interface Props {
-  skillLevel?: number;
-  minSkillLevel?: number,
-  maxSkillLevel?: number,
-  disabled?: boolean;
+interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
+  value?: number;
+  min?: number;
+  max?: number;
+  size?: number;
   onChange: (skillLevel: number) => void;
 }
 const SkillLevel = memo((props: Props) => {
-  const { skillLevel = 1, minSkillLevel = 1, maxSkillLevel = 4, disabled, onChange } = props;
+  const { value, min = 1, max = 4, size = 32, disabled: _disabled = false, sx, onChange, ...rest } = props;
 
-  const previousSkillLevel = (skillLevel ?? 0) > 4 ? 4 : 1;
-  const nextSkillLevel = (skillLevel ?? 0) < 4 ? 4 : 7;
-
-  const rankButton = (rank: number) => (
-    <Button sx={{ width: "100%" }}
-      aria-label={`Skill Rank to ${rank}`}
-      onClick={() => onChange(rank)}
-      disabled={disabled || skillLevel === rank || rank > maxSkillLevel || rank < minSkillLevel}
-    >
-      <Image sx={{
-        width: "40px",
-        height: "40px",
-      }}
-        src={`/img/rank/${rank}.png`}
-        sizes="40px"
-        alt={`Rank ${rank}`}
-      />
-    </Button>
-  );
+  const disabled = useContext(DisabledContext) || _disabled;
 
   return (
-    <Box sx={{
-      display: "grid",
-      gridAutoFlow: "column",
-      gridTemplateColumns: "48px 48px 48px",
-      gridTemplateRows: "32px 48px 32px",
-      gap: "4px",
-      "& .MuiButton-root": {
-        p: 0,
-        minWidth: 0,
-        lineHeight: 0.5,
-        color: "#ffffff",
-      }
-    }}>
-      <div />
-      {rankButton(previousSkillLevel)}
-      <div />
-      <Button
-        aria-label="Raise Skill Rank"
-        onClick={() => onChange(skillLevel! + 1)}
-        disabled={disabled || skillLevel === maxSkillLevel}
-      >
-        <KeyboardArrowUpSharp fontSize="large" />
-      </Button>
-      <Box sx={{
-        display: "grid",
-        width: "48px",
-        height: "48px",
-        position: "relative",
-        opacity: disabled ? 0.5 : 1,
-        ...skillBackground,
-      }}>
-        {skillLevel
-          ? <Image sx={{ display: "contents" }}
-            src={`/img/rank/${skillLevel}.png`}
-            sizes="48px"
-            alt={`Rank ${skillLevel}`}
-            style={{
-              backgroundImage: "/img/rank/bg.png",
+    <ToggleButtonGroup exclusive value={value}
+      aria-label="Skill Level"
+      onChange={(_, i) => { if (i !== null) onChange(i) }}
+      disabled={disabled}
+      sx={{
+        display: "flex",
+        borderRadius: 1,
+        flexWrap: "wrap",
+        gap: 1,
+        ...sx
+      }}
+      {...rest}
+    >
+      {[...Array(max + 1).keys()]
+        .filter(n => n >= min && n <= max)
+        .map(n =>
+          <ToggleButton key={n} value={n}
+            sx={{
+              p: 1,
+              "&:not(._):not(._)": {
+                borderRadius: 1
+              }
             }}
-          />
-          : null}
-      </Box>
-      <Button
-        aria-label="Lower Skill Rank"
-        onClick={() => onChange(skillLevel! - 1)}
-        disabled={disabled || skillLevel === 1 || skillLevel === minSkillLevel}
-      >
-        <KeyboardArrowDownSharp fontSize="large" />
-      </Button>
-      <div />
-      {rankButton(nextSkillLevel)}
-      <div />
-    </Box>
+          >
+            <Image
+              width={size}
+              height={size}
+              src={`/img/rank/${n}.png`}
+              alt={`Rank ${n}`}
+            />
+          </ToggleButton>
+        )}
+    </ToggleButtonGroup>
   )
 })
 export default SkillLevel;

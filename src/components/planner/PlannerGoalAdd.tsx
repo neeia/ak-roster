@@ -1,7 +1,7 @@
 import {
   Box,
-  Button, Collapse, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid,
-  IconButton, InputLabel, MenuItem, Select, SelectChangeEvent, SxProps, Typography,
+  Button, Collapse, Dialog, DialogActions, DialogContent, DialogTitle, FormControl,
+  IconButton, InputLabel, MenuItem, Select, SelectChangeEvent,
   useMediaQuery, useTheme,
 } from "@mui/material";
 import React, { useCallback, useState } from "react";
@@ -12,7 +12,7 @@ import { useRosterGetQuery } from "store/extendRoster";
 import { useGroupsGetQuery } from "store/extendGroups";
 import Chip from "../base/Chip";
 import Promotion from "../data/input/Select/Promotion";
-import SelectGroup from "../data/input/Select/SelectGroup";
+import SelectGroup, { DisabledContext } from "../data/input/Select/SelectGroup";
 import Level from "../data/input/Select/Level";
 import SkillLevel from "../data/input/Select/SkillLevel";
 import AddGroupDialog from "./AddGroupDialog";
@@ -81,6 +81,8 @@ const PlannerGoalAdd = (props: Props) => {
       setModules(undefined);
     }
   });
+
+  const [showPresets, setShowPresets] = useState(true);
 
   const onPromotionChange = (elite: number) => {
     setEliteLevel(elite);
@@ -278,22 +280,13 @@ const PlannerGoalAdd = (props: Props) => {
     }
   }, [currentOperator, masteries, selectedOperatorData])
 
-  const sectionSx: SxProps = {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    gap: "8px",
-    "& h3": {
-      width: "100%"
-    }
-  }
-
   return (
     <>
       <Dialog
         open={open}
         onClose={() => { onClose(); onSelectedOperatorChange(null); }}
         fullScreen={fullScreen}
+        keepMounted
         PaperProps={{
           elevation: 1,
           sx: {
@@ -302,9 +295,6 @@ const PlannerGoalAdd = (props: Props) => {
         }}
       >
         <DialogTitle variant="h2" sx={{
-          alignSelf: "start",
-          textAlign: "left",
-          width: "100%",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -336,93 +326,130 @@ const PlannerGoalAdd = (props: Props) => {
             backgroundColor: "primary.light",
           }
         }}>
-          <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: 2, pt: 2 }}>
-            <OperatorSearch sx={{ width: "100%", maxWidth: "40ch" }}
-              value={selectedOperatorData}
-              onChange={(newOp) => onSelectedOperatorChange(newOp)}
-            />
-            <FormControl sx={{ flexGrow: 1 }}>
-              <InputLabel>Goal Group</InputLabel>
-              <Select
-                value={selectedGroup}
-                onChange={onGroupChange}
-                label={"Goal Group"}
-                fullWidth
-                sx={selectedGroup === "Default" ? { color: "text.secondary" } : undefined}
-              >
-                <MenuItem value="Default" sx={{ color: "text.secondary" }}>Default (none)</MenuItem>
-                <MenuItem value={"Add new..."}>Add new...</MenuItem>
-                {goalGroups ? goalGroups.filter(s => s !== "Default").map((group) => (
-                  <MenuItem value={group} key={group}>{group}</MenuItem>)) : null}
-              </Select>
-            </FormControl>
-          </Box>
-          <SelectGroup title="Shortcuts" label="HIDE">
-            <Box component="ul" sx={{ display: "flex", flexWrap: "wrap", m: 0, p: 0, gap: 2 }}>
-              {SHORTCUTS.map((shortcut) => (
-                <Box component="li" key={shortcut} sx={{ display: "contents" }}>
-                  <Chip disabled={!selectedOperatorData} onClick={() => handleShortcuts(shortcut)}>{shortcut}</Chip>
-                </Box>
-              ))}
+          <DisabledContext.Provider value={!selectedOperatorData}>
+            <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: 2, pt: 2 }}>
+              <OperatorSearch sx={{ width: "100%", maxWidth: "40ch" }}
+                value={selectedOperatorData}
+                onChange={(newOp) => onSelectedOperatorChange(newOp)}
+              />
+              <FormControl sx={{ flexGrow: 1 }}>
+                <InputLabel>Goal Group</InputLabel>
+                <Select
+                  value={selectedGroup}
+                  onChange={onGroupChange}
+                  label={"Goal Group"}
+                  fullWidth
+                  sx={selectedGroup === "Default" ? { color: "text.secondary" } : undefined}
+                >
+                  <MenuItem value="Default" sx={{ color: "text.secondary" }}>Default (none)</MenuItem>
+                  <MenuItem value={"Add new..."}>Add new...</MenuItem>
+                  {goalGroups ? goalGroups.filter(s => s !== "Default").map((group) => (
+                    <MenuItem value={group} key={group}>{group}</MenuItem>)) : null}
+                </Select>
+              </FormControl>
             </Box>
-          </SelectGroup>
-          <SelectGroup title={"Promotion"} label="CLEAR"
-            onClick={onPromotionClearClick}
-          >
-            <Promotion
-              min={currentOperator?.elite}
-              max={selectedOperatorData?.eliteLevels.length}
-              value={eliteLevel}
-              disabled={!selectedOperatorData}
-              onChange={onPromotionChange}
-            />
-          </SelectGroup>
-          <SelectGroup title={"Level"} label="CLEAR"
-            onClick={onLevelClearClick}
-          >
-            <Level
-              disabled={!selectedOperatorData}
-              value={level}
-              min={currentOperator?.level}
-              max={(selectedOperatorData && eliteLevel) ? MAX_LEVEL_BY_RARITY[selectedOperatorData.rarity][eliteLevel] : undefined}
-              onChange={onLevelChange}
-            />
-          </SelectGroup>
-          <SelectGroup title={"Skill Rank"} label="CLEAR"
-            onClick={onSkillLevelClearClick}
-          >
-            <SkillLevel
-              disabled={!selectedOperatorData}
-              skillLevel={skillLevel}
-              minSkillLevel={currentOperator?.skill_level}
-              maxSkillLevel={[4, 7, 7][eliteLevel ?? 0]}
-              onChange={onSkillLevelChange}
-            />
-          </SelectGroup>
-          <SelectGroup title={"Mastery"} label="CLEAR"
-            onClick={onMasteryClearClick}
-          >
-            <Mastery
-              masteries={masteries}
-              opId={currentOperator?.op_id}
-              skillLevel={skillLevel}
-              eliteLevel={eliteLevel}
-              minMasteries={currentOperator?.masteries}
-              onChange={onMasteryChange}
-            />
-          </SelectGroup>
-          <SelectGroup title="Module" label="CLEAR"
-            onClick={onModuleClearClick}
-          >
-            <Module
-              modules={modules}
-              opId={currentOperator?.op_id}
-              opLevel={level}
-              eliteLevel={eliteLevel}
-              minModules={currentOperator?.modules}
-              onChange={onModuleChange}
-            />
-          </SelectGroup>
+            <SelectGroup title="Shortcuts" label={showPresets ? "HIDE" : "SHOW"} onClick={() => setShowPresets(s => !s)}>
+              <Collapse in={showPresets}>
+                <Box component="ul" sx={{ display: "flex", flexWrap: "wrap", m: 0, p: 0, gap: 2 }}>
+                  {SHORTCUTS.map((shortcut) => (
+                    <Box component="li" key={shortcut} sx={{ display: "contents" }}>
+                      <Chip disabled={!selectedOperatorData} onClick={() => handleShortcuts(shortcut)}>{shortcut}</Chip>
+                    </Box>
+                  ))}
+                </Box>
+              </Collapse>
+            </SelectGroup>
+            <SelectGroup.Toggle title="Promotion" onClick={onPromotionClearClick}>
+              <SelectGroup.FromTo>
+                <Promotion
+                  value={undefined}
+                  min={undefined}
+                  max={undefined}
+                  onChange={onPromotionChange}
+                />
+                <Promotion
+                  value={eliteLevel}
+                  min={currentOperator?.elite}
+                  max={selectedOperatorData?.eliteLevels.length}
+                  onChange={onPromotionChange}
+                />
+              </SelectGroup.FromTo>
+            </SelectGroup.Toggle>
+            <SelectGroup.Toggle title="Level" onClick={onLevelClearClick}>
+              <SelectGroup.FromTo>
+                <Level
+                  value={undefined}
+                  min={undefined}
+                  max={undefined}
+                  onChange={onLevelChange}
+                />
+                <Level
+                  value={level}
+                  min={currentOperator?.level}
+                  max={(selectedOperatorData && eliteLevel) ? MAX_LEVEL_BY_RARITY[selectedOperatorData.rarity][eliteLevel] : undefined}
+                  onChange={onLevelChange}
+                />
+              </SelectGroup.FromTo>
+            </SelectGroup.Toggle>
+            <SelectGroup.Toggle title="Skill Rank" onClick={onSkillLevelClearClick}>
+              <SelectGroup.FromTo>
+                <SkillLevel
+                  value={undefined}
+                  min={1}
+                  max={6}
+                  onChange={onSkillLevelChange}
+                />
+                <SkillLevel
+                  value={skillLevel}
+                  min={currentOperator?.skill_level}
+                  max={[4, 7, 7][eliteLevel ?? 0]}
+                  onChange={onSkillLevelChange}
+                />
+              </SelectGroup.FromTo>
+            </SelectGroup.Toggle>
+            <SelectGroup.Toggle title="Mastery" onClick={onMasteryClearClick} disabled={!selectedOperatorData || selectedOperatorData.rarity <= 3}>
+              <Mastery>
+                {selectedOperatorData
+                  ? selectedOperatorData.skillData?.map((data, i) => (
+                    <Mastery.Skill src={data.iconId ?? data.skillId} key={data.skillId} skillName={data.skillName} skillNumber={i + 1}>
+                      <SelectGroup.FromTo>
+                        <Mastery.Select
+                          value={currentOperator?.masteries[i]}
+                          onChange={(n) => onMasteryChange(i, n)}
+                        />
+                        <Mastery.Select
+                          value={currentOperator?.masteries[i]}
+                          onChange={(n) => onMasteryChange(i, n)}
+                        />
+                      </SelectGroup.FromTo>
+                    </Mastery.Skill>
+                  ))
+                  : null
+                }
+              </Mastery>
+            </SelectGroup.Toggle>
+            <SelectGroup.Toggle title="Module" onClick={onModuleClearClick} disabled={!!(selectedOperatorData?.moduleData?.length)}>
+              <Module>
+                {selectedOperatorData
+                  ? selectedOperatorData.moduleData?.map((mod, i) => (
+                    <Module.Item key={mod.moduleId} {...mod}>
+                      <SelectGroup.FromTo>
+                        <Module.Select
+                          value={currentOperator?.modules[mod.moduleId]}
+                          onChange={(n) => onModuleChange(mod.moduleId, n)}
+                        />
+                        <Module.Select
+                          value={currentOperator?.modules[mod.moduleId]}
+                          onChange={(n) => onModuleChange(mod.moduleId, n)}
+                        />
+                      </SelectGroup.FromTo>
+                    </Module.Item>
+                  ))
+                  : null
+                }
+              </Module>
+            </SelectGroup.Toggle>
+          </DisabledContext.Provider>
         </DialogContent>
         <DialogActions>
           <Button variant="outlined" onClick={() => handleGoalAddDialogClose(false)}>Cancel</Button>

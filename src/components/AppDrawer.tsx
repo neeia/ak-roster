@@ -26,14 +26,13 @@ import LoginForm from "./app/LoginDialog";
 import RegisterForm from "./app/RegisterDialog";
 import { useRouter } from "next/router";
 import Logo from "./app/Logo";
-import AccountContextMenu from "./app/AccountContextMenu";
 import { UserContext } from "pages/_app";
-import { skipToken } from "@reduxjs/toolkit/query";
 import { useAccountGetQuery, useAccountUpdateMutation } from "store/extendAccount";
 import { interactive } from "styles/theme/appTheme";
 import randomName from "util/randomName";
 import JumpTo from "./base/JumpTo";
 import AccountWidget from "./app/AccountWidget";
+import findFirstFocusableElement from "util/findFirstFocusableElement";
 
 const DRAWER_WIDTH_PX = 220;
 const ICON_BY_PATH = [
@@ -131,6 +130,7 @@ const AppDrawer = React.memo((props: Props) => {
       <Logo hideSubtitle
         sx={{ width: "100%", height: "200px", }}
         LinkProps={{ sx: { position: "relative" } }}
+        sizes="220px"
       >
         <Typography sx={{ position: "absolute", fontSize: "0.625rem", lineHeight: 0, bottom: 7.5, right: 8, }}>3.0</Typography>
       </Logo>
@@ -298,25 +298,3 @@ const AppDrawer = React.memo((props: Props) => {
 AppDrawer.displayName = "AppDrawer";
 export default AppDrawer;
 
-
-const findFirstFocusableElement = (container: HTMLElement) => {
-  return Array.from(container.getElementsByTagName("*")).find(isFocusable);
-};
-
-const isFocusable = (item: any) => {
-  if (item.tabIndex < 0) {
-    return false;
-  }
-  switch (item.tagName) {
-    case "A":
-      return !!item.href;
-    case "INPUT":
-      return item.type !== "hidden" && !item.disabled;
-    case "SELECT":
-    case "TEXTAREA":
-    case "BUTTON":
-      return !item.disabled;
-    default:
-      return false;
-  }
-};

@@ -1,7 +1,8 @@
-import React, { memo } from "react";
+import React, { memo, useContext } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import { minMax } from "util/changeOperator";
 import { KeyboardArrowDownSharp, KeyboardArrowUpSharp, KeyboardDoubleArrowLeftSharp, KeyboardDoubleArrowRightSharp } from "@mui/icons-material";
+import { DisabledContext } from "./SelectGroup";
 
 interface Props {
   value?: number;
@@ -11,9 +12,12 @@ interface Props {
   onChange: (level: number) => void;
 }
 const Level = memo((props: Props) => {
-  const { value: level = 1, min: minLevel = 1, max: maxLevel = 30, disabled = false, onChange } = props;
+  const { value: level = 1, min: minLevel = 1, max: maxLevel = 30, disabled: _disabled = false, onChange } = props;
+  
+  const disabled = useContext(DisabledContext) || _disabled;
 
   const [levelField, setLevelField] = React.useState<string>(level.toString());
+
 
   function updateLevel(lvl: string | number) {
     let parsedLevel = null;

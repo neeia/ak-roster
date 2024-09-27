@@ -1,105 +1,114 @@
-import React, { memo } from "react";
-import { Operator, ModuleData } from "types/operator";
-import operatorJson from "data/operators";
-import { Box, Button, Typography } from "@mui/material";
-import { changeModule, MODULE_REQ_BY_RARITY } from "util/changeOperator";
+import React, { memo, useContext } from "react";
+import { ModuleData } from "types/operator";
+import { Box, BoxProps, ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps, Typography } from "@mui/material";
 import Image from "next/image";
-import Mastery from "./Mastery";
+import attachSubComponents from "util/subcomponent";
+import { DisabledContext } from "./SelectGroup";
 
-interface Props {
-  modules?: Record<string, number>,
-  minModules? : Record<string, number>,
-  opId?: string;
-  opLevel? : number;
-  eliteLevel? : number;
-  onChange: (moduleId: string, newMasteryLevel: number) => void;
+interface Props extends BoxProps<"ol"> {
+  children?: React.ReactNode;
 }
 const Module = memo((props: Props) => {
-  const {modules, minModules, opId, opLevel, eliteLevel, onChange } = props;
-  const opData = opId ? operatorJson[opId] : undefined;
+  const { children, sx, ...rest } = props;
 
   return (
-    <Box sx={{
+    <Box component="ol" sx={{
+      width: "100%",
+      m: 0,
+      p: 0,
+      py: 1,
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      gap: "4px",
-    }}>
-      {opData?.moduleData?.map((module: ModuleData, moduleNumber: number) => {
-        const disabled = !opId || (opLevel ?? 0) < MODULE_REQ_BY_RARITY[opData.rarity] || (eliteLevel ?? 0) < 2;
-        return (
-          <Box
-            key={`maB${moduleNumber}`}
-            sx={{
-              display: "grid",
-              width: "max-content",
-              gap: "0rem 1rem",
-              gridTemplateAreas: `"icon name name name name"
-                      "icon m m m m"`,
-              gridTemplateColumns: "auto repeat(4, 1fr)",
-              gridTemplateRows: "auto 1fr",
-              justifyItems: "center",
-              alignItems: "center",
-            }}>
-            <Typography
-              variant="caption2"
-              sx={{
-                textAlign: "center",
-                gridArea: "name",
-                zIndex: 1,
-                width: "fit-content",
-                maxWidth: "16rem",
-                lineHeight: "1.1",
-                overflowWrap: "break-word",
-              }}>
-              {`${module.typeName} (${module.moduleName})`}
-            </Typography>
-            <Box sx={{ gridArea: "icon", display: "flex", flexDirection: "column", alignItems: "center", }}>
-              <Image
-                className={disabled ? "Mui-disabled" : ""}
-                width={48}
-                height={48}
-                src={`/img/equip/${opData!.moduleData![moduleNumber].moduleId}.png`}
-                alt={`Module ${moduleNumber + 1}`}
-              />
-              <Typography
-                variant="caption3"
-                sx={{
-                  mb: -0.25,
-                  zIndex: 1
-                }}>
-                {module.typeName}
-              </Typography>
-            </Box>
-            {[...Array(4)].map((_, moduleLevel) =>
-              <Button
-                className={moduleLevel === (modules && modules[module.moduleId] ? modules[module.moduleId] :  0) ? "active" : "inactive"}
-                key={`mod${moduleLevel}Button`}
-                sx={{
-                  gridRow: 2,
-                  gridColumn: moduleLevel + 2,
-                  display: "grid",
-                  p: 0.5,
-                  minWidth: 0,
-                  backgroundColor: "background.default",
-                  height: "40px",
-                }}
-                onClick={() => onChange(opData!.moduleData![moduleNumber].moduleId, moduleLevel)}
-                disabled={disabled || moduleLevel < (minModules ? minModules[module.moduleId] : 0)}
-              >
-                <Image
-                  width={32}
-                  height={32}
-                  src={`/img/equip/img_stg${moduleLevel}.png`}
-                  alt={`Module ${moduleLevel}`}
-                />
-              </Button>
-            )}
-          </Box>
-        );
-      })}
+      gap: 4,
+      ...sx
+    }} {...rest}>
+      {children}
     </Box>
   )
 })
-Module.displayName = "Module";
-export default Module;
+
+interface ItemProps extends Partial<Pick<ModuleData, "moduleName" | "moduleId" | "typeName">> {
+  children?: React.ReactNode;
+}
+const Item = (props: ItemProps) => {
+  const { moduleId: src, typeName, moduleName = "Missing Module Data", children } = props;
+  const size = 48;
+
+  return (
+    <Box component="li" sx={{
+      display: "flex",
+      flexDirection: "column",
+      gap: 2,
+      width: "100%",
+    }}>
+      <Box sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: 2,
+      }}>
+        {src && <Image src={`/img/equip/${src}.png`}
+          alt=""
+          width={size}
+          height={size}
+        />
+        }
+        <Box sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 0.25
+        }}>
+          {typeName && <Typography variant="h4" component="span" sx={{ m: 0 }}>
+            {typeName}
+          </Typography>}
+          <Typography>
+            {moduleName}
+          </Typography>
+        </Box>
+      </Box>
+      {children}
+    </Box>
+  )
+}
+
+interface SelectProps extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
+  value?: number,
+  min?: number,
+  max?: number;
+  size?: number;
+  onChange: (value: number) => void;
+}
+const Select = (props: SelectProps) => {
+  const { value, min = 0, max = 3, onChange, disabled: _disabled = false, sx, size = 32, ...rest } = props;
+
+  const disabled = useContext(DisabledContext) || _disabled;
+
+  return (
+    <ToggleButtonGroup exclusive value={value}
+      onChange={(_, i) => onChange(i)}
+      disabled={disabled}
+      sx={{
+        height: "min-content",
+        width: "min-content",
+        display: "flex",
+        justifyContent: "center",
+        borderRadius: 1,
+        ...sx
+      }}
+      {...rest}
+    >
+      {[...Array(4)].map((_, i) => (
+        <ToggleButton key={i} value={i} sx={{ p: 1 }}>
+          <Image src={`/img/equip/img_stg${i}.png`}
+            alt={`Module ${i}`}
+            width={size}
+            height={size}
+          />
+        </ToggleButton>
+      ))}
+    </ToggleButtonGroup>
+  );
+}
+
+const _Module = attachSubComponents("Module", Module, { Item, Select });
+export default _Module;

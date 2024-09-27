@@ -187,9 +187,11 @@ const appTheme = (brandColor: string) => createTheme({
       marginLeft: "8px",
     },
     h4: {
-      fontWeight: "normal",
-      fontSize: "2rem",
+      fontSize: "0.875rem",
       lineHeight: 1,
+      fontWeight: "normal",
+      color: neutral[200],
+      marginLeft: "8px",
     },
     h6: {
       fontWeight: "normal",
