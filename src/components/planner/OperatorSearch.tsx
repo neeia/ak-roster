@@ -69,23 +69,26 @@ const OperatorSearch = (props: Props) => {
                 pl: 0,
               },
             }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start" sx={{ pl: 1 }}>
-                  {value != null ? (
-                    <Image
-                      src={`/img/avatars/${value.id}.png`}
-                      width={32}
-                      height={32}
-                      alt=""
-                      className="operator-avatar"
-                    />
-                  ) : (
-                    <AccountCircleIcon width={32} height={32} />
-                  )}
-                </InputAdornment>
-              ),
-              ...otherInputProps,
+            slotProps={{
+              input: {
+                autoFocus: true,
+                startAdornment: (
+                  <InputAdornment position="start" sx={{ pl: 1 }}>
+                    {value != null ? (
+                      <Image
+                        src={`/img/avatars/${value.id}.png`}
+                        width={32}
+                        height={32}
+                        alt=""
+                        className="operator-avatar"
+                      />
+                    ) : (
+                      <AccountCircleIcon width={32} height={32} />
+                    )}
+                  </InputAdornment>
+                ),
+                ...otherInputProps,
+              }
             }}
           />
         );
@@ -119,24 +122,26 @@ const LISTBOX_PADDING = 8; // px
 
 function renderRow(props: ListChildComponentProps) {
   const { data, index, style } = props;
-  const dataSet = data[index];
+  const [_props, opData] = data[index] as [React.HTMLAttributes<HTMLLIElement> & { key: any }, OperatorData];
   const inlineStyle = {
     ...style,
     top: (style.top as number) + LISTBOX_PADDING,
   };
 
+  const { key, ...rest } = _props;
+
   return (
-    <Typography component="li" {...dataSet[0]} noWrap style={inlineStyle}>
+    <Typography component="li" key={key} {...rest} noWrap style={inlineStyle}>
       <Box mr={2} display="inline-flex" alignItems="center">
         <Image
-          src={`/img/avatars/${dataSet[1].id}.png`}
+          src={`/img/avatars/${opData.id}.png`}
           width={32}
           height={32}
           alt=""
           className="operator-avatar"
         />
       </Box>
-      {dataSet[1].name}
+      {opData.name}
     </Typography>
   );
 }
@@ -165,9 +170,9 @@ const ListboxComponent = React.forwardRef<
   React.HTMLAttributes<HTMLElement>
 >(function ListboxComponent(props, ref) {
   const { children, ...other } = props;
-  const itemData: React.ReactChild[] = [];
-  (children as React.ReactChild[]).forEach(
-    (item: React.ReactChild & { children?: React.ReactChild[] }) => {
+  const itemData: React.ReactNode[] = [];
+  (children as React.ReactElement[]).forEach(
+    (item: React.ReactElement & { children?: React.ReactElement[] }) => {
       itemData.push(item);
       itemData.push(...(item.children || []));
     }

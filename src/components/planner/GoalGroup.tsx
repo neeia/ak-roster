@@ -25,12 +25,12 @@ import { useGroupsDeleteMutation } from "../../store/extendGroups";
 interface Props {
   operatorGoals: GoalData[] | undefined;
   groupName: string;
-  onGoalDeleted : (plannerGoal: PlannerGoal) => void;
+  onGoalDeleted: (plannerGoal: PlannerGoal) => void;
   defaultExpanded: boolean;
 }
 
-const GoalGroup = memo((props : Props) => {
-  const {operatorGoals, groupName, onGoalDeleted, defaultExpanded} = props;
+const GoalGroup = memo((props: Props) => {
+  const { operatorGoals, groupName, onGoalDeleted, defaultExpanded } = props;
 
   const [expanded, setExpanded] = useState<boolean>(defaultExpanded);
   const [deleteGroupGoalsOpen, setDeleteGroupGoalsOpen] = useState<boolean>(false);
@@ -76,22 +76,24 @@ const GoalGroup = memo((props : Props) => {
 
   return (
     <>
-      <Accordion onChange={(_, expanded) => setExpanded(expanded)} disableGutters elevation={0} defaultExpanded={defaultExpanded} sx={{ '&:before': {
+      <Accordion onChange={(_, expanded) => setExpanded(expanded)} disableGutters elevation={0} defaultExpanded={defaultExpanded} sx={{
+        '&:before': {
           display: 'none',
-        }}}>
+        }
+      }}>
         <AccordionSummary>
-          <Box sx={{display: "flex", flexDirection: "column", width: "100%",
-           }}>
+          <Box sx={{
+            display: "flex", flexDirection: "column", width: "100%",
+          }}>
             <Box sx={{
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
             }}>
               <IconButton
-
                 id="more-button"
                 onClick={handleMoreButtonClick}>
-                <MoreHorizIcon/>
+                <MoreHorizIcon />
               </IconButton>
               <Menu
                 onClick={(e) => e.stopPropagation()}
@@ -106,17 +108,16 @@ const GoalGroup = memo((props : Props) => {
                   vertical: "top",
                   horizontal: "right",
                 }}
-
               >
                 <MenuItem disabled={!operatorGoals}>
-                  <Typography onClick={handleDeleteGroupGoalsButtonClick} color={theme => theme.palette.error.light}>Delete goals</Typography>
+                  <Typography onClick={handleDeleteGroupGoalsButtonClick} color="error">Delete goals</Typography>
                 </MenuItem>
                 <MenuItem disabled={groupName == "Default"}>
-                  <Typography onClick={handleDeleteGroupButtonClick} color={theme => theme.palette.error.light}>Delete group</Typography>
+                  <Typography onClick={handleDeleteGroupButtonClick} color="error">Delete group</Typography>
                 </MenuItem>
               </Menu>
-              <Typography textAlign="center" variant="h5" sx={{flexGrow: "1"}}>{groupName}</Typography>
-                {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+              <Typography textAlign="center" variant="h5" sx={{ flexGrow: "1" }}>{groupName}</Typography>
+              {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </Box>
             {!expanded && operatorGoals &&
               <Box sx={{
@@ -127,11 +128,11 @@ const GoalGroup = memo((props : Props) => {
               }}>
                 {
                   operatorGoals.map((operatorGoal) => {
-                const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
-                return (<Box sx={{"&:not(:first-of-type)": { marginLeft: -2 },}} key={operatorGoal.op_id}>
-                          <Image src={imgUrl} width={64} height={64} alt=""/>
-                        </Box>)
-                })}
+                    const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
+                    return (<Box sx={{ "&:not(:first-of-type)": { marginLeft: -2 }, }} key={operatorGoal.op_id}>
+                      <Image src={imgUrl} width={64} height={64} alt="" />
+                    </Box>)
+                  })}
               </Box>
             }
           </Box>
@@ -140,8 +141,9 @@ const GoalGroup = memo((props : Props) => {
           {
             operatorGoals && operatorGoals.map((operatorGoal) => {
               return (
-                <OperatorGoals key={operatorGoal.op_id} operatorGoal={operatorGoal} onGoalDeleted={onGoalDeleted}/>
-              )})}
+                <OperatorGoals key={operatorGoal.op_id} operatorGoal={operatorGoal} onGoalDeleted={onGoalDeleted} />
+              )
+            })}
         </AccordionDetails>
       </Accordion>
       <Dialog

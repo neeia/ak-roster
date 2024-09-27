@@ -27,9 +27,9 @@ import { UserContext } from "pages/_app";
 import { defaultOperatorObject } from "util/changeOperator";
 import Board from "components/base/Board";
 import Chip from "components/base/Chip";
-import Image from "components/base/Image";
 import { focused } from "styles/theme/appTheme";
-import { Clear, Close, ZoomInMap, ZoomOutMap } from "@mui/icons-material";
+import { Close, ZoomInMap, ZoomOutMap } from "@mui/icons-material";
+import Image from "next/image";
 
 const TAGS_BY_CATEGORY = {
   Rarity: ["Top Operator", "Senior Operator", "Starter", "Robot"],
@@ -192,8 +192,8 @@ const Recruit: NextPage = () => {
               />
             )}
             renderGroup={(params) =>
-              <Collapse collapsedSize="0px" in={open}>
-                <Box component="li" key={params.key}>
+              <Collapse collapsedSize="0px" in={open} key={params.key}>
+                <Box component="li">
                   <Typography variant="h3" className="MuiAutocomplete-groupLabel" sx={{ mb: "8px" }}>
                     {params.group}
                   </Typography>
@@ -211,10 +211,10 @@ const Recruit: NextPage = () => {
                 </Box>
               </Collapse>
             }
-            renderOption={(props, option) =>
-              <Box {...props} component="li">
+            renderOption={({ key, ...props }, option) =>
+              <Box key={key} {...props} component="li">
                 {classList.includes(option.value)
-                  ? <Image sx={{ width: "1.5rem", height: "1.5rem" }} src={`/img/classes/class_${option.value.toLowerCase()}.png`} alt={option.value}></Image>
+                  ? <Image width={24} height={24} src={`/img/classes/class_${option.value.toLowerCase()}.png`} alt={option.value}></Image>
                   : null}
                 {option.value}
               </Box>
