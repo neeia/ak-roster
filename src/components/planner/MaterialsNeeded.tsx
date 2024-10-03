@@ -39,8 +39,8 @@ const MaterialsNeeded: React.FC = React.memo(() => {
   const { data: depot = {} } = useDepotGetQuery();
   const { data: goals = [] } = useGoalsGetQuery();
   const [depotUpdateTrigger] = useDepotUpdateMutation();
-  const [depotResetStockUpdateTrigger] = useDepotResetStockUpdateMutation();;
-  const [depotResetCraftingUpdateTrigger] = useDepotResetCraftingUpdateMutation(;);
+  const [depotResetStockUpdateTrigger] = useDepotResetStockUpdateMutation();
+  const [depotResetCraftingUpdateTrigger] = useDepotResetCraftingUpdateMutation();
 
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [popoverItemId, setPopoverItemId] = useState<string | null>(null);
@@ -193,6 +193,7 @@ const MaterialsNeeded: React.FC = React.memo(() => {
     .forEach((ingredient: Ingredient) => {
       materialsNeeded[ingredient.id] = (materialsNeeded[ingredient.id] ?? 0) + ingredient.quantity;
     });
+
   // 2. populate number of ingredients required for items being crafted
   const ingredientToCraftedItemsMapping: Record<string, string[]> = {};
   Object.values(itemsJson)
@@ -215,6 +216,7 @@ const MaterialsNeeded: React.FC = React.memo(() => {
         }
       }
     });
+
   // 3. calculate what ingredients can be fulfilled by crafting
   const depotCopy = { ...depot }; // need to hypothetically deduct from stock
   const canCompleteByCrafting: Record<string, boolean> = {};
@@ -253,6 +255,7 @@ const MaterialsNeeded: React.FC = React.memo(() => {
         depotCopy[craftedItemId] = copy;
       }
     });
+
   Object.keys(ingredientToCraftedItemsMapping).forEach((ingrId) => {
     if ((materialsNeeded[ingrId] ?? 0) - (depotCopy[ingrId]?.stock ?? 0) <= 0) {
       //here
