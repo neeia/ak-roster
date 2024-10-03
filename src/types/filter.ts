@@ -1,3 +1,3 @@
-import { Operator, OperatorData } from "./operator";
+import { OpInfo } from "./operator";
 
-export type FilterFunction = (op: Operator, opData: OperatorData) => boolean;
+export type FilterFunction = (op: OpInfo) => boolean;

@@ -1,5 +1,5 @@
 import React from "react";
-import { OpInfo, Operator, OperatorData } from 'types/operator';
+import { OpInfo, Operator } from 'types/operator';
 import classList from "data/classList";
 import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
@@ -9,8 +9,8 @@ import Roster from "types/operators/roster";
 interface Props {
   operators: Roster;
   onClick: (opId: string) => void;
-  filter?: (opInfo: OperatorData, op: Operator) => boolean;
-  sort?: (opA: OpInfo, opB: OpInfo) => number;
+  filter: (opInfo: OpInfo) => boolean;
+  sort: (opA: OpInfo, opB: OpInfo) => number;
 }
 
 function nullOperator(id: string): Operator {
@@ -30,11 +30,8 @@ function nullOperator(id: string): Operator {
 const OperatorSelector = React.memo((props: Props) => {
   const { operators, onClick, filter, sort } = props;
 
-  const defineFilter = filter ?? (() => true);
-
-  const ps = sort ?? (() => 0)
   function sortComparator(a: OpInfo, b: OpInfo) {
-    return ps(a, b) ||
+    return sort(a, b) ||
       classList.indexOf(a.class) - classList.indexOf(b.class) ||
       a.name.localeCompare(b.name)
   }
@@ -43,14 +40,27 @@ const OperatorSelector = React.memo((props: Props) => {
   return (
     <Box component="ol" sx={{
       display: "contents",
+      "& .icon-fav": {
+        display: "none",
+      },
+      "& .favorite .icon-fav": {
+        display: "block",
+        position: "absolute",
+        top: 2,
+        left: 2,
+      }
     }}>
       {Object.values(operatorJson)
         .map((op) => ({ ...op, ...(operators[op.id] ?? nullOperator(op.id)) }))
         .sort(sortComparator)
         .map((op) => <OperatorButton key={op.id}
-          op={op}
+          op_id={op.id}
+          className={[
+            !op.potential && "unowned",
+            filter(op) && "hidden",
+            op.favorite && "favorite",
+          ].filter(t => t).join(" ")}
           onClick={onClick}
-          hidden={!defineFilter(operatorJson[op.op_id as keyof typeof operatorJson], op)}
         />
         )}
     </Box>)

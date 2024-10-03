@@ -1,14 +1,13 @@
 import { Box, Divider, IconButton } from "@mui/material";
 import React from "react";
+import { Value } from "util/useFilter";
 
 interface Props {
-  enMod: boolean;
-  cnMod: boolean;
-  toggleEN: () => void;
-  toggleCN: () => void;
+  value: Set<Value>;
+  onChange: (value: boolean) => void;
 }
 const ModuleFilter = (props: Props) => {
-  const { enMod, cnMod, toggleEN, toggleCN } = props;
+  const { value, onChange } = props;
 
   const r = 4;
   return (
@@ -20,16 +19,14 @@ const ModuleFilter = (props: Props) => {
       </Box>
       <Box display="grid" gridTemplateColumns="1fr 1fr" width="100%" height="100%">
         <IconButton
-          className={enMod ? "active" : "inactive"}
-          sx={{ borderRadius: `${r}px 0px 0px ${r}px` }}
-          onClick={() => toggleEN()}
+          className={value.has(false) ? "active" : "inactive"}
+          onClick={() => onChange(false)}
         >
           EN
         </IconButton>
         <IconButton
-          className={cnMod ? "active" : "inactive"}
-          sx={{ borderRadius: `0px ${r}px ${r}px 0px` }}
-          onClick={() => toggleCN()}
+          className={value.has(true) ? "active" : "inactive"}
+          onClick={() => onChange(true)}
         >
           CN
         </IconButton>

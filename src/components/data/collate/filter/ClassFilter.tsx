@@ -1,5 +1,6 @@
 import { Box, Divider, IconButton } from "@mui/material";
 import React from "react";
+import { Value } from "util/useFilter";
 
 const classList = [
   "Vanguard",
@@ -12,30 +13,13 @@ const classList = [
   "Specialist",
 ]
 
-const br = (index: number) => {
-  const r = 4;
-  if (index === 0) return `${r}px 0px 0px ${r}px`;
-  else if (index === classList.length) return `0px ${r}px ${r}px 0px`;
-  else return "0";
-}
-
-const bm = (index: number) => {
-  const r = 4;
-  if (index === 0) return `${r}px 0px 0px 0px`;
-  else if (index === 3) return `0px ${r}px 0px 0px`;
-  else if (index === 4) return `0px 0px 0px ${r}px`;
-  else if (index === classList.length) return `0px 0px ${r}px 0px`;
-  else return "0";
-}
-
 interface Props {
-  activeClasses: string[];
-  setClassFilter: (value: string) => void;
+  value: Set<Value>;
+  onChange: (value: string) => void;
 }
 
 const ClassFilter = (props: Props) => {
-  const { activeClasses, setClassFilter } = props;
-
+  const { value: activeClasses, onChange: setClassFilter } = props;
 
   return (
     <>
@@ -46,8 +30,7 @@ const ClassFilter = (props: Props) => {
         {classList.map((cl, i) => (
           <IconButton
             key={cl}
-            className={activeClasses.includes(cl) ? "active" : "inactive"}
-            sx={{ borderRadius: { xs: bm(i), sm: br(i) } }}
+            className={activeClasses.has(cl) ? "active" : "inactive"}
             onClick={() => setClassFilter(cl)}
           >
             <Box

@@ -1,5 +1,4 @@
 import { EliteGoal, MasteryGoal, ModuleGoal, SkillLevelGoal } from "./goal";
-import operatorJson from "data/operators";
 
 export interface Operator {
   op_id: string;

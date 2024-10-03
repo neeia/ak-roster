@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { rarityColors } from "styles/rarityColors";
 import { FilterFunction } from "types/filter";
 import { Operator } from "types/operator";
+import { Value } from "util/useFilter";
 
 const br = (index: number) => {
   const r = 4;
@@ -21,11 +22,11 @@ const bm = (index: number) => {
 }
 
 interface Props {
-  activeRarities: number[];
-  toggleFilter: (value: number) => void;
+  value: Set<Value>;
+  onChange: (value: number) => void;
 }
 const RarityFilter = (props: Props) => {
-  const { activeRarities, toggleFilter } = props;
+  const { value: activeRarities, onChange: toggleFilter } = props;
 
   return (
     <>
@@ -36,7 +37,7 @@ const RarityFilter = (props: Props) => {
         {[...Array(6)].map((_, i) => (
           <IconButton
             key={i}
-            className={activeRarities.includes(i + 1) ? "active" : "inactive"}
+            className={activeRarities.has(i + 1) ? "active" : "inactive"}
             sx={{
               borderRadius: { xs: bm(i), sm: br(i) },
               color: rarityColors[i + 1],
