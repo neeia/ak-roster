@@ -1,16 +1,6 @@
 import CheckIcon from "@mui/icons-material/Check";
 import SettingsIcon from "@mui/icons-material/Settings";
-import {
-  Box,
-  Divider,
-  IconButton,
-  ListItemIcon,
-  ListItemText,
-  Menu,
-  MenuItem,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Paper, Typography } from "@mui/material";
 import Image from "next/image";
 import React, { useCallback, useState } from "react";
 
@@ -20,17 +10,13 @@ import { Ingredient, Item } from "types/item";
 import ItemInfoPopover from "./ItemInfoPopover";
 import ItemNeeded from "./ItemNeeded";
 import getGoalIngredients from "util/getGoalIngredients";
-import {
-  useDepotGetQuery,
-  useDepotResetCraftingUpdateMutation,
-  useDepotResetStockUpdateMutation,
-  useDepotUpdateMutation,
-} from "store/extendDepot";
+import { useDepotGetQuery, useDepotResetCraftingUpdateMutation, useDepotResetStockUpdateMutation, useDepotUpdateMutation } from "store/extendDepot";
 import { DepotDataInsert } from "types/depotData";
 import { useGoalsGetQuery } from "../../store/extendGoals";
 import { getPlannerGoals } from "../../types/goalData";
 import { LocalStorageSettings } from "../../types/localStorageSettings";
 import useLocalStorage from "../../util/useLocalStorage";
+import ExportImportDialog from "./ExportImportDialog";
 
 const LMD_ITEM_ID = "4001";
 const EXCLUDE = ["2001", "2002", "2003", "2004", "4001"];
@@ -47,6 +33,7 @@ const MaterialsNeeded: React.FC = React.memo(() => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [localStorageData, setLocalStorageData] = useLocalStorage<LocalStorageSettings>("settings", {});
   const isSettingsMenuOpen = Boolean(anchorEl);
+  const [exportImportOpen, setExportImportOpen] = useState<boolean>(false);
 
   const handleSettingsButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(e.currentTarget);
@@ -67,35 +54,35 @@ const MaterialsNeeded: React.FC = React.memo(() => {
 
   const handleChange = useCallback(
     (itemId: string, newQuantity: number) => {
-      var item = depot[itemId];
+      const item = depot[itemId];
       if (item) {
-        var data: DepotDataInsert = { material_id: itemId, stock: newQuantity };
+        const data: DepotDataInsert = { material_id: itemId, stock: newQuantity };
         depotUpdateTrigger([data]);
       }
     },
-    [depot, depotUpdateTrigger],
+    [depot, depotUpdateTrigger]
   );
 
   const handleIncrement = useCallback(
     (itemId: string) => {
-      var item = depot[itemId];
+      const item = depot[itemId];
       if (item) {
-        var data: DepotDataInsert = { material_id: itemId, stock: item.stock + 1 };
+        const data: DepotDataInsert = { material_id: itemId, stock: item.stock + 1 };
         depotUpdateTrigger([data]);
       }
     },
-    [depot, depotUpdateTrigger],
+    [depot, depotUpdateTrigger]
   );
 
   const handleDecrement = useCallback(
     (itemId: string) => {
-      var item = depot[itemId];
+      const item = depot[itemId];
       if (item) {
-        var data: DepotDataInsert = { material_id: itemId, stock: Math.min(item.stock - 1, 0) };
+        const data: DepotDataInsert = { material_id: itemId, stock: Math.min(item.stock - 1, 0) };
         depotUpdateTrigger([data]);
       }
     },
-    [depot, depotUpdateTrigger],
+    [depot, depotUpdateTrigger]
   );
 
   //TODO disable crafting button if not enough ingredients to craft
@@ -116,18 +103,18 @@ const MaterialsNeeded: React.FC = React.memo(() => {
 
       depotUpdateTrigger(updatedDatas);
     },
-    [depot, depotUpdateTrigger],
+    [depot, depotUpdateTrigger]
   );
 
   const handleCraftingToggle = useCallback(
     (itemId: string) => {
-      var item = depot[itemId];
+      const item = depot[itemId];
       if (item) {
-        var data: DepotDataInsert = { material_id: item.material_id, stock: item.stock, crafting: !item.crafting };
+        const data: DepotDataInsert = { material_id: item.material_id, stock: item.stock, crafting: !item.crafting };
         depotUpdateTrigger([data]);
       }
     },
-    [depot, depotUpdateTrigger],
+    [depot, depotUpdateTrigger]
   );
 
   const handleResetCrafting = useCallback(() => {
@@ -185,6 +172,11 @@ const MaterialsNeeded: React.FC = React.memo(() => {
     setAnchorEl(null);
   }, [localStorageData, setLocalStorageData]);
 
+  const handleExportImport = useCallback(() => {
+    setExportImportOpen(true);
+    setAnchorEl(null);
+  }, []);
+
   const materialsNeeded: Record<string, number> = {};
   // 1. populate the ingredients required for each goal
   goals
@@ -232,8 +224,8 @@ const MaterialsNeeded: React.FC = React.memo(() => {
         // numTimesCraftable: max number of times the formula can be executed
         const numTimesCraftable = Math.min(
           ...ingredients.map(
-            (ingr) => Math.floor((depotCopy[ingr.id].stock ?? 0) / ingr.quantity), //here
-          ),
+            (ingr) => Math.floor((depotCopy[ingr.id].stock ?? 0) / ingr.quantity) //here
+          )
         );
         // numTimesToCraft: how many times we'll actually execute the formula
         const numTimesToCraft = Math.min(numTimesCraftable, Math.ceil(shortage / itemYield));
@@ -242,7 +234,7 @@ const MaterialsNeeded: React.FC = React.memo(() => {
           const copy = { ...depotCopy[ingr.id] };
           copy.stock = Math.max(
             //here
-            (depotCopy[ingr.id].stock ?? 0) - ingr.quantity * numTimesToCraft, //here
+            (depotCopy[ingr.id].stock ?? 0) - ingr.quantity * numTimesToCraft //here
           );
           depotCopy[ingr.id] = copy;
         });
@@ -258,7 +250,6 @@ const MaterialsNeeded: React.FC = React.memo(() => {
 
   Object.keys(ingredientToCraftedItemsMapping).forEach((ingrId) => {
     if ((materialsNeeded[ingrId] ?? 0) - (depotCopy[ingrId]?.stock ?? 0) <= 0) {
-      //here
       canCompleteByCrafting[ingrId] = true;
     }
   });
@@ -280,86 +271,104 @@ const MaterialsNeeded: React.FC = React.memo(() => {
   });
 
   return (
-    <Paper component="section" sx={{ p: 2 }}>
-      <Box display="grid" gridTemplateColumns="1fr auto">
-        <div>
-          <Typography component="h2" variant="h5">
-            Materials needed
-          </Typography>
-          <Divider sx={{ mt: 2, mb: 1, width: "90%" }} />
-          <Typography component="span" variant="h6">
-            Total cost:
-            <Box component="span" display="inline-flex" alignItems="center" columnGap={0.5} ml={1}>
-              <b>{lmdCost.toLocaleString()}</b>
-              <Image src="/img/items/GOLD_SHD.webp" width={26} height={18} alt="LMD" />
-            </Box>
-          </Typography>
-        </div>
-        <IconButton id="settings-button" onClick={handleSettingsButtonClick} sx={{ alignSelf: "start", justifySelf: "end" }} aria-label="Settings" aria-haspopup="true" aria-expanded={isSettingsMenuOpen ? "true" : undefined} aria-controls={isSettingsMenuOpen ? "settings-menu" : undefined}>
-          <SettingsIcon />
-        </IconButton>
-        <Menu
-          id="settings-menu"
-          anchorEl={anchorEl}
-          open={isSettingsMenuOpen}
-          onClose={handleSettingsMenuClose}
-          MenuListProps={{
-            "aria-labelledby": "settings-button",
-          }}
-          hideBackdrop={false}
-          BackdropProps={{
-            invisible: false,
-          }}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
+    <>
+      <Paper component="section" sx={{ p: 2 }}>
+        <Box display="grid" gridTemplateColumns="1fr auto">
+          <div>
+            <Typography component="h2" variant="h5">
+              Materials needed
+            </Typography>
+            <Divider sx={{ mt: 2, mb: 1, width: "90%" }} />
+            <Typography component="span" variant="h6">
+              Total cost:
+              <Box component="span" display="inline-flex" alignItems="center" columnGap={0.5} ml={1}>
+                <b>{lmdCost.toLocaleString()}</b>
+                <Image src="/img/items/GOLD_SHD.webp" width={26} height={18} alt="LMD" />
+              </Box>
+            </Typography>
+          </div>
+          <IconButton id="settings-button" onClick={handleSettingsButtonClick} sx={{ alignSelf: "start", justifySelf: "end" }} aria-label="Settings" aria-haspopup="true" aria-expanded={isSettingsMenuOpen ? "true" : undefined} aria-controls={isSettingsMenuOpen ? "settings-menu" : undefined}>
+            <SettingsIcon />
+          </IconButton>
+          <Menu
+            id="settings-menu"
+            anchorEl={anchorEl}
+            open={isSettingsMenuOpen}
+            onClose={handleSettingsMenuClose}
+            MenuListProps={{
+              "aria-labelledby": "settings-button",
+            }}
+            hideBackdrop={false}
+            slotProps={{
+              root: {
+                slotProps: {
+                  backdrop: {
+                    invisible: false,
+                  },
+                },
+              },
+            }}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            <SettingsMenuItem onClick={handleSortToBottom} checked={localStorageData.plannerSettings?.sortCompletedToBottom ?? false}>
+              Sort completed items to bottom
+            </SettingsMenuItem>
+            <SettingsMenuItem onClick={handleShowInactive} checked={localStorageData.plannerSettings?.showInactiveMaterials ?? false}>
+              Show inactive materials
+            </SettingsMenuItem>
+            <SettingsMenuItem onClick={handleShowButtons} checked={localStorageData.plannerSettings?.hideIncrementDecrementButtons ?? false}>
+              Hide increment/decrement buttons
+            </SettingsMenuItem>
+            <Divider />
+            <MenuItem onClick={handleExportImport}>
+              <ListItemText inset>Export/Import</ListItemText>
+            </MenuItem>
+            <Divider />
+            <MenuItem onClick={handleResetCrafting}>
+              <ListItemText inset sx={{ color: (theme) => theme.palette.error.light }}>
+                Reset crafting states
+              </ListItemText>
+            </MenuItem>
+            <MenuItem onClick={handleResetStock}>
+              <ListItemText inset sx={{ color: (theme) => theme.palette.error.light }}>
+                Reset stock
+              </ListItemText>
+            </MenuItem>
+          </Menu>
+        </Box>
+        <Box
+          component="ul"
+          sx={{
+            display: "grid",
+            mt: 2,
+            mb: 0,
+            mx: 0,
+            p: 0,
+            columnGap: 2,
+            rowGap: 1.5,
+            gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))",
           }}
         >
-          <SettingsMenuItem onClick={handleSortToBottom} checked={localStorageData.plannerSettings?.sortCompletedToBottom ?? false}>
-            Sort completed items to bottom
-          </SettingsMenuItem>
-          <SettingsMenuItem onClick={handleShowInactive} checked={localStorageData.plannerSettings?.showInactiveMaterials ?? false}>
-            Show inactive materials
-          </SettingsMenuItem>
-          <SettingsMenuItem onClick={handleShowButtons} checked={localStorageData.plannerSettings?.hideIncrementDecrementButtons ?? false}>
-            Hide increment/decrement buttons
-          </SettingsMenuItem>
-          <Divider />
-          <MenuItem onClick={handleResetCrafting}>
-            <ListItemText inset sx={{ color: (theme) => theme.palette.error.light }}>
-              Reset crafting states
-            </ListItemText>
-          </MenuItem>
-          <MenuItem onClick={handleResetStock}>
-            <ListItemText inset sx={{ color: (theme) => theme.palette.error.light }}>
-              Reset stock
-            </ListItemText>
-          </MenuItem>
-        </Menu>
-      </Box>
-      <Box
-        component="ul"
-        sx={{
-          display: "grid",
-          mt: 2,
-          mb: 0,
-          mx: 0,
-          p: 0,
-          columnGap: 2,
-          rowGap: 1.5,
-          gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))",
+          {sortedMaterialsNeeded.map(([itemId, needed]) => (
+            <ItemNeeded key={itemId} component="li" itemId={itemId} owned={depot[itemId]?.stock ?? 0} quantity={needed} canCompleteByCrafting={canCompleteByCrafting[itemId]} isCrafting={depot[itemId]?.crafting ?? false} onChange={handleChange} onCraftOne={handleCraftOne} onDecrement={handleDecrement} onIncrement={handleIncrement} onCraftingToggle={handleCraftingToggle} onClick={handleItemClick} hideIncrementDecrementButtons={localStorageData.plannerSettings?.hideIncrementDecrementButtons ?? false} />
+          ))}
+        </Box>
+        <ItemInfoPopover itemId={popoverItemId} ingredientToCraftedItemsMapping={ingredientToCraftedItemsMapping} open={popoverOpen} onClose={handlePopoverClose} />
+      </Paper>
+      <ExportImportDialog
+        open={exportImportOpen}
+        onClose={() => {
+          setExportImportOpen(false);
         }}
-      >
-        {sortedMaterialsNeeded.map(([itemId, needed]) => (
-          <ItemNeeded key={itemId} component="li" itemId={itemId} owned={depot[itemId]?.stock ?? 0} quantity={needed} canCompleteByCrafting={canCompleteByCrafting[itemId]} isCrafting={depot[itemId]?.crafting ?? false} onChange={handleChange} onCraftOne={handleCraftOne} onDecrement={handleDecrement} onIncrement={handleIncrement} onCraftingToggle={handleCraftingToggle} onClick={handleItemClick} hideIncrementDecrementButtons={localStorageData.plannerSettings?.hideIncrementDecrementButtons ?? false} />
-        ))}
-      </Box>
-      <ItemInfoPopover itemId={popoverItemId} ingredientToCraftedItemsMapping={ingredientToCraftedItemsMapping} open={popoverOpen} onClose={handlePopoverClose} />
-    </Paper>
+      />
+    </>
   );
 });
 MaterialsNeeded.displayName = "MaterialsNeeded";
