@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, darken, lighten } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
   interface Theme {
@@ -21,7 +21,7 @@ const neutral = {
   300: "#ADADAD",
   400: "#919191",
   500: "#707070",
-  600: "#595959",
+  600: "#505050",
   700: "#303030",
   800: "#212121",
   900: "#121212",
@@ -58,6 +58,9 @@ const appTheme = (brandColor: string) => createTheme({
     primary: {
       main: brandColor,
     },
+    secondary: {
+      main: neutral[700],
+    },
     text: {
       primary: neutral[50],
       secondary: neutral[200],
@@ -91,7 +94,10 @@ const appTheme = (brandColor: string) => createTheme({
           style: {
             color: neutral[50],
             backgroundColor: neutral[700],
-            ...interactive,
+            "&:hover": {
+              background: lighten(neutral[700], 0.1),
+            },
+            transition: "background-color 0.1s",
           }
         }
       ]
@@ -117,7 +123,12 @@ const appTheme = (brandColor: string) => createTheme({
     MuiToggleButton: {
       styleOverrides: {
         root: {
+          color: neutral[50],
           backgroundColor: neutral[700],
+          "&:hover": {
+            background: lighten(neutral[700], 0.1),
+          },
+          transition: "background-color 0.1s",
           "&:not(._):not(._):not(._)": {
             border: "none",
             margin: 0,
