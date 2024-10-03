@@ -1,16 +1,7 @@
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-import {
-  Box,
-  Button,
-  ButtonBase,
-  ButtonGroup,
-  IconButton,
-  InputAdornment,
-  TextField,
-  Tooltip,
-} from "@mui/material";
+import { Box, Button, ButtonBase, ButtonGroup, IconButton, InputAdornment, TextField, Tooltip } from "@mui/material";
 import React, { ElementType, useEffect, useState } from "react";
 
 import items from "../../data/items.json";
@@ -23,6 +14,7 @@ interface Props extends ItemStackProps {
   owned: number;
   isCrafting: boolean;
   canCompleteByCrafting: boolean;
+  hideIncrementDecrementButtons: boolean;
   onIncrement: (itemId: string) => void;
   onDecrement: (itemId: string) => void;
   onChange: (itemId: string, newQuantity: number) => void;
@@ -33,25 +25,12 @@ interface Props extends ItemStackProps {
 }
 
 const ItemNeeded: React.FC<Props> = React.memo((props) => {
-  const {
-    owned,
-    isCrafting,
-    canCompleteByCrafting,
-    onIncrement,
-    onDecrement,
-    onChange,
-    onCraftingToggle,
-    onCraftOne,
-    onClick,
-    component,
-    ...rest
-  } = props;
+  const { owned, isCrafting, canCompleteByCrafting, hideIncrementDecrementButtons, onIncrement, onDecrement, onChange, onCraftingToggle, onCraftOne, onClick, component, ...rest } = props;
   const { itemId, quantity } = rest;
   const item: Item = items[itemId as keyof typeof items];
   const isCraftable = Boolean(item.ingredients);
   const isComplete = owned >= quantity;
   const [rawValue, setRawValue] = useState<string>("");
-  const hideIncrementDecrementButtons = false;
 
   useEffect(() => {
     setRawValue(`${owned}`);
@@ -94,14 +73,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
           },
         }}
       >
-        <ItemStack
-          {...rest}
-          sx={
-            isComplete || (isCrafting && canCompleteByCrafting)
-              ? { opacity: 0.4 }
-              : undefined
-          }
-        />
+        <ItemStack {...rest} sx={isComplete || (isCrafting && canCompleteByCrafting) ? { opacity: 0.4 } : undefined} />
         {quantity > 0 && isComplete && (
           <CheckCircleIcon
             htmlColor="greenyellow"
@@ -116,12 +88,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
         )}
         {quantity > 0 && !isComplete && isCrafting && canCompleteByCrafting && (
           <Tooltip arrow title="Can be completed by crafting">
-            <Box
-              alignSelf="center"
-              justifySelf="center"
-              zIndex={1}
-              lineHeight={0}
-            >
+            <Box alignSelf="center" justifySelf="center" zIndex={1} lineHeight={0}>
               <CraftingIcon />
             </Box>
           </Tooltip>
@@ -148,55 +115,43 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
           hideIncrementDecrementButtons
             ? {}
             : {
-              startAdornment: (
-                <InputAdornment position="start" sx={{ mr: 0 }}>
-                  <IconButton
-                    size="small"
-                    aria-label="Remove 1 from owned amount"
-                    edge="start"
-                    disabled={owned === 0}
-                    onClick={() => onDecrement(itemId)}
-                  >
-                    <RemoveCircleIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-              endAdornment: (
-                <InputAdornment position="end" sx={{ ml: 0 }}>
-                  <IconButton
-                    size="small"
-                    aria-label="Add 1 to owned amount"
-                    edge="end"
-                    onClick={() => onIncrement(itemId)}
-                  >
-                    <AddCircleIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-              sx: {
-                px: "5px",
-                borderBottomLeftRadius: 0,
-                borderBottomRightRadius: 0,
-                "& input[type=number]": {
-                  "-moz-appearance": "textfield"
+                startAdornment: (
+                  <InputAdornment position="start" sx={{ mr: 0 }}>
+                    <IconButton size="small" aria-label="Remove 1 from owned amount" edge="start" disabled={owned === 0} onClick={() => onDecrement(itemId)}>
+                      <RemoveCircleIcon />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end" sx={{ ml: 0 }}>
+                    <IconButton size="small" aria-label="Add 1 to owned amount" edge="end" onClick={() => onIncrement(itemId)}>
+                      <AddCircleIcon />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+                sx: {
+                  px: "5px",
+                  borderBottomLeftRadius: 0,
+                  borderBottomRightRadius: 0,
+                  "& input[type=number]": {
+                    MozAppearance: "textfield",
+                  },
+                  "& input[type=,number]::-webkit-outer-spin-button": {
+                    WebkitAppearance: "none",
+                    margin: 0,
+                  },
+                  "& input[type=number]::-webkit-inner-spin-button": {
+                    WebkitAppearance: "none",
+                    margin: 0,
+                  },
                 },
-                "& input[type=number]::-webkit-outer-spin-button": {
-                  "-webkit-appearance": "none",
-                  margin: 0
-                },
-                "& input[type=number]::-webkit-inner-spin-button": {
-                  "-webkit-appearance": "none",
-                  margin: 0
-                }
-              },
-            }
+              }
         }
       />
       <Box minWidth={126} height={31}>
         {isCraftable ? (
           <ButtonGroup
             size="small"
-            color="secondary"
             fullWidth
             sx={{
               gap: "1px",
@@ -207,15 +162,10 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
               },
               "& > .MuiButtonGroup-grouped:not(:last-of-type)": {
                 borderRightColor: "rgba(251, 192, 45, 0.5)",
-              }
+              },
             }}
           >
-            <Button
-              variant={isCrafting ? "contained" : "outlined"}
-              onClick={() => onCraftingToggle(itemId)}
-              aria-label="Toggle crafting"
-              aria-pressed={isCrafting}
-            >
+            <Button variant={isCrafting ? "contained" : "outlined"} onClick={() => onCraftingToggle(itemId)} aria-label="Toggle crafting" aria-pressed={isCrafting}>
               {isCrafting ? "Crafting" : "Craft"}
             </Button>
             {isCrafting ? (

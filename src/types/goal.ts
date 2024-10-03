@@ -2,6 +2,7 @@ import { Ingredient } from "./item";
 
 export enum OperatorGoalCategory {
   Elite = 0,
+  Level,
   Mastery,
   SkillLevel,
   Module,
@@ -49,6 +50,13 @@ interface PlannerEliteGoal extends BasePlannerGoal {
   eliteLevel: number;
 }
 
+interface PlannerLevelGoal extends BasePlannerGoal {
+  category: OperatorGoalCategory.Level;
+  fromLevel: number;
+  toLevel: number;
+  eliteLevel: number;
+}
+
 interface PlannerMasteryGoal extends BasePlannerGoal {
   category: OperatorGoalCategory.Mastery;
   skillId: string;
@@ -66,8 +74,4 @@ interface PlannerSkillLevelGoal extends BasePlannerGoal {
   skillLevel: number;
 }
 
-export type PlannerGoal =
-  | PlannerEliteGoal
-  | PlannerMasteryGoal
-  | PlannerModuleGoal
-  | PlannerSkillLevelGoal;
+export type PlannerGoal = PlannerEliteGoal | PlannerMasteryGoal | PlannerModuleGoal | PlannerSkillLevelGoal | PlannerLevelGoal;

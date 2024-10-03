@@ -1,5 +1,4 @@
 import { EliteGoal, MasteryGoal, ModuleGoal, SkillLevelGoal } from "./goal";
-import operatorJson from "data/operators";
 
 export interface Operator {
   op_id: string;
@@ -8,8 +7,8 @@ export interface Operator {
   elite: number;
   level: number;
   skill_level: number;
-  masteries: number[];
-  modules: Record<string, number>;
+  masteries?: number[];
+  modules?: Record<string, number>;
   skin?: string;
 }
 

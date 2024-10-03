@@ -64,9 +64,11 @@ const Toggle = (props: AddGroupProps) => {
   const el = useRef<HTMLElement>(null);
 
   const onClick = useCallback(() => {
-    setOpen(o => !o);
-    _onClick?.();
-  }, [_onClick, id]);
+    setOpen((o) => !o);
+    if (open) {
+      _onClick?.();
+    }
+  }, [_onClick, open]);
 
   useEffect(() => {
     if (!el.current) return;
