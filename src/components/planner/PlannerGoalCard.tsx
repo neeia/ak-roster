@@ -29,33 +29,28 @@ const PlannerGoalCard = memo((props : Props) => {
   const theme = useTheme();
   const isXSScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isXLScreen = useMediaQuery(theme.breakpoints.up("xl"));
-  const operatorIconSize = isXSScreen ? 32 : 48;
 
   const operator: OperatorData =
     operatorsJson[goal.operatorId as keyof typeof operatorsJson];
-  const [_, appellation] = operator.name.split(" the ");
 
   const goalName = useCallback(() => {
     switch (goal.category) {
+      case OperatorGoalCategory.Level:
+        return `Lv.${goal.fromLevel} to Lv.${goal.toLevel} for Elite ${goal.eliteLevel}`;
       case OperatorGoalCategory.Elite:
         return `Elite ${goal.eliteLevel}`;
       case OperatorGoalCategory.SkillLevel:
         return `${isXLScreen ? "Skill Level" : "Sk.Lv."} ${goal.skillLevel}`;
       case OperatorGoalCategory.Mastery: {
-        const skillNumber =
-          operator.skillData!.findIndex((sk) => sk.skillId === goal.skillId) + 1;
-        return isXLScreen
-          ? `Skill ${skillNumber} Mastery ${goal.masteryLevel}`
-          : `S${skillNumber} M${goal.masteryLevel}`;
+        const skillNumber = operator.skillData!.findIndex((sk) => sk.skillId === goal.skillId) + 1;
+        return isXLScreen ? `Skill ${skillNumber} Mastery ${goal.masteryLevel}` : `S${skillNumber} M${goal.masteryLevel}`;
       }
       case OperatorGoalCategory.Module: {
-        const mod = operator.moduleData!.find(
-          (m) => m.moduleId === goal.moduleId
-        )!;
+        const mod = operator.moduleData!.find((m) => m.moduleId === goal.moduleId)!;
         return `${mod.typeName} (${mod.moduleName}) Stage ${goal.moduleLevel}`;
       }
     }
-  },[goal, isXLScreen, operator.moduleData, operator.skillData]);
+  }, [goal, isXLScreen, operator.moduleData, operator.skillData]);
 
   const goalLabel = `${operator.name} ${goalName}`;
 

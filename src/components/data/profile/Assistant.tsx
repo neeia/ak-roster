@@ -4,9 +4,8 @@ import { Operator, OperatorData } from "types/operator";
 import PopOp from "./PopOp";
 import OpSelectionButton from "./OpSelectionButton";
 import AccountData from "types/auth/accountData";
-import {useCurrentRosterGetQuery} from "store/extendRoster";
 import {useAccountUpdateMutation} from "store/extendAccount";
-import supabase from "supabase/supabaseClient";
+import { useRosterGetQuery } from "store/extendRoster";
 
 interface Props {
   user: AccountData;
@@ -15,7 +14,7 @@ interface Props {
 const Assistant = ((props: Props) => {
   const { user } = props;
 
-  const {data: operators, isLoading} = useCurrentRosterGetQuery();
+  const {data: operators, isLoading} = useRosterGetQuery();
 
   const [assistant, _setAssistant] = useState<string>(user?.assistant ?? "");
   const [open, setOpen] = useState<boolean>(false);
