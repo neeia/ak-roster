@@ -12,21 +12,26 @@ const Module = memo((props: Props) => {
   const { children, sx, ...rest } = props;
 
   return (
-    <Box component="ol" sx={{
-      width: "100%",
-      m: 0,
-      p: 0,
-      py: 1,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      gap: 4,
-      ...sx
-    }} {...rest}>
+    <Box
+      component="ol"
+      sx={{
+        width: "100%",
+        m: 0,
+        p: 0,
+        py: 1,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 4,
+        ...sx,
+      }}
+      {...rest}
+    >
       {children}
     </Box>
-  )
-})
+  );
+});
+Module.displayName = "Module_inside";
 
 interface ItemProps extends Partial<Pick<ModuleData, "moduleName" | "moduleId" | "typeName">> {
   children?: React.ReactNode;
@@ -84,8 +89,12 @@ const Select = (props: SelectProps) => {
   const disabled = useContext(DisabledContext) || _disabled;
 
   return (
-    <ToggleButtonGroup exclusive value={value}
-      onChange={(_, i) => onChange(i)}
+    <ToggleButtonGroup
+      exclusive
+      value={value}
+      onChange={(_, i) => {
+        if (i != null) onChange(i);
+      }}
       disabled={disabled}
       sx={{
         height: "min-content",
@@ -93,17 +102,13 @@ const Select = (props: SelectProps) => {
         display: "flex",
         justifyContent: "center",
         borderRadius: 1,
-        ...sx
+        ...sx,
       }}
       {...rest}
     >
       {[...Array(4)].map((_, i) => (
         <ToggleButton key={i} value={i} sx={{ p: 1 }}>
-          <Image src={`/img/equip/img_stg${i}.png`}
-            alt={`Module ${i}`}
-            width={size}
-            height={size}
-          />
+          <Image src={`/img/equip/img_stg${i}.png`} alt={`Module ${i}`} width={size} height={size} />
         </ToggleButton>
       ))}
     </ToggleButtonGroup>
