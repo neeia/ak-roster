@@ -1,20 +1,16 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
-import { Box, ButtonGroup, IconButton, Skeleton, Typography } from "@mui/material";
+import { Box, ButtonGroup } from "@mui/material";
 import Layout from "components/Layout";
 import SearchDialog from "components/data/collate/SearchDialog";
 import FilterDialog from "components/data/collate/FilterDialog";
 import SortDialog from "components/data/collate/SortDialog";
-import { useSort, useFilter } from "util/useSSF";
-import { Operator, OperatorData } from "types/operator";
-import usePresets from "util/usePresets";
-import { ArrowBack } from "@mui/icons-material";
+import useSort from "util/useSort";
+import useFilter from "util/useFilter";
+import { Operator, OperatorData, OpInfo } from "types/operator";
 import { AccountInfo, isCN } from "types/doctor";
 import useLocalStorage from "util/useLocalStorage";
-import supabase from "supabase/supabaseClient";
-import { Session } from "@supabase/supabase-js";
-import { keyframes } from '@mui/system';
 import { useRosterGetQuery } from "store/extendRoster";
 
 const EditOperator = dynamic(
@@ -30,30 +26,18 @@ const Input: NextPage = () => {
 
   const { data: operators } = useRosterGetQuery();
 
-  const [presets, changePreset, rename] = usePresets();
-  const [batch, setBatch] = useState(false);
-  const [preset, setPreset] = useState("");
-
   const [opId, setOpId] = React.useState<string>("char_002_amiya");
   const [editOpen, setEditOpen] = React.useState(false);
 
-  const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
+  const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort([
     { key: "Rarity", desc: true },
   ]);
-  const [, setSearchName, filter, addFilter, removeFilter, clearFilters, filterFunction] = useFilter();
+  const { filters, toggleFilter, clearFilters, filterFunction } = useFilter();
 
   const [doctor] = useLocalStorage<AccountInfo>("doctor", {});
   useEffect(() => {
-    const filterKey = "cn";
-    if (!(doctor && doctor.server && isCN(doctor.server))) addFilter(filterKey, "EN", (_, opInfo: OperatorData) => !opInfo.isCnOnly);
+    if (!(doctor && doctor.server && isCN(doctor.server))) toggleFilter("CN", false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const [session, setSession] = useState<Session | null>(null);
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session);
-    });
   }, []);
 
   const onChange = (op: Operator) => {
@@ -65,8 +49,6 @@ const Input: NextPage = () => {
     setEditOpen(true);
   }, []);
 
-
-  // const [editPresetOpen, setEditPresetOpen] = useState(false);
   return (
     <Layout tab="/data" page="/input">
       <Box sx={{
@@ -105,31 +87,16 @@ const Input: NextPage = () => {
         }}>
           <SortDialog
             sortFns={sortFunctions}
-            sortQueue={sortQueue}
-            setSortQueue={setSortQueue}
+            sortQueue={sorts}
+            setSortQueue={setSorts}
             toggleSort={toggleSort}
           />
           <FilterDialog
-            filter={filter}
-            addFilter={addFilter}
-            removeFilter={removeFilter}
+            filter={filters}
+            toggleFilter={toggleFilter}
             clearFilters={clearFilters}
           />
-          {batch
-            ? <Box sx={{
-              display: { xs: "none", sm: "inherit" },
-              position: "absolute",
-              gridArea: "4 / 1 / span 5 / 1",
-              width: "100%",
-              height: "100%",
-              backgroundColor: "rgba(255, 255, 255, 0.15)",
-              borderRadius: "2rem",
-              boxShadow: 1,
-            }}>
-            </Box>
-            : null
-          }
-          <SearchDialog setSearch={setSearchName} />
+          {/* <SearchDialog setSearch={setSearchName} /> */}
         </ButtonGroup>
         <Box sx={{
           width: "100%",
@@ -145,16 +112,9 @@ const Input: NextPage = () => {
             opacity: 0.75
           },
           "& .hidden": {
-            display: "none"
-          },
-          "& .untoggled": {
-            opacity: 0.5
-          },
-          "& .toggled": {
-            opacity: 1,
+            display: "none",
           },
         }}>
-
           <OperatorSelector
             operators={operators ?? {}}
             onClick={selectOp}
@@ -162,7 +122,7 @@ const Input: NextPage = () => {
             filter={filterFunction}
           />
           <EditOperator
-            op={operators[opId]}
+            op={operators?.[opId]}
             changeOperator={onChange}
             open={editOpen}
             onClose={() => setEditOpen(false)}

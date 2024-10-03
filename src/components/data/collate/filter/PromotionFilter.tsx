@@ -1,5 +1,6 @@
 import { Box, Divider, IconButton } from "@mui/material";
 import React from "react";
+import { Value } from "util/useFilter";
 
 const br = (index: number) => {
   const r = 4;
@@ -9,11 +10,11 @@ const br = (index: number) => {
 }
 
 interface Props {
-  activePromotions: number[];
-  toggleFilter: (value: number) => void;
+  value: Set<Value>;
+  onChange: (value: number) => void;
 }
 const PromotionFilter = (props: Props) => {
-  const { activePromotions, toggleFilter } = props;
+  const { value: activePromotions, onChange: toggleFilter } = props;
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -24,7 +25,7 @@ const PromotionFilter = (props: Props) => {
         {[...Array(3)].map((_, i) => (
           <IconButton
             key={i}
-            className={activePromotions.includes(i) ? "active" : "inactive"}
+            className={activePromotions.has(i) ? "active" : "inactive"}
             sx={{ borderRadius: br(i) }}
             onClick={() => toggleFilter(i)}
           >

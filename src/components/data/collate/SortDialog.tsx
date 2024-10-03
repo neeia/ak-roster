@@ -15,7 +15,7 @@ interface Props {
 const SortDialog = (props: Props) => {
   const { sortFns, sortQueue, setSortQueue, toggleSort } = props;
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const fullScreen = !useMediaQuery(theme.breakpoints.up('sm'));
 
   const handleDragEnd = (result: DropResult) => {
     if (!result.destination) {
@@ -79,13 +79,7 @@ const SortDialog = (props: Props) => {
           justifyContent: "space-between",
           paddingBottom: "12px",
         }}>
-          <Typography
-            component="div"
-            variant="h2"
-            sx={{
-              marginLeft: "8px",
-              paddingTop: "12px",
-            }}>
+          <Typography variant="h2">
             Sorting
           </Typography>
           <IconButton onClick={() => setOpen(false)} sx={{ display: { sm: "none" } }}>
@@ -121,7 +115,6 @@ const SortDialog = (props: Props) => {
                   {sortQueue.map(({ key, desc }, index) => (
                     <Draggable key={key} draggableId={key} index={index}>
                       {(provided) => {
-                        const sort = sortQueue.find(sq => sq.key === key)?.desc
                         return <Box
                           ref={provided.innerRef}
                           {...provided.draggableProps}
@@ -146,8 +139,8 @@ const SortDialog = (props: Props) => {
                             ))}
                           </TextField>
                           <IconButton onClick={() => changeDesc(key)}>
-                            <NorthEast sx={{ display: sort ? "none" : "" }} />
-                            <SouthEast sx={{ display: sort ? "" : "none" }} />
+                            <NorthEast sx={{ display: desc ? "none" : "" }} />
+                            <SouthEast sx={{ display: desc ? "" : "none" }} />
                           </IconButton>
                           <IconButton onClick={() => toggleSort(key)}>
                             <Close />
