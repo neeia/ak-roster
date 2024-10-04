@@ -11,7 +11,7 @@ const classList = [
   "Medic",
   "Supporter",
   "Specialist",
-]
+];
 
 interface Props {
   value: Set<Value>;
@@ -23,10 +23,16 @@ const ClassFilter = (props: Props) => {
 
   return (
     <>
-      <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
+      <Divider sx={{ mt: 1, mb: 0.5 }} variant="middle" flexItem>
         Class
       </Divider>
-      <Box sx={{ display: "grid", gridTemplateColumns: { xs: "repeat(4, 1fr)", sm: "repeat(8, 1fr)" }, width: "100%" }}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { xs: "repeat(4, 1fr)", sm: "repeat(8, 1fr)" },
+          width: "100%",
+        }}
+      >
         {classList.map((cl, i) => (
           <IconButton
             key={cl}
@@ -41,8 +47,9 @@ const ClassFilter = (props: Props) => {
             />
           </IconButton>
         ))}
-      </Box >
-    </>);
-}
+      </Box>
+    </>
+  );
+};
 
 export default ClassFilter;

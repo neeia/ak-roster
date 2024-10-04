@@ -1,32 +1,38 @@
 import { Box, Button, TextField } from "@mui/material";
 import { FirebaseError } from "firebase/app";
-import { EmailAuthProvider, reauthenticateWithCredential, updateEmail, User } from "firebase/auth";
-import React, {useEffect, useState} from "react";
+import {
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  updateEmail,
+  User,
+} from "firebase/auth";
+import React, { useEffect, useState } from "react";
 import { authErrors } from "../../util/authErrors";
 import PasswordTextField from "../app/PasswordTextField";
-import {AccountData} from "../../types/auth/accountData";
+import { AccountData } from "../../types/auth/accountData";
 import supabase from "../../supabase/supabaseClient";
-import {useSession, useSessionContext, useUser} from "@supabase/auth-helpers-react";
+import {
+  useSession,
+  useSessionContext,
+  useUser,
+} from "@supabase/auth-helpers-react";
 
-interface Props {
-}
+interface Props {}
 
-const UpdateEmail = ((props: Props) => {
-
-  const [currentEmail, setCurrentEmail ] = useState<string | undefined>("")
+const UpdateEmail = (props: Props) => {
+  const [currentEmail, setCurrentEmail] = useState<string | undefined>("");
   const [newEmail, setNewEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  useEffect( () => {
-    const getSession = async () =>
-    {
+  useEffect(() => {
+    const getSession = async () => {
       // refresh session to grab possible new mail
       await supabase.auth.refreshSession();
-      const {data, error} = await supabase.auth.getSession();
+      const { data, error } = await supabase.auth.getSession();
       if (!error) {
         setCurrentEmail(data.session?.user.email);
       }
-    }
+    };
     getSession().then();
   });
 
@@ -36,13 +42,13 @@ const UpdateEmail = ((props: Props) => {
       return;
     }
 
-    setError("Checking...")
-    const {data, error} = await supabase.auth.updateUser({email: newEmail});
+    setError("Checking...");
+    const { data, error } = await supabase.auth.updateUser({ email: newEmail });
     if (error) {
       setError(`Something went wrong: ${error.message}`);
       return;
     }
-    setError("Check your e-mails to confirm the e-mail change.")
+    setError("Check your e-mails to confirm the e-mail change.");
   }
 
   return (
@@ -63,13 +69,18 @@ const UpdateEmail = ((props: Props) => {
         }}
         variant="filled"
       />
-      <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <Button onClick={tryEmail}>
-          Change Email
-        </Button>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Button onClick={tryEmail}>Change Email</Button>
         {error}
       </Box>
-    </>);
-});
+    </>
+  );
+};
 
 export default UpdateEmail;

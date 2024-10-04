@@ -1,6 +1,5 @@
 import { getAuth, User } from "firebase/auth";
 
-
 const getUserStatus = function () {
   return new Promise<User | null>(function (resolve) {
     getAuth().onAuthStateChanged(function (user) {

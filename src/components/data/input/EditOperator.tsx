@@ -2,7 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Operator, Skin } from "types/operator";
 import skinJson from "data/skins.json";
 import sg0 from "data/sg0.json";
-import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import EditRow from "./EditRow";
 import General from "./Select/General";
 import Potential from "./Select/Potential";
@@ -16,7 +25,11 @@ import { Close } from "@mui/icons-material";
 import Skins from "./Select/Skins";
 import Image from "next/image";
 import operatorJson from "data/operators";
-import { changePromotion, defaultOperatorObject, MAX_PROMOTION_BY_RARITY } from "util/changeOperator";
+import {
+  changePromotion,
+  defaultOperatorObject,
+  MAX_PROMOTION_BY_RARITY,
+} from "util/changeOperator";
 
 interface Props {
   op?: Operator;
@@ -28,7 +41,7 @@ interface Props {
 const EditOperator = React.memo((props: Props) => {
   const { op, changeOperator: onChange, open, onClose } = props;
   const theme = useTheme();
-  const fullScreen = !useMediaQuery(theme.breakpoints.up('sm'));
+  const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
   if (!op) return null;
   const opSkins: Skin[] = skinJson[op.op_id as keyof typeof skinJson];
@@ -50,83 +63,127 @@ const EditOperator = React.memo((props: Props) => {
       sx={{
         marginLeft: "8px",
         paddingTop: "12px",
-      }}>
+      }}
+    >
       <Box
         sx={{
           fontSize: {
             xs: "75%",
-            sm: "100%"
-          }
-        }}>
-        <Typography
-          component="div"
-          variant="h2"
-          sx={{ fontSize: "50%", }}
-        >
+            sm: "100%",
+          },
+        }}
+      >
+        <Typography component="div" variant="h2" sx={{ fontSize: "50%" }}>
           {opSplit[1] ?? ""}
         </Typography>
         {opSplit[0]}
       </Box>
     </Typography>
-  )
+  );
 
   const iconWidth = 20;
   const links = (
-    <Box sx={{
-      display: {
-        xs: "none",
-        sm: "flex"
-      },
-      flexDirection: "column"
-    }}>
-      <ExtLink href={`https://aceship.github.io/AN-EN-Tags/akhrchars.html?opname=${opData.name}`} label="ACE" title="Aceship">
-        <Image src={`/img/ext/aceship.png`} width={iconWidth} height={iconWidth} alt="" />
+    <Box
+      sx={{
+        display: {
+          xs: "none",
+          sm: "flex",
+        },
+        flexDirection: "column",
+      }}
+    >
+      <ExtLink
+        href={`https://aceship.github.io/AN-EN-Tags/akhrchars.html?opname=${opData.name}`}
+        label="ACE"
+        title="Aceship"
+      >
+        <Image
+          src={`/img/ext/aceship.png`}
+          width={iconWidth}
+          height={iconWidth}
+          alt=""
+        />
       </ExtLink>
-      <ExtLink href={`https://gamepress.gg/arknights/operator/${opData.name.replace(/( the )|[ !@#$%^&*(),.]/g, "-").replace("'", "")}`} label="GP" title="Gamepress">
-        <Image src={`/img/ext/gp.png`} width={iconWidth} height={iconWidth} alt="" />
+      <ExtLink
+        href={`https://gamepress.gg/arknights/operator/${opData.name
+          .replace(/( the )|[ !@#$%^&*(),.]/g, "-")
+          .replace("'", "")}`}
+        label="GP"
+        title="Gamepress"
+      >
+        <Image
+          src={`/img/ext/gp.png`}
+          width={iconWidth}
+          height={iconWidth}
+          alt=""
+        />
       </ExtLink>
-      <ExtLink href={`http://prts.wiki/w/${encodeURIComponent(opData.cnName)}`} label="PRTS" title="PRTS Wiki">
-        <Image src={`/img/ext/prts.png`} width={iconWidth} height={iconWidth} alt="" />
+      <ExtLink
+        href={`http://prts.wiki/w/${encodeURIComponent(opData.cnName)}`}
+        label="PRTS"
+        title="PRTS Wiki"
+      >
+        <Image
+          src={`/img/ext/prts.png`}
+          width={iconWidth}
+          height={iconWidth}
+          alt=""
+        />
       </ExtLink>
-      {op.op_id in sg0
-        ? <ExtLink href={`https://sanitygone.help/operators/${opData.name.toLowerCase().replace(/ /g, "-").replace("'", "")}`} label="S;G" title="Sanity;Gone">
-          <Image src={`/img/ext/sg0.png`} width={iconWidth} height={iconWidth} alt="" />
+      {op.op_id in sg0 ? (
+        <ExtLink
+          href={`https://sanitygone.help/operators/${opData.name
+            .toLowerCase()
+            .replace(/ /g, "-")
+            .replace("'", "")}`}
+          label="S;G"
+          title="Sanity;Gone"
+        >
+          <Image
+            src={`/img/ext/sg0.png`}
+            width={iconWidth}
+            height={iconWidth}
+            alt=""
+          />
         </ExtLink>
-        : null
-      }
+      ) : null}
     </Box>
-  )
+  );
 
   const editProps = { op: op, onChange };
   return (
-    <Dialog
-      open={open}
-      onClose={onClose}
-      fullScreen={fullScreen}
-    >
-      <DialogTitle variant="h2" sx={{
-        alignSelf: "start",
-        textAlign: "left",
-        width: "100%",
-        display: "grid",
-        gridTemplateColumns: "auto 1fr auto",
-        alignItems: "center",
-        paddingBottom: "12px",
-      }}>
+    <Dialog open={open} onClose={onClose} fullScreen={fullScreen}>
+      <DialogTitle
+        variant="h2"
+        sx={{
+          alignSelf: "start",
+          textAlign: "left",
+          width: "100%",
+          display: "grid",
+          gridTemplateColumns: "auto 1fr auto",
+          alignItems: "center",
+          paddingBottom: "12px",
+        }}
+      >
         <Box
           sx={{
             height: {
               xs: "4rem",
-              sm: "6rem"
+              sm: "6rem",
             },
             width: {
               xs: "4rem",
-              sm: "6rem"
+              sm: "6rem",
             },
             position: "relative",
           }}
         >
-          <Image src={imgUrl} fill sizes="(max-width: 600px) 64px, 96px" alt="" />
+          <Image
+            src={imgUrl}
+            fill
+            sizes="(max-width: 600px) 64px, 96px"
+            alt=""
+          />
         </Box>
         {name}
         {links}
@@ -134,82 +191,97 @@ const EditOperator = React.memo((props: Props) => {
           <Close />
         </IconButton>
       </DialogTitle>
-      <DialogContent sx={{
-        "& .MuiButtonBase-root": {
-          backgroundColor: "info.main",
-          boxShadow: 1,
-          transition: "background-color 0.1s",
-          "&:hover": {
-            backgroundColor: "rgba(255, 212, 64, 0.1)",
-          }
-        },
-        "& .inactive": {
-          opacity: 0.75,
-        },
-        "& .active": {
-          opacity: 1,
-          boxShadow: 0,
-          borderBottomWidth: "0.25rem",
-          borderBottomColor: "primary.main",
-          borderBottomStyle: "solid",
-          backgroundColor: "info.light",
-        },
-        "& .Mui-disabled": {
-          opacity: 0.25,
-          boxShadow: 0,
-        },
-      }}>
+      <DialogContent
+        sx={{
+          "& .MuiButtonBase-root": {
+            backgroundColor: "info.main",
+            boxShadow: 1,
+            transition: "background-color 0.1s",
+            "&:hover": {
+              backgroundColor: "rgba(255, 212, 64, 0.1)",
+            },
+          },
+          "& .inactive": {
+            opacity: 0.75,
+          },
+          "& .active": {
+            opacity: 1,
+            boxShadow: 0,
+            borderBottomWidth: "0.25rem",
+            borderBottomColor: "primary.main",
+            borderBottomStyle: "solid",
+            backgroundColor: "info.light",
+          },
+          "& .Mui-disabled": {
+            opacity: 0.25,
+            boxShadow: 0,
+          },
+        }}
+      >
         <EditRow
           left={{
             title: "General",
-            body: <General {...editProps} />
+            body: <General {...editProps} />,
           }}
           right={{
             title: "Potential",
-            body: <Potential {...editProps} />
+            body: <Potential {...editProps} />,
           }}
         />
         <EditRow
           left={{
             title: "Promotion",
-            body: <Promotion
-              value={op.elite}
-              max={MAX_PROMOTION_BY_RARITY[opData.rarity]}
-              onChange={(i: number) => onChange(changePromotion(op, i))}
-              disabled={op.potential > 0}
-            />
+            body: (
+              <Promotion
+                value={op.elite}
+                max={MAX_PROMOTION_BY_RARITY[opData.rarity]}
+                onChange={(i: number) => onChange(changePromotion(op, i))}
+                disabled={op.potential > 0}
+              />
+            ),
           }}
           right={{
             title: "Level",
-            body: <Level {...editProps} />
+            body: <Level {...editProps} />,
           }}
         />
-        {opData?.skillData?.length
-          ? <EditRow
+        {opData?.skillData?.length ? (
+          <EditRow
             left={{
               title: "Skill Rank",
-              body: <SkillLevel {...editProps} />
+              body: <SkillLevel {...editProps} />,
             }}
-            right={opData.rarity > 3 ? {
-              title: "Masteries",
-              body: <Mastery {...editProps} />
-            } : undefined}
+            right={
+              opData.rarity > 3
+                ? {
+                    title: "Masteries",
+                    body: <Mastery {...editProps} />,
+                  }
+                : undefined
+            }
           />
-          : null
-        }
+        ) : null}
         <EditRow
-          left={opSkins && opSkins.length > 1 ? {
-            title: "Outfits",
-            body: <Skins {...editProps} />
-          } : undefined}
-          right={opData?.moduleData?.length ? {
-            title: "Modules",
-            body: <Module {...editProps} />
-          } : undefined}
+          left={
+            opSkins && opSkins.length > 1
+              ? {
+                  title: "Outfits",
+                  body: <Skins {...editProps} />,
+                }
+              : undefined
+          }
+          right={
+            opData?.moduleData?.length
+              ? {
+                  title: "Modules",
+                  body: <Module {...editProps} />,
+                }
+              : undefined
+          }
         />
       </DialogContent>
     </Dialog>
   );
 });
-EditOperator.displayName = "EditOperator"
+EditOperator.displayName = "EditOperator";
 export default EditOperator;

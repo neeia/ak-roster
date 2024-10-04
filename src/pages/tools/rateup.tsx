@@ -155,8 +155,7 @@ const Rateup: NextPage = () => {
       } else {
         _setPity("");
       }
-    }
-    else if (e.target.name === "pulls") {
+    } else if (e.target.name === "pulls") {
       toInt = minMax(0, toInt, MAX_PULL_COUNT);
       if (toInt >= 0 && toInt <= MAX_PULL_COUNT) {
         setPulls(toInt);
@@ -196,8 +195,8 @@ const Rateup: NextPage = () => {
                     onFocus={handleFocus}
                     onChange={handleTextInputChage}
                     inputProps={{
-                      inputMode: 'numeric',
-                      pattern: '[0-9]*'
+                      inputMode: "numeric",
+                      pattern: "[0-9]*",
                     }}
                   />
                 </Grid>
@@ -215,8 +214,8 @@ const Rateup: NextPage = () => {
                     onFocus={handleFocus}
                     onChange={handleTextInputChage}
                     inputProps={{
-                      inputMode: 'numeric',
-                      pattern: '[0-9]*'
+                      inputMode: "numeric",
+                      pattern: "[0-9]*",
                     }}
                   />
                 </Grid>
@@ -234,7 +233,9 @@ const Rateup: NextPage = () => {
                       }}
                       onChange={handleSelectChange}
                     >
-                      <option value="event">Event (one rate-up 6⭐️, 50%)</option>
+                      <option value="event">
+                        Event (one rate-up 6⭐️, 50%)
+                      </option>
                       <option value="standard">
                         Standard (two rate-up 6⭐️, each 25%)
                       </option>

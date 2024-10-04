@@ -7,11 +7,14 @@ export default async function (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<Account | undefined> {
-  const { username, profile } = req.query as { username: string, profile: string };
+  const { username, profile } = req.query as {
+    username: string;
+    profile: string;
+  };
   const { data, error: fetchError } = await supabase
     .from("ak_accounts")
     .select("user_id, account_name")
-    .match({ username, account_name: profile })
+    .match({ username, account_name: profile });
   if (fetchError) {
     // Unknown Supabase error?
     res.status(500).json(fetchError);

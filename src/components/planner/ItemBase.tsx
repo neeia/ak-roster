@@ -43,7 +43,7 @@ const ItemBase = React.forwardRef<
         alt={item.name}
         width={size}
         height={size}
-        style={{objectFit: "contain"}}
+        style={{ objectFit: "contain" }}
       />
       {children}
     </Box>

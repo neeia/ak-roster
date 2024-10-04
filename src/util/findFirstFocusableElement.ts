@@ -1,6 +1,6 @@
 export default function findFirstFocusableElement(container: HTMLElement) {
   return Array.from(container.getElementsByTagName("*")).find(isFocusable);
-};
+}
 
 const isFocusable = (item: any) => {
   if (item.tabIndex < 0) {

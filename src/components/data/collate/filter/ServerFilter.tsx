@@ -12,7 +12,7 @@ const ServerFilter = (props: Props) => {
   return (
     <Box display="flex" flexDirection="column" width="100%">
       <Box>
-        <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
+        <Divider sx={{ mt: 1, mb: 0.5 }} variant="middle" flexItem>
           Server
         </Divider>
       </Box>
@@ -30,7 +30,8 @@ const ServerFilter = (props: Props) => {
           CN
         </IconButton>
       </Box>
-    </Box>);
-}
+    </Box>
+  );
+};
 
 export default ServerFilter;

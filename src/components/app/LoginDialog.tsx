@@ -1,5 +1,17 @@
 import React, { useState } from "react";
-import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Divider,
+  IconButton,
+  TextField,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { CloseOutlined } from "@mui/icons-material";
 import PasswordTextField from "./PasswordTextField";
 import ResetPassword from "./ResetPassword";
@@ -11,17 +23,19 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const LoginForm = ((props: Props) => {
+const LoginForm = (props: Props) => {
   const { open, onClose, children } = props;
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [resetOpen, setResetOpen] = useState<boolean>(false);
 
-  async function handleLogin(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
+  async function handleLogin(
+    e: React.MouseEvent<HTMLButtonElement>
+  ): Promise<void> {
     e.preventDefault();
     if (!email) {
       setError("No email given.");
@@ -31,9 +45,11 @@ const LoginForm = ((props: Props) => {
       setError("No password given.");
       return;
     }
-    const {data, error} = await supabase.auth.signInWithPassword({email: email.trim(), password: password});
-    if (error != null)
-    {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password: password,
+    });
+    if (error != null) {
       setError(error.message);
       return;
     }
@@ -49,11 +65,13 @@ const LoginForm = ((props: Props) => {
       fullWidth
       maxWidth="sm"
     >
-      <DialogTitle sx={{
-        paddingBottom: "12px",
-        display: "flex",
-        justifyContent: "space-between"
-      }}>
+      <DialogTitle
+        sx={{
+          paddingBottom: "12px",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <Typography variant="h2" component="span">
           Log In
         </Typography>
@@ -70,8 +88,8 @@ const LoginForm = ((props: Props) => {
             gap: "12px 6px",
             "& .MuiFormHelperText-root": {
               mt: 1,
-              lineHeight: 1
-            }
+              lineHeight: 1,
+            },
           }}
         >
           <TextField
@@ -93,22 +111,35 @@ const LoginForm = ((props: Props) => {
             ariaId="logn-pass"
           />
           <Divider />
-          <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
             <Button type="submit" onClick={handleLogin}>
               Log In
             </Button>
             {error}
           </Box>
-          <Box sx={{ display: "flex", flexDirection: "column", }}>
-            <Button onClick={() => setResetOpen(true)} sx={{ color: "text.secondary" }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              onClick={() => setResetOpen(true)}
+              sx={{ color: "text.secondary" }}
+            >
               Forgot Password?
             </Button>
-            <ResetPassword open={resetOpen} onClose={() => setResetOpen(false)} email={email} />
+            <ResetPassword
+              open={resetOpen}
+              onClose={() => setResetOpen(false)}
+              email={email}
+            />
             {children}
           </Box>
         </Box>
       </DialogContent>
     </Dialog>
   );
-});
+};
 export default LoginForm;

@@ -1,8 +1,15 @@
 import { ContentPasteOutlined, InventoryOutlined } from "@mui/icons-material";
-import { Box, Button, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import UpdatePrivacy from "./UpdatePrivacy";
-import {AccountData} from "../../types/auth/accountData";
+import { AccountData } from "../../types/auth/accountData";
 import { useDisplayNameSetMutation } from "../../store/extendAccount";
 import supabase from "../../supabase/supabaseClient";
 
@@ -11,21 +18,24 @@ function isAlphaNumeric(str: string) {
 
   for (i = 0, len = str.length; i < len; i++) {
     code = str.charCodeAt(i);
-    if (!(code > 47 && code < 58) && // numeric (0-9)
+    if (
+      !(code > 47 && code < 58) && // numeric (0-9)
       !(code > 64 && code < 91) && // upper alpha (A-Z)
       !(code > 96 && code < 123) && // lower alpha (a-z)
-      !(code == 32)) { // space
+      !(code == 32)
+    ) {
+      // space
       return false;
     }
   }
   return true;
-};
+}
 
 interface Props {
   user: AccountData;
 }
 
-const UpdateUsername = ((props: Props) => {
+const UpdateUsername = (props: Props) => {
   const { user } = props;
 
   const [newDisplayName, setNewDisplayName] = useState<string>("");
@@ -34,7 +44,6 @@ const UpdateUsername = ((props: Props) => {
 
   const [setDisplayName, result] = useDisplayNameSetMutation();
   async function tryUsername() {
-
     let usernameAvailable = false;
     if (!newDisplayName) {
       setErrorUsername("No username found.");
@@ -52,39 +61,39 @@ const UpdateUsername = ((props: Props) => {
     setErrorUsername("Checking...");
 
     if (newDisplayName.toLowerCase() === user.display_name?.toLowerCase()) {
-      usernameAvailable = true
-    }
-    else
-    {
+      usernameAvailable = true;
+    } else {
       const username = newDisplayName.toLowerCase().replace(/\s/g, "");
-      const {count, error} = await supabase
+      const { count, error } = await supabase
         .from("krooster_accounts")
-        .select('*', { count: "exact", head: true })
+        .select("*", { count: "exact", head: true })
         .ilike("username", username);
       usernameAvailable = count == 0;
     }
 
-    if (!usernameAvailable)
-    {
-      setErrorUsername("That username is taken.")
-    }
-    else
-    {
+    if (!usernameAvailable) {
+      setErrorUsername("That username is taken.");
+    } else {
       setErrorUsername("Saving...");
       setDisplayName(newDisplayName);
-      if (result.isError)
-      {
+      if (result.isError) {
         setErrorUsername("An unexpected error occurred.");
         return;
       }
-        setErrorUsername("Saved.");
+      setErrorUsername("Saved.");
     }
-  };
+  }
 
   return (
     <>
       Update Username
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <TextField
           label="Current Username"
           value={user.display_name ?? "No Username Set"}
@@ -95,7 +104,9 @@ const UpdateUsername = ((props: Props) => {
       </Box>
       <TextField
         label="Share Link"
-        value={user.username ? `https://www.krooster.com/u/${user.username}` : "---"}
+        value={
+          user.username ? `https://www.krooster.com/u/${user.username}` : "---"
+        }
         variant="standard"
         disabled
         InputProps={{
@@ -106,15 +117,21 @@ const UpdateUsername = ((props: Props) => {
               </Typography>
               <IconButton
                 aria-labelledby="copy-label"
-                onClick={() => { setCopiedLink(true); navigator.clipboard.writeText(`https://krooster.com/u/${user.display_name}`); }}
+                onClick={() => {
+                  setCopiedLink(true);
+                  navigator.clipboard.writeText(
+                    `https://krooster.com/u/${user.display_name}`
+                  );
+                }}
               >
-                {copyLink
-                  ? <InventoryOutlined height="1rem" />
-                  : <ContentPasteOutlined height="1rem" />
-                }
+                {copyLink ? (
+                  <InventoryOutlined height="1rem" />
+                ) : (
+                  <ContentPasteOutlined height="1rem" />
+                )}
               </IconButton>
             </InputAdornment>
-          )
+          ),
         }}
       />
       <TextField
@@ -126,13 +143,23 @@ const UpdateUsername = ((props: Props) => {
         }}
         variant="filled"
       />
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Button onClick={tryUsername} disabled={newDisplayName === user.display_name}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Button
+          onClick={tryUsername}
+          disabled={newDisplayName === user.display_name}
+        >
           Change Name
         </Button>
         {errorUsername}
       </Box>
-    </>);
-});
+    </>
+  );
+};
 
 export default UpdateUsername;

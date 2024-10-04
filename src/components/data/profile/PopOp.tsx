@@ -1,6 +1,16 @@
 import React from "react";
-import { Operator, OperatorData } from '../../types/operator';
-import { Box, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Operator, OperatorData } from "../../types/operator";
+import {
+  Box,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { CloseOutlined } from "@mui/icons-material";
 import OperatorSelector from "../input/OperatorSelector";
 
@@ -18,9 +28,20 @@ interface Props {
 }
 
 const PopOp = (props: Props) => {
-  const { operators, open, onClose, title, onClick, filter, sort, toggleGroup, sticky, children } = props;
+  const {
+    operators,
+    open,
+    onClose,
+    title,
+    onClick,
+    filter,
+    sort,
+    toggleGroup,
+    sticky,
+    children,
+  } = props;
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <>
@@ -31,15 +52,17 @@ const PopOp = (props: Props) => {
         fullWidth
         maxWidth="md"
       >
-        <DialogTitle sx={{
-          paddingBottom: "12px",
-          display: "flex",
-          justifyContent: "space-between",
-          boxShadow: {
-            xs: 1,
-            md: 0
-          },
-        }}>
+        <DialogTitle
+          sx={{
+            paddingBottom: "12px",
+            display: "flex",
+            justifyContent: "space-between",
+            boxShadow: {
+              xs: 1,
+              md: 0,
+            },
+          }}
+        >
           <Typography variant="h2" component="span">
             {title}
           </Typography>
@@ -50,7 +73,7 @@ const PopOp = (props: Props) => {
         <DialogContent
           sx={{
             p: 1,
-            paddingTop: "0.5rem !important"
+            paddingTop: "0.5rem !important",
           }}
         >
           <Box
@@ -78,14 +101,14 @@ const PopOp = (props: Props) => {
                 height: "min-content",
               },
               "& .untoggled": {
-                opacity: 0.5
+                opacity: 0.5,
               },
-              "& .toggled": {
-              },
+              "& .toggled": {},
               "& .hidden": {
                 display: "none",
               },
-            }}>
+            }}
+          >
             <OperatorSelector
               operators={operators}
               onClick={(opId: string) => {
@@ -98,14 +121,9 @@ const PopOp = (props: Props) => {
             />
           </Box>
         </DialogContent>
-        {children
-          ? <DialogActions>
-            {children}
-          </DialogActions>
-          : null
-        }
+        {children ? <DialogActions>{children}</DialogActions> : null}
       </Dialog>
     </>
   );
-}
+};
 export default PopOp;

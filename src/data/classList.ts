@@ -7,5 +7,5 @@ const classList = [
   "Medic",
   "Supporter",
   "Specialist",
-]
+];
 export default classList;

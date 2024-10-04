@@ -8,11 +8,11 @@ export const opSkillSlotSchema = {
   properties: {
     opID: { type: "string" },
     opSkll: { type: "number" },
-    opModule: { type: "number" }
+    opModule: { type: "number" },
   },
   required: ["opID", "opSkill"],
-  additionalProperties: false
-}
+  additionalProperties: false,
+};
 
 export interface Team {
   name: string;
@@ -25,12 +25,12 @@ const teamSchema = {
     name: { type: "string" },
     ops: {
       type: "array",
-      items: opSkillSlotSchema
-    }
+      items: opSkillSlotSchema,
+    },
   },
   required: ["name", "ops"],
-  additionalProperties: false
-}
+  additionalProperties: false,
+};
 
 export interface FriendCode {
   username: string;
@@ -58,25 +58,25 @@ export const profileSchema = {
         username: { type: "string" },
         tag: { type: "string" },
         required: ["username"],
-        additionalProperties: false
-      }
+        additionalProperties: false,
+      },
     },
     server: { type: "string" },
     assistant: { type: "string" },
     supports: {
       type: "array",
-      items: opSkillSlotSchema
+      items: opSkillSlotSchema,
     },
     level: { type: "number" },
     onboard: { type: "date" },
     teams: {
       type: "array",
-      items: teamSchema
-    }
+      items: teamSchema,
+    },
   },
   required: [],
-  additionalProperties: false
-}
+  additionalProperties: false,
+};
 
 export const servers = ["EN", "官服", "B服", "JP", "KR", "TW"];
 

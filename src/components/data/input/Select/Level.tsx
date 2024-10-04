@@ -1,7 +1,12 @@
 import React, { memo, useContext } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import { minMax } from "util/changeOperator";
-import { KeyboardArrowDownSharp, KeyboardArrowUpSharp, KeyboardDoubleArrowLeftSharp, KeyboardDoubleArrowRightSharp } from "@mui/icons-material";
+import {
+  KeyboardArrowDownSharp,
+  KeyboardArrowUpSharp,
+  KeyboardDoubleArrowLeftSharp,
+  KeyboardDoubleArrowRightSharp,
+} from "@mui/icons-material";
 import { DisabledContext } from "./SelectGroup";
 
 interface Props {
@@ -12,22 +17,25 @@ interface Props {
   onChange: (level: number) => void;
 }
 const Level = memo((props: Props) => {
-  const { value: level = 1, min: minLevel = 1, max: maxLevel = 30, disabled: _disabled = false, onChange } = props;
-  
+  const {
+    value: level = 1,
+    min: minLevel = 1,
+    max: maxLevel = 30,
+    disabled: _disabled = false,
+    onChange,
+  } = props;
+
   const disabled = useContext(DisabledContext) || _disabled;
 
   const [levelField, setLevelField] = React.useState<string>(level.toString());
 
-
   function updateLevel(lvl: string | number) {
     let parsedLevel = null;
     if (typeof lvl === "number") {
-      parsedLevel = minMax(minLevel, lvl, maxLevel)
-    }
-    else if (parseInt(lvl, 10)) {
+      parsedLevel = minMax(minLevel, lvl, maxLevel);
+    } else if (parseInt(lvl, 10)) {
       parsedLevel = minMax(minLevel, parseInt(lvl, 10), maxLevel);
-    }
-    else {
+    } else {
       setLevelField("");
       return;
     }
@@ -61,7 +69,8 @@ const Level = memo((props: Props) => {
     }
   }
 
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => e.target.select();
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) =>
+    e.target.select();
 
   const disableDown = disabled || level <= minLevel;
 
@@ -88,11 +97,19 @@ const Level = memo((props: Props) => {
         }}
       >
         <div />
-        <Button aria-keyshortcuts="ArrowLeft" onClick={() => updateLevel(level - 10)} disabled={disableDown}>
+        <Button
+          aria-keyshortcuts="ArrowLeft"
+          onClick={() => updateLevel(level - 10)}
+          disabled={disableDown}
+        >
           <KeyboardDoubleArrowLeftSharp />
         </Button>
         <div />
-        <Button aria-keyshortcuts="ArrowUp" onClick={() => updateLevel(level + 1)} disabled={disableUp}>
+        <Button
+          aria-keyshortcuts="ArrowUp"
+          onClick={() => updateLevel(level + 1)}
+          disabled={disableUp}
+        >
           <KeyboardArrowUpSharp />
         </Button>
         <TextField
@@ -123,24 +140,44 @@ const Level = memo((props: Props) => {
             },
           }}
         />
-        <Button aria-keyshortcuts="ArrowLeft" onClick={() => updateLevel(level - 1)} disabled={disableDown}>
+        <Button
+          aria-keyshortcuts="ArrowLeft"
+          onClick={() => updateLevel(level - 1)}
+          disabled={disableDown}
+        >
           <KeyboardArrowDownSharp />
         </Button>
         <div />
-        <Button aria-keyshortcuts="ArrowRight" onClick={() => updateLevel(level === 1 ? 10 : level + 10)} disabled={disableUp}>
+        <Button
+          aria-keyshortcuts="ArrowRight"
+          onClick={() => updateLevel(level === 1 ? 10 : level + 10)}
+          disabled={disableUp}
+        >
           <KeyboardDoubleArrowRightSharp />
         </Button>
         <div />
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column-reverse", gap: 1 }}>
-        <Button sx={{ height: "100%" }} aria-keyshortcuts="End" title="Shortcut: (End)" onClick={() => updateLevel(minLevel)} disabled={disableDown}>
+        <Button
+          sx={{ height: "100%" }}
+          aria-keyshortcuts="End"
+          title="Shortcut: (End)"
+          onClick={() => updateLevel(minLevel)}
+          disabled={disableDown}
+        >
           Min
         </Button>
-        <Button sx={{ height: "100%" }} aria-keyshortcuts="Home" title="Shortcut: (Home)" onClick={() => updateLevel(maxLevel)} disabled={disableUp}>
+        <Button
+          sx={{ height: "100%" }}
+          aria-keyshortcuts="Home"
+          title="Shortcut: (Home)"
+          onClick={() => updateLevel(maxLevel)}
+          disabled={disableUp}
+        >
           Max
         </Button>
       </Box>
     </Box>
   );
-})
+});
 export default Level;

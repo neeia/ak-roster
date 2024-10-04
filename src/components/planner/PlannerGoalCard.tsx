@@ -1,6 +1,15 @@
 import DeleteGoalIcon from "@mui/icons-material/CloseRounded";
 import CompleteGoalIcon from "@mui/icons-material/Upload";
-import { Box, Button, ButtonGroup, Paper, styled, Tooltip, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Paper,
+  styled,
+  Tooltip,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import React, { memo, useCallback } from "react";
 
 import operatorsJson from "data/operators.json";
@@ -24,7 +33,7 @@ interface Props {
   onGoalCompleted: (goal: PlannerGoal) => void;
 }
 
-const PlannerGoalCard = memo((props : Props) => {
+const PlannerGoalCard = memo((props: Props) => {
   const { goal, onGoalDeleted, onGoalCompleted, ...rest } = props;
   const theme = useTheme();
   const isXSScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -42,11 +51,17 @@ const PlannerGoalCard = memo((props : Props) => {
       case OperatorGoalCategory.SkillLevel:
         return `${isXLScreen ? "Skill Level" : "Sk.Lv."} ${goal.skillLevel}`;
       case OperatorGoalCategory.Mastery: {
-        const skillNumber = operator.skillData!.findIndex((sk) => sk.skillId === goal.skillId) + 1;
-        return isXLScreen ? `Skill ${skillNumber} Mastery ${goal.masteryLevel}` : `S${skillNumber} M${goal.masteryLevel}`;
+        const skillNumber =
+          operator.skillData!.findIndex((sk) => sk.skillId === goal.skillId) +
+          1;
+        return isXLScreen
+          ? `Skill ${skillNumber} Mastery ${goal.masteryLevel}`
+          : `S${skillNumber} M${goal.masteryLevel}`;
       }
       case OperatorGoalCategory.Module: {
-        const mod = operator.moduleData!.find((m) => m.moduleId === goal.moduleId)!;
+        const mod = operator.moduleData!.find(
+          (m) => m.moduleId === goal.moduleId
+        )!;
         return `${mod.typeName} (${mod.moduleName}) Stage ${goal.moduleLevel}`;
       }
     }
@@ -62,8 +77,10 @@ const PlannerGoalCard = memo((props : Props) => {
       sx={{
         borderTop: "solid 2px",
         borderColor: (theme) => theme.palette.background.light,
-        "&:last-of-type": { borderBottom: "solid 2px",
-          borderColor: (theme) => theme.palette.background.light,},
+        "&:last-of-type": {
+          borderBottom: "solid 2px",
+          borderColor: (theme) => theme.palette.background.light,
+        },
         display: "grid",
         gridTemplateColumns: "1fr auto",
         borderRadius: "0px",
@@ -106,10 +123,7 @@ const PlannerGoalCard = memo((props : Props) => {
           {!isXSScreen && <OperatorGoalIconography goal={goal} />}
         </Box>
 
-        <Box
-          gridArea="goalname">
-          {goalName()}
-        </Box>
+        <Box gridArea="goalname">{goalName()}</Box>
 
         <Box gridArea="mats" display="flex" justifyContent="space-evenly">
           {ingredients.map((ingredient) => (
@@ -131,12 +145,7 @@ const PlannerGoalCard = memo((props : Props) => {
           gridTemplateRows: "10fr 9fr",
         }}
       >
-        <Tooltip
-          arrow
-          describeChild
-          title="Complete Goal"
-          placement="left"
-        >
+        <Tooltip arrow describeChild title="Complete Goal" placement="left">
           <GoalCardButton
             aria-label={`Complete goal: ${goalLabel}`}
             onClick={() => onGoalCompleted(goal)}

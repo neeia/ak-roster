@@ -11,33 +11,33 @@ interface Props {
 const EditWrapper = React.memo((props: Props) => {
   const { editMode, children, onClick } = props;
 
-
   return (
     <Box sx={{ display: "grid", "& > *": { gridArea: "1 / 1" } }}>
-      <Button sx={{
-        display: editMode ? "" : "none",
-        pointerEvents: editMode ? "" : "none",
-        justifySelf: "center",
-        alignSelf: "center",
-        borderRadius: "4px",
-        width: "100%",
-        height: "100%",
-        zIndex: 10,
-        opacity: 0,
-        position: "relative",
-        ":hover": {
-          opacity: 1,
-        },
-        ":before": {
-          position: "absolute",
-          content: '""',
+      <Button
+        sx={{
+          display: editMode ? "" : "none",
+          pointerEvents: editMode ? "" : "none",
+          justifySelf: "center",
+          alignSelf: "center",
+          borderRadius: "4px",
           width: "100%",
           height: "100%",
-          opacity: 0.8,
-          backgroundColor: "background.default",
-          zIndex: -1,
-        }
-      }}
+          zIndex: 10,
+          opacity: 0,
+          position: "relative",
+          ":hover": {
+            opacity: 1,
+          },
+          ":before": {
+            position: "absolute",
+            content: '""',
+            width: "100%",
+            height: "100%",
+            opacity: 0.8,
+            backgroundColor: "background.default",
+            zIndex: -1,
+          },
+        }}
         disabled={!editMode}
         onClick={onClick}
       >

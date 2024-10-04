@@ -230,27 +230,26 @@ const MaterialsNeeded_Old: React.FC = React.memo(() => {
   delete materialsNeeded[LMD_ITEM_ID];
 
   const allItems: [string, number][] = Object.values(itemsJson)
-    .filter(item => !(EXCLUDE.includes(item.id)))
-    .map(item => [item.id, materialsNeeded[item.id] ?? 0]);
+    .filter((item) => !EXCLUDE.includes(item.id))
+    .map((item) => [item.id, materialsNeeded[item.id] ?? 0]);
 
-  const sortedMaterialsNeeded =
-    (showInactiveMaterials ? allItems : Object.entries(materialsNeeded)).sort(
-      ([itemIdA, neededA], [itemIdB, neededB]) => {
-        const itemA = itemsJson[itemIdA as keyof typeof itemsJson];
-        const itemB = itemsJson[itemIdB as keyof typeof itemsJson];
-        const compareBySortId = itemA.sortId - itemB.sortId;
-        if (sortCompletedToBottom) {
-          return (
-            (neededA && neededA <= stock[itemIdA] ? 1 : 0) -
-            (neededB && neededB <= stock[itemIdB] ? 1 : 0) ||
-            (canCompleteByCrafting[itemIdA] ? 1 : 0) -
-            (canCompleteByCrafting[itemIdB] ? 1 : 0) ||
-            compareBySortId
-          );
-        }
-        return compareBySortId;
-      }
-    );
+  const sortedMaterialsNeeded = (
+    showInactiveMaterials ? allItems : Object.entries(materialsNeeded)
+  ).sort(([itemIdA, neededA], [itemIdB, neededB]) => {
+    const itemA = itemsJson[itemIdA as keyof typeof itemsJson];
+    const itemB = itemsJson[itemIdB as keyof typeof itemsJson];
+    const compareBySortId = itemA.sortId - itemB.sortId;
+    if (sortCompletedToBottom) {
+      return (
+        (neededA && neededA <= stock[itemIdA] ? 1 : 0) -
+          (neededB && neededB <= stock[itemIdB] ? 1 : 0) ||
+        (canCompleteByCrafting[itemIdA] ? 1 : 0) -
+          (canCompleteByCrafting[itemIdB] ? 1 : 0) ||
+        compareBySortId
+      );
+    }
+    return compareBySortId;
+  });
 
   return (
     <Paper component="section" sx={{ p: 2 }}>

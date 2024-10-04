@@ -1,12 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { OperatorSkillSlot } from 'types/doctor';
-import supabase from 'util/api/db';
-import fetchPid from 'util/api/fetchAccount';
+import type { NextApiRequest, NextApiResponse } from "next";
+import { OperatorSkillSlot } from "types/doctor";
+import supabase from "util/api/db";
+import fetchPid from "util/api/fetchAccount";
 
-export default async function (
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { username } = req.query as { username: string };
   const { data, error: fetchError } = await fetchPid(username);
   if (fetchError) {
@@ -23,17 +20,15 @@ export default async function (
 
   switch (req.method) {
     case "GET":
-      GET(req, res, pid)
+      GET(req, res, pid);
       break;
     default:
       res.status(405);
   }
-
 }
 
 // GETs the specified user's supports
 async function GET(req: NextApiRequest, res: NextApiResponse, pid: string) {
-
   // Fetch profile
   const { data, error } = await supabase
     .from("supports")
@@ -46,14 +41,15 @@ async function GET(req: NextApiRequest, res: NextApiResponse, pid: string) {
   }
 
   const supports: (OperatorSkillSlot | null)[] = [null, null, null];
-  data?.forEach(support => {
+  data?.forEach((support) => {
     supports[support.slot] = {
       opID: support.op_id,
       opSkill: support.skill,
-      opModule: support.module ?? undefined
-    }
-  })
+      opModule: support.module ?? undefined,
+    };
+  });
 
-  if (supports.length === 0) res.status(204).json({ message: "No supports found", data: [] });
+  if (supports.length === 0)
+    res.status(204).json({ message: "No supports found", data: [] });
   else res.status(200).json({ message: "Successful", data: supports });
 }

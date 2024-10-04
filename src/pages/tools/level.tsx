@@ -1,15 +1,13 @@
-import {
-  Box,
-  Container,
-  SxProps,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Container, SxProps, TextField, Typography } from "@mui/material";
 import { NextPage } from "next";
 import Image from "next/image";
 import { memo, useState } from "react";
 
-import { COST_BY_RARITY, MAX_LEVEL_BY_RARITY, minMax } from "util/changeOperator";
+import {
+  COST_BY_RARITY,
+  MAX_LEVEL_BY_RARITY,
+  minMax,
+} from "util/changeOperator";
 import Layout from "components/Layout";
 import Promotion from "components/data/input/Select/Promotion";
 import Board from "components/base/Board";
@@ -34,18 +32,20 @@ const levelingCost = (
     .map((_, i) => {
       const elite = startingElite + i;
       const eliteStartingLevel = elite === startingElite ? startingLevel : 1;
-      const eliteTargetLevel = elite === targetElite
-        ? targetLevel
-        : MAX_LEVEL_BY_RARITY[rarity][elite];
+      const eliteTargetLevel =
+        elite === targetElite
+          ? targetLevel
+          : MAX_LEVEL_BY_RARITY[rarity][elite];
       const exp = COST_BY_RARITY.expCostByElite[elite]
         .slice(eliteStartingLevel - 1, eliteTargetLevel - 1)
         .reduce((a, b) => a + b, 0);
       const levelingLmd = COST_BY_RARITY.lmdCostByElite[elite]
         .slice(eliteStartingLevel - 1, eliteTargetLevel - 1)
         .reduce((a, b) => a + b, 0);
-      const eliteLmd = elite === startingElite
-        ? 0
-        : COST_BY_RARITY.eliteLmdCost[rarity][elite - 1];
+      const eliteLmd =
+        elite === startingElite
+          ? 0
+          : COST_BY_RARITY.eliteLmdCost[rarity][elite - 1];
       return {
         exp,
         lmd: levelingLmd + eliteLmd,
@@ -165,9 +165,8 @@ const Level: NextPage = () => {
     let toInt = parseInt(e.target.value as string, 10);
     if (isNaN(toInt)) {
       _setStartingLevel("");
-    }
-    else {
-      toInt = minMax(1, parseInt(e.target.value, 10), maxStartingLevel)
+    } else {
+      toInt = minMax(1, parseInt(e.target.value, 10), maxStartingLevel);
       setStartingLevel(toInt);
       _setStartingLevel(toInt.toString());
     }
@@ -178,9 +177,8 @@ const Level: NextPage = () => {
     let toInt = parseInt(e.target.value as string, 10);
     if (isNaN(toInt)) {
       _setTargetLevel("");
-    }
-    else {
-      toInt = minMax(1, parseInt(e.target.value, 10), maxTargetLevel)
+    } else {
+      toInt = minMax(1, parseInt(e.target.value, 10), maxTargetLevel);
       setTargetLevel(toInt);
       _setTargetLevel(toInt.toString());
     }
@@ -193,7 +191,10 @@ const Level: NextPage = () => {
 
   return (
     <Layout tab="/tools" page="/level">
-      <Container maxWidth="sm" sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <Container
+        maxWidth="sm"
+        sx={{ display: "flex", flexDirection: "column", gap: 4 }}
+      >
         <Board title="Data">
           {/* Rarity */}
           <Box sx={sectionStyle}>
@@ -203,26 +204,32 @@ const Level: NextPage = () => {
             <Rarity value={rarity} onChange={handleChangeRarity} />
           </Box>
           {/* Elite / Lvl */}
-          <Box
-            sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
-          >
+          <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
             {/* Start */}
             <Box>
               <Typography variant="h3" gutterBottom>
                 Start
               </Typography>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: "min-content" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
+                  width: "min-content",
+                }}
+              >
                 <Promotion
                   value={startingElite}
                   max={maxElite(rarity)}
                   onChange={handleChangeStartingElite}
                 />
-                <TextField id="starting-level"
+                <TextField
+                  id="starting-level"
                   value={_startingLevel}
                   label="Level"
                   inputProps={{
-                    inputMode: 'numeric',
-                    pattern: '[0-9]*'
+                    inputMode: "numeric",
+                    pattern: "[0-9]*",
                   }}
                   onFocus={(e) => e.target.select()}
                   onChange={handleChangeStartingLevel}
@@ -236,18 +243,26 @@ const Level: NextPage = () => {
               <Typography variant="h3" gutterBottom>
                 End
               </Typography>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: "min-content" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
+                  width: "min-content",
+                }}
+              >
                 <Promotion
                   value={targetElite}
                   max={maxElite(rarity)}
                   onChange={handleChangeTargetElite}
                 />
-                <TextField id="target-level"
+                <TextField
+                  id="target-level"
                   value={_targetLevel}
                   label="Target level"
                   inputProps={{
-                    inputMode: 'numeric',
-                    pattern: '[0-9]*'
+                    inputMode: "numeric",
+                    pattern: "[0-9]*",
                   }}
                   onFocus={(e) => e.target.select()}
                   onChange={handleChangeTargetLevel}
@@ -264,13 +279,16 @@ const Level: NextPage = () => {
               Total EXP cost:{" "}
               <strong>
                 {_startingLevel && _targetLevel ? exp.toLocaleString() : " - "}
-              </strong> EXP
+              </strong>{" "}
+              EXP
             </Typography>
             <Typography variant="body1" component="li" sx={{ mt: 1 }}>
               Total LMD cost:{" "}
               <span>
                 <strong data-cy="lmd" data-lmd={lmd}>
-                  {_startingLevel && _targetLevel ? lmd.toLocaleString() : " - "}
+                  {_startingLevel && _targetLevel
+                    ? lmd.toLocaleString()
+                    : " - "}
                 </strong>{" "}
                 <LmdIcon />
               </span>
@@ -286,7 +304,9 @@ const Level: NextPage = () => {
                   LMD cost for leveling:{" "}
                   <span>
                     <span>
-                      {_startingLevel && _targetLevel ? levelingLmd.toLocaleString() : " - "}
+                      {_startingLevel && _targetLevel
+                        ? levelingLmd.toLocaleString()
+                        : " - "}
                     </span>{" "}
                     <LmdIcon />
                   </span>
@@ -295,7 +315,9 @@ const Level: NextPage = () => {
                   LMD cost for elite promotions:{" "}
                   <span>
                     <span>
-                      {_startingLevel && _targetLevel ? eliteLmd.toLocaleString() : " - "}
+                      {_startingLevel && _targetLevel
+                        ? eliteLmd.toLocaleString()
+                        : " - "}
                     </span>{" "}
                     <LmdIcon />
                   </span>

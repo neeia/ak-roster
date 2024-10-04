@@ -7,8 +7,6 @@ interface Props extends Omit<ChipProps, "label" | "children"> {
 const Chip = (props: Props) => {
   const { children, ...rest } = props;
 
-  return (
-    <MuiChip label={children} {...rest} />
-  );
-}
+  return <MuiChip label={children} {...rest} />;
+};
 export default Chip;

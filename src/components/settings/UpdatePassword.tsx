@@ -1,20 +1,24 @@
 import { Box, Button, TextField } from "@mui/material";
 import { FirebaseError } from "firebase/app";
-import { EmailAuthProvider, reauthenticateWithCredential, updatePassword, User } from "firebase/auth";
-import React, {useEffect, useState} from "react";
+import {
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  updatePassword,
+  User,
+} from "firebase/auth";
+import React, { useEffect, useState } from "react";
 import { authErrors } from "../../util/authErrors";
 import PasswordTextField from "../app/PasswordTextField";
 import ResetPassword from "../app/ResetPassword";
-import {AccountData} from "../../types/auth/accountData";
+import { AccountData } from "../../types/auth/accountData";
 import supabase from "../../supabase/supabaseClient";
-import {useSession} from "@supabase/auth-helpers-react";
-
+import { useSession } from "@supabase/auth-helpers-react";
 
 interface Props {
   user: AccountData;
 }
 
-const UpdatePassword = ((props: Props) => {
+const UpdatePassword = (props: Props) => {
   const { user } = props;
 
   const [newPassword, setNewPassword] = useState<string>("");
@@ -30,16 +34,16 @@ const UpdatePassword = ((props: Props) => {
       return;
     }
 
-    setErrorPassword("Checking...")
-    const {data, error} = await supabase.auth.updateUser({password: newPassword})
+    setErrorPassword("Checking...");
+    const { data, error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
 
-    if (error)
-    {
+    if (error) {
       setErrorPassword(`Something went wrong: ${error.message}`);
       return;
     }
-    setErrorPassword("Updated.")
-
+    setErrorPassword("Updated.");
   }
 
   return (
@@ -72,19 +76,28 @@ const UpdatePassword = ((props: Props) => {
         }}
         ariaId="upw-ne2"
       />
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Button onClick={tryPassword}>
-          Change Password
-        </Button>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Button onClick={tryPassword}>Change Password</Button>
         {errorPassword}
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Button onClick={() => setResetOpen(true)}>
-          Forgot Password?
-        </Button>
-        <ResetPassword open={resetOpen} onClose={() => setResetOpen(false)}/>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Button onClick={() => setResetOpen(true)}>Forgot Password?</Button>
+        <ResetPassword open={resetOpen} onClose={() => setResetOpen(false)} />
       </Box>
-    </>);
-});
+    </>
+  );
+};
 
 export default UpdatePassword;

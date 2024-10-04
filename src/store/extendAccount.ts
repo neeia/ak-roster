@@ -1,5 +1,5 @@
 import { supabaseApi, UID } from "./apiSlice";
-import supabase from 'supabase/supabaseClient';
+import supabase from "supabase/supabaseClient";
 import AccountData, { AccountDataInsert } from "types/auth/accountData";
 
 const extendedApi = supabaseApi.injectEndpoints({
@@ -18,7 +18,6 @@ const extendedApi = supabaseApi.injectEndpoints({
     }),
     accountGet: builder.query<AccountData, void>({
       async queryFn() {
-
         const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
@@ -31,7 +30,7 @@ const extendedApi = supabaseApi.injectEndpoints({
         return { data } as { data: AccountData };
       },
       providesTags: ["account"],
-      serializeQueryArgs: q => q.endpointName,
+      serializeQueryArgs: (q) => q.endpointName,
     }),
     accountUpdate: builder.mutation<AccountData, AccountDataInsert>({
       async queryFn(account: AccountData) {
@@ -49,6 +48,6 @@ const extendedApi = supabaseApi.injectEndpoints({
     }),
   }),
   overrideExisting: false,
-})
+});
 
-export const { useAccountGetQuery, useAccountUpdateMutation } = extendedApi
+export const { useAccountGetQuery, useAccountUpdateMutation } = extendedApi;

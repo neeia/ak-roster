@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { Box, Link, Typography } from "@mui/material";
-import manifest from "../../../public/manifest.json"
+import manifest from "../../../public/manifest.json";
 import { OpenInNew } from "@mui/icons-material";
 
 const GITH_COLOR = "#50505A";
@@ -11,26 +11,25 @@ const cons = [
     login: "neeia",
     avatar: "/img/ext/neia.png",
     dark: true,
-    color: "#4b444b"
+    color: "#4b444b",
   },
   {
     name: "Samidare☔️",
     login: "iansjk",
     avatar: "/img/ext/samidare.webp",
     dark: false,
-    color: "#fff"
-  }
+    color: "#fff",
+  },
 ];
 
-const GitHubEmbed = (() => {
-
+const GitHubEmbed = () => {
   return (
     <Box>
       <Link
         sx={{
           mt: 2,
           ":hover": {
-            filter: "brightness(110%)"
+            filter: "brightness(110%)",
           },
           boxShadow: 1,
           width: "max-content",
@@ -48,17 +47,20 @@ const GitHubEmbed = (() => {
         target="_blank"
         rel="noreferrer noopener"
       >
-        <Box sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }} component="img" src="/img/ext/gh-light.png" alt="GitHub" />
+        <Box
+          sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }}
+          component="img"
+          src="/img/ext/gh-light.png"
+          alt="GitHub"
+        />
         <Box sx={{ display: "flex", flexDirection: "column", gap: 0 }}>
-          <Typography variant="body1" >
+          <Typography variant="body1">
             AK Roster
             <Typography variant="caption2" pl="0.5rem">
               v{manifest.version}
             </Typography>
           </Typography>
-          <Typography variant="caption2" >
-            {repo.substring(19)}
-          </Typography>
+          <Typography variant="caption2">{repo.substring(19)}</Typography>
         </Box>
         <OpenInNew fontSize="small" />
       </Link>
@@ -104,5 +106,5 @@ const GitHubEmbed = (() => {
       </Box> */}
     </Box>
   );
-});
+};
 export default GitHubEmbed;

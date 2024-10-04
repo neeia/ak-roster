@@ -14,7 +14,9 @@ export function getGoalString(goal: GoalData, opData: OperatorData) {
 
   if (goal.level_from && goal.level_to) {
     if (goal.elite_from && goal.elite_to) {
-      goalArray.push(`LV${goal.level_from}(E${goal.elite_from}) → LV${goal.level_to}(E${goal.elite_to})`);
+      goalArray.push(
+        `LV${goal.level_from}(E${goal.elite_from}) → LV${goal.level_to}(E${goal.elite_to})`
+      );
     } else {
       goalArray.push(`LV${goal.level_from} → LV${goal.level_to}`);
     }
@@ -28,15 +30,22 @@ export function getGoalString(goal: GoalData, opData: OperatorData) {
   if (goal.masteries_from && goal.masteries_to) {
     goal.masteries_from.forEach((level, index) => {
       if (goal.masteries_to![index] > 0) {
-        goalArray.push(`S${index}M${level} → S${index}M${goal.masteries_to![index]}`);
+        goalArray.push(
+          `S${index}M${level} → S${index}M${goal.masteries_to![index]}`
+        );
       }
     });
   }
   if (goal.modules_from && goal.modules_to) {
     Object.entries(goal.modules_to).forEach(([moduleId, moduleLevel]) => {
-      const moduleData = opData.moduleData!.find((m) => m.moduleId === moduleId)!;
-      const startingLevel = (goal.modules_from as Record<string, number>)![moduleId] ?? 0;
-      goalArray.push(`MOD ${moduleData.typeName} (${moduleData.moduleName}) L${startingLevel} → L${moduleLevel}`);
+      const moduleData = opData.moduleData!.find(
+        (m) => m.moduleId === moduleId
+      )!;
+      const startingLevel =
+        (goal.modules_from as Record<string, number>)![moduleId] ?? 0;
+      goalArray.push(
+        `MOD ${moduleData.typeName} (${moduleData.moduleName}) L${startingLevel} → L${moduleLevel}`
+      );
     });
   }
 
@@ -60,7 +69,12 @@ export function getPlannerGoals(goal: GoalData, opData?: OperatorData) {
     }
   }
 
-  if (goal.level_from && goal.level_to && goal.elite_from != null && goal.elite_to != null) {
+  if (
+    goal.level_from &&
+    goal.level_to &&
+    goal.elite_from != null &&
+    goal.elite_to != null
+  ) {
     if (goal.elite_from == goal.elite_to) {
       const levelGoal: PlannerGoal = {
         category: OperatorGoalCategory.Level,
@@ -71,12 +85,16 @@ export function getPlannerGoals(goal: GoalData, opData?: OperatorData) {
       };
       plannerGoals.push(levelGoal);
     } else {
-      const maxEliteLevel = goal.level_to == 1 ? goal.elite_to - 1 : goal.elite_to;
+      const maxEliteLevel =
+        goal.level_to == 1 ? goal.elite_to - 1 : goal.elite_to;
       for (let i = goal.elite_from; i <= maxEliteLevel; i++) {
         const eliteGoal: PlannerGoal = {
           category: OperatorGoalCategory.Level,
           fromLevel: i == goal.elite_from ? goal.level_from : 1,
-          toLevel: i == goal.elite_to ? goal.level_to : MAX_LEVEL_BY_RARITY[opData.rarity][i],
+          toLevel:
+            i == goal.elite_to
+              ? goal.level_to
+              : MAX_LEVEL_BY_RARITY[opData.rarity][i],
           eliteLevel: i,
           operatorId: goal.op_id,
         };
@@ -112,7 +130,12 @@ export function getPlannerGoals(goal: GoalData, opData?: OperatorData) {
   }
   if (goal.modules_from && goal.modules_to) {
     Object.entries(goal.modules_to).forEach(([moduleId, moduleLevel]) => {
-      for (let i = ((goal.modules_from as Record<string, number>)[moduleId] ?? 0) + 1; i <= moduleLevel; i++) {
+      for (
+        let i =
+          ((goal.modules_from as Record<string, number>)[moduleId] ?? 0) + 1;
+        i <= moduleLevel;
+        i++
+      ) {
         const masteriesGoal: PlannerGoal = {
           category: OperatorGoalCategory.Module,
           moduleId: moduleId,

@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Box, Divider, IconButton, Menu, MenuItem, IconButtonProps } from "@mui/material";
+import {
+  Box,
+  Divider,
+  IconButton,
+  Menu,
+  MenuItem,
+  IconButtonProps,
+} from "@mui/material";
 import supabase from "supabase/supabaseClient";
 import { Settings } from "@mui/icons-material";
 import { DISCORD_BLURPLE } from "styles/theme/appTheme";
@@ -23,29 +30,30 @@ const AccountContextMenu = (props: Props) => {
 
   useEffect(() => {
     supabase.auth.getUserIdentities().then(({ data, error }) => {
-      setShowDiscord(!(data?.identities.find((e) => e.provider === "discord")))
+      setShowDiscord(!data?.identities.find((e) => e.provider === "discord"));
     });
   }, []);
   const linkDiscord = async () => {
     const { data, error } = await supabase.auth.linkIdentity({
-      provider: "discord", options: {
-        redirectTo: window.location.href
-      }
-    })
-    console.log(error)
-  }
+      provider: "discord",
+      options: {
+        redirectTo: window.location.href,
+      },
+    });
+    console.log(error);
+  };
 
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
-  }
+  };
 
   return (
     <>
       <IconButton
         id="account-settings"
-        aria-controls={open ? 'basic-menu' : undefined}
+        aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
+        aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
         {...rest}
       >
@@ -57,27 +65,28 @@ const AccountContextMenu = (props: Props) => {
         onClose={handleClose}
         disableScrollLock
         MenuListProps={{
-          'aria-labelledby': 'basic-button',
+          "aria-labelledby": "basic-button",
         }}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
+          vertical: "bottom",
+          horizontal: "right",
         }}
         transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
+          vertical: "top",
+          horizontal: "right",
         }}
       >
         <MenuItem>Account Settings</MenuItem>
-        {changeUsername && <MenuItem onClick={changeUsername}>Change Display Name</MenuItem>}
-        {showDiscord
-          ? <MenuItem onClick={linkDiscord}>Link Discord</MenuItem>
-          : null
-        }
+        {changeUsername && (
+          <MenuItem onClick={changeUsername}>Change Display Name</MenuItem>
+        )}
+        {showDiscord ? (
+          <MenuItem onClick={linkDiscord}>Link Discord</MenuItem>
+        ) : null}
         <Divider component="li"></Divider>
         <MenuItem onClick={signOut}>Sign Out</MenuItem>
       </Menu>
     </>
   );
-}
+};
 export default AccountContextMenu;

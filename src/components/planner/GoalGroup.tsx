@@ -2,16 +2,21 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Box, Button,
-  Dialog, DialogActions, DialogContent,
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
   DialogTitle,
-  IconButton, Menu, MenuItem,
+  IconButton,
+  Menu,
+  MenuItem,
   Typography,
 } from "@mui/material";
-import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Image from "next/image";
 import PlannerGoalCard from "./PlannerGoalCard";
 import React, { memo, useCallback, useState } from "react";
@@ -33,7 +38,8 @@ const GoalGroup = memo((props: Props) => {
   const { operatorGoals, groupName, onGoalDeleted, defaultExpanded } = props;
 
   const [expanded, setExpanded] = useState<boolean>(defaultExpanded);
-  const [deleteGroupGoalsOpen, setDeleteGroupGoalsOpen] = useState<boolean>(false);
+  const [deleteGroupGoalsOpen, setDeleteGroupGoalsOpen] =
+    useState<boolean>(false);
   const [deleteGroupOpen, setDeleteGroupOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -47,7 +53,7 @@ const GoalGroup = memo((props: Props) => {
   }, [goalsDeleteAllFromGroupTrigger, groupName]);
 
   const onDeleteGroupClick = useCallback(() => {
-    groupsDeleteTrigger(groupName)
+    groupsDeleteTrigger(groupName);
     setDeleteGroupGoalsOpen(false);
   }, [groupName, groupsDeleteTrigger]);
 
@@ -59,40 +65,59 @@ const GoalGroup = memo((props: Props) => {
     []
   );
 
-  const handleMoreMenuClose = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    setAnchorEl(null);
-  }, []);
+  const handleMoreMenuClose = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      setAnchorEl(null);
+    },
+    []
+  );
 
-  const handleDeleteGroupButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
-    handleMoreMenuClose(e)
-    setDeleteGroupOpen(true);
-  }, [handleMoreMenuClose]);
+  const handleDeleteGroupButtonClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      handleMoreMenuClose(e);
+      setDeleteGroupOpen(true);
+    },
+    [handleMoreMenuClose]
+  );
 
-  const handleDeleteGroupGoalsButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
-    handleMoreMenuClose(e)
-    setDeleteGroupGoalsOpen(true)
-  }, [handleMoreMenuClose]);
+  const handleDeleteGroupGoalsButtonClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      handleMoreMenuClose(e);
+      setDeleteGroupGoalsOpen(true);
+    },
+    [handleMoreMenuClose]
+  );
 
   return (
     <>
-      <Accordion onChange={(_, expanded) => setExpanded(expanded)} disableGutters elevation={0} defaultExpanded={defaultExpanded} sx={{
-        '&:before': {
-          display: 'none',
-        }
-      }}>
+      <Accordion
+        onChange={(_, expanded) => setExpanded(expanded)}
+        disableGutters
+        elevation={0}
+        defaultExpanded={defaultExpanded}
+        sx={{
+          "&:before": {
+            display: "none",
+          },
+        }}
+      >
         <AccordionSummary>
-          <Box sx={{
-            display: "flex", flexDirection: "column", width: "100%",
-          }}>
-            <Box sx={{
+          <Box
+            sx={{
               display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}>
-              <IconButton
-                id="more-button"
-                onClick={handleMoreButtonClick}>
+              flexDirection: "column",
+              width: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <IconButton id="more-button" onClick={handleMoreButtonClick}>
                 <MoreHorizIcon />
               </IconButton>
               <Menu
@@ -110,49 +135,71 @@ const GoalGroup = memo((props: Props) => {
                 }}
               >
                 <MenuItem disabled={!operatorGoals}>
-                  <Typography onClick={handleDeleteGroupGoalsButtonClick} color="error">Delete goals</Typography>
+                  <Typography
+                    onClick={handleDeleteGroupGoalsButtonClick}
+                    color="error"
+                  >
+                    Delete goals
+                  </Typography>
                 </MenuItem>
                 <MenuItem disabled={groupName == "Default"}>
-                  <Typography onClick={handleDeleteGroupButtonClick} color="error">Delete group</Typography>
+                  <Typography
+                    onClick={handleDeleteGroupButtonClick}
+                    color="error"
+                  >
+                    Delete group
+                  </Typography>
                 </MenuItem>
               </Menu>
-              <Typography textAlign="center" variant="h5" sx={{ flexGrow: "1" }}>{groupName}</Typography>
+              <Typography
+                textAlign="center"
+                variant="h5"
+                sx={{ flexGrow: "1" }}
+              >
+                {groupName}
+              </Typography>
               {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </Box>
-            {!expanded && operatorGoals &&
-              <Box sx={{
-                display: "flex",
-                flexDirection: "row",
-                backgroundColor: "background.default",
-                padding: 1,
-              }}>
-                {
-                  operatorGoals.map((operatorGoal) => {
-                    const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
-                    return (<Box sx={{ "&:not(:first-of-type)": { marginLeft: -2 }, }} key={operatorGoal.op_id}>
+            {!expanded && operatorGoals && (
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  backgroundColor: "background.default",
+                  padding: 1,
+                }}
+              >
+                {operatorGoals.map((operatorGoal) => {
+                  const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
+                  return (
+                    <Box
+                      sx={{ "&:not(:first-of-type)": { marginLeft: -2 } }}
+                      key={operatorGoal.op_id}
+                    >
                       <Image src={imgUrl} width={64} height={64} alt="" />
-                    </Box>)
-                  })}
+                    </Box>
+                  );
+                })}
               </Box>
-            }
+            )}
           </Box>
         </AccordionSummary>
         <AccordionDetails>
-          {
-            operatorGoals && operatorGoals.map((operatorGoal) => {
+          {operatorGoals &&
+            operatorGoals.map((operatorGoal) => {
               return (
-                <OperatorGoals key={operatorGoal.op_id} operatorGoal={operatorGoal} onGoalDeleted={onGoalDeleted} />
-              )
+                <OperatorGoals
+                  key={operatorGoal.op_id}
+                  operatorGoal={operatorGoal}
+                  onGoalDeleted={onGoalDeleted}
+                />
+              );
             })}
         </AccordionDetails>
       </Accordion>
-      <Dialog
-        open={deleteGroupGoalsOpen}
-      >
+      <Dialog open={deleteGroupGoalsOpen}>
         <DialogTitle>
-          <Typography>
-            Delete goal group
-          </Typography>
+          <Typography>Delete goal group</Typography>
         </DialogTitle>
         <DialogContent>
           <Typography>
@@ -160,17 +207,24 @@ const GoalGroup = memo((props: Props) => {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button variant={"contained"} onClick={() => setDeleteGroupGoalsOpen(false)}>Cancel</Button>
-          <Button variant={"contained"} color={"error"} onClick={onDeleteFromGroupsClick}>Delete</Button>
+          <Button
+            variant={"contained"}
+            onClick={() => setDeleteGroupGoalsOpen(false)}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant={"contained"}
+            color={"error"}
+            onClick={onDeleteFromGroupsClick}
+          >
+            Delete
+          </Button>
         </DialogActions>
       </Dialog>
-      <Dialog
-        open={deleteGroupOpen}
-      >
+      <Dialog open={deleteGroupOpen}>
         <DialogTitle>
-          <Typography>
-            Delete group
-          </Typography>
+          <Typography>Delete group</Typography>
         </DialogTitle>
         <DialogContent>
           <Typography>
@@ -178,8 +232,19 @@ const GoalGroup = memo((props: Props) => {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button variant={"contained"} onClick={() => setDeleteGroupOpen(false)}>Cancel</Button>
-          <Button variant={"contained"} color={"error"} onClick={onDeleteGroupClick}>Delete</Button>
+          <Button
+            variant={"contained"}
+            onClick={() => setDeleteGroupOpen(false)}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant={"contained"}
+            color={"error"}
+            onClick={onDeleteGroupClick}
+          >
+            Delete
+          </Button>
         </DialogActions>
       </Dialog>
     </>

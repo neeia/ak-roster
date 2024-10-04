@@ -74,4 +74,9 @@ interface PlannerSkillLevelGoal extends BasePlannerGoal {
   skillLevel: number;
 }
 
-export type PlannerGoal = PlannerEliteGoal | PlannerMasteryGoal | PlannerModuleGoal | PlannerSkillLevelGoal | PlannerLevelGoal;
+export type PlannerGoal =
+  | PlannerEliteGoal
+  | PlannerMasteryGoal
+  | PlannerModuleGoal
+  | PlannerSkillLevelGoal
+  | PlannerLevelGoal;

@@ -3,15 +3,17 @@ import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import Layout from "components/Layout";
 
-const MaterialsNeeded = dynamic(() => import("components/planner/MaterialsNeeded"), {
-  ssr: false
-});
+const MaterialsNeeded = dynamic(
+  () => import("components/planner/MaterialsNeeded"),
+  {
+    ssr: false,
+  }
+);
 const PlannerGoals = dynamic(() => import("components/planner/PlannerGoals"), {
   ssr: false,
 });
 
 const Goals: NextPage = () => {
-
   return (
     <Layout tab="/data" page="/planner">
       <Grid container mt={1} mb={1} spacing={4}>

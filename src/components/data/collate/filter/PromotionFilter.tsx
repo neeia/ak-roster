@@ -7,7 +7,7 @@ const br = (index: number) => {
   if (index === 0) return `${r}px 0px 0px ${r}px`;
   else if (index === 2) return `0px ${r}px ${r}px 0px`;
   else return "0";
-}
+};
 
 interface Props {
   value: Set<Value>;
@@ -18,10 +18,16 @@ const PromotionFilter = (props: Props) => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
+      <Divider sx={{ mt: 1, mb: 0.5 }} variant="middle" flexItem>
         Elite
       </Divider>
-      <Box sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", width: "100%" }}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          width: "100%",
+        }}
+      >
         {[...Array(3)].map((_, i) => (
           <IconButton
             key={i}
@@ -38,7 +44,8 @@ const PromotionFilter = (props: Props) => {
           </IconButton>
         ))}
       </Box>
-    </Box>);
-}
+    </Box>
+  );
+};
 
 export default PromotionFilter;

@@ -27,7 +27,10 @@ import RegisterForm from "./app/RegisterDialog";
 import { useRouter } from "next/router";
 import Logo from "./app/Logo";
 import { UserContext } from "pages/_app";
-import { useAccountGetQuery, useAccountUpdateMutation } from "store/extendAccount";
+import {
+  useAccountGetQuery,
+  useAccountUpdateMutation,
+} from "store/extendAccount";
 import { interactive } from "styles/theme/appTheme";
 import randomName from "util/randomName";
 import JumpTo from "./base/JumpTo";
@@ -103,14 +106,18 @@ const AppDrawer = React.memo((props: Props) => {
     if (user && accountData) {
       if (accountData.display_name) {
         setUsername(accountData.display_name);
-      }
-      else if (!accountData.display_name) {
+      } else if (!accountData.display_name) {
         const genName = randomName();
-        trigger({ user_id: user.id, username: genName, display_name: genName, private: false, });
+        trigger({
+          user_id: user.id,
+          username: genName,
+          display_name: genName,
+          private: false,
+        });
       }
     }
     if (!user && requireLogin) router.push("/");
-  }, [accountData])
+  }, [accountData]);
 
   const router = useRouter();
 
@@ -118,21 +125,44 @@ const AppDrawer = React.memo((props: Props) => {
   const [register, setRegister] = useState(false);
 
   const drawerContent = (
-    <Box sx={{ height: "100%", maxHeight: "100%", overflow: "hidden", display: "flex", flexDirection: "column", gap: "16px", py: "16px" }}>
-      <JumpTo onClick={() => {
-        const main = document.getElementById("app-main");
-        if (!main) return;
-        const el = findFirstFocusableElement(main);
-        if (el) (el as HTMLElement).focus();
-      }}>
+    <Box
+      sx={{
+        height: "100%",
+        maxHeight: "100%",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        py: "16px",
+      }}
+    >
+      <JumpTo
+        onClick={() => {
+          const main = document.getElementById("app-main");
+          if (!main) return;
+          const el = findFirstFocusableElement(main);
+          if (el) (el as HTMLElement).focus();
+        }}
+      >
         skip to main content
       </JumpTo>
-      <Logo hideSubtitle
-        sx={{ width: "100%", height: "200px", }}
+      <Logo
+        hideSubtitle
+        sx={{ width: "100%", height: "200px" }}
         LinkProps={{ sx: { position: "relative" } }}
         sizes="220px"
       >
-        <Typography sx={{ position: "absolute", fontSize: "0.625rem", lineHeight: 0, bottom: 7.5, right: 8, }}>3.0</Typography>
+        <Typography
+          sx={{
+            position: "absolute",
+            fontSize: "0.625rem",
+            lineHeight: 0,
+            bottom: 7.5,
+            right: 8,
+          }}
+        >
+          3.0
+        </Typography>
       </Logo>
       <Divider />
       <Box
@@ -142,101 +172,100 @@ const AppDrawer = React.memo((props: Props) => {
           gap: "4px",
         }}
       >
-        {!user
-          ? <Box
+        {!user ? (
+          <Box
             sx={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
               gap: "4px",
-              mx: "8px"
+              mx: "8px",
             }}
           >
             <Button onClick={() => setLogin(true)}>Log In</Button>
             <Button onClick={() => setRegister(true)}>Register</Button>
           </Box>
-          : null
-        }
+        ) : null}
         <LoginForm open={login} onClose={() => setLogin(false)} />
         <RegisterForm open={register} onClose={() => setRegister(false)} />
-        {user
-          ? <AccountWidget username={username} />
-          : null
-        }
+        {user ? <AccountWidget username={username} /> : null}
       </Box>
       <Divider />
-      <List sx={{
-        height: "100%",
-        overflowY: "auto",
-        scrollbarColor: "#6b6b6b transparent",
-        scrollbarWidth: "thin",
-        '*::-webkit-scrollbar': {
-          width: "12px"
-        },
-        '*::-webkit-scrollbar-track': {
-          background: "transparent",
-        },
-        '*::-webkit-scrollbar-thumb': {
-          backgroundColor: "#6b6b6b",
-          borderRadius: 4,
-          border: "transparent",
-          outline: "transparent",
-        },
-      }}>
+      <List
+        sx={{
+          height: "100%",
+          overflowY: "auto",
+          scrollbarColor: "#6b6b6b transparent",
+          scrollbarWidth: "thin",
+          "*::-webkit-scrollbar": {
+            width: "12px",
+          },
+          "*::-webkit-scrollbar-track": {
+            background: "transparent",
+          },
+          "*::-webkit-scrollbar-thumb": {
+            backgroundColor: "#6b6b6b",
+            borderRadius: 4,
+            border: "transparent",
+            outline: "transparent",
+          },
+        }}
+      >
         {Object.entries(tabs)
           .filter(([_, { exclude }]) => !exclude)
-          .map(
-            ([tabPath, { title: tabTitle, pages }], i: number) => (
-              <ListItemTab
-                key={i}
-                tabTitle={tabTitle}
-                startOpen={tabTitle === currentTab}
-                icon={ICON_BY_PATH[i]}
-              >
-                {Object.entries(pages).map(
-                  ([pagePath, pg]: [string, ConfigPage]) => (
-                    <ListItem key={pg.title}
-                      disablePadding
+          .map(([tabPath, { title: tabTitle, pages }], i: number) => (
+            <ListItemTab
+              key={i}
+              tabTitle={tabTitle}
+              startOpen={tabTitle === currentTab}
+              icon={ICON_BY_PATH[i]}
+            >
+              {Object.entries(pages).map(
+                ([pagePath, pg]: [string, ConfigPage]) => (
+                  <ListItem
+                    key={pg.title}
+                    disablePadding
+                    sx={{
+                      ...(currentPage === pg.title && {
+                        borderLeftWidth: "8px",
+                        borderLeftStyle: "solid",
+                        borderColor: "primary.main",
+                        fontWeight: "bold",
+                      }),
+                    }}
+                  >
+                    <ListItemButton
+                      component="a"
+                      href={`${tabPath}${pagePath}`}
                       sx={{
-                        ...(currentPage === pg.title && {
-                          borderLeftWidth: "8px",
-                          borderLeftStyle: "solid",
-                          borderColor: "primary.main",
-                          fontWeight: "bold",
-                        }),
+                        p: 0,
+                        ...(currentPage === pg.title && interactive),
                       }}
                     >
-                      <ListItemButton component="a" href={`${tabPath}${pagePath}`}
+                      <ListItemIcon sx={{ minWidth: 0, pr: 1, pl: 3 }}>
+                        <ArrowRight height="1.5rem" />
+                      </ListItemIcon>
+                      <ListItemText
                         sx={{
-                          p: 0,
-                          ...(currentPage === pg.title && interactive),
+                          display: "block",
+                          width: "100%",
+                          px: 1,
+                          py: 2,
+                          m: 0,
                         }}
-                      >
-                        <ListItemIcon sx={{ minWidth: 0, pr: 1, pl: 3 }}>
-                          <ArrowRight height="1.5rem" />
-                        </ListItemIcon>
-                        <ListItemText
-                          sx={{
-                            display: "block",
-                            width: "100%",
-                            px: 1,
-                            py: 2,
-                            m: 0,
-                          }}
-                          primaryTypographyProps={{
-                            sx: {
-                              fontSize: "1rem",
-                              lineHeight: 1,
-                            }
-                          }}
-                          primary={pg.title}
-                        />
-                      </ListItemButton>
-                    </ListItem>
-                  )
-                )}
-              </ListItemTab>
-            )
-          )}
+                        primaryTypographyProps={{
+                          sx: {
+                            fontSize: "1rem",
+                            lineHeight: 1,
+                          },
+                        }}
+                        primary={pg.title}
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                )
+              )}
+            </ListItemTab>
+          ))}
       </List>
       <Divider />
       <DiscordInvite />
@@ -297,4 +326,3 @@ const AppDrawer = React.memo((props: Props) => {
 
 AppDrawer.displayName = "AppDrawer";
 export default AppDrawer;
-

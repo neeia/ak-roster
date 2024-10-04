@@ -13,11 +13,16 @@ const ModuleFilter = (props: Props) => {
   return (
     <Box display="flex" flexDirection="column" width="100%">
       <Box>
-        <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
+        <Divider sx={{ mt: 1, mb: 0.5 }} variant="middle" flexItem>
           Has Module
         </Divider>
       </Box>
-      <Box display="grid" gridTemplateColumns="1fr 1fr" width="100%" height="100%">
+      <Box
+        display="grid"
+        gridTemplateColumns="1fr 1fr"
+        width="100%"
+        height="100%"
+      >
         <IconButton
           className={value.has(false) ? "active" : "inactive"}
           onClick={() => onChange(false)}
@@ -31,7 +36,8 @@ const ModuleFilter = (props: Props) => {
           CN
         </IconButton>
       </Box>
-    </Box>);
-}
+    </Box>
+  );
+};
 
 export default ModuleFilter;

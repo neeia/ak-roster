@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { Box, ButtonGroup, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  ButtonGroup,
+  IconButton,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@mui/material";
 import Layout from "components/Layout";
 import { ArrowBack, Search } from "@mui/icons-material";
 import { child, get, getDatabase, ref } from "firebase/database";
@@ -15,7 +22,6 @@ import { repair } from "util/useOperators";
 import ProfileDialog from "components/lookup/ProfileDialog";
 import { AccountInfo } from "types/doctor";
 import { SocialInfo } from "types/social";
-
 
 const Lookup: NextPage = () => {
   const { query } = useRouter();
@@ -38,11 +44,11 @@ const Lookup: NextPage = () => {
             setDoctor(v.info);
             setSocial(v.connections);
           }
-        })
+        });
       } else {
         setError("User could not be found.");
       }
-    })
+    });
   };
   useEffect(() => {
     const searchUser = Array.isArray(query.user) ? query.user[0] : query.user;
@@ -51,48 +57,65 @@ const Lookup: NextPage = () => {
       search(searchUser);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query.user])
+  }, [query.user]);
 
-  const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
-    { key: "Favorite", desc: true },
-    { key: "Level", desc: true },
-    { key: "Rarity", desc: true },
-  ]);
-  const [, setSearchName, filter, addFilter, removeFilter, clearFilters, filterFunction] = useFilter(
-    {
-      "owned": { "owned": (op: Operator) => !!op }
-    });
+  const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] =
+    useSort([
+      { key: "Favorite", desc: true },
+      { key: "Level", desc: true },
+      { key: "Rarity", desc: true },
+    ]);
+  const [
+    ,
+    setSearchName,
+    filter,
+    addFilter,
+    removeFilter,
+    clearFilters,
+    filterFunction,
+  ] = useFilter({
+    owned: { owned: (op: Operator) => !!op },
+  });
 
   return (
     <Layout
       tab="/network"
       page="/lookup"
-      header={roster
-        ? <>
-          <IconButton
-            aria-label="Back to lookup"
-            edge="start"
-            onClick={() => { setSocial(undefined); setDoctor(undefined); setRoster(undefined); }}
-          >
-            <ArrowBack sx={{ color: "background.paper" }} />
-          </IconButton>
-          <Typography variant="h5" sx={{ lineHeight: "1rem", mr: 1.5 }}>
-            {doctor?.displayName ?? username}
-          </Typography>
-          {doctor
-            ? <ProfileDialog roster={roster} social={social} user={doctor} username={username} />
-            : null
-          }
-        </>
-        : null
+      header={
+        roster ? (
+          <>
+            <IconButton
+              aria-label="Back to lookup"
+              edge="start"
+              onClick={() => {
+                setSocial(undefined);
+                setDoctor(undefined);
+                setRoster(undefined);
+              }}
+            >
+              <ArrowBack sx={{ color: "background.paper" }} />
+            </IconButton>
+            <Typography variant="h5" sx={{ lineHeight: "1rem", mr: 1.5 }}>
+              {doctor?.displayName ?? username}
+            </Typography>
+            {doctor ? (
+              <ProfileDialog
+                roster={roster}
+                social={social}
+                user={doctor}
+                username={username}
+              />
+            ) : null}
+          </>
+        ) : null
       }
     >
-      {doctor
-        ? null
-        : <Box sx={{
-          display: "flex",
-          maxWidth: "sm"
-        }}
+      {doctor ? null : (
+        <Box
+          sx={{
+            display: "flex",
+            maxWidth: "sm",
+          }}
           component="form"
         >
           <TextField
@@ -102,27 +125,34 @@ const Lookup: NextPage = () => {
             placeholder="Find a user..."
             value={username}
             helperText={error}
-            onChange={e => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton type="submit" onClick={e => { e.preventDefault(); search(username); }}>
+                  <IconButton
+                    type="submit"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      search(username);
+                    }}
+                  >
                     <Search />
                   </IconButton>
                 </InputAdornment>
-              )
+              ),
             }}
           />
         </Box>
-      }
-      {roster
-        ?
-        <Box sx={{
-          display: "grid",
-          gridTemplateAreas: { xs: `"ctrl" "box"`, sm: `"ctrl box"` },
-          gridTemplateColumns: { xs: "1fr", sm: "auto 1fr" },
-          gap: 2
-        }}>
+      )}
+      {roster ? (
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateAreas: { xs: `"ctrl" "box"`, sm: `"ctrl box"` },
+            gridTemplateColumns: { xs: "1fr", sm: "auto 1fr" },
+            gap: 2,
+          }}
+        >
           <ButtonGroup
             sx={{
               gridArea: "ctrl",
@@ -142,9 +172,10 @@ const Lookup: NextPage = () => {
               backgroundColor: { xs: "info.main", sm: "transparent" },
               boxShadow: {
                 xs: 5,
-                sm: 0
+                sm: 0,
               },
-            }}>
+            }}
+          >
             <SortDialog
               sortFns={sortFunctions}
               sortQueue={sortQueue}
@@ -159,12 +190,14 @@ const Lookup: NextPage = () => {
             />
             <SearchDialog setSearch={setSearchName} />
           </ButtonGroup>
-          <Box sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: { xs: "center", sm: "left" },
-            gap: "12px 6px",
-          }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: { xs: "center", sm: "left" },
+              gap: "12px 6px",
+            }}
+          >
             <CollectionContainer
               operators={roster}
               sort={sortFunction}
@@ -172,9 +205,8 @@ const Lookup: NextPage = () => {
             />
           </Box>
         </Box>
-        : null
-      }
+      ) : null}
     </Layout>
   );
-}
+};
 export default Lookup;

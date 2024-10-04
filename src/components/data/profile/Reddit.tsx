@@ -1,29 +1,37 @@
 import { Box, InputAdornment, TextField } from "@mui/material";
 import { User } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
-import React, {useCallback, useState} from "react";
+import React, { useCallback, useState } from "react";
 import useLocalStorage from "../../util/useLocalStorage";
 import { SocialInfo } from "../../types/social";
 import { Reddit as RedditIcon } from "@mui/icons-material";
-import {AccountData} from "../../types/auth/accountData";
-import {useDiscordSetMutation, useRedditSetMutation} from "../../store/extendAccount";
-import {debounce} from "lodash";
+import { AccountData } from "../../types/auth/accountData";
+import {
+  useDiscordSetMutation,
+  useRedditSetMutation,
+} from "../../store/extendAccount";
+import { debounce } from "lodash";
 
 interface Props {
   user: AccountData;
 }
 
-const Reddit = ((props: Props) => {
+const Reddit = (props: Props) => {
   const { user } = props;
 
-  const [redditUsername, _setRedditUsername] = useState<string>(user.reddituser ?? "");
+  const [redditUsername, _setRedditUsername] = useState<string>(
+    user.reddituser ?? ""
+  );
   const [setRedditTrigger] = useRedditSetMutation();
   const setUsername = (s: string) => {
     _setRedditUsername(s);
     setRedditDebounced(s);
-  }
+  };
 
-  const setRedditDebounced = useCallback(debounce((username) => setRedditTrigger(username),300), []);
+  const setRedditDebounced = useCallback(
+    debounce((username) => setRedditTrigger(username), 300),
+    []
+  );
 
   return (
     <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto" }}>
@@ -45,10 +53,11 @@ const Reddit = ((props: Props) => {
             <InputAdornment position="start">
               <RedditIcon />
             </InputAdornment>
-          )
+          ),
         }}
       />
-    </Box>);
-});
+    </Box>
+  );
+};
 
 export default Reddit;

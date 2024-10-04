@@ -1,5 +1,5 @@
 import React from "react";
-import { OpInfo, Operator } from 'types/operator';
+import { OpInfo, Operator } from "types/operator";
 import classList from "data/classList";
 import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
@@ -22,48 +22,57 @@ function nullOperator(id: string): Operator {
     level: 0,
     skill_level: 0,
     masteries: [],
-    modules: {}
+    modules: {},
   };
 }
-
 
 const OperatorSelector = React.memo((props: Props) => {
   const { operators, onClick, filter, sort } = props;
 
   function sortComparator(a: OpInfo, b: OpInfo) {
-    return sort(a, b) ||
+    return (
+      sort(a, b) ||
       classList.indexOf(a.class) - classList.indexOf(b.class) ||
       a.name.localeCompare(b.name)
+    );
   }
 
   // Operator Selector Component
   return (
-    <Box component="ol" sx={{
-      display: "contents",
-      "& .icon-fav": {
-        display: "none",
-      },
-      "& .favorite .icon-fav": {
-        display: "block",
-        position: "absolute",
-        top: 2,
-        left: 2,
-      }
-    }}>
+    <Box
+      component="ol"
+      sx={{
+        display: "contents",
+        "& .icon-fav": {
+          display: "none",
+        },
+        "& .favorite .icon-fav": {
+          display: "block",
+          position: "absolute",
+          top: 2,
+          left: 2,
+        },
+      }}
+    >
       {Object.values(operatorJson)
         .map((op) => ({ ...op, ...(operators[op.id] ?? nullOperator(op.id)) }))
         .sort(sortComparator)
-        .map((op) => <OperatorButton key={op.id}
-          op_id={op.id}
-          className={[
-            !op.potential && "unowned",
-            filter(op) && "hidden",
-            op.favorite && "favorite",
-          ].filter(t => t).join(" ")}
-          onClick={onClick}
-        />
-        )}
-    </Box>)
+        .map((op) => (
+          <OperatorButton
+            key={op.id}
+            op_id={op.id}
+            className={[
+              !op.potential && "unowned",
+              filter(op) && "hidden",
+              op.favorite && "favorite",
+            ]
+              .filter((t) => t)
+              .join(" ")}
+            onClick={onClick}
+          />
+        ))}
+    </Box>
+  );
 });
-OperatorSelector.displayName = "OperatorSelector"
+OperatorSelector.displayName = "OperatorSelector";
 export default OperatorSelector;

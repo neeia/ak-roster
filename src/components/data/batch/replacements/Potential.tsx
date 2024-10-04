@@ -8,27 +8,29 @@ const br = (op: string, pot: number) => {
   if (pot === 0) return `${r}px 0px 0px ${r}px`;
   else if (pot === getMaxPotentialById(op) - 1) return `0px ${r}px ${r}px 0px`;
   else return "0";
-}
+};
 
 interface Props {
   op: Operator;
   onChange: (newOperator: Operator) => void;
 }
-const Potential = ((props: Props) => {
+const Potential = (props: Props) => {
   const { op, onChange } = props;
   return (
-    <Box sx={{
-      display: "flex",
-      justifyContent: "center",
-      borderRadius: 1,
-      width: "fit-content",
-      mx: "auto",
-      boxShadow: +op.owned,
-      "& .MuiButtonBase-root": {
-        boxShadow: 0,
-      },
-    }}>
-      {[...Array(getMaxPotentialById(op.op_id))].map((_, i) =>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        borderRadius: 1,
+        width: "fit-content",
+        mx: "auto",
+        boxShadow: +op.owned,
+        "& .MuiButtonBase-root": {
+          boxShadow: 0,
+        },
+      }}
+    >
+      {[...Array(getMaxPotentialById(op.op_id))].map((_, i) => (
         <IconButton
           sx={{
             borderRadius: br(op.op_id, i),
@@ -38,11 +40,13 @@ const Potential = ((props: Props) => {
           disabled={!op.owned}
           key={`pot${i + 1}`}
         >
-          <Box sx={{
-            width: "32px",
-            height: "32px",
-            position: "relative",
-          }}>
+          <Box
+            sx={{
+              width: "32px",
+              height: "32px",
+              position: "relative",
+            }}
+          >
             <Image
               layout="fill"
               src={`/img/potential/${i + 1}.png`}
@@ -50,8 +54,8 @@ const Potential = ((props: Props) => {
             />
           </Box>
         </IconButton>
-      )}
+      ))}
     </Box>
-  )
-})
+  );
+};
 export default Potential;

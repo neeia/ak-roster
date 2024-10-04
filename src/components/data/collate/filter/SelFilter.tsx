@@ -14,7 +14,7 @@ const SelFilter = (props: Props) => {
   return (
     <Box display="flex" flexDirection="column" width="100%">
       <Box>
-        <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
+        <Divider sx={{ mt: 1, mb: 0.5 }} variant="middle" flexItem>
           Ideal City
         </Divider>
       </Box>
@@ -23,11 +23,11 @@ const SelFilter = (props: Props) => {
         width="100%"
         sx={{
           "& .MuiIconButton-root": {
-            height: "5.5rem"
+            height: "5.5rem",
           },
           "& img": {
             height: "100%",
-          }
+          },
         }}
       >
         <IconButton
@@ -38,7 +38,8 @@ const SelFilter = (props: Props) => {
           <Box component="img" src="/img/misc/v5.png" />
         </IconButton>
       </Box>
-    </Box>);
-}
+    </Box>
+  );
+};
 
 export default SelFilter;

@@ -60,7 +60,9 @@ const GoalSelect: React.FC<Props> = (props) => {
     operator.skillData.forEach((skill, i) => {
       if (skill.masteries.length === 3) {
         if (!opData || !opData.masteries[i] || opData.masteries[i] < 3)
-          presets.push(`Skill ${i + 1} Mastery ${(opData?.masteries[i] ?? 0) + 1} → 3`);
+          presets.push(
+            `Skill ${i + 1} Mastery ${(opData?.masteries[i] ?? 0) + 1} → 3`
+          );
       }
     });
     if (presets.length > 0) {
@@ -188,14 +190,20 @@ const GoalSelect: React.FC<Props> = (props) => {
           });
           operator!.skillData?.forEach((_, i) => {
             operator!.skillData[i].masteries.forEach((_, j) => {
-              if (!opData || !opData.masteries[i] || opData.masteries[i] < j + 1)
+              if (
+                !opData ||
+                !opData.masteries[i] ||
+                opData.masteries[i] < j + 1
+              )
                 newSpecificGoals.add(`Skill ${i + 1} Mastery ${j + 1}`);
             });
           });
           operator!.moduleData?.forEach((module, i) => {
             module.stages.forEach((_, j) => {
               if (!opData || !opData.modules[i] || opData.modules[i] < j + 1)
-              newSpecificGoals.add(`Module ${module.typeName} Stage ${j + 1}`);
+                newSpecificGoals.add(
+                  `Module ${module.typeName} Stage ${j + 1}`
+                );
             });
           });
           break;
@@ -219,71 +227,79 @@ const GoalSelect: React.FC<Props> = (props) => {
 
     const elite =
       operator.eliteLevels.length > 0
-        ? operator.eliteLevels.filter((_, i) => !opData || opData.elite < i + 1).map((goal) => (
-          <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
-            <Checkbox
-              checked={selectedGoalNames.indexOf(goal.name) > -1}
-              size="small"
-            />
-            <ListItemText primary={goal.name} />
-          </GoalMenuCheckboxItem>
-        ))
+        ? operator.eliteLevels
+            .filter((_, i) => !opData || opData.elite < i + 1)
+            .map((goal) => (
+              <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
+                <Checkbox
+                  checked={selectedGoalNames.indexOf(goal.name) > -1}
+                  size="small"
+                />
+                <ListItemText primary={goal.name} />
+              </GoalMenuCheckboxItem>
+            ))
         : null;
     const skillLevel =
       operator.skillLevels.length > 0
-        ? operator.skillLevels.filter((_, i) => !opData || opData.skill_level < i + 2).map((goal) => (
-          <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
-            <Checkbox
-              checked={selectedGoalNames.indexOf(goal.name) > -1}
-              size="small"
-            />
-            <ListItemText primary={goal.name} />
-          </GoalMenuCheckboxItem>
-        ))
+        ? operator.skillLevels
+            .filter((_, i) => !opData || opData.skill_level < i + 2)
+            .map((goal) => (
+              <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
+                <Checkbox
+                  checked={selectedGoalNames.indexOf(goal.name) > -1}
+                  size="small"
+                />
+                <ListItemText primary={goal.name} />
+              </GoalMenuCheckboxItem>
+            ))
         : null;
-    const masteryGoals = operator.skillData.flatMap((skill, i) => skill.masteries
-      .filter((_, j) => !opData || (opData.masteries[i] ?? 0) < j + 1)
+    const masteryGoals = operator.skillData.flatMap((skill, i) =>
+      skill.masteries.filter(
+        (_, j) => !opData || (opData.masteries[i] ?? 0) < j + 1
+      )
     );
     const mastery =
       masteryGoals.length > 0
         ? masteryGoals.map((goal) => (
-          <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
-            <Checkbox
-              checked={selectedGoalNames.indexOf(goal.name) > -1}
-              size="small"
-            />
-            <ListItemText primary={goal.name} />
-          </GoalMenuCheckboxItem>
-        ))
+            <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
+              <Checkbox
+                checked={selectedGoalNames.indexOf(goal.name) > -1}
+                size="small"
+              />
+              <ListItemText primary={goal.name} />
+            </GoalMenuCheckboxItem>
+          ))
         : null;
 
-    const moduleGoals = operator.moduleData.flatMap((module, i) => module.stages
-      .filter((_, j) => !opData || (opData.modules[i] ?? 0) < j + 1)
+    const moduleGoals = operator.moduleData.flatMap((module, i) =>
+      module.stages.filter(
+        (_, j) => !opData || (opData.modules[i] ?? 0) < j + 1
+      )
     );
     const mod =
       moduleGoals.length > 0
         ? moduleGoals.map((goal) => (
-          <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
-            <Checkbox
-              checked={selectedGoalNames.indexOf(goal.name) > -1}
-              size="small"
-            />{" "}
-            <ListItemText primary={goal.name} />
-          </GoalMenuCheckboxItem>
-        ))
+            <GoalMenuCheckboxItem key={goal.name} value={goal.name}>
+              <Checkbox
+                checked={selectedGoalNames.indexOf(goal.name) > -1}
+                size="small"
+              />{" "}
+              <ListItemText primary={goal.name} />
+            </GoalMenuCheckboxItem>
+          ))
         : null;
 
     const presets =
       availablePresets.length > 0
         ? [
-          <ListSubheader key="presets">Shortcuts</ListSubheader>,
-          ...availablePresets.map((preset) => (
-            <GoalMenuPlainItem key={preset} value={preset}>
-              {preset}
-            </GoalMenuPlainItem>
-          )),
-          <ListSubheader key="goals">Goals</ListSubheader>,
-        ]
+            <ListSubheader key="presets">Shortcuts</ListSubheader>,
+            ...availablePresets.map((preset) => (
+              <GoalMenuPlainItem key={preset} value={preset}>
+                {preset}
+              </GoalMenuPlainItem>
+            )),
+            <ListSubheader key="goals">Goals</ListSubheader>,
+          ]
         : [];
 
     const options = [...presets];

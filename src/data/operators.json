@@ -97449,11 +97449,7 @@
         "isCnOnly": true
       }
     ],
-    "potentials": [
-      "ATK +35",
-      "Max HP +250",
-      "DEF +35"
-    ],
+    "potentials": ["ATK +35", "Max HP +250", "DEF +35"],
     "skillLevels": [
       {
         "skillLevel": 2,

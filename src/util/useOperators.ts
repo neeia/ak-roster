@@ -1,7 +1,12 @@
 import { useEffect } from "react";
-import { defaultOperatorObject, Operator, OperatorData, OperatorV1, } from '../types/operator';
+import {
+  defaultOperatorObject,
+  Operator,
+  OperatorData,
+  OperatorV1,
+} from "../types/operator";
 import operatorJson from "data/operators.json";
-import useLocalStorage from './useLocalStorage';
+import useLocalStorage from "./useLocalStorage";
 
 // Converts a LegacyOperator into an Operator
 function convertLegacy([_, op]: [any, OperatorV1]): [string, Operator] {
@@ -28,42 +33,46 @@ function convertLegacy([_, op]: [any, OperatorV1]): [string, Operator] {
   ];
 }
 
-export function repair(ops: Record<string, Operator>, setOps: (v: Record<string, Operator>) => void) {
-  var rooster = { ...ops }
-  Object.entries(operatorJson).forEach((props: [opId: string, opJ: OperatorData]) => {
-    const [opId, opJsonItem] = props;
-    const op = rooster[opId];
+export function repair(
+  ops: Record<string, Operator>,
+  setOps: (v: Record<string, Operator>) => void
+) {
+  var rooster = { ...ops };
+  Object.entries(operatorJson).forEach(
+    (props: [opId: string, opJ: OperatorData]) => {
+      const [opId, opJsonItem] = props;
+      const op = rooster[opId];
 
-    // check for missing operators to repair
-    if (!op || !op.name || !op.op_id || op.op_id !== opId) {
-      if (opJsonItem) rooster[opId] = defaultOperatorObject([opId, opJsonItem])[1];
+      // check for missing operators to repair
+      if (!op || !op.name || !op.op_id || op.op_id !== opId) {
+        if (opJsonItem)
+          rooster[opId] = defaultOperatorObject([opId, opJsonItem])[1];
+      } else if (op.name !== opJsonItem.name) {
+        rooster[opId].name = opJsonItem.name;
+      }
     }
-    else if (op.name !== opJsonItem.name) {
-      rooster[opId].name = opJsonItem.name;
-    }
-  })
-  
+  );
+
   Object.entries(rooster).forEach(([opId, op]) => {
     // check for outdated operators to redefine
     if (op.class === undefined) {
       rooster[opId] = convertLegacy([, op])[1];
-    }
-    else {
+    } else {
       if (op.masteries === undefined) op.masteries = [];
       if (op.modules === undefined) op.modules = [];
     }
-  })
+  });
   setOps(rooster);
-
 }
 
 function useOperators() {
-  const [operators, setOperators] = useLocalStorage<Record<string, Operator>>("operators", Object.fromEntries(
-    Object.entries(operatorJson).map(defaultOperatorObject)
-  ));
+  const [operators, setOperators] = useLocalStorage<Record<string, Operator>>(
+    "operators",
+    Object.fromEntries(Object.entries(operatorJson).map(defaultOperatorObject))
+  );
   useEffect(() => {
     repair(operators, setOperators);
-  }, [])
-  return [operators, setOperators] as const
+  }, []);
+  return [operators, setOperators] as const;
 }
 export default useOperators;

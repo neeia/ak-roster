@@ -36,16 +36,16 @@ const Goals: NextPage = () => {
 
   function parseText(text: string) {
     try {
-      const { goals, depot }: { goals: GoalsState, depot: DepotState } = JSON.parse(lz.decompressFromEncodedURIComponent(text) ?? "");
+      const { goals, depot }: { goals: GoalsState; depot: DepotState } =
+        JSON.parse(lz.decompressFromEncodedURIComponent(text) ?? "");
       Object.entries(depot.stock).forEach(([itemId, newQuantity]) => {
         dispatch(setStock({ itemId, newQuantity }));
-      })
+      });
       Object.entries(depot.crafting).forEach(([itemId, isCrafting]) => {
-        dispatch(setCrafting({ itemId, isCrafting }))
-      })
+        dispatch(setCrafting({ itemId, isCrafting }));
+      });
       dispatch(addGoals(goals));
-    }
-    catch (e) {
+    } catch (e) {
       captureMessage("Error while migrating planner data: " + e);
     }
   }
@@ -54,10 +54,10 @@ const Goals: NextPage = () => {
   useEffect(() => {
     if (router.query.migrate && !Array.isArray(router.query.migrate)) {
       const data = router.query.migrate;
-      router.replace('/planner/goals', undefined, { shallow: true });
+      router.replace("/planner/goals", undefined, { shallow: true });
       parseText(data);
     }
-  }, [router])
+  }, [router]);
 
   const handleGoalComplete = (goal: PlannerGoal) => {
     setOperators((ops) => {
@@ -72,19 +72,27 @@ const Goals: NextPage = () => {
           ops[goal.operatorId].rank = Math.max(goal.skillLevel, op.rank);
           break;
         case OperatorGoalCategory.Mastery:
-          const skillIndex = opData.skillData.findIndex((sk) => sk.skillId === goal.skillId);
-          ops[goal.operatorId].masteries[skillIndex] = Math.max(goal.masteryLevel, op.masteries[skillIndex]);
+          const skillIndex = opData.skillData.findIndex(
+            (sk) => sk.skillId === goal.skillId
+          );
+          ops[goal.operatorId].masteries[skillIndex] = Math.max(
+            goal.masteryLevel,
+            op.masteries[skillIndex]
+          );
           break;
         case OperatorGoalCategory.Module:
           const moduleIndex = opData.moduleData.findIndex(
             (m) => m.moduleId === goal.moduleId
           )!;
-          ops[goal.operatorId].modules[moduleIndex] = Math.max(goal.moduleLevel, op.masteries[moduleIndex]);
+          ops[goal.operatorId].modules[moduleIndex] = Math.max(
+            goal.moduleLevel,
+            op.masteries[moduleIndex]
+          );
           break;
       }
       return ops;
-    })
-  }
+    });
+  };
 
   return (
     <Layout tab="/planner" page="/goals">
@@ -116,7 +124,11 @@ const Goals: NextPage = () => {
             },
           }}
         >
-          <GoalSelect opData={operator && operators[operator.id]} operator={operator} onGoalsAdded={handleGoalsAdded} />
+          <GoalSelect
+            opData={operator && operators[operator.id]}
+            operator={operator}
+            onGoalsAdded={handleGoalsAdded}
+          />
         </Grid>
       </Grid>
 
