@@ -4,8 +4,7 @@ export default function attachSubComponents<
 >(displayName: string, topLevelComponent: C, otherComponents: O): C & O {
   topLevelComponent.displayName = displayName;
   Object.entries(otherComponents).forEach(
-    ([tag, component]) =>
-      (component.displayName = `${displayName}.${tag}`)
+    ([tag, component]) => (component.displayName = `${displayName}.${tag}`)
   );
 
   return Object.assign(topLevelComponent, otherComponents);

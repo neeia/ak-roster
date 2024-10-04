@@ -117,7 +117,7 @@ const PlannerGoalCard = React.forwardRef<HTMLLIElement, Props>((props, ref) => {
           borderRight: "1px solid rgba(255, 255, 255, 0.2)",
           "& .operator-avatar": {
             borderRadius: "0 0 0 40%",
-          }
+          },
         }}
       >
         <Box gridArea="icon" display="flex">
@@ -132,7 +132,12 @@ const PlannerGoalCard = React.forwardRef<HTMLLIElement, Props>((props, ref) => {
 
         <Typography
           component="span"
-          sx={{ fontSize: 20, lineHeight: 1, gridArea: "name", ml: { xs: 0, sm: 1 } }}
+          sx={{
+            fontSize: 20,
+            lineHeight: 1,
+            gridArea: "name",
+            ml: { xs: 0, sm: 1 },
+          }}
         >
           {appellation ?? operator.name}
         </Typography>
@@ -169,12 +174,7 @@ const PlannerGoalCard = React.forwardRef<HTMLLIElement, Props>((props, ref) => {
           backgroundColor: (theme) => theme.palette.background.paper,
         }}
       >
-        <Tooltip
-          arrow
-          describeChild
-          title="Complete Goal"
-          placement="left"
-        >
+        <Tooltip arrow describeChild title="Complete Goal" placement="left">
           <GoalCardButton
             aria-label={`Complete goal: ${goalLabel}`}
             onClick={() => onGoalCompleted(goal)}

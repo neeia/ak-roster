@@ -1,23 +1,30 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  TextField,
+} from "@mui/material";
 import React, { useState } from "react";
 import { useGroupsUpdateMutation } from "../../store/extendGroups";
 
 interface Props {
-  open : boolean,
+  open: boolean;
   onClose: (groupName: string) => void;
 }
 
-const AddGroupDialog = (props : Props) => {
-  const {open, onClose} = props;
+const AddGroupDialog = (props: Props) => {
+  const { open, onClose } = props;
 
   const [groupsUpdateTrigger] = useGroupsUpdateMutation();
 
   const [newGroupName, setNewGroupName] = useState<string>("");
 
   const handleGroupDialogClose = (shouldAddGroup: boolean) => {
-    if (shouldAddGroup)
-    {
-      let data = {group_name: newGroupName};
+    if (shouldAddGroup) {
+      let data = { group_name: newGroupName };
       groupsUpdateTrigger([data]);
     }
     setNewGroupName("");
@@ -25,10 +32,7 @@ const AddGroupDialog = (props : Props) => {
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={() => handleGroupDialogClose(false)}
-    >
+    <Dialog open={open} onClose={() => handleGroupDialogClose(false)}>
       <DialogTitle>Add new goal group</DialogTitle>
       <DialogContent>
         <DialogContentText>

@@ -11,7 +11,7 @@ const br = (index: number) => {
   if (index === 0) return `${r}px 0px 0px ${r}px`;
   else if (index === 5) return `0px ${r}px ${r}px 0px`;
   else return "0";
-}
+};
 const bm = (index: number) => {
   const r = 4;
   if (index === 0) return `${r}px 0px 0px 0px`;
@@ -19,7 +19,7 @@ const bm = (index: number) => {
   else if (index === 3) return `0px 0px 0px ${r}px`;
   else if (index === 5) return `0px 0px ${r}px 0px`;
   else return "0";
-}
+};
 
 interface Props {
   value: Set<Value>;
@@ -30,10 +30,16 @@ const RarityFilter = (props: Props) => {
 
   return (
     <>
-      <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
+      <Divider sx={{ mt: 1, mb: 0.5 }} variant="middle" flexItem>
         Rarity
       </Divider>
-      <Box sx={{ display: "grid", gridTemplateColumns: { xs: "repeat(3, 1fr)", sm: "repeat(6, 1fr)" }, width: "100%" }}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { xs: "repeat(3, 1fr)", sm: "repeat(6, 1fr)" },
+          width: "100%",
+        }}
+      >
         {[...Array(6)].map((_, i) => (
           <IconButton
             key={i}
@@ -50,7 +56,8 @@ const RarityFilter = (props: Props) => {
           </IconButton>
         ))}
       </Box>
-    </>);
-}
+    </>
+  );
+};
 
 export default RarityFilter;

@@ -9,7 +9,10 @@ const extendedApi = supabaseApi.injectEndpoints({
         const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
-        const { data } = await supabase.from("depot").select().eq("user_id", user_id);
+        const { data } = await supabase
+          .from("depot")
+          .select()
+          .eq("user_id", user_id);
 
         const result: Record<string, DepotData> = {};
         data?.forEach((x) => (result[x.material_id] = x));
@@ -22,7 +25,10 @@ const extendedApi = supabaseApi.injectEndpoints({
         const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
-        const { data } = await supabase.from("depot").upsert(depotDataInsert).select();
+        const { data } = await supabase
+          .from("depot")
+          .upsert(depotDataInsert)
+          .select();
 
         return { data } as { data: DepotData[] };
       },
@@ -33,7 +39,10 @@ const extendedApi = supabaseApi.injectEndpoints({
         const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
-        const { error } = await supabase.from("depot").update({ crafting: false }).eq("user_id", user_id);
+        const { error } = await supabase
+          .from("depot")
+          .update({ crafting: false })
+          .eq("user_id", user_id);
         console.log(JSON.stringify(error));
 
         return { data: !!error };
@@ -45,7 +54,10 @@ const extendedApi = supabaseApi.injectEndpoints({
         const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
-        const { error } = await supabase.from("depot").update({ stock: 0 }).eq("user_id", user_id);
+        const { error } = await supabase
+          .from("depot")
+          .update({ stock: 0 })
+          .eq("user_id", user_id);
 
         console.log(JSON.stringify(error));
         return { data: !!error };
@@ -56,4 +68,9 @@ const extendedApi = supabaseApi.injectEndpoints({
   overrideExisting: false,
 });
 
-export const { useDepotGetQuery, useDepotUpdateMutation, useDepotResetStockUpdateMutation, useDepotResetCraftingUpdateMutation } = extendedApi;
+export const {
+  useDepotGetQuery,
+  useDepotUpdateMutation,
+  useDepotResetStockUpdateMutation,
+  useDepotResetCraftingUpdateMutation,
+} = extendedApi;

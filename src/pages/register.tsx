@@ -1,6 +1,15 @@
 import React, { MouseEventHandler, useRef, useState } from "react";
 import type { NextPage } from "next";
-import { Alert, Box, Button, ButtonBase, CircularProgress, Divider, TextField, Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  ButtonBase,
+  CircularProgress,
+  Divider,
+  TextField,
+  Typography,
+} from "@mui/material";
 import Layout from "components/Layout";
 import supabase from "supabase/supabaseClient";
 import { DISCORD_BLURPLE } from "styles/theme/appTheme";
@@ -12,39 +21,35 @@ import Image from "next/image";
 import { server } from "util/server";
 import AuthLayout from "components/AuthLayout";
 
-const DiscordButton = React.memo((props: { onClick: React.MouseEventHandler }) =>
-  <ButtonBase
-    sx={{
-      width: "100%",
-      fontSize: "1rem",
-      backgroundColor: DISCORD_BLURPLE,
-      display: "flex",
-      gap: 1,
-      p: 2,
-      borderRadius: 1,
-      transition: "filter 0.1s",
-      ":hover": { filter: "brightness(110%)" },
-    }}
-    onClick={props.onClick}
-  >
-    <Image
-      src="/img/assets/discord.svg"
-      width="24"
-      height="18"
-      alt=""
-    />
-    Continue with Discord
-  </ButtonBase>
+const DiscordButton = React.memo(
+  (props: { onClick: React.MouseEventHandler }) => (
+    <ButtonBase
+      sx={{
+        width: "100%",
+        fontSize: "1rem",
+        backgroundColor: DISCORD_BLURPLE,
+        display: "flex",
+        gap: 1,
+        p: 2,
+        borderRadius: 1,
+        transition: "filter 0.1s",
+        ":hover": { filter: "brightness(110%)" },
+      }}
+      onClick={props.onClick}
+    >
+      <Image src="/img/assets/discord.svg" width="24" height="18" alt="" />
+      Continue with Discord
+    </ButtonBase>
+  )
 );
 
 enum RegisterState {
   Default,
   Email,
-  Verify
+  Verify,
 }
 
 const Register: NextPage = () => {
-
   const [flow, setFlow] = useState(RegisterState.Default);
   const [loading, setLoading] = useState(false);
 
@@ -55,7 +60,9 @@ const Register: NextPage = () => {
 
   const [errorSb, setErrorSb] = useState<string | null>();
 
-  async function handleRegister(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
+  async function handleRegister(
+    e: React.MouseEvent<HTMLButtonElement>
+  ): Promise<void> {
     e.preventDefault();
     setLoading(true);
     setErrorSb(null);
@@ -71,8 +78,8 @@ const Register: NextPage = () => {
       email: email.trim(),
       password: password,
       options: {
-        emailRedirectTo: `${server}`
-      }
+        emailRedirectTo: `${server}`,
+      },
     });
     if (error) setErrorSb(error.message);
     else {
@@ -82,7 +89,9 @@ const Register: NextPage = () => {
     setLoading(false);
   }
 
-  async function resendVerify(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
+  async function resendVerify(
+    e: React.MouseEvent<HTMLButtonElement>
+  ): Promise<void> {
     e.preventDefault();
     if (!email) {
       setErrorEmail("This field is required.");
@@ -93,21 +102,21 @@ const Register: NextPage = () => {
       return;
     }
     const { error } = await supabase.auth.resend({
-      type: 'signup',
+      type: "signup",
       email: email,
       options: {
-        emailRedirectTo: `${server}`
-      }
-    })
+        emailRedirectTo: `${server}`,
+      },
+    });
     if (error) setErrorSb(error.message);
   }
 
   async function signInWithDiscord() {
     const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'discord',
+      provider: "discord",
       options: {
-        redirectTo: `${server}`
-      }
+        redirectTo: `${server}`,
+      },
     });
     if (error) setErrorSb(error.message);
   }
@@ -115,15 +124,16 @@ const Register: NextPage = () => {
   const title: Record<RegisterState, string> = {
     [RegisterState.Default]: "Choose a sign up method",
     [RegisterState.Email]: "Create account",
-    [RegisterState.Verify]: "Verify your email"
-  }
+    [RegisterState.Verify]: "Verify your email",
+  };
   const render: Record<RegisterState, React.ReactNode> = {
     [RegisterState.Default]: (
       <>
         <DiscordButton onClick={signInWithDiscord} />
         <Typography component="p">
-          If you don't have a Discord account, Krooster still supports traditional password-based registration.
-          Your email is used only to log in and is kept private.
+          If you don't have a Discord account, Krooster still supports
+          traditional password-based registration. Your email is used only to
+          log in and is kept private.
         </Typography>
         <Button
           onClick={() => setFlow(RegisterState.Email)}
@@ -143,11 +153,14 @@ const Register: NextPage = () => {
     ),
     [RegisterState.Email]: (
       <>
-        <Box component="form" sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: { xs: 2, sm: 4 },
-        }}>
+        <Box
+          component="form"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: { xs: 2, sm: 4 },
+          }}
+        >
           <TextField
             label="Email"
             value={email}
@@ -157,7 +170,8 @@ const Register: NextPage = () => {
               setErrorEmail(null);
             }}
             onBlur={(e) => {
-              if (e.target.value.length === 0) setErrorEmail("This field is required.")
+              if (e.target.value.length === 0)
+                setErrorEmail("This field is required.");
             }}
             error={!!errorEmail}
             variant="outlined"
@@ -173,8 +187,10 @@ const Register: NextPage = () => {
               if (e.target.value.length >= 6) setErrorPw("");
             }}
             onBlur={(e) => {
-              if (e.target.value.length === 0) setErrorPw("This field is required.")
-              else if (e.target.value.length < 6) setErrorPw("Password must have at least 6 characters.")
+              if (e.target.value.length === 0)
+                setErrorPw("This field is required.");
+              else if (e.target.value.length < 6)
+                setErrorPw("Password must have at least 6 characters.");
             }}
             error={!!errorPw}
             helperText={errorPw}
@@ -203,33 +219,45 @@ const Register: NextPage = () => {
     [RegisterState.Verify]: (
       <>
         <Box>
-          You're almost done! We sent a link to {email} to verify your email address and activate your account.
-          This link will expire in 24 hours. You may need to check your spam folder.
+          You're almost done! We sent a link to {email} to verify your email
+          address and activate your account. This link will expire in 24 hours.
+          You may need to check your spam folder.
         </Box>
-        <Box sx={{ display: "flex", gap: 1, alignItems: "baseline", flexWrap: "wrap" }}>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 1,
+            alignItems: "baseline",
+            flexWrap: "wrap",
+          }}
+        >
           Didn't receive an email?
-          <ButtonBase onClick={resendVerify} sx={{
-            display: "inline",
-            color: "primary.main",
-            fontSize: "1rem",
-            ":focus": { outline: "1px solid white" }
-          }}>
+          <ButtonBase
+            onClick={resendVerify}
+            sx={{
+              display: "inline",
+              color: "primary.main",
+              fontSize: "1rem",
+              ":focus": { outline: "1px solid white" },
+            }}
+          >
             Resend
           </ButtonBase>
         </Box>
       </>
     ),
-  }
+  };
 
   return (
     <AuthLayout title={title[flow]}>
-      {loading
-        ? <Box sx={{ p: 4, display: "flex", justifyContent: "center" }}>
+      {loading ? (
+        <Box sx={{ p: 4, display: "flex", justifyContent: "center" }}>
           <CircularProgress />
         </Box>
-        : render[flow]
-      }
+      ) : (
+        render[flow]
+      )}
     </AuthLayout>
   );
-}
+};
 export default Register;

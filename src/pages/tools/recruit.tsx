@@ -86,8 +86,8 @@ interface Tag {
   value: string;
 }
 
-const options: Tag[] = Object.entries(TAGS_BY_CATEGORY).flatMap(([type, tagArray]) =>
-  tagArray.flatMap((tag) => ({ type, value: tag }))
+const options: Tag[] = Object.entries(TAGS_BY_CATEGORY).flatMap(
+  ([type, tagArray]) => tagArray.flatMap((tag) => ({ type, value: tag }))
 );
 
 const Recruit: NextPage = () => {
@@ -102,12 +102,17 @@ const Recruit: NextPage = () => {
     }
   }, [inputNode]);
 
-  const matchingOperators = useMemo(() => getTagCombinations([...activeTags]
-    .sort((a, b) => a.value.localeCompare(b.value))
-    .map(tag => tag.value)
-  )
-    .map((tags) => recruitmentJson[`${tags}` as keyof typeof recruitmentJson])
-    .filter((result) => result != null),
+  const matchingOperators = useMemo(
+    () =>
+      getTagCombinations(
+        [...activeTags]
+          .sort((a, b) => a.value.localeCompare(b.value))
+          .map((tag) => tag.value)
+      )
+        .map(
+          (tags) => recruitmentJson[`${tags}` as keyof typeof recruitmentJson]
+        )
+        .filter((result) => result != null),
     [activeTags]
   );
 
@@ -126,99 +131,124 @@ const Recruit: NextPage = () => {
     }
   };
 
-
   const isServer = () => typeof window === `undefined`;
 
   const [open, setOpen] = useState(true);
 
   const [showPotentials, setShowPotentials] = useState(false);
   const [bonuses, setBonuses] = useState(false);
-  const [_showPotentials, _setShowPotentials] = useLocalStorage("recruitShowPotential", false);
+  const [_showPotentials, _setShowPotentials] = useLocalStorage(
+    "recruitShowPotential",
+    false
+  );
   const [_bonuses, _setBonuses] = useLocalStorage("recruitShowBonuses", false);
   useEffect(() => {
     setShowPotentials(_showPotentials);
-    setBonuses(_bonuses)
+    setBonuses(_bonuses);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+  }, []);
 
   return (
     <Layout tab="/tools" page="/recruit">
-      <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, gap: "32px", justifyContent: "center", }}>
-        <Board title="Tags"
-          TitleAction={<IconButton onClick={() => setOpen(o => !o)}>
-            {open
-              ? <ZoomInMap />
-              : <ZoomOutMap />
-            }
-          </IconButton>}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          gap: "32px",
+          justifyContent: "center",
+        }}
+      >
+        <Board
+          title="Tags"
+          TitleAction={
+            <IconButton onClick={() => setOpen((o) => !o)}>
+              {open ? <ZoomInMap /> : <ZoomOutMap />}
+            </IconButton>
+          }
           sx={{
             width: { xs: "100%", md: open ? "100%" : "320px" },
             height: "min-content",
             transition: "width 0.25s",
             maxWidth: { xs: "100%", md: "sm" },
             "&:focus-within .MuiAutocomplete-option.Mui-focused": {
-              ...focused
+              ...focused,
             },
-          }}>
-          <Autocomplete multiple options={options} value={activeTags}
+          }}
+        >
+          <Autocomplete
+            multiple
+            options={options}
+            value={activeTags}
             open={open}
             autoHighlight
             disableCloseOnSelect
             disablePortal
             groupBy={(option) => option.type}
             getOptionLabel={(option) => option.value}
-            isOptionEqualToValue={(option, value) => option.value === value.value}
+            isOptionEqualToValue={(option, value) =>
+              option.value === value.value
+            }
             onChange={handleTagsChanged}
             renderInput={(params) => (
               <TextField
                 {...params}
                 slotProps={{
-                  input:
-                  {
+                  input: {
                     ...params.InputProps,
                     sx: {
-                      pr: "48px !important"
+                      pr: "48px !important",
                     },
                     endAdornment: (
-                      <IconButton sx={{ position: "absolute", right: 8, top: 8 }} >
+                      <IconButton
+                        sx={{ position: "absolute", right: 8, top: 8 }}
+                      >
                         <Close fontSize="small" />
                       </IconButton>
                     ),
-                  }
+                  },
                 }}
                 label="Selected tags"
                 inputRef={setInputNode}
               />
             )}
-            renderGroup={(params) =>
+            renderGroup={(params) => (
               <Collapse collapsedSize="0px" in={open} key={params.key}>
                 <Box component="li">
-                  <Typography variant="h3" className="MuiAutocomplete-groupLabel" sx={{ mb: "8px" }}>
+                  <Typography
+                    variant="h3"
+                    className="MuiAutocomplete-groupLabel"
+                    sx={{ mb: "8px" }}
+                  >
                     {params.group}
                   </Typography>
-                  <Box component="ul"
+                  <Box
+                    component="ul"
                     className="MuiAutocomplete-groupUl"
                     sx={{
                       p: 0,
                       display: "flex",
                       flexWrap: "wrap",
-                      gap: "8px 16px"
+                      gap: "8px 16px",
                     }}
                   >
                     {params.children}
                   </Box>
                 </Box>
               </Collapse>
-            }
-            renderOption={({ key, ...props }, option) =>
+            )}
+            renderOption={({ key, ...props }, option) => (
               <Box key={key} {...props} component="li">
-                {classList.includes(option.value)
-                  ? <Image width={24} height={24} src={`/img/classes/class_${option.value.toLowerCase()}.png`} alt={option.value}></Image>
-                  : null}
+                {classList.includes(option.value) ? (
+                  <Image
+                    width={24}
+                    height={24}
+                    src={`/img/classes/class_${option.value.toLowerCase()}.png`}
+                    alt={option.value}
+                  ></Image>
+                ) : null}
                 {option.value}
               </Box>
-            }
+            )}
             ListboxProps={{
               sx: {
                 display: "flex",
@@ -236,54 +266,76 @@ const Recruit: NextPage = () => {
                   display: "flex",
                   gap: "8px",
                   alignItems: "center",
-                  lineHeight: "1"
+                  lineHeight: "1",
                 },
-              }
+              },
             }}
             PopperComponent={(props) => (
-              <Popper {...props} sx={{
-                position: "static !important",
-                height: "max-content !important",
-                transform: "none !important",
-                width: "100% !important",
-                zIndex: "0 !important",
-              }} />
+              <Popper
+                {...props}
+                sx={{
+                  position: "static !important",
+                  height: "max-content !important",
+                  transform: "none !important",
+                  width: "100% !important",
+                  zIndex: "0 !important",
+                }}
+              />
             )}
           />
         </Board>
-        <Board title="Results" sx={{
-          maxWidth: "md",
-          height: "min-content",
-          "&:focus-within .MuiAutocomplete-option.Mui-focused": {
-            ...focused
-          },
-        }}>
-          <Box sx={{
-            display: "flex",
-            gap: 2,
-            "& span": {
-              lineHeight: 1.1,
-            }
-          }}>
+        <Board
+          title="Results"
+          sx={{
+            maxWidth: "md",
+            height: "min-content",
+            "&:focus-within .MuiAutocomplete-option.Mui-focused": {
+              ...focused,
+            },
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              "& span": {
+                lineHeight: 1.1,
+              },
+            }}
+          >
             <FormControlLabel
-              control={<Checkbox checked={showPotentials}
-                onChange={(e) => { setShowPotentials(e.target.checked); _setShowPotentials(e.target.checked); }}
-                disabled={!user}
-              />}
+              control={
+                <Checkbox
+                  checked={showPotentials}
+                  onChange={(e) => {
+                    setShowPotentials(e.target.checked);
+                    _setShowPotentials(e.target.checked);
+                  }}
+                  disabled={!user}
+                />
+              }
               label="Show Potentials"
             />
             <FormControlLabel
-              control={<Checkbox checked={bonuses}
-                onChange={(e) => { setBonuses(e.target.checked); _setBonuses(e.target.checked); }}
-                disabled={!user}
-              />}
+              control={
+                <Checkbox
+                  checked={bonuses}
+                  onChange={(e) => {
+                    setBonuses(e.target.checked);
+                    _setBonuses(e.target.checked);
+                  }}
+                  disabled={!user}
+                />
+              }
               label="Next Upgrade"
             />
           </Box>
           <Divider />
-          {activeTags.length === 0
-            && <Alert severity="info">Select at least one tag to see results.</Alert>
-          }
+          {activeTags.length === 0 && (
+            <Alert severity="info">
+              Select at least one tag to see results.
+            </Alert>
+          )}
           {matchingOperators
             .sort(
               (
@@ -293,12 +345,13 @@ const Recruit: NextPage = () => {
                 Math.min(
                   ...opSetB.map((op) => (op.rarity === 1 ? 4 : op.rarity))
                 ) -
-                Math.min(
-                  ...opSetA.map((op) => (op.rarity === 1 ? 4 : op.rarity))
-                ) || tagSetB.length - tagSetA.length
+                  Math.min(
+                    ...opSetA.map((op) => (op.rarity === 1 ? 4 : op.rarity))
+                  ) || tagSetB.length - tagSetA.length
             )
             .map(({ tags, operators, guarantees }) => (
-              <Box key={tags.join(",")}
+              <Box
+                key={tags.join(",")}
                 sx={{
                   display: "flex",
                   flexDirection: "column",
@@ -319,50 +372,59 @@ const Recruit: NextPage = () => {
                     </Chip>
                   ))}
                   {tags.map((tag) => (
-                    <Chip key={tag}>
-                      {tag}
-                    </Chip>
+                    <Chip key={tag}>{tag}</Chip>
                   ))}
                 </Box>
-                <Box sx={{
-                  ...chipContainerStyles,
-                  display: "grid",
-                  gridArea: "box",
-                  gridTemplateColumns: `repeat(auto-fill, minmax(${showPotentials ? "108px" : "80px"}, 1fr))`,
-                  gridTemplateRows: "min-content",
-                  justifyContent: "center",
-                  gap: { xs: 0.5, sm: 1 },
-                  margin: 0,
-                  padding: 0,
-                  "& .MuiTypography-root": {
-                    display: "flex",
-                    lineHeight: "1.25rem",
-                    color: "text.primary",
-                    letterSpacing: "normal",
-                    textTransform: "none",
-                    pointerEvents: "none",
-                    flexDirection: "column",
-                    mx: "-1rem",
-                    textAlign: "center",
-                  },
-                  "& .max-pot": {
-                    opacity: 0.75
-                  }
-                }}
+                <Box
+                  sx={{
+                    ...chipContainerStyles,
+                    display: "grid",
+                    gridArea: "box",
+                    gridTemplateColumns: `repeat(auto-fill, minmax(${
+                      showPotentials ? "108px" : "80px"
+                    }, 1fr))`,
+                    gridTemplateRows: "min-content",
+                    justifyContent: "center",
+                    gap: { xs: 0.5, sm: 1 },
+                    margin: 0,
+                    padding: 0,
+                    "& .MuiTypography-root": {
+                      display: "flex",
+                      lineHeight: "1.25rem",
+                      color: "text.primary",
+                      letterSpacing: "normal",
+                      textTransform: "none",
+                      pointerEvents: "none",
+                      flexDirection: "column",
+                      mx: "-1rem",
+                      textAlign: "center",
+                    },
+                    "& .max-pot": {
+                      opacity: 0.75,
+                    },
+                  }}
                 >
-                  {!isServer() && [...operators]
-                    .sort((a, b) => (a.rarity - b.rarity)
-                      || (roster
-                        ? (a.id in roster ? roster[a.id].potential : 0)
-                        - (b.id in roster ? roster[b.id].potential : 0)
-                        : 0))
-                    .map((operator) => (
-                      <RecruitableOperatorCard op={roster?.[operator.id] ?? defaultOperatorObject(operator.id)}
-                        key={operator.id}
-                        showPotentials={showPotentials}
-                        showBonus={bonuses}
-                      />
-                    ))}
+                  {!isServer() &&
+                    [...operators]
+                      .sort(
+                        (a, b) =>
+                          a.rarity - b.rarity ||
+                          (roster
+                            ? (a.id in roster ? roster[a.id].potential : 0) -
+                              (b.id in roster ? roster[b.id].potential : 0)
+                            : 0)
+                      )
+                      .map((operator) => (
+                        <RecruitableOperatorCard
+                          op={
+                            roster?.[operator.id] ??
+                            defaultOperatorObject(operator.id)
+                          }
+                          key={operator.id}
+                          showPotentials={showPotentials}
+                          showBonus={bonuses}
+                        />
+                      ))}
                 </Box>
               </Box>
             ))}

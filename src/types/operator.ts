@@ -103,7 +103,7 @@ export function defaultPresetObject(_: any, index: number): [string, Preset] {
       elite: -1,
       level: 0,
       rank: 0,
-      masteries: []
+      masteries: [],
     },
   ];
 }

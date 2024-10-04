@@ -3,9 +3,7 @@ import { Link } from "@mui/material";
 import Image from "next/image";
 import { DISCORD_BLURPLE } from "styles/theme/appTheme";
 
-
 const DiscordInvite = () => {
-
   return (
     <Link
       sx={{
@@ -27,14 +25,9 @@ const DiscordInvite = () => {
       target="_blank"
       rel="noreferrer noopener"
     >
-      <Image
-        src="/img/assets/discord.svg"
-        width="20"
-        height="15"
-        alt=""
-      />
+      <Image src="/img/assets/discord.svg" width="20" height="15" alt="" />
       Join the Discord!
     </Link>
   );
-}
+};
 export default DiscordInvite;

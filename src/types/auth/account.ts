@@ -5,4 +5,8 @@ export interface Account {
   account_name: string;
 }
 
-export type Get = (req: NextApiRequest, res: NextApiResponse, account: Account) => void;
+export type Get = (
+  req: NextApiRequest,
+  res: NextApiResponse,
+  account: Account
+) => void;

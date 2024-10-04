@@ -1,5 +1,13 @@
 import React from "react";
-import { Dialog, DialogContent, DialogTitle, IconButton, TextField, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  TextField,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import EditRow from "../input/EditRow";
 import General from "../input/Select/General";
 import Potential from "./replacements/Potential";
@@ -21,7 +29,7 @@ interface Props {
 const EditPreset = React.memo((props: Props) => {
   const { preset, open, onClose, onChange, rename } = props;
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   if (!preset) return null;
 
@@ -31,63 +39,63 @@ const EditPreset = React.memo((props: Props) => {
       size="small"
       margin="none"
       value={preset.name}
-      onChange={e => rename(preset.op_id, e.target.value)}
+      onChange={(e) => rename(preset.op_id, e.target.value)}
       inputProps={{
         sx: {
           paddingTop: "12px",
           paddingBottom: "12px",
           fontSize: "24px",
           textAlign: "center",
-        }
+        },
       }}
     />
-  )
+  );
 
   return (
-    <Dialog
-      open={open}
-      onClose={onClose}
-      fullScreen={fullScreen}
-    >
-      <DialogTitle sx={{
-        alignSelf: "start",
-        width: "100%",
-        display: "grid",
-        gridTemplateColumns: "1fr auto",
-        alignItems: "center",
-        paddingBottom: "12px",
-        boxShadow: {
-          xs: 1,
-          sm: 0
-        },
-      }}>
+    <Dialog open={open} onClose={onClose} fullScreen={fullScreen}>
+      <DialogTitle
+        sx={{
+          alignSelf: "start",
+          width: "100%",
+          display: "grid",
+          gridTemplateColumns: "1fr auto",
+          alignItems: "center",
+          paddingBottom: "12px",
+          boxShadow: {
+            xs: 1,
+            sm: 0,
+          },
+        }}
+      >
         {name}
         <IconButton onClick={onClose} sx={{ display: { sm: "none" } }}>
           <Close />
         </IconButton>
       </DialogTitle>
-      <DialogContent sx={{
-        "& .MuiButtonBase-root": {
-          border: "unset",
-          backgroundColor: "info.main",
-          boxShadow: 1,
-        },
-        "& .inactive": {
-          opacity: 0.75,
-        },
-        "& .active": {
-          opacity: 1,
-          boxShadow: 0,
-          borderBottomWidth: "0.25rem 0px 0px 0px !important",
-          borderBottomColor: "primary.main",
-          borderBottomStyle: "solid",
-          backgroundColor: "info.light",
-        },
-        "& .Mui-disabled": {
-          opacity: 0.25,
-          boxShadow: 0,
-        },
-      }}>
+      <DialogContent
+        sx={{
+          "& .MuiButtonBase-root": {
+            border: "unset",
+            backgroundColor: "info.main",
+            boxShadow: 1,
+          },
+          "& .inactive": {
+            opacity: 0.75,
+          },
+          "& .active": {
+            opacity: 1,
+            boxShadow: 0,
+            borderBottomWidth: "0.25rem 0px 0px 0px !important",
+            borderBottomColor: "primary.main",
+            borderBottomStyle: "solid",
+            backgroundColor: "info.light",
+          },
+          "& .Mui-disabled": {
+            opacity: 0.25,
+            boxShadow: 0,
+          },
+        }}
+      >
         <EditRow
           titleL="General"
           titleR="Potential"

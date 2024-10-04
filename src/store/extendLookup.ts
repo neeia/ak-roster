@@ -1,6 +1,6 @@
 import operatorJson from "data/operators";
 import { supabaseApi, UID } from "./apiSlice";
-import supabase from 'supabase/supabaseClient';
+import supabase from "supabase/supabaseClient";
 import AccountData from "types/auth/accountData";
 import Roster from "types/operators/roster";
 import { Operator } from "types/operator";
@@ -22,26 +22,29 @@ const extendedApi = supabaseApi.injectEndpoints({
     }),
     rosterGetById: builder.query<Roster, UID>({
       async queryFn({ user_id }) {
-
         const { data } = await supabase
           .from("operators")
-          .select("op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin")
-          .match({ user_id })
+          .select(
+            "op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin"
+          )
+          .match({ user_id });
 
         if (!data || data.length == 0) return { data: {} };
 
         const acc: Roster = {};
-        data.forEach(o => o.op_id in operatorJson ? acc[o.op_id] = o as Operator : null);
+        data.forEach((o) =>
+          o.op_id in operatorJson ? (acc[o.op_id] = o as Operator) : null
+        );
         return { data: acc };
       },
-      providesTags: ["operator"]
+      providesTags: ["operator"],
     }),
     supportsGetById: builder.query<OperatorSupport[], UID>({
       queryFn: async ({ user_id }) => {
         const { data, error } = await supabase
           .from("supports")
           .select()
-          .eq('user_id', user_id)
+          .eq("user_id", user_id);
 
         return { data: data as OperatorSupport[] };
       },
@@ -49,6 +52,6 @@ const extendedApi = supabaseApi.injectEndpoints({
     }),
   }),
   overrideExisting: false,
-})
+});
 
 export const { useAccountGetByIdQuery } = extendedApi;

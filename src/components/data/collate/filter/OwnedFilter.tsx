@@ -4,22 +4,26 @@ import React from "react";
 import { Value } from "util/useFilter";
 
 interface Props {
-  value: Set<Value>
+  value: Set<Value>;
   onChange: (value: boolean) => void;
 }
 const OwnedFilter = (props: Props) => {
   const { value, onChange: toggleFilter } = props;
 
-
   const r = 4;
   return (
     <Box display="flex" flexDirection="column" width="100%">
       <Box>
-        <Divider sx={{ mt: 1, mb: 0.5, }} variant="middle" flexItem>
+        <Divider sx={{ mt: 1, mb: 0.5 }} variant="middle" flexItem>
           Owned
         </Divider>
       </Box>
-      <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" width="100%" height="100%">
+      <Box
+        display="grid"
+        gridTemplateColumns="repeat(2, 1fr)"
+        width="100%"
+        height="100%"
+      >
         <IconButton
           className={value.has(true) ? "active" : "inactive"}
           sx={{ borderRadius: `${r}px 0px 0px ${r}px` }}
@@ -35,7 +39,8 @@ const OwnedFilter = (props: Props) => {
           <Clear color="error" />
         </IconButton>
       </Box>
-    </Box>);
-}
+    </Box>
+  );
+};
 
 export default OwnedFilter;

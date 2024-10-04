@@ -8,15 +8,16 @@ import Image from "next/image";
 import { useRosterGetQuery } from "store/extendRoster";
 import {
   useSupportRemoveMutation,
-  useSupportSetMutation, useSupportsGetQuery,
+  useSupportSetMutation,
+  useSupportsGetQuery,
   useSupportSkillSetMutation,
 } from "store/extendSupports";
-import {OperatorSupport} from "types/operators/supports";
+import { OperatorSupport } from "types/operators/supports";
 
-const SupportSelection = (() => {
-
-  const {data: operators, isLoading: isLoadingOperators} = useRosterGetQuery();
-  const {data: supports, isLoading: isLoadingSupport} = useSupportsGetQuery();
+const SupportSelection = () => {
+  const { data: operators, isLoading: isLoadingOperators } =
+    useRosterGetQuery();
+  const { data: supports, isLoading: isLoadingSupport } = useSupportsGetQuery();
 
   const [setSupport] = useSupportSetMutation();
   const [setSupportSkill] = useSupportSkillSetMutation();
@@ -28,25 +29,29 @@ const SupportSelection = (() => {
   const setSupp = (value: string) => {
     //TODO module selection not implemented yet
     //const opInfo = operatorJson[value as keyof typeof operatorJson];
-    const support :OperatorSupport = {
+    const support: OperatorSupport = {
       module: {},
       op_id: value,
       skill: 0,
-      slot: index
-    }
+      slot: index,
+    };
     setSupport(support);
   };
   const setSkill = (supportSlot: number, skillSlot: number) => {
-    setSupportSkill({supportSlot, skillSlot});
+    setSupportSkill({ supportSlot, skillSlot });
   };
   const clearSupp = (supportSlot: number) => {
     removeSupport(supportSlot);
   };
 
-  const filter = (op: OperatorData) => operators![op.id] != null && !supports!.find((v) => !v || v.op_id === op.id) && (index ? true : op.rarity < 6);
-  const sort = (a: Operator, b: Operator) => b.elite - a.elite || b.level - a.level;
+  const filter = (op: OperatorData) =>
+    operators![op.id] != null &&
+    !supports!.find((v) => !v || v.op_id === op.id) &&
+    (index ? true : op.rarity < 6);
+  const sort = (a: Operator, b: Operator) =>
+    b.elite - a.elite || b.level - a.level;
 
-  return ( isLoadingOperators || isLoadingSupport ? null :
+  return isLoadingOperators || isLoadingSupport ? null : (
     <>
       <Box
         sx={{
@@ -68,13 +73,13 @@ const SupportSelection = (() => {
         }}
       >
         Support Units
-        <Box sx={{ gridColumn: "span 3" }}>
-          Skills
-        </Box>
+        <Box sx={{ gridColumn: "span 3" }}>Skills</Box>
         {[...Array(3)].map((_, i) => {
-          const support = supports!.filter(support => support.slot === i)[0];
-          const op = operators![support?.op_id ??  ""];
-          const opInfo = op ? operatorJson[op.op_id as keyof typeof operatorJson] : undefined;
+          const support = supports!.filter((support) => support.slot === i)[0];
+          const op = operators![support?.op_id ?? ""];
+          const opInfo = op
+            ? operatorJson[op.op_id as keyof typeof operatorJson]
+            : undefined;
           return (
             <Box display="contents" key={i}>
               <OpSelectionButton
@@ -83,13 +88,15 @@ const SupportSelection = (() => {
                   setIndex(i);
                   setOpen(true);
                 }}
-                clear={() => { clearSupp(i) }}
+                clear={() => {
+                  clearSupp(i);
+                }}
               />
-              {(op
-                ? [...Array(3)].map((_, k) => {
+              {op ? (
+                [...Array(3)].map((_, k) => {
                   if (k < (opInfo?.skillData?.length ?? 0)) {
-                    return (opInfo && support
-                      ? <Button
+                    return opInfo && support ? (
+                      <Button
                         className={support.skill === k ? "active" : ""}
                         key={`op-${i}-sk-${k}`}
                         onClick={() => setSkill(i, k)}
@@ -101,12 +108,14 @@ const SupportSelection = (() => {
                           gap: 0.5,
                         }}
                       >
-                        <Box sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          mt: 0.5,
-                          gap: 1,
-                        }}>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            mt: 0.5,
+                            gap: 1,
+                          }}
+                        >
                           <Box
                             sx={{
                               height: {
@@ -121,33 +130,35 @@ const SupportSelection = (() => {
                             }}
                           >
                             <Image
-                              src={`/img/skills/${opInfo.skillData?.[k].iconId ?? opInfo.skillData?.[k].skillId}.png`}
+                              src={`/img/skills/${
+                                opInfo.skillData?.[k].iconId ??
+                                opInfo.skillData?.[k].skillId
+                              }.png`}
                               fill
                               alt={`Skill ${k + 1}`}
                             />
                           </Box>
-                          <Box sx={{
-                            display: {
-                              xs: "none",
-                              sm: "grid",
-                            },
-                            width: "36px",
-                            height: "35px",
-                            position: "relative",
-                            minWidth: 0,
-                          }}>
-                            <Image
-                              src={`/img/rank/bg.png`}
-                              fill
-                              alt={""}
-                            />
-                            {(!op.masteries[k] || op.masteries[k] === 0
-                              ? <Image
+                          <Box
+                            sx={{
+                              display: {
+                                xs: "none",
+                                sm: "grid",
+                              },
+                              width: "36px",
+                              height: "35px",
+                              position: "relative",
+                              minWidth: 0,
+                            }}
+                          >
+                            <Image src={`/img/rank/bg.png`} fill alt={""} />
+                            {!op.masteries[k] || op.masteries[k] === 0 ? (
+                              <Image
                                 src={`/img/rank/${op.skill_level}.png`}
                                 fill
                                 alt={`Level ${op.skill_level}`}
                               />
-                              : <Image
+                            ) : (
+                              <Image
                                 src={`/img/rank/m-${op.masteries[k]}.png`}
                                 fill
                                 alt={`Mastery Level ${op.masteries[k]}`}
@@ -168,19 +179,21 @@ const SupportSelection = (() => {
                             alignItems: "center",
                             justifyContent: "center",
                             height: "1.5rem",
-                            color: "text.primary"
+                            color: "text.primary",
                           }}
                         >
                           {opInfo.skillData![k].skillName}
                         </Typography>
                       </Button>
-                      : <div key={`button-op-${i}-err-${k}`}>Error</div>
+                    ) : (
+                      <div key={`button-op-${i}-err-${k}`}>Error</div>
                     );
                   } else {
-                    return <div key={`button-op-${i}-no-sk-${k}`} />
+                    return <div key={`button-op-${i}-no-sk-${k}`} />;
                   }
                 })
-                : <>
+              ) : (
+                <>
                   <div />
                   <div />
                   <div />
@@ -199,7 +212,8 @@ const SupportSelection = (() => {
         filter={filter}
         sort={sort}
       />
-    </>);
-});
+    </>
+  );
+};
 
 export default SupportSelection;

@@ -7,6 +7,6 @@ const url = (env: string | undefined) => {
     default:
       return "http://localhost:3000";
   }
-}
+};
 
 export const server = url(process.env.NODE_ENV);

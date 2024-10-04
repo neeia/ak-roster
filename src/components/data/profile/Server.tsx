@@ -2,13 +2,13 @@ import { MenuItem, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { servers } from "types/doctor";
 import AccountData from "types/auth/accountData";
-import {useAccountUpdateMutation} from "store/extendAccount";
+import { useAccountUpdateMutation } from "store/extendAccount";
 
 interface Props {
   user: AccountData;
 }
 
-const Server = ((props: Props) => {
+const Server = (props: Props) => {
   const { user } = props;
 
   const [server, _setServer] = useState<string>(user.server ?? "");
@@ -17,7 +17,11 @@ const Server = ((props: Props) => {
 
   const setServer = (value: string) => {
     _setServer(value);
-    accountUpdateTrigger({user_id: user.user_id, server: value, private: user.private});
+    accountUpdateTrigger({
+      user_id: user.user_id,
+      server: value,
+      private: user.private,
+    });
   };
 
   return (
@@ -35,7 +39,8 @@ const Server = ((props: Props) => {
           {s}
         </MenuItem>
       ))}
-    </TextField>);
-});
+    </TextField>
+  );
+};
 
 export default Server;

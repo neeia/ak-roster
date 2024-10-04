@@ -23,8 +23,14 @@ interface Props {
 const OpSelectionButton = (props: Props) => {
   const { op, onClick, clear } = props;
 
-  return (op
-    ? <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", height: "min-content" }}>
+  return op ? (
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "1fr auto",
+        height: "min-content",
+      }}
+    >
       <Box
         sx={{
           borderRadius: "2px 0px 0px 2px",
@@ -33,15 +39,11 @@ const OpSelectionButton = (props: Props) => {
           position: "relative",
           width: {
             xs: "4rem",
-            sm: "6rem"
+            sm: "6rem",
           },
         }}
       >
-        <Image
-          src={imgUrl(op)}
-          layout="fill"
-          alt={op.name}
-        />
+        <Image src={imgUrl(op)} layout="fill" alt={op.name} />
       </Box>
       <IconButton
         aria-label="Clear Operator"
@@ -65,11 +67,11 @@ const OpSelectionButton = (props: Props) => {
         sx={{
           height: {
             xs: "2rem",
-            sm: "3rem"
+            sm: "3rem",
           },
           width: {
             xs: "2.5rem",
-            sm: "2.5rem"
+            sm: "2.5rem",
           },
           borderRadius: "0px 0px 2px 0px",
         }}
@@ -77,23 +79,25 @@ const OpSelectionButton = (props: Props) => {
       >
         <PersonAddAlt1 />
       </IconButton>
-    </Box >
-    : <IconButton
+    </Box>
+  ) : (
+    <IconButton
       aria-label="Select Operator"
       sx={{
         borderRadius: "2px",
         height: {
           xs: "4rem",
-          sm: "6rem"
+          sm: "6rem",
         },
         width: {
           xs: "6.5rem",
-          sm: "8.5rem"
+          sm: "8.5rem",
         },
       }}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       <PersonAddAlt1 />
     </IconButton>
   );
-}
+};
 export default OpSelectionButton;

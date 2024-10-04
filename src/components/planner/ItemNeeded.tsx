@@ -1,7 +1,16 @@
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-import { Box, Button, ButtonBase, ButtonGroup, IconButton, InputAdornment, TextField, Tooltip } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonBase,
+  ButtonGroup,
+  IconButton,
+  InputAdornment,
+  TextField,
+  Tooltip,
+} from "@mui/material";
 import React, { ElementType, useEffect, useState } from "react";
 
 import items from "../../data/items.json";
@@ -25,7 +34,20 @@ interface Props extends ItemStackProps {
 }
 
 const ItemNeeded: React.FC<Props> = React.memo((props) => {
-  const { owned, isCrafting, canCompleteByCrafting, hideIncrementDecrementButtons, onIncrement, onDecrement, onChange, onCraftingToggle, onCraftOne, onClick, component, ...rest } = props;
+  const {
+    owned,
+    isCrafting,
+    canCompleteByCrafting,
+    hideIncrementDecrementButtons,
+    onIncrement,
+    onDecrement,
+    onChange,
+    onCraftingToggle,
+    onCraftOne,
+    onClick,
+    component,
+    ...rest
+  } = props;
   const { itemId, quantity } = rest;
   const item: Item = items[itemId as keyof typeof items];
   const isCraftable = Boolean(item.ingredients);
@@ -73,7 +95,14 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
           },
         }}
       >
-        <ItemStack {...rest} sx={isComplete || (isCrafting && canCompleteByCrafting) ? { opacity: 0.4 } : undefined} />
+        <ItemStack
+          {...rest}
+          sx={
+            isComplete || (isCrafting && canCompleteByCrafting)
+              ? { opacity: 0.4 }
+              : undefined
+          }
+        />
         {quantity > 0 && isComplete && (
           <CheckCircleIcon
             htmlColor="greenyellow"
@@ -88,7 +117,12 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
         )}
         {quantity > 0 && !isComplete && isCrafting && canCompleteByCrafting && (
           <Tooltip arrow title="Can be completed by crafting">
-            <Box alignSelf="center" justifySelf="center" zIndex={1} lineHeight={0}>
+            <Box
+              alignSelf="center"
+              justifySelf="center"
+              zIndex={1}
+              lineHeight={0}
+            >
               <CraftingIcon />
             </Box>
           </Tooltip>
@@ -117,14 +151,25 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
             : {
                 startAdornment: (
                   <InputAdornment position="start" sx={{ mr: 0 }}>
-                    <IconButton size="small" aria-label="Remove 1 from owned amount" edge="start" disabled={owned === 0} onClick={() => onDecrement(itemId)}>
+                    <IconButton
+                      size="small"
+                      aria-label="Remove 1 from owned amount"
+                      edge="start"
+                      disabled={owned === 0}
+                      onClick={() => onDecrement(itemId)}
+                    >
                       <RemoveCircleIcon />
                     </IconButton>
                   </InputAdornment>
                 ),
                 endAdornment: (
                   <InputAdornment position="end" sx={{ ml: 0 }}>
-                    <IconButton size="small" aria-label="Add 1 to owned amount" edge="end" onClick={() => onIncrement(itemId)}>
+                    <IconButton
+                      size="small"
+                      aria-label="Add 1 to owned amount"
+                      edge="end"
+                      onClick={() => onIncrement(itemId)}
+                    >
                       <AddCircleIcon />
                     </IconButton>
                   </InputAdornment>
@@ -165,7 +210,12 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
               },
             }}
           >
-            <Button variant={isCrafting ? "contained" : "outlined"} onClick={() => onCraftingToggle(itemId)} aria-label="Toggle crafting" aria-pressed={isCrafting}>
+            <Button
+              variant={isCrafting ? "contained" : "outlined"}
+              onClick={() => onCraftingToggle(itemId)}
+              aria-label="Toggle crafting"
+              aria-pressed={isCrafting}
+            >
               {isCrafting ? "Crafting" : "Craft"}
             </Button>
             {isCrafting ? (

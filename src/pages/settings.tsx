@@ -8,25 +8,28 @@ import UpdatePassword from "components/settings/UpdatePassword";
 import { useAccountGetQuery } from "store/extendAccount";
 
 const Settings: NextPage = () => {
-
   const { data: account, isLoading } = useAccountGetQuery();
 
   return (
     <Layout tab="/account" page="/settings">
-      {isLoading ? "" :
-        <Box sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "12px 6px",
-          maxWidth: "sm",
-          "& *:before": {
-            border: "none",
-            borderStyle: "none !important",
-          },
-          "& .MuiFilledInput-root": {
-            borderRadius: "4px",
-          },
-        }}>
+      {isLoading ? (
+        ""
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px 6px",
+            maxWidth: "sm",
+            "& *:before": {
+              border: "none",
+              borderStyle: "none !important",
+            },
+            "& .MuiFilledInput-root": {
+              borderRadius: "4px",
+            },
+          }}
+        >
           <UpdateUsername user={account!} />
           <Divider />
           {/*<Data user={user} operators={operators} setOperators={setOperators} />*/}
@@ -34,8 +37,9 @@ const Settings: NextPage = () => {
           <UpdateEmail />
           <Divider />
           <UpdatePassword user={account!} />
-        </Box>}
+        </Box>
+      )}
     </Layout>
   );
-}
+};
 export default Settings;

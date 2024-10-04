@@ -35,7 +35,7 @@ const OperatorGoals: React.FC<Props> = ({ onCompleteGoal }) => {
 
   const handleGoalCompleted = (goal: PlannerGoal) => {
     dispatch(completeGoal(goal));
-    onCompleteGoal(goal)
+    onCompleteGoal(goal);
   };
 
   const handleClearAll = () => {

@@ -16,7 +16,7 @@ export const getLogoUrl = () => {
     default:
       return "default";
   }
-}
+};
 
 interface Props extends BoxProps {
   LinkProps?: LinkProps;
@@ -27,14 +27,13 @@ interface Props extends BoxProps {
 const Logo = (props: Props) => {
   const { LinkProps, full, hideSubtitle, children, sizes, ...rest } = props;
 
-  const suffix = (full ? "-h" : (hideSubtitle ? "" : "-v"))
+  const suffix = full ? "-h" : hideSubtitle ? "" : "-v";
 
   return (
-    <Link href="/" title="Krooster"
-      {...LinkProps}
-    >
+    <Link href="/" title="Krooster" {...LinkProps}>
       <Box position="relative" {...rest}>
-        <Image alt="Krooster - Arknights Roster"
+        <Image
+          alt="Krooster - Arknights Roster"
           src={`/assets/title/${getLogoUrl()}${suffix}.png`}
           fill
           sizes={sizes}
@@ -43,5 +42,5 @@ const Logo = (props: Props) => {
       {children}
     </Link>
   );
-}
+};
 export default Logo;

@@ -6,7 +6,12 @@ import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { Search } from "@mui/icons-material";
 import React, { useCallback, useState } from "react";
-import { useGoalsDeleteAllMutation, useGoalsGetQuery, useGoalsOperatorDeleteMutation, useGoalsUpdateMutation } from "store/extendGoals";
+import {
+  useGoalsDeleteAllMutation,
+  useGoalsGetQuery,
+  useGoalsOperatorDeleteMutation,
+  useGoalsUpdateMutation,
+} from "store/extendGoals";
 import PlannerGoalAdd from "./PlannerGoalAdd";
 import operatorJson from "data/operators";
 import GoalGroup from "./GoalGroup";
@@ -37,7 +42,8 @@ const OperatorGoals = () => {
       switch (plannerGoal.category) {
         case OperatorGoalCategory.Elite:
           const removedElite = plannerGoal.eliteLevel;
-          const newMaxLevel = MAX_LEVEL_BY_RARITY[opData.rarity][Math.max(removedElite - 1, 0)];
+          const newMaxLevel =
+            MAX_LEVEL_BY_RARITY[opData.rarity][Math.max(removedElite - 1, 0)];
           if (goal.elite_from! <= removedElite - 1) {
             if (goal.level_to) {
               goalUpdate.elite_from = goal.elite_from;
@@ -94,12 +100,17 @@ const OperatorGoals = () => {
           break;
         case OperatorGoalCategory.Mastery:
           const skillId = plannerGoal.skillId;
-          const skillIndex = opData.skillData?.findIndex((x) => x.skillId === skillId)!;
+          const skillIndex = opData.skillData?.findIndex(
+            (x) => x.skillId === skillId
+          )!;
 
           goalUpdate.masteries_to = [...goal.masteries_to!];
           const removedMastery = plannerGoal.masteryLevel;
 
-          goalUpdate.masteries_to[skillIndex] = Math.max(removedMastery - 1, goal.masteries_from![skillIndex]);
+          goalUpdate.masteries_to[skillIndex] = Math.max(
+            removedMastery - 1,
+            goal.masteries_from![skillIndex]
+          );
 
           if (_.isEqual(goal.masteries_from, goalUpdate.masteries_to)) {
             goalUpdate.masteries_from = null;
@@ -109,10 +120,15 @@ const OperatorGoals = () => {
         case OperatorGoalCategory.Module:
           const moduleId = plannerGoal.moduleId;
 
-          const updatedModuleTo: Record<string, number> = { ...(goal.modules_to as Record<string, number>) };
+          const updatedModuleTo: Record<string, number> = {
+            ...(goal.modules_to as Record<string, number>),
+          };
           const removedMasteryLevel = plannerGoal.moduleLevel;
 
-          if (removedMasteryLevel - 1 <= ((goal.modules_from as Record<string, number>)![moduleId] ?? 0)) {
+          if (
+            removedMasteryLevel - 1 <=
+            ((goal.modules_from as Record<string, number>)![moduleId] ?? 0)
+          ) {
             delete updatedModuleTo[moduleId];
           } else {
             updatedModuleTo[moduleId] = removedMasteryLevel - 1;
@@ -132,7 +148,10 @@ const OperatorGoals = () => {
             goalUpdate.skill_level_from = null;
             goalUpdate.skill_level_to = null;
           } else {
-            goalUpdate.skill_level_to = Math.max(removedSkillLevel - 1, goal.skill_level_from!);
+            goalUpdate.skill_level_to = Math.max(
+              removedSkillLevel - 1,
+              goal.skill_level_from!
+            );
           }
           break;
       }
@@ -148,7 +167,15 @@ const OperatorGoals = () => {
 
   const createGoalGroups = () => {
     const groupedGoals = Object.groupBy(goals!, (goal) => goal.group_name);
-    return groups!.map((groupName, index) => <GoalGroup key={groupName} groupName={groupName} operatorGoals={groupedGoals[groupName]} onGoalDeleted={onPlannerGoalCardGoalDeleted} defaultExpanded={index == 0} />);
+    return groups!.map((groupName, index) => (
+      <GoalGroup
+        key={groupName}
+        groupName={groupName}
+        operatorGoals={groupedGoals[groupName]}
+        onGoalDeleted={onPlannerGoalCardGoalDeleted}
+        defaultExpanded={index == 0}
+      />
+    ));
   };
 
   const handleClearAll = () => {
@@ -166,7 +193,12 @@ const OperatorGoals = () => {
       <Board
         title="Goals"
         TitleAction={
-          <Button onClick={handleAddGoal} startIcon={<AddIcon />} variant="contained" color="primary">
+          <Button
+            onClick={handleAddGoal}
+            startIcon={<AddIcon />}
+            variant="contained"
+            color="primary"
+          >
             New Goal
           </Button>
         }
@@ -176,7 +208,12 @@ const OperatorGoals = () => {
         }}
       >
         {/* TODO: add settings button, move clear all to there w/ confirmation dialog */}
-        <Button onClick={handleClearAll} startIcon={<ClearAllIcon />} variant="outlined" color="error">
+        <Button
+          onClick={handleClearAll}
+          startIcon={<ClearAllIcon />}
+          variant="outlined"
+          color="error"
+        >
           Clear All
         </Button>
         <Grid
@@ -224,7 +261,11 @@ const OperatorGoals = () => {
         </Grid>
         {goals && groups && createGoalGroups()}
       </Board>
-      <PlannerGoalAdd open={addGoalOpen} onClose={() => setAddGoalOpen(false)} goals={goals} />
+      <PlannerGoalAdd
+        open={addGoalOpen}
+        onClose={() => setAddGoalOpen(false)}
+        goals={goals}
+      />
     </>
   );
 };

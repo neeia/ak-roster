@@ -1,6 +1,6 @@
-import { createTheme, darken, lighten } from '@mui/material/styles';
+import { createTheme, darken, lighten } from "@mui/material/styles";
 
-declare module '@mui/material/styles' {
+declare module "@mui/material/styles" {
   interface Theme {
     status: {
       danger: string;
@@ -25,7 +25,7 @@ const neutral = {
   700: "#303030",
   800: "#212121",
   900: "#121212",
-  950: "#0D0D0D"
+  950: "#0D0D0D",
 };
 
 export const DISCORD_BLURPLE = "#5865F2";
@@ -40,182 +40,181 @@ export const brand: Record<string, string> = {
   "/tools": "#E399FF",
   "/community": "#949DF9",
   // "0": "#FF6E40",
-}
+};
 
-const appTheme = (brandColor: string) => createTheme({
-  // breakpoints: {
-  //   unit: "rem",
-  //   values: {
-  //     xs: 0,
-  //     sm: 40,
-  //     md: 55,
-  //     lg: 75,
-  //     xl: 96,
-  //   },
-  // },
-  palette: {
-    mode: "dark",
-    primary: {
-      main: brandColor,
-    },
-    secondary: {
-      main: neutral[700],
-    },
-    text: {
-      primary: neutral[50],
-      secondary: neutral[200],
-    },
-    background: {
-      default: neutral[800],
-      paper: neutral[900],
-      light: neutral[700],
-    },
-    grey: neutral
-  },
-  components: {
-    MuiAlert: {
-      defaultProps: {
-        variant: "outlined"
-      }
-    },
-    MuiButton: {
-      defaultProps: {
-        variant: "neutral"
+const appTheme = (brandColor: string) =>
+  createTheme({
+    // breakpoints: {
+    //   unit: "rem",
+    //   values: {
+    //     xs: 0,
+    //     sm: 40,
+    //     md: 55,
+    //     lg: 75,
+    //     xl: 96,
+    //   },
+    // },
+    palette: {
+      mode: "dark",
+      primary: {
+        main: brandColor,
       },
-      styleOverrides: {
-        root: {
-          textTransform: "none",
-          minWidth: 0,
-        }
+      secondary: {
+        main: neutral[700],
       },
-      variants: [
-        {
-          props: { variant: "neutral" },
-          style: {
+      text: {
+        primary: neutral[50],
+        secondary: neutral[200],
+      },
+      background: {
+        default: neutral[800],
+        paper: neutral[900],
+        light: neutral[700],
+      },
+      grey: neutral,
+    },
+    components: {
+      MuiAlert: {
+        defaultProps: {
+          variant: "outlined",
+        },
+      },
+      MuiButton: {
+        defaultProps: {
+          variant: "neutral",
+        },
+        styleOverrides: {
+          root: {
+            textTransform: "none",
+            minWidth: 0,
+          },
+        },
+        variants: [
+          {
+            props: { variant: "neutral" },
+            style: {
+              color: neutral[50],
+              backgroundColor: neutral[700],
+              "&:hover": {
+                background: lighten(neutral[700], 0.1),
+              },
+              transition: "background-color 0.1s",
+            },
+          },
+        ],
+      },
+      MuiDialog: {
+        defaultProps: {
+          scroll: "body",
+        },
+      },
+      MuiMenuItem: {
+        styleOverrides: {
+          root: {
+            paddingRight: "32px",
+            paddingLeft: "16px",
+          },
+        },
+      },
+      MuiToggleButtonGroup: {
+        defaultProps: {
+          color: "primary",
+        },
+      },
+      MuiToggleButton: {
+        styleOverrides: {
+          root: {
             color: neutral[50],
             backgroundColor: neutral[700],
             "&:hover": {
               background: lighten(neutral[700], 0.1),
             },
             transition: "background-color 0.1s",
-          }
-        }
-      ]
-    },
-    MuiDialog: {
-      defaultProps: {
-        scroll: "body",
-      }
-    },
-    MuiMenuItem: {
-      styleOverrides: {
-        root: {
-          paddingRight: "32px",
-          paddingLeft: "16px"
-        }
-      }
-    },
-    MuiToggleButtonGroup: {
-      defaultProps: {
-        color: "primary",
-      },
-    },
-    MuiToggleButton: {
-      styleOverrides: {
-        root: {
-          color: neutral[50],
-          backgroundColor: neutral[700],
-          "&:hover": {
-            background: lighten(neutral[700], 0.1),
-          },
-          transition: "background-color 0.1s",
-          "&:not(._):not(._):not(._)": {
-            border: "none",
-            margin: 0,
-            "&.Mui-selected": {
-              borderBottomStyle: "solid",
-              borderBottomWidth: "0.25rem",
-              borderBottomColor: brandColor,
+            "&:not(._):not(._):not(._)": {
+              border: "none",
+              margin: 0,
+              "&.Mui-selected": {
+                borderBottomStyle: "solid",
+                borderBottomWidth: "0.25rem",
+                borderBottomColor: brandColor,
+              },
             },
           },
         },
-      }
+      },
+      MuiLink: {
+        defaultProps: {
+          color: "inherit",
+          underline: "hover",
+          fontFamily: `"Lato", sans-serif`,
+        },
+        styleOverrides: {
+          root: {
+            "&[aria-disabled='true']": {
+              color: neutral[300],
+              opacity: 0.8,
+              pointerEvents: "none",
+            },
+          },
+        },
+      },
+      MuiPaper: {
+        defaultProps: {
+          elevation: 0,
+        },
+      },
     },
-    MuiLink: {
-      defaultProps: {
-        color: "inherit",
-        underline: "hover",
+    typography: {
+      allVariants: {
         fontFamily: `"Lato", sans-serif`,
       },
-      styleOverrides: {
-        root: {
-          "&[aria-disabled='true']": {
-            color: neutral[300],
-            opacity: 0.8,
-            pointerEvents: "none",
-          },
-        }
-      }
+      caption: {
+        margin: 0,
+        fontWeight: 400,
+        fontSize: "0.875rem",
+        lineHeight: 1.66,
+      },
+      caption2: {
+        margin: 0,
+        fontWeight: 400,
+        fontSize: "0.675rem",
+        lineHeight: 1.66,
+      },
+      caption3: {
+        margin: 0,
+        fontWeight: 400,
+        fontSize: "0.6rem",
+      },
+      h1: {
+        fontSize: "4rem",
+      },
+      h2: {
+        fontSize: "2rem",
+      },
+      h3: {
+        fontSize: "1rem",
+        lineHeight: 1,
+        fontWeight: "normal",
+        color: neutral[200],
+        marginLeft: "8px",
+      },
+      h4: {
+        fontSize: "0.875rem",
+        lineHeight: 1,
+        fontWeight: "normal",
+        color: neutral[200],
+        marginLeft: "8px",
+      },
+      h6: {
+        fontWeight: "normal",
+        fontSize: "0.875rem",
+      },
     },
-    MuiPaper: {
-      defaultProps: {
-        elevation: 0
-      }
-    }
-  },
-  typography: {
-    allVariants: {
-      fontFamily: `"Lato", sans-serif`,
-    },
-    caption: {
-      margin: 0,
-      fontWeight: 400,
-      fontSize: "0.875rem",
-      lineHeight: 1.66,
-    },
-    caption2: {
-      margin: 0,
-      fontWeight: 400,
-      fontSize: "0.675rem",
-      lineHeight: 1.66,
-    },
-    caption3: {
-      margin: 0,
-      fontWeight: 400,
-      fontSize: "0.6rem",
-    },
-    h1: {
-      fontSize: "4rem",
-    },
-    h2: {
-      fontSize: "2rem",
-    },
-    h3: {
-      fontSize: "1rem",
-      lineHeight: 1,
-      fontWeight: "normal",
-      color: neutral[200],
-      marginLeft: "8px",
-    },
-    h4: {
-      fontSize: "0.875rem",
-      lineHeight: 1,
-      fontWeight: "normal",
-      color: neutral[200],
-      marginLeft: "8px",
-    },
-    h6: {
-      fontWeight: "normal",
-      fontSize: "0.875rem",
-    }
-  },
-});
+  });
 
 export default appTheme;
 
-
-declare module '@mui/material/styles' {
-
+declare module "@mui/material/styles" {
   interface TypeBackground {
     light: string;
   }
@@ -232,14 +231,14 @@ declare module '@mui/material/styles' {
   }
 }
 
-declare module '@mui/material/Button' {
+declare module "@mui/material/Button" {
   interface ButtonPropsVariantOverrides {
     neutral: true;
   }
 }
 
 // Update the Typography's variant prop options
-declare module '@mui/material/Typography' {
+declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     caption2: true;
     caption3: true;
@@ -249,14 +248,14 @@ declare module '@mui/material/Typography' {
 export const interactive = {
   transition: "filter 0.1s, background-color 0.1s",
   ":hover": { filter: "brightness(110%)" },
-}
+};
 
 export const focused = {
-  boxShadow: "inset 0px 0px 0px 2px white"
-}
+  boxShadow: "inset 0px 0px 0px 2px white",
+};
 
 export const skillBackground = {
   backgroundImage: "url(/img/rank/bg.png)",
   backgroundSize: "contain",
   backgroundRepeat: "no-repeat",
-}
+};

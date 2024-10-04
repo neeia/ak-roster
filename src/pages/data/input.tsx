@@ -23,7 +23,6 @@ const OperatorSelector = dynamic(
 );
 
 const Input: NextPage = () => {
-
   const { data: operators } = useRosterGetQuery();
 
   const [opId, setOpId] = React.useState<string>("char_002_amiya");
@@ -36,13 +35,12 @@ const Input: NextPage = () => {
 
   const [doctor] = useLocalStorage<AccountInfo>("doctor", {});
   useEffect(() => {
-    if (!(doctor && doctor.server && isCN(doctor.server))) toggleFilter("CN", false);
+    if (!(doctor && doctor.server && isCN(doctor.server)))
+      toggleFilter("CN", false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onChange = (op: Operator) => {
-
-  };
+  const onChange = (op: Operator) => {};
 
   const selectOp = useCallback((id: string) => {
     setOpId(id);
@@ -51,40 +49,44 @@ const Input: NextPage = () => {
 
   return (
     <Layout tab="/data" page="/input">
-      <Box sx={{
-        display: "flex",
-        flexDirection: { xs: "column", sm: "row" },
-        gap: 2,
-      }}>
-        <ButtonGroup sx={{
-          gridArea: "ctrl",
-          display: "grid",
-          gridTemplateRows: { xs: "1fr auto", sm: "repeat(6, auto)" },
-          gridTemplateColumns: { xs: "repeat(4, auto)", sm: "1fr", },
-          position: "sticky",
-          top: 64,
-          zIndex: 10,
-          gap: { xs: 0, sm: 1 },
-          "& .MuiIconButton-root": {
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
+          gap: 2,
+        }}
+      >
+        <ButtonGroup
+          sx={{
+            gridArea: "ctrl",
+            display: "grid",
+            gridTemplateRows: { xs: "1fr auto", sm: "repeat(6, auto)" },
+            gridTemplateColumns: { xs: "repeat(4, auto)", sm: "1fr" },
+            position: "sticky",
+            top: 64,
+            zIndex: 10,
+            gap: { xs: 0, sm: 1 },
+            "& .MuiIconButton-root": {
+              height: "min-content",
+            },
+            "& .MuiSvgIcon-root": {
+              height: { xs: "1.5rem", sm: "2.5rem" },
+            },
+            justifyContent: "space-around",
             height: "min-content",
-          },
-          "& .MuiSvgIcon-root": {
-            height: { xs: "1.5rem", sm: "2.5rem" },
-          },
-          justifyContent: "space-around",
-          height: "min-content",
-          backgroundColor: { xs: "info.main", sm: "transparent" },
-          boxShadow: {
-            xs: 1,
-            sm: 0
-          },
-          "& .Mui-disabled": {
-            opacity: 0.5,
-          },
-          "& .selected": {
-            backgroundColor: "rgba(255, 255, 255, 0.25)"
-          },
-        }}>
+            backgroundColor: { xs: "info.main", sm: "transparent" },
+            boxShadow: {
+              xs: 1,
+              sm: 0,
+            },
+            "& .Mui-disabled": {
+              opacity: 0.5,
+            },
+            "& .selected": {
+              backgroundColor: "rgba(255, 255, 255, 0.25)",
+            },
+          }}
+        >
           <SortDialog
             sortFns={sortFunctions}
             sortQueue={sorts}
@@ -98,23 +100,25 @@ const Input: NextPage = () => {
           />
           {/* <SearchDialog setSearch={setSearchName} /> */}
         </ButtonGroup>
-        <Box sx={{
-          width: "100%",
-          display: "grid",
-          gridArea: "box",
-          gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
-          gridTemplateRows: "min-content",
-          justifyContent: "center",
-          gap: { xs: 0.5, sm: 1 },
-          margin: 0,
-          padding: 0,
-          "& .unowned": {
-            opacity: 0.75
-          },
-          "& .hidden": {
-            display: "none",
-          },
-        }}>
+        <Box
+          sx={{
+            width: "100%",
+            display: "grid",
+            gridArea: "box",
+            gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
+            gridTemplateRows: "min-content",
+            justifyContent: "center",
+            gap: { xs: 0.5, sm: 1 },
+            margin: 0,
+            padding: 0,
+            "& .unowned": {
+              opacity: 0.75,
+            },
+            "& .hidden": {
+              display: "none",
+            },
+          }}
+        >
           <OperatorSelector
             operators={operators ?? {}}
             onClick={selectOp}
@@ -131,5 +135,5 @@ const Input: NextPage = () => {
       </Box>
     </Layout>
   );
-}
+};
 export default Input;

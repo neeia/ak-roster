@@ -1,6 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { Box, ButtonGroup, IconButton, Tooltip, Typography } from "@mui/material";
+import {
+  Box,
+  ButtonGroup,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import dynamic from "next/dynamic";
 import Layout from "components/Layout";
 import { Operator } from "types/operator";
@@ -21,16 +27,23 @@ const CollectionContainer = dynamic(
   { ssr: false }
 );
 const View: NextPage = () => {
-
-  const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] = useSort([
-    { key: "Favorite", desc: true },
-    { key: "Level", desc: true },
-    { key: "Rarity", desc: true },
-  ]);
-  const [, setSearchName, filter, addFilter, removeFilter, clearFilters, filterFunction] = useFilter(
-    {
-      "owned": { "owned": (op: Operator) => op.potential > 0 }
-    });
+  const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] =
+    useSort([
+      { key: "Favorite", desc: true },
+      { key: "Level", desc: true },
+      { key: "Rarity", desc: true },
+    ]);
+  const [
+    ,
+    setSearchName,
+    filter,
+    addFilter,
+    removeFilter,
+    clearFilters,
+    filterFunction,
+  ] = useFilter({
+    owned: { owned: (op: Operator) => op.potential > 0 },
+  });
 
   const [opId, setOpId] = React.useState<string>();
   const [editOpen, setEditOpen] = React.useState(false);
@@ -49,15 +62,16 @@ const View: NextPage = () => {
     });
   }, []);
 
-
   return (
     <Layout tab="/data" page="/view">
-      <Box sx={{
-        display: "grid",
-        gridTemplateAreas: { xs: `"ctrl" "box"`, sm: `"ctrl box"` },
-        gridTemplateColumns: { xs: "1fr", sm: "auto 1fr" },
-        gap: 2
-      }}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateAreas: { xs: `"ctrl" "box"`, sm: `"ctrl box"` },
+          gridTemplateColumns: { xs: "1fr", sm: "auto 1fr" },
+          gap: 2,
+        }}
+      >
         <ButtonGroup
           sx={{
             gridArea: "ctrl",
@@ -75,16 +89,17 @@ const View: NextPage = () => {
               width: { xs: "1.5rem", sm: "2.5rem" },
             },
             "& .selected": {
-              backgroundColor: "rgba(255, 255, 255, 0.15)"
+              backgroundColor: "rgba(255, 255, 255, 0.15)",
             },
             justifyContent: "space-around",
             height: "min-content",
             backgroundColor: { xs: "info.main", sm: "transparent" },
             boxShadow: {
               xs: 1,
-              sm: 0
+              sm: 0,
             },
-          }}>
+          }}
+        >
           <SortDialog
             sortFns={sortFunctions}
             sortQueue={sortQueue}
@@ -103,20 +118,26 @@ const View: NextPage = () => {
               className={editMode ? "selected" : ""}
               onClick={() => setEditMode(!editMode)}
               aria-label="Edit Mode"
-              sx={{ display: "flex", flexDirection: "column" }} >
+              sx={{ display: "flex", flexDirection: "column" }}
+            >
               <ModeEdit fontSize="large" color="primary" />
-              <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
+              <Typography
+                variant="caption"
+                sx={{ display: { sm: "none" }, lineHeight: 1.1 }}
+              >
                 Edit Mode
               </Typography>
             </IconButton>
           </Tooltip>
         </ButtonGroup>
-        <Box sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: { xs: "center", sm: "left" },
-          gap: "12px 6px",
-        }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: { xs: "center", sm: "left" },
+            gap: "12px 6px",
+          }}
+        >
           <CollectionContainer
             sort={sortFunction}
             filter={filterFunction}
@@ -132,5 +153,5 @@ const View: NextPage = () => {
       </Box>
     </Layout>
   );
-}
+};
 export default View;

@@ -12,19 +12,33 @@
 } from "@mui/material";
 import type { NextPage } from "next";
 import config from "data/config";
-import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Image from "next/image";
 import { getLogoUrl } from "components/app/Logo";
 import HomeNavItem from "components/landing/HomeNavItem";
 import HomeNavSection from "components/landing/HomeNavSection";
-import { brand, DISCORD_BLURPLE, GITHUB_DARK, KOFI_BLUE } from "styles/theme/appTheme";
+import {
+  brand,
+  DISCORD_BLURPLE,
+  GITHUB_DARK,
+  KOFI_BLUE,
+} from "styles/theme/appTheme";
 import { LockPerson, Search } from "@mui/icons-material";
 import JumpTo from "components/base/JumpTo";
 import { UserContext } from "pages/_app";
 import Link from "components/base/Link";
 import Head from "components/app/Head";
 import AccountContextMenu from "components/app/AccountContextMenu";
-import { useAccountGetQuery, useAccountUpdateMutation } from "store/extendAccount";
+import {
+  useAccountGetQuery,
+  useAccountUpdateMutation,
+} from "store/extendAccount";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { server } from "util/server";
 import randomName from "util/randomName";
@@ -38,7 +52,7 @@ const authFrame: SxProps = {
   minHeight: 80,
   borderRadius: 1,
   p: 2,
-}
+};
 
 const Home: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");
@@ -61,30 +75,36 @@ const Home: NextPage = () => {
     if (user && accountData) {
       if (accountData.display_name) {
         setUsername(accountData.display_name);
-      }
-      else if (!accountData.display_name) {
+      } else if (!accountData.display_name) {
         const genName = randomName();
-        trigger({ user_id: user.id, username: genName, display_name: genName, private: false, });
+        trigger({
+          user_id: user.id,
+          username: genName,
+          display_name: genName,
+          private: false,
+        });
       }
     }
-  }, [accountData])
+  }, [accountData]);
 
   return (
     <Head title="Krooster" url={server} description={config.siteDescription}>
-      <Box component="main" sx={{
-        minHeight: "100dvh",
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "background.paper",
-        alignItems: "center",
-        gap: 4,
-        p: 2,
-      }}>
-        <JumpTo href="search">
-          jump to search
-        </JumpTo>
+      <Box
+        component="main"
+        sx={{
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "background.paper",
+          alignItems: "center",
+          gap: 4,
+          p: 2,
+        }}
+      >
+        <JumpTo href="search">jump to search</JumpTo>
         <Box component="h1" display="flex" m={0}>
-          <Box component="img"
+          <Box
+            component="img"
             alt="Krooster - Arknights Roster"
             sx={{
               height: "16rem",
@@ -96,12 +116,17 @@ const Home: NextPage = () => {
           />
         </Box>
 
-        {(user === null)
-          ? <Paper elevation={2} sx={{
-            ...authFrame,
-            alignItems: "center",
-          }}>
-            <Button component={Link} href="/register"
+        {user === null ? (
+          <Paper
+            elevation={2}
+            sx={{
+              ...authFrame,
+              alignItems: "center",
+            }}
+          >
+            <Button
+              component={Link}
+              href="/register"
               variant="contained"
               sx={{
                 ":hover": { backgroundColor: "primary.light" },
@@ -112,48 +137,59 @@ const Home: NextPage = () => {
             >
               New User
             </Button>
-            <span>
-              or
-            </span>
-            <Button component={Link} href="/login"
+            <span>or</span>
+            <Button
+              component={Link}
+              href="/login"
               variant="outlined"
               sx={{
                 width: "100%",
                 height: "100%",
                 fontSize: "1rem",
-              }}>
+              }}
+            >
               Sign In
             </Button>
           </Paper>
-          : <Paper elevation={2} sx={{
-            ...authFrame,
-            flexDirection: "column",
-          }}>
+        ) : (
+          <Paper
+            elevation={2}
+            sx={{
+              ...authFrame,
+              flexDirection: "column",
+            }}
+          >
             <AccountWidget sx={{ p: 0 }} username={username} />
-            {randomUsername && <Alert
-              severity="info"
-              onClose={() => setRandomUsername(false)}
-            >
-              You have been assigned a random username. Change it in the settings!
-            </Alert>
-            }
+            {randomUsername && (
+              <Alert severity="info" onClose={() => setRandomUsername(false)}>
+                You have been assigned a random username. Change it in the
+                settings!
+              </Alert>
+            )}
             {errors.map((err, i) => (
-              <Alert key={i}
+              <Alert
+                key={i}
                 severity="error"
-                onClose={() => { setErrors([...errors.slice(0, i), ...errors.slice(i + 1)]) }}
+                onClose={() => {
+                  setErrors([...errors.slice(0, i), ...errors.slice(i + 1)]);
+                }}
               >
                 {err}
               </Alert>
             ))}
           </Paper>
-        }
+        )}
 
-        <Box component="nav" sx={{
-          width: "100%",
-          maxWidth: "40rem",
-          mt: 8
-        }}>
-          <Box component="ul"
+        <Box
+          component="nav"
+          sx={{
+            width: "100%",
+            maxWidth: "40rem",
+            mt: 8,
+          }}
+        >
+          <Box
+            component="ul"
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -162,15 +198,11 @@ const Home: NextPage = () => {
               p: 0,
             }}
           >
-            <HomeNavSection
-              title="Data"
-              color={brand["/data"]}
-              src="data"
-            >
-              <Alert severity="warning" variant="outlined"
-                icon={
-                  <LockPerson />
-                }
+            <HomeNavSection title="Data" color={brand["/data"]} src="data">
+              <Alert
+                severity="warning"
+                variant="outlined"
+                icon={<LockPerson />}
                 sx={{
                   display: user ? "none" : "flex",
                   alignItems: "center",
@@ -185,9 +217,19 @@ const Home: NextPage = () => {
               <HomeNavItem disabled={!user} href={"/data/view"}>
                 Collection
               </HomeNavItem>
-              <HomeNavItem disabled={!user} href={"/data/planner"} icon={
-                <Image key="p" src="/img/icons/rock.svg" alt="" width={24} height={24} />
-              }>
+              <HomeNavItem
+                disabled={!user}
+                href={"/data/planner"}
+                icon={
+                  <Image
+                    key="p"
+                    src="/img/icons/rock.svg"
+                    alt=""
+                    width={24}
+                    height={24}
+                  />
+                }
+              >
                 Planner
               </HomeNavItem>
               <HomeNavItem disabled={!user} href={"/data/profile"}>
@@ -200,7 +242,8 @@ const Home: NextPage = () => {
               src="network"
             >
               <Box component="li" display="flex">
-                <TextField id="search"
+                <TextField
+                  id="search"
                   autoComplete="off"
                   label="Find a user..."
                   value={searchText}
@@ -221,39 +264,30 @@ const Home: NextPage = () => {
                           <Search fontSize="small" />
                         </IconButton>
                       </InputAdornment>
-                    )
+                    ),
                   }}
                 />
               </Box>
-              <HomeNavItem href={"/network/findafriend"} >
+              <HomeNavItem href={"/network/findafriend"}>
                 Support Search
               </HomeNavItem>
             </HomeNavSection>
-            <HomeNavSection
-              title="Tools"
-              color={brand["/tools"]}
-              src="tools"
-            >
-              <HomeNavItem href={"/tools/recruit"} >
-                Recruitment
-              </HomeNavItem>
-              <HomeNavItem href={"/tools/rateup"} >
-                Headhunting
-              </HomeNavItem>
-              <HomeNavItem href={"/tools/level"} >
-                Level Costs
-              </HomeNavItem>
+            <HomeNavSection title="Tools" color={brand["/tools"]} src="tools">
+              <HomeNavItem href={"/tools/recruit"}>Recruitment</HomeNavItem>
+              <HomeNavItem href={"/tools/rateup"}>Headhunting</HomeNavItem>
+              <HomeNavItem href={"/tools/level"}>Level Costs</HomeNavItem>
             </HomeNavSection>
             <HomeNavSection
               title="Community"
               color={brand["/community"]}
               src="community"
             >
-              <HomeNavItem external
+              <HomeNavItem
+                external
                 href="https://discord.gg/qx8hJGvTwc"
                 title="Join our Discord!"
                 sx={{
-                  backgroundColor: DISCORD_BLURPLE
+                  backgroundColor: DISCORD_BLURPLE,
                 }}
               >
                 <Image
@@ -264,11 +298,12 @@ const Home: NextPage = () => {
                 />
                 Discord
               </HomeNavItem>
-              <HomeNavItem external
+              <HomeNavItem
+                external
                 href="https://github.com/neeia/ak-roster"
                 title="For developers!"
                 sx={{
-                  backgroundColor: GITHUB_DARK
+                  backgroundColor: GITHUB_DARK,
                 }}
               >
                 <Image
@@ -279,11 +314,12 @@ const Home: NextPage = () => {
                 />
                 GitHub
               </HomeNavItem>
-              <HomeNavItem external
+              <HomeNavItem
+                external
                 href="https://ko-fi.com/neeia"
                 title="Support Krooster!"
                 sx={{
-                  backgroundColor: KOFI_BLUE
+                  backgroundColor: KOFI_BLUE,
                 }}
               >
                 <Image
@@ -298,7 +334,7 @@ const Home: NextPage = () => {
             </HomeNavSection>
           </Box>
         </Box>
-      </Box >
+      </Box>
     </Head>
   );
 };
