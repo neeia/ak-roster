@@ -6,11 +6,11 @@ import Layout from "components/Layout";
 import SearchDialog from "components/data/collate/SearchDialog";
 import FilterDialog from "components/data/collate/FilterDialog";
 import SortDialog from "components/data/collate/SortDialog";
-import useSort from "util/useSort";
-import useFilter from "util/useFilter";
+import useSort from "util/hooks/useSort";
+import useFilter from "util/hooks/useFilter";
 import { Operator, OperatorData, OpInfo } from "types/operator";
 import { AccountInfo, isCN } from "types/doctor";
-import useLocalStorage from "util/useLocalStorage";
+import useLocalStorage from "util/hooks/useLocalStorage";
 import { useRosterGetQuery } from "store/extendRoster";
 
 const EditOperator = dynamic(
@@ -23,7 +23,6 @@ const OperatorSelector = dynamic(
 );
 
 const Input: NextPage = () => {
-  const { data: operators } = useRosterGetQuery();
 
   const [opId, setOpId] = React.useState<string>("char_002_amiya");
   const [editOpen, setEditOpen] = React.useState(false);
@@ -39,8 +38,6 @@ const Input: NextPage = () => {
       toggleFilter("CN", false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const onChange = (op: Operator) => {};
 
   const selectOp = useCallback((id: string) => {
     setOpId(id);
@@ -120,14 +117,12 @@ const Input: NextPage = () => {
           }}
         >
           <OperatorSelector
-            operators={operators ?? {}}
             onClick={selectOp}
             sort={sortFunction}
             filter={filterFunction}
           />
           <EditOperator
-            op={operators?.[opId]}
-            changeOperator={onChange}
+            opId={opId}
             open={editOpen}
             onClose={() => setEditOpen(false)}
           />

@@ -12,14 +12,15 @@ export const rosterApi = supabaseApi.injectEndpoints({
         const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
-        const { data } = await supabase
+        const { data, error } = await supabase
           .from("operators")
           .select(
             "op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin"
           )
           .match({ user_id });
 
-        if (!data || data.length == 0) return { data: {} };
+        if (error) throw { error };
+        if (!data?.length) return { data: {} };
 
         const acc: Roster = {};
         data.forEach((o) =>
@@ -27,8 +28,32 @@ export const rosterApi = supabaseApi.injectEndpoints({
         );
         return { data: acc };
       },
-      providesTags: ["operator"],
+      providesTags: (result) =>
+        result
+          ? Object.keys(result).map((id) => ({ type: "operator", id }))
+          : ["operator"],
     }),
+    // operatorGet: builder.query<Operator, string>({
+    //   async queryFn(op_id: string) {
+    //     const { data: session } = await supabase.auth.getSession();
+    //     const user_id = session.session?.user.id ?? "";
+
+    //     const { data, error } = await supabase
+    //       .from("operators")
+    //       .select(
+    //         "op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin"
+    //       )
+    //       .match({ user_id, op_id })
+    //       .single();
+
+    //     if (error) throw { error };
+    //     if (data.modules == null) data.modules = {};
+
+    //     return { data };
+    //   },
+    //   providesTags: (result) =>
+    //     result ? [{ type: "operator", id: result.op_id }] : ["operator"],
+    // }),
     rosterUpsert: builder.mutation({
       async queryFn(op: Operator | Operator[]) {
         const { data } = await supabase
@@ -82,6 +107,7 @@ export const rosterApi = supabaseApi.injectEndpoints({
 
 export const {
   useRosterGetQuery,
+  // useOperatorGetQuery,
   useRosterUpsertMutation,
   useRosterDeleteMutation,
 } = rosterApi;

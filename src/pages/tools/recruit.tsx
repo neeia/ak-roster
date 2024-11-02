@@ -20,7 +20,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import recruitmentJson from "data/recruitment.json";
 import Layout from "components/Layout";
 import classList from "data/classList";
-import useLocalStorage from "util/useLocalStorage";
+import useLocalStorage from "util/hooks/useLocalStorage";
 import RecruitableOperatorCard from "components/recruit/RecruitableOperatorCard";
 import { useRosterGetQuery } from "store/extendRoster";
 import { UserContext } from "pages/_app";

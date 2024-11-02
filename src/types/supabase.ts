@@ -77,6 +77,7 @@ export type Database = {
           op_id: string;
           skill_level_from: number | null;
           skill_level_to: number | null;
+          sort_order: number;
           user_id: string;
         };
         Insert: {
@@ -92,6 +93,7 @@ export type Database = {
           op_id: string;
           skill_level_from?: number | null;
           skill_level_to?: number | null;
+          sort_order?: number;
           user_id?: string;
         };
         Update: {
@@ -107,6 +109,7 @@ export type Database = {
           op_id?: string;
           skill_level_from?: number | null;
           skill_level_to?: number | null;
+          sort_order?: number;
           user_id?: string;
         };
         Relationships: [
@@ -129,14 +132,17 @@ export type Database = {
       groups: {
         Row: {
           group_name: string;
+          sort_order: number;
           user_id: string;
         };
         Insert: {
           group_name: string;
+          sort_order?: number;
           user_id?: string;
         };
         Update: {
           group_name?: string;
+          sort_order?: number;
           user_id?: string;
         };
         Relationships: [
@@ -192,23 +198,15 @@ export type Database = {
           user_id?: string;
           username?: string | null;
         };
-        Relationships: [
-          {
-            foreignKeyName: "krooster_accounts_user_id_fkey";
-            columns: ["user_id"];
-            isOneToOne: true;
-            referencedRelation: "users";
-            referencedColumns: ["id"];
-          }
-        ];
+        Relationships: [];
       };
       operators: {
         Row: {
           elite: number;
           favorite: boolean;
           level: number;
-          masteries: number[] | null;
-          modules: Json | null;
+          masteries: number[];
+          modules: Json;
           op_id: string;
           potential: number;
           skill_level: number;
@@ -219,8 +217,8 @@ export type Database = {
           elite: number;
           favorite: boolean;
           level: number;
-          masteries?: number[] | null;
-          modules?: Json | null;
+          masteries?: number[];
+          modules?: Json;
           op_id: string;
           potential: number;
           skill_level: number;
@@ -231,8 +229,8 @@ export type Database = {
           elite?: number;
           favorite?: boolean;
           level?: number;
-          masteries?: number[] | null;
-          modules?: Json | null;
+          masteries?: number[];
+          modules?: Json;
           op_id?: string;
           potential?: number;
           skill_level?: number;
@@ -715,4 +713,19 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
   ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+  : never;
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof PublicSchema["CompositeTypes"]
+    | { schema: keyof Database },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof Database;
+  }
+    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
+  ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
   : never;

@@ -72,28 +72,31 @@ const SelectGroup = (props: Props) => {
 };
 
 interface AddGroupProps extends Props {
+  open?: boolean;
+  toggleOpen?: () => void;
   disabled?: boolean;
 }
 const Toggle = (props: AddGroupProps) => {
   const {
+    open = false,
     label = "Remove",
     onClick: _onClick,
+    toggleOpen,
     disabled: _disabled = false,
     id: _id,
     ...rest
   } = props;
-  const [open, setOpen] = useState(false);
   const disabled = useContext(DisabledContext);
 
   const id = _id ?? `sel-group-${props.title}`;
   const el = useRef<HTMLElement>(null);
 
   const onClick = useCallback(() => {
-    setOpen((o) => !o);
+    toggleOpen?.();
     if (open) {
       _onClick?.();
     }
-  }, [_onClick, open]);
+  }, [_onClick, toggleOpen, open]);
 
   useEffect(() => {
     if (!el.current) return;
@@ -102,7 +105,7 @@ const Toggle = (props: AddGroupProps) => {
   }, [el]);
 
   useEffect(() => {
-    if (disabled) setOpen(false);
+    if (disabled) _onClick?.();
   }, [disabled]);
 
   return open ? (

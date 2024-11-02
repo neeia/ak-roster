@@ -32,22 +32,23 @@ import {
 } from "util/changeOperator";
 
 interface Props {
-  op?: Operator;
+  opId?: string;
   changeOperator: (op: Operator) => void;
   open: boolean;
   onClose: () => void;
 }
 
 const EditOperator = React.memo((props: Props) => {
-  const { op, changeOperator: onChange, open, onClose } = props;
+  const { opId: op_id, changeOperator: onChange, open, onClose } = props;
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
-  if (!op) return null;
-  const opSkins: Skin[] = skinJson[op.op_id as keyof typeof skinJson];
-  const opData = operatorJson[op.op_id];
+  if (!op_id) return null;
 
-  let intermediate = op.op_id;
+  const opSkins: Skin[] = skinJson[op_id as keyof typeof skinJson];
+  const opData = operatorJson[op_id];
+
+  let intermediate = op_id;
   if (op?.elite === 2) {
     intermediate += "_2";
   } else if (op?.elite === 1 && opData.name === "Amiya") {

@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import { OpInfo } from "../types/operator";
-import { SortFunctionData, SortListItem } from "../types/sort";
+import { OpInfo } from "../../types/operator";
+import { SortFunctionData, SortListItem } from "../../types/sort";
 
 export const sortFunctions: Record<string, SortFunctionData> = {
   Name: {

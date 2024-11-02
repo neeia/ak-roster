@@ -1,7 +1,7 @@
 import { Check, Clear } from "@mui/icons-material";
 import { Box, Divider, IconButton } from "@mui/material";
 import React from "react";
-import { Value } from "util/useFilter";
+import { Value } from "util/hooks/useFilter";
 
 interface Props {
   value: Set<Value>;

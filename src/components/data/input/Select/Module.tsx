@@ -38,7 +38,6 @@ const Module = memo((props: Props) => {
     </Box>
   );
 });
-Module.displayName = "Module_inside";
 
 interface ItemProps
   extends Partial<Pick<ModuleData, "moduleName" | "moduleId" | "typeName">> {

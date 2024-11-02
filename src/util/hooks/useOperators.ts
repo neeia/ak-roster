@@ -1,36 +1,40 @@
 import { useEffect } from "react";
-import {
-  defaultOperatorObject,
-  Operator,
-  OperatorData,
-  OperatorV1,
-} from "../types/operator";
-import operatorJson from "data/operators.json";
+import { Operator, OperatorData, OperatorV1 } from "types/operator";
+import operatorJson from "data/operators";
 import useLocalStorage from "./useLocalStorage";
+import getNumSkills from "util/fns/getNumSkills";
 
-// Converts a LegacyOperator into an Operator
-function convertLegacy([_, op]: [any, OperatorV1]): [string, Operator] {
-  const newMastery = [];
-  if (op.skill1Mastery) newMastery[0] = op.skill1Mastery;
-  if (op.skill2Mastery) newMastery[1] = op.skill2Mastery;
-  if (op.skill3Mastery) newMastery[2] = op.skill3Mastery;
-  return [
-    op.id,
-    {
-      op_id: op.id,
-      name: op.name,
-      favorite: op.favorite,
-      rarity: op.rarity,
-      class: operatorJson[op.id as keyof typeof operatorJson].class,
-      potential: op.potential,
-      elite: op.promotion,
-      owned: op.owned,
-      level: op.level,
-      skill_level: op.skillLevel,
-      masteries: newMastery,
-      modules: op.module ?? [],
-    },
-  ];
+function checkVersion(op: any) {
+  if ("class" in op) return 1;
+  if ("name" in op) return 2;
+  return 3;
+}
+
+// Converts an OperatorV1 into an Operator
+function convertV1(op: OperatorV1): Operator {
+  const masteries = [...Array(getNumSkills(op.id))].fill(0);
+  if (op.skill1Mastery) masteries[0] = op.skill1Mastery;
+  if (op.skill2Mastery) masteries[1] = op.skill2Mastery;
+  if (op.skill3Mastery) masteries[2] = op.skill3Mastery;
+
+  const modData = operatorJson[op.id];
+  const modules = {};
+  modules.
+
+  return {
+    op_id: op.id,
+    name: op.name,
+    favorite: op.favorite,
+    rarity: op.rarity,
+    class: operatorJson[op.id as keyof typeof operatorJson].class,
+    potential: op.potential,
+    elite: op.promotion,
+    owned: op.owned,
+    level: op.level,
+    skill_level: op.skillLevel,
+    masteries,
+    modules: op.module ?? [],
+  };
 }
 
 export function repair(
@@ -56,7 +60,7 @@ export function repair(
   Object.entries(rooster).forEach(([opId, op]) => {
     // check for outdated operators to redefine
     if (op.class === undefined) {
-      rooster[opId] = convertLegacy([, op])[1];
+      rooster[opId] = convertV1([, op])[1];
     } else {
       if (op.masteries === undefined) op.masteries = [];
       if (op.modules === undefined) op.modules = [];

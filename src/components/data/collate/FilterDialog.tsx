@@ -11,7 +11,6 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { FilterFunction } from "types/filter";
 import ClassFilter from "./filter/ClassFilter";
 import OwnedFilter from "./filter/OwnedFilter";
 import RarityFilter from "./filter/RarityFilter";
@@ -19,7 +18,7 @@ import ServerFilter from "./filter/ServerFilter";
 import PromotionFilter from "./filter/PromotionFilter";
 import ModuleFilter from "./filter/ModuleFilter";
 import { Close, FilterAltOutlined } from "@mui/icons-material";
-import { Filters, ToggleFilter } from "util/useFilter";
+import { Filters, ToggleFilter } from "util/hooks/useFilter";
 
 interface Props {
   filter: Filters;
@@ -89,26 +88,6 @@ const FilterDialog = memo((props: Props) => {
             display: "flex",
             flexDirection: "column",
             gap: "1rem",
-            "& .MuiButtonBase-root": {
-              boxShadow: 1,
-              backgroundColor: "info.main",
-            },
-            "& .inactive": {
-              opacity: 0.9,
-              py: "0.6rem",
-            },
-            "& .active": {
-              opacity: 1,
-              boxShadow: 0,
-              pt: "0.6rem",
-              borderBottomWidth: "0.25rem",
-              borderBottomColor: "primary.main",
-              borderBottomStyle: "solid",
-              backgroundColor: "info.light",
-            },
-            "& .MuiButton-root, .MuiIconButton-root": {
-              height: "3rem",
-            },
           }}
         >
           <Box sx={{ width: "100%" }}>

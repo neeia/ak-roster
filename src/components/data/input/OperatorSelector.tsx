@@ -5,9 +5,9 @@ import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
 import operatorJson from "data/operators";
 import Roster from "types/operators/roster";
+import { useRosterGetQuery } from "store/extendRoster";
 
 interface Props {
-  operators: Roster;
   onClick: (opId: string) => void;
   filter: (opInfo: OpInfo) => boolean;
   sort: (opA: OpInfo, opB: OpInfo) => number;
@@ -23,11 +23,14 @@ function nullOperator(id: string): Operator {
     skill_level: 0,
     masteries: [],
     modules: {},
+    skin: null,
   };
 }
 
 const OperatorSelector = React.memo((props: Props) => {
-  const { operators, onClick, filter, sort } = props;
+  const { onClick, filter, sort } = props;
+
+  const { data: operators } = useRosterGetQuery();
 
   function sortComparator(a: OpInfo, b: OpInfo) {
     return (
@@ -55,7 +58,10 @@ const OperatorSelector = React.memo((props: Props) => {
       }}
     >
       {Object.values(operatorJson)
-        .map((op) => ({ ...op, ...(operators[op.id] ?? nullOperator(op.id)) }))
+        .map((op) => ({
+          ...op,
+          ...(operators?.[op.id] ?? nullOperator(op.id)),
+        }))
         .sort(sortComparator)
         .map((op) => (
           <OperatorButton
@@ -63,7 +69,7 @@ const OperatorSelector = React.memo((props: Props) => {
             op_id={op.id}
             className={[
               !op.potential && "unowned",
-              filter(op) && "hidden",
+              !filter(op) && "hidden",
               op.favorite && "favorite",
             ]
               .filter((t) => t)

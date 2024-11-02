@@ -37,7 +37,6 @@ const Mastery = memo((props: Props) => {
     </Box>
   );
 });
-Mastery.displayName = "Mastery";
 
 interface SkillProps {
   src?: string;

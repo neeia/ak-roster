@@ -70,6 +70,23 @@ const PlannerGoalAdd = (props: Props) => {
   const [selectedGroup, setSelectedGroup] = useState<string>("Default");
   const [openGroupDialog, setOpenGroupDialog] = React.useState<boolean>(false);
   const [showPresets, setShowPresets] = useState(true);
+  const [openSections, setOpenSections] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  const toggleSection = useCallback(
+    (n: number) => {
+      const s = [...openSections];
+      console.log(openSections);
+      s[n] = !s[n];
+      setOpenSections(s);
+    },
+    [openSections, setOpenSections]
+  );
+  console.log(openSections);
 
   const [eliteLevelFrom, setEliteLevelFrom] = React.useState<
     number | undefined
@@ -155,7 +172,6 @@ const PlannerGoalAdd = (props: Props) => {
         setCurrentAccountOperator(accountOp);
 
         setCurrentAccountOperator(accountOp);
-        console.log(accountOp);
         setEliteLevelFrom(accountOp?.elite);
         setLevelFrom(accountOp?.level);
         setSkillLevelFrom(accountOp?.skill_level);
@@ -601,12 +617,6 @@ const PlannerGoalAdd = (props: Props) => {
         }}
         fullScreen={fullScreen}
         keepMounted
-        PaperProps={{
-          elevation: 1,
-          sx: {
-            width: "100%",
-          },
-        }}
       >
         <DialogTitle
           variant="h2"
@@ -719,6 +729,8 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectGroup.Toggle
               title="Promotion"
               onClick={onPromotionClearClick}
+              open={openSections[0]}
+              toggleOpen={() => toggleSection(0)}
             >
               <SelectGroup.FromTo>
                 <Promotion
@@ -735,7 +747,12 @@ const PlannerGoalAdd = (props: Props) => {
                 />
               </SelectGroup.FromTo>
             </SelectGroup.Toggle>
-            <SelectGroup.Toggle title="Level" onClick={onLevelClearClick}>
+            <SelectGroup.Toggle
+              title="Level"
+              onClick={onLevelClearClick}
+              open={openSections[1]}
+              toggleOpen={() => toggleSection(1)}
+            >
               <SelectGroup.FromTo>
                 <Level
                   value={levelFrom}
@@ -775,6 +792,8 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectGroup.Toggle
               title="Skill Rank"
               onClick={onSkillLevelClearClick}
+              open={openSections[2]}
+              toggleOpen={() => toggleSection(2)}
             >
               <SelectGroup.FromTo>
                 <SkillLevel
@@ -795,6 +814,8 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectGroup.Toggle
               title="Mastery"
               onClick={onMasteryClearClick}
+              open={openSections[3]}
+              toggleOpen={() => toggleSection(3)}
               disabled={
                 !selectedOperatorData || selectedOperatorData.rarity <= 3
               }
@@ -820,7 +841,7 @@ const PlannerGoalAdd = (props: Props) => {
                             onChange={(masteryLevel) =>
                               onMasteryFromChange(skillIndex, masteryLevel)
                             }
-                            disabled={(eliteLevelFrom ?? 0) < 2}
+                            // disabled={(eliteLevelFrom ?? 0) < 2}
                           />
                           <Mastery.Select
                             value={masteriesTo[skillIndex]}
@@ -829,7 +850,7 @@ const PlannerGoalAdd = (props: Props) => {
                             onChange={(masteryLevel) =>
                               onMasteryToChange(skillIndex, masteryLevel)
                             }
-                            disabled={(eliteLevelTo ?? eliteLevelFrom ?? 0) < 2}
+                            // disabled={(eliteLevelTo ?? eliteLevelFrom ?? 0) < 2}
                           />
                         </SelectGroup.FromTo>
                       </Mastery.Skill>
@@ -841,6 +862,8 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectGroup.Toggle
               title="Module"
               onClick={onModuleClearClick}
+              open={openSections[4]}
+              toggleOpen={() => toggleSection(4)}
               disabled={!!selectedOperatorData?.moduleData?.length}
             >
               <Module>
@@ -859,12 +882,12 @@ const PlannerGoalAdd = (props: Props) => {
                             }
                             min={undefined}
                             max={undefined}
-                            disabled={
-                              (eliteLevelFrom ?? 0) < 2 ||
-                              MODULE_REQ_BY_RARITY[
-                                selectedOperatorData!.rarity
-                              ] >= (levelFrom ?? 0)
-                            }
+                            // disabled={
+                            //   (eliteLevelFrom ?? 0) < 2 ||
+                            //   MODULE_REQ_BY_RARITY[
+                            //     selectedOperatorData!.rarity
+                            //   ] >= (levelFrom ?? 0)
+                            // }
                           />
                           <Module.Select
                             value={
@@ -875,13 +898,13 @@ const PlannerGoalAdd = (props: Props) => {
                             onChange={(n) => onModuleToChange(mod.moduleId, n)}
                             min={undefined}
                             max={undefined}
-                            disabled={
-                              (eliteLevelTo ?? eliteLevelFrom ?? 0) < 2 ||
-                              (levelTo ?? levelFrom ?? 0) <
-                                MODULE_REQ_BY_RARITY[
-                                  selectedOperatorData!.rarity
-                                ]
-                            }
+                            // disabled={
+                            //   (eliteLevelTo ?? eliteLevelFrom ?? 0) < 2 ||
+                            //   (levelTo ?? levelFrom ?? 0) <
+                            //     MODULE_REQ_BY_RARITY[
+                            //       selectedOperatorData!.rarity
+                            //     ]
+                            // }
                           />
                         </SelectGroup.FromTo>
                       </Module.Item>

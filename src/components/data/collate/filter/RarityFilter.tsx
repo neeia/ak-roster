@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { rarityColors } from "styles/rarityColors";
 import { FilterFunction } from "types/filter";
 import { Operator } from "types/operator";
-import { Value } from "util/useFilter";
+import { Value } from "util/hooks/useFilter";
 
 const br = (index: number) => {
   const r = 4;

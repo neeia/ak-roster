@@ -18,7 +18,7 @@ import SearchDialog from "components/data/collate/SearchDialog";
 import FilterDialog from "components/data/collate/FilterDialog";
 import SortDialog from "components/data/collate/SortDialog";
 import { useFilter, useSort } from "util/useSSF";
-import { repair } from "util/useOperators";
+import { repair } from "util/hooks/useOperators";
 import ProfileDialog from "components/lookup/ProfileDialog";
 import { AccountInfo } from "types/doctor";
 import { SocialInfo } from "types/social";

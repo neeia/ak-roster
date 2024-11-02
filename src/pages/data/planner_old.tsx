@@ -9,7 +9,7 @@ import { OperatorData } from "types/operator";
 import { useAppDispatch } from "store/hooks";
 import { addGoals, GoalsState } from "store/goalsSlice";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
-import useOperators from "util/useOperators";
+import useOperators from "util/hooks/useOperators";
 import operatorsJson from "data/operators.json";
 import { useRouter } from "next/router";
 import * as lz from "util/lz-string";

@@ -106,6 +106,12 @@ const appTheme = (brandColor: string) =>
       MuiDialog: {
         defaultProps: {
           scroll: "body",
+          PaperProps: {
+            elevation: 1,
+            sx: {
+              width: "100%",
+            },
+          },
         },
       },
       MuiMenuItem: {
