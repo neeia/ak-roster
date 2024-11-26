@@ -1,19 +1,5 @@
-import {
-  Box,
-  BoxProps,
-  Button,
-  SxProps,
-  Theme,
-  Typography,
-} from "@mui/material";
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Box, BoxProps, Button, SxProps, Theme, Typography } from "@mui/material";
+import React, { createContext, useCallback, useContext, useEffect, useRef } from "react";
 import findFirstFocusableElement from "util/findFirstFocusableElement";
 import attachSubComponents from "util/subcomponent";
 
@@ -23,16 +9,17 @@ interface Props extends Omit<BoxProps, "onClick"> {
   title?: string;
   label?: string;
   onClick?: () => void;
+  nobg?: boolean;
 }
 
 const SelectGroup = (props: Props) => {
-  const { title, label, children, onClick, sx, ...rest } = props;
+  const { title, label, children, onClick, sx, nobg = false, ...rest } = props;
 
   return (
     <Box
       sx={{
         width: "100%",
-        backgroundColor: "background.default",
+        backgroundColor: nobg ? "transparent" : "background.default",
         borderRadius: 1,
         display: "flex",
         flexDirection: "column",

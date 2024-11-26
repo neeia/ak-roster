@@ -1,3 +1,3 @@
-import { OpInfo } from "./operator";
+import { OpInfo } from "./operators/operator";
 
 export type FilterFunction = (op: OpInfo) => boolean;

@@ -44,16 +44,15 @@ export const brand: Record<string, string> = {
 
 const appTheme = (brandColor: string) =>
   createTheme({
-    // breakpoints: {
-    //   unit: "rem",
-    //   values: {
-    //     xs: 0,
-    //     sm: 40,
-    //     md: 55,
-    //     lg: 75,
-    //     xl: 96,
-    //   },
-    // },
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 640,
+        md: 900,
+        lg: 1200,
+        xl: 1536,
+      },
+    },
     palette: {
       mode: "dark",
       primary: {
@@ -77,6 +76,27 @@ const appTheme = (brandColor: string) =>
       MuiAlert: {
         defaultProps: {
           variant: "outlined",
+        },
+      },
+      MuiButtonBase: {
+        styleOverrides: {
+          root: {
+            "&.Mui-disabled": {
+              color: "inherit",
+              opacity: "0.38",
+            },
+            "&:not(._):not(._):not(._)": {
+              border: "none",
+              margin: 0,
+              "&.Mui-selected": {
+                borderBottomStyle: "solid",
+                borderBottomWidth: "0.25rem",
+                borderBottomColor: brandColor,
+                backgroundColor: `${brandColor}28`,
+                color: brandColor,
+              },
+            },
+          },
         },
       },
       MuiButton: {
@@ -110,7 +130,29 @@ const appTheme = (brandColor: string) =>
             elevation: 1,
             sx: {
               width: "100%",
+              marginX: 0,
             },
+          },
+        },
+      },
+      MuiDialogTitle: {
+        defaultProps: {
+          variant: "h2",
+        },
+        styleOverrides: {
+          root: {
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: 32,
+            gap: 16,
+          },
+        },
+      },
+      MuiDialogContent: {
+        styleOverrides: {
+          root: {
+            padding: 16,
           },
         },
       },
@@ -130,6 +172,7 @@ const appTheme = (brandColor: string) =>
       MuiToggleButton: {
         styleOverrides: {
           root: {
+            padding: 8,
             color: neutral[50],
             backgroundColor: neutral[700],
             "&:hover": {
@@ -139,11 +182,6 @@ const appTheme = (brandColor: string) =>
             "&:not(._):not(._):not(._)": {
               border: "none",
               margin: 0,
-              "&.Mui-selected": {
-                borderBottomStyle: "solid",
-                borderBottomWidth: "0.25rem",
-                borderBottomColor: brandColor,
-              },
             },
           },
         },

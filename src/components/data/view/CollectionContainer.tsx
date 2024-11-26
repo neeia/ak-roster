@@ -1,63 +1,56 @@
 import React from "react";
-import { Operator, OperatorData, OperatorId } from "types/operator";
+import { Operator, OperatorData, OpInfo } from "types/operators/operator";
 import classList from "data/classList";
 import { Box } from "@mui/material";
 import OperatorBlock from "./OperatorBlock";
 import EditWrapper from "./EditWrapper";
 import operatorJson from "data/operators";
-import { OpInfo, SortFunction } from "types/sort";
 import { defaultOperatorObject } from "util/changeOperator";
-import { useAppSelector } from "store/hooks";
-import { selectRoster } from "store/rosterSlice";
+import { SortFunction } from "types/sort";
+import Roster from "types/operators/roster";
+import clsx from "clsx";
 
 interface Props {
-  filter?: (opInfo: OperatorData, op: Operator) => boolean;
-  sort?: SortFunction;
+  roster: Roster;
+  onClick?: (opId: string) => void;
+  filter: (op: OpInfo) => boolean;
+  sort: SortFunction;
   editMode?: boolean;
-  onClick?: (opId: OperatorId) => void;
 }
 
 const CollectionContainer = (props: Props) => {
-  const { filter, sort, editMode, onClick } = props;
-  const operators = useAppSelector(selectRoster);
+  const { roster, filter, sort, editMode, onClick } = props;
 
-  const defineFilter = filter ?? (() => true);
-
-  const defineSort = sort ?? (() => 0);
   function sortComparator(a: OpInfo, b: OpInfo) {
-    return (
-      defineSort(a, b) ||
-      classList.indexOf(a.class) - classList.indexOf(b.class) ||
-      a.name.localeCompare(b.name)
-    );
+    return sort(a, b) || classList.indexOf(a.class) - classList.indexOf(b.class) || a.name.localeCompare(b.name);
   }
 
-  // Operator Selector Component
   return (
     <Box component="ol" display="contents">
       {Object.values(operatorJson)
         .map((op) => ({
           ...op,
-          ...(operators[op.id] ?? defaultOperatorObject(op.id)),
+          ...(roster[op.id] ?? defaultOperatorObject(op.id)),
         }))
         .sort(sortComparator)
-        .map((op: Operator) => {
+        .map((op: OpInfo) => {
           return (
             <Box
               component="li"
               key={op.op_id}
               sx={{
-                listStyleType: "none",
-                display: !defineFilter(operatorJson[op.op_id], op)
-                  ? "none"
-                  : "",
+                display: "contents",
               }}
             >
-              <EditWrapper
-                editMode={editMode}
-                onClick={() => onClick && onClick(op.op_id)}
-              >
-                <OperatorBlock op={op} />
+              <EditWrapper editMode={editMode} onClick={() => onClick && onClick(op.op_id)}>
+                <OperatorBlock
+                  op={op}
+                  className={clsx({
+                    unowned: !op.potential,
+                    hidden: !filter(op),
+                    favorite: op.favorite,
+                  })}
+                />
               </EditWrapper>
             </Box>
           );

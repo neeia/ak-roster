@@ -1,74 +1,64 @@
 import React, { useContext } from "react";
-import { Operator, Skin } from "types/operator";
-import skinJson from "data/skins.json";
-import { Box, Button, Tooltip } from "@mui/material";
-import { changeSkin } from "util/changeOperator";
+import { Skin } from "types/operators/operator";
+import { ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps, ToggleButtonProps, Tooltip } from "@mui/material";
 import Image from "next/image";
 import { DisabledContext } from "./SelectGroup";
+import attachSubComponents from "util/subcomponent";
 
-interface Props {
-  op: Operator;
-  onChange: (newOperator: Operator) => void;
-  disabled?: boolean;
+interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
+  value: string | null;
+  onChange: (value: string) => void;
 }
 const Skins = (props: Props) => {
-  const { op, onChange, disabled: _disabled = false } = props;
-  const opSkins: Skin[] = skinJson[op.op_id as keyof typeof skinJson];
+  const { value, onChange, disabled: _disabled = false, sx, children, ...rest } = props;
 
   const disabled = useContext(DisabledContext) || _disabled;
 
   return (
-    <Box
+    <ToggleButtonGroup
+      value={value}
+      aria-label="Skins"
+      onChange={(_, i) => onChange(i)}
+      disabled={disabled}
       sx={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr",
-        justifyContent: "space-around",
-        gap: "4px",
+        display: "flex",
+        borderRadius: 1,
+        flexWrap: "wrap",
+        gap: 1,
+        ...sx,
       }}
+      {...rest}
     >
-      {opSkins
-        .sort((a, b) => a.sortId - b.sortId)
-        .map((skin: Skin, i: number) => {
-          // sortId -1 is the E2 skin, sortId -2 is Amiya's E1 skin
-          const d =
-            disabled ||
-            (skin.sortId === -1 && op.elite < 2) ||
-            (skin.sortId === -2 && op.elite < 1);
-          return (
-            <Tooltip
-              title={skin.skinName ?? `Default Elite ${skin.sortId + 3}`}
-              arrow
-              describeChild
-              key={`${op.op_id}-skn${i}`}
-            >
-              <span>
-                <Button
-                  fullWidth
-                  className={
-                    op.skin === skin.avatarId.replace("#", "%23")
-                      ? "active"
-                      : "inactive"
-                  }
-                  onClick={() =>
-                    onChange(changeSkin(op, skin.avatarId.replace("#", "%23")))
-                  }
-                  disabled={d}
-                >
-                  <Image
-                    src={`/img/avatars/${skin.avatarId.replace(
-                      "#",
-                      "%23"
-                    )}.png`}
-                    width={48}
-                    height={48}
-                    alt={skin.skinName ?? ""}
-                  />
-                </Button>
-              </span>
-            </Tooltip>
-          );
-        })}
-    </Box>
+      {children}
+    </ToggleButtonGroup>
   );
 };
-export default Skins;
+
+interface SelectProps extends Skin, Omit<ToggleButtonProps, "value" | "size"> {
+  size?: number;
+}
+const Select = (props: SelectProps) => {
+  const { skinName, skinId, sortId, avatarId, disabled: _disabled = false, sx, size = 48, ...rest } = props;
+
+  return (
+    // <Tooltip title={skinName ?? `Default Elite ${sortId + 3}`} arrow describeChild>
+    <ToggleButton
+      value={avatarId}
+      sx={{
+        p: 1,
+        "&:not(._):not(._)": {
+          borderRadius: 1,
+        },
+        ...sx,
+      }}
+      disabled={_disabled}
+      {...rest}
+    >
+      <Image src={`/img/avatars/${avatarId.replace("#", "%23")}.png`} width={size} height={size} alt={""} />
+    </ToggleButton>
+    // </Tooltip>
+  );
+};
+
+const _Skins = attachSubComponents("Skins", Skins, { Select });
+export default _Skins;

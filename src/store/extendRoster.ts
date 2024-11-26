@@ -1,6 +1,6 @@
 import operatorJson from "data/operators";
 import { supabaseApi, UID } from "./apiSlice";
-import { Operator } from "types/operator";
+import { Operator } from "types/operators/operator";
 import Roster from "types/operators/roster";
 import supabase from "supabase/supabaseClient";
 import { defaultOperatorObject } from "util/changeOperator";

@@ -1,6 +1,6 @@
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import { Ingredient } from "types/item";
-import { OperatorData } from "types/operator";
+import { OperatorData } from "types/operators/operator";
 import operatorsJson from "data/operators";
 import { COST_BY_RARITY } from "./changeOperator";
 

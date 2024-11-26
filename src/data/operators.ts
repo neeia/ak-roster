@@ -1,4 +1,4 @@
-import { OperatorData } from "types/operator";
+import { OperatorData } from "types/operators/operator";
 import json from "./operators.json";
 
 /*

@@ -1,4 +1,4 @@
-import { OpInfo } from "./operator";
+import { OpInfo } from "./operators/operator";
 
 export interface SortListItem {
   key: string;

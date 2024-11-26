@@ -3,7 +3,7 @@ import { supabaseApi, UID } from "./apiSlice";
 import supabase from "supabase/supabaseClient";
 import AccountData from "types/auth/accountData";
 import Roster from "types/operators/roster";
-import { Operator } from "types/operator";
+import { Operator } from "types/operators/operator";
 import { OperatorSupport } from "types/operators/supports";
 
 const extendedApi = supabaseApi.injectEndpoints({

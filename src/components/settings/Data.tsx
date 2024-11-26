@@ -8,7 +8,7 @@ import { Box, Button } from "@mui/material";
 import { User } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
 import React from "react";
-import { Operator } from "../../types/operator";
+import { Operator } from "../../types/operators/operator";
 import { safeSyncAll } from "../../util/hooks/useSync";
 
 interface Props {

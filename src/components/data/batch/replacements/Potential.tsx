@@ -1,4 +1,4 @@
-import { Operator } from "types/operator";
+import { Operator } from "types/operators/operator";
 import { Box, IconButton } from "@mui/material";
 import { changePotential, getMaxPotentialById } from "util/changeOperator";
 import Image from "next/image";

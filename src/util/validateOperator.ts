@@ -1,4 +1,4 @@
-import { Operator, OperatorData } from "types/operator";
+import { Operator, OperatorData } from "types/operators/operator";
 import operatorJson from "data/operators.json";
 import {
   MAX_LEVEL_BY_RARITY,

@@ -14,21 +14,9 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import {
-  Close,
-  DragHandle,
-  NorthEast,
-  PlaylistAdd,
-  Sort,
-  SouthEast,
-} from "@mui/icons-material";
+import { Close, DragHandle, NorthEast, PlaylistAdd, Sort, SouthEast } from "@mui/icons-material";
 import { SortFunctionData, SortListItem } from "types/sort";
-import {
-  DragDropContext,
-  Draggable,
-  Droppable,
-  DropResult,
-} from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd";
 
 interface Props {
   sortFns: Record<string, SortFunctionData>;
@@ -73,9 +61,7 @@ const SortDialog = (props: Props) => {
     setSortQueue(items);
   };
 
-  const openSorts = Object.keys(sortFns).filter(
-    (key) => !sortQueue.some((sli) => sli.key === key)
-  );
+  const openSorts = Object.keys(sortFns).filter((key) => !sortQueue.some((sli) => sli.key === key));
 
   const [open, setOpen] = React.useState(false);
   return (
@@ -89,22 +75,12 @@ const SortDialog = (props: Props) => {
           sx={{ display: "flex", flexDirection: "column" }}
         >
           <Sort fontSize="large" color="primary" />
-          <Typography
-            variant="caption"
-            sx={{ display: { sm: "none" }, lineHeight: 1.1 }}
-          >
+          <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
             Sort
           </Typography>
         </IconButton>
       </Tooltip>
-      <Dialog
-        open={open}
-        onClose={() => setOpen(false)}
-        fullScreen={fullScreen}
-        keepMounted
-        fullWidth
-        maxWidth="sm"
-      >
+      <Dialog open={open} onClose={() => setOpen(false)} fullScreen={fullScreen} keepMounted fullWidth maxWidth="sm">
         <DialogTitle
           sx={{
             display: "flex",
@@ -112,11 +88,10 @@ const SortDialog = (props: Props) => {
             paddingBottom: "12px",
           }}
         >
-          <Typography variant="h2">Sorting</Typography>
-          <IconButton
-            onClick={() => setOpen(false)}
-            sx={{ display: { sm: "none" } }}
-          >
+          <Typography variant="h2" component="div">
+            Sorting
+          </Typography>
+          <IconButton onClick={() => setOpen(false)} sx={{ display: { sm: "none" } }}>
             <Close />
           </IconButton>
         </DialogTitle>
@@ -194,9 +169,7 @@ const SortDialog = (props: Props) => {
                   ))}
                   {provided.placeholder}
                   <Button
-                    onClick={(e) =>
-                      toggleSort(openSorts[0], sortFns[openSorts[0]].dfDesc)
-                    }
+                    onClick={(e) => toggleSort(openSorts[0], sortFns[openSorts[0]].dfDesc)}
                     size="small"
                     disabled={openSorts.length === 0}
                     sx={{

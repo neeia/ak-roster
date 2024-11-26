@@ -13,7 +13,7 @@ import { ArrowBack, Search } from "@mui/icons-material";
 import { child, get, getDatabase, ref } from "firebase/database";
 import { useRouter } from "next/router";
 import CollectionContainer from "components/data/view/CollectionContainer";
-import { Operator } from "types/operator";
+import { Operator } from "types/operators/operator";
 import SearchDialog from "components/data/collate/SearchDialog";
 import FilterDialog from "components/data/collate/FilterDialog";
 import SortDialog from "components/data/collate/SortDialog";

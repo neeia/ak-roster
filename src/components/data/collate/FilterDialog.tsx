@@ -11,14 +11,15 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import ClassFilter from "./filter/ClassFilter";
+import Class from "../input/Select/Class";
 import OwnedFilter from "./filter/OwnedFilter";
-import RarityFilter from "./filter/RarityFilter";
 import ServerFilter from "./filter/ServerFilter";
-import PromotionFilter from "./filter/PromotionFilter";
 import ModuleFilter from "./filter/ModuleFilter";
 import { Close, FilterAltOutlined } from "@mui/icons-material";
 import { Filters, ToggleFilter } from "util/hooks/useFilter";
+import Select from "../input/Select/SelectGroup";
+import Rarity from "../input/Select/Rarity";
+import Promotion from "../input/Select/Promotion";
 
 interface Props {
   filter: Filters;
@@ -43,22 +44,12 @@ const FilterDialog = memo((props: Props) => {
           sx={{ display: "flex", flexDirection: "column" }}
         >
           <FilterAltOutlined fontSize="large" color="primary" />
-          <Typography
-            variant="caption"
-            sx={{ display: { sm: "none" }, lineHeight: 1.1 }}
-          >
+          <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
             Filter
           </Typography>
         </IconButton>
       </Tooltip>
-      <Dialog
-        open={open}
-        onClose={() => setOpen(false)}
-        fullScreen={fullScreen}
-        keepMounted
-        fullWidth
-        maxWidth="sm"
-      >
+      <Dialog open={open} onClose={() => setOpen(false)} fullScreen={fullScreen} keepMounted fullWidth maxWidth="sm">
         <DialogTitle
           sx={{
             display: "flex",
@@ -76,10 +67,7 @@ const FilterDialog = memo((props: Props) => {
           >
             Filters
           </Typography>
-          <IconButton
-            onClick={() => setOpen(false)}
-            sx={{ display: { sm: "none" } }}
-          >
+          <IconButton onClick={() => setOpen(false)} sx={{ display: { sm: "none" } }}>
             <Close />
           </IconButton>
         </DialogTitle>
@@ -87,45 +75,38 @@ const FilterDialog = memo((props: Props) => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: "1rem",
           }}
         >
-          <Box sx={{ width: "100%" }}>
-            <ClassFilter
-              value={filter.CLASS}
-              onChange={(value) => toggleFilter("CLASS", value)}
-            />
-          </Box>
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: { xs: "3fr 4fr", sm: "3fr 4fr 4fr" },
-              gap: 2,
+              gridTemplateColumns: { xs: "1fr 1fr", sm: "1fr 1fr auto" },
               width: "100%",
             }}
           >
-            <Box sx={{ gridColumn: "span 2", width: "100%" }}>
-              <RarityFilter
+            <Select title="Class" nobg sx={{ gridColumn: "1 / -1" }}>
+              <Class value={filter.CLASS} onChange={(value) => toggleFilter("CLASS", value)} />
+            </Select>
+            <Select title="Rarity" nobg sx={{ gridColumn: "span 2" }}>
+              <Rarity
                 value={filter.RARITY}
                 onChange={(value) => toggleFilter("RARITY", value)}
+                exclusive={false}
+                fullWidth
               />
-            </Box>
-            <PromotionFilter
-              value={filter.ELITE}
-              onChange={(value) => toggleFilter("ELITE", value)}
-            />
-            <OwnedFilter
-              value={filter.OWNED}
-              onChange={(value) => toggleFilter("OWNED", value)}
-            />
-            <ServerFilter
-              value={filter.CN}
-              onChange={(value) => toggleFilter("CN", value)}
-            />
-            <ModuleFilter
-              value={filter.MODULECN}
-              onChange={(value) => toggleFilter("MODULECN", value)}
-            />
+            </Select>
+            <Select title="Elite" nobg>
+              <Promotion value={filter.ELITE} onChange={(value) => toggleFilter("ELITE", value)} />
+            </Select>
+            <Select title="Owned" nobg>
+              <OwnedFilter value={filter.OWNED} onChange={(value) => toggleFilter("OWNED", value)} />
+            </Select>
+            <Select title="Server" nobg>
+              <ServerFilter value={filter.CN} onChange={(value) => toggleFilter("CN", value)} />
+            </Select>
+            <Select title="Module" nobg>
+              <ServerFilter value={filter.MODULECN} onChange={(value) => toggleFilter("MODULECN", value)} />
+            </Select>
           </Box>
           <Button onClick={clearFilters}>Clear Filter</Button>
         </DialogContent>

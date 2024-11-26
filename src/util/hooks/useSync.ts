@@ -1,6 +1,6 @@
 import { User } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
-import { Operator } from "types/operator";
+import { Operator } from "types/operators/operator";
 import operatorJson from "data/operators.json";
 import { repair } from "./useOperators";
 

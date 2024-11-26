@@ -1,12 +1,5 @@
 import React, { memo, useContext } from "react";
-import {
-  Box,
-  BoxProps,
-  ToggleButton,
-  ToggleButtonGroup,
-  ToggleButtonGroupProps,
-  Typography,
-} from "@mui/material";
+import { Box, BoxProps, ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps, Typography } from "@mui/material";
 import Image from "next/image";
 import attachSubComponents from "util/subcomponent";
 import { DisabledContext } from "./SelectGroup";
@@ -24,7 +17,6 @@ const Mastery = memo((props: Props) => {
         width: "100%",
         m: 0,
         p: 0,
-        py: 1,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -38,19 +30,15 @@ const Mastery = memo((props: Props) => {
   );
 });
 
-interface SkillProps {
+interface SkillProps extends BoxProps<"li"> {
   src?: string;
   skillNumber?: number;
   skillName?: string;
+  disabled?: boolean;
   children?: React.ReactNode;
 }
 const Skill = (props: SkillProps) => {
-  const {
-    src,
-    skillNumber,
-    skillName = "Missing Skill Data",
-    children,
-  } = props;
+  const { src, skillNumber, skillName = "Missing Skill Data", children, sx, ...rest } = props;
   const size = 48;
 
   return (
@@ -61,8 +49,69 @@ const Skill = (props: SkillProps) => {
         flexDirection: "column",
         gap: 2,
         width: "100%",
+        ...sx,
       }}
+      {...rest}
     >
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 2,
+        }}
+      >
+        {src && <Image src={`/img/skills/${src}.png`} alt="" width={size} height={size} />}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 0.25,
+          }}
+        >
+          {skillNumber !== undefined && (
+            <Typography variant="h4" component="span" sx={{ m: 0 }}>
+              Skill {skillNumber}
+            </Typography>
+          )}
+          <Typography>{skillName}</Typography>
+        </Box>
+      </Box>
+      {children}
+    </Box>
+  );
+};
+
+const SkillAlt = (props: SkillProps) => {
+  const { src, skillNumber, skillName = "Missing Skill Data", disabled = false, children, sx, ...rest } = props;
+  const size = 48;
+
+  return (
+    <Box
+      component="li"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 1,
+        width: "100%",
+        ...sx,
+      }}
+      {...rest}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          gap: 1,
+          alignItems: "baseline",
+          opacity: disabled ? 0.25 : 1,
+        }}
+      >
+        {skillNumber !== undefined && (
+          <Typography variant="h3" component="span" sx={{ m: 0 }}>
+            S{skillNumber}
+          </Typography>
+        )}
+        <Typography>{skillName}</Typography>
+      </Box>
       <Box
         sx={{
           display: "flex",
@@ -76,30 +125,16 @@ const Skill = (props: SkillProps) => {
             alt=""
             width={size}
             height={size}
+            style={{ opacity: disabled ? 0.25 : 1 }}
           />
         )}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 0.25,
-          }}
-        >
-          {skillNumber !== null && (
-            <Typography variant="h4" component="span" sx={{ m: 0 }}>
-              Skill {skillNumber}
-            </Typography>
-          )}
-          <Typography>{skillName}</Typography>
-        </Box>
+        {children}
       </Box>
-      {children}
     </Box>
   );
 };
 
-interface SelectProps
-  extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
+interface SelectProps extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   value?: number;
   min?: number;
   max?: number;
@@ -107,26 +142,14 @@ interface SelectProps
   onChange: (value: number) => void;
 }
 const Select = (props: SelectProps) => {
-  const {
-    value,
-    min = 0,
-    max = 3,
-    onChange,
-    disabled: _disabled = false,
-    sx,
-    size = 32,
-    ...rest
-  } = props;
+  const { value, min = 0, max = 3, onChange, disabled: _disabled = false, sx, size = 32, ...rest } = props;
 
   const disabled = useContext(DisabledContext) || _disabled;
 
   return (
     <ToggleButtonGroup
-      exclusive
       value={value}
-      onChange={(_, i) => {
-        if (i != null) onChange(i);
-      }}
+      onChange={(_, i) => onChange(i)}
       disabled={disabled}
       sx={{
         height: "min-content",
@@ -140,17 +163,12 @@ const Select = (props: SelectProps) => {
     >
       {[...Array(4)].map((_, i) => (
         <ToggleButton key={i} value={i} sx={{ p: 1 }}>
-          <Image
-            src={`/img/rank/m-${i}.png`}
-            alt={`Mastery ${i}`}
-            width={size}
-            height={size}
-          />
+          <Image src={`/img/rank/m-${i}.png`} alt={`Mastery ${i}`} width={size} height={size} />
         </ToggleButton>
       ))}
     </ToggleButtonGroup>
   );
 };
 
-const _Mastery = attachSubComponents("Mastery", Mastery, { Skill, Select });
+const _Mastery = attachSubComponents("Mastery", Mastery, { Skill, SkillAlt, Select });
 export default _Mastery;

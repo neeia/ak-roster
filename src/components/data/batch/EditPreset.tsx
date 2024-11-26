@@ -16,7 +16,7 @@ import Mastery from "./replacements/Mastery";
 import Level from "../input/Select/Level";
 import SkillLevel from "../input/Select/SkillLevel";
 import { Close } from "@mui/icons-material";
-import { Operator } from "types/operator";
+import { Operator } from "types/operators/operator";
 
 interface Props {
   preset: Operator;

@@ -1,82 +1,63 @@
-import { useEffect } from "react";
-import { Operator, OperatorData, OperatorV1 } from "types/operator";
+import { useCallback, useEffect } from "react";
+import { Operator } from "types/operators/operator";
 import operatorJson from "data/operators";
 import useLocalStorage from "./useLocalStorage";
-import getNumSkills from "util/fns/getNumSkills";
-
-function checkVersion(op: any) {
-  if ("class" in op) return 1;
-  if ("name" in op) return 2;
-  return 3;
-}
-
-// Converts an OperatorV1 into an Operator
-function convertV1(op: OperatorV1): Operator {
-  const masteries = [...Array(getNumSkills(op.id))].fill(0);
-  if (op.skill1Mastery) masteries[0] = op.skill1Mastery;
-  if (op.skill2Mastery) masteries[1] = op.skill2Mastery;
-  if (op.skill3Mastery) masteries[2] = op.skill3Mastery;
-
-  const modData = operatorJson[op.id];
-  const modules = {};
-  modules.
-
-  return {
-    op_id: op.id,
-    name: op.name,
-    favorite: op.favorite,
-    rarity: op.rarity,
-    class: operatorJson[op.id as keyof typeof operatorJson].class,
-    potential: op.potential,
-    elite: op.promotion,
-    owned: op.owned,
-    level: op.level,
-    skill_level: op.skillLevel,
-    masteries,
-    modules: op.module ?? [],
-  };
-}
-
-export function repair(
-  ops: Record<string, Operator>,
-  setOps: (v: Record<string, Operator>) => void
-) {
-  var rooster = { ...ops };
-  Object.entries(operatorJson).forEach(
-    (props: [opId: string, opJ: OperatorData]) => {
-      const [opId, opJsonItem] = props;
-      const op = rooster[opId];
-
-      // check for missing operators to repair
-      if (!op || !op.name || !op.op_id || op.op_id !== opId) {
-        if (opJsonItem)
-          rooster[opId] = defaultOperatorObject([opId, opJsonItem])[1];
-      } else if (op.name !== opJsonItem.name) {
-        rooster[opId].name = opJsonItem.name;
-      }
-    }
-  );
-
-  Object.entries(rooster).forEach(([opId, op]) => {
-    // check for outdated operators to redefine
-    if (op.class === undefined) {
-      rooster[opId] = convertV1([, op])[1];
-    } else {
-      if (op.masteries === undefined) op.masteries = [];
-      if (op.modules === undefined) op.modules = [];
-    }
-  });
-  setOps(rooster);
-}
+import Roster from "types/operators/roster";
+import supabase from "supabase/supabaseClient";
 
 function useOperators() {
-  const [operators, setOperators] = useLocalStorage<Record<string, Operator>>(
-    "operators",
-    Object.fromEntries(Object.entries(operatorJson).map(defaultOperatorObject))
+  const [operators, setOperators] = useLocalStorage<Roster>("roster", {});
+  const [_operators] = useLocalStorage<Roster>("operators", {});
+  
+  // change operator, push to db
+  const onChange = useCallback(
+    (op: Operator) => {
+      setOperators(({ ..._roster }) => {
+        // assign if owned, otherwise delete
+        if (op.potential) _roster[op.op_id] = op;
+        else delete _roster[op.op_id];
+        return _roster;
+      });
+    },
+    [setOperators]
   );
+
+  // fetch data from db
   useEffect(() => {
-    repair(operators, setOperators);
+    let isCanceled = false;
+
+    const fetchData = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      const user_id = session?.user.id;
+
+      if (!user_id) return;
+
+      const { data: dbOperators } = await supabase
+        .from("operators")
+        .select(
+          "op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin"
+        )
+        .match({ user_id });
+
+      if (!dbOperators?.length) return { data: {} };
+
+      const _roster: Roster = {};
+      dbOperators.forEach((op) =>
+        op.op_id in operatorJson ? (_roster[op.op_id] = op as Operator) : null
+      );
+
+      if (!isCanceled) setOperators(_roster);
+    };
+
+    fetchData();
+
+    return () => {
+      isCanceled = true;
+    };
   }, []);
-  return [operators, setOperators] as const;
+
+  return [operators, setOperators, onChange] as const;
 }
 export default useOperators;

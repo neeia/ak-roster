@@ -1,5 +1,5 @@
 import React from "react";
-import { Operator } from "types/operator";
+import { Operator } from "types/operators/operator";
 import { Box, Button, Typography } from "@mui/material";
 import { rarityColors } from "styles/rarityColors";
 import { Favorite } from "@mui/icons-material";

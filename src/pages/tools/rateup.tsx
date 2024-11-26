@@ -17,7 +17,7 @@ import React, { useMemo, useState } from "react";
 import { sprintf } from "sprintf-js";
 
 import Layout from "components/Layout";
-import { minMax } from "../../util/changeOperator";
+import { clamp } from "../../util/changeOperator";
 import Board from "components/base/Board";
 
 const MAX_PULL_COUNT = 2000;
@@ -156,13 +156,13 @@ const Rateup: NextPage = () => {
         _setPity("");
       }
     } else if (e.target.name === "pulls") {
-      toInt = minMax(0, toInt, MAX_PULL_COUNT);
+      toInt = clamp(0, toInt, MAX_PULL_COUNT);
       if (toInt >= 0 && toInt <= MAX_PULL_COUNT) {
         setPulls(toInt);
         _setPulls(toInt.toString());
       }
     } else {
-      toInt = minMax(0, toInt, 98);
+      toInt = clamp(0, toInt, 98);
       if (toInt >= 0 && toInt <= 98) {
         setPity(toInt);
         _setPity(toInt.toString());

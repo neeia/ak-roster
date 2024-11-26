@@ -1,6 +1,6 @@
 import React, { memo, useContext } from "react";
 import { Box, Button, TextField } from "@mui/material";
-import { minMax } from "util/changeOperator";
+import { clamp } from "util/changeOperator";
 import {
   KeyboardArrowDownSharp,
   KeyboardArrowUpSharp,
@@ -17,51 +17,43 @@ interface Props {
   onChange: (level: number) => void;
 }
 const Level = memo((props: Props) => {
-  const {
-    value: level = 1,
-    min: minLevel = 1,
-    max: maxLevel = 30,
-    disabled: _disabled = false,
-    onChange,
-  } = props;
+  const { value: level = 1, min: minLevel = 1, max: maxLevel = 30, disabled: _disabled = false, onChange } = props;
 
   const disabled = useContext(DisabledContext) || _disabled;
 
   const [levelField, setLevelField] = React.useState<string>(level.toString());
 
-  function updateLevel(lvl: string | number) {
-    let parsedLevel = null;
-    if (typeof lvl === "number") {
-      parsedLevel = minMax(minLevel, lvl, maxLevel);
-    } else if (parseInt(lvl, 10)) {
-      parsedLevel = minMax(minLevel, parseInt(lvl, 10), maxLevel);
-    } else {
-      setLevelField("");
-      return;
-    }
-
-    onChange(parsedLevel);
-    setLevelField(parsedLevel.toString());
+  function updateLevel(lvl: number) {
+    const _lvl = clamp(minLevel, lvl, maxLevel);
+    onChange(lvl);
+    setLevelField(_lvl.toString());
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
+    console.log(e.key);
     switch (e.key) {
       case "ArrowUp":
+        e.preventDefault;
         updateLevel(level + 1);
         break;
       case "ArrowDown":
+        e.preventDefault;
         updateLevel(level - 1);
         break;
       case "ArrowRight":
+        e.preventDefault;
         updateLevel(level === 1 ? 10 : level + 10);
         break;
       case "ArrowLeft":
+        e.preventDefault;
         updateLevel(level - 10);
         break;
       case "End":
+        e.preventDefault;
         updateLevel(minLevel);
         break;
       case "Home":
+        e.preventDefault;
         updateLevel(maxLevel);
         break;
       default:
@@ -69,8 +61,7 @@ const Level = memo((props: Props) => {
     }
   }
 
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) =>
-    e.target.select();
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => e.target.select();
 
   const disableDown = disabled || level <= minLevel;
 
@@ -97,19 +88,11 @@ const Level = memo((props: Props) => {
         }}
       >
         <div />
-        <Button
-          aria-keyshortcuts="ArrowLeft"
-          onClick={() => updateLevel(level - 10)}
-          disabled={disableDown}
-        >
+        <Button aria-keyshortcuts="ArrowLeft" onClick={() => updateLevel(level - 10)} disabled={disableDown}>
           <KeyboardDoubleArrowLeftSharp />
         </Button>
         <div />
-        <Button
-          aria-keyshortcuts="ArrowUp"
-          onClick={() => updateLevel(level + 1)}
-          disabled={disableUp}
-        >
+        <Button aria-keyshortcuts="ArrowUp" onClick={() => updateLevel(level + 1)} disabled={disableUp}>
           <KeyboardArrowUpSharp />
         </Button>
         <TextField
@@ -118,7 +101,7 @@ const Level = memo((props: Props) => {
           margin="none"
           value={disabled || levelField ? level : ""}
           error={levelField === ""}
-          onChange={(e) => updateLevel(e.target.value)}
+          onChange={(e) => (e.target.value === "" ? setLevelField("") : updateLevel(parseInt(e.target.value)))}
           onKeyDown={handleKeyDown}
           sx={{
             width: "56px",
@@ -140,11 +123,7 @@ const Level = memo((props: Props) => {
             },
           }}
         />
-        <Button
-          aria-keyshortcuts="ArrowLeft"
-          onClick={() => updateLevel(level - 1)}
-          disabled={disableDown}
-        >
+        <Button aria-keyshortcuts="ArrowLeft" onClick={() => updateLevel(level - 1)} disabled={disableDown}>
           <KeyboardArrowDownSharp />
         </Button>
         <div />

@@ -1,5 +1,4 @@
 import React from "react";
-import { OpInfo } from "types/operator";
 import { Box, Button, Typography } from "@mui/material";
 import { rarityColors } from "styles/rarityColors";
 import { Favorite } from "@mui/icons-material";
@@ -41,13 +40,7 @@ const OperatorButton = React.memo((props: Props) => {
   const nameComponent = (
     <Typography
       sx={{ pointerEvents: "none" }}
-      variant={
-        width > LONG_CUTOFF
-          ? width > LONGER_CUTOFF
-            ? "caption3"
-            : "caption2"
-          : "caption"
-      }
+      variant={width > LONG_CUTOFF ? (width > LONGER_CUTOFF ? "caption3" : "caption2") : "caption"}
     >
       <Box
         sx={{
@@ -72,35 +65,33 @@ const OperatorButton = React.memo((props: Props) => {
   const imgUrl = `/img/avatars/${skin ?? op_id}.png`;
 
   return (
-    <Box component="li" sx={{ display: "contents" }}>
-      <Button
-        className={className}
-        onClick={() => onClick(op_id)}
+    <Button
+      className={className}
+      onClick={() => onClick(op_id)}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        boxShadow: 2,
+        width: "100%",
+        height: "96px",
+        position: "relative",
+        p: 0,
+      }}
+    >
+      <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          boxShadow: 2,
-          width: "100%",
-          height: "96px",
+          height: "4rem",
+          width: "4rem",
+          boxSizing: "content-box",
+          borderBottom: `3px solid ${rarityColors[op.rarity]}`,
           position: "relative",
-          p: 0,
         }}
       >
-        <Box
-          sx={{
-            height: "4rem",
-            width: "4rem",
-            boxSizing: "content-box",
-            borderBottom: `3px solid ${rarityColors[op.rarity]}`,
-            position: "relative",
-          }}
-        >
-          <Image src={imgUrl} width={64} height={64} alt="" />
-          <Favorite fontSize="small" color="error" className="icon-fav" />
-        </Box>
-        {opName}
-      </Button>
-    </Box>
+        <Image src={imgUrl} width={64} height={64} alt="" />
+        <Favorite fontSize="small" color="error" className="icon-fav" />
+      </Box>
+      {opName}
+    </Button>
   );
 });
 OperatorButton.displayName = "OperatorButton";

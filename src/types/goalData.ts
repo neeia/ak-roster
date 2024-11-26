@@ -1,5 +1,5 @@
 import { Database } from "./supabase";
-import { OperatorData } from "./operator";
+import { OperatorData } from "./operators/operator";
 import { OperatorGoalCategory, PlannerGoal } from "./goal";
 import operatorJson from "../data/operators";
 import { MAX_LEVEL_BY_RARITY } from "../util/changeOperator";

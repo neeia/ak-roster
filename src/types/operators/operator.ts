@@ -1,5 +1,5 @@
-import { EliteGoal, MasteryGoal, ModuleGoal, SkillLevelGoal } from "./goal";
-import { Database } from "./supabase";
+import { EliteGoal, MasteryGoal, ModuleGoal, SkillLevelGoal } from "../goal";
+import { Database } from "../supabase";
 
 type Table = Database["public"]["Tables"]["operators"];
 

@@ -1,46 +1,28 @@
 import React from "react";
-import { OpInfo, Operator } from "types/operator";
+import { OpInfo } from "types/operators/operator";
 import classList from "data/classList";
 import { Box } from "@mui/material";
 import OperatorButton from "./OperatorButton";
 import operatorJson from "data/operators";
 import Roster from "types/operators/roster";
-import { useRosterGetQuery } from "store/extendRoster";
+import { defaultOperatorObject } from "util/changeOperator";
+import clsx from "clsx";
+import getAvatar from "util/fns/getAvatar";
 
 interface Props {
+  roster: Roster;
   onClick: (opId: string) => void;
   filter: (opInfo: OpInfo) => boolean;
   sort: (opA: OpInfo, opB: OpInfo) => number;
 }
 
-function nullOperator(id: string): Operator {
-  return {
-    op_id: id,
-    favorite: false,
-    potential: 0,
-    elite: -1,
-    level: 0,
-    skill_level: 0,
-    masteries: [],
-    modules: {},
-    skin: null,
-  };
-}
-
 const OperatorSelector = React.memo((props: Props) => {
-  const { onClick, filter, sort } = props;
-
-  const { data: operators } = useRosterGetQuery();
+  const { roster, onClick, filter, sort } = props;
 
   function sortComparator(a: OpInfo, b: OpInfo) {
-    return (
-      sort(a, b) ||
-      classList.indexOf(a.class) - classList.indexOf(b.class) ||
-      a.name.localeCompare(b.name)
-    );
+    return sort(a, b) || classList.indexOf(a.class) - classList.indexOf(b.class) || a.name.localeCompare(b.name);
   }
 
-  // Operator Selector Component
   return (
     <Box
       component="ol"
@@ -60,22 +42,22 @@ const OperatorSelector = React.memo((props: Props) => {
       {Object.values(operatorJson)
         .map((op) => ({
           ...op,
-          ...(operators?.[op.id] ?? nullOperator(op.id)),
+          ...(roster?.[op.id] ?? defaultOperatorObject(op.id)),
         }))
         .sort(sortComparator)
         .map((op) => (
-          <OperatorButton
-            key={op.id}
-            op_id={op.id}
-            className={[
-              !op.potential && "unowned",
-              !filter(op) && "hidden",
-              op.favorite && "favorite",
-            ]
-              .filter((t) => t)
-              .join(" ")}
-            onClick={onClick}
-          />
+          <Box key={op.id} component="li" sx={{ display: "contents" }}>
+            <OperatorButton
+              op_id={op.id}
+              className={clsx({
+                unowned: !op.potential,
+                hidden: !filter(op),
+                favorite: op.favorite,
+              })}
+              skin={getAvatar(op)}
+              onClick={onClick}
+            />
+          </Box>
         ))}
     </Box>
   );
