@@ -1,4 +1,4 @@
-import { Operator, OperatorV1, OperatorV2 } from "types/operator";
+import { Operator, OperatorV1, OperatorV2 } from "types/operators/operator";
 import operatorJson from "data/operators.json";
 
 function isV1(op: any): boolean {

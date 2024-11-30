@@ -3,7 +3,7 @@ import clsx from "clsx";
 import Image from "next/image";
 
 import operatorsJson from "data/operators.json";
-import { OperatorData } from "types/operator";
+import { OperatorData } from "types/operators/operator";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import React from "react";
 

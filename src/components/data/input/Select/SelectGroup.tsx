@@ -1,19 +1,5 @@
-import {
-  Box,
-  BoxProps,
-  Button,
-  SxProps,
-  Theme,
-  Typography,
-} from "@mui/material";
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Box, BoxProps, Button, SxProps, Theme, Typography } from "@mui/material";
+import React, { createContext, useCallback, useContext, useEffect, useRef } from "react";
 import findFirstFocusableElement from "util/findFirstFocusableElement";
 import attachSubComponents from "util/subcomponent";
 
@@ -23,16 +9,17 @@ interface Props extends Omit<BoxProps, "onClick"> {
   title?: string;
   label?: string;
   onClick?: () => void;
+  nobg?: boolean;
 }
 
 const SelectGroup = (props: Props) => {
-  const { title, label, children, onClick, sx, ...rest } = props;
+  const { title, label, children, onClick, sx, nobg = false, ...rest } = props;
 
   return (
     <Box
       sx={{
         width: "100%",
-        backgroundColor: "background.default",
+        backgroundColor: nobg ? "transparent" : "background.default",
         borderRadius: 1,
         display: "flex",
         flexDirection: "column",
@@ -72,28 +59,31 @@ const SelectGroup = (props: Props) => {
 };
 
 interface AddGroupProps extends Props {
+  open?: boolean;
+  toggleOpen?: () => void;
   disabled?: boolean;
 }
 const Toggle = (props: AddGroupProps) => {
   const {
+    open = false,
     label = "Remove",
     onClick: _onClick,
+    toggleOpen,
     disabled: _disabled = false,
     id: _id,
     ...rest
   } = props;
-  const [open, setOpen] = useState(false);
   const disabled = useContext(DisabledContext);
 
   const id = _id ?? `sel-group-${props.title}`;
   const el = useRef<HTMLElement>(null);
 
   const onClick = useCallback(() => {
-    setOpen((o) => !o);
+    toggleOpen?.();
     if (open) {
       _onClick?.();
     }
-  }, [_onClick, open]);
+  }, [_onClick, toggleOpen, open]);
 
   useEffect(() => {
     if (!el.current) return;
@@ -102,7 +92,7 @@ const Toggle = (props: AddGroupProps) => {
   }, [el]);
 
   useEffect(() => {
-    if (disabled) setOpen(false);
+    if (disabled) _onClick?.();
   }, [disabled]);
 
   return open ? (

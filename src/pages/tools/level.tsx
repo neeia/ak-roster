@@ -3,11 +3,7 @@ import { NextPage } from "next";
 import Image from "next/image";
 import { memo, useState } from "react";
 
-import {
-  COST_BY_RARITY,
-  MAX_LEVEL_BY_RARITY,
-  minMax,
-} from "util/changeOperator";
+import { COST_BY_RARITY, MAX_LEVEL_BY_RARITY, clamp } from "util/changeOperator";
 import Layout from "components/Layout";
 import Promotion from "components/data/input/Select/Promotion";
 import Board from "components/base/Board";
@@ -32,20 +28,14 @@ const levelingCost = (
     .map((_, i) => {
       const elite = startingElite + i;
       const eliteStartingLevel = elite === startingElite ? startingLevel : 1;
-      const eliteTargetLevel =
-        elite === targetElite
-          ? targetLevel
-          : MAX_LEVEL_BY_RARITY[rarity][elite];
+      const eliteTargetLevel = elite === targetElite ? targetLevel : MAX_LEVEL_BY_RARITY[rarity][elite];
       const exp = COST_BY_RARITY.expCostByElite[elite]
         .slice(eliteStartingLevel - 1, eliteTargetLevel - 1)
         .reduce((a, b) => a + b, 0);
       const levelingLmd = COST_BY_RARITY.lmdCostByElite[elite]
         .slice(eliteStartingLevel - 1, eliteTargetLevel - 1)
         .reduce((a, b) => a + b, 0);
-      const eliteLmd =
-        elite === startingElite
-          ? 0
-          : COST_BY_RARITY.eliteLmdCost[rarity][elite - 1];
+      const eliteLmd = elite === startingElite ? 0 : COST_BY_RARITY.eliteLmdCost[rarity][elite - 1];
       return {
         exp,
         lmd: levelingLmd + eliteLmd,
@@ -112,7 +102,8 @@ const Level: NextPage = () => {
   const startingLevelHelpText = `Max ${maxStartingLevel}`;
   const targetLevelHelpText = `Max ${maxTargetLevel}`;
 
-  const handleChangeRarity = (rar: number) => {
+  const handleChangeRarity = (rar: number | null) => {
+    if (rar == null) return;
     setRarity(rar);
     const newMaxElite = maxElite(rar);
     if (startingElite > newMaxElite) {
@@ -137,7 +128,8 @@ const Level: NextPage = () => {
     }
   };
 
-  const handleChangeStartingElite = (i: number) => {
+  const handleChangeStartingElite = (i: number | null) => {
+    if (i == null) return;
     setStartingElite(i);
     if (targetElite < i) {
       setTargetElite(i);
@@ -148,7 +140,8 @@ const Level: NextPage = () => {
       _setStartingLevel(ms.toString());
     }
   };
-  const handleChangeTargetElite = (i: number) => {
+  const handleChangeTargetElite = (i: number | null) => {
+    if (i == null) return;
     setTargetElite(i);
     if (startingElite > i) {
       setStartingElite(i);
@@ -159,45 +152,38 @@ const Level: NextPage = () => {
       _setTargetLevel(mt.toString());
     }
   };
-  const handleChangeStartingLevel = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChangeStartingLevel = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     let toInt = parseInt(e.target.value as string, 10);
     if (isNaN(toInt)) {
       _setStartingLevel("");
     } else {
-      toInt = minMax(1, parseInt(e.target.value, 10), maxStartingLevel);
+      toInt = clamp(1, parseInt(e.target.value, 10), maxStartingLevel);
       setStartingLevel(toInt);
       _setStartingLevel(toInt.toString());
     }
   };
-  const handleChangeTargetLevel = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChangeTargetLevel = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     let toInt = parseInt(e.target.value as string, 10);
     if (isNaN(toInt)) {
       _setTargetLevel("");
     } else {
-      toInt = minMax(1, parseInt(e.target.value, 10), maxTargetLevel);
+      toInt = clamp(1, parseInt(e.target.value, 10), maxTargetLevel);
       setTargetLevel(toInt);
       _setTargetLevel(toInt.toString());
     }
   };
 
-  const sectionStyle: SxProps = {
-    display: "flex",
-    flexDirection: "column",
-  };
-
   return (
     <Layout tab="/tools" page="/level">
-      <Container
-        maxWidth="sm"
-        sx={{ display: "flex", flexDirection: "column", gap: 4 }}
-      >
+      <Container maxWidth="sm" sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
         <Board title="Data">
           {/* Rarity */}
-          <Box sx={sectionStyle}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             <Typography variant="h3" id="rarity" gutterBottom>
               Rarity
             </Typography>
@@ -218,11 +204,7 @@ const Level: NextPage = () => {
                   width: "min-content",
                 }}
               >
-                <Promotion
-                  value={startingElite}
-                  max={maxElite(rarity)}
-                  onChange={handleChangeStartingElite}
-                />
+                <Promotion value={startingElite} max={maxElite(rarity)} onChange={handleChangeStartingElite} />
                 <TextField
                   id="starting-level"
                   value={_startingLevel}
@@ -251,11 +233,7 @@ const Level: NextPage = () => {
                   width: "min-content",
                 }}
               >
-                <Promotion
-                  value={targetElite}
-                  max={maxElite(rarity)}
-                  onChange={handleChangeTargetElite}
-                />
+                <Promotion value={targetElite} max={maxElite(rarity)} onChange={handleChangeTargetElite} />
                 <TextField
                   id="target-level"
                   value={_targetLevel}
@@ -276,19 +254,13 @@ const Level: NextPage = () => {
         <Board title="Result">
           <Box component="ul" sx={{ m: 0, p: 0, listStyle: "none" }}>
             <Typography variant="body1" component="li">
-              Total EXP cost:{" "}
-              <strong>
-                {_startingLevel && _targetLevel ? exp.toLocaleString() : " - "}
-              </strong>{" "}
-              EXP
+              Total EXP cost: <strong>{_startingLevel && _targetLevel ? exp.toLocaleString() : " - "}</strong> EXP
             </Typography>
             <Typography variant="body1" component="li" sx={{ mt: 1 }}>
               Total LMD cost:{" "}
               <span>
                 <strong data-cy="lmd" data-lmd={lmd}>
-                  {_startingLevel && _targetLevel
-                    ? lmd.toLocaleString()
-                    : " - "}
+                  {_startingLevel && _targetLevel ? lmd.toLocaleString() : " - "}
                 </strong>{" "}
                 <LmdIcon />
               </span>
@@ -303,23 +275,13 @@ const Level: NextPage = () => {
                 <Typography variant="body1" component="li">
                   LMD cost for leveling:{" "}
                   <span>
-                    <span>
-                      {_startingLevel && _targetLevel
-                        ? levelingLmd.toLocaleString()
-                        : " - "}
-                    </span>{" "}
-                    <LmdIcon />
+                    <span>{_startingLevel && _targetLevel ? levelingLmd.toLocaleString() : " - "}</span> <LmdIcon />
                   </span>
                 </Typography>
                 <Typography variant="body1" component="li">
                   LMD cost for elite promotions:{" "}
                   <span>
-                    <span>
-                      {_startingLevel && _targetLevel
-                        ? eliteLmd.toLocaleString()
-                        : " - "}
-                    </span>{" "}
-                    <LmdIcon />
+                    <span>{_startingLevel && _targetLevel ? eliteLmd.toLocaleString() : " - "}</span> <LmdIcon />
                   </span>
                 </Typography>
               </Box>

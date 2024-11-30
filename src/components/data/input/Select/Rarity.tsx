@@ -1,15 +1,10 @@
 import React, { useContext } from "react";
-import {
-  ToggleButton,
-  ToggleButtonGroup,
-  ToggleButtonGroupProps,
-} from "@mui/material";
+import { ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps } from "@mui/material";
 import { rarityColors } from "styles/rarityColors";
 import { Star } from "@mui/icons-material";
 import { DisabledContext } from "./SelectGroup";
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange"> {
-  value: number;
   onChange: (rarity: number) => void;
 }
 const Rarity = (props: Props) => {
@@ -19,14 +14,10 @@ const Rarity = (props: Props) => {
 
   return (
     <ToggleButtonGroup
-      exclusive
       value={value}
       aria-label="Rarity"
       disabled={disabled}
-      onChange={(_, r) => {
-        if (r == null) return;
-        else onChange(r);
-      }}
+      onChange={(_, r) => onChange(r)}
       sx={{
         display: "grid",
         gridTemplateColumns: "repeat(6, 1fr)",
@@ -40,6 +31,7 @@ const Rarity = (props: Props) => {
           value={i}
           sx={{
             color: rarityColors[i],
+            height: 48,
           }}
         >
           {i} <Star fontSize="small" />

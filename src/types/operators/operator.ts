@@ -1,16 +1,19 @@
-import { EliteGoal, MasteryGoal, ModuleGoal, SkillLevelGoal } from "./goal";
+import { EliteGoal, MasteryGoal, ModuleGoal, SkillLevelGoal } from "../goal";
+import { Database } from "../supabase";
+
+type Table = Database["public"]["Tables"]["operators"];
 
 export interface Operator {
-  op_id: string;
-  favorite: boolean;
-  potential: number;
   elite: number;
+  favorite: boolean;
   level: number;
+  masteries: number[];
+  modules: Record<string, number>;
+  op_id: string;
+  potential: number;
   skill_level: number;
-  masteries?: number[];
-  modules?: Record<string, number>;
-  skin?: string;
-}
+  skin: string | null;
+};
 
 export interface Skin {
   skinId: string;

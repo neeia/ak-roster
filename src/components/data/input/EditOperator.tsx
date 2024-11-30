@@ -1,284 +1,322 @@
-import React, { useEffect, useState } from "react";
-import { Operator, Skin } from "types/operator";
+import React, { useCallback, useContext } from "react";
+import { Operator, Skin } from "types/operators/operator";
 import skinJson from "data/skins.json";
-import sg0 from "data/sg0.json";
 import {
   Box,
   Dialog,
   DialogContent,
   DialogTitle,
   IconButton,
+  ToggleButton,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import EditRow from "./EditRow";
-import General from "./Select/General";
 import Potential from "./Select/Potential";
 import Promotion from "./Select/Promotion";
 import Mastery from "./Select/Mastery";
 import Module from "./Select/Module";
 import Level from "./Select/Level";
 import SkillLevel from "./Select/SkillLevel";
-import ExtLink from "./Select/ExtLink";
-import { Close } from "@mui/icons-material";
+import { Close, Favorite, FavoriteBorder } from "@mui/icons-material";
 import Skins from "./Select/Skins";
 import Image from "next/image";
 import operatorJson from "data/operators";
 import {
-  changePromotion,
-  defaultOperatorObject,
+  changeFavorite,
+  changeLevel,
+  changeMastery,
+  changeModule,
+  changeOwned,
+  changePotential,
+  changePromotion as changeElite,
+  changeSkillLevel,
+  changeSkin,
   MAX_PROMOTION_BY_RARITY,
+  MODULE_REQ_BY_RARITY,
+  getMaxPotentialById,
+  MAX_SKILL_LEVEL_BY_PROMOTION,
+  MAX_LEVEL_BY_RARITY,
 } from "util/changeOperator";
+import Select, { DisabledContext } from "./Select/SelectGroup";
+import getAvatar from "util/fns/getAvatar";
+import supabase from "supabase/supabaseClient";
+import { UserContext } from "pages/_app";
+import { useSnackbar } from "notistack";
+import { PostgrestError } from "@supabase/supabase-js";
 
 interface Props {
   op?: Operator;
-  changeOperator: (op: Operator) => void;
+  onChange: (op: Operator, callback?: () => void) => void;
   open: boolean;
   onClose: () => void;
 }
 
 const EditOperator = React.memo((props: Props) => {
-  const { op, changeOperator: onChange, open, onClose } = props;
+  const { op, onChange, open, onClose } = props;
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  function handleError({ error }: { error: PostgrestError | null }) {
+    if (error)
+      enqueueSnackbar({
+        message: `$DB{error.code}: ${error.message}`,
+        variant: "error",
+      });
+  }
+
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
   if (!op) return null;
+
+  const user = useContext(UserContext);
+
   const opSkins: Skin[] = skinJson[op.op_id as keyof typeof skinJson];
   const opData = operatorJson[op.op_id];
 
-  let intermediate = op.op_id;
-  if (op?.elite === 2) {
-    intermediate += "_2";
-  } else if (op?.elite === 1 && opData.name === "Amiya") {
-    intermediate += "_1";
-  }
-  const imgUrl = `/img/avatars/${op?.skin ?? intermediate}.png`;
-
   const opSplit = opData.name.split(" the ");
-  const name = (
-    <Typography
-      component="div"
-      variant="h2"
-      sx={{
-        marginLeft: "8px",
-        paddingTop: "12px",
-      }}
-    >
-      <Box
-        sx={{
-          fontSize: {
-            xs: "75%",
-            sm: "100%",
-          },
-        }}
-      >
-        <Typography component="div" variant="h2" sx={{ fontSize: "50%" }}>
-          {opSplit[1] ?? ""}
-        </Typography>
-        {opSplit[0]}
-      </Box>
-    </Typography>
+
+  const onChangeOwned = useCallback(() => {
+    const _op = changeOwned(op, !op.potential);
+    onChange(_op);
+
+    if (_op.potential) {
+      // add operator in
+      supabase.from("operators").insert(_op).then();
+    } else {
+      // remove op
+      supabase.from("operators").delete().eq("op_id", op.op_id).then(handleError);
+    }
+  }, [op, user]);
+
+  // Applies a change and sends it to the DB
+  const _onChange = useCallback(
+    (_op: Operator) => {
+      onChange(_op);
+      if (user) supabase.from("operators").update(_op).match({ user_id: user.id, op_id: op.op_id }).then(handleError);
+    },
+    [user]
   );
 
-  const iconWidth = 20;
-  const links = (
-    <Box
-      sx={{
-        display: {
-          xs: "none",
-          sm: "flex",
-        },
-        flexDirection: "column",
-      }}
-    >
-      <ExtLink
-        href={`https://aceship.github.io/AN-EN-Tags/akhrchars.html?opname=${opData.name}`}
-        label="ACE"
-        title="Aceship"
-      >
-        <Image
-          src={`/img/ext/aceship.png`}
-          width={iconWidth}
-          height={iconWidth}
-          alt=""
-        />
-      </ExtLink>
-      <ExtLink
-        href={`https://gamepress.gg/arknights/operator/${opData.name
-          .replace(/( the )|[ !@#$%^&*(),.]/g, "-")
-          .replace("'", "")}`}
-        label="GP"
-        title="Gamepress"
-      >
-        <Image
-          src={`/img/ext/gp.png`}
-          width={iconWidth}
-          height={iconWidth}
-          alt=""
-        />
-      </ExtLink>
-      <ExtLink
-        href={`http://prts.wiki/w/${encodeURIComponent(opData.cnName)}`}
-        label="PRTS"
-        title="PRTS Wiki"
-      >
-        <Image
-          src={`/img/ext/prts.png`}
-          width={iconWidth}
-          height={iconWidth}
-          alt=""
-        />
-      </ExtLink>
-      {op.op_id in sg0 ? (
-        <ExtLink
-          href={`https://sanitygone.help/operators/${opData.name
-            .toLowerCase()
-            .replace(/ /g, "-")
-            .replace("'", "")}`}
-          label="S;G"
-          title="Sanity;Gone"
-        >
-          <Image
-            src={`/img/ext/sg0.png`}
-            width={iconWidth}
-            height={iconWidth}
-            alt=""
-          />
-        </ExtLink>
-      ) : null}
-    </Box>
+  const onChangeFavorite = useCallback(() => {
+    _onChange(changeFavorite(op, !op.favorite));
+  }, [op, _onChange]);
+
+  const onChangePotential = useCallback(
+    (value: number | null) => {
+      if (value == null) return;
+      _onChange(changePotential(op, value));
+    },
+    [op, _onChange]
   );
 
-  const editProps = { op: op, onChange };
+  const onChangeElite = useCallback(
+    (value: number | null) => {
+      if (value == null) return;
+      _onChange(changeElite(op, value));
+    },
+    [op, _onChange]
+  );
+
+  const onChangeLevel = useCallback(
+    (value: number | null) => {
+      if (value == null) return;
+      _onChange(changeLevel(op, value));
+    },
+    [op, _onChange]
+  );
+
+  const onChangeSkillLevel = useCallback(
+    (value: number | null) => {
+      if (value == null) return;
+      _onChange(changeSkillLevel(op, value));
+    },
+    [op, _onChange]
+  );
+
+  const onChangeMastery = useCallback(
+    (index: number, value: number | null) => {
+      if (value == null) return;
+      _onChange(changeMastery(op, index, value));
+    },
+    [op, _onChange]
+  );
+
+  const onChangeModule = useCallback(
+    (id: string, value: number | null) => {
+      if (value == null) return;
+      _onChange(changeModule(op, id, value));
+    },
+    [op, _onChange]
+  );
+
+  const onChangeSkin = useCallback(
+    (value: string) => {
+      _onChange(changeSkin(op, value));
+    },
+    [op, _onChange]
+  );
+
   return (
     <Dialog open={open} onClose={onClose} fullScreen={fullScreen}>
-      <DialogTitle
-        variant="h2"
-        sx={{
-          alignSelf: "start",
-          textAlign: "left",
-          width: "100%",
-          display: "grid",
-          gridTemplateColumns: "auto 1fr auto",
-          alignItems: "center",
-          paddingBottom: "12px",
-        }}
-      >
+      <DialogTitle>
         <Box
           sx={{
-            height: {
-              xs: "4rem",
-              sm: "6rem",
-            },
+            mt: -2,
+            mb: -1,
             width: {
               xs: "4rem",
               sm: "6rem",
             },
+            aspectRatio: "1 / 1",
             position: "relative",
           }}
         >
           <Image
-            src={imgUrl}
+            src={`/img/avatars/${getAvatar({ ...op, ...opData })}.png`}
             fill
             sizes="(max-width: 600px) 64px, 96px"
             alt=""
           />
         </Box>
-        {name}
-        {links}
-        <IconButton onClick={onClose} sx={{ display: { sm: "none" } }}>
+        <Typography variant="h2" component="div" sx={{ width: "100%" }}>
+          <Typography variant="h2" component="div" sx={{ fontSize: "50%" }}>
+            {opSplit[1]}
+          </Typography>
+          {opSplit[0]}
+        </Typography>
+        <IconButton onClick={onClose}>
           <Close />
         </IconButton>
       </DialogTitle>
       <DialogContent
         sx={{
-          "& .MuiButtonBase-root": {
-            backgroundColor: "info.main",
-            boxShadow: 1,
-            transition: "background-color 0.1s",
-            "&:hover": {
-              backgroundColor: "rgba(255, 212, 64, 0.1)",
-            },
-          },
-          "& .inactive": {
-            opacity: 0.75,
-          },
-          "& .active": {
-            opacity: 1,
-            boxShadow: 0,
-            borderBottomWidth: "0.25rem",
-            borderBottomColor: "primary.main",
-            borderBottomStyle: "solid",
-            backgroundColor: "info.light",
-          },
-          "& .Mui-disabled": {
-            opacity: 0.25,
-            boxShadow: 0,
+          display: "grid",
+          gap: 2,
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "1fr 320px",
           },
         }}
       >
-        <EditRow
-          left={{
-            title: "General",
-            body: <General {...editProps} />,
-          }}
-          right={{
-            title: "Potential",
-            body: <Potential {...editProps} />,
-          }}
-        />
-        <EditRow
-          left={{
-            title: "Promotion",
-            body: (
-              <Promotion
-                value={op.elite}
-                max={MAX_PROMOTION_BY_RARITY[opData.rarity]}
-                onChange={(i: number) => onChange(changePromotion(op, i))}
-                disabled={op.potential > 0}
-              />
-            ),
-          }}
-          right={{
-            title: "Level",
-            body: <Level {...editProps} />,
-          }}
-        />
-        {opData?.skillData?.length ? (
-          <EditRow
-            left={{
-              title: "Skill Rank",
-              body: <SkillLevel {...editProps} />,
+        <Select title="General">
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              "& > *": {
+                lineHeight: 0.5,
+              },
             }}
-            right={
-              opData.rarity > 3
-                ? {
-                    title: "Masteries",
-                    body: <Mastery {...editProps} />,
-                  }
-                : undefined
-            }
-          />
-        ) : null}
-        <EditRow
-          left={
-            opSkins && opSkins.length > 1
-              ? {
-                  title: "Outfits",
-                  body: <Skins {...editProps} />,
-                }
-              : undefined
-          }
-          right={
-            opData?.moduleData?.length
-              ? {
-                  title: "Modules",
-                  body: <Module {...editProps} />,
-                }
-              : undefined
-          }
-        />
+          >
+            <ToggleButton value="owned" selected={op.potential > 0} onClick={onChangeOwned} sx={{ p: 1.5 }}>
+              Owned
+            </ToggleButton>
+            <ToggleButton
+              value="favorite"
+              selected={op.favorite}
+              onClick={onChangeFavorite}
+              disabled={!op.potential}
+              aria-label="favorite"
+              sx={{ p: 1.5 }}
+            >
+              {op.favorite ? (
+                <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
+              ) : (
+                <FavoriteBorder fontSize="small" color="error" sx={{ m: "2px" }} />
+              )}
+            </ToggleButton>
+          </Box>
+        </Select>
+        <DisabledContext.Provider value={op.potential === 0}>
+          <Select title="Potential">
+            <Potential
+              value={op.potential}
+              exclusive
+              max={getMaxPotentialById(op.op_id)}
+              onChange={onChangePotential}
+              size={32}
+              bonuses={opData.potentials}
+            />
+          </Select>
+          <Select title="Promotion">
+            <Promotion
+              value={op.elite}
+              exclusive
+              max={MAX_PROMOTION_BY_RARITY[opData.rarity]}
+              onChange={onChangeElite}
+            />
+          </Select>
+          <Select title="Level">
+            <Level value={op.level} max={MAX_LEVEL_BY_RARITY[opData.rarity][op.elite]} onChange={onChangeLevel} />
+          </Select>
+          {opData?.skillData?.length ? (
+            <Select title="Skill Rank">
+              <SkillLevel
+                value={op.skill_level}
+                exclusive
+                max={MAX_SKILL_LEVEL_BY_PROMOTION[op.elite]}
+                onChange={onChangeSkillLevel}
+              />
+            </Select>
+          ) : undefined}
+          {opData.rarity > 3 ? (
+            <Select title="Masteries">
+              <Mastery sx={{ gap: 2 }}>
+                {opData.skillData?.map((data, skillIndex) => (
+                  <Mastery.SkillAlt
+                    src={data.iconId ?? data.skillId}
+                    key={data.skillId}
+                    skillName={data.skillName}
+                    skillNumber={skillIndex + 1}
+                    disabled={op.skill_level < 7 || op.elite < 2}
+                  >
+                    <Mastery.Select
+                      value={op.masteries[skillIndex]}
+                      exclusive
+                      onChange={(value) => onChangeMastery(skillIndex, value)}
+                      disabled={op.skill_level < 7 || op.elite < 2}
+                    />
+                  </Mastery.SkillAlt>
+                ))}
+              </Mastery>
+            </Select>
+          ) : undefined}
+          {opSkins.length > 1 ? (
+            <Select title="Outfits">
+              <Skins value={op.skin} exclusive onChange={onChangeSkin}>
+                {opSkins
+                  .sort((a, b) => a.sortId - b.sortId)
+                  .map((skin: Skin) => {
+                    // sortId -1 is the E2 skin, sortId -2 is Amiya's E1 skin
+                    const d = (skin.sortId === -1 && op.elite < 2) || (skin.sortId === -2 && op.elite < 1);
+                    return <Skins.Select key={skin.skinId} {...skin} disabled={d} />;
+                  })}
+              </Skins>
+            </Select>
+          ) : undefined}
+          {opData.moduleData?.length ? (
+            <Select title="Modules">
+              <Module sx={{ gap: 2 }}>
+                {opData.moduleData.map((mod) => (
+                  <Module.ItemAlt
+                    key={mod.moduleId}
+                    disabled={op.level < MODULE_REQ_BY_RARITY[opData.rarity] || op.elite < 2}
+                    {...mod}
+                  >
+                    <Module.Select
+                      value={op.modules[mod.moduleId]}
+                      exclusive
+                      moduleId={mod.moduleId}
+                      onChange={onChangeModule}
+                      disabled={op.level < MODULE_REQ_BY_RARITY[opData.rarity] || op.elite < 2}
+                    />
+                  </Module.ItemAlt>
+                ))}
+              </Module>
+            </Select>
+          ) : undefined}
+        </DisabledContext.Provider>
       </DialogContent>
     </Dialog>
   );

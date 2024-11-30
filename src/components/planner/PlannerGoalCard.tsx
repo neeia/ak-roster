@@ -16,7 +16,7 @@ import operatorsJson from "data/operators.json";
 
 import ItemStack from "./ItemStack";
 import OperatorGoalIconography from "./OperatorGoalIconography";
-import { OperatorData } from "types/operator";
+import { OperatorData } from "types/operators/operator";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import getGoalIngredients from "util/getGoalIngredients";
 

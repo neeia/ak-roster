@@ -1,14 +1,9 @@
 import React, { memo, useContext } from "react";
-import {
-  ToggleButton,
-  ToggleButtonGroup,
-  ToggleButtonGroupProps,
-} from "@mui/material";
+import { ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps } from "@mui/material";
 import Image from "next/image";
 import { DisabledContext } from "./SelectGroup";
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
-  value?: number;
   min?: number;
   max?: number;
   onChange: (value: number) => void;
@@ -30,13 +25,10 @@ const Promotion = memo((props: Props) => {
 
   return (
     <ToggleButtonGroup
-      exclusive
       value={value}
       aria-label="Promotion"
       disabled={disabled}
-      onChange={(_, i) => {
-        if (i !== null) onChange(i);
-      }}
+      onChange={(_, i) => onChange(i)}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -51,12 +43,7 @@ const Promotion = memo((props: Props) => {
         .filter((n) => n >= minPromotion && n <= maxPromotion)
         .map((n) => (
           <ToggleButton key={n} value={n}>
-            <Image
-              width={size}
-              height={size}
-              src={`/img/elite/${n}.png`}
-              alt={`Elite ${n}`}
-            />
+            <Image width={size} height={size} src={`/img/elite/${n}.png`} alt={`Elite ${n}`} />
           </ToggleButton>
         ))}
     </ToggleButtonGroup>

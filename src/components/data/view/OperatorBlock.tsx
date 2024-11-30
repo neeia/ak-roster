@@ -1,31 +1,30 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
-import { Operator, OperatorData } from "../../types/operator";
+import { Box, BoxProps, Typography } from "@mui/material";
+import { ModuleData, Operator, OpInfo } from "types/operators/operator";
 import { Favorite } from "@mui/icons-material";
-import { rarityColors } from "../../styles/rarityColors";
-import { MAX_LEVEL_BY_RARITY } from "../../util/changeOperator";
+import { rarityColors } from "styles/rarityColors";
+import { MAX_LEVEL_BY_RARITY } from "util/changeOperator";
 import Image from "next/image";
 import operatorJson from "data/operators";
 
-interface Props {
-  op: Operator;
+interface Props extends BoxProps {
+  op: OpInfo;
   nobg?: boolean;
   skill?: number;
 }
 
 const OperatorBlock = (props: Props) => {
-  const { op, nobg, skill } = props;
+  const { op, nobg, skill, sx, ...rest } = props;
 
-  const opData = operatorJson[op.op_id];
   let intermediate = op.op_id;
   if (op.elite === 2) {
     intermediate += "_2";
-  } else if (op.elite === 1 && opData.name === "Amiya") {
+  } else if (op.elite === 1 && op.name === "Amiya") {
     intermediate += "_1";
   }
 
   const reg = /( the )|\(/gi;
-  const splitName = opData.name.replace(/\)$/, "").split(reg);
+  const splitName = op.name.replace(/\)$/, "").split(reg);
   const name = splitName.length > 1 ? splitName[2].split(")")[0] : splitName[0];
   const nameIsLong = name.split(" ").length > 1 && name.length > 11;
 
@@ -106,12 +105,7 @@ const OperatorBlock = (props: Props) => {
           position: "relative",
         }}
       >
-        <Image
-          src={`/img/potential/${op.potential}.png`}
-          fill
-          sizes={iconSizes}
-          alt={`Potential ${op.potential}`}
-        />
+        <Image src={`/img/potential/${op.potential}.png`} fill sizes={iconSizes} alt={`Potential ${op.potential}`} />
       </Box>
     </Box>
   );
@@ -160,11 +154,7 @@ const OperatorBlock = (props: Props) => {
             fill="#323232"
             fillOpacity="0.95"
             strokeWidth="2"
-            stroke={
-              op.level === MAX_LEVEL_BY_RARITY[opData.rarity][2]
-                ? "#f7d98b"
-                : "#808080"
-            }
+            stroke={op.level === MAX_LEVEL_BY_RARITY[op.rarity][2] ? "#f7d98b" : "#808080"}
           />
         </svg>
       </Box>
@@ -232,7 +222,7 @@ const OperatorBlock = (props: Props) => {
         gap: "2px",
       }}
     >
-      {[...Array(opData.skillData.length)].map((_, n: number) => (
+      {[...Array(op.skillData?.length ?? 0)].map((_, n: number) => (
         <Box
           key={n}
           sx={{
@@ -242,8 +232,7 @@ const OperatorBlock = (props: Props) => {
               gridRow: 1,
               gridColumn: 1,
               opacity: skill === undefined || n === skill ? 0.95 : 0.25,
-              boxShadow:
-                skill !== undefined && n === skill ? "-2px 0px #ffd440" : "",
+              boxShadow: skill !== undefined && n === skill ? "-2px 0px #ffd440" : "",
               width: { xs: "16px", sm: "24px" },
               height: { xs: "16px", sm: "24px" },
               position: "relative",
@@ -251,21 +240,11 @@ const OperatorBlock = (props: Props) => {
           }}
         >
           <Box className="stack">
-            <Image
-              src={`/img/rank/bg.png`}
-              fill
-              sizes={iconSizes}
-              alt={`Skill ${n + 1}`}
-            />
+            <Image src={`/img/rank/bg.png`} fill sizes={iconSizes} alt={`Skill ${n + 1}`} />
           </Box>
           {!op.masteries || !op.masteries[n] || op.masteries[n] === 0 ? (
             <Box className="stack">
-              <Image
-                src={`/img/rank/${op.skill_level}.png`}
-                fill
-                sizes={iconSizes}
-                alt={`Rank ${op.skill_level}`}
-              />
+              <Image src={`/img/rank/${op.skill_level}.png`} fill sizes={iconSizes} alt={`Rank ${op.skill_level}`} />
             </Box>
           ) : (
             <Box className="stack">
@@ -282,20 +261,10 @@ const OperatorBlock = (props: Props) => {
     </Box>
   );
 
-  const opModuleUrls = op.modules
-    ? op.modules
-        .map((mod, n: number) => {
-          return {
-            typeName: opData.moduleData[n].typeName,
-            url: `/img/equip/${opData.moduleData[
-              n
-            ].typeName.toLowerCase()}.png`,
-            index: n,
-            mod,
-          };
-        })
-        .filter(({ mod }) => mod > 0)
-    : [];
+  function getModUrl(mod: ModuleData) {
+    return `/img/equip/${mod.typeName.toLowerCase()}.png`;
+  }
+
   const moduleBlock = (
     <Box
       sx={{
@@ -308,9 +277,9 @@ const OperatorBlock = (props: Props) => {
         gap: { xs: "2px", sm: "4px" },
       }}
     >
-      {opModuleUrls.map(({ typeName, url, index }, n: number) => (
+      {(op.moduleData ?? []).map(({ moduleId, typeName }) => (
         <Box
-          key={n}
+          key={moduleId}
           sx={{
             display: "grid",
             height: { xs: "24px", sm: "32px" },
@@ -334,7 +303,7 @@ const OperatorBlock = (props: Props) => {
           <Typography
             zIndex={3}
             component="abbr"
-            title={`Stage ${op.modules[index]}`}
+            title={`Stage ${op.modules[moduleId]}`}
             sx={{
               display: "flex",
               justifySelf: "end",
@@ -379,7 +348,9 @@ const OperatorBlock = (props: Props) => {
         margin: { xs: "2px 4px 4px 10px", sm: "2px 16px 10px 12px" },
         opacity: op.potential ? 1 : 0.5,
         borderRadius: "4px",
+        ...sx,
       }}
+      {...rest}
     >
       {opName}
       <Favorite
@@ -402,12 +373,7 @@ const OperatorBlock = (props: Props) => {
           position: "relative",
         }}
       >
-        <Image
-          src={`/img/avatars/${op.skin ?? intermediate}.png`}
-          fill
-          sizes="(max-width: 768px) 80px, 120px"
-          alt=""
-        />
+        <Image src={`/img/avatars/${op.skin ?? intermediate}.png`} fill sizes="(max-width: 768px) 80px, 120px" alt="" />
       </Box>
       {levelBubble}
       {skillBlock}
@@ -418,10 +384,5 @@ const OperatorBlock = (props: Props) => {
 export default OperatorBlock;
 
 function isMaxKrooster(op: Operator) {
-  return (
-    op.op_id === "char_1021_kroos2" &&
-    op.potential === 6 &&
-    op.level === 80 &&
-    op.masteries.every((v) => v === 3)
-  );
+  return op.op_id === "char_1021_kroos2" && op.potential === 6 && op.level === 80 && op.masteries.every((v) => v === 3);
 }

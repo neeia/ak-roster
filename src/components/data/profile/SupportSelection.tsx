@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { Operator, OperatorData } from "types/operator";
+import { Operator, OperatorData } from "types/operators/operator";
 import operatorJson from "data/operators";
 import PopOp from "./PopOp";
 import OpSelectionButton from "./OpSelectionButton";

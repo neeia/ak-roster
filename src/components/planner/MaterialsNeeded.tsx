@@ -15,8 +15,8 @@ import { DepotDataInsert } from "types/depotData";
 import { useGoalsGetQuery } from "../../store/extendGoals";
 import { getPlannerGoals } from "../../types/goalData";
 import { LocalStorageSettings } from "../../types/localStorageSettings";
-import useLocalStorage from "../../util/useLocalStorage";
 import ExportImportDialog from "./ExportImportDialog";
+import useLocalStorage from "../../util/hooks/useLocalStorage";
 
 const LMD_ITEM_ID = "4001";
 const EXCLUDE = ["2001", "2002", "2003", "2004", "4001"];

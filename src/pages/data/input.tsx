@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { Box, ButtonGroup } from "@mui/material";
@@ -6,41 +6,23 @@ import Layout from "components/Layout";
 import SearchDialog from "components/data/collate/SearchDialog";
 import FilterDialog from "components/data/collate/FilterDialog";
 import SortDialog from "components/data/collate/SortDialog";
-import useSort from "util/useSort";
-import useFilter from "util/useFilter";
-import { Operator, OperatorData, OpInfo } from "types/operator";
-import { AccountInfo, isCN } from "types/doctor";
-import useLocalStorage from "util/useLocalStorage";
-import { useRosterGetQuery } from "store/extendRoster";
+import useSort from "util/hooks/useSort";
+import useFilter from "util/hooks/useFilter";
+import { Operator } from "types/operators/operator";
+import useOperators from "util/hooks/useOperators";
+import { defaultOperatorObject } from "util/changeOperator";
 
-const EditOperator = dynamic(
-  () => import("components/data/input/EditOperator"),
-  { ssr: false }
-);
-const OperatorSelector = dynamic(
-  () => import("components/data/input/OperatorSelector"),
-  { ssr: false }
-);
+const EditOperator = dynamic(() => import("components/data/input/EditOperator"), { ssr: false });
+const OperatorSelector = dynamic(() => import("components/data/input/OperatorSelector"), { ssr: false });
 
 const Input: NextPage = () => {
-  const { data: operators } = useRosterGetQuery();
+  const [roster, , onChange] = useOperators();
 
   const [opId, setOpId] = React.useState<string>("char_002_amiya");
   const [editOpen, setEditOpen] = React.useState(false);
 
-  const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort([
-    { key: "Rarity", desc: true },
-  ]);
-  const { filters, toggleFilter, clearFilters, filterFunction } = useFilter();
-
-  const [doctor] = useLocalStorage<AccountInfo>("doctor", {});
-  useEffect(() => {
-    if (!(doctor && doctor.server && isCN(doctor.server)))
-      toggleFilter("CN", false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const onChange = (op: Operator) => {};
+  const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort([{ key: "Rarity", desc: true }]);
+  const { filters, toggleFilter, clearFilters, filterFunction, setSearch } = useFilter();
 
   const selectOp = useCallback((id: string) => {
     setOpId(id);
@@ -58,53 +40,35 @@ const Input: NextPage = () => {
       >
         <ButtonGroup
           sx={{
-            gridArea: "ctrl",
             display: "grid",
-            gridTemplateRows: { xs: "1fr auto", sm: "repeat(6, auto)" },
-            gridTemplateColumns: { xs: "repeat(4, auto)", sm: "1fr" },
+            gridTemplateRows: { xs: "1fr", sm: "repeat(3, auto)" },
+            gridTemplateColumns: { xs: "repeat(3, 1fr)", sm: "1fr" },
             position: "sticky",
             top: 64,
             zIndex: 10,
-            gap: { xs: 0, sm: 1 },
+            gap: 1,
             "& .MuiIconButton-root": {
               height: "min-content",
             },
             "& .MuiSvgIcon-root": {
               height: { xs: "1.5rem", sm: "2.5rem" },
             },
-            justifyContent: "space-around",
             height: "min-content",
-            backgroundColor: { xs: "info.main", sm: "transparent" },
+            backgroundColor: { xs: "background.light", sm: "transparent" },
             boxShadow: {
               xs: 1,
               sm: 0,
             },
-            "& .Mui-disabled": {
-              opacity: 0.5,
-            },
-            "& .selected": {
-              backgroundColor: "rgba(255, 255, 255, 0.25)",
-            },
           }}
         >
-          <SortDialog
-            sortFns={sortFunctions}
-            sortQueue={sorts}
-            setSortQueue={setSorts}
-            toggleSort={toggleSort}
-          />
-          <FilterDialog
-            filter={filters}
-            toggleFilter={toggleFilter}
-            clearFilters={clearFilters}
-          />
-          {/* <SearchDialog setSearch={setSearchName} /> */}
+          <SortDialog sortFns={sortFunctions} sortQueue={sorts} setSortQueue={setSorts} toggleSort={toggleSort} />
+          <FilterDialog filter={filters} toggleFilter={toggleFilter} clearFilters={clearFilters} />
+          <SearchDialog onChange={setSearch} />
         </ButtonGroup>
         <Box
           sx={{
             width: "100%",
             display: "grid",
-            gridArea: "box",
             gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
             gridTemplateRows: "min-content",
             justifyContent: "center",
@@ -119,17 +83,12 @@ const Input: NextPage = () => {
             },
           }}
         >
-          <OperatorSelector
-            operators={operators ?? {}}
-            onClick={selectOp}
-            sort={sortFunction}
-            filter={filterFunction}
-          />
+          <OperatorSelector roster={roster} onClick={selectOp} sort={sortFunction} filter={filterFunction} />
           <EditOperator
-            op={operators?.[opId]}
-            changeOperator={onChange}
+            op={roster[opId] ?? defaultOperatorObject(opId)}
             open={editOpen}
             onClose={() => setEditOpen(false)}
+            onChange={onChange}
           />
         </Box>
       </Box>

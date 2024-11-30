@@ -3,7 +3,7 @@ import "styles/globals.css";
 import { AppProps } from "next/app";
 import createTheme, { brand } from "styles/theme/appTheme";
 import createEmotionCache from "util/createEmotionCache";
-import { CssBaseline, ThemeProvider, useMediaQuery } from "@mui/material";
+import { AlertProps, CssBaseline, ThemeProvider, useMediaQuery } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import { getApps, initializeApp } from "firebase/app";
 import { Analytics } from "@vercel/analytics/react";
@@ -12,6 +12,7 @@ import supabase from "supabase/supabaseClient";
 import { User } from "@supabase/supabase-js";
 import { Provider as ReduxProvider } from "react-redux";
 import { store } from "store/store";
+import { SnackbarProvider } from "notistack";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDjpt2G4GFQjYbPT5Mrj6L2meeWEnsCEgU",
@@ -54,10 +55,7 @@ const MyApp = (props: AppProps) => {
 
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
-  const theme = React.useMemo(
-    () => createTheme(brand.DEFAULT),
-    [prefersDarkMode]
-  );
+  const theme = React.useMemo(() => createTheme(brand.DEFAULT), [prefersDarkMode]);
 
   const clientSideEmotionCache = createEmotionCache();
   return (
@@ -65,11 +63,13 @@ const MyApp = (props: AppProps) => {
       <UserContext.Provider value={user}>
         <CacheProvider value={clientSideEmotionCache}>
           <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Analytics />
-            <div className={lato.className}>
-              <Component {...pageProps} />
-            </div>
+            <SnackbarProvider maxSnack={3} preventDuplicate>
+              <CssBaseline />
+              <Analytics />
+              <div className={lato.className}>
+                <Component {...pageProps} />
+              </div>
+            </SnackbarProvider>
           </ThemeProvider>
         </CacheProvider>
       </UserContext.Provider>

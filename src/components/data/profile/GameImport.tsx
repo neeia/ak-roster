@@ -9,7 +9,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useRosterUpsertMutation } from "store/extendRoster";
-import { Operator, Skin } from "types/operator";
+import { Operator, Skin } from "types/operators/operator";
 import { OperatorSupport } from "types/operators/supports";
 import { useSupportSetMutation } from "store/extendSupports";
 import { useAccountUpdateMutation } from "store/extendAccount";

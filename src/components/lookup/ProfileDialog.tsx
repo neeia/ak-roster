@@ -15,7 +15,7 @@ import {
 import { BadgeOutlined, Close, Reddit } from "@mui/icons-material";
 import { AccountInfo } from "types/doctor";
 import { SocialInfo } from "types/social";
-import { Operator } from "types/operator";
+import { Operator } from "types/operators/operator";
 import OperatorBlock from "../view/OperatorBlock";
 import Image from "next/image";
 

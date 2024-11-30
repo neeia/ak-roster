@@ -1,9 +1,8 @@
 import { useCallback, useState } from "react";
-import { OpInfo } from "types/operator";
+import { OpInfo } from "types/operators/operator";
 
 const checkClasses = (op: OpInfo, value: Set<Value>) => value.has(op.class);
-const checkOwned = (op: OpInfo, value: Set<Value>) =>
-  value.has(op.potential > 0);
+const checkOwned = (op: OpInfo, value: Set<Value>) => value.has(op.potential > 0);
 const checkElite = (op: OpInfo, value: Set<Value>) => value.has(op.elite);
 const checkRarity = (op: OpInfo, value: Set<Value>) => value.has(op.rarity);
 const checkCNOnly = (op: OpInfo, value: Set<Value>) => value.has(op.isCnOnly);
@@ -32,6 +31,8 @@ export default function useFilter(init: Partial<Filters> = {}) {
     MODULECN: init.MODULECN ?? new Set(),
   });
 
+  const [search, setSearch] = useState("");
+
   const toggleFilter = useCallback(
     (category: keyof Filters, value: Value) => {
       const cloneFilter = structuredClone(filters);
@@ -45,10 +46,7 @@ export default function useFilter(init: Partial<Filters> = {}) {
   );
 
   const clearFilters = useCallback(() => {
-    setFilters(
-      (f: Filters) =>
-        Object.fromEntries(Object.keys(f).map((k) => [k, new Set()])) as Filters
-    );
+    setFilters((f: Filters) => Object.fromEntries(Object.keys(f).map((k) => [k, new Set()])) as Filters);
   }, []);
 
   const filterFunction = useCallback(
@@ -58,11 +56,11 @@ export default function useFilter(init: Partial<Filters> = {}) {
       if (filters.ELITE.size && !checkElite(op, filters.ELITE)) return false;
       if (filters.RARITY.size && !checkRarity(op, filters.RARITY)) return false;
       if (filters.CN.size && !checkCNOnly(op, filters.CN)) return false;
-      if (filters.MODULECN.size && !checkModuleCNOnly(op, filters.MODULECN))
-        return false;
+      if (filters.MODULECN.size && !checkModuleCNOnly(op, filters.MODULECN)) return false;
+      if (!op.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())) return false;
       return true;
     },
-    [filters]
+    [filters, search]
   );
 
   return {
@@ -70,5 +68,7 @@ export default function useFilter(init: Partial<Filters> = {}) {
     toggleFilter,
     clearFilters,
     filterFunction,
+    search,
+    setSearch,
   } as const;
 }

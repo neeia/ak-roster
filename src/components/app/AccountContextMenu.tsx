@@ -77,6 +77,7 @@ const AccountContextMenu = (props: Props) => {
         }}
       >
         <MenuItem>Account Settings</MenuItem>
+        <MenuItem>Resync Data</MenuItem>
         {changeUsername && (
           <MenuItem onClick={changeUsername}>Change Display Name</MenuItem>
         )}

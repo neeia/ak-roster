@@ -1,4 +1,4 @@
-import { Preset, defaultPresetObject } from "../types/operator";
+import { Preset, defaultPresetObject } from "../../types/operators/operator";
 import useLocalStorage from "./useLocalStorage";
 
 function usePresets() {

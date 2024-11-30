@@ -1,43 +1,39 @@
 import { Clear, Search } from "@mui/icons-material";
-import {
-  Dialog,
-  IconButton,
-  InputAdornment,
-  TextField,
-  Tooltip,
-  Typography,
-} from "@mui/material";
-import React, { memo, useCallback, useEffect } from "react";
+import { Dialog, IconButton, InputAdornment, TextField, Tooltip, Typography } from "@mui/material";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 
 interface Props {
-  setSearch: (search: string) => void;
+  onChange: (value: string) => void;
 }
 
 const SearchDialog = memo((props: Props) => {
-  const { setSearch } = props;
-  const [searchText, setSearchText] = React.useState("");
-  const [open, setOpen] = React.useState(false);
+  const { onChange } = props;
+  const [text, setText] = useState("");
+  const [open, setOpen] = useState(false);
+  const input = useRef<HTMLInputElement>(null);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value);
-    setSearch(e.target.value);
-  };
   const search = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setSearch(searchText);
+    onChange(text);
   };
   const clear = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setSearchText("");
-    setSearch("");
+    onChange("");
+    setText("");
   };
 
-  const checkSearch = useCallback((event: KeyboardEvent) => {
-    if (event.ctrlKey && event.key === "f") {
-      event.preventDefault();
-      setOpen((o) => !o);
-    }
-  }, []);
+  const checkSearch = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === "f") {
+        event.preventDefault();
+        setOpen(true);
+        input.current?.select();
+      } else if (event.key === "Escape") {
+        setOpen(false);
+      }
+    },
+    [input.current]
+  );
 
   useEffect(() => {
     window.addEventListener("keydown", checkSearch);
@@ -57,10 +53,7 @@ const SearchDialog = memo((props: Props) => {
           sx={{ display: "flex", flexDirection: "column" }}
         >
           <Search fontSize="large" color="primary" />
-          <Typography
-            variant="caption"
-            sx={{ display: { sm: "none" }, lineHeight: 1.1 }}
-          >
+          <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
             Search
           </Typography>
         </IconButton>
@@ -68,12 +61,11 @@ const SearchDialog = memo((props: Props) => {
       <Dialog
         disableEnforceFocus
         disableScrollLock
-        componentsProps={{
+        slotProps={{
           backdrop: {
             style: {
               backgroundColor: "transparent",
-              backgroundImage:
-                "linear-gradient(to top, rgba(10, 10, 10, 1), rgba(10, 10, 10, 0) 20%)",
+              backgroundImage: "linear-gradient(to top, rgba(10, 10, 10, 1), rgba(10, 10, 10, 0) 20%)",
             },
           },
         }}
@@ -87,8 +79,7 @@ const SearchDialog = memo((props: Props) => {
         open={open}
         onClose={() => {
           setOpen(false);
-          setSearchText("");
-          setSearch("");
+          onChange("");
         }}
       >
         <form>
@@ -99,27 +90,32 @@ const SearchDialog = memo((props: Props) => {
             autoFocus
             autoComplete="off"
             placeholder="Type to start searching..."
-            value={searchText}
-            onChange={onChange}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    type="reset"
-                    onClick={clear}
-                    sx={{
-                      opacity: searchText.length,
-                      pointerEvents: searchText.length === 0 ? "none" : "",
-                    }}
-                    disabled={searchText.length === 0}
-                  >
-                    <Clear />
-                  </IconButton>
-                  <IconButton type="submit" onClick={search}>
-                    <Search />
-                  </IconButton>
-                </InputAdornment>
-              ),
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            slotProps={{
+              htmlInput: {
+                ref: input,
+              },
+              input: {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      type="reset"
+                      onClick={clear}
+                      sx={{
+                        opacity: text.length && 1,
+                        pointerEvents: text.length === 0 ? "none" : "",
+                      }}
+                      disabled={text.length === 0}
+                    >
+                      <Clear />
+                    </IconButton>
+                    <IconButton type="submit" onClick={search}>
+                      <Search />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              },
             }}
           />
         </form>

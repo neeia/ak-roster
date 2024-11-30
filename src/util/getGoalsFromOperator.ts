@@ -1,4 +1,4 @@
-import { Operator } from "types/operator";
+import { Operator } from "types/operators/operator";
 
 export default function (original: Operator, target: Operator) {}
 

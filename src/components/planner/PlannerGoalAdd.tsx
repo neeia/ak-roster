@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import OperatorSearch from "./OperatorSearch";
-import { Operator, OperatorData } from "types/operator";
+import { Operator, OperatorData } from "types/operators/operator";
 import { Close } from "@mui/icons-material";
 import { useRosterGetQuery } from "store/extendRoster";
 import { useGroupsGetQuery } from "store/extendGroups";
@@ -63,39 +63,33 @@ const PlannerGoalAdd = (props: Props) => {
   const { data: goalGroups } = useGroupsGetQuery();
   const [goalsUpdateTrigger] = useGoalsUpdateMutation();
 
-  const [selectedOperatorData, setSelectedOperatorData] =
-    useState<OperatorData | null>(null);
-  const [currentAccountOperator, setCurrentAccountOperator] =
-    useState<Operator | null>(null);
+  const [selectedOperatorData, setSelectedOperatorData] = useState<OperatorData | null>(null);
+  const [currentAccountOperator, setCurrentAccountOperator] = useState<Operator | null>(null);
   const [selectedGroup, setSelectedGroup] = useState<string>("Default");
   const [openGroupDialog, setOpenGroupDialog] = React.useState<boolean>(false);
   const [showPresets, setShowPresets] = useState(true);
-
-  const [eliteLevelFrom, setEliteLevelFrom] = React.useState<
-    number | undefined
-  >(undefined);
-  const [levelFrom, setLevelFrom] = React.useState<number | undefined>(
-    undefined
+  const [openSections, setOpenSections] = useState([false, false, false, false, false]);
+  const toggleSection = useCallback(
+    (n: number) => {
+      const s = [...openSections];
+      console.log(openSections);
+      s[n] = !s[n];
+      setOpenSections(s);
+    },
+    [openSections, setOpenSections]
   );
-  const [skillLevelFrom, setSkillLevelFrom] = React.useState<
-    number | undefined
-  >(undefined);
+
+  const [eliteLevelFrom, setEliteLevelFrom] = React.useState<number | undefined>(undefined);
+  const [levelFrom, setLevelFrom] = React.useState<number | undefined>(undefined);
+  const [skillLevelFrom, setSkillLevelFrom] = React.useState<number | undefined>(undefined);
   const [masteriesFrom, setMasteriesFrom] = React.useState<number[]>([]);
-  const [modulesFrom, setModulesFrom] = React.useState<
-    Record<string, number> | undefined
-  >(undefined);
+  const [modulesFrom, setModulesFrom] = React.useState<Record<string, number> | undefined>(undefined);
 
-  const [eliteLevelTo, setEliteLevelTo] = React.useState<number | undefined>(
-    undefined
-  );
+  const [eliteLevelTo, setEliteLevelTo] = React.useState<number | undefined>(undefined);
   const [levelTo, setLevelTo] = React.useState<number | undefined>(undefined);
-  const [skillLevelTo, setSkillLevelTo] = React.useState<number | undefined>(
-    undefined
-  );
+  const [skillLevelTo, setSkillLevelTo] = React.useState<number | undefined>(undefined);
   const [masteriesTo, setMasteriesTo] = React.useState<number[]>([]);
-  const [modulesTo, setModulesTo] = React.useState<
-    Record<string, number> | undefined
-  >(undefined);
+  const [modulesTo, setModulesTo] = React.useState<Record<string, number> | undefined>(undefined);
 
   const onGroupChange = useCallback(
     (event: SelectChangeEvent) => {
@@ -106,20 +100,14 @@ const PlannerGoalAdd = (props: Props) => {
         setSelectedGroup(groupName);
 
         if (selectedOperatorData) {
-          const defaultMasteries: number[] =
-            selectedOperatorData.skillData?.forEach((_) => 0) ?? [];
-          const existingGoal = goals?.find(
-            (x) =>
-              x.op_id == selectedOperatorData.id && x.group_name == groupName
-          );
+          const defaultMasteries: number[] = selectedOperatorData.skillData?.forEach((_) => 0) ?? [];
+          const existingGoal = goals?.find((x) => x.op_id == selectedOperatorData.id && x.group_name == groupName);
           if (existingGoal) {
             setEliteLevelTo(existingGoal.elite_to ?? undefined);
             setLevelTo(existingGoal.level_to ?? undefined);
             setSkillLevelTo(existingGoal.skill_level_to ?? undefined);
             setMasteriesTo(existingGoal.masteries_to ?? defaultMasteries);
-            setModulesTo(
-              (existingGoal.modules_to as Record<string, number>) ?? undefined
-            );
+            setModulesTo((existingGoal.modules_to as Record<string, number>) ?? undefined);
           } else {
             setEliteLevelTo(undefined);
             setLevelTo(undefined);
@@ -155,28 +143,22 @@ const PlannerGoalAdd = (props: Props) => {
         setCurrentAccountOperator(accountOp);
 
         setCurrentAccountOperator(accountOp);
-        console.log(accountOp);
         setEliteLevelFrom(accountOp?.elite);
         setLevelFrom(accountOp?.level);
         setSkillLevelFrom(accountOp?.skill_level);
-        const defaultMasteries: number[] =
-          newOp.skillData?.forEach((_) => 0) ?? [];
+        const defaultMasteries: number[] = newOp.skillData?.forEach((_) => 0) ?? [];
         setMasteriesFrom(accountOp?.masteries ?? defaultMasteries);
         setModulesFrom(accountOp?.modules);
 
         setMasteriesTo(accountOp?.masteries ?? defaultMasteries);
 
-        const existingGoal = goals?.find(
-          (x) => x.op_id == newOp.id && x.group_name == selectedGroup
-        );
+        const existingGoal = goals?.find((x) => x.op_id == newOp.id && x.group_name == selectedGroup);
         if (existingGoal) {
           setEliteLevelTo(existingGoal.elite_to ?? undefined);
           setLevelTo(existingGoal.level_to ?? undefined);
           setSkillLevelTo(existingGoal.skill_level_to ?? undefined);
           setMasteriesTo(existingGoal.masteries_to ?? defaultMasteries);
-          setModulesTo(
-            (existingGoal.modules_to as Record<string, number>) ?? undefined
-          );
+          setModulesTo((existingGoal.modules_to as Record<string, number>) ?? undefined);
         }
       }
     },
@@ -295,8 +277,7 @@ const PlannerGoalAdd = (props: Props) => {
 
   const onMasteryClearClick = useCallback(() => {
     if (currentAccountOperator) {
-      const defaultMasteries: number[] =
-        selectedOperatorData?.skillData?.forEach((_) => 0) ?? [];
+      const defaultMasteries: number[] = selectedOperatorData?.skillData?.forEach((_) => 0) ?? [];
       setMasteriesFrom(currentAccountOperator.masteries ?? defaultMasteries);
       setMasteriesTo(currentAccountOperator.masteries ?? defaultMasteries);
     } else {
@@ -343,11 +324,7 @@ const PlannerGoalAdd = (props: Props) => {
 
         let shouldUpsert = false;
 
-        if (
-          eliteLevelFrom != null &&
-          eliteLevelTo &&
-          eliteLevelFrom != eliteLevelTo
-        ) {
+        if (eliteLevelFrom != null && eliteLevelTo && eliteLevelFrom != eliteLevelTo) {
           goalData.elite_from = eliteLevelFrom;
           goalData.elite_to = eliteLevelTo;
           shouldUpsert = true;
@@ -369,11 +346,7 @@ const PlannerGoalAdd = (props: Props) => {
           shouldUpsert = true;
         }
 
-        if (
-          masteriesFrom &&
-          masteriesTo &&
-          !_.isEqual(masteriesFrom, masteriesTo)
-        ) {
+        if (masteriesFrom && masteriesTo && !_.isEqual(masteriesFrom, masteriesTo)) {
           goalData.masteries_from = masteriesFrom;
           goalData.masteries_to = masteriesTo;
           shouldUpsert = true;
@@ -424,17 +397,13 @@ const PlannerGoalAdd = (props: Props) => {
 
   const handleShortcuts = useCallback(
     (shortcut: string) => {
-      const moduleLevelRequirement =
-        MODULE_REQ_BY_RARITY[selectedOperatorData!.rarity];
+      const moduleLevelRequirement = MODULE_REQ_BY_RARITY[selectedOperatorData!.rarity];
       const moduleCount = selectedOperatorData?.moduleData?.length ?? 0;
-      const moduleIds = selectedOperatorData?.moduleData?.map(
-        (x) => x.moduleId
-      );
+      const moduleIds = selectedOperatorData?.moduleData?.map((x) => x.moduleId);
       const skillCount = selectedOperatorData?.skillData?.length ?? 0;
       const maxElite = selectedOperatorData?.eliteLevels.length ?? 0;
       const maxLevel = MAX_LEVEL_BY_RARITY[selectedOperatorData!.rarity];
-      const defaultMasteries: number[] =
-        selectedOperatorData?.skillData?.forEach((_) => 0) ?? [];
+      const defaultMasteries: number[] = selectedOperatorData?.skillData?.forEach((_) => 0) ?? [];
 
       //reset the "from" section to current operator stats
       setEliteLevelFrom(currentAccountOperator?.elite);
@@ -581,14 +550,7 @@ const PlannerGoalAdd = (props: Props) => {
           break;
       }
     },
-    [
-      currentAccountOperator,
-      eliteLevelTo,
-      levelTo,
-      masteriesTo,
-      modulesTo,
-      selectedOperatorData,
-    ]
+    [currentAccountOperator, eliteLevelTo, levelTo, masteriesTo, modulesTo, selectedOperatorData]
   );
 
   return (
@@ -601,22 +563,8 @@ const PlannerGoalAdd = (props: Props) => {
         }}
         fullScreen={fullScreen}
         keepMounted
-        PaperProps={{
-          elevation: 1,
-          sx: {
-            width: "100%",
-          },
-        }}
       >
-        <DialogTitle
-          variant="h2"
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: 4,
-          }}
-        >
+        <DialogTitle>
           New Goal
           <IconButton onClick={onClose} sx={{ display: { sm: "none" } }}>
             <Close />
@@ -624,25 +572,9 @@ const PlannerGoalAdd = (props: Props) => {
         </DialogTitle>
         <DialogContent
           sx={{
-            p: 2,
             display: "flex",
             flexDirection: "column",
             gap: 2,
-            "& .Mui-disabled": {
-              opacity: 0.25,
-              boxShadow: 0,
-            },
-            "& .inactive": {
-              opacity: 0.75,
-            },
-            "& .active": {
-              opacity: 1,
-              boxShadow: 0,
-              borderBottomWidth: "0.25rem 0px 0px 0px !important",
-              borderBottomColor: "primary.main",
-              borderBottomStyle: "solid",
-              backgroundColor: "primary.light",
-            },
           }}
         >
           <DisabledContext.Provider value={!selectedOperatorData}>
@@ -667,11 +599,7 @@ const PlannerGoalAdd = (props: Props) => {
                   onChange={onGroupChange}
                   label={"Goal Group"}
                   fullWidth
-                  sx={
-                    selectedGroup === "Default"
-                      ? { color: "text.secondary" }
-                      : undefined
-                  }
+                  sx={selectedGroup === "Default" ? { color: "text.secondary" } : undefined}
                 >
                   <MenuItem value="Default" sx={{ color: "text.secondary" }}>
                     Default (none)
@@ -695,20 +623,10 @@ const PlannerGoalAdd = (props: Props) => {
               onClick={() => setShowPresets((s) => !s)}
             >
               <Collapse in={showPresets}>
-                <Box
-                  component="ul"
-                  sx={{ display: "flex", flexWrap: "wrap", m: 0, p: 0, gap: 2 }}
-                >
+                <Box component="ul" sx={{ display: "flex", flexWrap: "wrap", m: 0, p: 0, gap: 2 }}>
                   {SHORTCUTS.map((shortcut) => (
-                    <Box
-                      component="li"
-                      key={shortcut}
-                      sx={{ display: "contents" }}
-                    >
-                      <Chip
-                        disabled={!selectedOperatorData}
-                        onClick={() => handleShortcuts(shortcut)}
-                      >
+                    <Box component="li" key={shortcut} sx={{ display: "contents" }}>
+                      <Chip disabled={!selectedOperatorData} onClick={() => handleShortcuts(shortcut)}>
                         {shortcut}
                       </Chip>
                     </Box>
@@ -719,6 +637,8 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectGroup.Toggle
               title="Promotion"
               onClick={onPromotionClearClick}
+              open={openSections[0]}
+              toggleOpen={() => toggleSection(0)}
             >
               <SelectGroup.FromTo>
                 <Promotion
@@ -735,21 +655,23 @@ const PlannerGoalAdd = (props: Props) => {
                 />
               </SelectGroup.FromTo>
             </SelectGroup.Toggle>
-            <SelectGroup.Toggle title="Level" onClick={onLevelClearClick}>
+            <SelectGroup.Toggle
+              title="Level"
+              onClick={onLevelClearClick}
+              open={openSections[1]}
+              toggleOpen={() => toggleSection(1)}
+            >
               <SelectGroup.FromTo>
                 <Level
                   value={levelFrom}
                   min={
-                    currentAccountOperator?.elite &&
-                    currentAccountOperator?.elite == eliteLevelFrom
+                    currentAccountOperator?.elite && currentAccountOperator?.elite == eliteLevelFrom
                       ? currentAccountOperator.level
                       : 1
                   }
                   max={
                     selectedOperatorData && eliteLevelFrom != undefined
-                      ? MAX_LEVEL_BY_RARITY[selectedOperatorData.rarity][
-                          eliteLevelFrom
-                        ]
+                      ? MAX_LEVEL_BY_RARITY[selectedOperatorData.rarity][eliteLevelFrom]
                       : undefined
                   }
                   onChange={onLevelFromChange}
@@ -759,13 +681,9 @@ const PlannerGoalAdd = (props: Props) => {
                   min={eliteLevelTo == eliteLevelFrom ? levelFrom : 1}
                   max={
                     selectedOperatorData && eliteLevelTo != undefined
-                      ? MAX_LEVEL_BY_RARITY[selectedOperatorData.rarity][
-                          eliteLevelTo
-                        ]
+                      ? MAX_LEVEL_BY_RARITY[selectedOperatorData.rarity][eliteLevelTo]
                       : selectedOperatorData && eliteLevelFrom != undefined
-                      ? MAX_LEVEL_BY_RARITY[selectedOperatorData.rarity][
-                          eliteLevelFrom
-                        ]
+                      ? MAX_LEVEL_BY_RARITY[selectedOperatorData.rarity][eliteLevelFrom]
                       : undefined
                   }
                   onChange={onLevelToChange}
@@ -775,6 +693,8 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectGroup.Toggle
               title="Skill Rank"
               onClick={onSkillLevelClearClick}
+              open={openSections[2]}
+              toggleOpen={() => toggleSection(2)}
             >
               <SelectGroup.FromTo>
                 <SkillLevel
@@ -795,9 +715,9 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectGroup.Toggle
               title="Mastery"
               onClick={onMasteryClearClick}
-              disabled={
-                !selectedOperatorData || selectedOperatorData.rarity <= 3
-              }
+              open={openSections[3]}
+              toggleOpen={() => toggleSection(3)}
+              disabled={!selectedOperatorData || selectedOperatorData.rarity <= 3}
             >
               <Mastery>
                 {selectedOperatorData
@@ -811,25 +731,17 @@ const PlannerGoalAdd = (props: Props) => {
                         <SelectGroup.FromTo>
                           <Mastery.Select
                             value={masteriesFrom[skillIndex]}
-                            min={
-                              currentAccountOperator?.masteries
-                                ? currentAccountOperator?.masteries[skillIndex]
-                                : 0
-                            }
+                            min={currentAccountOperator?.masteries ? currentAccountOperator?.masteries[skillIndex] : 0}
                             max={masteriesTo[skillIndex] ?? 3}
-                            onChange={(masteryLevel) =>
-                              onMasteryFromChange(skillIndex, masteryLevel)
-                            }
-                            disabled={(eliteLevelFrom ?? 0) < 2}
+                            onChange={(masteryLevel) => onMasteryFromChange(skillIndex, masteryLevel)}
+                            // disabled={(eliteLevelFrom ?? 0) < 2}
                           />
                           <Mastery.Select
                             value={masteriesTo[skillIndex]}
                             min={masteriesFrom[skillIndex]}
                             max={3}
-                            onChange={(masteryLevel) =>
-                              onMasteryToChange(skillIndex, masteryLevel)
-                            }
-                            disabled={(eliteLevelTo ?? eliteLevelFrom ?? 0) < 2}
+                            onChange={(masteryLevel) => onMasteryToChange(skillIndex, masteryLevel)}
+                            // disabled={(eliteLevelTo ?? eliteLevelFrom ?? 0) < 2}
                           />
                         </SelectGroup.FromTo>
                       </Mastery.Skill>
@@ -841,6 +753,8 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectGroup.Toggle
               title="Module"
               onClick={onModuleClearClick}
+              open={openSections[4]}
+              toggleOpen={() => toggleSection(4)}
               disabled={!!selectedOperatorData?.moduleData?.length}
             >
               <Module>
@@ -849,59 +763,45 @@ const PlannerGoalAdd = (props: Props) => {
                       <Module.Item key={mod.moduleId} {...mod}>
                         <SelectGroup.FromTo>
                           <Module.Select
-                            value={
-                              modulesFrom && modulesFrom[mod.moduleId]
-                                ? modulesFrom[mod.moduleId]
-                                : 0
-                            }
-                            onChange={(n) =>
-                              onModuleFromChange(mod.moduleId, n)
-                            }
+                            value={modulesFrom && modulesFrom[mod.moduleId] ? modulesFrom[mod.moduleId] : 0}
+                            moduleId={mod.moduleId}
+                            onChange={onModuleFromChange}
                             min={undefined}
                             max={undefined}
-                            disabled={
-                              (eliteLevelFrom ?? 0) < 2 ||
-                              MODULE_REQ_BY_RARITY[
-                                selectedOperatorData!.rarity
-                              ] >= (levelFrom ?? 0)
-                            }
+                            // disabled={
+                            //   (eliteLevelFrom ?? 0) < 2 ||
+                            //   MODULE_REQ_BY_RARITY[
+                            //     selectedOperatorData!.rarity
+                            //   ] >= (levelFrom ?? 0)
+                            // }
                           />
                           <Module.Select
-                            value={
-                              modulesTo && modulesTo[mod.moduleId]
-                                ? modulesTo[mod.moduleId]
-                                : 0
-                            }
-                            onChange={(n) => onModuleToChange(mod.moduleId, n)}
+                            value={modulesTo && modulesTo[mod.moduleId] ? modulesTo[mod.moduleId] : 0}
+                            moduleId={mod.moduleId}
+                            onChange={onModuleToChange}
                             min={undefined}
                             max={undefined}
-                            disabled={
-                              (eliteLevelTo ?? eliteLevelFrom ?? 0) < 2 ||
-                              (levelTo ?? levelFrom ?? 0) <
-                                MODULE_REQ_BY_RARITY[
-                                  selectedOperatorData!.rarity
-                                ]
-                            }
+                            // disabled={
+                            //   (eliteLevelTo ?? eliteLevelFrom ?? 0) < 2 ||
+                            //   (levelTo ?? levelFrom ?? 0) <
+                            //     MODULE_REQ_BY_RARITY[
+                            //       selectedOperatorData!.rarity
+                            //     ]
+                            // }
                           />
                         </SelectGroup.FromTo>
                       </Module.Item>
                     ))
-                  : null}
+                  : undefined}
               </Module>
             </SelectGroup.Toggle>
           </DisabledContext.Provider>
         </DialogContent>
         <DialogActions>
-          <Button
-            variant="outlined"
-            onClick={() => handleGoalAddDialogClose(false)}
-          >
+          <Button variant="outlined" onClick={() => handleGoalAddDialogClose(false)}>
             Cancel
           </Button>
-          <Button
-            variant="contained"
-            onClick={() => handleGoalAddDialogClose(true)}
-          >
+          <Button variant="contained" onClick={() => handleGoalAddDialogClose(true)}>
             Add
           </Button>
         </DialogActions>

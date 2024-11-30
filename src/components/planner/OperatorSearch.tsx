@@ -16,7 +16,7 @@ import React, { useCallback } from "react";
 import { VariableSizeList, ListChildComponentProps } from "react-window";
 
 import operatorsJson from "data/operators.json";
-import { OperatorData } from "types/operator";
+import { OperatorData } from "types/operators/operator";
 import SomePartial from "types/somePartial";
 
 const normalizeOperatorName = (operatorName: string) =>
