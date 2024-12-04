@@ -5,7 +5,7 @@ import { Ingredient, Item } from "../types/item";
 import { wrap } from "comlink";
 import { MaterialWorker } from "./getMaterialFromImage";
 import GoalData, { getPlannerGoals } from "../types/goalData";
-import DepotData from "../types/depotData";
+import DepotItem from "../types/depotItem";
 
 export const SUPPORTED_EXPORT_TYPES: DataShareInfo[] = [
   {
@@ -61,7 +61,7 @@ function isPenguinData(o: any): o is PenguinData {
   return "@type" in o;
 }
 
-export function exportToString(exportType: string, goals: GoalData[], stock: Record<string, DepotData>): string {
+export function exportToString(exportType: string, goals: GoalData[], stock: Record<string, DepotItem>): string {
   const exportData: ExportDataStock = {};
 
   for (const stockKey in stock) {

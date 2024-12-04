@@ -9,10 +9,7 @@ const extendedApi = supabaseApi.injectEndpoints({
         const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
-        const { data } = await supabase
-          .from("goals")
-          .select()
-          .eq("user_id", user_id);
+        const { data } = await supabase.from("goals").select().eq("user_id", user_id);
 
         return { data } as { data: GoalData[] };
       },
@@ -20,11 +17,7 @@ const extendedApi = supabaseApi.injectEndpoints({
     }),
     goalsUpdate: builder.mutation<GoalData[], GoalDataInsert[]>({
       async queryFn(goalDataInsert) {
-        const { data, error } = await supabase
-          .from("goals")
-          .upsert(goalDataInsert)
-          .select();
-        console.log(error);
+        const { data, error } = await supabase.from("goals").upsert(goalDataInsert).select();
         return { data } as { data: GoalData[] };
       },
       invalidatesTags: ["goals"],
@@ -34,10 +27,7 @@ const extendedApi = supabaseApi.injectEndpoints({
         const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
-        const { error } = await supabase
-          .from("goals")
-          .delete()
-          .eq("user_id", user_id);
+        const { error } = await supabase.from("goals").delete().eq("user_id", user_id);
 
         return { data: !!error };
       },
@@ -48,11 +38,7 @@ const extendedApi = supabaseApi.injectEndpoints({
         const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
-        const { error } = await supabase
-          .from("goals")
-          .delete()
-          .eq("user_id", user_id)
-          .eq("group_name", groupName);
+        const { error } = await supabase.from("goals").delete().eq("user_id", user_id).eq("group_name", groupName);
 
         return { data: !!error };
       },

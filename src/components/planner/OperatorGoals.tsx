@@ -17,47 +17,41 @@ import React, { memo, useCallback, useState } from "react";
 import { PlannerGoal } from "../../types/goal";
 import operatorJson from "../../data/operators";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { useGoalsOperatorDeleteMutation } from "../../store/extendGoals";
+import { Operator } from "../../types/operators/operator";
 
 interface Props {
   operatorGoal: GoalData;
   onGoalDeleted: (plannerGoal: PlannerGoal) => void;
+  onGoalCompleted: (plannerGoal: PlannerGoal, operator: Operator) => void;
+  removeAllGoalsFromOperator: (opId: string, groupName: string) => void;
 }
 
 export const OperatorGoals = memo((props: Props) => {
-  const { operatorGoal, onGoalDeleted } = props;
+  const { operatorGoal, onGoalDeleted, onGoalCompleted, removeAllGoalsFromOperator } = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const isMenuOpen = Boolean(anchorEl);
 
-  const [goalsDeleteOneOperatorTrigger] = useGoalsOperatorDeleteMutation();
-
   const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
   const opData = operatorJson[operatorGoal.op_id];
 
-  const handleMoreButtonClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
-      setAnchorEl(e.currentTarget);
-    },
-    []
-  );
+  const handleMoreButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setAnchorEl(e.currentTarget);
+  }, []);
 
-  const handleMoreMenuClose = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
-      setAnchorEl(null);
-    },
-    []
-  );
+  const handleMoreMenuClose = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setAnchorEl(null);
+  }, []);
 
   const handleDeleteGoalsButtonClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       handleMoreMenuClose(e);
-      goalsDeleteOneOperatorTrigger(operatorGoal);
+      removeAllGoalsFromOperator(operatorGoal.op_id, operatorGoal.group_name);
     },
-    [goalsDeleteOneOperatorTrigger, handleMoreMenuClose, operatorGoal]
+    [removeAllGoalsFromOperator, handleMoreMenuClose, operatorGoal]
   );
 
   const handleCompleteGoalsButtonClick = useCallback(
@@ -92,36 +86,21 @@ export const OperatorGoals = memo((props: Props) => {
             alignItems: "end",
           }}
         >
-          <Box
-            sx={{ gridArea: "opImage", position: "relative", marginLeft: -4 }}
-          >
-            <Box
-              sx={{ borderBottomLeftRadius: 25, overflow: "hidden" }}
-              width={64}
-              height={64}
-            >
+          <Box sx={{ gridArea: "opImage", position: "relative", marginLeft: -4 }}>
+            <Box sx={{ borderBottomLeftRadius: 25, overflow: "hidden" }} width={64} height={64}>
               <Image src={imgUrl} width={64} height={64} alt="" />
             </Box>
             {expanded ? (
-              <RemoveCircleIcon
-                sx={{ position: "absolute", bottom: "-10px", left: "0" }}
-              />
+              <RemoveCircleIcon sx={{ position: "absolute", bottom: "-10px", left: "0" }} />
             ) : (
-              <AddCircleIcon
-                sx={{ position: "absolute", bottom: "-10px", left: "0" }}
-              />
+              <AddCircleIcon sx={{ position: "absolute", bottom: "-10px", left: "0" }} />
             )}
           </Box>
           <Typography variant="h5" sx={{ gridArea: "opName" }}>
             {opData.name}
           </Typography>
-          <Typography sx={{ gridArea: "goals" }}>
-            {getGoalString(operatorGoal, opData)}
-          </Typography>
-          <IconButton
-            sx={{ gridArea: "more", alignSelf: "center" }}
-            onClick={handleMoreButtonClick}
-          >
+          <Typography sx={{ gridArea: "goals" }}>{getGoalString(operatorGoal, opData)}</Typography>
+          <IconButton sx={{ gridArea: "more", alignSelf: "center" }} onClick={handleMoreButtonClick}>
             <MoreHorizIcon />
           </IconButton>
           <Menu
@@ -139,10 +118,7 @@ export const OperatorGoals = memo((props: Props) => {
             }}
           >
             <MenuItem>
-              <Typography
-                onClick={handleCompleteGoalsButtonClick}
-                color="success"
-              >
+              <Typography onClick={handleCompleteGoalsButtonClick} color="success">
                 Complete all goals
               </Typography>
             </MenuItem>
@@ -160,7 +136,7 @@ export const OperatorGoals = memo((props: Props) => {
             key={index}
             goal={plannerGoal}
             onGoalDeleted={onGoalDeleted}
-            onGoalCompleted={() => {}}
+            onGoalCompleted={onGoalCompleted}
           />
         ))}
       </AccordionDetails>

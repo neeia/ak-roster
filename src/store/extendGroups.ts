@@ -1,6 +1,5 @@
 import { supabaseApi } from "./apiSlice";
 import supabase from "supabase/supabaseClient";
-import GoalData, { GoalDataInsert } from "types/goalData";
 import GroupData, { GroupsDataInsert } from "../types/groupData";
 
 const extendedApi = supabaseApi.injectEndpoints({
@@ -10,14 +9,11 @@ const extendedApi = supabaseApi.injectEndpoints({
         const { data: session } = await supabase.auth.getSession();
         const user_id = session.session?.user.id ?? "";
 
-        const { data } = await supabase
-          .from("groups")
-          .select("group_name")
-          .eq("user_id", user_id);
+        const { data } = await supabase.from("groups").select("group_name, sort_order").eq("user_id", user_id);
 
         let names: string[] = [];
         if (data) {
-          names = data.map((x) => x.group_name);
+          names = data.sort((a, b) => a.sort_order - b.sort_order).map((x) => x.group_name);
         }
         return { data: names };
       },
@@ -25,10 +21,7 @@ const extendedApi = supabaseApi.injectEndpoints({
     }),
     groupsUpdate: builder.mutation<GroupData[], GroupsDataInsert[]>({
       async queryFn(goalDataInsert) {
-        const { data } = await supabase
-          .from("groups")
-          .upsert(goalDataInsert)
-          .select();
+        const { data } = await supabase.from("groups").upsert(goalDataInsert).select();
 
         return { data } as { data: GroupData[] };
       },
@@ -36,10 +29,7 @@ const extendedApi = supabaseApi.injectEndpoints({
     }),
     groupsDelete: builder.mutation<boolean, string>({
       async queryFn(groupName: string) {
-        const { error } = await supabase
-          .from("groups")
-          .delete()
-          .eq("group_name", groupName);
+        const { error } = await supabase.from("groups").delete().eq("group_name", groupName);
 
         return { data: !!error };
       },

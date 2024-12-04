@@ -1,11 +1,38 @@
-import { Alert, Button, Dialog, DialogContent, DialogTitle, FormControl, IconButton, InputAdornment, InputLabel, List, ListItem, MenuItem, Select, SelectChangeEvent, Snackbar, Stack, TextField, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Alert,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  List,
+  ListItem,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Snackbar,
+  Stack,
+  TextField,
+  Tooltip,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import React, { useState } from "react";
 import { Close, ContentCopy, FileUpload, InfoOutlined } from "@mui/icons-material";
-import { exportToString, importFromString, SUPPORTED_EXPORT_TYPES, SUPPORTED_IMPORT_TYPES } from "../../util/exportImportHelper";
-import { useDepotGetQuery, useDepotUpdateMutation } from "../../store/extendDepot";
-import { useGoalsGetQuery } from "../../store/extendGoals";
-import { DepotDataInsert } from "../../types/depotData";
+import {
+  exportToString,
+  importFromString,
+  SUPPORTED_EXPORT_TYPES,
+  SUPPORTED_IMPORT_TYPES,
+} from "../../util/exportImportHelper";
+import useDepot from "../../util/hooks/useDepot";
+import useGoals from "../../util/hooks/useGoals";
+import DepotItem from "../../types/depotItem";
 
 interface Props {
   open: boolean;
@@ -27,15 +54,13 @@ const ExportImportDialog = (props: Props) => {
   const [importMessage, setImportMessage] = useState("");
   const [fileList, setFileList] = useState<File[]>([]);
 
-  const { data: goals } = useGoalsGetQuery();
-  const { data: stock } = useDepotGetQuery();
-
-  const [depotUpdateTrigger] = useDepotUpdateMutation();
+  const [depot, setDepot] = useDepot();
+  const [goals] = useGoals();
 
   const handleExportFormatChange = (e: SelectChangeEvent) => {
     const selectedFormat = e.target.value;
     setExportFormat(selectedFormat);
-    const data = exportToString(selectedFormat, goals ?? [], stock ?? {});
+    const data = exportToString(selectedFormat, goals ?? [], depot ?? {});
     setExportData(data);
   };
 
@@ -53,14 +78,14 @@ const ExportImportDialog = (props: Props) => {
     const importStatus = await importFromString(importFormat, importData, fileList);
 
     if (importStatus.success) {
-      const updatedDepot: DepotDataInsert[] = [];
+      const updatedDepot: DepotItem[] = [];
       importStatus.data.forEach((payload) =>
         updatedDepot.push({
           material_id: payload.itemId,
           stock: payload.newQuantity,
         })
       );
-      depotUpdateTrigger(updatedDepot);
+      setDepot(updatedDepot);
       setImportMessage("Import successful");
       setImportErrored(false);
       setImportFinished(true);
