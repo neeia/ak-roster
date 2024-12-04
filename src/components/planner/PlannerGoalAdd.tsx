@@ -19,8 +19,6 @@ import React, { useCallback, useState } from "react";
 import OperatorSearch from "./OperatorSearch";
 import { Operator, OperatorData } from "types/operators/operator";
 import { Close } from "@mui/icons-material";
-import { useRosterGetQuery } from "store/extendRoster";
-import { useGroupsGetQuery } from "store/extendGroups";
 import Chip from "../base/Chip";
 import Promotion from "../data/input/Select/Promotion";
 import SelectGroup, { DisabledContext } from "../data/input/Select/SelectGroup";
@@ -30,13 +28,17 @@ import AddGroupDialog from "./AddGroupDialog";
 import Mastery from "../data/input/Select/Mastery";
 import Module from "../data/input/Select/Module";
 import GoalData, { GoalDataInsert } from "types/goalData";
-import { useGoalsUpdateMutation } from "store/extendGoals";
 import _ from "lodash";
 import { MAX_LEVEL_BY_RARITY, MODULE_REQ_BY_RARITY } from "util/changeOperator";
+import useOperators from "../../util/hooks/useOperators";
+import { GroupsDataInsert } from "../../types/groupData";
 
 interface Props {
   open: boolean;
   goals: GoalData[] | undefined;
+  goalGroups: string[];
+  updateGoals: (goalsData: GoalDataInsert[]) => void;
+  setGroups: (goalGroupInsert: GroupsDataInsert[]) => void;
   onClose: () => void;
 }
 
@@ -55,13 +57,11 @@ const SHORTCUTS: string[] = [
   "Module 3 lv 3",
 ];
 const PlannerGoalAdd = (props: Props) => {
-  const { open, goals, onClose } = props;
+  const { open, goals, goalGroups, updateGoals, setGroups, onClose } = props;
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
-  const { data: roster } = useRosterGetQuery();
-  const { data: goalGroups } = useGroupsGetQuery();
-  const [goalsUpdateTrigger] = useGoalsUpdateMutation();
+  const [roster] = useOperators();
 
   const [selectedOperatorData, setSelectedOperatorData] = useState<OperatorData | null>(null);
   const [currentAccountOperator, setCurrentAccountOperator] = useState<Operator | null>(null);
@@ -72,7 +72,6 @@ const PlannerGoalAdd = (props: Props) => {
   const toggleSection = useCallback(
     (n: number) => {
       const s = [...openSections];
-      console.log(openSections);
       s[n] = !s[n];
       setOpenSections(s);
     },
@@ -358,7 +357,11 @@ const PlannerGoalAdd = (props: Props) => {
           shouldUpsert = true;
         }
         if (shouldUpsert) {
-          goalsUpdateTrigger([goalData]);
+          if (!goals?.find((goal) => goal.group_name == selectedGroup && goal.op_id == currentAccountOperator.op_id)) {
+            const sortOrders = goals?.map((goal) => goal.sort_order) ?? [0];
+            goalData.sort_order = Math.max(0, ...sortOrders) + 1;
+          }
+          updateGoals([goalData]);
         }
       }
       onClose();
@@ -381,7 +384,8 @@ const PlannerGoalAdd = (props: Props) => {
       currentAccountOperator,
       eliteLevelFrom,
       eliteLevelTo,
-      goalsUpdateTrigger,
+      goals,
+      updateGoals,
       levelFrom,
       levelTo,
       masteriesFrom,
@@ -392,7 +396,7 @@ const PlannerGoalAdd = (props: Props) => {
       selectedGroup,
       skillLevelFrom,
       skillLevelTo,
-    ]
+    ],
   );
 
   const handleShortcuts = useCallback(
@@ -812,6 +816,8 @@ const PlannerGoalAdd = (props: Props) => {
           setSelectedGroup(newGroupName);
           setOpenGroupDialog(false);
         }}
+        setGroups={setGroups}
+        nextGoalSortOrder={Math.max(0, ...(goals?.map((goal) => goal.sort_order) ?? [0])) + 1}
       />
     </>
   );

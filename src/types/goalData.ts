@@ -5,7 +5,7 @@ import operatorJson from "../data/operators";
 import { MAX_LEVEL_BY_RARITY } from "../util/changeOperator";
 
 type GoalsTable = Database["public"]["Tables"]["goals"];
-type GoalData = GoalsTable["Row"];
+type GoalData = Omit<GoalsTable["Row"], "user_id">;
 export default GoalData;
 export type GoalDataInsert = Omit<GoalsTable["Insert"], "user_id">;
 
@@ -29,10 +29,8 @@ export function getGoalString(goal: GoalData, opData: OperatorData) {
   }
   if (goal.masteries_from && goal.masteries_to) {
     goal.masteries_from.forEach((level, index) => {
-      if (goal.masteries_to![index] > 0) {
-        goalArray.push(
-          `S${index}M${level} → S${index}M${goal.masteries_to![index]}`
-        );
+      if (goal.masteries_to![index] > 0 && level < goal.masteries_to![index]) {
+        goalArray.push(`S${index}M${level} → S${index}M${goal.masteries_to![index]}`);
       }
     });
   }

@@ -1,21 +1,15 @@
 import AccountData from "types/auth/accountData";
 import { UserData } from "types/arknightsApiTypes/apiTypes";
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  TextField,
-} from "@mui/material";
+import { Box, Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
 import { useRosterUpsertMutation } from "store/extendRoster";
 import { Operator, Skin } from "types/operators/operator";
 import { OperatorSupport } from "types/operators/supports";
 import { useSupportSetMutation } from "store/extendSupports";
 import { useAccountUpdateMutation } from "store/extendAccount";
 import skinJson from "data/skins.json";
-import { useDepotUpdateMutation } from "store/extendDepot";
-import { DepotDataInsert } from "types/depotData";
+import useDepot from "../../../util/hooks/useDepot";
+import DepotItem from "../../../types/depotItem";
 
 interface Props {
   user: AccountData;
@@ -31,14 +25,14 @@ const GameImport = (props: Props) => {
   const [hasToken, setHasToken] = useState(
     localStorage.getItem("token") != null
   );
-  const [rememberLogin, setRememberLogin] = useState(
-    localStorage.getItem("token") != null
-  );
+  const [rememberLogin, setRememberLogin] = useState(localStorage.getItem("token") != null);
 
+  //TODO convert this to direct db call
   const [upsertRoster] = useRosterUpsertMutation();
   const [setSupport] = useSupportSetMutation();
   const [accountUpdateTrigger] = useAccountUpdateMutation();
-  const [depotUpdateTrigger] = useDepotUpdateMutation();
+
+  const [, setDepot] = useDepot();
 
   const sendCode = async () => {
     const result = await fetch(`/api/arknights/sendAuthMail?mail=${email}`);
@@ -120,13 +114,10 @@ const GameImport = (props: Props) => {
       Object.entries(value.equip)
         .slice(1)
         .filter(([moduleKey, moduleValue]) => moduleValue!.locked == 0)
-        .forEach(
-          ([moduleKey, moduleValue]) =>
-            (supportModules[moduleKey] = moduleValue!.level)
-        );
+        .forEach(([moduleKey, moduleValue]) => (supportModules[moduleKey] = moduleValue!.level));
 
       let masteries = value.skills.map((skill) => skill.specializeLevel);
-      let skin = value.skin as string | undefined;
+      let skin = value.skin as string | null;
       const opSkins: Skin[] = skinJson[value.charId as keyof typeof skinJson];
       //convert to aceship format
       if (opSkins && skin) {
@@ -184,15 +175,15 @@ const GameImport = (props: Props) => {
 
     //Update depot
     const depot = userData.inventory;
-    const depotData: DepotDataInsert[] = [];
+    const depotData: DepotItem[] = [];
     for (let key in depot) {
       if (!EXCLUDED_ITEMS.includes(key)) {
         let value = depot[key]!;
-        let item: DepotDataInsert = { material_id: key, stock: value };
+        let item: DepotItem = { material_id: key, stock: value };
         depotData.push(item);
       }
     }
-    depotUpdateTrigger(depotData);
+    setDepot(depotData);
 
     setError("Data imported.");
   }

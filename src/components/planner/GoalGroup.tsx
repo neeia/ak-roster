@@ -13,65 +13,64 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Image from "next/image";
-import PlannerGoalCard from "./PlannerGoalCard";
 import React, { memo, useCallback, useState } from "react";
-import operatorJson from "../../data/operators";
-import GoalData, { getGoalString, getPlannerGoals } from "../../types/goalData";
+import GoalData from "../../types/goalData";
 import { PlannerGoal } from "../../types/goal";
 import { OperatorGoals } from "./OperatorGoals";
-import { useGoalsDeleteAllFromGroupMutation } from "../../store/extendGoals";
-import { useGroupsDeleteMutation } from "../../store/extendGroups";
+import { Operator } from "../../types/operators/operator";
 
 interface Props {
   operatorGoals: GoalData[] | undefined;
   groupName: string;
   onGoalDeleted: (plannerGoal: PlannerGoal) => void;
+  onGoalCompleted: (plannerGoal: PlannerGoal, operator: Operator) => void;
+  removeAllGoalsFromGroup: (groupName: string) => void;
+  removeGroup: (groupName: string) => void;
+  removeAllGoalsFromOperator: (opId: string, groupName: string) => void;
   defaultExpanded: boolean;
 }
 
 const GoalGroup = memo((props: Props) => {
-  const { operatorGoals, groupName, onGoalDeleted, defaultExpanded } = props;
+  const {
+    operatorGoals,
+    groupName,
+    onGoalDeleted,
+    onGoalCompleted,
+    removeAllGoalsFromGroup,
+    removeGroup,
+    removeAllGoalsFromOperator,
+    defaultExpanded,
+  } = props;
 
   const [expanded, setExpanded] = useState<boolean>(defaultExpanded);
-  const [deleteGroupGoalsOpen, setDeleteGroupGoalsOpen] =
-    useState<boolean>(false);
+  const [deleteGroupGoalsOpen, setDeleteGroupGoalsOpen] = useState<boolean>(false);
   const [deleteGroupOpen, setDeleteGroupOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const isMenuOpen = Boolean(anchorEl);
 
-  const [goalsDeleteAllFromGroupTrigger] = useGoalsDeleteAllFromGroupMutation();
-  const [groupsDeleteTrigger] = useGroupsDeleteMutation();
-
   const onDeleteFromGroupsClick = useCallback(() => {
-    goalsDeleteAllFromGroupTrigger(groupName);
+    removeAllGoalsFromGroup(groupName);
     setDeleteGroupGoalsOpen(false);
-  }, [goalsDeleteAllFromGroupTrigger, groupName]);
+  }, [removeAllGoalsFromGroup, groupName]);
 
   const onDeleteGroupClick = useCallback(() => {
-    groupsDeleteTrigger(groupName);
+    removeGroup(groupName);
     setDeleteGroupGoalsOpen(false);
-  }, [groupName, groupsDeleteTrigger]);
+  }, [groupName, removeGroup]);
 
-  const handleMoreButtonClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
-      setAnchorEl(e.currentTarget);
-    },
-    []
-  );
+  const handleMoreButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setAnchorEl(e.currentTarget);
+  }, []);
 
-  const handleMoreMenuClose = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
-      setAnchorEl(null);
-    },
-    []
-  );
+  const handleMoreMenuClose = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setAnchorEl(null);
+  }, []);
 
   const handleDeleteGroupButtonClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -135,27 +134,17 @@ const GoalGroup = memo((props: Props) => {
                 }}
               >
                 <MenuItem disabled={!operatorGoals}>
-                  <Typography
-                    onClick={handleDeleteGroupGoalsButtonClick}
-                    color="error"
-                  >
+                  <Typography onClick={handleDeleteGroupGoalsButtonClick} color="error">
                     Delete goals
                   </Typography>
                 </MenuItem>
                 <MenuItem disabled={groupName == "Default"}>
-                  <Typography
-                    onClick={handleDeleteGroupButtonClick}
-                    color="error"
-                  >
+                  <Typography onClick={handleDeleteGroupButtonClick} color="error">
                     Delete group
                   </Typography>
                 </MenuItem>
               </Menu>
-              <Typography
-                textAlign="center"
-                variant="h5"
-                sx={{ flexGrow: "1" }}
-              >
+              <Typography textAlign="center" variant="h5" sx={{ flexGrow: "1" }}>
                 {groupName}
               </Typography>
               {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
@@ -169,32 +158,35 @@ const GoalGroup = memo((props: Props) => {
                   padding: 1,
                 }}
               >
-                {operatorGoals.map((operatorGoal) => {
-                  const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
-                  return (
-                    <Box
-                      sx={{ "&:not(:first-of-type)": { marginLeft: -2 } }}
-                      key={operatorGoal.op_id}
-                    >
-                      <Image src={imgUrl} width={64} height={64} alt="" />
-                    </Box>
-                  );
-                })}
+                {operatorGoals
+                  .sort((a, b) => a.sort_order - b.sort_order)
+                  .map((operatorGoal) => {
+                    const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
+                    return (
+                      <Box sx={{ "&:not(:first-of-type)": { marginLeft: -2 } }} key={operatorGoal.op_id}>
+                        <Image src={imgUrl} width={64} height={64} alt="" />
+                      </Box>
+                    );
+                  })}
               </Box>
             )}
           </Box>
         </AccordionSummary>
         <AccordionDetails>
           {operatorGoals &&
-            operatorGoals.map((operatorGoal) => {
-              return (
-                <OperatorGoals
-                  key={operatorGoal.op_id}
-                  operatorGoal={operatorGoal}
-                  onGoalDeleted={onGoalDeleted}
-                />
-              );
-            })}
+            operatorGoals
+              .sort((a, b) => a.sort_order - b.sort_order)
+              .map((operatorGoal) => {
+                return (
+                  <OperatorGoals
+                    key={operatorGoal.op_id}
+                    operatorGoal={operatorGoal}
+                    onGoalDeleted={onGoalDeleted}
+                    onGoalCompleted={onGoalCompleted}
+                    removeAllGoalsFromOperator={removeAllGoalsFromOperator}
+                  />
+                );
+              })}
         </AccordionDetails>
       </Accordion>
       <Dialog open={deleteGroupGoalsOpen}>
@@ -202,22 +194,13 @@ const GoalGroup = memo((props: Props) => {
           <Typography>Delete goal group</Typography>
         </DialogTitle>
         <DialogContent>
-          <Typography>
-            Do you want to delete all the goals in the group?
-          </Typography>
+          <Typography>Do you want to delete all the goals in the group?</Typography>
         </DialogContent>
         <DialogActions>
-          <Button
-            variant={"contained"}
-            onClick={() => setDeleteGroupGoalsOpen(false)}
-          >
+          <Button variant={"contained"} onClick={() => setDeleteGroupGoalsOpen(false)}>
             Cancel
           </Button>
-          <Button
-            variant={"contained"}
-            color={"error"}
-            onClick={onDeleteFromGroupsClick}
-          >
+          <Button variant={"contained"} color={"error"} onClick={onDeleteFromGroupsClick}>
             Delete
           </Button>
         </DialogActions>
@@ -227,22 +210,13 @@ const GoalGroup = memo((props: Props) => {
           <Typography>Delete group</Typography>
         </DialogTitle>
         <DialogContent>
-          <Typography>
-            Do you want to delete the group and all the goals in it?
-          </Typography>
+          <Typography>Do you want to delete the group and all the goals in it?</Typography>
         </DialogContent>
         <DialogActions>
-          <Button
-            variant={"contained"}
-            onClick={() => setDeleteGroupOpen(false)}
-          >
+          <Button variant={"contained"} onClick={() => setDeleteGroupOpen(false)}>
             Cancel
           </Button>
-          <Button
-            variant={"contained"}
-            color={"error"}
-            onClick={onDeleteGroupClick}
-          >
+          <Button variant={"contained"} color={"error"} onClick={onDeleteGroupClick}>
             Delete
           </Button>
         </DialogActions>

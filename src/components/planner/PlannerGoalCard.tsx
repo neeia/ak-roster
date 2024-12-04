@@ -1,24 +1,16 @@
 import DeleteGoalIcon from "@mui/icons-material/CloseRounded";
 import CompleteGoalIcon from "@mui/icons-material/Upload";
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Paper,
-  styled,
-  Tooltip,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, ButtonGroup, Paper, styled, Tooltip, useMediaQuery, useTheme } from "@mui/material";
 import React, { memo, useCallback } from "react";
 
 import operatorsJson from "data/operators.json";
 
 import ItemStack from "./ItemStack";
 import OperatorGoalIconography from "./OperatorGoalIconography";
-import { OperatorData } from "types/operators/operator";
+import { Operator, OperatorData } from "types/operators/operator";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import getGoalIngredients from "util/getGoalIngredients";
+import useOperators from "../../util/hooks/useOperators";
 
 const GoalCardButton = styled(Button)(({ theme }) => ({
   padding: theme.spacing(0.75),
@@ -30,7 +22,7 @@ const GoalCardButton = styled(Button)(({ theme }) => ({
 interface Props {
   goal: PlannerGoal;
   onGoalDeleted: (goal: PlannerGoal) => void;
-  onGoalCompleted: (goal: PlannerGoal) => void;
+  onGoalCompleted: (goal: PlannerGoal, operator: Operator) => void;
 }
 
 const PlannerGoalCard = memo((props: Props) => {
@@ -39,6 +31,9 @@ const PlannerGoalCard = memo((props: Props) => {
   const isXSScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isXLScreen = useMediaQuery(theme.breakpoints.up("xl"));
 
+  const [roster] = useOperators();
+
+  const rosterOperator = roster[goal.operatorId];
   const operator: OperatorData =
     operatorsJson[goal.operatorId as keyof typeof operatorsJson];
 
@@ -114,12 +109,7 @@ const PlannerGoalCard = memo((props: Props) => {
           columnGap: 3,
         }}
       >
-        <Box
-          gridArea="icon"
-          display="flex"
-          alignItems="center"
-          ml={{ xs: 0, sm: 1 }}
-        >
+        <Box gridArea="icon" display="flex" alignItems="center" ml={{ xs: 0, sm: 1 }}>
           {!isXSScreen && <OperatorGoalIconography goal={goal} />}
         </Box>
 
@@ -148,7 +138,8 @@ const PlannerGoalCard = memo((props: Props) => {
         <Tooltip arrow describeChild title="Complete Goal" placement="left">
           <GoalCardButton
             aria-label={`Complete goal: ${goalLabel}`}
-            onClick={() => onGoalCompleted(goal)}
+            disabled={!rosterOperator}
+            onClick={() => onGoalCompleted(goal, rosterOperator!)}
             sx={{
               borderWidth: "0 0 1px 2px",
               borderColor: (theme) => theme.palette.background.light,
