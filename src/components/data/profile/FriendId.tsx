@@ -2,8 +2,8 @@ import { Box, InputAdornment, TextField } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import AccountData from "types/auth/accountData";
 import { Json } from "types/supabase";
-import { useAccountUpdateMutation } from "store/extendAccount";
 import { debounce } from "lodash";
+import useAccount from "../../../util/hooks/useAccount";
 
 interface Props {
   user: AccountData;
@@ -19,7 +19,7 @@ const FriendID = (props: Props) => {
     ((user.friendcode as { [key: string]: Json })?.tag as string) ?? ""
   );
 
-  const [accountUpdateTrigger] = useAccountUpdateMutation();
+  const [_, setAccount] = useAccount();
 
   const setFriendUsername = (s: string) => {
     _setFriendUsername(s);
@@ -34,7 +34,7 @@ const FriendID = (props: Props) => {
   const setFriendCodeDebounced = useCallback(
     debounce((username, tag) => {
       const friendCode = { username: username, tag: tag };
-      accountUpdateTrigger({
+        setAccount({
         user_id: user.user_id,
         private: false,
         friendcode: friendCode,
@@ -78,9 +78,14 @@ const FriendID = (props: Props) => {
             borderRadius: "0px 2px 2px 0px",
           },
         }}
-        inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
-        InputProps={{
-          startAdornment: <InputAdornment position="start">#</InputAdornment>,
+        slotProps={{
+         htmlInput: {
+             inputMode: "numeric",
+             pattern: "[0-9]*"
+         },
+         input: {
+             startAdornment : <InputAdornment position="start">#</InputAdornment>,
+         }
         }}
       />
     </Box>

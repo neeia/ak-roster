@@ -5,11 +5,11 @@ import { Box, Button, Checkbox, FormControlLabel, TextField } from "@mui/materia
 import { useRosterUpsertMutation } from "store/extendRoster";
 import { Operator, Skin } from "types/operators/operator";
 import { OperatorSupport } from "types/operators/supports";
-import { useSupportSetMutation } from "store/extendSupports";
-import { useAccountUpdateMutation } from "store/extendAccount";
 import skinJson from "data/skins.json";
 import useDepot from "../../../util/hooks/useDepot";
 import DepotItem from "../../../types/depotItem";
+import useAccount from "../../../util/hooks/useAccount";
+import useSupports from "../../../util/hooks/useSupports";
 
 interface Props {
   user: AccountData;
@@ -29,8 +29,8 @@ const GameImport = (props: Props) => {
 
   //TODO convert this to direct db call
   const [upsertRoster] = useRosterUpsertMutation();
-  const [setSupport] = useSupportSetMutation();
-  const [accountUpdateTrigger] = useAccountUpdateMutation();
+  const [, setSupport, removeSupport] = useSupports();
+  const [, setAccount] = useAccount();
 
   const [, setDepot] = useDepot();
 
@@ -93,15 +93,12 @@ const GameImport = (props: Props) => {
       username: profileData.nickName,
       tag: profileData.nickNumber,
     };
-    accountUpdateTrigger({
+    await setAccount({
       user_id: user.user_id,
       private: user.private,
       friendcode: friendCode,
-    });
-    accountUpdateTrigger({
-      user_id: user.user_id,
-      private: user.private,
       level: profileData.level,
+      assistant: profileData.secretary,
     });
 
     //Update roster data
@@ -143,14 +140,10 @@ const GameImport = (props: Props) => {
     }
     upsertRoster(operators);
 
-    //Update secretary
-    accountUpdateTrigger({
-      user_id: user.user_id,
-      private: user.private,
-      assistant: profileData.secretary,
-    });
-
     //Update support data
+    await removeSupport(0)
+    await removeSupport(1)
+    await removeSupport(2)
     const supportsData = userData.social.assistCharList;
 
     for (let i = 0; i < supportsData.length; i++) {
@@ -170,7 +163,7 @@ const GameImport = (props: Props) => {
         skill: supportData.skillIndex!,
         slot: i,
       };
-      setSupport(support);
+      await setSupport(support);
     }
 
     //Update depot
@@ -183,7 +176,7 @@ const GameImport = (props: Props) => {
         depotData.push(item);
       }
     }
-    setDepot(depotData);
+    await setDepot(depotData);
 
     setError("Data imported.");
   }

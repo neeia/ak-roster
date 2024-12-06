@@ -7,15 +7,15 @@ import FriendID from "components/data/profile/FriendId";
 import Level from "components/data/profile/Level";
 import Server from "components/data/profile/Server";
 import Onboard from "components/data/profile/Onboard";
-import { useAccountGetQuery } from "store/extendAccount";
 import GameImport from "components/data/profile/GameImport";
+import useAccount from "../../util/hooks/useAccount";
 
 const Profile: NextPage = () => {
-  const { data: account, isLoading } = useAccountGetQuery();
+  const [account] = useAccount();
 
   return (
     <Layout tab="/data" page="/profile">
-      {isLoading ? (
+      {!account ? (
         ""
       ) : (
         <Box

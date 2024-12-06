@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import AccountData from "types/auth/accountData";
 import { debounce } from "lodash";
-import { useAccountUpdateMutation } from "store/extendAccount";
+import useAccount from "../../../util/hooks/useAccount";
 
 interface Props {
   user: AccountData;
@@ -12,7 +12,7 @@ const Onboard = (props: Props) => {
   const { user } = props;
 
   const [onboard, _setOnboard] = useState<string>(user.onboard ?? "");
-  const [accountUpdateTrigger] = useAccountUpdateMutation();
+    const [_, setAccount] = useAccount();
 
   const setOnboard = (value: string) => {
     _setOnboard(value);
@@ -24,7 +24,7 @@ const Onboard = (props: Props) => {
   const setOnboardDebounced = useCallback(
     debounce(
       (date) =>
-        accountUpdateTrigger({
+        setAccount({
           user_id: user.user_id,
           private: user.private,
           onboard: date,

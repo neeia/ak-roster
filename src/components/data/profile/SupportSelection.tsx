@@ -5,23 +5,13 @@ import operatorJson from "data/operators";
 import PopOp from "./PopOp";
 import OpSelectionButton from "./OpSelectionButton";
 import Image from "next/image";
-import { useRosterGetQuery } from "store/extendRoster";
-import {
-  useSupportRemoveMutation,
-  useSupportSetMutation,
-  useSupportsGetQuery,
-  useSupportSkillSetMutation,
-} from "store/extendSupports";
 import { OperatorSupport } from "types/operators/supports";
+import useOperators from "../../../util/hooks/useOperators";
+import useSupports from "../../../util/hooks/useSupports";
 
 const SupportSelection = () => {
-  const { data: operators, isLoading: isLoadingOperators } =
-    useRosterGetQuery();
-  const { data: supports, isLoading: isLoadingSupport } = useSupportsGetQuery();
-
-  const [setSupport] = useSupportSetMutation();
-  const [setSupportSkill] = useSupportSkillSetMutation();
-  const [removeSupport] = useSupportRemoveMutation();
+  const [operators] = useOperators();
+  const [supports, setSupport, removeSupport] = useSupports();
 
   const [index, setIndex] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
@@ -38,7 +28,9 @@ const SupportSelection = () => {
     setSupport(support);
   };
   const setSkill = (supportSlot: number, skillSlot: number) => {
-    setSupportSkill({ supportSlot, skillSlot });
+      const support = supports[supportSlot];
+      support.skill = skillSlot;
+      setSupport(support);
   };
   const clearSupp = (supportSlot: number) => {
     removeSupport(supportSlot);
@@ -51,7 +43,7 @@ const SupportSelection = () => {
   const sort = (a: Operator, b: Operator) =>
     b.elite - a.elite || b.level - a.level;
 
-  return isLoadingOperators || isLoadingSupport ? null : (
+  return !operators && !supports ? null : (
     <>
       <Box
         sx={{
@@ -76,7 +68,7 @@ const SupportSelection = () => {
         <Box sx={{ gridColumn: "span 3" }}>Skills</Box>
         {[...Array(3)].map((_, i) => {
           const support = supports!.filter((support) => support.slot === i)[0];
-          const op = operators![support?.op_id ?? ""];
+          const op = operators[support?.op_id ?? ""];
           const opInfo = op
             ? operatorJson[op.op_id as keyof typeof operatorJson]
             : undefined;

@@ -13,7 +13,7 @@ function useGoals() {
       goalsData.forEach((goalInsert) => {
         let goal = goals.find((x) => x.op_id == goalInsert.op_id && x.group_name == goalInsert.group_name);
         if (goal) {
-          const newGoal: GoalData = { ...goalInsert, ...goal };
+          const newGoal: GoalData = { ...goal, ...goalInsert };
           goalsCopy.push(newGoal);
         } else {
           goalsCopy.push(goalInsert as GoalData);

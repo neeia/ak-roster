@@ -4,8 +4,8 @@ import { Operator, OperatorData } from "types/operators/operator";
 import PopOp from "./PopOp";
 import OpSelectionButton from "./OpSelectionButton";
 import AccountData from "types/auth/accountData";
-import { useAccountUpdateMutation } from "store/extendAccount";
-import { useRosterGetQuery } from "store/extendRoster";
+import useOperators from "../../../util/hooks/useOperators";
+import useAccount from "../../../util/hooks/useAccount";
 
 interface Props {
   user: AccountData;
@@ -14,28 +14,28 @@ interface Props {
 const Assistant = (props: Props) => {
   const { user } = props;
 
-  const { data: operators, isLoading } = useRosterGetQuery();
+  const [operators] = useOperators();
 
   const [assistant, _setAssistant] = useState<string>(user?.assistant ?? "");
   const [open, setOpen] = useState<boolean>(false);
-  const [accountUpdateTrigger] = useAccountUpdateMutation();
+  const [_, setAccount] = useAccount();
 
   const setAssistant = (value: string) => {
     _setAssistant(value);
     user.assistant = value;
-    accountUpdateTrigger(user);
+    setAccount(user);
   };
   const clear = () => {
     _setAssistant("");
     user.assistant = null;
-    accountUpdateTrigger(user);
+    setAccount(user);
   };
 
   const filter = (op: OperatorData) => operators![op.id] != null;
   const sort = (a: Operator, b: Operator) => a.op_id.localeCompare(b.op_id);
 
   // TODO: I don't like the whole PopOp thing. It feels annoying. Can't filter or sort or anything really. What a mess.
-  return isLoading ? null : (
+  return !operators ? null : (
     <Box
       sx={{
         width: "min-content",
