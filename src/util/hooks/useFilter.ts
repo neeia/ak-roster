@@ -36,7 +36,7 @@ export default function useFilter(init: Partial<Filters> = {}) {
   const toggleFilter = useCallback(
     (category: keyof Filters, value: Value) => {
       const cloneFilter = structuredClone(filters);
-      const set = cloneFilter[category] as Set<typeof value>;
+      const set = cloneFilter[category];
       if (set.has(value)) {
         set.delete(value);
       } else set.add(value);

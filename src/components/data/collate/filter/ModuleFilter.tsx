@@ -12,11 +12,10 @@ const ModuleFilter = (props: Props) => {
   return (
     <ToggleButtonGroup
       value={value}
-      onChange={(_, v) => onChange(v)}
       sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", width: "100%" }}
     >
-      <ToggleButton value={false}>EN</ToggleButton>
-      <ToggleButton value={true}>CN</ToggleButton>
+      <ToggleButton value={false} onChange={() => onChange(false)}>EN</ToggleButton>
+      <ToggleButton value={true} onChange={() => onChange(true)}>CN</ToggleButton>
     </ToggleButtonGroup>
   );
 };

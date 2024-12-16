@@ -4,7 +4,7 @@ import React from "react";
 import { Value } from "util/hooks/useFilter";
 
 interface Props {
-  value: Set<Value>;
+  value: Value[];
   onChange: (value: boolean) => void;
 }
 const OwnedFilter = (props: Props) => {
@@ -13,13 +13,12 @@ const OwnedFilter = (props: Props) => {
   return (
     <ToggleButtonGroup
       value={value}
-      onChange={(_, v) => onChange(v)}
       sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", width: "100%", height: 48 }}
     >
-      <ToggleButton value={true}>
+      <ToggleButton value={true} onChange={() => onChange(true)}>
         <Check color="success" />
       </ToggleButton>
-      <ToggleButton value={false}>
+      <ToggleButton value={false} onChange={() => onChange(false)}>
         <Clear color="error" />
       </ToggleButton>
     </ToggleButtonGroup>

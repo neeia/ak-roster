@@ -85,27 +85,27 @@ const FilterDialog = memo((props: Props) => {
             }}
           >
             <Select title="Class" nobg sx={{ gridColumn: "1 / -1" }}>
-              <Class value={filter.CLASS} onChange={(value) => toggleFilter("CLASS", value)} />
+              <Class value={[...filter.CLASS]} onChange={(value) => toggleFilter("CLASS", value)} />
             </Select>
             <Select title="Rarity" nobg sx={{ gridColumn: "span 2" }}>
               <Rarity
-                value={filter.RARITY}
+                value={[...filter.RARITY]}
                 onChange={(value) => toggleFilter("RARITY", value)}
                 exclusive={false}
                 fullWidth
               />
             </Select>
             <Select title="Elite" nobg>
-              <Promotion value={filter.ELITE} onChange={(value) => toggleFilter("ELITE", value)} />
+              <Promotion value={[...filter.ELITE]} onChange={(value) => toggleFilter("ELITE", value)} />
             </Select>
             <Select title="Owned" nobg>
-              <OwnedFilter value={filter.OWNED} onChange={(value) => toggleFilter("OWNED", value)} />
+              <OwnedFilter value={[...filter.OWNED]} onChange={(value) => toggleFilter("OWNED", value)} />
             </Select>
             <Select title="Server" nobg>
-              <ServerFilter value={filter.CN} onChange={(value) => toggleFilter("CN", value)} />
+              <ServerFilter value={[...filter.CN]} onChange={(value) => toggleFilter("CN", value)} />
             </Select>
             <Select title="Module" nobg>
-              <ServerFilter value={filter.MODULECN} onChange={(value) => toggleFilter("MODULECN", value)} />
+              <ServerFilter value={[...filter.MODULECN]} onChange={(value) => toggleFilter("MODULECN", value)} />
             </Select>
           </Box>
           <Button onClick={clearFilters}>Clear Filter</Button>

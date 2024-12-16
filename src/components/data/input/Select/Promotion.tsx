@@ -28,7 +28,6 @@ const Promotion = memo((props: Props) => {
       value={value}
       aria-label="Promotion"
       disabled={disabled}
-      onChange={(_, i) => onChange(i)}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -42,7 +41,7 @@ const Promotion = memo((props: Props) => {
       {[...Array(maxPromotion + 1).keys()]
         .filter((n) => n >= minPromotion && n <= maxPromotion)
         .map((n) => (
-          <ToggleButton key={n} value={n}>
+          <ToggleButton key={n} value={n} onChange={() => onChange(n)}>
             <Image width={size} height={size} src={`/img/elite/${n}.png`} alt={`Elite ${n}`} />
           </ToggleButton>
         ))}

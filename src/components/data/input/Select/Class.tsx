@@ -13,7 +13,6 @@ const ClassFilter = (props: Props) => {
   return (
     <ToggleButtonGroup
       value={value}
-      onChange={(_, c) => onChange(c)}
       sx={{
         display: "grid",
         gridTemplateColumns: { xs: "repeat(4, 1fr)", sm: "repeat(8, 1fr)" },
@@ -25,6 +24,7 @@ const ClassFilter = (props: Props) => {
         <ToggleButton
           value={c}
           key={c}
+          onChange={() => onChange(c)}
           sx={{
             "&:not(._):not(._)": {
               borderRadius: 1,

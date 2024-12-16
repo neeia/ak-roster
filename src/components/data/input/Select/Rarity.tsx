@@ -17,7 +17,6 @@ const Rarity = (props: Props) => {
       value={value}
       aria-label="Rarity"
       disabled={disabled}
-      onChange={(_, r) => onChange(r)}
       sx={{
         display: "grid",
         gridTemplateColumns: "repeat(6, 1fr)",
@@ -25,16 +24,17 @@ const Rarity = (props: Props) => {
       }}
       {...rest}
     >
-      {[1, 2, 3, 4, 5, 6].map((i) => (
+      {[1, 2, 3, 4, 5, 6].map((n) => (
         <ToggleButton
-          key={i}
-          value={i}
+          key={n}
+          value={n}
+          onChange={() => onChange(n)}
           sx={{
-            color: rarityColors[i],
+            color: rarityColors[n],
             height: 48,
           }}
         >
-          {i} <Star fontSize="small" />
+          {n} <Star fontSize="small" />
         </ToggleButton>
       ))}
     </ToggleButtonGroup>

@@ -3,7 +3,7 @@ import React from "react";
 import { Value } from "util/hooks/useFilter";
 
 interface Props {
-  value: Set<Value>;
+  value: Value[];
   onChange: (value: boolean) => void;
 }
 const ServerFilter = (props: Props) => {
@@ -12,11 +12,14 @@ const ServerFilter = (props: Props) => {
   return (
     <ToggleButtonGroup
       value={value}
-      onChange={(_, v) => onChange(v)}
       sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", width: "100%", height: 48 }}
     >
-      <ToggleButton value={false}>EN</ToggleButton>
-      <ToggleButton value={true}>CN</ToggleButton>
+      <ToggleButton value={false} onChange={() => onChange(false)}>
+        EN
+      </ToggleButton>
+      <ToggleButton value={true} onChange={() => onChange(true)}>
+        CN
+      </ToggleButton>
     </ToggleButtonGroup>
   );
 };
