@@ -92,7 +92,7 @@ const View: NextPage = () => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: { xs: "center", sm: "left" },
-            gap: "8px 6px",
+            gap: "8px 16px",
             "& .unowned": {
               opacity: 0.75,
             },
