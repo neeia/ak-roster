@@ -62,7 +62,7 @@ const OperatorButton = React.memo((props: Props) => {
   // Process operator name
   let opName = t ? <abbr title={op.name}>{nameComponent}</abbr> : nameComponent;
 
-  const imgUrl = `/img/avatars/${skin ?? op_id}.png`;
+  const imgUrl = skin ?? `/img/avatars/${op_id}.png`;
 
   return (
     <Button

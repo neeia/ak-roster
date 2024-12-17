@@ -54,12 +54,12 @@ interface Props {
 
 const EditOperator = React.memo((props: Props) => {
   const { op, onChange, open, onClose } = props;
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   function handleError({ error }: { error: PostgrestError | null }) {
     if (error)
       enqueueSnackbar({
-        message: `$DB{error.code}: ${error.message}`,
+        message: `DB${error.code}: ${error.message}`,
         variant: "error",
       });
   }
@@ -82,7 +82,7 @@ const EditOperator = React.memo((props: Props) => {
 
     if (_op.potential) {
       // add operator in
-      supabase.from("operators").insert(_op).then();
+      supabase.from("operators").insert(_op).then(handleError);
     } else {
       // remove op
       supabase.from("operators").delete().eq("op_id", op.op_id).then(handleError);
@@ -172,12 +172,7 @@ const EditOperator = React.memo((props: Props) => {
             position: "relative",
           }}
         >
-          <Image
-            src={`/img/avatars/${getAvatar({ ...op, ...opData })}.png`}
-            fill
-            sizes="(max-width: 600px) 64px, 96px"
-            alt=""
-          />
+          <Image src={getAvatar({ ...op, ...opData })} fill sizes="(max-width: 600px) 64px, 96px" alt="" />
         </Box>
         <Typography variant="h2" component="div" sx={{ width: "100%" }}>
           <Typography variant="h2" component="div" sx={{ fontSize: "50%" }}>

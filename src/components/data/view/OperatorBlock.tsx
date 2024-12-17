@@ -1,20 +1,22 @@
 import React from "react";
 import { Box, BoxProps, Typography } from "@mui/material";
-import { ModuleData, Operator, OpInfo } from "types/operators/operator";
+import { ModuleData, OpInfo } from "types/operators/operator";
 import { Favorite } from "@mui/icons-material";
 import { rarityColors } from "styles/rarityColors";
 import { MAX_LEVEL_BY_RARITY } from "util/changeOperator";
 import Image from "next/image";
-import operatorJson from "data/operators";
+import getAvatar from "util/fns/getAvatar";
+
+function getModUrl(mod: ModuleData) {
+  return `/img/equip/${mod.typeName.toLowerCase()}.png`;
+}
 
 interface Props extends BoxProps {
   op: OpInfo;
-  nobg?: boolean;
-  skill?: number;
 }
 
 const OperatorBlock = (props: Props) => {
-  const { op, nobg, skill, sx, ...rest } = props;
+  const { op, sx, ...rest } = props;
 
   let intermediate = op.op_id;
   if (op.elite === 2) {
@@ -25,343 +27,76 @@ const OperatorBlock = (props: Props) => {
 
   const reg = /( the )|\(/gi;
   const splitName = op.name.replace(/\)$/, "").split(reg);
-  const name = splitName.length > 1 ? splitName[2].split(")")[0] : splitName[0];
-  const nameIsLong = name.split(" ").length > 1 && name.length > 11;
-
-  const opName = (
-    <Box
-      sx={{
-        marginLeft: "1px",
-        color: !nobg && isMaxKrooster(op) ? "background.paper" : "text.primary",
-        "& > div.opName": {
-          fontSize: {
-            xs: nameIsLong ? "9px" : "12px",
-            sm: nameIsLong ? "12px" : "14px",
-          },
-          lineHeight: { xs: "17px", sm: "20px" },
-        },
-        "& > div + div.opName": {
-          fontSize: { xs: "11px", sm: "12px" },
-          lineHeight: { xs: "11px", sm: "12px" },
-        },
-      }}
-    >
-      {splitName[2] && (
-        <Box
-          sx={{
-            fontSize: { xs: "7px", sm: "9px" },
-            lineHeight: { xs: "6px", sm: "8px" },
-          }}
-        >
-          {splitName[2]}
-        </Box>
-      )}
-      <Box className="opName">{splitName[0]}</Box>
-    </Box>
-  );
+  const name = splitName[0];
+  const nameIsLong = name.split(" ").length > 1 && name.length >= 16;
 
   const iconSizes = "(max-width: 768px) 16px, 24px";
-  const potentialBlock = (
-    <Box
-      sx={{
-        display: "grid",
-        gridTemplateAreas: `"potential"`,
-        gridArea: "potential",
-        marginLeft: "0px",
-        marginBottom: { xs: "2px", sm: "8px" },
-        justifySelf: "start",
-      }}
-    >
-      <Box
-        sx={{
-          gridArea: "potential",
-          width: { xs: "12px", sm: "20px" },
-          height: { xs: "18px", sm: "20px" },
-          alignSelf: "center",
-          justifySelf: "center",
-        }}
-      >
-        <svg width="100%" height="100%">
-          <rect
-            x="0"
-            y="0"
-            width="100%"
-            height="100%"
-            fill="#121212"
-            fillOpacity="0.85"
-            stroke="#666666"
-            strokeOpacity="0.85"
-            strokeWidth={1.5}
-          />
-        </svg>
-      </Box>
-      <Box
-        sx={{
-          gridArea: "potential",
-          width: { xs: "16px", sm: "24px" },
-          height: { xs: "16px", sm: "24px" },
-          alignSelf: "center",
-          justifySelf: "center",
-          position: "relative",
-        }}
-      >
-        <Image src={`/img/potential/${op.potential}.png`} fill sizes={iconSizes} alt={`Potential ${op.potential}`} />
-      </Box>
-    </Box>
-  );
-
-  const promotionBlock = (
-    <Box
-      sx={{
-        width: { xs: "20px", sm: "32px" },
-        height: { xs: "20px", sm: "32px" },
-        marginBottom: { xs: "2px", sm: "2px" },
-        marginLeft: { xs: "-4px", sm: "-6px" },
-        position: "relative",
-      }}
-    >
-      <Image
-        src={`/img/elite/${op.elite}_s_box.png`}
-        fill
-        sizes="(max-width: 768px) 20px, 32px"
-        alt={`Elite ${op.elite}`}
-      />
-    </Box>
-  );
-
-  const levelSx = {
-    gridArea: "level",
-    display: "grid",
-    gridTemplateAreas: "level",
-    width: { xs: "32px", sm: "48px" },
-    height: { xs: "32px", sm: "48px" },
-    marginLeft: { xs: "-2px", sm: "-4px" },
-    marginBottom: "-2px",
-  };
-
-  const levelBlock = (
-    <Box sx={{ ...levelSx }}>
-      <Box
-        sx={{
-          ...levelSx,
-        }}
-      >
-        <svg width="100%" height="100%">
-          <circle
-            cx="50%"
-            cy="50%"
-            r="45%"
-            fill="#323232"
-            fillOpacity="0.95"
-            strokeWidth="2"
-            stroke={op.level === MAX_LEVEL_BY_RARITY[op.rarity][2] ? "#f7d98b" : "#808080"}
-          />
-        </svg>
-      </Box>
-      <Box
-        sx={{
-          ...levelSx,
-          fontSize: { xs: "18px", sm: "24px" },
-          lineHeight: { xs: "16px", sm: "24px" },
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Box
-          component="abbr"
-          title="Level"
-          sx={{
-            gridArea: "level",
-            fontSize: "9px",
-            lineHeight: "4px",
-            display: {
-              xs: "none",
-              sm: "flex",
-            },
-            textDecoration: "none",
-            border: "none",
-          }}
-        >
-          LV
-        </Box>
-        {op.level}
-      </Box>
-    </Box>
-  );
-
-  const levelBubble = (
-    <Box
-      sx={{
-        gridArea: "img",
-        alignSelf: "end",
-        justifySelf: "start",
-        marginLeft: "-12px",
-        marginBottom: "-8px",
-        display: "grid",
-        gridTemplateAreas: `"potential" "elite" "level"`,
-        zIndex: 1,
-      }}
-    >
-      {op.potential > 1 ? potentialBlock : null}
-      {op.elite > 0 ? promotionBlock : null}
-      {op.elite > 0 || op.level > 1 ? levelBlock : null}
-    </Box>
-  );
-
-  const skillBlock = (
-    <Box
-      sx={{
-        gridArea: "img",
-        marginTop: "4px",
-        marginRight: { xs: "-14px", sm: "-24px" },
-        display: op.skill_level > 1 ? "flex" : "none",
-        flexDirection: "column",
-        justifySelf: "end",
-        gap: "2px",
-      }}
-    >
-      {[...Array(op.skillData?.length ?? 0)].map((_, n: number) => (
-        <Box
-          key={n}
-          sx={{
-            display: op.elite >= n ? "grid" : "none",
-            marginLeft: { xs: "0px", sm: `${4 * n}px` },
-            "& .stack": {
-              gridRow: 1,
-              gridColumn: 1,
-              opacity: skill === undefined || n === skill ? 0.95 : 0.25,
-              boxShadow: skill !== undefined && n === skill ? "-2px 0px #ffd440" : "",
-              width: { xs: "16px", sm: "24px" },
-              height: { xs: "16px", sm: "24px" },
-              position: "relative",
-            },
-          }}
-        >
-          <Box className="stack">
-            <Image src={`/img/rank/bg.png`} fill sizes={iconSizes} alt={`Skill ${n + 1}`} />
-          </Box>
-          {!op.masteries || !op.masteries[n] || op.masteries[n] === 0 ? (
-            <Box className="stack">
-              <Image src={`/img/rank/${op.skill_level}.png`} fill sizes={iconSizes} alt={`Rank ${op.skill_level}`} />
-            </Box>
-          ) : (
-            <Box className="stack">
-              <Image
-                src={`/img/rank/m-${op.masteries[n]}.png`}
-                fill
-                sizes={iconSizes}
-                alt={`Mastery ${op.masteries[n]}`}
-              />
-            </Box>
-          )}
-        </Box>
-      ))}
-    </Box>
-  );
-
-  function getModUrl(mod: ModuleData) {
-    return `/img/equip/${mod.typeName.toLowerCase()}.png`;
-  }
-
-  const moduleBlock = (
-    <Box
-      sx={{
-        gridArea: "img",
-        display: "flex",
-        flexDirection: "row-reverse",
-        alignSelf: "end",
-        mb: "-4px",
-        marginRight: { xs: "-12px", sm: "-16px" },
-        gap: { xs: "2px", sm: "4px" },
-      }}
-    >
-      {(op.moduleData ?? []).map(({ moduleId, typeName }) => (
-        <Box
-          key={moduleId}
-          sx={{
-            display: "grid",
-            height: { xs: "24px", sm: "32px" },
-            width: { xs: "24px", sm: "32px" },
-            "& > *": {
-              gridArea: "1 / 1",
-              width: "100%",
-            },
-            "& .frame": {
-              opacity: "0.75",
-              backgroundColor: "info.main",
-              border: "1px solid #808080",
-            },
-            position: "relative",
-          }}
-        >
-          <Box zIndex={1} className="frame" />
-          <Box zIndex={2} sx={{ "& > img": { objectFit: "contain" } }}>
-            <Image src={url} fill alt={typeName} />
-          </Box>
-          <Typography
-            zIndex={3}
-            component="abbr"
-            title={`Stage ${op.modules[moduleId]}`}
-            sx={{
-              display: "flex",
-              justifySelf: "end",
-              alignSelf: "end",
-              width: "min-content !important",
-              height: "min-content",
-              lineHeight: 1.25,
-              textDecoration: "none",
-              border: "none",
-              fontSize: { xs: "0.9rem", sm: "1.1rem" },
-              color: "text.primary",
-              backgroundColor: "rgba(0,0,0,0.8)",
-              borderRadius: 999,
-              marginRight: "-10%",
-              marginBottom: "-25%",
-            }}
-          >
-            {typeName.slice(-1)}
-            {op.modules[index] > 1 && op.modules[index]}
-          </Typography>
-        </Box>
-      ))}
-    </Box>
-  );
 
   return (
     <Box
       sx={{
-        display: "grid",
-        gridTemplateAreas: `"name fav" "img img"`,
-        gridTemplateRows: "auto 1fr",
-        gridTemplateColumns: "1fr auto",
-        backgroundColor: nobg
-          ? "info.main"
-          : op.favorite
-          ? isMaxKrooster(op)
-            ? "primary.dark"
-            : "error.dark"
-          : "info.main",
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "background.light",
         boxShadow: 1,
         padding: { xs: "4px 8px 4px 6px", sm: "6px 10px 8px 10px" },
-        margin: { xs: "2px 4px 4px 10px", sm: "2px 16px 10px 12px" },
-        opacity: op.potential ? 1 : 0.5,
+        margin: { xs: "2px 4px 4px 10px", sm: "4px 12px 12px 12px" },
         borderRadius: "4px",
+        height: "min-content",
+        width: "min-content",
         ...sx,
       }}
       {...rest}
     >
-      {opName}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          height: { xs: "17px", sm: "20px" },
+          marginLeft: "1px",
+          color: "text.primary",
+          "& > div + div": {
+            fontSize: { xs: "11px", sm: "12px" },
+            lineHeight: { xs: "11px", sm: "12px" },
+          },
+        }}
+      >
+        {splitName[2] && (
+          <Box
+            sx={{
+              fontSize: { xs: "7px", sm: "9px" },
+              lineHeight: { xs: "6px", sm: "8px" },
+            }}
+          >
+            {splitName[2]}
+          </Box>
+        )}
+        <Box
+          sx={{
+            fontSize: {
+              xs: nameIsLong ? "9px" : "12px",
+              sm: nameIsLong ? "11px" : "14px",
+            },
+            lineHeight: {
+              xs: nameIsLong ? "9px" : "17px",
+              sm: nameIsLong ? "10px" : "20px",
+            },
+            textOverflow: nameIsLong ? "wrap" : "",
+          }}
+        >
+          {splitName[0]}
+        </Box>
+      </Box>
       <Favorite
         fontSize="inherit"
         color="error"
         sx={{
+          position: "absolute",
+          right: 8,
+          top: 8,
           display: op.favorite ? "inherit" : "none",
-          alignSelf: "center",
-          justifySelf: "end",
-          lineHeight: "0px",
-          marginRight: "-2px",
         }}
       />
       <Box
@@ -369,20 +104,207 @@ const OperatorBlock = (props: Props) => {
           gridArea: "img",
           height: { xs: "84px", sm: "124px" },
           width: { xs: "80px", sm: "120px" },
-          borderBottom: `4px solid ${rarityColors[opData.rarity]}`,
+          borderBottom: `4px solid ${rarityColors[op.rarity]}`,
           position: "relative",
         }}
       >
-        <Image src={`/img/avatars/${op.skin ?? intermediate}.png`} fill sizes="(max-width: 768px) 80px, 120px" alt="" />
+        <Image src={getAvatar(op)} fill sizes="(max-width: 768px) 80px, 120px" alt="" />
       </Box>
-      {levelBubble}
-      {skillBlock}
-      {op.modules ? moduleBlock : ""}
+      {/* Potential, Promotion, Level */}
+      <Box
+        sx={{
+          position: "absolute",
+          left: -12,
+          bottom: -8,
+          display: "flex",
+          flexDirection: "column",
+          gap: "2px",
+          zIndex: 1,
+        }}
+      >
+        {op.potential > 1 ? (
+          <Box
+            sx={{
+              position: "relative",
+              width: { xs: "12px", sm: "20px" },
+              height: { xs: "16px", sm: "24px" },
+              backgroundColor: "background.paper",
+              border: "1px solid",
+              borderColor: "grey.500",
+              ml: "4px",
+              marginBottom: { xs: "2px", sm: "8px" },
+            }}
+          >
+            <Box
+              sx={{
+                width: { xs: "16px", sm: "24px" },
+                height: { xs: "16px", sm: "24px" },
+                position: "absolute",
+                m: "auto",
+                left: -4,
+                right: -4,
+                top: -4,
+                bottom: -4,
+              }}
+            >
+              <Image
+                src={`/img/potential/${op.potential}.png`}
+                fill
+                sizes={iconSizes}
+                alt={`Potential ${op.potential}`}
+              />
+            </Box>
+          </Box>
+        ) : null}
+        {op.elite > 0 ? (
+          <Box
+            sx={{
+              width: { xs: "20px", sm: "32px" },
+              height: { xs: "20px", sm: "32px" },
+              position: "relative",
+              marginBottom: { xs: "0px", sm: "4px" },
+            }}
+          >
+            <Image
+              src={`/img/elite/${op.elite}_s_box.png`}
+              fill
+              sizes="(max-width: 768px) 20px, 32px"
+              alt={`Elite ${op.elite}`}
+            />
+          </Box>
+        ) : null}
+        {op.elite > 0 || op.level > 1 ? (
+          <Box
+            sx={{
+              height: { xs: "32px", sm: "48px" },
+              aspectRatio: "1 / 1",
+              fontSize: { xs: "18px", sm: "24px" },
+              lineHeight: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "50%",
+              backgroundColor: "background.light",
+              border: "2px solid",
+              borderColor: op.level === MAX_LEVEL_BY_RARITY[op.rarity][2] ? "primary.main" : "grey.500",
+            }}
+          >
+            <Box
+              component="abbr"
+              title="Level"
+              sx={{
+                fontSize: "9px",
+                lineHeight: "4px",
+                display: {
+                  xs: "none",
+                  sm: "flex",
+                },
+                textDecoration: "none",
+              }}
+            >
+              LV
+            </Box>
+            {op.level}
+          </Box>
+        ) : null}
+      </Box>
+      {/* Skills */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 32,
+          right: { xs: "0px", sm: "-12px" },
+          display: op.skill_level > 1 ? "flex" : "none",
+          flexDirection: "column",
+          gap: "2px",
+        }}
+      >
+        {[...Array(op.skillData?.length ?? 0)].map((_, i: number) => (
+          <Box
+            key={i}
+            sx={{
+              display: op.elite >= i ? "grid" : "none",
+              marginLeft: { xs: "0px", sm: `${4 * i}px` },
+              width: { xs: "16px", sm: "24px" },
+              height: { xs: "16px", sm: "24px" },
+              position: "relative",
+              backgroundImage: "url('/img/rank/bg.png')",
+              backgroundSize: "contain",
+            }}
+          >
+            {!op.masteries[i] ? (
+              <Image
+                src={`/img/rank/${op.skill_level}.png`}
+                fill
+                sizes={iconSizes}
+                alt={`Skill ${i + 1} Rank ${op.skill_level}`}
+              />
+            ) : (
+              <Image
+                src={`/img/rank/m-${op.masteries[i]}.png`}
+                fill
+                sizes={iconSizes}
+                alt={`Mastery ${op.masteries[i]}`}
+              />
+            )}
+          </Box>
+        ))}
+      </Box>
+      {/* Modules */}
+      <Box
+        sx={{
+          position: "absolute",
+          right: 0,
+          bottom: -4,
+          display: "flex",
+          flexDirection: "row-reverse",
+          alignSelf: "end",
+          gap: { xs: "2px", sm: "4px" },
+        }}
+      >
+        {(op.moduleData ?? [])
+          .filter((mod) => op.modules[mod.moduleId] > 0)
+          .map((mod) => (
+            <Box
+              key={mod.moduleId}
+              sx={{
+                display: "grid",
+                height: { xs: "24px", sm: "32px" },
+                width: { xs: "24px", sm: "32px" },
+                "& > *": {
+                  gridArea: "1 / 1",
+                  width: "100%",
+                },
+                backgroundColor: "background.light",
+                border: "1px solid",
+                borderColor: "grey.500",
+                position: "relative",
+              }}
+            >
+              <Image src={getModUrl(mod)} fill alt={mod.typeName} />
+              <Typography
+                zIndex={1}
+                component="abbr"
+                title={`Stage ${op.modules[mod.moduleId]}`}
+                sx={{
+                  position: "absolute",
+                  width: "min-content !important",
+                  lineHeight: 1,
+                  textDecoration: "none",
+                  backgroundColor: "grey.950",
+                  borderRadius: "4px",
+                  right: "-10%",
+                  bottom: "-25%",
+                }}
+              >
+                {mod.typeName.slice(-1)}
+                {op.modules[mod.moduleId] > 1 && op.modules[mod.moduleId]}
+              </Typography>
+            </Box>
+          ))}
+      </Box>
     </Box>
   );
 };
 export default OperatorBlock;
-
-function isMaxKrooster(op: Operator) {
-  return op.op_id === "char_1021_kroos2" && op.potential === 6 && op.level === 80 && op.masteries.every((v) => v === 3);
-}
