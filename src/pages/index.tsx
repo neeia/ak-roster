@@ -111,6 +111,14 @@ const Home: NextPage = () => {
             }}
           >
             <AccountWidget sx={{ p: 0 }} username={account?.username} />
+            <Alert severity="info">
+              You can now update your information in one click by connecting to Yostar!
+              <div>
+                <Link sx={{ textDecoration: "1px dotted underline" }} href="/import">
+                  See More
+                </Link>
+              </div>
+            </Alert>
             {errors.map((err, i) => (
               <Alert
                 key={i}

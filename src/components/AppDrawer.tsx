@@ -1,5 +1,6 @@
 import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch } from "@mui/icons-material";
 import {
+  Alert,
   Box,
   Button,
   Collapse,
@@ -149,20 +150,14 @@ const AppDrawer = React.memo((props: Props) => {
         <RegisterForm open={register} onClose={() => setRegister(false)} />
         {account && <AccountWidget username={account.username} />}
         {account && (
-          <Link
-            href="/import"
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              backgroundColor: "primary.main",
-              color: "primary.contrastText",
-              borderRadius: "999px",
-              m: 1,
-              p: 1,
-            }}
-          >
-            Auto-Import (Yostar)
-          </Link>
+          <Alert severity="info" sx={{ m: 1 }}>
+            Connect to Yostar to update your data in one click!
+            <div>
+              <Link sx={{ textDecoration: "1px dotted underline" }} href="/import">
+                See More
+              </Link>
+            </div>
+          </Alert>
         )}
       </Box>
       <Divider />
