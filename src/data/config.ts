@@ -1,7 +1,6 @@
 const config: SiteCfg = {
   siteTitle: "Krooster",
-  siteDescription:
-    "A collection and progress tracker for Arknights, a game developed by Hypergryph.",
+  siteDescription: "A collection and progress tracker for Arknights, a game developed by Hypergryph.",
   tabs: {
     "/data": {
       title: "Data",
@@ -15,13 +14,13 @@ const config: SiteCfg = {
           title: "Collection",
           description: "View a summary of operator data.",
         },
-        "/profile": {
-          title: "Profile",
-          description: "Share your in-game Doctor information.",
-        },
         "/planner": {
           title: "Planner",
           description: "Set goals for operators and calculate material costs.",
+        },
+        "/profile": {
+          title: "Profile",
+          description: "Share your in-game Doctor information.",
         },
       },
     },
@@ -43,13 +42,11 @@ const config: SiteCfg = {
       pages: {
         "/recruit": {
           title: "Recruitment",
-          description:
-            "See what pool of operators are available from your tags in Recruitment.",
+          description: "See what pool of operators are available from your tags in Recruitment.",
         },
         "/rateup": {
           title: "Headhunting",
-          description:
-            "Calculate the probability of pulling operators on a gacha banner.",
+          description: "Calculate the probability of pulling operators on a gacha banner.",
         },
         "/level": {
           title: "Level Costs",
@@ -61,12 +58,6 @@ const config: SiteCfg = {
       title: "",
       exclude: true,
       pages: {
-        "/settings": {
-          title: "Settings",
-          description: "Change your account settings.",
-          requireLogin: true,
-          noIndex: true,
-        },
         "/login": {
           title: "Login",
           description: "Log in to Krooster.",
@@ -74,6 +65,16 @@ const config: SiteCfg = {
         "/register": {
           title: "Register",
           description: "Sign up for a Krooster account!",
+        },
+        "/settings": {
+          title: "Settings",
+          description: "Change your settings.",
+          noIndex: true,
+        },
+        "/import": {
+          title: "Import",
+          description: "Import account data directly from the game.",
+          requireLogin: true,
         },
       },
     },
