@@ -2,7 +2,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 
-import enSkinTable from "./ArknightsGameData/en_US/gamedata/excel/skin_table.json" assert { type: "json" };
+import enSkinTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/skin_table.json" assert { type: "json" };
 import cnSkinTable from "./ArknightsGameData/zh_CN/gamedata/excel/skin_table.json" assert { type: "json" };
 import cnCharacterTable from "./ArknightsGameData/zh_CN/gamedata/excel/character_table.json" assert { type: "json" };
 

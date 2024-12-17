@@ -2,10 +2,10 @@
 import path from "path";
 import { fileURLToPath } from "url";
 
-import enCharacterPatchTable from "./ArknightsGameData/en_US/gamedata/excel/char_patch_table.json" assert { type: "json" };
-import enCharacterTable from "./ArknightsGameData/en_US/gamedata/excel/character_table.json" assert { type: "json" };
-import enSkillTable from "./ArknightsGameData/en_US/gamedata/excel/skill_table.json" assert { type: "json" };
-import enUniequipTable from "./ArknightsGameData/en_US/gamedata/excel/uniequip_table.json" assert { type: "json" };
+import enCharacterPatchTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/char_patch_table.json" assert { type: "json" };
+import enCharacterTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/character_table.json" assert { type: "json" };
+import enSkillTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/skill_table.json" assert { type: "json" };
+import enUniequipTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/uniequip_table.json" assert { type: "json" };
 import cnCharacterPatchTable from "./ArknightsGameData/zh_CN/gamedata/excel/char_patch_table.json" assert { type: "json" };
 import cnCharacterTable from "./ArknightsGameData/zh_CN/gamedata/excel/character_table.json" assert { type: "json" };
 import cnSkillTable from "./ArknightsGameData/zh_CN/gamedata/excel/skill_table.json" assert { type: "json" };
@@ -39,6 +39,9 @@ function getOperatorName(operatorId) {
   if (operatorId === "char_1001_amiya2") {
     return "Amiya (Guard)";
   }
+  if (operatorId === "char_1037_amiya3") {
+    return "Amiya (Medic)";
+  }
   const entry = cnCharacterTable[operatorId];
   if (entry == null) {
     throw new Error(`No such operator: "${operatorId}"`);
@@ -51,6 +54,9 @@ function getOperatorName(operatorId) {
 function getCNOperatorName(operatorId) {
   if (operatorId === "char_1001_amiya2") {
     return "阿米娅(近卫)";
+  }
+  else if (operatorId === "char_1037_amiya3") {
+    return "阿米娅(治疗)";
   }
   const entry = cnCharacterTable[operatorId];
   if (entry == null) {
@@ -246,6 +252,4 @@ export default createOperatorsJson;
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   createOperatorsJson();
-  createSkinsJson();
-  uploadAllImages();
 }
