@@ -1,16 +1,11 @@
 import { Box, InputAdornment, TextField } from "@mui/material";
 import React, { useCallback, useState } from "react";
-import AccountData from "types/auth/accountData";
 import { Json } from "types/supabase";
 import { debounce } from "lodash";
-import useAccount from "../../../util/hooks/useAccount";
+import { AccountMutateProps } from "pages/data/profile";
 
-interface Props {
-  user: AccountData;
-}
-
-const FriendID = (props: Props) => {
-  const { user } = props;
+const FriendID = (props: AccountMutateProps) => {
+  const { user, setAccount } = props;
 
   const [friendUsername, _setFriendUsername] = useState<string>(
     ((user.friendcode as { [key: string]: Json })?.username as string) ?? ""
@@ -18,8 +13,6 @@ const FriendID = (props: Props) => {
   const [friendTag, _setFriendTag] = useState<string>(
     ((user.friendcode as { [key: string]: Json })?.tag as string) ?? ""
   );
-
-  const [_, setAccount] = useAccount();
 
   const setFriendUsername = (s: string) => {
     _setFriendUsername(s);
@@ -34,9 +27,8 @@ const FriendID = (props: Props) => {
   const setFriendCodeDebounced = useCallback(
     debounce((username, tag) => {
       const friendCode = { username: username, tag: tag };
-        setAccount({
+      setAccount({
         user_id: user.user_id,
-        private: false,
         friendcode: friendCode,
       });
     }, 500),
@@ -79,13 +71,13 @@ const FriendID = (props: Props) => {
           },
         }}
         slotProps={{
-         htmlInput: {
-             inputMode: "numeric",
-             pattern: "[0-9]*"
-         },
-         input: {
-             startAdornment : <InputAdornment position="start">#</InputAdornment>,
-         }
+          htmlInput: {
+            inputMode: "numeric",
+            pattern: "[0-9]*",
+          },
+          input: {
+            startAdornment: <InputAdornment position="start">#</InputAdornment>,
+          },
         }}
       />
     </Box>

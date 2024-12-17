@@ -1,103 +1,58 @@
 import React from "react";
-import { Box, IconButton } from "@mui/material";
-import { Operator } from "../../types/operator";
-import { Backspace, PersonAddAlt1 } from "@mui/icons-material";
+import { Button } from "@mui/material";
+import { OpInfo } from "types/operators/operator";
+import { ChangeCircle, PersonAddAlt1 } from "@mui/icons-material";
 import Image from "next/image";
-
-function imgUrl(op: Operator) {
-  let intermediate = op?.op_id ?? "";
-  if (op && op.elite === 2) {
-    intermediate += "_2";
-  } else if (op && op.elite === 1 && op.name === "Amiya") {
-    intermediate += "_1";
-  }
-  return `/img/avatars/${op.skin ?? intermediate}.png`;
-}
+import getAvatar from "util/fns/getAvatar";
 
 interface Props {
-  op: Operator;
+  op?: OpInfo;
   onClick: () => void;
-  clear: () => void;
 }
 
 const OpSelectionButton = (props: Props) => {
-  const { op, onClick, clear } = props;
+  const { op, onClick } = props;
 
-  return op ? (
-    <Box
+  return (
+    <Button
       sx={{
-        display: "grid",
-        gridTemplateColumns: "1fr auto",
-        height: "min-content",
-      }}
-    >
-      <Box
-        sx={{
-          borderRadius: "2px 0px 0px 2px",
-          backgroundColor: "info.main",
-          gridRow: "span 2",
-          position: "relative",
-          width: {
-            xs: "4rem",
-            sm: "6rem",
-          },
-        }}
-      >
-        <Image src={imgUrl(op)} layout="fill" alt={op.name} />
-      </Box>
-      <IconButton
-        aria-label="Clear Operator"
-        sx={{
-          height: {
-            xs: "2rem",
-            sm: "3rem",
-          },
-          width: {
-            xs: "2.5rem",
-            sm: "2.5rem",
-          },
-          borderRadius: "0px 2px 0px 0px",
-        }}
-        onClick={clear}
-      >
-        <Backspace />
-      </IconButton>
-      <IconButton
-        aria-label="Select Operator"
-        sx={{
-          height: {
-            xs: "2rem",
-            sm: "3rem",
-          },
-          width: {
-            xs: "2.5rem",
-            sm: "2.5rem",
-          },
-          borderRadius: "0px 0px 2px 0px",
-        }}
-        onClick={onClick}
-      >
-        <PersonAddAlt1 />
-      </IconButton>
-    </Box>
-  ) : (
-    <IconButton
-      aria-label="Select Operator"
-      sx={{
-        borderRadius: "2px",
-        height: {
-          xs: "4rem",
-          sm: "6rem",
+        position: "relative",
+        height: 96,
+        aspectRatio: "1 / 1",
+        backgroundColor: "background.light",
+        "& img": {
+          borderRadius: "4px",
+          transition: "transform 0.05s",
         },
-        width: {
-          xs: "6.5rem",
-          sm: "8.5rem",
+        "&:hover": {
+          filter: "brightness(1.04)",
+          "& img": {
+            transform: "scale(1.04)",
+            filter: "brightness(0.96)",
+          },
         },
       }}
       onClick={onClick}
     >
-      <PersonAddAlt1 />
-    </IconButton>
+      {op ? (
+        <>
+          <Image src={getAvatar(op)} fill sizes="100px" alt={op.name} />
+          <ChangeCircle
+            fontSize="large"
+            aria-label="Select Operator"
+            sx={{
+              position: "absolute",
+              bottom: -8,
+              left: -8,
+              backgroundColor: "background.default",
+              borderRadius: "50%",
+            }}
+          />
+        </>
+      ) : (
+        <PersonAddAlt1 />
+      )}
+    </Button>
   );
 };
 export default OpSelectionButton;

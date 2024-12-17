@@ -1,26 +1,19 @@
 import { MenuItem, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { servers } from "types/doctor";
-import AccountData from "types/auth/accountData";
-import useAccount from "../../../util/hooks/useAccount";
+import useAccount from "util/hooks/useAccount";
+import { AccountMutateProps } from "pages/data/profile";
 
-interface Props {
-  user: AccountData;
-}
-
-const Server = (props: Props) => {
-  const { user } = props;
+const Server = (props: AccountMutateProps) => {
+  const { user, setAccount } = props;
 
   const [server, _setServer] = useState<string>(user.server ?? "");
-
-  const [_, setAccount] = useAccount();
 
   const setServer = (value: string) => {
     _setServer(value);
     setAccount({
       user_id: user.user_id,
       server: value,
-      private: user.private,
     });
   };
 

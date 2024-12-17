@@ -1,62 +1,47 @@
-import { Box, InputAdornment, TextField } from "@mui/material";
-import { User } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import { InputAdornment, TextField } from "@mui/material";
 import React, { useCallback, useState } from "react";
-import useLocalStorage from "../../util/useLocalStorage";
-import { SocialInfo } from "../../types/social";
-import { Reddit as RedditIcon } from "@mui/icons-material";
-import { AccountData } from "../../types/auth/accountData";
-import {
-  useDiscordSetMutation,
-  useRedditSetMutation,
-} from "../../store/extendAccount";
 import { debounce } from "lodash";
+import { AccountMutateProps } from "pages/data/profile";
+import { Reddit as RedditIcon } from "@mui/icons-material";
 
-interface Props {
-  user: AccountData;
-}
+const Reddit = (props: AccountMutateProps) => {
+  const { user, setAccount } = props;
 
-const Reddit = (props: Props) => {
-  const { user } = props;
+  const [redditUsername, _setRedditUsername] = useState<string>(user.reddituser ?? "");
 
-  const [redditUsername, _setRedditUsername] = useState<string>(
-    user.reddituser ?? ""
-  );
-  const [setRedditTrigger] = useRedditSetMutation();
-  const setUsername = (s: string) => {
+  const setRedditUsername = (s: string) => {
     _setRedditUsername(s);
     setRedditDebounced(s);
   };
 
   const setRedditDebounced = useCallback(
-    debounce((username) => setRedditTrigger(username), 300),
+    debounce(
+      (username) =>
+        setAccount({
+          user_id: user.user_id,
+          reddituser: username,
+        }),
+      500
+    ),
     []
   );
 
   return (
-    <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto" }}>
-      <TextField
-        id="Reddit Username"
-        label="Reddit Username"
-        value={redditUsername}
-        onChange={(e) => {
-          setUsername(e.target.value);
-        }}
-        sx={{
-          "& .MuiFilledInput-root": {
-            borderRadius: "2px",
-          },
-        }}
-        variant="filled"
-        InputProps={{
+    <TextField
+      label="Reddit"
+      value={redditUsername}
+      onChange={(e) => setRedditUsername(e.target.value)}
+      variant="filled"
+      slotProps={{
+        input: {
           startAdornment: (
             <InputAdornment position="start">
-              <RedditIcon />
+              <RedditIcon></RedditIcon>
             </InputAdornment>
           ),
-        }}
-      />
-    </Box>
+        },
+      }}
+    />
   );
 };
 

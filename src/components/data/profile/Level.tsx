@@ -1,8 +1,7 @@
 import { TextField } from "@mui/material";
 import React, { useCallback, useState } from "react";
-import AccountData from "types/auth/accountData";
 import { debounce } from "lodash";
-import useAccount from "../../../util/hooks/useAccount";
+import { AccountMutateProps } from "pages/data/profile";
 
 function parse(n: string, min?: number, max?: number): string {
   if (parseInt(n)) {
@@ -13,15 +12,10 @@ function parse(n: string, min?: number, max?: number): string {
   }
 }
 
-interface Props {
-  user: AccountData;
-}
-
-const Level = (props: Props) => {
-  const { user } = props;
+const Level = (props: AccountMutateProps) => {
+  const { user, setAccount } = props;
 
   const [level, _setLevel] = useState<string>(user.level?.toString() ?? "");
-    const [, setAccount] = useAccount();
   const setLevel = (value: string) => {
     _setLevel(value);
     setLevelDebounced(value);
@@ -32,7 +26,6 @@ const Level = (props: Props) => {
       (newLevel) =>
         setAccount({
           user_id: user.user_id,
-          private: user.private,
           level: newLevel,
         }),
       500
@@ -52,7 +45,7 @@ const Level = (props: Props) => {
       sx={{
         width: "6rem",
       }}
-      inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
+      slotProps={{ htmlInput: { inputMode: "numeric", pattern: "[0-9]*" } }}
     />
   );
 };

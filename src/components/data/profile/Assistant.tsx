@@ -1,40 +1,29 @@
-import { Box } from "@mui/material";
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, useMediaQuery, useTheme } from "@mui/material";
 import React, { useState } from "react";
-import { Operator, OperatorData } from "types/operators/operator";
-import PopOp from "./PopOp";
+import { OperatorData } from "types/operators/operator";
 import OpSelectionButton from "./OpSelectionButton";
-import AccountData from "types/auth/accountData";
-import useOperators from "../../../util/hooks/useOperators";
-import useAccount from "../../../util/hooks/useAccount";
+import useOperators from "util/hooks/useOperators";
+import operatorJson from "data/operators";
+import OperatorSearch from "components/planner/OperatorSearch";
+import { AccountMutateProps } from "pages/data/profile";
 
-interface Props {
-  user: AccountData;
-}
-
-const Assistant = (props: Props) => {
-  const { user } = props;
+const Assistant = (props: AccountMutateProps) => {
+  const { user, setAccount } = props;
 
   const [operators] = useOperators();
 
   const [assistant, _setAssistant] = useState<string>(user?.assistant ?? "");
   const [open, setOpen] = useState<boolean>(false);
-  const [_, setAccount] = useAccount();
 
   const setAssistant = (value: string) => {
     _setAssistant(value);
     user.assistant = value;
     setAccount(user);
   };
-  const clear = () => {
-    _setAssistant("");
-    user.assistant = null;
-    setAccount(user);
-  };
 
-  const filter = (op: OperatorData) => operators![op.id] != null;
-  const sort = (a: Operator, b: Operator) => a.op_id.localeCompare(b.op_id);
+  const theme = useTheme();
+  const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
-  // TODO: I don't like the whole PopOp thing. It feels annoying. Can't filter or sort or anything really. What a mess.
   return !operators ? null : (
     <Box
       sx={{
@@ -46,21 +35,38 @@ const Assistant = (props: Props) => {
     >
       Assistant
       <OpSelectionButton
-        op={operators![assistant]}
+        op={{ ...operators[assistant], ...operatorJson[assistant] }}
         onClick={() => {
           setOpen(true);
         }}
-        clear={clear}
       />
-      <PopOp
-        operators={operators!}
-        open={open}
-        onClose={() => setOpen(false)}
-        title="Set Assistant"
-        onClick={setAssistant}
-        sort={sort}
-        filter={filter}
-      />
+      <Dialog open={open} onClose={() => setOpen(false)} fullScreen={fullScreen} fullWidth maxWidth="xs">
+        <DialogTitle>Assistant</DialogTitle>
+        <DialogContent>
+          <OperatorSearch
+            sx={{ mt: 1 }}
+            value={operatorJson[assistant]}
+            onChange={(op: OperatorData | null) => (op ? setAssistant(op.id) : null)}
+            filter={(op: OperatorData) => !!operators[op.id]}
+          />
+        </DialogContent>
+        <DialogActions sx={{ display: "flex", gap: 1, width: "100%" }}>
+          <Button variant="neutral" onClick={() => setOpen(false)}>
+            Cancel
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => {
+              if (assistant in operatorJson) {
+                setAssistant(assistant);
+                setOpen(false);
+              }
+            }}
+          >
+            Confirm
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };

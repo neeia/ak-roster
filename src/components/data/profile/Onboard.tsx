@@ -1,18 +1,12 @@
 import { TextField } from "@mui/material";
 import React, { useCallback, useState } from "react";
-import AccountData from "types/auth/accountData";
 import { debounce } from "lodash";
-import useAccount from "../../../util/hooks/useAccount";
+import { AccountMutateProps } from "pages/data/profile";
 
-interface Props {
-  user: AccountData;
-}
-
-const Onboard = (props: Props) => {
-  const { user } = props;
+const Onboard = (props: AccountMutateProps) => {
+  const { user, setAccount } = props;
 
   const [onboard, _setOnboard] = useState<string>(user.onboard ?? "");
-    const [_, setAccount] = useAccount();
 
   const setOnboard = (value: string) => {
     _setOnboard(value);
