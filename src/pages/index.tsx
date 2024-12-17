@@ -1,48 +1,19 @@
-﻿import {
-  Alert,
-  Box,
-  Button,
-  IconButton,
-  InputAdornment,
-  Paper,
-  Skeleton,
-  SxProps,
-  TextField,
-  Typography,
-} from "@mui/material";
+﻿import { Alert, Box, Button, IconButton, InputAdornment, Paper, SxProps, TextField } from "@mui/material";
 import type { NextPage } from "next";
 import config from "data/config";
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import { getLogoUrl } from "components/app/Logo";
 import HomeNavItem from "components/landing/HomeNavItem";
 import HomeNavSection from "components/landing/HomeNavSection";
-import {
-  brand,
-  DISCORD_BLURPLE,
-  GITHUB_DARK,
-  KOFI_BLUE,
-} from "styles/theme/appTheme";
+import { brand, DISCORD_BLURPLE, GITHUB_DARK, KOFI_BLUE } from "styles/theme/appTheme";
 import { LockPerson, Search } from "@mui/icons-material";
 import JumpTo from "components/base/JumpTo";
-import { UserContext } from "pages/_app";
 import Link from "components/base/Link";
 import Head from "components/app/Head";
-import AccountContextMenu from "components/app/AccountContextMenu";
-import {
-  useAccountGetQuery,
-  useAccountUpdateMutation,
-} from "store/extendAccount";
-import { skipToken } from "@reduxjs/toolkit/query";
 import { server } from "util/server";
-import randomName from "util/randomName";
 import AccountWidget from "components/app/AccountWidget";
+import useAccount from "util/hooks/useAccount";
 
 const authFrame: SxProps = {
   display: "flex",
@@ -56,9 +27,6 @@ const authFrame: SxProps = {
 
 const Home: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");
-  const [username, setUsername] = useState<string | null>();
-  const [randomUsername, setRandomUsername] = useState<boolean>(false);
-  const [trigger, out] = useAccountUpdateMutation();
 
   const [errors, setErrors] = useState<string[]>([]);
 
@@ -68,24 +36,7 @@ const Home: NextPage = () => {
 
   const logoBasePath = useRef(`/assets/title/${getLogoUrl()}`);
 
-  const user = useContext(UserContext);
-  const { data: accountData } = useAccountGetQuery();
-
-  useEffect(() => {
-    if (user && accountData) {
-      if (accountData.display_name) {
-        setUsername(accountData.display_name);
-      } else if (!accountData.display_name) {
-        const genName = randomName();
-        trigger({
-          user_id: user.id,
-          username: genName,
-          display_name: genName,
-          private: false,
-        });
-      }
-    }
-  }, [accountData]);
+  const [account] = useAccount();
 
   return (
     <Head title="Krooster" url={server} description={config.siteDescription}>
@@ -116,7 +67,7 @@ const Home: NextPage = () => {
           />
         </Box>
 
-        {user === null ? (
+        {account === null ? (
           <Paper
             elevation={2}
             sx={{
@@ -159,13 +110,7 @@ const Home: NextPage = () => {
               flexDirection: "column",
             }}
           >
-            <AccountWidget sx={{ p: 0 }} username={username} />
-            {randomUsername && (
-              <Alert severity="info" onClose={() => setRandomUsername(false)}>
-                You have been assigned a random username. Change it in the
-                settings!
-              </Alert>
-            )}
+            <AccountWidget sx={{ p: 0 }} username={account?.username} />
             {errors.map((err, i) => (
               <Alert
                 key={i}
@@ -204,43 +149,31 @@ const Home: NextPage = () => {
                 variant="outlined"
                 icon={<LockPerson />}
                 sx={{
-                  display: user ? "none" : "flex",
+                  display: account ? "none" : "flex",
                   alignItems: "center",
                   width: "100%",
                 }}
               >
                 You must be logged in to access these features.
               </Alert>
-              <HomeNavItem disabled={!user} href={"/data/input"}>
+              <HomeNavItem disabled={!account} href={"/data/input"}>
                 Roster
               </HomeNavItem>
-              <HomeNavItem disabled={!user} href={"/data/view"}>
+              <HomeNavItem disabled={!account} href={"/data/view"}>
                 Collection
               </HomeNavItem>
               <HomeNavItem
-                disabled={!user}
+                disabled={!account}
                 href={"/data/planner"}
-                icon={
-                  <Image
-                    key="p"
-                    src="/img/icons/rock.svg"
-                    alt=""
-                    width={24}
-                    height={24}
-                  />
-                }
+                icon={<Image key="p" src="/img/icons/rock.svg" alt="" width={24} height={24} />}
               >
                 Planner
               </HomeNavItem>
-              <HomeNavItem disabled={!user} href={"/data/profile"}>
+              <HomeNavItem disabled={!account} href={"/data/profile"}>
                 Profile
               </HomeNavItem>
             </HomeNavSection>
-            <HomeNavSection
-              title="Network"
-              color={brand["/network"]}
-              src="network"
-            >
+            <HomeNavSection title="Network" color={brand["/network"]} src="network">
               <Box component="li" display="flex">
                 <TextField
                   id="search"
@@ -268,20 +201,14 @@ const Home: NextPage = () => {
                   }}
                 />
               </Box>
-              <HomeNavItem href={"/network/findafriend"}>
-                Support Search
-              </HomeNavItem>
+              <HomeNavItem href={"/network/findafriend"}>Support Search</HomeNavItem>
             </HomeNavSection>
             <HomeNavSection title="Tools" color={brand["/tools"]} src="tools">
               <HomeNavItem href={"/tools/recruit"}>Recruitment</HomeNavItem>
               <HomeNavItem href={"/tools/rateup"}>Headhunting</HomeNavItem>
               <HomeNavItem href={"/tools/level"}>Level Costs</HomeNavItem>
             </HomeNavSection>
-            <HomeNavSection
-              title="Community"
-              color={brand["/community"]}
-              src="community"
-            >
+            <HomeNavSection title="Community" color={brand["/community"]} src="community">
               <HomeNavItem
                 external
                 href="https://discord.gg/qx8hJGvTwc"
@@ -290,12 +217,7 @@ const Home: NextPage = () => {
                   backgroundColor: DISCORD_BLURPLE,
                 }}
               >
-                <Image
-                  src="/img/assets/discord.svg"
-                  width="20"
-                  height="15"
-                  alt=""
-                />
+                <Image src="/img/assets/discord.svg" width="20" height="15" alt="" />
                 Discord
               </HomeNavItem>
               <HomeNavItem
@@ -306,12 +228,7 @@ const Home: NextPage = () => {
                   backgroundColor: GITHUB_DARK,
                 }}
               >
-                <Image
-                  width="18"
-                  height="18"
-                  src="/img/assets/github-1.png"
-                  alt=""
-                />
+                <Image width="18" height="18" src="/img/assets/github-1.png" alt="" />
                 GitHub
               </HomeNavItem>
               <HomeNavItem
@@ -322,13 +239,7 @@ const Home: NextPage = () => {
                   backgroundColor: KOFI_BLUE,
                 }}
               >
-                <Image
-                  className="icon"
-                  width="24"
-                  height="16"
-                  src="/img/assets/ko-fi.png"
-                  alt="Ko-fi"
-                />
+                <Image className="icon" width="24" height="16" src="/img/assets/ko-fi.png" alt="Ko-fi" />
                 Donations
               </HomeNavItem>
             </HomeNavSection>

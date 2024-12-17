@@ -2,6 +2,7 @@ import config from "data/config";
 import Head from "./app/Head";
 import { Box, Typography } from "@mui/material";
 import Logo from "./app/Logo";
+import { server } from "util/server";
 
 interface Props {
   title: string;
@@ -11,7 +12,7 @@ const AuthLayout = (props: Props) => {
   return (
     <Head
       title="Krooster"
-      url={`${config.siteUrl}/register`}
+      url={`${server}/register`}
       description={config.siteDescription}
     >
       <Box

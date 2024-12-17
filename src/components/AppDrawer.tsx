@@ -1,14 +1,7 @@
-import {
-  ArrowRight,
-  Description,
-  ExpandLess,
-  ExpandMore,
-  PersonSearch,
-} from "@mui/icons-material";
+import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch } from "@mui/icons-material";
 import {
   Box,
   Button,
-  CircularProgress,
   Collapse,
   Divider,
   Drawer,
@@ -19,35 +12,24 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import config from "data/config";
 import DiscordInvite from "./app/DiscordInvite";
 import LoginForm from "./app/LoginDialog";
 import RegisterForm from "./app/RegisterDialog";
-import { useRouter } from "next/router";
 import Logo from "./app/Logo";
-import { UserContext } from "pages/_app";
-import {
-  useAccountGetQuery,
-  useAccountUpdateMutation,
-} from "store/extendAccount";
 import { interactive } from "styles/theme/appTheme";
-import randomName from "util/randomName";
 import JumpTo from "./base/JumpTo";
 import AccountWidget from "./app/AccountWidget";
 import findFirstFocusableElement from "util/findFirstFocusableElement";
+import useAccount from "util/hooks/useAccount";
+import Link from "./base/Link";
 
 const DRAWER_WIDTH_PX = 220;
 const ICON_BY_PATH = [
   <Description key="d" height="1.5rem" />,
   <PersonSearch key="c" height="1.5rem" />,
-  <svg
-    key="0"
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-  >
+  <svg key="0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
     <path
       fill="currentColor"
       d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2
@@ -96,30 +78,8 @@ const AppDrawer = React.memo((props: Props) => {
   const { tabs } = config;
   const { title: currentTab, pages, requireLogin: r1 } = tabs[tab];
   const { title: currentPage, requireLogin: r2 } = pages[page];
-  const requireLogin = r1 || r2;
-  const [trigger, out] = useAccountUpdateMutation();
 
-  const user = useContext(UserContext);
-  const [username, setUsername] = useState<string | null>();
-  const { data: accountData } = useAccountGetQuery();
-  useEffect(() => {
-    if (user && accountData) {
-      if (accountData.display_name) {
-        setUsername(accountData.display_name);
-      } else if (!accountData.display_name) {
-        const genName = randomName();
-        trigger({
-          user_id: user.id,
-          username: genName,
-          display_name: genName,
-          private: false,
-        });
-      }
-    }
-    if (!user && requireLogin) router.push("/");
-  }, [accountData]);
-
-  const router = useRouter();
+  const [account] = useAccount();
 
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
@@ -172,7 +132,7 @@ const AppDrawer = React.memo((props: Props) => {
           gap: "4px",
         }}
       >
-        {!user ? (
+        {!account && (
           <Box
             sx={{
               display: "grid",
@@ -184,10 +144,26 @@ const AppDrawer = React.memo((props: Props) => {
             <Button onClick={() => setLogin(true)}>Log In</Button>
             <Button onClick={() => setRegister(true)}>Register</Button>
           </Box>
-        ) : null}
+        )}
         <LoginForm open={login} onClose={() => setLogin(false)} />
         <RegisterForm open={register} onClose={() => setRegister(false)} />
-        {user ? <AccountWidget username={username} /> : null}
+        {account && <AccountWidget username={account.username} />}
+        {account && (
+          <Link
+            href="/import"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              backgroundColor: "primary.main",
+              color: "primary.contrastText",
+              borderRadius: "999px",
+              m: 1,
+              p: 1,
+            }}
+          >
+            Auto-Import (Yostar)
+          </Link>
+        )}
       </Box>
       <Divider />
       <List
@@ -213,57 +189,50 @@ const AppDrawer = React.memo((props: Props) => {
         {Object.entries(tabs)
           .filter(([_, { exclude }]) => !exclude)
           .map(([tabPath, { title: tabTitle, pages }], i: number) => (
-            <ListItemTab
-              key={i}
-              tabTitle={tabTitle}
-              startOpen={tabTitle === currentTab}
-              icon={ICON_BY_PATH[i]}
-            >
-              {Object.entries(pages).map(
-                ([pagePath, pg]: [string, ConfigPage]) => (
-                  <ListItem
-                    key={pg.title}
-                    disablePadding
+            <ListItemTab key={i} tabTitle={tabTitle} startOpen={tabTitle === currentTab} icon={ICON_BY_PATH[i]}>
+              {Object.entries(pages).map(([pagePath, pg]: [string, ConfigPage]) => (
+                <ListItem
+                  key={pg.title}
+                  disablePadding
+                  sx={{
+                    ...(currentPage === pg.title && {
+                      borderLeftWidth: "8px",
+                      borderLeftStyle: "solid",
+                      borderColor: "primary.main",
+                      fontWeight: "bold",
+                    }),
+                  }}
+                >
+                  <ListItemButton
+                    component="a"
+                    href={`${tabPath}${pagePath}`}
                     sx={{
-                      ...(currentPage === pg.title && {
-                        borderLeftWidth: "8px",
-                        borderLeftStyle: "solid",
-                        borderColor: "primary.main",
-                        fontWeight: "bold",
-                      }),
+                      p: 0,
+                      ...(currentPage === pg.title && interactive),
                     }}
                   >
-                    <ListItemButton
-                      component="a"
-                      href={`${tabPath}${pagePath}`}
+                    <ListItemIcon sx={{ minWidth: 0, pr: 1, pl: 3 }}>
+                      <ArrowRight height="1.5rem" />
+                    </ListItemIcon>
+                    <ListItemText
                       sx={{
-                        p: 0,
-                        ...(currentPage === pg.title && interactive),
+                        display: "block",
+                        width: "100%",
+                        px: 1,
+                        py: 2,
+                        m: 0,
                       }}
-                    >
-                      <ListItemIcon sx={{ minWidth: 0, pr: 1, pl: 3 }}>
-                        <ArrowRight height="1.5rem" />
-                      </ListItemIcon>
-                      <ListItemText
-                        sx={{
-                          display: "block",
-                          width: "100%",
-                          px: 1,
-                          py: 2,
-                          m: 0,
-                        }}
-                        primaryTypographyProps={{
-                          sx: {
-                            fontSize: "1rem",
-                            lineHeight: 1,
-                          },
-                        }}
-                        primary={pg.title}
-                      />
-                    </ListItemButton>
-                  </ListItem>
-                )
-              )}
+                      primaryTypographyProps={{
+                        sx: {
+                          fontSize: "1rem",
+                          lineHeight: 1,
+                        },
+                      }}
+                      primary={pg.title}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              ))}
             </ListItemTab>
           ))}
       </List>
