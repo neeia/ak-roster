@@ -29,6 +29,9 @@ const neutral = {
 };
 
 export const DISCORD_BLURPLE = "#5865F2";
+export const REDDIT_ORANGERED = "#FF4500";
+export const YOUTUBE_RED = "#FF0000";
+export const TWITCH_PURPLE = "#9146FF";
 export const GITHUB_LIGHT = "#FAFBFC";
 export const GITHUB_DARK = "#24292E";
 export const KOFI_BLUE = "#29ABE0";
