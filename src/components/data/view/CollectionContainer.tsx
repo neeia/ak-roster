@@ -1,5 +1,5 @@
 import React from "react";
-import { Operator, OperatorData, OpInfo } from "types/operators/operator";
+import { OpInfo } from "types/operators/operator";
 import classList from "data/classList";
 import { Box } from "@mui/material";
 import OperatorBlock from "./OperatorBlock";

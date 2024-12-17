@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import {
-  Box,
-  ButtonGroup,
-  IconButton,
-  InputAdornment,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, ButtonGroup, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import Layout from "components/Layout";
 import { ArrowBack, Search } from "@mui/icons-material";
 import { child, get, getDatabase, ref } from "firebase/database";
@@ -17,8 +10,8 @@ import { Operator } from "types/operators/operator";
 import SearchDialog from "components/data/collate/SearchDialog";
 import FilterDialog from "components/data/collate/FilterDialog";
 import SortDialog from "components/data/collate/SortDialog";
-import { useFilter, useSort } from "util/useSSF";
-import { repair } from "util/hooks/useOperators";
+import useSort from "util/hooks/useSort";
+import useFilter from "util/hooks/useFilter";
 import ProfileDialog from "components/lookup/ProfileDialog";
 import { AccountInfo } from "types/doctor";
 import { SocialInfo } from "types/social";
@@ -40,7 +33,6 @@ const Lookup: NextPage = () => {
           if (s2.exists()) {
             const v = s2.val();
 
-            repair(v.roster, setRoster);
             setDoctor(v.info);
             setSocial(v.connections);
           }
@@ -59,22 +51,13 @@ const Lookup: NextPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query.user]);
 
-  const [sortQueue, setSortQueue, sortFunctions, toggleSort, sortFunction] =
-    useSort([
-      { key: "Favorite", desc: true },
-      { key: "Level", desc: true },
-      { key: "Rarity", desc: true },
-    ]);
-  const [
-    ,
-    setSearchName,
-    filter,
-    addFilter,
-    removeFilter,
-    clearFilters,
-    filterFunction,
-  ] = useFilter({
-    owned: { owned: (op: Operator) => !!op },
+  const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort([
+    { key: "Favorite", desc: true },
+    { key: "Level", desc: true },
+    { key: "Rarity", desc: true },
+  ]);
+  const { filters, toggleFilter, clearFilters, filterFunction, setSearch } = useFilter({
+    OWNED: new Set([true]),
   });
 
   return (
@@ -98,14 +81,7 @@ const Lookup: NextPage = () => {
             <Typography variant="h5" sx={{ lineHeight: "1rem", mr: 1.5 }}>
               {doctor?.displayName ?? username}
             </Typography>
-            {doctor ? (
-              <ProfileDialog
-                roster={roster}
-                social={social}
-                user={doctor}
-                username={username}
-              />
-            ) : null}
+            {doctor ? <ProfileDialog roster={roster} social={social} user={doctor} username={username} /> : null}
           </>
         ) : null
       }
@@ -176,19 +152,9 @@ const Lookup: NextPage = () => {
               },
             }}
           >
-            <SortDialog
-              sortFns={sortFunctions}
-              sortQueue={sortQueue}
-              setSortQueue={setSortQueue}
-              toggleSort={toggleSort}
-            />
-            <FilterDialog
-              filter={filter}
-              addFilter={addFilter}
-              removeFilter={removeFilter}
-              clearFilters={clearFilters}
-            />
-            <SearchDialog setSearch={setSearchName} />
+            <SortDialog sortFns={sortFunctions} sortQueue={sorts} setSortQueue={setSorts} toggleSort={toggleSort} />
+            <FilterDialog filter={filters} toggleFilter={toggleFilter} clearFilters={clearFilters} />
+            <SearchDialog onChange={setSearch} />
           </ButtonGroup>
           <Box
             sx={{
@@ -198,11 +164,7 @@ const Lookup: NextPage = () => {
               gap: "12px 6px",
             }}
           >
-            <CollectionContainer
-              operators={roster}
-              sort={sortFunction}
-              filter={filterFunction}
-            />
+            <CollectionContainer roster={roster} sort={sortFunction} filter={filterFunction} />
           </Box>
         </Box>
       ) : null}

@@ -16,8 +16,9 @@ import { BadgeOutlined, Close, Reddit } from "@mui/icons-material";
 import { AccountInfo } from "types/doctor";
 import { SocialInfo } from "types/social";
 import { Operator } from "types/operators/operator";
-import OperatorBlock from "../view/OperatorBlock";
+import OperatorBlock from "../data/view/OperatorBlock";
 import Image from "next/image";
+import operatorJson from "data/operators";
 
 interface Props {
   roster: Record<string, Operator>;
@@ -89,12 +90,7 @@ const ProfileDialog = (props: Props) => {
                 marginBottom: "-72px",
               }}
             >
-              <Image
-                src={getImgSrc(user?.assistant)}
-                height={240}
-                width={240}
-                alt=""
-              />
+              <Image src={getImgSrc(user?.assistant)} height={240} width={240} alt="" />
             </Box>
           ) : null}
           <Typography
@@ -119,9 +115,8 @@ const ProfileDialog = (props: Props) => {
               flexDirection: { xs: "column", sm: "row" },
             }}
           >
-            {user?.server ?? "Server Unknown"} - {user?.friendCode?.username}#
-            {user?.friendCode?.tag ?? "Tag Unknown"} - Level{" "}
-            {user?.level ?? "Unknown"}
+            {user?.server ?? "Server Unknown"} - {user?.friendCode?.username}#{user?.friendCode?.tag ?? "Tag Unknown"} -
+            Level {user?.level ?? "Unknown"}
             <Box
               sx={{
                 marginLeft: { xs: "0px", sm: "auto" },
@@ -174,14 +169,7 @@ const ProfileDialog = (props: Props) => {
                   if (!s || !s.opID) return null;
                   if (!s.opSkill) s.opSkill = 0;
                   const op = roster[s.opID];
-                  return (
-                    <OperatorBlock
-                      key={op.op_id}
-                      op={op}
-                      nobg
-                      skill={s.opSkill}
-                    />
-                  );
+                  return <OperatorBlock key={op.op_id} op={{ ...op, ...operatorJson[s.opID] }} />;
                 })}
               </Box>
             </Box>
@@ -199,19 +187,11 @@ const ProfileDialog = (props: Props) => {
                   pl: 1,
                 }}
               >
-                <Image
-                  src="/img/ext/icon_clyde_white_RGB.svg"
-                  width={24}
-                  height={24}
-                  alt="Discord"
-                />
+                <Image src="/img/ext/icon_clyde_white_RGB.svg" width={24} height={24} alt="Discord" />
                 {social?.discord?.username}#{social?.discord?.tag}
                 <Reddit />{" "}
                 {social && social.reddit && (
-                  <Link
-                    href={`https://reddit.com/u/${social.reddit}`}
-                    rel="noreferrer"
-                  >
+                  <Link href={`https://reddit.com/u/${social.reddit}`} rel="noreferrer">
                     {social.reddit}
                   </Link>
                 )}
