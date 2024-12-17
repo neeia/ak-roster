@@ -16,7 +16,7 @@ const EditOperator = dynamic(() => import("components/data/input/EditOperator"),
 const CollectionContainer = dynamic(() => import("components/data/view/CollectionContainer"), { ssr: false });
 const View: NextPage = () => {
   const [roster, , onChange] = useOperators();
-  const [opId, setOpId] = useState("");
+  const [opId, setOpId] = useState("char_002_amiya");
   const [editOpen, setEditOpen] = useState(false);
 
   const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort([
@@ -47,20 +47,23 @@ const View: NextPage = () => {
         <ButtonGroup
           sx={{
             display: "grid",
-            gridTemplateRows: { xs: "1fr", sm: "repeat(3, auto)" },
-            gridTemplateColumns: { xs: "repeat(3, 1fr)", sm: "1fr" },
+            gridTemplateRows: { xs: "1fr", sm: "repeat(4, auto)" },
+            gridTemplateColumns: { xs: "repeat(4, 1fr)", sm: "1fr" },
             position: "sticky",
             top: 64,
             zIndex: 10,
             gap: 1,
+            p: 1,
             "& .MuiIconButton-root": {
-              height: "min-content",
+              aspectRatio: { sm: "1 / 1" },
+              borderRadius: "4px",
+              p: "4px",
             },
             "& .MuiSvgIcon-root": {
               height: { xs: "1.5rem", sm: "2.5rem" },
             },
             height: "min-content",
-            backgroundColor: { xs: "background.light", sm: "transparent" },
+            backgroundColor: { xs: "background.light", sm: "background.paper" },
             boxShadow: {
               xs: 1,
               sm: 0,
@@ -79,7 +82,7 @@ const View: NextPage = () => {
             >
               <ModeEdit fontSize="large" color="primary" />
               <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
-                Edit Mode
+                Edit
               </Typography>
             </IconButton>
           </Tooltip>
@@ -89,7 +92,16 @@ const View: NextPage = () => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: { xs: "center", sm: "left" },
-            gap: "12px 6px",
+            gap: "8px 6px",
+            "& .unowned": {
+              opacity: 0.75,
+            },
+            "& .unowned img": {
+              opacity: 0.5,
+            },
+            "& .hidden": {
+              display: "none",
+            },
           }}
         >
           <CollectionContainer

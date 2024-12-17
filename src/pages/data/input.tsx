@@ -8,7 +8,6 @@ import FilterDialog from "components/data/collate/FilterDialog";
 import SortDialog from "components/data/collate/SortDialog";
 import useSort from "util/hooks/useSort";
 import useFilter from "util/hooks/useFilter";
-import { Operator } from "types/operators/operator";
 import useOperators from "util/hooks/useOperators";
 import { defaultOperatorObject } from "util/changeOperator";
 
@@ -18,7 +17,7 @@ const OperatorSelector = dynamic(() => import("components/data/input/OperatorSel
 const Input: NextPage = () => {
   const [roster, , onChange] = useOperators();
 
-  const [opId, setOpId] = React.useState<string>("char_002_amiya");
+  const [opId, setOpId] = React.useState("char_002_amiya");
   const [editOpen, setEditOpen] = React.useState(false);
 
   const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort([{ key: "Rarity", desc: true }]);
@@ -47,14 +46,17 @@ const Input: NextPage = () => {
             top: 64,
             zIndex: 10,
             gap: 1,
+            p: 1,
             "& .MuiIconButton-root": {
-              height: "min-content",
+              aspectRatio: { sm: "1 / 1" },
+              borderRadius: "4px",
+              p: "4px",
             },
             "& .MuiSvgIcon-root": {
               height: { xs: "1.5rem", sm: "2.5rem" },
             },
             height: "min-content",
-            backgroundColor: { xs: "background.light", sm: "transparent" },
+            backgroundColor: { xs: "background.light", sm: "background.paper" },
             boxShadow: {
               xs: 1,
               sm: 0,
