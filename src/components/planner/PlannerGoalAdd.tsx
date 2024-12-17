@@ -598,7 +598,6 @@ const PlannerGoalAdd = (props: Props) => {
               <FormControl sx={{ flexGrow: 1 }}>
                 <InputLabel>Goal Group</InputLabel>
                 <Select
-                  variant={"standard"}
                   value={selectedGroup}
                   onChange={onGroupChange}
                   label={"Goal Group"}

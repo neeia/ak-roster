@@ -38,6 +38,9 @@ const CollectionContainer = (props: Props) => {
             <Box
               component="li"
               key={op.op_id}
+              className={clsx({
+                hidden: !filter(op),
+              })}
               sx={{
                 display: "contents",
               }}
@@ -47,7 +50,6 @@ const CollectionContainer = (props: Props) => {
                   op={op}
                   className={clsx({
                     unowned: !op.potential,
-                    hidden: !filter(op),
                     favorite: op.favorite,
                   })}
                 />

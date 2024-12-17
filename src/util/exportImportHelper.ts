@@ -1,11 +1,11 @@
 import itemsJson from "data/items.json";
 import itemNameToIdJson from "data/item-name-to-id.json";
 import getGoalIngredients from "./getGoalIngredients";
-import { Ingredient, Item } from "../types/item";
+import { Ingredient, Item } from "types/item";
 import { wrap } from "comlink";
 import { MaterialWorker } from "./getMaterialFromImage";
 import GoalData, { getPlannerGoals } from "../types/goalData";
-import DepotItem from "../types/depotItem";
+import DepotItem from "types/depotItem";
 
 export const SUPPORTED_EXPORT_TYPES: DataShareInfo[] = [
   {

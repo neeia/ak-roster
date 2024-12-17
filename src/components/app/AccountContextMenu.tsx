@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Divider,
-  IconButton,
-  Menu,
-  MenuItem,
-  IconButtonProps,
-} from "@mui/material";
+import { Divider, IconButton, Menu, MenuItem, IconButtonProps } from "@mui/material";
 import supabase from "supabase/supabaseClient";
 import { Settings } from "@mui/icons-material";
 import { DISCORD_BLURPLE } from "styles/theme/appTheme";
+import Link from "components/base/Link";
 
 interface Props extends IconButtonProps {
   changeUsername?: () => void;
@@ -76,14 +70,12 @@ const AccountContextMenu = (props: Props) => {
           horizontal: "right",
         }}
       >
-        <MenuItem>Account Settings</MenuItem>
+        <MenuItem>
+          <Link href="/account/settings">Account Settings</Link>
+        </MenuItem>
         <MenuItem>Resync Data</MenuItem>
-        {changeUsername && (
-          <MenuItem onClick={changeUsername}>Change Display Name</MenuItem>
-        )}
-        {showDiscord ? (
-          <MenuItem onClick={linkDiscord}>Link Discord</MenuItem>
-        ) : null}
+        {changeUsername && <MenuItem onClick={changeUsername}>Change Display Name</MenuItem>}
+        {showDiscord ? <MenuItem onClick={linkDiscord}>Link Discord</MenuItem> : null}
         <Divider component="li"></Divider>
         <MenuItem onClick={signOut}>Sign Out</MenuItem>
       </Menu>

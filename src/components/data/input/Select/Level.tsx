@@ -30,7 +30,6 @@ const Level = memo((props: Props) => {
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
-    console.log(e.key);
     switch (e.key) {
       case "ArrowUp":
         e.preventDefault;

@@ -26,46 +26,32 @@ const operators = Object.values(operatorsJson)
   .filter((op) => op.rarity >= 3)
   .sort((a, b) => a.name.localeCompare(b.name));
 
-const operatorNormalizedNames = Object.fromEntries(
-  operators.map((op) => [op.name, normalizeOperatorName(op.name)])
-);
+const operatorNormalizedNames = Object.fromEntries(operators.map((op) => [op.name, normalizeOperatorName(op.name)]));
 
 interface Props
   extends Omit<
-    SomePartial<
-      AutocompleteProps<OperatorData, false, false, false>,
-      "renderInput"
-    >,
+    SomePartial<AutocompleteProps<OperatorData, false, false, false>, "renderInput">,
     "onChange" | "options"
   > {
   value: OperatorData | null;
   onChange: (value: OperatorData | null) => void;
+  filter?: (value: OperatorData) => boolean;
 }
 
 const OperatorSearch = (props: Props) => {
-  const { value, onChange, sx, ...rest } = props;
+  const { value, onChange, filter = () => true, sx, ...rest } = props;
 
-  const filterOptions = useCallback(
-    (
-      operators: OperatorData[],
-      { inputValue }: FilterOptionsState<OperatorData>
-    ) => {
-      const normalizedInput = normalizeOperatorName(inputValue);
-      return operators.filter((op) =>
-        operatorNormalizedNames[op.name].includes(normalizedInput)
-      );
-    },
-    []
-  );
+  const filterOptions = useCallback((operators: OperatorData[], { inputValue }: FilterOptionsState<OperatorData>) => {
+    const normalizedInput = normalizeOperatorName(inputValue);
+    return operators.filter((op) => operatorNormalizedNames[op.name].includes(normalizedInput) && filter(op));
+  }, []);
 
   return (
     <Autocomplete<OperatorData>
       value={value}
       autoComplete
       autoHighlight
-      onChange={(_: unknown, newValue: OperatorData | null) =>
-        onChange(newValue)
-      }
+      onChange={(_: unknown, newValue: OperatorData | null) => onChange(newValue)}
       PopperComponent={StyledPopper}
       ListboxComponent={ListboxComponent}
       options={operators}
@@ -135,10 +121,7 @@ const LISTBOX_PADDING = 8; // px
 
 function renderRow(props: ListChildComponentProps) {
   const { data, index, style } = props;
-  const [_props, opData] = data[index] as [
-    React.HTMLAttributes<HTMLLIElement> & { key: any },
-    OperatorData
-  ];
+  const [_props, opData] = data[index] as [React.HTMLAttributes<HTMLLIElement> & { key: any }, OperatorData];
   const inlineStyle = {
     ...style,
     top: (style.top as number) + LISTBOX_PADDING,
@@ -149,13 +132,7 @@ function renderRow(props: ListChildComponentProps) {
   return (
     <Typography component="li" key={key} {...rest} noWrap style={inlineStyle}>
       <Box mr={2} display="inline-flex" alignItems="center">
-        <Image
-          src={`/img/avatars/${opData.id}.png`}
-          width={32}
-          height={32}
-          alt=""
-          className="operator-avatar"
-        />
+        <Image src={`/img/avatars/${opData.id}.png`} width={32} height={32} alt="" className="operator-avatar" />
       </Box>
       {opData.name}
     </Typography>
@@ -181,18 +158,16 @@ function useResetCache(data: any) {
 }
 
 // Adapter for react-window
-const ListboxComponent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLElement>
->(function ListboxComponent(props, ref) {
+const ListboxComponent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLElement>>(function ListboxComponent(
+  props,
+  ref
+) {
   const { children, ...other } = props;
   const itemData: React.ReactNode[] = [];
-  (children as React.ReactElement[]).forEach(
-    (item: React.ReactElement & { children?: React.ReactElement[] }) => {
-      itemData.push(item);
-      itemData.push(...(item.children || []));
-    }
-  );
+  (children as React.ReactElement[]).forEach((item: React.ReactElement & { children?: React.ReactElement[] }) => {
+    itemData.push(item);
+    itemData.push(...(item.children || []));
+  });
 
   const itemCount = itemData.length;
   const itemSize = 44;
