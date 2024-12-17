@@ -32,7 +32,7 @@ const config: SiteCfg = {
           description: "Find other users.",
         },
         "/support": {
-          title: "Support Search",
+          title: "Unit Finder",
           description: "Find support units to add as friends.",
         },
       },
