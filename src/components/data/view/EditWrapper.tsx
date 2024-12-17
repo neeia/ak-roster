@@ -12,29 +12,29 @@ const EditWrapper = React.memo((props: Props) => {
   const { editMode, children, onClick } = props;
 
   return (
-    <Box sx={{ display: "grid", "& > *": { gridArea: "1 / 1" } }}>
+    <Box sx={{ display: "grid", height: "min-content", "& > *": { gridArea: "1 / 1" } }}>
       <Button
         sx={{
-          display: editMode ? "" : "none",
+          display: editMode ? "flex" : "none",
           pointerEvents: editMode ? "" : "none",
-          justifySelf: "center",
-          alignSelf: "center",
           borderRadius: "4px",
+          flexDirection: "column",
           width: "100%",
           height: "100%",
           zIndex: 10,
           opacity: 0,
           position: "relative",
+          transition: "opacity 0.1s",
           ":hover": {
             opacity: 1,
           },
           ":before": {
             position: "absolute",
+            borderRadius: "4px",
             content: '""',
             width: "100%",
             height: "100%",
-            opacity: 0.8,
-            backgroundColor: "background.default",
+            backgroundColor: "background.light",
             zIndex: -1,
           },
         }}
