@@ -332,6 +332,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -885,6 +899,17 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1011,6 +1036,18 @@
           "Defense",
           "Melee",
           "Defender",
+          "Robot"
+        ]
+      },
+      {
+        "id": "char_4136_phonor",
+        "name": "PhonoR-0",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Elemental",
+          "Ranged",
+          "Supporter",
           "Robot"
         ]
       }
@@ -1503,6 +1540,16 @@
         ]
       },
       {
+        "id": "char_381_bubble",
+        "name": "Bubble",
+        "rarity": 4,
+        "tags": [
+          "Defense",
+          "Melee",
+          "Defender"
+        ]
+      },
+      {
         "id": "char_123_fang",
         "name": "Fang",
         "rarity": 3,
@@ -1918,6 +1965,17 @@
         ]
       },
       {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_385_finlpp",
         "name": "Purestream",
         "rarity": 4,
@@ -2230,6 +2288,18 @@
           "Sniper",
           "Robot"
         ]
+      },
+      {
+        "id": "char_4136_phonor",
+        "name": "PhonoR-0",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Elemental",
+          "Ranged",
+          "Supporter",
+          "Robot"
+        ]
       }
     ],
     "guarantees": []
@@ -2478,6 +2548,16 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender"
+        ]
+      },
+      {
+        "id": "char_381_bubble",
+        "name": "Bubble",
+        "rarity": 4,
+        "tags": [
+          "Defense",
           "Melee",
           "Defender"
         ]
@@ -2995,6 +3075,17 @@
         ]
       },
       {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_235_jesica",
         "name": "Jessica",
         "rarity": 4,
@@ -3353,6 +3444,18 @@
           "Ranged",
           "Supporter"
         ]
+      },
+      {
+        "id": "char_4136_phonor",
+        "name": "PhonoR-0",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Elemental",
+          "Ranged",
+          "Supporter",
+          "Robot"
+        ]
       }
     ],
     "guarantees": []
@@ -3596,6 +3699,17 @@
           "Defense",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       },
@@ -4640,6 +4754,16 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender"
+        ]
+      },
+      {
+        "id": "char_381_bubble",
+        "name": "Bubble",
+        "rarity": 4,
+        "tags": [
+          "Defense",
           "Melee",
           "Defender"
         ]
@@ -5842,6 +5966,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6035,6 +6173,20 @@
           "DPS",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
           "Top Operator",
           "Senior Operator"
         ]
@@ -6291,6 +6443,20 @@
           "DPS",
           "Survival",
           "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
           "Melee",
           "Defender",
           "Top Operator",
@@ -7037,6 +7203,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7126,6 +7306,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7197,6 +7391,20 @@
           "Defense",
           "Healing",
           "Support",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
           "Melee",
           "Defender",
           "Top Operator",
@@ -8038,6 +8246,17 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8446,6 +8665,17 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8773,6 +9003,17 @@
           "Defense",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       }
@@ -10050,6 +10291,18 @@
           "Sniper",
           "Robot"
         ]
+      },
+      {
+        "id": "char_4136_phonor",
+        "name": "PhonoR-0",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Elemental",
+          "Ranged",
+          "Supporter",
+          "Robot"
+        ]
       }
     ],
     "guarantees": [
@@ -10163,6 +10416,29 @@
           "Nuker",
           "Melee",
           "Specialist",
+          "Robot"
+        ]
+      }
+    ],
+    "guarantees": [
+      1
+    ]
+  },
+  "Robot,Supporter": {
+    "tags": [
+      "Robot",
+      "Supporter"
+    ],
+    "operators": [
+      {
+        "id": "char_4136_phonor",
+        "name": "PhonoR-0",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Elemental",
+          "Ranged",
+          "Supporter",
           "Robot"
         ]
       }
@@ -10381,6 +10657,16 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender"
+        ]
+      },
+      {
+        "id": "char_381_bubble",
+        "name": "Bubble",
+        "rarity": 4,
+        "tags": [
+          "Defense",
           "Melee",
           "Defender"
         ]
@@ -11626,6 +11912,16 @@
         ]
       },
       {
+        "id": "char_381_bubble",
+        "name": "Bubble",
+        "rarity": 4,
+        "tags": [
+          "Defense",
+          "Melee",
+          "Defender"
+        ]
+      },
+      {
         "id": "char_122_beagle",
         "name": "Beagle",
         "rarity": 3,
@@ -12492,6 +12788,17 @@
         ]
       },
       {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_235_jesica",
         "name": "Jessica",
         "rarity": 4,
@@ -12727,6 +13034,18 @@
           "Ranged",
           "Supporter"
         ]
+      },
+      {
+        "id": "char_4136_phonor",
+        "name": "PhonoR-0",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Elemental",
+          "Ranged",
+          "Supporter",
+          "Robot"
+        ]
       }
     ],
     "guarantees": []
@@ -12793,6 +13112,17 @@
           "Defense",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       },
@@ -14112,6 +14442,16 @@
         ]
       },
       {
+        "id": "char_381_bubble",
+        "name": "Bubble",
+        "rarity": 4,
+        "tags": [
+          "Defense",
+          "Melee",
+          "Defender"
+        ]
+      },
+      {
         "id": "char_122_beagle",
         "name": "Beagle",
         "rarity": 3,
@@ -14902,6 +15242,17 @@
         "tags": [
           "AoE",
           "Debuff",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
           "Ranged",
           "Sniper",
           "Senior Operator"
@@ -17388,6 +17739,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -17644,6 +18009,20 @@
           "DPS",
           "Survival",
           "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
           "Melee",
           "Defender",
           "Top Operator",
@@ -18400,6 +18779,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18491,6 +18884,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18564,6 +18971,20 @@
           "Defense",
           "Healing",
           "Support",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
           "Melee",
           "Defender",
           "Top Operator",
@@ -18893,6 +19314,20 @@
           "DPS",
           "Survival",
           "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
           "Melee",
           "Defender",
           "Top Operator",
@@ -19339,6 +19774,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19405,6 +19854,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19452,6 +19915,20 @@
           "Defense",
           "Healing",
           "Support",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
           "Melee",
           "Defender",
           "Top Operator",
@@ -20399,6 +20876,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20452,6 +20943,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20473,6 +20978,20 @@
           "Defense",
           "Healing",
           "Support",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
           "Melee",
           "Defender",
           "Top Operator",
@@ -21585,6 +22104,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -21608,6 +22141,32 @@
           "DPS",
           "Melee",
           "Specialist",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "DPS,Healing,Top Operator": {
+    "tags": [
+      "DPS",
+      "Healing",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
           "Top Operator",
           "Senior Operator"
         ]
@@ -21854,6 +22413,20 @@
           "Defense",
           "Healing",
           "Support",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_423_blemsh",
+        "name": "Blemishine",
+        "rarity": 6,
+        "tags": [
+          "Defense",
+          "Healing",
+          "DPS",
           "Melee",
           "Defender",
           "Top Operator",
@@ -23258,6 +23831,17 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -23409,6 +23993,17 @@
           "Defense",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       }
@@ -24639,6 +25234,17 @@
         "tags": [
           "AoE",
           "Debuff",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
           "Ranged",
           "Sniper",
           "Senior Operator"
@@ -26466,6 +27072,30 @@
       1
     ]
   },
+  "Ranged,Robot,Supporter": {
+    "tags": [
+      "Ranged",
+      "Robot",
+      "Supporter"
+    ],
+    "operators": [
+      {
+        "id": "char_4136_phonor",
+        "name": "PhonoR-0",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Elemental",
+          "Ranged",
+          "Supporter",
+          "Robot"
+        ]
+      }
+    ],
+    "guarantees": [
+      1
+    ]
+  },
   "Healing,Ranged,Robot": {
     "tags": [
       "Healing",
@@ -26790,6 +27420,16 @@
         "tags": [
           "Defense",
           "Healing",
+          "Melee",
+          "Defender"
+        ]
+      },
+      {
+        "id": "char_381_bubble",
+        "name": "Bubble",
+        "rarity": 4,
+        "tags": [
+          "Defense",
           "Melee",
           "Defender"
         ]
@@ -29171,6 +29811,17 @@
         "tags": [
           "AoE",
           "Debuff",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_346_aosta",
+        "name": "Aosta",
+        "rarity": 5,
+        "tags": [
+          "AoE",
           "Ranged",
           "Sniper",
           "Senior Operator"
