@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
-import { enqueueSnackbar } from "notistack";
 import { OperatorSupport } from "types/operators/supports";
+import handlePostgrestError from "util/fns/handlePostgrestError";
 
 function useSupports() {
   const [supports, _setSupport] = useState<OperatorSupport[]>([]);
@@ -15,12 +15,7 @@ function useSupports() {
       _setSupport(_supports);
 
       const { error } = await supabase.from("supports").upsert(newSupport);
-
-      if (error)
-        enqueueSnackbar({
-          message: `DB${error.code}: ${error.message}`,
-          variant: "error",
-        });
+      handlePostgrestError(error);
     },
     [supports]
   );
@@ -31,12 +26,7 @@ function useSupports() {
       _setSupport(supportsCopy);
 
       const { error } = await supabase.from("supports").delete().eq("slot", slot);
-
-      if (error)
-        enqueueSnackbar({
-          message: `DB${error.code}: ${error.message}`,
-          variant: "error",
-        });
+      handlePostgrestError(error);
     },
     [supports]
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { OpInfo } from "types/operators/operator";
 import classList from "data/classList";
 import { Box } from "@mui/material";
-import OperatorBlock from "./OperatorBlock";
+import OperatorBlock from "../OperatorBlock";
 import EditWrapper from "./EditWrapper";
 import operatorJson from "data/operators";
 import { defaultOperatorObject } from "util/changeOperator";

@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
-import { Box, ButtonGroup } from "@mui/material";
+import { Box } from "@mui/material";
 import Layout from "components/Layout";
 import SearchDialog from "components/data/collate/SearchDialog";
 import FilterDialog from "components/data/collate/FilterDialog";
@@ -10,6 +10,7 @@ import useSort from "util/hooks/useSort";
 import useFilter from "util/hooks/useFilter";
 import useOperators from "util/hooks/useOperators";
 import { defaultOperatorObject } from "util/changeOperator";
+import Toolbar from "components/data/Toolbar";
 
 const EditOperator = dynamic(() => import("components/data/input/EditOperator"), { ssr: false });
 const OperatorSelector = dynamic(() => import("components/data/input/OperatorSelector"), { ssr: false });
@@ -37,36 +38,11 @@ const Input: NextPage = () => {
           gap: 2,
         }}
       >
-        <ButtonGroup
-          sx={{
-            display: "grid",
-            gridTemplateRows: { xs: "1fr", sm: "repeat(3, auto)" },
-            gridTemplateColumns: { xs: "repeat(3, 1fr)", sm: "1fr" },
-            position: "sticky",
-            top: 64,
-            zIndex: 10,
-            gap: 1,
-            p: 1,
-            "& .MuiIconButton-root": {
-              aspectRatio: { sm: "1 / 1" },
-              borderRadius: "4px",
-              p: "4px",
-            },
-            "& .MuiSvgIcon-root": {
-              height: { xs: "1.5rem", sm: "2.5rem" },
-            },
-            height: "min-content",
-            backgroundColor: { xs: "background.light", sm: "background.paper" },
-            boxShadow: {
-              xs: 1,
-              sm: 0,
-            },
-          }}
-        >
+        <Toolbar>
           <SortDialog sortFns={sortFunctions} sortQueue={sorts} setSortQueue={setSorts} toggleSort={toggleSort} />
           <FilterDialog filter={filters} toggleFilter={toggleFilter} clearFilters={clearFilters} />
           <SearchDialog onChange={setSearch} />
-        </ButtonGroup>
+        </Toolbar>
         <Box
           sx={{
             width: "100%",

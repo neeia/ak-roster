@@ -85,10 +85,10 @@ export interface StatusData {
 }
 
 export interface RosterData {
-  chars: { [id: string]: CharachterData | undefined };
+  chars: { [id: string]: CharacterData | undefined };
 }
 
-export interface CharachterData {
+export interface CharacterData {
   //id for operator, based on the order of acquisition.
   instId: number;
   charId: string;

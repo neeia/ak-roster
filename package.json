@@ -31,6 +31,7 @@
     "@vercel/analytics": "^0.1.11",
     "comlink": "^4.4.2",
     "firebase": "^9.22.0",
+    "html2canvas": "^1.4.1",
     "js-combinatorics": "^2.1.1",
     "lodash": "^4.17.21",
     "next": "^13.2.4",

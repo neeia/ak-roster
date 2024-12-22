@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
-import GoalData, { GoalDataInsert } from "../../types/goalData";
-import { enqueueSnackbar } from "notistack";
+import GoalData, { GoalDataInsert } from "types/goalData";
+import handlePostgrestError from "util/fns/handlePostgrestError";
 
 function useGoals() {
   const [goals, _setGoals] = useState<GoalData[]>([]);
@@ -23,12 +23,7 @@ function useGoals() {
       _setGoals(goalsCopy);
 
       const { error } = await supabase.from("goals").upsert(goalsData);
-
-      if (error)
-        enqueueSnackbar({
-          message: `DB${error.code}: ${error.message}`,
-          variant: "error",
-        });
+      handlePostgrestError(error);
     },
     [goals]
   );
@@ -37,12 +32,7 @@ function useGoals() {
     _setGoals([]);
 
     const { error } = await supabase.from("goals").delete();
-
-    if (error)
-      enqueueSnackbar({
-        message: `DB${error.code}: ${error.message}`,
-        variant: "error",
-      });
+    handlePostgrestError(error);
   }, []);
 
   const removeAllGoalsFromGroup = useCallback(
@@ -51,12 +41,7 @@ function useGoals() {
       _setGoals(filteredArray);
 
       const { error } = await supabase.from("goals").delete().eq("group_name", groupName);
-
-      if (error)
-        enqueueSnackbar({
-          message: `DB${error.code}: ${error.message}`,
-          variant: "error",
-        });
+      handlePostgrestError(error);
     },
     [goals]
   );
@@ -67,12 +52,7 @@ function useGoals() {
       _setGoals(filteredArray);
 
       const { error } = await supabase.from("goals").delete().eq("op_id", opId).eq("group_name", groupName);
-
-      if (error)
-        enqueueSnackbar({
-          message: `DB${error.code}: ${error.message}`,
-          variant: "error",
-        });
+      handlePostgrestError(error);
     },
     [goals]
   );

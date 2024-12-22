@@ -11,6 +11,7 @@ import useSort from "util/hooks/useSort";
 import useFilter from "util/hooks/useFilter";
 import useOperators from "util/hooks/useOperators";
 import { defaultOperatorObject } from "util/changeOperator";
+import Toolbar from "components/data/Toolbar";
 
 const EditOperator = dynamic(() => import("components/data/input/EditOperator"), { ssr: false });
 const CollectionContainer = dynamic(() => import("components/data/view/CollectionContainer"), { ssr: false });
@@ -44,32 +45,7 @@ const View: NextPage = () => {
           gap: 2,
         }}
       >
-        <ButtonGroup
-          sx={{
-            display: "grid",
-            gridTemplateRows: { xs: "1fr", sm: "repeat(4, auto)" },
-            gridTemplateColumns: { xs: "repeat(4, 1fr)", sm: "1fr" },
-            position: "sticky",
-            top: 64,
-            zIndex: 10,
-            gap: 1,
-            p: 1,
-            "& .MuiIconButton-root": {
-              aspectRatio: { sm: "1 / 1" },
-              borderRadius: "4px",
-              p: "4px",
-            },
-            "& .MuiSvgIcon-root": {
-              height: { xs: "1.5rem", sm: "2.5rem" },
-            },
-            height: "min-content",
-            backgroundColor: { xs: "background.light", sm: "background.paper" },
-            boxShadow: {
-              xs: 1,
-              sm: 0,
-            },
-          }}
-        >
+        <Toolbar>
           <SortDialog sortFns={sortFunctions} sortQueue={sorts} setSortQueue={setSorts} toggleSort={toggleSort} />
           <FilterDialog filter={filters} toggleFilter={toggleFilter} clearFilters={clearFilters} />
           <SearchDialog onChange={setSearch} />
@@ -86,7 +62,7 @@ const View: NextPage = () => {
               </Typography>
             </IconButton>
           </Tooltip>
-        </ButtonGroup>
+        </Toolbar>
         <Box
           sx={{
             display: "flex",

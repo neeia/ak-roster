@@ -1,19 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
-import { GroupsDataInsert } from "../../types/groupData";
-import { enqueueSnackbar } from "notistack";
+import { GroupsDataInsert } from "types/groupData";
+import handlePostgrestError from "util/fns/handlePostgrestError";
 
 function useGoalGroups() {
   const [groups, _setGroups] = useState<string[]>([]);
 
   const setGroups = useCallback(async (goalGroupInsert: GroupsDataInsert[]) => {
     const { error } = await supabase.from("groups").upsert(goalGroupInsert);
-
-    if (error)
-      enqueueSnackbar({
-        message: `DB${error.code}: ${error.message}`,
-        variant: "error",
-      });
+    handlePostgrestError(error);
 
     const { data } = await supabase.from("groups").select("group_name, sort_order");
 
@@ -30,12 +25,7 @@ function useGoalGroups() {
       _setGroups(groupsCopy);
 
       const { error } = await supabase.from("groups").delete().eq("group_name", groupName);
-
-      if (error)
-        enqueueSnackbar({
-          message: `DB${error.code}: ${error.message}`,
-          variant: "error",
-        });
+      handlePostgrestError(error);
     },
     [groups]
   );

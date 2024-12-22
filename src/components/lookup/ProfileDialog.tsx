@@ -1,206 +1,278 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
+  alpha,
   Box,
   Button,
   Dialog,
   DialogContent,
-  DialogTitle,
-  Divider,
-  IconButton,
-  Link,
+  DialogProps,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { BadgeOutlined, Close, Reddit } from "@mui/icons-material";
-import { AccountInfo } from "types/doctor";
-import { SocialInfo } from "types/social";
-import { Operator } from "types/operators/operator";
-import OperatorBlock from "../data/view/OperatorBlock";
+import { Close, IosShare, Reddit } from "@mui/icons-material";
+import OperatorBlock from "../data/SupportBlock";
 import Image from "next/image";
 import operatorJson from "data/operators";
+import { LookupData } from "util/hooks/useLookup";
+import getAvatarFull from "util/fns/getAvatarFull";
+import html2canvas from "html2canvas";
+import ShareDialog from "./ShareDialog";
+import { enqueueSnackbar } from "notistack";
 
-interface Props {
-  roster: Record<string, Operator>;
-  user?: AccountInfo;
-  social?: SocialInfo;
-  username?: string;
+interface Props extends DialogProps {
+  data?: LookupData;
+  onClose: () => void;
 }
 
 const ProfileDialog = (props: Props) => {
-  const { roster, user, social, username } = props;
+  const { data, onClose, ...rest } = props;
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
-  if (user && user.supports && !Array.isArray(user.supports)) {
-    user.supports = Object.values(user.supports);
-  }
-  const getImgSrc = (opId: string) => {
-    const op = roster[opId];
-    let intermediate = opId;
-    if (op.elite === 2) {
-      intermediate += "_2";
-    } else if (op.elite === 1 && op.op_id === "char_002_amiya") {
-      intermediate += "_1";
-    }
-    return `/img/avatars/${op.skin ?? intermediate}.png`;
+  const [saving, setSaving] = React.useState(false);
+
+  const ssTarget = useRef<HTMLDivElement>();
+  const shareAnchor = useRef<HTMLButtonElement | null>(null);
+
+  const downloadImage = async () => {
+    if (!ssTarget.current || !data) return;
+
+    ssTarget.current.classList.add("screenshot");
+    const canvas = await html2canvas(ssTarget.current);
+    const canvasUrl = canvas.toDataURL();
+    const link = document.createElement("a");
+
+    link.href = canvasUrl;
+    link.download = `${data.account.username}.png`;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    ssTarget.current.classList.remove("screenshot");
   };
 
+  useEffect(() => {
+    if (!saving) return;
+
+    downloadImage().then(() => setSaving(false));
+  }, [saving]);
+
+  const handleImageDownload = async () => {
+    setSaving(true);
+  };
+
+  const copyLink = React.useCallback(() => {
+    if (!data) return;
+    const link = `${window.location.origin}/u/${data.account.username}`;
+    navigator.clipboard.writeText(link).then(() => {
+      enqueueSnackbar("Copied link to clipboard", { variant: "success" });
+    });
+  }, [data]);
+
   const [open, setOpen] = React.useState(false);
+  const openShare = React.useCallback(() => {
+    setOpen(true);
+  }, []);
+
+  const closeShare = React.useCallback(() => {
+    setOpen(false);
+  }, []);
+
   return (
-    <>
-      <Button
-        onClick={() => {
-          setOpen(true);
-        }}
-        aria-label="Filter"
-      >
-        <BadgeOutlined sx={{ color: "background.paper", mr: 1 }} />
-        <Typography variant="h6" textTransform="none" color="background.paper">
-          Open Profile
-        </Typography>
-      </Button>
-      <Dialog
-        open={open}
-        onClose={() => setOpen(false)}
-        fullScreen={fullScreen}
-        keepMounted
-        fullWidth
-        maxWidth="sm"
-        PaperProps={{
-          sx: {
-            overflow: "visible",
-            maxHeight: "75%",
-            alignSelf: { xs: "end", sm: "inherit" },
+    <Dialog
+      onClose={onClose}
+      fullScreen={fullScreen}
+      keepMounted
+      fullWidth
+      maxWidth="sm"
+      PaperProps={{
+        sx: {
+          background: "none",
+          margin: 0,
+          overflow: "hidden",
+        },
+      }}
+      sx={{
+        width: "100%",
+        alignSelf: { xs: "end", sm: "inherit" },
+      }}
+      {...rest}
+    >
+      <DialogContent
+        ref={ssTarget}
+        id="profile-content"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          backgroundColor: alpha(theme.palette.background.paper, 0.25),
+          backdropFilter: "blur(24px) grayscale(50%)",
+          p: 0,
+          overflow: "hidden",
+          "&.screenshot": {
+            backgroundColor: "background.paper",
+            backdropFilter: "none",
           },
         }}
       >
-        <DialogTitle
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          {user?.assistant ? (
-            <Box
+        {data && (
+          <>
+            <Typography
+              component="h1"
               sx={{
-                mx: "auto",
-                width: "144px",
-                transform: "translateY(-50%)",
-                marginBottom: "-72px",
+                fontSize: "12px",
+                backgroundColor: "primary.main",
+                color: "primary.contrastText",
+                borderRadius: "4px",
+                p: "2px 8px",
+                m: 1,
+                width: "fit-content",
+                position: "absolute",
+                top: 0,
+                left: 0,
               }}
             >
-              <Image src={getImgSrc(user?.assistant)} height={240} width={240} alt="" />
-            </Box>
-          ) : null}
-          <Typography
-            component="div"
-            variant="h2"
-            sx={{
-              marginLeft: "8px",
-              "& .mobileHide": {
-                display: { xs: "none", sm: "inline" },
-              },
-            }}
-          >
-            {user?.displayName ?? username}
-            <span className="mobileHide">&apos;s Profile</span>
-          </Typography>
-          <Typography
-            component="div"
-            variant="h6"
-            sx={{
-              marginLeft: "8px",
-              display: "flex",
-              flexDirection: { xs: "column", sm: "row" },
-            }}
-          >
-            {user?.server ?? "Server Unknown"} - {user?.friendCode?.username}#{user?.friendCode?.tag ?? "Tag Unknown"} -
-            Level {user?.level ?? "Unknown"}
+              /u/{data.account.username}
+            </Typography>
             <Box
               sx={{
-                marginLeft: { xs: "0px", sm: "auto" },
-                color: "text.secondary",
+                position: "relative",
+                height: { xs: 320, sm: 560 },
+                width: { xs: "100vw", sm: 560 },
               }}
             >
-              Onboard: {user?.onboard?.toString()}
-            </Box>
-          </Typography>
-          <IconButton
-            onClick={() => setOpen(false)}
-            sx={{
-              display: { sm: "none" },
-              position: "absolute",
-              top: 8,
-              right: 8,
-            }}
-          >
-            <Close />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 1,
-          }}
-        >
-          <Box
-            sx={{
-              columnGap: "2rem",
-              justifyContent: "center",
-              "& .MuiDivider-wrapper": {
-                color: "text.secondary",
-              },
-            }}
-          >
-            <Box>
-              <Divider sx={{ mt: 1, mb: 0.5 }} variant="middle" flexItem>
-                Support
-              </Divider>
-              <Box
+              <Image
+                src={
+                  data.account.assistant
+                    ? getAvatarFull({
+                        ...data.roster[data.account.assistant],
+                        ...operatorJson[data.account.assistant],
+                      })
+                    : "/img/characters/logo_rhodes.png"
+                }
+                fill
+                sizes="600px"
+                alt=""
+              />
+              <Typography
+                component="aside"
                 sx={{
+                  position: "absolute",
+                  left: 0,
+                  bottom: 0,
                   display: "flex",
-                  justifyContent: "space-around",
-                  color: "text.main",
+                  flexDirection: "column",
+                  gap: 0.5,
+                  p: "8px 8px 16px 16px",
+                  backgroundColor: alpha(theme.palette.background.paper, 0.75),
                 }}
               >
-                {user?.supports?.map((s) => {
-                  if (!s || !s.opID) return null;
-                  if (!s.opSkill) s.opSkill = 0;
-                  const op = roster[s.opID];
-                  return <OperatorBlock key={op.op_id} op={{ ...op, ...operatorJson[s.opID] }} />;
-                })}
-              </Box>
+                {data.account.friendcode && (
+                  <Typography>
+                    {data.account.friendcode.username}#{data.account.friendcode.tag}
+                  </Typography>
+                )}
+                {(data.account.server || data.account.level || data.account.onboard) && (
+                  <Typography sx={{ fontSize: "14px" }}>
+                    {[data.account.server, data.account.level && `Level ${data.account.level}`, data.account.onboard]
+                      .filter((s) => s)
+                      .join(" - ")}
+                  </Typography>
+                )}
+                {(data.account.discordcode || data.account.reddituser) && (
+                  <Box sx={{ display: "flex", gap: 2 }}>
+                    {data.account.discordcode && (
+                      <Typography sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+                        <Image src="/img/assets/discord2.svg" width={18} height={14} alt="discord" />
+                        {data.account.discordcode}
+                      </Typography>
+                    )}
+                    {data.account.reddituser && (
+                      <Typography sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+                        <Reddit />
+                        {data.account.reddituser}
+                      </Typography>
+                    )}
+                  </Box>
+                )}
+              </Typography>
             </Box>
-            <Box>
-              <Divider sx={{ mt: 1, mb: 0.5 }} variant="middle" flexItem>
-                Socials
-              </Divider>
+            {data.supports.length > 0 && (
               <Box
                 sx={{
-                  display: "grid",
-                  gridTemplateColumns: "auto 1fr auto 1fr",
+                  position: {
+                    xs: "relative",
+                    sm: "absolute",
+                  },
+                  right: 0,
+                  bottom: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: { xs: "center", sm: "end" },
                   gap: 1,
-                  alignItems: "center",
-                  height: "min-content",
-                  pl: 1,
+                  alignItems: { xs: "start", sm: "center" },
+                  backgroundColor: {
+                    xs: "none",
+                    sm: alpha(theme.palette.background.paper, 0.75),
+                  },
+                  padding: {
+                    xs: "8px",
+                    sm: "16px 8px",
+                  },
                 }}
               >
-                <Image src="/img/ext/icon_clyde_white_RGB.svg" width={24} height={24} alt="Discord" />
-                {social?.discord?.username}#{social?.discord?.tag}
-                <Reddit />{" "}
-                {social && social.reddit && (
-                  <Link href={`https://reddit.com/u/${social.reddit}`} rel="noreferrer">
-                    {social.reddit}
-                  </Link>
-                )}
+                <Typography variant="h3" component="h2" sx={{ fontSize: "16px" }}>
+                  Support Units
+                </Typography>
+                <Box
+                  sx={{
+                    width: { xs: "100%", sm: "auto" },
+                    display: "flex",
+                    flexDirection: { xs: "row", sm: "column" },
+                    gap: "16px 0px",
+                    justifyContent: { xs: "space-around", sm: "center" },
+                  }}
+                >
+                  {data.supports
+                    .sort((a, b) => a.slot - b.slot)
+                    .map((s) => {
+                      if (!s) return null;
+                      const op = data.roster[s.op_id];
+                      return <OperatorBlock key={op.op_id} op={{ ...op, ...operatorJson[s.op_id] }} />;
+                    })}
+                </Box>
               </Box>
-            </Box>
-          </Box>
-        </DialogContent>
-      </Dialog>
-    </>
+            )}
+          </>
+        )}
+      </DialogContent>
+      <Box
+        sx={{
+          position: "absolute",
+          right: 0,
+          top: 0,
+          display: "flex",
+          gap: 1,
+          p: 1,
+        }}
+      >
+        <Button component="button" onClick={openShare} ref={shareAnchor}>
+          <IosShare />
+        </Button>
+        <Button onClick={() => onClose()} variant="text">
+          <Close color="action" />
+        </Button>
+      </Box>
+      <ShareDialog
+        anchorEl={shareAnchor.current}
+        open={open}
+        onClose={closeShare}
+        save={handleImageDownload}
+        copy={copyLink}
+        saving={saving}
+      />
+    </Dialog>
   );
 };
 export default ProfileDialog;

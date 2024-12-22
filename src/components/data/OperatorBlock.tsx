@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, BoxProps, Typography } from "@mui/material";
 import { ModuleData, OpInfo } from "types/operators/operator";
-import { Favorite } from "@mui/icons-material";
+import { Favorite, Margin } from "@mui/icons-material";
 import { rarityColors } from "styles/rarityColors";
 import { MAX_LEVEL_BY_RARITY } from "util/changeOperator";
 import Image from "next/image";
@@ -101,9 +101,9 @@ const OperatorBlock = (props: Props) => {
       />
       <Box
         sx={{
-          gridArea: "img",
-          height: { xs: "84px", sm: "124px" },
-          width: { xs: "80px", sm: "120px" },
+          height: { xs: "80px", sm: "120px" },
+          aspectRatio: "1 / 1",
+          boxSizing: "content-box",
           borderBottom: `4px solid ${rarityColors[op.rarity]}`,
           position: "relative",
         }}
@@ -187,7 +187,7 @@ const OperatorBlock = (props: Props) => {
               borderRadius: "50%",
               backgroundColor: "background.light",
               border: "2px solid",
-              borderColor: op.level === MAX_LEVEL_BY_RARITY[op.rarity][2] ? "primary.main" : "grey.500",
+              borderColor: op.level === MAX_LEVEL_BY_RARITY[op.rarity][2] ? "primary.light" : "grey.500",
             }}
           >
             <Box
@@ -255,47 +255,44 @@ const OperatorBlock = (props: Props) => {
       <Box
         sx={{
           position: "absolute",
-          right: 0,
-          bottom: -4,
+          right: -8,
+          bottom: -12,
           display: "flex",
           flexDirection: "row-reverse",
           alignSelf: "end",
-          gap: { xs: "2px", sm: "4px" },
+          gap: "4px",
         }}
       >
         {(op.moduleData ?? [])
           .filter((mod) => op.modules[mod.moduleId] > 0)
-          .map((mod) => (
+          .map((mod, i) => (
             <Box
               key={mod.moduleId}
               sx={{
+                position: "relative",
                 display: "grid",
                 height: { xs: "24px", sm: "32px" },
-                width: { xs: "24px", sm: "32px" },
-                "& > *": {
-                  gridArea: "1 / 1",
-                  width: "100%",
-                },
-                backgroundColor: "background.light",
+                aspectRatio: "1 / 1",
+                backgroundColor: "background.default",
                 border: "1px solid",
-                borderColor: "grey.500",
-                position: "relative",
+                borderColor: "background.light",
               }}
             >
-              <Image src={getModUrl(mod)} fill alt={mod.typeName} />
+              <Image src={getModUrl(mod)} fill sizes="(max-width: 768px) 24px, 32px" alt={mod.typeName} />
               <Typography
                 zIndex={1}
                 component="abbr"
                 title={`Stage ${op.modules[mod.moduleId]}`}
                 sx={{
+                  fontSize: { xs: "10px", sm: "12px" },
                   position: "absolute",
                   width: "min-content !important",
                   lineHeight: 1,
                   textDecoration: "none",
                   backgroundColor: "grey.950",
-                  borderRadius: "4px",
-                  right: "-10%",
-                  bottom: "-25%",
+                  pl: "2px",
+                  right: -1,
+                  bottom: -1,
                 }}
               >
                 {mod.typeName.slice(-1)}

@@ -237,6 +237,7 @@ const appTheme = (brandColor: string) =>
       },
       h2: {
         fontSize: "2rem",
+        fontWeight: "normal",
       },
       h3: {
         fontSize: "1rem",

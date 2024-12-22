@@ -3,6 +3,7 @@ import supabase from "supabase/supabaseClient";
 import AccountData, { AccountDataInsert } from "types/auth/accountData";
 import { enqueueSnackbar } from "notistack";
 import randomName from "util/randomName";
+import handlePostgrestError from "util/fns/handlePostgrestError";
 
 function useAccount() {
   const [account, _setAccount] = useState<AccountData>();
@@ -18,12 +19,7 @@ function useAccount() {
         .from("krooster_accounts")
         .update({ ...rest })
         .eq("user_id", user_id);
-
-      if (error)
-        enqueueSnackbar({
-          message: `DB${error.code}: ${error.message}`,
-          variant: "error",
-        });
+      handlePostgrestError(error);
     },
     [account]
   );
@@ -39,13 +35,13 @@ function useAccount() {
 
       if (!user_id) return;
 
-      const { data, error } = await supabase.from("krooster_accounts").select().eq("user_id", user_id).single();
-
-      if (error)
-        enqueueSnackbar({
-          message: `DB${error.code}: ${error.message}`,
-          variant: "error",
-        });
+      const { data, error } = await supabase
+        .from("krooster_accounts")
+        .select()
+        .eq("user_id", user_id)
+        .limit(1)
+        .single();
+      handlePostgrestError(error);
 
       if (!data || !data.username) {
         const genName = randomName();
@@ -57,6 +53,7 @@ function useAccount() {
             display_name: genName,
           })
           .select()
+          .limit(1)
           .single();
 
         enqueueSnackbar({

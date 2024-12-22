@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
-import DepotItem from "../../types/depotItem";
-import { enqueueSnackbar } from "notistack";
+import DepotItem from "types/depotItem";
+import handlePostgrestError from "util/fns/handlePostgrestError";
 
 function useDepot() {
   const [depot, _setDepot] = useState<Record<string, DepotItem>>({});
@@ -18,12 +18,7 @@ function useDepot() {
       _setDepot(depotCopy);
 
       const { error } = await supabase.from("depot").upsert(items).select();
-
-      if (error)
-        enqueueSnackbar({
-          message: `DB${error.code}: ${error.message}`,
-          variant: "error",
-        });
+      handlePostgrestError(error);
     },
     [depot]
   );

@@ -5,7 +5,8 @@ const rEl = (arr: any[]) => {
 };
 
 export default function randomName() {
-  const rn = String(Math.floor(Math.random() * 100000)).padStart(5, "0");
-  const genName = `${rEl(seeds.adjectives)}-${rEl(seeds.colors)}-${rEl(seeds.animals)}-${rn}`;
+  const rn = String(Math.floor(Math.random() * 100)).padStart(2, "0");
+  const rs = Math.random().toString(36).substring(2, 4);
+  const genName = `${rEl(seeds.adjectives)}-${rEl(seeds.colors)}-${rEl(seeds.animals)}-${rn}${rs}`;
   return genName.substring(0, 32);
 }

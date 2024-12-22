@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Box, Divider, Input, Typography } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import Layout from "components/Layout";
 import SupportSelection from "components/data/profile/SupportSelection";
 import Assistant from "components/data/profile/Assistant";
@@ -7,7 +7,6 @@ import FriendID from "components/data/profile/FriendId";
 import Level from "components/data/profile/Level";
 import Server from "components/data/profile/Server";
 import Onboard from "components/data/profile/Onboard";
-import GameImport from "components/app/GameImport";
 import useAccount from "util/hooks/useAccount";
 import AccountData, { AccountDataInsert } from "types/auth/accountData";
 import Discord from "components/data/profile/Discord";

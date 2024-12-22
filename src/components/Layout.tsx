@@ -71,7 +71,7 @@ const Layout = React.memo((props: Props) => {
                   <MenuIcon sx={{ color: "background.paper" }} />
                 </IconButton>
                 <Box component="span" sx={{ verticalAlign: "bottom" }}>
-                  <Typography component="h2" variant="h5" noWrap sx={{ display: "inline", verticalAlign: "baseline" }}>
+                  <Typography component="h1" variant="h5" noWrap sx={{ display: "inline", verticalAlign: "baseline" }}>
                     {title}
                   </Typography>
                 </Box>

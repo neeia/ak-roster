@@ -7,12 +7,8 @@ import { AccountMutateProps } from "pages/data/profile";
 const FriendID = (props: AccountMutateProps) => {
   const { user, setAccount } = props;
 
-  const [friendUsername, _setFriendUsername] = useState<string>(
-    ((user.friendcode as { [key: string]: Json })?.username as string) ?? ""
-  );
-  const [friendTag, _setFriendTag] = useState<string>(
-    ((user.friendcode as { [key: string]: Json })?.tag as string) ?? ""
-  );
+  const [friendUsername, _setFriendUsername] = useState<string>((user.friendcode?.username as string) ?? "");
+  const [friendTag, _setFriendTag] = useState<string>((user.friendcode?.tag as string) ?? "");
 
   const setFriendUsername = (s: string) => {
     _setFriendUsername(s);
