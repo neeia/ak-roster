@@ -20,6 +20,11 @@ const tasks = [
     filter: (filename) => /^char_.*\.png$/.test(filename),
   },
   {
+    sourceDir: path.join(ACESHIP_ROOT, "characters"),
+    destDir: "public\\img\\characters",
+    filter: (filename) => /^char_.*\.png$/.test(filename),
+  },
+  {
     sourceDir: path.join(ACESHIP_ROOT, "equip/icon"),
     destDir: "public\\img\\equip",
     filter: (filename) => filename.endsWith(".png"),
@@ -59,11 +64,12 @@ const upload = async (existingFilePaths, task) => {
 
   await Promise.all(
     filenames.map(async (filename) => {
+      const _filename = replaceFn ? replaceFn(filename) : filename;
       const targetFilePath = path.join(
         destDir,
-        replaceFn ? replaceFn(filename) : filename
+        _filename
       );
-      if (targetFilePath && !existingFilePaths.has(replaceFn ? replaceFn(filename) : filename)) {
+      if (targetFilePath && !existingFilePaths.has(_filename)) {
         console.log(
           `images: "${targetFilePath}" not found in storage, saving...`
         );
@@ -78,23 +84,20 @@ const upload = async (existingFilePaths, task) => {
 };
 
 const uploadAllImages = async () => {
-  // first iterate through all images in the image directory
-  const rawDirInfo = await fs.readdir("./public/img/", { withFileTypes: true });
-  const directoryInfo = rawDirInfo.filter(dirent => dirent.isDirectory()).map(dirent => dirent.name);
-  const existingImageIDs = new Set();
-  while (directoryInfo.length > 0) {
-    const dirName = directoryInfo.pop();
-    const rawFileNames = await fs.readdir("./public/img/" + dirName)
-    rawFileNames.forEach(value => existingImageIDs.add(value))
-  }
-  
-  console.log(
-    `images: found ${existingImageIDs.size} existing images in project.`
-  );
-
   try {
     const uploadCounts = await Promise.all(
-      tasks.map((task) => upload(existingImageIDs, task))
+      tasks.map(async (task) => {
+        // first iterate through all images in the image directory
+        const rawFileNames = await fs.readdir(task.destDir, { withFileTypes: true });
+        const existingImageIDs = new Set();
+        rawFileNames.forEach(value => existingImageIDs.add(value));
+        
+        console.log(
+          `images: found ${existingImageIDs.size} existing images in ${task.destDir}.`
+        );
+      
+        upload(existingImageIDs, task);
+      })
     );
     const totalUploadCount = uploadCounts.reduce((acc, cur) => acc + cur, 0);
     console.log(`images: uploaded ${totalUploadCount} new files, done.`);
