@@ -1,7 +1,6 @@
 import { UserData } from "types/arknightsApiTypes/apiTypes";
 import React, { useState } from "react";
 import { Box, Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
-import { useRosterUpsertMutation } from "store/extendRoster";
 import { Operator, Skin } from "types/operators/operator";
 import { OperatorSupport } from "types/operators/supports";
 import skinJson from "data/skins.json";
@@ -9,6 +8,8 @@ import useDepot from "util/hooks/useDepot";
 import DepotItem from "types/depotItem";
 import useSupports from "util/hooks/useSupports";
 import useAccount from "util/hooks/useAccount";
+import supabase from "supabase/supabaseClient";
+import useOperators from "util/hooks/useOperators";
 
 const EXCLUDED_ITEMS = ["2001", "2002", "2003", "2004", "4001"];
 const GameImport = () => {
@@ -18,8 +19,8 @@ const GameImport = () => {
   const [hasToken, setHasToken] = useState(localStorage.getItem("token") != null);
   const [rememberLogin, setRememberLogin] = useState(localStorage.getItem("token") != null);
 
-  //TODO convert this to direct db call
-  const [upsertRoster] = useRosterUpsertMutation();
+  const [_roster] = useOperators();
+
   const [user, setAccount] = useAccount();
   const [, setSupport, removeSupport] = useSupports();
   const [, setDepot] = useDepot();
@@ -82,8 +83,8 @@ const GameImport = () => {
       tag: profileData.nickNumber,
     };
     await setAccount({
-      user_id: user.user_id,
-      private: user.private,
+      user_id: user!.user_id,
+      private: user!.private,
       friendcode: friendCode,
       level: profileData.level,
       assistant: profileData.secretary,
@@ -119,14 +120,14 @@ const GameImport = () => {
         level: value.level,
         potential: value.potentialRank + 1,
         skill_level: value.mainSkillLvl,
-        favorite: value.starMark == 1,
+        favorite: _roster[value.charId]?.favorite || false, // value.starMark == 1,
         skin: skin,
         modules: supportModules,
         masteries: masteries,
       };
       operators.push(operator);
     }
-    upsertRoster(operators);
+    const { data } = await supabase.from("operators").upsert(operators);
 
     //Update support data
     await removeSupport(0);
