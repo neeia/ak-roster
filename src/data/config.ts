@@ -22,6 +22,10 @@ const config: SiteCfg = {
           title: "Profile",
           description: "Share your in-game Doctor information.",
         },
+        "/presets": {
+          title: "Presets",
+          description: "Configure preset goals for operators.",
+        },
       },
     },
     "/network": {
