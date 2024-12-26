@@ -67,16 +67,10 @@ const EditOperator = React.memo((props: Props) => {
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
-  if (!op) return null;
-
   const user = useContext(UserContext);
 
-  const opSkins: Skin[] = skinJson[op.op_id as keyof typeof skinJson];
-  const opData = operatorJson[op.op_id];
-
-  const opSplit = opData.name.split(" the ");
-
   const onChangeOwned = useCallback(() => {
+    if (!op) return;
     const _op = changeOwned(op, !op.potential);
     onChange(_op);
 
@@ -92,19 +86,21 @@ const EditOperator = React.memo((props: Props) => {
   // Applies a change and sends it to the DB
   const _onChange = useCallback(
     (_op: Operator) => {
+      if (!op) return;
       onChange(_op);
       if (user) supabase.from("operators").update(_op).match({ user_id: user.id, op_id: op.op_id }).then(handleError);
     },
-    [user]
+    [op, user]
   );
 
   const onChangeFavorite = useCallback(() => {
+    if (!op) return;
     _onChange(changeFavorite(op, !op.favorite));
   }, [op, _onChange]);
 
   const onChangePotential = useCallback(
     (value: number | null) => {
-      if (value == null) return;
+      if (!op || value == null) return;
       _onChange(changePotential(op, value));
     },
     [op, _onChange]
@@ -112,7 +108,7 @@ const EditOperator = React.memo((props: Props) => {
 
   const onChangeElite = useCallback(
     (value: number | null) => {
-      if (value == null) return;
+      if (!op || value == null) return;
       _onChange(changeElite(op, value));
     },
     [op, _onChange]
@@ -120,7 +116,7 @@ const EditOperator = React.memo((props: Props) => {
 
   const onChangeLevel = useCallback(
     (value: number | null) => {
-      if (value == null) return;
+      if (!op || value == null) return;
       _onChange(changeLevel(op, value));
     },
     [op, _onChange]
@@ -128,7 +124,7 @@ const EditOperator = React.memo((props: Props) => {
 
   const onChangeSkillLevel = useCallback(
     (value: number | null) => {
-      if (value == null) return;
+      if (!op || value == null) return;
       _onChange(changeSkillLevel(op, value));
     },
     [op, _onChange]
@@ -136,7 +132,7 @@ const EditOperator = React.memo((props: Props) => {
 
   const onChangeMastery = useCallback(
     (index: number, value: number | null) => {
-      if (value == null) return;
+      if (!op || value == null) return;
       _onChange(changeMastery(op, index, value));
     },
     [op, _onChange]
@@ -144,7 +140,7 @@ const EditOperator = React.memo((props: Props) => {
 
   const onChangeModule = useCallback(
     (id: string, value: number | null) => {
-      if (value == null) return;
+      if (!op || value == null) return;
       _onChange(changeModule(op, id, value));
     },
     [op, _onChange]
@@ -152,10 +148,17 @@ const EditOperator = React.memo((props: Props) => {
 
   const onChangeSkin = useCallback(
     (value: string) => {
+      if (!op) return;
       _onChange(changeSkin(op, value));
     },
     [op, _onChange]
   );
+
+  if (!op) return null;
+
+  const opSkins: Skin[] = skinJson[op.op_id as keyof typeof skinJson];
+  const opData = operatorJson[op.op_id];
+  const opSplit = opData.name.split(" the ");
 
   return (
     <Dialog open={open} onClose={onClose} fullScreen={fullScreen}>
