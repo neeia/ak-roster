@@ -1,8 +1,8 @@
 import { Checkbox, FormControlLabel } from "@mui/material";
 import React, { useCallback, useState } from "react";
-import { AccountData } from "../../types/auth/accountData";
-import { useAccountPrivateSetMutation } from "../../store/extendAccount";
 import { debounce } from "lodash";
+import AccountData from "types/auth/accountData";
+import supabase from "supabase/supabaseClient";
 
 interface Props {
   user: AccountData;
@@ -10,9 +10,15 @@ interface Props {
 
 const UpdatePrivacy = (props: Props) => {
   const { user } = props;
-  const [setPrivate] = useAccountPrivateSetMutation();
 
   const [isPublic, _setPublic] = useState<boolean>(!user.private);
+
+  const setPrivate = useCallback(
+    (value: boolean) => {
+      supabase.from("krooster_accounts").update({ private: value }).eq("id", user.user_id);
+    },
+    [isPublic, user]
+  );
 
   const setPrivateDebounced = useCallback(debounce(setPrivate, 300), []);
   const setSecret = (value: boolean) => {
@@ -23,12 +29,7 @@ const UpdatePrivacy = (props: Props) => {
   return (
     <FormControlLabel
       control={
-        <Checkbox
-          size="small"
-          checked={isPublic}
-          onChange={(e) => setSecret(e.target.checked)}
-          sx={{ mr: 1.5 }}
-        />
+        <Checkbox size="small" checked={isPublic} onChange={(e) => setSecret(e.target.checked)} sx={{ mr: 1.5 }} />
       }
       label="Public"
       labelPlacement="start"

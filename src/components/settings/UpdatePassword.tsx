@@ -1,18 +1,9 @@
 import { Box, Button, TextField } from "@mui/material";
-import { FirebaseError } from "firebase/app";
-import {
-  EmailAuthProvider,
-  reauthenticateWithCredential,
-  updatePassword,
-  User,
-} from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { authErrors } from "../../util/authErrors";
 import PasswordTextField from "../app/PasswordTextField";
 import ResetPassword from "../app/ResetPassword";
-import { AccountData } from "../../types/auth/accountData";
-import supabase from "../../supabase/supabaseClient";
-import { useSession } from "@supabase/auth-helpers-react";
+import AccountData, { AccountDataInsert } from "types/auth/accountData";
+import supabase from "supabase/supabaseClient";
 
 interface Props {
   user: AccountData;
@@ -57,6 +48,7 @@ const UpdatePassword = (props: Props) => {
           setErrorPassword("");
         }}
         ariaId="upw-cur"
+        variant="filled"
       />
       <PasswordTextField
         label="New Password"
@@ -66,6 +58,7 @@ const UpdatePassword = (props: Props) => {
           setErrorPassword("");
         }}
         ariaId="upw-ne1"
+        variant="filled"
       />
       <PasswordTextField
         label="Repeat Password"
@@ -75,6 +68,7 @@ const UpdatePassword = (props: Props) => {
           setErrorPassword("");
         }}
         ariaId="upw-ne2"
+        variant="filled"
       />
       <Box
         sx={{
