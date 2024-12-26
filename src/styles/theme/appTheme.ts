@@ -88,7 +88,7 @@ const appTheme = (brandColor: string) =>
               color: "inherit",
               opacity: "0.38",
             },
-            "&:not(._):not(._):not(._)": {
+            "&:not(._):not(._):not(.MuiButton-outlined)": {
               border: "none",
               margin: 0,
               "&.Mui-selected": {
