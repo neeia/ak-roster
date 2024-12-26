@@ -6,7 +6,7 @@ import Image from "next/image";
 export const getLogoUrl = () => {
   const date = new Date();
 
-  switch (date.getMonth()) {
+  switch (date.getMonth() + 1) {
     case 1:
     case 12:
       return "holiday";
