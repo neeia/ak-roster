@@ -11,7 +11,7 @@ interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   onChange: (skillLevel: number) => void;
 }
 const SkillLevel = memo((props: Props) => {
-  const { value, min = 1, max = 4, size = 32, disabled: _disabled = false, sx, onChange, ...rest } = props;
+  const { value, min = 1, max = 7, size = 32, disabled: _disabled = false, sx, onChange, ...rest } = props;
 
   const disabled = useContext(DisabledContext) || _disabled;
 

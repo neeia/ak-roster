@@ -165,6 +165,7 @@ const AppDrawer = React.memo((props: Props) => {
         sx={{
           height: "100%",
           overflowY: "auto",
+          p: 0,
           scrollbarColor: "#6b6b6b transparent",
           scrollbarWidth: "thin",
           "*::-webkit-scrollbar": {

@@ -97,20 +97,21 @@ export function clamp(min: number, value: number, max: number) {
 /**
  *  Creates a placeholder for an unowned Operator
  * @param id - The operator's ID
- * @returns An unowned operator
+ * @param owned - Whether the operator is owned
+ * @returns An operator
  */
-export function defaultOperatorObject(id: string): Operator {
+export function defaultOperatorObject(id: string, owned = false): Operator {
   return {
     op_id: id,
     favorite: false,
-    potential: 0,
-    elite: -1,
-    level: 0,
-    skill_level: 0,
-    masteries: new Array(operatorJson[id].skillData?.length ?? 0).fill(-1),
+    potential: owned ? 1 : 0,
+    elite: owned ? 0 : -1,
+    level: owned ? 1 : 0,
+    skill_level: owned ? 1 : 0,
+    masteries: new Array(operatorJson[id].skillData?.length ?? 0).fill(owned ? 0 : -1),
     modules:
       operatorJson[id].moduleData?.reduce((acc: Record<string, number>, cur) => {
-        acc[cur.moduleId] = -1;
+        acc[cur.moduleId] = owned ? 0 : -1;
         return acc;
       }, {}) ?? {},
     skin: null,

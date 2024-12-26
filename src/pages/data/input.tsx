@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { Box } from "@mui/material";
@@ -18,8 +18,8 @@ const OperatorSelector = dynamic(() => import("components/data/input/OperatorSel
 const Input: NextPage = () => {
   const [roster, , onChange] = useOperators();
 
-  const [opId, setOpId] = React.useState("char_002_amiya");
-  const [editOpen, setEditOpen] = React.useState(false);
+  const [opId, setOpId] = useState<string>();
+  const [editOpen, setEditOpen] = useState(false);
 
   const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort([{ key: "Rarity", desc: true }]);
   const { filters, toggleFilter, clearFilters, filterFunction, setSearch } = useFilter();
@@ -63,7 +63,7 @@ const Input: NextPage = () => {
         >
           <OperatorSelector roster={roster} onClick={selectOp} sort={sortFunction} filter={filterFunction} />
           <EditOperator
-            op={roster[opId] ?? defaultOperatorObject(opId)}
+            op={opId ? roster[opId] ?? defaultOperatorObject(opId) : undefined}
             open={editOpen}
             onClose={() => setEditOpen(false)}
             onChange={onChange}
