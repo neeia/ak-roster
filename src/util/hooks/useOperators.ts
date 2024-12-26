@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Operator } from "types/operators/operator";
 import operatorJson from "data/operators";
 import useLocalStorage from "./useLocalStorage";
@@ -6,9 +6,9 @@ import Roster from "types/operators/roster";
 import supabase from "supabase/supabaseClient";
 
 function useOperators() {
-  const [operators, setOperators] = useLocalStorage<Roster>("roster", {});
+  const [operators, setOperators] = useState<Roster>({});
   const [_operators] = useLocalStorage<Roster>("operators", {});
-  
+
   // change operator, push to db
   const onChange = useCallback(
     (op: Operator) => {
@@ -36,17 +36,13 @@ function useOperators() {
 
       const { data: dbOperators } = await supabase
         .from("operators")
-        .select(
-          "op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin"
-        )
+        .select("op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin")
         .match({ user_id });
 
       if (!dbOperators?.length) return { data: {} };
 
       const _roster: Roster = {};
-      dbOperators.forEach((op) =>
-        op.op_id in operatorJson ? (_roster[op.op_id] = op as Operator) : null
-      );
+      dbOperators.forEach((op) => (op.op_id in operatorJson ? (_roster[op.op_id] = op as Operator) : null));
 
       if (!isCanceled) setOperators(_roster);
     };
