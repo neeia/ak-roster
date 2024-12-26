@@ -18,10 +18,10 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Image from "next/image";
 import React, { memo, useCallback, useState } from "react";
-import GoalData from "../../types/goalData";
-import { PlannerGoal } from "../../types/goal";
+import GoalData from "types/goalData";
+import { PlannerGoal } from "types/goal";
 import { OperatorGoals } from "./OperatorGoals";
-import { Operator } from "../../types/operators/operator";
+import { Operator } from "types/operators/operator";
 
 interface Props {
   operatorGoals: GoalData[] | undefined;

@@ -10,14 +10,14 @@ import PlannerGoalAdd from "./PlannerGoalAdd";
 import operatorJson from "data/operators";
 import GoalGroup from "./GoalGroup";
 import Board from "components/base/Board";
-import GoalData, { GoalDataInsert } from "../../types/goalData";
+import GoalData, { GoalDataInsert } from "types/goalData";
 import _ from "lodash";
-import { MAX_LEVEL_BY_RARITY } from "../../util/changeOperator";
+import { MAX_LEVEL_BY_RARITY } from "util/changeOperator";
 import GoalReorderDialog from "./GoalReorderDialog";
-import DepotItem from "../../types/depotItem";
-import { Ingredient } from "../../types/item";
-import { Operator } from "../../types/operators/operator";
-import useGoalGroups from "../../util/hooks/useGoalGroups";
+import DepotItem from "types/depotItem";
+import { Ingredient } from "types/item";
+import { Operator } from "types/operators/operator";
+import useGoalGroups from "util/hooks/useGoalGroups";
 
 interface Props {
   goals: GoalData[];

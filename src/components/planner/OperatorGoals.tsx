@@ -11,13 +11,13 @@ import {
 import Image from "next/image";
 import AddCircleIcon from "@mui/icons-material/AddCircleOutlined";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircleOutlined";
-import GoalData, { getGoalString, getPlannerGoals } from "../../types/goalData";
+import GoalData, { getGoalString, getPlannerGoals } from "types/goalData";
 import PlannerGoalCard from "./PlannerGoalCard";
 import React, { memo, useCallback, useState } from "react";
-import { PlannerGoal } from "../../types/goal";
-import operatorJson from "../../data/operators";
+import { PlannerGoal } from "types/goal";
+import operatorJson from "data/operators";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { Operator } from "../../types/operators/operator";
+import { Operator } from "types/operators/operator";
 
 interface Props {
   operatorGoal: GoalData;
@@ -87,13 +87,29 @@ export const OperatorGoals = memo((props: Props) => {
           }}
         >
           <Box sx={{ gridArea: "opImage", position: "relative", marginLeft: -4 }}>
-            <Box sx={{ borderBottomLeftRadius: 25, overflow: "hidden" }} width={64} height={64}>
+            <Box sx={{ borderBottomLeftRadius: "50%", overflow: "hidden" }} width={64} height={64}>
               <Image src={imgUrl} width={64} height={64} alt="" />
             </Box>
             {expanded ? (
-              <RemoveCircleIcon sx={{ position: "absolute", bottom: "-10px", left: "0" }} />
+              <RemoveCircleIcon
+                sx={{
+                  position: "absolute",
+                  bottom: "-6px",
+                  left: "0",
+                  borderRadius: "50%",
+                  backgroundColor: "background.paper",
+                }}
+              />
             ) : (
-              <AddCircleIcon sx={{ position: "absolute", bottom: "-10px", left: "0" }} />
+              <AddCircleIcon
+                sx={{
+                  position: "absolute",
+                  bottom: "-6px",
+                  left: "0",
+                  borderRadius: "50%",
+                  backgroundColor: "background.paper",
+                }}
+              />
             )}
           </Box>
           <Typography variant="h5" sx={{ gridArea: "opName" }}>

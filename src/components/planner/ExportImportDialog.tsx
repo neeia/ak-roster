@@ -55,7 +55,7 @@ const ExportImportDialog = (props: Props) => {
   const [fileList, setFileList] = useState<File[]>([]);
 
   const [depot, setDepot] = useDepot();
-  const [goals] = useGoals();
+  const { goals } = useGoals();
 
   const handleExportFormatChange = (e: SelectChangeEvent) => {
     const selectedFormat = e.target.value;
@@ -239,7 +239,14 @@ const ExportImportDialog = (props: Props) => {
             <Grid size={{ xs: 4, md: 2 }}>
               <Tooltip title="Importing data OVERRIDE the current one">
                 <span>
-                  <Button variant="contained" color="primary" aria-label="Import data" startIcon={<FileUpload />} disabled={importData == "" && fileList.length == 0} onClick={handleImportData}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    aria-label="Import data"
+                    startIcon={<FileUpload />}
+                    disabled={importData == "" && fileList.length == 0}
+                    onClick={handleImportData}
+                  >
                     Import data
                   </Button>
                 </span>
@@ -260,7 +267,13 @@ const ExportImportDialog = (props: Props) => {
                       <InputAdornment position="end" sx={{ alignItems: "flex-end" }}>
                         <Tooltip title="Copy">
                           <span>
-                            <IconButton aria-label="Copy exported data" onClick={copyToClipboard} edge="end" sx={{ mr: 0.1 }} disabled={exportData == ""}>
+                            <IconButton
+                              aria-label="Copy exported data"
+                              onClick={copyToClipboard}
+                              edge="end"
+                              sx={{ mr: 0.1 }}
+                              disabled={exportData == ""}
+                            >
                               <ContentCopy />
                             </IconButton>
                           </span>

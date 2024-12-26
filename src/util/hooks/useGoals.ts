@@ -8,19 +8,19 @@ function useGoals() {
 
   const updateGoals = useCallback(
     async (goalsData: GoalDataInsert[]) => {
-      const goalsCopy = [...goals];
+      const _goals = [...goals];
 
       goalsData.forEach((goalInsert) => {
         let goal = goals.find((x) => x.op_id == goalInsert.op_id && x.group_name == goalInsert.group_name);
         if (goal) {
           const newGoal: GoalData = { ...goal, ...goalInsert };
-          goalsCopy.push(newGoal);
+          _goals.push(newGoal);
         } else {
-          goalsCopy.push(goalInsert as GoalData);
+          _goals.push(goalInsert as GoalData);
         }
       });
 
-      _setGoals(goalsCopy);
+      _setGoals(_goals);
 
       const { error } = await supabase.from("goals").upsert(goalsData);
       handlePostgrestError(error);
@@ -80,7 +80,7 @@ function useGoals() {
     fetchData();
   }, []);
 
-  return [goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator] as const;
+  return { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator } as const;
 }
 
 export default useGoals;

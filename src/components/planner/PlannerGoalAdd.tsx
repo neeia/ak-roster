@@ -29,18 +29,20 @@ import Mastery from "../data/input/Select/Mastery";
 import Module from "../data/input/Select/Module";
 import GoalData, { GoalDataInsert } from "types/goalData";
 import _ from "lodash";
-import { MAX_LEVEL_BY_RARITY, MODULE_REQ_BY_RARITY } from "util/changeOperator";
-import useOperators from "../../util/hooks/useOperators";
-import { GroupsDataInsert } from "../../types/groupData";
+import { clamp, defaultOperatorObject, MAX_LEVEL_BY_RARITY, MODULE_REQ_BY_RARITY } from "util/changeOperator";
+import useOperators from "util/hooks/useOperators";
+import { GroupsDataInsert } from "types/groupData";
 
 interface Props {
   open: boolean;
-  goals: GoalData[] | undefined;
+  goals?: GoalData[];
   goalGroups: string[];
   updateGoals: (goalsData: GoalDataInsert[]) => void;
   setGroups: (goalGroupInsert: GroupsDataInsert[]) => void;
   onClose: () => void;
 }
+
+const isNumber = (value: any) => typeof value === "number";
 
 const SHORTCUTS: string[] = [
   "Nothing",
@@ -57,517 +59,512 @@ const SHORTCUTS: string[] = [
   "Module 3 lv 3",
 ];
 const PlannerGoalAdd = (props: Props) => {
-  const { open, goals, goalGroups, updateGoals, setGroups, onClose } = props;
+  const { open, goals = [], goalGroups, updateGoals, setGroups, onClose } = props;
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
   const [roster] = useOperators();
 
-  const [selectedOperatorData, setSelectedOperatorData] = useState<OperatorData | null>(null);
-  const [currentAccountOperator, setCurrentAccountOperator] = useState<Operator | null>(null);
-  const [selectedGroup, setSelectedGroup] = useState<string>("Default");
-  const [openGroupDialog, setOpenGroupDialog] = React.useState<boolean>(false);
+  const [opData, setOpData] = useState<OperatorData | null>(null);
+  const [currentOp, setCurrentOp] = useState<Operator | null>(null);
+
+  const [selectedGroup, setSelectedGroup] = useState("Default");
+  const [isEdit, setIsEdit] = useState(false);
+
+  const [openGroupDialog, setOpenGroupDialog] = useState(false);
+
   const [showPresets, setShowPresets] = useState(true);
-  const [openSections, setOpenSections] = useState([false, false, false, false, false]);
-  const toggleSection = useCallback(
-    (n: number) => {
-      const s = [...openSections];
-      s[n] = !s[n];
-      setOpenSections(s);
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    elite: false,
+    level: false,
+    module: false,
+    skill: false,
+    mastery: false,
+  });
+  const toggleSection = (section: string) => {
+    if (!opData || !currentOp) return;
+    const open = !openSections[section];
+    setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
+
+    switch (section) {
+      case "elite":
+        setGoalBuilder((prev) => ({
+          ...prev,
+          elite_from: open ? currentOp.elite : undefined,
+          elite_to: open ? currentOp.elite : undefined,
+        }));
+        break;
+      case "level":
+        setGoalBuilder((prev) => ({
+          ...prev,
+          level_from: open ? currentOp.level : undefined,
+          level_to: open ? currentOp.level : undefined,
+        }));
+        break;
+      case "module":
+        setGoalBuilder((prev) => ({
+          ...prev,
+          modules_from: open ? currentOp.modules : undefined,
+          modules_to: open ? currentOp.modules : undefined,
+        }));
+        break;
+      case "skill":
+        setGoalBuilder((prev) => ({
+          ...prev,
+          skill_level_from: open ? currentOp.skill_level : undefined,
+          skill_level_to: open ? currentOp.skill_level : undefined,
+        }));
+        break;
+      case "mastery":
+        setGoalBuilder((prev) => ({
+          ...prev,
+          masteries_from: open ? currentOp.masteries : undefined,
+          masteries_to: open ? currentOp.masteries : undefined,
+        }));
+        break;
+    }
+  };
+
+  const [goalBuilder, setGoalBuilder] = useState<Partial<GoalDataInsert>>({});
+
+  const onSelectedOperatorChange = useCallback(
+    (_opData: OperatorData | null) => {
+      if (_opData?.id === opData?.id) return;
+
+      setOpData(_opData);
+      if (!_opData) {
+        // no operator selected
+        setCurrentOp(null);
+        setGoalBuilder({});
+        return;
+      }
+      // operator selected, find operator in roster
+      const op = roster[_opData.id] ?? defaultOperatorObject(_opData.id, true);
+      setCurrentOp(op);
+      setGoalBuilder({
+        op_id: _opData.id,
+      });
+
+      // if a group is selected, check if there is an existing goal for the selected group
+      const existingGoal = goals.find((x) => x.op_id == _opData.id && x.group_name == selectedGroup);
+      if (existingGoal) {
+        setGoalBuilder(existingGoal);
+        setIsEdit(true);
+      }
     },
-    [openSections, setOpenSections]
+    [roster, goals, selectedGroup]
   );
-
-  const [eliteLevelFrom, setEliteLevelFrom] = React.useState<number | undefined>(undefined);
-  const [levelFrom, setLevelFrom] = React.useState<number | undefined>(undefined);
-  const [skillLevelFrom, setSkillLevelFrom] = React.useState<number | undefined>(undefined);
-  const [masteriesFrom, setMasteriesFrom] = React.useState<number[]>([]);
-  const [modulesFrom, setModulesFrom] = React.useState<Record<string, number> | undefined>(undefined);
-
-  const [eliteLevelTo, setEliteLevelTo] = React.useState<number | undefined>(undefined);
-  const [levelTo, setLevelTo] = React.useState<number | undefined>(undefined);
-  const [skillLevelTo, setSkillLevelTo] = React.useState<number | undefined>(undefined);
-  const [masteriesTo, setMasteriesTo] = React.useState<number[]>([]);
-  const [modulesTo, setModulesTo] = React.useState<Record<string, number> | undefined>(undefined);
 
   const onGroupChange = useCallback(
     (event: SelectChangeEvent) => {
-      let groupName = event.target.value as string;
+      const groupName = event.target.value;
       if (groupName == "Add new...") {
         setOpenGroupDialog(true);
-      } else {
-        setSelectedGroup(groupName);
-
-        if (selectedOperatorData) {
-          const defaultMasteries: number[] = selectedOperatorData.skillData?.forEach((_) => 0) ?? [];
-          const existingGoal = goals?.find((x) => x.op_id == selectedOperatorData.id && x.group_name == groupName);
-          if (existingGoal) {
-            setEliteLevelTo(existingGoal.elite_to ?? undefined);
-            setLevelTo(existingGoal.level_to ?? undefined);
-            setSkillLevelTo(existingGoal.skill_level_to ?? undefined);
-            setMasteriesTo(existingGoal.masteries_to ?? defaultMasteries);
-            setModulesTo((existingGoal.modules_to as Record<string, number>) ?? undefined);
-          } else {
-            setEliteLevelTo(undefined);
-            setLevelTo(undefined);
-            setSkillLevelTo(undefined);
-            setMasteriesTo([]);
-            setModulesTo(undefined);
-          }
-        }
+        return;
       }
-    },
-    [goals, selectedOperatorData]
-  );
 
-  const onSelectedOperatorChange = useCallback(
-    (newOp: OperatorData | null) => {
-      setSelectedOperatorData(newOp);
-      if (!newOp) {
-        setCurrentAccountOperator(null);
-
-        setEliteLevelFrom(undefined);
-        setLevelFrom(undefined);
-        setSkillLevelFrom(undefined);
-        setMasteriesFrom([]);
-        setModulesFrom(undefined);
-
-        setEliteLevelTo(undefined);
-        setLevelTo(undefined);
-        setSkillLevelTo(undefined);
-        setMasteriesTo([]);
-        setModulesTo(undefined);
-      } else if (roster) {
-        const accountOp: Operator | null = roster[newOp.id] ?? null;
-        setCurrentAccountOperator(accountOp);
-
-        setCurrentAccountOperator(accountOp);
-        setEliteLevelFrom(accountOp?.elite);
-        setLevelFrom(accountOp?.level);
-        setSkillLevelFrom(accountOp?.skill_level);
-        const defaultMasteries: number[] = newOp.skillData?.forEach((_) => 0) ?? [];
-        setMasteriesFrom(accountOp?.masteries ?? defaultMasteries);
-        setModulesFrom(accountOp?.modules);
-
-        setMasteriesTo(accountOp?.masteries ?? defaultMasteries);
-
-        const existingGoal = goals?.find((x) => x.op_id == newOp.id && x.group_name == selectedGroup);
+      // if an op is selected, check if there is an existing goal for the selected group
+      if (opData) {
+        const existingGoal = goals.find((goal) => goal.op_id === opData.id && goal.group_name === groupName);
         if (existingGoal) {
-          setEliteLevelTo(existingGoal.elite_to ?? undefined);
-          setLevelTo(existingGoal.level_to ?? undefined);
-          setSkillLevelTo(existingGoal.skill_level_to ?? undefined);
-          setMasteriesTo(existingGoal.masteries_to ?? defaultMasteries);
-          setModulesTo((existingGoal.modules_to as Record<string, number>) ?? undefined);
+          setGoalBuilder(existingGoal);
+          setIsEdit(true);
         }
       }
+
+      setSelectedGroup(groupName);
     },
-    [goals, roster, selectedGroup]
+    [goals, opData]
   );
 
-  const onPromotionFromChange = (elite: number) => {
-    setEliteLevelFrom(elite);
-    const maxLevel = MAX_LEVEL_BY_RARITY[selectedOperatorData!.rarity][elite];
-    if (maxLevel < (levelFrom ?? 0)) {
-      onLevelFromChange(maxLevel);
-    }
-    if (elite == 1) {
-      setMasteriesFrom([]);
-      setModulesFrom(undefined);
-    }
-    if (elite == 0) {
-      setSkillLevelFrom(4);
-      setMasteriesFrom([]);
-      setModulesFrom(undefined);
-    }
+  // promotion
+  const onPromotionFromChange = (elite_from: number) => {
+    if (!isNumber(goalBuilder.elite_from) || !isNumber(goalBuilder.elite_to)) return;
+    const maxLevel = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_from];
+    setGoalBuilder((prev) => ({
+      ...prev,
+      elite_from,
+      elite_to: clamp(elite_from, prev.elite_to!, opData!.eliteLevels.length),
+      level_from: prev.level_from ? clamp(1, prev.level_from, maxLevel) : undefined,
+      level_to: prev.level_to ? clamp(1, prev.level_to, maxLevel) : undefined,
+    }));
+  };
+  const onPromotionToChange = (elite_to: number) => {
+    if (!isNumber(goalBuilder.elite_from) || !isNumber(goalBuilder.elite_to)) return;
+    const maxLevel = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_to];
+    setGoalBuilder((prev) => ({
+      ...prev,
+      elite_from: clamp(0, prev.elite_from!, elite_to),
+      elite_to,
+      level_from: prev.level_from ? clamp(1, prev.level_from, maxLevel) : undefined,
+      level_to: prev.level_to ? clamp(1, prev.level_to, maxLevel) : undefined,
+    }));
+  };
+  const onPromotionClearClick = () => {
+    setGoalBuilder((prev) => {
+      const _prev = { ...prev };
+      delete _prev.elite_from;
+      delete _prev.elite_to;
+      return _prev;
+    });
   };
 
-  const onPromotionToChange = useCallback(
-    (elite: number) => {
-      setEliteLevelTo(elite);
-      const maxLevel = MAX_LEVEL_BY_RARITY[selectedOperatorData!.rarity][elite];
-      if (levelTo && maxLevel < levelTo) {
-        onLevelToChange(maxLevel);
-      }
-      if (elite == 1) {
-        setMasteriesTo([]);
-        setModulesTo(undefined);
-      }
-      if (elite == 0) {
-        setSkillLevelTo(4);
-        setMasteriesTo([]);
-        setModulesTo(undefined);
-      }
-    },
-    [levelTo, selectedOperatorData]
-  );
-
-  const onPromotionClearClick = useCallback(() => {
-    if (currentAccountOperator) {
-      setEliteLevelFrom(currentAccountOperator.elite);
-    } else {
-      setEliteLevelFrom(undefined);
-    }
-    setEliteLevelTo(undefined);
-  }, [currentAccountOperator]);
-
-  const onLevelFromChange = (level: number) => {
-    setLevelFrom(level);
-    if (eliteLevelFrom == eliteLevelTo && (levelTo ?? 0) < level) {
-      setLevelTo(level);
-    }
+  // level
+  const onLevelFromChange = (level_from: number) => {
+    if (!isNumber(goalBuilder.level_from) || !isNumber(goalBuilder.level_to)) return;
+    const maxLevel = MAX_LEVEL_BY_RARITY[opData!.rarity][goalBuilder.elite_from ?? currentOp?.elite ?? 0];
+    setGoalBuilder((prev) => ({
+      ...prev,
+      level_from: clamp(1, level_from, maxLevel),
+    }));
+  };
+  const onLevelToChange = (level_to: number) => {
+    if (!isNumber(goalBuilder.level_from) || !isNumber(goalBuilder.level_to)) return;
+    const maxLevel = MAX_LEVEL_BY_RARITY[opData!.rarity][goalBuilder.elite_to ?? currentOp?.elite ?? 0];
+    setGoalBuilder((prev) => ({
+      ...prev,
+      level_to: clamp(1, level_to, maxLevel),
+    }));
+  };
+  const onLevelClearClick = () => {
+    setGoalBuilder((prev) => {
+      const _prev = { ...prev };
+      delete _prev.level_from;
+      delete _prev.level_to;
+      return _prev;
+    });
   };
 
-  const onLevelToChange = (level: number) => {
-    setLevelTo(level);
+  // skills
+  const onSkillLevelFromChange = (skill_level_from: number) => {
+    if (!isNumber(goalBuilder.skill_level_from) || !isNumber(goalBuilder.skill_level_to)) return;
+    setGoalBuilder((prev) => ({
+      ...prev,
+      skill_level_from: clamp(1, skill_level_from, 7),
+      skill_level_to: clamp(skill_level_from, prev.skill_level_to!, 7),
+    }));
+  };
+  const onSkillLevelToChange = (skill_level_to: number) => {
+    if (!isNumber(goalBuilder.skill_level_from) || !isNumber(goalBuilder.skill_level_to)) return;
+    setGoalBuilder((prev) => ({
+      ...prev,
+      skill_level_from: clamp(1, prev.skill_level_from!, skill_level_to),
+      skill_level_to: clamp(1, skill_level_to, 7),
+    }));
+  };
+  const onSkillLevelClearClick = () => {
+    setGoalBuilder((prev) => {
+      const _prev = { ...prev };
+      delete _prev.skill_level_from;
+      delete _prev.skill_level_to;
+      return _prev;
+    });
   };
 
-  const onLevelClearClick = useCallback(() => {
-    if (currentAccountOperator) {
-      setLevelFrom(currentAccountOperator.level);
-    } else {
-      setLevelFrom(undefined);
-    }
-    setLevelTo(undefined);
-  }, [currentAccountOperator]);
+  // mastery
+  const onMasteryFromChange = (skillNumber: number, newMasteryLevel: number) => {
+    if (!goalBuilder.masteries_from || !goalBuilder.masteries_to) return;
+    if (skillNumber >= goalBuilder.masteries_from.length) return;
 
-  const onSkillLevelFromChange = (level: number) => {
-    if (eliteLevelFrom && eliteLevelFrom < 1) {
-      onPromotionFromChange(1);
-    }
-    setSkillLevelFrom(level);
+    const masteries_from = [...goalBuilder.masteries_from];
+    masteries_from[skillNumber] = newMasteryLevel;
+    const masteries_to = [...goalBuilder.masteries_to];
+    masteries_to[skillNumber] = Math.max(newMasteryLevel, masteries_to[skillNumber]);
+    setGoalBuilder((prev) => ({
+      ...prev,
+      masteries_from,
+      masteries_to,
+    }));
+  };
+  const onMasteryToChange = (skillNumber: number, newMasteryLevel: number) => {
+    if (!goalBuilder.masteries_from || !goalBuilder.masteries_to) return;
+    const masteries_to = [...(goalBuilder.masteries_to ?? [])];
+    masteries_to[skillNumber] = newMasteryLevel;
+    setGoalBuilder((prev) => ({
+      ...prev,
+      masteries_from: prev.masteries_from!.map((n, i) => Math.min(n, masteries_to[i])),
+      masteries_to,
+    }));
+  };
+  const onMasteryClearClick = () => {
+    setGoalBuilder((prev) => {
+      const _prev = { ...prev };
+      delete _prev.masteries_from;
+      delete _prev.masteries_to;
+      return _prev;
+    });
   };
 
-  const onSkillLevelToChange = useCallback(
-    (level: number) => {
-      if (!eliteLevelTo || eliteLevelTo < 1) {
-        onPromotionToChange(1);
+  // module
+  const onModuleFromChange = (moduleId: string, newModuleLevel: number) => {
+    if (!goalBuilder.modules_from || !goalBuilder.modules_to) return;
+    if (!currentOp?.modules?.[moduleId]) return;
+
+    const modules_from = { ...(goalBuilder.modules_from as Record<string, number>) };
+    modules_from[moduleId] = clamp(0, newModuleLevel, 3);
+    const modules_to = { ...(goalBuilder.modules_to as Record<string, number>) };
+    modules_to[moduleId] = clamp(newModuleLevel, modules_to[moduleId], 3);
+    setGoalBuilder((prev) => ({
+      ...prev,
+      modules_from,
+      modules_to,
+    }));
+  };
+  const onModuleToChange = (moduleId: string, newModuleLevel: number) => {
+    if (!goalBuilder.modules_from || !goalBuilder.modules_to) return;
+    if (!currentOp?.modules?.[moduleId]) return;
+
+    const modules_from = { ...(goalBuilder.modules_from as Record<string, number>) };
+    modules_from[moduleId] = clamp(0, modules_from[moduleId], newModuleLevel);
+    const modules_to = { ...(goalBuilder.modules_to as Record<string, number>) };
+    modules_to[moduleId] = clamp(0, newModuleLevel, 3);
+    setGoalBuilder((prev) => ({
+      ...prev,
+      modules_from,
+      modules_to,
+    }));
+  };
+  const onModuleClearClick = () => {
+    setGoalBuilder((prev) => {
+      const _prev = { ...prev };
+      delete _prev.modules_from;
+      delete _prev.modules_to;
+      return _prev;
+    });
+  };
+
+  const handleGoalAddDialogClose = (shouldAddGoal: boolean) => {
+    if (shouldAddGoal && currentOp) {
+      const goalData: GoalDataInsert = { group_name: selectedGroup, op_id: currentOp.op_id };
+
+      let hasChanged = false;
+
+      if (
+        isNumber(goalBuilder.elite_from) &&
+        isNumber(goalBuilder.elite_to) &&
+        goalBuilder.elite_from !== goalBuilder.elite_to
+      ) {
+        goalData.elite_from = goalBuilder.elite_from;
+        goalData.elite_to = goalBuilder.elite_to;
+        hasChanged = true;
       }
-      setSkillLevelTo(level);
-    },
-    [eliteLevelTo, onPromotionToChange]
-  );
 
-  const onSkillLevelClearClick = useCallback(() => {
-    if (currentAccountOperator) {
-      setSkillLevelFrom(currentAccountOperator.skill_level);
-    } else {
-      setSkillLevelFrom(undefined);
-    }
-    setSkillLevelTo(undefined);
-  }, [currentAccountOperator]);
-
-  const onMasteryFromChange = useCallback(
-    (skillNumber: number, newMasteryLevel: number) => {
-      const newMasteries = [...masteriesFrom];
-      newMasteries[skillNumber] = newMasteryLevel;
-      setMasteriesFrom(newMasteries);
-    },
-    [masteriesFrom]
-  );
-
-  const onMasteryToChange = useCallback(
-    (skillNumber: number, newMasteryLevel: number) => {
-      const newMasteries = [...masteriesTo];
-      newMasteries[skillNumber] = newMasteryLevel;
-      setMasteriesTo(newMasteries);
-    },
-    [masteriesTo]
-  );
-
-  const onMasteryClearClick = useCallback(() => {
-    if (currentAccountOperator) {
-      const defaultMasteries: number[] = selectedOperatorData?.skillData?.forEach((_) => 0) ?? [];
-      setMasteriesFrom(currentAccountOperator.masteries ?? defaultMasteries);
-      setMasteriesTo(currentAccountOperator.masteries ?? defaultMasteries);
-    } else {
-      setMasteriesFrom([]);
-      setMasteriesTo([]);
-    }
-  }, [currentAccountOperator, selectedOperatorData]);
-
-  const onModuleFromChange = useCallback(
-    (moduleId: string, newModuleLevel: number) => {
-      const newModules = { ...modulesFrom };
-      newModules[moduleId] = newModuleLevel;
-      setModulesFrom(newModules);
-    },
-    [modulesFrom]
-  );
-
-  const onModuleToChange = useCallback(
-    (moduleId: string, newModuleLevel: number) => {
-      const newModules = { ...modulesTo };
-      newModules[moduleId] = newModuleLevel;
-      setModulesTo(newModules);
-    },
-    [modulesTo]
-  );
-
-  const onModuleClearClick = useCallback(() => {
-    if (currentAccountOperator) {
-      setModulesFrom(currentAccountOperator.modules);
-      setModulesTo(currentAccountOperator.modules);
-    } else {
-      setModulesFrom(undefined);
-      setModulesTo(undefined);
-    }
-  }, [currentAccountOperator]);
-
-  const handleGoalAddDialogClose = useCallback(
-    (shouldAddGoal: boolean) => {
-      if (shouldAddGoal && currentAccountOperator) {
-        const goalData: GoalDataInsert = {
-          group_name: selectedGroup,
-          op_id: currentAccountOperator.op_id,
-        };
-
-        let shouldUpsert = false;
-
-        if (eliteLevelFrom != null && eliteLevelTo && eliteLevelFrom != eliteLevelTo) {
-          goalData.elite_from = eliteLevelFrom;
-          goalData.elite_to = eliteLevelTo;
-          shouldUpsert = true;
-        }
-
-        if (levelFrom && levelTo && levelFrom != levelTo) {
-          goalData.level_from = levelFrom;
-          goalData.level_to = levelTo;
-          if (eliteLevelFrom != null && eliteLevelTo == null) {
-            goalData.elite_from = eliteLevelFrom;
-            goalData.elite_to = eliteLevelFrom;
-          }
-          shouldUpsert = true;
-        }
-
-        if (skillLevelFrom && skillLevelTo && skillLevelFrom != skillLevelTo) {
-          goalData.skill_level_from = skillLevelFrom;
-          goalData.skill_level_to = skillLevelTo;
-          shouldUpsert = true;
-        }
-
-        if (masteriesFrom && masteriesTo && !_.isEqual(masteriesFrom, masteriesTo)) {
-          goalData.masteries_from = masteriesFrom;
-          goalData.masteries_to = masteriesTo;
-          shouldUpsert = true;
-        }
-
-        if (modulesFrom && modulesTo && !_.isEqual(modulesFrom, modulesTo)) {
-          goalData.modules_from = modulesFrom;
-          goalData.modules_to = modulesTo;
-          shouldUpsert = true;
-        }
-        if (shouldUpsert) {
-          if (!goals?.find((goal) => goal.group_name == selectedGroup && goal.op_id == currentAccountOperator.op_id)) {
-            const sortOrders = goals?.map((goal) => goal.sort_order) ?? [0];
-            goalData.sort_order = Math.max(0, ...sortOrders) + 1;
-          }
-          updateGoals([goalData]);
-        }
+      if (
+        isNumber(goalBuilder.level_from) &&
+        isNumber(goalBuilder.level_to) &&
+        goalBuilder.level_from !== goalBuilder.level_to
+      ) {
+        goalData.level_from = goalBuilder.level_from;
+        goalData.level_to = goalBuilder.level_to;
+        hasChanged = true;
       }
-      onClose();
-      setCurrentAccountOperator(null);
-      setSelectedOperatorData(null);
 
-      setEliteLevelFrom(undefined);
-      setLevelFrom(undefined);
-      setSkillLevelFrom(undefined);
-      setMasteriesFrom([]);
-      setModulesFrom(undefined);
-
-      setEliteLevelTo(undefined);
-      setLevelTo(undefined);
-      setSkillLevelTo(undefined);
-      setMasteriesTo([]);
-      setModulesTo(undefined);
-    },
-    [
-      currentAccountOperator,
-      eliteLevelFrom,
-      eliteLevelTo,
-      goals,
-      updateGoals,
-      levelFrom,
-      levelTo,
-      masteriesFrom,
-      masteriesTo,
-      modulesFrom,
-      modulesTo,
-      onClose,
-      selectedGroup,
-      skillLevelFrom,
-      skillLevelTo,
-    ],
-  );
-
-  const handleShortcuts = useCallback(
-    (shortcut: string) => {
-      const moduleLevelRequirement = MODULE_REQ_BY_RARITY[selectedOperatorData!.rarity];
-      const moduleCount = selectedOperatorData?.moduleData?.length ?? 0;
-      const moduleIds = selectedOperatorData?.moduleData?.map((x) => x.moduleId);
-      const skillCount = selectedOperatorData?.skillData?.length ?? 0;
-      const maxElite = selectedOperatorData?.eliteLevels.length ?? 0;
-      const maxLevel = MAX_LEVEL_BY_RARITY[selectedOperatorData!.rarity];
-      const defaultMasteries: number[] = selectedOperatorData?.skillData?.forEach((_) => 0) ?? [];
-
-      //reset the "from" section to current operator stats
-      setEliteLevelFrom(currentAccountOperator?.elite);
-      setLevelFrom(currentAccountOperator?.level);
-      setSkillLevelFrom(currentAccountOperator?.skill_level);
-      setMasteriesFrom(currentAccountOperator?.masteries ?? defaultMasteries);
-      setModulesFrom(currentAccountOperator?.modules);
-
-      switch (shortcut) {
-        case "Nothing":
-          setEliteLevelTo(undefined);
-          setLevelTo(undefined);
-          setSkillLevelTo(undefined);
-          setMasteriesTo(currentAccountOperator?.masteries ?? defaultMasteries);
-          setModulesTo(undefined);
-          break;
-        case "Everything":
-          if (maxElite == 1) {
-            setEliteLevelTo(1);
-            setLevelTo(maxLevel[1]);
-            setSkillLevelTo(7);
-          } else {
-            setEliteLevelTo(2);
-            setLevelTo(maxLevel[2]);
-            setSkillLevelTo(7);
-            let newMasteries = masteriesTo.map((_) => 3);
-            setMasteriesTo(newMasteries);
-            if (moduleIds) {
-              const maxedModules: Record<string, number> = {};
-              moduleIds.forEach((moduleId) => {
-                maxedModules[moduleId] = 3;
-              });
-              setModulesTo(maxedModules);
-            }
-          }
-          break;
-        case "Elite 1":
-          if (maxElite >= 1) {
-            setEliteLevelTo(1);
-            if (levelTo && maxLevel[1] < levelTo) {
-              setLevelTo(maxLevel[1]);
-            }
-          }
-          break;
-        case "Elite 2":
-          if (maxElite == 2) {
-            setEliteLevelTo(2);
-            if (levelTo && maxLevel[2] < levelTo) {
-              setLevelTo(maxLevel[2]);
-            }
-          }
-          break;
-        case "Skill level 7":
-          if (!eliteLevelTo || eliteLevelTo < 1) {
-            setEliteLevelTo(1);
-          }
-          setSkillLevelTo(7);
-          break;
-        case "All Skill Masteries 1 → 3":
-          if (maxElite == 2) {
-            setEliteLevelTo(2);
-            if (levelTo && maxLevel[2] < levelTo) {
-              setLevelTo(maxLevel[2]);
-            }
-            setSkillLevelTo(7);
-            let newMasteries = masteriesTo.map((_) => 3);
-            setMasteriesTo(newMasteries);
-          }
-          break;
-        case "Skill 1 Mastery 3":
-          if (maxElite == 2 && skillCount >= 1) {
-            setEliteLevelTo(2);
-            if (levelTo && maxLevel[2] < levelTo) {
-              setLevelTo(maxLevel[2]);
-            }
-            setSkillLevelTo(7);
-            let newMasteries = [...masteriesTo];
-            newMasteries[0] = 3;
-            setMasteriesTo(newMasteries);
-          }
-          break;
-        case "Skill 2 Mastery 3":
-          if (maxElite == 2 && skillCount >= 2) {
-            setEliteLevelTo(2);
-            if (levelTo && maxLevel[2] < levelTo) {
-              setLevelTo(maxLevel[2]);
-            }
-            setSkillLevelTo(7);
-            let newMasteries = [...masteriesTo];
-            newMasteries[1] = 3;
-            setMasteriesTo(newMasteries);
-          }
-          break;
-        case "Skill 3 Mastery 3":
-          if (maxElite == 2 && skillCount >= 3) {
-            setEliteLevelTo(2);
-            if (maxLevel[2] < (levelTo ?? 0)) {
-              setLevelTo(maxLevel[2]);
-            }
-            setSkillLevelTo(7);
-            let newMasteries = [...masteriesTo];
-            newMasteries[2] = 3;
-            setMasteriesTo(newMasteries);
-          }
-          break;
-        case "Module 1 Lv 3":
-          if (maxElite == 2 && moduleCount >= 1) {
-            setEliteLevelTo(2);
-            if ((levelTo ?? 0) < moduleLevelRequirement) {
-              setLevelTo(moduleLevelRequirement);
-            }
-            const moduleData = { ...modulesTo };
-            if (moduleIds) {
-              moduleData[moduleIds[0]] = 3;
-            }
-            setModulesTo(moduleData);
-          }
-          break;
-        case "Module 2 Lv 3":
-          if (maxElite == 2 && moduleCount >= 2) {
-            setEliteLevelTo(2);
-            if ((levelTo ?? 0) < moduleLevelRequirement) {
-              setLevelTo(moduleLevelRequirement);
-            }
-            const moduleData = { ...modulesTo };
-            if (moduleIds) {
-              moduleData[moduleIds[1]] = 3;
-            }
-            setModulesTo(moduleData);
-          }
-          break;
-        case "Module 3 lv 3":
-          if (maxElite == 2 && moduleCount >= 3) {
-            setEliteLevelTo(2);
-            if ((levelTo ?? 0) < moduleLevelRequirement) {
-              setLevelTo(moduleLevelRequirement);
-            }
-            const moduleData = { ...modulesTo };
-            if (moduleIds) {
-              moduleData[moduleIds[2]] = 3;
-            }
-            setModulesTo(moduleData);
-          }
-          break;
+      if (
+        isNumber(goalBuilder.skill_level_from) &&
+        isNumber(goalBuilder.skill_level_to) &&
+        goalBuilder.skill_level_from !== goalBuilder.skill_level_to
+      ) {
+        goalData.skill_level_from = goalBuilder.skill_level_from;
+        goalData.skill_level_to = goalBuilder.skill_level_to;
+        hasChanged = true;
       }
-    },
-    [currentAccountOperator, eliteLevelTo, levelTo, masteriesTo, modulesTo, selectedOperatorData]
-  );
+
+      if (
+        goalBuilder.masteries_from?.every(isNumber) &&
+        goalBuilder.masteries_to?.every(isNumber) &&
+        !goalBuilder.masteries_from?.every((x, i) => x === goalBuilder.masteries_to?.[i])
+      ) {
+        goalData.masteries_from = goalBuilder.masteries_from;
+        goalData.masteries_to = goalBuilder.masteries_to;
+        hasChanged = true;
+      }
+
+      if (
+        goalBuilder.modules_from &&
+        Object.values(goalBuilder.modules_from).every(isNumber) &&
+        goalBuilder.modules_to &&
+        Object.values(goalBuilder.modules_to).every(isNumber) &&
+        !Object.entries(goalBuilder.modules_from)?.every(
+          ([id, n]) => n === (goalBuilder.modules_to as Record<string, number>)?.[id]
+        )
+      ) {
+        goalData.modules_from = goalBuilder.modules_from;
+        goalData.modules_to = goalBuilder.modules_to;
+        hasChanged = true;
+      }
+      if (hasChanged) {
+        if (!isEdit) {
+          const sortOrders = goals.map(({ sort_order }) => sort_order);
+          goalData.sort_order = Math.max(0, ...sortOrders) + 1;
+        }
+        updateGoals([goalData]);
+      }
+      setOpData(null);
+      setCurrentOp(null);
+    }
+    onClose();
+    setGoalBuilder({});
+    setOpenSections({
+      elite: false,
+      level: false,
+      module: false,
+      skill: false,
+      mastery: false,
+    });
+  };
+
+  const handleShortcuts = (shortcut: string) => {
+    if (!opData || !currentOp) return;
+    const moduleLevelRequirement = MODULE_REQ_BY_RARITY[opData!.rarity];
+    const moduleCount = opData?.moduleData?.length ?? 0;
+    const moduleIds = opData?.moduleData?.map((x) => x.moduleId);
+    const skillCount = opData?.skillData?.length ?? 0;
+    const maxElite = opData?.eliteLevels.length ?? 0;
+    const maxLevel = MAX_LEVEL_BY_RARITY[opData!.rarity];
+
+    setGoalBuilder({});
+
+    switch (shortcut) {
+      case "Nothing":
+        setGoalBuilder({});
+        break;
+      case "Everything":
+        if (maxElite === 0) {
+          setGoalBuilder({
+            level_from: currentOp.level,
+            level_to: 30,
+          });
+        } else if (maxElite === 1) {
+          setGoalBuilder({
+            level_from: currentOp.level,
+            level_to: maxLevel[1],
+            skill_level_from: currentOp.skill_level,
+            skill_level_to: 7,
+          });
+        } else if (maxElite === 2) {
+          setGoalBuilder({
+            elite_from: currentOp.elite,
+            elite_to: 2,
+            level_from: currentOp.level,
+            level_to: maxLevel[2],
+            skill_level_from: currentOp.skill_level,
+            skill_level_to: 7,
+            masteries_from: currentOp.masteries,
+            masteries_to: currentOp.masteries.map(() => 3),
+            modules_from: moduleCount ? currentOp.modules : undefined,
+            modules_to: moduleCount
+              ? opData.moduleData?.reduce((acc, { moduleId }) => ({ ...acc, [moduleId]: 3 }), {})
+              : undefined,
+          });
+        }
+        break;
+      // case "Elite 1":
+      //   if (maxElite >= 1) {
+      //     setEliteLevelTo(1);
+      //     if (levelTo && maxLevel[1] < levelTo) {
+      //       setLevelTo(maxLevel[1]);
+      //     }
+      //   }
+      //   break;
+      // case "Elite 2":
+      //   if (maxElite == 2) {
+      //     setEliteLevelTo(2);
+      //     if (levelTo && maxLevel[2] < levelTo) {
+      //       setLevelTo(maxLevel[2]);
+      //     }
+      //   }
+      //   break;
+      // case "Skill level 7":
+      //   if (!eliteLevelTo || eliteLevelTo < 1) {
+      //     setEliteLevelTo(1);
+      //   }
+      //   setSkillLevelTo(7);
+      //   break;
+      // case "All Skill Masteries 1 → 3":
+      //   if (maxElite == 2) {
+      //     setEliteLevelTo(2);
+      //     if (levelTo && maxLevel[2] < levelTo) {
+      //       setLevelTo(maxLevel[2]);
+      //     }
+      //     setSkillLevelTo(7);
+      //     setMasteriesTo((opData?.skillData ?? []).map(() => 3));
+      //   }
+      //   break;
+      // case "Skill 1 Mastery 3":
+      //   if (maxElite == 2 && skillCount >= 1) {
+      //     setEliteLevelTo(2);
+      //     if (levelTo && maxLevel[2] < levelTo) {
+      //       setLevelTo(maxLevel[2]);
+      //     }
+      //     setSkillLevelTo(7);
+      //     setMasteriesTo((opData?.skillData ?? []).map((_, i) => (i === 0 ? 3 : 0)));
+      //   }
+      //   break;
+      // case "Skill 2 Mastery 3":
+      //   if (maxElite == 2 && skillCount >= 2) {
+      //     setEliteLevelTo(2);
+      //     if (levelTo && maxLevel[2] < levelTo) {
+      //       setLevelTo(maxLevel[2]);
+      //     }
+      //     setSkillLevelTo(7);
+      //     setMasteriesTo((opData?.skillData ?? []).map((_, i) => (i === 1 ? 3 : 0)));
+      //   }
+      //   break;
+      // case "Skill 3 Mastery 3":
+      //   if (maxElite == 2 && skillCount >= 3) {
+      //     setEliteLevelTo(2);
+      //     if (maxLevel[2] < (levelTo ?? 0)) {
+      //       setLevelTo(maxLevel[2]);
+      //     }
+      //     setSkillLevelTo(7);
+      //     setMasteriesTo((opData?.skillData ?? []).map((_, i) => (i === 2 ? 3 : 0)));
+      //   }
+      //   break;
+      // case "Module 1 Lv 3":
+      //   if (maxElite == 2 && moduleCount >= 1) {
+      //     setEliteLevelTo(2);
+      //     if ((levelTo ?? 0) < moduleLevelRequirement) {
+      //       setLevelTo(moduleLevelRequirement);
+      //     }
+      //     const moduleData = { ...modulesTo };
+      //     if (moduleIds) {
+      //       moduleData[moduleIds[0]] = 3;
+      //     }
+      //     setModulesTo(moduleData);
+      //   }
+      //   break;
+      // case "Module 2 Lv 3":
+      //   if (maxElite == 2 && moduleCount >= 2) {
+      //     setEliteLevelTo(2);
+      //     if ((levelTo ?? 0) < moduleLevelRequirement) {
+      //       setLevelTo(moduleLevelRequirement);
+      //     }
+      //     const moduleData = { ...modulesTo };
+      //     if (moduleIds) {
+      //       moduleData[moduleIds[1]] = 3;
+      //     }
+      //     setModulesTo(moduleData);
+      //   }
+      //   break;
+      // case "Module 3 lv 3":
+      // if (maxElite == 2 && moduleCount >= 3) {
+      //   setEliteLevelTo(2);
+      //   if ((levelTo ?? 0) < moduleLevelRequirement) {
+      //     setLevelTo(moduleLevelRequirement);
+      //   }
+      //   const moduleData = { ...modulesTo };
+      //   if (moduleIds) {
+      //     moduleData[moduleIds[2]] = 3;
+      //   }
+      //   setModulesTo(moduleData);
+      // }
+      // break;
+    }
+  };
 
   return (
     <>
-      <Dialog
-        open={open}
-        onClose={() => {
-          onClose();
-          onSelectedOperatorChange(null);
-        }}
-        fullScreen={fullScreen}
-        keepMounted
-      >
+      <Dialog open={open} onClose={() => handleGoalAddDialogClose(false)} fullScreen={fullScreen}>
         <DialogTitle>
           New Goal
           <IconButton onClick={onClose} sx={{ display: { sm: "none" } }}>
@@ -581,7 +578,7 @@ const PlannerGoalAdd = (props: Props) => {
             gap: 2,
           }}
         >
-          <DisabledContext.Provider value={!selectedOperatorData}>
+          <DisabledContext.Provider value={!opData}>
             <Box
               sx={{
                 display: "flex",
@@ -592,7 +589,7 @@ const PlannerGoalAdd = (props: Props) => {
             >
               <OperatorSearch
                 sx={{ width: "100%", maxWidth: "40ch" }}
-                value={selectedOperatorData}
+                value={opData}
                 onChange={(newOp) => onSelectedOperatorChange(newOp)}
               />
               <FormControl sx={{ flexGrow: 1 }}>
@@ -629,7 +626,7 @@ const PlannerGoalAdd = (props: Props) => {
                 <Box component="ul" sx={{ display: "flex", flexWrap: "wrap", m: 0, p: 0, gap: 2 }}>
                   {SHORTCUTS.map((shortcut) => (
                     <Box component="li" key={shortcut} sx={{ display: "contents" }}>
-                      <Chip disabled={!selectedOperatorData} onClick={() => handleShortcuts(shortcut)}>
+                      <Chip disabled={!opData} onClick={() => handleShortcuts(shortcut)}>
                         {shortcut}
                       </Chip>
                     </Box>
@@ -640,20 +637,20 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectGroup.Toggle
               title="Promotion"
               onClick={onPromotionClearClick}
-              open={openSections[0]}
-              toggleOpen={() => toggleSection(0)}
+              open={openSections.elite}
+              toggleOpen={() => toggleSection("elite")}
             >
               <SelectGroup.FromTo>
                 <Promotion
-                  value={eliteLevelFrom}
-                  min={currentAccountOperator?.elite}
-                  max={eliteLevelTo}
+                  exclusive
+                  value={goalBuilder.elite_from}
+                  max={opData?.eliteLevels.length}
                   onChange={onPromotionFromChange}
                 />
                 <Promotion
-                  value={eliteLevelTo}
-                  min={(eliteLevelFrom ?? 0) + 1}
-                  max={selectedOperatorData?.eliteLevels.length}
+                  exclusive
+                  value={goalBuilder.elite_to}
+                  max={opData?.eliteLevels.length}
                   onChange={onPromotionToChange}
                 />
               </SelectGroup.FromTo>
@@ -661,34 +658,18 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectGroup.Toggle
               title="Level"
               onClick={onLevelClearClick}
-              open={openSections[1]}
-              toggleOpen={() => toggleSection(1)}
+              open={openSections.level}
+              toggleOpen={() => toggleSection("level")}
             >
               <SelectGroup.FromTo>
                 <Level
-                  value={levelFrom}
-                  min={
-                    currentAccountOperator?.elite && currentAccountOperator?.elite == eliteLevelFrom
-                      ? currentAccountOperator.level
-                      : 1
-                  }
-                  max={
-                    selectedOperatorData && eliteLevelFrom != undefined
-                      ? MAX_LEVEL_BY_RARITY[selectedOperatorData.rarity][eliteLevelFrom]
-                      : undefined
-                  }
+                  value={goalBuilder.level_from ?? undefined}
+                  max={MAX_LEVEL_BY_RARITY[opData?.rarity ?? 0][goalBuilder.elite_from ?? currentOp?.elite ?? 0]}
                   onChange={onLevelFromChange}
                 />
                 <Level
-                  value={levelTo}
-                  min={eliteLevelTo == eliteLevelFrom ? levelFrom : 1}
-                  max={
-                    selectedOperatorData && eliteLevelTo != undefined
-                      ? MAX_LEVEL_BY_RARITY[selectedOperatorData.rarity][eliteLevelTo]
-                      : selectedOperatorData && eliteLevelFrom != undefined
-                      ? MAX_LEVEL_BY_RARITY[selectedOperatorData.rarity][eliteLevelFrom]
-                      : undefined
-                  }
+                  value={goalBuilder.level_to ?? undefined}
+                  max={MAX_LEVEL_BY_RARITY[opData?.rarity ?? 0][goalBuilder.elite_to ?? currentOp?.elite ?? 0]}
                   onChange={onLevelToChange}
                 />
               </SelectGroup.FromTo>
@@ -696,35 +677,28 @@ const PlannerGoalAdd = (props: Props) => {
             <SelectGroup.Toggle
               title="Skill Rank"
               onClick={onSkillLevelClearClick}
-              open={openSections[2]}
-              toggleOpen={() => toggleSection(2)}
+              open={openSections.skill}
+              toggleOpen={() => toggleSection("skill")}
             >
               <SelectGroup.FromTo>
                 <SkillLevel
-                  value={skillLevelFrom}
-                  min={currentAccountOperator?.skill_level}
-                  max={[4, 7, 7][eliteLevelFrom ?? 0]}
+                  exclusive
+                  value={goalBuilder.skill_level_from ?? undefined}
                   onChange={onSkillLevelFromChange}
                 />
-                <SkillLevel
-                  value={skillLevelTo}
-                  min={skillLevelFrom ? skillLevelFrom + 1 : 1}
-                  max={[4, 7, 7][eliteLevelTo ?? 0]}
-                  onChange={onSkillLevelToChange}
-                />
+                <SkillLevel exclusive value={goalBuilder.skill_level_to ?? undefined} onChange={onSkillLevelToChange} />
               </SelectGroup.FromTo>
             </SelectGroup.Toggle>
-            {/*TODO fix min and max*/}
             <SelectGroup.Toggle
               title="Mastery"
               onClick={onMasteryClearClick}
-              open={openSections[3]}
-              toggleOpen={() => toggleSection(3)}
-              disabled={!selectedOperatorData || selectedOperatorData.rarity <= 3}
+              open={openSections.mastery}
+              toggleOpen={() => toggleSection("mastery")}
+              disabled={!opData || opData.rarity <= 3}
             >
               <Mastery>
-                {selectedOperatorData
-                  ? selectedOperatorData.skillData?.map((data, skillIndex) => (
+                {opData
+                  ? opData.skillData?.map((data, skillIndex) => (
                       <Mastery.Skill
                         src={data.iconId ?? data.skillId}
                         key={data.skillId}
@@ -733,18 +707,14 @@ const PlannerGoalAdd = (props: Props) => {
                       >
                         <SelectGroup.FromTo>
                           <Mastery.Select
-                            value={masteriesFrom[skillIndex]}
-                            min={currentAccountOperator?.masteries ? currentAccountOperator?.masteries[skillIndex] : 0}
-                            max={masteriesTo[skillIndex] ?? 3}
+                            exclusive
+                            value={goalBuilder.masteries_from?.[skillIndex]}
                             onChange={(masteryLevel) => onMasteryFromChange(skillIndex, masteryLevel)}
-                            // disabled={(eliteLevelFrom ?? 0) < 2}
                           />
                           <Mastery.Select
-                            value={masteriesTo[skillIndex]}
-                            min={masteriesFrom[skillIndex]}
-                            max={3}
+                            exclusive
+                            value={goalBuilder.masteries_to?.[skillIndex]}
                             onChange={(masteryLevel) => onMasteryToChange(skillIndex, masteryLevel)}
-                            // disabled={(eliteLevelTo ?? eliteLevelFrom ?? 0) < 2}
                           />
                         </SelectGroup.FromTo>
                       </Mastery.Skill>
@@ -752,45 +722,29 @@ const PlannerGoalAdd = (props: Props) => {
                   : null}
               </Mastery>
             </SelectGroup.Toggle>
-            {/*TODO fix min and max*/}
             <SelectGroup.Toggle
               title="Module"
               onClick={onModuleClearClick}
-              open={openSections[4]}
-              toggleOpen={() => toggleSection(4)}
-              disabled={!!selectedOperatorData?.moduleData?.length}
+              open={openSections.module}
+              toggleOpen={() => toggleSection("module")}
+              disabled={!!opData?.moduleData?.length}
             >
               <Module>
-                {selectedOperatorData
-                  ? selectedOperatorData.moduleData?.map((mod) => (
+                {opData
+                  ? opData.moduleData?.map((mod) => (
                       <Module.Item key={mod.moduleId} {...mod}>
                         <SelectGroup.FromTo>
                           <Module.Select
-                            value={modulesFrom && modulesFrom[mod.moduleId] ? modulesFrom[mod.moduleId] : 0}
+                            exclusive
+                            value={(goalBuilder.modules_from as Record<string, number>)?.[mod.moduleId] ?? 0}
                             moduleId={mod.moduleId}
                             onChange={onModuleFromChange}
-                            min={undefined}
-                            max={undefined}
-                            // disabled={
-                            //   (eliteLevelFrom ?? 0) < 2 ||
-                            //   MODULE_REQ_BY_RARITY[
-                            //     selectedOperatorData!.rarity
-                            //   ] >= (levelFrom ?? 0)
-                            // }
                           />
                           <Module.Select
-                            value={modulesTo && modulesTo[mod.moduleId] ? modulesTo[mod.moduleId] : 0}
+                            exclusive
+                            value={(goalBuilder.modules_to as Record<string, number>)?.[mod.moduleId] ?? 0}
                             moduleId={mod.moduleId}
                             onChange={onModuleToChange}
-                            min={undefined}
-                            max={undefined}
-                            // disabled={
-                            //   (eliteLevelTo ?? eliteLevelFrom ?? 0) < 2 ||
-                            //   (levelTo ?? levelFrom ?? 0) <
-                            //     MODULE_REQ_BY_RARITY[
-                            //       selectedOperatorData!.rarity
-                            //     ]
-                            // }
                           />
                         </SelectGroup.FromTo>
                       </Module.Item>
@@ -800,11 +754,11 @@ const PlannerGoalAdd = (props: Props) => {
             </SelectGroup.Toggle>
           </DisabledContext.Provider>
         </DialogContent>
-        <DialogActions>
+        <DialogActions sx={{ display: "flex", gap: 1 }}>
           <Button variant="outlined" onClick={() => handleGoalAddDialogClose(false)}>
             Cancel
           </Button>
-          <Button variant="contained" onClick={() => handleGoalAddDialogClose(true)}>
+          <Button variant="contained" onClick={() => handleGoalAddDialogClose(true)} disabled={!opData}>
             Add
           </Button>
         </DialogActions>

@@ -2,22 +2,19 @@ import Grid from "@mui/material/Grid2";
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import Layout from "components/Layout";
-import useGoals from "../../util/hooks/useGoals";
-import useDepot from "../../util/hooks/useDepot";
+import useGoals from "util/hooks/useGoals";
+import useDepot from "util/hooks/useDepot";
 
-const MaterialsNeeded = dynamic(
-  () => import("components/planner/MaterialsNeeded"),
-  {
-    ssr: false,
-  }
-);
+const MaterialsNeeded = dynamic(() => import("components/planner/MaterialsNeeded"), {
+  ssr: false,
+});
 const PlannerGoals = dynamic(() => import("components/planner/PlannerGoals"), {
   ssr: false,
 });
 
 const Goals: NextPage = () => {
   const [depot, setDepot] = useDepot();
-  const [goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator] = useGoals();
+  const { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator } = useGoals();
 
   return (
     <Layout tab="/data" page="/planner">
