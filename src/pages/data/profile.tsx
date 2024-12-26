@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Box, Divider } from "@mui/material";
+import { Box, Button, Divider, Typography } from "@mui/material";
 import Layout from "components/Layout";
 import SupportSelection from "components/data/profile/SupportSelection";
 import Assistant from "components/data/profile/Assistant";
@@ -11,6 +11,10 @@ import useAccount from "util/hooks/useAccount";
 import AccountData, { AccountDataInsert } from "types/auth/accountData";
 import Discord from "components/data/profile/Discord";
 import Reddit from "components/data/profile/Reddit";
+import { useState } from "react";
+import ProfileDialog from "components/lookup/ProfileDialog";
+import useOperators from "util/hooks/useOperators";
+import useSupports from "util/hooks/useSupports";
 
 export interface AccountMutateProps {
   user: AccountData;
@@ -18,7 +22,10 @@ export interface AccountMutateProps {
 }
 
 const Profile: NextPage = () => {
+  const [roster] = useOperators();
+  const [supports, setSupports] = useSupports();
   const [account, setAccount] = useAccount();
+  const [open, setOpen] = useState(false);
 
   if (!account) return <Layout tab="/data" page="/profile"></Layout>;
 
@@ -45,6 +52,11 @@ const Profile: NextPage = () => {
           },
         }}
       >
+        <Button onClick={() => setOpen(true)} sx={{ width: "100%", py: 1.5 }}>
+          <Typography variant="caption" sx={{ lineHeight: 1.1 }}>
+            View profile
+          </Typography>
+        </Button>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
           Account
           <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", gap: { xs: 1, sm: 2 } }}>
@@ -58,7 +70,7 @@ const Profile: NextPage = () => {
         </Box>
         <Divider />
         <Assistant {...accProps} />
-        <SupportSelection />
+        <SupportSelection supports={supports} setSupports={setSupports} />
         <Divider />
         <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
           Connections
@@ -67,6 +79,7 @@ const Profile: NextPage = () => {
             <Reddit {...accProps} />
           </Box>
         </Box>
+        <ProfileDialog open={open} onClose={() => setOpen(false)} data={{ roster, supports, account }} />
       </Box>
     </Layout>
   );

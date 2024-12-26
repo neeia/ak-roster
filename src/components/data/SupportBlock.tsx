@@ -255,7 +255,7 @@ const OperatorBlock = (props: Props) => {
           }}
         >
           {[...Array(3)].map((_, i) => {
-            if (!op.moduleData?.[i]) return <SpaceFiller />;
+            if (!op.moduleData?.[i]) return <SpaceFiller key={i} />;
             const mod = op.moduleData[i];
             return (
               <Box

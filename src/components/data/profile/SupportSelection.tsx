@@ -16,13 +16,17 @@ import OpSelectionButton from "./OpSelectionButton";
 import Image from "next/image";
 import { OperatorSupport } from "types/operators/supports";
 import useOperators from "util/hooks/useOperators";
-import useSupports from "util/hooks/useSupports";
 import OperatorSearch from "components/planner/OperatorSearch";
 import SupportOption from "./SupportOption";
 
-const SupportSelection = () => {
+interface Props {
+  supports: OperatorSupport[];
+  setSupports: (newSupport: OperatorSupport) => Promise<void>;
+}
+const SupportSelection = (props: Props) => {
+  const { supports, setSupports } = props;
+
   const [operators] = useOperators();
-  const [supports, _setSupport] = useSupports();
   const [index, setIndex] = useState<number>(0);
   const [input, setInput] = useState<string>(supports[index]?.op_id);
 
@@ -38,13 +42,13 @@ const SupportSelection = () => {
       skill: 0,
       slot: index,
     };
-    _setSupport(support);
+    setSupports(support);
   };
   const setSkill = (supportSlot: number, skillSlot: number) => {
     const support = supports.find(({ slot }) => slot === supportSlot);
     if (!support) return;
     support.skill = skillSlot;
-    _setSupport(support);
+    setSupports(support);
   };
   const setModule = (supportSlot: number, moduleSlot: number) => {
     const support = supports.find(({ slot }) => slot === supportSlot);
@@ -52,7 +56,7 @@ const SupportSelection = () => {
     const moduleData = operatorJson[support.op_id].moduleData;
     if (!moduleData) return;
     support.module = moduleData[moduleSlot].moduleId;
-    _setSupport(support);
+    setSupports(support);
   };
 
   const filter = (op: OperatorData) =>
@@ -75,7 +79,9 @@ const SupportSelection = () => {
         <Box>Modules</Box>
         {[...Array(3)].map((_, i) => {
           const support = supports.filter((support) => support.slot === i)[0];
-          const op = support ? { ...operators[support?.op_id], ...operatorJson[support?.op_id] } : undefined;
+          const opA = operators[support?.op_id];
+          const opB = operatorJson[support?.op_id];
+          const op = support ? { ...opA, ...opB } : undefined;
           return (
             <Fragment key={i}>
               <OpSelectionButton
@@ -85,7 +91,7 @@ const SupportSelection = () => {
                   setOpen(true);
                 }}
               />
-              {op ? (
+              {opA && opB && op ? (
                 <>
                   {/* Skills */}
                   {!op.skillData ? (
