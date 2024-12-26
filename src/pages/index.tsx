@@ -1,4 +1,16 @@
-﻿import { Alert, Box, Button, IconButton, InputAdornment, Paper, SxProps, TextField } from "@mui/material";
+﻿import {
+  Alert,
+  Box,
+  BoxProps,
+  Button,
+  IconButton,
+  InputAdornment,
+  Paper,
+  SxProps,
+  Tab,
+  Tabs,
+  TextField,
+} from "@mui/material";
 import type { NextPage } from "next";
 import config from "data/config";
 import React, { useCallback, useRef, useState } from "react";
@@ -25,10 +37,49 @@ const authFrame: SxProps = {
   p: 2,
 };
 
+interface TabPanelProps extends BoxProps {
+  index: number;
+  value: number;
+  component?: string;
+}
+
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, sx, ...rest } = props;
+
+  return (
+    <Box
+      role="tabpanel"
+      hidden={value !== index}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
+      sx={{
+        width: "100%",
+        maxWidth: "40rem",
+        ...sx,
+      }}
+      {...rest}
+    >
+      {value === index && children}
+    </Box>
+  );
+}
+
+function a11yProps(index: number) {
+  return {
+    id: `tab-${index}`,
+    "aria-controls": `tabpanel-${index}`,
+  };
+}
+
 const Home: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");
 
   const [errors, setErrors] = useState<string[]>([]);
+  const [value, setValue] = React.useState(1);
+
+  const handleChange = (_: any, newValue: number) => {
+    setValue(newValue);
+  };
 
   const search = useCallback((s: string) => {
     window.location.href = `/u/${s}`;
@@ -133,14 +184,17 @@ const Home: NextPage = () => {
           </Paper>
         )}
 
-        <Box
-          component="nav"
-          sx={{
-            width: "100%",
-            maxWidth: "40rem",
-            mt: 8,
-          }}
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="tab menu"
+          sx={{ mt: 8, ml: 4, width: "100%", maxWidth: "40rem" }}
         >
+          <Tab value={1} label="Menu"></Tab>
+          <Tab value={2} label="About"></Tab>
+          <Tab value={3} label="Updates"></Tab>
+        </Tabs>
+        <TabPanel index={1} value={value} component="nav">
           <Box
             component="ul"
             sx={{
@@ -252,7 +306,20 @@ const Home: NextPage = () => {
               </HomeNavItem>
             </HomeNavSection>
           </Box>
-        </Box>
+        </TabPanel>
+        <TabPanel index={2} value={value}>
+          <Box component="aside">
+            what is krooster?
+            okay, but what is a krooster?
+            i found a bug.
+            can you add this feature?
+            who made this?
+            how can i contribute?
+          </Box>
+        </TabPanel>
+        <TabPanel index={3} value={value}>
+          <Box component="aside"></Box>
+        </TabPanel>
       </Box>
     </Head>
   );
