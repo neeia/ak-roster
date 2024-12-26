@@ -123,9 +123,9 @@ const Lookup: NextPage = () => {
               gap: "12px 6px",
             }}
           >
-            <Button onClick={() => setOpen(true)} sx={{ width: "100%" }}>
+            <Button onClick={() => setOpen(true)} sx={{ width: "100%", py: 1.5 }}>
               <Typography variant="caption" sx={{ lineHeight: 1.1 }}>
-                View {data.account.username}'s Profile
+                View {data.account.username}'s profile
               </Typography>
             </Button>
             <CollectionContainer roster={data.roster} sort={sortFunction} filter={filterFunction} />

@@ -4,13 +4,14 @@ import { FileDownload, Link } from "@mui/icons-material";
 
 interface Props extends PopoverProps {
   save: () => void;
-  copy: () => void;
+  copyImage: () => void;
+  copyUrl: () => void;
   onClose: () => void;
   saving: boolean;
 }
 
 const ShareDialog = (props: Props) => {
-  const { save, copy, onClose, saving, ...rest } = props;
+  const { save, copyImage, copyUrl, onClose, saving, ...rest } = props;
   const theme = useTheme();
 
   return (
@@ -55,7 +56,16 @@ const ShareDialog = (props: Props) => {
         >
           Save Image
         </Button>
-        <Button onClick={copy} endIcon={<Link />} variant="text" fullWidth>
+        <Button
+          onClick={copyImage}
+          disabled={saving}
+          endIcon={saving ? <CircularProgress size={20} /> : <FileDownload />}
+          variant="text"
+          fullWidth
+        >
+          Copy Image
+        </Button>
+        <Button onClick={copyUrl} endIcon={<Link />} variant="text" fullWidth>
           Copy Link
         </Button>
       </Box>

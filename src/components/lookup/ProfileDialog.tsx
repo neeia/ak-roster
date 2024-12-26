@@ -35,7 +35,7 @@ const ProfileDialog = (props: Props) => {
   const ssTarget = useRef<HTMLDivElement>();
   const shareAnchor = useRef<HTMLButtonElement | null>(null);
 
-  const downloadImage = async () => {
+  const downloadImage = async (copy = false) => {
     if (!ssTarget.current || !data) return;
 
     ssTarget.current.classList.add("screenshot");
@@ -47,19 +47,39 @@ const ProfileDialog = (props: Props) => {
     link.download = `${data.account.username}.png`;
 
     document.body.appendChild(link);
-    link.click();
+    if (!copy) {
+      link.click();
+    } else {
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+
+        try {
+          navigator.clipboard
+            .write([
+              new ClipboardItem({
+                "image/png": blob,
+              }),
+            ])
+            .then(() => {
+              enqueueSnackbar("Copied image to clipboard", { variant: "success" });
+            });
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }
     document.body.removeChild(link);
     ssTarget.current.classList.remove("screenshot");
   };
 
-  useEffect(() => {
-    if (!saving) return;
-
-    downloadImage().then(() => setSaving(false));
-  }, [saving]);
-
   const handleImageDownload = async () => {
     setSaving(true);
+    downloadImage().then(() => setSaving(false));
+  };
+
+  const handleImageCopy = async () => {
+    setSaving(true);
+    downloadImage(true).then(() => setSaving(false));
   };
 
   const copyLink = React.useCallback(() => {
@@ -269,7 +289,8 @@ const ProfileDialog = (props: Props) => {
         open={open}
         onClose={closeShare}
         save={handleImageDownload}
-        copy={copyLink}
+        copyImage={handleImageCopy}
+        copyUrl={copyLink}
         saving={saving}
       />
     </Dialog>
