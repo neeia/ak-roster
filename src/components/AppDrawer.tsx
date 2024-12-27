@@ -25,6 +25,7 @@ import AccountWidget from "./app/AccountWidget";
 import findFirstFocusableElement from "util/findFirstFocusableElement";
 import useAccount from "util/hooks/useAccount";
 import Link from "./base/Link";
+import manifest from "data/manifest";
 
 const DRAWER_WIDTH_PX = 220;
 const ICON_BY_PATH = [
@@ -122,7 +123,7 @@ const AppDrawer = React.memo((props: Props) => {
             right: 8,
           }}
         >
-          3.0
+          {manifest.version}
         </Typography>
       </Logo>
       <Divider />

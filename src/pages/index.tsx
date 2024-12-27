@@ -1,4 +1,7 @@
 ﻿import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Alert,
   Box,
   BoxProps,
@@ -10,6 +13,7 @@
   Tab,
   Tabs,
   TextField,
+  Typography,
 } from "@mui/material";
 import type { NextPage } from "next";
 import config from "data/config";
@@ -19,13 +23,47 @@ import { getLogoUrl } from "components/app/Logo";
 import HomeNavItem from "components/landing/HomeNavItem";
 import HomeNavSection from "components/landing/HomeNavSection";
 import { brand, DISCORD_BLURPLE, GITHUB_DARK, KOFI_BLUE } from "styles/theme/appTheme";
-import { LockPerson, Search } from "@mui/icons-material";
+import { ExpandMore, LockPerson, Search } from "@mui/icons-material";
 import JumpTo from "components/base/JumpTo";
 import Link from "components/base/Link";
 import Head from "components/app/Head";
 import { server } from "util/server";
 import AccountWidget from "components/app/AccountWidget";
 import useAccount from "util/hooks/useAccount";
+import GitHubEmbed from "components/landing/GitHubEmbed";
+import DiscordEmbed from "components/landing/DiscordEmbed";
+
+const cons = [
+  {
+    name: "Neia",
+    login: "neeia",
+    avatar: "neia.png",
+    dark: true,
+    color: "#4b444b",
+  },
+  {
+    name: "Samidare☔️",
+    login: "iansjk",
+    avatar: "samidare.webp",
+    dark: false,
+    color: "#fff",
+  },
+  {
+    name: "Yesod30",
+    login: "yesod30",
+    avatar: "yesod.gif",
+    dark: true,
+    color: "#384c6a",
+    // color: "#eeddbb"
+  },
+  {
+    name: "Stinggyray",
+    login: "Stinggyray",
+    avatar: "stinggyray.png",
+    dark: false,
+    color: "#FFCD4C",
+  },
+];
 
 const authFrame: SxProps = {
   display: "flex",
@@ -308,14 +346,119 @@ const Home: NextPage = () => {
           </Box>
         </TabPanel>
         <TabPanel index={2} value={value}>
-          <Box component="aside">
-            what is krooster? okay, but what is a krooster? i found a bug. can you add this feature? who made this? how
-            can i contribute?
+          <Box component="aside" sx={{ "& h2": { m: 0 } }}>
+            <Accordion defaultExpanded slotProps={{ heading: { component: "h2" } }}>
+              <AccordionSummary expandIcon={<ExpandMore />}>What is Krooster?</AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Krooster (Arknights Roster) is a web app that lets you share your roster, plan goals, and find
+                  friends. It also includes a number of useful calculators.
+                </p>
+                <p>
+                  This is an open-source project, and the full source code is available on GitHub. It is a fan site and
+                  is unaffiliated with Hypergryph or Yostar.
+                </p>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion slotProps={{ heading: { component: "h2" } }}>
+              <AccordionSummary expandIcon={<ExpandMore />}>Okay, but what is a Krooster?</AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Krooster is a portmanteau of "Kroos" and "alter" and refers to Kroos the Keen Glint. Because I was
+                  working on this project around the time she was released, I decided to name it after her.
+                </p>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion slotProps={{ heading: { component: "h2" } }}>
+              <AccordionSummary expandIcon={<ExpandMore />}>I found a bug / can you add this feature?</AccordionSummary>
+              <AccordionDetails>
+                <p>Join the Discord server and let me know! I'm always looking for feedback and suggestions.</p>
+                <DiscordEmbed />
+              </AccordionDetails>
+            </Accordion>
+            <Accordion slotProps={{ heading: { component: "h2" } }}>
+              <AccordionSummary expandIcon={<ExpandMore />}>How can I contribute?</AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Donations are welcomed through Ko-fi! Running Krooster costs around $2 a day, and donating helps
+                  offset my out-of-pocket costs.
+                </p>
+                <HomeNavItem
+                  external
+                  href="https://ko-fi.com/neeia"
+                  title="Support Krooster!"
+                  sx={{
+                    backgroundColor: KOFI_BLUE,
+                  }}
+                >
+                  <Image className="icon" width="24" height="16" src="/img/assets/ko-fi.png" alt="Ko-fi" />
+                  Donations
+                </HomeNavItem>
+                <p>
+                  If you're a developer, you can contribute to the project on GitHub. The project is open-source and
+                  contributions are welcome. If you're interested, join the Discord server and shoot me a message!
+                </p>
+                <GitHubEmbed />
+              </AccordionDetails>
+            </Accordion>
+            <Accordion slotProps={{ heading: { component: "h2" } }}>
+              <AccordionSummary expandIcon={<ExpandMore />}>Who made this?</AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Hi, I'm Neia, the primary developer of Krooster. I played Arknights from release, and quit shortly
+                  after the third anniversary. However, the website will continue to be actively maintained until the
+                  game shuts down.
+                </p>
+                <p>Special thanks to Samidare, without whom Krooster would not exist.</p>
+                <p>
+                  This project would not be possible without the help of the community that makes it worth it. Thank
+                  you!
+                </p>
+                <Typography variant="h5" component="h3" sx={{ pt: 3, pb: 1 }}>
+                  Contributors:
+                </Typography>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                  {cons.map((c) => (
+                    <Link
+                      key={c.name}
+                      sx={{
+                        ":hover": {
+                          filter: "brightness(110%)",
+                        },
+                        transition: "filter 0.1s",
+                        boxShadow: 1,
+                        width: "max-content",
+                        color: c.dark ? "text.primary" : "background.paper",
+                        display: "grid",
+                        gridTemplateColumns: "1fr 2.5fr",
+                        gap: 1.5,
+                        textDecoration: "none",
+                        padding: 1,
+                        borderRadius: "4px",
+                        backgroundColor: c.color,
+                      }}
+                      href={`https://github.com/${c.login}`}
+                      component="a"
+                      title="Visit GitHub Profile"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      <Image src={`/img/ext/contributors/${c.avatar}`} alt="" width={48} height={48} />
+                      <Box sx={{ display: "flex", flexDirection: "column", gap: 0 }}>
+                        <Typography variant="body1">{c.name}</Typography>
+                        <Typography variant="caption2">{c.login}</Typography>
+                      </Box>
+                    </Link>
+                  ))}
+                </Box>
+              </AccordionDetails>
+            </Accordion>
           </Box>
         </TabPanel>
         <TabPanel index={3} value={value}>
           <Box component="aside"></Box>
         </TabPanel>
+        <Box sx={{ height: "60px" }}></Box>
       </Box>
     </Head>
   );

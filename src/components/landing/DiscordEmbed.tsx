@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Box, Divider, Link, Typography } from "@mui/material";
+import { getLogoUrl } from "components/app/Logo";
 
 const DISC_BLURPLE = "#5865F2";
-const DISC_API =
-  "https://discord.com/api/v10/guilds/970485224624508979/widget.json";
+const DISC_API = "https://discord.com/api/v10/guilds/970485224624508979/widget.json";
 
 interface Props {}
 
@@ -29,9 +29,8 @@ const DiscordEmbed = (props: Props) => {
         boxShadow: 1,
         width: "max-content",
         color: "text.primary",
-        display: "grid",
-        gridTemplateColumns: "1fr 2fr auto 1fr",
-        gap: 1.5,
+        display: "flex",
+        gap: 1,
         textDecoration: "none",
         padding: 1.5,
         borderRadius: "4px",
@@ -44,17 +43,17 @@ const DiscordEmbed = (props: Props) => {
       rel="noreferrer noopener"
     >
       <Box
-        sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }}
+        sx={{ width: "4rem", height: "4rem", my: -1 }}
         component="img"
-        src="/res/kroos2ava.png"
+        src={`/assets/title/${getLogoUrl()}-c.png`}
         alt=""
         loading="lazy"
       />
       <Box sx={{ display: "flex", flexDirection: "column", gap: 0 }}>
         <Typography variant="body1">{name}</Typography>
-        <Typography variant="button">{users} online</Typography>
+        <Typography variant="caption">{users} online</Typography>
       </Box>
-      <Divider orientation="vertical" />
+      <Divider orientation="vertical" flexItem />
       <Box
         sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }}
         component="img"
