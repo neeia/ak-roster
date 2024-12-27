@@ -1,59 +1,48 @@
-import React, { MouseEventHandler, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import {
-  Alert,
-  Box,
-  Button,
-  ButtonBase,
-  CircularProgress,
-  Divider,
-  TextField,
-  Typography,
-} from "@mui/material";
-import Layout from "components/Layout";
+import { Alert, Box, Button, ButtonBase, CircularProgress, Divider, TextField } from "@mui/material";
 import supabase from "supabase/supabaseClient";
 import { DISCORD_BLURPLE } from "styles/theme/appTheme";
 import PasswordTextField from "components/app/PasswordTextField";
-import Head from "components/app/Head";
-import config from "data/config";
-import Logo, { getLogoUrl } from "components/app/Logo";
 import Image from "next/image";
 import { server } from "util/server";
 import AuthLayout from "components/AuthLayout";
 import { useRouter } from "next/router";
+import useAccount from "util/hooks/useAccount";
 
-const DiscordButton = React.memo(
-  (props: { onClick: React.MouseEventHandler }) => (
-    <ButtonBase
-      sx={{
-        width: "100%",
-        fontSize: "1rem",
-        backgroundColor: DISCORD_BLURPLE,
-        display: "flex",
-        gap: 1,
-        p: 2,
-        borderRadius: 1,
-        transition: "filter 0.1s",
-        ":hover": { filter: "brightness(110%)" },
-      }}
-      onClick={props.onClick}
-    >
-      <Image src="/img/assets/discord.svg" width="24" height="18" alt="" />
-      Sign In with Discord
-    </ButtonBase>
-  )
-);
+const DiscordButton = React.memo((props: { onClick: React.MouseEventHandler }) => (
+  <ButtonBase
+    sx={{
+      width: "100%",
+      fontSize: "1rem",
+      backgroundColor: DISCORD_BLURPLE,
+      display: "flex",
+      gap: 1,
+      p: 2,
+      borderRadius: 1,
+      transition: "filter 0.1s",
+      ":hover": { filter: "brightness(110%)" },
+    }}
+    onClick={props.onClick}
+  >
+    <Image src="/img/assets/discord.svg" width="24" height="18" alt="" />
+    Sign In with Discord
+  </ButtonBase>
+));
 
 const Login: NextPage = () => {
   const { query, isReady } = useRouter();
   const [redirectTo, setRedirectTo] = useState<string>(server);
   useEffect(() => {
     if (!isReady) return;
-    const r = Array.isArray(query.redirectTo)
-      ? query.redirectTo[0]
-      : query.redirectTo;
+    const r = Array.isArray(query.redirectTo) ? query.redirectTo[0] : query.redirectTo;
     if (r) setRedirectTo(r);
   }, [isReady]);
+
+  const [account] = useAccount();
+  useEffect(() => {
+    if (account) window.location.href = redirectTo ?? "/";
+  }, [account, redirectTo]);
 
   const [loading, setLoading] = useState(false);
 
@@ -64,9 +53,7 @@ const Login: NextPage = () => {
 
   const [errorSb, setErrorSb] = useState<string | null>();
 
-  async function handleLogin(
-    e: React.MouseEvent<HTMLButtonElement>
-  ): Promise<void> {
+  async function handleLogin(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
     e.preventDefault();
     setLoading(true);
     setErrorSb(null);
@@ -84,7 +71,7 @@ const Login: NextPage = () => {
     });
     if (error) setErrorSb(error.message);
     else {
-      setEmail(data.user?.email ?? email.trim());
+      window.location.href = redirectTo ?? "/";
     }
     setLoading(false);
   }
@@ -123,8 +110,7 @@ const Login: NextPage = () => {
               setErrorEmail(null);
             }}
             onBlur={(e) => {
-              if (e.target.value.length === 0)
-                setErrorEmail("This field is required.");
+              if (e.target.value.length === 0) setErrorEmail("This field is required.");
             }}
             error={!!errorEmail}
             variant="outlined"
@@ -140,17 +126,15 @@ const Login: NextPage = () => {
               if (e.target.value.length >= 6) setErrorPw("");
             }}
             onBlur={(e) => {
-              if (e.target.value.length === 0)
-                setErrorPw("This field is required.");
-              else if (e.target.value.length < 6)
-                setErrorPw("Password must have at least 6 characters.");
+              if (e.target.value.length === 0) setErrorPw("This field is required.");
+              else if (e.target.value.length < 6) setErrorPw("Password must have at least 6 characters.");
             }}
             error={!!errorPw}
             helperText={errorPw}
-            ariaId="reg-pass"
           />
           {errorSb && <Alert severity="error">{errorSb}</Alert>}
           <Button
+            type="submit"
             onClick={handleLogin}
             color="primary"
             variant="contained"

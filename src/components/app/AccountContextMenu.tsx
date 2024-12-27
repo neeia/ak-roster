@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Divider, IconButton, Menu, MenuItem, IconButtonProps } from "@mui/material";
 import supabase from "supabase/supabaseClient";
 import { Settings } from "@mui/icons-material";
-import { DISCORD_BLURPLE } from "styles/theme/appTheme";
 import Link from "components/base/Link";
+import handleAuthError from "util/fns/handleAuthError";
 
 interface Props extends IconButtonProps {
   changeUsername?: () => void;
@@ -39,6 +39,12 @@ const AccountContextMenu = (props: Props) => {
 
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      handleAuthError(error);
+      return;
+    }
+    window.location.reload();
   };
 
   return (
@@ -71,11 +77,10 @@ const AccountContextMenu = (props: Props) => {
         }}
       >
         <MenuItem>
-          <Link href="/account/settings">Account Settings</Link>
+          <Link href="/settings">Account Settings</Link>
         </MenuItem>
-        <MenuItem>Resync Data</MenuItem>
         {changeUsername && <MenuItem onClick={changeUsername}>Change Display Name</MenuItem>}
-        {showDiscord ? <MenuItem onClick={linkDiscord}>Link Discord</MenuItem> : null}
+        {showDiscord && <MenuItem onClick={linkDiscord}>Link Discord</MenuItem>}
         <Divider component="li"></Divider>
         <MenuItem onClick={signOut}>Sign Out</MenuItem>
       </Menu>

@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useRef, useState } from "react";
+import React, { MouseEventHandler, useEffect, useRef, useState } from "react";
 import type { NextPage } from "next";
 import { Alert, Box, Button, ButtonBase, CircularProgress, Divider, TextField, Typography } from "@mui/material";
 import supabase from "supabase/supabaseClient";
@@ -8,6 +8,8 @@ import Image from "next/image";
 import { server } from "util/server";
 import AuthLayout from "components/AuthLayout";
 import { enqueueSnackbar } from "notistack";
+import useAccount from "util/hooks/useAccount";
+import { useRouter } from "next/router";
 
 const DiscordButton = React.memo((props: { onClick: React.MouseEventHandler }) => (
   <ButtonBase
@@ -36,8 +38,30 @@ enum RegisterState {
 }
 
 const Register: NextPage = () => {
+  const { query, isReady } = useRouter();
+  useEffect(() => {
+    if (!isReady) return;
+    const r = Array.isArray(query.flow) ? query.flow[0] : query.flow;
+    switch (r) {
+      case "email":
+        setFlow(RegisterState.Email);
+        break;
+      case "verify":
+        setFlow(RegisterState.Verify);
+        break;
+      default:
+        setFlow(RegisterState.Default);
+        break;
+    }
+  }, [isReady]);
+
   const [flow, setFlow] = useState(RegisterState.Default);
   const [loading, setLoading] = useState(false);
+
+  const [account] = useAccount();
+  useEffect(() => {
+    if (account) window.location.href = "/";
+  }, [account]);
 
   const [email, setEmail] = useState<string>("");
   const [errorEmail, setErrorEmail] = useState<string | null>();
@@ -176,6 +200,7 @@ const Register: NextPage = () => {
           />
           {errorSb && <Alert severity="error">{errorSb}</Alert>}
           <Button
+            type="submit"
             onClick={handleRegister}
             color="primary"
             variant="contained"
