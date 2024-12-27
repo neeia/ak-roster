@@ -1,47 +1,33 @@
 import React, { MouseEventHandler, useRef, useState } from "react";
 import type { NextPage } from "next";
-import {
-  Alert,
-  Box,
-  Button,
-  ButtonBase,
-  CircularProgress,
-  Divider,
-  TextField,
-  Typography,
-} from "@mui/material";
-import Layout from "components/Layout";
+import { Alert, Box, Button, ButtonBase, CircularProgress, Divider, TextField, Typography } from "@mui/material";
 import supabase from "supabase/supabaseClient";
 import { DISCORD_BLURPLE } from "styles/theme/appTheme";
 import PasswordTextField from "components/app/PasswordTextField";
-import Head from "components/app/Head";
-import config from "data/config";
-import Logo, { getLogoUrl } from "components/app/Logo";
 import Image from "next/image";
 import { server } from "util/server";
 import AuthLayout from "components/AuthLayout";
+import { enqueueSnackbar } from "notistack";
 
-const DiscordButton = React.memo(
-  (props: { onClick: React.MouseEventHandler }) => (
-    <ButtonBase
-      sx={{
-        width: "100%",
-        fontSize: "1rem",
-        backgroundColor: DISCORD_BLURPLE,
-        display: "flex",
-        gap: 1,
-        p: 2,
-        borderRadius: 1,
-        transition: "filter 0.1s",
-        ":hover": { filter: "brightness(110%)" },
-      }}
-      onClick={props.onClick}
-    >
-      <Image src="/img/assets/discord.svg" width="24" height="18" alt="" />
-      Continue with Discord
-    </ButtonBase>
-  )
-);
+const DiscordButton = React.memo((props: { onClick: React.MouseEventHandler }) => (
+  <ButtonBase
+    sx={{
+      width: "100%",
+      fontSize: "1rem",
+      backgroundColor: DISCORD_BLURPLE,
+      display: "flex",
+      gap: 1,
+      p: 2,
+      borderRadius: 1,
+      transition: "filter 0.1s",
+      ":hover": { filter: "brightness(110%)" },
+    }}
+    onClick={props.onClick}
+  >
+    <Image src="/img/assets/discord.svg" width="24" height="18" alt="" />
+    Continue with Discord
+  </ButtonBase>
+));
 
 enum RegisterState {
   Default,
@@ -60,9 +46,7 @@ const Register: NextPage = () => {
 
   const [errorSb, setErrorSb] = useState<string | null>();
 
-  async function handleRegister(
-    e: React.MouseEvent<HTMLButtonElement>
-  ): Promise<void> {
+  async function handleRegister(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
     e.preventDefault();
     setLoading(true);
     setErrorSb(null);
@@ -89,9 +73,7 @@ const Register: NextPage = () => {
     setLoading(false);
   }
 
-  async function resendVerify(
-    e: React.MouseEvent<HTMLButtonElement>
-  ): Promise<void> {
+  async function resendVerify(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
     e.preventDefault();
     if (!email) {
       setErrorEmail("This field is required.");
@@ -109,6 +91,7 @@ const Register: NextPage = () => {
       },
     });
     if (error) setErrorSb(error.message);
+    else enqueueSnackbar("Verification email resent.", { variant: "success" });
   }
 
   async function signInWithDiscord() {
@@ -131,9 +114,8 @@ const Register: NextPage = () => {
       <>
         <DiscordButton onClick={signInWithDiscord} />
         <Typography component="p">
-          If you don't have a Discord account, Krooster still supports
-          traditional password-based registration. Your email is used only to
-          log in and is kept private.
+          If you don't have a Discord account, Krooster still supports traditional password-based registration. Your
+          email is used only to log in and is kept private.
         </Typography>
         <Button
           onClick={() => setFlow(RegisterState.Email)}
@@ -170,8 +152,7 @@ const Register: NextPage = () => {
               setErrorEmail(null);
             }}
             onBlur={(e) => {
-              if (e.target.value.length === 0)
-                setErrorEmail("This field is required.");
+              if (e.target.value.length === 0) setErrorEmail("This field is required.");
             }}
             error={!!errorEmail}
             variant="outlined"
@@ -187,14 +168,11 @@ const Register: NextPage = () => {
               if (e.target.value.length >= 6) setErrorPw("");
             }}
             onBlur={(e) => {
-              if (e.target.value.length === 0)
-                setErrorPw("This field is required.");
-              else if (e.target.value.length < 6)
-                setErrorPw("Password must have at least 6 characters.");
+              if (e.target.value.length === 0) setErrorPw("This field is required.");
+              else if (e.target.value.length < 6) setErrorPw("Password must have at least 6 characters.");
             }}
             error={!!errorPw}
             helperText={errorPw}
-            ariaId="reg-pass"
           />
           {errorSb && <Alert severity="error">{errorSb}</Alert>}
           <Button
@@ -206,7 +184,7 @@ const Register: NextPage = () => {
               p: 2,
               borderRadius: 1,
               lineHeight: 1,
-              ":hover": { color: "primary.light" },
+              ":hover": { backgroundColor: "primary.light" },
             }}
           >
             Create Account
@@ -219,9 +197,8 @@ const Register: NextPage = () => {
     [RegisterState.Verify]: (
       <>
         <Box>
-          You're almost done! We sent a link to {email} to verify your email
-          address and activate your account. This link will expire in 24 hours.
-          You may need to check your spam folder.
+          You're almost done! We sent a link to {email} to verify your email address and activate your account. This
+          link will expire in 24 hours. You may need to check your spam folder.
         </Box>
         <Box
           sx={{

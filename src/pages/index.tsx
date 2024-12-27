@@ -87,7 +87,7 @@ const Home: NextPage = () => {
 
   const logoBasePath = useRef(`/assets/title/${getLogoUrl()}`);
 
-  const [account] = useAccount();
+  const [account, , { loading }] = useAccount();
 
   return (
     <Head title="Krooster" url={server} description={config.siteDescription}>
@@ -118,7 +118,7 @@ const Home: NextPage = () => {
           />
         </Box>
 
-        {account === null ? (
+        {!loading && !account ? (
           <Paper
             elevation={2}
             sx={{
@@ -190,9 +190,9 @@ const Home: NextPage = () => {
           aria-label="tab menu"
           sx={{ mt: 8, ml: 4, width: "100%", maxWidth: "40rem" }}
         >
-          <Tab value={1} label="Menu"></Tab>
-          <Tab value={2} label="About"></Tab>
-          <Tab value={3} label="Updates"></Tab>
+          <Tab value={1} label="Menu" {...a11yProps(1)}></Tab>
+          <Tab value={2} label="About" {...a11yProps(2)}></Tab>
+          <Tab value={3} label="Updates" {...a11yProps(3)}></Tab>
         </Tabs>
         <TabPanel index={1} value={value} component="nav">
           <Box
@@ -309,12 +309,8 @@ const Home: NextPage = () => {
         </TabPanel>
         <TabPanel index={2} value={value}>
           <Box component="aside">
-            what is krooster?
-            okay, but what is a krooster?
-            i found a bug.
-            can you add this feature?
-            who made this?
-            how can i contribute?
+            what is krooster? okay, but what is a krooster? i found a bug. can you add this feature? who made this? how
+            can i contribute?
           </Box>
         </TabPanel>
         <TabPanel index={3} value={value}>

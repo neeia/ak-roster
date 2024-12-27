@@ -33,7 +33,10 @@ function useAccount() {
       } = await supabase.auth.getSession();
       const user_id = session?.user.id;
 
-      if (!user_id) return;
+      if (!user_id) {
+        setLoading(false);
+        return;
+      }
 
       const { data, error } = await supabase
         .from("krooster_accounts")
