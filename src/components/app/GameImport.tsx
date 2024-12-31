@@ -10,8 +10,9 @@ import useSupports from "util/hooks/useSupports";
 import useAccount from "util/hooks/useAccount";
 import supabase from "supabase/supabaseClient";
 import useOperators from "util/hooks/useOperators";
+import operatorJson from "data/operators";
 
-const EXCLUDED_ITEMS = ["2001", "2002", "2003", "2004", "4001"];
+const EXCLUDED_ITEMS: string[] = [];
 const GameImport = () => {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
@@ -95,8 +96,12 @@ const GameImport = () => {
     const operators: Operator[] = [];
     for (let key in roster) {
       let value = roster[key]!;
+      const opData = operatorJson[value.charId];
+
       //first module is the default one, we can skip.
-      let supportModules: Record<string, number> = {};
+      let supportModules: Record<string, number> = Object.fromEntries(
+        opData?.moduleData?.map((mod) => [mod.moduleId, 0]) ?? []
+      );
       Object.entries(value.equip)
         .slice(1)
         .filter(([moduleKey, moduleValue]) => moduleValue!.locked == 0)
@@ -110,7 +115,6 @@ const GameImport = () => {
         const matches = opSkins.filter((x) => x.skinId == skin);
         if (matches.length > 0) {
           skin = matches[0].avatarId;
-          skin = skin.replace("#", "%23");
         }
       }
 
@@ -127,7 +131,7 @@ const GameImport = () => {
       };
       operators.push(operator);
     }
-    const { data } = await supabase.from("operators").upsert(operators);
+    await supabase.from("operators").upsert(operators);
 
     //Update support data
     await removeSupport(0);
