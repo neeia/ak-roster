@@ -169,9 +169,10 @@ const Recruit: NextPage = () => {
                     ...params.InputProps,
                     sx: {
                       pr: "48px !important",
+                      gap: "4px",
                     },
                     endAdornment: (
-                      <IconButton sx={{ position: "absolute", right: 8, top: 8 }}>
+                      <IconButton sx={{ position: "absolute", right: 8, top: 8 }} onClick={() => setActiveTags([])}>
                         <Close fontSize="small" />
                       </IconButton>
                     ),
