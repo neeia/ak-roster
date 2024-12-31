@@ -5,7 +5,6 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ACESHIP_ROOT = path.join(__dirname, "../../Arknight-Images");
 
-
 /**@type {Array<{ sourceDir: string, destDir: string, replace?: (filename: string) => string, filter?: (filename: string) => boolean}} */
 const tasks = [
   {
@@ -53,11 +52,9 @@ const upload = async (existingFilePaths, task) => {
     withFileTypes: true,
   });
   const filenames = dirEntries
-    .filter(
-      (dirent) => dirent.isFile() && (filterFn == null || filterFn(dirent.name))
-    )
+    .filter((dirent) => dirent.isFile() && (filterFn == null || filterFn(dirent.name)))
     .map((dirent) => dirent.name);
-  await fs.mkdir(destDir, { recursive: true })
+  await fs.mkdir(destDir, { recursive: true });
 
   //const filename = filenames[0]
   //console.table({sourceDir, destDir, filename})
@@ -65,14 +62,9 @@ const upload = async (existingFilePaths, task) => {
   await Promise.all(
     filenames.map(async (filename) => {
       const _filename = replaceFn ? replaceFn(filename) : filename;
-      const targetFilePath = path.join(
-        destDir,
-        _filename
-      );
+      const targetFilePath = path.join(destDir, _filename);
       if (targetFilePath && !existingFilePaths.has(_filename)) {
-        console.log(
-          `images: "${targetFilePath}" not found in storage, saving...`
-        );
+        console.log(`images: "${targetFilePath}" not found in storage, saving...`);
         const sourceFilePath = path.join(sourceDir, filename);
         //console.table({sourceFilePath, targetFilePath});
         await fs.copyFile(sourceFilePath, targetFilePath);
@@ -90,12 +82,10 @@ const uploadAllImages = async () => {
         // first iterate through all images in the image directory
         const rawFileNames = await fs.readdir(task.destDir, { withFileTypes: true });
         const existingImageIDs = new Set();
-        rawFileNames.forEach(value => existingImageIDs.add(value));
-        
-        console.log(
-          `images: found ${existingImageIDs.size} existing images in ${task.destDir}.`
-        );
-      
+        rawFileNames.forEach((value) => existingImageIDs.add(value));
+
+        console.log(`images: found ${existingImageIDs.size} existing images in ${task.destDir}.`);
+
         upload(existingImageIDs, task);
       })
     );
@@ -109,5 +99,5 @@ const uploadAllImages = async () => {
 export default uploadAllImages;
 
 //if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  uploadAllImages();
+uploadAllImages();
 //}

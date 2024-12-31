@@ -1,3 +1,4 @@
 /**/*.*
 !src/**/*.tsx
 !src/**/*.ts
+!scripts/**/*.mjs

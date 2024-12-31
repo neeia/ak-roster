@@ -25,9 +25,7 @@ export function professionToClass(profession) {
 }
 
 export function toTitleCase(string) {
-  return [...string.toLowerCase()]
-    .map((char, i) => (i === 0 ? char.toUpperCase() : char))
-    .join("");
+  return [...string.toLowerCase()].map((char, i) => (i === 0 ? char.toUpperCase() : char)).join("");
 }
 
 /**
@@ -78,12 +76,12 @@ const { recruitDetail } = gachaTable;
 
 const createRecruitmentJson = () => {
   const operatorNameToId = Object.fromEntries(
-    Object.entries(characterTable).filter(([id]) => id.startsWith("char")).map(([id, opData]) => [opData.name, id])
+    Object.entries(characterTable)
+      .filter(([id]) => id.startsWith("char"))
+      .map(([id, opData]) => [opData.name, id])
   );
 
-  const recruitmentStrings = recruitDetail
-    .split(/★+/)
-    .slice(1);
+  const recruitmentStrings = recruitDetail.split(/★+/).slice(1);
   const recruitableOperators = recruitmentStrings.map((line) =>
     line
       .replace(/\n|-{2,}/g, "")
@@ -96,14 +94,9 @@ const createRecruitmentJson = () => {
       .filter((name) => !!name)
       .map((opName) => {
         const rarity = r + 1;
-        const opId =
-          recruitableNameToIdOverride[opName] ?? operatorNameToId[opName];
+        const opId = recruitableNameToIdOverride[opName] ?? operatorNameToId[opName];
         const opData = characterTable[opId];
-        const tags = [
-          ...(opData.tagList ?? []),
-          toTitleCase(opData.position),
-          professionToClass(opData.profession),
-        ];
+        const tags = [...(opData.tagList ?? []), toTitleCase(opData.position), professionToClass(opData.profession)];
         if (rarity === 1) {
           tags.push("Robot");
         } else if (rarity === 6) {
@@ -131,9 +124,7 @@ const createRecruitmentJson = () => {
         operators: recruitment
           .filter((recruitable) =>
             tagSet.every(
-              (tag) =>
-                recruitable.tags.includes(tag) &&
-                (recruitable.rarity < 6 || tagSet.includes("Top Operator"))
+              (tag) => recruitable.tags.includes(tag) && (recruitable.rarity < 6 || tagSet.includes("Top Operator"))
             )
           )
           .sort((op1, op2) => op2.rarity - op1.rarity),
@@ -144,11 +135,7 @@ const createRecruitmentJson = () => {
         // we include 1* if
         // - the otherwise highest rarity is 5 (1* and 5* can't coexist), or
         // - the Robot tag is available
-        const lowestRarity = Math.min(
-          ...result.operators
-            .map((op) => op.rarity)
-            .filter((rarity) => rarity > 1)
-        );
+        const lowestRarity = Math.min(...result.operators.map((op) => op.rarity).filter((rarity) => rarity > 1));
         if (lowestRarity > 1 && lowestRarity < 4) {
           return [
             result.tags,
@@ -160,11 +147,7 @@ const createRecruitmentJson = () => {
         }
 
         const guarantees = Number.isFinite(lowestRarity) ? [lowestRarity] : [];
-        if (
-          (result.operators.find((op) => op.rarity === 1) &&
-            lowestRarity >= 5) ||
-          result.tags.includes("Robot")
-        ) {
+        if ((result.operators.find((op) => op.rarity === 1) && lowestRarity >= 5) || result.tags.includes("Robot")) {
           guarantees.push(1);
         }
         return [
