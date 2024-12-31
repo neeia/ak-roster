@@ -32,6 +32,7 @@ import { Close, Groups, ZoomInMap, ZoomOutMap } from "@mui/icons-material";
 import Image from "next/image";
 import { RecruitmentResult } from "types/recruit";
 import useOperators from "util/hooks/useOperators";
+import useSettings from "util/hooks/useSettings";
 
 const TAGS_BY_CATEGORY = {
   Rarity: ["Top Operator", "Senior Operator", "Starter", "Robot"],
@@ -114,15 +115,8 @@ const Recruit: NextPage = () => {
 
   const [open, setOpen] = useState(true);
 
-  const [showPotentials, setShowPotentials] = useState(false);
-  const [bonuses, setBonuses] = useState(false);
-  const [_showPotentials, _setShowPotentials] = useLocalStorage("recruitShowPotential", false);
-  const [_bonuses, _setBonuses] = useLocalStorage("recruitShowBonuses", false);
-  useEffect(() => {
-    setShowPotentials(_showPotentials);
-    setBonuses(_bonuses);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [_settings, setSettings] = useSettings();
+  const settings = _settings.recruitSettings;
 
   return (
     <Layout tab="/tools" page="/recruit">
@@ -273,10 +267,15 @@ const Recruit: NextPage = () => {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={showPotentials}
+                  checked={settings.showPotential}
                   onChange={(e) => {
-                    setShowPotentials(e.target.checked);
-                    _setShowPotentials(e.target.checked);
+                    setSettings((s) => ({
+                      ...s,
+                      recruitSettings: {
+                        ...settings,
+                        showPotential: e.target.checked,
+                      },
+                    }));
                   }}
                   disabled={!user}
                 />
@@ -286,11 +285,16 @@ const Recruit: NextPage = () => {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={bonuses}
-                  onChange={(e) => {
-                    setBonuses(e.target.checked);
-                    _setBonuses(e.target.checked);
-                  }}
+                checked={settings.showBonuses}
+                onChange={(e) => {
+                  setSettings((s) => ({
+                    ...s,
+                    recruitSettings: {
+                      ...settings,
+                      showBonuses: e.target.checked,
+                    },
+                  }));
+                }}
                   disabled={!user}
                 />
               }
@@ -372,8 +376,8 @@ const Recruit: NextPage = () => {
                         <RecruitableOperatorCard
                           op={roster?.[operator.id] ?? defaultOperatorObject(operator.id)}
                           key={operator.id}
-                          showPotentials={showPotentials}
-                          showBonus={bonuses}
+                          showPotentials={settings.showPotential}
+                          showBonus={settings.showBonuses}
                         />
                       ))}
                 </Box>

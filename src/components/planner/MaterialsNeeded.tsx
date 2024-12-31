@@ -1,7 +1,7 @@
 import CheckIcon from "@mui/icons-material/Check";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import itemsJson from "data/items.json";
 import { Ingredient, Item } from "types/item";
@@ -11,13 +11,11 @@ import ItemNeeded from "./ItemNeeded";
 import getGoalIngredients from "util/getGoalIngredients";
 import DepotItem from "types/depotItem";
 import GoalData, { getPlannerGoals } from "types/goalData";
-import { defaultSettings, LocalStorageSettings } from "types/localStorageSettings";
 import ExportImportDialog from "./ExportImportDialog";
-import useLocalStorage from "util/hooks/useLocalStorage";
 import Board from "components/base/Board";
+import useSettings from "util/hooks/useSettings";
 
 const LMD_ITEM_ID = "4001";
-const EXCLUDE = ["2001", "2002", "2003", "2004"];
 
 export const BATTLE_RECORD_TO_EXP = {
   "2001": 200,
@@ -29,16 +27,16 @@ export const BATTLE_RECORD_TO_EXP = {
 interface Props {
   goals: GoalData[];
   depot: Record<string, DepotItem>;
-  setDepot: (depotItem: DepotItem[]) => void;
+  putDepot: (depotItem: DepotItem[]) => void;
 }
 
 const MaterialsNeeded = React.memo((props: Props) => {
-  const { goals, depot, setDepot } = props;
+  const { goals, depot, putDepot } = props;
 
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [popoverItemId, setPopoverItemId] = useState<string | null>(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const [settings, setSettings] = useLocalStorage<LocalStorageSettings>("settings", defaultSettings);
+  const [settings, setSettings] = useSettings();
 
   const isSettingsMenuOpen = Boolean(anchorEl);
   const [exportImportOpen, setExportImportOpen] = useState<boolean>(false);
@@ -65,10 +63,10 @@ const MaterialsNeeded = React.memo((props: Props) => {
       const item = depot[itemId];
       if (item) {
         const data: DepotItem = { material_id: itemId, stock: newQuantity };
-        setDepot([data]);
+        putDepot([data]);
       }
     },
-    [depot, setDepot]
+    [depot, putDepot]
   );
 
   const handleIncrement = useCallback(
@@ -79,17 +77,17 @@ const MaterialsNeeded = React.memo((props: Props) => {
           material_id: itemId,
           stock: item.stock + 1,
         };
-        setDepot([data]);
+        putDepot([data]);
       } else {
         const data: DepotItem = {
           material_id: itemId,
           stock: 1,
           crafting: false,
         };
-        setDepot([data]);
+        putDepot([data]);
       }
     },
-    [depot, setDepot]
+    [depot, putDepot]
   );
 
   const handleDecrement = useCallback(
@@ -100,10 +98,10 @@ const MaterialsNeeded = React.memo((props: Props) => {
           material_id: itemId,
           stock: Math.max(item.stock - 1, 0),
         };
-        setDepot([data]);
+        putDepot([data]);
       }
     },
-    [depot, setDepot]
+    [depot, putDepot]
   );
 
   //TODO disable crafting button if not enough ingredients to craft
@@ -122,73 +120,68 @@ const MaterialsNeeded = React.memo((props: Props) => {
       craftedData.stock = (depot[itemId].stock ?? 0) + (itemYield ?? 1);
       updatedDatas.push(craftedData);
 
-      setDepot(updatedDatas);
+      putDepot(updatedDatas);
     },
-    [depot, setDepot]
+    [depot, putDepot]
   );
 
   const handleCraftingToggle = useCallback(
     (itemId: string) => {
-      const item = depot[itemId];
-      if (item) {
-        const data: DepotItem = {
-          material_id: item.material_id,
-          stock: item.stock,
-          crafting: !item.crafting,
-        };
-        setDepot([data]);
+      const depotSettings = { ...settings.depotSettings };
+      const crafting = [...depotSettings.crafting];
+      const index = settings.depotSettings.crafting.indexOf(itemId);
+      if (index !== -1) {
+        crafting.splice(index, 1);
       } else {
-        const data: DepotItem = {
-          material_id: itemId,
-          stock: 0,
-          crafting: true,
-        };
-        setDepot([data]);
+        crafting.push(itemId);
       }
+      depotSettings.crafting = crafting;
+      setSettings((s) => ({
+        ...s,
+        depotSettings,
+      }));
     },
-    [depot, setDepot]
+    [settings, setSettings]
   );
 
   const handleResetCrafting = useCallback(() => {
-    const depotCopy = { ...depot };
-    const items = Object.values(depotCopy) as DepotItem[];
-    items.forEach((item) => (item.crafting = false));
-    setDepot(items);
-    setAnchorEl(null);
-  }, [depot, setDepot]);
+    const depotSettings = { ...settings.depotSettings };
+    depotSettings.crafting = [];
 
-  const handleResetStock = useCallback(() => {
-    const depotCopy = { ...depot };
-    const items = Object.values(depotCopy) as DepotItem[];
-    items.forEach((item) => (item.stock = 0));
-    setDepot(items);
-    setAnchorEl(null);
-  }, [depot, setDepot]);
+    setSettings((s) => ({ ...s, depotSettings }));
+  }, [settings, setSettings]);
 
   const handleSortToBottom = useCallback(() => {
-    const updatedSettings = { ...settings };
-    updatedSettings.plannerSettings.sortCompletedToBottom = !updatedSettings.plannerSettings?.sortCompletedToBottom;
+    const depotSettings = { ...settings.depotSettings };
+    depotSettings.sortCompletedToBottom = !depotSettings.sortCompletedToBottom;
 
-    setSettings(updatedSettings);
+    setSettings((s) => ({ ...s, depotSettings }));
     setAnchorEl(null);
   }, [settings, setSettings]);
 
   const handleShowInactive = useCallback(() => {
-    const updatedSettings = { ...settings };
-    updatedSettings.plannerSettings.showInactiveMaterials = !updatedSettings.plannerSettings?.showInactiveMaterials;
+    const depotSettings = { ...settings.depotSettings };
+    depotSettings.showInactiveMaterials = !depotSettings?.showInactiveMaterials;
 
-    setSettings(updatedSettings);
+    setSettings((s) => ({ ...s, depotSettings }));
     setAnchorEl(null);
   }, [settings, setSettings]);
 
   const handleShowButtons = useCallback(() => {
-    const updatedSettings = { ...settings };
-    updatedSettings.plannerSettings.hideIncrementDecrementButtons =
-      !updatedSettings.plannerSettings?.hideIncrementDecrementButtons;
+    const depotSettings = { ...settings.depotSettings };
+    depotSettings.showIncrementDecrementButtons = !depotSettings?.showIncrementDecrementButtons;
 
-    setSettings(updatedSettings);
+    setSettings((s) => ({ ...s, depotSettings }));
     setAnchorEl(null);
   }, [settings, setSettings]);
+
+  const handleResetStock = useCallback(() => {
+    const _depot = { ...depot };
+    const items = Object.values(_depot) as DepotItem[];
+    items.forEach((item) => (item.stock = 0));
+    putDepot(items);
+    setAnchorEl(null);
+  }, [depot, putDepot]);
 
   const handleExportImport = useCallback(() => {
     setExportImportOpen(true);
@@ -213,7 +206,8 @@ const MaterialsNeeded = React.memo((props: Props) => {
       // because we will be modifying materialsNeeded during execution
       if (materialsNeeded[item.id] != null) {
         const remaining = Math.max(materialsNeeded[item.id] - (depot[item.id]?.stock ?? 0), 0);
-        if (remaining > 0 && depot[item.id]?.crafting) {
+
+        if (remaining > 0 && settings.depotSettings.crafting?.includes(item.id)) {
           const itemBeingCrafted: Item = itemsJson[item.id as keyof typeof itemsJson];
           const { ingredients, yield: itemYield } = itemBeingCrafted;
           if (ingredients != null) {
@@ -228,7 +222,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
     });
 
   // 3. calculate what ingredients can be fulfilled by crafting
-  const depotCopy = { ...depot }; // need to hypothetically deduct from stock
+  const _depot = { ...depot }; // need to hypothetically deduct from stock
   const canCompleteByCrafting: Record<string, boolean> = {};
   Object.keys(depot)
     .filter(
@@ -249,32 +243,32 @@ const MaterialsNeeded = React.memo((props: Props) => {
         // numTimesCraftable: max number of times the formula can be executed
         const numTimesCraftable = Math.min(
           ...ingredients.map(
-            (ingr) => Math.floor((depotCopy[ingr.id]?.stock ?? 0) / ingr.quantity) //here
+            (ingr) => Math.floor((_depot[ingr.id]?.stock ?? 0) / ingr.quantity) //here
           )
         );
         // numTimesToCraft: how many times we'll actually execute the formula
         const numTimesToCraft = Math.min(numTimesCraftable, Math.ceil(shortage / itemYield));
         // now deduct from crafting supply
         ingredients.forEach((ingr) => {
-          const copy = { ...depotCopy[ingr.id] };
+          const copy = { ..._depot[ingr.id] };
           copy.stock = Math.max(
             //here
-            (depotCopy[ingr.id]?.stock ?? 0) - ingr.quantity * numTimesToCraft //here
+            (_depot[ingr.id]?.stock ?? 0) - ingr.quantity * numTimesToCraft //here
           );
-          depotCopy[ingr.id] = copy;
+          _depot[ingr.id] = copy;
         });
         if (shortage - numTimesToCraft <= 0) {
           canCompleteByCrafting[craftedItemId] = true;
         }
         // even if the crafted item can't be completed, update our hypothetical depot counts
-        const copy = { ...depotCopy[craftedItemId] };
-        copy.stock = (depotCopy[craftedItemId].stock ?? 0) + numTimesToCraft * itemYield; //here //here
-        depotCopy[craftedItemId] = copy;
+        const copy = { ..._depot[craftedItemId] };
+        copy.stock = (_depot[craftedItemId].stock ?? 0) + numTimesToCraft * itemYield; //here //here
+        _depot[craftedItemId] = copy;
       }
     });
 
   Object.keys(ingredientToCraftedItemsMapping).forEach((ingrId) => {
-    if ((materialsNeeded[ingrId] ?? 0) - (depotCopy[ingrId]?.stock ?? 0) <= 0) {
+    if ((materialsNeeded[ingrId] ?? 0) - (_depot[ingrId]?.stock ?? 0) <= 0) {
       canCompleteByCrafting[ingrId] = true;
     }
   });
@@ -282,14 +276,14 @@ const MaterialsNeeded = React.memo((props: Props) => {
   const allItems: [string, number][] = Object.values(itemsJson).map((item) => [item.id, materialsNeeded[item.id] ?? 0]);
 
   const sortedMaterialsNeeded = (
-    settings.plannerSettings?.showInactiveMaterials ? allItems : Object.entries(materialsNeeded)
+    settings.depotSettings.showInactiveMaterials ? allItems : Object.entries(materialsNeeded)
   ).sort(([itemIdA, neededA], [itemIdB, neededB]) => {
     const itemA = itemsJson[itemIdA as keyof typeof itemsJson];
     const itemB = itemsJson[itemIdB as keyof typeof itemsJson];
 
     if (!itemA) console.log(itemIdA);
     const compareBySortId = itemA.sortId - itemB.sortId;
-    if (settings.plannerSettings?.sortCompletedToBottom) {
+    if (settings.depotSettings.sortCompletedToBottom) {
       return (
         (neededA && neededA <= depot[itemIdA]?.stock ? 1 : 0) - (neededB && neededB <= depot[itemIdB]?.stock ? 1 : 0) ||
         (canCompleteByCrafting[itemIdA] ? 1 : 0) - (canCompleteByCrafting[itemIdB] ? 1 : 0) ||
@@ -350,23 +344,14 @@ const MaterialsNeeded = React.memo((props: Props) => {
             horizontal: "right",
           }}
         >
-          <SettingsMenuItem
-            onClick={handleSortToBottom}
-            checked={settings.plannerSettings?.sortCompletedToBottom ?? false}
-          >
+          <SettingsMenuItem onClick={handleSortToBottom} checked={settings.depotSettings.sortCompletedToBottom}>
             Sort completed items to bottom
           </SettingsMenuItem>
-          <SettingsMenuItem
-            onClick={handleShowInactive}
-            checked={settings.plannerSettings?.showInactiveMaterials ?? false}
-          >
+          <SettingsMenuItem onClick={handleShowInactive} checked={settings.depotSettings.showInactiveMaterials}>
             Show inactive materials
           </SettingsMenuItem>
-          <SettingsMenuItem
-            onClick={handleShowButtons}
-            checked={settings.plannerSettings?.hideIncrementDecrementButtons ?? false}
-          >
-            Hide increment/decrement buttons
+          <SettingsMenuItem onClick={handleShowButtons} checked={settings.depotSettings.showIncrementDecrementButtons}>
+            Show increment/decrement buttons
           </SettingsMenuItem>
           <Divider />
           <MenuItem onClick={handleExportImport}>
@@ -408,7 +393,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
               owned={itemId === "EXP" ? expOwned : depot[itemId]?.stock ?? 0}
               quantity={needed}
               canCompleteByCrafting={canCompleteByCrafting[itemId]}
-              isCrafting={depot[itemId]?.crafting ?? false}
+              isCrafting={settings.depotSettings.crafting.includes(itemId) ?? false}
               onChange={handleChange}
               onCraftOne={handleCraftOne}
               onDecrement={handleDecrement}
@@ -416,7 +401,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
               onCraftingToggle={handleCraftingToggle}
               onClick={handleItemClick}
               hideIncrementDecrementButtons={
-                (itemId === "4001" || itemId === "EXP" || settings.plannerSettings?.hideIncrementDecrementButtons) ??
+                (itemId === "4001" || itemId === "EXP" || !settings.depotSettings.showIncrementDecrementButtons) ??
                 false
               }
             />
