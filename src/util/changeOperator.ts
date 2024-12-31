@@ -1,5 +1,6 @@
 import { Operator } from "types/operators/operator";
 import operatorJson from "data/operators";
+import getNumSkills from "./fns/getNumSkills";
 
 // Utility exports
 export const MAX_LEVEL_BY_RARITY = [
@@ -174,8 +175,9 @@ export const changeLevel = (op: Operator, value: number) => {
 
 export const changeSkillLevel = (op: Operator, value: number) => {
   let _op = { ...op };
-
-  _op.skill_level = clamp(1, value, MAX_SKILL_LEVEL_BY_PROMOTION[_op.elite]);
+  const rarity = operatorJson[op.op_id].rarity;
+  if (rarity < 3) _op.skill_level = 0;
+  else _op.skill_level = clamp(1, value, MAX_SKILL_LEVEL_BY_PROMOTION[_op.elite]);
   if (_op.skill_level < 7) {
     _op.masteries.fill(0);
   }
@@ -184,7 +186,7 @@ export const changeSkillLevel = (op: Operator, value: number) => {
 
 export const changeMastery = (op: Operator, index: number, value: number) => {
   // Check if masteries are invalid
-  if (op.elite !== 2 || op.skill_level !== 7) return op;
+  if (op.elite !== 2 || op.skill_level !== 7 || index >= getNumSkills(op.op_id)) return op;
   const masteries = [...op.masteries];
   masteries[index] = clamp(0, value, 3);
   return { ...op, masteries };

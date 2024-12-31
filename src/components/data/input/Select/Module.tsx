@@ -141,7 +141,6 @@ const Select = (props: SelectProps) => {
   return (
     <ToggleButtonGroup
       value={value}
-      onChange={(_, i) => onChange(moduleId, i)}
       disabled={disabled}
       sx={{
         height: "min-content",
@@ -154,7 +153,7 @@ const Select = (props: SelectProps) => {
       {...rest}
     >
       {[...Array(4)].map((_, i) => (
-        <ToggleButton key={i} value={i} sx={{ p: 1 }}>
+        <ToggleButton key={i} value={i} sx={{ p: 1 }} onChange={() => onChange(moduleId, i)}>
           <Image src={`/img/equip/img_stg${i}.png`} alt={`Module ${i}`} width={size} height={size} />
         </ToggleButton>
       ))}

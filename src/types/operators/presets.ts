@@ -1,11 +1,8 @@
-interface Preset {
-  name: string;
-  elite?: number;
-  level?: number;
-  skill_level?: number;
-  masteries?: number[];
-  potential?: number;
-}
-export default Preset;
+import { Database } from "types/supabase";
 
-export const initialState: Preset[] = [];
+type Table = Database["public"]["Tables"]["presets"];
+
+type Preset = Omit<Table["Insert"], "modules"> & {
+  modules?: Record<string, number>;
+};
+export default Preset;

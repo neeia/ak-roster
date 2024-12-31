@@ -3,6 +3,8 @@ import { Operator, Skin } from "types/operators/operator";
 import skinJson from "data/skins.json";
 import {
   Box,
+  Button,
+  Collapse,
   Dialog,
   DialogContent,
   DialogTitle,
@@ -44,6 +46,9 @@ import supabase from "supabase/supabaseClient";
 import { UserContext } from "pages/_app";
 import { useSnackbar } from "notistack";
 import { PostgrestError } from "@supabase/supabase-js";
+import usePresets from "util/hooks/usePresets";
+import Chip from "components/base/Chip";
+import applyPresetToOperator from "util/fns/applyPresetToOperator";
 
 interface Props {
   op?: Operator;
@@ -55,6 +60,7 @@ interface Props {
 const EditOperator = React.memo((props: Props) => {
   const { op, onChange, open, onClose } = props;
   const { enqueueSnackbar } = useSnackbar();
+  const { presets } = usePresets();
 
   function handleError({ error }: { error: PostgrestError | null }) {
     if (error)
@@ -88,7 +94,7 @@ const EditOperator = React.memo((props: Props) => {
     (_op: Operator) => {
       if (!op) return;
       onChange(_op);
-      if (user) supabase.from("operators").update(_op).match({ user_id: user.id, op_id: op.op_id }).then(handleError);
+      if (user) supabase.from("operators").upsert(_op).match({ user_id: user.id, op_id: op.op_id }).then(handleError);
     },
     [op, user]
   );
@@ -154,6 +160,8 @@ const EditOperator = React.memo((props: Props) => {
     [op, _onChange]
   );
 
+  const [showPresets, setShowPresets] = React.useState(true);
+
   if (!op) return null;
 
   const opSkins: Skin[] = skinJson[op.op_id as keyof typeof skinJson];
@@ -197,6 +205,59 @@ const EditOperator = React.memo((props: Props) => {
           },
         }}
       >
+        <Box
+          sx={{
+            gridColumn: "1 / -1",
+            width: "100%",
+            backgroundColor: "background.default",
+            borderRadius: 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "start",
+            gap: 1,
+            p: 2,
+          }}
+        >
+          {presets.length && (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
+              <Typography variant="h3">Presets</Typography>
+              <Button
+                variant="text"
+                onClick={() => setShowPresets((prev) => !prev)}
+                sx={{
+                  color: "text.secondary",
+                  textTransform: "uppercase",
+                  p: 0,
+                }}
+              >
+                Hide
+              </Button>
+            </Box>
+          )}
+          <Collapse
+            in={showPresets}
+            sx={{
+              "& .MuiCollapse-wrapperInner": {
+                display: "flex",
+                gap: 1,
+                flexWrap: "wrap",
+              },
+            }}
+          >
+            {presets.map((preset) => (
+              <Chip key={preset.index} onClick={() => _onChange(applyPresetToOperator(preset, op))}>
+                {preset.name}
+              </Chip>
+            ))}
+          </Collapse>
+        </Box>
         <Select title="General">
           <Box
             sx={{

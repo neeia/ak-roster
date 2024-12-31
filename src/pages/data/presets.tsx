@@ -1,65 +1,73 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import type { NextPage } from "next";
-import dynamic from "next/dynamic";
 import { Box } from "@mui/material";
 import Layout from "components/Layout";
-import SearchDialog from "components/data/collate/SearchDialog";
-import FilterDialog from "components/data/collate/FilterDialog";
-import SortDialog from "components/data/collate/SortDialog";
-import useSort from "util/hooks/useSort";
-import useFilter from "util/hooks/useFilter";
-import useOperators from "util/hooks/useOperators";
-import { defaultOperatorObject } from "util/changeOperator";
-import Toolbar from "components/data/Toolbar";
+import usePresets from "util/hooks/usePresets";
+import Chip from "components/base/Chip";
+import { Add } from "@mui/icons-material";
+import Board from "components/base/Board";
+import PresetDialog from "components/data/batch/PresetDialog";
+import Preset from "types/operators/presets";
 
 const Presets: NextPage = () => {
-  const [roster, , onChange] = useOperators();
+  const { presets, addPreset, changePreset, deletePreset } = usePresets();
 
-  const [opId, setOpId] = useState<string>();
-  const [editOpen, setEditOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [open, setOpen] = useState(false);
 
-  const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort([{ key: "Rarity", desc: true }]);
-  const { filters, toggleFilter, clearFilters, filterFunction, setSearch } = useFilter();
-
-  const selectOp = useCallback((id: string) => {
-    setOpId(id);
-    setEditOpen(true);
-  }, []);
+  const onChange = (preset: Preset) => {
+    if (index === presets.length) {
+      addPreset(preset);
+    } else if (index < presets.length) {
+      changePreset(preset);
+    }
+  };
 
   return (
-    <Layout tab="/data" page="/input">
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: { xs: "column", sm: "row" },
-          gap: 2,
-        }}
-      >
-        <Toolbar>
-          <SortDialog sortFns={sortFunctions} sortQueue={sorts} setSortQueue={setSorts} toggleSort={toggleSort} />
-          <FilterDialog filter={filters} toggleFilter={toggleFilter} clearFilters={clearFilters} />
-          <SearchDialog onChange={setSearch} />
-        </Toolbar>
+    <Layout tab="/data" page="/presets">
+      <Board>
         <Box
           sx={{
-            width: "100%",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
-            gridTemplateRows: "min-content",
-            justifyContent: "center",
-            gap: { xs: 0.5, sm: 1 },
-            margin: 0,
-            padding: 0,
-            "& .unowned": {
-              opacity: 0.75,
-            },
-            "& .hidden": {
-              display: "none",
-            },
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 2,
+            lineHeight: 1,
           }}
         >
+          <Chip
+            component="button"
+            onClick={() => {
+              setIndex(presets.length);
+              setOpen(true);
+            }}
+            color="primary"
+            icon={<Add fontSize="small" />}
+            sx={{ px: 1, "& .MuiChip-label": { px: 1 } }}
+          >
+            Create New
+          </Chip>
+          {presets.map((preset) => (
+            <Chip
+              key={preset.index}
+              component="button"
+              onClick={() => {
+                setIndex(preset.index);
+                setOpen(true);
+              }}
+            >
+              {preset.name}
+            </Chip>
+          ))}
         </Box>
-      </Box>
+        <PresetDialog
+          open={open}
+          onClose={() => setOpen(false)}
+          preset={presets[index] || { index, name: "" }}
+          onSubmit={onChange}
+          onDelete={() => deletePreset(index)}
+          add={index === presets.length}
+        />
+      </Board>
     </Layout>
   );
 };

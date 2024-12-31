@@ -243,22 +243,46 @@ export type Database = {
       };
       presets: {
         Row: {
-          presets: Json[];
+          elite: number | null;
+          favorite: boolean | null;
+          index: number;
+          level: number | null;
+          masteries: number[] | null;
+          modules: Json | null;
+          name: string;
+          potential: number | null;
+          skill_level: number | null;
           user_id: string;
         };
         Insert: {
-          presets: Json[];
+          elite?: number | null;
+          favorite?: boolean | null;
+          index: number;
+          level?: number | null;
+          masteries?: number[] | null;
+          modules?: Json | null;
+          name: string;
+          potential?: number | null;
+          skill_level?: number | null;
           user_id?: string;
         };
         Update: {
-          presets?: Json[];
+          elite?: number | null;
+          favorite?: boolean | null;
+          index?: number;
+          level?: number | null;
+          masteries?: number[] | null;
+          modules?: Json | null;
+          name?: string;
+          potential?: number | null;
+          skill_level?: number | null;
           user_id?: string;
         };
         Relationships: [
           {
             foreignKeyName: "presets_user_id_fkey";
             columns: ["user_id"];
-            isOneToOne: true;
+            isOneToOne: false;
             referencedRelation: "krooster_accounts";
             referencedColumns: ["user_id"];
           }
