@@ -30,6 +30,8 @@ import Chip from "components/base/Chip";
 import { focused } from "styles/theme/appTheme";
 import { Close, Groups, ZoomInMap, ZoomOutMap } from "@mui/icons-material";
 import Image from "next/image";
+import { RecruitmentResult } from "types/recruit";
+import useOperators from "util/hooks/useOperators";
 
 const TAGS_BY_CATEGORY = {
   Rarity: ["Top Operator", "Senior Operator", "Starter", "Robot"],
@@ -75,7 +77,7 @@ const options: Tag[] = Object.entries(TAGS_BY_CATEGORY).flatMap(([type, tagArray
 
 const Recruit: NextPage = () => {
   const user = useContext(UserContext);
-  const { data: roster } = useRosterGetQuery();
+  const [roster] = useOperators();
 
   const [activeTags, setActiveTags] = useState<Tag[]>([]);
   const [inputNode, setInputNode] = useState<HTMLInputElement | null>(null);
@@ -85,7 +87,7 @@ const Recruit: NextPage = () => {
     }
   }, [inputNode]);
 
-  const matchingOperators = useMemo(
+  const matchingOperators: RecruitmentResult[] = useMemo(
     () =>
       getTagCombinations([...activeTags].sort((a, b) => a.value.localeCompare(b.value)).map((tag) => tag.value))
         .map((tags) => recruitmentJson[`${tags}` as keyof typeof recruitmentJson])
@@ -302,7 +304,7 @@ const Recruit: NextPage = () => {
                 Math.min(...opSetB.map((op) => (op.rarity === 1 ? 4 : op.rarity))) -
                   Math.min(...opSetA.map((op) => (op.rarity === 1 ? 4 : op.rarity))) || tagSetB.length - tagSetA.length
             )
-            .map(({ tags, operators, guarantees }, i) => (
+            .map(({ tags, operators, guarantees }) => (
               <Box
                 key={tags.join(",")}
                 sx={{
@@ -310,7 +312,8 @@ const Recruit: NextPage = () => {
                   flexDirection: "column",
                   gap: 2,
                   "& ~ &": {
-                    borderTop: "1px solid #4d4d4d",
+                    borderTop: "1px solid",
+                    borderColor: "background.light",
                     pt: 2,
                   },
                 }}
@@ -357,20 +360,12 @@ const Recruit: NextPage = () => {
                       mx: "-1rem",
                       textAlign: "center",
                     },
-                    "& .max-pot": {
-                      opacity: 0.75,
-                    },
                   }}
                 >
                   {!isServer() &&
                     [...operators]
                       .sort(
-                        (a, b) =>
-                          a.rarity - b.rarity ||
-                          (roster
-                            ? (a.id in roster ? roster[a.id].potential : 0) -
-                              (b.id in roster ? roster[b.id].potential : 0)
-                            : 0)
+                        (a, b) => a.rarity - b.rarity || (roster[a.id]?.potential ?? 0) - (roster[b.id]?.potential ?? 0)
                       )
                       .map((operator) => (
                         <RecruitableOperatorCard
