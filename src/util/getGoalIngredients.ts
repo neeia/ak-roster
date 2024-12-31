@@ -19,7 +19,11 @@ const getGoalIngredients = (goal: PlannerGoal): Ingredient[] => {
         quantity: lmd,
         id: "4001",
       };
-      return [lmdIngredient];
+      const expIngredient: Ingredient = {
+        quantity: exp,
+        id: "EXP",
+      };
+      return [lmdIngredient, expIngredient];
     case OperatorGoalCategory.Elite:
       return operator.eliteLevels[goal.eliteLevel - 1].ingredients;
     case OperatorGoalCategory.SkillLevel:

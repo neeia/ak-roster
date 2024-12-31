@@ -4,6 +4,7 @@ import { Box, Button, Checkbox, FormControlLabel, TextField } from "@mui/materia
 import { Operator, Skin } from "types/operators/operator";
 import { OperatorSupport } from "types/operators/supports";
 import skinJson from "data/skins.json";
+import itemJson from "data/items.json";
 import useDepot from "util/hooks/useDepot";
 import DepotItem from "types/depotItem";
 import useSupports from "util/hooks/useSupports";
@@ -158,12 +159,13 @@ const GameImport = () => {
     const depot = userData.inventory;
     const depotData: DepotItem[] = [];
     for (let key in depot) {
-      if (!EXCLUDED_ITEMS.includes(key)) {
+      if (!EXCLUDED_ITEMS.includes(key) && key in itemJson) {
         let value = depot[key]!;
         let item: DepotItem = { material_id: key, stock: value };
         depotData.push(item);
       }
     }
+    depotData.push({ material_id: "4001", stock: userData.status.gold });
     await setDepot(depotData);
 
     setError("Data imported.");

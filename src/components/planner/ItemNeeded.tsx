@@ -45,6 +45,15 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
   const isComplete = owned >= quantity;
   const [rawValue, setRawValue] = useState<string>("");
 
+  const [focused, setFocused] = useState(false);
+
+  const abbrOwned =
+    owned < 1000
+      ? owned
+      : owned < 1000000
+      ? `${owned % 1000 === 0 ? `${owned / 1000}` : (owned / 1000).toFixed(0)}K`
+      : `${owned % 1000000 === 0 ? `${owned / 1000000}` : (owned / 1000000).toFixed(0)}M`;
+
   useEffect(() => {
     setRawValue(`${owned}`);
   }, [owned]);
@@ -105,22 +114,26 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
       </ButtonBase>
       <TextField
         size="small"
-        value={rawValue}
-        onFocus={(e) => e.target.select()}
-        onChange={handleChange}
-        inputProps={{
-          type: "number",
-          min: 0,
-          step: 1,
-          "aria-label": "Quantity owned",
-          sx: {
-            textAlign: "center",
-            width: "4ch", // width of 4 "0" characters
-            flexGrow: 1,
-          },
+        value={focused ? rawValue : abbrOwned.toString()}
+        onFocus={(e) => {
+          e.target.select();
+          setFocused(true);
         }}
-        InputProps={
-          hideIncrementDecrementButtons
+        onBlur={() => setFocused(false)}
+        onChange={handleChange}
+        slotProps={{
+          htmlInput: {
+            type: focused ? "number" : "text",
+            min: 0,
+            step: 1,
+            "aria-label": "Quantity owned",
+            sx: {
+              textAlign: "center",
+              width: "5ch", // width of 4 "0" characters
+              flexGrow: 1,
+            },
+          },
+          input: hideIncrementDecrementButtons
             ? {}
             : {
                 startAdornment: (
@@ -152,20 +165,20 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
                   px: "4px",
                   borderBottomLeftRadius: 0,
                   borderBottomRightRadius: 0,
-                  "& input[type=number]": {
+                  "& input": {
                     MozAppearance: "textfield",
                   },
-                  "& input[type=,number]::-webkit-outer-spin-button": {
+                  "& input::-webkit-outer-spin-button": {
                     WebkitAppearance: "none",
                     margin: 0,
                   },
-                  "& input[type=number]::-webkit-inner-spin-button": {
+                  "& input::-webkit-inner-spin-button": {
                     WebkitAppearance: "none",
                     margin: 0,
                   },
                 },
-              }
-        }
+              },
+        }}
       />
       <Box
         sx={{

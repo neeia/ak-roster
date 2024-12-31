@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
 import DepotItem from "types/depotItem";
 import handlePostgrestError from "util/fns/handlePostgrestError";
+import itemJson from "data/items.json";
 
 function useDepot() {
   const [depot, _setDepot] = useState<Record<string, DepotItem>>({});
@@ -37,7 +38,16 @@ function useDepot() {
       const { data: depot } = await supabase.from("depot").select().eq("user_id", user_id);
 
       const depotResult: Record<string, DepotItem> = {};
-      depot?.forEach((x) => (depotResult[x.material_id] = x));
+      const depotTrash: string[] = [];
+      depot?.forEach((x) => {
+        if (x.material_id in itemJson) {
+          depotResult[x.material_id] = x;
+        } else {
+          depotTrash.push(x.material_id);
+        }
+      });
+
+      if (depotTrash.length) await supabase.from("depot").delete().in("material_id", depotTrash);
 
       _setDepot(depotResult);
     };
