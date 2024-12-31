@@ -9,6 +9,14 @@ import Promotion from "components/data/input/Select/Promotion";
 import Board from "components/base/Board";
 import Rarity from "components/data/input/Select/Rarity";
 
+/**
+ * The cost of leveling an operator
+ * @typedef {Object} LevelingCost
+ * @property {number} exp - The total exp cost
+ * @property {number} lmd - The total lmd cost
+ * @property {number} levelingLmd - The lmd cost for leveling
+ * @property {number} eliteLmd - The lmd cost for elite promotions
+ */
 interface LevelingCost {
   exp: number;
   lmd: number;
@@ -16,7 +24,16 @@ interface LevelingCost {
   eliteLmd: number;
 }
 
-const levelingCost = (
+/**
+ * Calculate the cost of leveling an operator
+ * @param {number} rarity - The rarity of the operator
+ * @param {number} startingElite - The starting promotion of the operator
+ * @param {number} startingLevel - The starting level of the operator
+ * @param {number} targetElite - The target promotion of the operator
+ * @param {number} targetLevel - The target level of the operator
+ * @returns {LevelingCost} The total cost of leveling the operator
+ */
+export const levelingCost = (
   rarity: number,
   startingElite: number,
   startingLevel: number,

@@ -83,32 +83,4 @@ export interface OperatorV1 {
   module?: number[];
 }
 
-export interface Preset {
-  id: number;
-  name: string;
-  favorite: boolean;
-  potential: number;
-  elite: number;
-  level: number;
-  rank: number;
-  masteries: number[];
-}
-
-// Generates a preset with the given index
-export function defaultPresetObject(_: any, index: number): [string, Preset] {
-  return [
-    index.toString(),
-    {
-      id: index,
-      name: `Untitled Preset ${index + 1}`,
-      favorite: false,
-      potential: 0,
-      elite: -1,
-      level: 0,
-      rank: 0,
-      masteries: [],
-    },
-  ];
-}
-
 export type OpInfo = Operator & OperatorData;

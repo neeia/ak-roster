@@ -84,6 +84,7 @@ const appTheme = (brandColor: string) =>
       MuiButtonBase: {
         styleOverrides: {
           root: {
+            fontFamily: `"Lato", sans-serif`,
             "&.Mui-disabled": {
               color: "inherit",
               opacity: "0.38",
@@ -91,7 +92,7 @@ const appTheme = (brandColor: string) =>
             "&:not(._):not(._):not(.MuiButton-outlined)": {
               border: "none",
               margin: 0,
-              "&.Mui-selected": {
+              "&.Mui-selected:not(.no-underline)": {
                 borderBottomStyle: "solid",
                 borderBottomWidth: "0.25rem",
                 borderBottomColor: brandColor,

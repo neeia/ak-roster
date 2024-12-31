@@ -67,7 +67,7 @@
   "Bipolar Nanoflake": "30125",
   "D32 Steel": "30135",
   "Crystalline Electronic Unit": "30145",
-  "Sintered Core Crystals": "30155",
+  "Nucleic Crystal Sinter": "30155",
   "Coagulating Gel": "31013",
   "Polymerized Gel": "31014",
   "Incandescent Alloy": "31023",
@@ -78,11 +78,14 @@
   "Refined Solvent": "31044",
   "Compound Cutting Fluid": "31053",
   "Cutting Fluid Solution": "31054",
-  "Transmuted Salt Cluster": "31063",
-  "Transmuted Salt Block": "31064",
+  "Transmuted Salt": "31063",
+  "Transmuted Salt Agglomerate": "31064",
+  "Fuscous Fiber": "31073",
+  "Solidified Fiber Board": "31074",
+  "Aggregate Cyclicene": "31083",
+  "Cyclicene Prefab": "31084",
   "Chip Catalyst": "32001",
   "Module Data Block": "mod_unlock_token",
   "Data Supplement Instrument": "mod_update_token_2",
-  "Data Supplement Stick": "mod_update_token_1",
-  "Crystalline Electroassembly": "30145"
+  "Data Supplement Stick": "mod_update_token_1"
 }

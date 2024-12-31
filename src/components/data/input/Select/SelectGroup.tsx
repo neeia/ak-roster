@@ -89,11 +89,7 @@ const Toggle = (props: AddGroupProps) => {
     if (!el.current) return;
     const e = findFirstFocusableElement(el.current);
     if (e) (e as HTMLElement).focus();
-  }, [el]);
-
-  useEffect(() => {
-    if (disabled) _onClick?.();
-  }, [disabled]);
+  }, [el.current]);
 
   return open ? (
     <Box sx={{ display: "contents" }} ref={el}>
@@ -102,7 +98,7 @@ const Toggle = (props: AddGroupProps) => {
   ) : (
     <Button
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || _disabled}
       sx={{
         width: "100%",
         height: "64px",
@@ -125,7 +121,6 @@ const FromTo = (props: FromToProps) => {
     display: "flex",
     flexDirection: "column",
     gap: 1,
-    ..._sx,
   };
 
   return (
@@ -138,6 +133,7 @@ const FromTo = (props: FromToProps) => {
           sm: "1fr 1fr",
         },
         gap: 2,
+        ..._sx,
       }}
     >
       <Box sx={sx} {...rest}>

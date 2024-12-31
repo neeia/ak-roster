@@ -1,35 +1,103 @@
-import { Preset, defaultPresetObject } from "../../types/operators/operator";
-import useLocalStorage from "./useLocalStorage";
+import Preset from "types/operators/presets";
+import { useEffect, useState } from "react";
+import supabase from "supabase/supabaseClient";
+import handlePostgrestError from "util/fns/handlePostgrestError";
 
 function usePresets() {
-  const [presets, setPresets] = useLocalStorage<Record<string, Preset>>(
-    "presets",
-    Object.fromEntries([...Array(6)].map(defaultPresetObject))
-  );
+  const [presets, setPresets] = useState<Preset[]>([]);
+  const [user_id, setUserId] = useState<string>("");
 
-  const onChange = (preset: Preset) => {
-    setPresets(
-      (oldOperators: Record<string, Preset>): Record<string, Preset> => {
-        const copyOperators = { ...oldOperators };
-        copyOperators[preset.id] = { ...preset };
-        return copyOperators;
-      }
-    );
+  const addPreset = async (preset: Preset) => {
+    const _presets = [...presets];
+    _presets.push({ ...preset });
+    setPresets(_presets);
+
+    if (!user_id) return;
+    const { error } = await supabase
+      .from("presets")
+      .insert({ ...preset })
+      .match({ user_id, index: preset.index });
+    handlePostgrestError(error);
   };
 
-  const rename = (presetID: string, value: string) => {
-    setPresets(
-      (oldOperators: Record<string, Preset>): Record<string, Preset> => {
-        const copyOperators = { ...oldOperators };
-        const copyOperatorData = { ...copyOperators[presetID] };
-        copyOperatorData.name = value;
-        copyOperators[presetID] = copyOperatorData;
-        return copyOperators;
-      }
-    );
+  const deletePreset = async (index: number) => {
+    let _presets = [...presets];
+    delete _presets[index];
+    _presets = _presets.filter((p) => p);
+    setPresets(_presets.map((p, index) => ({ ...p, index })));
+
+    if (!user_id) return;
+    const { error } = await supabase.from("presets").delete().eq("index", index);
+    handlePostgrestError(error);
+
+    _presets.forEach(async (preset, index) => {
+      const { error } = await supabase
+        .from("presets")
+        .update({ ...preset, index })
+        .match({ user_id, index: preset.index });
+      if (error) handlePostgrestError(error);
+    });
   };
 
-  return [presets, onChange, rename] as const;
+  const changePreset = async (preset: Preset) => {
+    const _presets = [...presets];
+    _presets[preset.index] = { ...preset };
+    setPresets(_presets);
+
+    if (!user_id) return;
+    const { error } = await supabase
+      .from("presets")
+      .update({ ...preset })
+      .match({ user_id, index: preset.index });
+    handlePostgrestError(error);
+  };
+
+  // fetch data from db
+  useEffect(() => {
+    let isCanceled = false;
+
+    const fetchData = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      const user_id = session?.user.id;
+
+      if (!user_id) return;
+      else setUserId(user_id);
+
+      const { data: dbPresets, error } = await supabase.from("presets").select().match({ user_id });
+      if (error) handlePostgrestError(error);
+
+      if (!dbPresets?.length) {
+        setPresets([]);
+        return;
+      }
+
+      const _presets = dbPresets.sort((a, b) => a.index - b.index) as Preset[];
+      if (!_presets.every(({ index }, i) => index === i)) {
+        _presets.forEach(async (preset, index) => {
+          const { error } = await supabase
+            .from("presets")
+            .update({ ...preset, index })
+            .eq("user_id", user_id)
+            .eq("index", preset.index);
+          if (error) handlePostgrestError(error);
+        });
+        setPresets(_presets.map((p, index) => ({ ...p, index })));
+        return;
+      }
+
+      if (!isCanceled) setPresets(_presets);
+    };
+
+    fetchData();
+
+    return () => {
+      isCanceled = true;
+    };
+  }, []);
+
+  return { presets, addPreset, deletePreset, changePreset } as const;
 }
 
 export default usePresets;

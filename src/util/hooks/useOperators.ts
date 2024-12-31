@@ -4,6 +4,7 @@ import operatorJson from "data/operators";
 import useLocalStorage from "./useLocalStorage";
 import Roster from "types/operators/roster";
 import supabase from "supabase/supabaseClient";
+import handlePostgrestError from "util/fns/handlePostgrestError";
 
 function useOperators() {
   const [operators, setOperators] = useState<Roster>({});
@@ -34,12 +35,13 @@ function useOperators() {
 
       if (!user_id) return;
 
-      const { data: dbOperators } = await supabase
-        .from("operators")
-        .select("op_id, favorite, potential, elite, level, skill_level, masteries, modules, skin")
-        .match({ user_id });
+      const { data: dbOperators, error } = await supabase.from("operators").select().match({ user_id });
+      if (error) handlePostgrestError(error);
 
-      if (!dbOperators?.length) return { data: {} };
+      if (!dbOperators?.length) {
+        setOperators({});
+        return;
+      }
 
       const _roster: Roster = {};
       dbOperators.forEach((op) => (op.op_id in operatorJson ? (_roster[op.op_id] = op as Operator) : null));

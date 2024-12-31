@@ -34,15 +34,8 @@ interface Props extends BoxProps {
   op: OpInfo;
 }
 
-const OperatorBlock = (props: Props) => {
+const SupportBlock = (props: Props) => {
   const { op, sx, ...rest } = props;
-
-  let intermediate = op.op_id;
-  if (op.elite === 2) {
-    intermediate += "_2";
-  } else if (op.elite === 1 && op.name === "Amiya") {
-    intermediate += "_1";
-  }
 
   const reg = /( the )|\(/gi;
   const splitName = op.name.replace(/\)$/, "").split(reg);
@@ -132,8 +125,9 @@ const OperatorBlock = (props: Props) => {
             zIndex: 1,
           }}
         >
-          {op.potential > 1 ? (
+          {op.potential > 1 && (
             <Box
+              className="potential"
               sx={{
                 position: "relative",
                 width: { xs: "12px" },
@@ -165,8 +159,9 @@ const OperatorBlock = (props: Props) => {
                 />
               </Box>
             </Box>
-          ) : null}
+          )}
           <Box
+            className="elite"
             sx={{
               width: { xs: "20px" },
               height: { xs: "20px" },
@@ -182,6 +177,7 @@ const OperatorBlock = (props: Props) => {
             />
           </Box>
           <Box
+            className="level"
             sx={{
               height: { xs: "32px" },
               aspectRatio: "1 / 1",
@@ -201,13 +197,13 @@ const OperatorBlock = (props: Props) => {
           </Box>
         </Box>
       </Box>
-      {/* Potential, Promotion, Level */}
+      {/* Skills & Modules */}
       <Box sx={{ alignSelf: "end", display: "flex", flexDirection: "column", alignItems: "start", gap: "4px" }}>
         {/* Skills */}
         <Typography sx={{ display: { xs: "none", sm: "block" }, fontSize: "12px" }}>Skills</Typography>
         <Box
           sx={{
-            display: op.skill_level > 1 ? "flex" : "none",
+            display: "flex",
             gap: "2px",
           }}
         >
@@ -217,7 +213,8 @@ const OperatorBlock = (props: Props) => {
               <Box
                 key={i}
                 sx={{
-                  display: op.elite >= i ? "grid" : "none",
+                  display: "grid",
+                  opacity: op.elite >= i ? 1 : 0.25,
                   marginLeft: 0,
                   width: 24,
                   height: 24,
@@ -226,7 +223,7 @@ const OperatorBlock = (props: Props) => {
                   backgroundSize: "contain",
                 }}
               >
-                {op.masteries[i] < 1 ? (
+                {!op.masteries[i] ? (
                   <Image
                     src={`/img/rank/${op.skill_level}.png`}
                     fill
@@ -257,6 +254,7 @@ const OperatorBlock = (props: Props) => {
           {[...Array(3)].map((_, i) => {
             if (!op.moduleData?.[i]) return <SpaceFiller key={i} />;
             const mod = op.moduleData[i];
+            const modLevel = op.modules[mod.moduleId];
             return (
               <Box
                 key={mod.moduleId}
@@ -268,6 +266,7 @@ const OperatorBlock = (props: Props) => {
                   backgroundColor: "background.default",
                   border: "1px solid",
                   borderColor: "background.light",
+                  opacity: modLevel ? 1 : 0.25,
                 }}
               >
                 <Image src={getModUrl(mod)} fill sizes="(max-width: 768px) 24px, 32px" alt={mod.typeName} />
@@ -288,7 +287,7 @@ const OperatorBlock = (props: Props) => {
                   }}
                 >
                   {mod.typeName.slice(-1)}
-                  {op.modules[mod.moduleId] > 1 && op.modules[mod.moduleId]}
+                  {modLevel > 1 && modLevel}
                 </Typography>
               </Box>
             );
@@ -298,4 +297,4 @@ const OperatorBlock = (props: Props) => {
     </Box>
   );
 };
-export default OperatorBlock;
+export default SupportBlock;

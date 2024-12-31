@@ -18,13 +18,6 @@ interface Props extends BoxProps {
 const OperatorBlock = (props: Props) => {
   const { op, sx, ...rest } = props;
 
-  let intermediate = op.op_id;
-  if (op.elite === 2) {
-    intermediate += "_2";
-  } else if (op.elite === 1 && op.name === "Amiya") {
-    intermediate += "_1";
-  }
-
   const reg = /( the )|\(/gi;
   const splitName = op.name.replace(/\)$/, "").split(reg);
   const name = splitName[0];

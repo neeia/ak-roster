@@ -118,7 +118,7 @@ const RecruitableOperatorCard = React.memo((props: Props) => {
           position: "relative",
         }}
       >
-        <Image src={imgUrl} layout="fill" alt="" />
+        <Image src={imgUrl} fill sizes="64px" alt="" />
       </Box>
       <Box
         sx={{

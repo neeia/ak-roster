@@ -11,7 +11,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { Close, IosShare, Reddit } from "@mui/icons-material";
-import OperatorBlock from "../data/SupportBlock";
+import SupportBlock from "../data/SupportBlock";
 import Image from "next/image";
 import operatorJson from "data/operators";
 import { LookupData } from "util/hooks/useLookup";
@@ -259,7 +259,7 @@ const ProfileDialog = (props: Props) => {
                     .map((s) => {
                       if (!s) return null;
                       const op = data.roster[s.op_id];
-                      return <OperatorBlock key={op.op_id} op={{ ...op, ...operatorJson[s.op_id] }} />;
+                      return <SupportBlock key={op.op_id} op={{ ...op, ...operatorJson[s.op_id] }} />;
                     })}
                 </Box>
               </Box>
