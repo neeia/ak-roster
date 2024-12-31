@@ -273,6 +273,7 @@ const PlannerGoalAdd = (props: Props) => {
     setGoalBuilder((prev) => ({
       ...prev,
       level_from: clamp(1, level_from, maxLevel),
+      level_to: clamp(level_from, prev.level_to ?? level_from, maxLevel),
     }));
   };
   const onLevelToChange = (level_to: number) => {
@@ -280,6 +281,7 @@ const PlannerGoalAdd = (props: Props) => {
     const maxLevel = MAX_LEVEL_BY_RARITY[opData!.rarity][goalBuilder.elite_to ?? currentOp?.elite ?? 0];
     setGoalBuilder((prev) => ({
       ...prev,
+      level_from: clamp(1, prev.level_from ?? level_to, level_to),
       level_to: clamp(1, level_to, maxLevel),
     }));
   };
@@ -469,7 +471,7 @@ const PlannerGoalAdd = (props: Props) => {
       _goalBuilder.level_from = level_from;
       _goalBuilder.level_to = level_to;
     }
-    if (isNumber(preset.skill_level) && skill_level_from < skill_level_to) {
+    if (opData.rarity > 2 && isNumber(preset.skill_level) && skill_level_from < skill_level_to) {
       _goalBuilder.skill_level_from = goalBuilder.skill_level_from ?? currentOp.skill_level;
       _goalBuilder.skill_level_to = preset.skill_level;
     }
@@ -666,6 +668,7 @@ const PlannerGoalAdd = (props: Props) => {
               title="Skill Rank"
               open={isNumber(goalBuilder.skill_level_from) || isNumber(goalBuilder.skill_level_to)}
               toggleOpen={() => toggleSection("skill")}
+              disabled={!opData || opData.rarity <= 2}
             >
               <SelectGroup.FromTo>
                 <SkillLevel

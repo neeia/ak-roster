@@ -23,7 +23,6 @@ const normalizeOperatorName = (operatorName: string) =>
   operatorName.toLowerCase().replace(/['"]/g, "").replace("ł", "l");
 
 const operators = Object.values(operatorsJson)
-  .filter((op) => op.rarity >= 3)
   .sort((a, b) => a.name.localeCompare(b.name));
 
 const operatorNormalizedNames = Object.fromEntries(operators.map((op) => [op.name, normalizeOperatorName(op.name)]));
