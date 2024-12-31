@@ -41,7 +41,8 @@ const nameOverrides = {
   "Justice Knight": "'Justice Knight'",
 };
 
-const RECRUITMENT_TAGS = [
+const RECRUITMENT_TAGS = gachaTable.gachaTags.map((tag) => tag.tagName).filter((tag) => tag !== "Female" && tag !== "Male");
+const _RECRUITMENT_TAGS = [
   "Top Operator",
   "Senior Operator",
   "Starter",
@@ -70,6 +71,7 @@ const RECRUITMENT_TAGS = [
   "Summon",
   "Support",
   "Survival",
+  "Elemental",
 ];
 
 const { recruitDetail } = gachaTable;
