@@ -10,8 +10,6 @@ import cnCharacterPatchTable from "./ArknightsGameData/zh_CN/gamedata/excel/char
 import cnCharacterTable from "./ArknightsGameData/zh_CN/gamedata/excel/character_table.json" assert { type: "json" };
 import cnSkillTable from "./ArknightsGameData/zh_CN/gamedata/excel/skill_table.json" assert { type: "json" };
 import cnUniequipTable from "./ArknightsGameData/zh_CN/gamedata/excel/uniequip_table.json" assert { type: "json" };
-import createSkinsJson from "./skins.mjs";
-import uploadAllImages from "./images.mjs";
 
 const enPatchCharacters = enCharacterPatchTable.patchChars;
 const cnPatchCharacters = cnCharacterPatchTable.patchChars;

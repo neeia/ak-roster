@@ -54,7 +54,6 @@ const { workshopFormulas, manufactFormulas: manufactureFormulas } =
   cnBuildingData;
 
 const ADDITIONAL_ITEM_NAME_TO_ID_ENTRIES = {
-  "Crystalline Electroassembly": "30145",
 };
 
 const isPlannerItem = (itemId) => {
