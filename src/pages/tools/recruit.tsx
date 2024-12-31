@@ -28,22 +28,13 @@ import { defaultOperatorObject } from "util/changeOperator";
 import Board from "components/base/Board";
 import Chip from "components/base/Chip";
 import { focused } from "styles/theme/appTheme";
-import { Close, ZoomInMap, ZoomOutMap } from "@mui/icons-material";
+import { Close, Groups, ZoomInMap, ZoomOutMap } from "@mui/icons-material";
 import Image from "next/image";
 
 const TAGS_BY_CATEGORY = {
   Rarity: ["Top Operator", "Senior Operator", "Starter", "Robot"],
   Position: ["Melee", "Ranged"],
-  Class: [
-    "Caster",
-    "Defender",
-    "Guard",
-    "Medic",
-    "Sniper",
-    "Specialist",
-    "Supporter",
-    "Vanguard",
-  ],
+  Class: ["Caster", "Defender", "Guard", "Medic", "Sniper", "Specialist", "Supporter", "Vanguard"],
   Other: [
     "AoE",
     "Crowd-Control",
@@ -51,6 +42,7 @@ const TAGS_BY_CATEGORY = {
     "DPS",
     "Debuff",
     "Defense",
+    "Elemental",
     "Fast-Redeploy",
     "Healing",
     "Nuker",
@@ -62,13 +54,6 @@ const TAGS_BY_CATEGORY = {
   ],
 };
 
-const chipContainerStyles: SxProps<Theme> = {
-  display: "flex",
-  alignItems: "center",
-  gap: 1,
-  flexWrap: "wrap",
-};
-
 function getTagCombinations(activeTags: string[]) {
   if (activeTags.length === 0) {
     return [];
@@ -76,9 +61,7 @@ function getTagCombinations(activeTags: string[]) {
   const range = Array(activeTags.length)
     .fill(0)
     .map((_, i) => i + 1);
-  return range.flatMap((k) =>
-    [...new Combination<string>(activeTags, k)].sort()
-  );
+  return range.flatMap((k) => [...new Combination<string>(activeTags, k)].sort());
 }
 
 interface Tag {
@@ -86,8 +69,8 @@ interface Tag {
   value: string;
 }
 
-const options: Tag[] = Object.entries(TAGS_BY_CATEGORY).flatMap(
-  ([type, tagArray]) => tagArray.flatMap((tag) => ({ type, value: tag }))
+const options: Tag[] = Object.entries(TAGS_BY_CATEGORY).flatMap(([type, tagArray]) =>
+  tagArray.flatMap((tag) => ({ type, value: tag }))
 );
 
 const Recruit: NextPage = () => {
@@ -104,14 +87,8 @@ const Recruit: NextPage = () => {
 
   const matchingOperators = useMemo(
     () =>
-      getTagCombinations(
-        [...activeTags]
-          .sort((a, b) => a.value.localeCompare(b.value))
-          .map((tag) => tag.value)
-      )
-        .map(
-          (tags) => recruitmentJson[`${tags}` as keyof typeof recruitmentJson]
-        )
+      getTagCombinations([...activeTags].sort((a, b) => a.value.localeCompare(b.value)).map((tag) => tag.value))
+        .map((tags) => recruitmentJson[`${tags}` as keyof typeof recruitmentJson])
         .filter((result) => result != null),
     [activeTags]
   );
@@ -137,10 +114,7 @@ const Recruit: NextPage = () => {
 
   const [showPotentials, setShowPotentials] = useState(false);
   const [bonuses, setBonuses] = useState(false);
-  const [_showPotentials, _setShowPotentials] = useLocalStorage(
-    "recruitShowPotential",
-    false
-  );
+  const [_showPotentials, _setShowPotentials] = useLocalStorage("recruitShowPotential", false);
   const [_bonuses, _setBonuses] = useLocalStorage("recruitShowBonuses", false);
   useEffect(() => {
     setShowPotentials(_showPotentials);
@@ -161,9 +135,7 @@ const Recruit: NextPage = () => {
         <Board
           title="Tags"
           TitleAction={
-            <IconButton onClick={() => setOpen((o) => !o)}>
-              {open ? <ZoomInMap /> : <ZoomOutMap />}
-            </IconButton>
+            <IconButton onClick={() => setOpen((o) => !o)}>{open ? <ZoomInMap /> : <ZoomOutMap />}</IconButton>
           }
           sx={{
             width: { xs: "100%", md: open ? "100%" : "320px" },
@@ -185,9 +157,7 @@ const Recruit: NextPage = () => {
             disablePortal
             groupBy={(option) => option.type}
             getOptionLabel={(option) => option.value}
-            isOptionEqualToValue={(option, value) =>
-              option.value === value.value
-            }
+            isOptionEqualToValue={(option, value) => option.value === value.value}
             onChange={handleTagsChanged}
             renderInput={(params) => (
               <TextField
@@ -199,9 +169,7 @@ const Recruit: NextPage = () => {
                       pr: "48px !important",
                     },
                     endAdornment: (
-                      <IconButton
-                        sx={{ position: "absolute", right: 8, top: 8 }}
-                      >
+                      <IconButton sx={{ position: "absolute", right: 8, top: 8 }}>
                         <Close fontSize="small" />
                       </IconButton>
                     ),
@@ -214,11 +182,7 @@ const Recruit: NextPage = () => {
             renderGroup={(params) => (
               <Collapse collapsedSize="0px" in={open} key={params.key}>
                 <Box component="li">
-                  <Typography
-                    variant="h3"
-                    className="MuiAutocomplete-groupLabel"
-                    sx={{ mb: "8px" }}
-                  >
+                  <Typography variant="h3" className="MuiAutocomplete-groupLabel" sx={{ mb: "8px" }}>
                     {params.group}
                   </Typography>
                   <Box
@@ -331,25 +295,14 @@ const Recruit: NextPage = () => {
             />
           </Box>
           <Divider />
-          {activeTags.length === 0 && (
-            <Alert severity="info">
-              Select at least one tag to see results.
-            </Alert>
-          )}
+          {activeTags.length === 0 && <Alert severity="info">Select at least one tag to see results.</Alert>}
           {matchingOperators
             .sort(
-              (
-                { tags: tagSetA, operators: opSetA },
-                { tags: tagSetB, operators: opSetB }
-              ) =>
-                Math.min(
-                  ...opSetB.map((op) => (op.rarity === 1 ? 4 : op.rarity))
-                ) -
-                  Math.min(
-                    ...opSetA.map((op) => (op.rarity === 1 ? 4 : op.rarity))
-                  ) || tagSetB.length - tagSetA.length
+              ({ tags: tagSetA, operators: opSetA }, { tags: tagSetB, operators: opSetB }) =>
+                Math.min(...opSetB.map((op) => (op.rarity === 1 ? 4 : op.rarity))) -
+                  Math.min(...opSetA.map((op) => (op.rarity === 1 ? 4 : op.rarity))) || tagSetB.length - tagSetA.length
             )
-            .map(({ tags, operators, guarantees }) => (
+            .map(({ tags, operators, guarantees }, i) => (
               <Box
                 key={tags.join(",")}
                 sx={{
@@ -362,12 +315,19 @@ const Recruit: NextPage = () => {
                   },
                 }}
               >
-                <Box sx={chipContainerStyles}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1,
+                    flexWrap: "wrap",
+                    ml: 1,
+                  }}
+                >
+                  <Groups /> {operators.length}
+                  <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
                   {guarantees.map((guaranteedRarity) => (
-                    <Chip
-                      key={`guaranteed${guaranteedRarity}`}
-                      sx={{ background: "#fff", color: "#000" }}
-                    >
+                    <Chip key={`guaranteed${guaranteedRarity}`} sx={{ background: "#fff", color: "#000" }}>
                       {`${guaranteedRarity}★`}
                     </Chip>
                   ))}
@@ -377,14 +337,12 @@ const Recruit: NextPage = () => {
                 </Box>
                 <Box
                   sx={{
-                    ...chipContainerStyles,
                     display: "grid",
                     gridArea: "box",
-                    gridTemplateColumns: `repeat(auto-fill, minmax(${
-                      showPotentials ? "108px" : "80px"
-                    }, 1fr))`,
+                    gridTemplateColumns: `repeat(auto-fill, minmax(80px, 1fr))`,
                     gridTemplateRows: "min-content",
                     justifyContent: "center",
+                    alignItems: "center",
                     gap: { xs: 0.5, sm: 1 },
                     margin: 0,
                     padding: 0,
@@ -416,10 +374,7 @@ const Recruit: NextPage = () => {
                       )
                       .map((operator) => (
                         <RecruitableOperatorCard
-                          op={
-                            roster?.[operator.id] ??
-                            defaultOperatorObject(operator.id)
-                          }
+                          op={roster?.[operator.id] ?? defaultOperatorObject(operator.id)}
                           key={operator.id}
                           showPotentials={showPotentials}
                           showBonus={bonuses}
