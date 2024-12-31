@@ -35,9 +35,17 @@ const OperatorGoals = (props: Props) => {
   const { groups, putGroups, removeGroup } = useGoalGroups();
 
   const [addGoalOpen, setAddGoalOpen] = useState<boolean>(false);
+  const [opId, setOpId] = useState<string>();
+  const [group, setGroup] = useState<string>();
   const [reorderOpen, setReorderOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const isSettingsMenuOpen = Boolean(anchorEl);
+
+  const onGoalEdit = (opId: string, groupName: string) => {
+    setOpId(opId);
+    setGroup(groupName);
+    setAddGoalOpen(true);
+  };
 
   const onPlannerGoalCardGoalDeleted = useCallback(
     (plannerGoal: PlannerGoal) => {
@@ -283,6 +291,7 @@ const OperatorGoals = (props: Props) => {
         key={groupName}
         groupName={groupName}
         operatorGoals={groupedGoals[groupName]}
+        onGoalEdit={onGoalEdit}
         onGoalDeleted={onPlannerGoalCardGoalDeleted}
         onGoalCompleted={onPlannerGoalCardGoalCompleted}
         removeAllGoalsFromGroup={removeAllGoalsFromGroup}
@@ -419,7 +428,13 @@ const OperatorGoals = (props: Props) => {
       </Board>
       <PlannerGoalAdd
         open={addGoalOpen}
-        onClose={() => setAddGoalOpen(false)}
+        onClose={() => {
+          setAddGoalOpen(false);
+          setOpId(undefined);
+          setGroup(undefined);
+        }}
+        op_id={opId}
+        group={group}
         goals={goals}
         goalGroups={groups}
         putGroup={putGroups}

@@ -22,13 +22,14 @@ import { Operator } from "types/operators/operator";
 interface Props {
   operator: Operator;
   operatorGoal: GoalData;
+  onGoalEdit: (opId: string, groupName: string) => void;
   onGoalDeleted: (plannerGoal: PlannerGoal) => void;
   onGoalCompleted: (plannerGoal: PlannerGoal, operator: Operator) => void;
   removeAllGoalsFromOperator: (opId: string, groupName: string) => void;
 }
 
 export const OperatorGoals = memo((props: Props) => {
-  const { operator, operatorGoal, onGoalDeleted, onGoalCompleted, removeAllGoalsFromOperator } = props;
+  const { operator, operatorGoal, onGoalEdit, onGoalDeleted, onGoalCompleted, removeAllGoalsFromOperator } = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -37,15 +38,20 @@ export const OperatorGoals = memo((props: Props) => {
   const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
   const opData = operatorJson[operatorGoal.op_id];
 
-  const handleMoreButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMoreButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setAnchorEl(e.currentTarget);
-  }, []);
+  };
 
-  const handleMoreMenuClose = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMoreMenuClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setAnchorEl(null);
-  }, []);
+  };
+
+  const handleEditGoalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    handleMoreMenuClose(e);
+    onGoalEdit(operatorGoal.op_id, operatorGoal.group_name);
+  };
 
   const handleDeleteGoalsButtonClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -147,16 +153,16 @@ export const OperatorGoals = memo((props: Props) => {
               vertical: "top",
               horizontal: "right",
             }}
+            sx={{ "& button": { width: "100%" } }}
           >
-            <MenuItem>
-              <Typography onClick={handleCompleteGoalsButtonClick} color="success">
-                Complete all goals
-              </Typography>
+            <MenuItem component="button" onClick={handleEditGoalButtonClick}>
+              <Typography>Edit Goal</Typography>
             </MenuItem>
-            <MenuItem>
-              <Typography onClick={handleDeleteGoalsButtonClick} color="error">
-                Delete all goals
-              </Typography>
+            <MenuItem component="button" onClick={handleCompleteGoalsButtonClick}>
+              <Typography color="success">Complete all goals</Typography>
+            </MenuItem>
+            <MenuItem component="button" onClick={handleDeleteGoalsButtonClick}>
+              <Typography color="error">Delete all goals</Typography>
             </MenuItem>
           </Menu>
         </Box>

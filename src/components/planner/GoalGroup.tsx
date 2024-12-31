@@ -29,6 +29,7 @@ import { defaultOperatorObject } from "util/changeOperator";
 interface Props {
   operatorGoals: GoalData[] | undefined;
   groupName: string;
+  onGoalEdit: (opId: string, groupName: string) => void;
   onGoalDeleted: (plannerGoal: PlannerGoal) => void;
   onGoalCompleted: (plannerGoal: PlannerGoal, operator: Operator) => void;
   removeAllGoalsFromGroup: (groupName: string) => void;
@@ -41,6 +42,7 @@ const GoalGroup = memo((props: Props) => {
   const {
     operatorGoals,
     groupName,
+    onGoalEdit,
     onGoalDeleted,
     onGoalCompleted,
     removeAllGoalsFromGroup,
@@ -204,6 +206,7 @@ const GoalGroup = memo((props: Props) => {
                     key={operatorGoal.op_id}
                     operator={roster[operatorGoal.op_id] ?? defaultOperatorObject(operatorGoal.op_id, true)}
                     operatorGoal={operatorGoal}
+                    onGoalEdit={onGoalEdit}
                     onGoalDeleted={onGoalDeleted}
                     onGoalCompleted={onGoalCompleted}
                     removeAllGoalsFromOperator={removeAllGoalsFromOperator}

@@ -16,7 +16,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import OperatorSearch from "./OperatorSearch";
 import { ModuleData, Operator, OperatorData } from "types/operators/operator";
 import { Close } from "@mui/icons-material";
@@ -47,9 +47,12 @@ import OperatorBlock from "components/data/OperatorBlock";
 import SupportBlock from "components/data/SupportBlock";
 import applyGoalsFromOperator from "util/fns/applyGoalsFromOperator";
 import applyGoalsToOperator from "util/fns/applyGoalsToOperator";
+import operatorJson from "data/operators";
 
 interface Props {
   open: boolean;
+  op_id?: string;
+  group?: string;
   goals?: GoalData[];
   goalGroups: string[];
   updateGoals: (goalsData: GoalDataInsert[]) => void;
@@ -74,7 +77,7 @@ const SHORTCUTS: Preset[] = [
   },
 ];
 const PlannerGoalAdd = (props: Props) => {
-  const { open, goals = [], goalGroups, updateGoals, putGroup, onClose } = props;
+  const { open, op_id, group, goals = [], goalGroups, updateGoals, putGroup, onClose } = props;
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -85,9 +88,19 @@ const PlannerGoalAdd = (props: Props) => {
   const [currentOp, setCurrentOp] = useState<Operator | null>(null);
 
   const [selectedGroup, setSelectedGroup] = useState("Default");
+  useEffect(() => {
+    if (op_id) {
+      onSelectedOperatorChange(operatorJson[op_id]);
+    }
+    if (opData?.id === op_id && group) {
+      onGroupChange(group);
+    }
+  }, [op_id, opData, group]);
+
   const [isEdit, setIsEdit] = useState(false);
 
   const [openGroupDialog, setOpenGroupDialog] = useState(false);
+  const [goalBuilder, setGoalBuilder] = useState<GoalBuilder>({});
 
   const [showPreview, setShowPreview] = useState(true);
   const [showPresets, setShowPresets] = useState(true);
@@ -187,8 +200,6 @@ const PlannerGoalAdd = (props: Props) => {
         break;
     }
   };
-
-  const [goalBuilder, setGoalBuilder] = useState<GoalBuilder>({});
 
   const onSelectedOperatorChange = (_opData: OperatorData | null) => {
     if (_opData?.id === opData?.id) return;
