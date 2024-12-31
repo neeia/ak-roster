@@ -2,9 +2,10 @@ import Preset from "types/operators/presets";
 import { useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
 import handlePostgrestError from "util/fns/handlePostgrestError";
+import useLocalStorage from "./useLocalStorage";
 
 function usePresets() {
-  const [presets, setPresets] = useState<Preset[]>([]);
+  const [presets, setPresets] = useLocalStorage<Preset[]>("v3_presets", []);
   const [user_id, setUserId] = useState<string>("");
 
   const addPreset = async (preset: Preset) => {

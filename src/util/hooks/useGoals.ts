@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
 import GoalData, { GoalDataInsert } from "types/goalData";
 import handlePostgrestError from "util/fns/handlePostgrestError";
+import useLocalStorage from "./useLocalStorage";
 
 const fillNull = (goal: GoalDataInsert, index: number): GoalData => {
   const {
@@ -37,7 +38,7 @@ const fillNull = (goal: GoalDataInsert, index: number): GoalData => {
 };
 
 function useGoals() {
-  const [goals, _setGoals] = useState<GoalData[]>([]);
+  const [goals, _setGoals] = useLocalStorage<GoalData[]>("v3_goals", []);
 
   const updateGoals = useCallback(
     async (goalsData: GoalDataInsert[]) => {

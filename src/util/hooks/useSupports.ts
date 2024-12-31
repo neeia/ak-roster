@@ -2,9 +2,10 @@ import { useCallback, useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
 import { OperatorSupport } from "types/operators/supports";
 import handlePostgrestError from "util/fns/handlePostgrestError";
+import useLocalStorage from "./useLocalStorage";
 
 function useSupports() {
-  const [supports, _setSupport] = useState<OperatorSupport[]>([]);
+  const [supports, _setSupport] = useLocalStorage<OperatorSupport[]>("v3_supports", []);
 
   const setSupport = useCallback(
     async (newSupport: OperatorSupport) => {

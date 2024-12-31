@@ -7,7 +7,7 @@ import supabase from "supabase/supabaseClient";
 import handlePostgrestError from "util/fns/handlePostgrestError";
 
 function useOperators() {
-  const [operators, setOperators] = useState<Roster>({});
+  const [operators, setOperators] = useLocalStorage<Roster>("v3_roster", {});
   const [_operators] = useLocalStorage<Roster>("operators", {});
 
   // change operator, push to db

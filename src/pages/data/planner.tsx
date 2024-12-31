@@ -46,7 +46,7 @@ const PlannerGoals = dynamic(() => import("components/planner/PlannerGoals"), {
 });
 
 const Goals: NextPage = () => {
-  const [depot, setDepot] = useDepot();
+  const [depot, putDepot] = useDepot();
   const { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator } = useGoals();
   const [value, setValue] = useState(1);
 
@@ -68,13 +68,13 @@ const Goals: NextPage = () => {
       </Tabs>
       <Box sx={{ display: { xs: "flex", md: "grid" }, gridTemplateColumns: "1fr 1fr", gap: 2 }}>
         <TabPanel index={1} value={value}>
-          <MaterialsNeeded goals={goals} depot={depot} setDepot={setDepot} />
+          <MaterialsNeeded goals={goals} depot={depot} putDepot={putDepot} />
         </TabPanel>
         <TabPanel index={2} value={value}>
           <PlannerGoals
             goals={goals}
             depot={depot}
-            setDepot={setDepot}
+            setDepot={putDepot}
             updateGoals={updateGoals}
             removeAllGoals={removeAllGoals}
             removeAllGoalsFromGroup={removeAllGoalsFromGroup}

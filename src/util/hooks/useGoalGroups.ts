@@ -2,9 +2,10 @@ import { useCallback, useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
 import { GroupsDataInsert } from "types/groupData";
 import handlePostgrestError from "util/fns/handlePostgrestError";
+import useLocalStorage from "./useLocalStorage";
 
 function useGoalGroups() {
-  const [groups, _setGroups] = useState<string[]>([]);
+  const [groups, _setGroups] = useLocalStorage<string[]>("v3_groups", []);
   const [user_id, setUserId] = useState<string>("");
 
   const putGroups = useCallback(

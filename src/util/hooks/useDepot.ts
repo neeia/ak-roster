@@ -3,12 +3,13 @@ import supabase from "supabase/supabaseClient";
 import DepotItem from "types/depotItem";
 import handlePostgrestError from "util/fns/handlePostgrestError";
 import itemJson from "data/items.json";
+import useLocalStorage from "./useLocalStorage";
 
 function useDepot() {
-  const [depot, _setDepot] = useState<Record<string, DepotItem>>({});
+  const [depot, _setDepot] = useLocalStorage<Record<string, DepotItem>>("v3_depot", {});
 
   // change operator, push to db
-  const setDepot = useCallback(
+  const putDepot = useCallback(
     async (items: DepotItem[]) => {
       const depotCopy = { ...depot };
 
@@ -55,7 +56,7 @@ function useDepot() {
     fetchData();
   }, []);
 
-  return [depot, setDepot] as const;
+  return [depot, putDepot] as const;
 }
 
 export default useDepot;
