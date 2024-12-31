@@ -30,19 +30,16 @@ export type Database = {
     Tables: {
       depot: {
         Row: {
-          crafting: boolean;
           material_id: string;
           stock: number;
           user_id: string;
         };
         Insert: {
-          crafting?: boolean;
           material_id: string;
           stock: number;
           user_id?: string;
         };
         Update: {
-          crafting?: boolean;
           material_id?: string;
           stock?: number;
           user_id?: string;

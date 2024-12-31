@@ -82,7 +82,6 @@ const MaterialsNeeded = React.memo((props: Props) => {
         const data: DepotItem = {
           material_id: itemId,
           stock: 1,
-          crafting: false,
         };
         putDepot([data]);
       }
