@@ -94,7 +94,12 @@ export const OperatorGoals = memo((props: Props) => {
         >
           <Box sx={{ gridArea: "opImage", position: "relative", marginLeft: -4 }}>
             <Box
-              sx={{ borderBottomLeftRadius: "50%", borderBottomRightRadius: "4px", overflow: "hidden" }}
+              sx={{
+                borderBottomLeftRadius: "50%",
+                borderTopLeftRadius: 8,
+                borderBottomRightRadius: 4,
+                overflow: "hidden",
+              }}
               width={64}
               height={64}
             >

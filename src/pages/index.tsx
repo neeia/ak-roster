@@ -458,7 +458,7 @@ const Home: NextPage = () => {
         <TabPanel index={3} value={value}>
           <Box component="aside"></Box>
         </TabPanel>
-        <Box sx={{ height: "60px" }}></Box>
+        <Box sx={{ height: "60px" }} />
       </Box>
     </Head>
   );

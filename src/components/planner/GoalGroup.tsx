@@ -165,6 +165,7 @@ const GoalGroup = memo((props: Props) => {
                     padding: 1,
                     borderRadius: 1,
                     pl: 2.5,
+                    mt: 1,
                   }}
                 >
                   {operatorGoals
