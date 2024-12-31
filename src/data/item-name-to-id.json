@@ -87,5 +87,6 @@
   "Chip Catalyst": "32001",
   "Module Data Block": "mod_unlock_token",
   "Data Supplement Instrument": "mod_update_token_2",
-  "Data Supplement Stick": "mod_update_token_1"
+  "Data Supplement Stick": "mod_update_token_1",
+  "Operator EXP": "EXP"
 }
