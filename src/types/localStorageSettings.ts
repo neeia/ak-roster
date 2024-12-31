@@ -1,5 +1,5 @@
 export interface LocalStorageSettings {
-  plannerSettings?: PlannerSettings;
+  plannerSettings: PlannerSettings;
 }
 
 export interface PlannerSettings {
@@ -7,3 +7,14 @@ export interface PlannerSettings {
   hideIncrementDecrementButtons: boolean;
   sortCompletedToBottom: boolean;
 }
+
+const defaultPlannerSettings: PlannerSettings = {
+  showInactiveMaterials: false,
+  hideIncrementDecrementButtons: true,
+  sortCompletedToBottom: false,
+};
+
+
+export const defaultSettings: LocalStorageSettings = {
+  plannerSettings: defaultPlannerSettings,
+};

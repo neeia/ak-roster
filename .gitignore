@@ -44,3 +44,5 @@ yarn-error.log*
 
 # Sentry
 next.config.original.js
+
+src/data/user.ts
