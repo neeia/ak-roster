@@ -20,6 +20,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Operator } from "types/operators/operator";
 
 interface Props {
+  operator: Operator;
   operatorGoal: GoalData;
   onGoalDeleted: (plannerGoal: PlannerGoal) => void;
   onGoalCompleted: (plannerGoal: PlannerGoal, operator: Operator) => void;
@@ -27,7 +28,7 @@ interface Props {
 }
 
 export const OperatorGoals = memo((props: Props) => {
-  const { operatorGoal, onGoalDeleted, onGoalCompleted, removeAllGoalsFromOperator } = props;
+  const { operator, operatorGoal, onGoalDeleted, onGoalCompleted, removeAllGoalsFromOperator } = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -70,24 +71,33 @@ export const OperatorGoals = memo((props: Props) => {
         "&:before": {
           display: "none",
         },
+        borderRadius: 1,
       }}
     >
-      <AccordionSummary>
+      <AccordionSummary
+        sx={{
+          "& .MuiAccordionSummary-content": {
+            my: 1,
+          },
+          "& .MuiAccordionSummary-content.Mui-expanded": {
+            my: 1.5,
+          },
+        }}
+      >
         <Box
           sx={{
             width: "stretch",
-            display: "grid",
-            gridTemplateColumns: "auto 1fr",
-            gridTemplateRows: "1fr 1fr",
-            columnGap: "20px",
-            gridTemplateAreas: `
-                        "opImage opName more"
-                        "opImage goals more"`,
-            alignItems: "end",
+            display: "flex",
+            gap: "20px",
+            alignItems: "center",
           }}
         >
           <Box sx={{ gridArea: "opImage", position: "relative", marginLeft: -4 }}>
-            <Box sx={{ borderBottomLeftRadius: "50%", overflow: "hidden" }} width={64} height={64}>
+            <Box
+              sx={{ borderBottomLeftRadius: "50%", borderBottomRightRadius: "4px", overflow: "hidden" }}
+              width={64}
+              height={64}
+            >
               <Image src={imgUrl} width={64} height={64} alt="" />
             </Box>
             {expanded ? (
@@ -112,11 +122,11 @@ export const OperatorGoals = memo((props: Props) => {
               />
             )}
           </Box>
-          <Typography variant="h5" sx={{ gridArea: "opName" }}>
-            {opData.name}
-          </Typography>
-          <Typography sx={{ gridArea: "goals" }}>{getGoalString(operatorGoal, opData)}</Typography>
-          <IconButton sx={{ gridArea: "more", alignSelf: "center" }} onClick={handleMoreButtonClick}>
+          <Box sx={{ width: "100%" }}>
+            <Typography variant="h5">{opData.name}</Typography>
+            <Typography sx={{ fontVariant: "small-caps" }}>{getGoalString(operatorGoal, opData)}</Typography>
+          </Box>
+          <IconButton sx={{ alignSelf: "center" }} onClick={handleMoreButtonClick}>
             <MoreHorizIcon />
           </IconButton>
           <Menu
@@ -146,8 +156,8 @@ export const OperatorGoals = memo((props: Props) => {
           </Menu>
         </Box>
       </AccordionSummary>
-      <AccordionDetails sx={{ padding: "0" }}>
-        {getPlannerGoals(operatorGoal, opData).map((plannerGoal, index) => (
+      <AccordionDetails sx={{ p: 0 }}>
+        {getPlannerGoals(operatorGoal, { ...operator, ...opData }).map((plannerGoal, index) => (
           <PlannerGoalCard
             key={index}
             goal={plannerGoal}

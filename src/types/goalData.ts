@@ -5,39 +5,45 @@ import operatorJson from "../data/operators";
 import { MAX_LEVEL_BY_RARITY } from "../util/changeOperator";
 
 type GoalsTable = Database["public"]["Tables"]["goals"];
-type GoalData = Omit<GoalsTable["Row"], "user_id">;
+type GoalData = Omit<GoalsTable["Row"], "user_id" | "modules_from" | "modules_to"> & {
+  modules_from: Record<string, number> | null;
+  modules_to: Record<string, number> | null;
+};
 export default GoalData;
-export type GoalDataInsert = Omit<GoalsTable["Insert"], "user_id">;
+export type GoalDataInsert = Omit<GoalsTable["Insert"], "user_id" | "modules_from" | "modules_to"> & {
+  modules_from?: Record<string, number> | null;
+  modules_to?: Record<string, number> | null;
+};
+
+const isNumber = (value: any) => typeof value === "number";
 
 export function getGoalString(goal: GoalData, opData: OperatorData) {
   let goalArray: string[] = [];
 
-  if (goal.level_from && goal.level_to) {
-    if (goal.elite_from && goal.elite_to) {
-      goalArray.push(`LV${goal.level_from}(E${goal.elite_from}) → LV${goal.level_to}(E${goal.elite_to})`);
+  if (isNumber(goal.level_from) && isNumber(goal.level_to)) {
+    if (isNumber(goal.elite_from) && isNumber(goal.elite_to)) {
+      goalArray.push(`E${goal.elite_from} Lv${goal.level_from} → E${goal.elite_to} Lv${goal.level_to}`);
     } else {
-      goalArray.push(`LV${goal.level_from} → LV${goal.level_to}`);
+      goalArray.push(`Lv${goal.level_from} → Lv${goal.level_to}`);
     }
-  }
-  if (goal.elite_from != null && goal.elite_to) {
+  } else if (isNumber(goal.elite_from) && isNumber(goal.elite_to)) {
     goalArray.push(`E${goal.elite_from} → E${goal.elite_to}`);
   }
   if (goal.skill_level_from && goal.skill_level_to) {
-    goalArray.push(`SL${goal.skill_level_from} → SL${goal.skill_level_to}`);
+    goalArray.push(`Sl${goal.skill_level_from} → Sl${goal.skill_level_to}`);
   }
   if (goal.masteries_from && goal.masteries_to) {
     goal.masteries_from.forEach((level, index) => {
       if (goal.masteries_to![index] > 0 && level < goal.masteries_to![index]) {
-        goalArray.push(`S${index + 1}M${level} → S${index + 1}M${goal.masteries_to![index]}`);
+        goalArray.push(`S${index + 1}M${level} → M${goal.masteries_to![index]}`);
       }
     });
   }
-  
   if (goal.modules_from && goal.modules_to) {
     Object.entries(goal.modules_to).forEach(([moduleId, moduleLevel]) => {
       const moduleData = opData.moduleData!.find((m) => m.moduleId === moduleId)!;
       const startingLevel = (goal.modules_from as Record<string, number>)![moduleId] ?? 0;
-      goalArray.push(`MOD ${moduleData.typeName} (${moduleData.moduleName}) L${startingLevel} → L${moduleLevel}`);
+      goalArray.push(`Mod ${moduleData.typeName.split("-")[1]} S${startingLevel} → S${moduleLevel}`);
     });
   }
 

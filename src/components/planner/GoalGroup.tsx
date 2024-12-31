@@ -4,6 +4,7 @@ import {
   AccordionSummary,
   Box,
   Button,
+  Collapse,
   Dialog,
   DialogActions,
   DialogContent,
@@ -22,6 +23,8 @@ import GoalData from "types/goalData";
 import { PlannerGoal } from "types/goal";
 import { OperatorGoals } from "./OperatorGoals";
 import { Operator } from "types/operators/operator";
+import useOperators from "util/hooks/useOperators";
+import { defaultOperatorObject } from "util/changeOperator";
 
 interface Props {
   operatorGoals: GoalData[] | undefined;
@@ -51,6 +54,8 @@ const GoalGroup = memo((props: Props) => {
   const [deleteGroupOpen, setDeleteGroupOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const isMenuOpen = Boolean(anchorEl);
+
+  const [roster] = useOperators();
 
   const onDeleteFromGroupsClick = useCallback(() => {
     removeAllGoalsFromGroup(groupName);
@@ -149,26 +154,42 @@ const GoalGroup = memo((props: Props) => {
               </Typography>
               {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </Box>
-            {!expanded && operatorGoals && (
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  backgroundColor: "background.default",
-                  padding: 1,
-                }}
-              >
-                {operatorGoals
-                  .sort((a, b) => a.sort_order - b.sort_order)
-                  .map((operatorGoal) => {
-                    const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
-                    return (
-                      <Box sx={{ "&:not(:first-of-type)": { marginLeft: -2 } }} key={operatorGoal.op_id}>
-                        <Image src={imgUrl} width={64} height={64} alt="" />
-                      </Box>
-                    );
-                  })}
-              </Box>
+            {operatorGoals && (
+              <Collapse in={!expanded}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                    backgroundColor: "background.default",
+                    padding: 1,
+                    borderRadius: 1,
+                    pl: 2.5,
+                  }}
+                >
+                  {operatorGoals
+                    .sort((a, b) => a.sort_order - b.sort_order)
+                    .map((operatorGoal) => {
+                      const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
+                      return (
+                        <Box
+                          sx={{
+                            "& img": {
+                              borderBottomLeftRadius: "50%",
+                              borderTopLeftRadius: 8,
+                              borderBottomRightRadius: 4,
+                              filter: "drop-shadow(-4px -2px 4px rgba(0,0,0,0.5))",
+                              ml: -1.5,
+                            },
+                          }}
+                          key={operatorGoal.op_id}
+                        >
+                          <Image src={imgUrl} width={48} height={48} alt="" />
+                        </Box>
+                      );
+                    })}
+                </Box>
+              </Collapse>
             )}
           </Box>
         </AccordionSummary>
@@ -180,6 +201,7 @@ const GoalGroup = memo((props: Props) => {
                 return (
                   <OperatorGoals
                     key={operatorGoal.op_id}
+                    operator={roster[operatorGoal.op_id] ?? defaultOperatorObject(operatorGoal.op_id, true)}
                     operatorGoal={operatorGoal}
                     onGoalDeleted={onGoalDeleted}
                     onGoalCompleted={onGoalCompleted}

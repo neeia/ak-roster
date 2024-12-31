@@ -17,13 +17,13 @@ interface Props {
   goals: GoalData[] | undefined;
   groups: string[] | undefined;
   updateGoals: (goalsData: GoalData[]) => void;
-  setGroups: (goalGroupInsert: GroupsDataInsert[]) => void;
+  putGroups: (goalGroupInsert: GroupsDataInsert[]) => void;
   onClose: () => void;
 }
 
 // for possible scrolling issue, may want to take a look at https://atlassian.design/components/pragmatic-drag-and-drop/optional-packages/react-beautiful-dnd-migration/about
 const GoalReorderDialog = (props: Props) => {
-  const { open, goals, groups, updateGoals, setGroups, onClose } = props;
+  const { open, goals, groups, updateGoals, putGroups, onClose } = props;
 
   const [reorderedGroups, setReorderedGroups] = useState<string[]>([]);
   const [groupedOperators, setGroupedOperators] = useState<Record<string, GoalData[]>>({});
@@ -79,10 +79,10 @@ const GoalReorderDialog = (props: Props) => {
 
     const updatedGoals = Object.values(groupedOperators).flat();
 
-    setGroups(updatedGroups);
+    putGroups(updatedGroups);
     updateGoals(updatedGoals);
     onClose();
-  }, [updateGoals, setGroups, groupedOperators, onClose, reorderedGroups]);
+  }, [updateGoals, putGroups, groupedOperators, onClose, reorderedGroups]);
 
   return (
     <>

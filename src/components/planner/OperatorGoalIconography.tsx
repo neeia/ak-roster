@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, BoxProps } from "@mui/material";
 import clsx from "clsx";
 import Image from "next/image";
 
@@ -7,75 +7,49 @@ import { OperatorData } from "types/operators/operator";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import React from "react";
 
-interface Props {
+interface Props extends BoxProps {
   goal: PlannerGoal;
+  size?: number;
 }
 
-const OperatorGoalIconography: React.FC<Props> = ({ goal }) => {
-  const operator: OperatorData =
-    operatorsJson[goal.operatorId as keyof typeof operatorsJson];
+const OperatorGoalIconography: React.FC<Props> = ({ goal, size = 48, sx, ...rest }) => {
+  const operator: OperatorData = operatorsJson[goal.operatorId as keyof typeof operatorsJson];
 
   let icon = null;
   switch (goal.category) {
     case OperatorGoalCategory.Level:
-      icon = (
-        <Image
-          src={`/img/items/sprite_exp_card_t${goal.eliteLevel + 1}.png`}
-          width={48}
-          height={48}
-          alt=""
-        />
-      );
+      icon = <Image src={`/img/items/sprite_exp_card_t${goal.eliteLevel + 1}.png`} width={size} height={size} alt="" />;
       break;
     case OperatorGoalCategory.Module:
-      icon = (
-        <Image
-          src={`/img/equip/${goal.moduleId}.png`}
-          width={48}
-          height={48}
-          alt=""
-        />
-      );
+      icon = <Image src={`/img/equip/${goal.moduleId}.png`} width={size} height={size} alt="" />;
       break;
     case OperatorGoalCategory.Elite:
       if (goal.eliteLevel >= 1) {
-        icon = (
-          <Image
-            src={`/img/elite/${goal.eliteLevel}.png`}
-            width={48}
-            height={48}
-            alt=""
-          />
-        );
+        icon = <Image src={`/img/elite/${goal.eliteLevel}.png`} width={size} height={size} alt="" />;
       }
       break;
     case OperatorGoalCategory.Mastery: {
-      const skill = operator.skillData!.find(
-        (sk) => sk.skillId === goal.skillId
-      )!;
+      const skill = operator.skillData!.find((sk) => sk.skillId === goal.skillId)!;
       icon = (
         <Box position="relative">
           <Image
-            src={`/img/skills/${(skill.iconId ?? skill.skillId).replace(
-              "#",
-              "_"
-            )}.png`}
-            width={48}
-            height={48}
+            src={`/img/skills/${(skill.iconId ?? skill.skillId).replace("#", "_")}.png`}
+            width={size}
+            height={size}
             alt=""
-          ></Image>
+          />
           <Image
-            style={{ position: "absolute", top: "32px", left: "32px" }}
-            width={24}
-            height={24}
+            style={{ position: "absolute", top: (size * 2) / 3, left: (size * 2) / 3 }}
+            width={size / 2}
+            height={size / 2}
             src={`/img/rank/bg.png`}
             alt={""}
           />
           <Image
-            style={{ position: "absolute", top: "32px", left: "32px" }}
+            style={{ position: "absolute", top: (size * 2) / 3, left: (size * 2) / 3 }}
             src={`/img/rank/m-${goal.masteryLevel}.png`}
-            width={24}
-            height={24}
+            width={size / 2}
+            height={size / 2}
             alt=""
           />
         </Box>
@@ -84,41 +58,18 @@ const OperatorGoalIconography: React.FC<Props> = ({ goal }) => {
     }
     case OperatorGoalCategory.SkillLevel:
       if (goal.skillLevel >= 2 && goal.skillLevel < 4) {
-        icon = (
-          <Image
-            src="/img/items/MTL_SKILL1.png"
-            width={48}
-            height={48}
-            alt=""
-          />
-        );
-      } else if (goal.skillLevel >= 4 && goal.skillLevel < 6) {
-        icon = (
-          <Image
-            src="/img/items/MTL_SKILL2.png"
-            width={48}
-            height={48}
-            alt=""
-          />
-        );
+        icon = <Image src="/img/items/MTL_SKILL1.png" width={size} height={size} alt="" />;
+      } else if (goal.skillLevel >= 4 && goal.skillLevel < 7) {
+        icon = <Image src="/img/items/MTL_SKILL2.png" width={size} height={size} alt="" />;
       } else {
-        icon = (
-          <Image
-            src="/img/items/MTL_SKILL3.png"
-            width={48}
-            height={48}
-            alt=""
-          />
-        );
+        icon = <Image src="/img/items/MTL_SKILL3.png" width={size} height={size} alt="" />;
       }
       break;
   }
   if (icon != null) {
     return (
       <Box
-        className={clsx(
-          goal.category === OperatorGoalCategory.Elite && "elite"
-        )}
+        className={clsx(goal.category === OperatorGoalCategory.Elite && "elite")}
         component="span"
         mr={0.5}
         sx={{
@@ -127,7 +78,9 @@ const OperatorGoalIconography: React.FC<Props> = ({ goal }) => {
             position: "relative",
             top: "-2px",
           },
+          ...sx,
         }}
+        {...rest}
       >
         {icon}
       </Box>

@@ -246,6 +246,7 @@ const ExportImportDialog = (props: Props) => {
                     startIcon={<FileUpload />}
                     disabled={importData == "" && fileList.length == 0}
                     onClick={handleImportData}
+                    sx={{ lineHeight: "1.3" }}
                   >
                     Import data
                   </Button>

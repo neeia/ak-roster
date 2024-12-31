@@ -6,6 +6,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Divider,
   FormControl,
   IconButton,
   InputLabel,
@@ -17,7 +18,7 @@ import {
 } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import OperatorSearch from "./OperatorSearch";
-import { Operator, OperatorData } from "types/operators/operator";
+import { ModuleData, Operator, OperatorData } from "types/operators/operator";
 import { Close } from "@mui/icons-material";
 import Chip from "../base/Chip";
 import Promotion from "../data/input/Select/Promotion";
@@ -29,41 +30,56 @@ import Mastery from "../data/input/Select/Mastery";
 import Module from "../data/input/Select/Module";
 import GoalData, { GoalDataInsert } from "types/goalData";
 import _ from "lodash";
-import { clamp, defaultOperatorObject, MAX_LEVEL_BY_RARITY, MODULE_REQ_BY_RARITY } from "util/changeOperator";
+import {
+  clamp,
+  defaultOperatorObject,
+  MAX_LEVEL_BY_RARITY,
+  MAX_SKILL_LEVEL_BY_PROMOTION,
+  MODULE_REQ_BY_RARITY,
+} from "util/changeOperator";
 import useOperators from "util/hooks/useOperators";
 import { GroupsDataInsert } from "types/groupData";
+import Preset from "types/operators/presets";
+import usePresets from "util/hooks/usePresets";
+import { modTypes } from "components/data/batch/PresetDialog";
+import { current } from "@reduxjs/toolkit";
+import OperatorBlock from "components/data/OperatorBlock";
+import SupportBlock from "components/data/SupportBlock";
+import applyGoalsFromOperator from "util/fns/applyGoalsFromOperator";
+import applyGoalsToOperator from "util/fns/applyGoalsToOperator";
 
 interface Props {
   open: boolean;
   goals?: GoalData[];
   goalGroups: string[];
   updateGoals: (goalsData: GoalDataInsert[]) => void;
-  setGroups: (goalGroupInsert: GroupsDataInsert[]) => void;
+  putGroup: (goalGroupInsert: GroupsDataInsert[]) => void;
   onClose: () => void;
 }
 
+type GoalBuilder = Partial<GoalDataInsert>;
+
 const isNumber = (value: any) => typeof value === "number";
 
-const SHORTCUTS: string[] = [
-  "Nothing",
-  "Everything",
-  "Elite 1",
-  "Elite 2",
-  "Skill level 7",
-  "All Skill Masteries 1 → 3",
-  "Skill 1 Mastery 3",
-  "Skill 2 Mastery 3",
-  "Skill 3 Mastery 3",
-  "Module 1 Lv 3",
-  "Module 2 Lv 3",
-  "Module 3 lv 3",
+const SHORTCUTS: Preset[] = [
+  { name: "Nothing", index: -2 },
+  {
+    name: "Everything",
+    index: -1,
+    elite: 2,
+    level: 90,
+    skill_level: 7,
+    masteries: [3, 3, 3],
+    modules: Object.fromEntries(modTypes.map((s) => [s, 3])),
+  },
 ];
 const PlannerGoalAdd = (props: Props) => {
-  const { open, goals = [], goalGroups, updateGoals, setGroups, onClose } = props;
+  const { open, goals = [], goalGroups, updateGoals, putGroup, onClose } = props;
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
   const [roster] = useOperators();
+  const { presets } = usePresets();
 
   const [opData, setOpData] = useState<OperatorData | null>(null);
   const [currentOp, setCurrentOp] = useState<Operator | null>(null);
@@ -73,109 +89,158 @@ const PlannerGoalAdd = (props: Props) => {
 
   const [openGroupDialog, setOpenGroupDialog] = useState(false);
 
+  const [showPreview, setShowPreview] = useState(true);
   const [showPresets, setShowPresets] = useState(true);
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-    elite: false,
-    level: false,
-    module: false,
-    skill: false,
-    mastery: false,
-  });
   const toggleSection = (section: string) => {
     if (!opData || !currentOp) return;
-    const open = !openSections[section];
-    setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
 
     switch (section) {
       case "elite":
-        setGoalBuilder((prev) => ({
-          ...prev,
-          elite_from: open ? currentOp.elite : undefined,
-          elite_to: open ? currentOp.elite : undefined,
-        }));
+        setGoalBuilder((prev) => {
+          const _goalBuilder = { ...prev };
+          const wasOpen = isNumber(_goalBuilder.elite_from) && isNumber(_goalBuilder.elite_to);
+          if (wasOpen) {
+            delete _goalBuilder.elite_from;
+            delete _goalBuilder.elite_to;
+            delete _goalBuilder.level_from;
+            delete _goalBuilder.level_to;
+          } else {
+            _goalBuilder.elite_from = currentOp.elite;
+            _goalBuilder.elite_to = currentOp.elite;
+          }
+          return _goalBuilder;
+        });
         break;
       case "level":
-        setGoalBuilder((prev) => ({
-          ...prev,
-          level_from: open ? currentOp.level : undefined,
-          level_to: open ? currentOp.level : undefined,
-        }));
+        setGoalBuilder((prev) => {
+          const _goalBuilder = { ...prev };
+          const wasOpen = isNumber(_goalBuilder.level_from) && isNumber(_goalBuilder.level_to);
+          if (wasOpen) {
+            if (_goalBuilder.elite_from === _goalBuilder.elite_to) {
+              delete _goalBuilder.elite_from;
+              delete _goalBuilder.elite_to;
+            }
+            delete _goalBuilder.level_from;
+            delete _goalBuilder.level_to;
+          } else {
+            if (!isNumber(_goalBuilder.elite_from) || !isNumber(_goalBuilder.elite_to)) {
+              _goalBuilder.elite_from = currentOp.elite;
+              _goalBuilder.elite_to = currentOp.elite;
+            }
+            _goalBuilder.level_from = clamp(
+              1,
+              currentOp.level,
+              MAX_LEVEL_BY_RARITY[opData.rarity][_goalBuilder.elite_from ?? currentOp.elite]
+            );
+            _goalBuilder.level_to = clamp(
+              1,
+              currentOp.level,
+              MAX_LEVEL_BY_RARITY[opData.rarity][_goalBuilder.elite_to ?? currentOp.elite]
+            );
+          }
+          return _goalBuilder;
+        });
         break;
       case "module":
-        setGoalBuilder((prev) => ({
-          ...prev,
-          modules_from: open ? currentOp.modules : undefined,
-          modules_to: open ? currentOp.modules : undefined,
-        }));
+        if (!opData.moduleData?.length) break;
+        setGoalBuilder((prev) => {
+          const _goalBuilder = { ...prev };
+          const wasOpen = _goalBuilder.modules_from && _goalBuilder.modules_from;
+          if (wasOpen) {
+            delete _goalBuilder.modules_from;
+            delete _goalBuilder.modules_to;
+          } else {
+            _goalBuilder.modules_from = currentOp.modules;
+            _goalBuilder.modules_to = currentOp.modules;
+          }
+          return _goalBuilder;
+        });
         break;
       case "skill":
-        setGoalBuilder((prev) => ({
-          ...prev,
-          skill_level_from: open ? currentOp.skill_level : undefined,
-          skill_level_to: open ? currentOp.skill_level : undefined,
-        }));
+        setGoalBuilder((prev) => {
+          const _goalBuilder = { ...prev };
+          const wasOpen = isNumber(_goalBuilder.skill_level_from) && isNumber(_goalBuilder.skill_level_to);
+          if (wasOpen) {
+            delete _goalBuilder.skill_level_from;
+            delete _goalBuilder.skill_level_to;
+          } else {
+            _goalBuilder.skill_level_from = currentOp.skill_level;
+            _goalBuilder.skill_level_to = currentOp.skill_level;
+          }
+          return _goalBuilder;
+        });
         break;
       case "mastery":
-        setGoalBuilder((prev) => ({
-          ...prev,
-          masteries_from: open ? currentOp.masteries : undefined,
-          masteries_to: open ? currentOp.masteries : undefined,
-        }));
+        if (opData.rarity < 4) break;
+        setGoalBuilder((prev) => {
+          const _goalBuilder = { ...prev };
+          const wasOpen = _goalBuilder.masteries_from && _goalBuilder.masteries_to;
+          if (wasOpen) {
+            delete _goalBuilder.masteries_from;
+            delete _goalBuilder.masteries_to;
+          } else {
+            _goalBuilder.masteries_from = currentOp.masteries;
+            _goalBuilder.masteries_to = currentOp.masteries;
+          }
+          return _goalBuilder;
+        });
         break;
     }
   };
 
-  const [goalBuilder, setGoalBuilder] = useState<Partial<GoalDataInsert>>({});
+  const [goalBuilder, setGoalBuilder] = useState<GoalBuilder>({});
 
-  const onSelectedOperatorChange = useCallback(
-    (_opData: OperatorData | null) => {
-      if (_opData?.id === opData?.id) return;
+  const onSelectedOperatorChange = (_opData: OperatorData | null) => {
+    if (_opData?.id === opData?.id) return;
 
-      setOpData(_opData);
-      if (!_opData) {
-        // no operator selected
-        setCurrentOp(null);
+    setOpData(_opData);
+    if (!_opData) {
+      // no operator selected
+      setCurrentOp(null);
+      setGoalBuilder({});
+      return;
+    }
+    // operator selected, find operator in roster
+    const op = roster[_opData.id] ?? defaultOperatorObject(_opData.id, true);
+    setCurrentOp(op);
+    setGoalBuilder({});
+
+    // if a group is selected, check if there is an existing goal for the selected group
+    const existingGoal = goals.find((x) => x.op_id == _opData.id && x.group_name == selectedGroup);
+    if (existingGoal) {
+      setGoalBuilder(existingGoal);
+      setIsEdit(true);
+    } else {
+      setIsEdit(false);
+    }
+  };
+
+  const addGroup = (groupName: string) => {
+    putGroup([{ group_name: groupName, sort_order: goalGroups.length }]);
+    setSelectedGroup(groupName);
+  };
+  const onGroupChange = (groupName: string) => {
+    if (!groupName) {
+      setOpenGroupDialog(true);
+      return;
+    }
+
+    // if an op is selected, check if there is an existing goal for the selected group
+    if (opData) {
+      if (isEdit) {
         setGoalBuilder({});
-        return;
       }
-      // operator selected, find operator in roster
-      const op = roster[_opData.id] ?? defaultOperatorObject(_opData.id, true);
-      setCurrentOp(op);
-      setGoalBuilder({
-        op_id: _opData.id,
-      });
-
-      // if a group is selected, check if there is an existing goal for the selected group
-      const existingGoal = goals.find((x) => x.op_id == _opData.id && x.group_name == selectedGroup);
+      const existingGoal = goals.find((goal) => goal.op_id === opData.id && goal.group_name === groupName);
       if (existingGoal) {
         setGoalBuilder(existingGoal);
         setIsEdit(true);
+      } else {
+        setIsEdit(false);
       }
-    },
-    [roster, goals, selectedGroup]
-  );
+    }
 
-  const onGroupChange = useCallback(
-    (event: SelectChangeEvent) => {
-      const groupName = event.target.value;
-      if (groupName == "Add new...") {
-        setOpenGroupDialog(true);
-        return;
-      }
-
-      // if an op is selected, check if there is an existing goal for the selected group
-      if (opData) {
-        const existingGoal = goals.find((goal) => goal.op_id === opData.id && goal.group_name === groupName);
-        if (existingGoal) {
-          setGoalBuilder(existingGoal);
-          setIsEdit(true);
-        }
-      }
-
-      setSelectedGroup(groupName);
-    },
-    [goals, opData]
-  );
+    setSelectedGroup(groupName);
+  };
 
   // promotion
   const onPromotionFromChange = (elite_from: number) => {
@@ -200,14 +265,6 @@ const PlannerGoalAdd = (props: Props) => {
       level_to: prev.level_to ? clamp(1, prev.level_to, maxLevel) : undefined,
     }));
   };
-  const onPromotionClearClick = () => {
-    setGoalBuilder((prev) => {
-      const _prev = { ...prev };
-      delete _prev.elite_from;
-      delete _prev.elite_to;
-      return _prev;
-    });
-  };
 
   // level
   const onLevelFromChange = (level_from: number) => {
@@ -225,14 +282,6 @@ const PlannerGoalAdd = (props: Props) => {
       ...prev,
       level_to: clamp(1, level_to, maxLevel),
     }));
-  };
-  const onLevelClearClick = () => {
-    setGoalBuilder((prev) => {
-      const _prev = { ...prev };
-      delete _prev.level_from;
-      delete _prev.level_to;
-      return _prev;
-    });
   };
 
   // skills
@@ -252,14 +301,6 @@ const PlannerGoalAdd = (props: Props) => {
       skill_level_to: clamp(1, skill_level_to, 7),
     }));
   };
-  const onSkillLevelClearClick = () => {
-    setGoalBuilder((prev) => {
-      const _prev = { ...prev };
-      delete _prev.skill_level_from;
-      delete _prev.skill_level_to;
-      return _prev;
-    });
-  };
 
   // mastery
   const onMasteryFromChange = (skillNumber: number, newMasteryLevel: number) => {
@@ -278,6 +319,8 @@ const PlannerGoalAdd = (props: Props) => {
   };
   const onMasteryToChange = (skillNumber: number, newMasteryLevel: number) => {
     if (!goalBuilder.masteries_from || !goalBuilder.masteries_to) return;
+    if (skillNumber >= goalBuilder.masteries_to.length) return;
+
     const masteries_to = [...(goalBuilder.masteries_to ?? [])];
     masteries_to[skillNumber] = newMasteryLevel;
     setGoalBuilder((prev) => ({
@@ -286,19 +329,11 @@ const PlannerGoalAdd = (props: Props) => {
       masteries_to,
     }));
   };
-  const onMasteryClearClick = () => {
-    setGoalBuilder((prev) => {
-      const _prev = { ...prev };
-      delete _prev.masteries_from;
-      delete _prev.masteries_to;
-      return _prev;
-    });
-  };
 
   // module
   const onModuleFromChange = (moduleId: string, newModuleLevel: number) => {
     if (!goalBuilder.modules_from || !goalBuilder.modules_to) return;
-    if (!currentOp?.modules?.[moduleId]) return;
+    if (!opData?.moduleData?.find((mod) => mod.moduleId === moduleId)) return;
 
     const modules_from = { ...(goalBuilder.modules_from as Record<string, number>) };
     modules_from[moduleId] = clamp(0, newModuleLevel, 3);
@@ -312,7 +347,7 @@ const PlannerGoalAdd = (props: Props) => {
   };
   const onModuleToChange = (moduleId: string, newModuleLevel: number) => {
     if (!goalBuilder.modules_from || !goalBuilder.modules_to) return;
-    if (!currentOp?.modules?.[moduleId]) return;
+    if (!opData?.moduleData?.find((mod) => mod.moduleId === moduleId)) return;
 
     const modules_from = { ...(goalBuilder.modules_from as Record<string, number>) };
     modules_from[moduleId] = clamp(0, modules_from[moduleId], newModuleLevel);
@@ -323,14 +358,6 @@ const PlannerGoalAdd = (props: Props) => {
       modules_from,
       modules_to,
     }));
-  };
-  const onModuleClearClick = () => {
-    setGoalBuilder((prev) => {
-      const _prev = { ...prev };
-      delete _prev.modules_from;
-      delete _prev.modules_to;
-      return _prev;
-    });
   };
 
   const handleGoalAddDialogClose = (shouldAddGoal: boolean) => {
@@ -354,6 +381,8 @@ const PlannerGoalAdd = (props: Props) => {
         isNumber(goalBuilder.level_to) &&
         goalBuilder.level_from !== goalBuilder.level_to
       ) {
+        goalData.elite_from = goalBuilder.elite_from ?? currentOp.elite;
+        goalData.elite_to = goalBuilder.elite_to ?? currentOp.elite;
         goalData.level_from = goalBuilder.level_from;
         goalData.level_to = goalBuilder.level_to;
         hasChanged = true;
@@ -399,174 +428,93 @@ const PlannerGoalAdd = (props: Props) => {
         }
         updateGoals([goalData]);
       }
-      setOpData(null);
-      setCurrentOp(null);
     }
+    setOpData(null);
+    setCurrentOp(null);
     onClose();
     setGoalBuilder({});
-    setOpenSections({
-      elite: false,
-      level: false,
-      module: false,
-      skill: false,
-      mastery: false,
-    });
   };
 
-  const handleShortcuts = (shortcut: string) => {
-    if (!opData || !currentOp) return;
-    const moduleLevelRequirement = MODULE_REQ_BY_RARITY[opData!.rarity];
-    const moduleCount = opData?.moduleData?.length ?? 0;
-    const moduleIds = opData?.moduleData?.map((x) => x.moduleId);
-    const skillCount = opData?.skillData?.length ?? 0;
-    const maxElite = opData?.eliteLevels.length ?? 0;
-    const maxLevel = MAX_LEVEL_BY_RARITY[opData!.rarity];
+  const handlePreset = (preset: Preset) => {
+    if (!opData || !currentOp) return {};
+    const skillCount = opData.skillData?.length ?? 0;
+    const maxElite = opData.eliteLevels.length ?? 0;
+    const maxLevel = MAX_LEVEL_BY_RARITY[opData.rarity];
 
-    setGoalBuilder({});
+    const _goalBuilder: GoalBuilder = {};
 
-    switch (shortcut) {
-      case "Nothing":
-        setGoalBuilder({});
-        break;
-      case "Everything":
-        if (maxElite === 0) {
-          setGoalBuilder({
-            level_from: currentOp.level,
-            level_to: 30,
-          });
-        } else if (maxElite === 1) {
-          setGoalBuilder({
-            level_from: currentOp.level,
-            level_to: maxLevel[1],
-            skill_level_from: currentOp.skill_level,
-            skill_level_to: 7,
-          });
-        } else if (maxElite === 2) {
-          setGoalBuilder({
-            elite_from: currentOp.elite,
-            elite_to: 2,
-            level_from: currentOp.level,
-            level_to: maxLevel[2],
-            skill_level_from: currentOp.skill_level,
-            skill_level_to: 7,
-            masteries_from: currentOp.masteries,
-            masteries_to: currentOp.masteries.map(() => 3),
-            modules_from: moduleCount ? currentOp.modules : undefined,
-            modules_to: moduleCount
-              ? opData.moduleData?.reduce((acc, { moduleId }) => ({ ...acc, [moduleId]: 3 }), {})
-              : undefined,
-          });
-        }
-        break;
-      // case "Elite 1":
-      //   if (maxElite >= 1) {
-      //     setEliteLevelTo(1);
-      //     if (levelTo && maxLevel[1] < levelTo) {
-      //       setLevelTo(maxLevel[1]);
-      //     }
-      //   }
-      //   break;
-      // case "Elite 2":
-      //   if (maxElite == 2) {
-      //     setEliteLevelTo(2);
-      //     if (levelTo && maxLevel[2] < levelTo) {
-      //       setLevelTo(maxLevel[2]);
-      //     }
-      //   }
-      //   break;
-      // case "Skill level 7":
-      //   if (!eliteLevelTo || eliteLevelTo < 1) {
-      //     setEliteLevelTo(1);
-      //   }
-      //   setSkillLevelTo(7);
-      //   break;
-      // case "All Skill Masteries 1 → 3":
-      //   if (maxElite == 2) {
-      //     setEliteLevelTo(2);
-      //     if (levelTo && maxLevel[2] < levelTo) {
-      //       setLevelTo(maxLevel[2]);
-      //     }
-      //     setSkillLevelTo(7);
-      //     setMasteriesTo((opData?.skillData ?? []).map(() => 3));
-      //   }
-      //   break;
-      // case "Skill 1 Mastery 3":
-      //   if (maxElite == 2 && skillCount >= 1) {
-      //     setEliteLevelTo(2);
-      //     if (levelTo && maxLevel[2] < levelTo) {
-      //       setLevelTo(maxLevel[2]);
-      //     }
-      //     setSkillLevelTo(7);
-      //     setMasteriesTo((opData?.skillData ?? []).map((_, i) => (i === 0 ? 3 : 0)));
-      //   }
-      //   break;
-      // case "Skill 2 Mastery 3":
-      //   if (maxElite == 2 && skillCount >= 2) {
-      //     setEliteLevelTo(2);
-      //     if (levelTo && maxLevel[2] < levelTo) {
-      //       setLevelTo(maxLevel[2]);
-      //     }
-      //     setSkillLevelTo(7);
-      //     setMasteriesTo((opData?.skillData ?? []).map((_, i) => (i === 1 ? 3 : 0)));
-      //   }
-      //   break;
-      // case "Skill 3 Mastery 3":
-      //   if (maxElite == 2 && skillCount >= 3) {
-      //     setEliteLevelTo(2);
-      //     if (maxLevel[2] < (levelTo ?? 0)) {
-      //       setLevelTo(maxLevel[2]);
-      //     }
-      //     setSkillLevelTo(7);
-      //     setMasteriesTo((opData?.skillData ?? []).map((_, i) => (i === 2 ? 3 : 0)));
-      //   }
-      //   break;
-      // case "Module 1 Lv 3":
-      //   if (maxElite == 2 && moduleCount >= 1) {
-      //     setEliteLevelTo(2);
-      //     if ((levelTo ?? 0) < moduleLevelRequirement) {
-      //       setLevelTo(moduleLevelRequirement);
-      //     }
-      //     const moduleData = { ...modulesTo };
-      //     if (moduleIds) {
-      //       moduleData[moduleIds[0]] = 3;
-      //     }
-      //     setModulesTo(moduleData);
-      //   }
-      //   break;
-      // case "Module 2 Lv 3":
-      //   if (maxElite == 2 && moduleCount >= 2) {
-      //     setEliteLevelTo(2);
-      //     if ((levelTo ?? 0) < moduleLevelRequirement) {
-      //       setLevelTo(moduleLevelRequirement);
-      //     }
-      //     const moduleData = { ...modulesTo };
-      //     if (moduleIds) {
-      //       moduleData[moduleIds[1]] = 3;
-      //     }
-      //     setModulesTo(moduleData);
-      //   }
-      //   break;
-      // case "Module 3 lv 3":
-      // if (maxElite == 2 && moduleCount >= 3) {
-      //   setEliteLevelTo(2);
-      //   if ((levelTo ?? 0) < moduleLevelRequirement) {
-      //     setLevelTo(moduleLevelRequirement);
-      //   }
-      //   const moduleData = { ...modulesTo };
-      //   if (moduleIds) {
-      //     moduleData[moduleIds[2]] = 3;
-      //   }
-      //   setModulesTo(moduleData);
-      // }
-      // break;
+    const elite_from = Math.min(goalBuilder.elite_from ?? currentOp.elite, maxElite);
+    const elite_to = Math.min(preset.elite ?? goalBuilder.elite_to ?? elite_from, maxElite);
+    const level_from = Math.min(goalBuilder.level_from ?? currentOp.level, maxLevel[elite_from]);
+    const level_to = Math.min(preset.level ?? goalBuilder.level_to ?? level_from, maxLevel[elite_to]);
+    const skill_level_from = Math.min(
+      goalBuilder.skill_level_from ?? currentOp.skill_level,
+      MAX_SKILL_LEVEL_BY_PROMOTION[elite_from]
+    );
+    const skill_level_to = Math.min(
+      preset.skill_level ?? goalBuilder.skill_level_to ?? elite_from,
+      MAX_SKILL_LEVEL_BY_PROMOTION[elite_to]
+    );
+    const masteries_from = goalBuilder.masteries_from ?? currentOp.masteries;
+    const _masteries_to = preset.masteries ?? goalBuilder.masteries_to ?? masteries_from;
+    const masteries_to = _masteries_to
+      .filter((_, i) => i < skillCount)
+      .map((mastery, i) => (mastery === -1 ? masteries_from[i] : mastery));
+
+    if (isNumber(preset.elite) && elite_from < elite_to) {
+      _goalBuilder.elite_from = elite_from;
+      _goalBuilder.elite_to = elite_to;
     }
+    if (isNumber(preset.level) && (elite_from < elite_to || level_from !== level_to)) {
+      _goalBuilder.level_from = level_from;
+      _goalBuilder.level_to = level_to;
+    }
+    if (isNumber(preset.skill_level) && skill_level_from < skill_level_to) {
+      _goalBuilder.skill_level_from = goalBuilder.skill_level_from ?? currentOp.skill_level;
+      _goalBuilder.skill_level_to = preset.skill_level;
+    }
+    if (
+      opData.rarity > 3 &&
+      preset.masteries?.every(isNumber) &&
+      masteries_from.some((v, i) => v !== masteries_to[i])
+    ) {
+      _goalBuilder.masteries_from = masteries_from;
+      _goalBuilder.masteries_to = masteries_to;
+    }
+    if (opData.moduleData?.length && preset.modules) {
+      const moduleData = opData.moduleData;
+
+      const modules_from = goalBuilder.modules_from ?? currentOp.modules;
+      const modules_to = moduleData.reduce((acc, { moduleId, typeName }) => {
+        const _acc = { ...acc };
+        _acc[moduleId] =
+          Object.entries(preset.modules!).find(([type]) => typeName.endsWith(type))?.[1] ??
+          currentOp.modules[moduleId] ??
+          0;
+        return _acc;
+      }, {} as Record<string, number>);
+
+      if (Object.entries(modules_from).some(([i, v]) => v < modules_to[i])) {
+        _goalBuilder.modules_from = modules_from;
+        _goalBuilder.modules_to = modules_to;
+      }
+    }
+
+    return _goalBuilder;
+  };
+
+  const isEqual = (a: GoalBuilder, b: GoalBuilder) => {
+    const aKeys = Object.keys(a) as (keyof GoalBuilder)[];
+    const bKeys = Object.keys(b) as (keyof GoalBuilder)[];
+    if (aKeys.length !== bKeys.length) return false;
+    return aKeys.every((key) => _.isEqual(a[key], b[key]));
   };
 
   return (
     <>
       <Dialog open={open} onClose={() => handleGoalAddDialogClose(false)} fullScreen={fullScreen}>
         <DialogTitle>
-          New Goal
+          {isEdit ? "Edit" : "New"} Goal
           <IconButton onClick={onClose} sx={{ display: { sm: "none" } }}>
             <Close />
           </IconButton>
@@ -596,38 +544,62 @@ const PlannerGoalAdd = (props: Props) => {
                 <InputLabel>Goal Group</InputLabel>
                 <Select
                   value={selectedGroup}
-                  onChange={onGroupChange}
-                  label={"Goal Group"}
+                  onChange={(e) => onGroupChange(e.target.value)}
+                  label="Goal Group"
                   fullWidth
-                  sx={selectedGroup === "Default" ? { color: "text.secondary" } : undefined}
+                  sx={{
+                    color: selectedGroup === "Default" ? "text.secondary" : undefined,
+                  }}
                 >
-                  <MenuItem value="Default" sx={{ color: "text.secondary" }}>
+                  <MenuItem value="Default" sx={{ color: "text.secondary" }} className="no-underline">
                     Default (none)
                   </MenuItem>
-                  <MenuItem value={"Add new..."}>Add new...</MenuItem>
                   {goalGroups
-                    ? goalGroups
-                        .filter((s) => s !== "Default")
-                        .map((group) => (
-                          <MenuItem value={group} key={group}>
-                            {group}
-                          </MenuItem>
-                        ))
-                    : null}
+                    .filter((s) => s !== "Default")
+                    .map((group) => (
+                      <MenuItem value={group} key={group} className="no-underline">
+                        {group}
+                      </MenuItem>
+                    ))}
+                  <Divider component="li" />
+                  <MenuItem>(Add new...)</MenuItem>
                 </Select>
               </FormControl>
             </Box>
+            <SelectGroup
+              title="Preview"
+              label={showPreview ? "HIDE" : "SHOW"}
+              onClick={() => setShowPreview((s) => !s)}
+            >
+              <Collapse in={showPreview} sx={{ width: "100%" }}>
+                {currentOp && opData && (
+                  <SelectGroup.FromTo
+                    sx={{ gridTemplateColumns: "1fr 1fr", "& .potential": { display: "none" }, overflow: "hidden" }}
+                  >
+                    <SupportBlock op={{ ...applyGoalsFromOperator(goalBuilder, currentOp), ...opData }} />
+                    <SupportBlock op={{ ...applyGoalsToOperator(goalBuilder, currentOp), ...opData }} />
+                  </SelectGroup.FromTo>
+                )}
+              </Collapse>
+            </SelectGroup>
             <SelectGroup
               title="Shortcuts"
               label={showPresets ? "HIDE" : "SHOW"}
               onClick={() => setShowPresets((s) => !s)}
             >
               <Collapse in={showPresets}>
-                <Box component="ul" sx={{ display: "flex", flexWrap: "wrap", m: 0, p: 0, gap: 2 }}>
-                  {SHORTCUTS.map((shortcut) => (
-                    <Box component="li" key={shortcut} sx={{ display: "contents" }}>
-                      <Chip disabled={!opData} onClick={() => handleShortcuts(shortcut)}>
-                        {shortcut}
+                <Box component="ul" sx={{ display: "flex", flexWrap: "wrap", m: 0, p: 0, gap: 1 }}>
+                  {[...SHORTCUTS, ...presets].map((shortcut) => (
+                    <Box component="li" key={shortcut.index} sx={{ display: "contents" }}>
+                      <Chip
+                        disabled={
+                          !opData ||
+                          isEqual(goalBuilder, handlePreset(shortcut)) ||
+                          (shortcut.index >= 0 && isEqual({}, handlePreset(shortcut)))
+                        }
+                        onClick={() => setGoalBuilder(handlePreset(shortcut))}
+                      >
+                        {shortcut.name}
                       </Chip>
                     </Box>
                   ))}
@@ -636,9 +608,26 @@ const PlannerGoalAdd = (props: Props) => {
             </SelectGroup>
             <SelectGroup.Toggle
               title="Promotion"
-              onClick={onPromotionClearClick}
-              open={openSections.elite}
+              open={isNumber(goalBuilder.elite_from) || isNumber(goalBuilder.elite_to)}
               toggleOpen={() => toggleSection("elite")}
+              sx={{
+                position: "relative",
+                "&:after": {
+                  content: "''",
+                  position: "absolute",
+                  bottom: "-16px",
+                  left: 0,
+                  right: 0,
+                  mx: "auto",
+                  width: 6,
+                  height: isNumber(goalBuilder.level_from) || isNumber(goalBuilder.level_to) ? 16 : 0,
+                  borderLeft: "2px solid",
+                  borderRight: "2px solid",
+                  borderColor: "grey.500",
+                  opacity: isNumber(goalBuilder.level_from) || isNumber(goalBuilder.level_to) ? 1 : 0,
+                  transition: "height 0.25s, opacity 0.25s",
+                },
+              }}
             >
               <SelectGroup.FromTo>
                 <Promotion
@@ -657,8 +646,7 @@ const PlannerGoalAdd = (props: Props) => {
             </SelectGroup.Toggle>
             <SelectGroup.Toggle
               title="Level"
-              onClick={onLevelClearClick}
-              open={openSections.level}
+              open={isNumber(goalBuilder.level_from) || isNumber(goalBuilder.level_to)}
               toggleOpen={() => toggleSection("level")}
             >
               <SelectGroup.FromTo>
@@ -676,8 +664,7 @@ const PlannerGoalAdd = (props: Props) => {
             </SelectGroup.Toggle>
             <SelectGroup.Toggle
               title="Skill Rank"
-              onClick={onSkillLevelClearClick}
-              open={openSections.skill}
+              open={isNumber(goalBuilder.skill_level_from) || isNumber(goalBuilder.skill_level_to)}
               toggleOpen={() => toggleSection("skill")}
             >
               <SelectGroup.FromTo>
@@ -691,8 +678,7 @@ const PlannerGoalAdd = (props: Props) => {
             </SelectGroup.Toggle>
             <SelectGroup.Toggle
               title="Mastery"
-              onClick={onMasteryClearClick}
-              open={openSections.mastery}
+              open={!!goalBuilder.masteries_from || !!goalBuilder.masteries_to}
               toggleOpen={() => toggleSection("mastery")}
               disabled={!opData || opData.rarity <= 3}
             >
@@ -724,32 +710,29 @@ const PlannerGoalAdd = (props: Props) => {
             </SelectGroup.Toggle>
             <SelectGroup.Toggle
               title="Module"
-              onClick={onModuleClearClick}
-              open={openSections.module}
+              open={!!goalBuilder.modules_from || !!goalBuilder.modules_to}
               toggleOpen={() => toggleSection("module")}
-              disabled={!!opData?.moduleData?.length}
+              disabled={!opData?.moduleData?.length}
             >
               <Module>
-                {opData
-                  ? opData.moduleData?.map((mod) => (
-                      <Module.Item key={mod.moduleId} {...mod}>
-                        <SelectGroup.FromTo>
-                          <Module.Select
-                            exclusive
-                            value={(goalBuilder.modules_from as Record<string, number>)?.[mod.moduleId] ?? 0}
-                            moduleId={mod.moduleId}
-                            onChange={onModuleFromChange}
-                          />
-                          <Module.Select
-                            exclusive
-                            value={(goalBuilder.modules_to as Record<string, number>)?.[mod.moduleId] ?? 0}
-                            moduleId={mod.moduleId}
-                            onChange={onModuleToChange}
-                          />
-                        </SelectGroup.FromTo>
-                      </Module.Item>
-                    ))
-                  : undefined}
+                {opData?.moduleData?.map((mod) => (
+                  <Module.Item key={mod.moduleId} {...mod}>
+                    <SelectGroup.FromTo>
+                      <Module.Select
+                        exclusive
+                        value={(goalBuilder.modules_from as Record<string, number>)?.[mod.moduleId] ?? 0}
+                        moduleId={mod.moduleId}
+                        onChange={onModuleFromChange}
+                      />
+                      <Module.Select
+                        exclusive
+                        value={(goalBuilder.modules_to as Record<string, number>)?.[mod.moduleId] ?? 0}
+                        moduleId={mod.moduleId}
+                        onChange={onModuleToChange}
+                      />
+                    </SelectGroup.FromTo>
+                  </Module.Item>
+                ))}
               </Module>
             </SelectGroup.Toggle>
           </DisabledContext.Provider>
@@ -759,18 +742,15 @@ const PlannerGoalAdd = (props: Props) => {
             Cancel
           </Button>
           <Button variant="contained" onClick={() => handleGoalAddDialogClose(true)} disabled={!opData}>
-            Add
+            {isEdit ? "Save" : "Add"}
           </Button>
         </DialogActions>
       </Dialog>
       <AddGroupDialog
         open={openGroupDialog}
-        onClose={(newGroupName) => {
-          setSelectedGroup(newGroupName);
-          setOpenGroupDialog(false);
-        }}
-        setGroups={setGroups}
-        nextGoalSortOrder={Math.max(0, ...(goals?.map((goal) => goal.sort_order) ?? [0])) + 1}
+        onClose={() => setOpenGroupDialog(false)}
+        onSubmit={addGroup}
+        goalGroups={goalGroups}
       />
     </>
   );

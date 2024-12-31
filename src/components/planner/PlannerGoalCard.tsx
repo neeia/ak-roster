@@ -1,7 +1,16 @@
-import DeleteGoalIcon from "@mui/icons-material/CloseRounded";
-import CompleteGoalIcon from "@mui/icons-material/Upload";
-import { Box, Button, ButtonGroup, Paper, styled, Tooltip, useMediaQuery, useTheme } from "@mui/material";
-import React, { memo, useCallback } from "react";
+import {
+  alpha,
+  Box,
+  Button,
+  ButtonGroup,
+  Divider,
+  Paper,
+  styled,
+  Tooltip,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import React, { memo, useCallback, useEffect, useState } from "react";
 
 import operatorsJson from "data/operators.json";
 
@@ -10,14 +19,15 @@ import OperatorGoalIconography from "./OperatorGoalIconography";
 import { Operator, OperatorData } from "types/operators/operator";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import getGoalIngredients from "util/getGoalIngredients";
-import useOperators from "../../util/hooks/useOperators";
+import useOperators from "util/hooks/useOperators";
+import { DeleteForever, Upload } from "@mui/icons-material";
 
-const GoalCardButton = styled(Button)(({ theme }) => ({
-  padding: theme.spacing(0.75),
-  flexGrow: 1,
-  backgroundColor: theme.palette.background.default,
+const GoalCardButton = styled(Button)({
   borderRadius: "0px",
-}));
+  width: 40,
+  height: 40,
+  backgroundColor: "transparent",
+});
 
 interface Props {
   goal: PlannerGoal;
@@ -28,150 +38,139 @@ interface Props {
 const PlannerGoalCard = memo((props: Props) => {
   const { goal, onGoalDeleted, onGoalCompleted, ...rest } = props;
   const theme = useTheme();
-  const isXSScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const isXLScreen = useMediaQuery(theme.breakpoints.up("xl"));
+  const isXSScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
   const [roster] = useOperators();
 
-  const rosterOperator = roster[goal.operatorId];
-  const operator: OperatorData =
-    operatorsJson[goal.operatorId as keyof typeof operatorsJson];
+  const operator = roster[goal.operatorId];
+  const opData: OperatorData = operatorsJson[goal.operatorId as keyof typeof operatorsJson];
 
-  const goalName = useCallback(() => {
+  const [goalName, setGoalName] = useState("");
+
+  useEffect(() => {
     switch (goal.category) {
       case OperatorGoalCategory.Level:
-        return `Lv.${goal.fromLevel} to Lv.${goal.toLevel} for Elite ${goal.eliteLevel}`;
+        setGoalName(`E${goal.eliteLevel} Lv${goal.fromLevel} → ${goal.toLevel}`);
+        break;
       case OperatorGoalCategory.Elite:
-        return `Elite ${goal.eliteLevel}`;
+        setGoalName(`Elite ${goal.eliteLevel}`);
+        break;
       case OperatorGoalCategory.SkillLevel:
-        return `${isXLScreen ? "Skill Level" : "Sk.Lv."} ${goal.skillLevel}`;
+        setGoalName(`Skill Level ${goal.skillLevel}`);
+        break;
       case OperatorGoalCategory.Mastery: {
-        const skillNumber =
-          operator.skillData!.findIndex((sk) => sk.skillId === goal.skillId) +
-          1;
-        return isXLScreen
-          ? `Skill ${skillNumber} Mastery ${goal.masteryLevel}`
-          : `S${skillNumber} M${goal.masteryLevel}`;
+        const skillNumber = opData.skillData!.findIndex((sk) => sk.skillId === goal.skillId) + 1;
+        setGoalName(`S${skillNumber} M${goal.masteryLevel}`);
+        break;
       }
       case OperatorGoalCategory.Module: {
-        const mod = operator.moduleData!.find(
-          (m) => m.moduleId === goal.moduleId
-        )!;
-        return `${mod.typeName} (${mod.moduleName}) Stage ${goal.moduleLevel}`;
+        const mod = opData.moduleData!.find((m) => m.moduleId === goal.moduleId)!;
+        setGoalName(`${mod.typeName} S${goal.moduleLevel}`);
+        break;
       }
     }
-  }, [goal, isXLScreen, operator.moduleData, operator.skillData]);
+  }, [goal]);
 
-  const goalLabel = `${operator.name} ${goalName}`;
+  const goalLabel = `${opData.name} ${goalName}`;
 
   const ingredients = getGoalIngredients(goal);
 
   return (
-    <Paper
+    <Box
       component="li"
       sx={{
-        borderTop: "solid 2px",
-        borderColor: (theme) => theme.palette.background.light,
+        borderTop: "solid 1px",
+        borderLeft: "solid 1px",
         "&:last-of-type": {
-          borderBottom: "solid 2px",
-          borderColor: (theme) => theme.palette.background.light,
+          borderBottom: "solid 1px",
+          borderColor: "background.light",
         },
+        borderColor: "background.light",
+        backgroundColor: "background.default",
         display: "grid",
         gridTemplateColumns: "1fr auto",
         borderRadius: "0px",
       }}
-      {...rest}
     >
-      <Paper
+      <Box
         sx={{
-          backgroundColor: "background.default",
-          display: "grid",
+          display: "flex",
           p: 1,
-          pb: {
-            xs: 2,
-            sm: 1,
-          },
           alignItems: "center",
-          gridTemplateAreas: {
-            xs: `
-              'icon goalname'
-              'icon mats'
-            `,
-            sm: `
-              'icon goalname mats'
-            `,
-          },
-          gridTemplateRows: "1fr auto",
-          gridTemplateColumns: {
-            xs: `auto 1fr`,
-            xl: `auto 1fr`,
-          },
-          columnGap: 3,
+          gap: 2,
         }}
       >
-        <Box gridArea="icon" display="flex" alignItems="center" ml={{ xs: 0, sm: 1 }}>
-          {!isXSScreen && <OperatorGoalIconography goal={goal} />}
+        <OperatorGoalIconography
+          goal={goal}
+          size={isXSScreen ? 32 : 48}
+          sx={{ display: "flex", alignItems: "center", ml: 0.5 }}
+        />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            alignItems: { xs: "start", sm: "center" },
+            gap: 1,
+            width: "100%",
+          }}
+        >
+          <Box sx={{ width: "100%" }}>{goalName}</Box>
+          <Box sx={{ display: "flex", gap: 1, justifyContent: { xs: "start", sm: "end" } }}>
+            {ingredients.map((ingredient) => (
+              <ItemStack
+                key={ingredient.id}
+                itemId={ingredient.id}
+                quantity={ingredient.quantity}
+                size={isXSScreen ? 32 : 48}
+                showItemNameTooltip={true}
+              />
+            ))}
+          </Box>
         </Box>
-
-        <Box gridArea="goalname">{goalName()}</Box>
-
-        <Box gridArea="mats" display="flex" justifyContent="space-evenly">
-          {ingredients.map((ingredient) => (
-            <ItemStack
-              key={ingredient.id}
-              itemId={ingredient.id}
-              quantity={ingredient.quantity}
-              size={55}
-              showItemNameTooltip={true}
-            />
-          ))}
-        </Box>
-      </Paper>
-
-      <ButtonGroup
-        orientation="vertical"
+      </Box>
+      {/* Action Button */}
+      <Box
         sx={{
-          display: "grid",
-          gridTemplateRows: "10fr 9fr",
+          display: "flex",
+          flexDirection: "column",
+          borderLeft: "1px solid",
+          borderRight: "1px solid",
+          borderColor: "background.light",
         }}
       >
         <Tooltip arrow describeChild title="Complete Goal" placement="left">
           <GoalCardButton
             aria-label={`Complete goal: ${goalLabel}`}
-            disabled={!rosterOperator}
-            onClick={() => onGoalCompleted(goal, rosterOperator!)}
+            onClick={() => onGoalCompleted(goal, operator!)}
             sx={{
-              borderWidth: "0 0 1px 2px",
-              borderColor: (theme) => theme.palette.background.light,
-              color: "#fff",
+              color: "text.secondary",
               "&:hover": {
-                borderWidth: "1px 0 0 2px",
-                borderColor: (theme) => theme.palette.background.light,
-                backgroundColor: (theme) => theme.palette.success.main,
+                backgroundColor: (theme) => alpha(theme.palette.success.dark, 0.25),
+                color: "success.main",
               },
             }}
           >
-            <CompleteGoalIcon />
+            <Upload fontSize="small" />
           </GoalCardButton>
         </Tooltip>
-        <GoalCardButton
-          aria-label={`Delete goal: ${goalLabel}`}
-          onClick={() => onGoalDeleted(goal)}
-          sx={{
-            borderWidth: "1px 0 0 2px",
-            borderColor: (theme) => theme.palette.background.light,
-            color: "#ccc",
-            "&:hover": {
-              borderWidth: "1px 0 0 2px",
-              borderColor: (theme) => theme.palette.background.light,
-              backgroundColor: (theme) => theme.palette.error.main,
-            },
-          }}
-        >
-          <DeleteGoalIcon />
-        </GoalCardButton>
-      </ButtonGroup>
-    </Paper>
+        <Divider />
+        <Tooltip arrow describeChild title="Delete Goal" placement="left">
+          <GoalCardButton
+            aria-label={`Delete goal: ${goalLabel}`}
+            onClick={() => onGoalDeleted(goal)}
+            sx={{
+              color: "text.secondary",
+              "&:hover": {
+                backgroundColor: (theme) => alpha(theme.palette.error.dark, 0.25),
+                color: "error.main",
+              },
+            }}
+          >
+            <DeleteForever fontSize="small" />
+          </GoalCardButton>
+        </Tooltip>
+      </Box>
+    </Box>
   );
 });
 PlannerGoalCard.displayName = "PlannerGoalCard";

@@ -3,18 +3,53 @@ import supabase from "supabase/supabaseClient";
 import GoalData, { GoalDataInsert } from "types/goalData";
 import handlePostgrestError from "util/fns/handlePostgrestError";
 
+const fillNull = (goal: GoalDataInsert, index: number): GoalData => {
+  const {
+    op_id,
+    group_name,
+    elite_from,
+    elite_to,
+    level_from,
+    level_to,
+    masteries_from,
+    masteries_to,
+    modules_from,
+    modules_to,
+    skill_level_from,
+    skill_level_to,
+    sort_order,
+  } = goal;
+  return {
+    op_id,
+    group_name,
+    elite_from: elite_from ?? null,
+    elite_to: elite_to ?? null,
+    level_from: level_from ?? null,
+    level_to: level_to ?? null,
+    masteries_from: masteries_from ?? null,
+    masteries_to: masteries_to ?? null,
+    modules_from: modules_from ?? null,
+    modules_to: modules_to ?? null,
+    skill_level_from: skill_level_from ?? null,
+    skill_level_to: skill_level_to ?? null,
+    sort_order: sort_order ?? index,
+  };
+};
+
 function useGoals() {
   const [goals, _setGoals] = useState<GoalData[]>([]);
 
   const updateGoals = useCallback(
     async (goalsData: GoalDataInsert[]) => {
       const _goals = [...goals];
+      const maxIndex = (goals.reduce((acc, goal) => (goal.sort_order > acc ? goal.sort_order : acc), 0) ?? 0) + 1;
 
-      goalsData.forEach((goalInsert) => {
-        let goal = goals.find((x) => x.op_id == goalInsert.op_id && x.group_name == goalInsert.group_name);
-        if (goal) {
-          const newGoal: GoalData = { ...goal, ...goalInsert };
-          _goals.push(newGoal);
+      const nulledGoalsData = goalsData.map((g) => fillNull(g, maxIndex));
+      nulledGoalsData.forEach((goalInsert) => {
+        const index = goals.findIndex((x) => x.op_id == goalInsert.op_id && x.group_name == goalInsert.group_name);
+        if (index !== -1) {
+          const newGoal: GoalData = { ...goals[index], ...goalInsert };
+          _goals[index] = newGoal;
         } else {
           _goals.push(goalInsert as GoalData);
         }
@@ -22,7 +57,7 @@ function useGoals() {
 
       _setGoals(_goals);
 
-      const { error } = await supabase.from("goals").upsert(goalsData);
+      const { error } = await supabase.from("goals").upsert(nulledGoalsData);
       handlePostgrestError(error);
     },
     [goals]

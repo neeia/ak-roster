@@ -1,6 +1,6 @@
 import CheckIcon from "@mui/icons-material/Check";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Paper, Typography } from "@mui/material";
+import { Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Typography } from "@mui/material";
 import Image from "next/image";
 import React, { useCallback, useState } from "react";
 
@@ -11,10 +11,11 @@ import ItemInfoPopover from "./ItemInfoPopover";
 import ItemNeeded from "./ItemNeeded";
 import getGoalIngredients from "util/getGoalIngredients";
 import DepotItem from "types/depotItem";
-import GoalData, { getPlannerGoals } from "../../types/goalData";
-import { LocalStorageSettings } from "../../types/localStorageSettings";
+import GoalData, { getPlannerGoals } from "types/goalData";
+import { LocalStorageSettings } from "types/localStorageSettings";
 import ExportImportDialog from "./ExportImportDialog";
-import useLocalStorage from "../../util/hooks/useLocalStorage";
+import useLocalStorage from "util/hooks/useLocalStorage";
+import Board from "components/base/Board";
 
 const LMD_ITEM_ID = "4001";
 const EXCLUDE = ["2001", "2002", "2003", "2004", "4001"];
@@ -31,7 +32,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [popoverItemId, setPopoverItemId] = useState<string | null>(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const [localStorageData, setLocalStorageData] = useLocalStorage<LocalStorageSettings>("settings", {});
+  const [settings, setSettings] = useLocalStorage<LocalStorageSettings>("settings", {});
   const isSettingsMenuOpen = Boolean(anchorEl);
   const [exportImportOpen, setExportImportOpen] = useState<boolean>(false);
 
@@ -116,7 +117,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
       setDepot(updatedDatas);
     },
-    [depot, setDepot],
+    [depot, setDepot]
   );
 
   const handleCraftingToggle = useCallback(
@@ -158,7 +159,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
   }, [depot, setDepot]);
 
   const handleSortToBottom = useCallback(() => {
-    const updatedSettings = { ...localStorageData };
+    const updatedSettings = { ...settings };
     if (updatedSettings.plannerSettings) {
       updatedSettings.plannerSettings.sortCompletedToBottom = !updatedSettings.plannerSettings?.sortCompletedToBottom;
     } else {
@@ -168,12 +169,12 @@ const MaterialsNeeded = React.memo((props: Props) => {
         hideIncrementDecrementButtons: false,
       };
     }
-    setLocalStorageData(updatedSettings);
+    setSettings(updatedSettings);
     setAnchorEl(null);
-  }, [localStorageData, setLocalStorageData]);
+  }, [settings, setSettings]);
 
   const handleShowInactive = useCallback(() => {
-    const updatedSettings = { ...localStorageData };
+    const updatedSettings = { ...settings };
     if (updatedSettings.plannerSettings) {
       updatedSettings.plannerSettings.showInactiveMaterials = !updatedSettings.plannerSettings?.showInactiveMaterials;
     } else {
@@ -183,12 +184,12 @@ const MaterialsNeeded = React.memo((props: Props) => {
         hideIncrementDecrementButtons: false,
       };
     }
-    setLocalStorageData(updatedSettings);
+    setSettings(updatedSettings);
     setAnchorEl(null);
-  }, [localStorageData, setLocalStorageData]);
+  }, [settings, setSettings]);
 
   const handleShowButtons = useCallback(() => {
-    const updatedSettings = { ...localStorageData };
+    const updatedSettings = { ...settings };
     if (updatedSettings.plannerSettings) {
       updatedSettings.plannerSettings.hideIncrementDecrementButtons =
         !updatedSettings.plannerSettings?.hideIncrementDecrementButtons;
@@ -199,9 +200,9 @@ const MaterialsNeeded = React.memo((props: Props) => {
         hideIncrementDecrementButtons: true,
       };
     }
-    setLocalStorageData(updatedSettings);
+    setSettings(updatedSettings);
     setAnchorEl(null);
-  }, [localStorageData, setLocalStorageData]);
+  }, [settings, setSettings]);
 
   const handleExportImport = useCallback(() => {
     setExportImportOpen(true);
@@ -272,7 +273,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
           const copy = { ...depotCopy[ingr.id] };
           copy.stock = Math.max(
             //here
-            (depotCopy[ingr.id]?.stock ?? 0) - ingr.quantity * numTimesToCraft, //here
+            (depotCopy[ingr.id]?.stock ?? 0) - ingr.quantity * numTimesToCraft //here
           );
           depotCopy[ingr.id] = copy;
         });
@@ -299,12 +300,14 @@ const MaterialsNeeded = React.memo((props: Props) => {
     .map((item) => [item.id, materialsNeeded[item.id] ?? 0]);
 
   const sortedMaterialsNeeded = (
-    localStorageData.plannerSettings?.showInactiveMaterials ? allItems : Object.entries(materialsNeeded)
+    settings.plannerSettings?.showInactiveMaterials ? allItems : Object.entries(materialsNeeded)
   ).sort(([itemIdA, neededA], [itemIdB, neededB]) => {
     const itemA = itemsJson[itemIdA as keyof typeof itemsJson];
     const itemB = itemsJson[itemIdB as keyof typeof itemsJson];
+
+    if (!itemA) console.log(itemIdA);
     const compareBySortId = itemA.sortId - itemB.sortId;
-    if (localStorageData.plannerSettings?.sortCompletedToBottom) {
+    if (settings.plannerSettings?.sortCompletedToBottom) {
       return (
         (neededA && neededA <= depot[itemIdA].stock ? 1 : 0) - (neededB && neededB <= depot[itemIdB].stock ? 1 : 0) ||
         (canCompleteByCrafting[itemIdA] ? 1 : 0) - (canCompleteByCrafting[itemIdB] ? 1 : 0) ||
@@ -316,21 +319,9 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
   return (
     <>
-      <Paper component="section" sx={{ p: 2 }}>
-        <Box display="grid" gridTemplateColumns="1fr auto">
-          <div>
-            <Typography component="h2" variant="h5">
-              Materials needed
-            </Typography>
-            <Divider sx={{ mt: 2, mb: 1, width: "90%" }} />
-            <Typography component="span" variant="h6">
-              Total cost:
-              <Box component="span" display="inline-flex" alignItems="center" columnGap={0.5} ml={1}>
-                <b>{lmdCost.toLocaleString()}</b>
-                <Image src="/img/items/GOLD_SHD.webp" width={26} height={18} alt="LMD" />
-              </Box>
-            </Typography>
-          </div>
+      <Board
+        title="Depot"
+        TitleAction={
           <IconButton
             id="settings-button"
             onClick={handleSettingsButtonClick}
@@ -342,68 +333,77 @@ const MaterialsNeeded = React.memo((props: Props) => {
           >
             <SettingsIcon />
           </IconButton>
-          <Menu
-            id="settings-menu"
-            anchorEl={anchorEl}
-            open={isSettingsMenuOpen}
-            onClose={handleSettingsMenuClose}
-            MenuListProps={{
-              "aria-labelledby": "settings-button",
-            }}
-            hideBackdrop={false}
-            slotProps={{
-              root: {
-                slotProps: {
-                  backdrop: {
-                    invisible: false,
-                  },
+        }
+        sx={{ borderRadius: { xs: "0px 0px 4px 4px", md: "4px" } }}
+      >
+        <Typography component="span" variant="h6">
+          Total cost:
+          <Box component="span" display="inline-flex" alignItems="center" columnGap={0.5} ml={1}>
+            <b>{lmdCost.toLocaleString()}</b>
+            <Image src="/img/items/GOLD_SHD.webp" width={26} height={18} alt="LMD" />
+          </Box>
+        </Typography>
+        <Menu
+          id="settings-menu"
+          anchorEl={anchorEl}
+          open={isSettingsMenuOpen}
+          onClose={handleSettingsMenuClose}
+          MenuListProps={{
+            "aria-labelledby": "settings-button",
+          }}
+          hideBackdrop={false}
+          slotProps={{
+            root: {
+              slotProps: {
+                backdrop: {
+                  invisible: false,
                 },
               },
-            }}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
+            },
+          }}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+        >
+          <SettingsMenuItem
+            onClick={handleSortToBottom}
+            checked={settings.plannerSettings?.sortCompletedToBottom ?? false}
           >
-            <SettingsMenuItem
-              onClick={handleSortToBottom}
-              checked={localStorageData.plannerSettings?.sortCompletedToBottom ?? false}
-            >
-              Sort completed items to bottom
-            </SettingsMenuItem>
-            <SettingsMenuItem
-              onClick={handleShowInactive}
-              checked={localStorageData.plannerSettings?.showInactiveMaterials ?? false}
-            >
-              Show inactive materials
-            </SettingsMenuItem>
-            <SettingsMenuItem
-              onClick={handleShowButtons}
-              checked={localStorageData.plannerSettings?.hideIncrementDecrementButtons ?? false}
-            >
-              Hide increment/decrement buttons
-            </SettingsMenuItem>
-            <Divider />
-            <MenuItem onClick={handleExportImport}>
-              <ListItemText inset>Export/Import</ListItemText>
-            </MenuItem>
-            <Divider />
-            <MenuItem onClick={handleResetCrafting}>
-              <ListItemText inset sx={{ color: (theme) => theme.palette.error.light }}>
-                Reset crafting states
-              </ListItemText>
-            </MenuItem>
-            <MenuItem onClick={handleResetStock}>
-              <ListItemText inset sx={{ color: (theme) => theme.palette.error.light }}>
-                Reset stock
-              </ListItemText>
-            </MenuItem>
-          </Menu>
-        </Box>
+            Sort completed items to bottom
+          </SettingsMenuItem>
+          <SettingsMenuItem
+            onClick={handleShowInactive}
+            checked={settings.plannerSettings?.showInactiveMaterials ?? false}
+          >
+            Show inactive materials
+          </SettingsMenuItem>
+          <SettingsMenuItem
+            onClick={handleShowButtons}
+            checked={settings.plannerSettings?.hideIncrementDecrementButtons ?? false}
+          >
+            Hide increment/decrement buttons
+          </SettingsMenuItem>
+          <Divider />
+          <MenuItem onClick={handleExportImport}>
+            <ListItemText inset>Export/Import</ListItemText>
+          </MenuItem>
+          <Divider />
+          <MenuItem onClick={handleResetCrafting}>
+            <ListItemText inset sx={{ color: (theme) => theme.palette.error.light }}>
+              Reset crafting states
+            </ListItemText>
+          </MenuItem>
+          <MenuItem onClick={handleResetStock}>
+            <ListItemText inset sx={{ color: (theme) => theme.palette.error.light }}>
+              Reset stock
+            </ListItemText>
+          </MenuItem>
+        </Menu>
         <Box
           component="ul"
           sx={{
@@ -412,11 +412,31 @@ const MaterialsNeeded = React.memo((props: Props) => {
             mb: 0,
             mx: 0,
             p: 0,
-            columnGap: 2,
-            rowGap: 1.5,
-            gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))",
+            columnGap: { xs: 1, sm: 2 },
+            rowGap: 2,
+            gridTemplateColumns: {
+              xs: "repeat(auto-fill, minmax(96px, 1fr))",
+              sm: "repeat(auto-fill, minmax(108px, 1fr))",
+            },
           }}
         >
+          {(settings.plannerSettings?.showInactiveMaterials || lmdCost > 0) && (
+            <ItemNeeded
+              component="li"
+              itemId={LMD_ITEM_ID}
+              owned={depot[LMD_ITEM_ID]?.stock ?? 0}
+              quantity={lmdCost}
+              canCompleteByCrafting={false}
+              isCrafting={false}
+              onChange={handleChange}
+              onCraftOne={handleCraftOne}
+              onDecrement={handleDecrement}
+              onIncrement={handleIncrement}
+              onCraftingToggle={handleCraftingToggle}
+              onClick={handleItemClick}
+              hideIncrementDecrementButtons={settings.plannerSettings?.hideIncrementDecrementButtons ?? false}
+            />
+          )}
           {sortedMaterialsNeeded.map(([itemId, needed]) => (
             <ItemNeeded
               key={itemId}
@@ -432,7 +452,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
               onIncrement={handleIncrement}
               onCraftingToggle={handleCraftingToggle}
               onClick={handleItemClick}
-              hideIncrementDecrementButtons={localStorageData.plannerSettings?.hideIncrementDecrementButtons ?? false}
+              hideIncrementDecrementButtons={settings.plannerSettings?.hideIncrementDecrementButtons ?? false}
             />
           ))}
         </Box>
@@ -442,7 +462,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
           open={popoverOpen}
           onClose={handlePopoverClose}
         />
-      </Paper>
+      </Board>
       <ExportImportDialog
         open={exportImportOpen}
         onClose={() => {

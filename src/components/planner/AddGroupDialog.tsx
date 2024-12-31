@@ -1,44 +1,57 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material";
 import React, { useState } from "react";
-import { GroupsDataInsert } from "../../types/groupData";
+import { GroupsDataInsert } from "types/groupData";
 
 interface Props {
   open: boolean;
-  onClose: (groupName: string) => void;
-  setGroups: (goalGroupInsert: GroupsDataInsert[]) => void;
-  nextGoalSortOrder: number;
+  onClose: () => void;
+  onSubmit: (groupName: string) => void;
+  goalGroups: string[];
 }
 
 const AddGroupDialog = (props: Props) => {
-  const { open, onClose, setGroups, nextGoalSortOrder } = props;
+  const { open, onClose, onSubmit, goalGroups } = props;
 
   const [newGroupName, setNewGroupName] = useState<string>("");
 
-  const handleGroupDialogClose = (shouldAddGroup: boolean) => {
-    if (shouldAddGroup) {
-      let data = { group_name: newGroupName, sort_order: nextGoalSortOrder };
-      setGroups([data]);
-    }
+  const handleGroupDialogClose = (shouldAddGroup = false) => {
+    if (shouldAddGroup) onSubmit(newGroupName);
     setNewGroupName("");
-    onClose(newGroupName);
+    onClose();
+  };
+
+  const isValid = (groupName: string) => {
+    return !goalGroups.includes(groupName) && 0 < newGroupName.length && newGroupName.length < 33;
   };
 
   return (
-    <Dialog open={open} onClose={() => handleGroupDialogClose(false)}>
-      <DialogTitle>Add new goal group</DialogTitle>
+    <Dialog open={open} onClose={() => handleGroupDialogClose()}>
+      <DialogTitle>Add New Group</DialogTitle>
       <DialogContent>
-        <DialogContentText>Select a name for the new goal group</DialogContentText>
         <TextField
+          sx={{ mt: "4px" }}
           value={newGroupName}
           onChange={(event) => setNewGroupName(event.target.value as string)}
           autoFocus
           label="Group name"
           fullWidth
+          error={!isValid(newGroupName)}
+          helperText={
+            !newGroupName
+              ? "Group name cannot be empty"
+              : newGroupName.length >= 33
+              ? "Group name must be shorter than 33 characters"
+              : goalGroups.includes(newGroupName)
+              ? "Group name already exists"
+              : ""
+          }
         />
       </DialogContent>
-      <DialogActions>
-        <Button onClick={() => handleGroupDialogClose(false)}>Cancel</Button>
-        <Button onClick={() => handleGroupDialogClose(true)}>Add</Button>
+      <DialogActions sx={{ gap: 1 }}>
+        <Button onClick={() => handleGroupDialogClose()}>Cancel</Button>
+        <Button disabled={!isValid(newGroupName)} onClick={() => handleGroupDialogClose(true)} variant="contained">
+          Add
+        </Button>
       </DialogActions>
     </Dialog>
   );

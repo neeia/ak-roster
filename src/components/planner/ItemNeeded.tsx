@@ -1,16 +1,7 @@
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-import {
-  Box,
-  Button,
-  ButtonBase,
-  ButtonGroup,
-  IconButton,
-  InputAdornment,
-  TextField,
-  Tooltip,
-} from "@mui/material";
+import { Box, Button, ButtonBase, ButtonGroup, IconButton, InputAdornment, TextField, Tooltip } from "@mui/material";
 import React, { ElementType, useEffect, useState } from "react";
 
 import items from "../../data/items.json";
@@ -68,11 +59,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
   };
 
   const craftOneButton = (
-    <Button
-      disabled={!isCrafting}
-      onClick={() => onCraftOne(itemId)}
-      sx={{ width: "auto" }}
-    >
+    <Button disabled={!isCrafting} onClick={() => onCraftOne(itemId)} sx={{ width: "auto" }}>
       +1
     </Button>
   );
@@ -95,14 +82,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
           },
         }}
       >
-        <ItemStack
-          {...rest}
-          sx={
-            isComplete || (isCrafting && canCompleteByCrafting)
-              ? { opacity: 0.4 }
-              : undefined
-          }
-        />
+        <ItemStack {...rest} sx={isComplete || (isCrafting && canCompleteByCrafting) ? { opacity: 0.4 } : undefined} />
         {quantity > 0 && isComplete && (
           <CheckCircleIcon
             htmlColor="greenyellow"
@@ -117,12 +97,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
         )}
         {quantity > 0 && !isComplete && isCrafting && canCompleteByCrafting && (
           <Tooltip arrow title="Can be completed by crafting">
-            <Box
-              alignSelf="center"
-              justifySelf="center"
-              zIndex={1}
-              lineHeight={0}
-            >
+            <Box alignSelf="center" justifySelf="center" zIndex={1} lineHeight={0}>
               <CraftingIcon />
             </Box>
           </Tooltip>
@@ -130,7 +105,6 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
       </ButtonBase>
       <TextField
         size="small"
-        fullWidth
         value={rawValue}
         onFocus={(e) => e.target.select()}
         onChange={handleChange}
@@ -175,7 +149,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
                   </InputAdornment>
                 ),
                 sx: {
-                  px: "5px",
+                  px: "4px",
                   borderBottomLeftRadius: 0,
                   borderBottomRightRadius: 0,
                   "& input[type=number]": {
@@ -193,7 +167,12 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
               }
         }
       />
-      <Box minWidth={126} height={31}>
+      <Box
+        sx={{
+          minWidth: 96,
+          height: 32,
+        }}
+      >
         {isCraftable ? (
           <ButtonGroup
             size="small"

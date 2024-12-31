@@ -32,7 +32,7 @@ interface Props {
 const OperatorGoals = (props: Props) => {
   const { goals, depot, setDepot, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator } =
     props;
-  const [groups, setGroups, removeGroup] = useGoalGroups();
+  const { groups, putGroups, removeGroup } = useGoalGroups();
 
   const [addGoalOpen, setAddGoalOpen] = useState<boolean>(false);
   const [reorderOpen, setReorderOpen] = useState<boolean>(false);
@@ -368,8 +368,8 @@ const OperatorGoals = (props: Props) => {
           </Box>
         }
         sx={{
-          mb: 1,
-          p: 2,
+          borderRadius: { xs: "0px 0px 4px 4px", md: "4px" },
+          px: { xs: 1, md: 2 },
         }}
       >
         <Grid
@@ -422,7 +422,7 @@ const OperatorGoals = (props: Props) => {
         onClose={() => setAddGoalOpen(false)}
         goals={goals}
         goalGroups={groups}
-        setGroups={setGroups}
+        putGroup={putGroups}
         updateGoals={updateGoals}
       />
       <GoalReorderDialog
@@ -430,7 +430,7 @@ const OperatorGoals = (props: Props) => {
         goals={goals}
         groups={groups}
         updateGoals={updateGoals}
-        setGroups={setGroups}
+        putGroups={putGroups}
         onClose={() => setReorderOpen(false)}
       />
     </>
