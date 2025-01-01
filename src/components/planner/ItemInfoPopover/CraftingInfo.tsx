@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import { Item } from "types/item";
 
 import itemsJson from "data/items.json";
-import ItemStack from "../ItemStack";
+import ItemStack from "../depot/ItemStack";
 
 import ItemInfoSection from "./ItemInfoSection";
 

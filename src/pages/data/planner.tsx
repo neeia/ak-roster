@@ -38,10 +38,10 @@ function a11yProps(index: number) {
   };
 }
 
-const MaterialsNeeded = dynamic(() => import("components/planner/MaterialsNeeded"), {
+const MaterialsNeeded = dynamic(() => import("components/planner/depot/MaterialsNeeded"), {
   ssr: false,
 });
-const PlannerGoals = dynamic(() => import("components/planner/PlannerGoals"), {
+const PlannerGoals = dynamic(() => import("components/planner/goals/PlannerGoals"), {
   ssr: false,
 });
 

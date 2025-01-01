@@ -6,7 +6,7 @@ import React, { useCallback, useState } from "react";
 import itemsJson from "data/items.json";
 import { Ingredient, Item } from "types/item";
 
-import ItemInfoPopover from "./ItemInfoPopover";
+import ItemInfoPopover from "../ItemInfoPopover";
 import ItemNeeded from "./ItemNeeded";
 import getGoalIngredients from "util/getGoalIngredients";
 import DepotItem from "types/depotItem";

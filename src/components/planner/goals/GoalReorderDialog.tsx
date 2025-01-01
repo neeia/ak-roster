@@ -1,4 +1,4 @@
-import GoalData from "../../types/goalData";
+import GoalData from "../../../types/goalData";
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
 import {
   DragDropContext,
@@ -9,8 +9,8 @@ import {
   DropResult,
 } from "react-beautiful-dnd";
 import React, { useCallback, useEffect, useState } from "react";
-import operatorJson from "../../data/operators";
-import { GroupsDataInsert } from "../../types/groupData";
+import operatorJson from "../../../data/operators";
+import { GroupsDataInsert } from "../../../types/groupData";
 
 interface Props {
   open: boolean;

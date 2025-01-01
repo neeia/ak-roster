@@ -14,7 +14,7 @@ import React, { memo, useCallback, useEffect, useState } from "react";
 
 import operatorsJson from "data/operators.json";
 
-import ItemStack from "./ItemStack";
+import ItemStack from "../depot/ItemStack";
 import OperatorGoalIconography from "./OperatorGoalIconography";
 import { Operator, OperatorData } from "types/operators/operator";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";

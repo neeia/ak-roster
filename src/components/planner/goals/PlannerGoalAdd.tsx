@@ -12,22 +12,21 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  SelectChangeEvent,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React, { useCallback, useEffect, useState } from "react";
-import OperatorSearch from "./OperatorSearch";
-import { ModuleData, Operator, OperatorData } from "types/operators/operator";
+import React, { useEffect, useState } from "react";
+import OperatorSearch from "../OperatorSearch";
+import { Operator, OperatorData } from "types/operators/operator";
 import { Close } from "@mui/icons-material";
-import Chip from "../base/Chip";
-import Promotion from "../data/input/Select/Promotion";
-import SelectGroup, { DisabledContext } from "../data/input/Select/SelectGroup";
-import Level from "../data/input/Select/Level";
-import SkillLevel from "../data/input/Select/SkillLevel";
+import Chip from "../../base/Chip";
+import Promotion from "../../data/input/Select/Promotion";
+import SelectGroup, { DisabledContext } from "../../data/input/Select/SelectGroup";
+import Level from "../../data/input/Select/Level";
+import SkillLevel from "../../data/input/Select/SkillLevel";
 import AddGroupDialog from "./AddGroupDialog";
-import Mastery from "../data/input/Select/Mastery";
-import Module from "../data/input/Select/Module";
+import Mastery from "../../data/input/Select/Mastery";
+import Module from "../../data/input/Select/Module";
 import GoalData, { GoalDataInsert } from "types/goalData";
 import _ from "lodash";
 import {
