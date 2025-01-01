@@ -3,6 +3,7 @@ import { OperatorData } from "./operators/operator";
 import { OperatorGoalCategory, PlannerGoal } from "./goal";
 import operatorJson from "../data/operators";
 import { MAX_LEVEL_BY_RARITY } from "../util/changeOperator";
+import getNumSkills from "util/fns/getNumSkills";
 
 type GoalsTable = Database["public"]["Tables"]["goals"];
 type GoalData = Omit<GoalsTable["Row"], "user_id" | "modules_from" | "modules_to"> & {
@@ -135,3 +136,49 @@ export function getPlannerGoals(goal: GoalData, opData?: OperatorData) {
 
   return plannerGoals;
 }
+
+export const plannerGoalToGoalData = (goal: PlannerGoal): Partial<GoalDataInsert> => {
+  const opData = operatorJson[goal.operatorId];
+  switch (goal.category) {
+    case OperatorGoalCategory.Elite:
+      return {
+        elite_from: goal.eliteLevel - 1,
+        elite_to: goal.eliteLevel,
+      };
+    case OperatorGoalCategory.Level:
+      return {
+        elite_from: goal.eliteLevel,
+        elite_to: goal.eliteLevel,
+        level_from: goal.fromLevel,
+        level_to: goal.toLevel,
+      };
+    case OperatorGoalCategory.Mastery:
+      const moduleIndex = opData.skillData?.findIndex((x) => x.skillId === goal.skillId);
+      if (!isNumber(moduleIndex) || moduleIndex === -1) return {};
+
+      const masteries_from = [...Array(getNumSkills(goal.operatorId))].fill(-1);
+      const masteries_to = [...Array(getNumSkills(goal.operatorId))].fill(-1);
+      masteries_from[moduleIndex] = goal.masteryLevel - 1;
+      masteries_to[moduleIndex] = goal.masteryLevel;
+      return {
+        masteries_from,
+        masteries_to,
+      };
+    case OperatorGoalCategory.Module:
+      if (!opData?.moduleData) return {};
+
+      const _modules_from = Object.fromEntries(opData.moduleData.map((mod) => [mod.moduleId, -1]));
+      const _modules_to = { ..._modules_from };
+      const modules_from = { ..._modules_from, [goal.moduleId]: goal.moduleLevel - 1 };
+      const modules_to = { ..._modules_to, [goal.moduleId]: goal.moduleLevel };
+      return {
+        modules_from,
+        modules_to,
+      };
+    case OperatorGoalCategory.SkillLevel:
+      return {
+        skill_level_from: goal.skillLevel - 1,
+        skill_level_to: goal.skillLevel,
+      };
+  }
+};
