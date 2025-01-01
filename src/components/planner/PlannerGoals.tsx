@@ -10,9 +10,9 @@ import PlannerGoalAdd from "./PlannerGoalAdd";
 import operatorJson from "data/operators";
 import GoalGroup from "./GoalGroup";
 import Board from "components/base/Board";
-import GoalData, { GoalDataInsert } from "types/goalData";
+import GoalData, { getPlannerGoals, GoalDataInsert } from "types/goalData";
 import _ from "lodash";
-import { MAX_LEVEL_BY_RARITY } from "util/changeOperator";
+import { clamp, MAX_LEVEL_BY_RARITY } from "util/changeOperator";
 import GoalReorderDialog from "./GoalReorderDialog";
 import DepotItem from "types/depotItem";
 import { Ingredient } from "types/item";
@@ -51,120 +51,165 @@ const OperatorGoals = (props: Props) => {
     (plannerGoal: PlannerGoal) => {
       const opId = plannerGoal.operatorId;
       const opData = operatorJson[opId];
-      // TODO: There should probably be some sort of failsafe if goals is undefined  <-- groups is always defined in this point, otherwise you can't physically click the button
-      const goal = goals!.find((x) => x.op_id === opId)!;
 
-      const goalUpdate: GoalData = { ...goal };
+      if (!goals) return;
+
+      const goal = goals.find((x) => x.op_id === opId);
+      if (!goal) return;
+
+      const _goal: GoalData = { ...goal };
+      const allPlannerGoals = getPlannerGoals(goal, opData);
 
       switch (plannerGoal.category) {
         case OperatorGoalCategory.Elite:
-          const removedElite = plannerGoal.eliteLevel;
-          const newMaxLevel = MAX_LEVEL_BY_RARITY[opData.rarity][Math.max(removedElite - 1, 0)];
-          if (goal.elite_from! <= removedElite - 1) {
-            if (goal.level_to) {
-              goalUpdate.elite_from = goal.elite_from;
-              goalUpdate.elite_to = goal.elite_from;
-              if (newMaxLevel == goal.level_from) {
-                goalUpdate.elite_from = null;
-                goalUpdate.elite_to = null;
-                goalUpdate.elite_from = null;
-                goalUpdate.elite_to = null;
-              } else {
-                goalUpdate.level_to = Math.min(newMaxLevel, goal.level_to);
-              }
+          if (goal.elite_from != null && goal.elite_to != null) {
+            /*
+             * if goal is e0 -> e2 and goal removed is e2, then update elite_to to e1
+             * otherwise, remove elite goal entirely
+             * then, if operator has a level goal, then update level_to to the new max level and make sure elite_from and elite_to are non-null
+             *
+             * ex: e1 50 -> e2 40, remove e2
+             * new goal: e1 50 -> e1 max
+             *
+             * ex: e0 max -> e2 40, remove e1
+             * new goal: none
+             *
+             * ex: e0 1 -> e2 1, remove e1
+             * new goal: e0 1 -> e0 max
+             */
+
+            const removedElite = plannerGoal.eliteLevel; // can either be 1 or 2
+            const elite_from = _goal.elite_from ?? 0;
+            const elite_to = _goal.elite_to ?? 0;
+            if (removedElite === 2 && goal.elite_from === 0) {
+              _goal.elite_to = 1;
             } else {
-              goalUpdate.elite_from = null;
-              goalUpdate.elite_to = null;
+              _goal.elite_from = null;
+              _goal.elite_to = null;
             }
-          } else {
-            goalUpdate.elite_to = removedElite - 1;
-            if (goal.level_to) {
-              if (newMaxLevel == goal.level_from) {
-                goalUpdate.elite_from = null;
-                goalUpdate.elite_to = null;
-                goalUpdate.elite_from = null;
-                goalUpdate.elite_to = null;
+
+            // update level goal if it exists
+            if (goal.level_from && goal.level_to) {
+              const maxFrom = MAX_LEVEL_BY_RARITY[opData.rarity][elite_from];
+              const maxTo = MAX_LEVEL_BY_RARITY[opData.rarity][elite_to];
+              const level_from = clamp(1, goal.level_from, maxFrom);
+              const level_to = clamp(1, goal.level_to, maxTo);
+
+              if (elite_from === elite_to && level_from === level_to) {
+                // level goal is redundant and can be removed
+                _goal.elite_from = null;
+                _goal.elite_to = null;
+                _goal.elite_from = null;
+                _goal.elite_to = null;
               } else {
-                goalUpdate.level_to = Math.min(newMaxLevel, goal.level_to);
+                // either elite is differnt or level is; either way, not redundant
+                _goal.elite_from = elite_from;
+                _goal.elite_to = elite_to;
+                _goal.level_from = level_from;
+                _goal.level_to = level_to;
               }
             }
           }
           break;
         case OperatorGoalCategory.Level:
-          const goalElite = plannerGoal.eliteLevel;
-          if (goalElite == goal.elite_to) {
-            if (goal.elite_to == goal.elite_from) {
-              goalUpdate.level_from = null;
-              goalUpdate.level_to = null;
-              goalUpdate.elite_from = null;
-              goalUpdate.elite_to = null;
+          if (goal.level_from != null && goal.elite_to != null) {
+            /*
+             * if goal is the only level component of an elite goal, then remove level goal and leave elite goal intact
+             * otherwise, remove elite goal entirely
+             * if goal is part of a greater promotion + level goal, then remove anything that requires the level goal, leaving anything prior intact
+             *
+             * ex: e1 50 -> e2 40, remove e1 50 -> max
+             * new goal: e1 -> e2
+             *
+             * ex: e0 max -> e2 40, remove e1 1 -> max
+             * new goal: e0 -> e1
+             *
+             * ex: e0 1 -> e2 1, remove e1 1 -> max
+             * new goal: e0 1 -> e1 1
+             */
+
+            // pure level goal
+            if (goal.elite_from === goal.elite_to) {
+              // this means there are no other level or promotion goals. great, we can remove level / elite entirely
+              _goal.elite_from = null;
+              _goal.elite_to = null;
+              _goal.elite_from = null;
+              _goal.elite_to = null;
+            } else if (allPlannerGoals.filter((x) => x.category === OperatorGoalCategory.Level).length === 1) {
+              /* check for possible pure elite goal
+               * this can only be elite A lvl 1 -> elite A + 1 lvl 1
+               * or elite A lvl max -> elite A + 1 lvl N
+               * or elite 0 lvl max -> elite 2 lvl 1
+               * we can do this by checking if getPlannerGoals returns only one level goal
+               */
+              _goal.level_from = null;
+              _goal.level_to = null;
             } else {
-              goalUpdate.level_to = 1;
-            }
-          } else {
-            //goalElite < goal.elite_to
-            if (goalElite == goal.elite_from) {
-              goalUpdate.level_from = null;
-              goalUpdate.level_to = null;
-              goalUpdate.elite_from = null;
-              goalUpdate.elite_to = null;
-            } else {
-              goalUpdate.elite_to = goalElite;
-              goalUpdate.level_to = 1;
+              // remaining goal must be complex - a mix of elite and level goals
+
+              // sanity check - elite_from should never be equal to elite_to at this point, but just in case
+              if (_goal.elite_to === plannerGoal.eliteLevel) {
+                _goal.elite_from = null;
+                _goal.elite_to = null;
+              } else {
+                // cap elite goal at the current elite
+                _goal.elite_to = plannerGoal.eliteLevel;
+                // we should be able to set the level_to to 1 here because if the previous level was E? max,
+                // this case would have been caught by the pure elite goal check
+                _goal.level_to = 1;
+              }
             }
           }
           break;
         case OperatorGoalCategory.Mastery:
-          const skillId = plannerGoal.skillId;
-          const skillIndex = opData.skillData?.findIndex((x) => x.skillId === skillId)!;
+          // fortunately any non-elite/lvl cases should be simpler -
+          // just remove anything after the indicated level
+          const skillIndex = opData.skillData?.findIndex((x) => x.skillId === plannerGoal.skillId);
+          if (skillIndex != null && goal.masteries_from && goal.masteries_to) {
+            _goal.masteries_to = [...goal.masteries_to];
 
-          goalUpdate.masteries_to = [...goal.masteries_to!];
-          const removedMastery = plannerGoal.masteryLevel;
+            _goal.masteries_to[skillIndex] = Math.max(plannerGoal.masteryLevel - 1, goal.masteries_from[skillIndex]);
 
-          goalUpdate.masteries_to[skillIndex] = Math.max(removedMastery - 1, goal.masteries_from![skillIndex]);
-
-          if (_.isEqual(goal.masteries_from, goalUpdate.masteries_to)) {
-            goalUpdate.masteries_from = null;
-            goalUpdate.masteries_to = null;
+            if (_.isEqual(goal.masteries_from, _goal.masteries_to)) {
+              _goal.masteries_from = null;
+              _goal.masteries_to = null;
+            }
           }
           break;
         case OperatorGoalCategory.Module:
           const moduleId = plannerGoal.moduleId;
+          if (moduleId != null && goal.modules_from && goal.modules_to) {
+            _goal.modules_to = { ...goal.modules_to };
+            const removedMasteryLevel = plannerGoal.moduleLevel;
 
-          const updatedModuleTo: Record<string, number> = {
-            ...(goal.modules_to as Record<string, number>),
-          };
-          const removedMasteryLevel = plannerGoal.moduleLevel;
+            if (removedMasteryLevel - 1 <= goal.modules_from[moduleId]) {
+              _goal.modules_to[moduleId] = goal.modules_from[moduleId];
+            } else {
+              _goal.modules_to[moduleId] = removedMasteryLevel - 1;
+            }
 
-          if (removedMasteryLevel - 1 <= ((goal.modules_from as Record<string, number>)![moduleId] ?? 0)) {
-            delete updatedModuleTo[moduleId];
-          } else {
-            updatedModuleTo[moduleId] = removedMasteryLevel - 1;
-          }
-
-          if (_.isEqual(updatedModuleTo, goal.modules_from)) {
-            goalUpdate.modules_from = null;
-            goalUpdate.modules_to = null;
-          } else {
-            goalUpdate.modules_to = updatedModuleTo;
+            if (_.isEqual(_goal.modules_to, goal.modules_from)) {
+              _goal.modules_from = null;
+              _goal.modules_to = null;
+            }
           }
           break;
         case OperatorGoalCategory.SkillLevel:
-          const removedSkillLevel = plannerGoal.skillLevel;
+          const newSkillLevel = plannerGoal.skillLevel - 1;
 
-          if (removedSkillLevel - 1 <= goal.skill_level_from!) {
-            goalUpdate.skill_level_from = null;
-            goalUpdate.skill_level_to = null;
+          if (newSkillLevel <= goal.skill_level_from!) {
+            _goal.skill_level_from = null;
+            _goal.skill_level_to = null;
           } else {
-            goalUpdate.skill_level_to = Math.max(removedSkillLevel - 1, goal.skill_level_from!);
+            _goal.skill_level_to = newSkillLevel;
           }
           break;
       }
-      const { group_name, op_id, ...rest } = goalUpdate;
+      const { group_name, op_id, sort_order, ...rest } = _goal;
       if (Object.values(rest).every((x) => x == null)) {
         removeAllGoalsFromOperator(op_id, group_name);
       } else {
-        updateGoals([goalUpdate]);
+        updateGoals([_goal]);
       }
     },
     [goals, updateGoals, removeAllGoalsFromOperator]
