@@ -103,20 +103,40 @@ const MaterialsNeeded = React.memo((props: Props) => {
     [depot, putDepot]
   );
 
+  const canCraftOne = useCallback(
+    (itemId: string) => {
+      const updatedDatas: DepotItem[] = [];
+      let canCraft = true;
+      const { ingredients } = itemsJson[itemId as keyof typeof itemsJson] as Item;
+      if (!ingredients) return false;
+
+      ingredients.forEach((ingr) => {
+        const ingrData: DepotItem = { ...depot[ingr.id] };
+        const remaining = (depot[ingr.id]?.stock ?? 0) - ingr.quantity;
+        if (remaining < 0) canCraft = false;
+        ingrData.stock = remaining;
+        updatedDatas.push(ingrData);
+      });
+
+      return canCraft;
+    },
+    [depot]
+  );
+
   //TODO disable crafting button if not enough ingredients to craft
   const handleCraftOne = useCallback(
     (itemId: string) => {
-      const updatedDatas: DepotItem[] = [];
       const { ingredients, yield: itemYield } = itemsJson[itemId as keyof typeof itemsJson] as Item;
-      if (ingredients != null) {
-        ingredients.forEach((ingr) => {
-          const ingrData: DepotItem = { ...depot[ingr.id] };
-          ingrData.stock = Math.max((depot[ingr.id].stock ?? 0) - ingr.quantity, 0);
-          updatedDatas.push(ingrData);
-        });
-      }
+      if (!ingredients) return;
+      const updatedDatas: DepotItem[] = [];
+
+      ingredients.forEach((ingr) => {
+        const ingrData: DepotItem = { ...depot[ingr.id] };
+        ingrData.stock = Math.max((depot[ingr.id]?.stock ?? 0) - ingr.quantity, 0);
+        updatedDatas.push(ingrData);
+      });
       const craftedData: DepotItem = { ...depot[itemId] };
-      craftedData.stock = (depot[itemId].stock ?? 0) + (itemYield ?? 1);
+      craftedData.stock = (depot[itemId]?.stock ?? 0) + (itemYield ?? 1);
       updatedDatas.push(craftedData);
 
       putDepot(updatedDatas);
@@ -358,12 +378,12 @@ const MaterialsNeeded = React.memo((props: Props) => {
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleResetCrafting}>
-            <ListItemText inset sx={{ color: (theme) => theme.palette.error.light }}>
+            <ListItemText inset sx={{ color: "error.light" }}>
               Reset crafting states
             </ListItemText>
           </MenuItem>
           <MenuItem onClick={handleResetStock}>
-            <ListItemText inset sx={{ color: (theme) => theme.palette.error.light }}>
+            <ListItemText inset sx={{ color: "error.light" }}>
               Reset stock
             </ListItemText>
           </MenuItem>
@@ -392,6 +412,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
               owned={itemId === "EXP" ? expOwned : depot[itemId]?.stock ?? 0}
               quantity={needed}
               canCompleteByCrafting={canCompleteByCrafting[itemId]}
+              canCraftOne={canCraftOne(itemId)}
               isCrafting={settings.depotSettings.crafting.includes(itemId) ?? false}
               onChange={handleChange}
               onCraftOne={handleCraftOne}

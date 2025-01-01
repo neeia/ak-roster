@@ -14,6 +14,7 @@ interface Props extends ItemStackProps {
   owned: number;
   isCrafting: boolean;
   canCompleteByCrafting: boolean;
+  canCraftOne: boolean;
   hideIncrementDecrementButtons: boolean;
   onIncrement: (itemId: string) => void;
   onDecrement: (itemId: string) => void;
@@ -29,6 +30,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
     owned,
     isCrafting,
     canCompleteByCrafting,
+    canCraftOne,
     hideIncrementDecrementButtons,
     onIncrement,
     onDecrement,
@@ -68,7 +70,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
   };
 
   const craftOneButton = (
-    <Button disabled={!isCrafting} onClick={() => onCraftOne(itemId)} sx={{ width: "auto" }}>
+    <Button disabled={!isCrafting || !canCraftOne} onClick={() => onCraftOne(itemId)} sx={{ width: "auto" }}>
       +1
     </Button>
   );
@@ -134,7 +136,12 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
             },
           },
           input: hideIncrementDecrementButtons
-            ? {}
+            ? {
+                sx: {
+                  borderBottomLeftRadius: 0,
+                  borderBottomRightRadius: 0,
+                },
+              }
             : {
                 startAdornment: (
                   <InputAdornment position="start" sx={{ mr: 0 }}>
@@ -210,13 +217,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
             >
               {isCrafting ? "Crafting" : "Craft"}
             </Button>
-            {isCrafting ? (
-              <Tooltip arrow title="Craft one using your materials">
-                {craftOneButton}
-              </Tooltip>
-            ) : (
-              craftOneButton
-            )}
+            {isCrafting && craftOneButton}
           </ButtonGroup>
         ) : (
           <Button
