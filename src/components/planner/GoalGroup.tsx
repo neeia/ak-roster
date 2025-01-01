@@ -20,35 +20,24 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Image from "next/image";
 import React, { memo, useCallback, useState } from "react";
 import GoalData from "types/goalData";
-import { PlannerGoal } from "types/goal";
-import { OperatorGoals } from "./OperatorGoals";
-import { Operator } from "types/operators/operator";
-import useOperators from "util/hooks/useOperators";
-import { defaultOperatorObject } from "util/changeOperator";
 
 interface Props {
   operatorGoals: GoalData[] | undefined;
   groupName: string;
-  onGoalEdit: (opId: string, groupName: string) => void;
-  onGoalDeleted: (plannerGoal: PlannerGoal) => void;
-  onGoalCompleted: (plannerGoal: PlannerGoal, operator: Operator) => void;
   removeAllGoalsFromGroup: (groupName: string) => void;
   removeGroup: (groupName: string) => void;
-  removeAllGoalsFromOperator: (opId: string, groupName: string) => void;
   defaultExpanded: boolean;
+  children?: React.ReactNode;
 }
 
 const GoalGroup = memo((props: Props) => {
   const {
     operatorGoals,
     groupName,
-    onGoalEdit,
-    onGoalDeleted,
-    onGoalCompleted,
     removeAllGoalsFromGroup,
     removeGroup,
-    removeAllGoalsFromOperator,
     defaultExpanded,
+    children,
   } = props;
 
   const [expanded, setExpanded] = useState<boolean>(defaultExpanded);
@@ -56,8 +45,6 @@ const GoalGroup = memo((props: Props) => {
   const [deleteGroupOpen, setDeleteGroupOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const isMenuOpen = Boolean(anchorEl);
-
-  const [roster] = useOperators();
 
   const onDeleteFromGroupsClick = useCallback(() => {
     removeAllGoalsFromGroup(groupName);
@@ -196,24 +183,7 @@ const GoalGroup = memo((props: Props) => {
             )}
           </Box>
         </AccordionSummary>
-        <AccordionDetails>
-          {operatorGoals &&
-            operatorGoals
-              .sort((a, b) => a.sort_order - b.sort_order)
-              .map((operatorGoal) => {
-                return (
-                  <OperatorGoals
-                    key={operatorGoal.op_id}
-                    operator={roster[operatorGoal.op_id] ?? defaultOperatorObject(operatorGoal.op_id, true)}
-                    operatorGoal={operatorGoal}
-                    onGoalEdit={onGoalEdit}
-                    onGoalDeleted={onGoalDeleted}
-                    onGoalCompleted={onGoalCompleted}
-                    removeAllGoalsFromOperator={removeAllGoalsFromOperator}
-                  />
-                );
-              })}
-        </AccordionDetails>
+        <AccordionDetails>{children}</AccordionDetails>
       </Accordion>
       <Dialog open={deleteGroupGoalsOpen}>
         <DialogTitle>

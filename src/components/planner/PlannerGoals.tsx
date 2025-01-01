@@ -10,14 +10,19 @@ import PlannerGoalAdd from "./PlannerGoalAdd";
 import operatorJson from "data/operators";
 import GoalGroup from "./GoalGroup";
 import Board from "components/base/Board";
-import GoalData, { getPlannerGoals, GoalDataInsert } from "types/goalData";
+import GoalData, { getPlannerGoals, GoalDataInsert, plannerGoalToGoalData } from "types/goalData";
 import _ from "lodash";
-import { clamp, MAX_LEVEL_BY_RARITY } from "util/changeOperator";
+import { changeLevel, changePromotion, clamp, defaultOperatorObject, MAX_LEVEL_BY_RARITY } from "util/changeOperator";
 import GoalReorderDialog from "./GoalReorderDialog";
 import DepotItem from "types/depotItem";
 import { Ingredient } from "types/item";
 import { Operator } from "types/operators/operator";
 import useGoalGroups from "util/hooks/useGoalGroups";
+import applyGoalsToOperator from "util/fns/applyGoalsToOperator";
+import getGoalIngredients from "util/getGoalIngredients";
+import useOperators from "util/hooks/useOperators";
+import OperatorGoals from "./OperatorGoals";
+import PlannerGoalCard from "./PlannerGoalCard";
 
 interface Props {
   goals: GoalData[];
@@ -29,10 +34,11 @@ interface Props {
   removeAllGoalsFromOperator: (opId: string, groupName: string) => void;
 }
 
-const OperatorGoals = (props: Props) => {
+const PlannerGoals = (props: Props) => {
   const { goals, depot, setDepot, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator } =
     props;
   const { groups, putGroups, removeGroup } = useGoalGroups();
+  const [roster] = useOperators();
 
   const [addGoalOpen, setAddGoalOpen] = useState<boolean>(false);
   const [opId, setOpId] = useState<string>();
@@ -246,84 +252,21 @@ const OperatorGoals = (props: Props) => {
   );
 
   const onPlannerGoalCardGoalCompleted = useCallback(
-    (plannerGoal: PlannerGoal, operator: Operator) => {
+    (plannerGoal: PlannerGoal, operator?: Operator) => {
+      if (!operator) operator = defaultOperatorObject(plannerGoal.operatorId, true);
       const opId = plannerGoal.operatorId;
       const opData = operatorJson[opId];
       const goal = goals!.find((x) => x.op_id === operator.op_id)!;
-      const operatorUpdate: Operator = { ...operator };
+      let _operator: Operator = { ...operator };
       let depotUpdate: DepotItem[] = [];
 
-      switch (plannerGoal.category) {
-        case OperatorGoalCategory.Elite:
-          const completedElite = plannerGoal.eliteLevel;
-          operator.elite = completedElite;
+      const op = applyGoalsToOperator(plannerGoalToGoalData(plannerGoal), operator);
 
-          break;
-        case OperatorGoalCategory.Level:
-          const completedLevel = plannerGoal.toLevel;
-          const eliteLevel = plannerGoal.eliteLevel;
+      const ingredients = getGoalIngredients(plannerGoal);
+      console.log(ingredients);
 
-          break;
-        case OperatorGoalCategory.Mastery:
-          const completedMasteryLevel = plannerGoal.masteryLevel;
-          const skillId = plannerGoal.skillId;
-          const skillIndex = opData.skillData?.findIndex((x) => x.skillId === skillId)!;
-          const rosterOperatorMasteryLevel = operator.masteries?.[skillIndex] ?? 0;
-
-          if (rosterOperatorMasteryLevel < completedMasteryLevel) {
-            if (operatorUpdate.masteries) {
-              operatorUpdate.masteries = [0, 0, 0];
-            }
-            operatorUpdate.masteries![skillIndex] = completedMasteryLevel;
-            const masteryLevelStart = Math.max(goal.masteries_from![skillIndex], operator.masteries?.[skillIndex] ?? 0);
-            const ingredients = opData
-              .skillData![skillIndex].masteries.slice(masteryLevelStart, completedMasteryLevel)
-              .flatMap((x) => x.ingredients);
-            depotUpdate = depotUpdate.concat(getDepotUpdateFromIngredients(ingredients));
-
-            //TODO add complete e2, SL7 requirements
-          }
-          break;
-        case OperatorGoalCategory.Module:
-          const completedModuleLevel = plannerGoal.moduleLevel;
-          const moduleId = plannerGoal.moduleId;
-          const rosterOperatorModuleLevel = operator.modules?.[moduleId] ?? 0;
-          if (rosterOperatorModuleLevel < completedModuleLevel) {
-            if (operatorUpdate.modules) {
-              operatorUpdate.modules = {};
-            }
-            operatorUpdate.modules![moduleId] = completedModuleLevel;
-            const moduleLevelStart = Math.max(
-              (goal.modules_from as Record<string, number>)![moduleId],
-              operator.modules?.[moduleId] ?? 0
-            );
-            const ingredients = opData
-              .moduleData!.find((x) => x.moduleId === moduleId)!
-              .stages.slice(moduleLevelStart, completedModuleLevel)
-              .flatMap((x) => x.ingredients);
-            depotUpdate = depotUpdate.concat(getDepotUpdateFromIngredients(ingredients));
-
-            //TODO add complete e1, e2, min level requirements
-          }
-          break;
-        case OperatorGoalCategory.SkillLevel:
-          const completedSkillLevel = plannerGoal.skillLevel;
-          if (operator.skill_level < completedSkillLevel) {
-            const skillLevelStart = Math.max(goal.skill_level_from!, operator.skill_level);
-            const ingredients = opData.skillLevels
-              .slice(skillLevelStart, completedSkillLevel)
-              .flatMap((x) => x.ingredients);
-            depotUpdate = depotUpdate.concat(getDepotUpdateFromIngredients(ingredients));
-
-            if (completedSkillLevel > 4) {
-              //TODO add complete e1 requirement
-            }
-          }
-
-          break;
-      }
       if (depotUpdate.length > 0) {
-        setDepot(depotUpdate);
+        // setDepot(depotUpdate);
       }
     },
     [getDepotUpdateFromIngredients, goals, setDepot]
@@ -336,14 +279,36 @@ const OperatorGoals = (props: Props) => {
         key={groupName}
         groupName={groupName}
         operatorGoals={groupedGoals[groupName]}
-        onGoalEdit={onGoalEdit}
-        onGoalDeleted={onPlannerGoalCardGoalDeleted}
-        onGoalCompleted={onPlannerGoalCardGoalCompleted}
         removeAllGoalsFromGroup={removeAllGoalsFromGroup}
         removeGroup={removeGroup}
-        removeAllGoalsFromOperator={removeAllGoalsFromOperator}
         defaultExpanded={index == 0}
-      />
+      >
+        {groupedGoals[groupName]
+          ?.sort((a, b) => a.sort_order - b.sort_order)
+          .map((operatorGoal) => {
+            return (
+              <OperatorGoals
+                key={operatorGoal.op_id}
+                operator={roster[operatorGoal.op_id] ?? defaultOperatorObject(operatorGoal.op_id, true)}
+                operatorGoal={operatorGoal}
+                onGoalEdit={onGoalEdit}
+                removeAllGoalsFromOperator={removeAllGoalsFromOperator}
+              >
+                {getPlannerGoals(operatorGoal, {
+                  ...(roster[operatorGoal.op_id] ?? defaultOperatorObject(operatorGoal.op_id, true)),
+                  ...operatorJson[operatorGoal.op_id],
+                }).map((plannerGoal, index) => (
+                  <PlannerGoalCard
+                    key={index}
+                    goal={plannerGoal}
+                    onGoalDeleted={onPlannerGoalCardGoalDeleted}
+                    onGoalCompleted={onPlannerGoalCardGoalCompleted}
+                  />
+                ))}
+              </OperatorGoals>
+            );
+          })}
+      </GoalGroup>
     ));
   };
 
@@ -496,4 +461,4 @@ const OperatorGoals = (props: Props) => {
     </>
   );
 };
-export default OperatorGoals;
+export default PlannerGoals;

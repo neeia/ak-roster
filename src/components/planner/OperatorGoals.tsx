@@ -11,8 +11,7 @@ import {
 import Image from "next/image";
 import AddCircleIcon from "@mui/icons-material/AddCircleOutlined";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircleOutlined";
-import GoalData, { getGoalString, getPlannerGoals } from "types/goalData";
-import PlannerGoalCard from "./PlannerGoalCard";
+import GoalData, { getGoalString } from "types/goalData";
 import React, { memo, useCallback, useState } from "react";
 import { PlannerGoal } from "types/goal";
 import operatorJson from "data/operators";
@@ -23,13 +22,13 @@ interface Props {
   operator: Operator;
   operatorGoal: GoalData;
   onGoalEdit: (opId: string, groupName: string) => void;
-  onGoalDeleted: (plannerGoal: PlannerGoal) => void;
-  onGoalCompleted: (plannerGoal: PlannerGoal, operator: Operator) => void;
   removeAllGoalsFromOperator: (opId: string, groupName: string) => void;
+  children?: React.ReactNode;
 }
 
 export const OperatorGoals = memo((props: Props) => {
-  const { operator, operatorGoal, onGoalEdit, onGoalDeleted, onGoalCompleted, removeAllGoalsFromOperator } = props;
+  const { operatorGoal, onGoalEdit, removeAllGoalsFromOperator, children } =
+    props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -167,16 +166,7 @@ export const OperatorGoals = memo((props: Props) => {
           </Menu>
         </Box>
       </AccordionSummary>
-      <AccordionDetails sx={{ p: 0 }}>
-        {getPlannerGoals(operatorGoal, { ...operator, ...opData }).map((plannerGoal, index) => (
-          <PlannerGoalCard
-            key={index}
-            goal={plannerGoal}
-            onGoalDeleted={onGoalDeleted}
-            onGoalCompleted={onGoalCompleted}
-          />
-        ))}
-      </AccordionDetails>
+      <AccordionDetails sx={{ p: 0 }}>{children}</AccordionDetails>
     </Accordion>
   );
 });
