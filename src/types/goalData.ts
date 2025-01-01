@@ -68,7 +68,7 @@ export function getPlannerGoals(goal: GoalData, opData?: OperatorData) {
   }
 
   if (goal.level_from && goal.level_to && goal.elite_from != null && goal.elite_to != null) {
-    if (goal.elite_from == goal.elite_to) {
+    if (goal.elite_from === goal.elite_to) {
       const levelGoal: PlannerGoal = {
         category: OperatorGoalCategory.Level,
         eliteLevel: goal.elite_to,
@@ -80,14 +80,16 @@ export function getPlannerGoals(goal: GoalData, opData?: OperatorData) {
     } else {
       const maxEliteLevel = goal.level_to == 1 ? goal.elite_to - 1 : goal.elite_to;
       for (let i = goal.elite_from; i <= maxEliteLevel; i++) {
+        const fromLevel = i === goal.elite_from ? goal.level_from : 1;
+        const toLevel = i === goal.elite_to ? goal.level_to : MAX_LEVEL_BY_RARITY[opData.rarity][i];
         const eliteGoal: PlannerGoal = {
           category: OperatorGoalCategory.Level,
-          fromLevel: i == goal.elite_from ? goal.level_from : 1,
-          toLevel: i == goal.elite_to ? goal.level_to : MAX_LEVEL_BY_RARITY[opData.rarity][i],
+          fromLevel,
+          toLevel,
           eliteLevel: i,
           operatorId: goal.op_id,
         };
-        plannerGoals.push(eliteGoal);
+        if (fromLevel !== toLevel) plannerGoals.push(eliteGoal);
       }
     }
   }
