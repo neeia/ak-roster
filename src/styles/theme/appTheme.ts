@@ -27,7 +27,19 @@ const neutral = {
   900: "#121212",
   950: "#0D0D0D",
 };
-
+const neutral_light = {
+  950: "#F2F2F2",
+  900: "#E3E3E3",
+  800: "#C7C7C7",
+  700: "#ADADAD",
+  600: "#919191",
+  500: "#707070",
+  400: "#505050",
+  300: "#303030",
+  200: "#212121",
+  100: "#121212",
+  50: "#0D0D0D",
+};
 export const DISCORD_BLURPLE = "#5865F2";
 export const REDDIT_ORANGERED = "#FF4500";
 export const YOUTUBE_RED = "#FF0000";
@@ -45,8 +57,10 @@ export const brand: Record<string, string> = {
   // "0": "#FF6E40",
 };
 
-const appTheme = (brandColor: string) =>
-  createTheme({
+const appTheme = (brandColor: string, light = false) => {
+  const _neutral = light ? neutral_light : neutral;
+
+  return createTheme({
     breakpoints: {
       values: {
         xs: 0,
@@ -62,18 +76,18 @@ const appTheme = (brandColor: string) =>
         main: brandColor,
       },
       secondary: {
-        main: neutral[700],
+        main: _neutral[700],
       },
       text: {
-        primary: neutral[50],
-        secondary: neutral[200],
+        primary: _neutral[50],
+        secondary: _neutral[200],
       },
       background: {
-        default: neutral[800],
-        paper: neutral[900],
-        light: neutral[700],
+        default: _neutral[800],
+        paper: _neutral[900],
+        light: _neutral[700],
       },
-      grey: neutral,
+      grey: _neutral,
     },
     components: {
       MuiAlert: {
@@ -117,10 +131,10 @@ const appTheme = (brandColor: string) =>
           {
             props: { variant: "neutral" },
             style: {
-              color: neutral[50],
-              backgroundColor: neutral[700],
+              color: _neutral[50],
+              backgroundColor: _neutral[700],
               "&:hover": {
-                background: lighten(neutral[700], 0.1),
+                background: lighten(_neutral[700], 0.1),
               },
               transition: "background-color 0.1s",
             },
@@ -177,10 +191,10 @@ const appTheme = (brandColor: string) =>
         styleOverrides: {
           root: {
             padding: 8,
-            color: neutral[50],
-            backgroundColor: neutral[700],
+            color: _neutral[50],
+            backgroundColor: _neutral[700],
             "&:hover": {
-              background: lighten(neutral[700], 0.1),
+              background: lighten(_neutral[700], 0.1),
             },
             transition: "background-color 0.1s",
             "&:not(._):not(._):not(._)": {
@@ -199,7 +213,7 @@ const appTheme = (brandColor: string) =>
         styleOverrides: {
           root: {
             "&[aria-disabled='true']": {
-              color: neutral[300],
+              color: _neutral[300],
               opacity: 0.8,
               pointerEvents: "none",
             },
@@ -244,14 +258,14 @@ const appTheme = (brandColor: string) =>
         fontSize: "1rem",
         lineHeight: 1,
         fontWeight: "normal",
-        color: neutral[200],
+        color: _neutral[200],
         marginLeft: "8px",
       },
       h4: {
         fontSize: "0.875rem",
         lineHeight: 1,
         fontWeight: "normal",
-        color: neutral[200],
+        color: _neutral[200],
         marginLeft: "8px",
       },
       h6: {
@@ -260,6 +274,7 @@ const appTheme = (brandColor: string) =>
       },
     },
   });
+};
 
 export default appTheme;
 

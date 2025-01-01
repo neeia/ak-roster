@@ -3,7 +3,7 @@ import "styles/globals.css";
 import { AppProps } from "next/app";
 import createTheme, { brand } from "styles/theme/appTheme";
 import createEmotionCache from "util/createEmotionCache";
-import { AlertProps, CssBaseline, ThemeProvider, useMediaQuery } from "@mui/material";
+import { CssBaseline, ThemeProvider, useMediaQuery } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import { getApps, initializeApp } from "firebase/app";
 import { Analytics } from "@vercel/analytics/react";
