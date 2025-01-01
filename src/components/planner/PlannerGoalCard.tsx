@@ -21,6 +21,7 @@ import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import getGoalIngredients from "util/getGoalIngredients";
 import useOperators from "util/hooks/useOperators";
 import { DeleteForever, Upload } from "@mui/icons-material";
+import canCompleteByCrafting from "util/fns/canCompleteGoalByCrafting";
 
 const GoalCardButton = styled(Button)({
   borderRadius: "0px",
@@ -74,6 +75,7 @@ const PlannerGoalCard = memo((props: Props) => {
   const goalLabel = `${opData.name} ${goalName}`;
 
   const ingredients = getGoalIngredients(goal);
+  // const isCompletable = canCompleteByCrafting(Object.fromEntries(ingredients), depotSlice, crafting);
 
   return (
     <Box
@@ -141,7 +143,7 @@ const PlannerGoalCard = memo((props: Props) => {
         <Tooltip arrow describeChild title="Complete Goal" placement="left">
           <GoalCardButton
             aria-label={`Complete goal: ${goalLabel}`}
-            onClick={() => onGoalCompleted(goal, operator!)}
+            onClick={() => onGoalCompleted(goal, operator)}
             sx={{
               color: "text.secondary",
               "&:hover": {

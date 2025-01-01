@@ -14,6 +14,7 @@ import GoalData, { getPlannerGoals } from "types/goalData";
 import ExportImportDialog from "./ExportImportDialog";
 import Board from "components/base/Board";
 import useSettings from "util/hooks/useSettings";
+import canCompleteByCrafting from "util/fns/canCompleteGoalByCrafting";
 
 const LMD_ITEM_ID = "4001";
 
@@ -123,7 +124,6 @@ const MaterialsNeeded = React.memo((props: Props) => {
     [depot]
   );
 
-  //TODO disable crafting button if not enough ingredients to craft
   const handleCraftOne = useCallback(
     (itemId: string) => {
       const { ingredients, yield: itemYield } = itemsJson[itemId as keyof typeof itemsJson] as Item;
@@ -242,55 +242,11 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
   // 3. calculate what ingredients can be fulfilled by crafting
   const _depot = { ...depot }; // need to hypothetically deduct from stock
-  const canCompleteByCrafting: Record<string, boolean> = {};
-  Object.keys(depot)
-    .filter(
-      (craftedItemId) =>
-        materialsNeeded[craftedItemId] != null &&
-        materialsNeeded[craftedItemId] - (depot[craftedItemId]?.stock ?? 0) > 0
-    )
-    .sort(
-      (itemA, itemB) =>
-        itemsJson[itemA as keyof typeof itemsJson].tier - itemsJson[itemB as keyof typeof itemsJson].tier
-    )
-    .forEach((craftedItemId) => {
-      const shortage = materialsNeeded[craftedItemId] - (depot[craftedItemId].stock ?? 0);
-      const craftedItem: Item = itemsJson[craftedItemId as keyof typeof itemsJson];
-      const ingredients = craftedItem.ingredients?.filter((ingr) => ingr.id !== LMD_ITEM_ID);
-      if (ingredients != null) {
-        const itemYield = craftedItem.yield ?? 1;
-        // numTimesCraftable: max number of times the formula can be executed
-        const numTimesCraftable = Math.min(
-          ...ingredients.map(
-            (ingr) => Math.floor((_depot[ingr.id]?.stock ?? 0) / ingr.quantity) //here
-          )
-        );
-        // numTimesToCraft: how many times we'll actually execute the formula
-        const numTimesToCraft = Math.min(numTimesCraftable, Math.ceil(shortage / itemYield));
-        // now deduct from crafting supply
-        ingredients.forEach((ingr) => {
-          const copy = { ..._depot[ingr.id] };
-          copy.stock = Math.max(
-            //here
-            (_depot[ingr.id]?.stock ?? 0) - ingr.quantity * numTimesToCraft //here
-          );
-          _depot[ingr.id] = copy;
-        });
-        if (shortage - numTimesToCraft <= 0) {
-          canCompleteByCrafting[craftedItemId] = true;
-        }
-        // even if the crafted item can't be completed, update our hypothetical depot counts
-        const copy = { ..._depot[craftedItemId] };
-        copy.stock = (_depot[craftedItemId].stock ?? 0) + numTimesToCraft * itemYield; //here //here
-        _depot[craftedItemId] = copy;
-      }
-    });
-
-  Object.keys(ingredientToCraftedItemsMapping).forEach((ingrId) => {
-    if ((materialsNeeded[ingrId] ?? 0) - (_depot[ingrId]?.stock ?? 0) <= 0) {
-      canCompleteByCrafting[ingrId] = true;
-    }
-  });
+  const craftableItems: Record<string, boolean> = canCompleteByCrafting(
+    materialsNeeded,
+    _depot,
+    settings.depotSettings.crafting
+  );
 
   const allItems: [string, number][] = Object.values(itemsJson).map((item) => [item.id, materialsNeeded[item.id] ?? 0]);
 
@@ -305,7 +261,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
     if (settings.depotSettings.sortCompletedToBottom) {
       return (
         (neededA && neededA <= depot[itemIdA]?.stock ? 1 : 0) - (neededB && neededB <= depot[itemIdB]?.stock ? 1 : 0) ||
-        (canCompleteByCrafting[itemIdA] ? 1 : 0) - (canCompleteByCrafting[itemIdB] ? 1 : 0) ||
+        (craftableItems[itemIdA] ? 1 : 0) - (craftableItems[itemIdB] ? 1 : 0) ||
         compareBySortId
       );
     }
@@ -411,7 +367,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
               itemId={itemId}
               owned={itemId === "EXP" ? expOwned : depot[itemId]?.stock ?? 0}
               quantity={needed}
-              canCompleteByCrafting={canCompleteByCrafting[itemId]}
+              canCompleteByCrafting={craftableItems[itemId]}
               canCraftOne={canCraftOne(itemId)}
               isCrafting={settings.depotSettings.crafting.includes(itemId) ?? false}
               onChange={handleChange}
