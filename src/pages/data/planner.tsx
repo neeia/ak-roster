@@ -5,6 +5,9 @@ import useGoals from "util/hooks/useGoals";
 import useDepot from "util/hooks/useDepot";
 import { Box, BoxProps, Tab, Tabs } from "@mui/material";
 import { useState } from "react";
+import useSettings from "util/hooks/useSettings";
+import useGoalFilter from "util/hooks/useGoalFilter";
+import { getPlannerGoals } from "types/goalData";
 
 interface TabPanelProps extends BoxProps {
   index: number;
@@ -49,6 +52,13 @@ const Goals: NextPage = () => {
   const [depot, putDepot] = useDepot();
   const { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator } = useGoals();
   const [value, setValue] = useState(1);
+  const [settings, setSettings] = useSettings();
+  const filters = useGoalFilter();
+
+  const plannerGoals = goals
+    .flatMap((goal) => getPlannerGoals(goal).map((g) => ({ goal: g, group: goal.group_name })))
+    .filter(({ goal, group }) => filters.filterFunction(goal, depot, group))
+    .map(({ goal }) => goal);
 
   const handleChange = (_: any, newValue: number) => {
     setValue(newValue);
@@ -68,7 +78,13 @@ const Goals: NextPage = () => {
       </Tabs>
       <Box sx={{ display: { xs: "flex", md: "grid" }, gridTemplateColumns: "1fr 1fr", gap: 2 }}>
         <TabPanel index={1} value={value}>
-          <MaterialsNeeded goals={goals} depot={depot} putDepot={putDepot} />
+          <MaterialsNeeded
+            goals={plannerGoals}
+            depot={depot}
+            putDepot={putDepot}
+            settings={settings}
+            setSettings={setSettings}
+          />
         </TabPanel>
         <TabPanel index={2} value={value}>
           <PlannerGoals
@@ -79,6 +95,8 @@ const Goals: NextPage = () => {
             removeAllGoals={removeAllGoals}
             removeAllGoalsFromGroup={removeAllGoalsFromGroup}
             removeAllGoalsFromOperator={removeAllGoalsFromOperator}
+            settings={settings}
+            {...filters}
           />
         </TabPanel>
       </Box>

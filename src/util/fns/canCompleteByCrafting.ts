@@ -83,7 +83,7 @@ const canCompleteByCrafting = (
     }
   });
 
-  return craftableItems;
+  return { craftableItems, depot: _depot };
 };
 
 export default canCompleteByCrafting;

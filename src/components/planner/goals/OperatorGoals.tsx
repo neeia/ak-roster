@@ -13,7 +13,6 @@ import AddCircleIcon from "@mui/icons-material/AddCircleOutlined";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircleOutlined";
 import GoalData, { getGoalString } from "types/goalData";
 import React, { memo, useCallback, useState } from "react";
-import { PlannerGoal } from "types/goal";
 import operatorJson from "data/operators";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Operator } from "types/operators/operator";
@@ -22,13 +21,13 @@ interface Props {
   operator: Operator;
   operatorGoal: GoalData;
   onGoalEdit: (opId: string, groupName: string) => void;
+  onGoalMove: (opId: string, groupName: string) => void;
   removeAllGoalsFromOperator: (opId: string, groupName: string) => void;
   children?: React.ReactNode;
 }
 
 export const OperatorGoals = memo((props: Props) => {
-  const { operatorGoal, onGoalEdit, removeAllGoalsFromOperator, children } =
-    props;
+  const { operatorGoal, onGoalEdit, onGoalMove, removeAllGoalsFromOperator, children } = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -52,6 +51,11 @@ export const OperatorGoals = memo((props: Props) => {
     onGoalEdit(operatorGoal.op_id, operatorGoal.group_name);
   };
 
+  const handleMoveGoalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    handleMoreMenuClose(e);
+    onGoalMove(operatorGoal.op_id, operatorGoal.group_name);
+  };
+
   const handleDeleteGoalsButtonClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       handleMoreMenuClose(e);
@@ -72,12 +76,13 @@ export const OperatorGoals = memo((props: Props) => {
       onChange={(_, expanded) => setExpanded(expanded)}
       sx={{
         backgroundColor: "background.default",
-        mb: 2,
+        mb: "16px !important",
         "&:before": {
           display: "none",
         },
         borderRadius: 1,
       }}
+      slotProps={{ transition: { timeout: 250 } }}
     >
       <AccordionSummary
         sx={{
@@ -156,6 +161,9 @@ export const OperatorGoals = memo((props: Props) => {
           >
             <MenuItem component="button" onClick={handleEditGoalButtonClick}>
               <Typography>Edit Goal</Typography>
+            </MenuItem>
+            <MenuItem component="button" onClick={handleMoveGoalButtonClick}>
+              <Typography>Change Group</Typography>
             </MenuItem>
             <MenuItem component="button" onClick={handleCompleteGoalsButtonClick}>
               <Typography color="success">Complete all goals</Typography>

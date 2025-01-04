@@ -19,37 +19,30 @@ import React, { useEffect, useState } from "react";
 import OperatorSearch from "../OperatorSearch";
 import { Operator, OperatorData } from "types/operators/operator";
 import { Close } from "@mui/icons-material";
-import Chip from "../../base/Chip";
-import Promotion from "../../data/input/Select/Promotion";
-import SelectGroup, { DisabledContext } from "../../data/input/Select/SelectGroup";
-import Level from "../../data/input/Select/Level";
-import SkillLevel from "../../data/input/Select/SkillLevel";
+import Chip from "components/base/Chip";
+import Promotion from "components/data/input/Select/Promotion";
+import SelectGroup, { DisabledContext } from "components/data/input/Select/SelectGroup";
+import Level from "components/data/input/Select/Level";
+import SkillLevel from "components/data/input/Select/SkillLevel";
 import AddGroupDialog from "./AddGroupDialog";
-import Mastery from "../../data/input/Select/Mastery";
-import Module from "../../data/input/Select/Module";
+import Mastery from "components/data/input/Select/Mastery";
+import Module from "components/data/input/Select/Module";
 import GoalData, { GoalDataInsert } from "types/goalData";
 import _ from "lodash";
-import {
-  clamp,
-  defaultOperatorObject,
-  MAX_LEVEL_BY_RARITY,
-  MAX_SKILL_LEVEL_BY_PROMOTION,
-  MODULE_REQ_BY_RARITY,
-} from "util/changeOperator";
-import useOperators from "util/hooks/useOperators";
+import { clamp, defaultOperatorObject, MAX_LEVEL_BY_RARITY, MAX_SKILL_LEVEL_BY_PROMOTION } from "util/changeOperator";
 import { GroupsDataInsert } from "types/groupData";
 import Preset from "types/operators/presets";
 import usePresets from "util/hooks/usePresets";
 import { modTypes } from "components/data/batch/PresetDialog";
-import { current } from "@reduxjs/toolkit";
-import OperatorBlock from "components/data/OperatorBlock";
 import SupportBlock from "components/data/SupportBlock";
 import applyGoalsFromOperator from "util/fns/applyGoalsFromOperator";
 import applyGoalsToOperator from "util/fns/applyGoalsToOperator";
 import operatorJson from "data/operators";
+import Roster from "types/operators/roster";
 
 interface Props {
   open: boolean;
+  roster: Roster;
   op_id?: string;
   group?: string;
   goals?: GoalData[];
@@ -76,11 +69,10 @@ const SHORTCUTS: Preset[] = [
   },
 ];
 const PlannerGoalAdd = (props: Props) => {
-  const { open, op_id, group, goals = [], goalGroups, updateGoals, putGroup, onClose } = props;
+  const { open, roster, op_id, group, goals = [], goalGroups, updateGoals, putGroup, onClose } = props;
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
-  const [roster] = useOperators();
   const { presets } = usePresets();
 
   const [opData, setOpData] = useState<OperatorData | null>(null);
@@ -255,13 +247,15 @@ const PlannerGoalAdd = (props: Props) => {
   // promotion
   const onPromotionFromChange = (elite_from: number) => {
     if (!isNumber(goalBuilder.elite_from) || !isNumber(goalBuilder.elite_to)) return;
-    const maxLevel = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_from];
+    const elite_to = goalBuilder.elite_to ?? currentOp?.elite ?? 0;
+    const max_from = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_from];
+    const max_to = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_to];
     setGoalBuilder((prev) => ({
       ...prev,
       elite_from,
       elite_to: clamp(elite_from, prev.elite_to!, opData!.eliteLevels.length),
-      level_from: prev.level_from ? clamp(1, prev.level_from, maxLevel) : undefined,
-      level_to: prev.level_to ? clamp(1, prev.level_to, maxLevel) : undefined,
+      level_from: prev.level_from ? clamp(1, prev.level_from, max_from) : undefined,
+      level_to: prev.level_to ? clamp(1, prev.level_to, max_to) : undefined,
     }));
   };
   const onPromotionToChange = (elite_to: number) => {
@@ -279,20 +273,26 @@ const PlannerGoalAdd = (props: Props) => {
   // level
   const onLevelFromChange = (level_from: number) => {
     if (!isNumber(goalBuilder.level_from) || !isNumber(goalBuilder.level_to)) return;
-    const maxLevel = MAX_LEVEL_BY_RARITY[opData!.rarity][goalBuilder.elite_from ?? currentOp?.elite ?? 0];
+    const elite_from = goalBuilder.elite_from ?? currentOp?.elite ?? 0;
+    const elite_to = goalBuilder.elite_to ?? currentOp?.elite ?? 0;
+    const max_from = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_from];
+    const max_to = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_to];
     setGoalBuilder((prev) => ({
       ...prev,
-      level_from: clamp(1, level_from, maxLevel),
-      level_to: clamp(level_from, prev.level_to ?? level_from, maxLevel),
+      level_from: clamp(1, level_from, max_from),
+      level_to: clamp(elite_from === elite_to ? level_from : 1, prev.level_to ?? level_from, max_to),
     }));
   };
   const onLevelToChange = (level_to: number) => {
     if (!isNumber(goalBuilder.level_from) || !isNumber(goalBuilder.level_to)) return;
-    const maxLevel = MAX_LEVEL_BY_RARITY[opData!.rarity][goalBuilder.elite_to ?? currentOp?.elite ?? 0];
+    const elite_from = goalBuilder.elite_from ?? currentOp?.elite ?? 0;
+    const elite_to = goalBuilder.elite_to ?? currentOp?.elite ?? 0;
+    const max_from = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_from];
+    const max_to = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_to];
     setGoalBuilder((prev) => ({
       ...prev,
-      level_from: clamp(1, prev.level_from ?? level_to, level_to),
-      level_to: clamp(1, level_to, maxLevel),
+      level_from: clamp(1, prev.level_from ?? level_to, elite_from === elite_to ? level_to : max_from),
+      level_to: clamp(1, level_to, max_to),
     }));
   };
 

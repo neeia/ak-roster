@@ -6,7 +6,7 @@ import { MAX_LEVEL_BY_RARITY } from "../util/changeOperator";
 import getNumSkills from "util/fns/getNumSkills";
 
 type GoalsTable = Database["public"]["Tables"]["goals"];
-type GoalData = Omit<GoalsTable["Row"], "user_id" | "modules_from" | "modules_to"> & {
+type GoalData = Omit<GoalsTable["Row"], "modules_from" | "modules_to"> & {
   modules_from: Record<string, number> | null;
   modules_to: Record<string, number> | null;
 };
@@ -51,7 +51,7 @@ export function getGoalString(goal: GoalData, opData: OperatorData) {
   return goalArray.join(", ");
 }
 
-export function getPlannerGoals(goal: GoalData, opData?: OperatorData) {
+export function getPlannerGoals(goal: GoalDataInsert, opData?: OperatorData) {
   let plannerGoals: PlannerGoal[] = [];
   if (!opData) {
     opData = operatorJson[goal.op_id];

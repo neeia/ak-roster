@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
-import GoalData, { GoalDataInsert } from "types/goalData";
+import GoalData, { getPlannerGoals, GoalDataInsert } from "types/goalData";
 import handlePostgrestError from "util/fns/handlePostgrestError";
 import useLocalStorage from "./useLocalStorage";
 
-const fillNull = (goal: GoalDataInsert, index: number): GoalData => {
+const fillNull = (goal: GoalDataInsert, index: number): GoalDataInsert => {
   const {
     op_id,
     group_name,
@@ -47,6 +47,18 @@ function useGoals() {
 
       const nulledGoalsData = goalsData.map((g) => fillNull(g, maxIndex));
       nulledGoalsData.forEach((goalInsert) => {
+        const plannerGoals = getPlannerGoals(goalInsert);
+        const substantial = plannerGoals.length > 0;
+        if (!substantial) {
+          const index = goals.findIndex((x) => x.op_id === goalInsert.op_id && x.group_name === goalInsert.group_name);
+          _goals.splice(index, 1);
+          supabase
+            .from("goals")
+            .delete()
+            .match({ op_id: goalInsert.op_id, group_name: goalInsert.group_name })
+            .then(({ error }) => handlePostgrestError(error));
+          return;
+        }
         const index = goals.findIndex((x) => x.op_id == goalInsert.op_id && x.group_name == goalInsert.group_name);
         if (index !== -1) {
           const newGoal: GoalData = { ...goals[index], ...goalInsert };
@@ -54,12 +66,13 @@ function useGoals() {
         } else {
           _goals.push(goalInsert as GoalData);
         }
+        
+        supabase
+          .from("goals")
+          .upsert(goalInsert)
+          .then(({ error }) => handlePostgrestError(error));
       });
-
       _setGoals(_goals);
-
-      const { error } = await supabase.from("goals").upsert(nulledGoalsData);
-      handlePostgrestError(error);
     },
     [goals]
   );

@@ -1,27 +1,15 @@
-import {
-  alpha,
-  Box,
-  Button,
-  ButtonGroup,
-  Divider,
-  Paper,
-  styled,
-  Tooltip,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import React, { memo, useCallback, useEffect, useState } from "react";
+import { alpha, Box, Button, Divider, styled, Tooltip, useMediaQuery, useTheme } from "@mui/material";
+import React, { memo, useEffect, useState } from "react";
 
 import operatorsJson from "data/operators.json";
 
 import ItemStack from "../depot/ItemStack";
 import OperatorGoalIconography from "./OperatorGoalIconography";
-import { Operator, OperatorData } from "types/operators/operator";
+import { OperatorData } from "types/operators/operator";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import getGoalIngredients from "util/getGoalIngredients";
-import useOperators from "util/hooks/useOperators";
 import { DeleteForever, Upload } from "@mui/icons-material";
-import canCompleteByCrafting from "util/fns/canCompleteGoalByCrafting";
+import clsx from "clsx";
 
 const GoalCardButton = styled(Button)({
   borderRadius: "0px",
@@ -33,17 +21,16 @@ const GoalCardButton = styled(Button)({
 interface Props {
   goal: PlannerGoal;
   onGoalDeleted: (goal: PlannerGoal) => void;
-  onGoalCompleted: (goal: PlannerGoal, operator: Operator) => void;
+  onGoalCompleted: (goal: PlannerGoal) => void;
+  completable?: boolean;
+  completableByCrafting?: boolean;
 }
 
 const PlannerGoalCard = memo((props: Props) => {
-  const { goal, onGoalDeleted, onGoalCompleted, ...rest } = props;
+  const { goal, onGoalDeleted, onGoalCompleted, completable = false, completableByCrafting = false } = props;
   const theme = useTheme();
   const isXSScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
-  const [roster] = useOperators();
-
-  const operator = roster[goal.operatorId];
   const opData: OperatorData = operatorsJson[goal.operatorId as keyof typeof operatorsJson];
 
   const [goalName, setGoalName] = useState("");
@@ -75,17 +62,36 @@ const PlannerGoalCard = memo((props: Props) => {
   const goalLabel = `${opData.name} ${goalName}`;
 
   const ingredients = getGoalIngredients(goal);
-  // const isCompletable = canCompleteByCrafting(Object.fromEntries(ingredients), depotSlice, crafting);
 
   return (
     <Box
       component="li"
+      className={clsx({
+        completable: completable,
+        craftable: completableByCrafting && !completable,
+      })}
       sx={{
         borderTop: "solid 1px",
-        borderLeft: "solid 1px",
         "&:last-of-type": {
           borderBottom: "solid 1px",
           borderColor: "background.light",
+        },
+        borderLeft: "solid 1px",
+        position: "relative",
+        "&:before": {
+          content: '""',
+          position: "absolute",
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: "2px",
+          height: "100%",
+        },
+        "&.craftable:before": {
+          backgroundColor: "warning.main",
+        },
+        "&.completable:before": {
+          backgroundColor: "success.main",
         },
         borderColor: "background.light",
         backgroundColor: "background.default",
@@ -143,7 +149,7 @@ const PlannerGoalCard = memo((props: Props) => {
         <Tooltip arrow describeChild title="Complete Goal" placement="left">
           <GoalCardButton
             aria-label={`Complete goal: ${goalLabel}`}
-            onClick={() => onGoalCompleted(goal, operator)}
+            onClick={() => onGoalCompleted(goal)}
             sx={{
               color: "text.secondary",
               "&:hover": {
@@ -151,6 +157,7 @@ const PlannerGoalCard = memo((props: Props) => {
                 color: "success.main",
               },
             }}
+            disabled={!completable && !completableByCrafting}
           >
             <Upload fontSize="small" />
           </GoalCardButton>

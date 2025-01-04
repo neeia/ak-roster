@@ -26,19 +26,13 @@ interface Props {
   groupName: string;
   removeAllGoalsFromGroup: (groupName: string) => void;
   removeGroup: (groupName: string) => void;
+  onRename: (groupName: string) => void;
   defaultExpanded: boolean;
   children?: React.ReactNode;
 }
 
 const GoalGroup = memo((props: Props) => {
-  const {
-    operatorGoals,
-    groupName,
-    removeAllGoalsFromGroup,
-    removeGroup,
-    defaultExpanded,
-    children,
-  } = props;
+  const { operatorGoals, groupName, removeAllGoalsFromGroup, removeGroup, onRename, defaultExpanded, children } = props;
 
   const [expanded, setExpanded] = useState<boolean>(defaultExpanded);
   const [deleteGroupGoalsOpen, setDeleteGroupGoalsOpen] = useState<boolean>(false);
@@ -82,6 +76,14 @@ const GoalGroup = memo((props: Props) => {
     [handleMoreMenuClose]
   );
 
+  const handleRenameGroupButtonClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      handleMoreMenuClose(e);
+      onRename(groupName);
+    },
+    [handleMoreMenuClose]
+  );
+
   return (
     <>
       <Accordion
@@ -94,6 +96,7 @@ const GoalGroup = memo((props: Props) => {
             display: "none",
           },
         }}
+        slotProps={{ transition: { timeout: 250 } }}
       >
         <AccordionSummary>
           <Box
@@ -127,12 +130,15 @@ const GoalGroup = memo((props: Props) => {
                   horizontal: "right",
                 }}
               >
+                <MenuItem disabled={groupName === "Default"}>
+                  <Typography onClick={handleRenameGroupButtonClick}>Rename group</Typography>
+                </MenuItem>
                 <MenuItem disabled={!operatorGoals}>
                   <Typography onClick={handleDeleteGroupGoalsButtonClick} color="error">
                     Delete goals
                   </Typography>
                 </MenuItem>
-                <MenuItem disabled={groupName == "Default"}>
+                <MenuItem disabled={groupName === "Default"}>
                   <Typography onClick={handleDeleteGroupButtonClick} color="error">
                     Delete group
                   </Typography>

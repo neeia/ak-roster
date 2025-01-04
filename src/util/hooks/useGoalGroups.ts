@@ -24,6 +24,23 @@ function useGoalGroups() {
     [user_id]
   );
 
+  const renameGroup = useCallback(
+    async (oldName: string, newName: string) => {
+      if (!oldName || !newName) return;
+      const { error } = await supabase.from("groups").update({ group_name: newName }).eq("group_name", oldName);
+      handlePostgrestError(error);
+
+      const { data } = await supabase.from("groups").select("group_name, sort_order").eq("user_id", user_id);
+
+      let names: string[] = [];
+      if (data) {
+        names = data.sort((a, b) => a.sort_order - b.sort_order).map((x) => x.group_name);
+      }
+      _setGroups(names);
+    },
+    [user_id]
+  );
+
   const removeGroup = useCallback(
     async (groupName: string) => {
       const groupsCopy = groups.filter((x) => x !== groupName);
@@ -58,7 +75,7 @@ function useGoalGroups() {
     fetchData();
   }, []);
 
-  return { groups, putGroups: putGroups, removeGroup } as const;
+  return { groups, putGroups: putGroups, renameGroup, removeGroup } as const;
 }
 
 export default useGoalGroups;

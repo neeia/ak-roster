@@ -10,34 +10,28 @@ import ItemInfoPopover from "../ItemInfoPopover";
 import ItemNeeded from "./ItemNeeded";
 import getGoalIngredients from "util/getGoalIngredients";
 import DepotItem from "types/depotItem";
-import GoalData, { getPlannerGoals } from "types/goalData";
 import ExportImportDialog from "./ExportImportDialog";
 import Board from "components/base/Board";
-import useSettings from "util/hooks/useSettings";
-import canCompleteByCrafting from "util/fns/canCompleteGoalByCrafting";
-
-const LMD_ITEM_ID = "4001";
-
-export const BATTLE_RECORD_TO_EXP = {
-  "2001": 200,
-  "2002": 400,
-  "2003": 1000,
-  "2004": 2000,
-};
+import canCompleteByCrafting from "util/fns/canCompleteByCrafting";
+import { LocalStorageSettings } from "types/localStorageSettings";
+import depotToExp from "util/fns/depot/depotToExp";
+import { PlannerGoal } from "types/goal";
 
 interface Props {
-  goals: GoalData[];
+  goals: PlannerGoal[];
   depot: Record<string, DepotItem>;
   putDepot: (depotItem: DepotItem[]) => void;
+  settings: LocalStorageSettings;
+  setSettings: (settings: LocalStorageSettings | ((settings: LocalStorageSettings) => LocalStorageSettings)) => void;
 }
 
+const EXP = ["2001", "2002", "2003", "2004"];
 const MaterialsNeeded = React.memo((props: Props) => {
-  const { goals, depot, putDepot } = props;
+  const { goals, depot, putDepot, settings, setSettings } = props;
 
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [popoverItemId, setPopoverItemId] = useState<string | null>(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const [settings, setSettings] = useSettings();
 
   const isSettingsMenuOpen = Boolean(anchorEl);
   const [exportImportOpen, setExportImportOpen] = useState<boolean>(false);
@@ -209,12 +203,14 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
   const materialsNeeded: Record<string, number> = {};
   // 1. populate the ingredients required for each goal
-  goals
-    .flatMap((x) => getPlannerGoals(x))
-    .flatMap(getGoalIngredients)
-    .forEach((ingredient: Ingredient) => {
-      materialsNeeded[ingredient.id] = (materialsNeeded[ingredient.id] ?? 0) + ingredient.quantity;
+  goals.flatMap(getGoalIngredients).forEach((ingredient: Ingredient) => {
+    materialsNeeded[ingredient.id] = (materialsNeeded[ingredient.id] ?? 0) + ingredient.quantity;
+  });
+  if (materialsNeeded.EXP) {
+    EXP.forEach((exp) => {
+      materialsNeeded[exp] = 0;
     });
+  }
 
   // 2. populate number of ingredients required for items being crafted
   const ingredientToCraftedItemsMapping: Record<string, string[]> = {};
@@ -242,11 +238,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
   // 3. calculate what ingredients can be fulfilled by crafting
   const _depot = { ...depot }; // need to hypothetically deduct from stock
-  const craftableItems: Record<string, boolean> = canCompleteByCrafting(
-    materialsNeeded,
-    _depot,
-    settings.depotSettings.crafting
-  );
+  const { craftableItems } = canCompleteByCrafting(materialsNeeded, _depot, settings.depotSettings.crafting);
 
   const allItems: [string, number][] = Object.values(itemsJson).map((item) => [item.id, materialsNeeded[item.id] ?? 0]);
 
@@ -268,10 +260,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
     return compareBySortId;
   });
 
-  const expOwned = Object.entries(BATTLE_RECORD_TO_EXP).reduce(
-    (acc, [id, value]) => acc + (depot[id]?.stock ?? 0) * value,
-    0
-  );
+  const expOwned = depotToExp(depot);
 
   return (
     <>
