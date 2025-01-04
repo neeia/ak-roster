@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@arkntools/depot-recognition": "1.8.0",
+    "@atlaskit/pragmatic-drag-and-drop": "^1.4.0",
     "@emotion/cache": "^11.9.3",
     "@emotion/react": "^11.9.3",
     "@emotion/server": "^11.4.0",
