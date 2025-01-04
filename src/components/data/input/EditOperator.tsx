@@ -62,14 +62,6 @@ const EditOperator = React.memo((props: Props) => {
   const { enqueueSnackbar } = useSnackbar();
   const { presets } = usePresets();
 
-  function handleError({ error }: { error: PostgrestError | null }) {
-    if (error)
-      enqueueSnackbar({
-        message: `DB${error.code}: ${error.message}`,
-        variant: "error",
-      });
-  }
-
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -77,87 +69,68 @@ const EditOperator = React.memo((props: Props) => {
 
   const onChangeOwned = useCallback(() => {
     if (!op) return;
-    const _op = changeOwned(op, !op.potential);
-    onChange(_op);
-
-    if (_op.potential) {
-      // add operator in
-      supabase.from("operators").insert(_op).then(handleError);
-    } else {
-      // remove op
-      supabase.from("operators").delete().eq("op_id", op.op_id).then(handleError);
-    }
+    onChange(changeOwned(op, !op.potential));
   }, [op, user]);
-
-  // Applies a change and sends it to the DB
-  const _onChange = useCallback(
-    (_op: Operator) => {
-      if (!op) return;
-      onChange(_op);
-      if (user) supabase.from("operators").upsert(_op).match({ user_id: user.id, op_id: op.op_id }).then(handleError);
-    },
-    [op, user]
-  );
 
   const onChangeFavorite = useCallback(() => {
     if (!op) return;
-    _onChange(changeFavorite(op, !op.favorite));
-  }, [op, _onChange]);
+    onChange(changeFavorite(op, !op.favorite));
+  }, [op, onChange]);
 
   const onChangePotential = useCallback(
     (value: number | null) => {
       if (!op || value == null) return;
-      _onChange(changePotential(op, value));
+      onChange(changePotential(op, value));
     },
-    [op, _onChange]
+    [op, onChange]
   );
 
   const onChangeElite = useCallback(
     (value: number | null) => {
       if (!op || value == null) return;
-      _onChange(changeElite(op, value));
+      onChange(changeElite(op, value));
     },
-    [op, _onChange]
+    [op, onChange]
   );
 
   const onChangeLevel = useCallback(
     (value: number | null) => {
       if (!op || value == null) return;
-      _onChange(changeLevel(op, value));
+      onChange(changeLevel(op, value));
     },
-    [op, _onChange]
+    [op, onChange]
   );
 
   const onChangeSkillLevel = useCallback(
     (value: number | null) => {
       if (!op || value == null) return;
-      _onChange(changeSkillLevel(op, value));
+      onChange(changeSkillLevel(op, value));
     },
-    [op, _onChange]
+    [op, onChange]
   );
 
   const onChangeMastery = useCallback(
     (index: number, value: number | null) => {
       if (!op || value == null) return;
-      _onChange(changeMastery(op, index, value));
+      onChange(changeMastery(op, index, value));
     },
-    [op, _onChange]
+    [op, onChange]
   );
 
   const onChangeModule = useCallback(
     (id: string, value: number | null) => {
       if (!op || value == null) return;
-      _onChange(changeModule(op, id, value));
+      onChange(changeModule(op, id, value));
     },
-    [op, _onChange]
+    [op, onChange]
   );
 
   const onChangeSkin = useCallback(
     (value: string) => {
       if (!op) return;
-      _onChange(changeSkin(op, value));
+      onChange(changeSkin(op, value));
     },
-    [op, _onChange]
+    [op, onChange]
   );
 
   const [showPresets, setShowPresets] = React.useState(true);
@@ -252,7 +225,7 @@ const EditOperator = React.memo((props: Props) => {
             }}
           >
             {presets.map((preset) => (
-              <Chip key={preset.index} onClick={() => _onChange(applyPresetToOperator(preset, op))}>
+              <Chip key={preset.index} onClick={() => onChange(applyPresetToOperator(preset, op))}>
                 {preset.name}
               </Chip>
             ))}

@@ -15,8 +15,20 @@ function useOperators() {
     (op: Operator) => {
       setOperators(({ ..._roster }) => {
         // assign if owned, otherwise delete
-        if (op.potential) _roster[op.op_id] = op;
-        else delete _roster[op.op_id];
+        if (op.potential) {
+          _roster[op.op_id] = op;
+          supabase
+            .from("operators")
+            .upsert(op)
+            .then(({ error }) => handlePostgrestError(error));
+        } else {
+          delete _roster[op.op_id];
+          supabase
+            .from("operators")
+            .delete()
+            .eq("op_id", op.op_id)
+            .then(({ error }) => handlePostgrestError(error));
+        }
         return _roster;
       });
     },
@@ -56,6 +68,6 @@ function useOperators() {
     };
   }, []);
 
-  return [operators, setOperators, onChange] as const;
+  return [operators, onChange] as const;
 }
 export default useOperators;
