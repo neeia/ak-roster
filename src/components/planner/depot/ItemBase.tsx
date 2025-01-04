@@ -16,16 +16,19 @@ export interface ItemBaseProps {
 const ItemBase = React.forwardRef<HTMLDivElement, React.PropsWithChildren<ItemBaseProps>>((props, ref) => {
   const { itemId, size = DEFAULT_SIZE, sx, children, ...rest } = props;
   const item: Item = items[itemId as keyof typeof items];
-  const bgSize = Math.floor(size * (95 / 100));
+  const bgSize = Math.floor(size * (96 / 100));
+
   return (
     <Box
       ref={ref}
       sx={{
         display: "inline-grid",
+        alignItems: "center",
+        justifyItems: "center",
         "& > *": {
           gridArea: "1 / -1",
         },
-        ...(sx ?? {}),
+        ...sx,
       }}
       {...rest}
     >

@@ -96,19 +96,19 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
         <ItemStack {...rest} sx={isComplete || (isCrafting && canCompleteByCrafting) ? { opacity: 0.4 } : undefined} />
         {quantity > 0 && isComplete && (
           <CheckCircleIcon
-            htmlColor="greenyellow"
-            opacity={0.8}
+            htmlColor="currentColor"
             fontSize="large"
             sx={{
               alignSelf: "center",
               justifySelf: "center",
               zIndex: 1,
+              color: "success.main",
             }}
           />
         )}
         {quantity > 0 && !isComplete && isCrafting && canCompleteByCrafting && (
           <Tooltip arrow title="Can be completed by crafting">
-            <Box alignSelf="center" justifySelf="center" zIndex={1} lineHeight={0}>
+            <Box alignSelf="center" justifySelf="center" zIndex={1} lineHeight={0} sx={{ color: "warning.main" }}>
               <CraftingIcon />
             </Box>
           </Tooltip>
@@ -123,6 +123,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
         }}
         onBlur={() => setFocused(false)}
         onChange={handleChange}
+        disabled={itemId === "EXP"}
         slotProps={{
           htmlInput: {
             type: focused ? "number" : "text",
