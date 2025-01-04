@@ -121,6 +121,15 @@ const Lookup: NextPage = () => {
               flexWrap: "wrap",
               justifyContent: { xs: "center", sm: "left" },
               gap: "12px 6px",
+              "& .unowned": {
+                opacity: 0.75,
+              },
+              "& .unowned img": {
+                opacity: 0.5,
+              },
+              "& .hidden": {
+                display: "none",
+              },
             }}
           >
             <Button onClick={() => setOpen(true)} sx={{ width: "100%", py: 1.5 }}>
