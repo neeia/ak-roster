@@ -1,6 +1,5 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material";
 import React, { useState } from "react";
-import { GroupsDataInsert } from "types/groupData";
 
 interface Props {
   open: boolean;

@@ -1,5 +1,5 @@
-import GoalData from "../../../types/goalData";
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
+import GoalData from "types/goalData";
+import { Alert, Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
 import {
   DragDropContext,
   Draggable,
@@ -9,8 +9,9 @@ import {
   DropResult,
 } from "react-beautiful-dnd";
 import React, { useCallback, useEffect, useState } from "react";
-import operatorJson from "../../../data/operators";
-import { GroupsDataInsert } from "../../../types/groupData";
+import operatorJson from "data/operators";
+import { GroupsDataInsert } from "types/groupData";
+import Image from "next/image";
 
 interface Props {
   open: boolean;
@@ -99,6 +100,9 @@ const GoalReorderDialog = (props: Props) => {
           Goal reordering
         </DialogTitle>
         <DialogContent>
+          <Alert severity="info" sx={{ mb: 2 }}>
+            Currently, operators cannot be moved between groups.
+          </Alert>
           <DragDropContext onDragEnd={handleDragEnd}>
             <Box
               p={2}
@@ -122,14 +126,25 @@ const GoalReorderDialog = (props: Props) => {
                                     <div {...operatorProvided.droppableProps} ref={operatorProvided.innerRef}>
                                       <Box component="ul" sx={{ m: 0, p: 0, pl: 2 }}>
                                         {(groupedOperators[groupName] ?? []).map((operator, i) => (
-                                          <Draggable key={operator.op_id} draggableId={operator.op_id} index={i}>
+                                          <Draggable
+                                            key={operator.op_id}
+                                            draggableId={groupName + operator.op_id}
+                                            index={i}
+                                          >
                                             {(operatorProvided: DraggableProvided) => (
                                               <Typography
                                                 key={operator.op_id}
                                                 {...operatorProvided.draggableProps}
                                                 {...operatorProvided.dragHandleProps}
                                                 ref={operatorProvided.innerRef}
+                                                sx={{ display: "flex", alignItems: "center", p: 0.5, gap: 1 }}
                                               >
+                                                <Image
+                                                  src={`/img/avatars/${operator.op_id}.png`}
+                                                  alt=""
+                                                  width={24}
+                                                  height={24}
+                                                />
                                                 {operatorJson[operator.op_id].name}
                                               </Typography>
                                             )}
