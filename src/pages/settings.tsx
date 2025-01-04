@@ -1,4 +1,4 @@
-﻿import React, { useContext, useState } from "react";
+﻿import React, { useContext, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { AlertProps, Box, Button, Divider, TextField, Typography } from "@mui/material";
 import Layout from "components/Layout";
@@ -10,6 +10,8 @@ import handlePostgrestError from "util/fns/handlePostgrestError";
 import { UserContext } from "./_app";
 import PasswordTextField from "components/app/PasswordTextField";
 import ResetPassword from "components/app/ResetPassword";
+import handleAuthError from "util/fns/handleAuthError";
+import { UserIdentity } from "@supabase/supabase-js";
 
 function isValidUsername(input: string) {
   const regex = /^[a-zA-Z0-9_-]+$/;
@@ -25,6 +27,19 @@ const Settings: NextPage = () => {
   const [username, setUsername] = useState("");
   const [display_name, setDisplayName] = useState("");
   const [copyLink, setCopiedLink] = useState(false);
+
+  const [discordIdentity, setDiscordIdentity] = useState<UserIdentity>();
+  const [emailIdentity, setEmailIdentity] = useState<UserIdentity>();
+
+  useEffect(() => {
+    supabase.auth.getUserIdentities().then(({ data, error }) => {
+      if (error) handleAuthError(error);
+      const _discordIdentity = data?.identities.find((e) => e.provider === "discord");
+      setDiscordIdentity(_discordIdentity);
+      const _emailIdentity = data?.identities.find((e) => e.provider === "discord");
+      setEmailIdentity(_emailIdentity);
+    });
+  }, []);
 
   const user = useContext(UserContext);
 
@@ -65,14 +80,14 @@ const Settings: NextPage = () => {
       return;
     }
 
-    setAccount({ ...account, display_name: username });
+    setAccount({ ...account, display_name: display_name });
   };
 
   const [email, setEmail] = useState("");
 
   async function updateEmail() {
     const { error } = await supabase.auth.updateUser({ email: email });
-    if (error) alert(`AUTH${error.code}: ${error.message}`);
+    if (error) handleAuthError(error);
     else alert("Check your new e-mail to confirm the e-mail change.");
   }
 
@@ -86,10 +101,27 @@ const Settings: NextPage = () => {
     const { error } = await supabase.auth.updateUser({
       password: password1,
     });
-    if (error) alert(`AUTH${error.code}: ${error.message}`);
+    if (error) handleAuthError(error);
     else alert("Password changed.");
   }
 
+  const linkDiscord = async () => {
+    const { error } = await supabase.auth.linkIdentity({
+      provider: "discord",
+      options: {
+        redirectTo: window.location.href,
+      },
+    });
+    handleAuthError(error);
+  };
+
+  const unlinkDiscord = async () => {
+    if (!discordIdentity) return;
+    const { error } = await supabase.auth.unlinkIdentity(discordIdentity);
+    handleAuthError(error);
+  };
+
+  console.log(discordIdentity);
   return (
     <Layout tab="" page="/settings">
       {loading || !account ? (
@@ -182,56 +214,97 @@ const Settings: NextPage = () => {
             </Button>
           </Box>
           <Divider />
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            <Typography variant="h2" sx={{ fontSize: "18px" }}>
-              Change Email
+          <Box>
+            <Typography variant="h2" sx={{ fontSize: "24px" }}>
+              Identities
             </Typography>
-            <TextField label="Current Email" value={user?.email} variant="standard" disabled />
+            <p>
+              Unlinking an identity will remove it from your account. You will no longer be able to log in using that
+              identity.
+            </p>
+          </Box>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
             <TextField
-              label="New Email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              variant="filled"
+              label="Discord"
+              value={discordIdentity ? discordIdentity.identity_data?.["full_name"] : "Not Linked"}
+              disabled
             />
-            <Button onClick={updateEmail} disabled={!email}>
-              Change Email
-            </Button>
+            {discordIdentity ? (
+              <Button onClick={unlinkDiscord} disabled={!emailIdentity}>
+                Unlink Discord
+              </Button>
+            ) : (
+              <Button onClick={linkDiscord}>Link Discord</Button>
+            )}
+            <TextField
+              label="Email"
+              value={emailIdentity ? emailIdentity.identity_data?.["email"] : "Not Linked"}
+              disabled
+              sx={{ mt: 2 }}
+            />
+            {emailIdentity ? (
+              <Button onClick={unlinkDiscord} disabled={!emailIdentity}>
+                Unlink Email
+              </Button>
+            ) : (
+              <Button onClick={linkDiscord}>Link Discord</Button>
+            )}
           </Box>
-          <Divider />
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            <Typography variant="h2" sx={{ fontSize: "18px" }}>
-              Change Password
-            </Typography>
-            <PasswordTextField
-              label="Current Password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              variant="filled"
-            />
-            <PasswordTextField
-              label="New Password"
-              value={password1}
-              onChange={(e) => {
-                setNewPassword(e.target.value);
-              }}
-              variant="filled"
-            />
-            <PasswordTextField
-              label="Repeat Password"
-              value={password2}
-              onChange={(e) => {
-                setRepeatPassword(e.target.value);
-              }}
-              error={password1 !== password2}
-              variant="filled"
-            />
-            <Button onClick={changePassword}>Change Password</Button>
-            <Button onClick={() => setResetOpen(true)}>Forgot Password?</Button>
-          </Box>
+          {emailIdentity && (
+            <>
+              <Divider />
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                <Typography variant="h2" sx={{ fontSize: "18px" }}>
+                  Change Email
+                </Typography>
+                <TextField label="Current Email" value={user?.email} variant="standard" disabled />
+                <TextField
+                  label="New Email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  variant="filled"
+                />
+                <Button onClick={updateEmail} disabled={!email}>
+                  Change Email
+                </Button>
+              </Box>
+              <Divider />
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                <Typography variant="h2" sx={{ fontSize: "18px" }}>
+                  Change Password
+                </Typography>
+                <PasswordTextField
+                  label="Current Password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  variant="filled"
+                />
+                <PasswordTextField
+                  label="New Password"
+                  value={password1}
+                  onChange={(e) => {
+                    setNewPassword(e.target.value);
+                  }}
+                  variant="filled"
+                />
+                <PasswordTextField
+                  label="Repeat Password"
+                  value={password2}
+                  onChange={(e) => {
+                    setRepeatPassword(e.target.value);
+                  }}
+                  error={password1 !== password2}
+                  variant="filled"
+                />
+                <Button onClick={changePassword}>Change Password</Button>
+                <Button onClick={() => setResetOpen(true)}>Forgot Password?</Button>
+              </Box>
+            </>
+          )}
           <ResetPassword open={resetOpen} onClose={() => setResetOpen(false)} />
         </Box>
       )}
