@@ -35,7 +35,12 @@ const PasswordTextField = (props: Props) => {
             <Button
               variant="text"
               onClick={() => setShowPW(!showPW)}
-              sx={{ height: "100%", aspectRatio: "1 / 1", "&:not(:hover), &:not(:focus)": { opacity: 0.75 } }}
+              sx={{
+                height: "100%",
+                aspectRatio: "1 / 1",
+                "&:not(:hover), &:not(:focus)": { opacity: 0.75 },
+                color: "text.primary",
+              }}
             >
               {showPW ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
             </Button>
