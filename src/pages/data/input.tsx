@@ -16,7 +16,7 @@ const EditOperator = dynamic(() => import("components/data/input/EditOperator"),
 const OperatorSelector = dynamic(() => import("components/data/input/OperatorSelector"), { ssr: false });
 
 const Input: NextPage = () => {
-  const [roster, , onChange] = useOperators();
+  const [roster, onChange] = useOperators();
 
   const [opId, setOpId] = useState<string>();
   const [editOpen, setEditOpen] = useState(false);

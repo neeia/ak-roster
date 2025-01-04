@@ -16,7 +16,7 @@ import Toolbar from "components/data/Toolbar";
 const EditOperator = dynamic(() => import("components/data/input/EditOperator"), { ssr: false });
 const CollectionContainer = dynamic(() => import("components/data/view/CollectionContainer"), { ssr: false });
 const View: NextPage = () => {
-  const [roster, , onChange] = useOperators();
+  const [roster, onChange] = useOperators();
   const [opId, setOpId] = useState("char_002_amiya");
   const [editOpen, setEditOpen] = useState(false);
 
