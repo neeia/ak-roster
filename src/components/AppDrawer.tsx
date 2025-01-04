@@ -119,11 +119,11 @@ const AppDrawer = React.memo((props: Props) => {
             position: "absolute",
             fontSize: "0.625rem",
             lineHeight: 0,
-            bottom: 7.5,
-            right: 8,
+            bottom: 8,
+            right: 10,
           }}
         >
-          {manifest.version}
+          {manifest.version.split(".").slice(0, 2).join(".")}
         </Typography>
       </Logo>
       <Divider />
