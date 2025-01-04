@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Divider, IconButton, Menu, MenuItem, IconButtonProps } from "@mui/material";
 import supabase from "supabase/supabaseClient";
 import { Settings } from "@mui/icons-material";
-import Link from "components/base/Link";
 import handleAuthError from "util/fns/handleAuthError";
 
 interface Props extends IconButtonProps {
@@ -11,30 +10,29 @@ interface Props extends IconButtonProps {
 const AccountContextMenu = (props: Props) => {
   const { changeUsername, ...rest } = props;
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const [open, setOpen] = useState(false);
+  const anchorEl = useRef<HTMLButtonElement | null>(null);
+  const handleClick = () => {
+    setOpen(true);
   };
 
   const [showDiscord, setShowDiscord] = useState(false);
 
   useEffect(() => {
     supabase.auth.getUserIdentities().then(({ data, error }) => {
+      handleAuthError(error);
       setShowDiscord(!data?.identities.find((e) => e.provider === "discord"));
     });
   }, []);
+
   const linkDiscord = async () => {
-    const { data, error } = await supabase.auth.linkIdentity({
+    const { error } = await supabase.auth.linkIdentity({
       provider: "discord",
       options: {
         redirectTo: window.location.href,
       },
     });
-    console.log(error);
+    handleAuthError(error);
   };
 
   const signOut = async () => {
@@ -55,14 +53,15 @@ const AccountContextMenu = (props: Props) => {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
+        ref={anchorEl}
         {...rest}
       >
         <Settings fontSize="small" />
       </IconButton>
       <Menu
-        anchorEl={anchorEl}
+        anchorEl={anchorEl.current}
         open={open}
-        onClose={handleClose}
+        onClose={() => setOpen(false)}
         disableScrollLock
         MenuListProps={{
           "aria-labelledby": "basic-button",
@@ -76,8 +75,8 @@ const AccountContextMenu = (props: Props) => {
           horizontal: "right",
         }}
       >
-        <MenuItem>
-          <Link href="/settings">Account Settings</Link>
+        <MenuItem component="a" href="/settings">
+          Account Settings
         </MenuItem>
         {changeUsername && <MenuItem onClick={changeUsername}>Change Display Name</MenuItem>}
         {showDiscord && <MenuItem onClick={linkDiscord}>Link Discord</MenuItem>}
