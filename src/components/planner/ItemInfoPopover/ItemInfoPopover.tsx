@@ -18,8 +18,7 @@ interface Props {
 
 const ItemInfoPopover: React.FC<Props> = React.memo((props) => {
   const { itemId, ingredientToCraftedItemsMapping, open, onClose } = props;
-  const item: Item | null =
-    itemId != null ? itemsJson[itemId as keyof typeof itemsJson] : null;
+  const item: Item | null = itemId != null ? itemsJson[itemId as keyof typeof itemsJson] : null;
   return (
     <Popover
       open={open}
@@ -75,10 +74,7 @@ const ItemInfoPopover: React.FC<Props> = React.memo((props) => {
             {item.name}
           </Typography>
           <CraftingInfo item={item} />
-          <NeededToCraft
-            item={item}
-            ingredientToCraftedItemsMapping={ingredientToCraftedItemsMapping}
-          />
+          <NeededToCraft item={item} ingredientToCraftedItemsMapping={ingredientToCraftedItemsMapping} />
           <StageInfo item={item} />
         </Paper>
       )}

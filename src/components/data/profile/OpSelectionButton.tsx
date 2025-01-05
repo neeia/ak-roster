@@ -10,6 +10,7 @@ interface Props {
   onClick: () => void;
 }
 
+// used in support / assistant selection
 const OpSelectionButton = (props: Props) => {
   const { op, onClick } = props;
 

@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, BoxProps, Theme, ThemeProvider, Typography } from "@mui/material";
-import createTheme, { brand } from "styles/theme/appTheme";
+import { Box, BoxProps, ThemeProvider, Typography } from "@mui/material";
+import createTheme from "styles/theme/appTheme";
 
 interface Props extends BoxProps {
   title: string;

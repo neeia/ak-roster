@@ -1,13 +1,7 @@
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  TextField,
-} from "@mui/material";
+import { Box, Button, Dialog, DialogContent, DialogTitle, TextField } from "@mui/material";
+import { enqueueSnackbar } from "notistack";
 import React, { useEffect, useState } from "react";
-import supabase from "../../supabase/supabaseClient";
+import supabase from "supabase/supabaseClient";
 
 interface Props {
   open: boolean;
@@ -33,9 +27,10 @@ const ResetPassword = (props: Props) => {
   });
 
   function resetPassword() {
-    supabase.auth
-      .resetPasswordForEmail(resetEmail)
-      .then(() => setSentEmail(true));
+    supabase.auth.resetPasswordForEmail(resetEmail).then(() => {
+      enqueueSnackbar("Email sent. Please check your inbox.", { variant: "info" });
+      setSentEmail(true);
+    });
   }
 
   return (
@@ -83,7 +78,7 @@ const ResetPassword = (props: Props) => {
             alignItems: "center",
           }}
         >
-          <Button onClick={resetPassword}>Confirm</Button>
+          <Button onClick={resetPassword}>{sentEmail ? "Sent!" : "Confirm"}</Button>
           {errorEmail}
         </Box>
       </DialogContent>

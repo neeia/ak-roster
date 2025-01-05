@@ -1,4 +1,3 @@
-import config from "data/config";
 import NextHead from "next/head";
 
 interface Props {

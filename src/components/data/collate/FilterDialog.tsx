@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from "react";
+import React, { memo } from "react";
 import {
   Box,
   Button,
@@ -14,7 +14,6 @@ import {
 import Class from "../input/Select/Class";
 import OwnedFilter from "./filter/OwnedFilter";
 import ServerFilter from "./filter/ServerFilter";
-import ModuleFilter from "./filter/ModuleFilter";
 import { Close, FilterAltOutlined } from "@mui/icons-material";
 import { Filters, ToggleFilter } from "util/hooks/useFilter";
 import Select from "../input/Select/SelectGroup";

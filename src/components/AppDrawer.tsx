@@ -2,7 +2,6 @@ import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch } from "@
 import {
   Alert,
   Box,
-  Button,
   Collapse,
   Divider,
   Drawer,
@@ -13,11 +12,9 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import config from "data/config";
 import DiscordInvite from "./app/DiscordInvite";
-import LoginForm from "./app/LoginDialog";
-import RegisterForm from "./app/RegisterDialog";
 import Logo from "./app/Logo";
 import { interactive } from "styles/theme/appTheme";
 import JumpTo from "./base/JumpTo";
@@ -83,9 +80,6 @@ const AppDrawer = React.memo((props: Props) => {
 
   const [account] = useAccount();
 
-  const [login, setLogin] = useState(false);
-  const [register, setRegister] = useState(false);
-
   const drawerContent = (
     <Box
       sx={{
@@ -143,12 +137,10 @@ const AppDrawer = React.memo((props: Props) => {
               mx: "8px",
             }}
           >
-            <Button onClick={() => setLogin(true)}>Log In</Button>
-            <Button onClick={() => setRegister(true)}>Register</Button>
+            <Link href="/login">Log In</Link>
+            <Link href="/register">Register</Link>
           </Box>
         )}
-        <LoginForm open={login} onClose={() => setLogin(false)} />
-        <RegisterForm open={register} onClose={() => setRegister(false)} />
         {account && <AccountWidget username={account.username} />}
         {account && (
           <Alert severity="info" sx={{ m: 1 }}>

@@ -42,10 +42,7 @@ import {
 } from "util/changeOperator";
 import Select, { DisabledContext } from "./Select/SelectGroup";
 import getAvatar from "util/fns/getAvatar";
-import supabase from "supabase/supabaseClient";
 import { UserContext } from "pages/_app";
-import { useSnackbar } from "notistack";
-import { PostgrestError } from "@supabase/supabase-js";
 import usePresets from "util/hooks/usePresets";
 import Chip from "components/base/Chip";
 import applyPresetToOperator from "util/fns/applyPresetToOperator";
@@ -59,7 +56,6 @@ interface Props {
 
 const EditOperator = React.memo((props: Props) => {
   const { op, onChange, open, onClose } = props;
-  const { enqueueSnackbar } = useSnackbar();
   const { presets } = usePresets();
 
   const theme = useTheme();

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, IconButton, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { ModeEdit } from "@mui/icons-material";
 
 interface Props {

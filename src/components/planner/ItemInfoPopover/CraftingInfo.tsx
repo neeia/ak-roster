@@ -21,8 +21,7 @@ const CraftingInfo: React.FC<Props> = (props) => {
     <ItemInfoSection heading="Crafting recipe">
       <Grid container spacing={1} direction="row" justifyContent="space-evenly">
         {item.ingredients.map((ingredient) => {
-          const { name: ingredientName } =
-            itemsJson[ingredient.id as keyof typeof itemsJson];
+          const { name: ingredientName } = itemsJson[ingredient.id as keyof typeof itemsJson];
           return (
             <Grid
               item

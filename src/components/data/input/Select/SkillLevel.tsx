@@ -19,7 +19,6 @@ const SkillLevel = memo((props: Props) => {
     <ToggleButtonGroup
       value={value}
       aria-label="Skill Level"
-      onChange={(_, i) => onChange(i)}
       disabled={disabled}
       sx={{
         display: "flex",
@@ -36,6 +35,7 @@ const SkillLevel = memo((props: Props) => {
           <ToggleButton
             key={n}
             value={n}
+            onChange={() => onChange(n)}
             sx={{
               p: 1,
               "&:not(._):not(._)": {

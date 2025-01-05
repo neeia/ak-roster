@@ -1,7 +1,6 @@
 import {
   Paper,
   PaperProps,
-  styled,
   Typography,
   TypographyProps,
 } from "@mui/material";

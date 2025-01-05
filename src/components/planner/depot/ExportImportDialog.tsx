@@ -29,10 +29,10 @@ import {
   importFromString,
   SUPPORTED_EXPORT_TYPES,
   SUPPORTED_IMPORT_TYPES,
-} from "../../../util/exportImportHelper";
-import useDepot from "../../../util/hooks/useDepot";
-import useGoals from "../../../util/hooks/useGoals";
-import DepotItem from "../../../types/depotItem";
+} from "util/exportImportHelper";
+import useDepot from "util/hooks/useDepot";
+import useGoals from "util/hooks/useGoals";
+import DepotItem from "types/depotItem";
 
 interface Props {
   open: boolean;

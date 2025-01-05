@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, BoxProps, Typography } from "@mui/material";
 import { ModuleData, OpInfo } from "types/operators/operator";
-import { Favorite, Margin } from "@mui/icons-material";
+import { Favorite } from "@mui/icons-material";
 import { rarityColors } from "styles/rarityColors";
 import { MAX_LEVEL_BY_RARITY } from "util/changeOperator";
 import Image from "next/image";

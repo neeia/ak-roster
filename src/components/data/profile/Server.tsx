@@ -1,7 +1,6 @@
 import { MenuItem, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { servers } from "types/doctor";
-import useAccount from "util/hooks/useAccount";
 import { AccountMutateProps } from "pages/data/profile";
 
 const Server = (props: AccountMutateProps) => {

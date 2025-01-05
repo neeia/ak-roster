@@ -4,7 +4,7 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { Box, Button, ButtonBase, ButtonGroup, IconButton, InputAdornment, TextField, Tooltip } from "@mui/material";
 import React, { ElementType, useEffect, useState } from "react";
 
-import items from "../../../data/items.json";
+import items from "data/items.json";
 
 import CraftingIcon from "./CraftingIcon";
 import ItemStack, { ItemStackProps } from "./ItemStack";

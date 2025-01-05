@@ -1,6 +1,6 @@
 import { Tooltip, Typography } from "@mui/material";
 
-import itemsJson from "../../../data/items.json";
+import itemsJson from "data/items.json";
 
 import ItemBase, { ItemBaseProps } from "./ItemBase";
 

@@ -32,7 +32,7 @@ import AccountWidget from "components/app/AccountWidget";
 import useAccount from "util/hooks/useAccount";
 import GitHubEmbed from "components/landing/GitHubEmbed";
 import DiscordEmbed from "components/landing/DiscordEmbed";
-import Update from "components/landing/Update";
+import Update from "components/landing/PatchNotes";
 import { useRouter } from "next/router";
 
 const cons = [

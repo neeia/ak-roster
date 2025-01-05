@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, BoxProps, LinkProps, Typography } from "@mui/material";
+import { Box, BoxProps, LinkProps } from "@mui/material";
 import Link from "components/base/Link";
 import Image from "next/image";
 
+// seasonal logo filenames
 export const getLogoUrl = () => {
   const date = new Date();
 

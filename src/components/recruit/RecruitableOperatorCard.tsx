@@ -1,6 +1,6 @@
 import React from "react";
 import { Operator } from "types/operators/operator";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { rarityColors } from "styles/rarityColors";
 import { Favorite } from "@mui/icons-material";
 import getTextWidth from "styles/getTextWidth";
@@ -83,7 +83,7 @@ const RecruitableOperatorCard = React.memo((props: Props) => {
         flexDirection: "column",
         boxShadow: 2,
         borderRadius: "4px",
-        backgroundColor: showPotentials && op.potential === 6 ?"background.default" : "background.light",
+        backgroundColor: showPotentials && op.potential === 6 ? "background.default" : "background.light",
         width: "100%",
         height: "min-content",
         justifyContent: "center",

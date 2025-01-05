@@ -1,6 +1,5 @@
 import { Box, InputAdornment, TextField } from "@mui/material";
 import React, { useCallback, useState } from "react";
-import { Json } from "types/supabase";
 import { debounce } from "lodash";
 import { AccountMutateProps } from "pages/data/profile";
 

@@ -1,13 +1,4 @@
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, useMediaQuery, useTheme } from "@mui/material";
 import React, { Fragment, useState } from "react";
 import { OperatorData } from "types/operators/operator";
 import operatorJson from "data/operators";

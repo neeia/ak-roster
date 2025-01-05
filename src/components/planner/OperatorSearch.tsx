@@ -22,8 +22,7 @@ import SomePartial from "types/somePartial";
 const normalizeOperatorName = (operatorName: string) =>
   operatorName.toLowerCase().replace(/['"]/g, "").replace("ł", "l");
 
-const operators = Object.values(operatorsJson)
-  .sort((a, b) => a.name.localeCompare(b.name));
+const operators = Object.values(operatorsJson).sort((a, b) => a.name.localeCompare(b.name));
 
 const operatorNormalizedNames = Object.fromEntries(operators.map((op) => [op.name, normalizeOperatorName(op.name)]));
 
