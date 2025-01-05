@@ -10,7 +10,7 @@ import { Lato } from "next/font/google";
 import supabase from "supabase/supabaseClient";
 import { User } from "@supabase/supabase-js";
 import { Provider as ReduxProvider } from "react-redux";
-import { store } from "store/store";
+import { store } from "legacyStore/store";
 import { SnackbarProvider } from "notistack";
 
 // const firebaseConfig = {
