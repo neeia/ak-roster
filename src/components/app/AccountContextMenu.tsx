@@ -20,7 +20,7 @@ const AccountContextMenu = (props: Props) => {
 
   useEffect(() => {
     supabase.auth.getUserIdentities().then(({ data, error }) => {
-      handleAuthError(error);
+      if (error?.code) handleAuthError(error);
       setShowDiscord(!data?.identities.find((e) => e.provider === "discord"));
     });
   }, []);

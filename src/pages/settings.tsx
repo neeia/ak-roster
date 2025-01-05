@@ -1,6 +1,6 @@
 ﻿import React, { useContext, useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { AlertProps, Box, Button, Divider, TextField, Typography } from "@mui/material";
+import { Box, Button, Divider, TextField, Typography } from "@mui/material";
 import Layout from "components/Layout";
 import useAccount from "util/hooks/useAccount";
 import { ContentPasteOutlined, InventoryOutlined } from "@mui/icons-material";

@@ -17,7 +17,7 @@
 } from "@mui/material";
 import type { NextPage } from "next";
 import config from "data/config";
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { getLogoUrl } from "components/app/Logo";
 import HomeNavItem from "components/landing/HomeNavItem";
@@ -32,6 +32,8 @@ import AccountWidget from "components/app/AccountWidget";
 import useAccount from "util/hooks/useAccount";
 import GitHubEmbed from "components/landing/GitHubEmbed";
 import DiscordEmbed from "components/landing/DiscordEmbed";
+import Update from "components/landing/Update";
+import { useRouter } from "next/router";
 
 const cons = [
   {
@@ -118,6 +120,16 @@ const Home: NextPage = () => {
   const handleChange = (_: any, newValue: number) => {
     setValue(newValue);
   };
+
+  const { asPath } = useRouter();
+  useEffect(() => {
+    const hash = asPath.split("#")[1];
+    if (hash?.startsWith("v")) {
+      setValue(3);
+      window.history.replaceState(null, "", asPath.split("#")[0]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [asPath]);
 
   const search = useCallback((s: string) => {
     window.location.href = `/u/${s}`;
@@ -412,7 +424,8 @@ const Home: NextPage = () => {
                 <p>Special thanks to Samidare, without whom Krooster would not exist.</p>
                 <p>
                   This project would not be possible without the help of the community that makes it worth it. Thank
-                  you!
+                  you! And a special thank you to the generous donors who support our work on Ko-fi. Your support is
+                  much appreciated, and every dollar goes back into keeping the site running.
                 </p>
                 <Typography variant="h5" component="h3" sx={{ pt: 3, pb: 1 }}>
                   Contributors:
@@ -456,7 +469,9 @@ const Home: NextPage = () => {
           </Box>
         </TabPanel>
         <TabPanel index={3} value={value}>
-          <Box component="aside"></Box>
+          <Box component="aside">
+            <Update />
+          </Box>
         </TabPanel>
         <Box sx={{ height: "60px" }} />
       </Box>
