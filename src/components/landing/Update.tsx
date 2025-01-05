@@ -27,10 +27,10 @@ const Update = (props: Props) => {
 
   return (
     <Box component="ol" sx={{ display: "flex", flexDirection: "column" }}>
-      {patchJson.map(({ version, title, content, changelog }) => (
+      {patchJson.map(({ version, date, title, content, changelog }) => (
         <Box component="li" sx={{ display: "flex", flexDirection: "column", "& ul + li": { mt: 1 } }}>
           <Typography variant="h3" sx={{ m: 0 }}>
-            <a href={`#v${version}`}>{version}</a>
+            <a href={`#v${version}`}>{version}</a> - {date}
           </Typography>
           <Typography variant="h2" id={`v${version}`}>
             {title}

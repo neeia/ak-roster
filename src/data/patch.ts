@@ -1,6 +1,7 @@
 export default [
   {
     version: "3.0.0",
+    date: "Jan 5, 2025",
     title: "Krooster V3 Out!",
     content: ["After a long time, Krooster v3.0 is finally released. Thanks for your patience!"],
     changelog: [
