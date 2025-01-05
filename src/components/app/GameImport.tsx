@@ -77,19 +77,21 @@ const GameImport = () => {
       setHasToken(false);
     }
 
-    //TODO import the other data.
     //Update the profile data
     const profileData = userData.status;
     const friendCode = {
       username: profileData.nickName,
       tag: profileData.nickNumber,
     };
+    const d = new Date(profileData.registerTs * 1000);
     await setAccount({
       user_id: user!.user_id,
       private: user!.private,
       friendcode: friendCode,
       level: profileData.level,
       assistant: profileData.secretary,
+      server: "EN",
+      onboard: `${d.getFullYear}-${d.getMonth() + 1}-${d.getDay()}`,
     });
 
     //Update roster data
