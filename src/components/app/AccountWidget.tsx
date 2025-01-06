@@ -19,11 +19,28 @@ const AccountWidget = (props: Props) => {
       }}
       {...rest}
     >
-      <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
-        <Typography sx={{ fontSize: "0.875rem", color: "text.secondary" }}>
-          Signed in as
-        </Typography>
-        {username ?? <Skeleton variant="text" />}
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          overflowX: "hidden",
+        }}
+      >
+        <Typography sx={{ fontSize: "0.875rem", color: "text.secondary" }}>Signed in as</Typography>
+        {username ? (
+          <Typography
+            sx={{
+              overflowX: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {username}
+          </Typography>
+        ) : (
+          <Skeleton variant="text" />
+        )}
       </Box>
       <AccountContextMenu />
     </Box>
