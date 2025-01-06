@@ -12,7 +12,7 @@ const patch = [
         "Profiles look very different now. Fancy!",
         "The recruitment calculator has been given a fresh coat of paint.",
       ],
-      "We're migrating to a new account management system. This does mean you will need to make a new account.",
+      "We're migrating to a new account management system. You will not need to make a new account, but you will need to verify your email to log in.",
       [
         "On the more technical side of things, Krooster now runs on Supabase instead of Firebase.",
         "The main reason for this change is that adding planner data to the Supabase DB would have been quite expensive.",
