@@ -43,8 +43,7 @@ const OneTimeV3Popup = (props: Props) => {
         <Typography>Here's what you need to know.</Typography>
         <Typography variant="h3">Your Account</Typography>
         <Typography>
-          We changed our account provider - you can log in as before, but you will be asked to verify your email if you
-          haven't already. You can also sign in with Discord.
+          We changed our account provider - you will need to make a new account. You can also sign in with Discord.
         </Typography>
         <Typography variant="h3">Your Data</Typography>
         <Typography>
