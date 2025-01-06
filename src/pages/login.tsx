@@ -35,7 +35,7 @@ function DiscordButton(props: { onClick: React.MouseEventHandler }) {
 
 const Login: NextPage = () => {
   const { query, isReady } = useRouter();
-  const [redirectTo, setRedirectTo] = useState<string>(document?.location?.origin ?? "");
+  const [redirectTo, setRedirectTo] = useState<string>(typeof window === "undefined" ? "" : document?.location?.origin);
   useEffect(() => {
     if (!isReady) return;
     const r = Array.isArray(query.redirectTo) ? query.redirectTo[0] : query.redirectTo;
