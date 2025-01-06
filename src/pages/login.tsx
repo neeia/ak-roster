@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { Alert, Box, Button, ButtonBase, CircularProgress, Divider, TextField } from "@mui/material";
+import { Alert, Box, Button, ButtonBase, CircularProgress, Divider, TextField, Typography } from "@mui/material";
 import supabase from "supabase/supabaseClient";
 import { DISCORD_BLURPLE } from "styles/theme/appTheme";
 import PasswordTextField from "components/app/PasswordTextField";
@@ -9,6 +9,7 @@ import { server } from "util/server";
 import AuthLayout from "components/AuthLayout";
 import { useRouter } from "next/router";
 import useAccount from "util/hooks/useAccount";
+import { enqueueSnackbar } from "notistack";
 
 const DiscordButton = React.memo((props: { onClick: React.MouseEventHandler }) => (
   <ButtonBase
@@ -69,8 +70,12 @@ const Login: NextPage = () => {
       email: email.trim(),
       password: password,
     });
-    if (error) setErrorSb(error.message);
-    else {
+    if (error) {
+      setErrorSb(error.message);
+      if (error.code === "email_not_confirmed") {
+        setResend(true);
+      }
+    } else {
       window.location.href = redirectTo ?? "/";
     }
     setLoading(false);
@@ -84,6 +89,28 @@ const Login: NextPage = () => {
       },
     });
     if (error) setErrorSb(error.message);
+  }
+
+  const [resend, setResend] = useState(false);
+  async function resendVerify(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
+    e.preventDefault();
+    if (!email) {
+      setErrorEmail("This field is required.");
+      return;
+    }
+    if (!password) {
+      setErrorPw("This field is required.");
+      return;
+    }
+    const { error } = await supabase.auth.resend({
+      type: "signup",
+      email: email,
+      options: {
+        emailRedirectTo: `${server}`,
+      },
+    });
+    if (error) setErrorSb(error.message);
+    else enqueueSnackbar("Verification email resent.", { variant: "success" });
   }
 
   return (
@@ -132,7 +159,18 @@ const Login: NextPage = () => {
             error={!!errorPw}
             helperText={errorPw}
           />
-          {errorSb && <Alert severity="error">{errorSb}</Alert>}
+          {errorSb && (
+            <Alert severity="error">
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 1, fontSize: "0.875rem" }}>
+                <Typography>{errorSb}</Typography>
+                {resend && (
+                  <Button variant="contained" onClick={resendVerify}>
+                    Resend Verification Email
+                  </Button>
+                )}
+              </Box>
+            </Alert>
+          )}
           <Button
             type="submit"
             onClick={handleLogin}
