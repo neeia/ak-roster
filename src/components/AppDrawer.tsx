@@ -1,24 +1,32 @@
-import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch, ManageAccounts, Launch, Construction } from "@mui/icons-material";
-import { Box, Button, Collapse, Divider, Drawer, Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
-import { getAuth, onAuthStateChanged, signOut, User } from "firebase/auth";
-import { get, getDatabase, ref, set } from "firebase/database";
-import NextLink from "next/link";
-import React, { useEffect, useState } from "react";
+import { ArrowRight, Description, ExpandLess, ExpandMore, PersonSearch } from "@mui/icons-material";
+import {
+  Alert,
+  Box,
+  Collapse,
+  Divider,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import React from "react";
 import config from "data/config";
-import { AccountInfo } from "types/doctor";
-import { getUserStatus } from "util/getUserStatus";
-import useLocalStorage from "util/useLocalStorage";
 import DiscordInvite from "./app/DiscordInvite";
-import LoginButton from "./app/LoginButton";
-import PatchNotes from "./app/PatchNotes";
-import RegisterButton from "./app/RegisterButton";
-import Image from "next/image";
-
+import Logo from "./app/Logo";
+import { interactive } from "styles/theme/appTheme";
+import JumpTo from "./base/JumpTo";
+import AccountWidget from "./app/AccountWidget";
+import findFirstFocusableElement from "util/fns/findFirstFocusableElement";
+import useAccount from "util/hooks/useAccount";
+import Link from "./base/Link";
+import manifest from "data/manifest";
 
 const DRAWER_WIDTH_PX = 220;
 const ICON_BY_PATH = [
   <Description key="d" height="1.5rem" />,
-  <ManageAccounts key="a" height="1.5rem" />,
   <PersonSearch key="c" height="1.5rem" />,
   <svg key="0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
     <path
@@ -28,7 +36,6 @@ const ICON_BY_PATH = [
       m4 0v2h2v-2h-2m4 0v2h2v-2h-2m-8 4v2h2v-2H7m4 0v2h2v-2h-2m4 0v2h2v-2h-2Z"
     />
   </svg>,
-  <Image key="p" src="/img/icons/rock.svg" alt="" width={24} height={24} />
 ];
 
 interface ConfigPage {
@@ -37,15 +44,17 @@ interface ConfigPage {
   requireLogin?: boolean;
 }
 
-const ListItemTab: React.FC<{ tabTitle: string; startOpen: boolean; icon: React.ReactNode; children?: React.ReactNode }> = ({ tabTitle, startOpen, icon, children }) => {
+const ListItemTab: React.FC<{
+  tabTitle: string;
+  startOpen: boolean;
+  icon: React.ReactNode;
+  children?: React.ReactNode;
+}> = ({ tabTitle, startOpen, icon, children }) => {
   const [open, setOpen] = React.useState(startOpen);
   return (
     <>
-      <ListItemButton
-        onClick={() => setOpen(!open)}>
-        <ListItemIcon sx={{ minWidth: 0, pr: 1 }}>
-          {icon}
-        </ListItemIcon>
+      <ListItemButton onClick={() => setOpen(!open)}>
+        <ListItemIcon sx={{ minWidth: 0, pr: 1 }}>{icon}</ListItemIcon>
         <ListItemText primary={tabTitle} />
         {open ? <ExpandLess height="1.5rem" /> : <ExpandMore height="1.5rem" />}
       </ListItemButton>
@@ -53,184 +62,174 @@ const ListItemTab: React.FC<{ tabTitle: string; startOpen: boolean; icon: React.
         {children}
       </Collapse>
     </>
-  )
-}
+  );
+};
 
 interface Props {
   tab: string;
   page: string;
   open: boolean;
   onDrawerToggle: () => void;
-  onLogin?: (user: User) => void;
 }
 
-const AppDrawer: React.FC<Props> = React.memo((props) => {
-  const { tab, page, open, onDrawerToggle, onLogin } = props;
-  const { siteTitle, siteUrl, tabs } = config;
-  const { title: currentTab, pages } = tabs[tab as keyof typeof tabs];
-  const { title: currentPage } = pages[page as keyof typeof pages] ?? {};
+const AppDrawer = React.memo((props: Props) => {
+  const { tab, page, open, onDrawerToggle } = props;
+  const { tabs } = config;
+  const { title: currentTab, pages, requireLogin: r1 } = tabs[tab];
+  const { title: currentPage, requireLogin: r2 } = pages[page];
 
-  const [, setDoctor] = useLocalStorage<AccountInfo>("doctor", {});
-  const [, setSocial] = useLocalStorage<AccountInfo>("connections", {});
-
-  const [user, setUser] = useState<User | null>();
-  useEffect(() => {
-    const db = getDatabase();
-    getUserStatus().then((user) => {
-      setUser(user);
-    })
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        set(ref(db, `users/${user.uid}/time/`), Date.now());
-        get(ref(db, `users/${user.uid}/info/`)).then((s1) => {
-          if (s1.exists()) {
-            setDoctor(s1.val());
-          }
-        })
-        get(ref(db, `users/${user.uid}/connections/`)).then((s1) => {
-          if (s1.exists()) {
-            setSocial(s1.val());
-          }
-        })
-      }
-      setUser(user);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const [login, setLogin] = useState(false);
-  const [register, setRegister] = useState(false);
+  const [account] = useAccount();
 
   const drawerContent = (
-    <>
-      <Typography
-        component="h1"
-        variant="h4"
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "48px"
+    <Box
+      sx={{
+        height: "100%",
+        maxHeight: "100%",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        py: "16px",
+      }}
+    >
+      <JumpTo
+        onClick={() => {
+          const main = document.getElementById("app-main");
+          if (!main) return;
+          const el = findFirstFocusableElement(main);
+          if (el) (el as HTMLElement).focus();
         }}
       >
-        <NextLink
-          href={`/`}
+        skip to main content
+      </JumpTo>
+      <Logo
+        hideSubtitle
+        sx={{ width: "100%", height: "200px" }}
+        LinkProps={{ sx: { position: "relative" } }}
+        sizes="220px"
+      >
+        <Typography
+          sx={{
+            position: "absolute",
+            fontSize: "0.625rem",
+            lineHeight: 0,
+            bottom: 8,
+            right: 10,
+          }}
         >
-          {siteTitle}
-        </NextLink>
-        {/*<Offset />*/}
-      </Typography>
+          {manifest.version.split(".").slice(0, 2).join(".")}
+        </Typography>
+      </Logo>
       <Divider />
-      <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px", m: "4px" }}>
-        {!user
-          ?
-          <>
-            <Button onClick={() => setLogin(true)}>
-              Log In
-            </Button>
-            <Button onClick={() => setRegister(true)}>
-              Register
-            </Button>
-          </>
-          : null
-        }
-        <LoginButton open={login} onClose={() => setLogin(false)}>
-          <Button
-            onClick={() => {
-              setRegister(true);
-              setLogin(false);
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "4px",
+        }}
+      >
+        {!account && (
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "4px",
+              mx: "8px",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-            sx={{ color: "text.secondary" }}
           >
-            Sign Up Instead
-          </Button>
-        </LoginButton>
-        <RegisterButton open={register} onClose={() => setRegister(false)} >
-          <Button
-            onClick={() => {
-              setRegister(false);
-              setLogin(true);
-            }}
-            sx={{ color: "text.secondary" }}
-          >
-            Log In Instead
-          </Button>
-        </RegisterButton>
-        {user
-          ? <Button sx={{ gridColumn: "span 2" }} onClick={() => { signOut(getAuth()); }}>
-            Log Out
-          </Button>
-          : null
-        }
+            <Link href="/login">Log In</Link>
+            <Link href="/register">Register</Link>
+          </Box>
+        )}
+        {account && <AccountWidget username={account.username} />}
+        {account && (
+          <Alert severity="info" sx={{ m: 1 }}>
+            Connect to Yostar to update your data in one click!
+            <div>
+              <Link sx={{ textDecoration: "1px dotted underline" }} href="/import">
+                See More
+              </Link>
+            </div>
+          </Alert>
+        )}
       </Box>
       <Divider />
-      <List>
-        {Object.entries(tabs).map(([tabPath, { title: tabTitle, pages }], i: number) => (
-          <ListItemTab
-            key={i}
-            tabTitle={tabTitle}
-            startOpen={tabTitle === currentTab}
-            icon={ICON_BY_PATH[i]}
-          >
-            {Object.entries(pages)
-              .map(([pagePath, pg]: [string, ConfigPage]) => (
+      <List
+        sx={{
+          height: "100%",
+          overflowY: "auto",
+          p: 0,
+          scrollbarColor: "#6b6b6b transparent",
+          scrollbarWidth: "thin",
+          "*::-webkit-scrollbar": {
+            width: "12px",
+          },
+          "*::-webkit-scrollbar-track": {
+            background: "transparent",
+          },
+          "*::-webkit-scrollbar-thumb": {
+            backgroundColor: "#6b6b6b",
+            borderRadius: 4,
+            border: "transparent",
+            outline: "transparent",
+          },
+        }}
+      >
+        {Object.entries(tabs)
+          .filter(([_, { exclude }]) => !exclude)
+          .map(([tabPath, { title: tabTitle, pages }], i: number) => (
+            <ListItemTab key={i} tabTitle={tabTitle} startOpen={tabTitle === currentTab} icon={ICON_BY_PATH[i]}>
+              {Object.entries(pages).map(([pagePath, pg]: [string, ConfigPage]) => (
                 <ListItem
                   key={pg.title}
+                  disablePadding
                   sx={{
-                    p: 0,
-                    "& .Mui-focusVisible": {
-                      color: "#fff"
-                    }
+                    ...(currentPage === pg.title && {
+                      borderLeftWidth: "8px",
+                      borderLeftStyle: "solid",
+                      borderColor: "primary.main",
+                      fontWeight: "bold",
+                    }),
                   }}
                 >
-                  <ListItemIcon sx={{ minWidth: 0, pr: 1, pl: 3, }}>
-                    <ArrowRight height="1.5rem" />
-                  </ListItemIcon>
                   <ListItemButton
-                    tabIndex={-1}
+                    component="a"
+                    href={`${tabPath}${pagePath}`}
                     sx={{
                       p: 0,
-                      ...(currentPage === pg.title && {
-                        bgcolor: "primary.main",
-                        ":hover": {
-                          bgcolor: "primary.main",
-                          filter: "brightness(110%)"
-                        },
-                      })
+                      ...(currentPage === pg.title && interactive),
                     }}
-                    disabled={pg.requireLogin && !user}
                   >
-                    <NextLink
-                      href={`${tabPath}${pagePath}`}
-                      passHref
-                    >
-                      <Link
-                        sx={{
-                          display: "block",
-                          width: "100%",
-                          px: 2,
-                          py: 1.5,
-                          ...(currentPage === pg.title && {
-                            color: "background.paper",
-                            fontWeight: "bold",
-                          }),
-                        }}
-                        variant="body2"
-                      >
-                        {pg.title}
-                      </Link>
-                    </NextLink>
+                    <ListItemIcon sx={{ minWidth: 0, pr: 1, pl: 3 }}>
+                      <ArrowRight height="1.5rem" />
+                    </ListItemIcon>
+                    <ListItemText
+                      sx={{
+                        display: "block",
+                        width: "100%",
+                        px: 1,
+                        py: 2,
+                        m: 0,
+                      }}
+                      primaryTypographyProps={{
+                        sx: {
+                          fontSize: "1rem",
+                          lineHeight: 1,
+                        },
+                      }}
+                      primary={pg.title}
+                    />
                   </ListItemButton>
                 </ListItem>
               ))}
-          </ListItemTab>
-        ))}
+            </ListItemTab>
+          ))}
       </List>
-      <Divider sx={{ marginTop: "auto", mb: 1 }} />
-      <PatchNotes />
+      <Divider />
       <DiscordInvite />
-    </>
+    </Box>
   );
 
   return (
@@ -257,7 +256,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
             width: DRAWER_WIDTH_PX,
             display: {
               xs: "flex",
-              xl: "none"
+              xl: "none",
             },
             boxShadow: 6,
             backgroundImage: "none",
@@ -274,8 +273,8 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
             width: DRAWER_WIDTH_PX,
             display: {
               xs: "none",
-              xl: "flex"
-            }
+              xl: "flex",
+            },
           },
         }}
       >
@@ -283,7 +282,7 @@ const AppDrawer: React.FC<Props> = React.memo((props) => {
       </Drawer>
     </Box>
   );
-})
+});
 
 AppDrawer.displayName = "AppDrawer";
 export default AppDrawer;

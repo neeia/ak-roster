@@ -1,3 +1,3 @@
-import { Operator, OpJsonObj } from "./operator";
+import { OpInfo } from "./operators/operator";
 
-export type FilterFunction = (op: Operator, opInfo: OpJsonObj) => boolean;
+export type FilterFunction = (op: OpInfo) => boolean;

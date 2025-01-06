@@ -1,52 +1,44 @@
-const config = {
+const config: SiteCfg = {
   siteTitle: "Krooster",
-  siteUrl: "https://krooster.com/",
-  siteDescription:
-    "A collection and progress tracker for Arknights, a game developed by Hypergryph.",
+  siteDescription: "A collection and progress tracker for Arknights, a game developed by Hypergryph.",
   tabs: {
     "/data": {
       title: "Data",
-      description: "Input and Review Data",
+      requireLogin: true,
       pages: {
         "/input": {
           title: "Input",
-          description: "Enter data about owned operators.",
+          description: "Enter data of owned operators.",
         },
         "/view": {
           title: "Collection",
           description: "View a summary of operator data.",
-        }
-      }
-    },
-    "/account": {
-      title: "Account",
-      description: "Modify Account Details",
-      pages: {
+        },
+        "/planner": {
+          title: "Planner",
+          description: "Set goals for operators and calculate material costs.",
+        },
         "/profile": {
           title: "Profile",
           description: "Share your in-game Doctor information.",
-          requireLogin: true,
         },
-        "/settings": {
-          title: "Settings",
-          description: "Make changes to account details.",
-          requireLogin: true,
-        }
-      }
+        "/presets": {
+          title: "Presets",
+          description: "Configure preset goals for operators.",
+        },
+      },
     },
     "/network": {
       title: "Network",
-      description: "Krooster Community",
       pages: {
         "/lookup": {
           title: "Lookup",
           description: "Find other users.",
         },
-      }
+      },
     },
     "/tools": {
       title: "Tools",
-      description: "Calculators and Tools",
       pages: {
         "/recruit": {
           title: "Recruitment",
@@ -59,19 +51,51 @@ const config = {
         "/level": {
           title: "Level Costs",
           description: "Calculate LMD and EXP costs to level operators.",
-        }
-      }
-    },
-    "/planner": {
-      title: "Planner",
-      description: "Material calculator",
-      pages: {
-        "/goals": {
-          title: "Goals",
-          description: "Set goals for operators and calculate material costs.",
         },
-      }
+      },
+    },
+    "": {
+      title: "",
+      exclude: true,
+      pages: {
+        "/login": {
+          title: "Login",
+          description: "Log in to Krooster.",
+        },
+        "/register": {
+          title: "Register",
+          description: "Sign up for a Krooster account!",
+        },
+        "/settings": {
+          title: "Settings",
+          description: "Change your settings.",
+          noIndex: true,
+        },
+        "/import": {
+          title: "Import",
+          description: "Import account data directly from the game.",
+          requireLogin: true,
+        },
+      },
     },
   },
 };
 export default config;
+
+type SiteCfg = {
+  siteTitle: string;
+  siteDescription: string;
+  tabs: Record<string, SiteTab>;
+};
+type SiteTab = {
+  title: string;
+  requireLogin?: boolean;
+  pages: Record<string, SiteNode>;
+  exclude?: boolean;
+};
+type SiteNode = {
+  title: string;
+  description: string;
+  requireLogin?: boolean;
+  noIndex?: boolean;
+};

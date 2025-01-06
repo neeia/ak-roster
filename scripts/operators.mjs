@@ -10,8 +10,6 @@ import cnCharacterPatchTable from "./ArknightsGameData/zh_CN/gamedata/excel/char
 import cnCharacterTable from "./ArknightsGameData/zh_CN/gamedata/excel/character_table.json" assert { type: "json" };
 import cnSkillTable from "./ArknightsGameData/zh_CN/gamedata/excel/skill_table.json" assert { type: "json" };
 import cnUniequipTable from "./ArknightsGameData/zh_CN/gamedata/excel/uniequip_table.json" assert { type: "json" };
-import createSkinsJson from "./skins.mjs";
-import uploadAllImages from "./images.mjs";
 
 const enPatchCharacters = enCharacterPatchTable.patchChars;
 const cnPatchCharacters = cnCharacterPatchTable.patchChars;
@@ -20,11 +18,7 @@ const { equipDict: enEquipDict } = enUniequipTable;
 
 const isOperator = (charId) => {
   const operator = cnCharacterTable[charId];
-  return (
-    operator.profession !== "TOKEN" &&
-    operator.profession !== "TRAP" &&
-    !operator.isNotObtainable
-  );
+  return operator.profession !== "TOKEN" && operator.profession !== "TRAP" && !operator.isNotObtainable;
 };
 
 const operatorNameOverride = {
@@ -50,12 +44,11 @@ function getOperatorName(operatorId) {
   }
   const { appellation } = entry;
   return operatorNameOverride[appellation] ?? appellation;
-};
+}
 function getCNOperatorName(operatorId) {
   if (operatorId === "char_1001_amiya2") {
     return "阿米娅(近卫)";
-  }
-  else if (operatorId === "char_1037_amiya3") {
+  } else if (operatorId === "char_1037_amiya3") {
     return "阿米娅(治疗)";
   }
   const entry = cnCharacterTable[operatorId];
@@ -66,7 +59,7 @@ function getCNOperatorName(operatorId) {
   }
   const { name } = entry;
   return operatorNameOverride[name] ?? name;
-};
+}
 function professionToClass(profession) {
   switch (profession) {
     case "PIONEER":
@@ -80,9 +73,7 @@ function professionToClass(profession) {
     case "SUPPORT":
       return "Supporter";
     default:
-      return [...profession.toLowerCase()]
-        .map((char, i) => (i === 0 ? char.toUpperCase() : char))
-        .join("")
+      return [...profession.toLowerCase()].map((char, i) => (i === 0 ? char.toUpperCase() : char)).join("");
   }
 }
 
@@ -115,7 +106,7 @@ const gameDataCostToIngredient = (cost) => {
 
 const gameDataRarityToNumber = (rarity) => {
   return isNaN(rarity) ? Number.parseInt(rarity.slice(-1)) : rarity + 1;
-}
+};
 
 const OperatorGoalCategory = {
   Elite: 0,
@@ -134,42 +125,44 @@ const createOperatorsJson = () => {
       const isCnOnly = enCharacterTable[id] == null && enPatchCharacters[id] == null;
       const isPatchCharacter = cnPatchCharacters[id] != null;
 
-      const elite = isPatchCharacter
+      const eliteLevels = isPatchCharacter
         ? []
         : operator.phases
-          .filter(({ evolveCost }) => evolveCost != null)
-          .map(({ evolveCost }, i) => {
-            const ingredients = evolveCost.map(gameDataCostToIngredient);
-            ingredients.unshift(getEliteLMDCost(rarity, i + 1));
-            // [0] points to E1, [1] points to E2, so add 1
-            return {
-              eliteLevel: i + 1,
-              ingredients,
-              name: `Elite ${i + 1}`,
-              category: OperatorGoalCategory.Elite,
-            };
-          });
-      const skillLevels = isPatchCharacter || !operator.allSkillLvlup
-        ? []
-        : operator.allSkillLvlup
-          .filter(({ lvlUpCost }) => lvlUpCost != null)
-          .map((skillLevelEntry, i) => {
-            const cost = skillLevelEntry.lvlUpCost;
-            const ingredients = cost.map(gameDataCostToIngredient);
-            return {
-              // we want to return the result of a skillup,
-              // and since [0] points to skill level 1 -> 2, we add 2
-              skillLevel: i + 2,
-              ingredients,
-              name: `Skill Level ${i + 2}`,
-              category: OperatorGoalCategory.SkillLevel,
-            };
-          });
+            .filter(({ evolveCost }) => evolveCost != null)
+            .map(({ evolveCost }, i) => {
+              const ingredients = evolveCost.map(gameDataCostToIngredient);
+              ingredients.unshift(getEliteLMDCost(rarity, i + 1));
+              // [0] points to E1, [1] points to E2, so add 1
+              return {
+                eliteLevel: i + 1,
+                ingredients,
+                name: `Elite ${i + 1}`,
+                category: OperatorGoalCategory.Elite,
+              };
+            });
+      const skillLevels =
+        isPatchCharacter || !operator.allSkillLvlup
+          ? []
+          : operator.allSkillLvlup
+              .filter(({ lvlUpCost }) => lvlUpCost != null)
+              .map((skillLevelEntry, i) => {
+                const cost = skillLevelEntry.lvlUpCost;
+                const ingredients = cost.map(gameDataCostToIngredient);
+                return {
+                  // we want to return the result of a skillup,
+                  // and since [0] points to skill level 1 -> 2, we add 2
+                  skillLevel: i + 2,
+                  ingredients,
+                  name: `Skill Level ${i + 2}`,
+                  category: OperatorGoalCategory.SkillLevel,
+                };
+              });
 
-      const skills = operator.skills
+      const skillData = operator.skills
         .filter(
           ({ skillId, levelUpCostCond }) =>
-            skillId != null && levelUpCostCond &&
+            skillId != null &&
+            levelUpCostCond &&
             // require that all mastery levels have a levelUpCost defined
             !levelUpCostCond.find(({ levelUpCost }) => levelUpCost == null)
         )
@@ -193,20 +186,17 @@ const createOperatorsJson = () => {
           };
         });
 
-      let modules = [];
+      let moduleData = [];
       if (cnCharEquip[id] != null) {
         cnCharEquip[id].shift();
-        modules = cnCharEquip[id].map((modName) => {
+        moduleData = cnCharEquip[id].map((modName) => {
           const cnModuleData = cnEquipDict[modName];
           const enModuleData = enEquipDict[modName];
-          const typeName =
-            cnModuleData.typeName1 + "-" + cnModuleData.typeName2;
+          const typeName = cnModuleData.typeName1 + "-" + cnModuleData.typeName2;
           const stages = [...Array(3)].map((_, modLevel) => {
             return {
               moduleLevel: modLevel + 1,
-              ingredients: cnModuleData.itemCost[`${modLevel + 1}`].map(
-                gameDataCostToIngredient
-              ),
+              ingredients: cnModuleData.itemCost[`${modLevel + 1}`].map(gameDataCostToIngredient),
               name: `Module ${typeName} Stage ${modLevel + 1}`,
               category: OperatorGoalCategory.Module,
             };
@@ -216,12 +206,12 @@ const createOperatorsJson = () => {
             moduleId: cnModuleData.uniEquipId,
             typeName,
             stages,
-            isCnOnly: enModuleData === undefined
+            isCnOnly: enModuleData === undefined,
           };
         });
       }
 
-      const potentials = (enCharacterTable[id] ?? operator).potentialRanks.map(r => r.description);
+      const potentials = (enCharacterTable[id] ?? operator).potentialRanks.map((r) => r.description);
 
       const outputOperator = {
         id,
@@ -230,11 +220,11 @@ const createOperatorsJson = () => {
         rarity,
         class: professionToClass(operator.profession),
         isCnOnly,
-        skills,
-        modules,
+        skillData,
+        moduleData,
         potentials,
         skillLevels,
-        elite
+        eliteLevels,
       };
       return [id, outputOperator];
     })
@@ -252,6 +242,4 @@ export default createOperatorsJson;
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   createOperatorsJson();
-  createSkinsJson();
-  uploadAllImages();
 }

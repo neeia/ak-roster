@@ -21,9 +21,7 @@ const getEnglishItemName = (itemId) => {
   if (name == null) {
     const unofficialName = unofficialItemNameTranslations[itemId];
     if (unofficialName != null) {
-      console.log(
-        `Using unofficial item name translation for ID '${itemId}' => '${unofficialName}'`
-      );
+      console.log(`Using unofficial item name translation for ID '${itemId}' => '${unofficialName}'`);
       name = unofficialName;
     } else if (cnName != null) {
       console.warn(`No item name translation found for ID '${itemId}'`);
@@ -50,12 +48,9 @@ const convertLMDCostToLMDItem = (cost) => ({
 
 const enItems = enItemTable.items;
 const cnItems = cnItemTable.items;
-const { workshopFormulas, manufactFormulas: manufactureFormulas } =
-  cnBuildingData;
+const { workshopFormulas, manufactFormulas: manufactureFormulas } = cnBuildingData;
 
-const ADDITIONAL_ITEM_NAME_TO_ID_ENTRIES = {
-  "Crystalline Electroassembly": "30145",
-};
+const ADDITIONAL_ITEM_NAME_TO_ID_ENTRIES = {};
 
 const isPlannerItem = (itemId) => {
   const entry = cnItems[itemId];
@@ -70,10 +65,8 @@ const isPlannerItem = (itemId) => {
 };
 
 const createItemsJson = async () => {
-  const itemIds = Object.keys(cnItems).filter((itemId) =>
-    isPlannerItem(itemId)
-  );
-  const baseItems = Object.fromEntries(
+  const itemIds = Object.keys(cnItems).filter((itemId) => isPlannerItem(itemId));
+  const _baseItems = Object.fromEntries(
     itemIds.map((itemId) => {
       const item = cnItems[itemId];
       const baseOutputItem = {
@@ -84,9 +77,7 @@ const createItemsJson = async () => {
         sortId: item.sortId,
       };
 
-      const workshopFormulaId = item.buildingProductList.find(
-        ({ roomType }) => roomType === "WORKSHOP"
-      )?.formulaId;
+      const workshopFormulaId = item.buildingProductList.find(({ roomType }) => roomType === "WORKSHOP")?.formulaId;
       const manufactureFormulaId = item.buildingProductList.find(
         ({ roomType }) => roomType === "MANUFACTURE"
       )?.formulaId;
@@ -106,14 +97,21 @@ const createItemsJson = async () => {
         if (formula.goldCost != null && formula.goldCost > 0) {
           ingredients.unshift(convertLMDCostToLMDItem(formula.goldCost));
         }
-        return [
-          itemId,
-          { ...baseOutputItem, ingredients, yield: formula.count },
-        ];
+        return [itemId, { ...baseOutputItem, ingredients, yield: formula.count }];
       }
       return [itemId, baseOutputItem];
     })
   );
+  const baseItems = {
+    ..._baseItems,
+    EXP: {
+      id: "EXP",
+      name: "Operator EXP",
+      iconId: "EXP_PLAYER",
+      tier: 4,
+      sortId: 70000,
+    },
+  };
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
@@ -122,14 +120,10 @@ const createItemsJson = async () => {
   console.log(`items: wrote ${itemsJsonPath}`);
 
   const itemNameToId = {
-    ...Object.fromEntries(
-      Object.entries(baseItems).map(([id, item]) => [item.name, id])
-    ),
+    ...Object.fromEntries(Object.entries(baseItems).map(([id, item]) => [item.name, id])),
     ...ADDITIONAL_ITEM_NAME_TO_ID_ENTRIES,
   };
-  const itemNameToIdJsonPath = path.join(__dirname, "..", "src", "data",
-    "item-name-to-id.json"
-  );
+  const itemNameToIdJsonPath = path.join(__dirname, "..", "src", "data", "item-name-to-id.json");
   fs.writeFileSync(itemNameToIdJsonPath, JSON.stringify(itemNameToId, null, 2));
   console.log(`items: wrote ${itemNameToIdJsonPath}`);
 };

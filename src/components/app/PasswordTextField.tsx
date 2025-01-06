@@ -1,17 +1,15 @@
-import { VisibilityOffOutlined, VisibilityOutlined } from "@mui/icons-material";
-import { IconButton, InputAdornment, TextField, Typography } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Button, InputAdornment, OutlinedTextFieldProps, TextField } from "@mui/material";
 import React, { useState } from "react";
 
-
-interface Props {
-  label: string;
+// hacky but you can't extend TextFieldProps for some reason
+interface Props extends Omit<OutlinedTextFieldProps, "variant"> {
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  ariaId: string;
+  variant?: "standard" | "filled" | "outlined";
 }
 
-const PasswordTextField = ((props: Props) => {
-  const { label, value, onChange, ariaId } = props;
+const PasswordTextField = (props: Props) => {
+  const { label, value, onChange, variant = "outlined", sx, ...rest } = props;
 
   const [showPW, setShowPW] = useState<boolean>(false);
 
@@ -20,29 +18,41 @@ const PasswordTextField = ((props: Props) => {
       label={label}
       value={value}
       onChange={onChange}
-      helperText={showPW ? value : ""}
-      type="password"
-      variant="filled"
-      InputProps={{
-        endAdornment: (
-          <InputAdornment position="end">
-            <Typography id={`show-pw-${ariaId}`}>
-              {showPW ? "Hide" : "Show"}
-            </Typography>
-            <IconButton
-              aria-labelledby={`show-pw-${ariaId}`}
-              tabIndex={-1}
-              onClick={() => setShowPW(!showPW)}
+      type={showPW ? "" : "password"}
+      variant={variant}
+      sx={{ display: "flex", ...sx }}
+      slotProps={{
+        input: {
+          sx: { pr: 0 },
+          endAdornment: (
+            <InputAdornment
+              position="end"
+              sx={{
+                height: "100%",
+                maxHeight: "none",
+                borderLeft: "1px solid",
+                borderColor: "grey.600",
+              }}
             >
-              {showPW
-                ? <VisibilityOffOutlined height="1rem" />
-                : <VisibilityOutlined height="1rem" />
-              }
-            </IconButton>
-          </InputAdornment>
-        )
+              <Button
+                variant="text"
+                onClick={() => setShowPW(!showPW)}
+                sx={{
+                  height: "100%",
+                  aspectRatio: "1 / 1",
+                  "&:not(:hover), &:not(:focus)": { opacity: 0.75 },
+                  color: "text.primary",
+                }}
+              >
+                {showPW ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
+              </Button>
+            </InputAdornment>
+          ),
+        },
       }}
-    />);
-});
+      {...rest}
+    />
+  );
+};
 
 export default PasswordTextField;

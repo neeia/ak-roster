@@ -1392,5 +1392,12 @@
     "iconId": "mod_update_token_1",
     "tier": 4,
     "sortId": 90003
+  },
+  "EXP": {
+    "id": "EXP",
+    "name": "Operator EXP",
+    "iconId": "EXP_PLAYER",
+    "tier": 4,
+    "sortId": 70000
   }
 }

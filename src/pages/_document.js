@@ -8,9 +8,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>
-          {this.props.emotionStyleTags}
-        </Head>
+        <Head>{this.props.emotionStyleTags}</Head>
         <body>
           <Main />
           <NextScript />
@@ -35,7 +33,7 @@ MyDocument.getInitialProps = async (ctx) => {
     });
 
   const initialProps = await Document.getInitialProps(ctx);
-  resetServerContext()
+  resetServerContext();
 
   const emotionStyles = extractCriticalToChunks(initialProps.html);
   const emotionStyleTags = emotionStyles.styles.map((style) => (
