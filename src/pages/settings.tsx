@@ -162,7 +162,7 @@ const Settings: NextPage = () => {
             sx={{ display: "flex", width: "100%" }}
             onClick={() => {
               setCopiedLink(true);
-              navigator.clipboard.writeText(`https://krooster.com/u/${account.display_name}`);
+              navigator.clipboard.writeText(`https://krooster.com/u/${account.username}`);
             }}
           >
             <TextField
