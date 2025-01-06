@@ -36,7 +36,7 @@ const Settings: NextPage = () => {
       if (error) handleAuthError(error);
       const _discordIdentity = data?.identities.find((e) => e.provider === "discord");
       setDiscordIdentity(_discordIdentity);
-      const _emailIdentity = data?.identities.find((e) => e.provider === "discord");
+      const _emailIdentity = data?.identities.find((e) => e.provider === "email");
       setEmailIdentity(_emailIdentity);
     });
   }, []);
@@ -121,7 +121,6 @@ const Settings: NextPage = () => {
     handleAuthError(error);
   };
 
-  console.log(discordIdentity);
   return (
     <Layout tab="" page="/settings">
       {loading || !account ? (
@@ -242,13 +241,6 @@ const Settings: NextPage = () => {
               disabled
               sx={{ mt: 2 }}
             />
-            {emailIdentity ? (
-              <Button onClick={unlinkDiscord} disabled={!emailIdentity}>
-                Unlink Email
-              </Button>
-            ) : (
-              <Button onClick={linkDiscord}>Link Discord</Button>
-            )}
           </Box>
           {emailIdentity && (
             <>
