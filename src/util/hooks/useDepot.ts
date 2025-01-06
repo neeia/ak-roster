@@ -50,7 +50,7 @@ function useDepot() {
 
       const depotResult: Record<string, DepotItem> = {};
       const depotTrash: string[] = [];
-      if (_depot) {
+      if (_depot?.length) {
         _depot.forEach((x) => {
           if (x.material_id in itemJson) {
             depotResult[x.material_id] = x;
