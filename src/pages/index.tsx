@@ -315,7 +315,6 @@ const Home: NextPage = () => {
                   />
                 </Box>
               </Box>
-              <HomeNavItem href={"/network/findafriend"}>Support Search</HomeNavItem>
             </HomeNavSection>
             <HomeNavSection title="Tools" color={brand["/tools"]} src="tools">
               <HomeNavItem href={"/tools/recruit"}>Recruitment</HomeNavItem>

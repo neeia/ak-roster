@@ -35,10 +35,6 @@ const config: SiteCfg = {
           title: "Lookup",
           description: "Find other users.",
         },
-        "/support": {
-          title: "Unit Finder",
-          description: "Find support units to add as friends.",
-        },
       },
     },
     "/tools": {
