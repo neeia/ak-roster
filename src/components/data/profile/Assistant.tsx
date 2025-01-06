@@ -35,7 +35,7 @@ const Assistant = (props: AccountMutateProps) => {
     >
       Assistant
       <OpSelectionButton
-        op={{ ...operators[assistant], ...operatorJson[assistant] }}
+        op={assistant ? { ...operators[assistant], ...operatorJson[assistant] } : undefined}
         onClick={() => {
           setOpen(true);
         }}
