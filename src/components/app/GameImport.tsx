@@ -1,6 +1,6 @@
 import { UserData } from "types/arknightsApiTypes/apiTypes";
 import React, { useState } from "react";
-import { Box, Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
+import { Box, Button, Checkbox, Divider, FormControlLabel, TextField } from "@mui/material";
 import { Operator, Skin } from "types/operators/operator";
 import { OperatorSupport } from "types/operators/supports";
 import skinJson from "data/skins.json";
@@ -12,12 +12,12 @@ import useAccount from "util/hooks/useAccount";
 import supabase from "supabase/supabaseClient";
 import useOperators from "util/hooks/useOperators";
 import operatorJson from "data/operators";
+import { enqueueSnackbar } from "notistack";
 
 const EXCLUDED_ITEMS: string[] = [];
 const GameImport = () => {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
-  const [error, setError] = useState("");
   const [hasToken, setHasToken] = useState(localStorage.getItem("token") != null);
   const [rememberLogin, setRememberLogin] = useState(localStorage.getItem("token") != null);
 
@@ -28,27 +28,26 @@ const GameImport = () => {
   const [, setDepot] = useDepot();
 
   const sendCode = async () => {
-    const result = await fetch(`/api/arknights/sendAuthMail?mail=${email}`);
-    if (result.ok) {
-      setError("Code sent. Check your e-mail.");
-    } else {
-      setError("Error sending the code.");
-    }
+    enqueueSnackbar("Code sent. Check your e-mail.", { variant: "success" });
+    fetch(`/api/arknights/sendAuthMail?mail=${email}`);
   };
 
+  const [triedLogin, setTriedLogin] = useState(false);
   const login = async () => {
-    setError("Logging in...");
+    setTriedLogin(true);
+    enqueueSnackbar("Logging in...");
     const result = await fetch(`/api/arknights/getData?mail=${email}&code=${code}`);
     if (result.ok) {
       const userData = (await result.json()) as UserData;
       await processGameData(userData);
     } else {
-      setError("Error retrieving data.");
+      enqueueSnackbar("Error retrieving data.", { variant: "error" });
     }
+    setTriedLogin(false);
   };
 
   const loginWithToken = async () => {
-    setError("Logging in...");
+    enqueueSnackbar("Logging in...", { variant: "info" });
     const tokenData = localStorage.getItem("token");
     const result = await fetch(`/api/arknights/getData`, {
       method: "POST",
@@ -62,12 +61,12 @@ const GameImport = () => {
       const userData = (await result.json()) as UserData;
       await processGameData(userData);
     } else {
-      setError("Error retrieving data.");
+      enqueueSnackbar("Error retrieving data.", { variant: "error" });
     }
   };
 
   async function processGameData(userData: UserData) {
-    setError("Data Retrieved. Processing...");
+    enqueueSnackbar("Data Retrieved. Processing...", { variant: "info" });
 
     if (rememberLogin) {
       localStorage.setItem("token", JSON.stringify(userData.tokenData));
@@ -91,7 +90,7 @@ const GameImport = () => {
       level: profileData.level,
       assistant: profileData.secretary,
       server: "EN",
-      onboard: `${d.getFullYear}-${d.getMonth() + 1}-${d.getDay()}`,
+      onboard: `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`,
     });
 
     //Update roster data
@@ -170,61 +169,81 @@ const GameImport = () => {
     depotData.push({ material_id: "4001", stock: userData.status.gold });
     await setDepot(depotData);
 
-    setError("Data imported.");
+    enqueueSnackbar("Data imported.", { variant: "success" });
   }
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
       You can import your account data if your account is linked to a Yostar account. Doing this WILL log you out from
       the game, if you are currently logged in.
-      <TextField
-        id="Mail"
-        sx={{
-          "& .MuiFilledInput-root": {
-            borderRadius: "2px 0px 0px 2px",
-          },
-        }}
-        variant="filled"
-        label="Mail"
-        value={email}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-          setEmail(event.target.value.trim());
-        }}
-      />
-      <Button variant="outlined" disabled={email.length == 0} onClick={(event) => sendCode()}>
-        Send code
-      </Button>
-      <TextField
-        id="Code"
-        sx={{
-          "& .MuiFilledInput-root": {
-            borderRadius: "2px 0px 0px 2px",
-          },
-        }}
-        variant="filled"
-        label="Code"
-        value={code}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-          setCode(event.target.value.trim());
-        }}
-      />
-      <Button variant="outlined" disabled={code.length == 0} onClick={(event) => login()}>
-        Login
-      </Button>
-      <FormControlLabel
-        control={
-          <Checkbox
-            id="rememberLogin"
-            value={rememberLogin}
-            onChange={(event) => setRememberLogin(event.target.checked)}
-          />
-        }
-        label="Remember login"
-      />
+      <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+        <TextField
+          id="Mail"
+          sx={{
+            "& .MuiFilledInput-root": {
+              borderRadius: "2px 0px 0px 2px",
+            },
+          }}
+          variant="filled"
+          label="Mail"
+          value={email}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            setEmail(event.target.value.trim());
+          }}
+        />
+        <Button
+          variant="outlined"
+          type="submit"
+          disabled={email.length === 0}
+          onClick={(event) => {
+            event.preventDefault();
+            sendCode();
+          }}
+        >
+          Send code
+        </Button>
+      </Box>
+      <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+        <TextField
+          id="Code"
+          sx={{
+            "& .MuiFilledInput-root": {
+              borderRadius: "2px 0px 0px 2px",
+            },
+          }}
+          variant="filled"
+          label="Code"
+          value={code}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            setCode(event.target.value.trim());
+          }}
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              id="rememberLogin"
+              value={rememberLogin}
+              onChange={(event) => setRememberLogin(event.target.checked)}
+            />
+          }
+          label="Remember login"
+        />
+        <Button
+          variant="outlined"
+          type="submit"
+          disabled={code.length !== 6 || triedLogin}
+          onClick={(event) => {
+            event.preventDefault();
+            login();
+          }}
+        >
+          Log in
+        </Button>
+      </Box>
+      <Divider />
       <Button variant="outlined" disabled={!hasToken} onClick={(event) => loginWithToken()}>
         Login with previous credentials
       </Button>
-      {error}
     </Box>
   );
 };
