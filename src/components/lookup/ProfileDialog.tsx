@@ -160,6 +160,9 @@ const ProfileDialog = (props: Props) => {
                 position: "relative",
                 height: { xs: 320, sm: 560 },
                 width: { xs: "100vw", sm: 560 },
+                "& > img": {
+                  objectFit: "contain"
+                }
               }}
             >
               <Image

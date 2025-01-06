@@ -135,8 +135,12 @@ const AppDrawer = React.memo((props: Props) => {
               gridTemplateColumns: "1fr 1fr",
               gap: "4px",
               mx: "8px",
-              alignItems: "center",
-              justifyContent: "center",
+              "& > a": {
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "primary.main",
+              },
             }}
           >
             <Link href="/login">Log In</Link>

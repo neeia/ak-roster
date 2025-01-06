@@ -62,6 +62,7 @@ const ShareDialog = (props: Props) => {
           endIcon={saving ? <CircularProgress size={20} /> : <FileDownload />}
           variant="text"
           fullWidth
+          sx={{ display: { xs: "none", sm: "flex" } }}
         >
           Copy Image
         </Button>
