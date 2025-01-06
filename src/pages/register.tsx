@@ -11,25 +11,27 @@ import { enqueueSnackbar } from "notistack";
 import useAccount from "util/hooks/useAccount";
 import { useRouter } from "next/router";
 
-const DiscordButton = React.memo((props: { onClick: React.MouseEventHandler }) => (
-  <ButtonBase
-    sx={{
-      width: "100%",
-      fontSize: "1rem",
-      backgroundColor: DISCORD_BLURPLE,
-      display: "flex",
-      gap: 1,
-      p: 2,
-      borderRadius: 1,
-      transition: "filter 0.1s",
-      ":hover": { filter: "brightness(110%)" },
-    }}
-    onClick={props.onClick}
-  >
-    <Image src="/img/assets/discord.svg" width="24" height="18" alt="" />
-    Continue with Discord
-  </ButtonBase>
-));
+function DiscordButton(props: { onClick: React.MouseEventHandler }) {
+  return (
+    <ButtonBase
+      sx={{
+        width: "100%",
+        fontSize: "1rem",
+        backgroundColor: DISCORD_BLURPLE,
+        display: "flex",
+        gap: 1,
+        p: 2,
+        borderRadius: 1,
+        transition: "filter 0.1s",
+        ":hover": { filter: "brightness(110%)" },
+      }}
+      onClick={props.onClick}
+    >
+      <Image src="/img/assets/discord.svg" width="24" height="18" alt="" />
+      Continue with Discord
+    </ButtonBase>
+  );
+}
 
 enum RegisterState {
   Default,
@@ -53,7 +55,7 @@ const Register: NextPage = () => {
         setFlow(RegisterState.Default);
         break;
     }
-  }, [isReady]);
+  }, [isReady, query.flow]);
 
   const [flow, setFlow] = useState(RegisterState.Default);
   const [loading, setLoading] = useState(false);

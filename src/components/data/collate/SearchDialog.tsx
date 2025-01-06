@@ -32,7 +32,7 @@ const SearchDialog = memo((props: Props) => {
         setOpen(false);
       }
     },
-    [input.current]
+    [input]
   );
 
   useEffect(() => {

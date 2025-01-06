@@ -1,7 +1,7 @@
 import { DeportRecognizer, toSimpleTrustedResult } from "@arkntools/depot-recognition";
 import { sortBy } from "lodash";
 import itemsJson from "data/items.json";
-import { Item } from "../types/item";
+import { Item } from "../../../types/item";
 import { expose } from "comlink";
 
 async function getMaterialsFromImage(fileList: File[]): Promise<Record<string, number | undefined>[]> {

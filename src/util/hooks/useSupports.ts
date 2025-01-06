@@ -18,7 +18,7 @@ function useSupports() {
       const { error } = await supabase.from("supports").upsert(newSupport);
       handlePostgrestError(error);
     },
-    [supports]
+    [supports, _setSupport]
   );
 
   const removeSupport = useCallback(
@@ -29,7 +29,7 @@ function useSupports() {
       const { error } = await supabase.from("supports").delete().eq("slot", slot);
       handlePostgrestError(error);
     },
-    [supports]
+    [supports, _setSupport]
   );
 
   // fetch data from db
@@ -48,7 +48,7 @@ function useSupports() {
     };
 
     fetchData();
-  }, []);
+  }, [_setSupport]);
 
   return [supports, setSupport, removeSupport] as const;
 }

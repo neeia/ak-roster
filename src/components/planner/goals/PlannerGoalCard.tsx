@@ -1,15 +1,13 @@
 import { alpha, Box, Button, Divider, styled, Tooltip, useMediaQuery, useTheme } from "@mui/material";
 import React, { memo, useEffect, useState } from "react";
-
-import operatorsJson from "data/operators.json";
-
 import ItemStack from "../depot/ItemStack";
 import OperatorGoalIconography from "./OperatorGoalIconography";
 import { OperatorData } from "types/operators/operator";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
-import getGoalIngredients from "util/getGoalIngredients";
+import getGoalIngredients from "util/fns/depot/getGoalIngredients";
 import { DeleteForever, Upload } from "@mui/icons-material";
 import clsx from "clsx";
+import operatorJson from "data/operators";
 
 const GoalCardButton = styled(Button)({
   borderRadius: "0px",
@@ -31,11 +29,11 @@ const PlannerGoalCard = memo((props: Props) => {
   const theme = useTheme();
   const isXSScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
-  const opData: OperatorData = operatorsJson[goal.operatorId as keyof typeof operatorsJson];
-
   const [goalName, setGoalName] = useState("");
 
   useEffect(() => {
+    const opData: OperatorData = operatorJson[goal.operatorId];
+
     switch (goal.category) {
       case OperatorGoalCategory.Level:
         setGoalName(`E${goal.eliteLevel} Lv${goal.fromLevel} → ${goal.toLevel}`);
@@ -59,7 +57,7 @@ const PlannerGoalCard = memo((props: Props) => {
     }
   }, [goal]);
 
-  const goalLabel = `${opData.name} ${goalName}`;
+  const goalLabel = `${operatorJson[goal.operatorId].name} ${goalName}`;
 
   const ingredients = getGoalIngredients(goal);
 

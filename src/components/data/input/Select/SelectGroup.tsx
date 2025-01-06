@@ -1,6 +1,6 @@
 import { Box, BoxProps, Button, SxProps, Theme, Typography } from "@mui/material";
 import React, { createContext, useCallback, useContext, useEffect, useRef } from "react";
-import findFirstFocusableElement from "util/findFirstFocusableElement";
+import findFirstFocusableElement from "util/fns/findFirstFocusableElement";
 import attachSubComponents from "util/subcomponent";
 
 export const DisabledContext = createContext(false);
@@ -89,7 +89,7 @@ const Toggle = (props: AddGroupProps) => {
     if (!el.current) return;
     const e = findFirstFocusableElement(el.current);
     if (e) (e as HTMLElement).focus();
-  }, [el.current]);
+  }, [el]);
 
   return open ? (
     <Box sx={{ display: "contents" }} ref={el}>

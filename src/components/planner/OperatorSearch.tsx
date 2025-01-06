@@ -39,10 +39,13 @@ interface Props
 const OperatorSearch = (props: Props) => {
   const { value, onChange, filter = () => true, sx, ...rest } = props;
 
-  const filterOptions = useCallback((operators: OperatorData[], { inputValue }: FilterOptionsState<OperatorData>) => {
-    const normalizedInput = normalizeOperatorName(inputValue);
-    return operators.filter((op) => operatorNormalizedNames[op.name].includes(normalizedInput) && filter(op));
-  }, []);
+  const filterOptions = useCallback(
+    (operators: OperatorData[], { inputValue }: FilterOptionsState<OperatorData>) => {
+      const normalizedInput = normalizeOperatorName(inputValue);
+      return operators.filter((op) => operatorNormalizedNames[op.name].includes(normalizedInput) && filter(op));
+    },
+    [filter]
+  );
 
   return (
     <Autocomplete<OperatorData>

@@ -41,20 +41,29 @@ export const OperatorGoals = memo((props: Props) => {
     setAnchorEl(e.currentTarget);
   };
 
-  const handleMoreMenuClose = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    setAnchorEl(null);
-  };
+  const handleMoreMenuClose = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      setAnchorEl(null);
+    },
+    [setAnchorEl]
+  );
 
-  const handleEditGoalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    handleMoreMenuClose(e);
-    onGoalEdit(operatorGoal.op_id, operatorGoal.group_name);
-  };
+  const handleEditGoalButtonClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      handleMoreMenuClose(e);
+      onGoalEdit(operatorGoal.op_id, operatorGoal.group_name);
+    },
+    [onGoalEdit, handleMoreMenuClose, operatorGoal]
+  );
 
-  const handleMoveGoalButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    handleMoreMenuClose(e);
-    onGoalMove(operatorGoal.op_id, operatorGoal.group_name);
-  };
+  const handleMoveGoalButtonClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      handleMoreMenuClose(e);
+      onGoalMove(operatorGoal.op_id, operatorGoal.group_name);
+    },
+    [onGoalMove, handleMoreMenuClose, operatorGoal]
+  );
 
   const handleDeleteGoalsButtonClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {

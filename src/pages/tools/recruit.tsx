@@ -1,8 +1,6 @@
 ﻿import {
   Autocomplete,
   TextField,
-  SxProps,
-  Theme,
   Box,
   Checkbox,
   FormControlLabel,
@@ -20,9 +18,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import recruitmentJson from "data/recruitment.json";
 import Layout from "components/Layout";
 import classList from "data/classList";
-import useLocalStorage from "util/hooks/useLocalStorage";
 import RecruitableOperatorCard from "components/recruit/RecruitableOperatorCard";
-import { useRosterGetQuery } from "store/extendRoster";
 import { UserContext } from "pages/_app";
 import { defaultOperatorObject } from "util/changeOperator";
 import Board from "components/base/Board";
@@ -285,16 +281,16 @@ const Recruit: NextPage = () => {
             <FormControlLabel
               control={
                 <Checkbox
-                checked={settings.showBonuses}
-                onChange={(e) => {
-                  setSettings((s) => ({
-                    ...s,
-                    recruitSettings: {
-                      ...settings,
-                      showBonuses: e.target.checked,
-                    },
-                  }));
-                }}
+                  checked={settings.showBonuses}
+                  onChange={(e) => {
+                    setSettings((s) => ({
+                      ...s,
+                      recruitSettings: {
+                        ...settings,
+                        showBonuses: e.target.checked,
+                      },
+                    }));
+                  }}
                   disabled={!user}
                 />
               }

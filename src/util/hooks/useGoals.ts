@@ -79,7 +79,7 @@ function useGoals() {
       });
       _setGoals(_goals);
     },
-    [goals]
+    [goals, _setGoals]
   );
 
   const removeAllGoals = useCallback(async () => {
@@ -87,7 +87,7 @@ function useGoals() {
 
     const { error } = await supabase.from("goals").delete();
     handlePostgrestError(error);
-  }, []);
+  }, [_setGoals]);
 
   const removeAllGoalsFromGroup = useCallback(
     async (groupName: string) => {
@@ -97,7 +97,7 @@ function useGoals() {
       const { error } = await supabase.from("goals").delete().eq("group_name", groupName);
       handlePostgrestError(error);
     },
-    [goals]
+    [goals, _setGoals]
   );
 
   const removeAllGoalsFromOperator = useCallback(
@@ -108,7 +108,7 @@ function useGoals() {
       const { error } = await supabase.from("goals").delete().eq("op_id", opId).eq("group_name", groupName);
       handlePostgrestError(error);
     },
-    [goals]
+    [goals, _setGoals]
   );
 
   const hydrated = useRef(false);
@@ -149,7 +149,7 @@ function useGoals() {
     return () => {
       isCanceled = true;
     };
-  }, [hydrated.current, legacyGoals]);
+  }, [hydrated, legacyGoals, _setGoals]);
 
   return { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator } as const;
 }

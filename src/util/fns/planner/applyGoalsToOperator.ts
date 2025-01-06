@@ -12,7 +12,7 @@ import {
 } from "util/changeOperator";
 
 const isNumber = (value: any) => typeof value === "number";
-export default function (goal: Partial<GoalDataInsert>, op: Operator): Operator {
+export default function applyGoalsToOperator(goal: Partial<GoalDataInsert>, op: Operator): Operator {
   let _op = { ...op };
   const opData = operatorJson[op.op_id];
   let changed = false;
@@ -46,12 +46,12 @@ export default function (goal: Partial<GoalDataInsert>, op: Operator): Operator 
   if (goal.modules_to) {
     Object.entries(goal.modules_to).forEach(([id, value]) => {
       if (!opData.moduleData) return;
-      const module = opData.moduleData.find(({ moduleId }) => moduleId === id);
-      if (!module) return;
+      const moduleData = opData.moduleData.find(({ moduleId }) => moduleId === id);
+      if (!moduleData) return;
       changed = true;
       _op = changePromotion(_op, 2);
       _op = changeLevel(_op, Math.max(_op.level, MODULE_REQ_BY_RARITY[opData.rarity]));
-      _op = changeModule(_op, module.moduleId, value);
+      _op = changeModule(_op, moduleData.moduleId, value);
     });
   }
 

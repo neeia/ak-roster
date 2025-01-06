@@ -1,4 +1,4 @@
-export default [
+const patch = [
   {
     version: "3.0.0",
     date: "Jan 5, 2025",
@@ -32,3 +32,5 @@ export default [
     ],
   },
 ];
+
+export default patch;

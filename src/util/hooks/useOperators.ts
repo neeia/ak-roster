@@ -67,7 +67,7 @@ function useOperators() {
     return () => {
       isCanceled = true;
     };
-  }, [hydrated.current, legacyOperators]);
+  }, [hydrated, legacyOperators, setOperators]);
 
   return [operators, onChange] as const;
 }

@@ -43,4 +43,5 @@ const Potential = memo((props: Props) => {
     </ToggleButtonGroup>
   );
 });
+Potential.displayName = "Potential";
 export default Potential;

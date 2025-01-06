@@ -8,11 +8,11 @@ import { Ingredient, Item } from "types/item";
 
 import ItemInfoPopover from "../ItemInfoPopover";
 import ItemNeeded from "./ItemNeeded";
-import getGoalIngredients from "util/getGoalIngredients";
+import getGoalIngredients from "util/fns/depot/getGoalIngredients";
 import DepotItem from "types/depotItem";
 import ExportImportDialog from "./ExportImportDialog";
 import Board from "components/base/Board";
-import canCompleteByCrafting from "util/fns/canCompleteByCrafting";
+import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
 import { LocalStorageSettings } from "types/localStorageSettings";
 import depotToExp from "util/fns/depot/depotToExp";
 import { PlannerGoal } from "types/goal";

@@ -49,4 +49,5 @@ const SkillLevel = memo((props: Props) => {
     </ToggleButtonGroup>
   );
 });
+SkillLevel.displayName = "Skill Level";
 export default SkillLevel;

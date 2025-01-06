@@ -28,7 +28,7 @@ function useDepot() {
       const { error } = await supabase.from("depot").upsert(items).select();
       handlePostgrestError(error);
     },
-    [depot]
+    [depot, _setDepot]
   );
 
   // fetch data from db
@@ -80,7 +80,7 @@ function useDepot() {
     };
 
     fetchData();
-  }, [hydrated.current, legacyStore]);
+  }, [hydrated, legacyStore, _setDepot]);
 
   return [depot, putDepot] as const;
 }

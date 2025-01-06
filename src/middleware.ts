@@ -16,7 +16,3 @@ export async function middleware(req: NextRequest) {
 
   return res;
 }
-
-export const config = {
-  matcher: ["/account/:path*", "/data/:path*", "/planner/:path*"],
-};

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
 import AccountData, { AccountDataInsert } from "types/auth/accountData";
 import { enqueueSnackbar } from "notistack";
-import randomName from "util/randomName";
+import randomName from "util/fns/randomName";
 import handlePostgrestError from "util/fns/handlePostgrestError";
 
 function useAccount() {

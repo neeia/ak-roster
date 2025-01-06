@@ -1,6 +1,6 @@
 import { OpInfo } from "types/operators/operator";
 
-export default function (op: OpInfo) {
+export default function getAvatar(op: OpInfo) {
   if (op.skin) return `/img/avatars/${op.skin.replace("#", "%23")}.png`;
 
   let intermediate = op.op_id;

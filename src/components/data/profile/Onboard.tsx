@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { debounce } from "lodash";
 import { AccountMutateProps } from "pages/data/profile";
 
@@ -15,17 +15,14 @@ const Onboard = (props: AccountMutateProps) => {
     }
   };
 
-  const setOnboardDebounced = useCallback(
-    debounce(
-      (date) =>
-        setAccount({
-          user_id: user.user_id,
-          private: user.private,
-          onboard: date,
-        }),
-      500
-    ),
-    []
+  const setOnboardDebounced = debounce(
+    (date) =>
+      setAccount({
+        user_id: user.user_id,
+        private: user.private,
+        onboard: date,
+      }),
+    500
   );
 
   return (

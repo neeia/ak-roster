@@ -51,9 +51,9 @@ const MyApp = (props: AppProps) => {
     return subscription.unsubscribe;
   }, [user]);
 
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
-  const theme = React.useMemo(() => createTheme(brand.DEFAULT), [prefersDarkMode]);
+  const theme = React.useMemo(() => createTheme(brand.DEFAULT), []);
 
   const clientSideEmotionCache = createEmotionCache();
   return (

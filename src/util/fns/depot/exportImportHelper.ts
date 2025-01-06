@@ -4,7 +4,7 @@ import getGoalIngredients from "./getGoalIngredients";
 import { Ingredient, Item } from "types/item";
 import { wrap } from "comlink";
 import { MaterialWorker } from "./getMaterialFromImage";
-import GoalData, { getPlannerGoals } from "../types/goalData";
+import GoalData, { getPlannerGoals } from "../../../types/goalData";
 import DepotItem from "types/depotItem";
 
 export const SUPPORTED_EXPORT_TYPES: DataShareInfo[] = [

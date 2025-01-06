@@ -34,7 +34,7 @@ const Layout = React.memo((props: Props) => {
   const [account, , { loading }] = useAccount();
   useEffect(() => {
     if (!user && !loading && requireLogin) router.push("/");
-  }, [user, account, loading]);
+  }, [user, account, loading, requireLogin, router]);
 
   return (
     <ThemeProvider theme={createTheme(brand[tab] ?? brand.DEFAULT)}>

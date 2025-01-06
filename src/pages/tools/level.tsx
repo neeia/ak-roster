@@ -316,3 +316,4 @@ const LmdIcon = memo(() => (
     <Image src="/img/items/GOLD_SHD.webp" width={26} height={18} alt="LMD" />
   </Box>
 ));
+LmdIcon.displayName = "LMD";

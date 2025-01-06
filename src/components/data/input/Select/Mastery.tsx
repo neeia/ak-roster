@@ -37,7 +37,7 @@ interface SkillProps extends BoxProps<"li"> {
   disabled?: boolean;
   children?: React.ReactNode;
 }
-const Skill = (props: SkillProps) => {
+function Skill(props: SkillProps) {
   const { src, skillNumber, skillName = "Missing Skill Data", children, sx, ...rest } = props;
   const size = 48;
 
@@ -79,9 +79,9 @@ const Skill = (props: SkillProps) => {
       {children}
     </Box>
   );
-};
+}
 
-const SkillAlt = (props: SkillProps) => {
+function SkillAlt(props: SkillProps) {
   const { src, skillNumber, skillName = "Missing Skill Data", disabled = false, children, sx, ...rest } = props;
   const size = 48;
 
@@ -132,7 +132,7 @@ const SkillAlt = (props: SkillProps) => {
       </Box>
     </Box>
   );
-};
+}
 
 interface SelectProps extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   value?: number;
@@ -141,7 +141,7 @@ interface SelectProps extends Omit<ToggleButtonGroupProps, "onChange" | "size"> 
   size?: number;
   onChange: (value: number) => void;
 }
-const Select = (props: SelectProps) => {
+function Select(props: SelectProps) {
   const { value, min = 0, max = 3, onChange, disabled: _disabled = false, sx, size = 32, ...rest } = props;
 
   const disabled = useContext(DisabledContext) || _disabled;
@@ -167,7 +167,8 @@ const Select = (props: SelectProps) => {
       ))}
     </ToggleButtonGroup>
   );
-};
+}
 
+Mastery.displayName = "Mastery";
 const _Mastery = attachSubComponents("Mastery", Mastery, { Skill, SkillAlt, Select });
 export default _Mastery;

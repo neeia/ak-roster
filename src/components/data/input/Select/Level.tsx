@@ -158,4 +158,5 @@ const Level = memo((props: Props) => {
     </Box>
   );
 });
+Level.displayName = "Level";
 export default Level;

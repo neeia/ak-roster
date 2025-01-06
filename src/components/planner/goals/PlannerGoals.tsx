@@ -36,11 +36,11 @@ import {
 import GoalReorderDialog from "./GoalReorderDialog";
 import DepotItem from "types/depotItem";
 import useGoalGroups from "util/hooks/useGoalGroups";
-import getGoalIngredients from "util/getGoalIngredients";
+import getGoalIngredients from "util/fns/depot/getGoalIngredients";
 import useOperators from "util/hooks/useOperators";
 import OperatorGoals from "./OperatorGoals";
 import PlannerGoalCard from "./PlannerGoalCard";
-import canCompleteByCrafting from "util/fns/canCompleteByCrafting";
+import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
 import { LocalStorageSettings } from "types/localStorageSettings";
 import depotToExp from "util/fns/depot/depotToExp";
 import GoalFilterDialog from "./GoalFilterDialog";
@@ -292,7 +292,7 @@ const PlannerGoals = (props: Props) => {
         updateGoals([_goal]);
       }
     },
-    [goals, updateGoals, removeAllGoalsFromOperator, roster]
+    [goals, updateGoals, removeAllGoalsFromOperator]
   );
 
   const onPlannerGoalCardGoalCompleted = (plannerGoal: PlannerGoal) => {

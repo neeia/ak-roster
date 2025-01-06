@@ -21,7 +21,7 @@ function useGoalGroups() {
       }
       _setGroups(names);
     },
-    [user_id]
+    [user_id, _setGroups]
   );
 
   const renameGroup = useCallback(
@@ -38,7 +38,7 @@ function useGoalGroups() {
       }
       _setGroups(names);
     },
-    [user_id]
+    [user_id, _setGroups]
   );
 
   const removeGroup = useCallback(
@@ -49,7 +49,7 @@ function useGoalGroups() {
       const { error } = await supabase.from("groups").delete().eq("group_name", groupName);
       handlePostgrestError(error);
     },
-    [groups]
+    [groups, _setGroups]
   );
 
   // fetch data from db
@@ -73,7 +73,7 @@ function useGoalGroups() {
     };
 
     fetchData();
-  }, []);
+  }, [_setGroups]);
 
   return { groups, putGroups: putGroups, renameGroup, removeGroup } as const;
 }

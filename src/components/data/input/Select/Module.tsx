@@ -33,7 +33,7 @@ interface ItemProps extends Partial<Pick<ModuleData, "moduleName" | "moduleId" |
   children?: React.ReactNode;
   disabled?: boolean;
 }
-const Item = (props: ItemProps) => {
+function Item(props: ItemProps) {
   const { moduleId: src, typeName, moduleName = "Missing Module Data", children } = props;
   const size = 48;
 
@@ -73,8 +73,8 @@ const Item = (props: ItemProps) => {
       {children}
     </Box>
   );
-};
-const ItemAlt = (props: ItemProps) => {
+}
+function ItemAlt(props: ItemProps) {
   const { moduleId: src, typeName, moduleName = "Missing Module Data", disabled = false, children } = props;
   const size = 48;
 
@@ -123,7 +123,7 @@ const ItemAlt = (props: ItemProps) => {
       </Box>
     </Box>
   );
-};
+}
 
 interface SelectProps extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   value?: number;
@@ -133,7 +133,7 @@ interface SelectProps extends Omit<ToggleButtonGroupProps, "onChange" | "size"> 
   size?: number;
   onChange: (id: string, value: number) => void;
 }
-const Select = (props: SelectProps) => {
+function Select(props: SelectProps) {
   const { value, moduleId, min = 0, max = 3, onChange, disabled: _disabled = false, sx, size = 32, ...rest } = props;
 
   const disabled = useContext(DisabledContext) || _disabled;
@@ -159,7 +159,8 @@ const Select = (props: SelectProps) => {
       ))}
     </ToggleButtonGroup>
   );
-};
+}
 
+Module.displayName = "Module";
 const _Module = attachSubComponents("Module", Module, { Item, ItemAlt, Select });
 export default _Module;

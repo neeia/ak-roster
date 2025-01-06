@@ -1,5 +1,5 @@
 import { InputAdornment, TextField } from "@mui/material";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { debounce } from "lodash";
 import { AccountMutateProps } from "pages/data/profile";
 import Image from "next/image";
@@ -14,16 +14,13 @@ const Discord = (props: AccountMutateProps) => {
     setDiscordDebounced(s);
   };
 
-  const setDiscordDebounced = useCallback(
-    debounce(
-      (username) =>
-        setAccount({
-          user_id: user.user_id,
-          discordcode: username,
-        }),
-      500
-    ),
-    []
+  const setDiscordDebounced = debounce(
+    (username) =>
+      setAccount({
+        user_id: user.user_id,
+        discordcode: username,
+      }),
+    500
   );
 
   return (

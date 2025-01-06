@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { debounce } from "lodash";
 import { AccountMutateProps } from "pages/data/profile";
 
@@ -21,16 +21,13 @@ const Level = (props: AccountMutateProps) => {
     setLevelDebounced(value);
   };
 
-  const setLevelDebounced = useCallback(
-    debounce(
-      (newLevel) =>
-        setAccount({
-          user_id: user.user_id,
-          level: newLevel,
-        }),
-      500
-    ),
-    []
+  const setLevelDebounced = debounce(
+    (newLevel) =>
+      setAccount({
+        user_id: user.user_id,
+        level: newLevel,
+      }),
+    500
   );
 
   return (

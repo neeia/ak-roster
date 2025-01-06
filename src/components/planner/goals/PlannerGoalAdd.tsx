@@ -15,7 +15,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import OperatorSearch from "../OperatorSearch";
 import { Operator, OperatorData } from "types/operators/operator";
 import { Close } from "@mui/icons-material";
@@ -35,8 +35,8 @@ import Preset from "types/operators/presets";
 import usePresets from "util/hooks/usePresets";
 import { modTypes } from "components/data/batch/PresetDialog";
 import SupportBlock from "components/data/SupportBlock";
-import applyGoalsFromOperator from "util/fns/applyGoalsFromOperator";
-import applyGoalsToOperator from "util/fns/applyGoalsToOperator";
+import applyGoalsFromOperator from "util/fns/planner/applyGoalsFromOperator";
+import applyGoalsToOperator from "util/fns/planner/applyGoalsToOperator";
 import operatorJson from "data/operators";
 import Roster from "types/operators/roster";
 
@@ -77,16 +77,7 @@ const PlannerGoalAdd = (props: Props) => {
 
   const [opData, setOpData] = useState<OperatorData | null>(null);
   const [currentOp, setCurrentOp] = useState<Operator | null>(null);
-
   const [selectedGroup, setSelectedGroup] = useState("Default");
-  useEffect(() => {
-    if (op_id) {
-      onSelectedOperatorChange(operatorJson[op_id]);
-    }
-    if (opData?.id === op_id && group) {
-      onGroupChange(group);
-    }
-  }, [op_id, opData, group]);
 
   const [isEdit, setIsEdit] = useState(false);
 
@@ -192,57 +183,73 @@ const PlannerGoalAdd = (props: Props) => {
     }
   };
 
-  const onSelectedOperatorChange = (_opData: OperatorData | null) => {
-    if (_opData?.id === opData?.id) return;
+  const onSelectedOperatorChange = useCallback(
+    (_opData: OperatorData | null) => {
+      if (_opData?.id === opData?.id) return;
 
-    setOpData(_opData);
-    if (!_opData) {
-      // no operator selected
-      setCurrentOp(null);
-      setGoalBuilder({});
-      return;
-    }
-    // operator selected, find operator in roster
-    const op = roster[_opData.id] ?? defaultOperatorObject(_opData.id, true);
-    setCurrentOp(op);
-    setGoalBuilder({});
-
-    // if a group is selected, check if there is an existing goal for the selected group
-    const existingGoal = goals.find((x) => x.op_id == _opData.id && x.group_name == selectedGroup);
-    if (existingGoal) {
-      setGoalBuilder(existingGoal);
-      setIsEdit(true);
-    } else {
-      setIsEdit(false);
-    }
-  };
-
-  const addGroup = (groupName: string) => {
-    putGroup([{ group_name: groupName, sort_order: goalGroups.length }]);
-    setSelectedGroup(groupName);
-  };
-  const onGroupChange = (groupName: string) => {
-    if (!groupName) {
-      setOpenGroupDialog(true);
-      return;
-    }
-
-    // if an op is selected, check if there is an existing goal for the selected group
-    if (opData) {
-      if (isEdit) {
+      setOpData(_opData);
+      if (!_opData) {
+        // no operator selected
+        setCurrentOp(null);
         setGoalBuilder({});
+        return;
       }
-      const existingGoal = goals.find((goal) => goal.op_id === opData.id && goal.group_name === groupName);
+      // operator selected, find operator in roster
+      const op = roster[_opData.id] ?? defaultOperatorObject(_opData.id, true);
+      setCurrentOp(op);
+      setGoalBuilder({});
+
+      // if a group is selected, check if there is an existing goal for the selected group
+      const existingGoal = goals.find((x) => x.op_id == _opData.id && x.group_name == selectedGroup);
       if (existingGoal) {
         setGoalBuilder(existingGoal);
         setIsEdit(true);
       } else {
         setIsEdit(false);
       }
-    }
+    },
+    [goals, roster, defaultOperatorObject, opData, setOpData, setIsEdit, setCurrentOp, setGoalBuilder, selectedGroup]
+  );
 
+  const addGroup = (groupName: string) => {
+    putGroup([{ group_name: groupName, sort_order: goalGroups.length }]);
     setSelectedGroup(groupName);
   };
+
+  const onGroupChange = useCallback(
+    (groupName: string) => {
+      if (!groupName) {
+        setOpenGroupDialog(true);
+        return;
+      }
+
+      // if an op is selected, check if there is an existing goal for the selected group
+      if (opData) {
+        if (isEdit) {
+          setGoalBuilder({});
+        }
+        const existingGoal = goals.find((goal) => goal.op_id === opData.id && goal.group_name === groupName);
+        if (existingGoal) {
+          setGoalBuilder(existingGoal);
+          setIsEdit(true);
+        } else {
+          setIsEdit(false);
+        }
+      }
+
+      setSelectedGroup(groupName);
+    },
+    [setOpenGroupDialog, opData, isEdit, setGoalBuilder, goals, setIsEdit]
+  );
+
+  useEffect(() => {
+    if (op_id) {
+      onSelectedOperatorChange(operatorJson[op_id]);
+    }
+    if (opData?.id === op_id && group) {
+      onGroupChange(group);
+    }
+  }, [op_id, opData, group, onSelectedOperatorChange, onGroupChange]);
 
   // promotion
   const onPromotionFromChange = (elite_from: number) => {

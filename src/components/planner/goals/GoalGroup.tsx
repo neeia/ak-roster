@@ -76,13 +76,10 @@ const GoalGroup = memo((props: Props) => {
     [handleMoreMenuClose]
   );
 
-  const handleRenameGroupButtonClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      handleMoreMenuClose(e);
-      onRename(groupName);
-    },
-    [handleMoreMenuClose]
-  );
+  const handleRenameGroupButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    handleMoreMenuClose(e);
+    onRename(groupName);
+  };
 
   return (
     <>

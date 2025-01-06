@@ -1,5 +1,5 @@
 import { InputAdornment, TextField } from "@mui/material";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { debounce } from "lodash";
 import { AccountMutateProps } from "pages/data/profile";
 import { Reddit as RedditIcon } from "@mui/icons-material";
@@ -14,16 +14,13 @@ const Reddit = (props: AccountMutateProps) => {
     setRedditDebounced(s);
   };
 
-  const setRedditDebounced = useCallback(
-    debounce(
-      (username) =>
-        setAccount({
-          user_id: user.user_id,
-          reddituser: username,
-        }),
-      500
-    ),
-    []
+  const setRedditDebounced = debounce(
+    (username) =>
+      setAccount({
+        user_id: user.user_id,
+        reddituser: username,
+      }),
+    500
   );
 
   return (

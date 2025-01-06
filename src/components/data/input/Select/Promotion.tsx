@@ -48,4 +48,5 @@ const Promotion = memo((props: Props) => {
     </ToggleButtonGroup>
   );
 });
+Promotion.displayName = "Promotion";
 export default Promotion;

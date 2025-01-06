@@ -1,11 +1,11 @@
 import operatorJson from "data/operators";
-import { Dispatch, SetStateAction, useCallback, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useMemo, useState } from "react";
 import DepotItem from "types/depotItem";
 import { PlannerGoal } from "types/goal";
 import { GoalFilter } from "types/goalFilter";
-import canCompleteByCrafting from "util/fns/canCompleteByCrafting";
+import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
 import depotToExp from "util/fns/depot/depotToExp";
-import getGoalIngredients from "util/getGoalIngredients";
+import getGoalIngredients from "util/fns/depot/getGoalIngredients";
 
 export interface GoalFilterHook {
   readonly filters: GoalFilter;
@@ -15,20 +15,23 @@ export interface GoalFilterHook {
 }
 
 export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
-  const defaultFilter = {
-    search: init.search ?? "",
-    completable: init.completable,
-    craftable: init.craftable,
-    uncompletable: init.uncompletable,
-    category: init.category ?? [],
-    materials: init.materials ?? [],
-  };
+  const defaultFilter = useMemo(
+    () => ({
+      search: init.search ?? "",
+      completable: init.completable,
+      craftable: init.craftable,
+      uncompletable: init.uncompletable,
+      category: init.category ?? [],
+      materials: init.materials ?? [],
+    }),
+    [init]
+  );
 
   const [filters, setFilters] = useState<GoalFilter>(defaultFilter);
 
   const clearFilters = useCallback(() => {
     setFilters({ ...defaultFilter });
-  }, [init]);
+  }, [defaultFilter]);
 
   const filterFunction = useCallback(
     (goal: PlannerGoal, depot: Record<string, DepotItem>, group: string) => {

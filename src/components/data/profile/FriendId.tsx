@@ -1,5 +1,5 @@
 import { Box, InputAdornment, TextField } from "@mui/material";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { debounce } from "lodash";
 import { AccountMutateProps } from "pages/data/profile";
 
@@ -19,16 +19,13 @@ const FriendID = (props: AccountMutateProps) => {
     setFriendCodeDebounced(friendUsername, ns);
   };
 
-  const setFriendCodeDebounced = useCallback(
-    debounce((username, tag) => {
-      const friendCode = { username: username, tag: tag };
-      setAccount({
-        user_id: user.user_id,
-        friendcode: friendCode,
-      });
-    }, 500),
-    []
-  );
+  const setFriendCodeDebounced = debounce((username, tag) => {
+    const friendCode = { username: username, tag: tag };
+    setAccount({
+      user_id: user.user_id,
+      friendcode: friendCode,
+    });
+  }, 500);
 
   return (
     <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto" }}>

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback } from "react";
 import { Operator, Skin } from "types/operators/operator";
 import skinJson from "data/skins.json";
 import {
@@ -42,10 +42,9 @@ import {
 } from "util/changeOperator";
 import Select, { DisabledContext } from "./Select/SelectGroup";
 import getAvatar from "util/fns/getAvatar";
-import { UserContext } from "pages/_app";
 import usePresets from "util/hooks/usePresets";
 import Chip from "components/base/Chip";
-import applyPresetToOperator from "util/fns/applyPresetToOperator";
+import applyPresetToOperator from "util/fns/planner/applyPresetToOperator";
 
 interface Props {
   op?: Operator;
@@ -61,12 +60,10 @@ const EditOperator = React.memo((props: Props) => {
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
-  const user = useContext(UserContext);
-
   const onChangeOwned = useCallback(() => {
     if (!op) return;
     onChange(changeOwned(op, !op.potential));
-  }, [op, user]);
+  }, [op, onChange]);
 
   const onChangeFavorite = useCallback(() => {
     if (!op) return;

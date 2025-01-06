@@ -31,15 +31,11 @@ const getDataEndpoint = "/account/syncData";
 const defaultHeaders = {
   "Content-Type": "application/json",
   "X-Unity-Version": "2017.4.39f1",
-  "User-Agent":
-    "Dalvik/2.1.0 (Linux; U; Android 11; KB2000 Build/RP1A.201005.001)",
+  "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 11; KB2000 Build/RP1A.201005.001)",
   Connection: "Keep-Alive",
 };
 
-const sendTokenToMail = async function (
-  mail: string,
-  server: YostarServer
-): Promise<boolean> {
+const sendTokenToMail = async function (mail: string, server: YostarServer): Promise<boolean> {
   const passportUrl = yostarPassportUrls[server];
 
   const body = { platform: "android", account: mail, authlang: "en" };
@@ -48,7 +44,7 @@ const sendTokenToMail = async function (
     body: JSON.stringify(body),
     headers: defaultHeaders,
   });
-  console.log("mail sent");
+  // console.log("mail sent");
   return sendMail.ok;
 };
 
@@ -58,11 +54,8 @@ const sendTokenToMail = async function (
  * @param code - the code sent to the mail of the account
  * @return {Promise<UserData | null>} - the account {@link UserData} if the request was successful, otherwise null
  */
-const getGameData = async function (
-  mail: string,
-  code: string
-): Promise<UserData | null> {
-  console.log("starting to get game data");
+const getGameData = async function (mail: string, code: string): Promise<UserData | null> {
+  // console.log("starting to get game data");
   const server = "en";
   const distributor = "yostar";
 
@@ -73,10 +66,10 @@ const getGameData = async function (
 
   const networkConfig = await getNetworkConfig(server);
 
-  console.log("getting auth data");
+  // console.log("getting auth data");
   const yostarAuthData = await getYostarAuthData(mail, code, server);
   if (yostarAuthData) {
-    console.log("getting yostar token");
+    // console.log("getting yostar token");
     const yostarToken = await getYostarToken(
       mail,
       yostarAuthData.yostar_uid,
@@ -96,14 +89,12 @@ const getGameData = async function (
       );
     }
   }
-  console.log("something went wrong");
+  // console.log("something went wrong");
   return null;
 };
 
-const getGameDataWithToken = async function (
-  tokenData: TokenData
-): Promise<UserData | null> {
-  console.log("starting to get game data with starting token");
+const getGameDataWithToken = async function (tokenData: TokenData): Promise<UserData | null> {
+  // console.log("starting to get game data with starting token");
   const server = "en";
   const distributor = "yostar";
 
@@ -145,15 +136,10 @@ const getGameDataWithTokenInternal = async function (
   server: YostarServer,
   networkConfig: Record<string, string>
 ): Promise<UserData | null> {
-  console.log("getting access token");
-  const accessToken = await getAccessToken(
-    yostarToken.uid,
-    yostarToken.token,
-    deviceId1,
-    server
-  );
+  // console.log("getting access token");
+  const accessToken = await getAccessToken(yostarToken.uid, yostarToken.token, deviceId1, server);
   if (accessToken) {
-    console.log("getting u8 token");
+    // console.log("getting u8 token");
     const u8Token = await getU8Token(
       yostarToken.uid,
       accessToken.accessToken,
@@ -164,7 +150,7 @@ const getGameDataWithTokenInternal = async function (
       networkConfig
     );
     if (u8Token) {
-      console.log("getting login secret");
+      // console.log("getting login secret");
       const loginSecret = await getLoginSecret(
         u8Token.token,
         u8Token.uid,
@@ -174,13 +160,9 @@ const getGameDataWithTokenInternal = async function (
         networkConfig
       );
       if (loginSecret) {
-        console.log("getting user data");
-        const data = await getData(
-          loginSecret.secret,
-          loginSecret.uid,
-          networkConfig
-        );
-        console.log("user data got succesfully");
+        // console.log("getting user data");
+        const data = await getData(loginSecret.secret, loginSecret.uid, networkConfig);
+        // console.log("user data got succesfully");
         if (data) {
           data.tokenData = {
             token: yostarToken,
@@ -201,11 +183,7 @@ const getGameDataWithTokenInternal = async function (
  * @param server - yostar server of the account
  * @return {Promise<YostarAuthData | null>} - the {@link YostarAuthData}, containing token and uid, if the request was successful, otherwise null
  */
-async function getYostarAuthData(
-  mail: string,
-  code: string,
-  server: YostarServer
-): Promise<YostarAuthData | null> {
+async function getYostarAuthData(mail: string, code: string, server: YostarServer): Promise<YostarAuthData | null> {
   const passportUrl = yostarPassportUrls[server];
 
   const body = { account: mail, code: code };
@@ -249,14 +227,11 @@ async function getYostarToken(
     createNew: "0",
   };
 
-  const yostarTokenResponse = await fetch(
-    passportUrl + getYostarTokenEndpoint,
-    {
-      method: "POST",
-      body: JSON.stringify(yostarTokenBody),
-      headers: defaultHeaders,
-    }
-  );
+  const yostarTokenResponse = await fetch(passportUrl + getYostarTokenEndpoint, {
+    method: "POST",
+    body: JSON.stringify(yostarTokenBody),
+    headers: defaultHeaders,
+  });
 
   if (yostarTokenResponse.ok) {
     const yostarTokenResult = await yostarTokenResponse.json();
@@ -288,14 +263,11 @@ async function getAccessToken(
     deviceId: deviceId1,
   };
 
-  const accessTokenResponse = await fetch(
-    passportUrl + getAccessTokenEndpoint,
-    {
-      method: "POST",
-      body: JSON.stringify(accessTokenBody),
-      headers: defaultHeaders,
-    }
-  );
+  const accessTokenResponse = await fetch(passportUrl + getAccessTokenEndpoint, {
+    method: "POST",
+    body: JSON.stringify(accessTokenBody),
+    headers: defaultHeaders,
+  });
 
   if (accessTokenResponse.ok) {
     const accessTokenResult = await accessTokenResponse.json();
@@ -455,9 +427,7 @@ async function getData(
  * @return {Promise<any>} - returns the server URLs
  *
  */
-async function getNetworkConfig(
-  server: ArknightsServer
-): Promise<Record<string, string>> {
+async function getNetworkConfig(server: ArknightsServer): Promise<Record<string, string>> {
   const networkConfigUrl = networkConfigUrls[server];
 
   const networkResponse = await fetch(networkConfigUrl, {
@@ -465,9 +435,7 @@ async function getNetworkConfig(
   }).then((res) => res.json());
   const content = networkResponse["content"] as string;
   const jsonContent = JSON.parse(content);
-  const networkConfig = jsonContent["configs"][jsonContent["funcVer"]][
-    "network"
-  ] as Record<string, string>;
+  const networkConfig = jsonContent["configs"][jsonContent["funcVer"]]["network"] as Record<string, string>;
   return networkConfig;
 }
 
@@ -476,9 +444,7 @@ async function getNetworkConfig(
  * @param networkConfig - the dictionary of the network configuration for the server
  * @return {Promise<VersionInfo>} - returns the VersionInfo from the server
  */
-async function getVersionConfig(
-  networkConfig: Record<string, string>
-): Promise<VersionInfo> {
+async function getVersionConfig(networkConfig: Record<string, string>): Promise<VersionInfo> {
   const hvUrl = networkConfig["hv"];
   const hvUrlFormatted = hvUrl!.replace("{0}", "Android");
   const versionResponse = await fetch(hvUrlFormatted, {

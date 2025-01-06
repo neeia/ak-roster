@@ -19,7 +19,7 @@ import Logo from "./app/Logo";
 import { interactive } from "styles/theme/appTheme";
 import JumpTo from "./base/JumpTo";
 import AccountWidget from "./app/AccountWidget";
-import findFirstFocusableElement from "util/findFirstFocusableElement";
+import findFirstFocusableElement from "util/fns/findFirstFocusableElement";
 import useAccount from "util/hooks/useAccount";
 import Link from "./base/Link";
 import manifest from "data/manifest";
