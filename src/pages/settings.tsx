@@ -12,6 +12,7 @@ import PasswordTextField from "components/app/PasswordTextField";
 import ResetPassword from "components/app/ResetPassword";
 import handleAuthError from "util/fns/handleAuthError";
 import { UserIdentity } from "@supabase/supabase-js";
+import { useRouter } from "next/router";
 
 function isValidUsername(input: string) {
   const regex = /^[a-zA-Z0-9_-]+$/;
@@ -30,6 +31,15 @@ const Settings: NextPage = () => {
 
   const [discordIdentity, setDiscordIdentity] = useState<UserIdentity>();
   const [emailIdentity, setEmailIdentity] = useState<UserIdentity>();
+
+  const { asPath } = useRouter();
+  useEffect(() => {
+    const hash = asPath.split("#")[1];
+    if (hash?.startsWith("access_token=")) {
+      window.history.replaceState(null, "", asPath.split("#")[0]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [asPath]);
 
   useEffect(() => {
     supabase.auth.getUserIdentities().then(({ data, error }) => {
@@ -86,14 +96,18 @@ const Settings: NextPage = () => {
   const [email, setEmail] = useState("");
 
   async function updateEmail() {
-    const { error } = await supabase.auth.updateUser({ email: email });
+    const { error } = await supabase.auth.updateUser(
+      { email: email },
+      {
+        emailRedirectTo: window.location.href,
+      }
+    );
     if (error) handleAuthError(error);
     else alert("Check your new e-mail to confirm the e-mail change.");
   }
 
   const [password1, setNewPassword] = useState<string>("");
   const [password2, setRepeatPassword] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
 
   const [resetOpen, setResetOpen] = useState<boolean>(false);
 
@@ -264,17 +278,9 @@ const Settings: NextPage = () => {
               </Box>
               <Divider />
               <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                <Typography variant="h2" sx={{ fontSize: "18px" }}>
+                <Typography variant="h2" sx={{ fontSize: "18px" }} id="change-password">
                   Change Password
                 </Typography>
-                <PasswordTextField
-                  label="Current Password"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  variant="filled"
-                />
                 <PasswordTextField
                   label="New Password"
                   value={password1}
@@ -292,7 +298,9 @@ const Settings: NextPage = () => {
                   error={password1 !== password2}
                   variant="filled"
                 />
-                <Button onClick={changePassword}>Change Password</Button>
+                <Button onClick={changePassword} disabled={!password1 || !password2 || password1 !== password2}>
+                  Change Password
+                </Button>
                 <Button onClick={() => setResetOpen(true)}>Forgot Password?</Button>
               </Box>
             </>

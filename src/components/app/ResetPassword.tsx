@@ -1,7 +1,8 @@
 import { Box, Button, Dialog, DialogContent, DialogTitle, TextField } from "@mui/material";
 import { enqueueSnackbar } from "notistack";
-import React, { useEffect, useState } from "react";
+import React, { MouseEvent, useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
+import { server } from "util/server";
 
 interface Props {
   open: boolean;
@@ -14,6 +15,7 @@ const ResetPassword = (props: Props) => {
 
   const [resetEmail, setResetEmail] = useState<string>("");
   const [errorEmail, setErrorEmail] = useState<string>("");
+  const [loading, setLoading] = useState(false);
   const [sentEmail, setSentEmail] = useState<boolean>(false);
 
   useEffect(() => {
@@ -23,14 +25,21 @@ const ResetPassword = (props: Props) => {
         setResetEmail(data.session?.user.email ?? "");
       }
     };
-    getSession().then();
-  });
+    getSession();
+  }, []);
 
-  function resetPassword() {
-    supabase.auth.resetPasswordForEmail(resetEmail).then(() => {
-      enqueueSnackbar("Email sent. Please check your inbox.", { variant: "info" });
-      setSentEmail(true);
-    });
+  function resetPassword(e: MouseEvent) {
+    e.preventDefault();
+    setLoading(true);
+    supabase.auth
+      .resetPasswordForEmail(resetEmail, {
+        redirectTo: `${server}/settings`,
+      })
+      .then(() => {
+        enqueueSnackbar("Email sent. Please check your inbox.", { variant: "info" });
+        setSentEmail(true);
+        setLoading(false);
+      });
   }
 
   return (
@@ -46,40 +55,45 @@ const ResetPassword = (props: Props) => {
       >
         Reset Password
       </DialogTitle>
-      <DialogContent
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "12px 6px",
-          maxWidth: "sm",
-          "& *:before": {
-            border: "none",
-            borderStyle: "none !important",
-          },
-          "& .MuiFilledInput-root": {
-            borderRadius: "2px",
-          },
-        }}
-      >
-        <TextField
-          id="Enter Email"
-          label="Enter Email"
-          value={resetEmail}
-          onChange={(e) => {
-            setResetEmail(e.target.value);
-            setErrorEmail("");
-          }}
-          variant="filled"
-        />
+      <DialogContent>
         <Box
+          component="form"
           sx={{
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            flexDirection: "column",
+            gap: "12px 6px",
+            maxWidth: "sm",
+            "& *:before": {
+              border: "none",
+              borderStyle: "none !important",
+            },
+            "& .MuiFilledInput-root": {
+              borderRadius: "2px",
+            },
           }}
         >
-          <Button onClick={resetPassword}>{sentEmail ? "Sent!" : "Confirm"}</Button>
-          {errorEmail}
+          <TextField
+            id="Enter Email"
+            label="Enter Email"
+            value={resetEmail}
+            onChange={(e) => {
+              setResetEmail(e.target.value);
+              setErrorEmail("");
+            }}
+            variant="filled"
+          />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Button onClick={resetPassword} type="submit" disabled={loading || sentEmail}>
+              {sentEmail ? "Sent!" : loading ? "Loading" : "Confirm"}
+            </Button>
+            {errorEmail}
+          </Box>
         </Box>
       </DialogContent>
     </Dialog>

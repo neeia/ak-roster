@@ -10,6 +10,7 @@ import AuthLayout from "components/AuthLayout";
 import { useRouter } from "next/router";
 import useAccount from "util/hooks/useAccount";
 import { enqueueSnackbar } from "notistack";
+import ResetPassword from "components/app/ResetPassword";
 
 const DiscordButton = React.memo((props: { onClick: React.MouseEventHandler }) => (
   <ButtonBase
@@ -106,13 +107,14 @@ const Login: NextPage = () => {
       type: "signup",
       email: email,
       options: {
-        emailRedirectTo: `${server}`,
+        emailRedirectTo: redirectTo,
       },
     });
     if (error) setErrorSb(error.message);
     else enqueueSnackbar("Verification email resent.", { variant: "success" });
   }
 
+  const [resetOpen, setResetOpen] = useState<boolean>(false);
   return (
     <AuthLayout title="Sign in">
       {loading ? (
@@ -186,6 +188,8 @@ const Login: NextPage = () => {
           >
             Log In
           </Button>
+          <Button onClick={() => setResetOpen(true)}>Forgot Password?</Button>
+          <ResetPassword open={resetOpen} onClose={() => setResetOpen(false)} />
           <Divider></Divider>
           <DiscordButton onClick={signInWithDiscord} />
         </Box>
