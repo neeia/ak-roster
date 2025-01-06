@@ -1,14 +1,15 @@
-import { useCallback, useEffect, useState } from "react";
-import { Operator } from "types/operators/operator";
+import { useCallback, useEffect, useRef } from "react";
+import { Operator, OperatorV2 } from "types/operators/operator";
 import operatorJson from "data/operators";
 import useLocalStorage from "./useLocalStorage";
 import Roster from "types/operators/roster";
 import supabase from "supabase/supabaseClient";
 import handlePostgrestError from "util/fns/handlePostgrestError";
+import { repair } from "util/fns/convertLegacyOperator";
 
 function useOperators() {
   const [operators, setOperators] = useLocalStorage<Roster>("v3_roster", {});
-  const [_operators] = useLocalStorage<Roster>("operators", {});
+  const [legacyOperators] = useLocalStorage<Record<string, OperatorV2>>("operators", {});
 
   // change operator, push to db
   const onChange = useCallback(
@@ -35,9 +36,11 @@ function useOperators() {
     [setOperators]
   );
 
+  const hydrated = useRef(false);
   // fetch data from db
   useEffect(() => {
     let isCanceled = false;
+    if (hydrated.current) return;
 
     const fetchData = async () => {
       const {
@@ -50,14 +53,12 @@ function useOperators() {
       const { data: dbOperators, error } = await supabase.from("operators").select().match({ user_id });
       if (error) handlePostgrestError(error);
 
-      if (!dbOperators?.length) {
-        setOperators({});
-        return;
-      }
+      let _roster: Roster = {};
+      if (dbOperators)
+        dbOperators.forEach((op) => (op.op_id in operatorJson ? (_roster[op.op_id] = op as Operator) : null));
+      else if (legacyOperators) _roster = repair(legacyOperators);
 
-      const _roster: Roster = {};
-      dbOperators.forEach((op) => (op.op_id in operatorJson ? (_roster[op.op_id] = op as Operator) : null));
-
+      hydrated.current = true;
       if (!isCanceled) setOperators(_roster);
     };
 
@@ -66,7 +67,7 @@ function useOperators() {
     return () => {
       isCanceled = true;
     };
-  }, []);
+  }, [hydrated.current, legacyOperators]);
 
   return [operators, onChange] as const;
 }

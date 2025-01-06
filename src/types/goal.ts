@@ -2,10 +2,10 @@ import { Ingredient } from "./item";
 
 export enum OperatorGoalCategory {
   Elite = 0,
-  Level,
   Mastery,
   SkillLevel,
   Module,
+  Level,
 }
 
 interface BaseOperatorGoal {

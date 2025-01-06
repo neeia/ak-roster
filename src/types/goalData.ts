@@ -138,29 +138,33 @@ export function getPlannerGoals(goal: GoalDataInsert, opData?: OperatorData) {
 }
 
 export const plannerGoalToGoalData = (goal: PlannerGoal): Partial<GoalDataInsert> => {
-  const opData = operatorJson[goal.operatorId];
+  const op_id = goal.operatorId;
+  const opData = operatorJson[op_id];
   switch (goal.category) {
     case OperatorGoalCategory.Elite:
       return {
+        op_id,
         elite_from: goal.eliteLevel - 1,
         elite_to: goal.eliteLevel,
       };
     case OperatorGoalCategory.Level:
       return {
+        op_id,
         elite_from: goal.eliteLevel,
         elite_to: goal.eliteLevel,
         level_from: goal.fromLevel,
         level_to: goal.toLevel,
       };
     case OperatorGoalCategory.Mastery:
-      const moduleIndex = opData.skillData?.findIndex((x) => x.skillId === goal.skillId);
-      if (!isNumber(moduleIndex) || moduleIndex === -1) return {};
+      const skillIndex = opData.skillData?.findIndex((x) => x.skillId === goal.skillId);
+      if (!isNumber(skillIndex) || skillIndex === -1) return {};
 
       const masteries_from = [...Array(getNumSkills(goal.operatorId))].fill(-1);
       const masteries_to = [...Array(getNumSkills(goal.operatorId))].fill(-1);
-      masteries_from[moduleIndex] = goal.masteryLevel - 1;
-      masteries_to[moduleIndex] = goal.masteryLevel;
+      masteries_from[skillIndex] = goal.masteryLevel - 1;
+      masteries_to[skillIndex] = goal.masteryLevel;
       return {
+        op_id,
         masteries_from,
         masteries_to,
       };
@@ -172,11 +176,13 @@ export const plannerGoalToGoalData = (goal: PlannerGoal): Partial<GoalDataInsert
       const modules_from = { ..._modules_from, [goal.moduleId]: goal.moduleLevel - 1 };
       const modules_to = { ..._modules_to, [goal.moduleId]: goal.moduleLevel };
       return {
+        op_id,
         modules_from,
         modules_to,
       };
     case OperatorGoalCategory.SkillLevel:
       return {
+        op_id,
         skill_level_from: goal.skillLevel - 1,
         skill_level_to: goal.skillLevel,
       };

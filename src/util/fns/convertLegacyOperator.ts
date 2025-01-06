@@ -4,6 +4,7 @@ import operatorJson from "data/operators";
 import Roster from "types/operators/roster";
 
 function checkVersion(op: any) {
+  if ("mastery" in op) return 2;
   if ("class" in op) return 1;
   if ("name" in op) return 2;
   return 3;
@@ -71,7 +72,7 @@ function convert(op: OperatorV1 | OperatorV2 | Operator): Operator {
   }
 }
 
-export function repair(roster: Roster, update: (v: Roster) => void) {
+export function repair(roster: Record<string, Operator> | Record<string, OperatorV2> | Record<string, OperatorV1>) {
   var _roster: Roster = {};
 
   Object.values(roster).forEach((op) => {
@@ -81,5 +82,5 @@ export function repair(roster: Roster, update: (v: Roster) => void) {
     }
   });
 
-  update(_roster);
+  return _roster;
 }
