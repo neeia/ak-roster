@@ -56,7 +56,11 @@ function useOperators() {
       let _roster: Roster = {};
       if (dbOperators?.length)
         dbOperators.forEach((op) => (op.op_id in operatorJson ? (_roster[op.op_id] = op as Operator) : null));
-      else if (legacyOperators) _roster = repair(legacyOperators);
+      else if (legacyOperators) {
+        _roster = repair(legacyOperators);
+
+        await supabase.from("operators").insert(Object.values(_roster));
+      }
 
       hydrated.current = true;
       if (!isCanceled) setOperators(_roster);
