@@ -5,7 +5,6 @@ import supabase from "supabase/supabaseClient";
 import { DISCORD_BLURPLE } from "styles/theme/appTheme";
 import PasswordTextField from "components/app/PasswordTextField";
 import Image from "next/image";
-import { server } from "util/server";
 import AuthLayout from "components/AuthLayout";
 import { useRouter } from "next/router";
 import useAccount from "util/hooks/useAccount";
@@ -36,7 +35,7 @@ function DiscordButton(props: { onClick: React.MouseEventHandler }) {
 
 const Login: NextPage = () => {
   const { query, isReady } = useRouter();
-  const [redirectTo, setRedirectTo] = useState<string>(server);
+  const [redirectTo, setRedirectTo] = useState<string>(document?.location?.origin ?? "");
   useEffect(() => {
     if (!isReady) return;
     const r = Array.isArray(query.redirectTo) ? query.redirectTo[0] : query.redirectTo;

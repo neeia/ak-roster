@@ -33,7 +33,7 @@ const ResetPassword = (props: Props) => {
     setLoading(true);
     supabase.auth
       .resetPasswordForEmail(resetEmail, {
-        redirectTo: `${server}/settings`,
+        redirectTo: `${document.location.origin}/settings`,
       })
       .then(() => {
         enqueueSnackbar("Email sent. Please check your inbox.", { variant: "info" });

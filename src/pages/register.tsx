@@ -5,7 +5,6 @@ import supabase from "supabase/supabaseClient";
 import { DISCORD_BLURPLE } from "styles/theme/appTheme";
 import PasswordTextField from "components/app/PasswordTextField";
 import Image from "next/image";
-import { server } from "util/server";
 import AuthLayout from "components/AuthLayout";
 import { enqueueSnackbar } from "notistack";
 import useAccount from "util/hooks/useAccount";
@@ -88,7 +87,7 @@ const Register: NextPage = () => {
       email: email.trim(),
       password: password,
       options: {
-        emailRedirectTo: `${server}`,
+        emailRedirectTo: `${document.location.origin}`,
       },
     });
     if (error) setErrorSb(error.message);
@@ -113,7 +112,7 @@ const Register: NextPage = () => {
       type: "signup",
       email: email,
       options: {
-        emailRedirectTo: `${server}`,
+        emailRedirectTo: `${document.location.origin}`,
       },
     });
     if (error) setErrorSb(error.message);
@@ -124,7 +123,7 @@ const Register: NextPage = () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "discord",
       options: {
-        redirectTo: `${server}`,
+        redirectTo: `${document.location.origin}`,
       },
     });
     if (error) setErrorSb(error.message);
