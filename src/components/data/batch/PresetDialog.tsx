@@ -27,7 +27,7 @@ const isNumber = (value: any) => typeof value === "number";
 interface Props {
   open: boolean;
   onClose: () => void;
-  preset: Preset;
+  preset?: Preset;
   onSubmit: (preset: Preset) => void;
   onDelete: () => void;
   add?: boolean;
@@ -41,7 +41,7 @@ const PresetDialog = (props: Props) => {
   const [presetBuilder, setPresetBuilder] = useState<Preset>({ index: 0, name: "" });
 
   useEffect(() => {
-    setPresetBuilder(preset);
+    if (preset) setPresetBuilder(preset);
   }, [preset]);
 
   const toggleSection = (section: string) => {
@@ -285,6 +285,7 @@ const PresetDialog = (props: Props) => {
             variant="contained"
             onClick={() => {
               onSubmit(presetBuilder);
+              setPresetBuilder({ index: 0, name: "" });
               handleClose();
             }}
           >

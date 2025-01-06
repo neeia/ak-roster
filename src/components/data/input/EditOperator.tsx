@@ -171,20 +171,20 @@ const EditOperator = React.memo((props: Props) => {
           },
         }}
       >
-        <Box
-          sx={{
-            gridColumn: "1 / -1",
-            width: "100%",
-            backgroundColor: "background.default",
-            borderRadius: 1,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "start",
-            gap: 1,
-            p: 2,
-          }}
-        >
-          {presets.length && (
+        {presets.length ? (
+          <Box
+            sx={{
+              gridColumn: "1 / -1",
+              width: "100%",
+              backgroundColor: "background.default",
+              borderRadius: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "start",
+              gap: 1,
+              p: 2,
+            }}
+          >
             <Box
               sx={{
                 display: "flex",
@@ -206,24 +206,24 @@ const EditOperator = React.memo((props: Props) => {
                 Hide
               </Button>
             </Box>
-          )}
-          <Collapse
-            in={showPresets}
-            sx={{
-              "& .MuiCollapse-wrapperInner": {
-                display: "flex",
-                gap: 1,
-                flexWrap: "wrap",
-              },
-            }}
-          >
-            {presets.map((preset) => (
-              <Chip key={preset.index} onClick={() => onChange(applyPresetToOperator(preset, op))}>
-                {preset.name}
-              </Chip>
-            ))}
-          </Collapse>
-        </Box>
+            <Collapse
+              in={showPresets}
+              sx={{
+                "& .MuiCollapse-wrapperInner": {
+                  display: "flex",
+                  gap: 1,
+                  flexWrap: "wrap",
+                },
+              }}
+            >
+              {presets.map((preset) => (
+                <Chip key={preset.index} onClick={() => onChange(applyPresetToOperator(preset, op))}>
+                  {preset.name}
+                </Chip>
+              ))}
+            </Collapse>
+          </Box>
+        ) : null}
         <Select title="General">
           <Box
             sx={{
@@ -307,7 +307,7 @@ const EditOperator = React.memo((props: Props) => {
               </Mastery>
             </Select>
           ) : undefined}
-          {opSkins.length > 1 ? (
+          {opSkins?.length > 1 ? (
             <Select title="Outfits">
               <Skins value={op.skin} exclusive onChange={onChangeSkin}>
                 {opSkins
