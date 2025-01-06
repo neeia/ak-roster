@@ -3,7 +3,7 @@ const url = (env: string | undefined) => {
     case "production":
       return "https://www.krooster.com";
     case "preview":
-      return "https://ak-roster-git-v3-neeia.vercel.app/";
+      return "https://ak-roster-git-v3-neeia.vercel.app";
     default:
       return "http://localhost:3000";
   }
