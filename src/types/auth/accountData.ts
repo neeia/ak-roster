@@ -1,4 +1,4 @@
-import { Database, Json } from "../supabase";
+import { Database } from "../supabase";
 
 type KroosterAccounts = Database["public"]["Tables"]["krooster_accounts"];
 type AccountData = Omit<KroosterAccounts["Row"], "friendcode"> & {

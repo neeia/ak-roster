@@ -287,31 +287,33 @@ const Home: NextPage = () => {
             </HomeNavSection>
             <HomeNavSection title="Network" color={brand["/network"]} src="network">
               <Box component="li" display="flex">
-                <TextField
-                  id="search"
-                  autoComplete="off"
-                  label="Find a user..."
-                  value={searchText}
-                  onChange={(e) => setSearchText(e.target.value)}
-                  size="small"
-                  InputProps={{
-                    sx: { width: "240px", pr: 0.5 },
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          type="submit"
-                          aria-label="search"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            search(searchText);
-                          }}
-                        >
-                          <Search fontSize="small" />
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
+                <Box component="form" display="flex">
+                  <TextField
+                    id="search"
+                    autoComplete="off"
+                    label="Find a user..."
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    size="small"
+                    InputProps={{
+                      sx: { width: "240px", pr: 0.5 },
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            type="submit"
+                            aria-label="search"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              search(searchText);
+                            }}
+                          >
+                            <Search fontSize="small" />
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Box>
               </Box>
               <HomeNavItem href={"/network/findafriend"}>Support Search</HomeNavItem>
             </HomeNavSection>

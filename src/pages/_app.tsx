@@ -12,6 +12,7 @@ import { User } from "@supabase/supabase-js";
 import { Provider as ReduxProvider } from "react-redux";
 import { store } from "legacyStore/store";
 import { SnackbarProvider } from "notistack";
+import OneTimeV3Popup from "components/app/OneTimeV3Popup";
 
 // const firebaseConfig = {
 //   apiKey: "AIzaSyDjpt2G4GFQjYbPT5Mrj6L2meeWEnsCEgU",
@@ -65,6 +66,7 @@ const MyApp = (props: AppProps) => {
               <Analytics />
               <div className={lato.className}>
                 <Component {...pageProps} />
+                <OneTimeV3Popup />
               </div>
             </SnackbarProvider>
           </ThemeProvider>
