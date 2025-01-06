@@ -4,7 +4,6 @@
   FormControl,
   Grid,
   InputLabel,
-  Paper,
   Select,
   SelectChangeEvent,
   TextField,
@@ -17,7 +16,8 @@ import React, { useMemo, useState } from "react";
 import { sprintf } from "sprintf-js";
 
 import Layout from "components/Layout";
-import { minMax } from "../../util/changeOperator";
+import { clamp } from "util/changeOperator";
+import Board from "components/base/Board";
 
 const MAX_PULL_COUNT = 2000;
 
@@ -70,9 +70,7 @@ const Rateup: NextPage = () => {
   const [_pulls, _setPulls] = useState("0");
   const [pity, setPity] = useState(0);
   const [_pity, _setPity] = useState("0");
-  const [bannerType, setBannerType] = useState<
-    "event" | "standard" | "limited"
-  >("event");
+  const [bannerType, setBannerType] = useState<"event" | "standard" | "limited">("event");
   const theme = useTheme();
   const isXSmallScreen = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -93,22 +91,15 @@ const Rateup: NextPage = () => {
         for (let j = 0; j < 7; j++) {
           if (bannerType !== "event") {
             for (let k = 0; k < 7; k++) {
-              newProbabilities[Math.min(i + 1, 98)][j][k] +=
-                probabilities[i][j][k] * (1 - sixStarChance);
-              newProbabilities[0][j][k] +=
-                probabilities[i][j][k] * sixStarChance * (1 - subrate * 2);
-              newProbabilities[0][Math.min(j + 1, 6)][k] +=
-                probabilities[i][j][k] * sixStarChance * subrate;
-              newProbabilities[0][j][Math.min(k + 1, 6)] +=
-                probabilities[i][j][k] * sixStarChance * subrate;
+              newProbabilities[Math.min(i + 1, 98)][j][k] += probabilities[i][j][k] * (1 - sixStarChance);
+              newProbabilities[0][j][k] += probabilities[i][j][k] * sixStarChance * (1 - subrate * 2);
+              newProbabilities[0][Math.min(j + 1, 6)][k] += probabilities[i][j][k] * sixStarChance * subrate;
+              newProbabilities[0][j][Math.min(k + 1, 6)] += probabilities[i][j][k] * sixStarChance * subrate;
             }
           } else {
-            newProbabilities[Math.min(i + 1, 98)][j][0] +=
-              probabilities[i][j][0] * (1 - sixStarChance);
-            newProbabilities[0][j][0] +=
-              probabilities[i][j][0] * sixStarChance * (1 - subrate);
-            newProbabilities[0][Math.min(j + 1, 6)][0] +=
-              probabilities[i][j][0] * sixStarChance * subrate;
+            newProbabilities[Math.min(i + 1, 98)][j][0] += probabilities[i][j][0] * (1 - sixStarChance);
+            newProbabilities[0][j][0] += probabilities[i][j][0] * sixStarChance * (1 - subrate);
+            newProbabilities[0][Math.min(j + 1, 6)][0] += probabilities[i][j][0] * sixStarChance * subrate;
           }
         }
       }
@@ -141,12 +132,9 @@ const Rateup: NextPage = () => {
     }
     return `${sprintf("%.12f", percentage)}%`;
   };
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) =>
-    e.target.select();
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => e.target.select();
 
-  const handleTextInputChage = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleTextInputChage = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     let toInt = parseInt(e.target.value as string, 10);
     if (isNaN(toInt)) {
       if (e.target.name === "pulls") {
@@ -154,15 +142,14 @@ const Rateup: NextPage = () => {
       } else {
         _setPity("");
       }
-    }
-    else if (e.target.name === "pulls") {
-      toInt = minMax(0, toInt, MAX_PULL_COUNT);
+    } else if (e.target.name === "pulls") {
+      toInt = clamp(0, toInt, MAX_PULL_COUNT);
       if (toInt >= 0 && toInt <= MAX_PULL_COUNT) {
         setPulls(toInt);
         _setPulls(toInt.toString());
       }
     } else {
-      toInt = minMax(0, toInt, 98);
+      toInt = clamp(0, toInt, 98);
       if (toInt >= 0 && toInt <= 98) {
         setPity(toInt);
         _setPity(toInt.toString());
@@ -179,15 +166,7 @@ const Rateup: NextPage = () => {
       <Box display="flex" justifyContent="center">
         <Grid container spacing={2} sx={{ maxWidth: "800px" }}>
           <Grid item xs={12}>
-            <Paper
-              elevation={2}
-              sx={{
-                p: [2, 2, 3, 3],
-              }}
-            >
-              <Typography component="h3" variant="h5" mb={2}>
-                Data
-              </Typography>
+            <Board title="Data">
               <Grid container spacing={2} sx={{ maxWidth: "800px" }}>
                 <Grid item xs={6} sm={3}>
                   <TextField
@@ -203,8 +182,8 @@ const Rateup: NextPage = () => {
                     onFocus={handleFocus}
                     onChange={handleTextInputChage}
                     inputProps={{
-                      inputMode: 'numeric',
-                      pattern: '[0-9]*'
+                      inputMode: "numeric",
+                      pattern: "[0-9]*",
                     }}
                   />
                 </Grid>
@@ -222,8 +201,8 @@ const Rateup: NextPage = () => {
                     onFocus={handleFocus}
                     onChange={handleTextInputChage}
                     inputProps={{
-                      inputMode: 'numeric',
-                      pattern: '[0-9]*'
+                      inputMode: "numeric",
+                      pattern: "[0-9]*",
                     }}
                   />
                 </Grid>
@@ -242,37 +221,22 @@ const Rateup: NextPage = () => {
                       onChange={handleSelectChange}
                     >
                       <option value="event">Event (one rate-up 6⭐️, 50%)</option>
-                      <option value="standard">
-                        Standard (two rate-up 6⭐️, each 25%)
-                      </option>
-                      <option value="limited">
-                        Limited (two rate-up 6⭐️, each 35%)
-                      </option>
+                      <option value="standard">Standard (two rate-up 6⭐️, each 25%)</option>
+                      <option value="limited">Limited (two rate-up 6⭐️, each 35%)</option>
                     </Select>
                   </FormControl>
                 </Grid>
               </Grid>
-            </Paper>
+            </Board>
           </Grid>
 
           <Grid item xs={12}>
-            <Paper
-              elevation={2}
-              sx={{
-                p: [2, 2, 3, 3],
-              }}
-            >
-              <Typography component="h3" variant="h5" gutterBottom>
-                Probabilities
-              </Typography>
+            <Board title="Probabilities">
               <Grid container alignItems="center">
                 <Grid item xs={8}>
                   <Typography variant="body1">
                     {!isXSmallScreen && "Chance of obtaining "}
-                    <strong>
-                      at least 1{bannerType !== "event" && " of any"}
-                    </strong>{" "}
-                    rate-up:
+                    <strong>at least 1{bannerType !== "event" && " of any"}</strong> rate-up:
                   </Typography>
                 </Grid>
                 <Grid item>
@@ -307,8 +271,8 @@ const Rateup: NextPage = () => {
                   </>
                 )}
               </Grid>
-              <Divider sx={{ mt: 1, mb: 2 }} />
-              <Grid container alignItems="center" sx={{ mt: 2 }}>
+              <Divider />
+              <Grid container alignItems="center">
                 {[...Array(7).keys()].map((i) => (
                   <React.Fragment key={i}>
                     <Grid item xs={8}>
@@ -324,17 +288,13 @@ const Rateup: NextPage = () => {
                     </Grid>
                     <Grid item>
                       <Typography variant="h6" sx={{ pl: 2 }}>
-                        {toPercentage(
-                          bannerType === "event"
-                            ? finalOdds[i][0]
-                            : chanceMultiRateups(finalOdds, i)
-                        )}
+                        {toPercentage(bannerType === "event" ? finalOdds[i][0] : chanceMultiRateups(finalOdds, i))}
                       </Typography>
                     </Grid>
                   </React.Fragment>
                 ))}
               </Grid>
-            </Paper>
+            </Board>
             {bannerType === "limited" && (
               <Typography variant="caption" sx={{ display: "block", mt: 2 }}>
                 * Parametric system is not factored into these probabilities

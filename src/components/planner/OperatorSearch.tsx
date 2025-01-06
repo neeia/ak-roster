@@ -2,6 +2,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {
   Autocomplete,
   autocompleteClasses,
+  AutocompleteProps,
   Box,
   FilterOptionsState,
   InputAdornment,
@@ -15,43 +16,43 @@ import React, { useCallback } from "react";
 import { VariableSizeList, ListChildComponentProps } from "react-window";
 
 import operatorsJson from "data/operators.json";
-import { OpJsonObj } from "types/operator";
+import { OperatorData } from "types/operators/operator";
+import SomePartial from "types/somePartial";
 
 const normalizeOperatorName = (operatorName: string) =>
   operatorName.toLowerCase().replace(/['"]/g, "").replace("ł", "l");
 
-const operators = Object.values(operatorsJson)
-  .filter((op) => op.rarity >= 3)
-  .sort((a, b) => a.name.localeCompare(b.name));
+const operators = Object.values(operatorsJson).sort((a, b) => a.name.localeCompare(b.name));
 
-const operatorNormalizedNames = Object.fromEntries(
-  operators.map((op) => [op.name, normalizeOperatorName(op.name)])
-);
+const operatorNormalizedNames = Object.fromEntries(operators.map((op) => [op.name, normalizeOperatorName(op.name)]));
 
-interface Props {
-  value: OpJsonObj | null;
-  onChange: (value: OpJsonObj | null) => void;
+interface Props
+  extends Omit<
+    SomePartial<AutocompleteProps<OperatorData, false, false, false>, "renderInput">,
+    "onChange" | "options"
+  > {
+  value: OperatorData | null;
+  onChange: (value: OperatorData | null) => void;
+  filter?: (value: OperatorData) => boolean;
 }
 
-const OperatorSearch: React.FC<Props> = (props) => {
-  const { value, onChange } = props;
+const OperatorSearch = (props: Props) => {
+  const { value, onChange, filter = () => true, sx, ...rest } = props;
 
   const filterOptions = useCallback(
-    (operators: OpJsonObj[], { inputValue }: FilterOptionsState<OpJsonObj>) => {
+    (operators: OperatorData[], { inputValue }: FilterOptionsState<OperatorData>) => {
       const normalizedInput = normalizeOperatorName(inputValue);
-      return operators.filter((op) =>
-        operatorNormalizedNames[op.name].includes(normalizedInput)
-      );
+      return operators.filter((op) => operatorNormalizedNames[op.name].includes(normalizedInput) && filter(op));
     },
-    []
+    [filter]
   );
 
   return (
-    <Autocomplete<OpJsonObj>
+    <Autocomplete<OperatorData>
+      value={value}
       autoComplete
       autoHighlight
-      value={value}
-      onChange={(_: unknown, newValue: OpJsonObj | null) => onChange(newValue)}
+      onChange={(_: unknown, newValue: OperatorData | null) => onChange(newValue)}
       PopperComponent={StyledPopper}
       ListboxComponent={ListboxComponent}
       options={operators}
@@ -68,23 +69,26 @@ const OperatorSearch: React.FC<Props> = (props) => {
                 pl: 0,
               },
             }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start" sx={{ pl: 1 }}>
-                  {value != null ? (
-                    <Image
-                      src={`/img/avatars/${value.id}.png`}
-                      width={32}
-                      height={32}
-                      alt=""
-                      className="operator-avatar"
-                    />
-                  ) : (
-                    <AccountCircleIcon width={32} height={32} />
-                  )}
-                </InputAdornment>
-              ),
-              ...otherInputProps,
+            slotProps={{
+              input: {
+                autoFocus: true,
+                startAdornment: (
+                  <InputAdornment position="start" sx={{ pl: 1 }}>
+                    {value != null ? (
+                      <Image
+                        src={`/img/avatars/${value.id}.png`}
+                        width={32}
+                        height={32}
+                        alt=""
+                        className="operator-avatar"
+                      />
+                    ) : (
+                      <AccountCircleIcon width={32} height={32} />
+                    )}
+                  </InputAdornment>
+                ),
+                ...otherInputProps,
+              },
             }}
           />
         );
@@ -94,7 +98,9 @@ const OperatorSearch: React.FC<Props> = (props) => {
       filterOptions={filterOptions}
       sx={{
         flexGrow: 1,
+        ...sx,
       }}
+      {...rest}
     />
   );
 };
@@ -116,24 +122,20 @@ const LISTBOX_PADDING = 8; // px
 
 function renderRow(props: ListChildComponentProps) {
   const { data, index, style } = props;
-  const dataSet = data[index];
+  const [_props, opData] = data[index] as [React.HTMLAttributes<HTMLLIElement> & { key: any }, OperatorData];
   const inlineStyle = {
     ...style,
     top: (style.top as number) + LISTBOX_PADDING,
   };
 
+  const { key, ...rest } = _props;
+
   return (
-    <Typography component="li" {...dataSet[0]} noWrap style={inlineStyle}>
+    <Typography component="li" key={key} {...rest} noWrap style={inlineStyle}>
       <Box mr={2} display="inline-flex" alignItems="center">
-        <Image
-          src={`/img/avatars/${dataSet[1].id}.png`}
-          width={32}
-          height={32}
-          alt=""
-          className="operator-avatar"
-        />
+        <Image src={`/img/avatars/${opData.id}.png`} width={32} height={32} alt="" className="operator-avatar" />
       </Box>
-      {dataSet[1].name}
+      {opData.name}
     </Typography>
   );
 }
@@ -157,18 +159,16 @@ function useResetCache(data: any) {
 }
 
 // Adapter for react-window
-const ListboxComponent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLElement>
->(function ListboxComponent(props, ref) {
+const ListboxComponent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLElement>>(function ListboxComponent(
+  props,
+  ref
+) {
   const { children, ...other } = props;
-  const itemData: React.ReactChild[] = [];
-  (children as React.ReactChild[]).forEach(
-    (item: React.ReactChild & { children?: React.ReactChild[] }) => {
-      itemData.push(item);
-      itemData.push(...(item.children || []));
-    }
-  );
+  const itemData: React.ReactNode[] = [];
+  (children as React.ReactElement[]).forEach((item: React.ReactElement & { children?: React.ReactElement[] }) => {
+    itemData.push(item);
+    itemData.push(...(item.children || []));
+  });
 
   const itemCount = itemData.length;
   const itemSize = 44;

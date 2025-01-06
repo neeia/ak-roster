@@ -1,53 +1,44 @@
-import React, { memo } from "react";
-import { AppBar, Box, Container, IconButton, Toolbar, Typography } from "@mui/material";
-import Head from "next/head";
+import React, { useContext, useEffect } from "react";
+import { AppBar, Box, Container, IconButton, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import config from "data/config";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 import AppDrawer from "./AppDrawer";
-import { User } from "firebase/auth";
+import Head from "./app/Head";
+import { server } from "util/server";
+import createTheme, { brand } from "styles/theme/appTheme";
+import { UserContext } from "pages/_app";
+import { useRouter } from "next/router";
+import useAccount from "util/hooks/useAccount";
 
 interface Props {
-  tab: keyof typeof config.tabs;
+  tab: string;
   page: string;
   header?: React.ReactNode;
   children?: React.ReactNode;
-  onLogin?: (user: User) => void;
 }
-const Layout = memo((props: Props) => {
-  const { children, header, tab, page, onLogin } = props;
-  const { siteTitle, tabs } = config;
-  const { title: tabTitle, description: tabDescription, pages } = tabs[tab];
-  const { title: pageTitle, description: pageDescription } = pages[page as keyof typeof pages] ?? {};
-  const title = `${pageTitle} - ${siteTitle}`
+const Layout = React.memo((props: Props) => {
+  const { page, tab, children, header } = props;
+  const { siteDescription, tabs } = config;
+  const { pages, requireLogin: r1 } = tabs[tab];
+  const { title, description, requireLogin: r2 } = pages[page];
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const handleDrawerToggle = React.useCallback(() => {
     setDrawerOpen((open) => !open);
   }, []);
 
+  const user = useContext(UserContext);
+  const router = useRouter();
+  const requireLogin = r1 || r2;
+
+  const [account, , { loading }] = useAccount();
+  useEffect(() => {
+    if (!user && !loading && requireLogin) router.push("/");
+  }, [user, account, loading, requireLogin, router]);
+
   return (
-    <>
-      <Head>
-        <title>{title}</title>
-        <meta
-          key="url"
-          property="og:url"
-          content={`${config.siteUrl}${page}`}
-        />
-        <meta key="title"
-          property="og:title"
-          content={pageTitle} />
-        <meta
-          key="description"
-          name="description"
-          content={pageDescription}
-        />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#fbc02d" />
-      </Head>
+    <ThemeProvider theme={createTheme(brand[tab] ?? brand.DEFAULT)}>
+      <Head title={title} url={`${server}${tab ?? ""}${page}`} description={description ?? siteDescription} />
       <Box
         display="grid"
         height="100%"
@@ -56,33 +47,22 @@ const Layout = memo((props: Props) => {
         sx={{
           gridTemplateColumns: {
             xs: "0px 1fr",
-            xl: "220px 1fr"
-          }
+            xl: "220px 1fr",
+          },
         }}
       >
-        <AppDrawer
-          tab={tab}
-          page={page}
-          open={drawerOpen}
-          onDrawerToggle={handleDrawerToggle}
-          onLogin={onLogin}
-        />
-        <AppBar
-          position="sticky"
-          enableColorOnDark
-          sx={{ gridArea: "header" }}
-        >
-          <Toolbar
-            variant="dense"
-          >
-            {header
-              ??
+        <AppDrawer tab={tab} page={page} open={drawerOpen} onDrawerToggle={handleDrawerToggle} />
+        <AppBar position="sticky" enableColorOnDark sx={{ gridArea: "header" }}>
+          <Toolbar variant="dense" sx={{ gap: 1 }}>
+            {header ?? (
               <>
                 <IconButton
-                  aria-label="toggle navbar"
+                  color="inherit"
+                  aria-label="navigation menu"
                   edge="start"
                   onClick={handleDrawerToggle}
                   sx={{
+                    mr: 2,
                     display: {
                       xl: "none",
                     },
@@ -91,15 +71,16 @@ const Layout = memo((props: Props) => {
                   <MenuIcon sx={{ color: "background.paper" }} />
                 </IconButton>
                 <Box component="span" sx={{ verticalAlign: "bottom" }}>
-                  <Typography component="h2" variant="h5" noWrap sx={{ display: "inline", verticalAlign: "baseline", }}>
-                    {pageTitle}
+                  <Typography component="h1" variant="h5" noWrap sx={{ display: "inline", verticalAlign: "baseline" }}>
+                    {title}
                   </Typography>
                 </Box>
               </>
-            }
+            )}
           </Toolbar>
         </AppBar>
         <Container
+          id="app-main"
           component="main"
           maxWidth="xl"
           sx={{ gridArea: "main", p: { xs: 1, sm: 2 }, position: "relative" }}
@@ -107,8 +88,8 @@ const Layout = memo((props: Props) => {
           {children}
         </Container>
       </Box>
-    </>
-  )
+    </ThemeProvider>
+  );
 });
 Layout.displayName = "Layout";
 export default Layout;

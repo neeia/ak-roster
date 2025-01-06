@@ -1,11 +1,13 @@
-import { Operator } from "./operator";
+import { OpInfo } from "./operators/operator";
 
 export interface SortListItem {
   key: string;
   desc: boolean;
 }
 
-export interface SortFunction {
-  fn: (a: Operator, b: Operator) => number;
+export type SortFunction = (a: OpInfo, b: OpInfo) => number;
+
+export interface SortFunctionData {
+  fn: SortFunction;
   dfDesc: boolean;
 }

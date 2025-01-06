@@ -1,340 +1,483 @@
-﻿import { CacheProvider } from '@emotion/react'
-import { Box, Container, CssBaseline, Divider, IconButton, InputAdornment, Link, TextField, ThemeProvider, Typography } from '@mui/material'
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import NextLink from 'next/link'
-import config from '../data/config'
-import appTheme from '../styles/theme/appTheme'
-import createEmotionCache from '../util/createEmotionCache'
-import DiscordEmbed from '../components/index/DiscordEmbed'
-import GitHubEmbed from '../components/index/GitHubEmbed'
-import { memo, useEffect, useState } from 'react'
-import { LockClockOutlined, Search } from '@mui/icons-material'
-import Image from 'next/image'
+﻿import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Alert,
+  Box,
+  BoxProps,
+  Button,
+  IconButton,
+  InputAdornment,
+  Paper,
+  SxProps,
+  Tab,
+  Tabs,
+  TextField,
+  Typography,
+} from "@mui/material";
+import type { NextPage } from "next";
+import config from "data/config";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { getLogoUrl } from "components/app/Logo";
+import HomeNavItem from "components/landing/HomeNavItem";
+import HomeNavSection from "components/landing/HomeNavSection";
+import { brand, DISCORD_BLURPLE, GITHUB_DARK, KOFI_BLUE } from "styles/theme/appTheme";
+import { ExpandMore, LockPerson, Search } from "@mui/icons-material";
+import JumpTo from "components/base/JumpTo";
+import Link from "components/base/Link";
+import Head from "components/app/Head";
+import { server } from "util/server";
+import AccountWidget from "components/app/AccountWidget";
+import useAccount from "util/hooks/useAccount";
+import GitHubEmbed from "components/landing/GitHubEmbed";
+import DiscordEmbed from "components/landing/DiscordEmbed";
+import Update from "components/landing/PatchNotes";
+import { useRouter } from "next/router";
 
-const Kofi = memo(() => {
-  return (
-    <Link
-      sx={{
-        backgroundColor: "#FF5E5B",
-        display: "block",
-        width: "30%",
-        minWidth: "min-content",
-        height: "min-content",
-        borderRadius: "4px",
-        boxShadow: 1,
-        position: "relative",
-        mb: 6,
-        mt: 2,
-        pl: 1.5,
-        pr: 2,
-        pt: 1.5,
-        pb: 1,
-        boxSizing: "border-box",
-        ":hover": {
-          filter: "brightness(120%)"
-        },
-      }}
-      onClick={() => window.open("https://ko-fi.com/neeia", "_blank", "noreferrer noopener")}
-      title="Open Ko-fi"
-      component="button"
-    >
-      <Image
-        className="icon"
-        width="131px"
-        height="37px"
-        src="/img/ext/kofi.png"
-        alt="Ko-fi icon"
-        loading="lazy"
-      />
-    </Link>
-  )
-})
-Kofi.displayName = "Ko-fi";
+const cons = [
+  {
+    name: "Neia",
+    login: "neeia",
+    avatar: "neia.png",
+    dark: true,
+    color: "#4b444b",
+  },
+  {
+    name: "Samidare☔️",
+    login: "iansjk",
+    avatar: "samidare.webp",
+    dark: false,
+    color: "#fff",
+  },
+  {
+    name: "Yesod30",
+    login: "yesod30",
+    avatar: "yesod.gif",
+    dark: true,
+    color: "#384c6a",
+    // color: "#eeddbb"
+  },
+  {
+    name: "Stinggyray",
+    login: "Stinggyray",
+    avatar: "stinggyray.png",
+    dark: false,
+    color: "#FFCD4C",
+  },
+];
 
-const Home: NextPage = () => {
-  const clientSideEmotionCache = createEmotionCache();
+const authFrame: SxProps = {
+  display: "flex",
+  gap: 2,
+  width: "100%",
+  maxWidth: "sm",
+  minHeight: 80,
+  borderRadius: 1,
+  p: 2,
+};
 
-  const [username, setUsername] = useState<string>("");
-  const [error, setError] = useState<string>("");
-  const search = (s: string) => {
-    window.location.href = `/u/${s}`
-  };
-
-  return (
-    <CacheProvider value={clientSideEmotionCache}>
-      <ThemeProvider theme={appTheme}>
-        <CssBaseline />
-        <Head>
-          <title>Krooster</title>
-          <meta
-            key="url"
-            property="og:url"
-            content={config.siteUrl}
-          />
-          <meta
-            key="title"
-            property="og:title"
-            content="Arknights Roster" />
-          <meta
-            key="description"
-            name="description"
-            property="og:description"
-            content="A collection and progress tracker for Arknights, a game developed by Hypergryph."
-          />
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-          <link rel="manifest" href="/manifest.json" />
-          <meta name="theme-color" content="#fbc02d" />
-        </Head>
-        <Box component="main" sx={{
-          display: "flex",
-          flexDirection: "column",
-          "& em": {
-            color: "primary.main",
-            fontStyle: "normal",
-          }
-        }}>
-          <Box sx={{
-            backgroundColor: "background.paper",
-            backgroundImage: "url(/res/kroos2banner.webp)",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: { xs: "105px", sm: "220px" },
-            overflow: "hidden",
-          }}>
-            <Box sx={{
-              position: "relative",
-              "::before": {
-                content: '""',
-                position: "absolute",
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0,
-                margin: "auto",
-                width: "calc(100% - 0.5rem)",
-                height: "calc(100% - 1rem)",
-                backgroundColor: "rgba(0, 0, 0, 0.5)",
-                filter: "blur(2rem)",
-              }
-            }}>
-              <Typography variant="h1" position="relative" textAlign="center" sx={{ fontSize: { xs: "2rem", sm: "4rem" } }}>
-                Ar<em>k</em>nights <em>Rooster</em>
-              </Typography>
-            </Box>
-          </Box>
-          <Container sx={{
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            py: { xs: 1, sm: 6 },
-            gap: 6,
-          }}>
-            <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "2.5fr 3fr" }, gap: "4%" }}>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pt: 1 }} >
-                <Typography variant="h2" sx={{ fontSize: { xs: "1.75rem", sm: "2rem" } }}>
-                  Share your entire collection with the world <em>instantly.</em>
-                </Typography>
-                <Typography variant="body1" sx={{ display: { xs: "none", sm: "block" } }}>
-                  Want to show off your roster to your friends? Flex on the world? Need to find that one support unit to beat CC? Krooster lets you do all that, and more.
-                </Typography>
-                <Typography variant="body1">
-                  You can get started without even making an account. And the best part? It&apos;s totally free. No ads, no paywall, and entirely open-source.
-                </Typography>
-                <Box sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: { xs: "column", sm: "row" },
-                  gap: 2,
-                  mt: 2
-                }}>
-                  <NextLink
-                    href="/data/input/"
-                    passHref
-                  >
-                    <Link
-                      sx={{
-                        backgroundColor: "primary.main",
-                        display: "block",
-                        width: "100%",
-                        maxWidth: "12rem",
-                        px: 2,
-                        py: 1.5,
-                        color: "background.default",
-                        ":hover": {
-                          bgcolor: "primary.main",
-                          filter: "brightness(110%)"
-                        },
-                        borderRadius: "4px",
-                        fontSize: "1.25rem",
-                        textAlign: "center",
-                        verticalAlign: "middle",
-                        boxShadow: 1,
-                        alignSelf: { xs: "center", sm: "start" },
-                      }}
-                      variant="button"
-                    >
-                      Get Started
-                    </Link>
-                  </NextLink>
-                  <Box component="form" sx={{
-                    display: { xs: "flex", sm: "contents" },
-                    alignItems: "center",
-                    flexDirection: { xs: "column", sm: "row" },
-                    gap: 1,
-                  }}>
-                    or
-                    <TextField
-                      autoFocus
-                      autoComplete="off"
-                      placeholder="Find a user..."
-                      value={username}
-                      helperText={error}
-                      onChange={e => setUsername(e.target.value)}
-                      InputProps={{
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <IconButton type="submit" aria-label="search" onClick={e => { e.preventDefault(); search(username); }}>
-                              <Search />
-                            </IconButton>
-                          </InputAdornment>
-                        )
-                      }}
-                    />
-                  </Box>
-                </Box>
-              </Box>
-              <Box
-                boxShadow={2}
-                component="img"
-                src="/res/CollectionSample.webp"
-                width="495px"
-                sx={{ maxWidth: "100%", maxHeight: "auto", order: { xs: -1, sm: -1 } }}
-                alt="A screenshot of a user's collection."
-              />
-            </Box>
-            <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column", pt: 2.5 }} >
-              <Typography variant="h2" sx={{ fontSize: { xs: "1.25rem", sm: "1.5rem" } }}>
-                Tools? Calculators? We got that.
-              </Typography>
-              <Box sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 2,
-                mt: 1,
-                "& a": {
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "90px",
-                  height: "90px",
-                  px: 0.5,
-                  py: 1,
-                  backgroundColor: "#323232",
-                  ":hover": {
-                    filter: "brightness(120%)"
-                  },
-                  borderRadius: "4px",
-                  fontSize: "1.25rem",
-                  textAlign: "center",
-                  verticalAlign: "middle",
-                  boxShadow: 1,
-                  position: "relative",
-                }
-              }}>
-                <NextLink
-                  href="/tools/recruit/"
-                  passHref
-                >
-                  <Link>
-                    <Image src="/img/items/TKT_RECRUIT.png" width="75px" height="80px" alt="Recruitment" />
-                  </Link>
-                </NextLink>
-                <NextLink
-                  href="/tools/rateup/"
-                  passHref
-                >
-                  <Link>
-                    <Image src="/img/items/TKT_GACHA.png" width="90px" height="71px" alt="Headhunting" />
-                  </Link>
-                </NextLink>
-                <NextLink
-                  href="/tools/level/"
-                  passHref
-                >
-                  <Link>
-                    <Image src="/img/items/sprite_exp_card_t4.png" width="90px" height="71px" alt="Leveling" />
-                  </Link>
-                </NextLink>
-              </Box>
-            </Box>
-            <Divider />
-            <Box sx={{
-              display: "grid",
-              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
-              gap: "8%",
-              "& .block": {
-                display: "flex",
-                flexDirection: "column",
-                gap: 1,
-                pt: 1
-              },
-            }}>
-              <Box sx={{ display: "flex", flexDirection: "column", gridRow: "span 2", gap: 1, pt: 1 }} >
-                <Typography variant="h2">
-                  Development
-                </Typography>
-                <Typography variant="body1">
-                  Krooster is open-source - that means anyone can contribute. Visit the repository below, or check out our contributors.
-                </Typography>
-                <Box component="dl" sx={{
-                  display: "grid",
-                  gridTemplateColumns: "auto 1fr",
-                  gap: "0px 1rem",
-                  m: 0,
-                  "dd": {
-                    m: 0,
-                  }
-                }}>
-                  <dt>Framework</dt>
-                  <dd>NextJS, React</dd>
-                  <dt>Interface</dt>
-                  <dd>MUI v5</dd>
-                </Box>
-                <GitHubEmbed />
-              </Box>
-              <Box className="block">
-                <Typography variant="h2">
-                  Discord
-                </Typography>
-                <Typography variant="body1">
-                  Your feedback is appreciated - every bit helps make Krooster better for everyone.
-                  To make requests and keep up with the latest changes, join the Discord server.
-                </Typography>
-                <DiscordEmbed />
-              </Box>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pt: 1 }} >
-                <Typography variant="h2">
-                  Support Krooster
-                </Typography>
-                <Typography variant="body1">
-                  If you like what I do and have money to spare, then you can help contribute to server costs.
-                </Typography>
-                <Kofi />
-              </Box>
-            </Box>
-          </Container>
-        </Box>
-      </ThemeProvider>
-    </CacheProvider>
-  )
+interface TabPanelProps extends BoxProps {
+  index: number;
+  value: number;
+  component?: string;
 }
 
-export default Home
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, sx, ...rest } = props;
+
+  return (
+    <Box
+      role="tabpanel"
+      hidden={value !== index}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
+      sx={{
+        width: "100%",
+        maxWidth: "40rem",
+        ...sx,
+      }}
+      {...rest}
+    >
+      {value === index && children}
+    </Box>
+  );
+}
+
+function a11yProps(index: number) {
+  return {
+    id: `tab-${index}`,
+    "aria-controls": `tabpanel-${index}`,
+  };
+}
+
+const Home: NextPage = () => {
+  const [searchText, setSearchText] = useState<string>("");
+
+  const [errors, setErrors] = useState<string[]>([]);
+  const [value, setValue] = React.useState(1);
+
+  const handleChange = (_: any, newValue: number) => {
+    setValue(newValue);
+  };
+
+  const { asPath } = useRouter();
+  useEffect(() => {
+    const hash = asPath.split("#")[1];
+    if (hash?.startsWith("v")) {
+      setValue(3);
+      window.history.replaceState(null, "", asPath.split("#")[0]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [asPath]);
+
+  const search = useCallback((s: string) => {
+    window.location.href = `/u/${s}`;
+  }, []);
+
+  const logoBasePath = useRef(`/assets/title/${getLogoUrl()}`);
+
+  const [account, , { loading }] = useAccount();
+
+  return (
+    <Head title="Krooster" url={server} description={config.siteDescription}>
+      <Box
+        component="main"
+        sx={{
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "background.paper",
+          alignItems: "center",
+          gap: 4,
+          p: 2,
+        }}
+      >
+        <JumpTo href="search">jump to search</JumpTo>
+        <Box component="h1" display="flex" m={0}>
+          <Box
+            component="img"
+            alt="Krooster - Arknights Roster"
+            sx={{
+              height: "16rem",
+              content: {
+                xs: `url(${logoBasePath.current}-v.png)`,
+                sm: `url(${logoBasePath.current}-h.png)`,
+              },
+            }}
+          />
+        </Box>
+
+        {!loading && !account ? (
+          <Paper
+            elevation={2}
+            sx={{
+              ...authFrame,
+              alignItems: "center",
+            }}
+          >
+            <Button
+              component={Link}
+              href="/register"
+              variant="contained"
+              sx={{
+                ":hover": { backgroundColor: "primary.light" },
+                width: "100%",
+                height: "100%",
+                fontSize: "1rem",
+              }}
+            >
+              New User
+            </Button>
+            <span>or</span>
+            <Button
+              component={Link}
+              href="/login"
+              variant="outlined"
+              sx={{
+                width: "100%",
+                height: "100%",
+                fontSize: "1rem",
+              }}
+            >
+              Sign In
+            </Button>
+          </Paper>
+        ) : (
+          <Paper
+            elevation={2}
+            sx={{
+              ...authFrame,
+              flexDirection: "column",
+            }}
+          >
+            <AccountWidget sx={{ p: 0 }} username={account?.username} />
+            <Alert severity="info">
+              You can now update your information in one click by connecting to Yostar!
+              <div>
+                <Link sx={{ textDecoration: "1px dotted underline" }} href="/import">
+                  See More
+                </Link>
+              </div>
+            </Alert>
+            {errors.map((err, i) => (
+              <Alert
+                key={i}
+                severity="error"
+                onClose={() => {
+                  setErrors([...errors.slice(0, i), ...errors.slice(i + 1)]);
+                }}
+              >
+                {err}
+              </Alert>
+            ))}
+          </Paper>
+        )}
+
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="tab menu"
+          sx={{ mt: 8, ml: 4, width: "100%", maxWidth: "40rem" }}
+        >
+          <Tab value={1} label="Menu" {...a11yProps(1)}></Tab>
+          <Tab value={2} label="About" {...a11yProps(2)}></Tab>
+          <Tab value={3} label="Updates" {...a11yProps(3)}></Tab>
+        </Tabs>
+        <TabPanel index={1} value={value} component="nav">
+          <Box
+            component="ul"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 4,
+              m: 0,
+              p: 0,
+            }}
+          >
+            <HomeNavSection title="Data" color={brand["/data"]} src="data">
+              <Alert
+                severity="warning"
+                variant="outlined"
+                icon={<LockPerson />}
+                sx={{
+                  display: account ? "none" : "flex",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                You must be logged in to access these features.
+              </Alert>
+              <HomeNavItem disabled={!account} href={"/data/input"}>
+                Roster
+              </HomeNavItem>
+              <HomeNavItem disabled={!account} href={"/data/view"}>
+                Collection
+              </HomeNavItem>
+              <HomeNavItem
+                disabled={!account}
+                href={"/data/planner"}
+                icon={<Image key="p" src="/img/icons/rock.svg" alt="" width={24} height={24} />}
+              >
+                Planner
+              </HomeNavItem>
+              <HomeNavItem disabled={!account} href={"/data/profile"}>
+                Profile
+              </HomeNavItem>
+            </HomeNavSection>
+            <HomeNavSection title="Network" color={brand["/network"]} src="network">
+              <Box component="li" display="flex">
+                <Box component="form" display="flex">
+                  <TextField
+                    id="search"
+                    autoComplete="off"
+                    label="Find a user..."
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    size="small"
+                    InputProps={{
+                      sx: { width: "240px", pr: 0.5 },
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            type="submit"
+                            aria-label="search"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              search(searchText);
+                            }}
+                          >
+                            <Search fontSize="small" />
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Box>
+              </Box>
+            </HomeNavSection>
+            <HomeNavSection title="Tools" color={brand["/tools"]} src="tools">
+              <HomeNavItem href={"/tools/recruit"}>Recruitment</HomeNavItem>
+              <HomeNavItem href={"/tools/rateup"}>Headhunting</HomeNavItem>
+              <HomeNavItem href={"/tools/level"}>Level Costs</HomeNavItem>
+            </HomeNavSection>
+            <HomeNavSection title="Community" color={brand["/community"]} src="community">
+              <HomeNavItem
+                external
+                href="https://discord.gg/qx8hJGvTwc"
+                title="Join our Discord!"
+                sx={{
+                  backgroundColor: DISCORD_BLURPLE,
+                }}
+              >
+                <Image src="/img/assets/discord.svg" width="20" height="15" alt="" />
+                Discord
+              </HomeNavItem>
+              <HomeNavItem
+                external
+                href="https://github.com/neeia/ak-roster"
+                title="For developers!"
+                sx={{
+                  backgroundColor: GITHUB_DARK,
+                }}
+              >
+                <Image width="18" height="18" src="/img/assets/github-1.png" alt="" />
+                GitHub
+              </HomeNavItem>
+              <HomeNavItem
+                external
+                href="https://ko-fi.com/neeia"
+                title="Support Krooster!"
+                sx={{
+                  backgroundColor: KOFI_BLUE,
+                }}
+              >
+                <Image className="icon" width="24" height="16" src="/img/assets/ko-fi.png" alt="Ko-fi" />
+                Donations
+              </HomeNavItem>
+            </HomeNavSection>
+          </Box>
+        </TabPanel>
+        <TabPanel index={2} value={value}>
+          <Box component="aside" sx={{ "& h2": { m: 0 } }}>
+            <Accordion defaultExpanded slotProps={{ heading: { component: "h2" } }}>
+              <AccordionSummary expandIcon={<ExpandMore />}>What is Krooster?</AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Krooster (Arknights Roster) is a web app that lets you share your roster, plan goals, and find
+                  friends. It also includes a number of useful calculators.
+                </p>
+                <p>
+                  This is an open-source project, and the full source code is available on GitHub. It is a fan site and
+                  is unaffiliated with Hypergryph or Yostar.
+                </p>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion slotProps={{ heading: { component: "h2" } }}>
+              <AccordionSummary expandIcon={<ExpandMore />}>Okay, but what is a Krooster?</AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Krooster is a portmanteau of "Kroos" and "alter" and refers to Kroos the Keen Glint. Because I was
+                  working on this project around the time she was released, I decided to name it after her.
+                </p>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion slotProps={{ heading: { component: "h2" } }}>
+              <AccordionSummary expandIcon={<ExpandMore />}>I found a bug / can you add this feature?</AccordionSummary>
+              <AccordionDetails>
+                <p>Join the Discord server and let me know! I'm always looking for feedback and suggestions.</p>
+                <DiscordEmbed />
+              </AccordionDetails>
+            </Accordion>
+            <Accordion slotProps={{ heading: { component: "h2" } }}>
+              <AccordionSummary expandIcon={<ExpandMore />}>How can I contribute?</AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Donations are welcomed through Ko-fi! Running Krooster costs around $2 a day, and donating helps
+                  offset my out-of-pocket costs.
+                </p>
+                <HomeNavItem
+                  external
+                  href="https://ko-fi.com/neeia"
+                  title="Support Krooster!"
+                  sx={{
+                    backgroundColor: KOFI_BLUE,
+                  }}
+                >
+                  <Image className="icon" width="24" height="16" src="/img/assets/ko-fi.png" alt="Ko-fi" />
+                  Donations
+                </HomeNavItem>
+                <p>
+                  If you're a developer, you can contribute to the project on GitHub. The project is open-source and
+                  contributions are welcome. If you're interested, join the Discord server and shoot me a message!
+                </p>
+                <GitHubEmbed />
+              </AccordionDetails>
+            </Accordion>
+            <Accordion slotProps={{ heading: { component: "h2" } }}>
+              <AccordionSummary expandIcon={<ExpandMore />}>Who made this?</AccordionSummary>
+              <AccordionDetails>
+                <p>
+                  Hi, I'm Neia, the primary developer of Krooster. I played Arknights from release, and quit shortly
+                  after the third anniversary. However, the website will continue to be actively maintained until the
+                  game shuts down.
+                </p>
+                <p>Special thanks to Samidare, without whom Krooster would not exist.</p>
+                <p>
+                  This project would not be possible without the help of the community that makes it worth it. Thank
+                  you! And a special thank you to the generous donors who support our work on Ko-fi. Your support is
+                  much appreciated, and every dollar goes back into keeping the site running.
+                </p>
+                <Typography variant="h5" component="h3" sx={{ pt: 3, pb: 1 }}>
+                  Contributors:
+                </Typography>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                  {cons.map((c) => (
+                    <Link
+                      key={c.name}
+                      sx={{
+                        ":hover": {
+                          filter: "brightness(110%)",
+                        },
+                        transition: "filter 0.1s",
+                        boxShadow: 1,
+                        width: "max-content",
+                        color: c.dark ? "text.primary" : "background.paper",
+                        display: "grid",
+                        gridTemplateColumns: "1fr 2.5fr",
+                        gap: 1.5,
+                        textDecoration: "none",
+                        padding: 1,
+                        borderRadius: "4px",
+                        backgroundColor: c.color,
+                      }}
+                      href={`https://github.com/${c.login}`}
+                      component="a"
+                      title="Visit GitHub Profile"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      <Image src={`/img/ext/contributors/${c.avatar}`} alt="" width={48} height={48} />
+                      <Box sx={{ display: "flex", flexDirection: "column", gap: 0 }}>
+                        <Typography variant="body1">{c.name}</Typography>
+                        <Typography variant="caption2">{c.login}</Typography>
+                      </Box>
+                    </Link>
+                  ))}
+                </Box>
+              </AccordionDetails>
+            </Accordion>
+          </Box>
+        </TabPanel>
+        <TabPanel index={3} value={value}>
+          <Box component="aside">
+            <Update />
+          </Box>
+        </TabPanel>
+        <Box sx={{ height: "60px" }} />
+      </Box>
+    </Head>
+  );
+};
+
+export default Home;

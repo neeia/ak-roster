@@ -3,7 +3,7 @@ import { Box, Stack, Typography } from "@mui/material";
 
 import itemsJson from "data/items.json";
 import { Item } from "types/item";
-import ItemStack from "../ItemStack";
+import ItemStack from "../depot/ItemStack";
 
 import ItemInfoSection from "./ItemInfoSection";
 

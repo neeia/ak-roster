@@ -30,8 +30,7 @@ yarn-error.log*
 
 # Visual Studio cache/options directory
 .vs/
-
-# IntelliJ WebStorm cache/options directory
+# JetBrains IDEs directory
 .idea/
 
 # vercel
@@ -45,3 +44,5 @@ yarn-error.log*
 
 # Sentry
 next.config.original.js
+
+src/data/user.ts

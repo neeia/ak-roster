@@ -5,7 +5,6 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ACESHIP_ROOT = path.join(__dirname, "../../Arknight-Images");
 
-
 /**@type {Array<{ sourceDir: string, destDir: string, replace?: (filename: string) => string, filter?: (filename: string) => boolean}} */
 const tasks = [
   {
@@ -17,6 +16,11 @@ const tasks = [
   {
     sourceDir: path.join(ACESHIP_ROOT, "avatars"),
     destDir: "public\\img\\avatars",
+    filter: (filename) => /^char_.*\.png$/.test(filename),
+  },
+  {
+    sourceDir: path.join(ACESHIP_ROOT, "characters"),
+    destDir: "public\\img\\characters",
     filter: (filename) => /^char_.*\.png$/.test(filename),
   },
   {
@@ -48,25 +52,19 @@ const upload = async (existingFilePaths, task) => {
     withFileTypes: true,
   });
   const filenames = dirEntries
-    .filter(
-      (dirent) => dirent.isFile() && (filterFn == null || filterFn(dirent.name))
-    )
+    .filter((dirent) => dirent.isFile() && (filterFn == null || filterFn(dirent.name)))
     .map((dirent) => dirent.name);
-  await fs.mkdir(destDir, { recursive: true })
+  await fs.mkdir(destDir, { recursive: true });
 
   //const filename = filenames[0]
   //console.table({sourceDir, destDir, filename})
 
   await Promise.all(
     filenames.map(async (filename) => {
-      const targetFilePath = path.join(
-        destDir,
-        replaceFn ? replaceFn(filename) : filename
-      );
-      if (targetFilePath && !existingFilePaths.has(replaceFn ? replaceFn(filename) : filename)) {
-        console.log(
-          `images: "${targetFilePath}" not found in storage, saving...`
-        );
+      const _filename = replaceFn ? replaceFn(filename) : filename;
+      const targetFilePath = path.join(destDir, _filename);
+      if (targetFilePath && !existingFilePaths.has(_filename)) {
+        console.log(`images: "${targetFilePath}" not found in storage, saving...`);
         const sourceFilePath = path.join(sourceDir, filename);
         //console.table({sourceFilePath, targetFilePath});
         await fs.copyFile(sourceFilePath, targetFilePath);
@@ -78,23 +76,18 @@ const upload = async (existingFilePaths, task) => {
 };
 
 const uploadAllImages = async () => {
-  // first iterate through all images in the image directory
-  const rawDirInfo = await fs.readdir("./public/img/", { withFileTypes: true });
-  const directoryInfo = rawDirInfo.filter(dirent => dirent.isDirectory()).map(dirent => dirent.name);
-  const existingImageIDs = new Set();
-  while (directoryInfo.length > 0) {
-    const dirName = directoryInfo.pop();
-    const rawFileNames = await fs.readdir("./public/img/" + dirName)
-    rawFileNames.forEach(value => existingImageIDs.add(value))
-  }
-  
-  console.log(
-    `images: found ${existingImageIDs.size} existing images in project.`
-  );
-
   try {
     const uploadCounts = await Promise.all(
-      tasks.map((task) => upload(existingImageIDs, task))
+      tasks.map(async (task) => {
+        // first iterate through all images in the image directory
+        const rawFileNames = await fs.readdir(task.destDir, { withFileTypes: true });
+        const existingImageIDs = new Set();
+        rawFileNames.forEach((value) => existingImageIDs.add(value));
+
+        console.log(`images: found ${existingImageIDs.size} existing images in ${task.destDir}.`);
+
+        upload(existingImageIDs, task);
+      })
     );
     const totalUploadCount = uploadCounts.reduce((acc, cur) => acc + cur, 0);
     console.log(`images: uploaded ${totalUploadCount} new files, done.`);
@@ -106,5 +99,5 @@ const uploadAllImages = async () => {
 export default uploadAllImages;
 
 //if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  uploadAllImages();
+uploadAllImages();
 //}

@@ -1,27 +1,22 @@
-import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
-import {
-  Box,
-  FormControl,
-  Grid,
-  IconButton,
-  InputLabel,
-  Paper,
-  Select,
-  SelectChangeEvent,
-  TextField,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Container, SxProps, TextField, Typography } from "@mui/material";
 import { NextPage } from "next";
 import Image from "next/image";
-import { useState } from "react";
+import { memo, useState } from "react";
 
-import { COST_BY_RARITY, MAX_LEVEL_BY_RARITY, minMax } from "util/changeOperator";
+import { COST_BY_RARITY, MAX_LEVEL_BY_RARITY, clamp } from "util/changeOperator";
 import Layout from "components/Layout";
-import { rarityColors } from "../../styles/rarityColors";
-import { Star } from "@mui/icons-material";
+import Promotion from "components/data/input/Select/Promotion";
+import Board from "components/base/Board";
+import Rarity from "components/data/input/Select/Rarity";
 
+/**
+ * The cost of leveling an operator
+ * @typedef {Object} LevelingCost
+ * @property {number} exp - The total exp cost
+ * @property {number} lmd - The total lmd cost
+ * @property {number} levelingLmd - The lmd cost for leveling
+ * @property {number} eliteLmd - The lmd cost for elite promotions
+ */
 interface LevelingCost {
   exp: number;
   lmd: number;
@@ -29,7 +24,16 @@ interface LevelingCost {
   eliteLmd: number;
 }
 
-const levelingCost = (
+/**
+ * Calculate the cost of leveling an operator
+ * @param {number} rarity - The rarity of the operator
+ * @param {number} startingElite - The starting promotion of the operator
+ * @param {number} startingLevel - The starting level of the operator
+ * @param {number} targetElite - The target promotion of the operator
+ * @param {number} targetLevel - The target level of the operator
+ * @returns {LevelingCost} The total cost of leveling the operator
+ */
+export const levelingCost = (
   rarity: number,
   startingElite: number,
   startingLevel: number,
@@ -41,18 +45,14 @@ const levelingCost = (
     .map((_, i) => {
       const elite = startingElite + i;
       const eliteStartingLevel = elite === startingElite ? startingLevel : 1;
-      const eliteTargetLevel = elite === targetElite
-        ? targetLevel
-        : MAX_LEVEL_BY_RARITY[rarity][elite];
+      const eliteTargetLevel = elite === targetElite ? targetLevel : MAX_LEVEL_BY_RARITY[rarity][elite];
       const exp = COST_BY_RARITY.expCostByElite[elite]
         .slice(eliteStartingLevel - 1, eliteTargetLevel - 1)
         .reduce((a, b) => a + b, 0);
       const levelingLmd = COST_BY_RARITY.lmdCostByElite[elite]
         .slice(eliteStartingLevel - 1, eliteTargetLevel - 1)
         .reduce((a, b) => a + b, 0);
-      const eliteLmd = elite === startingElite
-        ? 0
-        : COST_BY_RARITY.eliteLmdCost[rarity][elite - 1];
+      const eliteLmd = elite === startingElite ? 0 : COST_BY_RARITY.eliteLmdCost[rarity][elite - 1];
       return {
         exp,
         lmd: levelingLmd + eliteLmd,
@@ -99,13 +99,6 @@ const maxLevel = (rarity: number | undefined, elite: number | undefined) => {
   return MAX_LEVEL_BY_RARITY[rarity][elite];
 };
 
-const br = (index: number) => {
-  const r = 4;
-  if (index === 0) return `${r}px 0px 0px ${r}px`;
-  else if (index === 5) return `0px ${r}px ${r}px 0px`;
-  else return "0";
-}
-
 const Level: NextPage = () => {
   const [rarity, setRarity] = useState(6);
   const [startingElite, setStartingElite] = useState(0);
@@ -114,8 +107,6 @@ const Level: NextPage = () => {
   const [targetElite, setTargetElite] = useState(0);
   const [targetLevel, setTargetLevel] = useState(1);
   const [_targetLevel, _setTargetLevel] = useState("1");
-  const theme = useTheme();
-  const isXSmallScreen = useMediaQuery(theme.breakpoints.down("xs"));
   const { exp, lmd, levelingLmd, eliteLmd } = levelingCost(
     rarity,
     startingElite,
@@ -125,10 +116,11 @@ const Level: NextPage = () => {
   );
   const maxStartingLevel = maxLevel(rarity, startingElite);
   const maxTargetLevel = maxLevel(rarity, targetElite);
-  const startingLevelHelpText = `Between 1 and ${maxStartingLevel}`;
-  const targetLevelHelpText = `Between 1 and ${maxTargetLevel}`;
+  const startingLevelHelpText = `Max ${maxStartingLevel}`;
+  const targetLevelHelpText = `Max ${maxTargetLevel}`;
 
-  const handleChange = (rar: number) => {
+  const handleChangeRarity = (rar: number | null) => {
+    if (rar == null) return;
     setRarity(rar);
     const newMaxElite = maxElite(rar);
     if (startingElite > newMaxElite) {
@@ -153,316 +145,175 @@ const Level: NextPage = () => {
     }
   };
 
-  const handleChangeStartingElite = (e: SelectChangeEvent<number>) => {
-    const newStartingElite = Number(e.target.value);
-    setStartingElite(newStartingElite);
-    if (targetElite < newStartingElite) {
-      setTargetElite(newStartingElite);
+  const handleChangeStartingElite = (i: number | null) => {
+    if (i == null) return;
+    setStartingElite(i);
+    if (targetElite < i) {
+      setTargetElite(i);
     }
-    const ms = maxLevel(rarity, newStartingElite);
+    const ms = maxLevel(rarity, i);
     if (startingLevel > ms) {
       setStartingLevel(ms);
       _setStartingLevel(ms.toString());
     }
   };
-  const handleChangeTargetElite = (e: SelectChangeEvent<number>) => {
-    const newTargetElite = Number(e.target.value);
-    setTargetElite(newTargetElite);
-    const mt = maxLevel(rarity, newTargetElite);
+  const handleChangeTargetElite = (i: number | null) => {
+    if (i == null) return;
+    setTargetElite(i);
+    if (startingElite > i) {
+      setStartingElite(i);
+    }
+    const mt = maxLevel(rarity, i);
     if (targetLevel > mt) {
       setTargetLevel(mt);
       _setTargetLevel(mt.toString());
     }
   };
-  const handleChangeStartingLevel = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChangeStartingLevel = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     let toInt = parseInt(e.target.value as string, 10);
     if (isNaN(toInt)) {
       _setStartingLevel("");
-    }
-    else {
-      toInt = minMax(1, parseInt(e.target.value, 10), maxStartingLevel)
+    } else {
+      toInt = clamp(1, parseInt(e.target.value, 10), maxStartingLevel);
       setStartingLevel(toInt);
       _setStartingLevel(toInt.toString());
     }
   };
-  const handleChangeTargetLevel = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChangeTargetLevel = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     let toInt = parseInt(e.target.value as string, 10);
     if (isNaN(toInt)) {
       _setTargetLevel("");
-    }
-    else {
-      toInt = minMax(1, parseInt(e.target.value, 10), maxTargetLevel)
+    } else {
+      toInt = clamp(1, parseInt(e.target.value, 10), maxTargetLevel);
       setTargetLevel(toInt);
       _setTargetLevel(toInt.toString());
     }
   };
 
-  const sectionStyle = {
-    px: 2,
-    pt: 2,
-    pb: 2,
-  };
-
   return (
     <Layout tab="/tools" page="/level">
-      <Box display="flex" justifyContent="center">
-        <Grid container spacing={2} sx={{ maxWidth: "800px" }}>
-          <Grid item xs={12}>
-            <Paper
-              elevation={2}
-              component="section"
-              sx={sectionStyle}
-            >
-              <Typography component="h3" variant="h5" gutterBottom>
-                Select Rarity
-              </Typography>
-              <Box sx={{
-                display: "grid",
-                gridTemplateColumns: {
-                  xs: "repeat(3, 1fr)",
-                  sm: "repeat(6, 1fr)"
-                },
-                width: "100%",
-                rowGap: 1,
-                "& .inactive": {
-                  opacity: 0.9,
-                  py: "0.6rem",
-                },
-                "& .active": {
-                  opacity: 1,
-                  boxShadow: 0,
-                  pt: "0.6rem",
-                  borderBottomWidth: "0.25rem",
-                  borderBottomColor: "primary.main",
-                  borderBottomStyle: "solid",
-                  backgroundColor: "info.light",
-                },
-              }}>
-                {[...Array(6)].map((_, i) => (
-                  <IconButton
-                    key={i}
-                    className={rarity === i + 1 ? "active" : "inactive"}
-                    sx={{
-                      borderRadius: br(i),
-                      color: rarityColors[i + 1],
-                      fontSize: "1rem",
-                    }}
-                    onClick={() => handleChange(i + 1)}
-                  >
-                    {i + 1}
-                    <Star fontSize="small" />
-                  </IconButton>
-                ))}
-              </Box>
-            </Paper>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            container
-            alignItems="center"
-            justifyContent="center"
+      <Container maxWidth="sm" sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+        <Board title="Data">
+          {/* Rarity */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
           >
-            <Grid item xs={12} sm={5}>
-              <Paper
-                elevation={2}
-                component="section"
-                sx={sectionStyle}
-              >
-                <Typography component="h3" variant="h5" gutterBottom>
-                  Starting Point
-                </Typography>
-                <Box display="flex" flexDirection="row">
-                  <div>
-                    <FormControl
-                      size="small"
-                      fullWidth
-                      sx={{
-                        mb: 2,
-                      }}
-                    >
-                      <InputLabel htmlFor="starting-elite">
-                        Starting elite
-                      </InputLabel>
-                      <Select<number>
-                        native
-                        value={startingElite}
-                        label="Starting elite"
-                        onChange={handleChangeStartingElite}
-                        inputProps={{
-                          name: "starting-elite",
-                          id: "starting-elite",
-                        }}
-                      >
-                        <option value={0}>Elite 0</option>
-                        {Array(maxElite(rarity))
-                          .fill(0)
-                          .map((_, i) => (
-                            <option key={i + 1} value={i + 1}>
-                              Elite {i + 1}
-                            </option>
-                          ))}
-                      </Select>
-                    </FormControl>
-                    <TextField
-                      size="small"
-                      fullWidth
-                      id="starting-level"
-                      label="Starting level"
-                      inputProps={{
-                        inputMode: 'numeric',
-                        pattern: '[0-9]*'
-                      }}
-                      value={_startingLevel}
-                      onFocus={(e) => e.target.select()}
-                      onChange={handleChangeStartingLevel}
-                      helperText={startingLevelHelpText}
-                    />
-                  </div>
-                </Box>
-              </Paper>
-            </Grid>
-            <Grid item xs={2}>
-              {!isXSmallScreen ? (
-                <TrendingFlatIcon
-                  sx={{
-                    fontSize: "3rem",
-                    color: "rgba(255, 255, 255, 0.8)",
-                    stroke: "black",
-                    strokeWidth: "0.2px",
-                    width: "100%",
-                  }}
-                />
-              ) : (
-                <>&nbsp;</>
-              )}
-            </Grid>
-            <Grid item xs={12} sm={5}>
-              <Paper
-                elevation={2}
-                component="section"
-                sx={sectionStyle}
-              >
-                <Typography component="h3" variant="h5" gutterBottom>
-                  End point
-                </Typography>
-                <Box display="flex" flexDirection="row">
-                  <div>
-                    <FormControl size="small" fullWidth sx={{ mb: 2 }}>
-                      <InputLabel htmlFor="target-elite">
-                        Target elite
-                      </InputLabel>
-                      <Select
-                        native
-                        value={targetElite}
-                        label="Target elite"
-                        onChange={handleChangeTargetElite}
-                        inputProps={{
-                          name: "target-elite",
-                          id: "target-elite",
-                        }}
-                      >
-                        <option value={0}>Elite 0</option>
-                        {Array(maxElite(rarity))
-                          .fill(0)
-                          .map((_, i) => (
-                            <option key={i + 1} value={i + 1}>
-                              Elite {i + 1}
-                            </option>
-                          ))}
-                      </Select>
-                    </FormControl>
-                    <TextField
-                      size="small"
-                      fullWidth
-                      id="target-level"
-                      label="Target level"
-                      type="numeric"
-                      value={_targetLevel}
-                      onFocus={(e) => e.target.select()}
-                      onChange={handleChangeTargetLevel}
-                      helperText={targetLevelHelpText}
-                    />
-                  </div>
-                </Box>
-              </Paper>
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper
-              elevation={2}
-              component="section"
-              sx={{ px: 2, pt: 2, pb: 3 }}
-            >
-              <Typography component="h3" variant="h5" gutterBottom>
-                Costs
+            <Typography variant="h3" id="rarity" gutterBottom>
+              Rarity
+            </Typography>
+            <Rarity value={rarity} onChange={handleChangeRarity} />
+          </Box>
+          {/* Elite / Lvl */}
+          <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+            {/* Start */}
+            <Box>
+              <Typography variant="h3" gutterBottom>
+                Start
               </Typography>
-              <Box component="ul" sx={{ m: 0, p: 0, listStyle: "none" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
+                  width: "min-content",
+                }}
+              >
+                <Promotion value={startingElite} max={maxElite(rarity)} onChange={handleChangeStartingElite} />
+                <TextField
+                  id="starting-level"
+                  value={_startingLevel}
+                  label="Level"
+                  inputProps={{
+                    inputMode: "numeric",
+                    pattern: "[0-9]*",
+                  }}
+                  onFocus={(e) => e.target.select()}
+                  onChange={handleChangeStartingLevel}
+                  helperText={startingLevelHelpText}
+                  size="small"
+                />
+              </Box>
+            </Box>
+            {/* End */}
+            <Box>
+              <Typography variant="h3" gutterBottom>
+                End
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
+                  width: "min-content",
+                }}
+              >
+                <Promotion value={targetElite} max={maxElite(rarity)} onChange={handleChangeTargetElite} />
+                <TextField
+                  id="target-level"
+                  value={_targetLevel}
+                  label="Target level"
+                  inputProps={{
+                    inputMode: "numeric",
+                    pattern: "[0-9]*",
+                  }}
+                  onFocus={(e) => e.target.select()}
+                  onChange={handleChangeTargetLevel}
+                  helperText={targetLevelHelpText}
+                  size="small"
+                />
+              </Box>
+            </Box>
+          </Box>
+        </Board>
+        <Board title="Result">
+          <Box component="ul" sx={{ m: 0, p: 0, listStyle: "none" }}>
+            <Typography variant="body1" component="li">
+              Total EXP cost: <strong>{_startingLevel && _targetLevel ? exp.toLocaleString() : " - "}</strong> EXP
+            </Typography>
+            <Typography variant="body1" component="li" sx={{ mt: 1 }}>
+              Total LMD cost:{" "}
+              <span>
+                <strong data-cy="lmd" data-lmd={lmd}>
+                  {_startingLevel && _targetLevel ? lmd.toLocaleString() : " - "}
+                </strong>{" "}
+                <LmdIcon />
+              </span>
+              <Box
+                component="ul"
+                sx={{
+                  mt: 1,
+                  "& > li": { display: "list-item", listStyle: "disc" },
+                  "& > li ~ li": { mt: 1 },
+                }}
+              >
                 <Typography variant="body1" component="li">
-                  Total EXP cost:{" "}
+                  LMD cost for leveling:{" "}
                   <span>
-                    <strong>
-                      {_startingLevel && _targetLevel ? exp.toLocaleString() : " - "}
-                    </strong> EXP
+                    <span>{_startingLevel && _targetLevel ? levelingLmd.toLocaleString() : " - "}</span> <LmdIcon />
                   </span>
                 </Typography>
-                <Typography variant="body1" component="li" sx={{ mt: 1 }}>
-                  Total LMD cost:{" "}
+                <Typography variant="body1" component="li">
+                  LMD cost for elite promotions:{" "}
                   <span>
-                    <strong data-cy="lmd" data-lmd={lmd}>
-                      {_startingLevel && _targetLevel ? lmd.toLocaleString() : " - "}
-                    </strong>{" "}
-                    <LmdIcon />
+                    <span>{_startingLevel && _targetLevel ? eliteLmd.toLocaleString() : " - "}</span> <LmdIcon />
                   </span>
-                  <Box
-                    component="ul"
-                    sx={{
-                      mt: 1,
-                      "& > li": { display: "list-item", listStyle: "disc" },
-                      "& > li ~ li": { mt: 1 },
-                    }}
-                  >
-                    <Typography variant="body1" component="li">
-                      LMD cost for leveling:{" "}
-                      <span>
-                        <span
-                          data-cy="levelingLmd"
-                          data-leveling-lmd={levelingLmd}
-                        >
-                          {_startingLevel && _targetLevel ? levelingLmd.toLocaleString() : " - "}
-                        </span>{" "}
-                        <LmdIcon />
-                      </span>
-                    </Typography>
-                    <Typography variant="body1" component="li">
-                      LMD cost for elite promotions:{" "}
-                      <span>
-                        <span>
-                          {_startingLevel && _targetLevel ? eliteLmd.toLocaleString() : " - "}
-                        </span>
-                        <LmdIcon />
-                      </span>
-                    </Typography>
-                  </Box>
                 </Typography>
               </Box>
-            </Paper>
-          </Grid>
-        </Grid>
-      </Box>
+            </Typography>
+          </Box>
+        </Board>
+      </Container>
     </Layout>
   );
 };
 export default Level;
 
-const LmdIcon: React.FC = () => {
-  return (
-    <Box component="span" position="relative" top={3}>
-      <Image src="/img/items/GOLD_SHD.webp" width={26} height={18} alt="LMD" />
-    </Box>
-  );
-};
+const LmdIcon = memo(() => (
+  <Box component="span" position="relative" top={3}>
+    <Image src="/img/items/GOLD_SHD.webp" width={26} height={18} alt="LMD" />
+  </Box>
+));
+LmdIcon.displayName = "LMD";

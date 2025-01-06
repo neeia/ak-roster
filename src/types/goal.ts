@@ -5,6 +5,7 @@ export enum OperatorGoalCategory {
   Mastery,
   SkillLevel,
   Module,
+  Level,
 }
 
 interface BaseOperatorGoal {
@@ -42,11 +43,17 @@ export type OperatorGoal =
 interface BasePlannerGoal {
   operatorId: string;
   category: OperatorGoalCategory;
-  priority: string;
 }
 
 interface PlannerEliteGoal extends BasePlannerGoal {
   category: OperatorGoalCategory.Elite;
+  eliteLevel: number;
+}
+
+interface PlannerLevelGoal extends BasePlannerGoal {
+  category: OperatorGoalCategory.Level;
+  fromLevel: number;
+  toLevel: number;
   eliteLevel: number;
 }
 
@@ -71,4 +78,5 @@ export type PlannerGoal =
   | PlannerEliteGoal
   | PlannerMasteryGoal
   | PlannerModuleGoal
-  | PlannerSkillLevelGoal;
+  | PlannerSkillLevelGoal
+  | PlannerLevelGoal;
