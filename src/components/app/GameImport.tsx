@@ -228,7 +228,7 @@ const GameImport = memo(() => {
         <AlertTitle>How It Works</AlertTitle>
         <Collapse in={collapse}>
           <Typography sx={{ fontSize: "14px" }}>
-            Loosely speaking, Krooster imitates the login process that the game itself goes through when you log in.
+            Krooster imitates the login process that the game client goes through when you log in.
           </Typography>
           <Box component="ol" sx={{ marginBlock: 1, paddingInlineStart: 2 }}>
             <Box component="li">
