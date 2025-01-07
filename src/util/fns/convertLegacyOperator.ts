@@ -40,12 +40,18 @@ function convertV1(op: OperatorV1): Operator {
 }
 
 function convertV2(op: OperatorV2): Operator {
+  const rarity = operatorJson[op.id].rarity;
   const modData = operatorJson[op.id].moduleData;
+  const skillData = operatorJson[op.id].skillData;
   const modules: Record<string, number> = {};
   if (modData) {
     modData.forEach((md, i) => {
       modules[md.moduleId] = op.module?.[i] ?? 0;
     });
+  }
+  const masteries: number[] = [];
+  if (skillData && rarity > 3) {
+    Object.keys(op.mastery).forEach((n) => (masteries[Number(n)] = op.mastery[Number(n)]));
   }
 
   return {
@@ -55,7 +61,7 @@ function convertV2(op: OperatorV2): Operator {
     elite: op.promotion,
     level: op.level,
     skill_level: op.skillLevel,
-    masteries: Object.keys(op.mastery).map((n) => op.mastery[Number(n)]),
+    masteries,
     modules,
     skin: op.skin || null,
   };
