@@ -48,7 +48,7 @@ function useSupports() {
     };
 
     fetchData();
-  }, [_setSupport]);
+  }, []);
 
   return [supports, setSupport, removeSupport] as const;
 }
