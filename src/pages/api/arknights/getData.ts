@@ -5,7 +5,7 @@ import { TokenData } from "types/arknightsApiTypes/apiTypes";
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { mail, code } = req.query as { mail: string; code: string };
   const token = req.body as TokenData;
-  const data = token ? await getGameDataWithToken(token) : await getGameData(mail, code);
+  const data = token ? await getGameDataWithToken(token) : await getGameData(mail.replaceAll(" ", "+"), code);
   if (data) {
     res.status(200).json(data);
   } else {
