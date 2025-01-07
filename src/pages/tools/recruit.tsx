@@ -100,9 +100,6 @@ const Recruit: NextPage = () => {
     }[]
   ) => {
     if (selectedOptions.length <= 5) {
-      if (inputNode != null) {
-        inputNode.focus();
-      }
       setActiveTags(selectedOptions);
     }
   };
