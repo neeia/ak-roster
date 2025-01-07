@@ -527,8 +527,12 @@ const PlannerGoals = (props: Props) => {
                       depot,
                       Object.keys(depot)
                     );
-                    const completable = ingredients.every(({ id, quantity }) =>
-                      id === "EXP" ? depotToExp(depot) : depot[id]?.stock >= quantity
+                    const completableByCrafting = ingredients.every(
+                      ({ id, quantity }) =>
+                        (id === "EXP" ? depotToExp(depot) : depot[id]?.stock) >= quantity || craftableItems[id]
+                    );
+                    const completable = ingredients.every(
+                      ({ id, quantity }) => (id === "EXP" ? depotToExp(depot) : depot[id]?.stock) >= quantity
                     );
                     return (
                       <PlannerGoalCard
@@ -537,7 +541,7 @@ const PlannerGoals = (props: Props) => {
                         onGoalDeleted={onPlannerGoalCardGoalDeleted}
                         onGoalCompleted={onPlannerGoalCardGoalCompleted}
                         completable={completable}
-                        completableByCrafting={Object.values(craftableItems).length === ingredients.length}
+                        completableByCrafting={completableByCrafting}
                       />
                     );
                   })}

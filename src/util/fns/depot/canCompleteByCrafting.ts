@@ -52,19 +52,14 @@ const canCompleteByCrafting = (
         const itemYield = craftedItem.yield ?? 1;
         // numTimesCraftable: max number of times the formula can be executed
         const numTimesCraftable = Math.min(
-          ...ingredients.map(
-            (ingr) => Math.floor((_depot[ingr.id]?.stock ?? 0) / ingr.quantity) //here
-          )
+          ...ingredients.map((ingr) => Math.floor((_depot[ingr.id]?.stock ?? 0) / ingr.quantity))
         );
         // numTimesToCraft: how many times we'll actually execute the formula
         const numTimesToCraft = Math.min(numTimesCraftable, Math.ceil(shortage / itemYield));
         // now deduct from crafting supply
         ingredients.forEach((ingr) => {
           const copy = { ..._depot[ingr.id] };
-          copy.stock = Math.max(
-            //here
-            (_depot[ingr.id]?.stock ?? 0) - ingr.quantity * numTimesToCraft //here
-          );
+          copy.stock = Math.max((_depot[ingr.id]?.stock ?? 0) - ingr.quantity * numTimesToCraft);
           _depot[ingr.id] = copy;
         });
         if (shortage - numTimesToCraft <= 0) {
@@ -72,7 +67,7 @@ const canCompleteByCrafting = (
         }
         // even if the crafted item can't be completed, update our hypothetical depot counts
         const copy = { ..._depot[craftedItemId] };
-        copy.stock = (_depot[craftedItemId].stock ?? 0) + numTimesToCraft * itemYield; //here //here
+        copy.stock = (_depot[craftedItemId].stock ?? 0) + numTimesToCraft * itemYield;
         _depot[craftedItemId] = copy;
       }
     });
@@ -83,7 +78,7 @@ const canCompleteByCrafting = (
     }
   });
 
-  return { craftableItems, depot: _depot };
+  return { craftableItems, ingredientToCraftedItemsMapping, depot: _depot };
 };
 
 export default canCompleteByCrafting;
