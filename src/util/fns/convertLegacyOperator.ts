@@ -49,7 +49,7 @@ function convertV2(op: OperatorV2): Operator {
       modules[md.moduleId] = op.module?.[i] ?? 0;
     });
   }
-  const masteries: number[] = [];
+  const masteries: number[] = new Array(getNumSkills(op.id)).fill(0);
   if (skillData && rarity > 3) {
     Object.keys(op.mastery).forEach((n) => (masteries[Number(n)] = op.mastery[Number(n)]));
   }
