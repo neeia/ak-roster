@@ -46,7 +46,7 @@ function useAccount() {
         .single();
       handlePostgrestError(error);
 
-      if (!data || !data.username) {
+      if (!data || (!data.username && !error)) {
         const genName = randomName();
         const { data: accountData } = await supabase
           .from("krooster_accounts")
