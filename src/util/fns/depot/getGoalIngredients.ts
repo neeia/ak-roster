@@ -34,7 +34,7 @@ const getGoalIngredients = (goal: PlannerGoal): Ingredient[] => {
     }
     case OperatorGoalCategory.Module:
       return (
-        operator.moduleData?.find((mod) => mod.moduleId === goal.moduleId)!.stages[goal.moduleLevel - 1].ingredients ??
+        operator.moduleData?.find((mod) => mod.moduleId === goal.moduleId)?.stages[goal.moduleLevel - 1].ingredients ??
         []
       );
   }
