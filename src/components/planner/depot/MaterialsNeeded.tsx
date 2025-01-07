@@ -212,33 +212,13 @@ const MaterialsNeeded = React.memo((props: Props) => {
     });
   }
 
-  // 2. populate number of ingredients required for items being crafted
-  const ingredientToCraftedItemsMapping: Record<string, string[]> = {};
-  Object.values(itemsJson)
-    .sort((a, b) => b.tier - a.tier)
-    .forEach((item) => {
-      // n.b. NOT equivalent to filtering the array first,
-      // because we will be modifying materialsNeeded during execution
-      if (materialsNeeded[item.id] != null) {
-        const remaining = Math.max(materialsNeeded[item.id] - (depot[item.id]?.stock ?? 0), 0);
-
-        if (remaining > 0 && settings.depotSettings.crafting?.includes(item.id)) {
-          const itemBeingCrafted: Item = itemsJson[item.id as keyof typeof itemsJson];
-          const { ingredients, yield: itemYield } = itemBeingCrafted;
-          if (ingredients != null) {
-            const multiplier = Math.ceil(remaining / (itemYield ?? 1));
-            ingredients.forEach((ingr) => {
-              ingredientToCraftedItemsMapping[ingr.id] = [...(ingredientToCraftedItemsMapping[ingr.id] ?? []), item.id];
-              materialsNeeded[ingr.id] = (materialsNeeded[ingr.id] ?? 0) + ingr.quantity * multiplier;
-            });
-          }
-        }
-      }
-    });
-
   // 3. calculate what ingredients can be fulfilled by crafting
   const _depot = { ...depot }; // need to hypothetically deduct from stock
-  const { craftableItems } = canCompleteByCrafting(materialsNeeded, _depot, settings.depotSettings.crafting);
+  const { craftableItems, ingredientToCraftedItemsMapping } = canCompleteByCrafting(
+    materialsNeeded,
+    _depot,
+    settings.depotSettings.crafting
+  );
 
   const allItems: [string, number][] = Object.values(itemsJson).map((item) => [item.id, materialsNeeded[item.id] ?? 0]);
 
