@@ -53,8 +53,8 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
     owned < 1000
       ? owned
       : owned < 1000000
-      ? `${owned % 1000 === 0 ? `${owned / 1000}` : (owned / 1000).toFixed(0)}K`
-      : `${owned % 1000000 === 0 ? `${owned / 1000000}` : (owned / 1000000).toFixed(0)}M`;
+      ? `${owned % 1000 === 0 ? `${owned / 1000}` : (owned / 1000).toFixed(1)}K`
+      : `${owned % 1000000 === 0 ? `${owned / 1000000}` : (owned / 1000000).toFixed(2)}M`;
 
   useEffect(() => {
     setRawValue(`${owned}`);
