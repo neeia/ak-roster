@@ -29,11 +29,11 @@ const OperatorGoalIconography: React.FC<Props> = ({ goal, size = 48, sx, ...rest
       }
       break;
     case OperatorGoalCategory.Mastery: {
-      const skill = operator.skillData!.find((sk) => sk.skillId === goal.skillId)!;
+      const skill = operator.skillData?.find((sk) => sk.skillId === goal.skillId);
       icon = (
         <Box position="relative">
           <Image
-            src={`/img/skills/${(skill.iconId ?? skill.skillId).replace("#", "_")}.png`}
+            src={`/img/skills/${(skill?.iconId ?? skill?.skillId ?? "").replace("#", "_")}.png`}
             width={size}
             height={size}
             alt=""
