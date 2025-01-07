@@ -27,22 +27,30 @@ const isNumber = (value: any) => typeof value === "number";
 interface Props {
   open: boolean;
   onClose: () => void;
-  preset?: Preset;
+  presets: Preset[];
+  index: number;
   onSubmit: (preset: Preset) => void;
   onDelete: () => void;
-  add?: boolean;
 }
 
 const PresetDialog = (props: Props) => {
-  const { open, onClose, preset, onSubmit, onDelete, add = false } = props;
+  const { open, onClose, presets, index, onSubmit, onDelete } = props;
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
-  const [presetBuilder, setPresetBuilder] = useState<Preset>({ index: 0, name: "" });
+  const [presetBuilder, setPresetBuilder] = useState<Preset>({ index, name: "" });
 
   useEffect(() => {
-    if (preset) setPresetBuilder(preset);
-  }, [preset]);
+    if (index === presetBuilder.index) return;
+    if (presets) {
+      const _preset = presets[index];
+      if (!_preset) {
+        setPresetBuilder({ index, name: "Untitled" });
+      } else {
+        setPresetBuilder(_preset);
+      }
+    }
+  }, [index, presets, presetBuilder, setPresetBuilder]);
 
   const toggleSection = (section: string) => {
     const _preset = { ...presetBuilder };
@@ -153,14 +161,14 @@ const PresetDialog = (props: Props) => {
 
   const handleClose = () => {
     onClose();
-    setPresetBuilder(preset || { index: 0, name: "" });
+    setPresetBuilder({ index: 0, name: "" });
   };
 
   return (
     <>
       <Dialog open={open} onClose={handleClose} fullScreen={fullScreen}>
         <DialogTitle>
-          {add ? "Create" : "Edit"} {presetBuilder.name || "Preset"}
+          {index === presets.length ? "Create" : "Edit"} {presetBuilder.name || "Preset"}
           <IconButton onClick={onClose} sx={{ display: { sm: "none" } }}>
             <Close />
           </IconButton>
@@ -265,7 +273,7 @@ const PresetDialog = (props: Props) => {
           </DisabledContext.Provider>
         </DialogContent>
         <DialogActions sx={{ display: "flex", gap: 1 }}>
-          {!add && (
+          {presets[index] && (
             <Button
               variant="outlined"
               color="error"
@@ -289,7 +297,7 @@ const PresetDialog = (props: Props) => {
               handleClose();
             }}
           >
-            {add ? "Add" : "Save"}
+            {index === presets.length ? "Add" : "Save"}
           </Button>
         </DialogActions>
       </Dialog>
