@@ -1,6 +1,19 @@
 import { UserData } from "types/arknightsApiTypes/apiTypes";
-import React, { useState } from "react";
-import { Box, Button, Checkbox, Divider, FormControlLabel, Stack, TextField } from "@mui/material";
+import React, { memo, useState } from "react";
+import {
+  Alert,
+  AlertTitle,
+  Box,
+  Button,
+  Checkbox,
+  Collapse,
+  Divider,
+  FormControlLabel,
+  IconButton,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { Operator, Skin } from "types/operators/operator";
 import { OperatorSupport } from "types/operators/supports";
 import skinJson from "data/skins.json";
@@ -13,15 +26,15 @@ import supabase from "supabase/supabaseClient";
 import useOperators from "util/hooks/useOperators";
 import operatorJson from "data/operators";
 import { enqueueSnackbar } from "notistack";
-import useSettings from "../../util/hooks/useSettings";
+import useSettings from "util/hooks/useSettings";
+import { Close, ExpandLess, ExpandMore } from "@mui/icons-material";
 
 const EXCLUDED_ITEMS: string[] = [];
-const GameImport = () => {
+const GameImport = memo(() => {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [_settings, setSettings] = useSettings();
-  if (!_settings.importSettings)
-  {
+  if (!_settings.importSettings) {
     setSettings((s) => ({
       ...s,
       importSettings: {
@@ -44,15 +57,13 @@ const GameImport = () => {
   const [, setSupport, removeSupport] = useSupports();
   const [, setDepot] = useDepot();
 
-  const sendCode = async () => {
+  const sendCode = async (email: string) => {
     enqueueSnackbar("Code sent. Check your e-mail.", { variant: "success" });
     const encodedMail = encodeURIComponent(email);
     fetch(`/api/arknights/sendAuthMail?mail=${encodedMail}`);
   };
 
-  const [triedLogin, setTriedLogin] = useState(false);
-  const login = async () => {
-    setTriedLogin(true);
+  const login = async (email: string, code: string) => {
     enqueueSnackbar("Logging in...");
     const encodedMail = encodeURIComponent(email);
     const result = await fetch(`/api/arknights/getData?mail=${encodedMail}&code=${code}`);
@@ -62,7 +73,6 @@ const GameImport = () => {
     } else {
       enqueueSnackbar("Error retrieving data.", { variant: "error" });
     }
-    setTriedLogin(false);
   };
 
   const loginWithToken = async () => {
@@ -98,8 +108,7 @@ const GameImport = () => {
     const roster = userData.troop.chars;
 
     //Update the profile data
-    if (settings.importProfile)
-    {
+    if (settings.importProfile) {
       const profileData = userData.status;
       const friendCode = {
         username: profileData.nickName,
@@ -142,8 +151,7 @@ const GameImport = () => {
     }
 
     //Update roster data
-    if (settings.importOperators)
-    {
+    if (settings.importOperators) {
       const operators: Operator[] = [];
       for (let key in roster) {
         let value = roster[key]!;
@@ -185,10 +193,8 @@ const GameImport = () => {
       await supabase.from("operators").upsert(operators);
     }
 
-
     //Update depot
-    if (settings.importDepot)
-    {
+    if (settings.importDepot) {
       const depot = userData.inventory;
       const depotData: DepotItem[] = [];
       for (let key in depot) {
@@ -204,10 +210,65 @@ const GameImport = () => {
     enqueueSnackbar("Data imported.", { variant: "success" });
   }
 
+  const [collapse, setCollapse] = useState(true);
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
       You can import your account data if your account is linked to a Yostar account. Doing this WILL log you out from
       the game, if you are currently logged in.
+      <Alert
+        component="aside"
+        sx={{}}
+        variant="outlined"
+        severity="info"
+        action={
+          <IconButton onClick={() => setCollapse(!collapse)}>{collapse ? <ExpandLess /> : <ExpandMore />}</IconButton>
+        }
+      >
+        <AlertTitle>How It Works</AlertTitle>
+        <Collapse in={collapse}>
+          <Typography sx={{ fontSize: "14px" }}>
+            Loosely speaking, Krooster imitates the login process that the game itself goes through when you log in.
+          </Typography>
+          <Box component="ol" sx={{ marginBlock: 1, paddingInlineStart: 2 }}>
+            <Box component="li">
+              Your email is sent to our servers, which send a request to the game servers to send you an email with a
+              6-digit code.
+            </Box>
+            <Box component="li">
+              Once the code is submitted on this page, another request is sent to our servers, which exchange your email
+              and the code with the game servers to receive an access token.
+            </Box>
+            <Box component="li">
+              The server then immediately exchanges this access token with the game server to access the account data.
+            </Box>
+            <Box component="li">
+              Finally, the account data, along with the access token, is returned to the client (the browser) to be
+              processed.
+              <Box component="ul">
+                <Box component="li">
+                  If selected, the access token itself is safely stored within the browser's storage. Otherwise, it is
+                  discarded.
+                </Box>
+                <Box component="li">
+                  Meanwhile, the rest of the data (as selected below) is processed into the format that the site uses,
+                  and uploaded to the database.
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+          <Typography sx={{ color: "error.main" }}>Notice:</Typography>
+          <Typography sx={{ fontSize: "14px", color: "text.primary" }}>
+            Krooster is not associated with Yostar or Hypergryph. This is <b>not</b> an officially approved tool. We do
+            not take responsibility for any actions taken by Arknights' publishers as a result of signing in using this
+            method. Use at your own risk.
+          </Typography>
+          <Typography sx={{ fontSize: "14px", color: "text.primary" }}>
+            So far, no such action has taken place; therefore, we consider it acceptable to offer this tool to our
+            general userbase. However, it is your decision to make.
+          </Typography>
+        </Collapse>
+      </Alert>
       <Box>
         Select what you want to import:
         <Stack>
@@ -291,7 +352,7 @@ const GameImport = () => {
           disabled={email.length === 0}
           onClick={(event) => {
             event.preventDefault();
-            sendCode();
+            sendCode(email);
           }}
         >
           Send code
@@ -320,26 +381,27 @@ const GameImport = () => {
               onChange={(event) => setRememberLogin(event.target.checked)}
             />
           }
-          label="Remember login"
+          label="Save credentials"
         />
         <Button
           variant="outlined"
           type="submit"
-          disabled={code.length !== 6 || triedLogin}
+          disabled={code.length !== 6}
           onClick={(event) => {
             event.preventDefault();
-            login();
+            login(email, code);
           }}
         >
-          Log in
+          Log In and Sync Data
         </Button>
       </Box>
       <Divider />
       <Button variant="outlined" disabled={!hasToken} onClick={(event) => loginWithToken()}>
-        Login with previous credentials
+        Log In With Previous Credentials
       </Button>
     </Box>
   );
-};
+});
 
+GameImport.displayName = "Game Import";
 export default GameImport;
