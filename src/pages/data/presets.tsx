@@ -62,10 +62,10 @@ const Presets: NextPage = () => {
         <PresetDialog
           open={open}
           onClose={() => setOpen(false)}
-          preset={presets[index]}
+          presets={presets}
+          index={index}
           onSubmit={onChange}
           onDelete={() => deletePreset(index)}
-          add={index === presets.length}
         />
       </Board>
     </Layout>
