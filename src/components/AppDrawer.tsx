@@ -90,6 +90,21 @@ const AppDrawer = React.memo((props: Props) => {
         flexDirection: "column",
         gap: "16px",
         py: "16px",
+        overflowY: "auto",
+        scrollbarColor: "#6b6b6b transparent",
+        scrollbarWidth: "thin",
+        "*::-webkit-scrollbar": {
+          width: "12px",
+        },
+        "*::-webkit-scrollbar-track": {
+          background: "transparent",
+        },
+        "*::-webkit-scrollbar-thumb": {
+          backgroundColor: "#6b6b6b",
+          borderRadius: 4,
+          border: "transparent",
+          outline: "transparent",
+        },
       }}
     >
       <JumpTo
@@ -163,22 +178,7 @@ const AppDrawer = React.memo((props: Props) => {
       <List
         sx={{
           height: "100%",
-          overflowY: "auto",
           p: 0,
-          scrollbarColor: "#6b6b6b transparent",
-          scrollbarWidth: "thin",
-          "*::-webkit-scrollbar": {
-            width: "12px",
-          },
-          "*::-webkit-scrollbar-track": {
-            background: "transparent",
-          },
-          "*::-webkit-scrollbar-thumb": {
-            backgroundColor: "#6b6b6b",
-            borderRadius: 4,
-            border: "transparent",
-            outline: "transparent",
-          },
         }}
       >
         {Object.entries(tabs)
