@@ -96,7 +96,7 @@ function usePresets() {
     return () => {
       isCanceled = true;
     };
-  }, [setPresets]);
+  }, []);
 
   return { presets, addPreset, deletePreset, changePreset } as const;
 }

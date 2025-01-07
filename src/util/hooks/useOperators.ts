@@ -6,10 +6,11 @@ import Roster from "types/operators/roster";
 import supabase from "supabase/supabaseClient";
 import handlePostgrestError from "util/fns/handlePostgrestError";
 import { repair } from "util/fns/convertLegacyOperator";
+import { enqueueSnackbar } from "notistack";
 
 function useOperators() {
   const [operators, setOperators] = useLocalStorage<Roster>("v3_roster", {});
-  const [legacyOperators] = useLocalStorage<Record<string, OperatorV2>>("operators", {});
+  const [legacyOperators] = useLocalStorage<null | Record<string, OperatorV2>>("operators", null);
 
   // change operator, push to db
   const onChange = useCallback(
@@ -57,9 +58,12 @@ function useOperators() {
       if (dbOperators?.length)
         dbOperators.forEach((op) => (op.op_id in operatorJson ? (_roster[op.op_id] = op as Operator) : null));
       else if (legacyOperators) {
+        enqueueSnackbar("Loading cached roster data...", { variant: "info" });
         _roster = repair(legacyOperators);
 
-        await supabase.from("operators").insert(Object.values(_roster));
+        const { error } = await supabase.from("operators").insert(Object.values(_roster));
+        if (error) handlePostgrestError(error);
+        else enqueueSnackbar("Finished loading data.", { variant: "success" });
       }
 
       hydrated.current = true;
