@@ -2,6 +2,7 @@ import { Operator, OperatorV1, OperatorV2 } from "types/operators/operator";
 import getNumSkills from "util/fns/getNumSkills";
 import operatorJson from "data/operators";
 import Roster from "types/operators/roster";
+import { isObject } from "lodash";
 
 function checkVersion(op: any) {
   if ("mastery" in op) return 2;
@@ -54,7 +55,7 @@ function convertV2(op: OperatorV2): Operator {
     elite: op.promotion,
     level: op.level,
     skill_level: op.skillLevel,
-    masteries: op.mastery,
+    masteries: Object.keys(op.mastery).map((n) => op.mastery[Number(n)]),
     modules,
     skin: op.skin || null,
   };

@@ -111,11 +111,9 @@ function useGoals() {
     [goals, _setGoals]
   );
 
-  const hydrated = useRef(false);
   // fetch data from db
   useEffect(() => {
     let isCanceled = false;
-    if (hydrated.current) return;
     const fetchData = async () => {
       const {
         data: { session },
@@ -141,7 +139,6 @@ function useGoals() {
         await supabase.from("goals").insert(goalResult);
       }
 
-      hydrated.current = true;
       if (!isCanceled) _setGoals(goalResult);
     };
 
@@ -149,7 +146,7 @@ function useGoals() {
     return () => {
       isCanceled = true;
     };
-  }, [hydrated, legacyGoals, _setGoals]);
+  }, []);
 
   return { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator } as const;
 }

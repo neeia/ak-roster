@@ -25,7 +25,7 @@ function useDepot() {
 
       _setDepot(depotCopy);
 
-      const { error } = await supabase.from("depot").upsert(items).select();
+      const { error } = await supabase.from("depot").upsert(items);
       handlePostgrestError(error);
     },
     [depot, _setDepot]
@@ -66,7 +66,7 @@ function useDepot() {
             depotTrash.push(material_id);
           }
         });
-        await supabase.from("depot").insert(Object.values(depotResult));
+        await supabase.from("depot").upsert(Object.values(depotResult));
       }
 
       if (depotTrash.length) await supabase.from("depot").delete().in("material_id", depotTrash);
