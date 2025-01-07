@@ -143,14 +143,16 @@ const GameImport = () => {
 
     for (let i = 0; i < supportsData.length; i++) {
       let supportData = supportsData[i];
-      let charInstanceId = supportData.charInstId!;
-      let charName = roster[charInstanceId]!.charId;
+      const instId = supportData.charInstId;
+      if (!instId || !roster[instId]) return;
+
+      let charName = roster[instId].charId;
       let supportModule = supportData.currentEquip;
 
       let support: OperatorSupport = {
         module: supportModule,
         op_id: charName,
-        skill: supportData.skillIndex!,
+        skill: supportData.skillIndex ?? -1,
         slot: i,
       };
       await setSupport(support);
