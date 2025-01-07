@@ -80,8 +80,7 @@ function usePresets() {
           const { error } = await supabase
             .from("presets")
             .update({ ...preset, index })
-            .eq("user_id", user_id)
-            .eq("index", preset.index);
+            .match({ user_id, index: preset.index });
           if (error) handlePostgrestError(error);
         });
         setPresets(_presets.map((p, index) => ({ ...p, index })));
