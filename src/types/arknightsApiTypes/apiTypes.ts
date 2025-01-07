@@ -99,7 +99,7 @@ export interface UserData {
   };
   building: Record<string, unknown>;
   dexNav: {
-    character: Record<string, { charInstId: number; count: number; classicCount?: number }>;
+    character?: Record<string, { charInstId: number; count: number; classicCount?: number }>;
     formula: unknown;
     enemy: unknown;
     teamV2: unknown;
@@ -279,7 +279,7 @@ export interface SkillData {
 }
 
 export interface SocialData {
-  assistCharList: AssistantData[];
+  assistCharList: AssistantData[] | [null];
   yesterdayReward: {
     canReceive: number;
     assistAmount: number;
@@ -298,7 +298,7 @@ export interface SocialData {
 
 export interface AssistantData {
   //char Id
-  charInstId: number | null;
+  charInstId: number;
   skillIndex: number | null;
   //equipped module
   currentEquip: string | null;
