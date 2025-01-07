@@ -55,11 +55,8 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
   const handleChange = useCallback(
     (itemId: string, newQuantity: number) => {
-      const item = depot[itemId];
-      if (item) {
-        const data: DepotItem = { material_id: itemId, stock: newQuantity };
-        putDepot([data]);
-      }
+      const data: DepotItem = { material_id: itemId, stock: newQuantity };
+      putDepot([data]);
     },
     [depot, putDepot]
   );
