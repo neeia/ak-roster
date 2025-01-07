@@ -20,6 +20,17 @@ const GameImport = () => {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [_settings, setSettings] = useSettings();
+  if (!_settings.importSettings)
+  {
+    setSettings((s) => ({
+      ...s,
+      importSettings: {
+        importProfile: true,
+        importDepot: true,
+        importOperators: true,
+      },
+    }));
+  }
   const settings = _settings.importSettings;
   // const [importProfile, setImportProfile] = useState(settings);
   // const [importOperators, setImportOperators] = useState(true);
@@ -204,8 +215,8 @@ const GameImport = () => {
             control={
               <Checkbox
                 id="importProfile"
-                value={settings.importProfile}
-                checked={settings.importProfile}
+                value={settings?.importProfile ?? true}
+                checked={settings?.importProfile ?? true}
                 onChange={(e) => {
                   setSettings((s) => ({
                     ...s,
@@ -223,8 +234,8 @@ const GameImport = () => {
             control={
               <Checkbox
                 id="importOperators"
-                value={settings.importOperators}
-                checked={settings.importOperators}
+                value={settings?.importOperators ?? true}
+                checked={settings?.importOperators ?? true}
                 onChange={(e) => {
                   setSettings((s) => ({
                     ...s,
@@ -242,8 +253,8 @@ const GameImport = () => {
             control={
               <Checkbox
                 id="importDepot"
-                value={settings.importDepot}
-                checked={settings.importDepot}
+                value={settings?.importDepot ?? true}
+                checked={settings?.importDepot ?? true}
                 onChange={(e) => {
                   setSettings((s) => ({
                     ...s,
