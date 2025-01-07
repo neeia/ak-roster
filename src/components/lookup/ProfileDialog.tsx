@@ -27,6 +27,7 @@ interface Props extends DialogProps {
 
 const ProfileDialog = (props: Props) => {
   const { data, onClose, ...rest } = props;
+
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -260,7 +261,7 @@ const ProfileDialog = (props: Props) => {
                   {data.supports
                     .sort((a, b) => a.slot - b.slot)
                     .map((s) => {
-                      if (!s) return null;
+                      if ((Object.keys(data.roster).length == 0) && !s) return null;
                       const op = data.roster[s.op_id];
                       return <SupportBlock key={op.op_id} op={{ ...op, ...operatorJson[s.op_id] }} />;
                     })}
