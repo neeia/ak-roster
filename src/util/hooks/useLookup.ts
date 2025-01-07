@@ -30,7 +30,7 @@ function useLookup() {
     const { data: _account, error: accountError } = await supabase
       .from("krooster_accounts")
       .select()
-      .eq(username, username.toLocaleLowerCase())
+      .eq("username", username.toLocaleLowerCase())
       .limit(1);
     handlePostgrestError(accountError);
 
