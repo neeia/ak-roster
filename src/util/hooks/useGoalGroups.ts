@@ -73,7 +73,7 @@ function useGoalGroups() {
     };
 
     fetchData();
-  }, [_setGroups]);
+  }, []);
 
   return { groups, putGroups: putGroups, renameGroup, removeGroup } as const;
 }
