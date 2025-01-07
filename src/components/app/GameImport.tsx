@@ -143,6 +143,7 @@ const GameImport = () => {
 
     for (let i = 0; i < supportsData.length; i++) {
       let supportData = supportsData[i];
+      if (!supportData) return;
       const instId = supportData.charInstId;
       if (!instId || !roster[instId]) return;
 
