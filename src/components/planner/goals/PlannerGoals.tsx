@@ -59,6 +59,7 @@ interface Props extends GoalFilterHook {
   removeAllGoals: () => void;
   removeAllGoalsFromGroup: (groupName: string) => void;
   removeAllGoalsFromOperator: (opId: string, groupName: string) => void;
+  changeLocalGoalGroup: (oldGroupName: string, newGroupName: string) => void;
   settings: LocalStorageSettings;
 }
 
@@ -71,6 +72,7 @@ const PlannerGoals = (props: Props) => {
     removeAllGoals,
     removeAllGoalsFromGroup,
     removeAllGoalsFromOperator,
+    changeLocalGoalGroup,
     settings,
     ...filter
   } = props;
@@ -490,7 +492,8 @@ const PlannerGoals = (props: Props) => {
   };
 
   const createGoalGroups = () => {
-    const groupedGoals = Object.groupBy(goals!, (goal) => goal.group_name);
+    const groupedGoals = _.groupBy(goals, (goal) => goal.group_name);
+    //const groupedGoals = Object.groupBy(goals!, (goal) => goal.group_name);
     return groups!.map((groupName, index) => (
       <GoalGroup
         key={groupName}
@@ -706,7 +709,7 @@ const PlannerGoals = (props: Props) => {
       <RenameGroupDialog
         open={!!groupToRename}
         onClose={() => setGroupToRename(undefined)}
-        onSubmit={(newGroupName) => (groupToRename ? renameGroup(groupToRename, newGroupName) : null)}
+        onSubmit={(newGroupName) => { if (groupToRename) {renameGroup(groupToRename, newGroupName); changeLocalGoalGroup(groupToRename, newGroupName)}}}
         goalGroups={groups}
       />
       <GoalFilterDialog open={filterOpen} onClose={() => setFilterOpen(false)} {...filter} />

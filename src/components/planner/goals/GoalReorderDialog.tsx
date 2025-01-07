@@ -12,6 +12,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import operatorJson from "data/operators";
 import { GroupsDataInsert } from "types/groupData";
 import Image from "next/image";
+import _ from "lodash";
 
 interface Props {
   open: boolean;
@@ -37,7 +38,8 @@ const GoalReorderDialog = (props: Props) => {
 
   useEffect(() => {
     if (goals) {
-      const groupedOp = Object.groupBy(structuredClone(goals), (goal) => goal.group_name) as Record<string, GoalData[]>;
+      const groupedOp = _.groupBy(structuredClone(goals), (goal) => goal.group_name) as Record<string, GoalData[]>;
+      //const groupedOp = Object.groupBy(structuredClone(goals), (goal) => goal.group_name) as Record<string, GoalData[]>;
       Object.values(groupedOp).forEach((goalArray) => goalArray.sort((a, b) => a.sort_order - b.sort_order));
       setGroupedOperators(groupedOp);
     }
