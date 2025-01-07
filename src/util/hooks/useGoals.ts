@@ -85,13 +85,13 @@ function useGoals() {
   const removeAllGoals = useCallback(async () => {
     _setGoals([]);
 
-    const { error } = await supabase.from("goals").delete();
+    const { error } = await supabase.from("goals").delete().eq("user_id", user_id);
     handlePostgrestError(error);
   }, [_setGoals]);
 
   const removeAllGoalsFromGroup = useCallback(
     async (groupName: string) => {
-      const filteredArray = goals.filter((goal) => goal.group_name != groupName);
+      const filteredArray = goals.filter((goal) => goal.group_name !== groupName);
       _setGoals(filteredArray);
 
       const { error } = await supabase.from("goals").delete().eq("group_name", groupName);
@@ -102,7 +102,7 @@ function useGoals() {
 
   const removeAllGoalsFromOperator = useCallback(
     async (opId: string, groupName: string) => {
-      const filteredArray = goals.filter((goal) => goal.group_name != groupName || goal.op_id != opId);
+      const filteredArray = goals.filter((goal) => goal.group_name !== groupName || goal.op_id !== opId);
       _setGoals(filteredArray);
 
       const { error } = await supabase.from("goals").delete().eq("op_id", opId).eq("group_name", groupName);
