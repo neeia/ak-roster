@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import supabase from "supabase/supabaseClient";
 import GoalData, { getPlannerGoals, GoalDataInsert, plannerGoalToGoalData } from "types/goalData";
 import handlePostgrestError from "util/fns/handlePostgrestError";
@@ -82,6 +82,18 @@ function useGoals() {
     [goals, _setGoals]
   );
 
+  const changeLocalGoalGroup = useCallback(
+    async (oldGoalGroup : string, newGoalGroup: string) => {
+      const _goals = [...goals];
+      _goals.forEach((goal) => {
+        if (goal.group_name == oldGoalGroup) {
+          goal.group_name = newGoalGroup;
+        }
+      })
+      _setGoals(_goals);
+    }, [_setGoals, goals]
+  )
+
   const removeAllGoals = useCallback(async () => {
     _setGoals([]);
 
@@ -148,7 +160,7 @@ function useGoals() {
     };
   }, []);
 
-  return { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator } as const;
+  return { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator, changeLocalGoalGroup } as const;
 }
 
 export default useGoals;
