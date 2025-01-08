@@ -115,23 +115,7 @@ const Lookup: NextPage = () => {
             </Tooltip>
           </Toolbar>
           <ProfileDialog open={open} onClose={() => setOpen(false)} data={data} />
-          <Box
-            sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: { xs: "center", sm: "left" },
-              gap: "12px 6px",
-              "& .unowned": {
-                opacity: 0.75,
-              },
-              "& .unowned img": {
-                opacity: 0.5,
-              },
-              "& .hidden": {
-                display: "none",
-              },
-            }}
-          >
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
             <Button onClick={() => setOpen(true)} sx={{ width: "100%", py: 1.5, height: "min-content" }}>
               <Typography variant="caption" sx={{ lineHeight: 1.1 }}>
                 View {data.account.username}'s profile

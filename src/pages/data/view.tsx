@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
-import { Box, ButtonGroup, IconButton, Tooltip, Typography } from "@mui/material";
+import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 import Layout from "components/Layout";
 import { ModeEdit } from "@mui/icons-material";
 import SearchDialog from "components/data/collate/SearchDialog";
@@ -63,23 +63,7 @@ const View: NextPage = () => {
             </IconButton>
           </Tooltip>
         </Toolbar>
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: { xs: "center", sm: "left" },
-            gap: "8px 16px",
-            "& .unowned": {
-              opacity: 0.75,
-            },
-            "& .unowned img": {
-              opacity: 0.5,
-            },
-            "& .hidden": {
-              display: "none",
-            },
-          }}
-        >
+        <Box>
           <CollectionContainer
             roster={roster}
             sort={sortFunction}
