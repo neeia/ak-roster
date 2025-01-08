@@ -26,7 +26,26 @@ const CollectionContainer = (props: Props) => {
   }
 
   return (
-    <Box component="ol" display="contents">
+    <Box
+      component="ol"
+      sx={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: { xs: "center", sm: "left" },
+        gap: "12px 6px",
+        "& .unowned": {
+          opacity: 0.75,
+        },
+        "& .unowned img": {
+          opacity: 0.5,
+        },
+        "& .hidden": {
+          display: "none",
+        },
+        p: 0,
+        m: 0,
+      }}
+    >
       {Object.values(operatorJson)
         .map((op) => ({
           ...op,
