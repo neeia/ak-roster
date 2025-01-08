@@ -4,6 +4,7 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { Box, Button, ButtonBase, ButtonGroup, IconButton, InputAdornment, TextField, Tooltip } from "@mui/material";
 import React, { ElementType, useEffect, useState } from "react";
 
+import { debounce } from "lodash";
 import items from "data/items.json";
 
 import CraftingIcon from "./CraftingIcon";
@@ -68,6 +69,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
       onChange(itemId, numberValue);
     }
   };
+  const handleChangeDebounced = debounce((e) => handleChange(e), 500);
 
   const craftOneButton = (
     <Button disabled={!isCrafting || !canCraftOne} onClick={() => onCraftOne(itemId)} sx={{ width: "auto" }}>
@@ -122,7 +124,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
           setFocused(true);
         }}
         onBlur={() => setFocused(false)}
-        onChange={handleChange}
+        onChange={handleChangeDebounced}
         disabled={itemId === "EXP"}
         slotProps={{
           htmlInput: {
