@@ -1,3 +1,4 @@
+import { matchOperatorName } from "components/planner/OperatorSearch";
 import { useCallback, useState } from "react";
 import { OpInfo } from "types/operators/operator";
 
@@ -57,7 +58,7 @@ export default function useFilter(init: Partial<Filters> = {}) {
       if (filters.RARITY.size && !checkRarity(op, filters.RARITY)) return false;
       if (filters.CN.size && !checkCNOnly(op, filters.CN)) return false;
       if (filters.MODULECN.size && !checkModuleCNOnly(op, filters.MODULECN)) return false;
-      if (!op.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())) return false;
+      if (!matchOperatorName(op.name, search)) return false;
       return true;
     },
     [filters, search]

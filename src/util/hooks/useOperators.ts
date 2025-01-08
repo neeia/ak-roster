@@ -10,7 +10,7 @@ import { enqueueSnackbar } from "notistack";
 
 function useOperators() {
   const [operators, setOperators] = useLocalStorage<Roster>("v3_roster", {});
-  const [legacyOperators] = useLocalStorage<null | Record<string, OperatorV2>>("operators", null);
+  const [legacyOperators, setLegacyOperators] = useLocalStorage<null | Record<string, OperatorV2>>("operators", null);
 
   // change operator, push to db
   const onChange = useCallback(
@@ -63,7 +63,10 @@ function useOperators() {
 
         const { error } = await supabase.from("operators").insert(Object.values(_roster));
         if (error) handlePostgrestError(error);
-        else enqueueSnackbar("Finished loading data.", { variant: "success" });
+        else {
+          enqueueSnackbar("Finished loading data.", { variant: "success" });
+          // setLegacyOperators(null);
+        }
       }
 
       hydrated.current = true;

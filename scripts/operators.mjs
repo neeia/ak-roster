@@ -28,6 +28,7 @@ const operatorNameOverride = {
   Истина: "Istina",
   Роса: "Rosa",
   Позёмка: "Pozëmka",
+  Лето: "Leto",
 };
 function getOperatorName(operatorId) {
   if (operatorId === "char_1001_amiya2") {
