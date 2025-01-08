@@ -6,6 +6,7 @@ import useLocalStorage from "./useLocalStorage";
 import { useAppSelector } from "legacyStore/hooks";
 import { selectGoals } from "legacyStore/goalsSlice";
 import { combineGoals } from "util/fns/planner/combineGoals";
+import { enqueueSnackbar } from "notistack";
 
 const fillNull = (goal: GoalDataInsert, index: number): GoalDataInsert => {
   const {
@@ -83,16 +84,17 @@ function useGoals() {
   );
 
   const changeLocalGoalGroup = useCallback(
-    async (oldGoalGroup : string, newGoalGroup: string) => {
+    async (oldGoalGroup: string, newGoalGroup: string) => {
       const _goals = [...goals];
       _goals.forEach((goal) => {
-        if (goal.group_name == oldGoalGroup) {
+        if (goal.group_name === oldGoalGroup) {
           goal.group_name = newGoalGroup;
         }
-      })
+      });
       _setGoals(_goals);
-    }, [_setGoals, goals]
-  )
+    },
+    [_setGoals, goals]
+  );
 
   const removeAllGoals = useCallback(async () => {
     _setGoals([]);
@@ -142,13 +144,17 @@ function useGoals() {
       if (goals?.length) {
         goalResult = goals as GoalData[];
       } else if (legacyGoals) {
+        enqueueSnackbar("Loading cached planner data...", { variant: "info" });
         const _goals = Object.groupBy(legacyGoals.map(plannerGoalToGoalData), (g) => g.op_id ?? "");
         const combinedGoals = Object.entries(_goals)
           .filter(([, goals]) => goals?.length)
           .map(([op_id, goals], i) => combineGoals(goals!, op_id, user_id, i))
           .filter((g) => g != null);
         goalResult = combinedGoals;
-        await supabase.from("goals").insert(goalResult);
+
+        const { error } = await supabase.from("goals").insert(goalResult);
+        if (error) handlePostgrestError(error);
+        else enqueueSnackbar("Finished loading data.", { variant: "success" });
       }
 
       if (!isCanceled) _setGoals(goalResult);
@@ -160,7 +166,14 @@ function useGoals() {
     };
   }, []);
 
-  return { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator, changeLocalGoalGroup } as const;
+  return {
+    goals,
+    updateGoals,
+    removeAllGoals,
+    removeAllGoalsFromGroup,
+    removeAllGoalsFromOperator,
+    changeLocalGoalGroup,
+  } as const;
 }
 
 export default useGoals;
