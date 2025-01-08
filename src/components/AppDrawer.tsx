@@ -12,7 +12,7 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import config from "data/config";
 import DiscordInvite from "./app/DiscordInvite";
 import Logo from "./app/Logo";
@@ -23,6 +23,7 @@ import findFirstFocusableElement from "util/fns/findFirstFocusableElement";
 import useAccount from "util/hooks/useAccount";
 import Link from "./base/Link";
 import manifest from "data/manifest";
+import useLocalStorage from "util/hooks/useLocalStorage";
 
 const DRAWER_WIDTH_PX = 220;
 const ICON_BY_PATH = [
@@ -79,6 +80,12 @@ const AppDrawer = React.memo((props: Props) => {
   const { title: currentPage, requireLogin: r2 } = pages[page];
 
   const [account] = useAccount();
+  const [_open, _setOpen] = useLocalStorage("v3_importnotif", true);
+  useEffect(() => {
+    if (page === "import") {
+      _setOpen(false);
+    }
+  }, [_open]);
 
   const drawerContent = (
     <Box
@@ -163,7 +170,7 @@ const AppDrawer = React.memo((props: Props) => {
           </Box>
         )}
         {account && <AccountWidget username={account.username} />}
-        {account && (
+        {account && _open && (
           <Alert severity="info" sx={{ m: 1 }}>
             Connect to Yostar to update your data in one click!
             <div>

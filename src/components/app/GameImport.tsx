@@ -27,7 +27,7 @@ import useOperators from "util/hooks/useOperators";
 import operatorJson from "data/operators";
 import { enqueueSnackbar } from "notistack";
 import useSettings from "util/hooks/useSettings";
-import { Close, ExpandLess, ExpandMore } from "@mui/icons-material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 const EXCLUDED_ITEMS: string[] = [];
 const GameImport = memo(() => {

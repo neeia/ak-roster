@@ -78,6 +78,9 @@ const AccountContextMenu = (props: Props) => {
         <MenuItem component="a" href="/settings">
           Account Settings
         </MenuItem>
+        <MenuItem component="a" href="/import">
+          Go To Import
+        </MenuItem>
         {changeUsername && <MenuItem onClick={changeUsername}>Change Display Name</MenuItem>}
         {showDiscord && <MenuItem onClick={linkDiscord}>Link Discord</MenuItem>}
         <Divider component="li"></Divider>
