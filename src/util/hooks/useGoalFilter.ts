@@ -1,3 +1,4 @@
+import { matchOperatorName } from "components/planner/OperatorSearch";
 import operatorJson from "data/operators";
 import { Dispatch, SetStateAction, useCallback, useMemo, useState } from "react";
 import DepotItem from "types/depotItem";
@@ -47,7 +48,7 @@ export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
       );
       if (!opData) return false;
       if (
-        !opData.name.toLocaleLowerCase().includes(filters.search.toLocaleLowerCase()) &&
+        !matchOperatorName(opData.name, filters.search) &&
         !group.toLocaleLowerCase().includes(filters.search.toLocaleLowerCase())
       )
         return false;

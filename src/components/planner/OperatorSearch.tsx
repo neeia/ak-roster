@@ -19,8 +19,13 @@ import operatorsJson from "data/operators.json";
 import { OperatorData } from "types/operators/operator";
 import SomePartial from "types/somePartial";
 
-const normalizeOperatorName = (operatorName: string) =>
-  operatorName.toLowerCase().replace(/['"]/g, "").replace("ł", "l");
+export const normalizeOperatorName = (operatorName: string) =>
+  operatorName.toLowerCase().replace(/['"]/g, "").replace("ł", "l").replace("š", "s");
+export const matchOperatorName = (operatorName: string, search: string) => {
+  return normalizeOperatorName(operatorName.toLocaleLowerCase()).includes(
+    normalizeOperatorName(search.toLocaleLowerCase())
+  );
+};
 
 const operators = Object.values(operatorsJson).sort((a, b) => a.name.localeCompare(b.name));
 
