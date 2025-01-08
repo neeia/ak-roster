@@ -32837,7 +32837,7 @@
   },
   "char_194_leto": {
     "id": "char_194_leto",
-    "name": "Лето",
+    "name": "Leto",
     "cnName": "烈夏",
     "rarity": 5,
     "class": "Guard",
@@ -59387,12 +59387,12 @@
     "cnName": "深巡",
     "rarity": 5,
     "class": "Defender",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_udflow_1",
         "iconId": null,
-        "skillName": "侵袭破坏应对",
+        "skillName": "Invasion Response",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -59456,7 +59456,7 @@
       {
         "skillId": "skchr_udflow_2",
         "iconId": null,
-        "skillName": "行动能力剥夺",
+        "skillName": "Pinning Maneuver",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -59520,7 +59520,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "基于咖啡的神经活性剂",
+        "moduleName": "A Neural Stimulant Based on 'Coffee'",
         "moduleId": "uniequip_002_udflow",
         "typeName": "SPT-X",
         "stages": [
@@ -59590,15 +59590,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -67144,7 +67144,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“桀骜”",
+        "moduleName": "'Unbridled'",
         "moduleId": "uniequip_002_coldst",
         "typeName": "HUN-X",
         "stages": [
@@ -67214,7 +67214,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -69531,12 +69531,12 @@
     "cnName": "海霓",
     "rarity": 5,
     "class": "Supporter",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_haini_1",
         "iconId": null,
-        "skillName": "迷惑性洋流图",
+        "skillName": "Camouflaging Current Chart",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -69600,7 +69600,7 @@
       {
         "skillId": "skchr_haini_2",
         "iconId": null,
-        "skillName": "阻滞性显色剂",
+        "skillName": "Release-retarding Chromogen",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -69664,7 +69664,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "多功能测绘仪-改良版",
+        "moduleName": "Multifunctional Mapping Instruments (Early Access)",
         "moduleId": "uniequip_002_haini",
         "typeName": "UMD-X",
         "stages": [
@@ -69734,15 +69734,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "法术抗性+8",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "RES +8",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -84456,7 +84456,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "《跳舞的月光》",
+        "moduleName": "Dancing Moonlight",
         "moduleId": "uniequip_002_ray",
         "typeName": "HUN-X",
         "stages": [
@@ -84526,7 +84526,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -89425,7 +89425,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“热成形记忆”",
+        "moduleName": "'Thermoformed Memory'",
         "moduleId": "uniequip_003_ifrit",
         "typeName": "BLA-D",
         "stages": [
@@ -89495,7 +89495,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -104930,7 +104930,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "淡金坠饰",
+        "moduleName": "Pale Gold Hair Pendant",
         "moduleId": "uniequip_003_glady",
         "typeName": "HOK-Y",
         "stages": [
@@ -105000,7 +105000,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -113908,7 +113908,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“无罪”",
+        "moduleName": "'Innocent'",
         "moduleId": "uniequip_003_judge",
         "typeName": "UNY-Y",
         "stages": [
@@ -113978,7 +113978,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -118177,12 +118177,12 @@
     "cnName": "乌尔比安",
     "rarity": 6,
     "class": "Guard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_ulpia_1",
         "iconId": null,
-        "skillName": "必须促成的接触",
+        "skillName": "Contact Must Be Made",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118246,7 +118246,7 @@
       {
         "skillId": "skchr_ulpia_2",
         "iconId": null,
-        "skillName": "必须维系的界限",
+        "skillName": "Boundaries Must Be Kept",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118310,7 +118310,7 @@
       {
         "skillId": "skchr_ulpia_3",
         "iconId": null,
-        "skillName": "必须开辟的通路",
+        "skillName": "Paths Must Be Opened",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118448,11 +118448,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "生命上限+250",
-      "攻击力+45",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Max HP +250",
+      "ATK +45",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -128713,7 +128713,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "带有灼痕的裙子",
+        "moduleName": "The Dress Handpicked by Theresa",
         "moduleId": "uniequip_002_amiya3",
         "typeName": "INC-X",
         "stages": [
@@ -128783,7 +128783,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
