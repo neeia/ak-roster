@@ -132,7 +132,7 @@ const Lookup: NextPage = () => {
               },
             }}
           >
-            <Button onClick={() => setOpen(true)} sx={{ width: "100%", py: 1.5 }}>
+            <Button onClick={() => setOpen(true)} sx={{ width: "100%", py: 1.5, height: "min-content" }}>
               <Typography variant="caption" sx={{ lineHeight: 1.1 }}>
                 View {data.account.username}'s profile
               </Typography>
