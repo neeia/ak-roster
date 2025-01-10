@@ -138,12 +138,12 @@ function useGoals() {
       setUserId(user_id);
 
       //fetch goals
-      const { data: goals } = await supabase.from("goals").select().eq("user_id", user_id);
+      const { data: _goals } = await supabase.from("goals").select().eq("user_id", user_id);
 
       let goalResult: GoalData[] = [];
-      if (goals?.length) {
-        goalResult = goals as GoalData[];
-      } else if (legacyGoals) {
+      if (_goals?.length) {
+        goalResult = _goals as GoalData[];
+      } else if (!goals && legacyGoals) {
         enqueueSnackbar("Loading cached planner data...", { variant: "info" });
         const _goals = Object.groupBy(legacyGoals.map(plannerGoalToGoalData), (g) => g.op_id ?? "");
         const combinedGoals = Object.entries(_goals)
@@ -154,7 +154,9 @@ function useGoals() {
 
         const { error } = await supabase.from("goals").insert(goalResult);
         if (error) handlePostgrestError(error);
-        else enqueueSnackbar("Finished loading data.", { variant: "success" });
+        else {
+          enqueueSnackbar("Finished loading data.", { variant: "success" });
+        }
       }
 
       if (!isCanceled) _setGoals(goalResult);
