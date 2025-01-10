@@ -462,8 +462,8 @@ const PlannerGoals = (props: Props) => {
         }
         break;
     }
-    updateGoals([_goal]);
 
+    updateGoals([_goal]);
     onChange(op);
 
     let depotUpdate: DepotItem[] = [];
@@ -709,7 +709,12 @@ const PlannerGoals = (props: Props) => {
       <RenameGroupDialog
         open={!!groupToRename}
         onClose={() => setGroupToRename(undefined)}
-        onSubmit={(newGroupName) => { if (groupToRename) {renameGroup(groupToRename, newGroupName); changeLocalGoalGroup(groupToRename, newGroupName)}}}
+        onSubmit={(newGroupName) => {
+          if (groupToRename) {
+            renameGroup(groupToRename, newGroupName);
+            changeLocalGoalGroup(groupToRename, newGroupName);
+          }
+        }}
         goalGroups={groups}
       />
       <GoalFilterDialog open={filterOpen} onClose={() => setFilterOpen(false)} {...filter} />

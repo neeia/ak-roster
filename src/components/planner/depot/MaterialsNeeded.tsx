@@ -64,19 +64,11 @@ const MaterialsNeeded = React.memo((props: Props) => {
   const handleIncrement = useCallback(
     (itemId: string) => {
       const item = depot[itemId];
-      if (item) {
-        const data: DepotItem = {
-          material_id: itemId,
-          stock: item.stock + 1,
-        };
-        putDepot([data]);
-      } else {
-        const data: DepotItem = {
-          material_id: itemId,
-          stock: 1,
-        };
-        putDepot([data]);
-      }
+      const data: DepotItem = {
+        material_id: itemId,
+        stock: (item?.stock ?? 0) + 1,
+      };
+      putDepot([data]);
     },
     [depot, putDepot]
   );
