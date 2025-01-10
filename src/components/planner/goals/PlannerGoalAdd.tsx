@@ -398,7 +398,7 @@ const PlannerGoalAdd = (props: Props) => {
       if (
         isNumber(goalBuilder.level_from) &&
         isNumber(goalBuilder.level_to) &&
-        goalBuilder.level_from !== goalBuilder.level_to
+        (goalBuilder.elite_from !== goalBuilder.elite_to || goalBuilder.level_from < goalBuilder.level_to)
       ) {
         goalData.elite_from = goalBuilder.elite_from ?? currentOp.elite;
         goalData.elite_to = goalBuilder.elite_to ?? currentOp.elite;
