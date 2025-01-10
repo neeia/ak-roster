@@ -1,17 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect } from "react";
 import supabase from "supabase/supabaseClient";
 import DepotItem from "types/depotItem";
 import handlePostgrestError from "util/fns/handlePostgrestError";
 import itemJson from "data/items.json";
 import useLocalStorage from "./useLocalStorage";
-import { useAppSelector } from "legacyStore/hooks";
-import { selectStock } from "legacyStore/depotSlice";
-import { enqueueSnackbar } from "notistack";
 
 function useDepot() {
   const [depot, _setDepot] = useLocalStorage<Record<string, DepotItem>>("v3_depot", {});
-
-  const legacyStore = useAppSelector(selectStock);
 
   // change operator, push to db
   const putDepot = useCallback(
@@ -54,17 +49,6 @@ function useDepot() {
             depotTrash.push(x.material_id);
           }
         });
-      } else if (Object.keys(legacyStore).length) {
-        Object.entries(legacyStore).forEach(([material_id, stock]) => {
-          if (material_id in itemJson) {
-            depotResult[material_id] = { material_id, stock };
-          } else {
-            depotTrash.push(material_id);
-          }
-        });
-        const { error } = await supabase.from("depot").upsert(Object.values(depotResult));
-        if (error) handlePostgrestError(error);
-        else enqueueSnackbar("Finished loading data.", { variant: "success" });
       }
 
       if (depotTrash.length) await supabase.from("depot").delete().in("material_id", depotTrash);
