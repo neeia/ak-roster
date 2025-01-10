@@ -133,9 +133,9 @@ const GameImport = memo(() => {
 
       for (let i = 0; i < supportsData.length; i++) {
         let supportData = supportsData[i];
-        if (!supportData) return;
+        if (!supportData) continue;
         const instId = supportData.charInstId;
-        if (!instId || !roster[instId]) return;
+        if (!instId || !roster[instId]) continue;
 
         let charName = roster[instId].charId;
         let supportModule = supportData.currentEquip;
