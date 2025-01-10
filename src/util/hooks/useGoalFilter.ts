@@ -48,8 +48,11 @@ export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
       );
       if (!opData) return false;
       if (
-        !matchOperatorName(opData.name, filters.search) &&
-        !group.toLocaleLowerCase().includes(filters.search.toLocaleLowerCase())
+        filters.search
+          .split(",")
+          .every(
+            (s) => !matchOperatorName(opData.name, s) && !group.toLocaleLowerCase().includes(s.toLocaleLowerCase())
+          )
       )
         return false;
       if (
