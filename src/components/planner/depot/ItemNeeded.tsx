@@ -69,7 +69,6 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
       onChange(itemId, numberValue);
     }
   };
-  const handleChangeDebounced = debounce((e) => handleChange(e), 500);
 
   const craftOneButton = (
     <Button disabled={!isCrafting || !canCraftOne} onClick={() => onCraftOne(itemId)} sx={{ width: "auto" }}>
@@ -124,7 +123,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
           setFocused(true);
         }}
         onBlur={() => setFocused(false)}
-        onChange={handleChangeDebounced}
+        onChange={handleChange}
         disabled={itemId === "EXP"}
         slotProps={{
           htmlInput: {
