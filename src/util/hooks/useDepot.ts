@@ -6,11 +6,10 @@ import itemJson from "data/items.json";
 import useLocalStorage from "./useLocalStorage";
 import { useAppSelector } from "legacyStore/hooks";
 import { selectStock } from "legacyStore/depotSlice";
+import { enqueueSnackbar } from "notistack";
 
 function useDepot() {
   const [depot, _setDepot] = useLocalStorage<Record<string, DepotItem>>("v3_depot", {});
-  const [user_id, setUserId] = useState<string>("");
-  const hydrated = useRef(false);
 
   const legacyStore = useAppSelector(selectStock);
 
@@ -33,8 +32,6 @@ function useDepot() {
 
   // fetch data from db
   useEffect(() => {
-    if (hydrated.current) return;
-
     const fetchData = async () => {
       const {
         data: { session },
@@ -43,7 +40,6 @@ function useDepot() {
       const user_id = session?.user.id;
 
       if (!user_id) return;
-      setUserId(user_id);
 
       //fetch depot
       const { data: _depot } = await supabase.from("depot").select().eq("user_id", user_id);
@@ -66,12 +62,12 @@ function useDepot() {
             depotTrash.push(material_id);
           }
         });
-        await supabase.from("depot").upsert(Object.values(depotResult));
+        const { error } = await supabase.from("depot").upsert(Object.values(depotResult));
+        if (error) handlePostgrestError(error);
+        else enqueueSnackbar("Finished loading data.", { variant: "success" });
       }
 
       if (depotTrash.length) await supabase.from("depot").delete().in("material_id", depotTrash);
-
-      hydrated.current = true;
 
       if (!isCanceled) _setDepot(depotResult);
       return () => {
@@ -80,7 +76,7 @@ function useDepot() {
     };
 
     fetchData();
-  }, [hydrated, legacyStore, _setDepot]);
+  }, []);
 
   return [depot, putDepot] as const;
 }
