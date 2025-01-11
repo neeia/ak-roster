@@ -1,7 +1,7 @@
 import { DeportRecognizer, toSimpleTrustedResult } from "@arkntools/depot-recognition";
 import { sortBy } from "lodash";
 import itemsJson from "data/items.json";
-import { Item } from "../../../types/item";
+import { Item } from "types/item";
 import { expose } from "comlink";
 
 async function getMaterialsFromImage(fileList: File[]): Promise<Record<string, number | undefined>[]> {
@@ -10,7 +10,9 @@ async function getMaterialsFromImage(fileList: File[]): Promise<Record<string, n
   const order = sortBy(Object.keys(items).filter(getSortId), getSortId);
 
   const md5 = (await fetch("https://data-cf.arkntools.app/check.json").then((response) => response.json()))["mapMd5"];
-  const pkgFile = (await fetch(`https://data-cf.arkntools.app/map.${md5}.json`).then((response) => response.json()))["pkg/item.zip"];
+  const pkgFile = (await fetch(`https://data-cf.arkntools.app/map.${md5}.json`).then((response) => response.json()))[
+    "pkg/item.zip"
+  ];
   const pkg = await fetch(`https://data-cf.arkntools.app/pkg/item.${pkgFile}.zip`).then((res) => res.arrayBuffer());
 
   const dr = new DeportRecognizer({ order, pkg });

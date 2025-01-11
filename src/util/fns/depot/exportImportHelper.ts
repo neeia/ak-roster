@@ -20,7 +20,8 @@ export const SUPPORTED_EXPORT_TYPES: DataShareInfo[] = [
 export const SUPPORTED_IMPORT_TYPES: DataShareInfo[] = [
   {
     format: "CSV",
-    description: "A csv file containing 2 columns with the following names: itemId OR itemName, owned. Header row MUST be present.",
+    description:
+      "A csv file containing 2 columns with the following names: itemId OR itemName, owned. Header row MUST be present.",
   },
   {
     format: "Penguin-Stats",
@@ -105,7 +106,15 @@ function exportToCsv(exportData: ExportDataStock): string {
   for (const exportDataKey in exportData) {
     const itemData = itemsJson[exportDataKey as keyof typeof itemsJson] as Item;
     if (itemData) {
-      dataString += exportDataKey + "," + itemData.name + "," + exportData[exportDataKey].owned + "," + exportData[exportDataKey].needed + "\n";
+      dataString +=
+        exportDataKey +
+        "," +
+        itemData.name +
+        "," +
+        exportData[exportDataKey].owned +
+        "," +
+        exportData[exportDataKey].needed +
+        "\n";
     }
   }
   return dataString;
@@ -255,7 +264,10 @@ async function importFromImage(fileList: File[]): Promise<ImportDataResult> {
       const imageResult = result[i];
       for (const itemId in imageResult) {
         if (imageResult[itemId] != null) {
-          payloadArray.push({ itemId: itemId, newQuantity: imageResult[itemId] as number });
+          const existingIndex = payloadArray.findIndex(({ itemId: _itemId }) => _itemId === itemId);
+          if (existingIndex === -1) payloadArray.push({ itemId, newQuantity: imageResult[itemId] as number });
+          else if (imageResult[itemId] > payloadArray[existingIndex].newQuantity)
+            payloadArray[existingIndex] = { itemId, newQuantity: imageResult[itemId] };
         }
       }
     }
