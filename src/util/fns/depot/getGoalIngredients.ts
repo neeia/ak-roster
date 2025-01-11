@@ -30,7 +30,7 @@ const getGoalIngredients = (goal: PlannerGoal): Ingredient[] => {
       return operator.skillLevels[goal.skillLevel - 2].ingredients;
     case OperatorGoalCategory.Mastery: {
       const skill = operator.skillData?.find((sk) => sk.skillId === goal.skillId);
-      return skill?.masteries[goal.masteryLevel - 1].ingredients ?? [];
+      return skill?.masteries[goal.masteryLevel - 1]?.ingredients ?? [];
     }
     case OperatorGoalCategory.Module:
       return (
