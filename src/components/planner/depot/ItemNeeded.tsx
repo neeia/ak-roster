@@ -10,6 +10,7 @@ import items from "data/items.json";
 import CraftingIcon from "./CraftingIcon";
 import ItemStack, { ItemStackProps } from "./ItemStack";
 import { Item } from "types/item";
+import DepotItem from "types/depotItem";
 
 interface Props extends ItemStackProps {
   owned: number;
@@ -17,8 +18,6 @@ interface Props extends ItemStackProps {
   canCompleteByCrafting: boolean;
   canCraftOne: boolean;
   hideIncrementDecrementButtons: boolean;
-  onIncrement: (itemId: string) => void;
-  onDecrement: (itemId: string) => void;
   onChange: (itemId: string, newQuantity: number) => void;
   onCraftingToggle: (itemId: string) => void;
   onCraftOne: (itemId: string) => void;
@@ -33,8 +32,6 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
     canCompleteByCrafting,
     canCraftOne,
     hideIncrementDecrementButtons,
-    onIncrement,
-    onDecrement,
     onChange,
     onCraftingToggle,
     onCraftOne,
@@ -75,6 +72,13 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
       +1
     </Button>
   );
+
+  const handleIncrement = () => {
+    onChange(itemId, owned + 1);
+  };
+  const handleDecrement = () => {
+    onChange(itemId, owned - 1);
+  };
 
   return (
     <Box display="inline-grid" component={component ?? "div"}>
@@ -152,7 +156,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
                       aria-label="Remove 1 from owned amount"
                       edge="start"
                       disabled={owned === 0}
-                      onClick={() => onDecrement(itemId)}
+                      onClick={() => handleDecrement()}
                     >
                       <RemoveCircleIcon />
                     </IconButton>
@@ -164,7 +168,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
                       size="small"
                       aria-label="Add 1 to owned amount"
                       edge="end"
-                      onClick={() => onIncrement(itemId)}
+                      onClick={() => handleIncrement()}
                     >
                       <AddCircleIcon />
                     </IconButton>
