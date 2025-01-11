@@ -60,19 +60,6 @@ const MaterialsNeeded = React.memo((props: Props) => {
     },
     [depot, putDepot]
   );
-
-  const handleIncrement = useCallback(
-    (itemId: string) => {
-      const item = depot[itemId];
-      const data: DepotItem = {
-        material_id: itemId,
-        stock: (item?.stock ?? 0) + 1,
-      };
-      putDepot([data]);
-    },
-    [depot, putDepot]
-  );
-
   const handleDecrement = useCallback(
     (itemId: string) => {
       const item = depot[itemId];
@@ -330,8 +317,6 @@ const MaterialsNeeded = React.memo((props: Props) => {
               isCrafting={settings.depotSettings.crafting.includes(itemId) ?? false}
               onChange={handleChange}
               onCraftOne={handleCraftOne}
-              onDecrement={handleDecrement}
-              onIncrement={handleIncrement}
               onCraftingToggle={handleCraftingToggle}
               onClick={handleItemClick}
               hideIncrementDecrementButtons={
