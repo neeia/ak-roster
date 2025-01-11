@@ -405,7 +405,7 @@ const PlannerGoals = (props: Props) => {
         if (skillIndex != null && goal.masteries_from && goal.masteries_to) {
           _goal.masteries_from = [...goal.masteries_from];
 
-          _goal.masteries_from[skillIndex] = Math.min(plannerGoal.masteryLevel + 1, goal.masteries_to[skillIndex]);
+          _goal.masteries_from[skillIndex] = Math.min(plannerGoal.masteryLevel, goal.masteries_to[skillIndex]);
 
           if (_.isEqual(goal.masteries_from, _goal.masteries_to)) {
             _goal.masteries_from = null;
@@ -423,14 +423,9 @@ const PlannerGoals = (props: Props) => {
       case OperatorGoalCategory.Module:
         const moduleId = plannerGoal.moduleId;
         if (moduleId != null && goal.modules_from && goal.modules_to) {
-          _goal.modules_to = { ...goal.modules_to };
-          const removedModuleLevel = plannerGoal.moduleLevel;
+          _goal.modules_from = { ...goal.modules_from };
 
-          if (removedModuleLevel - 1 <= goal.modules_from[moduleId]) {
-            _goal.modules_to[moduleId] = goal.modules_from[moduleId];
-          } else {
-            _goal.modules_to[moduleId] = removedModuleLevel - 1;
-          }
+          _goal.modules_from[moduleId] = Math.min(plannerGoal.moduleLevel, goal.modules_to[moduleId]);
 
           if (_.isEqual(_goal.modules_to, goal.modules_from)) {
             _goal.modules_from = null;
