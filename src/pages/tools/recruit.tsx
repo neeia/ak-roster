@@ -41,7 +41,6 @@ const TAGS_BY_CATEGORY = {
     "DPS",
     "Debuff",
     "Defense",
-    "Elemental",
     "Fast-Redeploy",
     "Healing",
     "Nuker",
@@ -50,6 +49,7 @@ const TAGS_BY_CATEGORY = {
     "Summon",
     "Support",
     "Survival",
+    "Elemental",
   ],
 };
 
@@ -84,6 +84,7 @@ const Recruit: NextPage = () => {
     }
   }, [inputNode]);
 
+  console.log(getTagCombinations([...activeTags].sort((a, b) => a.value.localeCompare(b.value)).map((tag) => tag.value)))
   const matchingOperators: RecruitmentResult[] = useMemo(
     () =>
       getTagCombinations([...activeTags].sort((a, b) => a.value.localeCompare(b.value)).map((tag) => tag.value))

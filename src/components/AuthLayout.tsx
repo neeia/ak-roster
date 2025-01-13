@@ -28,7 +28,7 @@ const AuthLayout = (props: Props) => {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           transition: "background-image 0.25s ease-in-out",
-          overflow: "hidden",
+          overflowX: "hidden",
         }}
       >
         <Box

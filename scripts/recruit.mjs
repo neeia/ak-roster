@@ -41,8 +41,10 @@ const nameOverrides = {
   "Justice Knight": "'Justice Knight'",
 };
 
-const RECRUITMENT_TAGS = gachaTable.gachaTags.map((tag) => tag.tagName).filter((tag) => tag !== "Female" && tag !== "Male");
-const _RECRUITMENT_TAGS = [
+const _RECRUITMENT_TAGS = gachaTable.gachaTags
+  .map((tag) => tag.tagName)
+  .filter((tag) => tag !== "Female" && tag !== "Male");
+const RECRUITMENT_TAGS = [
   "Top Operator",
   "Senior Operator",
   "Starter",
@@ -79,7 +81,7 @@ const { recruitDetail } = gachaTable;
 const createRecruitmentJson = () => {
   const operatorNameToId = Object.fromEntries(
     Object.entries(characterTable)
-      .filter(([id]) => id.startsWith("char"))
+      .filter(([id]) => !id.startsWith("trap"))
       .map(([id, opData]) => [opData.name, id])
   );
 
@@ -153,7 +155,7 @@ const createRecruitmentJson = () => {
           guarantees.push(1);
         }
         return [
-          result.tags,
+          result.tags.sort((a, b) => a.localeCompare(b)),
           {
             ...result,
             guarantees,

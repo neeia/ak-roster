@@ -7,6 +7,7 @@ import { useAppSelector } from "legacyStore/hooks";
 import { selectGoals } from "legacyStore/goalsSlice";
 import { combineGoals } from "util/fns/planner/combineGoals";
 import { enqueueSnackbar } from "notistack";
+import _ from "lodash";
 
 const fillNull = (goal: GoalDataInsert, index: number): GoalDataInsert => {
   const {
@@ -145,10 +146,10 @@ function useGoals() {
         goalResult = _goals as GoalData[];
       } else if (!goals && legacyGoals) {
         enqueueSnackbar("Loading cached planner data...", { variant: "info" });
-        const _goals = Object.groupBy(legacyGoals.map(plannerGoalToGoalData), (g) => g.op_id ?? "");
+        const _goals = _.groupBy(legacyGoals.map(plannerGoalToGoalData), (g) => g.op_id ?? "");
         const combinedGoals = Object.entries(_goals)
           .filter(([, goals]) => goals?.length)
-          .map(([op_id, goals], i) => combineGoals(goals!, op_id, user_id, i))
+          .map(([op_id, goals], i) => combineGoals(goals, op_id, user_id, i))
           .filter((g) => g != null);
         goalResult = combinedGoals;
 
