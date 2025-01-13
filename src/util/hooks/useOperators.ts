@@ -65,7 +65,8 @@ function useOperators() {
         if (error) handlePostgrestError(error);
         else {
           enqueueSnackbar("Finished loading data.", { variant: "success" });
-          // setLegacyOperators(null);
+          setLegacyOperators(null);
+          localStorage.removeItem("operators");
         }
       }
 
