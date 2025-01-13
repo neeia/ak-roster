@@ -65,7 +65,6 @@ const RECRUITMENT_TAGS = [
   "DPS",
   "Debuff",
   "Defense",
-  "Elemental",
   "Fast-Redeploy",
   "Healing",
   "Nuker",
@@ -74,6 +73,7 @@ const RECRUITMENT_TAGS = [
   "Summon",
   "Support",
   "Survival",
+  "Elemental",
 ];
 
 const { recruitDetail } = gachaTable;
@@ -81,7 +81,7 @@ const { recruitDetail } = gachaTable;
 const createRecruitmentJson = () => {
   const operatorNameToId = Object.fromEntries(
     Object.entries(characterTable)
-      .filter(([id]) => id.startsWith("char"))
+      .filter(([id]) => !id.startsWith("trap"))
       .map(([id, opData]) => [opData.name, id])
   );
 
@@ -155,7 +155,7 @@ const createRecruitmentJson = () => {
           guarantees.push(1);
         }
         return [
-          result.tags,
+          result.tags.sort((a, b) => a.localeCompare(b)),
           {
             ...result,
             guarantees,
