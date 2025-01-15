@@ -137,7 +137,7 @@ const GameImport = memo(() => {
         const instId = supportData.charInstId;
         if (!instId || !roster[instId]) continue;
 
-        let charName = roster[instId].charId;
+        let charName = roster[instId].currentTmpl ?? roster[instId].charId;
         let supportModule = supportData.currentEquip;
 
         let support: OperatorSupport = {
@@ -157,38 +157,84 @@ const GameImport = memo(() => {
         let value = roster[key]!;
         const opData = operatorJson[value.charId];
 
-        //first module is the default one, we can skip.
-        let supportModules: Record<string, number> = Object.fromEntries(
-          opData?.moduleData?.map((mod) => [mod.moduleId, 0]) ?? []
-        );
-        Object.entries(value.equip)
-          .slice(1)
-          .filter(([moduleKey, moduleValue]) => moduleValue!.locked == 0)
-          .forEach(([moduleKey, moduleValue]) => (supportModules[moduleKey] = moduleValue!.level));
+        //currently amiya only, if not null operator has class change and must be handled in a custom way
+        if (value.tmpl)
+        {
+          for (let key in value.tmpl)
+          {
+            let altValue = value.tmpl[key];
 
-        let masteries = value.skills.map((skill) => skill.specializeLevel);
-        let skin = value.skin as string | null;
-        const opSkins: Skin[] = skinJson[value.charId as keyof typeof skinJson];
-        //convert to aceship format
-        if (opSkins && skin) {
-          const matches = opSkins.filter((x) => x.skinId == skin);
-          if (matches.length > 0) {
-            skin = matches[0].avatarId;
+            //first module is the default one, we can skip.
+
+            let altSupportModules: Record<string, number> = Object.fromEntries(
+              opData?.moduleData?.map((mod) => [mod.moduleId, 0]) ?? []
+            );
+            Object.entries(altValue.equip)
+              .slice(1)
+              .filter(([moduleKey, moduleValue]) => moduleValue!.locked == 0)
+              .forEach(([moduleKey, moduleValue]) => (altSupportModules[moduleKey] = moduleValue!.level));
+
+            let altMasteries = altValue.skills.map((skill) => skill.specializeLevel);
+            let skin = altValue.skinId as string | null;
+            const opSkins: Skin[] = skinJson[value.charId as keyof typeof skinJson];
+            //convert to aceship format
+            if (opSkins && skin) {
+              const matches = opSkins.filter((x) => x.skinId == skin);
+              if (matches.length > 0) {
+                skin = matches[0].avatarId;
+              }
+            }
+
+            let alternativeOperator : Operator = {
+              op_id: key,
+              elite: value.evolvePhase,
+              level: value.level,
+              potential: value.potentialRank + 1,
+              skill_level: value.mainSkillLvl,
+              favorite: _roster[value.charId]?.favorite || false,
+              skin: skin,
+              modules: altSupportModules,
+              masteries: altMasteries,
+            }
+            operators.push(alternativeOperator);
           }
         }
+        else
+        {
+          //first module is the default one, we can skip.
+          let supportModules: Record<string, number> = Object.fromEntries(
+            opData?.moduleData?.map((mod) => [mod.moduleId, 0]) ?? []
+          );
+          Object.entries(value.equip)
+            .slice(1)
+            .filter(([moduleKey, moduleValue]) => moduleValue!.locked == 0)
+            .forEach(([moduleKey, moduleValue]) => (supportModules[moduleKey] = moduleValue!.level));
 
-        let operator: Operator = {
-          op_id: value.charId,
-          elite: value.evolvePhase,
-          level: value.level,
-          potential: value.potentialRank + 1,
-          skill_level: value.mainSkillLvl,
-          favorite: _roster[value.charId]?.favorite || false, // value.starMark == 1,
-          skin: skin,
-          modules: supportModules,
-          masteries: masteries,
-        };
-        operators.push(operator);
+          let masteries = value.skills.map((skill) => skill.specializeLevel);
+          let skin = value.skin as string | null;
+          const opSkins: Skin[] = skinJson[value.charId as keyof typeof skinJson];
+          //convert to aceship format
+          if (opSkins && skin) {
+            const matches = opSkins.filter((x) => x.skinId == skin);
+            if (matches.length > 0) {
+              skin = matches[0].avatarId;
+            }
+          }
+
+          let operator: Operator = {
+            op_id: value.charId,
+            elite: value.evolvePhase,
+            level: value.level,
+            potential: value.potentialRank + 1,
+            skill_level: value.mainSkillLvl,
+            favorite: _roster[value.charId]?.favorite || false, // value.starMark == 1,
+            skin: skin,
+            modules: supportModules,
+            masteries: masteries,
+          };
+          operators.push(operator);
+        }
+
       }
       await supabase.from("operators").upsert(operators);
     }
