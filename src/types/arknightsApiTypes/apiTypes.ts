@@ -259,8 +259,16 @@ export interface CharacterData {
   //this is just for amiya
   currentTmpl?: string;
   //more stuff just for amiya, to separate the two states
-  tmpl?: unknown;
+  tmpl?: { [id: string]: CharachterTemplateData };
   voiceLan: string;
+}
+
+export interface CharachterTemplateData {
+  skinId: string;
+  defaultSkillIndex: number;
+  currentEquip: string | null;
+  equip: { [id: string]: ModuleData | undefined };
+  skills: SkillData[];
 }
 
 export interface ModuleData {
