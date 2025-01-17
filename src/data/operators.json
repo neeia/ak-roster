@@ -16770,7 +16770,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "地上巡旅纪念灯",
+        "moduleName": "Ground Journey Commemorative Light",
         "moduleId": "uniequip_002_chnut",
         "typeName": "WDM-X",
         "stages": [
@@ -16840,7 +16840,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -50895,12 +50895,12 @@
     "cnName": "衡沙",
     "rarity": 5,
     "class": "Supporter",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_lasher_1",
         "iconId": null,
-        "skillName": "上紧发条",
+        "skillName": "Winding Up",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -50964,7 +50964,7 @@
       {
         "skillId": "skchr_lasher_2",
         "iconId": null,
-        "skillName": "权知轻重",
+        "skillName": "Weighing the Scales",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -51028,7 +51028,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "过往留痕",
+        "moduleName": "Traces From the Past",
         "moduleId": "uniequip_002_lasher",
         "typeName": "SUM-X",
         "stages": [
@@ -51098,15 +51098,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "法术抗性+8",
-      "再部署时间-6秒",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "RES +8",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -53548,7 +53548,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "宁心静神",
+        "moduleName": "Serenity Inside",
         "moduleId": "uniequip_002_mberry",
         "typeName": "WDM-X",
         "stages": [
@@ -53618,7 +53618,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -53908,7 +53908,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "落地之后",
+        "moduleName": "After Landing",
         "moduleId": "uniequip_002_glider",
         "typeName": "WDM-X",
         "stages": [
@@ -53978,7 +53978,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -54268,7 +54268,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "腿部护理套装",
+        "moduleName": "Legs Care Kit",
         "moduleId": "uniequip_002_harold",
         "typeName": "WDM-X",
         "stages": [
@@ -54338,7 +54338,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -55501,12 +55501,12 @@
     "cnName": "莎草",
     "rarity": 5,
     "class": "Medic",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_papyrs_1",
         "iconId": null,
-        "skillName": "巧思乍现",
+        "skillName": "Flash of Ingenuity",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -55570,7 +55570,7 @@
       {
         "skillId": "skchr_papyrs_2",
         "iconId": null,
-        "skillName": "临考发挥",
+        "skillName": "Pre-Exhibit Examination",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -55634,11 +55634,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -84691,12 +84691,12 @@
     "cnName": "娜仁图亚",
     "rarity": 6,
     "class": "Sniper",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_narant_1",
         "iconId": null,
-        "skillName": "旋刃",
+        "skillName": "Whirling Blade",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -84760,7 +84760,7 @@
       {
         "skillId": "skchr_narant_2",
         "iconId": null,
-        "skillName": "恶魇",
+        "skillName": "Nightmare",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -84824,7 +84824,7 @@
       {
         "skillId": "skchr_narant_3",
         "iconId": null,
-        "skillName": "吞日",
+        "skillName": "Sunswallower",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -84888,11 +84888,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "第二天赋效果增强",
-      "攻击力+27",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +27",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -101214,7 +101214,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "傀影特限证章",
+        "moduleName": "Phantom's Specialized Badge",
         "moduleId": "uniequip_004_phatom",
         "typeName": "ISW-A",
         "stages": [
@@ -101252,7 +101252,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -108604,7 +108604,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“莺歌”",
+        "moduleName": "'Nocturnal Echoes'",
         "moduleId": "uniequip_003_cgbird",
         "typeName": "RIN-Y",
         "stages": [
@@ -108674,7 +108674,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -109182,7 +109182,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "凯尔希特限证章",
+        "moduleName": "Kal'tsit's Specialized Badge",
         "moduleId": "uniequip_004_kalts",
         "typeName": "ISW-A",
         "stages": [
@@ -109220,7 +109220,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -110087,7 +110087,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "想要留住的声音",
+        "moduleName": "Sounds I Want to Retain",
         "moduleId": "uniequip_002_agoat2",
         "typeName": "WDM-X",
         "stages": [
@@ -110157,7 +110157,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -118609,12 +118609,12 @@
     "cnName": "佩佩",
     "rarity": 6,
     "class": "Guard",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_pepe_1",
         "iconId": null,
-        "skillName": "盖戳！",
+        "skillName": "Get Stamped!",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118678,7 +118678,7 @@
       {
         "skillId": "skchr_pepe_2",
         "iconId": null,
-        "skillName": "阻遏混乱锤",
+        "skillName": "Whirling Hammer Defense",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118742,7 +118742,7 @@
       {
         "skillId": "skchr_pepe_3",
         "iconId": null,
-        "skillName": "时光震荡",
+        "skillName": "Shock of Time",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118806,11 +118806,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "第二天赋效果增强",
-      "攻击力+35",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +35",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
