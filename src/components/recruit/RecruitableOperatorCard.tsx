@@ -118,16 +118,6 @@ const RecruitableOperatorCard = React.memo((props: Props) => {
           </Box>
         ) : null}
       </Box>
-      <Box
-        sx={{
-          gridArea: "1 / 1",
-          textAlign: "left",
-          alignSelf: "start",
-          zIndex: 1,
-        }}
-      >
-        {op.favorite ? <Favorite fontSize="small" color="error" sx={{ m: "2px" }} /> : ""}
-      </Box>
       <Box>{opName}</Box>
       {showBonus && (
         <Box
