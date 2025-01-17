@@ -346,6 +346,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -908,6 +922,17 @@
           "AoE",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
+          "Ranged",
+          "Medic",
           "Senior Operator"
         ]
       }
@@ -1550,6 +1575,16 @@
         ]
       },
       {
+        "id": "char_347_jaksel",
+        "name": "Jackie",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_123_fang",
         "name": "Fang",
         "rarity": 3,
@@ -1972,6 +2007,17 @@
           "AoE",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
+          "Ranged",
+          "Medic",
           "Senior Operator"
         ]
       },
@@ -2793,6 +2839,16 @@
         ]
       },
       {
+        "id": "char_347_jaksel",
+        "name": "Jackie",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_208_melan",
         "name": "Melantha",
         "rarity": 3,
@@ -2874,6 +2930,17 @@
         "tags": [
           "Healing",
           "Support",
+          "Ranged",
+          "Medic",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
           "Ranged",
           "Medic",
           "Senior Operator"
@@ -4460,6 +4527,16 @@
         ]
       },
       {
+        "id": "char_347_jaksel",
+        "name": "Jackie",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_211_adnach",
         "name": "Adnachiel",
         "rarity": 3,
@@ -4934,6 +5011,17 @@
           "Healing",
           "Melee",
           "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
+          "Ranged",
+          "Medic",
           "Senior Operator"
         ]
       },
@@ -6002,6 +6090,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6206,6 +6308,20 @@
         "tags": [
           "Defense",
           "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
           "DPS",
           "Melee",
           "Defender",
@@ -6478,6 +6594,20 @@
         "tags": [
           "Defense",
           "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
           "DPS",
           "Melee",
           "Defender",
@@ -7239,6 +7369,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7336,6 +7480,20 @@
         "tags": [
           "Defense",
           "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
           "DPS",
           "Melee",
           "Defender",
@@ -7698,6 +7856,20 @@
           "DPS",
           "Survival",
           "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Top Operator",
@@ -8279,6 +8451,17 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8558,6 +8741,17 @@
         "tags": [
           "Healing",
           "Support",
+          "Ranged",
+          "Medic",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
           "Ranged",
           "Medic",
           "Senior Operator"
@@ -9731,6 +9925,17 @@
           "Healing",
           "Melee",
           "Defender",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
+          "Ranged",
+          "Medic",
           "Senior Operator"
         ]
       }
@@ -10948,6 +11153,16 @@
         ]
       },
       {
+        "id": "char_347_jaksel",
+        "name": "Jackie",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_208_melan",
         "name": "Melantha",
         "rarity": 3,
@@ -11758,6 +11973,16 @@
       {
         "id": "char_271_spikes",
         "name": "Arene",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
+        "id": "char_347_jaksel",
+        "name": "Jackie",
         "rarity": 4,
         "tags": [
           "DPS",
@@ -12631,6 +12856,17 @@
         "tags": [
           "Healing",
           "Support",
+          "Ranged",
+          "Medic",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
           "Ranged",
           "Medic",
           "Senior Operator"
@@ -13665,6 +13901,17 @@
           "Slow",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
+          "Ranged",
+          "Medic",
           "Senior Operator"
         ]
       },
@@ -14875,6 +15122,16 @@
         ]
       },
       {
+        "id": "char_347_jaksel",
+        "name": "Jackie",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_208_melan",
         "name": "Melantha",
         "rarity": 3,
@@ -15147,6 +15404,17 @@
         "tags": [
           "Healing",
           "Support",
+          "Ranged",
+          "Medic",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
           "Ranged",
           "Medic",
           "Senior Operator"
@@ -17844,6 +18112,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18113,6 +18395,20 @@
         "tags": [
           "Defense",
           "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
           "DPS",
           "Melee",
           "Defender",
@@ -18884,6 +19180,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18983,6 +19293,20 @@
         "tags": [
           "Defense",
           "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
           "DPS",
           "Melee",
           "Defender",
@@ -19357,6 +19681,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19418,6 +19756,20 @@
         "tags": [
           "Defense",
           "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
           "DPS",
           "Melee",
           "Defender",
@@ -19879,6 +20231,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19953,6 +20319,20 @@
         "tags": [
           "Defense",
           "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
           "DPS",
           "Melee",
           "Defender",
@@ -20175,6 +20555,20 @@
           "DPS",
           "Survival",
           "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Top Operator",
@@ -20981,6 +21375,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -21042,6 +21450,20 @@
         "tags": [
           "Defense",
           "Healing",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
           "DPS",
           "Melee",
           "Defender",
@@ -21135,6 +21557,20 @@
           "DPS",
           "Survival",
           "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Top Operator",
@@ -22209,6 +22645,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22483,6 +22933,20 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22570,6 +23034,20 @@
           "DPS",
           "Survival",
           "Defense",
+          "Melee",
+          "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_311_mudrok",
+        "name": "Mudrock",
+        "rarity": 6,
+        "tags": [
+          "Survival",
+          "Defense",
+          "DPS",
           "Melee",
           "Defender",
           "Top Operator",
@@ -23796,6 +24274,17 @@
           "Medic",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -24400,6 +24889,17 @@
           "Slow",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
+          "Ranged",
+          "Medic",
           "Senior Operator"
         ]
       }
@@ -25242,6 +25742,17 @@
         "tags": [
           "Healing",
           "Support",
+          "Ranged",
+          "Medic",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
           "Ranged",
           "Medic",
           "Senior Operator"
@@ -27934,6 +28445,16 @@
         ]
       },
       {
+        "id": "char_347_jaksel",
+        "name": "Jackie",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Melee",
+          "Guard"
+        ]
+      },
+      {
         "id": "char_208_melan",
         "name": "Melantha",
         "rarity": 3,
@@ -29785,6 +30306,17 @@
         "tags": [
           "Healing",
           "Support",
+          "Ranged",
+          "Medic",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_436_whispr",
+        "name": "Whisperain",
+        "rarity": 5,
+        "tags": [
+          "Healing",
           "Ranged",
           "Medic",
           "Senior Operator"

@@ -36,7 +36,7 @@
     },
     {
       "skinId": "char_376_therex@marthe#7",
-      "skinName": "双料四分卫",
+      "skinName": "Dual-threat Quarterback",
       "avatarId": "char_376_therex_marthe#7",
       "sortId": 188
     }
@@ -78,7 +78,7 @@
     },
     {
       "skinId": "char_4091_ulika@sanrio#1",
-      "skinName": "云上直播间",
+      "skinName": "Stream Above The Clouds",
       "avatarId": "char_4091_ulika_sanrio#1",
       "sortId": 341
     }
@@ -682,7 +682,7 @@
     },
     {
       "skinId": "char_4100_caper@summer#18",
-      "skinName": "夏卉 FA083",
+      "skinName": "Summer Flowers FA083",
       "avatarId": "char_4100_caper_summer#18",
       "sortId": 181
     }
@@ -925,6 +925,12 @@
       "skinName": null,
       "avatarId": "char_301_cutter_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_301_cutter@marthe#8",
+      "skinName": "拭刀",
+      "avatarId": "char_301_cutter_marthe#8",
+      "sortId": 189
     }
   ],
   "char_337_utage": [
@@ -1610,7 +1616,7 @@
     },
     {
       "skinId": "char_488_buildr@epoque#34",
-      "skinName": "晚风休憩",
+      "skinName": "To Rest in Night Breezes",
       "avatarId": "char_488_buildr_epoque#34",
       "sortId": 90
     }
@@ -1872,7 +1878,7 @@
     },
     {
       "skinId": "char_4106_bryota@epoque#34",
-      "skinName": "动感",
+      "skinName": "Vibrant",
       "avatarId": "char_4106_bryota_epoque#34",
       "sortId": 91
     }
@@ -2486,7 +2492,7 @@
     },
     {
       "skinId": "char_498_inside@kitchen#2",
-      "skinName": "甜品大奖",
+      "skinName": "Sweet Jackpot",
       "avatarId": "char_498_inside_kitchen#2",
       "sortId": 299
     }
@@ -2621,6 +2627,12 @@
       "skinName": "Seedsower",
       "avatarId": "char_002_amiya_test#1",
       "sortId": 6
+    },
+    {
+      "skinId": "char_1037_amiya3@sale#13",
+      "skinName": "Solo Around The World",
+      "avatarId": "char_1037_amiya3_sale#13",
+      "sortId": 18
     },
     {
       "skinId": "char_1001_amiya2@casc#1",
@@ -3898,7 +3910,7 @@
     },
     {
       "skinId": "char_4006_melnte@epoque#33",
-      "skinName": "赴宴",
+      "skinName": "For the Banquet",
       "avatarId": "char_4006_melnte_epoque#33",
       "sortId": 88
     }
@@ -4252,7 +4264,7 @@
     },
     {
       "skinId": "char_4122_grabds@yun#3",
-      "skinName": "步芳兰",
+      "skinName": "Fragrant Pace",
       "avatarId": "char_4122_grabds_yun#3",
       "sortId": 357
     }
@@ -5394,7 +5406,7 @@
     },
     {
       "skinId": "char_377_gdglow@sanrio#1",
-      "skinName": "花房茶话会",
+      "skinName": "Party In The Garden",
       "avatarId": "char_377_gdglow_sanrio#1",
       "sortId": 340
     }
@@ -5600,7 +5612,7 @@
     },
     {
       "skinId": "char_1031_slent2@epoque#32",
-      "skinName": "栖息",
+      "skinName": "Habitat",
       "avatarId": "char_1031_slent2_epoque#32",
       "sortId": 85
     }
@@ -5772,7 +5784,7 @@
     },
     {
       "skinId": "char_322_lmlee@sanrio#1",
-      "skinName": "坊间凉茶铺",
+      "skinName": "Remedy In A Cup Of Leung Cha",
       "avatarId": "char_322_lmlee_sanrio#1",
       "sortId": 339
     }
@@ -5818,7 +5830,7 @@
     },
     {
       "skinId": "char_400_weedy@sightseer#1",
-      "skinName": "倾听",
+      "skinName": "Sedjem",
       "avatarId": "char_400_weedy_sightseer#1",
       "sortId": 367
     }
@@ -5864,7 +5876,7 @@
     },
     {
       "skinId": "char_474_glady@epoque#33",
-      "skinName": "我即潮汐",
+      "skinName": "I Am the Tides",
       "avatarId": "char_474_glady_epoque#33",
       "sortId": 86
     },
@@ -6024,7 +6036,7 @@
     },
     {
       "skinId": "char_179_cgbird@sightseer#1",
-      "skinName": "流辉",
+      "skinName": "Iakhu of Flows",
       "avatarId": "char_179_cgbird_sightseer#1",
       "sortId": 365
     }
@@ -6084,7 +6096,7 @@
     },
     {
       "skinId": "char_1016_agoat2@epoque#34",
-      "skinName": "远行前的野餐",
+      "skinName": "A Picnic Before A Long Trip",
       "avatarId": "char_1016_agoat2_epoque#34",
       "sortId": 89
     }
@@ -6136,7 +6148,7 @@
     },
     {
       "skinId": "char_136_hsguma@summer#16",
-      "skinName": "探寻者 SK97",
+      "skinName": "Seeker SK97",
       "avatarId": "char_136_hsguma_summer#16",
       "sortId": 175
     }
@@ -6274,7 +6286,7 @@
     },
     {
       "skinId": "char_4065_judge@epoque#33",
-      "skinName": "记叙",
+      "skinName": "Scribing",
       "avatarId": "char_4065_judge_epoque#33",
       "sortId": 87
     },
@@ -6496,7 +6508,7 @@
     },
     {
       "skinId": "char_4088_hodrer@sightseer#1",
-      "skinName": "沉思之庭",
+      "skinName": "Courtyard of Neka",
       "avatarId": "char_4088_hodrer_sightseer#1",
       "sortId": 366
     }
