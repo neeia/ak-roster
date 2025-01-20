@@ -67,7 +67,8 @@ const appTheme = (brandColor: string, light = false) => {
         sm: 640,
         md: 900,
         lg: 1200,
-        xl: 1536,
+        xl: 1536, 
+        xxl: 2560,
       },
     },
     palette: {
