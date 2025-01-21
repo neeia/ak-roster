@@ -57,7 +57,7 @@ function useOperators() {
       let _roster: Roster = {};
       if (dbOperators?.length)
         dbOperators.forEach((op) => (op.op_id in operatorJson ? (_roster[op.op_id] = op as Operator) : null));
-      else if (legacyOperators) {
+      else if (!Object.keys(operators).length && legacyOperators) {
         enqueueSnackbar("Loading cached roster data...", { variant: "info" });
         _roster = repair(legacyOperators);
 
