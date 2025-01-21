@@ -144,7 +144,7 @@ function useGoals() {
       let goalResult: GoalData[] = [];
       if (_goals?.length) {
         goalResult = _goals as GoalData[];
-      } else if (!goals && legacyGoals) {
+      } else if (!goals.length && legacyGoals) {
         enqueueSnackbar("Loading cached planner data...", { variant: "info" });
         const _goals = _.groupBy(legacyGoals.map(plannerGoalToGoalData), (g) => g.op_id ?? "");
         const combinedGoals = Object.entries(_goals)
