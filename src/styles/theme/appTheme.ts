@@ -12,6 +12,15 @@ declare module "@mui/material/styles" {
       danger?: string;
     };
   }
+  //Typescript - allow changing breakpoints
+  interface BreakpointOverrides {
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    xxl: true; // +xxl
+  }
 }
 
 const neutral = {
