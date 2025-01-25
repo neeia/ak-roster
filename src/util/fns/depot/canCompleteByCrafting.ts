@@ -69,7 +69,7 @@ const canCompleteByCrafting = (
         }
         // even if the crafted item can't be completed, update our hypothetical depot counts
         const copy = { ..._depot[craftedItemId] };
-        copy.stock = (_depot[craftedItemId].stock ?? 0) + numTimesToCraft * itemYield;
+        copy.stock = (_depot[craftedItemId]?.stock ?? 0) + numTimesToCraft * itemYield;
         _depot[craftedItemId] = copy;
       }
     });
