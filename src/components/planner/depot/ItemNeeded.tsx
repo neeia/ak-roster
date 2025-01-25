@@ -48,7 +48,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
   const [focused, setFocused] = useState(false);
   const textFieldRef = useRef<HTMLInputElement>(null);
   const focusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const DebounceTextInputDelay = 2000 //ms for text input
+  const DebounceTextInputDelay = 1500 //ms for text input.
   const DebounceButtonDelay = 500 //ms for inc/dec buttons
 
   const abbrOwned =
@@ -82,7 +82,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
     }
     focusTimeoutRef.current = setTimeout(() => {
       setFocused(false);
-    }, DebounceButtonDelay); 
+    }, DebounceTextInputDelay); //longest delay to keep focus and new text
   };
 
   // Cleanup debounced functions and focus, when unmounted
