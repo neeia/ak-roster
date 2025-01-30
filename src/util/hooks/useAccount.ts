@@ -55,6 +55,7 @@ function useAccount() {
             username: genName,
             display_name: genName,
           })
+          .is("username", null)
           .select()
           .limit(1)
           .single();
