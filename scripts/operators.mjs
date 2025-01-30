@@ -116,6 +116,148 @@ const OperatorGoalCategory = {
   Module: 3,
 };
 
+const amiyaSkillLevel = [
+  {
+    skillLevel: 2,
+    ingredients: [
+      {
+        id: "3301",
+        quantity: 4,
+      },
+    ],
+    name: "Skill Level 2",
+    category: 2,
+  },
+  {
+    skillLevel: 3,
+    ingredients: [
+      {
+        id: "3301",
+        quantity: 4,
+      },
+      {
+        id: "30061",
+        quantity: 4,
+      },
+    ],
+    name: "Skill Level 3",
+    category: 2,
+  },
+  {
+    skillLevel: 4,
+    ingredients: [
+      {
+        id: "3302",
+        quantity: 6,
+      },
+      {
+        id: "30012",
+        quantity: 4,
+      },
+    ],
+    name: "Skill Level 4",
+    category: 2,
+  },
+  {
+    skillLevel: 5,
+    ingredients: [
+      {
+        id: "3302",
+        quantity: 6,
+      },
+      {
+        id: "30022",
+        quantity: 5,
+      },
+    ],
+    name: "Skill Level 5",
+    category: 2,
+  },
+  {
+    skillLevel: 6,
+    ingredients: [
+      {
+        id: "3302",
+        quantity: 6,
+      },
+      {
+        id: "30053",
+        quantity: 4,
+      },
+    ],
+    name: "Skill Level 6",
+    category: 2,
+  },
+  {
+    skillLevel: 7,
+    ingredients: [
+      {
+        id: "3303",
+        quantity: 6,
+      },
+      {
+        id: "30063",
+        quantity: 2,
+      },
+      {
+        id: "30023",
+        quantity: 3,
+      },
+    ],
+    name: "Skill Level 7",
+    category: 2,
+  },
+];
+
+const amiyaEliteLevel = [
+  {
+    eliteLevel: 1,
+    ingredients: [
+      {
+        id: "4001",
+        quantity: 20000,
+      },
+      {
+        id: "3251",
+        quantity: 3,
+      },
+      {
+        id: "30062",
+        quantity: 4,
+      },
+      {
+        id: "30042",
+        quantity: 4,
+      },
+    ],
+    name: "Elite 1",
+    category: 0,
+  },
+  {
+    eliteLevel: 2,
+    ingredients: [
+      {
+        id: "4001",
+        quantity: 120000,
+      },
+      {
+        id: "3253",
+        quantity: 3,
+      },
+      {
+        id: "30014",
+        quantity: 10,
+      },
+      {
+        id: "30073",
+        quantity: 10,
+      },
+    ],
+    name: "Elite 2",
+    category: 0,
+  },
+];
+
 const createOperatorsJson = () => {
   const operatorsJson = Object.fromEntries(
     [
@@ -127,7 +269,7 @@ const createOperatorsJson = () => {
       const isPatchCharacter = cnPatchCharacters[id] != null;
 
       const eliteLevels = isPatchCharacter
-        ? []
+        ? amiyaEliteLevel
         : operator.phases
             .filter(({ evolveCost }) => evolveCost != null)
             .map(({ evolveCost }, i) => {
@@ -141,23 +283,24 @@ const createOperatorsJson = () => {
                 category: OperatorGoalCategory.Elite,
               };
             });
-      const skillLevels =
-        isPatchCharacter || !operator.allSkillLvlup
-          ? []
-          : operator.allSkillLvlup
-              .filter(({ lvlUpCost }) => lvlUpCost != null)
-              .map((skillLevelEntry, i) => {
-                const cost = skillLevelEntry.lvlUpCost;
-                const ingredients = cost.map(gameDataCostToIngredient);
-                return {
-                  // we want to return the result of a skillup,
-                  // and since [0] points to skill level 1 -> 2, we add 2
-                  skillLevel: i + 2,
-                  ingredients,
-                  name: `Skill Level ${i + 2}`,
-                  category: OperatorGoalCategory.SkillLevel,
-                };
-              });
+      const skillLevels = isPatchCharacter
+        ? amiyaSkillLevel
+        : !operator.allSkillLvlup
+        ? []
+        : operator.allSkillLvlup
+            .filter(({ lvlUpCost }) => lvlUpCost != null)
+            .map((skillLevelEntry, i) => {
+              const cost = skillLevelEntry.lvlUpCost;
+              const ingredients = cost.map(gameDataCostToIngredient);
+              return {
+                // we want to return the result of a skillup,
+                // and since [0] points to skill level 1 -> 2, we add 2
+                skillLevel: i + 2,
+                ingredients,
+                name: `Skill Level ${i + 2}`,
+                category: OperatorGoalCategory.SkillLevel,
+              };
+            });
 
       const skillData = operator.skills
         .filter(
