@@ -30,17 +30,18 @@ import {
   SUPPORTED_EXPORT_TYPES,
   SUPPORTED_IMPORT_TYPES,
 } from "util/fns/depot/exportImportHelper";
-import useDepot from "util/hooks/useDepot";
 import useGoals from "util/hooks/useGoals";
 import DepotItem from "types/depotItem";
 
 interface Props {
   open: boolean;
   onClose: () => void;
+  depot: Record<string, DepotItem>;
+  putDepot: (depotItem: DepotItem[]) => void;
 }
 
 const ExportImportDialog = (props: Props) => {
-  const { open, onClose } = props;
+  const { open, onClose, depot, putDepot } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -54,7 +55,6 @@ const ExportImportDialog = (props: Props) => {
   const [importMessage, setImportMessage] = useState("");
   const [fileList, setFileList] = useState<File[]>([]);
 
-  const [depot, setDepot] = useDepot();
   const { goals } = useGoals();
 
   const handleExportFormatChange = (e: SelectChangeEvent) => {
@@ -85,7 +85,7 @@ const ExportImportDialog = (props: Props) => {
           stock: payload.newQuantity,
         })
       );
-      setDepot(updatedDepot);
+      putDepot(updatedDepot);
       setImportMessage("Import successful");
       setImportErrored(false);
       setImportFinished(true);

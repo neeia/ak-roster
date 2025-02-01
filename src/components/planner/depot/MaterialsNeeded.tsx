@@ -32,6 +32,8 @@ const EXP = ["2001", "2002", "2003", "2004"];
 const MaterialsNeeded = React.memo((props: Props) => {
   const { goals, depot, putDepot, settings, setSettings } = props;
 
+  const materialsNeeded: Record<string, number> = {};
+
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [popoverItemId, setPopoverItemId] = useState<string | null>(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -39,7 +41,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
   const isSettingsMenuOpen = Boolean(anchorEl);
   const [exportImportOpen, setExportImportOpen] = useState<boolean>(false);
 
-  const craftToggleTooltips = ["Toggle only craftable materials ON","Toggle all crafting states ON","Reset all crafting states"];
+  const craftToggleTooltips = ["Toggle only craftable materials ON - use with Goals and Filters","Toggle all crafting states ON","Reset all crafting states"];
   const initialCraftToggle = 1;
   const [craftToggle, setCraftToggle] = useState(initialCraftToggle);
 
@@ -65,8 +67,8 @@ const MaterialsNeeded = React.memo((props: Props) => {
       const data: DepotItem = { material_id: itemId, stock: newQuantity };
       putDepot([data]);
     },
-    [depot, putDepot]
-  );
+    [putDepot]
+  );  
   const handleDecrement = useCallback(
     (itemId: string) => {
       const item = depot[itemId];
@@ -115,7 +117,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
       const craftedData: DepotItem = { ...depot[itemId] };
       craftedData.stock = (depot[itemId]?.stock ?? 0) + (itemYield ?? 1);
       updatedDatas.push(craftedData);
-
+      
       putDepot(updatedDatas);
     },
     [depot, putDepot]
@@ -145,41 +147,41 @@ const MaterialsNeeded = React.memo((props: Props) => {
   const handleCraftingToggleAll = useCallback(
     () => {
       const depotSettings = { ...settings.depotSettings };
-      const crafting = [...depotSettings.crafting];
+      const crafting: string[] = [];
 
       //cycle through crafting states:
       // 0 = reset, 1 = only craftable, 2 = full crafting 
       const nextCraftState = craftToggle < 2 ? craftToggle + 1 : 0;
 
-      //for non reset states filter and add craftable items
-      //[crafting]: 2 adds all > 0 (empties) > 1 (adds only craftable) > 2 (adds all) >...
-      if (nextCraftState > 0) {
-        Object.keys(depot).filter(
-          (itemID) => {
-            const Item = itemsJson[itemID as keyof typeof itemsJson] as Item;
-            return (Boolean(Item.ingredients)
-              //non-chips (but include dualchips)
-              && !Item.name.includes(" Chip")
-              //not already in crafting
-              && crafting.indexOf(itemID) === -1
-              //state 1 add only craftable (after empty state)
-              //or state 2: add missing 
-              && (nextCraftState === 1 && (craftableItems[itemID] ?? false)
-                ||
-                nextCraftState === 2)
-            );
-          }).forEach((itemID) => crafting.push(itemID));
-        depotSettings.crafting = crafting;
-      } else {
-        depotSettings.crafting = [];
-      }
+      switch (nextCraftState) {
+        case 1:
+          //calculate craftable items for all active goals
+          const { craftableItems: _crafting } = canCompleteByCrafting(
+            materialsNeeded,
+            depot,
+            Object.keys(depot));
+          crafting.push(
+            ...Object.keys(_crafting).filter((itemID) => _crafting[itemID] && !crafting.includes(itemID))
+          );
+          break;
+        case 2: //all depot to crafting
+          crafting.push(
+            ...Object.keys(depot).filter(
+              (itemID) => (itemsJson[itemID as keyof typeof itemsJson] as Item)?.ingredients
+              //dont need to exclude chips with fixed craft loop
+              //&& (itemsJson[itemID as keyof typeof itemsJson] as Item)?.name.includes(" Chip"))
+            )
+          );
+          break;
+      };
+      depotSettings.crafting = crafting;
       setCraftToggle(nextCraftState);
       setSettings((s) => ({
         ...s,
         depotSettings,
       }));
     },
-    [settings, setSettings]
+    [depot, materialsNeeded, settings, craftToggle, setSettings]
   );
 
   const handleResetCrafting = useCallback(() => {
@@ -226,7 +228,6 @@ const MaterialsNeeded = React.memo((props: Props) => {
     setAnchorEl(null);
   }, []);
 
-  const materialsNeeded: Record<string, number> = {};
   // 1. populate the ingredients required for each goal
   goals.flatMap(getGoalIngredients).forEach((ingredient: Ingredient) => {
     materialsNeeded[ingredient.id] = (materialsNeeded[ingredient.id] ?? 0) + ingredient.quantity;
@@ -401,6 +402,8 @@ const MaterialsNeeded = React.memo((props: Props) => {
         />
       </Board>
       <ExportImportDialog
+        depot={depot}
+        putDepot={putDepot}
         open={exportImportOpen}
         onClose={() => {
           setExportImportOpen(false);
