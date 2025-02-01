@@ -6,6 +6,7 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
@@ -23,11 +24,12 @@ interface Props {
   onGoalEdit: (opId: string, groupName: string) => void;
   onGoalMove: (opId: string, groupName: string) => void;
   removeAllGoalsFromOperator: (opId: string, groupName: string) => void;
+  completeAllGoalsFromOperator: (opId: string, groupName: string) => void;
   children?: React.ReactNode;
 }
 
 export const OperatorGoals = memo((props: Props) => {
-  const { operatorGoal, onGoalEdit, onGoalMove, removeAllGoalsFromOperator, children } = props;
+  const { operatorGoal, onGoalEdit, onGoalMove, removeAllGoalsFromOperator, completeAllGoalsFromOperator, children } = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -76,8 +78,9 @@ export const OperatorGoals = memo((props: Props) => {
   const handleCompleteGoalsButtonClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       handleMoreMenuClose(e);
+      completeAllGoalsFromOperator(operatorGoal.op_id, operatorGoal.group_name);
     },
-    [handleMoreMenuClose]
+    [completeAllGoalsFromOperator,handleMoreMenuClose, operatorGoal]
   );
 
   return (
@@ -174,9 +177,11 @@ export const OperatorGoals = memo((props: Props) => {
             <MenuItem component="button" onClick={handleMoveGoalButtonClick}>
               <Typography>Change Group</Typography>
             </MenuItem>
-            <MenuItem component="button" onClick={handleCompleteGoalsButtonClick}>
-              <Typography color="success">Complete all goals</Typography>
-            </MenuItem>
+            <Tooltip title="Force complete and remove. Consume or craft items set to 'Crafting'" arrow describeChild>
+              <MenuItem component="button" onClick={handleCompleteGoalsButtonClick}>
+                <Typography color="success">Complete all goals</Typography>
+              </MenuItem>
+            </Tooltip>
             <MenuItem component="button" onClick={handleDeleteGoalsButtonClick}>
               <Typography color="error">Delete all goals</Typography>
             </MenuItem>

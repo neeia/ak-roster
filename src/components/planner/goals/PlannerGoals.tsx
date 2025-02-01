@@ -51,9 +51,11 @@ import ChangeGroupDialog from "./ChangeGroupDialog";
 import { enqueueSnackbar } from "notistack";
 import RenameGroupDialog from "./RenameGroupDialog";
 
+type Depot = Record<string, DepotItem>;
+
 interface Props extends GoalFilterHook {
   goals: GoalData[];
-  depot: Record<string, DepotItem>;
+  depot: Depot;
   setDepot: (depotItem: DepotItem[]) => void;
   updateGoals: (goalsData: GoalDataInsert[]) => void;
   removeAllGoals: () => void;
@@ -297,16 +299,21 @@ const PlannerGoals = (props: Props) => {
     [goals, updateGoals, removeAllGoalsFromOperator]
   );
 
-  const onPlannerGoalCardGoalCompleted = (plannerGoal: PlannerGoal) => {
-    const operator = roster[plannerGoal.operatorId] ?? defaultOperatorObject(plannerGoal.operatorId, true);
+  //modified "onPlannerGoalCardGoalCompleted" for use in Loop.
+  //input: previous values, 
+  //return: computes and returns {updatedGoal, updatedOperator, updatedDepot}
+  //with changes after completing each Goal.
+  //hooks are removed, moved to wrapper functions.
+  const completePlannerGoal = useCallback(
+    (goal: GoalData, operator: any, depotData: Depot, plannerGoal: PlannerGoal) => {
     const opId = plannerGoal.operatorId;
     const opData = operatorJson[opId];
 
     // remove goal, remove any prerequisites, update roster, and update depot
-    const goal = goals!.find((x) => x.op_id === operator.op_id)!;
     const allPlannerGoals = getPlannerGoals(goal, opData);
     const _goal = { ...goal };
-    let op = { ...operator };
+    let op = { ...operator };    
+    let updatedDepot: Depot = {};    
 
     switch (plannerGoal.category) {
       case OperatorGoalCategory.Elite:
@@ -458,10 +465,9 @@ const PlannerGoals = (props: Props) => {
         break;
     }
 
-    updateGoals([_goal]);
-    onChange(op);
+    //updateGoals([_goal]);
+    //onChange(op);
 
-    //let depotUpdate: DepotItem[] = [];
     const ingredients = getGoalIngredients(plannerGoal);
     if (ingredients.length > 0) {
       if (plannerGoal.category === OperatorGoalCategory.Level) {
@@ -472,18 +478,69 @@ const PlannerGoals = (props: Props) => {
           plannerGoal.eliteLevel,
           plannerGoal.toLevel
         );
-        const { depot: _depot } = expToBattleRecords(exp, depot);
-        _depot["4001"].stock -= lmd;
-        setDepot(Object.values(_depot));
+        const { depot: _depotUpdate } = expToBattleRecords(exp, depotData);
+        _depotUpdate["4001"].stock -= lmd;
+        updatedDepot = _depotUpdate;
+        //setDepot(Object.values(_depot));
       } else {
-        const {depot: _depot}  = canCompleteByCrafting(
+        const { depot: _depotUpdate } = canCompleteByCrafting(
           Object.fromEntries(ingredients.map(({ quantity, id }) => [id, quantity])),
-          depot,
-          Object.keys(depot)) 
-        setDepot(Object.values(_depot));
+          depotData,
+          //tweak: only craft ingrediets in crafting state
+          settings.depotSettings.crafting); //Object.keys(depotData)
+          updatedDepot = _depotUpdate;
+        //setDepot(Object.values(_depot));
       }
     }
-  };
+    return {updatedGoal: _goal, updatedOperator: op, updatedDepot};
+  } , [settings.depotSettings.crafting]);
+
+  //wrapper for completePlannerGoal to compete one goal
+  const onPlannerGoalCardGoalCompleted = (plannerGoal: PlannerGoal) => {
+    const opData = roster[plannerGoal.operatorId] ?? defaultOperatorObject(plannerGoal.operatorId, true);
+    const goalData = goals!.find((x) => x.op_id === opData.op_id)!;
+
+    const { updatedGoal, updatedOperator, updatedDepot } = completePlannerGoal(goalData, opData, depot, plannerGoal);
+    //update storages through hooks
+    setDepot(Object.values(updatedDepot));
+    onChange(updatedOperator);
+    updateGoals([updatedGoal]);
+  }
+
+  //wrapper for completePlannerGoal to complete all goals of op in group
+  //gradually computes resulting values to use in next goals, and uses hooks on totals in the end.
+  const onPlannerGoalGroupCompleteAllGoals = useCallback(
+    (opId: string, groupName: string ) => { 
+    const OperatorGroupGoals = goals.filter((goal) => goal.op_id === opId && goal.group_name === groupName);
+    let _opData = roster[opId] ?? defaultOperatorObject(opId, true);
+    let _depotData = {...depot};
+    let _goalData : GoalData[]= [];
+
+      for (const goalData of OperatorGroupGoals) {
+        let _goal = goalData;
+        const plannerGoals = getPlannerGoals(goalData);
+        plannerGoals
+          .forEach((_plannerGoal) => {
+            const { updatedGoal, updatedOperator, updatedDepot } = completePlannerGoal(_goal, _opData, _depotData, _plannerGoal);
+            _opData = updatedOperator;
+            _depotData = updatedDepot;
+            _goal = updatedGoal;
+          });
+        _goalData.push(_goal);        
+      };      
+    //update storages through hooks
+    setDepot(Object.values(_depotData));
+    onChange(_opData);
+    
+    //Level,Elite category goals logic deletes parts of GoalData
+    //maybe modify and use later: 
+    //updateGoals(_goalData); 
+    
+    //delete all goals of op in group
+    removeAllGoalsFromOperator(opId, groupName);  
+    },
+  [depot, goals, roster, completePlannerGoal, setDepot, onChange, removeAllGoalsFromOperator] 
+);
 
   const createGoalGroups = () => {
     const groupedGoals = _.groupBy(goals, (goal) => goal.group_name);
@@ -516,13 +573,15 @@ const PlannerGoals = (props: Props) => {
                   onGoalEdit={onGoalEdit}
                   onGoalMove={onGoalMove}
                   removeAllGoalsFromOperator={removeAllGoalsFromOperator}
+                  completeAllGoalsFromOperator={onPlannerGoalGroupCompleteAllGoals}
                 >
                   {plannerGoals.map((plannerGoal, index) => {
                     const ingredients = getGoalIngredients(plannerGoal);
                     const { craftableItems } = canCompleteByCrafting(
                       Object.fromEntries(ingredients.map(({ quantity, id }) => [id, quantity])),
                       depot,
-                      Object.keys(depot)
+                      //tweak: only detect craftable state ingrediets
+                      settings.depotSettings.crafting  //Object.keys(depot)
                     );
                     const completableByCrafting = ingredients.every(
                       ({ id, quantity }) =>
@@ -641,7 +700,7 @@ const PlannerGoals = (props: Props) => {
             <TextField
               id="search"
               autoComplete="off"
-              label="Search..."
+              label="Filter with list of groups, ops..."
               value={filter.filters.search}
               onChange={(e) => filter.setFilters({ ...filter.filters, search: e.target.value })}
               size="small"
