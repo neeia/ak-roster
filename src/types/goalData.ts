@@ -46,7 +46,8 @@ export function getGoalString(goal: GoalData, opData: OperatorData) {
       const moduleData = opData.moduleData.find((m) => m.moduleId === moduleId);
       if (!moduleData) return;
       const startingLevel = (goal.modules_from as Record<string, number>)![moduleId] ?? 0;
-      goalArray.push(`Mod ${moduleData.typeName.split("-")[1]} S${startingLevel} → S${moduleLevel}`);
+      if (startingLevel == moduleLevel) return;
+      else goalArray.push(`Mod ${moduleData.typeName.split("-")[1]} S${startingLevel} → S${moduleLevel}`);
     });
   }
 
