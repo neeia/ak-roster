@@ -33,8 +33,8 @@ const canCompleteByCrafting = (
             const multiplier = Math.ceil(remaining / (itemYield ?? 1));
             ingredients.forEach((ingr) => {
               //Fix chips-pairs loop: add <" Chip"> or <" Chip" Pack> as ingredient only if craftedItem Chip isn't already ingredient
-              if (itemBeingCrafted.name.includes(" Chip")
-                && !Boolean(ingredientToCraftedItemsMapping[item.id] ?? false)) {
+              if (!itemBeingCrafted.name.includes(" Chip")
+                || !ingredientToCraftedItemsMapping[item.id]) {
                 ingredientToCraftedItemsMapping[ingr.id] = [...(ingredientToCraftedItemsMapping[ingr.id] ?? []), item.id];
               }
               materialsNeeded[ingr.id] = (materialsNeeded[ingr.id] ?? 0) + ingr.quantity * multiplier;
@@ -56,7 +56,7 @@ const canCompleteByCrafting = (
         && crafting.includes(craftedItemId)
         //Fix chips-pairs loop: only craft Chips that are not ingredients (of other chips)
         && (!itemsJson[craftedItemId as keyof typeof itemsJson].name.includes(" Chip")//  chip   = 0 not-chip  = 1
-          || !Boolean(ingredientToCraftedItemsMapping[craftedItemId]))                //  inr    = 0 not-inr   = 1 
+          || !ingredientToCraftedItemsMapping[craftedItemId])                //  inr    = 0 not-inr   = 1 
     )
     .sort(
       (itemA, itemB) =>
