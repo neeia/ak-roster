@@ -251,7 +251,7 @@ const GameImport = memo(() => {
         }
       }
       depotData.push({ material_id: "4001", stock: userData.status.gold });
-      await setDepot(depotData);
+      await setDepot(depotData,true);
     }
     enqueueSnackbar("Data imported.", { variant: "success" });
   }
