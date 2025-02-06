@@ -437,6 +437,13 @@
     "tier": 4,
     "sortId": 10004
   },
+  "4006": {
+    "id": "4006",
+    "name": "Purchase Certificate",
+    "iconId": "EXGG_SHD",
+    "tier": 4,
+    "sortId": 10005
+  },
   "30011": {
     "id": "30011",
     "name": "Orirock",
@@ -1370,7 +1377,14 @@
     "name": "Chip Catalyst",
     "iconId": "MTL_ASC_DI",
     "tier": 4,
-    "sortId": 400001
+    "sortId": 400001,
+    "ingredients": [
+      {
+        "id": "4006",
+        "quantity": 90
+      }
+    ],
+    "yield": 1
   },
   "mod_unlock_token": {
     "id": "mod_unlock_token",
