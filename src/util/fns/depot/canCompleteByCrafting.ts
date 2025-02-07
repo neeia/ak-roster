@@ -5,13 +5,17 @@ import itemsJson from "data/items.json";
 const canCompleteByCrafting = (
   materialsNeeded: Record<string, number>,
   depot: Record<string, DepotItem>,
-  crafting: string[]
+  crafting: string[],
+  ignoreLmdInCrafting?: boolean
 ) => {
   //0. Tweak: all Dualchips => hypothetically craftable
   //Needed to showcase depot for All Goals better
   //variables to save/refund/consume catalists
   const catalistId = "32001";
   let catalistsUsedQuantity = 0;
+
+  //Fix chips-pairs loop: array to store first calculated chip of each pair.
+  const plannedChipCrafts: string[] = [];
 
   // 1. Save original recipe
   const _materialsNeeded = { ...materialsNeeded };
@@ -32,12 +36,15 @@ const canCompleteByCrafting = (
           if (ingredients != null) {
             const multiplier = Math.ceil(remaining / (itemYield ?? 1));
             ingredients.forEach((ingr) => {
-              //Fix chips-pairs loop: add <" Chip"> or <" Chip" Pack> as ingredient only if craftedItem Chip isn't already ingredient
-              if (itemBeingCrafted.name.includes(" Chip")
-                && !Boolean(ingredientToCraftedItemsMapping[item.id] ?? false)) {
+              //Non-chips - calculate normally
+              //Chips: only if chip igredient wasn't already calculcated and planned for craft.
+              if (!itemBeingCrafted.name.includes(" Chip")
+                || plannedChipCrafts.indexOf(ingr.id) === -1) {
                 ingredientToCraftedItemsMapping[ingr.id] = [...(ingredientToCraftedItemsMapping[ingr.id] ?? []), item.id];
+                materialsNeeded[ingr.id] = (materialsNeeded[ingr.id] ?? 0) + ingr.quantity * multiplier;
+                //plan to craft chip
+                if (itemBeingCrafted.name.includes(" Chip")) plannedChipCrafts.push(item.id);
               }
-              materialsNeeded[ingr.id] = (materialsNeeded[ingr.id] ?? 0) + ingr.quantity * multiplier;
             });
           }
         }
@@ -54,9 +61,9 @@ const canCompleteByCrafting = (
           (materialsNeeded[craftedItemId] - (depot[craftedItemId]?.stock ?? 0)) > 0)
         //only craft "Crafting" items
         && crafting.includes(craftedItemId)
-        //Fix chips-pairs loop: only craft Chips that are not ingredients (of other chips)
-        && (!itemsJson[craftedItemId as keyof typeof itemsJson].name.includes(" Chip")//  chip   = 0 not-chip  = 1
-          || !Boolean(ingredientToCraftedItemsMapping[craftedItemId]))                //  inr    = 0 not-inr   = 1 
+        //craft all non-chips or planned/counted chips
+        && (!itemsJson[craftedItemId as keyof typeof itemsJson].name.includes(" Chip")
+          || plannedChipCrafts.indexOf(craftedItemId) !== -1)
     )
     .sort(
       (itemA, itemB) =>
@@ -70,7 +77,10 @@ const canCompleteByCrafting = (
         const itemYield = craftedItem.yield ?? 1;
         // numTimesCraftable: max number of times the formula can be executed
         const numTimesCraftable = Math.min(
-          ...ingredients.map((ingr) => Math.floor((_depot[ingr.id]?.stock ?? 0) / ingr.quantity))
+          ...ingredients.map((ingr) =>
+            ignoreLmdInCrafting && ingr.id === "4001"
+              ? Infinity //settings: allow craft without lmd
+              : Math.floor((_depot[ingr.id]?.stock ?? 0) / ingr.quantity))
         );
         // numTimesToCraft: how many times we'll actually execute the formula
         const numTimesToCraft = Math.min(numTimesCraftable, Math.ceil(shortage / itemYield));
