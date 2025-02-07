@@ -6,15 +6,20 @@ export interface LocalStorageSettings {
   importSettings: ImportSettings
 }
 
-export interface PlannerSettings {}
+export interface PlannerSettings {
+  allowAllGoals: boolean;
+}
 
-const plannerSettings: PlannerSettings = {};
+const plannerSettings: PlannerSettings = {
+  allowAllGoals: false,
+};
 
 export interface DepotSettings {
   crafting: string[];
   showInactiveMaterials: boolean;
   showIncrementDecrementButtons: boolean;
-  sortCompletedToBottom: boolean;
+  sortCompletedToBottom: boolean;  
+  ignoreLmdInCrafting: boolean,
 }
 
 export interface ImportSettings{
@@ -28,6 +33,7 @@ const depotSettings: DepotSettings = {
   showInactiveMaterials: false,
   showIncrementDecrementButtons: false,
   sortCompletedToBottom: false,
+  ignoreLmdInCrafting: false,
 };
 
 export interface RecruitSettings {
