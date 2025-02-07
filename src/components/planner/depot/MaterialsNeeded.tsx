@@ -91,6 +91,8 @@ const MaterialsNeeded = React.memo((props: Props) => {
       if (!ingredients) return false;
 
       ingredients.forEach((ingr) => {
+        //settings: ignore LMD
+        if (settings.depotSettings.ignoreLmdInCrafting && ingr.id === "4001") return;
         const ingrData: DepotItem = { ...depot[ingr.id] };
         const remaining = (depot[ingr.id]?.stock ?? 0) - ingr.quantity;
         if (remaining < 0) canCraft = false;
@@ -100,7 +102,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
       return canCraft;
     },
-    [depot]
+    [depot,settings.depotSettings.ignoreLmdInCrafting]
   );
 
   const handleCraftOne = useCallback(
@@ -159,7 +161,9 @@ const MaterialsNeeded = React.memo((props: Props) => {
           const { craftableItems: _crafting } = canCompleteByCrafting(
             materialsNeeded,
             depot,
-            Object.keys(depot));
+            Object.keys(depot),
+            settings.depotSettings.ignoreLmdInCrafting
+          );
           crafting.push(
             ...Object.keys(_crafting).filter((itemID) => _crafting[itemID] && !crafting.includes(itemID))
           );
@@ -215,6 +219,22 @@ const MaterialsNeeded = React.memo((props: Props) => {
     setAnchorEl(null);
   }, [settings, setSettings]);
 
+  const handleAllowAllGoals  = useCallback(() => {
+    const plannerSettings = { ...settings.plannerSettings };
+    plannerSettings.allowAllGoals = !plannerSettings?.allowAllGoals;
+
+    setSettings((s) => ({ ...s, plannerSettings }));
+    setAnchorEl(null);
+  }, [settings, setSettings]);
+
+  const handleAllowNoLmdCrafting  = useCallback(() => {
+    const depotSettings = { ...settings.depotSettings };
+    depotSettings.ignoreLmdInCrafting = !depotSettings?.ignoreLmdInCrafting;
+
+    setSettings((s) => ({ ...s, depotSettings }));
+    setAnchorEl(null);
+  }, [settings, setSettings]);
+
   const handleResetStock = useCallback(() => {
     const _depot = { ...depot };
     const items = Object.values(_depot) as DepotItem[];
@@ -243,7 +263,8 @@ const MaterialsNeeded = React.memo((props: Props) => {
   const { craftableItems, ingredientToCraftedItemsMapping } = canCompleteByCrafting(
     materialsNeeded,
     _depot,
-    settings.depotSettings.crafting
+    settings.depotSettings.crafting,
+    settings.depotSettings.ignoreLmdInCrafting
   );
 
   const allItems: [string, number][] = Object.values(itemsJson).map((item) => [item.id, materialsNeeded[item.id] ?? 0]);
@@ -340,6 +361,12 @@ const MaterialsNeeded = React.memo((props: Props) => {
           </SettingsMenuItem>
           <SettingsMenuItem onClick={handleShowButtons} checked={settings.depotSettings.showIncrementDecrementButtons}>
             Show increment/decrement buttons
+          </SettingsMenuItem>
+          <SettingsMenuItem onClick={handleAllowAllGoals} checked={settings.plannerSettings.allowAllGoals}>
+            Allow completing goals unconditionally
+          </SettingsMenuItem>
+          <SettingsMenuItem onClick={handleAllowNoLmdCrafting} checked={settings.depotSettings.ignoreLmdInCrafting}>
+            Ignore LMD in crafting requirements
           </SettingsMenuItem>
           <Divider />
           <MenuItem onClick={handleExportImport}>
