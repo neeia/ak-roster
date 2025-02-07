@@ -576,20 +576,33 @@ const PlannerGoals = (props: Props) => {
                   completeAllGoalsFromOperator={onPlannerGoalGroupCompleteAllGoals}
                 >
                   {plannerGoals.map((plannerGoal, index) => {
-                    const ingredients = getGoalIngredients(plannerGoal);
-                    const { craftableItems } = canCompleteByCrafting(
-                      Object.fromEntries(ingredients.map(({ quantity, id }) => [id, quantity])),
-                      depot,
-                      //tweak: only detect craftable state ingrediets
-                      settings.depotSettings.crafting  //Object.keys(depot)
-                    );
-                    const completableByCrafting = ingredients.every(
-                      ({ id, quantity }) =>
-                        (id === "EXP" ? depotToExp(depot) : depot[id]?.stock) >= quantity || craftableItems[id]
-                    );
-                    const completable = ingredients.every(
-                      ({ id, quantity }) => (id === "EXP" ? depotToExp(depot) : depot[id]?.stock) >= quantity
-                    );
+                    let completable = false;
+                    let completableByCrafting = false;
+                    //settings: allow all goals to be completable without calculations
+                    if (settings.plannerSettings.allowAllGoals) {
+                      completable = true;
+                      completableByCrafting = false;
+                    } //or calculate each goal
+                    else {
+                      const ingredients = getGoalIngredients(plannerGoal);
+                      const { craftableItems } = canCompleteByCrafting(
+                        Object.fromEntries(ingredients.map(({ quantity, id }) => [id, quantity])),
+                        depot,
+                        //tweak: only detect craftable state ingrediets
+                        settings.depotSettings.crafting,  //Object.keys(depot)
+                        settings.depotSettings.ignoreLmdInCrafting
+                      );
+                      completableByCrafting = ingredients.every(
+                        ({ id, quantity }) =>
+                          (settings.depotSettings.ignoreLmdInCrafting && id === "4001") || //Settings: allow No LMD
+                          (id === "EXP" ? depotToExp(depot) : depot[id]?.stock) >= quantity || craftableItems[id]
+                      );
+                      completable = ingredients.every(
+                        ({ id, quantity }) => 
+                          (settings.depotSettings.ignoreLmdInCrafting && id === "4001") || //Settings: allow No LMD
+                          (id === "EXP" ? depotToExp(depot) : depot[id]?.stock) >= quantity
+                      );
+                    }
                     return (
                       <PlannerGoalCard
                         key={index}
