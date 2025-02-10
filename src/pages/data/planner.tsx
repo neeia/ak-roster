@@ -49,7 +49,7 @@ const PlannerGoals = dynamic(() => import("components/planner/goals/PlannerGoals
 });
 
 const Goals: NextPage = () => {
-  const [depot, putDepot] = useDepot();
+  const [depot, putDepot, resetDepot] = useDepot();
   const { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator, changeLocalGoalGroup } = useGoals();
   const [value, setValue] = useState(1);
   const [settings, setSettings] = useSettings();
@@ -82,6 +82,7 @@ const Goals: NextPage = () => {
             goals={plannerGoals}
             depot={depot}
             putDepot={putDepot}
+            resetDepot={resetDepot}
             settings={settings}
             setSettings={setSettings}
           />

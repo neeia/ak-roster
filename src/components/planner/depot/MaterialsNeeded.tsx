@@ -24,13 +24,14 @@ interface Props {
   goals: PlannerGoal[];
   depot: Record<string, DepotItem>;
   putDepot: (depotItem: DepotItem[]) => void;
+  resetDepot: () => void;
   settings: LocalStorageSettings;
   setSettings: (settings: LocalStorageSettings | ((settings: LocalStorageSettings) => LocalStorageSettings)) => void;
 }
 
 const EXP = ["2001", "2002", "2003", "2004"];
 const MaterialsNeeded = React.memo((props: Props) => {
-  const { goals, depot, putDepot, settings, setSettings } = props;
+  const { goals, depot, putDepot, resetDepot, settings, setSettings } = props;
 
   const materialsNeeded: Record<string, number> = {};
 
@@ -236,12 +237,10 @@ const MaterialsNeeded = React.memo((props: Props) => {
   }, [settings, setSettings]);
 
   const handleResetStock = useCallback(() => {
-    const _depot = { ...depot };
-    const items = Object.values(_depot) as DepotItem[];
-    items.forEach((item) => (item.stock = 0));
-    putDepot(items);
+    //moved reset to useDepot hook.
+    resetDepot();
     setAnchorEl(null);
-  }, [depot, putDepot]);
+  }, [resetDepot]);
 
   const handleExportImport = useCallback(() => {
     setExportImportOpen(true);
