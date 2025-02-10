@@ -1391,7 +1391,14 @@
     "name": "Module Data Block",
     "iconId": "mod_unlock_token",
     "tier": 5,
-    "sortId": 90001
+    "sortId": 90001,
+    "ingredients": [
+      {
+        "id": "4006",
+        "quantity": 120
+      }
+    ],
+    "yield": 1
   },
   "mod_update_token_2": {
     "id": "mod_update_token_2",
