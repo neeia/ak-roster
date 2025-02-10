@@ -37,7 +37,7 @@ interface Props {
   open: boolean;
   onClose: () => void;
   depot: Record<string, DepotItem>;
-  putDepot: (depotItem: DepotItem[]) => void;
+  putDepot: (depotItem: DepotItem[], immediate?: boolean) => void;
 }
 
 const ExportImportDialog = (props: Props) => {
@@ -85,7 +85,7 @@ const ExportImportDialog = (props: Props) => {
           stock: payload.newQuantity,
         })
       );
-      putDepot(updatedDepot);
+      putDepot(updatedDepot, true);
       setImportMessage("Import successful");
       setImportErrored(false);
       setImportFinished(true);
