@@ -5,13 +5,15 @@ import handlePostgrestError from "util/fns/handlePostgrestError";
 import itemJson from "data/items.json";
 import useLocalStorage from "./useLocalStorage";
 import debounce from "lodash/debounce";
-import { enqueueSnackbar } from "notistack";
+import { enqueueSnackbar, closeSnackbar } from "notistack";
+
+type Depot = Record<string, DepotItem>;
 
 function useDepot() {
-  const [depot, _setDepot] = useLocalStorage<Record<string, DepotItem>>("v3_depot", {});
+  const [depot, _setDepot] = useLocalStorage<Depot>("v3_depot", {});
   const [depotTrackers, setDepotTrackers ] = useState({
-    rawUpdate: {} as Record<string, DepotItem>,
-    ogValues: {} as Record<string, DepotItem>,
+    rawUpdate: {} as Depot,
+    ogValues: {} as Depot,
   });
   const debounceSyncDelay = 5000; //5s of no changes before updating db
 
@@ -29,7 +31,7 @@ function useDepot() {
         handlePostgrestError(error);
       }
       else {
-        enqueueSnackbar("Depot synced changes to DB", { variant: "success" });
+        enqueueSnackbar("Depot synced to DB", { variant: "success", autoHideDuration: 2000 });
         setDepotTrackers({rawUpdate: {},ogValues: {}});
       }
     }
@@ -41,6 +43,7 @@ function useDepot() {
     debounce(
       (items: DepotItem[]) => {
         syncDepotToDB(items);
+        closeSnackbar();
       }
       , debounceSyncDelay)
     , [syncDepotToDB]
@@ -52,9 +55,11 @@ function useDepot() {
     (items: DepotItem[], immediate?: boolean) => {
       //dont copy user_id
       //mixing items with/w/o user_id, provokes row-level security error in upsert
-      const depotCopy = Object.fromEntries(
-        Object.entries(depot).map(([key, { user_id, ...rest }]) => [key, rest])
-      );
+      const depotCopy: Depot = {};
+      for (const key in depot) {
+        const { user_id, ...rest } = depot[key]; 
+        depotCopy[key] = rest;
+      }
       const _rawDepotUpdate = { ...depotTrackers.rawUpdate };
       const _ogDepotValues = { ...depotTrackers.ogValues};
       let hasChanges = false;
@@ -64,17 +69,16 @@ function useDepot() {
         //if exist - agregate only changes     
         if ((depotCopy[item.material_id]?.stock ?? 0) !== item.stock) {
           //keep og item before first change.
-          if (!_ogDepotValues[item.material_id]) _ogDepotValues[item.material_id] = {...depotCopy[item.material_id]};
+          if (!_ogDepotValues[item.material_id] && depotCopy[item.material_id])
+            _ogDepotValues[item.material_id] = { ...depotCopy[item.material_id] };
           //ignore user_id
           depotCopy[item.material_id] = {
             material_id: item.material_id,
             stock: item.stock
           }
           //ensure stock change from og value
-          if (depotCopy[item.material_id].stock !== _ogDepotValues[item.material_id].stock) {
-            _rawDepotUpdate[item.material_id] = {
-              ...depotCopy[item.material_id]
-            }
+          if (depotCopy[item.material_id].stock !== (_ogDepotValues[item.material_id]?.stock ?? 0)) {
+            _rawDepotUpdate[item.material_id] = { ...depotCopy[item.material_id] };
           } else if (_rawDepotUpdate[item.material_id]) {
             //remove change if stock returned
             delete _rawDepotUpdate[item.material_id];
@@ -90,9 +94,22 @@ function useDepot() {
 
       (immediate) ?
       syncDepotToDB(Object.values(_rawDepotUpdate))
-        : debouncedSyncDepot(Object.values(_rawDepotUpdate));
+      : (enqueueSnackbar(`Pending sync, keep depot open...`, { variant: "info", persist: true, preventDuplicate: true, transitionDuration: { exit: 100 } }),
+        debouncedSyncDepot(Object.values(_rawDepotUpdate)));
     },
     [depot,_setDepot,debouncedSyncDepot,depotTrackers.ogValues,depotTrackers.rawUpdate,syncDepotToDB]
+  );
+
+  //export function to set zero values to local storage and db
+  const resetDepot = useCallback(() => {
+    const depotCopy: Depot = {};
+    for (const key in depot) {
+      const { user_id, ...rest } = depot[key];
+      depotCopy[key] = { ...rest, stock: 0 };
+    }
+    _setDepot(depotCopy);
+    syncDepotToDB(Object.values(depotCopy));
+  }, [depot, _setDepot, syncDepotToDB]
   );
 
   // fetch data from db
@@ -108,7 +125,7 @@ function useDepot() {
       //fetch depot
       const { data: _depot } = await supabase.from("depot").select().eq("user_id", user_id);
 
-      const depotResult: Record<string, DepotItem> = {};
+      const depotResult: Depot = {};
       const depotTrash: string[] = [];
       if (_depot?.length) {
         _depot.forEach((x) => {
@@ -135,7 +152,7 @@ function useDepot() {
     fetchData();
   }, []);
 
-  return [depot, putDepot] as const;
+  return [depot, putDepot, resetDepot] as const;
 }
 
 export default useDepot;
