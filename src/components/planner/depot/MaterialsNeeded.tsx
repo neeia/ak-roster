@@ -19,9 +19,11 @@ import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
 import { LocalStorageSettings } from "types/localStorageSettings";
 import depotToExp from "util/fns/depot/depotToExp";
 import { PlannerGoal } from "types/goal";
+import GoalData from "types/goalData";
 
 interface Props {
   goals: PlannerGoal[];
+  goalData: GoalData[];
   depot: Record<string, DepotItem>;
   putDepot: (depotItem: DepotItem[]) => void;
   resetDepot: () => void;
@@ -31,7 +33,7 @@ interface Props {
 
 const EXP = ["2001", "2002", "2003", "2004"];
 const MaterialsNeeded = React.memo((props: Props) => {
-  const { goals, depot, putDepot, resetDepot, settings, setSettings } = props;
+  const { goals, goalData, depot, putDepot, resetDepot, settings, setSettings } = props;
 
   const materialsNeeded: Record<string, number> = {};
 
@@ -434,6 +436,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
         onClose={() => {
           setExportImportOpen(false);
         }}
+        goals={goalData}
       />
     </>
   );
