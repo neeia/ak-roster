@@ -80,6 +80,7 @@ const Goals: NextPage = () => {
         <TabPanel index={1} value={value}>
           <MaterialsNeeded
             goals={plannerGoals}
+            goalData={goals}
             depot={depot}
             putDepot={putDepot}
             resetDepot={resetDepot}
