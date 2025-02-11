@@ -50,8 +50,11 @@ export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
       if (
         filters.search
           .split(",")
+          .map((s) => s.trim())
           .every(
-            (s) => !matchOperatorName(opData.name, s) && !group.toLocaleLowerCase().includes(s.toLocaleLowerCase())
+            (s) =>
+              s.startsWith("-") ===
+              (matchOperatorName(opData.name, s) || group.toLocaleLowerCase().includes(s.toLocaleLowerCase()))
           )
       )
         return false;
