@@ -4,7 +4,6 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { Box, Button, ButtonBase, ButtonGroup, IconButton, InputAdornment, TextField, Tooltip } from "@mui/material";
 import React, { ElementType, useEffect, useState, useMemo, useRef, useCallback } from "react";
 
-import { debounce } from "lodash";
 import items from "data/items.json";
 
 import CraftingIcon from "./CraftingIcon";
@@ -48,59 +47,37 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
   const [focused, setFocused] = useState(false);
   const textFieldRef = useRef<HTMLInputElement>(null);
   const focusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const DebounceTextInputDelay = 1500 //ms for text input.
-  const DebounceButtonDelay = 500 //ms for inc/dec buttons
-
-  const abbrOwned =
-    owned < 1000
-      ? owned
-      : owned < 1000000
-      ? `${owned % 1000 === 0 ? `${owned / 1000}` : (owned / 1000).toFixed(1)}K`
-      : `${owned % 1000000 === 0 ? `${owned / 1000000}` : (owned / 1000000).toFixed(2)}M`;
-
+  const [abbrOwned, setAbbrOwned] = useState<string>(`${owned}`);
+  
   useEffect(() => {
     setRawValue(`${owned}`);
+    
+    //all ItemNeeded-s render a lot: only recalc on change
+    const abbrOwned =
+      owned < 1000
+        ? owned
+        : owned < 1000000
+          ? `${owned % 1000 === 0 ? `${owned / 1000}` : (owned / 1000).toFixed(1)}K`
+          : `${owned % 1000000 === 0 ? `${owned / 1000000}` : (owned / 1000000).toFixed(2)}M`;
+    setAbbrOwned(`${abbrOwned}`);
+
   }, [owned]);
 
-  //debounce template
-  const createDebouncedOnChange = useCallback(
-    (delay: number) =>
-      debounce((itemId: string, numberValue: number) => {
-        onChange(itemId, numberValue);
-      }, delay),
-    [onChange]
-  );
-  //two debounces with different delays
-  const debouncedOnChangeLong = useMemo(() => createDebouncedOnChange(DebounceTextInputDelay), [createDebouncedOnChange]);
-  const debouncedOnChangeShort = useMemo(() => createDebouncedOnChange(DebounceButtonDelay), [createDebouncedOnChange]);
-
   //keep focus on text field when clicking on Inc/Dec
-  //to show rawValue and hide owned (doesn't update till debounced onChange)
+  //to show rawValue and hide owned
   const handleFocusTimeout = () => {
     if (focusTimeoutRef.current) {
       clearTimeout(focusTimeoutRef.current);
     }
     focusTimeoutRef.current = setTimeout(() => {
       setFocused(false);
-    }, DebounceTextInputDelay); //longest delay to keep focus and new text
+    }, 500);
   };
 
-  // Cleanup debounced functions and focus, when unmounted
-  useEffect(() => {
-    return () => {
-      debouncedOnChangeLong.cancel();
-      debouncedOnChangeShort.cancel();
-
-      if (focusTimeoutRef.current) {
-        clearTimeout(focusTimeoutRef.current);
-      }
-    };
-  }, [debouncedOnChangeLong,debouncedOnChangeShort]);
-
-  //Inc/Dec additional handling: focus to text, rawValue, debounce
+  //Inc/Dec additional handling: focus on text
   const IncDecOnChange = (newValue : number) => {
     setRawValue(`${newValue}`);
-    debouncedOnChangeShort(itemId, newValue);
+    onChange(itemId, newValue);
     setFocused(true);
     textFieldRef.current?.focus();
     handleFocusTimeout();
@@ -113,9 +90,11 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
     
     const newRawValue = e.target.value;
     setRawValue(newRawValue);
-    const numberValue = Number(newRawValue);
+    let numberValue = Number(newRawValue);
     if (!Number.isNaN(numberValue)) {
-      debouncedOnChangeLong(itemId, numberValue);
+      //evade db error with more than integer.
+      numberValue = Math.min(numberValue, Number.MAX_SAFE_INTEGER);
+      onChange(itemId, numberValue);
     }
   };
 
@@ -194,7 +173,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
             step: 1,
             "aria-label": "Quantity owned",
             sx: {
-              textAlign: "center",
+              textAlign:((focused && abbrOwned.search("[KM]")!== -1)? "right" :"center" ),
               width: "5ch", // width of 4 "0" characters
               flexGrow: 1,
             },
