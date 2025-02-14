@@ -5,7 +5,6 @@ import handlePostgrestError from "util/fns/handlePostgrestError";
 import itemJson from "data/items.json";
 import useLocalStorage from "./useLocalStorage";
 import debounce from "lodash/debounce";
-import { enqueueSnackbar, closeSnackbar } from "notistack";
 
 type Depot = Record<string, DepotItem>;
 
@@ -31,7 +30,6 @@ function useDepot() {
         handlePostgrestError(error);
       }
       else {
-        enqueueSnackbar("Depot synced to DB", { variant: "success", autoHideDuration: 2000 });
         setDepotTrackers({rawUpdate: {},ogValues: {}});
       }
     }
@@ -43,7 +41,6 @@ function useDepot() {
     debounce(
       (items: DepotItem[]) => {
         syncDepotToDB(items);
-        closeSnackbar();
       }
       , debounceSyncDelay)
     , [syncDepotToDB]
@@ -94,8 +91,7 @@ function useDepot() {
 
       (immediate) ?
       syncDepotToDB(Object.values(_rawDepotUpdate))
-      : (enqueueSnackbar(`Pending sync, keep depot open...`, { variant: "info", persist: true, preventDuplicate: true, transitionDuration: { exit: 100 } }),
-        debouncedSyncDepot(Object.values(_rawDepotUpdate)));
+      : debouncedSyncDepot(Object.values(_rawDepotUpdate));
     },
     [depot,_setDepot,debouncedSyncDepot,depotTrackers.ogValues,depotTrackers.rawUpdate,syncDepotToDB]
   );
@@ -152,7 +148,19 @@ function useDepot() {
     fetchData();
   }, []);
 
-  return [depot, putDepot, resetDepot] as const;
+  //export state of unSavedChanges and debounce
+  const hasUnsavedChanges = Object.keys(depotTrackers.rawUpdate).length > 0;
+
+  //export function to refresh debounce timer with current changes data
+  const refreshDebounce = useCallback(() => {
+    //not do anything without active debounce
+    if (hasUnsavedChanges)
+      debouncedSyncDepot(Object.values(depotTrackers.rawUpdate));
+  }
+    , [debouncedSyncDepot, depotTrackers.rawUpdate, hasUnsavedChanges]
+  )
+
+  return [depot, putDepot, resetDepot, hasUnsavedChanges, refreshDebounce] as const;
 }
 
 export default useDepot;
