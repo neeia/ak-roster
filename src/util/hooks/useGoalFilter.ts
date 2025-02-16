@@ -51,10 +51,10 @@ export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
         filters.search
           .split(",")
           .map((s) => s.trim())
-          .every(
-            (s) =>
-              s.startsWith("-") ===
-              (matchOperatorName(opData.name, s) || group.toLocaleLowerCase().includes(s.toLocaleLowerCase()))
+          .every((s) =>
+            s.startsWith("-")
+              ? !matchOperatorName(opData.name, s) || !group.toLocaleLowerCase().includes(s.toLocaleLowerCase())
+              : matchOperatorName(opData.name, s) || group.toLocaleLowerCase().includes(s.toLocaleLowerCase())
           )
       )
         return false;
