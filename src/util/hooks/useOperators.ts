@@ -79,7 +79,7 @@ function useOperators() {
     return () => {
       isCanceled = true;
     };
-  }, [hydrated, legacyOperators, setOperators]);
+  }, []);
 
   return [operators, onChange] as const;
 }
