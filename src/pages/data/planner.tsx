@@ -49,7 +49,7 @@ const PlannerGoals = dynamic(() => import("components/planner/goals/PlannerGoals
 });
 
 const Goals: NextPage = () => {
-  const [depot, putDepot, resetDepot] = useDepot();
+  const [depot, putDepot, resetDepot, depotIsUnsaved, refreshDepotDebounce] = useDepot();
   const { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator, changeLocalGoalGroup } = useGoals();
   const [value, setValue] = useState(1);
   const [settings, setSettings] = useSettings();
@@ -71,20 +71,28 @@ const Goals: NextPage = () => {
         onChange={handleChange}
         aria-label="tab menu"
         variant="fullWidth"
-        sx={{ width: "100%", display: { md: "none" } }}
+        sx={{ width: "100%", display: { md: "none" }, minWidth: "410px"}}
       >
-        <Tab value={1} label="Depot" {...a11yProps(1)}></Tab>
+        <Tab value={1} label={!depotIsUnsaved ? "Depot" : "↑ Depot ↑"} {...a11yProps(1)}></Tab>
         <Tab value={2} label="Goals" {...a11yProps(2)}></Tab>
       </Tabs>
-      <Box sx={{ display: { xs: "flex", md: "grid" }, gridTemplateColumns: "1fr min(540px,49%);", gap: 5 }}>
+      <Box sx={{
+        display: { xs: "flex", md: "grid" }, gridTemplateColumns: "1fr min(540px,49%);", gap: 5,
+        borderWidth: 1,
+        borderStyle: "solid",
+        borderColor: depotIsUnsaved ? "#FFD440" : "transparent",
+      }}>
         <TabPanel index={1} value={value}>
           <MaterialsNeeded
             goals={plannerGoals}
+            goalData={goals}
             depot={depot}
             putDepot={putDepot}
             resetDepot={resetDepot}
             settings={settings}
             setSettings={setSettings}
+            depotIsUnsaved={depotIsUnsaved}
+            refreshDepotDebounce={refreshDepotDebounce}
           />
         </TabPanel>
         <TabPanel index={2} value={value}>

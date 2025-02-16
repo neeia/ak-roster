@@ -144,8 +144,14 @@ const PlannerGoalCard = memo((props: Props) => {
           borderColor: "background.light",
         }}
       >
-        <Tooltip arrow describeChild title="Complete Goal" placement="left">
-          <GoalCardButton
+        <Tooltip arrow describeChild 
+          title={(completable) ?
+            "Complete Goal"
+            : (completableByCrafting) ?
+              "Craft materials and Complete Goal"
+              : "Not enough craftable materials"} 
+          placement="left">
+          <span><GoalCardButton
             aria-label={`Complete goal: ${goalLabel}`}
             onClick={() => onGoalCompleted(goal)}
             sx={{
@@ -158,7 +164,7 @@ const PlannerGoalCard = memo((props: Props) => {
             disabled={!completable && !completableByCrafting}
           >
             <Upload fontSize="small" />
-          </GoalCardButton>
+          </GoalCardButton></span>
         </Tooltip>
         <Divider />
         <Tooltip arrow describeChild title="Delete Goal" placement="left">

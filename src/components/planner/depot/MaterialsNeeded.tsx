@@ -3,8 +3,8 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import CraftingIcon from "./CraftingIcon";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import { Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Button, Tooltip } from "@mui/material";
-import React, { useCallback, useState } from "react";
+import { Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Button, Tooltip, Typography } from "@mui/material";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import itemsJson from "data/items.json";
 import { Ingredient, Item } from "types/item";
@@ -19,21 +19,24 @@ import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
 import { LocalStorageSettings } from "types/localStorageSettings";
 import depotToExp from "util/fns/depot/depotToExp";
 import { PlannerGoal } from "types/goal";
+import GoalData from "types/goalData";
+import { debounce } from "lodash";
 
 interface Props {
   goals: PlannerGoal[];
+  goalData: GoalData[];
   depot: Record<string, DepotItem>;
   putDepot: (depotItem: DepotItem[]) => void;
   resetDepot: () => void;
+  depotIsUnsaved: boolean;
+  refreshDepotDebounce: () => void;
   settings: LocalStorageSettings;
   setSettings: (settings: LocalStorageSettings | ((settings: LocalStorageSettings) => LocalStorageSettings)) => void;
 }
 
 const EXP = ["2001", "2002", "2003", "2004"];
 const MaterialsNeeded = React.memo((props: Props) => {
-  const { goals, depot, putDepot, resetDepot, settings, setSettings } = props;
-
-  const materialsNeeded: Record<string, number> = {};
+  const { goals, goalData, depot, putDepot, resetDepot, settings, setSettings, depotIsUnsaved, refreshDepotDebounce } = props;
 
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [popoverItemId, setPopoverItemId] = useState<string | null>(null);
@@ -63,25 +66,142 @@ const MaterialsNeeded = React.memo((props: Props) => {
     setPopoverOpen(false);
   }, []);
 
+  //### MaterialsNeeded element updaded logic ###
+  //0. Planner re-renders each action: <=> savedStates + useCallbacks to prevent excess.
+  //1. useEffect to calculate page in normal state from changes in depot, goals, ops.
+  //  1.1 and not calculcate page when depot isnt fully synced.
+  //2. ItemNeeded-s triggers handleValuesChange onChange, onCraftOne props
+  //3. handleValuesChange puts changes in rawValues, and triggers debounce 500ms
+  //  3.1 rawValues (if exist) are used in place of depot for page logic.
+  //  3.2 debouncedOnChange() > onChange (ref.current)
+  //  3.3 refresh depot debounce timer in useDepot.
+  //4. 500ms later debouncedOnChange triggers:
+  //  4.1 putDepot(rawValues) to trigger start of depot change in useDepot
+  //  4.2 calculateMaterialsNeeded(), recalc page logic from rawValues => savedStates.
+  //5. after useDepot finishes syncing - useEffect() <= from !depotIsUnsaved && depot props
+  //  5.1 rawValues are reset to prioritise depot values
+  //  5.3 calculateMaterialsNeeded recalc page logic from depot => savedStates
+
+  //state to keep & show  raw changes of ItemNeeded
+  const [ rawValues, setRawValues ] = useState({} as Record<string, DepotItem>);
+  //states to keep data beetwen renders
+  const [ savedStates, setSavedStates ] = useState({
+    materialsNeeded: {} as Record<string, number>,
+    craftableItems: {} as Record<string, boolean>,
+    sortedMaterialsNeeded: [] as [string, number][],
+    ingredientToCraftedItemsMapping: {} as Record<string, string[]>,
+    expOwned: 0,
+  });
+
+  //page logic into useCallback function to recalc from changes, not all renders
+  const calculateMaterialsNeeded = useCallback(
+    (_rawValues?: Record<string, DepotItem>) => {
+
+      const materialsNeeded: Record<string, number> = {};
+      // 1. populate the ingredients required for each goal
+      goals.flatMap(getGoalIngredients).forEach((ingredient: Ingredient) => {
+        materialsNeeded[ingredient.id] = (materialsNeeded[ingredient.id] ?? 0) + ingredient.quantity;
+      });
+      if (materialsNeeded.EXP) {
+        EXP.forEach((exp) => {
+          materialsNeeded[exp] = 0;
+        });
+      }
+
+      // 3. calculate what ingredients can be fulfilled by crafting
+      const _depot = { ...depot, ..._rawValues }; // need to hypothetically deduct from stock
+      const { craftableItems, ingredientToCraftedItemsMapping } = canCompleteByCrafting(
+        materialsNeeded,
+        _depot,
+        settings.depotSettings.crafting,
+        settings.depotSettings.ignoreLmdInCrafting
+      );
+
+      const expOwned = depotToExp(depot);
+
+      const allItems: [string, number][] = Object.values(itemsJson).map((item) => [item.id, materialsNeeded[item.id] ?? 0]);
+      //not use RawValues in sort to not jump around while editing.
+      const sortedMaterialsNeeded = (
+        settings.depotSettings.showInactiveMaterials ? allItems : Object.entries(materialsNeeded)
+      ).sort(([itemIdA, neededA], [itemIdB, neededB]) => {
+        const itemA = itemsJson[itemIdA as keyof typeof itemsJson];
+        const itemB = itemsJson[itemIdB as keyof typeof itemsJson];
+
+        if (!itemA) console.log(itemIdA);
+        const compareBySortId = itemA.sortId - itemB.sortId;
+        if (settings.depotSettings.sortCompletedToBottom) {
+          return (
+            (neededA && neededA <= depot[itemIdA]?.stock ? 1 : 0) - (neededB && neededB <= depot[itemIdB]?.stock ? 1 : 0) ||
+            (craftableItems[itemIdA] ? 1 : 0) - (craftableItems[itemIdB] ? 1 : 0) ||
+            compareBySortId
+          );
+        }
+        return compareBySortId;
+      });
+
+      setSavedStates({
+        materialsNeeded,
+        craftableItems,
+        sortedMaterialsNeeded,
+        ingredientToCraftedItemsMapping,
+        expOwned,
+      });
+
+    }, [goals, depot, settings]
+  );
+
+  //useEffect recals on each render
+  //restrict global recalc when input happens: debouncedRecacl is used
+  useEffect(() => {
+    //reset rawValues, and recalc when depot has current data/synced
+    if (!depotIsUnsaved) {
+      setRawValues({});
+      calculateMaterialsNeeded();
+    }
+  }, [depotIsUnsaved,
+      calculateMaterialsNeeded]);
+
+  //function uses states, and updates on each render
+  const onChange = () => {
+    calculateMaterialsNeeded(rawValues);
+    if (Object.keys(rawValues).length !== 0)
+      putDepot(Object.values(rawValues));
+  }
+  //init ref with onChange
+  const ref = useRef(onChange);
+
+  //update ref on rawValues changes to see latest.
+  useEffect(() => {
+    ref.current = onChange;
+  }, [rawValues]);
+
+  //creating debounced callback only once - on mount
+  const debouncedOnChange = useMemo(() => {
+    const func = () => {
+      ref.current?.(); //with access to latest onChange version from ref
+    };
+    return debounce(func, 500);
+  }, []); 
+
+  const handleValuesChange = useCallback(
+    (items: DepotItem[]) => {
+      const _rawValues = { ...rawValues };
+      items.forEach((item) => {
+        _rawValues[item.material_id] = { ...item };
+      });
+      setRawValues(_rawValues);
+      //syncronize depot debounce timer
+      refreshDepotDebounce();
+      debouncedOnChange();
+    }, [debouncedOnChange,rawValues,refreshDepotDebounce]
+  );
+
   const handleChange = useCallback(
     (itemId: string, newQuantity: number) => {
       const data: DepotItem = { material_id: itemId, stock: newQuantity };
-      putDepot([data]);
+      handleValuesChange([data]);
     },
-    [putDepot]
-  );  
-  const handleDecrement = useCallback(
-    (itemId: string) => {
-      const item = depot[itemId];
-      if (item) {
-        const data: DepotItem = {
-          material_id: itemId,
-          stock: Math.max(item.stock - 1, 0),
-        };
-        putDepot([data]);
-      }
-    },
-    [depot, putDepot]
+    [handleValuesChange]
   );
 
   const canCraftOne = useCallback(
@@ -94,8 +214,8 @@ const MaterialsNeeded = React.memo((props: Props) => {
       ingredients.forEach((ingr) => {
         //settings: ignore LMD
         if (settings.depotSettings.ignoreLmdInCrafting && ingr.id === "4001") return;
-        const ingrData: DepotItem = { ...depot[ingr.id] };
-        const remaining = (depot[ingr.id]?.stock ?? 0) - ingr.quantity;
+        const ingrData: DepotItem = { ...rawValues[ingr.id] ?? depot[ingr.id] };
+        const remaining = (rawValues[ingr.id]?.stock ?? depot[ingr.id]?.stock ?? 0) - ingr.quantity;
         if (remaining < 0) canCraft = false;
         ingrData.stock = remaining;
         updatedDatas.push(ingrData);
@@ -103,7 +223,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
       return canCraft;
     },
-    [depot,settings.depotSettings.ignoreLmdInCrafting]
+    [depot,rawValues,settings.depotSettings.ignoreLmdInCrafting]
   );
 
   const handleCraftOne = useCallback(
@@ -113,17 +233,17 @@ const MaterialsNeeded = React.memo((props: Props) => {
       const updatedDatas: DepotItem[] = [];
 
       ingredients.forEach((ingr) => {
-        const ingrData: DepotItem = { ...depot[ingr.id] };
-        ingrData.stock = Math.max((depot[ingr.id]?.stock ?? 0) - ingr.quantity, 0);
+        const ingrData: DepotItem = { ...rawValues[ingr.id] ?? depot[ingr.id] };
+        ingrData.stock = Math.max((rawValues[ingr.id]?.stock ?? depot[ingr.id]?.stock ?? 0) - ingr.quantity, 0);
         updatedDatas.push(ingrData);
       });
-      const craftedData: DepotItem = { ...depot[itemId] };
-      craftedData.stock = (depot[itemId]?.stock ?? 0) + (itemYield ?? 1);
+      const craftedData: DepotItem = { ...rawValues[itemId] ?? depot[itemId] };
+      craftedData.stock = (rawValues[itemId]?.stock ?? depot[itemId]?.stock ?? 0) + (itemYield ?? 1);
       updatedDatas.push(craftedData);
       
-      putDepot(updatedDatas);
+      handleValuesChange(updatedDatas);
     },
-    [depot, putDepot]
+    [depot, rawValues, handleValuesChange]
   );
 
   const handleCraftingToggle = useCallback(
@@ -156,13 +276,16 @@ const MaterialsNeeded = React.memo((props: Props) => {
       // 0 = reset, 1 = only craftable, 2 = full crafting 
       const nextCraftState = craftToggle < 2 ? craftToggle + 1 : 0;
 
+      //depot with current changes
+      const _depot = {...depot,...rawValues};
+
       switch (nextCraftState) {
         case 1:
           //calculate craftable items for all active goals
           const { craftableItems: _crafting } = canCompleteByCrafting(
-            materialsNeeded,
-            depot,
-            Object.keys(depot),
+            savedStates.materialsNeeded,
+            _depot,
+            Object.keys(_depot),
             settings.depotSettings.ignoreLmdInCrafting
           );
           crafting.push(
@@ -171,9 +294,9 @@ const MaterialsNeeded = React.memo((props: Props) => {
           break;
         case 2: //all depot to crafting
           crafting.push(
-            ...Object.keys(depot).filter(
+            ...Object.keys(_depot).filter(
               (itemID) => (itemsJson[itemID as keyof typeof itemsJson] as Item)?.ingredients
-              //dont need to exclude chips with fixed craft loop
+              //uncomment to exclude chips.
               //&& (itemsJson[itemID as keyof typeof itemsJson] as Item)?.name.includes(" Chip"))
             )
           );
@@ -186,7 +309,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
         depotSettings,
       }));
     },
-    [depot, materialsNeeded, settings, craftToggle, setSettings]
+    [depot,rawValues,savedStates.materialsNeeded, settings, craftToggle, setSettings]
   );
 
   const handleResetCrafting = useCallback(() => {
@@ -247,53 +370,26 @@ const MaterialsNeeded = React.memo((props: Props) => {
     setAnchorEl(null);
   }, []);
 
-  // 1. populate the ingredients required for each goal
-  goals.flatMap(getGoalIngredients).forEach((ingredient: Ingredient) => {
-    materialsNeeded[ingredient.id] = (materialsNeeded[ingredient.id] ?? 0) + ingredient.quantity;
-  });
-  if (materialsNeeded.EXP) {
-    EXP.forEach((exp) => {
-      materialsNeeded[exp] = 0;
-    });
-  }
-
-  // 3. calculate what ingredients can be fulfilled by crafting
-  const _depot = { ...depot }; // need to hypothetically deduct from stock
-  const { craftableItems, ingredientToCraftedItemsMapping } = canCompleteByCrafting(
-    materialsNeeded,
-    _depot,
-    settings.depotSettings.crafting,
-    settings.depotSettings.ignoreLmdInCrafting
-  );
-
-  const allItems: [string, number][] = Object.values(itemsJson).map((item) => [item.id, materialsNeeded[item.id] ?? 0]);
-
-  const sortedMaterialsNeeded = (
-    settings.depotSettings.showInactiveMaterials ? allItems : Object.entries(materialsNeeded)
-  ).sort(([itemIdA, neededA], [itemIdB, neededB]) => {
-    const itemA = itemsJson[itemIdA as keyof typeof itemsJson];
-    const itemB = itemsJson[itemIdB as keyof typeof itemsJson];
-
-    if (!itemA) console.log(itemIdA);
-    const compareBySortId = itemA.sortId - itemB.sortId;
-    if (settings.depotSettings.sortCompletedToBottom) {
-      return (
-        (neededA && neededA <= depot[itemIdA]?.stock ? 1 : 0) - (neededB && neededB <= depot[itemIdB]?.stock ? 1 : 0) ||
-        (craftableItems[itemIdA] ? 1 : 0) - (craftableItems[itemIdB] ? 1 : 0) ||
-        compareBySortId
-      );
-    }
-    return compareBySortId;
-  });
-
-  const expOwned = depotToExp(depot);
-
   return (
     <>
       <Board
-        title="Depot"
+        title={
+          !depotIsUnsaved ?
+          <Box display="flex" alignItems="center">
+            <Typography variant="h2">Depot</Typography>
+            </Box>
+            : (<Box display="flex"
+              alignItems="center"
+              sx={{ flexFlow: "row nowrap", gap: { xs: 1, md: 3 } }}>
+              <Typography variant="h2">Depot</Typography>
+              <Tooltip title="on 5s idle: ↑ upload changes to DB ↑">
+                <Typography variant="h3"
+                  sx={{ color: "#FFD440" }}>unsaved</Typography>
+              </Tooltip>
+            </Box>)
+        }
         TitleAction={
-          <Box display="flex" gap={2}>
+          <Box display="flex" gap={1}>
             <Tooltip arrow title={craftToggleTooltips[craftToggle]}>
               <Button
                 onClick={handleCraftingToggleAll}
@@ -307,7 +403,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
                     <RadioButtonUncheckedIcon sx={{ width: "30px", height: "30px" }} />
                   )}
                 color="primary">
-                Crafting States
+                Crafting
               </Button>
             </Tooltip>
             <IconButton
@@ -399,14 +495,14 @@ const MaterialsNeeded = React.memo((props: Props) => {
             },
           }}
         >
-          {sortedMaterialsNeeded.map(([itemId, needed]) => (
+          {savedStates.sortedMaterialsNeeded.map(([itemId, needed]) => (
             <ItemNeeded
               key={itemId}
               component="li"
               itemId={itemId}
-              owned={itemId === "EXP" ? expOwned : depot[itemId]?.stock ?? 0}
+              owned={itemId === "EXP" ? savedStates.expOwned : rawValues[itemId]?.stock ?? depot[itemId]?.stock ?? 0}
               quantity={needed}
-              canCompleteByCrafting={craftableItems[itemId]}
+              canCompleteByCrafting={savedStates.craftableItems[itemId]}
               canCraftOne={canCraftOne(itemId)}
               isCrafting={settings.depotSettings.crafting.includes(itemId) ?? false}
               onChange={handleChange}
@@ -422,7 +518,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
         </Box>
         <ItemInfoPopover
           itemId={popoverItemId}
-          ingredientToCraftedItemsMapping={ingredientToCraftedItemsMapping}
+          ingredientToCraftedItemsMapping={savedStates.ingredientToCraftedItemsMapping}
           open={popoverOpen}
           onClose={handlePopoverClose}
         />
@@ -434,6 +530,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
         onClose={() => {
           setExportImportOpen(false);
         }}
+        goals={goalData}
       />
     </>
   );
