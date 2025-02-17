@@ -48,6 +48,7 @@ export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
       );
       if (!opData) return false;
       if (
+        filters.search &&
         filters.search
           .split(",")
           .map((s) => s.trim())
