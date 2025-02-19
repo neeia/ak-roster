@@ -3,9 +3,10 @@ import { Box, BoxProps, Typography } from "@mui/material";
 import { ModuleData, OpInfo } from "types/operators/operator";
 import { Favorite } from "@mui/icons-material";
 import { rarityColors } from "styles/rarityColors";
-import { MAX_LEVEL_BY_RARITY } from "util/changeOperator";
+import { MAX_PROMOTION_BY_RARITY, MAX_LEVEL_BY_RARITY, getMaxPotentialById } from "util/changeOperator";
 import Image from "next/image";
 import getAvatar from "util/fns/getAvatar";
+
 
 function getModUrl(mod: ModuleData) {
   return `/img/equip/${mod.typeName.toLowerCase()}.png`;
@@ -25,6 +26,19 @@ const OperatorBlock = (props: Props) => {
 
   const iconSizes = "(max-width: 768px) 16px, 24px";
 
+  function isOperatorMaxed(op: OpInfo) {
+    if (op.elite !== MAX_PROMOTION_BY_RARITY[op.rarity]) return false;
+    if (op.level !== MAX_LEVEL_BY_RARITY[op.rarity][2]) return false;
+    if (MAX_PROMOTION_BY_RARITY[op.rarity] === 2) {
+      if (!(op.masteries.every(m => m === 3))) return false;
+      if (!(op.moduleData?.every(({ moduleId }) => op.modules[moduleId] === 3) ?? false)) return false;
+    }
+    if (op.potential !== getMaxPotentialById(op.op_id)) return false;
+
+    return true;
+  }
+  const maxed = isOperatorMaxed(op);
+
   return (
     <Box
       sx={{
@@ -32,7 +46,7 @@ const OperatorBlock = (props: Props) => {
         display: "flex",
         flexDirection: "column",
         backgroundColor: "background.light",
-        boxShadow: 1,
+        boxShadow: maxed ? "0px 0px 10px yellow" : 1,
         padding: { xs: "4px 8px 4px 6px", sm: "6px 10px 8px 10px" },
         margin: { xs: "2px 4px 4px 10px", sm: "4px 12px 12px 12px" },
         borderRadius: "4px",
