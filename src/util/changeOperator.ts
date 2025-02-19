@@ -77,8 +77,6 @@ export const getMaxPotentialById = (opId: string) => {
     case "char_4019_ncdeer":
     case "char_4067_lolxh":
       return 1;
-    case "char_230_savage":
-      return 5;
     default:
       return 6;
   }

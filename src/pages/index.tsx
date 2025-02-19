@@ -65,6 +65,13 @@ const cons = [
     dark: false,
     color: "#FFCD4C",
   },
+  {
+    name: "DipstickPinez",
+    login: "DipstickPinez",
+    avatar: "dipstickpinez.png",
+    dark: false,
+    color: "#5ed6b4",
+  },
 ];
 
 const authFrame: SxProps = {
