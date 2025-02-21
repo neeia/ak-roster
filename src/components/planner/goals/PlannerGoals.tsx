@@ -159,14 +159,15 @@ const PlannerGoals = (props: Props) => {
              */
 
             const removedElite = plannerGoal.eliteLevel; // can either be 1 or 2
-            const elite_from = _goal.elite_from ?? 0;
-            const elite_to = _goal.elite_to ?? 0;
             if (removedElite === 2 && goal.elite_from === 0) {
               _goal.elite_to = 1;
             } else {
               _goal.elite_from = null;
               _goal.elite_to = null;
             }
+            //delete should be backwards: get values after elite goal removal
+            const elite_from = _goal.elite_from ?? 0;
+            const elite_to = _goal.elite_to ?? 0;
 
             // update level goal if it exists
             if (goal.level_from && goal.level_to) {
@@ -213,8 +214,8 @@ const PlannerGoals = (props: Props) => {
               // this means there are no other level or promotion goals. great, we can remove level / elite entirely
               _goal.elite_from = null;
               _goal.elite_to = null;
-              _goal.elite_from = null;
-              _goal.elite_to = null;
+              _goal.level_from = null;
+              _goal.level_to = null;
             } else if (allPlannerGoals.filter((x) => x.category === OperatorGoalCategory.Level).length === 1) {
               /* check for possible pure elite goal
                * this can only be elite A lvl 1 -> elite A + 1 lvl 1
@@ -228,7 +229,9 @@ const PlannerGoals = (props: Props) => {
               // remaining goal must be complex - a mix of elite and level goals
 
               // sanity check - elite_from should never be equal to elite_to at this point, but just in case
-              if (_goal.elite_to === plannerGoal.eliteLevel) {
+              // delete should be backwards: 
+              // del of plannerGoal of Lowest elite -> deletes It, and every higher goals (or complete it alone)
+              if (_goal.elite_from === plannerGoal.eliteLevel) {
                 _goal.elite_from = null;
                 _goal.elite_to = null;
                 _goal.level_from = null;
