@@ -18,14 +18,15 @@ const GoalCardButton = styled(Button)({
 
 interface Props {
   goal: PlannerGoal;
-  onGoalDeleted: (goal: PlannerGoal) => void;
-  onGoalCompleted: (goal: PlannerGoal) => void;
+  groupName: string;
+  onGoalDeleted: (goal: PlannerGoal, groupName: string) => void;
+  onGoalCompleted: (goal: PlannerGoal, groupName: string) => void;
   completable?: boolean;
   completableByCrafting?: boolean;
 }
 
 const PlannerGoalCard = memo((props: Props) => {
-  const { goal, onGoalDeleted, onGoalCompleted, completable = false, completableByCrafting = false } = props;
+  const { goal, groupName, onGoalDeleted, onGoalCompleted, completable = false, completableByCrafting = false } = props;
   const theme = useTheme();
   const isXSScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -153,7 +154,7 @@ const PlannerGoalCard = memo((props: Props) => {
           placement="left">
           <span><GoalCardButton
             aria-label={`Complete goal: ${goalLabel}`}
-            onClick={() => onGoalCompleted(goal)}
+            onClick={() => onGoalCompleted(goal, groupName)}
             sx={{
               color: "text.secondary",
               "&:hover": {
@@ -170,7 +171,7 @@ const PlannerGoalCard = memo((props: Props) => {
         <Tooltip arrow describeChild title="Delete Goal" placement="left">
           <GoalCardButton
             aria-label={`Delete goal: ${goalLabel}`}
-            onClick={() => onGoalDeleted(goal)}
+            onClick={() => onGoalDeleted(goal, groupName)}
             sx={{
               color: "text.secondary",
               "&:hover": {

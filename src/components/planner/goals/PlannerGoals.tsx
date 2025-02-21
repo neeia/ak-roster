@@ -128,13 +128,13 @@ const PlannerGoals = (props: Props) => {
   };
 
   const onPlannerGoalCardGoalDeleted = useCallback(
-    (plannerGoal: PlannerGoal) => {
+    (plannerGoal: PlannerGoal, groupName: string) => {
       const opId = plannerGoal.operatorId;
       const opData = operatorJson[opId];
 
       if (!goals) return;
 
-      const goal = goals.find((x) => x.op_id === opId);
+      const goal = goals.find((x) => x.op_id === opId && x.group_name === groupName);
       if (!goal) return;
 
       const _goal: GoalData = { ...goal };
@@ -496,9 +496,9 @@ const PlannerGoals = (props: Props) => {
   } , [settings.depotSettings.crafting]);
 
   //wrapper for completePlannerGoal to compete one goal
-  const onPlannerGoalCardGoalCompleted = (plannerGoal: PlannerGoal) => {
+  const onPlannerGoalCardGoalCompleted = (plannerGoal: PlannerGoal, groupName: string) => {
     const opData = roster[plannerGoal.operatorId] ?? defaultOperatorObject(plannerGoal.operatorId, true);
-    const goalData = goals!.find((x) => x.op_id === opData.op_id)!;
+    const goalData = goals!.find((x) => x.op_id === opData.op_id && x.group_name === groupName)!;
 
     const { updatedGoal, updatedOperator, updatedDepot } = completePlannerGoal(goalData, opData, depot, plannerGoal);
     //update storages through hooks
@@ -607,6 +607,7 @@ const PlannerGoals = (props: Props) => {
                       <PlannerGoalCard
                         key={index}
                         goal={plannerGoal}
+                        groupName={groupName}
                         onGoalDeleted={onPlannerGoalCardGoalDeleted}
                         onGoalCompleted={onPlannerGoalCardGoalCompleted}
                         completable={completable}
