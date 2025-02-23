@@ -237,7 +237,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
         ingrData.stock = Math.max((rawValues[ingr.id]?.stock ?? depot[ingr.id]?.stock ?? 0) - ingr.quantity, 0);
         updatedDatas.push(ingrData);
       });
-      const craftedData: DepotItem = { ...rawValues[itemId] ?? depot[itemId] };
+      const craftedData: DepotItem = { ...rawValues[itemId] ?? depot[itemId] ?? {material_id: itemId, stock: 0} };
       craftedData.stock = (rawValues[itemId]?.stock ?? depot[itemId]?.stock ?? 0) + (itemYield ?? 1);
       updatedDatas.push(craftedData);
       
