@@ -7,7 +7,6 @@ import { MAX_PROMOTION_BY_RARITY, MAX_LEVEL_BY_RARITY, getMaxPotentialById } fro
 import Image from "next/image";
 import getAvatar from "util/fns/getAvatar";
 
-
 function getModUrl(mod: ModuleData) {
   return `/img/equip/${mod.typeName.toLowerCase()}.png`;
 }
@@ -29,8 +28,9 @@ const OperatorBlock = (props: Props) => {
   function isOperatorMaxed(op: OpInfo) {
     if (op.elite !== MAX_PROMOTION_BY_RARITY[op.rarity]) return false;
     if (op.level !== MAX_LEVEL_BY_RARITY[op.rarity][2]) return false;
+    if (op.rarity > 2 && op.skill_level !== 7) return false;
     if (MAX_PROMOTION_BY_RARITY[op.rarity] === 2) {
-      if (!(op.masteries.every(m => m === 3))) return false;
+      if (!op.masteries.every((m) => m === 3)) return false;
       if (!(op.moduleData?.every(({ moduleId }) => op.modules[moduleId] === 3) ?? false)) return false;
     }
     if (op.potential !== getMaxPotentialById(op.op_id)) return false;
