@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { Search } from "@mui/icons-material";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import PlannerGoalAdd from "./PlannerGoalAdd";
 import operatorJson from "data/operators";
 import GoalGroup from "./GoalGroup";
@@ -63,6 +63,7 @@ interface Props extends GoalFilterHook {
   removeAllGoalsFromOperator: (opId: string, groupName: string) => void;
   changeLocalGoalGroup: (oldGroupName: string, newGroupName: string) => void;
   settings: LocalStorageSettings;
+  setSettings: (settings: LocalStorageSettings | ((settings: LocalStorageSettings) => LocalStorageSettings)) => void;
 }
 
 const PlannerGoals = (props: Props) => {
@@ -76,6 +77,7 @@ const PlannerGoals = (props: Props) => {
     removeAllGoalsFromOperator,
     changeLocalGoalGroup,
     settings,
+    setSettings,
     ...filter
   } = props;
   const { groups, putGroups, removeGroup, renameGroup } = useGoalGroups();
@@ -545,8 +547,101 @@ const PlannerGoals = (props: Props) => {
   [depot, goals, roster, completePlannerGoal, setDepot, onChange, removeAllGoalsFromOperator] 
 );
 
+  const inactiveOpsInGroups = useMemo(() => (
+    { ...settings.plannerSettings.inactiveOpsInGroups ?? {} }
+  ), [settings.plannerSettings.inactiveOpsInGroups]);
+  const groupedGoals = useMemo(() => _.groupBy(goals, (goal) => goal.group_name),[goals]);;
+
+  const handleOpSelect = useCallback((opId: string, groupName: string) => {
+    const _opsList = new Set(inactiveOpsInGroups[groupName] ?? []);
+
+    if (_opsList.has(opId)) {
+      _opsList.delete(opId);
+    } else {
+      _opsList.add(opId);
+    }
+
+    if (_opsList.size === 0) {
+      delete inactiveOpsInGroups[groupName];
+    } else {
+      inactiveOpsInGroups[groupName] = Array.from(_opsList);
+    }
+
+    setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups } }));
+
+  }, [inactiveOpsInGroups, setSettings]);
+
+  const resetAllOpsInactivity = useCallback(() => {
+    setAnchorEl(null);
+    setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups: {} } }));
+  }, [setSettings]
+  )
+  
+  const setAllOpsInactivity = useCallback(() => {
+    setAnchorEl(null);
+  
+    const allOpsInAllGroup = Object.keys(groupedGoals).reduce((acc, groupName) => {
+      const opsInGroup = groupedGoals[groupName]?.map(goal => goal.op_id) ?? [];
+      if (opsInGroup.length > 0) {
+        acc[groupName] = opsInGroup;
+      }
+      return acc;
+    }, {} as Record<string, string[]>);
+  
+    setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups: allOpsInAllGroup } }));
+  }, [groupedGoals, setSettings]);
+
+  const toggleGroupOpsInactivity = useCallback((groupName: string) => {
+    const opsSelection = inactiveOpsInGroups[groupName] ?? [];
+    const allOpsInGroup = groupedGoals[groupName]?.map(goal => goal.op_id) ?? [];
+
+    const allEnabled = allOpsInGroup.every(opId => !opsSelection.includes(opId));
+
+    const newSelectionState = allEnabled ? true : false;
+
+    const newOpsSelection = newSelectionState
+      ? opsSelection.concat(allOpsInGroup.filter(opId => !opsSelection.includes(opId)))
+      : [];
+
+    if (newOpsSelection.length === 0) {
+      delete inactiveOpsInGroups[groupName];
+    } else {
+      inactiveOpsInGroups[groupName] = newOpsSelection;
+    }
+
+    setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups } }));
+  }, [groupedGoals, inactiveOpsInGroups, setSettings]
+  )
+
+  const getGroupCheckboxState = useCallback((groupName: string) => {
+    const opsSelection = inactiveOpsInGroups[groupName] ?? [];
+    const allOpsInGroup = groupedGoals[groupName]?.map(goal => goal.op_id) ?? [];
+
+    const allEnabled = opsSelection.length === 0;
+    const someDisabled = opsSelection.length > 0;
+    const emptyGroup = allOpsInGroup.length === 0;
+    const allDisabled = someDisabled && opsSelection.length === allOpsInGroup.length
+
+    return {
+      checked: allEnabled && !emptyGroup,
+      indeterminate: !allDisabled && someDisabled,
+      disabled: emptyGroup, 
+    }
+
+  }, [groupedGoals, inactiveOpsInGroups]
+  )
+
+  const renameInactivityGroup = useCallback((groupName: string, newName: string) => {
+    const opsSelection = inactiveOpsInGroups[groupName] ?? [];
+    if (opsSelection.length === 0) return;
+    delete inactiveOpsInGroups[groupName];
+
+    inactiveOpsInGroups[newName] = opsSelection;
+    setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups } }));
+  },[inactiveOpsInGroups,setSettings]
+  )
+
   const createGoalGroups = () => {
-    const groupedGoals = _.groupBy(goals, (goal) => goal.group_name);
     //const groupedGoals = Object.groupBy(goals!, (goal) => goal.group_name);
     return groups!.map((groupName, index) => (
       <GoalGroup
@@ -557,6 +652,10 @@ const PlannerGoals = (props: Props) => {
         removeGroup={removeGroup}
         defaultExpanded={index == 0}
         onRename={onGroupRename}
+        inactiveOps={inactiveOpsInGroups[groupName] ?? []}
+        onOpSelect={handleOpSelect}
+        onGroupSelect={toggleGroupOpsInactivity}
+        getCheckboxState={getGroupCheckboxState}
       >
         {groupedGoals[groupName]
           ?.sort((a, b) => a.sort_order - b.sort_order)
@@ -564,7 +663,7 @@ const PlannerGoals = (props: Props) => {
             const plannerGoals = getPlannerGoals(operatorGoal, {
               ...(roster[operatorGoal.op_id] ?? defaultOperatorObject(operatorGoal.op_id, true)),
               ...operatorJson[operatorGoal.op_id],
-            }).filter((g) => filter.filterFunction(g, depot, groupName));
+            }).filter((g) => filter.filterFunction(g, depot, groupName, !(inactiveOpsInGroups[groupName]?.includes(g.operatorId) ?? false)));
             const substantial = plannerGoals.length > 0;
             const op = roster[operatorGoal.op_id] ?? defaultOperatorObject(operatorGoal.op_id, true);
             return (
@@ -577,6 +676,7 @@ const PlannerGoals = (props: Props) => {
                   onGoalMove={onGoalMove}
                   removeAllGoalsFromOperator={removeAllGoalsFromOperator}
                   completeAllGoalsFromOperator={onPlannerGoalGroupCompleteAllGoals}
+                  onOpSelect={handleOpSelect}
                 >
                   {plannerGoals.map((plannerGoal, index) => {
                     let completable = false;
@@ -681,10 +781,17 @@ const PlannerGoals = (props: Props) => {
               >
                 <ListItemText inset>Reorder groups and goals</ListItemText>
               </MenuItem>
+              <MenuItem onClick={resetAllOpsInactivity}>
+              <ListItemText inset>Enable all ops</ListItemText>
+              </MenuItem>
+              <MenuItem onClick={setAllOpsInactivity}>
+              <ListItemText inset>Disable all ops</ListItemText>
+              </MenuItem>
               <MenuItem
                 onClick={() => {
                   if (goals && goals.length > 0) {
                     removeAllGoals();
+                    resetAllOpsInactivity();
                   }
                   setAnchorEl(null);
                 }}
@@ -783,6 +890,7 @@ const PlannerGoals = (props: Props) => {
           if (groupToRename) {
             renameGroup(groupToRename, newGroupName);
             changeLocalGoalGroup(groupToRename, newGroupName);
+            renameInactivityGroup(groupToRename, newGroupName);
           }
         }}
         goalGroups={groups}
