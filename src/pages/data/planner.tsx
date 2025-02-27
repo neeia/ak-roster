@@ -54,10 +54,11 @@ const Goals: NextPage = () => {
   const [value, setValue] = useState(1);
   const [settings, setSettings] = useSettings();
   const filters = useGoalFilter();
+  const inactiveOpsInGroups = {...settings.plannerSettings.inactiveOpsInGroups}
 
   const plannerGoals = goals
     .flatMap((goal) => getPlannerGoals(goal).map((g) => ({ goal: g, group: goal.group_name })))
-    .filter(({ goal, group }) => filters.filterFunction(goal, depot, group))
+    .filter(({ goal, group }) => filters.filterFunction(goal, depot, group, !(inactiveOpsInGroups[group]?.includes(goal.operatorId) ?? false)))
     .map(({ goal }) => goal);
 
   const handleChange = (_: any, newValue: number) => {
@@ -106,6 +107,7 @@ const Goals: NextPage = () => {
             removeAllGoalsFromOperator={removeAllGoalsFromOperator}
             changeLocalGoalGroup={changeLocalGoalGroup}
             settings={settings}
+            setSettings={setSettings}
             {...filters}
           />
         </TabPanel>

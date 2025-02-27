@@ -6,12 +6,18 @@ export interface LocalStorageSettings {
   importSettings: ImportSettings
 }
 
+export interface InactiveOpsInGroups {
+  [groupName: string]: string[]; 
+}
+
 export interface PlannerSettings {
   allowAllGoals: boolean;
+  inactiveOpsInGroups: InactiveOpsInGroups;
 }
 
 const plannerSettings: PlannerSettings = {
   allowAllGoals: false,
+  inactiveOpsInGroups: {},
 };
 
 export interface DepotSettings {

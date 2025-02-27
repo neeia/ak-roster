@@ -26,10 +26,11 @@ interface Props {
   removeAllGoalsFromOperator: (opId: string, groupName: string) => void;
   completeAllGoalsFromOperator: (opId: string, groupName: string) => void;
   children?: React.ReactNode;
+  onOpSelect: (opId: string, groupName: string) => void;
 }
 
 export const OperatorGoals = memo((props: Props) => {
-  const { operatorGoal, onGoalEdit, onGoalMove, removeAllGoalsFromOperator, completeAllGoalsFromOperator, children } = props;
+  const { operatorGoal, onGoalEdit, onGoalMove, removeAllGoalsFromOperator, completeAllGoalsFromOperator, children, onOpSelect} = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -125,7 +126,11 @@ export const OperatorGoals = memo((props: Props) => {
               width={64}
               height={64}
             >
-              <Image src={imgUrl} width={64} height={64} alt="" />
+              <Image src={imgUrl} width={64} height={64} alt="" 
+              onClick={(e: React.MouseEvent<HTMLImageElement>) => { 
+                e.stopPropagation();  
+                onOpSelect(operatorGoal.op_id, operatorGoal.group_name)
+              }} />
             </Box>
             {expanded ? (
               <RemoveCircleIcon
