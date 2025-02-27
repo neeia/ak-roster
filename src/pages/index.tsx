@@ -72,6 +72,13 @@ const cons = [
     dark: false,
     color: "#5ed6b4",
   },
+  {
+    name: "Voiddp",
+    login: "Voiddp",
+    avatar: "voiddp.png",
+    dark: true,
+    color: "rgb(51, 53, 50)",
+  },
 ];
 
 const authFrame: SxProps = {
