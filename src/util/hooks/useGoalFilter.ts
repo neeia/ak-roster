@@ -12,7 +12,7 @@ export interface GoalFilterHook {
   readonly filters: GoalFilter;
   readonly setFilters: Dispatch<SetStateAction<GoalFilter>>;
   readonly clearFilters: () => void;
-  readonly filterFunction: (goal: PlannerGoal, depot: Record<string, DepotItem>, group: string) => boolean;
+  readonly filterFunction: (goal: PlannerGoal, depot: Record<string, DepotItem>, group: string, opIsEnabled?: boolean) => boolean;
 }
 
 export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
@@ -35,7 +35,7 @@ export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
   }, [defaultFilter]);
 
   const filterFunction = useCallback(
-    (goal: PlannerGoal, depot: Record<string, DepotItem>, group: string) => {
+    (goal: PlannerGoal, depot: Record<string, DepotItem>, group: string, opIsEnabled?: boolean) => {
       const opData = operatorJson[goal.operatorId];
       const ingredients = getGoalIngredients(goal);
       const completableByCrafting = canCompleteByCrafting(
@@ -47,6 +47,7 @@ export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
         id === "EXP" ? depotToExp(depot) : depot[id]?.stock >= quantity
       );
       if (!opData) return false;
+      if (opIsEnabled === false) return false;
       if (
         filters.search &&
         filters.search

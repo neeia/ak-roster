@@ -4,6 +4,7 @@ import {
   AccordionSummary,
   Box,
   Button,
+  Checkbox,
   Collapse,
   Dialog,
   DialogActions,
@@ -29,10 +30,14 @@ interface Props {
   onRename: (groupName: string) => void;
   defaultExpanded: boolean;
   children?: React.ReactNode;
+  inactiveOps: string[];
+  onOpSelect: (opId: string, groupName: string) => void;
+  onGroupSelect: (groupName: string) => void;
+  getCheckboxState: (groupName: string) => {checked: boolean, indeterminate: boolean, disabled: boolean};
 }
 
 const GoalGroup = memo((props: Props) => {
-  const { operatorGoals, groupName, removeAllGoalsFromGroup, removeGroup, onRename, defaultExpanded, children } = props;
+  const { operatorGoals, groupName, removeAllGoalsFromGroup, removeGroup, onRename, defaultExpanded, children, inactiveOps, onOpSelect, onGroupSelect, getCheckboxState} = props;
 
   const [expanded, setExpanded] = useState<boolean>(defaultExpanded);
   const [deleteGroupGoalsOpen, setDeleteGroupGoalsOpen] = useState<boolean>(false);
@@ -144,6 +149,12 @@ const GoalGroup = memo((props: Props) => {
               <Typography textAlign="center" variant="h5" sx={{ flexGrow: "1" }}>
                 {groupName}
               </Typography>
+              <Checkbox
+                {...getCheckboxState(groupName)}
+                onClick={(e) => {
+                  if (!expanded) e.stopPropagation();
+                  onGroupSelect(groupName);
+                }} />
               {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </Box>
             {operatorGoals && (
@@ -164,6 +175,7 @@ const GoalGroup = memo((props: Props) => {
                     .sort((a, b) => a.sort_order - b.sort_order)
                     .map((operatorGoal) => {
                       const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
+                      const isEnabled = !(inactiveOps.includes(operatorGoal.op_id) ?? false);                      
                       return (
                         <Box
                           sx={{
@@ -171,10 +183,13 @@ const GoalGroup = memo((props: Props) => {
                               borderBottomLeftRadius: "50%",
                               borderTopLeftRadius: 8,
                               borderBottomRightRadius: 4,
-                              filter: "drop-shadow(-4px -2px 4px rgba(0,0,0,0.5))",
+                              filter: `drop-shadow(-4px -2px 4px ${isEnabled ? 'rgba(0,0,0,0.5)' : 'rgba(255, 255, 255, 0.8)'}) ${isEnabled ? 'grayscale(0)' : 'grayscale(1)'}`,
                               ml: -1.5,
                             },
                           }}
+                          onClick={(e: React.MouseEvent<HTMLImageElement>) => { 
+                            e.stopPropagation(); 
+                            onOpSelect(operatorGoal.op_id, groupName)}}
                           key={operatorGoal.op_id}
                         >
                           <Image src={imgUrl} width={48} height={48} alt="" />
