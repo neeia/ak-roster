@@ -70,6 +70,11 @@ export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
       )
         return false;
       if (filters.category.length && !filters.category.includes(goal.category)) return false;
+      
+      if (filters.materials.length > 0) {
+        return ingredients.some((ingr) => filters.materials.includes(ingr.id));
+      }
+
       return true;
     },
     [filters]
