@@ -1,9 +1,7 @@
-import CheckIcon from "@mui/icons-material/Check";
-import SettingsIcon from "@mui/icons-material/Settings";
 import CraftingIcon from "./CraftingIcon";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import { Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Button, Tooltip, Typography } from "@mui/material";
+import { Box, Divider, ListItemText, MenuItem, Button, Tooltip, Typography } from "@mui/material";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import itemsJson from "data/items.json";
@@ -21,6 +19,8 @@ import depotToExp from "util/fns/depot/depotToExp";
 import { PlannerGoal } from "types/goal";
 import GoalData from "types/goalData";
 import { debounce } from "lodash";
+import {SettingsMenu, SettingsMenuItem, SettingsButton} from "../SettingsMenu";
+import useMenu from "util/hooks/useMenu";
 
 interface Props {
   goals: PlannerGoal[];
@@ -40,22 +40,14 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [popoverItemId, setPopoverItemId] = useState<string | null>(null);
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-  const isSettingsMenuOpen = Boolean(anchorEl);
   const [exportImportOpen, setExportImportOpen] = useState<boolean>(false);
+
+  const {setAnchorEl, menuProps, menuButtonProps} = useMenu();
 
   const craftToggleTooltips = ["Toggle only craftable materials ON - use with Goals and Filters","Toggle all crafting states ON","Reset all crafting states"];
   const initialCraftToggle = 1;
   const [craftToggle, setCraftToggle] = useState(initialCraftToggle);
-
-  const handleSettingsButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(e.currentTarget);
-  }, []);
-
-  const handleSettingsMenuClose = useCallback(() => {
-    setAnchorEl(null);
-  }, []);
 
   const handleItemClick = useCallback((itemId: string) => {
     setPopoverItemId(itemId);
@@ -317,7 +309,8 @@ const MaterialsNeeded = React.memo((props: Props) => {
     depotSettings.crafting = [];
     setCraftToggle(0);
     setSettings((s) => ({ ...s, depotSettings }));
-  }, [settings, setSettings]);
+    setAnchorEl(null);
+  }, [settings, setSettings, setAnchorEl]);
 
   const handleSortToBottom = useCallback(() => {
     const depotSettings = { ...settings.depotSettings };
@@ -325,7 +318,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
     setSettings((s) => ({ ...s, depotSettings }));
     setAnchorEl(null);
-  }, [settings, setSettings]);
+  }, [settings, setSettings, setAnchorEl]);
 
   const handleShowInactive = useCallback(() => {
     const depotSettings = { ...settings.depotSettings };
@@ -333,7 +326,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
     setSettings((s) => ({ ...s, depotSettings }));
     setAnchorEl(null);
-  }, [settings, setSettings]);
+  }, [settings, setSettings, setAnchorEl]);
 
   const handleShowButtons = useCallback(() => {
     const depotSettings = { ...settings.depotSettings };
@@ -341,15 +334,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
     setSettings((s) => ({ ...s, depotSettings }));
     setAnchorEl(null);
-  }, [settings, setSettings]);
-
-  const handleAllowAllGoals  = useCallback(() => {
-    const plannerSettings = { ...settings.plannerSettings };
-    plannerSettings.allowAllGoals = !plannerSettings?.allowAllGoals;
-
-    setSettings((s) => ({ ...s, plannerSettings }));
-    setAnchorEl(null);
-  }, [settings, setSettings]);
+  }, [settings, setSettings, setAnchorEl]);
 
   const handleAllowNoLmdCrafting  = useCallback(() => {
     const depotSettings = { ...settings.depotSettings };
@@ -357,18 +342,18 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
     setSettings((s) => ({ ...s, depotSettings }));
     setAnchorEl(null);
-  }, [settings, setSettings]);
+  }, [settings, setSettings, setAnchorEl]);
 
   const handleResetStock = useCallback(() => {
     //moved reset to useDepot hook.
     resetDepot();
     setAnchorEl(null);
-  }, [resetDepot]);
+  }, [resetDepot, setAnchorEl]);
 
   const handleExportImport = useCallback(() => {
     setExportImportOpen(true);
     setAnchorEl(null);
-  }, []);
+  }, [setAnchorEl]);
 
   return (
     <>
@@ -406,48 +391,12 @@ const MaterialsNeeded = React.memo((props: Props) => {
                 Crafting
               </Button>
             </Tooltip>
-            <IconButton
-              id="settings-button"
-              onClick={handleSettingsButtonClick}
-              sx={{ alignSelf: "start", justifySelf: "end" }}
-              aria-label="Settings"
-              aria-haspopup="true"
-              aria-expanded={isSettingsMenuOpen ? "true" : undefined}
-              aria-controls={isSettingsMenuOpen ? "settings-menu" : undefined}
-            >
-              <SettingsIcon />
-            </IconButton>
+            <SettingsButton props={menuButtonProps} />
           </Box>
         }
         sx={{ borderRadius: { xs: "0px 0px 4px 4px", md: "4px" } }}
       >
-        <Menu
-          id="settings-menu"
-          anchorEl={anchorEl}
-          open={isSettingsMenuOpen}
-          onClose={handleSettingsMenuClose}
-          MenuListProps={{
-            "aria-labelledby": "settings-button",
-          }}
-          hideBackdrop={false}
-          slotProps={{
-            root: {
-              slotProps: {
-                backdrop: {
-                  invisible: false,
-                },
-              },
-            },
-          }}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-        >
+        <SettingsMenu props={menuProps}>
           <SettingsMenuItem onClick={handleSortToBottom} checked={settings.depotSettings.sortCompletedToBottom}>
             Sort completed items to bottom
           </SettingsMenuItem>
@@ -457,12 +406,12 @@ const MaterialsNeeded = React.memo((props: Props) => {
           <SettingsMenuItem onClick={handleShowButtons} checked={settings.depotSettings.showIncrementDecrementButtons}>
             Show increment/decrement buttons
           </SettingsMenuItem>
-          <SettingsMenuItem onClick={handleAllowAllGoals} checked={settings.plannerSettings.allowAllGoals}>
-            Allow completing goals unconditionally
-          </SettingsMenuItem>
           <SettingsMenuItem onClick={handleAllowNoLmdCrafting} checked={settings.depotSettings.ignoreLmdInCrafting}>
             Ignore LMD in crafting requirements
           </SettingsMenuItem>
+          <MenuItem disabled>
+          <ListItemText inset>Allow all &gt; goals menu</ListItemText>
+          </MenuItem>
           <Divider />
           <MenuItem onClick={handleExportImport}>
             <ListItemText inset>Export/Import</ListItemText>
@@ -478,7 +427,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
               Reset stock
             </ListItemText>
           </MenuItem>
-        </Menu>
+        </SettingsMenu>
         <Box
           component="ul"
           sx={{
@@ -537,26 +486,3 @@ const MaterialsNeeded = React.memo((props: Props) => {
 });
 MaterialsNeeded.displayName = "MaterialsNeeded";
 export default MaterialsNeeded;
-
-const SettingsMenuItem: React.FC<
-  React.PropsWithChildren<{
-    onClick: () => void;
-    checked: boolean;
-  }>
-> = (props) => {
-  const { onClick, checked, children } = props;
-  return (
-    <MenuItem onClick={onClick}>
-      {checked ? (
-        <>
-          <ListItemIcon>
-            <CheckIcon />
-          </ListItemIcon>
-          {children}
-        </>
-      ) : (
-        <ListItemText inset>{children}</ListItemText>
-      )}
-    </MenuItem>
-  );
-};

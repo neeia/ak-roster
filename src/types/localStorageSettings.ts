@@ -12,11 +12,13 @@ export interface InactiveOpsInGroups {
 
 export interface PlannerSettings {
   allowAllGoals: boolean;
+  sortEmptyGroupsToBottom: boolean;
   inactiveOpsInGroups: InactiveOpsInGroups;
 }
 
 const plannerSettings: PlannerSettings = {
   allowAllGoals: false,
+  sortEmptyGroupsToBottom: false,
   inactiveOpsInGroups: {},
 };
 

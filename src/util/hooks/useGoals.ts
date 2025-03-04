@@ -105,10 +105,10 @@ function useGoals() {
   }, [_setGoals]);
 
   const removeAllGoalsFromGroup = useCallback(
-    async (groupName: string) => {
+    async (groupName: string, cleanLocal?: boolean) => {
       const filteredArray = goals.filter((goal) => goal.group_name !== groupName);
       _setGoals(filteredArray);
-
+      if (cleanLocal) return;
       const { error } = await supabase.from("goals").delete().eq("group_name", groupName);
       handlePostgrestError(error);
     },
