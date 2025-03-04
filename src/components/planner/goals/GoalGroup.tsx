@@ -152,7 +152,8 @@ const GoalGroup = memo((props: Props) => {
               <Checkbox
                 {...getCheckboxState(groupName)}
                 onClick={(e) => {
-                  if (!expanded) e.stopPropagation();
+                  const target = e.target as HTMLInputElement;
+                  if (target.checked || !expanded) e.stopPropagation(); 
                   onGroupSelect(groupName);
                 }} />
               {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
