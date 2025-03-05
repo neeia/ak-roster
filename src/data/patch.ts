@@ -1,5 +1,40 @@
 const patch = [
   {
+    version: "3.1.0",
+    date: "March 5, 2025",
+    title: "Big QOL Update",
+    content: [
+      "We've been hard at work over the past two months, fixing things up, making everything feel better, and adding some new features.",
+    ],
+    changelog: [
+      "The planner has been improved in a number of ways.",
+      [
+        "You can toggle goals on and off, to check the material requirements for specific goals and groups.",
+        "The search function works much better now. You can put a minus to exclude any matching goals, or use commas to search for multiple goals at once.",
+        "Filtering is significantly improved. Check it out!",
+        "Big QoL on crafting. Toggle it all at once,  use shop vouchers to buy materials, and many other small improvements.",
+        "The material planner is now significantly more responsive, due to adding a small delay on syncing with the database.",
+        "And many, many, many bugfixes. Things should work significantly better and more consistently.",
+        "Many thanks to Voiddp for his hard work making countless improvements to the planner.",
+      ],
+      "Light Mode!",
+      [
+        "You can now switch between light and dark mode. Give it a try!",
+        "For our dedicated dark mode users, we've made some improvements to the dark theme, too.",
+      ],
+      "Authentication improvements too!",
+      [
+        "If you created an account with discord, you can now add a password to your account and sign in that way.",
+        "Simply sign in with the email account associated with your discord and the new password you've set.`",
+      ],
+      "Maxed operators now have a special design! This should make parsing a roster at a glance much, much easier.",
+      [
+        "Maxed is determined by having max level, promotion, potential, skill levels, masteries, and modules available to EN.",
+      ],
+      "We've made countless style improvements and bug fixes across the site. We sincerely hope you enjoy the new experience.",
+    ],
+  },
+  {
     version: "3.0.0",
     date: "Jan 5, 2025",
     title: "Krooster V3 Out!",
