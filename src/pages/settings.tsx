@@ -48,6 +48,7 @@ const Settings: NextPage = () => {
       setDiscordIdentity(_discordIdentity);
       const _emailIdentity = data?.identities.find((e) => e.provider === "email");
       setEmailIdentity(_emailIdentity);
+      setEmail(user?.email || "");
     });
   }, []);
 
@@ -231,6 +232,13 @@ const Settings: NextPage = () => {
             <Typography variant="h2" sx={{ fontSize: "24px" }}>
               Identities
             </Typography>
+            <TextField
+              label="Current Email"
+              value={user?.email}
+              variant="standard"
+              disabled
+              sx={{ width: "100%", mt: 2 }}
+            />
             <p>
               Unlinking an identity will remove it from your account. You will no longer be able to log in using that
               identity.
@@ -249,12 +257,6 @@ const Settings: NextPage = () => {
             ) : (
               <Button onClick={linkDiscord}>Link Discord</Button>
             )}
-            <TextField
-              label="Email"
-              value={emailIdentity ? emailIdentity.identity_data?.["email"] : "Not Linked"}
-              disabled
-              sx={{ mt: 2 }}
-            />
           </Box>
           {emailIdentity && (
             <>
@@ -263,7 +265,6 @@ const Settings: NextPage = () => {
                 <Typography variant="h2" sx={{ fontSize: "18px" }}>
                   Change Email
                 </Typography>
-                <TextField label="Current Email" value={user?.email} variant="standard" disabled />
                 <TextField
                   label="New Email"
                   value={email}
@@ -276,35 +277,36 @@ const Settings: NextPage = () => {
                   Change Email
                 </Button>
               </Box>
-              <Divider />
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                <Typography variant="h2" sx={{ fontSize: "18px" }} id="change-password">
-                  Change Password
-                </Typography>
-                <PasswordTextField
-                  label="New Password"
-                  value={password1}
-                  onChange={(e) => {
-                    setNewPassword(e.target.value);
-                  }}
-                  variant="filled"
-                />
-                <PasswordTextField
-                  label="Repeat Password"
-                  value={password2}
-                  onChange={(e) => {
-                    setRepeatPassword(e.target.value);
-                  }}
-                  error={password1 !== password2}
-                  variant="filled"
-                />
-                <Button onClick={changePassword} disabled={!password1 || !password2 || password1 !== password2}>
-                  Change Password
-                </Button>
-                <Button onClick={() => setResetOpen(true)}>Forgot Password?</Button>
-              </Box>
             </>
           )}
+          <Divider />
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+            <Typography variant="h2" sx={{ fontSize: "18px" }} id="change-password">
+              Add or Change Password
+            </Typography>
+            <PasswordTextField
+              label="New Password"
+              value={password1}
+              onChange={(e) => {
+                setNewPassword(e.target.value);
+              }}
+              variant="filled"
+              sx={{ mt: 2 }}
+            />
+            <PasswordTextField
+              label="Repeat Password"
+              value={password2}
+              onChange={(e) => {
+                setRepeatPassword(e.target.value);
+              }}
+              error={password1 !== password2}
+              variant="filled"
+            />
+            <Button onClick={changePassword} disabled={!password1 || !password2 || password1 !== password2}>
+              Change Password
+            </Button>
+            <Button onClick={() => setResetOpen(true)}>Forgot Password?</Button>
+          </Box>
           <ResetPassword open={resetOpen} onClose={() => setResetOpen(false)} />
         </Box>
       )}
