@@ -118,7 +118,7 @@ const Lookup: NextPage = () => {
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
             <Button onClick={() => setOpen(true)} sx={{ width: "100%", py: 1.5, height: "min-content" }}>
               <Typography variant="caption" sx={{ lineHeight: 1.1 }}>
-                View {data.account.username}'s profile
+                View {data.account.display_name}'s profile
               </Typography>
             </Button>
             <CollectionContainer roster={data.roster} sort={sortFunction} filter={filterFunction} />
