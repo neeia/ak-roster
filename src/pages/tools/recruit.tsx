@@ -84,7 +84,6 @@ const Recruit: NextPage = () => {
     }
   }, [inputNode]);
 
-  console.log(getTagCombinations([...activeTags].sort((a, b) => a.value.localeCompare(b.value)).map((tag) => tag.value)))
   const matchingOperators: RecruitmentResult[] = useMemo(
     () =>
       getTagCombinations([...activeTags].sort((a, b) => a.value.localeCompare(b.value)).map((tag) => tag.value))
@@ -192,14 +191,19 @@ const Recruit: NextPage = () => {
               </Collapse>
             )}
             renderOption={({ key, ...props }, option) => (
-              <Box key={key} {...props} component="li">
+              <Box
+                key={key}
+                sx={{ "& > img": { filter: "drop-shadow(0px 0px 2px #000000)" } }}
+                {...props}
+                component="li"
+              >
                 {classList.includes(option.value) ? (
                   <Image
                     width={24}
                     height={24}
                     src={`/img/classes/class_${option.value.toLowerCase()}.png`}
                     alt={option.value}
-                  ></Image>
+                  />
                 ) : null}
                 {option.value}
               </Box>
