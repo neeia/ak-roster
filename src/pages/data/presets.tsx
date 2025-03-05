@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import { Box } from "@mui/material";
 import Layout from "components/Layout";
@@ -23,6 +23,12 @@ const Presets: NextPage = () => {
     }
   };
 
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <Layout tab="/data" page="/presets">
       <Board>
@@ -46,18 +52,19 @@ const Presets: NextPage = () => {
           >
             Create New
           </Chip>
-          {presets.map((preset) => (
-            <Chip
-              key={preset.index}
-              component="button"
-              onClick={() => {
-                setIndex(preset.index);
-                setOpen(true);
-              }}
-            >
-              {preset.name}
-            </Chip>
-          ))}
+          {isClient &&
+            presets.map((preset) => (
+              <Chip
+                key={preset.index}
+                component="button"
+                onClick={() => {
+                  setIndex(preset.index);
+                  setOpen(true);
+                }}
+              >
+                {preset.name}
+              </Chip>
+            ))}
         </Box>
         <PresetDialog
           open={open}
