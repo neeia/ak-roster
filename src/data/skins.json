@@ -662,7 +662,7 @@
     },
     {
       "skinId": "char_4062_totter@summer#17",
-      "skinName": "灿阳朝露 SDm09",
+      "skinName": "Shining Dew SDm09",
       "avatarId": "char_4062_totter_summer#17",
       "sortId": 189
     }
@@ -837,6 +837,12 @@
       "skinName": null,
       "avatarId": "char_289_gyuki_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_289_gyuki@epoque#40",
+      "skinName": "繁霜满阶",
+      "avatarId": "char_289_gyuki_epoque#40",
+      "sortId": 99
     }
   ],
   "char_159_peacok": [
@@ -1011,6 +1017,12 @@
       "skinName": null,
       "avatarId": "char_4063_quartz_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4063_quartz@epoque#39",
+      "skinName": "封面佣兵",
+      "avatarId": "char_4063_quartz_epoque#39",
+      "sortId": 96
     }
   ],
   "char_491_humus": [
@@ -1465,6 +1477,12 @@
       "skinName": null,
       "avatarId": "char_4107_vrdant_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4107_vrdant@unveiling#3",
+      "skinName": "玫瑰骑手",
+      "avatarId": "char_4107_vrdant_unveiling#3",
+      "sortId": 376
     }
   ],
   "char_4165_ctrail": [
@@ -1502,7 +1520,7 @@
     },
     {
       "skinId": "char_128_plosis@yun#4",
-      "skinName": "抚云间",
+      "skinName": "Among the Clouds",
       "avatarId": "char_128_plosis_yun#4",
       "sortId": 367
     }
@@ -1727,6 +1745,12 @@
       "skinName": null,
       "avatarId": "char_4119_wanqin_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4119_wanqin@epoque#41",
+      "skinName": "万顷阳光",
+      "avatarId": "char_4119_wanqin_epoque#41",
+      "sortId": 100
     }
   ],
   "char_476_blkngt": [
@@ -2114,7 +2138,7 @@
     },
     {
       "skinId": "char_4083_chimes@yun#5",
-      "skinName": "松间月",
+      "skinName": "Moon under the Pines",
       "avatarId": "char_4083_chimes_yun#5",
       "sortId": 368
     }
@@ -3285,6 +3309,20 @@
       "sortId": 213
     }
   ],
+  "char_4173_nowell": [
+    {
+      "skinId": "char_4173_nowell#1",
+      "skinName": null,
+      "avatarId": "char_4173_nowell",
+      "sortId": -3
+    },
+    {
+      "skinId": "char_4173_nowell#2",
+      "skinName": null,
+      "avatarId": "char_4173_nowell_2",
+      "sortId": -1
+    }
+  ],
   "char_402_tuye": [
     {
       "skinId": "char_402_tuye#1",
@@ -3389,6 +3427,12 @@
       "skinName": null,
       "avatarId": "char_1024_hbisc2_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_1024_hbisc2@unveiling#2",
+      "skinName": "浪漫满厢",
+      "avatarId": "char_1024_hbisc2_unveiling#2",
+      "sortId": 375
     }
   ],
   "char_494_vendla": [
@@ -4064,7 +4108,7 @@
     },
     {
       "skinId": "char_4104_coldst@striker#3",
-      "skinName": "破晓",
+      "skinName": "Dawnbreak",
       "avatarId": "char_4104_coldst_striker#3",
       "sortId": 324
     }
@@ -4258,7 +4302,7 @@
     },
     {
       "skinId": "char_4032_provs@summer#17",
-      "skinName": "悠然假日 HD78",
+      "skinName": "Holiday HD78",
       "avatarId": "char_4032_provs_summer#17",
       "sortId": 188
     },
@@ -4896,7 +4940,7 @@
     },
     {
       "skinId": "char_2012_typhon@summer#17",
-      "skinName": "温差 RT.RX07",
+      "skinName": "Temperature Difference RT.RX07",
       "avatarId": "char_2012_typhon_summer#17",
       "sortId": 187
     },
@@ -5039,6 +5083,12 @@
       "skinName": "Royal Guardswoman",
       "avatarId": "char_222_bpipe_epoque#28",
       "sortId": 73
+    },
+    {
+      "skinId": "char_222_bpipe@epoque#40",
+      "skinName": "风笛声声",
+      "avatarId": "char_222_bpipe_epoque#40",
+      "sortId": 98
     },
     {
       "skinId": "char_222_bpipe@race#1",
@@ -6176,7 +6226,7 @@
     },
     {
       "skinId": "char_1020_reed2@summer#17",
-      "skinName": "夏卉 FA075",
+      "skinName": "Summer Flower FA075",
       "avatarId": "char_1020_reed2_summer#17",
       "sortId": 186
     }
@@ -6771,6 +6821,12 @@
       "skinName": null,
       "avatarId": "char_4098_vvana_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4098_vvana@epoque#40",
+      "skinName": "寄自奥格尼斯科",
+      "avatarId": "char_4098_vvana_epoque#40",
+      "sortId": 97
     }
   ],
   "char_1019_siege2": [
@@ -6913,6 +6969,20 @@
       "sortId": 17
     }
   ],
+  "char_4010_etlchi": [
+    {
+      "skinId": "char_4010_etlchi#1",
+      "skinName": null,
+      "avatarId": "char_4010_etlchi",
+      "sortId": -3
+    },
+    {
+      "skinId": "char_4010_etlchi#2",
+      "skinName": null,
+      "avatarId": "char_4010_etlchi_2",
+      "sortId": -1
+    }
+  ],
   "char_4064_mlynar": [
     {
       "skinId": "char_4064_mlynar#1",
@@ -6962,7 +7032,7 @@
     },
     {
       "skinId": "char_282_catap@summer#17",
-      "skinName": "悠然假日 HD66",
+      "skinName": "Holiday HD66",
       "avatarId": "char_282_catap_summer#17",
       "sortId": 185
     }
@@ -7039,6 +7109,12 @@
       "skinName": "Light and Shadow",
       "avatarId": "char_164_nightm_epoque#5",
       "sortId": 24
+    },
+    {
+      "skinId": "char_164_nightm@unveiling#2",
+      "skinName": "湖畔的少女",
+      "avatarId": "char_164_nightm_unveiling#2",
+      "sortId": 374
     }
   ],
   "char_220_grani": [
