@@ -26,7 +26,7 @@ const Update = (props: Props) => {
   const {} = props;
 
   return (
-    <Box component="ol" sx={{ display: "flex", flexDirection: "column" }}>
+    <Box component="ol" sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
       {patchJson.map(({ version, date, title, content, changelog }) => (
         <Box component="li" key={version} sx={{ display: "flex", flexDirection: "column", "& ul + li": { mt: 1 } }}>
           <Typography variant="h3" sx={{ m: 0 }}>
