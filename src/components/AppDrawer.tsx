@@ -24,6 +24,7 @@ import useAccount from "util/hooks/useAccount";
 import Link from "./base/Link";
 import manifest from "data/manifest";
 import useLocalStorage from "util/hooks/useLocalStorage";
+import ThemeSwitcher from "./app/ThemeSwitcher";
 
 const DRAWER_WIDTH_PX = 220;
 const ICON_BY_PATH = [
@@ -148,6 +149,7 @@ const AppDrawer = React.memo((props: Props) => {
           display: "flex",
           flexDirection: "column",
           gap: "4px",
+          alignItems: "center",
         }}
       >
         {!account && (
@@ -180,6 +182,7 @@ const AppDrawer = React.memo((props: Props) => {
             </div>
           </Alert>
         )}
+        <ThemeSwitcher />
       </Box>
       <Divider />
       <List

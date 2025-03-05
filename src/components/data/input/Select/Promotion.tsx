@@ -41,7 +41,14 @@ const Promotion = memo((props: Props) => {
       {[...Array(maxPromotion + 1).keys()]
         .filter((n) => n >= minPromotion && n <= maxPromotion)
         .map((n) => (
-          <ToggleButton key={n} value={n} onChange={() => onChange(n)}>
+          <ToggleButton
+            key={n}
+            value={n}
+            onChange={() => onChange(n)}
+            sx={{
+              "& img": { filter: "drop-shadow(0px 0px 1px #000)" },
+            }}
+          >
             <Image width={size} height={size} src={`/img/elite/${n}.png`} alt={`Elite ${n}`} />
           </ToggleButton>
         ))}

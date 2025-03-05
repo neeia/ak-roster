@@ -56,7 +56,7 @@ const View: NextPage = () => {
               aria-label="Edit Mode"
               sx={{ display: "flex", flexDirection: "column" }}
             >
-              <ModeEdit fontSize="large" color="primary" />
+              <ModeEdit fontSize="large" />
               <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
                 Edit
               </Typography>

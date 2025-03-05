@@ -34,6 +34,7 @@ import GitHubEmbed from "components/landing/GitHubEmbed";
 import DiscordEmbed from "components/landing/DiscordEmbed";
 import Update from "components/landing/PatchNotes";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 const cons = [
   {
@@ -59,11 +60,11 @@ const cons = [
     // color: "#eeddbb"
   },
   {
-    name: "Stinggyray",
-    login: "Stinggyray",
-    avatar: "stinggyray.png",
-    dark: false,
-    color: "#FFCD4C",
+    name: "Voiddp",
+    login: "Voiddp",
+    avatar: "voiddp.png",
+    dark: true,
+    color: "rgb(51, 53, 50)",
   },
   {
     name: "DipstickPinez",
@@ -73,11 +74,11 @@ const cons = [
     color: "#5ed6b4",
   },
   {
-    name: "Voiddp",
-    login: "Voiddp",
-    avatar: "voiddp.png",
-    dark: true,
-    color: "rgb(51, 53, 50)",
+    name: "Stinggyray",
+    login: "Stinggyray",
+    avatar: "stinggyray.png",
+    dark: false,
+    color: "#FFCD4C",
   },
 ];
 
@@ -125,6 +126,7 @@ function a11yProps(index: number) {
   };
 }
 
+const ThemeSwitcher = dynamic(() => import("components/app/ThemeSwitcher"), { ssr: false });
 const Home: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");
 
@@ -247,12 +249,21 @@ const Home: NextPage = () => {
             ))}
           </Paper>
         )}
+        <ThemeSwitcher />
 
         <Tabs
           value={value}
           onChange={handleChange}
           aria-label="tab menu"
-          sx={{ mt: 8, ml: 4, width: "100%", maxWidth: "40rem" }}
+          sx={{
+            mt: 8,
+            ml: 4,
+            width: "100%",
+            maxWidth: "40rem",
+            "& .Mui-selected": {
+              fontWeight: "bolder",
+            },
+          }}
         >
           <Tab value={1} label="Menu" {...a11yProps(1)}></Tab>
           <Tab value={2} label="About" {...a11yProps(2)}></Tab>
@@ -342,6 +353,7 @@ const Home: NextPage = () => {
                 title="Join our Discord!"
                 sx={{
                   backgroundColor: DISCORD_BLURPLE,
+                  color: "#F2F2F2",
                 }}
               >
                 <Image src="/img/assets/discord.svg" width="20" height="15" alt="" />
@@ -353,6 +365,7 @@ const Home: NextPage = () => {
                 title="For developers!"
                 sx={{
                   backgroundColor: GITHUB_DARK,
+                  color: "#F2F2F2",
                 }}
               >
                 <Image width="18" height="18" src="/img/assets/github-1.png" alt="" />
@@ -364,6 +377,7 @@ const Home: NextPage = () => {
                 title="Support Krooster!"
                 sx={{
                   backgroundColor: KOFI_BLUE,
+                  color: "#F2F2F2",
                 }}
               >
                 <Image className="icon" width="24" height="16" src="/img/assets/ko-fi.png" alt="Ko-fi" />
@@ -456,7 +470,7 @@ const Home: NextPage = () => {
                         transition: "filter 0.1s",
                         boxShadow: 1,
                         width: "max-content",
-                        color: c.dark ? "text.primary" : "background.paper",
+                        color: c.dark ? "#F2F2F2" : "#121212",
                         display: "grid",
                         gridTemplateColumns: "1fr 2.5fr",
                         gap: 1.5,

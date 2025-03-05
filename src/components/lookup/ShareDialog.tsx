@@ -1,5 +1,5 @@
 import React from "react";
-import { alpha, Box, Button, CircularProgress, Popover, PopoverProps, useTheme } from "@mui/material";
+import { alpha, Box, Button, CircularProgress, Popover, PopoverProps } from "@mui/material";
 import { FileDownload, Link } from "@mui/icons-material";
 
 interface Props extends PopoverProps {
@@ -12,7 +12,6 @@ interface Props extends PopoverProps {
 
 const ShareDialog = (props: Props) => {
   const { save, copyImage, copyUrl, onClose, saving, ...rest } = props;
-  const theme = useTheme();
 
   return (
     <Popover
@@ -42,7 +41,7 @@ const ShareDialog = (props: Props) => {
           alignItems: "start",
           gap: 0.5,
           p: 0.5,
-          backgroundColor: alpha(theme.palette.background.paper, 0.25),
+          backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.25),
           backdropFilter: "blur(24px) grayscale(50%)",
           "& button": { justifyContent: "end", width: "100%", pl: 2 },
         }}

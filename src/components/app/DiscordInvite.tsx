@@ -15,10 +15,11 @@ const DiscordInvite = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        lineHeight: "0",
+        lineHeight: 0,
         gap: 1,
         textDecoration: "none",
         padding: "12px 12px",
+        color: "#FAFAFA",
       }}
       href="https://discord.gg/qx8hJGvTwc"
       title="Join Krooster"

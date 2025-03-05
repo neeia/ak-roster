@@ -30,8 +30,10 @@ const Rarity = (props: Props) => {
           value={n}
           onChange={() => onChange(n)}
           sx={{
-            color: rarityColors[n],
             height: 48,
+            "& svg": {
+              color: rarityColors[n],
+            },
           }}
         >
           {n} <Star fontSize="small" />

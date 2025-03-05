@@ -52,7 +52,7 @@ const SearchDialog = memo((props: Props) => {
           aria-label="Search"
           sx={{ display: "flex", flexDirection: "column" }}
         >
-          <Search fontSize="large" color="primary" />
+          <Search fontSize="large" />
           <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
             Search
           </Typography>
@@ -85,7 +85,7 @@ const SearchDialog = memo((props: Props) => {
         <form>
           <TextField
             sx={{
-              backgroundColor: "#333333",
+              backgroundColor: "background.light",
             }}
             autoFocus
             autoComplete="off"

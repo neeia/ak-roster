@@ -37,17 +37,17 @@ const neutral = {
   950: "#0D0D0D",
 };
 const neutral_light = {
-  950: "#F2F2F2",
-  900: "#E3E3E3",
-  800: "#C7C7C7",
-  700: "#ADADAD",
-  600: "#919191",
-  500: "#707070",
-  400: "#505050",
-  300: "#303030",
-  200: "#212121",
-  100: "#121212",
-  50: "#0D0D0D",
+  950: "#FFFFFF",
+  900: "#FAFAFA",
+  800: "#EDEDED",
+  700: "#E0E0E0",
+  600: "#D1D1D1",
+  500: "#BFBFBF",
+  400: "#A0A0A0",
+  300: "#6B6B6B",
+  200: "#333333",
+  100: "#171717",
+  50: "#0A0A0A",
 };
 export const DISCORD_BLURPLE = "#5865F2";
 export const REDDIT_ORANGERED = "#FF4500";
@@ -76,12 +76,12 @@ const appTheme = (brandColor: string, light = false) => {
         sm: 640,
         md: 900,
         lg: 1200,
-        xl: 1536, 
+        xl: 1536,
         xxl: 2560,
       },
     },
     palette: {
-      mode: "dark",
+      mode: light ? "light" : "dark",
       primary: {
         main: brandColor,
       },
@@ -121,7 +121,7 @@ const appTheme = (brandColor: string, light = false) => {
                 borderBottomWidth: "0.25rem",
                 borderBottomColor: brandColor,
                 backgroundColor: `${brandColor}28`,
-                color: brandColor,
+                color: light ? _neutral[50] : brandColor,
               },
             },
           },
@@ -147,6 +147,13 @@ const appTheme = (brandColor: string, light = false) => {
                 background: lighten(_neutral[700], 0.1),
               },
               transition: "background-color 0.1s",
+            },
+          },
+          {
+            props: { variant: "outlined" },
+            style: {
+              color: light ? _neutral[50] : "",
+              borderWidth: light ? "2px" : "",
             },
           },
         ],
@@ -192,6 +199,15 @@ const appTheme = (brandColor: string, light = false) => {
           },
         },
       },
+      MuiInputLabel: {
+        styleOverrides: {
+          root: {
+            "&.Mui-focused": {
+              color: light ? "inherit" : "",
+            },
+          },
+        },
+      },
       MuiToggleButtonGroup: {
         defaultProps: {
           color: "primary",
@@ -211,6 +227,14 @@ const appTheme = (brandColor: string, light = false) => {
               border: "none",
               margin: 0,
             },
+          },
+        },
+      },
+      MuiTooltip: {
+        styleOverrides: {
+          tooltip: {
+            color: _neutral[50],
+            backgroundColor: _neutral[700],
           },
         },
       },

@@ -41,6 +41,7 @@ const SkillLevel = memo((props: Props) => {
               "&:not(._):not(._)": {
                 borderRadius: 1,
               },
+              "& img": { filter: "drop-shadow(0px 0px 2px #000)" },
             }}
           >
             <Image width={size} height={size} src={`/img/rank/${n}.png`} alt={`Rank ${n}`} />

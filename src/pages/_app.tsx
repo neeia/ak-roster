@@ -3,7 +3,7 @@ import "styles/globals.css";
 import { AppProps } from "next/app";
 import createTheme, { brand } from "styles/theme/appTheme";
 import createEmotionCache from "util/createEmotionCache";
-import { CssBaseline, ThemeProvider, useMediaQuery } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import { Analytics } from "@vercel/analytics/react";
 import { Lato } from "next/font/google";
@@ -13,6 +13,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import { store } from "legacyStore/store";
 import { SnackbarProvider } from "notistack";
 import OneTimeV3Popup from "components/app/OneTimeV3Popup";
+import useLocalStorage from "util/hooks/useLocalStorage";
 
 // const firebaseConfig = {
 //   apiKey: "AIzaSyDjpt2G4GFQjYbPT5Mrj6L2meeWEnsCEgU",
@@ -31,6 +32,7 @@ const lato = Lato({
 });
 
 export const UserContext = React.createContext<User | null>(null);
+export const LightContext = React.createContext<[boolean, (theme: boolean) => void] | null>(null);
 
 const MyApp = (props: AppProps) => {
   const { Component, pageProps } = props;
@@ -51,26 +53,33 @@ const MyApp = (props: AppProps) => {
     return subscription.unsubscribe;
   }, [user]);
 
-  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [_light, _setLight] = useLocalStorage("light_theme", false);
+  const [light, setLight] = React.useState(false);
 
-  const theme = React.useMemo(() => createTheme(brand.DEFAULT), []);
+  const theme = React.useMemo(() => createTheme(brand.DEFAULT, light), [light]);
+
+  React.useEffect(() => {
+    setLight(_light);
+  }, [_light]);
 
   const clientSideEmotionCache = createEmotionCache();
   return (
     <ReduxProvider store={store}>
       <UserContext.Provider value={user}>
-        <CacheProvider value={clientSideEmotionCache}>
-          <ThemeProvider theme={theme}>
-            <SnackbarProvider maxSnack={3} preventDuplicate>
-              <CssBaseline />
-              <Analytics />
-              <div className={lato.className}>
-                <Component {...pageProps} />
-                <OneTimeV3Popup />
-              </div>
-            </SnackbarProvider>
-          </ThemeProvider>
-        </CacheProvider>
+        <LightContext.Provider value={[light, setLight]}>
+          <CacheProvider value={clientSideEmotionCache}>
+            <ThemeProvider theme={theme}>
+              <SnackbarProvider maxSnack={3} preventDuplicate>
+                <CssBaseline />
+                <Analytics />
+                <div className={lato.className}>
+                  <Component {...pageProps} />
+                  <OneTimeV3Popup />
+                </div>
+              </SnackbarProvider>
+            </ThemeProvider>
+          </CacheProvider>
+        </LightContext.Provider>
       </UserContext.Provider>
     </ReduxProvider>
   );

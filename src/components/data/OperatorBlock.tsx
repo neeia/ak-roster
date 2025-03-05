@@ -31,7 +31,8 @@ const OperatorBlock = (props: Props) => {
     if (op.rarity > 2 && op.skill_level !== 7) return false;
     if (MAX_PROMOTION_BY_RARITY[op.rarity] === 2) {
       if (!op.masteries.every((m) => m === 3)) return false;
-      if (!(op.moduleData?.every(({ moduleId }) => op.modules[moduleId] === 3) ?? false)) return false;
+      if (!(op.moduleData?.every(({ moduleId, isCnOnly }) => isCnOnly || op.modules[moduleId] === 3) ?? false))
+        return false;
     }
     if (op.potential !== getMaxPotentialById(op.op_id)) return false;
 
@@ -46,7 +47,7 @@ const OperatorBlock = (props: Props) => {
         display: "flex",
         flexDirection: "column",
         backgroundColor: "background.light",
-        boxShadow: maxed ? "0px 0px 10px yellow" : 1,
+        boxShadow: maxed ? (theme) => `0px 0px 8px ${theme.palette.primary.main}` : 1,
         padding: { xs: "4px 8px 4px 6px", sm: "6px 10px 8px 10px" },
         margin: { xs: "2px 4px 4px 10px", sm: "4px 12px 12px 12px" },
         borderRadius: "4px",
@@ -113,6 +114,7 @@ const OperatorBlock = (props: Props) => {
           boxSizing: "content-box",
           borderBottom: `4px solid ${rarityColors[op.rarity]}`,
           position: "relative",
+          filter: maxed ? (theme) => `drop-shadow(0px 0px 8px ${theme.palette.background.paper})` : 0,
         }}
       >
         <Image src={getAvatar(op)} fill sizes="(max-width: 768px) 80px, 120px" alt="" />
@@ -135,23 +137,22 @@ const OperatorBlock = (props: Props) => {
               position: "relative",
               width: { xs: "12px", sm: "20px" },
               height: { xs: "16px", sm: "24px" },
-              backgroundColor: "background.paper",
-              border: "1px solid",
-              borderColor: "grey.500",
               ml: "4px",
               marginBottom: { xs: "2px", sm: "8px" },
             }}
           >
             <Box
               sx={{
-                width: { xs: "16px", sm: "24px" },
-                height: { xs: "16px", sm: "24px" },
+                width: "100%",
+                height: "100%",
                 position: "absolute",
                 m: "auto",
                 left: -4,
                 right: -4,
                 top: -4,
                 bottom: -4,
+                backgroundImage: "url('/img/rank/bg.png')",
+                backgroundSize: "100% 100%",
               }}
             >
               <Image
@@ -192,7 +193,7 @@ const OperatorBlock = (props: Props) => {
               alignItems: "center",
               justifyContent: "center",
               borderRadius: "50%",
-              backgroundColor: "background.light",
+              backgroundColor: "background.default",
               border: "2px solid",
               borderColor: op.level === MAX_LEVEL_BY_RARITY[op.rarity][2] ? "primary.light" : "grey.500",
             }}
@@ -281,8 +282,8 @@ const OperatorBlock = (props: Props) => {
                 height: { xs: "24px", sm: "32px" },
                 aspectRatio: "1 / 1",
                 backgroundColor: "background.default",
-                border: "1px solid",
-                borderColor: "background.light",
+                backgroundImage: "url('/img/rank/bg.png')",
+                backgroundSize: "100% 100%",
               }}
             >
               <Image src={getModUrl(mod)} fill sizes="(max-width: 768px) 24px, 32px" alt={mod.typeName} />

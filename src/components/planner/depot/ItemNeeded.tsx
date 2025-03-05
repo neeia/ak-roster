@@ -48,19 +48,18 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
   const textFieldRef = useRef<HTMLInputElement>(null);
   const focusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [abbrOwned, setAbbrOwned] = useState<string>(`${owned}`);
-  
+
   useEffect(() => {
     setRawValue(`${owned}`);
-    
+
     //all ItemNeeded-s render a lot: only recalc on change
     const abbrOwned =
       owned < 1000
         ? owned
         : owned < 1000000
-          ? `${owned % 1000 === 0 ? `${owned / 1000}` : (owned / 1000).toFixed(1)}K`
-          : `${owned % 1000000 === 0 ? `${owned / 1000000}` : (owned / 1000000).toFixed(2)}M`;
+        ? `${owned % 1000 === 0 ? `${owned / 1000}` : (owned / 1000).toFixed(1)}K`
+        : `${owned % 1000000 === 0 ? `${owned / 1000000}` : (owned / 1000000).toFixed(2)}M`;
     setAbbrOwned(`${abbrOwned}`);
-
   }, [owned]);
 
   //keep focus on text field when clicking on Inc/Dec
@@ -75,19 +74,19 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
   };
 
   //Inc/Dec additional handling: focus on text
-  const IncDecOnChange = (newValue : number) => {
+  const IncDecOnChange = (newValue: number) => {
     setRawValue(`${newValue}`);
     onChange(itemId, newValue);
     setFocused(true);
     textFieldRef.current?.focus();
     handleFocusTimeout();
-  }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //return focus to textfield on any change
     setFocused(true);
     textFieldRef.current?.focus();
-    
+
     const newRawValue = e.target.value;
     setRawValue(newRawValue);
     let numberValue = Number(newRawValue);
@@ -104,16 +103,16 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
     </Button>
   );
 
-    // Handle increment button click
-    const handleIncrement = () => {
-      const newValue = Number(rawValue) + 1;
-      IncDecOnChange(newValue);
+  // Handle increment button click
+  const handleIncrement = () => {
+    const newValue = Number(rawValue) + 1;
+    IncDecOnChange(newValue);
   };
 
   // Handle decrement button click
   const handleDecrement = () => {
-      const newValue = Number(rawValue) - 1; 
-      IncDecOnChange(newValue);    
+    const newValue = Number(rawValue) - 1;
+    IncDecOnChange(newValue);
   };
 
   return (
@@ -173,7 +172,7 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
             step: 1,
             "aria-label": "Quantity owned",
             sx: {
-              textAlign:((focused && abbrOwned.search("[KM]")!== -1)? "right" :"center" ),
+              textAlign: focused && abbrOwned.search("[KM]") !== -1 ? "right" : "center",
               width: "5ch", // width of 4 "0" characters
               flexGrow: 1,
             },
@@ -241,11 +240,11 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
             size="small"
             fullWidth
             sx={{
-              gap: "1px",
+              mt: "-1px",
               "& > button": {
                 borderTopLeftRadius: 0,
                 borderTopRightRadius: 0,
-                boxSizing: "border-box",
+                height: 32,
               },
               "& > .MuiButtonGroup-grouped:not(:last-of-type)": {
                 borderRightColor: "rgba(251, 192, 45, 0.5)",

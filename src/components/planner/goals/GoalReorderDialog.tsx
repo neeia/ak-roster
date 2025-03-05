@@ -1,5 +1,15 @@
 import GoalData from "types/goalData";
-import { Alert, Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
+import {
+  alpha,
+  Alert,
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Typography,
+} from "@mui/material";
 import {
   DragDropContext,
   Draggable,
@@ -103,7 +113,7 @@ const GoalReorderDialog = (props: Props) => {
         </DialogTitle>
         <DialogContent>
           <Alert severity="info" sx={{ mb: 2 }}>
-            Currently, operators cannot be moved between groups.
+            This tool cannot move operators between groups.
           </Alert>
           <DragDropContext onDragEnd={handleDragEnd}>
             <Box
@@ -118,49 +128,73 @@ const GoalReorderDialog = (props: Props) => {
                   <div {...provided.droppableProps} ref={provided.innerRef}>
                     <Box component="ul" sx={{ m: 0, p: 0 }}>
                       {reorderedGroups.map((groupName, i) => (
-                        <Draggable key={groupName} draggableId={groupName} index={i}>
-                          {(provided: DraggableProvided) => (
-                            <div {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
-                              <Box p={1} sx={{ backgroundColor: "background.paper" }}>
-                                <Typography>{groupName}</Typography>
-                                <Droppable droppableId={`${groupName}-list`} type={`${groupName}-operators`}>
-                                  {(operatorProvided: DroppableProvided) => (
-                                    <div {...operatorProvided.droppableProps} ref={operatorProvided.innerRef}>
-                                      <Box component="ul" sx={{ m: 0, p: 0, pl: 2 }}>
-                                        {(groupedOperators[groupName] ?? []).map((operator, i) => (
-                                          <Draggable
-                                            key={operator.op_id}
-                                            draggableId={groupName + operator.op_id}
-                                            index={i}
-                                          >
-                                            {(operatorProvided: DraggableProvided) => (
-                                              <Typography
-                                                key={operator.op_id}
-                                                {...operatorProvided.draggableProps}
-                                                {...operatorProvided.dragHandleProps}
-                                                ref={operatorProvided.innerRef}
-                                                sx={{ display: "flex", alignItems: "center", p: 0.5, gap: 1 }}
-                                              >
-                                                <Image
-                                                  src={`/img/avatars/${operator.op_id}.png`}
-                                                  alt=""
-                                                  width={24}
-                                                  height={24}
-                                                />
-                                                {operatorJson[operator.op_id].name}
-                                              </Typography>
-                                            )}
-                                          </Draggable>
-                                        ))}
-                                      </Box>
-                                      {operatorProvided.placeholder}
-                                    </div>
-                                  )}
-                                </Droppable>
-                              </Box>
-                            </div>
-                          )}
-                        </Draggable>
+                        <Box
+                          key={groupName}
+                          component="li"
+                          sx={{
+                            display: "contents",
+                            "& > *": {
+                              borderTop: "4px solid",
+                              borderColor: "primary.main",
+                              mb: "8px",
+                            },
+                          }}
+                        >
+                          <Draggable draggableId={groupName} index={i}>
+                            {(provided: DraggableProvided) => (
+                              <div {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
+                                <Box p={1} sx={{ backgroundColor: "background.paper" }}>
+                                  <Typography>{groupName}</Typography>
+                                  <Droppable droppableId={`${groupName}-list`} type={`${groupName}-operators`}>
+                                    {(operatorProvided: DroppableProvided) => (
+                                      <div {...operatorProvided.droppableProps} ref={operatorProvided.innerRef}>
+                                        <Box component="ul" sx={{ m: 0, p: 0, pl: 2 }}>
+                                          {(groupedOperators[groupName] ?? []).map((operator, i) => (
+                                            <Box
+                                              key={operator.op_id}
+                                              component="li"
+                                              sx={{
+                                                display: "contents",
+                                                "& > *": {
+                                                  borderLeft: "4px solid",
+                                                  borderColor: "primary.main",
+                                                  backgroundColor: (theme) =>
+                                                    `${alpha(theme.palette.primary.main, 0.15)}`,
+                                                  mt: "4px",
+                                                },
+                                              }}
+                                            >
+                                              <Draggable draggableId={groupName + operator.op_id} index={i}>
+                                                {(operatorProvided: DraggableProvided) => (
+                                                  <Typography
+                                                    key={operator.op_id}
+                                                    {...operatorProvided.draggableProps}
+                                                    {...operatorProvided.dragHandleProps}
+                                                    ref={operatorProvided.innerRef}
+                                                    sx={{ display: "flex", alignItems: "center", p: 0.5, gap: 1 }}
+                                                  >
+                                                    <Image
+                                                      src={`/img/avatars/${operator.op_id}.png`}
+                                                      alt=""
+                                                      width={24}
+                                                      height={24}
+                                                    />
+                                                    {operatorJson[operator.op_id].name}
+                                                  </Typography>
+                                                )}
+                                              </Draggable>
+                                            </Box>
+                                          ))}
+                                        </Box>
+                                        {operatorProvided.placeholder}
+                                      </div>
+                                    )}
+                                  </Droppable>
+                                </Box>
+                              </div>
+                            )}
+                          </Draggable>
+                        </Box>
                       ))}
                     </Box>
                     {provided.placeholder}
@@ -170,7 +204,7 @@ const GoalReorderDialog = (props: Props) => {
             </Box>
           </DragDropContext>
         </DialogContent>
-        <DialogActions>
+        <DialogActions sx={{ gap: 1 }}>
           <Button variant="outlined" onClick={() => onClose()}>
             Cancel
           </Button>

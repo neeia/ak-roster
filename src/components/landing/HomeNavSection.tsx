@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, BoxProps, ThemeProvider, Typography } from "@mui/material";
 import createTheme from "styles/theme/appTheme";
+import { LightContext } from "pages/_app";
 
 interface Props extends BoxProps {
   title: string;
@@ -11,6 +12,8 @@ interface Props extends BoxProps {
 
 const HomeNavSection = (props: Props) => {
   const { children, title, color, src } = props;
+
+  const lightMode = useContext(LightContext)?.[0];
 
   return (
     <Box
@@ -27,7 +30,7 @@ const HomeNavSection = (props: Props) => {
         },
       }}
     >
-      <ThemeProvider theme={createTheme(color)}>
+      <ThemeProvider theme={createTheme(color, lightMode)}>
         <Typography
           variant="h2"
           sx={{

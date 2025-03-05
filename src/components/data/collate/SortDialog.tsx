@@ -74,7 +74,7 @@ const SortDialog = (props: Props) => {
           aria-label="Sort"
           sx={{ display: "flex", flexDirection: "column" }}
         >
-          <Sort fontSize="large" color="primary" />
+          <Sort fontSize="large" />
           <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
             Sort
           </Typography>

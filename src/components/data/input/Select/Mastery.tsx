@@ -161,7 +161,12 @@ function Select(props: SelectProps) {
       {...rest}
     >
       {[...Array(4)].map((_, i) => (
-        <ToggleButton key={i} value={i} sx={{ p: 1 }} onClick={() => onChange(i)}>
+        <ToggleButton
+          key={i}
+          value={i}
+          sx={{ p: 1, "& img": { filter: "drop-shadow(0px 0px 0px #000)" } }}
+          onClick={() => onChange(i)}
+        >
           <Image src={`/img/rank/m-${i}.png`} alt={`Mastery ${i}`} width={size} height={size} />
         </ToggleButton>
       ))}
