@@ -3,6 +3,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
+  ButtonBase,
   IconButton,
   Menu,
   MenuItem,
@@ -30,7 +31,15 @@ interface Props {
 }
 
 export const OperatorGoals = memo((props: Props) => {
-  const { operatorGoal, onGoalEdit, onGoalMove, removeAllGoalsFromOperator, completeAllGoalsFromOperator, children, onOpSelect} = props;
+  const {
+    operatorGoal,
+    onGoalEdit,
+    onGoalMove,
+    removeAllGoalsFromOperator,
+    completeAllGoalsFromOperator,
+    children,
+    onOpSelect,
+  } = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -81,7 +90,7 @@ export const OperatorGoals = memo((props: Props) => {
       handleMoreMenuClose(e);
       completeAllGoalsFromOperator(operatorGoal.op_id, operatorGoal.group_name);
     },
-    [completeAllGoalsFromOperator,handleMoreMenuClose, operatorGoal]
+    [completeAllGoalsFromOperator, handleMoreMenuClose, operatorGoal]
   );
 
   return (
@@ -116,22 +125,26 @@ export const OperatorGoals = memo((props: Props) => {
           }}
         >
           <Box sx={{ gridArea: "opImage", position: "relative", marginLeft: -4 }}>
-            <Box
+            <ButtonBase
               sx={{
                 borderBottomLeftRadius: "50%",
                 borderTopLeftRadius: 8,
                 borderBottomRightRadius: 4,
                 overflow: "hidden",
+                width: 64,
+                height: 64,
+                transition: "opacity 0.1s",
+                "&:focus, &:hover": {
+                  opacity: 0.5,
+                },
               }}
-              width={64}
-              height={64}
+              onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                e.stopPropagation();
+                onOpSelect(operatorGoal.op_id, operatorGoal.group_name);
+              }}
             >
-              <Image src={imgUrl} width={64} height={64} alt="" 
-              onClick={(e: React.MouseEvent<HTMLImageElement>) => { 
-                e.stopPropagation();  
-                onOpSelect(operatorGoal.op_id, operatorGoal.group_name)
-              }} />
-            </Box>
+              <Image src={imgUrl} width={64} height={64} alt="" />
+            </ButtonBase>
             {expanded ? (
               <RemoveCircleIcon
                 sx={{

@@ -40,11 +40,9 @@ const ItemInfoPopover: React.FC<Props> = React.memo((props) => {
     >
       {itemId != null && item != null && (
         <Paper
-          elevation={3}
+          elevation={1}
           sx={{
             p: 2,
-            backgroundColor: "rgba(255, 255, 255, 0.8)",
-            color: "#000",
             opacity: 0.9,
           }}
         >
@@ -57,9 +55,7 @@ const ItemInfoPopover: React.FC<Props> = React.memo((props) => {
               gridTemplateColumns: "auto 1fr",
               columnGap: 1.5,
               alignItems: "center",
-              backgroundColor: (theme) => theme.palette.background.default,
-              color: "#fff",
-              borderRadius: (theme) => theme.spacing(0.5),
+              borderRadius: 4,
             }}
           >
             <Image

@@ -47,16 +47,12 @@ const SupportBlock = (props: Props) => {
   return (
     <Box
       sx={{
-        position: "relative",
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         backgroundColor: "background.paper",
-        boxShadow: 1,
-        padding: { xs: "4px 8px 4px 6px" },
-        margin: { xs: "2px 4px 4px 10px" },
+        padding: "4px 8px 4px 6px",
+        margin: "2px 4px 4px 10px",
         borderRadius: "4px",
-        height: "min-content",
-        width: "min-content",
         gap: 2,
         ...sx,
       }}
@@ -149,6 +145,8 @@ const SupportBlock = (props: Props) => {
                   right: -4,
                   top: -4,
                   bottom: -4,
+                  backgroundImage: "url('/img/rank/bg.png')",
+                  backgroundSize: "100% 100%",
                 }}
               >
                 <Image
@@ -188,7 +186,7 @@ const SupportBlock = (props: Props) => {
               alignItems: "center",
               justifyContent: "center",
               borderRadius: "50%",
-              backgroundColor: "background.light",
+              backgroundColor: "background.paper",
               border: "2px solid",
               borderColor: op.level === MAX_LEVEL_BY_RARITY[op.rarity][2] ? "primary.light" : "grey.500",
             }}
@@ -220,7 +218,7 @@ const SupportBlock = (props: Props) => {
                   height: 24,
                   position: "relative",
                   backgroundImage: "url('/img/rank/bg.png')",
-                  backgroundSize: "contain",
+                  backgroundSize: "100% 100%",
                 }}
               >
                 {!op.masteries[i] ? (
@@ -263,7 +261,8 @@ const SupportBlock = (props: Props) => {
                   display: "grid",
                   height: 24,
                   aspectRatio: "1 / 1",
-                  backgroundColor: "background.default",
+                  backgroundImage: "url('/img/rank/bg.png')",
+                  backgroundSize: "100% 100%",
                   border: "1px solid",
                   borderColor: "background.light",
                   opacity: modLevel ? 1 : 0.25,

@@ -42,7 +42,7 @@ const FilterDialog = memo((props: Props) => {
           aria-label="Filter"
           sx={{ display: "flex", flexDirection: "column" }}
         >
-          <FilterAltOutlined fontSize="large" color="primary" />
+          <FilterAltOutlined fontSize="large" />
           <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
             Filter
           </Typography>

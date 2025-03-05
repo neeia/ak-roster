@@ -35,7 +35,7 @@ const Potential = memo((props: Props) => {
         .filter((n) => min <= n && n <= max)
         .map((n) => (
           // <Tooltip key={n} title={bonuses ? (n === 1 ? "Unlock" : bonuses[n - 1]) : ""} arrow>
-          <ToggleButton key={n} value={n} sx={{ p: 1 }}>
+          <ToggleButton key={n} value={n} sx={{ p: 1, "& img": { filter: "drop-shadow(0px 0px 0px #000)" } }}>
             <Image width={size} height={size} src={`/img/potential/${n}.png`} alt={`Potential ${n}`} />
           </ToggleButton>
           // </Tooltip>

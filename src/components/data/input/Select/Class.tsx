@@ -1,4 +1,5 @@
 import { Box, ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps } from "@mui/material";
+import Image from "next/image";
 import React from "react";
 
 const classList = ["Vanguard", "Guard", "Defender", "Sniper", "Caster", "Medic", "Supporter", "Specialist"];
@@ -31,7 +32,13 @@ const ClassFilter = (props: Props) => {
             },
           }}
         >
-          <Box component="img" width="2.5rem" src={`/img/classes/class_${c.toLowerCase()}.png`} alt={c} />
+          <Box
+            sx={{
+              filter: "drop-shadow(0px 0px 2px #000)",
+            }}
+          >
+            <Image width={40} height={40} src={`/img/classes/class_${c.toLowerCase()}.png`} alt={c} />
+          </Box>
         </ToggleButton>
       ))}
     </ToggleButtonGroup>

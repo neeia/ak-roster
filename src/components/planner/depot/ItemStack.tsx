@@ -34,7 +34,7 @@ const ItemStack: React.FC<ItemStackProps> = (props) => {
             mb: `${(rest.size ?? 96) / 16}px`,
             alignSelf: "end",
             justifySelf: "end",
-            background: "rgba(0, 0, 0, 0.75)",
+            backgroundColor: "background.paper",
             zIndex: 1,
             fontSize: `${fontSize}px`,
           }}

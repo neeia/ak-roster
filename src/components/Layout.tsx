@@ -6,7 +6,7 @@ import AppDrawer from "./AppDrawer";
 import Head from "./app/Head";
 import { server } from "util/server";
 import createTheme, { brand } from "styles/theme/appTheme";
-import { UserContext } from "pages/_app";
+import { LightContext, UserContext } from "pages/_app";
 import { useRouter } from "next/router";
 import useAccount from "util/hooks/useAccount";
 
@@ -31,13 +31,15 @@ const Layout = React.memo((props: Props) => {
   const router = useRouter();
   const requireLogin = r1 || r2;
 
+  const lightMode = useContext(LightContext)?.[0];
+
   const [account, , { loading }] = useAccount();
   useEffect(() => {
     if (!user && !loading && requireLogin) router.push("/");
   }, [user, account, loading, requireLogin, router]);
 
   return (
-    <ThemeProvider theme={createTheme(brand[tab] ?? brand.DEFAULT)}>
+    <ThemeProvider theme={createTheme(brand[tab] ?? brand.DEFAULT, lightMode)}>
       <Head title={title} url={`${server}${tab ?? ""}${page}`} description={description ?? siteDescription} />
       <Box
         display="grid"
@@ -68,7 +70,7 @@ const Layout = React.memo((props: Props) => {
                     },
                   }}
                 >
-                  <MenuIcon sx={{ color: "background.paper" }} />
+                  <MenuIcon sx={{ color: "primary.contrastText" }} />
                 </IconButton>
                 <Box component="span" sx={{ verticalAlign: "bottom" }}>
                   <Typography component="h1" variant="h5" noWrap sx={{ display: "inline", verticalAlign: "baseline" }}>

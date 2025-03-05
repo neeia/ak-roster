@@ -48,7 +48,7 @@ const Lookup: NextPage = () => {
         data && (
           <>
             <IconButton aria-label="Back to lookup" edge="start" onClick={clear}>
-              <ArrowBack sx={{ color: "background.paper" }} />
+              <ArrowBack />
             </IconButton>
             <Typography component="h1" variant="h5" sx={{ lineHeight: "1rem", mr: 1.5 }}>
               {data?.account.display_name ?? username}
@@ -107,7 +107,7 @@ const Lookup: NextPage = () => {
             <SearchDialog onChange={setSearch} />
             <Tooltip title="Profile" arrow describeChild>
               <IconButton onClick={() => setOpen(true)} sx={{ display: "flex", flexDirection: "column" }}>
-                <Badge fontSize="large" color="primary" />
+                <Badge fontSize="large" />
                 <Typography variant="caption" sx={{ display: { sm: "none" }, lineHeight: 1.1 }}>
                   Profile
                 </Typography>

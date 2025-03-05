@@ -1,6 +1,6 @@
 import config from "data/config";
 import Head from "./app/Head";
-import { alpha, Box, Typography, useTheme } from "@mui/material";
+import { alpha, Box, Typography } from "@mui/material";
 import Logo from "./app/Logo";
 import { server } from "util/server";
 import { useEffect, useState } from "react";
@@ -10,7 +10,6 @@ interface Props {
   children?: React.ReactNode;
 }
 const AuthLayout = (props: Props) => {
-  const theme = useTheme();
 
   const [rng, setRng] = useState(Math.floor(Math.random() * 8));
   useEffect(() => {
@@ -49,7 +48,7 @@ const AuthLayout = (props: Props) => {
               p: { xs: 4, sm: 8 },
               gap: 4,
               maxWidth: "sm",
-              backgroundColor: alpha(theme.palette.background.paper, 0.75),
+              backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.75),
             }}
           >
             <Logo

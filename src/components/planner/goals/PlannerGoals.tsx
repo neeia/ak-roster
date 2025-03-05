@@ -52,7 +52,7 @@ import { levelingCost } from "pages/tools/level";
 import ChangeGroupDialog from "./ChangeGroupDialog";
 import { enqueueSnackbar } from "notistack";
 import RenameGroupDialog from "./RenameGroupDialog";
-import {SettingsMenu, SettingsMenuItem, SettingsButton} from "../SettingsMenu";
+import { SettingsMenu, SettingsMenuItem, SettingsButton } from "../SettingsMenu";
 import useMenu from "util/hooks/useMenu";
 
 type Depot = Record<string, DepotItem>;
@@ -88,7 +88,7 @@ const PlannerGoals = (props: Props) => {
   const [roster, onChange] = useOperators();
 
   const [reorderOpen, setReorderOpen] = useState<boolean>(false);
-  const {setAnchorEl, menuProps, menuButtonProps} = useMenu();
+  const { setAnchorEl, menuProps, menuButtonProps } = useMenu();
 
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
 
@@ -234,7 +234,7 @@ const PlannerGoals = (props: Props) => {
               // remaining goal must be complex - a mix of elite and level goals
 
               // sanity check - elite_from should never be equal to elite_to at this point, but just in case
-              // delete should be backwards: 
+              // delete should be backwards:
               // del of plannerGoal of Lowest elite -> deletes It, and every higher goals (or complete it alone)
               if (_goal.elite_from === plannerGoal.eliteLevel) {
                 _goal.elite_from = null;
@@ -308,200 +308,203 @@ const PlannerGoals = (props: Props) => {
   );
 
   //modified "onPlannerGoalCardGoalCompleted" for use in Loop.
-  //input: previous values, 
+  //input: previous values,
   //return: computes and returns {updatedGoal, updatedOperator, updatedDepot}
   //with changes after completing each Goal.
   //hooks are removed, moved to wrapper functions.
   const completePlannerGoal = useCallback(
     (goal: GoalData, operator: any, depotData: Depot, plannerGoal: PlannerGoal) => {
-    const opId = plannerGoal.operatorId;
-    const opData = operatorJson[opId];
+      const opId = plannerGoal.operatorId;
+      const opData = operatorJson[opId];
 
-    // remove goal, remove any prerequisites, update roster, and update depot
-    const allPlannerGoals = getPlannerGoals(goal, opData);
-    const _goal = { ...goal };
-    let op = { ...operator };    
-    let updatedDepot: Depot = {};    
+      // remove goal, remove any prerequisites, update roster, and update depot
+      const allPlannerGoals = getPlannerGoals(goal, opData);
+      const _goal = { ...goal };
+      let op = { ...operator };
+      let updatedDepot: Depot = {};
 
-    switch (plannerGoal.category) {
-      case OperatorGoalCategory.Elite:
-        if (goal.elite_from != null && goal.elite_to != null) {
-          const finishedElite = plannerGoal.eliteLevel; // can either be 1 or 2
+      switch (plannerGoal.category) {
+        case OperatorGoalCategory.Elite:
+          if (goal.elite_from != null && goal.elite_to != null) {
+            const finishedElite = plannerGoal.eliteLevel; // can either be 1 or 2
 
-          const elite_from = finishedElite;
-          _goal.elite_from = finishedElite;
-          const elite_to = _goal.elite_to ?? 0;
-          if (_goal.elite_from >= elite_to) {
-            _goal.elite_from = null;
-            _goal.elite_to = null;
-          }
-
-          // update level goal if it exists
-          if (goal.level_from && goal.level_to) {
-            const maxTo = MAX_LEVEL_BY_RARITY[opData.rarity][elite_to];
-            const level_from = 1;
-            const level_to = clamp(1, goal.level_to, maxTo);
-
-            if (elite_from === elite_to && level_from === level_to) {
-              // level goal is redundant and can be removed
+            const elite_from = finishedElite;
+            _goal.elite_from = finishedElite;
+            const elite_to = _goal.elite_to ?? 0;
+            if (_goal.elite_from >= elite_to) {
               _goal.elite_from = null;
               _goal.elite_to = null;
-              _goal.elite_from = null;
-              _goal.elite_to = null;
-            } else {
-              // either elite is different or level is; either way, not redundant
-              _goal.elite_from = elite_from;
-              _goal.elite_to = elite_to;
-              _goal.level_from = level_from;
-              _goal.level_to = level_to;
+            }
+
+            // update level goal if it exists
+            if (goal.level_from && goal.level_to) {
+              const maxTo = MAX_LEVEL_BY_RARITY[opData.rarity][elite_to];
+              const level_from = 1;
+              const level_to = clamp(1, goal.level_to, maxTo);
+
+              if (elite_from === elite_to && level_from === level_to) {
+                // level goal is redundant and can be removed
+                _goal.elite_from = null;
+                _goal.elite_to = null;
+                _goal.elite_from = null;
+                _goal.elite_to = null;
+              } else {
+                // either elite is different or level is; either way, not redundant
+                _goal.elite_from = elite_from;
+                _goal.elite_to = elite_to;
+                _goal.level_from = level_from;
+                _goal.level_to = level_to;
+              }
+            }
+            if (op.elite < finishedElite) {
+              op = changePromotion(op, finishedElite);
             }
           }
-          if (op.elite < finishedElite) {
-            op = changePromotion(op, finishedElite);
-          }
-        }
-        break;
-      case OperatorGoalCategory.Level:
-        if (goal.level_from != null && goal.level_to != null) {
-          /*
-           * if goal is the only level component of an elite goal, then remove level goal and leave elite goal intact
-           * otherwise, remove elite goal entirely
-           * if goal is part of a greater promotion + level goal, then remove anything that the level goal required
-           *
-           * ex: e1 50 -> e2 40, finish e1 50 -> max
-           * new goal: e1 max -> e2 40
-           *
-           * ex: e0 max -> e2 40, finish e1 1 -> max
-           * new goal: e1 max -> e2 40
-           *
-           * ex: e0 1 -> e2 1, finish e1 1 -> max
-           * new goal: e1 -> e2
-           */
-
-          _goal.elite_from = plannerGoal.eliteLevel;
-          // we should be able to set the level_to to 1 here because if the previous level was E? max,
-          // this case would have been caught by the pure elite goal check
-          _goal.level_from = plannerGoal.toLevel;
-
-          // pure level goal
-          if (_goal.elite_from === _goal.elite_to) {
-            // this means there are no other level or promotion goals. great, we can remove level / elite entirely
-            _goal.elite_from = null;
-            _goal.elite_to = null;
-            _goal.level_from = null;
-            _goal.level_to = null;
-          } else if (allPlannerGoals.filter((x) => x.category === OperatorGoalCategory.Level).length === 1) {
-            /* check for possible pure elite goal
-             * this can only be elite A lvl 1 -> elite A + 1 lvl 1
-             * or elite A lvl max -> elite A + 1 lvl N
-             * or elite 0 lvl max -> elite 2 lvl 1
-             * we can do this by checking if getPlannerGoals returns only one level goal
+          break;
+        case OperatorGoalCategory.Level:
+          if (goal.level_from != null && goal.level_to != null) {
+            /*
+             * if goal is the only level component of an elite goal, then remove level goal and leave elite goal intact
+             * otherwise, remove elite goal entirely
+             * if goal is part of a greater promotion + level goal, then remove anything that the level goal required
+             *
+             * ex: e1 50 -> e2 40, finish e1 50 -> max
+             * new goal: e1 max -> e2 40
+             *
+             * ex: e0 max -> e2 40, finish e1 1 -> max
+             * new goal: e1 max -> e2 40
+             *
+             * ex: e0 1 -> e2 1, finish e1 1 -> max
+             * new goal: e1 -> e2
              */
-            _goal.level_from = null;
-            _goal.level_to = null;
-          } else if (_goal.elite_to === plannerGoal.eliteLevel) {
-            _goal.elite_from = null;
-            _goal.elite_to = null;
-            _goal.level_from = null;
-            _goal.level_to = null;
-          }
-          if (op.elite < plannerGoal.eliteLevel) {
-            op = changePromotion(op, plannerGoal.eliteLevel);
-          }
-          if (op.level < plannerGoal.toLevel) {
-            op = changeLevel(op, plannerGoal.toLevel);
-          }
-        }
-        break;
-      case OperatorGoalCategory.Mastery:
-        // fortunately any non-elite/lvl cases should be simpler -
-        // just remove anything before the indicated level
-        const skillIndex = opData.skillData?.findIndex((x) => x.skillId === plannerGoal.skillId);
-        if (skillIndex != null && goal.masteries_from && goal.masteries_to) {
-          _goal.masteries_from = [...goal.masteries_from];
 
-          _goal.masteries_from[skillIndex] = Math.min(plannerGoal.masteryLevel, goal.masteries_to[skillIndex]);
+            _goal.elite_from = plannerGoal.eliteLevel;
+            // we should be able to set the level_to to 1 here because if the previous level was E? max,
+            // this case would have been caught by the pure elite goal check
+            _goal.level_from = plannerGoal.toLevel;
 
-          if (_.isEqual(goal.masteries_from, _goal.masteries_to)) {
-            _goal.masteries_from = null;
-            _goal.masteries_to = null;
-          }
-          if (op.masteries[skillIndex] < plannerGoal.masteryLevel) {
-            if (op.elite < 2) op = changePromotion(op, 2);
-            if (op.skill_level < 7) {
-              op = changeSkillLevel(op, 7);
+            // pure level goal
+            if (_goal.elite_from === _goal.elite_to) {
+              // this means there are no other level or promotion goals. great, we can remove level / elite entirely
+              _goal.elite_from = null;
+              _goal.elite_to = null;
+              _goal.level_from = null;
+              _goal.level_to = null;
+            } else if (allPlannerGoals.filter((x) => x.category === OperatorGoalCategory.Level).length === 1) {
+              /* check for possible pure elite goal
+               * this can only be elite A lvl 1 -> elite A + 1 lvl 1
+               * or elite A lvl max -> elite A + 1 lvl N
+               * or elite 0 lvl max -> elite 2 lvl 1
+               * we can do this by checking if getPlannerGoals returns only one level goal
+               */
+              _goal.level_from = null;
+              _goal.level_to = null;
+            } else if (_goal.elite_to === plannerGoal.eliteLevel) {
+              _goal.elite_from = null;
+              _goal.elite_to = null;
+              _goal.level_from = null;
+              _goal.level_to = null;
             }
-            op = changeMastery(op, skillIndex, plannerGoal.masteryLevel);
-          }
-        }
-        break;
-      case OperatorGoalCategory.Module:
-        const moduleId = plannerGoal.moduleId;
-        if (moduleId != null && goal.modules_from && goal.modules_to) {
-          _goal.modules_from = { ...goal.modules_from };
-
-          _goal.modules_from[moduleId] = Math.min(plannerGoal.moduleLevel, goal.modules_to[moduleId]);
-
-          if (_.isEqual(_goal.modules_to, goal.modules_from)) {
-            _goal.modules_from = null;
-            _goal.modules_to = null;
-          }
-          if (op.modules[moduleId] < plannerGoal.moduleLevel) {
-            if (op.elite < 2) op = changePromotion(op, 2);
-            if (op.level < MODULE_REQ_BY_RARITY[opData.rarity]) {
-              op = changeLevel(op, MODULE_REQ_BY_RARITY[opData.rarity]);
+            if (op.elite < plannerGoal.eliteLevel) {
+              op = changePromotion(op, plannerGoal.eliteLevel);
             }
-            op = changeModule(op, moduleId, plannerGoal.moduleLevel);
+            if (op.level < plannerGoal.toLevel) {
+              op = changeLevel(op, plannerGoal.toLevel);
+            }
           }
-        }
-        break;
-      case OperatorGoalCategory.SkillLevel:
-        if (goal.skill_level_from != null && goal.skill_level_to != null) {
-          const newSkillLevel = plannerGoal.skillLevel;
+          break;
+        case OperatorGoalCategory.Mastery:
+          // fortunately any non-elite/lvl cases should be simpler -
+          // just remove anything before the indicated level
+          const skillIndex = opData.skillData?.findIndex((x) => x.skillId === plannerGoal.skillId);
+          if (skillIndex != null && goal.masteries_from && goal.masteries_to) {
+            _goal.masteries_from = [...goal.masteries_from];
 
-          if (newSkillLevel >= goal.skill_level_to!) {
-            _goal.skill_level_from = null;
-            _goal.skill_level_to = null;
-          } else {
-            _goal.skill_level_from = newSkillLevel;
+            _goal.masteries_from[skillIndex] = Math.min(plannerGoal.masteryLevel, goal.masteries_to[skillIndex]);
+
+            if (_.isEqual(goal.masteries_from, _goal.masteries_to)) {
+              _goal.masteries_from = null;
+              _goal.masteries_to = null;
+            }
+            if (op.masteries[skillIndex] < plannerGoal.masteryLevel) {
+              if (op.elite < 2) op = changePromotion(op, 2);
+              if (op.skill_level < 7) {
+                op = changeSkillLevel(op, 7);
+              }
+              op = changeMastery(op, skillIndex, plannerGoal.masteryLevel);
+            }
           }
-          if (op.skill_level < plannerGoal.skillLevel) {
-            if (op.elite < 1 && plannerGoal.skillLevel > 4) op = changePromotion(op, 1);
-            op = changeSkillLevel(op, plannerGoal.skillLevel);
+          break;
+        case OperatorGoalCategory.Module:
+          const moduleId = plannerGoal.moduleId;
+          if (moduleId != null && goal.modules_from && goal.modules_to) {
+            _goal.modules_from = { ...goal.modules_from };
+
+            _goal.modules_from[moduleId] = Math.min(plannerGoal.moduleLevel, goal.modules_to[moduleId]);
+
+            if (_.isEqual(_goal.modules_to, goal.modules_from)) {
+              _goal.modules_from = null;
+              _goal.modules_to = null;
+            }
+            if (op.modules[moduleId] < plannerGoal.moduleLevel) {
+              if (op.elite < 2) op = changePromotion(op, 2);
+              if (op.level < MODULE_REQ_BY_RARITY[opData.rarity]) {
+                op = changeLevel(op, MODULE_REQ_BY_RARITY[opData.rarity]);
+              }
+              op = changeModule(op, moduleId, plannerGoal.moduleLevel);
+            }
           }
-        }
-        break;
-    }
+          break;
+        case OperatorGoalCategory.SkillLevel:
+          if (goal.skill_level_from != null && goal.skill_level_to != null) {
+            const newSkillLevel = plannerGoal.skillLevel;
 
-    //updateGoals([_goal]);
-    //onChange(op);
-
-    const ingredients = getGoalIngredients(plannerGoal);
-    if (ingredients.length > 0) {
-      if (plannerGoal.category === OperatorGoalCategory.Level) {
-        const { exp, lmd } = levelingCost(
-          opData.rarity,
-          plannerGoal.eliteLevel,
-          plannerGoal.fromLevel,
-          plannerGoal.eliteLevel,
-          plannerGoal.toLevel
-        );
-        const { depot: _depotUpdate } = expToBattleRecords(exp, depotData);
-        _depotUpdate["4001"].stock -= lmd;
-        updatedDepot = _depotUpdate;
-        //setDepot(Object.values(_depot));
-      } else {
-        const { depot: _depotUpdate } = canCompleteByCrafting(
-          Object.fromEntries(ingredients.map(({ quantity, id }) => [id, quantity])),
-          depotData,
-          //tweak: only craft ingrediets in crafting state
-          settings.depotSettings.crafting); //Object.keys(depotData)
-          updatedDepot = _depotUpdate;
-        //setDepot(Object.values(_depot));
+            if (newSkillLevel >= goal.skill_level_to!) {
+              _goal.skill_level_from = null;
+              _goal.skill_level_to = null;
+            } else {
+              _goal.skill_level_from = newSkillLevel;
+            }
+            if (op.skill_level < plannerGoal.skillLevel) {
+              if (op.elite < 1 && plannerGoal.skillLevel > 4) op = changePromotion(op, 1);
+              op = changeSkillLevel(op, plannerGoal.skillLevel);
+            }
+          }
+          break;
       }
-    }
-    return {updatedGoal: _goal, updatedOperator: op, updatedDepot};
-  } , [settings.depotSettings.crafting]);
+
+      //updateGoals([_goal]);
+      //onChange(op);
+
+      const ingredients = getGoalIngredients(plannerGoal);
+      if (ingredients.length > 0) {
+        if (plannerGoal.category === OperatorGoalCategory.Level) {
+          const { exp, lmd } = levelingCost(
+            opData.rarity,
+            plannerGoal.eliteLevel,
+            plannerGoal.fromLevel,
+            plannerGoal.eliteLevel,
+            plannerGoal.toLevel
+          );
+          const { depot: _depotUpdate } = expToBattleRecords(exp, depotData);
+          _depotUpdate["4001"].stock -= lmd;
+          updatedDepot = _depotUpdate;
+          //setDepot(Object.values(_depot));
+        } else {
+          const { depot: _depotUpdate } = canCompleteByCrafting(
+            Object.fromEntries(ingredients.map(({ quantity, id }) => [id, quantity])),
+            depotData,
+            //tweak: only craft ingrediets in crafting state
+            settings.depotSettings.crafting
+          ); //Object.keys(depotData)
+          updatedDepot = _depotUpdate;
+          //setDepot(Object.values(_depot));
+        }
+      }
+      return { updatedGoal: _goal, updatedOperator: op, updatedDepot };
+    },
+    [settings.depotSettings.crafting]
+  );
 
   //wrapper for completePlannerGoal to compete one goal
   const onPlannerGoalCardGoalCompleted = (plannerGoal: PlannerGoal, groupName: string) => {
@@ -513,142 +516,155 @@ const PlannerGoals = (props: Props) => {
     setDepot(Object.values(updatedDepot));
     onChange(updatedOperator);
     updateGoals([updatedGoal]);
-  }
+  };
 
   //wrapper for completePlannerGoal to complete all goals of op in group
   //gradually computes resulting values to use in next goals, and uses hooks on totals in the end.
   const onPlannerGoalGroupCompleteAllGoals = useCallback(
-    (opId: string, groupName: string ) => { 
-    const OperatorGroupGoals = goals.filter((goal) => goal.op_id === opId && goal.group_name === groupName);
-    let _opData = roster[opId] ?? defaultOperatorObject(opId, true);
-    let _depotData = {...depot};
-    let _goalData : GoalData[]= [];
+    (opId: string, groupName: string) => {
+      const OperatorGroupGoals = goals.filter((goal) => goal.op_id === opId && goal.group_name === groupName);
+      let _opData = roster[opId] ?? defaultOperatorObject(opId, true);
+      let _depotData = { ...depot };
+      let _goalData: GoalData[] = [];
 
       for (const goalData of OperatorGroupGoals) {
         let _goal = goalData;
         const plannerGoals = getPlannerGoals(goalData);
-        plannerGoals
-          .forEach((_plannerGoal) => {
-            const { updatedGoal, updatedOperator, updatedDepot } = completePlannerGoal(_goal, _opData, _depotData, _plannerGoal);
-            _opData = updatedOperator;
-            _depotData = updatedDepot;
-            _goal = updatedGoal;
-          });
-        _goalData.push(_goal);        
-      };      
-    //update storages through hooks
-    setDepot(Object.values(_depotData));
-    onChange(_opData);
-    
-    //Level,Elite category goals logic deletes parts of GoalData
-    //maybe modify and use later: 
-    //updateGoals(_goalData); 
-    
-    //delete all goals of op in group
-    removeAllGoalsFromOperator(opId, groupName);  
+        plannerGoals.forEach((_plannerGoal) => {
+          const { updatedGoal, updatedOperator, updatedDepot } = completePlannerGoal(
+            _goal,
+            _opData,
+            _depotData,
+            _plannerGoal
+          );
+          _opData = updatedOperator;
+          _depotData = updatedDepot;
+          _goal = updatedGoal;
+        });
+        _goalData.push(_goal);
+      }
+      //update storages through hooks
+      setDepot(Object.values(_depotData));
+      onChange(_opData);
+
+      //Level,Elite category goals logic deletes parts of GoalData
+      //maybe modify and use later:
+      //updateGoals(_goalData);
+
+      //delete all goals of op in group
+      removeAllGoalsFromOperator(opId, groupName);
     },
-  [depot, goals, roster, completePlannerGoal, setDepot, onChange, removeAllGoalsFromOperator] 
-);
+    [depot, goals, roster, completePlannerGoal, setDepot, onChange, removeAllGoalsFromOperator]
+  );
 
-  const inactiveOpsInGroups = useMemo(() => (
-    { ...settings.plannerSettings.inactiveOpsInGroups ?? {} }
-  ), [settings.plannerSettings.inactiveOpsInGroups]);
-  const groupedGoals = useMemo(() => _.groupBy(goals, (goal) => goal.group_name),[goals]);
+  const inactiveOpsInGroups = useMemo(
+    () => ({ ...(settings.plannerSettings.inactiveOpsInGroups ?? {}) }),
+    [settings.plannerSettings.inactiveOpsInGroups]
+  );
+  const groupedGoals = useMemo(() => _.groupBy(goals, (goal) => goal.group_name), [goals]);
 
-  const handleOpSelect = useCallback((opId: string, groupName: string) => {
-    const _opsList = new Set(inactiveOpsInGroups[groupName] ?? []);
+  const handleOpSelect = useCallback(
+    (opId: string, groupName: string) => {
+      const _opsList = new Set(inactiveOpsInGroups[groupName] ?? []);
 
-    if (_opsList.has(opId)) {
-      _opsList.delete(opId);
-    } else {
-      _opsList.add(opId);
-    }
+      if (_opsList.has(opId)) {
+        _opsList.delete(opId);
+      } else {
+        _opsList.add(opId);
+      }
 
-    if (_opsList.size === 0) {
-      delete inactiveOpsInGroups[groupName];
-    } else {
-      inactiveOpsInGroups[groupName] = Array.from(_opsList);
-    }
+      if (_opsList.size === 0) {
+        delete inactiveOpsInGroups[groupName];
+      } else {
+        inactiveOpsInGroups[groupName] = Array.from(_opsList);
+      }
 
-    setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups } }));
-
-  }, [inactiveOpsInGroups, setSettings]);
+      setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups } }));
+    },
+    [inactiveOpsInGroups, setSettings]
+  );
 
   const resetAllOpsInactivity = useCallback(() => {
     setAnchorEl(null);
     setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups: {} } }));
-  }, [setSettings, setAnchorEl]
-  )
-  
+  }, [setSettings, setAnchorEl]);
+
   const setAllOpsInactivity = useCallback(() => {
     setAnchorEl(null);
-  
+
     const allOpsInAllGroup = Object.keys(groupedGoals).reduce((acc, groupName) => {
-      const opsInGroup = groupedGoals[groupName]?.map(goal => goal.op_id) ?? [];
+      const opsInGroup = groupedGoals[groupName]?.map((goal) => goal.op_id) ?? [];
       if (opsInGroup.length > 0) {
         acc[groupName] = opsInGroup;
       }
       return acc;
     }, {} as Record<string, string[]>);
-  
+
     setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups: allOpsInAllGroup } }));
   }, [groupedGoals, setSettings, setAnchorEl]);
 
-  const toggleGroupOpsInactivity = useCallback((groupName: string) => {
-    const opsSelection = inactiveOpsInGroups[groupName] ?? [];
-    const allOpsInGroup = groupedGoals[groupName]?.map(goal => goal.op_id) ?? [];
+  const toggleGroupOpsInactivity = useCallback(
+    (groupName: string) => {
+      const opsSelection = inactiveOpsInGroups[groupName] ?? [];
+      const allOpsInGroup = groupedGoals[groupName]?.map((goal) => goal.op_id) ?? [];
 
-    const allEnabled = allOpsInGroup.every(opId => !opsSelection.includes(opId));
+      const allEnabled = allOpsInGroup.every((opId) => !opsSelection.includes(opId));
 
-    const newSelectionState = allEnabled ? true : false;
+      const newSelectionState = allEnabled ? true : false;
 
-    const newOpsSelection = newSelectionState
-      ? opsSelection.concat(allOpsInGroup.filter(opId => !opsSelection.includes(opId)))
-      : [];
+      const newOpsSelection = newSelectionState
+        ? opsSelection.concat(allOpsInGroup.filter((opId) => !opsSelection.includes(opId)))
+        : [];
 
-    if (newOpsSelection.length === 0) {
+      if (newOpsSelection.length === 0) {
+        delete inactiveOpsInGroups[groupName];
+      } else {
+        inactiveOpsInGroups[groupName] = newOpsSelection;
+      }
+
+      setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups } }));
+    },
+    [groupedGoals, inactiveOpsInGroups, setSettings]
+  );
+
+  const getGroupCheckboxState = useCallback(
+    (groupName: string) => {
+      const opsSelection = inactiveOpsInGroups[groupName] ?? [];
+      const allOpsInGroup = groupedGoals[groupName]?.map((goal) => goal.op_id) ?? [];
+
+      const allEnabled = opsSelection.length === 0;
+      const someDisabled = opsSelection.length > 0;
+      const emptyGroup = allOpsInGroup.length === 0;
+      const allDisabled = someDisabled && opsSelection.length === allOpsInGroup.length;
+
+      return {
+        checked: allEnabled && !emptyGroup,
+        indeterminate: !allDisabled && someDisabled,
+        disabled: emptyGroup,
+      };
+    },
+    [groupedGoals, inactiveOpsInGroups]
+  );
+
+  const renameInactivityGroup = useCallback(
+    (groupName: string, newName: string) => {
+      const opsSelection = inactiveOpsInGroups[groupName] ?? [];
+      if (opsSelection.length === 0) return;
       delete inactiveOpsInGroups[groupName];
-    } else {
-      inactiveOpsInGroups[groupName] = newOpsSelection;
-    }
 
-    setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups } }));
-  }, [groupedGoals, inactiveOpsInGroups, setSettings]
-  )
+      inactiveOpsInGroups[newName] = opsSelection;
+      setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups } }));
+    },
+    [inactiveOpsInGroups, setSettings]
+  );
 
-  const getGroupCheckboxState = useCallback((groupName: string) => {
-    const opsSelection = inactiveOpsInGroups[groupName] ?? [];
-    const allOpsInGroup = groupedGoals[groupName]?.map(goal => goal.op_id) ?? [];
-
-    const allEnabled = opsSelection.length === 0;
-    const someDisabled = opsSelection.length > 0;
-    const emptyGroup = allOpsInGroup.length === 0;
-    const allDisabled = someDisabled && opsSelection.length === allOpsInGroup.length
-
-    return {
-      checked: allEnabled && !emptyGroup,
-      indeterminate: !allDisabled && someDisabled,
-      disabled: emptyGroup, 
-    }
-
-  }, [groupedGoals, inactiveOpsInGroups]
-  )
-
-  const renameInactivityGroup = useCallback((groupName: string, newName: string) => {
-    const opsSelection = inactiveOpsInGroups[groupName] ?? [];
-    if (opsSelection.length === 0) return;
-    delete inactiveOpsInGroups[groupName];
-
-    inactiveOpsInGroups[newName] = opsSelection;
-    setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups } }));
-  },[inactiveOpsInGroups,setSettings]
-  )
-
-  const resetGroupInactivity = useCallback((groupName: string) => {    
-    delete inactiveOpsInGroups[groupName];
-    setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups } }));
-  },[inactiveOpsInGroups,setSettings]
-  )
+  const resetGroupInactivity = useCallback(
+    (groupName: string) => {
+      delete inactiveOpsInGroups[groupName];
+      setSettings((s) => ({ ...s, plannerSettings: { ...s.plannerSettings, inactiveOpsInGroups } }));
+    },
+    [inactiveOpsInGroups, setSettings]
+  );
 
   const handleAllowAllGoals = useCallback(() => {
     const plannerSettings = { ...settings.plannerSettings };
@@ -670,115 +686,68 @@ const PlannerGoals = (props: Props) => {
     const sortedGroups = groups?.map((groupName, index) => {
       const sortedGoals = groupedGoals[groupName]?.sort((a, b) => a.sort_order - b.sort_order) || [];
       const inactiveOps = inactiveOpsInGroups[groupName] ?? [];
-  
+
       const operatorGoals = sortedGoals.map((operatorGoal) => {
         const op = roster[operatorGoal.op_id] ?? defaultOperatorObject(operatorGoal.op_id, true);
         const plannerGoals = getPlannerGoals(operatorGoal, {
           ...op,
           ...operatorJson[operatorGoal.op_id],
         }).filter((g) => filter.filterFunction(g, depot, groupName, !inactiveOps.includes(g.operatorId)));
-  
+
         return { operatorGoal, plannerGoals, substantial: plannerGoals.length > 0, operator: op };
       });
-      const hasSubstantialGoals = operatorGoals.some(goal => goal.substantial);
+      const hasSubstantialGoals = operatorGoals.some((goal) => goal.substantial);
 
       return { groupName, index, operatorGoals, inactiveOps, hasSubstantialGoals };
     });
 
     if (settings.plannerSettings.sortEmptyGroupsToBottom) {
       sortedGroups?.sort((a, b) => {
-        return (a.hasSubstantialGoals === b.hasSubstantialGoals)
-          ? 0
-          : a.hasSubstantialGoals ? -1 : 1;
-      })             
+        return a.hasSubstantialGoals === b.hasSubstantialGoals ? 0 : a.hasSubstantialGoals ? -1 : 1;
+      });
     }
     return sortedGroups;
-  }, [groups, groupedGoals, roster, filter, depot, 
-    inactiveOpsInGroups, settings.plannerSettings.sortEmptyGroupsToBottom]);
+  }, [
+    groups,
+    groupedGoals,
+    roster,
+    filter,
+    depot,
+    inactiveOpsInGroups,
+    settings.plannerSettings.sortEmptyGroupsToBottom,
+  ]);
 
-  const calculateCompletableStatus = useCallback((plannerGoal: PlannerGoal) => {
-    if (settings.plannerSettings.allowAllGoals) {
-      return { completable: true, completableByCrafting: false };
-    }
+  const calculateCompletableStatus = useCallback(
+    (plannerGoal: PlannerGoal) => {
+      if (settings.plannerSettings.allowAllGoals) {
+        return { completable: true, completableByCrafting: false };
+      }
 
-    const ingredients = getGoalIngredients(plannerGoal);
-    const { craftableItems } = canCompleteByCrafting(
-      Object.fromEntries(ingredients.map(({ quantity, id }) => [id, quantity])),
-      depot,
-      settings.depotSettings.crafting,
-      settings.depotSettings.ignoreLmdInCrafting
-    );
+      const ingredients = getGoalIngredients(plannerGoal);
+      const { craftableItems } = canCompleteByCrafting(
+        Object.fromEntries(ingredients.map(({ quantity, id }) => [id, quantity])),
+        depot,
+        settings.depotSettings.crafting,
+        settings.depotSettings.ignoreLmdInCrafting
+      );
 
-    const completableByCrafting = ingredients.every(
-      ({ id, quantity }) =>
-        (settings.depotSettings.ignoreLmdInCrafting && id === "4001") ||
-        (id === "EXP" ? depotToExp(depot) : depot[id]?.stock) >= quantity ||
-        craftableItems[id]
-    );
+      const completableByCrafting = ingredients.every(
+        ({ id, quantity }) =>
+          (settings.depotSettings.ignoreLmdInCrafting && id === "4001") ||
+          (id === "EXP" ? depotToExp(depot) : depot[id]?.stock) >= quantity ||
+          craftableItems[id]
+      );
 
-    const completable = ingredients.every(
-      ({ id, quantity }) =>
-        (settings.depotSettings.ignoreLmdInCrafting && id === "4001") ||
-        (id === "EXP" ? depotToExp(depot) : depot[id]?.stock) >= quantity
-    );
+      const completable = ingredients.every(
+        ({ id, quantity }) =>
+          (settings.depotSettings.ignoreLmdInCrafting && id === "4001") ||
+          (id === "EXP" ? depotToExp(depot) : depot[id]?.stock) >= quantity
+      );
 
-    return { completable, completableByCrafting };
-  }, [settings, depot]);
-
-  const createGoalGroups = () => {
-    return groupedGoalsMemo?.map(({ groupName, index, operatorGoals, inactiveOps }) => (
-      <GoalGroup
-        key={groupName}
-        groupName={groupName}
-        operatorGoals={groupedGoals[groupName]}
-        removeAllGoalsFromGroup={() => {
-          removeAllGoalsFromGroup(groupName);
-          resetGroupInactivity(groupName);
-        }}
-        removeGroup={() => {
-          removeGroup(groupName);
-          removeAllGoalsFromGroup(groupName, true);
-          resetGroupInactivity(groupName);
-        }}
-        defaultExpanded={index === 0}
-        onRename={onGroupRename}
-        inactiveOps={inactiveOps}
-        onOpSelect={handleOpSelect}
-        onGroupSelect={toggleGroupOpsInactivity}
-        getCheckboxState={getGroupCheckboxState}
-      >
-        {operatorGoals.map(({ operatorGoal, plannerGoals, substantial, operator }) => (
-          <Collapse in={substantial} key={operatorGoal.op_id}>
-            <OperatorGoals
-              key={operatorGoal.op_id}
-              operator={operator}
-              operatorGoal={operatorGoal}
-              onGoalEdit={onGoalEdit}
-              onGoalMove={onGoalMove}
-              removeAllGoalsFromOperator={removeAllGoalsFromOperator}
-              completeAllGoalsFromOperator={onPlannerGoalGroupCompleteAllGoals}
-              onOpSelect={handleOpSelect}
-            >
-              {plannerGoals.map((plannerGoal, index) => {
-                const { completable, completableByCrafting } = calculateCompletableStatus(plannerGoal);
-                return (
-                  <PlannerGoalCard
-                    key={index}
-                    goal={plannerGoal}
-                    groupName={groupName}
-                    onGoalDeleted={onPlannerGoalCardGoalDeleted}
-                    onGoalCompleted={onPlannerGoalCardGoalCompleted}
-                    completable={completable}
-                    completableByCrafting={completableByCrafting}
-                  />
-                );
-              })}
-            </OperatorGoals>
-          </Collapse>
-        ))}
-      </GoalGroup>
-    ));
-  };
+      return { completable, completableByCrafting };
+    },
+    [settings, depot]
+  );
 
   return (
     <>
@@ -794,15 +763,18 @@ const PlannerGoals = (props: Props) => {
               <SettingsMenuItem onClick={handleAllowAllGoals} checked={settings.plannerSettings.allowAllGoals}>
                 Allow completing goals unconditionally
               </SettingsMenuItem>
-              <SettingsMenuItem onClick={handleSortEmptyGroupsToBottom} checked={settings.plannerSettings.sortEmptyGroupsToBottom}>
+              <SettingsMenuItem
+                onClick={handleSortEmptyGroupsToBottom}
+                checked={settings.plannerSettings.sortEmptyGroupsToBottom}
+              >
                 Sort empty & excluded groups to bottom
               </SettingsMenuItem>
-              <Divider/>
+              <Divider />
               <MenuItem onClick={resetAllOpsInactivity}>
-              <ListItemText inset>Enable all ops</ListItemText>
+                <ListItemText inset>Enable all ops</ListItemText>
               </MenuItem>
               <MenuItem onClick={setAllOpsInactivity}>
-              <ListItemText inset>Disable all ops</ListItemText>
+                <ListItemText inset>Disable all ops</ListItemText>
               </MenuItem>
               <Divider>
                 <Typography variant="caption" color="textSecondary">
@@ -814,10 +786,11 @@ const PlannerGoals = (props: Props) => {
                   setReorderOpen(true);
                   setAnchorEl(null);
                 }}
-              ><ListItemIcon>
+              >
+                <ListItemIcon>
                   <SettingsIcon />
                 </ListItemIcon>
-              Reorder groups and goals
+                Reorder groups and goals
               </MenuItem>
               <MenuItem
                 onClick={() => {
@@ -883,7 +856,60 @@ const PlannerGoals = (props: Props) => {
             />
           </Grid>
         </Grid>
-        {goals && groups && createGoalGroups()}
+        {goals &&
+          groups &&
+          groupedGoalsMemo?.map(({ groupName, index, operatorGoals, inactiveOps }) => (
+            <GoalGroup
+              key={groupName}
+              groupName={groupName}
+              operatorGoals={groupedGoals[groupName]}
+              removeAllGoalsFromGroup={() => {
+                removeAllGoalsFromGroup(groupName);
+                resetGroupInactivity(groupName);
+              }}
+              removeGroup={() => {
+                removeGroup(groupName);
+                removeAllGoalsFromGroup(groupName, true);
+                resetGroupInactivity(groupName);
+              }}
+              defaultExpanded={index === 0}
+              onRename={onGroupRename}
+              inactiveOps={inactiveOps}
+              onOpSelect={handleOpSelect}
+              onGroupSelect={toggleGroupOpsInactivity}
+              getCheckboxState={getGroupCheckboxState}
+            >
+              {operatorGoals.map(({ operatorGoal, plannerGoals, substantial, operator }) => (
+                <Collapse in={substantial} key={operatorGoal.op_id}>
+                  <OperatorGoals
+                    key={operatorGoal.op_id}
+                    operator={operator}
+                    operatorGoal={operatorGoal}
+                    onGoalEdit={onGoalEdit}
+                    onGoalMove={onGoalMove}
+                    removeAllGoalsFromOperator={removeAllGoalsFromOperator}
+                    completeAllGoalsFromOperator={onPlannerGoalGroupCompleteAllGoals}
+                    onOpSelect={handleOpSelect}
+                  >
+                    {plannerGoals.map((plannerGoal, index) => {
+                      const { completable, completableByCrafting } = calculateCompletableStatus(plannerGoal);
+                      return (
+                        <PlannerGoalCard
+                          key={index}
+                          goal={plannerGoal}
+                          groupName={groupName}
+                          onGoalDeleted={onPlannerGoalCardGoalDeleted}
+                          onGoalCompleted={onPlannerGoalCardGoalCompleted}
+                          completable={completable}
+                          completableByCrafting={completableByCrafting}
+                        />
+                      );
+                    })}
+                  </OperatorGoals>
+                </Collapse>
+              ))}
+            </GoalGroup>
+          ))}
       </Board>
       <PlannerGoalAdd
         open={addGoalOpen}
