@@ -55,6 +55,10 @@ const MyApp = (props: AppProps) => {
 
   const [_light, _setLight] = useLocalStorage("light_theme", false);
   const [light, setLight] = React.useState(false);
+  const updateTheme = (value: boolean) => {
+    _setLight(value);
+    setLight(value);
+  };
 
   const theme = React.useMemo(() => createTheme(brand.DEFAULT, light), [light]);
 
@@ -66,7 +70,7 @@ const MyApp = (props: AppProps) => {
   return (
     <ReduxProvider store={store}>
       <UserContext.Provider value={user}>
-        <LightContext.Provider value={[light, setLight]}>
+        <LightContext.Provider value={[light, updateTheme]}>
           <CacheProvider value={clientSideEmotionCache}>
             <ThemeProvider theme={theme}>
               <SnackbarProvider maxSnack={3} preventDuplicate>
