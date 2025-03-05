@@ -3,11 +3,11 @@ export interface LocalStorageSettings {
   plannerSettings: PlannerSettings;
   depotSettings: DepotSettings;
   recruitSettings: RecruitSettings;
-  importSettings: ImportSettings
+  importSettings: ImportSettings;
 }
 
 export interface InactiveOpsInGroups {
-  [groupName: string]: string[]; 
+  [groupName: string]: string[];
 }
 
 export interface PlannerSettings {
@@ -26,11 +26,11 @@ export interface DepotSettings {
   crafting: string[];
   showInactiveMaterials: boolean;
   showIncrementDecrementButtons: boolean;
-  sortCompletedToBottom: boolean;  
-  ignoreLmdInCrafting: boolean,
+  sortCompletedToBottom: boolean;
+  ignoreLmdInCrafting: boolean;
 }
 
-export interface ImportSettings{
+export interface ImportSettings {
   importProfile: boolean;
   importOperators: boolean;
   importDepot: boolean;
@@ -58,7 +58,7 @@ const importSettings: ImportSettings = {
   importProfile: true,
   importOperators: true,
   importDepot: true,
-}
+};
 
 export const defaultSettings: LocalStorageSettings = {
   version: "1",
