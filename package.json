@@ -11,7 +11,7 @@
     "update:all": "git submodule update --remote && node ./scripts/operators.mjs && node ./scripts/images.mjs && node ./scripts/skins.mjs && node ./scripts/recruit.mjs && node ./scripts/items.mjs",
     "update:operators": "git submodule update --remote && node ./scripts/operators.mjs",
     "update:images": "git submodule update --remote && node ./scripts/images.mjs",
-    "update:skins": "node ./scripts/skins.mjs",
+    "update:skins": "git submodule update --remote && node ./scripts/skins.mjs",
     "update:items": "git submodule update --remote && node ./scripts/items.mjs",
     "update:recruit": "git submodule update --remote && node ./scripts/recruit.mjs"
   },

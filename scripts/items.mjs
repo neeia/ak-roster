@@ -52,6 +52,29 @@ const { workshopFormulas, manufactFormulas: manufactureFormulas } = cnBuildingDa
 
 const ADDITIONAL_ITEM_NAME_TO_ID_ENTRIES = {};
 
+const ADDITIONAL_RECIPES = {
+  32001: {
+    costs: [
+      {
+        id: "4006",
+        count: 90,
+        type: "MATERIAL",
+      },
+    ],
+    count: 1,
+  },
+  mod_unlock_token: {
+    costs: [
+      {
+        id: "4006",
+        count: 120,
+        type: "MATERIAL",
+      },
+    ],
+    count: 1,
+  },
+};
+
 const isPlannerItem = (itemId) => {
   const entry = cnItems[itemId];
   return (
@@ -81,6 +104,7 @@ const createItemsJson = async () => {
       const manufactureFormulaId = item.buildingProductList.find(
         ({ roomType }) => roomType === "MANUFACTURE"
       )?.formulaId;
+      const additionalRecipe = ADDITIONAL_RECIPES[itemId];
       let formula = null;
 
       if (workshopFormulaId) {
@@ -91,6 +115,8 @@ const createItemsJson = async () => {
         !manufactureFormulas[manufactureFormulaId].formulaType.endsWith("EXP")
       ) {
         formula = manufactureFormulas[manufactureFormulaId];
+      } else if (additionalRecipe) {
+        formula = additionalRecipe;
       }
       if (formula) {
         const ingredients = formula.costs.map(gameDataCostToIngredient);
@@ -110,6 +136,13 @@ const createItemsJson = async () => {
       iconId: "EXP_PLAYER",
       tier: 4,
       sortId: 70000,
+    },
+    4006: {
+      id: "4006",
+      name: "Purchase Certificate",
+      iconId: "EXGG_SHD",
+      tier: 4,
+      sortId: 10005,
     },
   };
 
