@@ -25,6 +25,7 @@ import GoalData, { getPlannerGoals } from "types/goalData";
 import getGoalIngredients from "util/fns/depot/getGoalIngredients";
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import FunctionsIcon from '@mui/icons-material/Functions';
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 
 interface Props {
     open: boolean;
@@ -77,85 +78,107 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         onClose();
     }
 
-    const craftHighFromLowTier = (tier: number, materials: Record<string, number>) => {
-        if (tier === 1) return;
+    const getMaterialsFromGoalData = (goalData: GoalData[]) => {
+
+        const _materialsFromGoals: Record<string, number> = {};
+
+        goalData.flatMap((goal) => getPlannerGoals(goal))
+            .flatMap(getGoalIngredients).forEach((ingr) => {
+                if (Number(ingr.id) > 30000 && Number(ingr.id) < 32000) {
+                    _materialsFromGoals[ingr.id] = (_materialsFromGoals[ingr.id] ?? 0) + ingr.quantity;
+                }
+            });
+
+        return _materialsFromGoals;
+
+    };
+
+    const addMatsToTierFromAllTiersHigher = (materials: Record<string, number>, toTier: number) => {
+
+        Object.keys(materials)
+            .filter((id) => itemsJson[id as keyof typeof itemsJson].tier > toTier)
+            .sort((a, b) => itemsJson[b as keyof typeof itemsJson].tier - itemsJson[a as keyof typeof itemsJson].tier)
+            .forEach((id) => {
+                const item = itemsJson[id as keyof typeof itemsJson] as Item;
+                if (item.ingredients) {
+                    const numCrafts = Math.ceil(materials[id] / (item.yield ?? 1));
+                    item.ingredients.forEach((ingr) => {
+                        if (Number(ingr.id) > 30000 && Number(ingr.id) < 32000) {
+                            materials[ingr.id] = (materials[ingr.id] ?? 0) + ingr.quantity * numCrafts;
+                        }
+                    })
+                }
+            });
+    };
+
+    const addMatsToTierFromPreviousTier = (materials: Record<string, number>, toTier: number, includeSkillSummaries?: boolean) => {
+        if (toTier === 1) return;
         Object.values(itemsJson)
-            .filter((item) => item.tier === tier
-                && Number(item.id) > 30000 && Number(item.id) < 32000)
+            .filter((item) => item.tier === toTier
+                && (Number(item.id) > 3300 && includeSkillSummaries || Number(item.id) > 30000)
+                && Number(item.id) < 32000)
             .forEach((item) => {
-                const itemJson: Item = item;;
+                const itemJson: Item = item;
                 if (!itemJson.ingredients) return;
                 const multiplier = itemJson.yield ?? 1;
                 const crafted = itemJson.ingredients
                     .filter(ingr => materials[ingr.id])
                     .map(ingr => Math.floor(materials[ingr.id] / ingr.quantity))
                     .reduce((min, uses) => Math.min(min, uses), Infinity);
-                materials[item.id] = materials[item.id] + crafted * multiplier;
-            })
+                if (crafted != Infinity && crafted != 0) {
+                    materials[item.id] = (materials[item.id] ?? 0) + crafted * multiplier;
+                    //fully remove ingrediets
+                    itemJson.ingredients.forEach(ingr => {
+                        /* materials[ingr.id] -= crafted * ingr.quantity;
+                        if (materials[ingr.id] <= 0) { */
+                        delete materials[ingr.id];
+                        /* } */
+                    });
+                }
+            });
     };
 
-    const goalsMaterialLinesUse = useCallback(() => {
+    const getAmountAndStatsOfTier = (materials: Record<string, number>, tier: number) => {
 
-        //not filtered goals materials
-        const goalsMaterialsAll: Record<string, number> = {};
+        const _materials = { ...materials };
 
-        goalData.flatMap((goal) => getPlannerGoals(goal))
-            .flatMap(getGoalIngredients).forEach((ingr) => {
-                if (Number(ingr.id) > 30000 && Number(ingr.id) < 32000) {
-                    goalsMaterialsAll[ingr.id] = (goalsMaterialsAll[ingr.id] ?? 0) + ingr.quantity;
-                }
-            });
-
-        //counting tiers 5 > 4 > 3 result
-        Object.keys(goalsMaterialsAll)
-            .filter((id) => itemsJson[id as keyof typeof itemsJson].tier > 3)
-            .sort((a, b) => itemsJson[b as keyof typeof itemsJson].tier - itemsJson[a as keyof typeof itemsJson].tier)
-            .forEach((id) => {
-                const item = itemsJson[id as keyof typeof itemsJson] as Item;
-                if (item.ingredients) {
-                    const numCrafts = Math.ceil(goalsMaterialsAll[id] / (item.yield ?? 1));
-                    item.ingredients.forEach((ingr) => {
-                        if (Number(ingr.id) > 30000 && Number(ingr.id) < 32000) {
-                            goalsMaterialsAll[ingr.id] = (goalsMaterialsAll[ingr.id] ?? 0) + ingr.quantity * numCrafts;
-                        }
-                    })
-                }
-            });
-
-        //crafting tier 2 from ingredients
-        craftHighFromLowTier(2, goalsMaterialsAll);
-        //crafting tier 3 from ingredients
-        craftHighFromLowTier(3, goalsMaterialsAll);
-
-        //collecting tier 3 totals
-        const tier3Materials = Object.keys(goalsMaterialsAll)
-            .filter((id) => itemsJson[id as keyof typeof itemsJson].tier === 3)
+        const _tierMaterials = Object.keys(_materials)
+            .filter((id) => itemsJson[id as keyof typeof itemsJson].tier === tier)
             .reduce((acc, id) => {
-                acc[id] = goalsMaterialsAll[id];
+                acc[id] = _materials[id];
                 return acc;
             }, {} as Record<string, number>);
-        //summ all tier 3 quantities
-        const tier3Total = Object.keys(tier3Materials)
-            .reduce((acc: number, id: string) => acc + goalsMaterialsAll[id], 0);
 
-        //calculate % from total
-        const tier3TotalsWithPercents = Object.keys(tier3Materials).reduce((acc, id) => {
+        const _tierTotal = Object.keys(_tierMaterials)
+            .reduce((acc: number, id: string) => acc + _materials[id], 0);
+
+        const _tierTotalsWithPercents = Object.keys(_tierMaterials).reduce((acc, id) => {
             acc[id] = {
-                total: goalsMaterialsAll[id],
-                percent: Math.round(10 * 100 * goalsMaterialsAll[id] / tier3Total) / 10
+                total: _materials[id],
+                percent: Math.round(10 * 100 * _materials[id] / _tierTotal) / 10
             };
             return acc;
         }, {} as Record<string, { total: number, percent: number }>);
 
-        return tier3TotalsWithPercents;
+        return _tierTotalsWithPercents;
+    };
 
-    }, [goalData]
+    const getTier3StatisticFromMaterials = useCallback((materials: Record<string, number>) => {
+
+        const _materials = { ...materials };
+
+        addMatsToTierFromAllTiersHigher(_materials, 3);
+        addMatsToTierFromPreviousTier(_materials, 2);
+        addMatsToTierFromPreviousTier(_materials, 3);
+
+        return getAmountAndStatsOfTier(_materials, 3);
+    }, []
     );
 
-    const calculateSummaryMaterials = useCallback(() => {
+    const calculateSummaryTab = useCallback(() => {
 
         //dont do background calculcation
-        if (!open) return { sortedNeedToFarm: [], sortedNeedToCraft: [], sortedStatistic: [] };
+        if (!open) return { sortedNeedToFarm: [], sortedNeedToCraft: [], sortedPossibleCraft: [] };
 
         const craftTier = 4;
         //specific craftables of wrong tiers
@@ -231,17 +254,76 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             })
             .map(([id, need]) => ([id, need - _depot[id].stock] as [string, number]));
 
-        const tier3Statistic = goalsMaterialLinesUse();
+        const needToFarm123 = Object.entries(_materialsNeeded)
+            .filter(([id, need]) => !craftingList.includes(id) && need - _depot[id].stock > 0
+                && itemsJson[id as keyof typeof itemsJson].tier < (craftTier)
+                && Number(id) > 3300 && Number(id) < 32000)
+            .reduce((acc, [id, need]) => {
+                acc[id] = (need - _depot[id].stock);
+                return acc;
+            }, {} as Record<string, number>);
 
-        const sortedStatistic = Object.entries(tier3Statistic)
+        const lowTierMats = Object.values(_depot)
+            .filter((item) =>
+                itemsJson[item.material_id as keyof typeof itemsJson].tier < (craftTier - 1)
+                && Number(item.material_id) > 3300 && Number(item.material_id) < 32000
+            ).reduce((acc, item) => {
+                acc[item.material_id] = Math.max(0, item.stock - (_materialsNeeded[item.material_id] ?? 0));
+                return acc;
+            }, {} as Record<string, number>);
+
+        addMatsToTierFromPreviousTier(lowTierMats, 2, true);
+        const t2OrirockException: [string, number] = ["30012", (lowTierMats["30012"] ?? 0)];
+        addMatsToTierFromPreviousTier(lowTierMats, 3, true);
+
+        const sortedPossibleCraft = Object.entries(getTier3StatisticFromMaterials(lowTierMats))
+            .map(([id, { total: num }]) => [id, num] as [string, number]).concat([t2OrirockException])
+            .filter(([id, num]) => num > 0 && needToFarm123[id])
+            .sort(([itemIdA], [itemIdB]) => {
+                const itemA = itemsJson[itemIdA as keyof typeof itemsJson];
+                const itemB = itemsJson[itemIdB as keyof typeof itemsJson];
+                const itemAlocalSortID = localSortId.find(keyword => itemA.name.includes(keyword[0]))?.[1] ?? 0;
+                const itemBlocalSortID = localSortId.find(keyword => itemB.name.includes(keyword[0]))?.[1] ?? 0;
+                return (
+                    itemAlocalSortID - itemBlocalSortID ||
+                    itemA.sortId - itemB.sortId)
+            })
+            .map(([id, num]) => [id, Math.min(num, needToFarm123[id])] as [string, number]);
+
+
+        return { sortedNeedToFarm, sortedNeedToCraft, sortedPossibleCraft }
+    }, [open, goalsMaterials, depot, expOwned, getTier3StatisticFromMaterials]
+    );
+
+    const calculateStatisticTab = useCallback(() => {
+
+        if (!open) return { sortedAllGoalsStats: [], sortedFilteredGoalsStats: [] };
+
+        const allGoalMaterials = getMaterialsFromGoalData(goalData);
+        const filteredGoalMaterials = Object.entries(goalsMaterials)
+            .filter(([id]) => Number(id) > 30000 && Number(id) < 32000)
+            .reduce((acc, [id, need]) => {
+                acc[id] = need;
+                return acc;
+            }, {} as Record<string, number>)
+
+        const sortedAllGoalsStats = Object.entries(getTier3StatisticFromMaterials(allGoalMaterials))
             .sort(([, { percent: pA }], [, { percent: pB }]) => pB - pA)
             .map(([id, { total, percent }]) => [id, total, percent] as [string, number, number]);
 
-        return { sortedNeedToFarm, sortedNeedToCraft, sortedStatistic }
-    }, [open, goalsMaterials, depot, expOwned, goalsMaterialLinesUse]
-    );
+        const sortedFilteredGoalsStats = Object.entries(getTier3StatisticFromMaterials(filteredGoalMaterials))
+            .sort(([, { percent: pA }], [, { percent: pB }]) => pB - pA)
+            .map(([id, { total, percent }]) => [id, total, percent] as [string, number, number]);
 
-    const { sortedNeedToFarm, sortedNeedToCraft, sortedStatistic } = useMemo(calculateSummaryMaterials, [calculateSummaryMaterials]);
+        const totalAll = sortedAllGoalsStats.reduce((acc, [, total]) => acc + total, 0);
+        const totalFiltered = sortedFilteredGoalsStats.reduce((acc, [, total]) => acc + total, 0);
+
+        return {
+            sortedAllGoalsStats,
+            sortedFilteredGoalsStats: (totalAll != totalFiltered) ? sortedFilteredGoalsStats : []
+        }
+    }
+        , [open, goalData, goalsMaterials, getTier3StatisticFromMaterials])
 
     const formatNumber = (num: number) => {
         return num < 1000
@@ -270,6 +352,10 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         },
     };
 
+    const { sortedNeedToFarm, sortedNeedToCraft, sortedPossibleCraft } = useMemo(calculateSummaryTab, [calculateSummaryTab]);
+
+    const { sortedAllGoalsStats, sortedFilteredGoalsStats } = useMemo(calculateStatisticTab, [calculateStatisticTab]);
+
     return (
         <>
             <Dialog
@@ -280,12 +366,18 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                 keepMounted fullWidth maxWidth="md">
                 <DialogTitle
                     sx={{
-                        display: "flex",
+                        display: "grid",
+                        gridTemplate: {
+                            xs:
+                                `"buttons none switch close"
+                                "title title title title"/1fr 2fr 1fr 1fr`,
+                            sm: `"buttons title switch"/1fr 5fr 1fr`
+                        },
                         justifyContent: "space-between",
                         paddingBottom: "12px",
                     }}
                 >
-                    <Stack direction="row" justifyContent="flex-start" alignItems="center">
+                    <Box gridArea="buttons">
                         <ToggleButtonGroup
                             orientation="horizontal"
                             value={view}
@@ -299,17 +391,19 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                 <LeaderboardIcon />
                             </ToggleButton>
                         </ToggleButtonGroup>
-                        <Typography
-                            variant="h2"
-                            sx={{
-                                marginLeft: "8px",
-                                paddingTop: "12px",
-                            }}
-                        >
-                            {(view === "summary") ? "Active goals require" : "Statistic"}
-                        </Typography>
-                    </Stack>
-                    <Stack direction="row" justifyContent="flex-end" alignItems="center">
+                    </Box>
+                    <Typography
+                        gridArea="title"
+                        variant="h2"
+                        textAlign="left"
+                        sx={{
+                            marginLeft: "8px",
+                            paddingTop: "12px",
+                        }}
+                    >
+                        {(view === "summary") ? "Active goals" : "Statistic"}
+                    </Typography>
+                    <Box gridArea="switch">
                         {(view === "statistic") && (
                             <Stack direction="row" alignItems="center">
                                 <Typography>∑</Typography>
@@ -321,10 +415,10 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                 <Typography>%</Typography>
                             </Stack>
                         )}
-                        <IconButton onClick={handleClose} sx={{ display: { sm: "none" } }}>
-                            <Close />
-                        </IconButton>
-                    </Stack>
+                    </Box>
+                    <IconButton onClick={handleClose} sx={{ display: { sm: "none" }, gridArea: "close" }}>
+                        <Close />
+                    </IconButton>
                 </DialogTitle>
                 <DialogContent
                     sx={{
@@ -351,14 +445,55 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                     <>
                                         {sortedNeedToFarm.length > 0 ? (
                                             <>
-                                                <Typography variant="h3" p={1} fontWeight="bold">Farm missing materials (or craft from lower tier) </Typography>
-                                                {sortedNeedToFarm.map(([id, need]) => (
-                                                    <ItemBase key={id} itemId={id} size={itemBaseSize}>
-                                                        <Typography {...numberCSS}>
-                                                            {formatNumber(need)}
-                                                        </Typography>
-                                                    </ItemBase>
-                                                ))}
+                                                <Stack direction="row" alignItems="center">
+                                                    <Typography variant="h3" p={1} fontWeight="bold">Farm missing materials
+                                                        {sortedPossibleCraft.length > 0 ? <> <big>≪</big><span>some possible to craft</span></> : null}
+                                                    </Typography>
+                                                </Stack>
+                                                <Stack direction="row" flexWrap="wrap" alignItems="center">
+                                                    {sortedNeedToFarm.map(([id, need]) => (
+                                                        <ItemBase key={id} itemId={id} size={itemBaseSize}>
+                                                            <Typography {...numberCSS}>
+                                                                {formatNumber(need)}
+                                                            </Typography>
+                                                        </ItemBase>
+                                                    ))}
+                                                    {sortedPossibleCraft.length > 0 ? (
+                                                        <>
+
+                                                            {sortedPossibleCraft.map(([id, need], index) => (
+                                                                index === 0 ? (
+                                                                    <Box key={id} display="flex" alignItems="center">
+                                                                        <DoubleArrowIcon
+                                                                            sx={{
+                                                                                transform: "rotate(180deg)",
+                                                                                ml: 0.5,
+                                                                                mr: -1,
+                                                                                fontSize: "2rem",
+                                                                                color: "rgba(255, 255, 255, 0.8)",
+                                                                                stroke: "black",
+                                                                                strokeWidth: "0.2px",
+                                                                                zIndex: 1,
+                                                                            }}
+                                                                        />
+                                                                        <ItemBase itemId={id} size={itemBaseSize * 0.75}>
+                                                                            <Typography {...numberCSS}>
+                                                                                {formatNumber(need)}
+                                                                            </Typography>
+                                                                        </ItemBase>
+                                                                    </Box>
+                                                                ) : (
+                                                                    <ItemBase key={id} itemId={id} size={itemBaseSize * 0.75}>
+                                                                        <Typography {...numberCSS}>
+                                                                            {formatNumber(need)}
+                                                                        </Typography>
+                                                                    </ItemBase>
+                                                                )
+                                                            ))}
+
+                                                        </>
+                                                    ) : null}
+                                                </Stack>
                                             </>
                                         ) : null}
                                         {sortedNeedToCraft.length > 0 ? (
@@ -385,22 +520,34 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                             mountOnEnter
                             unmountOnExit>
                             <Box>
-                                {sortedStatistic.length === 0 ? (
+                                {sortedAllGoalsStats.length === 0 ? (
                                     <>
                                         <Typography variant="h3" p={2} fontWeight="bold">Add goals to see their statistic</Typography>
                                     </>)
                                     : (
                                         <>
                                             <Typography variant="h3" p={2} fontWeight="bold">
-                                                Total usage of material types from costs of all user goals, converted to tier 3.
-                                                <br />Calculated ignoring depot and filters.</Typography>
-                                            {sortedStatistic.map(([id, total, percent]) => (
+                                                Total usage of material types from costs of user goals, converted to tier 3, ignoring depot. </Typography>
+                                            <Typography variant="h3" p={2} fontWeight="bold">For all goals, ignoring filters</Typography>
+                                            {sortedAllGoalsStats.map(([id, total, percent]) => (
                                                 <ItemBase key={id} itemId={id} size={itemBaseSize}>
                                                     <Typography {...numberCSS}>
                                                         {isTotalDigits ? formatNumber(total) : percent + "%"}
                                                     </Typography>
                                                 </ItemBase>
                                             ))}
+                                            {sortedFilteredGoalsStats.length > 0 ? (
+                                                <>
+                                                    <Typography variant="h3" p={2} fontWeight="bold">For active goals, with filters</Typography>
+                                                    {sortedFilteredGoalsStats.map(([id, total, percent]) => (
+                                                        <ItemBase key={id} itemId={id} size={itemBaseSize}>
+                                                            <Typography {...numberCSS}>
+                                                                {isTotalDigits ? formatNumber(total) : percent + "%"}
+                                                            </Typography>
+                                                        </ItemBase>
+                                                    ))}
+                                                </>
+                                            ) : null}
                                         </>
                                     )}
                             </Box>
