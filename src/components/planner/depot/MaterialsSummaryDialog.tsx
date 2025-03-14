@@ -31,12 +31,19 @@ import ItemBase from "../depot/ItemBase";
 import DepotItem from "types/depotItem";
 import { Item } from "types/item";
 import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
-import GoalData, { getPlannerGoals } from "types/goalData";
+import GoalData, { GoalDataInsert, getPlannerGoals } from "types/goalData";
 import getGoalIngredients from "util/fns/depot/getGoalIngredients";
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import FunctionsIcon from '@mui/icons-material/Functions';
+import ReduceCapacityIcon from '@mui/icons-material/ReduceCapacity';
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
-import { EventsData, Event } from "types/localStorageSettings";
+import { EventsData } from "types/localStorageSettings";
+import { OperatorData } from "types/operators/operator";
+import operators from "data/operators";
+import useOperators from "util/hooks/useOperators";
+import { defaultOperatorObject, MAX_SKILL_LEVEL_BY_PROMOTION } from "util/changeOperator"
+
+type GoalBuilder = Partial<GoalDataInsert>;
 
 interface Props {
     open: boolean;
@@ -66,22 +73,27 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     const containerRef = useRef<HTMLElement>(null);
 
     const [tab, setTab] = useState('summary');
+    const [sliderDirection, setSliderDirection] = useState<"left" | "right">("right");
     const [isTotalDigits, setTotalToDidigts] = useState(false);
 
     const [selectedEventIndex, setSelectedEventIndex] = useState(-1);
     const [isSelectFinished, setIsSelectFinished] = useState(false);
 
+    const [roster] = useOperators();
+
     const handleToggleChange = (event: React.MouseEvent<HTMLElement>, nextTab: string) => {
         let toTab = nextTab;
         if (toTab === null) {
             switch (tab) {
-                case "summary": toTab = "statistic"
+                case "summary": toTab = "goalsStatistic"
                     break;
-                case "statistic": toTab = "summary"
+                case "goalsStatistic": toTab = "operatorsStatistic"
                     break;
+                case "operatorsStatistic": toTab = "summary"
             }
         }
         setTab(toTab);
+        setSliderDirection((prevDirection) => (prevDirection === "right" ? "left" : "right"));
     };
 
     const handleDigitsSwitch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -426,6 +438,86 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
 
     const { sortedAllGoalsStats, sortedFilteredGoalsStats } = useMemo(calculateStatisticTab, [calculateStatisticTab]);
 
+    const maxGoalBuilder = (opData: OperatorData) => {
+
+        const op = defaultOperatorObject(opData.id, true)
+
+        const setMax = {
+            elite: 2,
+            skill_level: 7,
+            masteries: [3, 3, 3],
+            module: 3,
+        }
+
+        const skillCount = opData.skillData?.length ?? 0;
+        const maxElite = opData.eliteLevels.length ?? 0;
+        const maxSkillLevel = MAX_SKILL_LEVEL_BY_PROMOTION[maxElite];
+
+        const _goalBuilder: GoalBuilder = {};
+        _goalBuilder.op_id = opData.id;
+        _goalBuilder.elite_from = 0;
+        _goalBuilder.elite_to = maxElite;
+        _goalBuilder.skill_level_from = 0;
+        _goalBuilder.skill_level_to = Math.min(setMax.skill_level, maxSkillLevel);
+
+        const masteries_from = op.masteries;
+        const _masteries_to = setMax.masteries;
+        const masteries_to = _masteries_to
+            .filter((_, i) => i < skillCount)
+            .map((mastery, i) => (mastery === -1 ? masteries_from[i] : mastery));
+
+        if (
+            opData.rarity > 3 &&
+            masteries_from.some((v, i) => v !== masteries_to[i])
+        ) {
+            _goalBuilder.masteries_from = masteries_from;
+            _goalBuilder.masteries_to = masteries_to;
+        }
+
+        if (opData.moduleData?.length) {
+            const modules = op.modules;
+            const modules_to = Object.entries(modules)
+                .reduce((acc, [name]) => {
+                    acc[name] = setMax.module;
+                    return acc;
+                }, {} as Record<string, number>);
+            {
+                _goalBuilder.modules_from = modules;
+                _goalBuilder.modules_to = modules_to;
+            }
+        }
+        return _goalBuilder;
+    }
+    const calculateOperatorsTab = useCallback(() => {
+
+        if (!open) return { sortedAllOperatorsStats: [], sortedUnownedOperatorsStats: [] };
+
+        const _allOpsGoalData = Object.values(operators)
+            .map((opData) => maxGoalBuilder(opData) as GoalData);
+
+        const _notOwnedOpsGoalData = Object.values(operators)
+            .filter((opData) => !roster[opData.id])
+            .map((opData) => maxGoalBuilder(opData) as GoalData);
+
+        const _allOpsMaterials = getMaterialsFromGoalData(_allOpsGoalData);
+
+        const _unownedOpsMaterials = getMaterialsFromGoalData(_notOwnedOpsGoalData);
+
+        const sortedAllOperatorsStats = Object.entries(getTier3StatisticFromMaterials(_allOpsMaterials))
+            .sort(([, { percent: pA }], [, { percent: pB }]) => pB - pA)
+            .map(([id, { total, percent }]) => [id, total, percent] as [string, number, number]);
+
+        const sortedUnownedOperatorsStats = Object.entries(getTier3StatisticFromMaterials(_unownedOpsMaterials))
+            .sort(([, { percent: pA }], [, { percent: pB }]) => pB - pA)
+            .map(([id, { total, percent }]) => [id, total, percent] as [string, number, number]);
+
+
+        return { sortedAllOperatorsStats, sortedUnownedOperatorsStats }
+    }, [open, roster, getTier3StatisticFromMaterials]
+    );
+
+    const { sortedAllOperatorsStats, sortedUnownedOperatorsStats } = useMemo(calculateOperatorsTab, [calculateOperatorsTab]);
+
     return (
         <>
             <Dialog
@@ -457,8 +549,11 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                             <ToggleButton value="summary" aria-label="summary">
                                 <FunctionsIcon />
                             </ToggleButton>
-                            <ToggleButton value="statistic" aria-label="statistic">
+                            <ToggleButton value="goalsStatistic" aria-label="goalsStatistic">
                                 <LeaderboardIcon />
+                            </ToggleButton>
+                            <ToggleButton value="operatorsStatistic" aria-label="operatorsStatistic">
+                                <ReduceCapacityIcon />
                             </ToggleButton>
                         </ToggleButtonGroup>
                     </Box>
@@ -472,10 +567,10 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                             paddingTop: "12px",
                         }}
                     >
-                        {(tab === "summary") ? "Active goals" : "Statistic"}
+                        {(tab === "summary") ? "Active goals" : `Statistic ${(tab === "goalsStatistic") ? " - goals" : " - operators"}`}
                     </Typography>
                     <Box gridArea="switch">
-                        {(tab === "statistic") && (
+                        {(tab != "summary") && (
                             <Stack direction="row" alignItems="center">
                                 <Typography>∑</Typography>
                                 <Switch
@@ -503,7 +598,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                 > <Box component={"div"} display="flex">
                         <Slide container={containerRef.current}
                             in={tab === "summary"}
-                            direction="right"
+                            direction={sliderDirection}
                             timeout={{ enter: 500, exit: tab != "summary" ? 1 : 400 }}
                             mountOnEnter
                             unmountOnExit>
@@ -600,9 +695,9 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                             </Box>
                         </Slide>
                         <Slide container={containerRef.current}
-                            in={tab === "statistic"}
-                            direction="left"
-                            timeout={{ enter: 500, exit: tab != "statistic" ? 1 : 400 }}
+                            in={tab === "goalsStatistic"}
+                            direction={sliderDirection}
+                            timeout={{ enter: 500, exit: tab != "goalsStatistic" ? 1 : 400 }}
                             mountOnEnter
                             unmountOnExit>
                             <Box>
@@ -613,7 +708,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                     : (
                                         <>
                                             <Typography variant="h3" p={2} fontWeight="bold">
-                                                Total usage of material types from costs of user goals, converted to tier 3, ignoring depot. </Typography>
+                                                Total usage of material types, converted to tier 3. <br />Based on planner goals of user. Depot is ignored. </Typography>
                                             <Typography variant="h3" p={2} fontWeight="bold">For all goals, ignoring filters</Typography>
                                             {sortedAllGoalsStats.map(([id, total, percent]) => (
                                                 <ItemBase key={id} itemId={id} size={itemBaseSize}>
@@ -636,6 +731,41 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                             ) : null}
                                         </>
                                     )}
+                            </Box>
+                        </Slide>
+                        <Slide container={containerRef.current}
+                            in={tab === "operatorsStatistic"}
+                            direction={sliderDirection}
+                            timeout={{ enter: 500, exit: tab != "operatorsStatistic" ? 1 : 400 }}
+                            mountOnEnter
+                            unmountOnExit>
+                            <Box>
+                                <Typography variant="h3" p={2} fontWeight="bold">
+                                    Total usage of material types, converted to tier 3. <br />Based on existing operators. Includes costs of elite 1-2, skill levels 1-7, all masteries and modules 1-3 and unrelesed CN operators. Depot is ignored.</Typography>
+                                {(sortedAllOperatorsStats.length > 0) && (
+                                    <>
+                                        <Typography variant="h3" p={2} fontWeight="bold">All operators</Typography>
+                                        {sortedAllOperatorsStats.map(([id, total, percent]) => (
+                                            <ItemBase key={id} itemId={id} size={itemBaseSize}>
+                                                <Typography {...getNumberCSS()}>
+                                                    {isTotalDigits ? formatNumber(total) : percent + "%"}
+                                                </Typography>
+                                            </ItemBase>
+                                        ))}
+                                    </>
+                                )}
+                                {(sortedUnownedOperatorsStats.length > 0) && (
+                                    <>
+                                        <Typography variant="h3" p={2} fontWeight="bold">All unowned by user operators</Typography>
+                                        {sortedUnownedOperatorsStats.map(([id, total, percent]) => (
+                                            <ItemBase key={id} itemId={id} size={itemBaseSize}>
+                                                <Typography {...getNumberCSS()}>
+                                                    {isTotalDigits ? formatNumber(total) : percent + "%"}
+                                                </Typography>
+                                            </ItemBase>
+                                        ))}
+                                    </>
+                                )}
                             </Box>
                         </Slide>
                     </Box>
