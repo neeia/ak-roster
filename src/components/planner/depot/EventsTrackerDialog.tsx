@@ -284,17 +284,8 @@ const EventsTrackerDialog = React.memo((props: Props) => {
     const defaultMaterialsSet = useMemo(() =>
         Object.keys(itemsJson)
             .map((id) => itemsJson[id as keyof typeof itemsJson])
-            .filter((item) => (
-                ["Summary",
-                    " Chip",
-                    "Catalyst",
-                    "LMD",
-                    "Data "
-                ]
-                    .some((keyword) => item.name.includes(keyword)) ||
-                Number(item.id) > 30000 && Number(item.id) < 32000) /* &&
-                [3, 4, 5].includes(item.tier) */
-            )
+            .filter((item) => 
+                ["EXP", "Dualchip"].every((keyword) => !item.name.includes(keyword)))
             .map((item) => item.id)
             .sort((idA, idB) => itemsJson[idA as keyof typeof itemsJson].sortId - itemsJson[idB as keyof typeof itemsJson].sortId)
         , []
