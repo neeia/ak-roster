@@ -42,6 +42,7 @@ import { OperatorData } from "types/operators/operator";
 import operators from "data/operators";
 import useOperators from "util/hooks/useOperators";
 import { defaultOperatorObject, MAX_SKILL_LEVEL_BY_PROMOTION } from "util/changeOperator"
+import depotToExp from "util/fns/depot/depotToExp";
 
 type GoalBuilder = Partial<GoalDataInsert>;
 
@@ -210,6 +211,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         setIsSelectFinished(true);
     }
 
+    const EXP = useMemo(() => ["2001", "2002", "2003", "2004"], []);
+
     const getTotalMaterialsUptoSelectedEvent = useCallback(() => {
         const _eventMaterials = Object.entries(eventsData)
             .filter(([, eventData]) => eventData.index <= selectedEventIndex)
@@ -220,8 +223,17 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                 });
                 return acc;
             }, {} as Record<string, number>);
+
+        //EXP count
+        const _exp = depotToExp(EXP.reduce((acc, id) => {
+            acc[id] = { material_id: id, stock: _eventMaterials[id] ?? 0 }
+            return acc
+        }, {} as Record<string, DepotItem>));
+
+        if (_exp != 0) _eventMaterials["EXP"] = _exp;
+
         return _eventMaterials;
-    }, [selectedEventIndex, eventsData]
+    }, [EXP, selectedEventIndex, eventsData]
     );
 
     const localSortId: [string, number][] = useMemo(() => [
@@ -299,6 +311,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         }, _depot);
 
         const sortedEventMaterials = Object.entries(_eventMaterials)
+            .filter(([id]) => !EXP.includes(id))
             .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB));
         //-eventsData       
 
@@ -373,7 +386,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             eventsList,
             sortedEventMaterials
         }
-    }, [open, goalsMaterials, depot, expOwned, eventsData, localSortId,
+    }, [EXP, open, goalsMaterials, depot, expOwned, eventsData, localSortId,
         getTier3StatisticFromMaterials, , getTotalMaterialsUptoSelectedEvent, customItemsSort]
     );
 
