@@ -214,7 +214,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     const EXP = useMemo(() => ["2001", "2002", "2003", "2004"], []);
 
     const getTotalMaterialsUptoSelectedEvent = useCallback(() => {
-        const _eventMaterials = Object.entries(eventsData)
+        const _eventMaterials = Object.entries(eventsData ?? {})
             .filter(([, eventData]) => eventData.index <= selectedEventIndex)
             .reduce((acc, [, eventData]) => {
                 if (!eventData.materials) return acc;
@@ -296,7 +296,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         _depot["EXP"] = { material_id: "EXP", stock: expOwned };
 
         //+eventsData: count events mats and add them to depot
-        const eventsList = Object.entries(eventsData)
+        const eventsList = Object.entries(eventsData ?? {})
             .sort(([, a], [, b]) => a.index - b.index)
 
         const _eventMaterials = getTotalMaterialsUptoSelectedEvent();
