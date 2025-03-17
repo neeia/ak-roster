@@ -12,14 +12,17 @@ import {
     Divider,
     FormControl,
     IconButton,
+    InputAdornment,
     InputLabel,
     MenuItem,
     Select,
     Slide,
     Stack,
     Switch,
+    TextField,
     ToggleButton,
     ToggleButtonGroup,
+    Tooltip,
     Typography,
     useMediaQuery,
     useTheme,
@@ -37,12 +40,15 @@ import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import FunctionsIcon from '@mui/icons-material/Functions';
 import ReduceCapacityIcon from '@mui/icons-material/ReduceCapacity';
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
-import { EventsData } from "types/localStorageSettings";
+import { EventsData, Event } from "types/localStorageSettings";
 import { OperatorData } from "types/operators/operator";
 import operators from "data/operators";
 import useOperators from "util/hooks/useOperators";
 import { defaultOperatorObject, MAX_SKILL_LEVEL_BY_PROMOTION } from "util/changeOperator"
 import depotToExp from "util/fns/depot/depotToExp";
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import EventIcon from '@mui/icons-material/Event';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 type GoalBuilder = Partial<GoalDataInsert>;
 
@@ -77,10 +83,51 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     const [sliderDirection, setSliderDirection] = useState<"left" | "right">("right");
     const [isTotalDigits, setTotalToDidigts] = useState(false);
 
-    const [selectedEventIndex, setSelectedEventIndex] = useState(-1);
+    const [balanceValue, setBalanceValue] = useState<number>(100);
+    const [applyBalance, setApplyBalance] = useState(false);
+    const [balanceType, setBalanceType] = useState<string | null>(null);
+
+    const emptyEvent: Event = { index: -1, materials: {} };
+    const [selectedEvent, setSelectedEvent] = useState(emptyEvent);
     const [isSelectFinished, setIsSelectFinished] = useState(false);
 
+    const [accordionIsExpanded, setAccordionExpanded] = useState(false);
+
     const [roster] = useOperators();
+
+    const HELP_INFORMATION =
+        <>
+            <p>
+                The Summary combines <strong>depot</strong>, <strong>goals</strong>, and <strong>future events</strong> data, allowing Krooster to handle calculations more independently.
+            </p>
+
+            <strong>1. Basic Setup</strong> - Using planner to track depot and goals:
+            <ul>
+                <li>The Summary automatically calculates missing materials and suggests how to obtain them (based on general Arknights knowledge).</li>
+                <li>Includes statistics to assist in decision-making.</li>
+            </ul>
+            <strong>2. Overfarming to Balance</strong>
+            <ul>
+                <li><strong>Balance</strong> inputs adjust farming summary around a target number of available tier 3 materials after goals needs are met.</li>
+                <li><strong>Algorithm:</strong>
+                    <ul>
+                        <li>Full balance value is applied to the highest %-usage material that isn't orirock</li>
+                        <li>Adjusted values are applied to other materials based on the difference in %-usage.</li>
+                        <li>%-usage depends on whether goals are tracked, with priority given to: 1. active goals, 2. all goals, 3. unowned operators statistics.</li>
+                        <li>
+                            The <strong>"Event farms only"</strong> button applies the same algorithm but exclusively to 2-3 farmable materials from a selected event.
+                            (<em>To use this option:</em> Set up farmables in the Event Tracker by clicking on tier 3 images)
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <strong>3. Events Tracker Setup</strong> - Planning future upgrades with future income.
+            <ul>
+                <li>After adding future Events manually or with import, the Summary will also track free materials.</li>
+                <li>Combined materials from selected and previous events are factored into all calculations, reducing required amounts.</li>
+                <li>Highlights farmable tier 3 materials from selected event if they were set in the tracker.</li>
+            </ul>
+        </>;
 
     const handleToggleChange = (event: React.MouseEvent<HTMLElement>, nextTab: string) => {
         let toTab = nextTab;
@@ -90,11 +137,22 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                     break;
                 case "goalsStatistic": toTab = "operatorsStatistic"
                     break;
-                case "operatorsStatistic": toTab = "summary"
+                case "operatorsStatistic": toTab = "help"
+                    break;
+                case "help": toTab = "summary"
             }
         }
         setTab(toTab);
         setSliderDirection((prevDirection) => (prevDirection === "right" ? "left" : "right"));
+    };
+
+    const handleBalanceToggle = (event: React.MouseEvent<HTMLElement>, nextBalance: string) => {
+        if (nextBalance === null) {
+            setApplyBalance(false);
+        } else {
+            setApplyBalance(true);
+        }
+        setBalanceType(nextBalance);
     };
 
     const handleDigitsSwitch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -102,10 +160,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     };
 
     const handleClose = () => {
-        setTab('summary');
-        setTotalToDidigts(false);
-        setIsSelectFinished(false);
-        setSelectedEventIndex(-1);
+        setIsSelectFinished(true);
         onClose();
     }
 
@@ -207,20 +262,48 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     );
 
     const onEventChange = (index: number) => {
-        setSelectedEventIndex(index);
         setIsSelectFinished(true);
+        if (index === -1) setSelectedEvent(emptyEvent);
+
+        const _event = Object.entries(eventsData).find(([, eventData]) => eventData.index === index)?.[1] ?? emptyEvent;
+
+        setSelectedEvent(_event);
+        setIsSelectFinished(true);
+
+        if (balanceType === "event" && !_event.farms) {
+            setApplyBalance(false);
+            setBalanceType(null);
+        };
     }
 
     const EXP = useMemo(() => ["2001", "2002", "2003", "2004"], []);
 
     const getTotalMaterialsUptoSelectedEvent = useCallback(() => {
-        const _eventMaterials = Object.entries(eventsData ?? {})
-            .filter(([, eventData]) => eventData.index <= selectedEventIndex)
+        if (!eventsData || selectedEvent.index === -1) return { materials: {}, farmTimes: {} };
+
+        const _eventsData = eventsData;
+        const _filteredEvents = Object.entries(_eventsData)
+            .filter(([, eventData]) => eventData.index <= selectedEvent.index);
+        const _eventMaterials = _filteredEvents
             .reduce((acc, [, eventData]) => {
                 if (!eventData.materials) return acc;
                 Object.entries(eventData.materials).forEach(([id, quantity]) => {
                     acc[id] = (acc[id] ?? 0) + quantity;
                 });
+                return acc;
+            }, {} as Record<string, number>);
+
+        //store xTimes farms appearances and add 0 mats to totals if missing
+        const _farmTimes = _filteredEvents
+            .reduce((acc, [, eventData]) => {
+                if (eventData.farms) {
+                    eventData.farms.forEach((id) => {
+                        acc[id] = (acc[id] ?? 0) + 1;
+                        if (!_eventMaterials[id]) {
+                            _eventMaterials[id] = 0;
+                        }
+                    })
+                };
                 return acc;
             }, {} as Record<string, number>);
 
@@ -232,8 +315,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
 
         if (_exp != 0) _eventMaterials["EXP"] = _exp;
 
-        return _eventMaterials;
-    }, [EXP, selectedEventIndex, eventsData]
+        return { materials: _eventMaterials, farmTimes: _farmTimes };
+    }, [EXP, selectedEvent, eventsData]
     );
 
     const localSortId: [string, number][] = useMemo(() => [
@@ -248,6 +331,10 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         ["Data", 4],
     ], []);
 
+    const includeCraftIds: string[] = useMemo(() => [
+        "30013", //Orirock Cluster
+    ], []);
+
     const customItemsSort = useCallback((idA: string, idB: string, lowTierFirst: boolean = false) => {
         const itemA = itemsJson[idA as keyof typeof itemsJson];
         const itemB = itemsJson[idB as keyof typeof itemsJson];
@@ -260,136 +347,6 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         )
     }, [localSortId]
     )
-
-    const calculateSummaryTab = useCallback(() => {
-
-        //dont do background calculcation
-        if (!open) return {
-            sortedNeedToFarm: [],
-            sortedNeedToCraft: [],
-            sortedPossibleCraft: [],
-            eventsList: [],
-            sortedEventMaterials: []
-        };
-
-        const craftTier = 4;
-        //specific craftables of wrong tiers
-        const includeCraftIds: string[] = [
-            "30013", //Orirock Cluster
-        ];
-        const excludeCraftIds: string[] = [
-            //"3302" //skill summary 2
-        ];
-        const excludeCraftNames: string[] = [
-            " Chip", //any " Chips" and " Chip Packs"
-            "Data", //module ingredients
-        ];
-
-        // Create a copy of depot from itemsJson list of items to have full itemsList for calcs
-        const _depot = Object.fromEntries(
-            Object.keys(itemsJson).map((key) => [
-                key,
-                { material_id: key, stock: depot[key]?.stock ?? 0 },
-            ])
-        );
-
-        _depot["EXP"] = { material_id: "EXP", stock: expOwned };
-
-        //+eventsData: count events mats and add them to depot
-        const eventsList = Object.entries(eventsData ?? {})
-            .sort(([, a], [, b]) => a.index - b.index)
-
-        const _eventMaterials = getTotalMaterialsUptoSelectedEvent();
-
-        Object.entries(_eventMaterials).reduce((acc, [id, quantity]) => {
-            if (acc[id]) {
-                acc[id].stock = (acc[id].stock ?? 0) + quantity;
-            } else {
-                acc[id] = { material_id: id, stock: quantity };
-            }
-            return acc;
-        }, _depot);
-
-        const sortedEventMaterials = Object.entries(_eventMaterials)
-            .filter(([id]) => !EXP.includes(id))
-            .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB));
-        //-eventsData       
-
-        const craftingList = Object.keys(_depot)
-            .filter((id) => {
-                const item: Item = itemsJson[id as keyof typeof itemsJson];
-                return (
-                    item.tier >= craftTier
-                    && item.ingredients
-                    && !excludeCraftIds.includes(id)
-                    && !excludeCraftNames.some(keyword => item.name.includes(keyword))
-                )
-            })
-            .concat(includeCraftIds);
-
-        const _materialsNeeded = { ...goalsMaterials };
-
-        //mutates _materialsNeeded
-        canCompleteByCrafting(_materialsNeeded, _depot, craftingList);
-
-        const sortedNeedToCraft = Object.entries(_materialsNeeded)
-            .filter(([id, need]) => craftingList.includes(id) && need - (_depot[id]?.stock ?? 0) > 0)
-            .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB, true))
-            .map(([id, need]) => ([id, need - (_depot[id]?.stock ?? 0)] as [string, number]));
-
-        const sortedNeedToFarm = Object.entries(_materialsNeeded)
-            .filter(([id, need]) => !craftingList.includes(id) && need - (_depot[id]?.stock ?? 0) > 0)
-            .sort(([itemIdA], [itemIdB]) => {
-                const itemA = itemsJson[itemIdA as keyof typeof itemsJson];
-                const itemB = itemsJson[itemIdB as keyof typeof itemsJson];
-                const itemAlocalSortID = localSortId.find(keyword => itemA.name.includes(keyword[0]))?.[1] ?? 0;
-                const itemBlocalSortID = localSortId.find(keyword => itemB.name.includes(keyword[0]))?.[1] ?? 0;
-                return (
-                    (itemAlocalSortID - itemBlocalSortID) ||
-                    (_materialsNeeded[itemIdB] - (_depot[itemIdB]?.stock ?? 0)) - (_materialsNeeded[itemIdA] - (_depot[itemIdA]?.stock ?? 0))
-                );
-            })
-            .map(([id, need]) => ([id, need - (_depot[id]?.stock ?? 0)] as [string, number]));
-
-        const needToFarm123 = Object.entries(_materialsNeeded)
-            .filter(([id, need]) => !craftingList.includes(id) && need - (_depot[id]?.stock ?? 0) > 0
-                && itemsJson[id as keyof typeof itemsJson].tier < (craftTier)
-                && Number(id) > 3300 && Number(id) < 32000)
-            .reduce((acc, [id, need]) => {
-                acc[id] = (need - (_depot[id]?.stock ?? 0));
-                return acc;
-            }, {} as Record<string, number>);
-
-        const lowTierMats = Object.values(_depot)
-            .filter((item) =>
-                itemsJson[item.material_id as keyof typeof itemsJson].tier < (craftTier - 1)
-                && Number(item.material_id) > 3300 && Number(item.material_id) < 32000
-            ).reduce((acc, item) => {
-                acc[item.material_id] = Math.max(0, item.stock - (_materialsNeeded[item.material_id] ?? 0));
-                return acc;
-            }, {} as Record<string, number>);
-
-        addMatsToTierFromPreviousTier(lowTierMats, 2, true);
-        const t2OrirockException: [string, number] = ["30012", (lowTierMats["30012"] ?? 0)];
-        addMatsToTierFromPreviousTier(lowTierMats, 3, true);
-
-        const sortedPossibleCraft = Object.entries(getTier3StatisticFromMaterials(lowTierMats))
-            .map(([id, { total: num }]) => [id, num] as [string, number]).concat([t2OrirockException])
-            .filter(([id, num]) => num > 0 && needToFarm123[id])
-            .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB))
-            .map(([id, num]) => [id, Math.min(num, needToFarm123[id])] as [string, number]);
-
-        return {
-            sortedNeedToFarm,
-            sortedNeedToCraft,
-            sortedPossibleCraft,
-            eventsList,
-            sortedEventMaterials
-        }
-    }, [EXP, open, goalsMaterials, depot, expOwned, eventsData, localSortId,
-        getTier3StatisticFromMaterials, , getTotalMaterialsUptoSelectedEvent, customItemsSort]
-    );
-
     const calculateStatisticTab = useCallback(() => {
 
         if (!open) return { sortedAllGoalsStats: [], sortedFilteredGoalsStats: [] };
@@ -419,35 +376,6 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         }
     }
         , [open, goalData, goalsMaterials, getTier3StatisticFromMaterials])
-
-    const formatNumber = (num: number) => {
-        return num < 1000
-            ? num
-            : num < 1000000
-                ? `${num % 1000 === 0 ? `${num / 1000}` : (num / 1000).toFixed(1)}K`
-                : `${num % 1000000 === 0 ? `${num / 1000000}` : (num / 1000000).toFixed(2)}M`;
-    };
-
-    const itemBaseSize = isMdUp ? 64 : 56;
-
-    const getNumberCSS = (size: number = itemBaseSize) => ({
-        component: "span",
-        sx: {
-            display: "inline-block",
-            py: 0.25,
-            px: 0.5,
-            lineHeight: 1,
-            mr: `${size / 16}px`,
-            mb: `${size / 16}px`,
-            alignSelf: "end",
-            justifySelf: "end",
-            backgroundColor: "background.paper",
-            zIndex: 1,
-            fontSize: `${size / 24 + 12}px`,
-        },
-    });
-
-    const { sortedNeedToFarm, sortedNeedToCraft, sortedPossibleCraft, eventsList, sortedEventMaterials } = useMemo(calculateSummaryTab, [calculateSummaryTab]);
 
     const { sortedAllGoalsStats, sortedFilteredGoalsStats } = useMemo(calculateStatisticTab, [calculateStatisticTab]);
 
@@ -531,6 +459,208 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
 
     const { sortedAllOperatorsStats, sortedUnownedOperatorsStats } = useMemo(calculateOperatorsTab, [calculateOperatorsTab]);
 
+    const addBalanceValue = useCallback((materials: Record<string, number>) => {
+        if (applyBalance) {
+            const farmItems = selectedEvent.farms ?? [];
+            const percentsSource = sortedFilteredGoalsStats.length != 0
+                ? sortedFilteredGoalsStats
+                : sortedAllGoalsStats.length != 0
+                    ? sortedAllGoalsStats
+                    : sortedUnownedOperatorsStats;
+            const farmItemsStats = (balanceType === "event")
+                ? percentsSource.filter(([id]) => farmItems.includes(id))
+                : percentsSource;
+
+            if (farmItemsStats.length > 0) {
+                const maxPercent = farmItemsStats.reduce((acc, [id, , percent]) => {
+                    return (percent > acc && !includeCraftIds.includes(id)) ? percent : acc;
+                }, 0);
+
+                farmItemsStats.forEach(([id, , percent]) => {
+                    const proportion = maxPercent != 0 ? percent / maxPercent : 0;
+                    const additionalValue = Math.round(balanceValue * proportion);
+
+                    if (!includeCraftIds.includes(id)) {
+                        materials[id] = (materials[id] ?? 0) + additionalValue;
+                    } else {
+                        //correct into t2 for force crafted.                    
+                        const item = itemsJson[id as keyof typeof itemsJson] as Item
+                        item.ingredients && item.ingredients
+                            .filter((ingr) => itemsJson[ingr.id as keyof typeof itemsJson].tier === 2)
+                            .forEach((ingr) => {
+                                materials[ingr.id] = (materials[ingr.id] ?? 0) + ingr.quantity * Math.ceil(additionalValue / (item.yield ?? 1));
+                            });
+                    };
+                });
+            };
+        };
+
+    }, [applyBalance, balanceValue, balanceType, selectedEvent, sortedFilteredGoalsStats, sortedAllGoalsStats, sortedUnownedOperatorsStats, includeCraftIds]
+    )
+
+    const calculateSummaryTab = useCallback(() => {
+
+        //dont do background calculcation
+        if (!open) return {
+            sortedNeedToFarm: [],
+            sortedNeedToCraft: [],
+            sortedPossibleCraft: [],
+            eventsList: [],
+            sortedEventMaterials: [],
+            farmTimes: {}
+        };
+
+        const craftTier = 4;
+        //specific craftables of wrong tiers
+        const excludeCraftIds: string[] = [
+            //"3302" //skill summary 2
+        ];
+        const excludeCraftNames: string[] = [
+            " Chip", //any " Chips" and " Chip Packs"
+            "Data", //module ingredients
+        ];
+
+        // Create a copy of depot from itemsJson list of items to have full itemsList for calcs
+        const _depot = Object.fromEntries(
+            Object.keys(itemsJson).map((key) => [
+                key,
+                { material_id: key, stock: depot[key]?.stock ?? 0 },
+            ])
+        );
+
+        _depot["EXP"] = { material_id: "EXP", stock: expOwned };
+
+        //+eventsData: count events mats and add them to depot
+        const eventsList = Object.entries(eventsData ?? {})
+            .sort(([, a], [, b]) => a.index - b.index)
+
+        const { materials: _eventMaterials, farmTimes } = getTotalMaterialsUptoSelectedEvent();
+
+        Object.entries(_eventMaterials).reduce((acc, [id, quantity]) => {
+            if (acc[id]) {
+                acc[id].stock = (acc[id].stock ?? 0) + quantity;
+            } else {
+                acc[id] = { material_id: id, stock: quantity };
+            }
+            return acc;
+        }, _depot);
+
+        const sortedEventMaterials = Object.entries(_eventMaterials)
+            .filter(([id]) => !EXP.includes(id))
+            .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB));
+        //-eventsData       
+
+        const craftingList = Object.keys(_depot)
+            .filter((id) => {
+                const item: Item = itemsJson[id as keyof typeof itemsJson];
+                return (
+                    item.tier >= craftTier
+                    && item.ingredients
+                    && !excludeCraftIds.includes(id)
+                    && !excludeCraftNames.some(keyword => item.name.includes(keyword))
+                )
+            })
+            .concat(includeCraftIds);
+
+        const _materialsNeeded = { ...goalsMaterials };
+
+        //mutates _materialsNeeded
+        canCompleteByCrafting(_materialsNeeded, _depot, craftingList);
+
+        addBalanceValue(_materialsNeeded);
+
+        const sortedNeedToCraft = Object.entries(_materialsNeeded)
+            .filter(([id, need]) => craftingList.includes(id) && need - (_depot[id]?.stock ?? 0) > 0)
+            .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB, true))
+            .map(([id, need]) => ([id, need - (_depot[id]?.stock ?? 0)] as [string, number]));
+
+        const sortedNeedToFarm = Object.entries(_materialsNeeded)
+            .filter(([id, need]) => !craftingList.includes(id) && need - (_depot[id]?.stock ?? 0) > 0)
+            .sort(([itemIdA], [itemIdB]) => {
+                const itemA = itemsJson[itemIdA as keyof typeof itemsJson];
+                const itemB = itemsJson[itemIdB as keyof typeof itemsJson];
+                const itemAlocalSortID = localSortId.find(keyword => itemA.name.includes(keyword[0]))?.[1] ?? 0;
+                const itemBlocalSortID = localSortId.find(keyword => itemB.name.includes(keyword[0]))?.[1] ?? 0;
+                const isInSelectedEventFarmA = selectedEvent?.farms?.includes(itemIdA) ? 1 : 0;
+                const isInSelectedEventFarmB = selectedEvent?.farms?.includes(itemIdB) ? 1 : 0;
+                return (
+                    (isInSelectedEventFarmB - isInSelectedEventFarmA) ||
+                    (itemAlocalSortID - itemBlocalSortID) ||
+                    (_materialsNeeded[itemIdB] - (_depot[itemIdB]?.stock ?? 0)) - (_materialsNeeded[itemIdA] - (_depot[itemIdA]?.stock ?? 0))
+                );
+            })
+            .map(([id, need]) => ([id, need - (_depot[id]?.stock ?? 0)] as [string, number]));
+
+        const needToFarm123 = Object.entries(_materialsNeeded)
+            .filter(([id, need]) => !craftingList.includes(id) && need - (_depot[id]?.stock ?? 0) > 0
+                && itemsJson[id as keyof typeof itemsJson].tier < (craftTier)
+                && Number(id) > 3300 && Number(id) < 32000)
+            .reduce((acc, [id, need]) => {
+                acc[id] = (need - (_depot[id]?.stock ?? 0));
+                return acc;
+            }, {} as Record<string, number>);
+
+        const lowTierMats = Object.values(_depot)
+            .filter((item) =>
+                itemsJson[item.material_id as keyof typeof itemsJson].tier < (craftTier - 1)
+                && Number(item.material_id) > 3300 && Number(item.material_id) < 32000
+            ).reduce((acc, item) => {
+                acc[item.material_id] = Math.max(0, item.stock - (_materialsNeeded[item.material_id] ?? 0));
+                return acc;
+            }, {} as Record<string, number>);
+
+        addMatsToTierFromPreviousTier(lowTierMats, 2, true);
+        const t2OrirockException: [string, number] = ["30012", (lowTierMats["30012"] ?? 0)];
+        addMatsToTierFromPreviousTier(lowTierMats, 3, true);
+
+        const sortedPossibleCraft = Object.entries(getTier3StatisticFromMaterials(lowTierMats))
+            .map(([id, { total: num }]) => [id, num] as [string, number]).concat([t2OrirockException])
+            .filter(([id, num]) => num > 0 && needToFarm123[id])
+            .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB))
+            .map(([id, num]) => [id, Math.min(num, needToFarm123[id])] as [string, number]);
+
+        return {
+            sortedNeedToFarm,
+            sortedNeedToCraft,
+            sortedPossibleCraft,
+            eventsList,
+            sortedEventMaterials,
+            farmTimes,
+        }
+    }, [EXP, open, goalsMaterials, depot, expOwned, eventsData, localSortId, includeCraftIds, selectedEvent,
+        getTier3StatisticFromMaterials, getTotalMaterialsUptoSelectedEvent, customItemsSort,
+        addBalanceValue]
+    );
+
+    const formatNumber = (num: number) => {
+        return num < 1000
+            ? num
+            : num < 1000000
+                ? `${num % 1000 === 0 ? `${num / 1000}` : (num / 1000).toFixed(1)}K`
+                : `${num % 1000000 === 0 ? `${num / 1000000}` : (num / 1000000).toFixed(2)}M`;
+    };
+
+    const itemBaseSize = isMdUp ? 64 : 56;
+
+    const getNumberCSS = (size: number = itemBaseSize) => ({
+        component: "span",
+        sx: {
+            display: "inline-block",
+            py: 0.25,
+            px: 0.5,
+            lineHeight: 1,
+            mr: `${size / 16}px`,
+            mb: `${size / 16}px`,
+            alignSelf: "end",
+            justifySelf: "end",
+            backgroundColor: "background.paper",
+            zIndex: 1,
+            fontSize: `${size / 24 + 12}px`,
+        },
+    });
+
+    const { sortedNeedToFarm, sortedNeedToCraft, sortedPossibleCraft, eventsList, sortedEventMaterials, farmTimes } = useMemo(calculateSummaryTab, [calculateSummaryTab]);
+
     return (
         <>
             <Dialog
@@ -568,6 +698,9 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                             <ToggleButton value="operatorsStatistic" aria-label="operatorsStatistic">
                                 <ReduceCapacityIcon />
                             </ToggleButton>
+                            <ToggleButton value="help" aria-label="help">
+                                <QuestionMarkIcon />
+                            </ToggleButton>
                         </ToggleButtonGroup>
                     </Box>
                     <Typography
@@ -580,20 +713,60 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                             paddingTop: "12px",
                         }}
                     >
-                        {(tab === "summary") ? "Active goals" : `Statistic ${(tab === "goalsStatistic") ? " - goals" : " - operators"}`}
+                        {(tab === "summary") && "Active goals"}
+                        {tab.includes("Statistic") && `Statistic ${(tab === "goalsStatistic") ? " - goals" : " - operators"}`}
+                        {(tab === "help") && "Description"}
                     </Typography>
                     <Box gridArea="switch">
-                        {(tab != "summary") && (
-                            <Stack direction="row" alignItems="center">
-                                <Typography>∑</Typography>
-                                <Switch
-                                    checked={!isTotalDigits}
-                                    onChange={handleDigitsSwitch}
-                                    inputProps={{ 'aria-label': 'controlled' }}
-                                />
-                                <Typography>%</Typography>
-                            </Stack>
-                        )}
+                        <Stack direction="row" alignItems="center">
+                            {tab.includes("Statistic") && (
+                                <>
+                                    <Typography>∑</Typography>
+                                    <Switch
+                                        checked={!isTotalDigits}
+                                        onChange={handleDigitsSwitch}
+                                        inputProps={{ 'aria-label': 'controlled' }}
+                                    />
+                                    <Typography>%</Typography>
+                                </>
+                            )}
+                            {(tab === "summary") && (
+                                <>
+                                    <TextField value={balanceValue}
+                                        variant="standard"
+                                        label="Balance to"
+                                        type="number"
+                                        onChange={(e) => {
+                                            setBalanceValue(Number(e.target.value) || 0)
+                                        }}
+                                        sx={{ minWidth: "4ch" }}
+                                        slotProps={{
+                                            input: { startAdornment: <InputAdornment position="start">+</InputAdornment>, },
+                                            htmlInput: {
+                                                type: "text",
+                                            },
+                                        }} />
+                                    <ToggleButtonGroup
+                                        orientation="horizontal"
+                                        size="small"
+                                        value={balanceType}
+                                        exclusive
+                                        onChange={handleBalanceToggle}
+                                    >
+                                        <ToggleButton value="event" aria-label="event"
+                                            disabled={!(selectedEvent?.farms) ? true : false}>
+                                            <Tooltip title="Apply only to 2-3 event farms">
+                                                <EventIcon />
+                                            </Tooltip>
+                                        </ToggleButton>
+                                        <ToggleButton value="global" aria-label="global">
+                                            <Tooltip title="Apply to all materials">
+                                                <CalendarMonthIcon />
+                                            </Tooltip>
+                                        </ToggleButton>
+                                    </ToggleButtonGroup>
+                                </>)}
+                        </Stack>
                     </Box>
                     <IconButton onClick={handleClose} sx={{ display: { sm: "none" }, gridArea: "close" }}>
                         <Close />
@@ -625,13 +798,14 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                         {sortedNeedToFarm.length > 0 ? (
                                             <>
                                                 <Stack direction="row" alignItems="center">
-                                                    <Typography variant="h3" p={1} fontWeight="bold">Farm missing materials
+                                                    <Typography variant="h3" p={1} fontWeight="bold">Farm missing materials {balanceType != null && "& balance on top"}
                                                         {sortedPossibleCraft.length > 0 ? <> <big>≪</big><span>some possible to craft</span></> : null}
                                                     </Typography>
                                                 </Stack>
                                                 <Stack direction="row" flexWrap="wrap" alignItems="center">
                                                     {sortedNeedToFarm.map(([id, need]) => (
-                                                        <ItemBase key={id} itemId={id} size={itemBaseSize}>
+                                                        <ItemBase key={id} itemId={id} size={itemBaseSize}
+                                                            sx={{ backgroundColor: selectedEvent?.farms?.includes(id) ? "primary.main" : "" }}>
                                                             <Typography {...getNumberCSS()}>
                                                                 {formatNumber(need)}
                                                             </Typography>
@@ -689,16 +863,26 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                             </>
                                         ) : null}
                                         {sortedEventMaterials.length > 0 ? (
-                                            <Accordion>
-                                                <AccordionSummary>Income from future events</AccordionSummary>
+                                            <Accordion
+                                                onChange={(_, expanded) => setAccordionExpanded(expanded)}
+                                                expanded={accordionIsExpanded}>
+                                                <AccordionSummary>Income up to the selected event is deducted</AccordionSummary>
                                                 <AccordionDetails>
                                                     {sortedEventMaterials
                                                         .map(([id, need]) => (
-                                                            <ItemBase key={id} itemId={id} size={itemBaseSize * 0.6}>
-                                                                <Typography {...getNumberCSS(0)}>
-                                                                    {formatNumber(need)}
-                                                                </Typography>
-                                                            </ItemBase>
+                                                            <Tooltip key={`${id}-tip`} title={farmTimes[id] ? `can be farmed in ${farmTimes[id]} event${farmTimes[id] > 1 ? "s" : ""}` : ""}>
+                                                                <ItemBase key={id} itemId={id} size={itemBaseSize * 0.6}
+                                                                    sx={{
+                                                                        ...(farmTimes[id] && {
+                                                                            backgroundColor: "primary.main",
+                                                                            borderRadius: "20px",
+                                                                        })
+                                                                    }}>
+                                                                    <Typography {...getNumberCSS(0)}>
+                                                                        {formatNumber(need)}
+                                                                    </Typography>
+                                                                </ItemBase>
+                                                            </Tooltip>
                                                         ))}
                                                 </AccordionDetails>
                                             </Accordion>
@@ -781,6 +965,16 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                 )}
                             </Box>
                         </Slide>
+                        <Slide container={containerRef.current}
+                            in={tab === "help"}
+                            direction={sliderDirection}
+                            timeout={{ enter: 500, exit: tab != "help" ? 1 : 400 }}
+                            mountOnEnter
+                            unmountOnExit>
+                            <Box>
+                                {HELP_INFORMATION}
+                            </Box>
+                        </Slide>
                     </Box>
                 </DialogContent>
                 <DialogActions sx={{
@@ -801,7 +995,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                         <InputLabel>Select future Event</InputLabel>
                         <Select
                             disabled={tab !== "summary" ? true : false}
-                            value={selectedEventIndex}
+                            value={eventsList.length === 0 ? -1 : (selectedEvent?.index ?? -1)}
                             onChange={(e) => onEventChange(Number(e.target.value))}
                             onOpen={() => {
                                 setIsSelectFinished(false)
@@ -809,18 +1003,21 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                             label="Select future Event"
                             fullWidth
                         >
+                            <MenuItem value={-1} key={-1} className="no-underline">without Events</MenuItem>
+                            <Divider component="li" />
                             {eventsList
                                 .map(([name, event]) => (
                                     <MenuItem value={event.index} key={event.index} className="no-underline">
                                         <Stack direction="row" justifyContent="space-between" alignItems="center" width="stretch">
                                             {`${event.index}: ${name}`} {!isSelectFinished ? (
                                                 <Stack direction="row">
-                                                    {Object.entries(event.materials)
-                                                        .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB))
+                                                    {(event.farms ?? []).map((id) => [id, 0] as [string, number])
+                                                        .concat(Object.entries(event.materials)
+                                                            .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB)))
                                                         .slice(0, fullScreen ? 4 : 10)
-                                                        .map(([id, quantity]) => (
-                                                            <ItemBase key={id} itemId={id} size={itemBaseSize * 0.5}>
-                                                                <Typography {...getNumberCSS(0)}>{formatNumber(quantity)}</Typography>
+                                                        .map(([id, quantity], idx) => (
+                                                            <ItemBase key={`${id}${quantity === 0 && "-farm"}`} itemId={id} size={itemBaseSize * 0.5}>
+                                                                <Typography {...getNumberCSS(0)}>{quantity === 0 ? ["Ⅰ", "Ⅱ", "Ⅲ"][idx] : formatNumber(quantity)}</Typography>
                                                             </ItemBase>
                                                         ))}
                                                     {"..."}
@@ -828,8 +1025,6 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                         </Stack>
                                     </MenuItem>
                                 ))}
-                            <Divider component="li" />
-                            <MenuItem value={-1} key={-1} className="no-underline">without Events</MenuItem>
                         </Select>
                     </FormControl>
                 </DialogActions>
