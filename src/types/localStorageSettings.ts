@@ -10,6 +10,17 @@ export interface InactiveOpsInGroups {
   [groupName: string]: string[];
 }
 
+export interface Event {
+  index: number;
+  materials: {
+    [key: string]: number;
+  }
+};
+
+export interface EventsData {
+  [key: string]: Event;
+};
+
 export interface PlannerSettings {
   allowAllGoals: boolean;
   sortEmptyGroupsToBottom: boolean;
@@ -28,6 +39,7 @@ export interface DepotSettings {
   showIncrementDecrementButtons: boolean;
   sortCompletedToBottom: boolean;
   ignoreLmdInCrafting: boolean;
+  eventsIncomeData: EventsData;
 }
 
 export interface ImportSettings {
@@ -42,6 +54,7 @@ const depotSettings: DepotSettings = {
   showIncrementDecrementButtons: false,
   sortCompletedToBottom: false,
   ignoreLmdInCrafting: false,
+  eventsIncomeData: {},
 };
 
 export interface RecruitSettings {
