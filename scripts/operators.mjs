@@ -78,6 +78,92 @@ function professionToClass(profession) {
   }
 }
 
+function subProfessionToBranch(subProfession) {
+  switch (subProfession) {
+    case "physician":
+      return "Medic";
+    case "fearless":
+      return "Dreadnought";
+    case "fastshot":
+      return "Marksman";
+    case "bombarder":
+      return "Flinger";
+    case "corecaster":
+      return "Core";
+    case "splashcaster":
+      return "Splash";
+    case "slower":
+      return "Decel Binder";
+    case "funnel":
+      return "Mech-Accord";
+    case "aoesniper":
+      return "Artilleryman";
+    case "reaperrange":
+      return "Spreadshooter"
+    case "longrange":
+      return "Deadeye";
+    case "closerange":
+      return "Heavyshooter";
+    case "siegesniper":
+      return "Besieger";
+    case "bearer":
+      return "Standard Bearer";
+    case "artsfghter":
+      return "Arts Fighter";
+    case "sword":
+      return "Swordmaster";
+    case "musha":
+      return "Soloblade";
+    case "artsprotector":
+      return "Arts Protector";
+    case "blastcaster":
+      return "Blast";
+    case "blessing":
+      return "Abjurer";
+    case "chainhealer":
+      return "Chain Medic";
+    case "chain":
+      return "Chain Caster";
+    case "craftsman":
+      return "Artificer";
+    case "hammer":
+      return "Earthshaker";
+    case "healer":
+      return "Therapist";
+    case "incantationmedic":
+      return "Incantation";
+    case "primcaster":
+      return "Primal";
+    case "ringhealer":
+      return "Multi-target";
+    case "shotprotector":
+      return "Sentry Protector";
+    case "stalker":
+      return "Ambusher";
+    case "traper":
+      return "Trapmaster";
+    case "underminer":
+      return "Hexer";
+    case "unyield":
+      return "Juggernaut";
+    case "wandermedic":
+      return "Wandering";
+    case "soulcaster":
+      return "Shaper";
+    case "skywalker":
+      return "Skyranger";
+    case "primprotector":
+      return "Primal Protector";
+    default:
+      return [...subProfession.toLowerCase()].map((char, i) => (i === 0 ? char.toUpperCase() : char)).join("");
+    //Executor, Bard, Protector, Ritualist, Pioneer, Charger, Centurion
+    //Guardian, Mystic, Loopshooter, Tactician, Instructor, Crusher
+    //Lord, Dollkeeper, Duelist (defender), Fighter, Fortress, Geek
+    //Hookmaster, Liberator, Merchant, Phalanx, Pusher, Reaper, Summoner
+    //
+  }
+}
+
 const convertLMDCostToLMDItem = (cost) => ({
   id: "4001",
   quantity: cost,
@@ -363,6 +449,7 @@ const createOperatorsJson = () => {
         cnName: getCNOperatorName(id),
         rarity,
         class: professionToClass(operator.profession),
+        branch: subProfessionToBranch(operator.subProfessionId),
         isCnOnly,
         skillData,
         moduleData,
