@@ -21630,7 +21630,7 @@
     "cnName": "云迹",
     "rarity": 4,
     "class": "Specialist",
-    "branch": "Skywalker",
+    "branch": "Skyranger",
     "isCnOnly": true,
     "skillData": [
       {
@@ -50413,7 +50413,7 @@
     "cnName": "特克诺",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Soulcaster",
+    "branch": "Shaper",
     "isCnOnly": true,
     "skillData": [
       {
@@ -64770,7 +64770,7 @@
     "cnName": "菲莱",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Primprotector",
+    "branch": "Primal Protector",
     "isCnOnly": true,
     "skillData": [
       {
@@ -68306,6 +68306,7 @@
     "cnName": "水灯心",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Loopshooter",
     "isCnOnly": true,
     "skillData": [
       {
@@ -78333,6 +78334,7 @@
     "cnName": "钼铅",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Trapmaster",
     "isCnOnly": true,
     "skillData": [
       {
@@ -98995,6 +98997,7 @@
     "cnName": "死芒",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Shaper",
     "isCnOnly": true,
     "skillData": [
       {
@@ -118949,7 +118952,7 @@
     "cnName": "余",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Primprotector",
+    "branch": "Primal Protector",
     "isCnOnly": true,
     "skillData": [
       {
