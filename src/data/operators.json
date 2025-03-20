@@ -5,6 +5,7 @@
     "cnName": "Lancet-2",
     "rarity": 1,
     "class": "Medic",
+    "branch": "Medic",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -24,6 +25,7 @@
     "cnName": "Castle-3",
     "rarity": 1,
     "class": "Guard",
+    "branch": "Dreadnought",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -43,6 +45,7 @@
     "cnName": "THRM-EX",
     "rarity": 1,
     "class": "Specialist",
+    "branch": "Executor",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -62,6 +65,7 @@
     "cnName": "正义骑士号",
     "rarity": 1,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -81,6 +85,7 @@
     "cnName": "泰拉大陆调查团",
     "rarity": 1,
     "class": "Sniper",
+    "branch": "Flinger",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -100,6 +105,7 @@
     "cnName": "U-Official",
     "rarity": 1,
     "class": "Supporter",
+    "branch": "Bard",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -119,6 +125,7 @@
     "cnName": "Friston-3",
     "rarity": 1,
     "class": "Defender",
+    "branch": "Protector",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -138,6 +145,7 @@
     "cnName": "PhonoR-0",
     "rarity": 1,
     "class": "Supporter",
+    "branch": "Ritualist",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -157,6 +165,7 @@
     "cnName": "夜刀",
     "rarity": 2,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -176,6 +185,7 @@
     "cnName": "黑角",
     "rarity": 2,
     "class": "Defender",
+    "branch": "Protector",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -195,6 +205,7 @@
     "cnName": "巡林者",
     "rarity": 2,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -214,6 +225,7 @@
     "cnName": "杜林",
     "rarity": 2,
     "class": "Caster",
+    "branch": "Core",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -233,6 +245,7 @@
     "cnName": "12F",
     "rarity": 2,
     "class": "Caster",
+    "branch": "Splash",
     "isCnOnly": false,
     "skillData": [],
     "moduleData": [],
@@ -252,6 +265,7 @@
     "cnName": "芬",
     "rarity": 3,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -377,6 +391,7 @@
     "cnName": "香草",
     "rarity": 3,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -502,6 +517,7 @@
     "cnName": "翎羽",
     "rarity": 3,
     "class": "Vanguard",
+    "branch": "Charger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -627,6 +643,7 @@
     "cnName": "玫兰莎",
     "rarity": 3,
     "class": "Guard",
+    "branch": "Dreadnought",
     "isCnOnly": false,
     "skillData": [
       {
@@ -752,6 +769,7 @@
     "cnName": "泡普卡",
     "rarity": 3,
     "class": "Guard",
+    "branch": "Centurion",
     "isCnOnly": false,
     "skillData": [
       {
@@ -877,6 +895,7 @@
     "cnName": "卡缇",
     "rarity": 3,
     "class": "Defender",
+    "branch": "Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -1002,6 +1021,7 @@
     "cnName": "米格鲁",
     "rarity": 3,
     "class": "Defender",
+    "branch": "Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -1127,6 +1147,7 @@
     "cnName": "斑点",
     "rarity": 3,
     "class": "Defender",
+    "branch": "Guardian",
     "isCnOnly": false,
     "skillData": [
       {
@@ -1252,6 +1273,7 @@
     "cnName": "克洛丝",
     "rarity": 3,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -1377,6 +1399,7 @@
     "cnName": "安德切尔",
     "rarity": 3,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -1502,6 +1525,7 @@
     "cnName": "炎熔",
     "rarity": 3,
     "class": "Caster",
+    "branch": "Splash",
     "isCnOnly": false,
     "skillData": [
       {
@@ -1627,6 +1651,7 @@
     "cnName": "芙蓉",
     "rarity": 3,
     "class": "Medic",
+    "branch": "Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -1752,6 +1777,7 @@
     "cnName": "安赛尔",
     "rarity": 3,
     "class": "Medic",
+    "branch": "Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -1877,6 +1903,7 @@
     "cnName": "史都华德",
     "rarity": 3,
     "class": "Caster",
+    "branch": "Core",
     "isCnOnly": false,
     "skillData": [
       {
@@ -2002,6 +2029,7 @@
     "cnName": "梓兰",
     "rarity": 3,
     "class": "Supporter",
+    "branch": "Decel Binder",
     "isCnOnly": false,
     "skillData": [
       {
@@ -2127,6 +2155,7 @@
     "cnName": "夜烟",
     "rarity": 4,
     "class": "Caster",
+    "branch": "Core",
     "isCnOnly": false,
     "skillData": [
       {
@@ -2483,6 +2512,7 @@
     "cnName": "远山",
     "rarity": 4,
     "class": "Caster",
+    "branch": "Splash",
     "isCnOnly": false,
     "skillData": [
       {
@@ -2839,6 +2869,7 @@
     "cnName": "格雷伊",
     "rarity": 4,
     "class": "Caster",
+    "branch": "Splash",
     "isCnOnly": false,
     "skillData": [
       {
@@ -3195,6 +3226,7 @@
     "cnName": "卡达",
     "rarity": 4,
     "class": "Caster",
+    "branch": "Mech-Accord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -3551,6 +3583,7 @@
     "cnName": "深靛",
     "rarity": 4,
     "class": "Caster",
+    "branch": "Mystic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -3907,6 +3940,7 @@
     "cnName": "布丁",
     "rarity": 4,
     "class": "Caster",
+    "branch": "Chain Caster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -4263,6 +4297,7 @@
     "cnName": "杰西卡",
     "rarity": 4,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -4619,6 +4654,7 @@
     "cnName": "流星",
     "rarity": 4,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -4975,6 +5011,7 @@
     "cnName": "红云",
     "rarity": 4,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -5331,6 +5368,7 @@
     "cnName": "梅",
     "rarity": 4,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -5687,6 +5725,7 @@
     "cnName": "白雪",
     "rarity": 4,
     "class": "Sniper",
+    "branch": "Artilleryman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -6043,6 +6082,7 @@
     "cnName": "松果",
     "rarity": 4,
     "class": "Sniper",
+    "branch": "Spreadshooter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -6399,6 +6439,7 @@
     "cnName": "安比尔",
     "rarity": 4,
     "class": "Sniper",
+    "branch": "Deadeye",
     "isCnOnly": false,
     "skillData": [
       {
@@ -6755,6 +6796,7 @@
     "cnName": "酸糖",
     "rarity": 4,
     "class": "Sniper",
+    "branch": "Heavyshooter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -7111,6 +7153,7 @@
     "cnName": "铅踝",
     "rarity": 4,
     "class": "Sniper",
+    "branch": "Besieger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -7467,6 +7510,7 @@
     "cnName": "跃跃",
     "rarity": 4,
     "class": "Sniper",
+    "branch": "Loopshooter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -7749,6 +7793,7 @@
     "cnName": "讯使",
     "rarity": 4,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -8105,6 +8150,7 @@
     "cnName": "清道夫",
     "rarity": 4,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -8461,6 +8507,7 @@
     "cnName": "红豆",
     "rarity": 4,
     "class": "Vanguard",
+    "branch": "Charger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -8817,6 +8864,7 @@
     "cnName": "桃金娘",
     "rarity": 4,
     "class": "Vanguard",
+    "branch": "Standard Bearer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -9173,6 +9221,7 @@
     "cnName": "豆苗",
     "rarity": 4,
     "class": "Vanguard",
+    "branch": "Tactician",
     "isCnOnly": false,
     "skillData": [
       {
@@ -9529,6 +9578,7 @@
     "cnName": "杜宾",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Instructor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -9885,6 +9935,7 @@
     "cnName": "缠丸",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Dreadnought",
     "isCnOnly": false,
     "skillData": [
       {
@@ -10241,6 +10292,7 @@
     "cnName": "断罪者",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Dreadnought",
     "isCnOnly": false,
     "skillData": [
       {
@@ -10591,6 +10643,7 @@
     "cnName": "霜叶",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Lord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -10947,6 +11000,7 @@
     "cnName": "艾丝黛尔",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Centurion",
     "isCnOnly": false,
     "skillData": [
       {
@@ -11303,6 +11357,7 @@
     "cnName": "慕斯",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Arts Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -11659,6 +11714,7 @@
     "cnName": "刻刀",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Swordmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -12015,6 +12071,7 @@
     "cnName": "宴",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Soloblade",
     "isCnOnly": false,
     "skillData": [
       {
@@ -12371,6 +12428,7 @@
     "cnName": "芳汀",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Lord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -12727,6 +12785,7 @@
     "cnName": "罗小黑",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Lord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -13077,6 +13136,7 @@
     "cnName": "石英",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Crusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -13433,6 +13493,7 @@
     "cnName": "休谟斯",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Reaper",
     "isCnOnly": false,
     "skillData": [
       {
@@ -13789,6 +13850,7 @@
     "cnName": "砾",
     "rarity": 4,
     "class": "Specialist",
+    "branch": "Executor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -14145,6 +14207,7 @@
     "cnName": "孑",
     "rarity": 4,
     "class": "Specialist",
+    "branch": "Merchant",
     "isCnOnly": false,
     "skillData": [
       {
@@ -14501,6 +14564,7 @@
     "cnName": "暗索",
     "rarity": 4,
     "class": "Specialist",
+    "branch": "Hookmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -14857,6 +14921,7 @@
     "cnName": "末药",
     "rarity": 4,
     "class": "Medic",
+    "branch": "Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -15213,6 +15278,7 @@
     "cnName": "嘉维尔",
     "rarity": 4,
     "class": "Medic",
+    "branch": "Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -15569,6 +15635,7 @@
     "cnName": "苏苏洛",
     "rarity": 4,
     "class": "Medic",
+    "branch": "Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -15925,6 +15992,7 @@
     "cnName": "调香师",
     "rarity": 4,
     "class": "Medic",
+    "branch": "Multi-target",
     "isCnOnly": false,
     "skillData": [
       {
@@ -16281,6 +16349,7 @@
     "cnName": "清流",
     "rarity": 4,
     "class": "Medic",
+    "branch": "Therapist",
     "isCnOnly": false,
     "skillData": [
       {
@@ -16637,6 +16706,7 @@
     "cnName": "褐果",
     "rarity": 4,
     "class": "Medic",
+    "branch": "Wandering",
     "isCnOnly": false,
     "skillData": [
       {
@@ -16993,6 +17063,7 @@
     "cnName": "角峰",
     "rarity": 4,
     "class": "Defender",
+    "branch": "Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -17349,6 +17420,7 @@
     "cnName": "蛇屠箱",
     "rarity": 4,
     "class": "Defender",
+    "branch": "Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -17705,6 +17777,7 @@
     "cnName": "泡泡",
     "rarity": 4,
     "class": "Defender",
+    "branch": "Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -18061,6 +18134,7 @@
     "cnName": "露托",
     "rarity": 4,
     "class": "Defender",
+    "branch": "Juggernaut",
     "isCnOnly": false,
     "skillData": [
       {
@@ -18417,6 +18491,7 @@
     "cnName": "古米",
     "rarity": 4,
     "class": "Defender",
+    "branch": "Guardian",
     "isCnOnly": false,
     "skillData": [
       {
@@ -18773,6 +18848,7 @@
     "cnName": "坚雷",
     "rarity": 4,
     "class": "Defender",
+    "branch": "Arts Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -19055,6 +19131,7 @@
     "cnName": "深海色",
     "rarity": 4,
     "class": "Supporter",
+    "branch": "Summoner",
     "isCnOnly": false,
     "skillData": [
       {
@@ -19411,6 +19488,7 @@
     "cnName": "地灵",
     "rarity": 4,
     "class": "Supporter",
+    "branch": "Decel Binder",
     "isCnOnly": false,
     "skillData": [
       {
@@ -19767,6 +19845,7 @@
     "cnName": "波登可",
     "rarity": 4,
     "class": "Supporter",
+    "branch": "Decel Binder",
     "isCnOnly": false,
     "skillData": [
       {
@@ -20123,6 +20202,7 @@
     "cnName": "罗比菈塔",
     "rarity": 4,
     "class": "Supporter",
+    "branch": "Artificer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -20479,6 +20559,7 @@
     "cnName": "伊桑",
     "rarity": 4,
     "class": "Specialist",
+    "branch": "Ambusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -20835,6 +20916,7 @@
     "cnName": "阿消",
     "rarity": 4,
     "class": "Specialist",
+    "branch": "Pusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -21191,6 +21273,7 @@
     "cnName": "维荻",
     "rarity": 4,
     "class": "Specialist",
+    "branch": "Dollkeeper",
     "isCnOnly": false,
     "skillData": [
       {
@@ -21547,6 +21630,7 @@
     "cnName": "云迹",
     "rarity": 4,
     "class": "Specialist",
+    "branch": "Skywalker",
     "isCnOnly": true,
     "skillData": [
       {
@@ -21829,6 +21913,7 @@
     "cnName": "白面鸮",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Multi-target",
     "isCnOnly": false,
     "skillData": [
       {
@@ -22189,6 +22274,7 @@
     "cnName": "微风",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Multi-target",
     "isCnOnly": false,
     "skillData": [
       {
@@ -22549,6 +22635,7 @@
     "cnName": "瑰盐",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Multi-target",
     "isCnOnly": true,
     "skillData": [
       {
@@ -22909,6 +22996,7 @@
     "cnName": "凛冬",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -23269,6 +23357,7 @@
     "cnName": "德克萨斯",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -23629,6 +23718,7 @@
     "cnName": "贾维",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -23989,6 +24079,7 @@
     "cnName": "青枳",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -24349,6 +24440,7 @@
     "cnName": "红隼",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -24709,6 +24801,7 @@
     "cnName": "苇草",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Charger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -25069,6 +25162,7 @@
     "cnName": "野鬃",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Charger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -25429,6 +25523,7 @@
     "cnName": "历阵锐枪芬",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Charger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -25789,6 +25884,7 @@
     "cnName": "极境",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Standard Bearer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -26149,6 +26245,7 @@
     "cnName": "万顷",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Standard Bearer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -26509,6 +26606,7 @@
     "cnName": "夜半",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Tactician",
     "isCnOnly": false,
     "skillData": [
       {
@@ -26869,6 +26967,7 @@
     "cnName": "渡桥",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Tactician",
     "isCnOnly": false,
     "skillData": [
       {
@@ -27229,6 +27328,7 @@
     "cnName": "晓歌",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Agent",
     "isCnOnly": false,
     "skillData": [
       {
@@ -27515,6 +27615,7 @@
     "cnName": "谜图",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Agent",
     "isCnOnly": false,
     "skillData": [
       {
@@ -27801,6 +27902,7 @@
     "cnName": "齐尔查克",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Agent",
     "isCnOnly": false,
     "skillData": [
       {
@@ -28161,6 +28263,7 @@
     "cnName": "寻澜",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Agent",
     "isCnOnly": true,
     "skillData": [
       {
@@ -28447,6 +28550,7 @@
     "cnName": "诗怀雅",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Instructor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -28807,6 +28911,7 @@
     "cnName": "鞭刃",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Instructor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -29167,6 +29272,7 @@
     "cnName": "苍苔",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Instructor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -29527,6 +29633,7 @@
     "cnName": "医生",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Instructor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -29887,6 +29994,7 @@
     "cnName": "芙兰卡",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Dreadnought",
     "isCnOnly": false,
     "skillData": [
       {
@@ -30247,6 +30355,7 @@
     "cnName": "炎客",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Dreadnought",
     "isCnOnly": false,
     "skillData": [
       {
@@ -30607,6 +30716,7 @@
     "cnName": "摩根",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Dreadnought",
     "isCnOnly": false,
     "skillData": [
       {
@@ -30967,6 +31077,7 @@
     "cnName": "莱欧斯",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Dreadnought",
     "isCnOnly": false,
     "skillData": [
       {
@@ -31327,6 +31438,7 @@
     "cnName": "因陀罗",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -31687,6 +31799,7 @@
     "cnName": "燧石",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -32047,6 +32160,7 @@
     "cnName": "达格达",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -32407,6 +32521,7 @@
     "cnName": "拉普兰德",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Lord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -32767,6 +32882,7 @@
     "cnName": "断崖",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Lord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -33127,6 +33243,7 @@
     "cnName": "烈夏",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Lord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -33487,6 +33604,7 @@
     "cnName": "铎铃",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Crusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -33847,6 +33965,7 @@
     "cnName": "柏喙",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Swordmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -34207,6 +34326,7 @@
     "cnName": "战车",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Swordmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -34567,6 +34687,7 @@
     "cnName": "幽灵鲨",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Centurion",
     "isCnOnly": false,
     "skillData": [
       {
@@ -34927,6 +35048,7 @@
     "cnName": "布洛卡",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Centurion",
     "isCnOnly": false,
     "skillData": [
       {
@@ -35287,6 +35409,7 @@
     "cnName": "导火索",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Centurion",
     "isCnOnly": false,
     "skillData": [
       {
@@ -35647,6 +35770,7 @@
     "cnName": "星极",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Arts Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -36007,6 +36131,7 @@
     "cnName": "铸铁",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Arts Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -36367,6 +36492,7 @@
     "cnName": "赤冬",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Soloblade",
     "isCnOnly": false,
     "skillData": [
       {
@@ -36727,6 +36853,7 @@
     "cnName": "火龙S黑角",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Soloblade",
     "isCnOnly": false,
     "skillData": [
       {
@@ -37087,6 +37214,7 @@
     "cnName": "羽毛笔",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Reaper",
     "isCnOnly": false,
     "skillData": [
       {
@@ -37447,6 +37575,7 @@
     "cnName": "海沫",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Reaper",
     "isCnOnly": false,
     "skillData": [
       {
@@ -37807,6 +37936,7 @@
     "cnName": "龙舌兰",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Librator",
     "isCnOnly": false,
     "skillData": [
       {
@@ -38093,6 +38223,7 @@
     "cnName": "奥达",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Earthshaker",
     "isCnOnly": false,
     "skillData": [
       {
@@ -38453,6 +38584,7 @@
     "cnName": "蓝毒",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -38813,6 +38945,7 @@
     "cnName": "白金",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -39173,6 +39306,7 @@
     "cnName": "灰喉",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -39533,6 +39667,7 @@
     "cnName": "四月",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -39893,6 +40028,7 @@
     "cnName": "寒芒克洛丝",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -40253,6 +40389,7 @@
     "cnName": "隐现",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -40613,6 +40750,7 @@
     "cnName": "陨星",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Artilleryman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -40973,6 +41111,7 @@
     "cnName": "慑砂",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Artilleryman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -41333,6 +41472,7 @@
     "cnName": "截云",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Artilleryman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -41693,6 +41833,7 @@
     "cnName": "送葬人",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Spreadshooter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -42053,6 +42194,7 @@
     "cnName": "奥斯塔",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Spreadshooter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -42413,6 +42555,7 @@
     "cnName": "阿米娅",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Core",
     "isCnOnly": false,
     "skillData": [
       {
@@ -42837,6 +42980,7 @@
     "cnName": "苦艾",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Core",
     "isCnOnly": false,
     "skillData": [
       {
@@ -43197,6 +43341,7 @@
     "cnName": "特米米",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Core",
     "isCnOnly": false,
     "skillData": [
       {
@@ -43557,6 +43702,7 @@
     "cnName": "雪绒",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Core",
     "isCnOnly": false,
     "skillData": [
       {
@@ -43917,6 +44063,7 @@
     "cnName": "天火",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Splash",
     "isCnOnly": false,
     "skillData": [
       {
@@ -44277,6 +44424,7 @@
     "cnName": "惊蛰",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Chain Caster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -44637,6 +44785,7 @@
     "cnName": "星源",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Chain Caster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -44997,6 +45146,7 @@
     "cnName": "蜜蜡",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Phalanx",
     "isCnOnly": false,
     "skillData": [
       {
@@ -45357,6 +45507,7 @@
     "cnName": "莱恩哈特",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Splash",
     "isCnOnly": false,
     "skillData": [
       {
@@ -45717,6 +45868,7 @@
     "cnName": "寒檀",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Splash",
     "isCnOnly": false,
     "skillData": [
       {
@@ -46077,6 +46229,7 @@
     "cnName": "薄绿",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Phalanx",
     "isCnOnly": false,
     "skillData": [
       {
@@ -46437,6 +46590,7 @@
     "cnName": "爱丽丝",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Mystic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -46797,6 +46951,7 @@
     "cnName": "和弦",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Mystic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -47157,6 +47312,7 @@
     "cnName": "戴菲恩",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Mystic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -47517,6 +47673,7 @@
     "cnName": "炎狱炎熔",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Splash",
     "isCnOnly": false,
     "skillData": [
       {
@@ -47877,6 +48034,7 @@
     "cnName": "蚀清",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Blast",
     "isCnOnly": false,
     "skillData": [
       {
@@ -48237,6 +48395,7 @@
     "cnName": "阿罗玛",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Blast",
     "isCnOnly": false,
     "skillData": [
       {
@@ -48597,6 +48756,7 @@
     "cnName": "耶拉",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Mech-Accord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -48957,6 +49117,7 @@
     "cnName": "洛洛",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Mech-Accord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -49317,6 +49478,7 @@
     "cnName": "至简",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Mech-Accord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -49677,6 +49839,7 @@
     "cnName": "折光",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Primal",
     "isCnOnly": false,
     "skillData": [
       {
@@ -49963,6 +50126,7 @@
     "cnName": "温米",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Primal",
     "isCnOnly": false,
     "skillData": [
       {
@@ -50249,6 +50413,7 @@
     "cnName": "特克诺",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Soulcaster",
     "isCnOnly": true,
     "skillData": [
       {
@@ -50535,6 +50700,7 @@
     "cnName": "梅尔",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Summoner",
     "isCnOnly": false,
     "skillData": [
       {
@@ -50895,6 +51061,7 @@
     "cnName": "稀音",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Summoner",
     "isCnOnly": false,
     "skillData": [
       {
@@ -51255,6 +51422,7 @@
     "cnName": "衡沙",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Summoner",
     "isCnOnly": false,
     "skillData": [
       {
@@ -51615,6 +51783,7 @@
     "cnName": "赫默",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -51975,6 +52144,7 @@
     "cnName": "华法琳",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -52335,6 +52505,7 @@
     "cnName": "亚叶",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -52695,6 +52866,7 @@
     "cnName": "锡兰",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Therapist",
     "isCnOnly": false,
     "skillData": [
       {
@@ -53055,6 +53227,7 @@
     "cnName": "絮雨",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Therapist",
     "isCnOnly": false,
     "skillData": [
       {
@@ -53415,6 +53588,7 @@
     "cnName": "诺威尔",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Therapist",
     "isCnOnly": true,
     "skillData": [
       {
@@ -53775,6 +53949,7 @@
     "cnName": "图耶",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -54135,6 +54310,7 @@
     "cnName": "桑葚",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Wandering",
     "isCnOnly": false,
     "skillData": [
       {
@@ -54495,6 +54671,7 @@
     "cnName": "蜜莓",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Wandering",
     "isCnOnly": false,
     "skillData": [
       {
@@ -54855,6 +55032,7 @@
     "cnName": "哈洛德",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Wandering",
     "isCnOnly": false,
     "skillData": [
       {
@@ -55215,6 +55393,7 @@
     "cnName": "濯尘芙蓉",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Incantation",
     "isCnOnly": false,
     "skillData": [
       {
@@ -55575,6 +55754,7 @@
     "cnName": "刺玫",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Incantation",
     "isCnOnly": false,
     "skillData": [
       {
@@ -55935,6 +56115,7 @@
     "cnName": "明椒",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Chain Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -56221,6 +56402,7 @@
     "cnName": "莎草",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Chain Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -56507,6 +56689,7 @@
     "cnName": "临光",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Guardian",
     "isCnOnly": false,
     "skillData": [
       {
@@ -56867,6 +57050,7 @@
     "cnName": "吽",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Guardian",
     "isCnOnly": false,
     "skillData": [
       {
@@ -57227,6 +57411,7 @@
     "cnName": "深律",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Guardian",
     "isCnOnly": false,
     "skillData": [
       {
@@ -57587,6 +57772,7 @@
     "cnName": "森西",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Guardian",
     "isCnOnly": false,
     "skillData": [
       {
@@ -57947,6 +58133,7 @@
     "cnName": "红",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Executor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -58307,6 +58494,7 @@
     "cnName": "槐琥",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Executor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -58667,6 +58855,7 @@
     "cnName": "卡夫卡",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Executor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -59027,6 +59216,7 @@
     "cnName": "乌有",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Merchant",
     "isCnOnly": false,
     "skillData": [
       {
@@ -59387,6 +59577,7 @@
     "cnName": "裁度",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Merchant",
     "isCnOnly": true,
     "skillData": [
       {
@@ -59747,6 +59938,7 @@
     "cnName": "雷蛇",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Sentry Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -60107,6 +60299,7 @@
     "cnName": "深巡",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Sentry Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -60467,6 +60660,7 @@
     "cnName": "可颂",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -60827,6 +61021,7 @@
     "cnName": "拜松",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -61187,6 +61382,7 @@
     "cnName": "火神",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Juggernaut",
     "isCnOnly": false,
     "skillData": [
       {
@@ -61547,6 +61743,7 @@
     "cnName": "石棉",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Arts Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -61833,6 +62030,7 @@
     "cnName": "暮落",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Arts Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -62119,6 +62317,7 @@
     "cnName": "车尔尼",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Arts Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -62405,6 +62604,7 @@
     "cnName": "闪击",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Sentry Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -62765,6 +62965,7 @@
     "cnName": "暴雨",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -63125,6 +63326,7 @@
     "cnName": "灰毫",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Fortress",
     "isCnOnly": false,
     "skillData": [
       {
@@ -63485,6 +63687,7 @@
     "cnName": "火哨",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Fortress",
     "isCnOnly": false,
     "skillData": [
       {
@@ -63845,6 +64048,7 @@
     "cnName": "极光",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Duelist",
     "isCnOnly": false,
     "skillData": [
       {
@@ -64205,6 +64409,7 @@
     "cnName": "洋灰",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Duelist",
     "isCnOnly": false,
     "skillData": [
       {
@@ -64565,6 +64770,7 @@
     "cnName": "菲莱",
     "rarity": 5,
     "class": "Defender",
+    "branch": "Primprotector",
     "isCnOnly": true,
     "skillData": [
       {
@@ -64851,6 +65057,7 @@
     "cnName": "普罗旺斯",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Heavyshooter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -65211,6 +65418,7 @@
     "cnName": "玫拉",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Heavyshooter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -65571,6 +65779,7 @@
     "cnName": "守林人",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Deadeye",
     "isCnOnly": false,
     "skillData": [
       {
@@ -65931,6 +66140,7 @@
     "cnName": "安哲拉",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Deadeye",
     "isCnOnly": false,
     "skillData": [
       {
@@ -66291,6 +66501,7 @@
     "cnName": "子月",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Deadeye",
     "isCnOnly": false,
     "skillData": [
       {
@@ -66651,6 +66862,7 @@
     "cnName": "熔泉",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Besieger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -67011,6 +67223,7 @@
     "cnName": "埃拉托",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Besieger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -67371,6 +67584,7 @@
     "cnName": "承曦格雷伊",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Flinger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -67731,6 +67945,7 @@
     "cnName": "冰酿",
     "rarity": 5,
     "class": "Sniper",
+    "branch": "Hunter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -68377,6 +68592,7 @@
     "cnName": "空构",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Geek",
     "isCnOnly": false,
     "skillData": [
       {
@@ -68737,6 +68953,7 @@
     "cnName": "崖心",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Hookmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -69097,6 +69314,7 @@
     "cnName": "雪雉",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Hookmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -69457,6 +69675,7 @@
     "cnName": "杏仁",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Hookmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -69817,6 +70036,7 @@
     "cnName": "初雪",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Hexer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -70177,6 +70397,7 @@
     "cnName": "巫恋",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Hexer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -70537,6 +70758,7 @@
     "cnName": "海霓",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Hexer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -70897,6 +71119,7 @@
     "cnName": "真理",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Decel Binder",
     "isCnOnly": false,
     "skillData": [
       {
@@ -71257,6 +71480,7 @@
     "cnName": "格劳克斯",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Decel Binder",
     "isCnOnly": false,
     "skillData": [
       {
@@ -71617,6 +71841,7 @@
     "cnName": "但书",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Decel Binder",
     "isCnOnly": false,
     "skillData": [
       {
@@ -71977,6 +72202,7 @@
     "cnName": "小满",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Decel Binder",
     "isCnOnly": false,
     "skillData": [
       {
@@ -72337,6 +72563,7 @@
     "cnName": "掠风",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Artificer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -72697,6 +72924,7 @@
     "cnName": "凯瑟琳",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Artificer",
     "isCnOnly": true,
     "skillData": [
       {
@@ -73057,6 +73285,7 @@
     "cnName": "空",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Bard",
     "isCnOnly": false,
     "skillData": [
       {
@@ -73417,6 +73646,7 @@
     "cnName": "海蒂",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Bard",
     "isCnOnly": false,
     "skillData": [
       {
@@ -73777,6 +74007,7 @@
     "cnName": "月禾",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Abjurer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -74137,6 +74368,7 @@
     "cnName": "九色鹿",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Abjurer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -74491,6 +74723,7 @@
     "cnName": "夏栎",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Abjurer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -74851,6 +75084,7 @@
     "cnName": "行箸",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Abjurer",
     "isCnOnly": true,
     "skillData": [
       {
@@ -75211,6 +75445,7 @@
     "cnName": "凛视",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Ritualist",
     "isCnOnly": false,
     "skillData": [
       {
@@ -75571,6 +75806,7 @@
     "cnName": "波卜",
     "rarity": 5,
     "class": "Supporter",
+    "branch": "Ritualist",
     "isCnOnly": true,
     "skillData": [
       {
@@ -75931,6 +76167,7 @@
     "cnName": "狮蝎",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Ambusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -76291,6 +76528,7 @@
     "cnName": "绮良",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Ambusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -76651,6 +76889,7 @@
     "cnName": "食铁兽",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Pusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -77011,6 +77250,7 @@
     "cnName": "见行者",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Pusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -77371,6 +77611,7 @@
     "cnName": "罗宾",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Trapmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -77731,6 +77972,7 @@
     "cnName": "霜华",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Trapmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -78451,6 +78693,7 @@
     "cnName": "贝娜",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Dollkeeper",
     "isCnOnly": false,
     "skillData": [
       {
@@ -78811,6 +79054,7 @@
     "cnName": "风丸",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Dollkeeper",
     "isCnOnly": false,
     "skillData": [
       {
@@ -79171,6 +79415,7 @@
     "cnName": "双月",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Dollkeeper",
     "isCnOnly": false,
     "skillData": [
       {
@@ -79531,6 +79776,7 @@
     "cnName": "锡人",
     "rarity": 5,
     "class": "Specialist",
+    "branch": "Alchemist",
     "isCnOnly": false,
     "skillData": [
       {
@@ -79891,6 +80137,7 @@
     "cnName": "能天使",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -80396,6 +80643,7 @@
     "cnName": "空弦",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -80901,6 +81149,7 @@
     "cnName": "灰烬",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Marksman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -81406,6 +81655,7 @@
     "cnName": "黑",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Heavyshooter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -81911,6 +82161,7 @@
     "cnName": "鸿雪",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Heavyshooter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -82416,6 +82667,7 @@
     "cnName": "远牙",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Deadeye",
     "isCnOnly": false,
     "skillData": [
       {
@@ -82921,6 +83173,7 @@
     "cnName": "W",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Artilleryman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -83426,6 +83679,7 @@
     "cnName": "菲亚梅塔",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Artilleryman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -83931,6 +84185,7 @@
     "cnName": "早露",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Besieger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -84363,6 +84618,7 @@
     "cnName": "提丰",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Besieger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -84795,6 +85051,7 @@
     "cnName": "迷迭香",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Flinger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -85268,6 +85525,7 @@
     "cnName": "维什戴尔",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Flinger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -85700,6 +85958,7 @@
     "cnName": "假日威龙陈",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Spreadshooter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -86132,6 +86391,7 @@
     "cnName": "莱伊",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Hunter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -86564,6 +86824,7 @@
     "cnName": "娜仁图亚",
     "rarity": 6,
     "class": "Sniper",
+    "branch": "Loopshooter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -86922,6 +87183,7 @@
     "cnName": "推进之王",
     "rarity": 6,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -87427,6 +87689,7 @@
     "cnName": "风笛",
     "rarity": 6,
     "class": "Vanguard",
+    "branch": "Charger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -87932,6 +88195,7 @@
     "cnName": "嵯峨",
     "rarity": 6,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -88437,6 +88701,7 @@
     "cnName": "忍冬",
     "rarity": 6,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": true,
     "skillData": [
       {
@@ -88869,6 +89134,7 @@
     "cnName": "琴柳",
     "rarity": 6,
     "class": "Vanguard",
+    "branch": "Standard Bearer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -89374,6 +89640,7 @@
     "cnName": "焰尾",
     "rarity": 6,
     "class": "Vanguard",
+    "branch": "Pioneer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -89879,6 +90146,7 @@
     "cnName": "伺夜",
     "rarity": 6,
     "class": "Vanguard",
+    "branch": "Tactician",
     "isCnOnly": false,
     "skillData": [
       {
@@ -90384,6 +90652,7 @@
     "cnName": "缪尔赛思",
     "rarity": 6,
     "class": "Vanguard",
+    "branch": "Tactician",
     "isCnOnly": false,
     "skillData": [
       {
@@ -90816,6 +91085,7 @@
     "cnName": "伊内丝",
     "rarity": 6,
     "class": "Vanguard",
+    "branch": "Agent",
     "isCnOnly": false,
     "skillData": [
       {
@@ -91174,6 +91444,7 @@
     "cnName": "伊芙利特",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Blast",
     "isCnOnly": false,
     "skillData": [
       {
@@ -91679,6 +91950,7 @@
     "cnName": "莫斯提马",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Splash",
     "isCnOnly": false,
     "skillData": [
       {
@@ -92184,6 +92456,7 @@
     "cnName": "艾雅法拉",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Core",
     "isCnOnly": false,
     "skillData": [
       {
@@ -92616,6 +92889,7 @@
     "cnName": "刻俄柏",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Core",
     "isCnOnly": false,
     "skillData": [
       {
@@ -93121,6 +93395,7 @@
     "cnName": "霍尔海雅",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Core",
     "isCnOnly": false,
     "skillData": [
       {
@@ -93626,6 +93901,7 @@
     "cnName": "逻各斯",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Core",
     "isCnOnly": false,
     "skillData": [
       {
@@ -94058,6 +94334,7 @@
     "cnName": "夕",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Splash",
     "isCnOnly": false,
     "skillData": [
       {
@@ -94604,6 +94881,7 @@
     "cnName": "玛露西尔",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Splash",
     "isCnOnly": false,
     "skillData": [
       {
@@ -95036,6 +95314,7 @@
     "cnName": "异客",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Chain Caster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -95541,6 +95820,7 @@
     "cnName": "卡涅利安",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Phalanx",
     "isCnOnly": false,
     "skillData": [
       {
@@ -96046,6 +96326,7 @@
     "cnName": "林",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Phalanx",
     "isCnOnly": false,
     "skillData": [
       {
@@ -96551,6 +96832,7 @@
     "cnName": "澄闪",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Mech-Accord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -96983,6 +97265,7 @@
     "cnName": "荒芜拉普兰德",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Mech-Accord",
     "isCnOnly": true,
     "skillData": [
       {
@@ -97415,6 +97698,7 @@
     "cnName": "黑键",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Mystic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -97993,6 +98277,7 @@
     "cnName": "妮芙",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Primal",
     "isCnOnly": false,
     "skillData": [
       {
@@ -98351,6 +98636,7 @@
     "cnName": "烛煌",
     "rarity": 6,
     "class": "Caster",
+    "branch": "Primal",
     "isCnOnly": true,
     "skillData": [
       {
@@ -99067,6 +99353,7 @@
     "cnName": "灵知",
     "rarity": 6,
     "class": "Supporter",
+    "branch": "Hexer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -99572,6 +99859,7 @@
     "cnName": "安洁莉娜",
     "rarity": 6,
     "class": "Supporter",
+    "branch": "Decel Binder",
     "isCnOnly": false,
     "skillData": [
       {
@@ -100118,6 +100406,7 @@
     "cnName": "铃兰",
     "rarity": 6,
     "class": "Supporter",
+    "branch": "Decel Binder",
     "isCnOnly": false,
     "skillData": [
       {
@@ -100623,6 +100912,7 @@
     "cnName": "麦哲伦",
     "rarity": 6,
     "class": "Supporter",
+    "branch": "Summoner",
     "isCnOnly": false,
     "skillData": [
       {
@@ -101128,6 +101418,7 @@
     "cnName": "浊心斯卡蒂",
     "rarity": 6,
     "class": "Supporter",
+    "branch": "Bard",
     "isCnOnly": false,
     "skillData": [
       {
@@ -101560,6 +101851,7 @@
     "cnName": "魔王",
     "rarity": 6,
     "class": "Supporter",
+    "branch": "Bard",
     "isCnOnly": false,
     "skillData": [
       {
@@ -101992,6 +102284,7 @@
     "cnName": "淬羽赫默",
     "rarity": 6,
     "class": "Supporter",
+    "branch": "Abjurer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -102424,6 +102717,7 @@
     "cnName": "令",
     "rarity": 6,
     "class": "Supporter",
+    "branch": "Summoner",
     "isCnOnly": false,
     "skillData": [
       {
@@ -102856,6 +103150,7 @@
     "cnName": "白铁",
     "rarity": 6,
     "class": "Supporter",
+    "branch": "Artificer",
     "isCnOnly": false,
     "skillData": [
       {
@@ -103361,6 +103656,7 @@
     "cnName": "塑心",
     "rarity": 6,
     "class": "Supporter",
+    "branch": "Ritualist",
     "isCnOnly": false,
     "skillData": [
       {
@@ -103793,6 +104089,7 @@
     "cnName": "傀影",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Executor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -104339,6 +104636,7 @@
     "cnName": "缄默德克萨斯",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Executor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -104771,6 +105069,7 @@
     "cnName": "麒麟R夜刀",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Executor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -105203,6 +105502,7 @@
     "cnName": "弑君者",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Executor",
     "isCnOnly": true,
     "skillData": [
       {
@@ -105635,6 +105935,7 @@
     "cnName": "老鲤",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Merchant",
     "isCnOnly": false,
     "skillData": [
       {
@@ -106140,6 +106441,7 @@
     "cnName": "琳琅诗怀雅",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Merchant",
     "isCnOnly": false,
     "skillData": [
       {
@@ -106645,6 +106947,7 @@
     "cnName": "温蒂",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Pusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -107150,6 +107453,7 @@
     "cnName": "阿",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Geek",
     "isCnOnly": false,
     "skillData": [
       {
@@ -107582,6 +107886,7 @@
     "cnName": "歌蕾蒂娅",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Hookmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -108087,6 +108392,7 @@
     "cnName": "水月",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Ambusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -108592,6 +108898,7 @@
     "cnName": "阿斯卡纶",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Ambusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -109024,6 +109331,7 @@
     "cnName": "归溟幽灵鲨",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Dollkeeper",
     "isCnOnly": false,
     "skillData": [
       {
@@ -109529,6 +109837,7 @@
     "cnName": "多萝西",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Trapmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -109961,6 +110270,7 @@
     "cnName": "艾拉",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Trapmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -110393,6 +110703,7 @@
     "cnName": "引星棘刺",
     "rarity": 6,
     "class": "Specialist",
+    "branch": "Alchemist",
     "isCnOnly": true,
     "skillData": [
       {
@@ -110825,6 +111136,7 @@
     "cnName": "闪灵",
     "rarity": 6,
     "class": "Medic",
+    "branch": "Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -111330,6 +111642,7 @@
     "cnName": "夜莺",
     "rarity": 6,
     "class": "Medic",
+    "branch": "Multi-target",
     "isCnOnly": false,
     "skillData": [
       {
@@ -111835,6 +112148,7 @@
     "cnName": "凯尔希",
     "rarity": 6,
     "class": "Medic",
+    "branch": "Medic",
     "isCnOnly": false,
     "skillData": [
       {
@@ -112381,6 +112695,7 @@
     "cnName": "流明",
     "rarity": 6,
     "class": "Medic",
+    "branch": "Therapist",
     "isCnOnly": false,
     "skillData": [
       {
@@ -112886,6 +113201,7 @@
     "cnName": "纯烬艾雅法拉",
     "rarity": 6,
     "class": "Medic",
+    "branch": "Wandering",
     "isCnOnly": false,
     "skillData": [
       {
@@ -113318,6 +113634,7 @@
     "cnName": "焰影苇草",
     "rarity": 6,
     "class": "Medic",
+    "branch": "Incantation",
     "isCnOnly": false,
     "skillData": [
       {
@@ -113750,6 +114067,7 @@
     "cnName": "星熊",
     "rarity": 6,
     "class": "Defender",
+    "branch": "Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -114255,6 +114573,7 @@
     "cnName": "塞雷娅",
     "rarity": 6,
     "class": "Defender",
+    "branch": "Guardian",
     "isCnOnly": false,
     "skillData": [
       {
@@ -114760,6 +115079,7 @@
     "cnName": "瑕光",
     "rarity": 6,
     "class": "Defender",
+    "branch": "Guardian",
     "isCnOnly": false,
     "skillData": [
       {
@@ -115265,6 +115585,7 @@
     "cnName": "黍",
     "rarity": 6,
     "class": "Defender",
+    "branch": "Guardian",
     "isCnOnly": false,
     "skillData": [
       {
@@ -115697,6 +116018,7 @@
     "cnName": "年",
     "rarity": 6,
     "class": "Defender",
+    "branch": "Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -116202,6 +116524,7 @@
     "cnName": "泥岩",
     "rarity": 6,
     "class": "Defender",
+    "branch": "Juggernaut",
     "isCnOnly": false,
     "skillData": [
       {
@@ -116634,6 +116957,7 @@
     "cnName": "斥罪",
     "rarity": 6,
     "class": "Defender",
+    "branch": "Juggernaut",
     "isCnOnly": false,
     "skillData": [
       {
@@ -117139,6 +117463,7 @@
     "cnName": "森蚺",
     "rarity": 6,
     "class": "Defender",
+    "branch": "Duelist",
     "isCnOnly": false,
     "skillData": [
       {
@@ -117685,6 +118010,7 @@
     "cnName": "号角",
     "rarity": 6,
     "class": "Defender",
+    "branch": "Fortress",
     "isCnOnly": false,
     "skillData": [
       {
@@ -118190,6 +118516,7 @@
     "cnName": "涤火杰西卡",
     "rarity": 6,
     "class": "Defender",
+    "branch": "Sentry Protector",
     "isCnOnly": false,
     "skillData": [
       {
@@ -118622,6 +118949,7 @@
     "cnName": "余",
     "rarity": 6,
     "class": "Defender",
+    "branch": "Primprotector",
     "isCnOnly": true,
     "skillData": [
       {
@@ -118980,6 +119308,7 @@
     "cnName": "山",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -119412,6 +119741,7 @@
     "cnName": "重岳",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -119917,6 +120247,7 @@
     "cnName": "银灰",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Lord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -120349,6 +120680,7 @@
     "cnName": "棘刺",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Lord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -120781,6 +121113,7 @@
     "cnName": "仇白",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Lord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -121213,6 +121546,7 @@
     "cnName": "赫德雷",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Crusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -121645,6 +121979,7 @@
     "cnName": "乌尔比安",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Crusher",
     "isCnOnly": false,
     "skillData": [
       {
@@ -122077,6 +122412,7 @@
     "cnName": "佩佩",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Earthshaker",
     "isCnOnly": false,
     "skillData": [
       {
@@ -122509,6 +122845,7 @@
     "cnName": "陈",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Swordmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -123014,6 +123351,7 @@
     "cnName": "艾丽妮",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Swordmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -123519,6 +123857,7 @@
     "cnName": "锏",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Swordmaster",
     "isCnOnly": false,
     "skillData": [
       {
@@ -123951,6 +124290,7 @@
     "cnName": "煌",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Centurion",
     "isCnOnly": false,
     "skillData": [
       {
@@ -124383,6 +124723,7 @@
     "cnName": "百炼嘉维尔",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Centurion",
     "isCnOnly": false,
     "skillData": [
       {
@@ -124815,6 +125156,7 @@
     "cnName": "史尔特尔",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Arts Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -125247,6 +125589,7 @@
     "cnName": "薇薇安娜",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Arts Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -125679,6 +126022,7 @@
     "cnName": "维娜·维多利亚",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Arts Fighter",
     "isCnOnly": true,
     "skillData": [
       {
@@ -126111,6 +126455,7 @@
     "cnName": "赫拉格",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Soloblade",
     "isCnOnly": false,
     "skillData": [
       {
@@ -126616,6 +126961,7 @@
     "cnName": "左乐",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Soloblade",
     "isCnOnly": false,
     "skillData": [
       {
@@ -127121,6 +127467,7 @@
     "cnName": "帕拉斯",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Instructor",
     "isCnOnly": false,
     "skillData": [
       {
@@ -127626,6 +127973,7 @@
     "cnName": "耀骑士临光",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Dreadnought",
     "isCnOnly": false,
     "skillData": [
       {
@@ -128131,6 +128479,7 @@
     "cnName": "止颂",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Dreadnought",
     "isCnOnly": false,
     "skillData": [
       {
@@ -128636,6 +128985,7 @@
     "cnName": "圣约送葬人",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Reaper",
     "isCnOnly": false,
     "skillData": [
       {
@@ -129068,6 +129418,7 @@
     "cnName": "隐德来希",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Reaper",
     "isCnOnly": true,
     "skillData": [
       {
@@ -129500,6 +129851,7 @@
     "cnName": "玛恩纳",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Librator",
     "isCnOnly": false,
     "skillData": [
       {
@@ -129858,6 +130210,7 @@
     "cnName": "暴行",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Centurion",
     "isCnOnly": false,
     "skillData": [
       {
@@ -130218,6 +130571,7 @@
     "cnName": "空爆",
     "rarity": 3,
     "class": "Sniper",
+    "branch": "Artilleryman",
     "isCnOnly": false,
     "skillData": [
       {
@@ -130343,6 +130697,7 @@
     "cnName": "月见夜",
     "rarity": 3,
     "class": "Guard",
+    "branch": "Lord",
     "isCnOnly": false,
     "skillData": [
       {
@@ -130468,6 +130823,7 @@
     "cnName": "猎蜂",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -130824,6 +131180,7 @@
     "cnName": "杰克",
     "rarity": 4,
     "class": "Guard",
+    "branch": "Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -131180,6 +131537,7 @@
     "cnName": "夜魔",
     "rarity": 5,
     "class": "Caster",
+    "branch": "Core",
     "isCnOnly": false,
     "skillData": [
       {
@@ -131540,6 +131898,7 @@
     "cnName": "格拉尼",
     "rarity": 5,
     "class": "Vanguard",
+    "branch": "Charger",
     "isCnOnly": false,
     "skillData": [
       {
@@ -131900,6 +132259,7 @@
     "cnName": "斯卡蒂",
     "rarity": 6,
     "class": "Guard",
+    "branch": "Dreadnought",
     "isCnOnly": false,
     "skillData": [
       {
@@ -132405,6 +132765,7 @@
     "cnName": "阿米娅(近卫)",
     "rarity": 5,
     "class": "Guard",
+    "branch": "Arts Fighter",
     "isCnOnly": false,
     "skillData": [
       {
@@ -132765,6 +133126,7 @@
     "cnName": "阿米娅(治疗)",
     "rarity": 5,
     "class": "Medic",
+    "branch": "Incantation",
     "isCnOnly": false,
     "skillData": [
       {
