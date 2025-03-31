@@ -83,7 +83,7 @@ const AppDrawer = React.memo((props: Props) => {
   const [account] = useAccount();
   const [_open, _setOpen] = useLocalStorage("v3_importnotif", true);
   useEffect(() => {
-    if (page === "import") {
+    if (page === "/import") {
       _setOpen(false);
     }
   }, [_open]);
