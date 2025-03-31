@@ -104,7 +104,7 @@ const Settings: NextPage = () => {
       }
     );
     if (error) handleAuthError(error);
-    else alert("Check your new e-mail to confirm the e-mail change.");
+    else alert("Check your new e-mail to confirm the e-mail change.", "info");
   }
 
   const [password1, setNewPassword] = useState<string>("");
@@ -117,7 +117,7 @@ const Settings: NextPage = () => {
       password: password1,
     });
     if (error) handleAuthError(error);
-    else alert("Password changed.");
+    else alert("Password changed.", "success");
   }
 
   const linkDiscord = async () => {
