@@ -1,5 +1,19 @@
 const patch = [
   {
+    version: "3.2.0",
+    date: "March 31, 2025",
+    title: "Planner Summary",
+    content: ["Planner Upgrades!"],
+    changelog: [
+      "Material Summary",
+      ["You can now see the total amount of materials you need to complete all your goals."],
+      "Event Planner",
+      ["You can plan ahead by including material income from future events."],
+      "The Yostar import notice now disappears once you visit the import page once. You can still access the import page in the settings.",
+      "We're continuing to make improvements to the Krooster experience. Thank you for your support.",
+    ],
+  },
+  {
     version: "3.1.0",
     date: "March 5, 2025",
     title: "Big QOL Update",
