@@ -39,7 +39,7 @@ const tasks = [
     filter: (filename) => filename.endsWith(".png"),
   },
   {
-    sourceDir: `${ACESHIP_ROOT}/items`,
+    sourceDir: path.join(ACESHIP_ROOT, "items"),
     destDir: "public\\img\\items",
     filter: (filename) => filename.endsWith(".png"),
   },

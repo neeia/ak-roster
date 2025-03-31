@@ -162,7 +162,7 @@
     },
     {
       "skinId": "char_240_wyvern@game#4",
-      "skinName": "平原驯虫士",
+      "skinName": "The Zoophilist and Her Mollusca",
       "avatarId": "char_240_wyvern_game#4",
       "sortId": 367
     }
@@ -545,6 +545,12 @@
       "skinName": null,
       "avatarId": "char_190_clour_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_190_clour@epoque#43",
+      "skinName": "玩伴",
+      "avatarId": "char_190_clour_epoque#43",
+      "sortId": 104
     }
   ],
   "char_133_mm": [
