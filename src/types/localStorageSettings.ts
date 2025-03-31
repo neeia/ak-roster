@@ -14,7 +14,8 @@ export interface Event {
   index: number;
   materials: {
     [key: string]: number;
-  }
+  };
+  farms?: string[];
 };
 
 export interface EventsData {
