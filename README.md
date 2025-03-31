@@ -14,14 +14,17 @@ yarn install
 yarn start
 ```
 
+To test for build errors:
+```shell
+yarn next:build
+```
+
 ## Updating
 
-Clone [Arknight-Images](https://github.com/Aceship/Arknight-Images.git) to a sibling directory of ak-roster
+Clone [Arknight-Images](https://github.com/PuppiizSunniiz/Arknight-Images.git) as a sibling directory of ak-roster
 
 ```shell
-yarn update:operators
-yarn update:images
-yarn update:skins
+yarn update:all
 ```
 
 ## License
