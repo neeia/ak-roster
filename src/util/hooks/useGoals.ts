@@ -144,14 +144,6 @@ function useGoals() {
       let goalResult: GoalData[] = [];
       if (_goals?.length) {
         goalResult = _goals as GoalData[];
-      } else if (goals.length) {
-        enqueueSnackbar("No goals found in database. Uploading cached planner data...", { variant: "info" });
-
-        const { error } = await supabase.from("goals").insert(goals);
-        if (error) handlePostgrestError(error);
-        else {
-          enqueueSnackbar("Finished updating data.", { variant: "success" });
-        }
       } else if (!goals.length && legacyGoals) {
         enqueueSnackbar("Loading legacy planner data...", { variant: "info" });
         const _goals = _.groupBy(legacyGoals.map(plannerGoalToGoalData), (g) => g.op_id ?? "");
