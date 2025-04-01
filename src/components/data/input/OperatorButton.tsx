@@ -91,7 +91,6 @@ const OperatorButton = React.memo((props: Props) => {
       >
         <Image src={imgUrl} width={64} height={64} alt="" />
         <Favorite fontSize="small" color="error" className="icon-fav" />
-        <Image src={branchUrl} width={24} height={24} style={{position: "absolute", top: "-4px", right: "-10px"}} alt="" />
       </Box>
       {opName}
     </Button>
