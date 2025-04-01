@@ -183,7 +183,6 @@ const Home: NextPage = () => {
             }}
           />
         </Box>
-
         {!loading && !account ? (
           <Paper
             elevation={2}
@@ -233,6 +232,15 @@ const Home: NextPage = () => {
               <div>
                 <Link sx={{ textDecoration: "1px dotted underline" }} href="/import">
                   See More
+                </Link>
+              </div>
+            </Alert>
+            <Alert severity="info">
+              Krooster has big plans for the future, and we want your feedback! Please take a moment to fill out our
+              survey - it shouldn't take longer than a couple minutes and makes a big difference.
+              <div>
+                <Link sx={{ textDecoration: "1px dotted underline" }} href="https://forms.gle/kjT6ajTXEBjUCCDW6">
+                  Take the Survey
                 </Link>
               </div>
             </Alert>
