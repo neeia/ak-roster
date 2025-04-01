@@ -28,7 +28,7 @@ export interface OperatorData {
   cnName: string;
   rarity: number;
   class: string;
-  branch?: string;
+  branch: string;
   isCnOnly: boolean;
   skillData?: SkillData[];
   moduleData?: ModuleData[];
