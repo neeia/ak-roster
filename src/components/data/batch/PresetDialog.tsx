@@ -205,15 +205,11 @@ const PresetDialog = (props: Props) => {
               />
             </SelectGroup.Toggle>
             <SelectGroup.Toggle
-              title="Level"
-              open={isNumber(presetBuilder.level)}
-              toggleOpen={() => toggleSection("level")}
+              title="Potential"
+              open={isNumber(presetBuilder.potential)}
+              toggleOpen={() => toggleSection("potential")}
             >
-              <Level
-                value={presetBuilder.level ?? undefined}
-                max={MAX_LEVEL_BY_RARITY[6][presetBuilder.elite ?? 2]}
-                onChange={onLevelChange}
-              />
+              <Potential exclusive value={presetBuilder.potential ?? undefined} onChange={onPotentialChange} />
             </SelectGroup.Toggle>
             <SelectGroup.Toggle
               title="Skill Rank"
@@ -226,6 +222,17 @@ const PresetDialog = (props: Props) => {
                 min={presetBuilder.masteries ? 7 : 1}
                 max={[4, 7, 7][presetBuilder.elite ?? 2]}
                 onChange={onSkillLevelChange}
+              />
+            </SelectGroup.Toggle>
+            <SelectGroup.Toggle
+              title="Level"
+              open={isNumber(presetBuilder.level)}
+              toggleOpen={() => toggleSection("level")}
+            >
+              <Level
+                value={presetBuilder.level ?? undefined}
+                max={MAX_LEVEL_BY_RARITY[6][presetBuilder.elite ?? 2]}
+                onChange={onLevelChange}
               />
             </SelectGroup.Toggle>
             <SelectGroup.Toggle
@@ -244,13 +251,6 @@ const PresetDialog = (props: Props) => {
                   </Mastery.SkillAlt>
                 ))}
               </Mastery>
-            </SelectGroup.Toggle>
-            <SelectGroup.Toggle
-              title="Potential"
-              open={isNumber(presetBuilder.potential)}
-              toggleOpen={() => toggleSection("potential")}
-            >
-              <Potential exclusive value={presetBuilder.potential ?? undefined} onChange={onPotentialChange} />
             </SelectGroup.Toggle>
             <SelectGroup.Toggle
               title="Modules"
