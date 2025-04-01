@@ -118,21 +118,6 @@ const OperatorBlock = (props: Props) => {
         }}
       >
         <Image src={getAvatar(op)} fill sizes="(max-width: 768px) 80px, 120px" alt="" />
-        <Box
-        sx={{
-          width: { xs: "16px", sm: "24px" },
-          height: { xs: "16px", sm: "24px" },
-          position: "relative",
-          m: "auto auto auto 0",
-        }}
-      >
-      <Image
-        src={`/img/subclass/sub_${op.branch?.toLowerCase().replace(" ","_")}_icon.png`}
-        fill
-        sizes={iconSizes}
-        alt=""
-      />
-      </Box>
         {maxed && (
           <Box
             sx={{
