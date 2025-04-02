@@ -30,7 +30,7 @@ const OperatorBlock = (props: Props) => {
     if (op.level !== MAX_LEVEL_BY_RARITY[op.rarity][2]) return false;
     if (op.rarity > 2 && op.skill_level !== 7) return false;
     if (MAX_PROMOTION_BY_RARITY[op.rarity] === 2) {
-      if (!op.masteries.every((m) => m === 3)) return false;
+      if (!op.skillData?.every((_, m) => op.masteries[m] === 3)) return false;
       if (!(op.moduleData?.every(({ moduleId, isCnOnly }) => isCnOnly || op.modules[moduleId] === 3) ?? false))
         return false;
     }
