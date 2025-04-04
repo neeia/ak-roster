@@ -26,6 +26,8 @@ function useAccount() {
 
   // fetch data from db
   useEffect(() => {
+    let cancelled = false;
+
     const fetchData = async () => {
       setLoading(true);
       const {
@@ -33,7 +35,7 @@ function useAccount() {
       } = await supabase.auth.getSession();
       const user_id = session?.user.id;
 
-      if (!user_id) {
+      if (!user_id || cancelled) {
         setLoading(false);
         return;
       }
@@ -46,7 +48,7 @@ function useAccount() {
         .single();
       handlePostgrestError(error);
 
-      if (!data || (!data.username && !error)) {
+      if (!data || (!data.username && !error && !cancelled)) {
         const genName = randomName();
         const { data: accountData } = await supabase
           .from("krooster_accounts")
@@ -72,6 +74,9 @@ function useAccount() {
     };
 
     fetchData();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return [account, setAccount, { loading }] as const;
