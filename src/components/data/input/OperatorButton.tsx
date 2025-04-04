@@ -63,7 +63,9 @@ const OperatorButton = React.memo((props: Props) => {
   let opName = t ? <abbr title={op.name}>{nameComponent}</abbr> : nameComponent;
 
   const imgUrl = skin ?? `/img/avatars/${op_id}.png`;
-
+  const opBranch = op.branch ?? "Not Found" // There's like 2 "operators" that don't have branches and break things.
+  const branchUrl = `/img/subclass/sub_${opBranch.toLowerCase().replace(" ","_")}_icon.png`
+  
   return (
     <Button
       className={className}
