@@ -79,6 +79,19 @@ const Lookup = ({ username: _username, data: _data }: InferGetServerSidePropsTyp
 
   const superdata = data || _data;
 
+  const image = `${server}/api/og/${_username}`;
+  const description =
+    superdata?.account?.friendcode.username && superdata?.account?.friendcode.tag
+      ? [
+          `${superdata.account.friendcode.username}#${superdata.account.friendcode.tag}`,
+          superdata.account.server,
+          superdata.account.level && `Level ${superdata.account.level}`,
+          superdata.account.onboard,
+        ]
+          .filter((s) => s)
+          .join(" - ")
+      : "";
+
   return (
     <Layout
       tab="/network"
@@ -101,26 +114,20 @@ const Lookup = ({ username: _username, data: _data }: InferGetServerSidePropsTyp
             superdata?.account?.display_name ? `View ${superdata?.account?.display_name}'s profile` : "Krooster Lookup"
           }
           url={`${server}/network/lookup/${username.trim().toLocaleLowerCase()}`}
-          description={
-            superdata?.account?.friendcode.username && superdata?.account?.friendcode.tag
-              ? [
-                  `${superdata.account.friendcode.username}#${superdata.account.friendcode.tag}`,
-                  superdata.account.server,
-                  superdata.account.level && `Level ${superdata.account.level}`,
-                  superdata.account.onboard,
-                ]
-                  .filter((s) => s)
-                  .join(" - ")
-              : ""
-          }
+          description={description}
           themeColor={brand["/network"]}
         >
-          {_username && (
+          {_username && superdata && (
             <>
-              <meta property="og:image" content={`${server}/api/og/${_username}`} />
+              <meta property="og:image" content={image} />
               <meta property="og:image:type" content="image/png" />
               <meta property="og:image:width" content="1200" />
               <meta property="og:image:height" content="630" />
+              <meta name="twitter:image" content={image} />
+              <meta name="twitter:site" content="Krooster" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content={`View ${superdata.account?.display_name ?? _username}'s profile`} />
+              <meta name="twitter:description" content={description} />
             </>
           )}
         </Head>
