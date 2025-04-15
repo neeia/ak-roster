@@ -1,10 +1,10 @@
 import React from "react";
 import { Operator } from "types/operators/operator";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { rarityColors } from "styles/rarityColors";
 import getTextWidth from "styles/getTextWidth";
 import appTheme from "styles/theme/appTheme";
-import Image from "next/image";
+import Image from "components/base/Image";
 import operatorJson from "data/operators";
 import getAvatar from "util/fns/getAvatar";
 
@@ -45,10 +45,11 @@ interface Props {
   op: Operator;
   showPotentials: boolean;
   showBonus: boolean;
+  onClick?: (e: React.MouseEvent<HTMLElement>, op_id: string) => void;
 }
 
 const RecruitableOperatorCard = React.memo((props: Props) => {
-  const { op, showPotentials, showBonus } = props;
+  const { op, showPotentials, showBonus, onClick } = props;
 
   const opData = operatorJson[op.op_id];
   const [n, t] = opData.name.split(/ [Tt]he /g);
@@ -74,63 +75,73 @@ const RecruitableOperatorCard = React.memo((props: Props) => {
   let opName = t ? <abbr title={opData.name}>{nameComponent}</abbr> : nameComponent;
 
   return (
-    <Box
-      component="li"
-      sx={{
-        listStyleType: "none",
-        display: "flex",
-        flexDirection: "column",
-        boxShadow: 2,
-        borderRadius: "4px",
-        backgroundColor: showPotentials && op.potential === 6 ? "background.default" : "background.light",
-        width: "100%",
-        height: "min-content",
-        justifyContent: "center",
-        padding: "4px",
-        justifyItems: "center",
-        alignItems: "center",
-      }}
-    >
-      <Box
+    <Box component="li" sx={{ display: "contents" }}>
+      <Button
+        onClick={(e) => onClick?.(e, op.op_id)}
         sx={{
-          height: "64px",
-          gridArea: "1 / 1",
-          borderBottom: `3px solid ${rarityColors[opData.rarity]}`,
-          position: "relative",
-          boxSizing: "content-box",
+          listStyleType: "none",
+          display: "flex",
+          flexDirection: "column",
+          gap: "2px",
+          boxShadow: 2,
+          borderRadius: "4px",
+          backgroundColor: showPotentials && op.potential === 6 ? "background.default" : "background.light",
+          width: "100%",
+          height: "min-content",
+          justifyContent: "center",
+          padding: "4px",
+          justifyItems: "center",
+          alignItems: "center",
         }}
       >
-        <Image src={getAvatar({ ...op, ...opData })} width={64} height={64} alt="" />
-        {showPotentials && op.potential ? (
-          <Box
-            sx={{
-              position: "absolute",
-              width: "min-content !important",
-              lineHeight: 1,
-              textDecoration: "none",
-              backgroundColor: "grey.950",
-              top: 1,
-              left: 0,
-            }}
-          >
-            P{op.potential}
-          </Box>
-        ) : null}
-      </Box>
-      <Box>{opName}</Box>
-      {showBonus && (
         <Box
           sx={{
-            gridArea: "3 / 1 / 3 / span 2",
-            fontSize: "12px",
-            lineHeight: 1.1,
-            paddingBottom: "2px",
-            color: "#eee",
+            height: 64,
+            width: 64,
+            position: "relative",
           }}
         >
-          {getPotentialBonus(op)}
+          <Image
+            src={getAvatar({ ...op, ...opData })}
+            width={64}
+            height={64}
+            alt=""
+            sx={{
+              borderBottom: `3px solid ${rarityColors[opData.rarity]}`,
+              boxSizing: "content-box",
+            }}
+          />
+          {showPotentials && op.potential ? (
+            <Box
+              sx={{
+                position: "absolute",
+                width: "min-content !important",
+                lineHeight: 1,
+                textDecoration: "none",
+                backgroundColor: "grey.950",
+                top: 1,
+                left: 0,
+              }}
+            >
+              P{op.potential}
+            </Box>
+          ) : null}
         </Box>
-      )}
+        <Box>{opName}</Box>
+        {showBonus && (
+          <Box
+            sx={{
+              gridArea: "3 / 1 / 3 / span 2",
+              fontSize: "12px",
+              lineHeight: 1.1,
+              paddingBottom: "2px",
+              color: "#eee",
+            }}
+          >
+            {getPotentialBonus(op)}
+          </Box>
+        )}
+      </Button>
     </Box>
   );
 });

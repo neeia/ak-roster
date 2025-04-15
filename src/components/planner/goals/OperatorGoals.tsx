@@ -10,7 +10,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import Image from "next/image";
+import Image from "components/base/Image";
 import AddCircleIcon from "@mui/icons-material/AddCircleOutlined";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircleOutlined";
 import GoalData, { getGoalString } from "types/goalData";
@@ -18,6 +18,7 @@ import React, { memo, useCallback, useState } from "react";
 import operatorJson from "data/operators";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Operator } from "types/operators/operator";
+import imageBase from "util/imageBase";
 
 interface Props {
   operator: Operator;
@@ -45,7 +46,7 @@ export const OperatorGoals = memo((props: Props) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const isMenuOpen = Boolean(anchorEl);
 
-  const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
+  const imgUrl = `${imageBase}/avatars/${operatorGoal.op_id}.webp`;
   const opData = operatorJson[operatorGoal.op_id];
 
   const handleMoreButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {

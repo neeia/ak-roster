@@ -1,7 +1,8 @@
 import React, { memo, useContext } from "react";
 import { ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps } from "@mui/material";
-import Image from "next/image";
+import Image from "components/base/Image";
 import { DisabledContext } from "./SelectGroup";
+import imageBase from "util/imageBase";
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   min?: number;
@@ -49,7 +50,7 @@ const Promotion = memo((props: Props) => {
               "& img": { filter: "drop-shadow(0px 0px 1px #000)" },
             }}
           >
-            <Image width={size} height={size} src={`/img/elite/${n}.png`} alt={`Elite ${n}`} />
+            <Image width={size} height={size} src={`${imageBase}/elite/${n}.webp`} alt={`Elite ${n}`} />
           </ToggleButton>
         ))}
     </ToggleButtonGroup>

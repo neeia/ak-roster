@@ -28,6 +28,7 @@
     "@supabase/auth-helpers-nextjs": "^0.6.1",
     "@supabase/supabase-js": "^2.12.1",
     "@vercel/analytics": "^0.1.11",
+    "@vercel/og": "^0.6.8",
     "comlink": "^4.4.2",
     "html2canvas": "^1.4.1",
     "js-combinatorics": "^2.1.1",

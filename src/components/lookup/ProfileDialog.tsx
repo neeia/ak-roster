@@ -12,13 +12,14 @@ import {
 } from "@mui/material";
 import { Close, IosShare, Reddit } from "@mui/icons-material";
 import SupportBlock from "../data/SupportBlock";
-import Image from "next/image";
+import Image from "components/base/Image";
 import operatorJson from "data/operators";
 import { LookupData } from "util/hooks/useLookup";
 import getAvatarFull from "util/fns/getAvatarFull";
 import html2canvas from "html2canvas";
 import ShareDialog from "./ShareDialog";
 import { enqueueSnackbar } from "notistack";
+import imageBase from "util/imageBase";
 
 interface Props extends DialogProps {
   data?: LookupData;
@@ -173,10 +174,13 @@ const ProfileDialog = (props: Props) => {
                         ...data.roster[data.account.assistant],
                         ...operatorJson[data.account.assistant],
                       })
-                    : "/img/characters/logo_rhodes.png"
+                    : `${imageBase}/characters/logo_rhodes.webp`
                 }
-                fill
-                sizes="600px"
+                sx={{
+                  height: "100%",
+                  width: "100%",
+                  objectFit: "contain",
+                }}
                 alt=""
               />
               <Typography
@@ -192,7 +196,7 @@ const ProfileDialog = (props: Props) => {
                   backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.75),
                 }}
               >
-                {data.account.friendcode && (
+                {data.account.friendcode.username && (
                   <Typography>
                     {data.account.friendcode.username}#{data.account.friendcode.tag}
                   </Typography>

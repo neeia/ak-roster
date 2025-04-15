@@ -1,7 +1,8 @@
 import React, { memo, useContext } from "react";
 import { ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps, Tooltip } from "@mui/material";
-import Image from "next/image";
+import Image from "components/base/Image";
 import { DisabledContext } from "./SelectGroup";
+import imageBase from "util/imageBase";
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   value?: number;
@@ -36,7 +37,7 @@ const Potential = memo((props: Props) => {
         .map((n) => (
           // <Tooltip key={n} title={bonuses ? (n === 1 ? "Unlock" : bonuses[n - 1]) : ""} arrow>
           <ToggleButton key={n} value={n} sx={{ p: 1, "& img": { filter: "drop-shadow(0px 0px 0px #000)" } }}>
-            <Image width={size} height={size} src={`/img/potential/${n}.png`} alt={`Potential ${n}`} />
+            <Image width={size} height={size} src={`${imageBase}/potential/${n}.webp`} alt={`Potential ${n}`} />
           </ToggleButton>
           // </Tooltip>
         ))}

@@ -8,6 +8,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  Divider,
   IconButton,
   ToggleButton,
   Typography,
@@ -20,9 +21,9 @@ import Mastery from "./Select/Mastery";
 import Module from "./Select/Module";
 import Level from "./Select/Level";
 import SkillLevel from "./Select/SkillLevel";
-import { Close, Favorite, FavoriteBorder } from "@mui/icons-material";
 import Skins from "./Select/Skins";
-import Image from "next/image";
+import { Close, Favorite, FavoriteBorder } from "@mui/icons-material";
+import Image from "components/base/Image";
 import operatorJson from "data/operators";
 import {
   changeFavorite,
@@ -45,6 +46,8 @@ import getAvatar from "util/fns/getAvatar";
 import usePresets from "util/hooks/usePresets";
 import Chip from "components/base/Chip";
 import applyPresetToOperator from "util/fns/planner/applyPresetToOperator";
+import { rarityColors } from "styles/rarityColors";
+import imageBase from "util/imageBase";
 
 interface Props {
   op?: Operator;
@@ -136,51 +139,50 @@ const EditOperator = React.memo((props: Props) => {
 
   return (
     <Dialog open={open} onClose={onClose} fullScreen={fullScreen}>
-      <DialogTitle>
+      <DialogTitle sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
         <Box
           sx={{
-            mt: -2,
-            mb: -1,
-            width: {
-              xs: "4rem",
-              sm: "6rem",
-            },
-            aspectRatio: "1 / 1",
-            position: "relative",
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+            gap: "16px",
           }}
         >
-          <Image src={getAvatar({ ...op, ...opData })} fill sizes="(max-width: 600px) 64px, 96px" alt="" />
-        </Box>
-        <Typography variant="h2" component="div" sx={{ width: "100%" }}>
-          <Typography variant="h2" component="div" sx={{ fontSize: "50%" }}>
-            {opSplit[1]}
+          <Image
+            src={getAvatar({ ...op, ...opData })}
+            sx={{ display: { xs: "none", sm: "block" }, width: 64, height: 64, mt: -2, mb: -1 }}
+            alt=""
+          />
+          <Typography variant="h2" component="div" sx={{ width: "100%", flexGrow: 1 }}>
+            <Typography variant="h2" component="div" sx={{ fontSize: "50%" }}>
+              {opSplit[1]}
+            </Typography>
+            {opSplit[0]}
           </Typography>
-          {opSplit[0]}
-        </Typography>
-        <Box component="div" 
-          sx={{ display: "flex", 
-                FlexFlow: "row nowrap", 
-                gap:"8px" }} >
-          <ToggleButton value="owned" selected={op.potential > 0} onClick={onChangeOwned} sx={{ p: 1.5 }}>
-            Owned
-          </ToggleButton>
-          <ToggleButton
-            value="favorite"
-            selected={op.favorite}
-            onClick={onChangeFavorite}
-            disabled={!op.potential}
-            aria-label="favorite"
-            sx={{ p: 1.5 }}
-          >
-            {op.favorite ? (
-              <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
-            ) : (
-              <FavoriteBorder fontSize="small" color="error" sx={{ m: "2px" }} />
-            )}
-          </ToggleButton>
           <IconButton onClick={onClose}>
             <Close />
           </IconButton>
+        </Box>
+        <Box sx={{ fontSize: "16px", width: "100%", display: "flex", gap: 1, alignItems: "center" }}>
+          <Typography sx={{ color: rarityColors[opData.rarity] }}>{"★".repeat(opData.rarity)}</Typography>
+          <Divider orientation="vertical" flexItem />
+          <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+            <Image
+              src={`${imageBase}/classes/class_${opData.class.toLocaleLowerCase()}.webp`}
+              alt=""
+              sx={{ width: 24, height: 24 }}
+            />
+            {opData.class}
+          </Box>
+          <Divider orientation="vertical" flexItem />
+          <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+            <Image
+              src={`${imageBase}/subclass/sub_${opData.branch.toLocaleLowerCase().replaceAll(" ", "_")}_icon.webp`}
+              alt=""
+              sx={{ width: 24, height: 24 }}
+            />
+            {opData.branch}
+          </Box>
         </Box>
       </DialogTitle>
       <DialogContent
@@ -193,61 +195,79 @@ const EditOperator = React.memo((props: Props) => {
           },
         }}
       >
-        {presets.length ? (
+        <Select title="General">
+          <Box sx={{ display: "flex", gap: "8px" }}>
+            <ToggleButton value="owned" selected={op.potential > 0} onClick={onChangeOwned} sx={{ p: 1.5 }}>
+              Owned
+            </ToggleButton>
+            <ToggleButton
+              value="favorite"
+              selected={op.favorite}
+              onClick={onChangeFavorite}
+              disabled={!op.potential}
+              aria-label="favorite"
+              sx={{ p: 1.5 }}
+            >
+              {op.favorite ? (
+                <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
+              ) : (
+                <FavoriteBorder fontSize="small" color="error" sx={{ m: "2px" }} />
+              )}
+            </ToggleButton>
+          </Box>
+        </Select>
+        <Box
+          sx={{
+            width: "100%",
+            backgroundColor: "background.default",
+            borderRadius: 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "start",
+            gap: 1,
+            p: 2,
+          }}
+        >
           <Box
             sx={{
-              gridColumn: "1 / -1",
-              width: "100%",
-              backgroundColor: "background.default",
-              borderRadius: 1,
               display: "flex",
-              flexDirection: "column",
-              alignItems: "start",
-              gap: 1,
-              p: 2,
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
             }}
           >
-            <Box
+            <Typography variant="h3">Presets</Typography>
+            <Button
+              variant="text"
+              onClick={() => setShowPresets((prev) => !prev)}
               sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                width: "100%",
+                color: "text.secondary",
+                textTransform: "uppercase",
+                p: 0,
               }}
             >
-              <Typography variant="h3">Presets</Typography>
-              <Button
-                variant="text"
-                onClick={() => setShowPresets((prev) => !prev)}
-                sx={{
-                  color: "text.secondary",
-                  textTransform: "uppercase",
-                  p: 0,
-                }}
-              >
-                Hide
-              </Button>
-            </Box>
-            <Collapse
-              in={showPresets}
-              sx={{
-                "& .MuiCollapse-wrapperInner": {
-                  display: "flex",
-                  gap: 1,
-                  flexWrap: "wrap",
-                },
-              }}
-            >
-              {presets.map((preset) => (
-                <Chip key={preset.index} onClick={() => onChange(applyPresetToOperator(preset, op))}>
-                  {preset.name}
-                </Chip>
-              ))}
-            </Collapse>
+              {showPresets ? "Hide" : "Show"}
+            </Button>
           </Box>
-        ) : null}
+          <Collapse
+            in={showPresets}
+            sx={{
+              "& .MuiCollapse-wrapperInner": {
+                display: "flex",
+                gap: 1,
+                flexWrap: "wrap",
+              },
+            }}
+          >
+            {presets.map((preset) => (
+              <Chip key={preset.index} onClick={() => onChange(applyPresetToOperator(preset, op))}>
+                {preset.name}
+              </Chip>
+            ))}
+          </Collapse>
+        </Box>
         <DisabledContext.Provider value={op.potential === 0}>
-        <Select title="Promotion">
+          <Select title="Promotion">
             <Promotion
               value={op.elite}
               exclusive
@@ -255,7 +275,7 @@ const EditOperator = React.memo((props: Props) => {
               onChange={onChangeElite}
               size={28}
             />
-          </Select>        
+          </Select>
           <Select title="Potential">
             <Potential
               value={op.potential}
@@ -301,7 +321,7 @@ const EditOperator = React.memo((props: Props) => {
               </Mastery>
             </Select>
           ) : undefined}
-                    {opData.moduleData?.length ? (
+          {opData.moduleData?.length ? (
             <Select title="Modules">
               <Module sx={{ gap: 2 }}>
                 {opData.moduleData.map((mod) => (
@@ -332,7 +352,8 @@ const EditOperator = React.memo((props: Props) => {
                 backgroundColor: "background.default",
                 borderRadius: 1,
                 alignItems: "start",
-              }}>
+              }}
+            >
               <Select title="Outfits">
                 <Skins value={op.skin} exclusive onChange={onChangeSkin}>
                   {opSkins
@@ -346,8 +367,8 @@ const EditOperator = React.memo((props: Props) => {
               </Select>
             </Box>
           ) : undefined}
-          </DisabledContext.Provider>
-      </DialogContent>      
+        </DisabledContext.Provider>
+      </DialogContent>
     </Dialog>
   );
 });

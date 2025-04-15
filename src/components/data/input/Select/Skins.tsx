@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { Skin } from "types/operators/operator";
 import { ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps, ToggleButtonProps, Tooltip } from "@mui/material";
-import Image from "next/image";
+import Image from "components/base/Image";
 import { DisabledContext } from "./SelectGroup";
 import attachSubComponents from "util/subcomponent";
+import imageBase from "util/imageBase";
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   value: string | null;
@@ -54,7 +55,7 @@ const Select = (props: SelectProps) => {
       disabled={_disabled}
       {...rest}
     >
-      <Image src={`/img/avatars/${avatarId.replace("#", "%23")}.png`} width={size} height={size} alt={""} />
+      <Image src={`${imageBase}/avatars/${avatarId.replace("#", "%23")}.webp`} width={size} height={size} alt="" />
     </ToggleButton>
     // </Tooltip>
   );

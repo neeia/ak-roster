@@ -1,9 +1,9 @@
 import { Box, SxProps, Theme } from "@mui/material";
-import Image from "next/image";
+import Image from "components/base/Image";
 import React from "react";
 import { Item } from "types/item";
-
 import items from "data/items.json";
+import imageBase from "util/imageBase";
 
 const DEFAULT_SIZE = 96;
 
@@ -32,8 +32,8 @@ const ItemBase = React.forwardRef<HTMLDivElement, React.PropsWithChildren<ItemBa
       }}
       {...rest}
     >
-      <Image src={`/img/items/bg/${item.tier}.png`} alt="" width={bgSize} height={bgSize} />
-      <Image src={`/img/items/${item.iconId}.png`} alt={item.name} width={size} height={size} />
+      <Image src={`${imageBase}/items/bg/${item.tier}.webp`} alt="" width={bgSize} height={bgSize} />
+      <Image src={`${imageBase}/items/${item.iconId}.webp`} alt={item.name} width={size} height={size} />
       {children}
     </Box>
   );

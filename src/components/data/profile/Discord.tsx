@@ -2,7 +2,6 @@ import { InputAdornment, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { debounce } from "lodash";
 import { AccountMutateProps } from "pages/data/profile";
-import Image from "next/image";
 
 const Discord = (props: AccountMutateProps) => {
   const { user, setAccount } = props;

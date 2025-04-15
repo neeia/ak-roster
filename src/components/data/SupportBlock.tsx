@@ -3,8 +3,9 @@ import { Box, BoxProps, Typography } from "@mui/material";
 import { ModuleData, OpInfo } from "types/operators/operator";
 import { rarityColors } from "styles/rarityColors";
 import { MAX_LEVEL_BY_RARITY } from "util/changeOperator";
-import Image from "next/image";
+import Image from "components/base/Image";
 import getAvatar from "util/fns/getAvatar";
+import imageBase from "util/imageBase";
 
 const SpaceFiller = () => {
   return (
@@ -20,14 +21,14 @@ const SpaceFiller = () => {
       }}
     >
       <svg>
-        <line x1="0" y1="0" x2="24" y2="24" stroke="grey" strokeWidth="1" />
+        <line x1="0" y1="0" x2="23" y2="23" stroke="grey" strokeWidth="1" />
       </svg>
     </Box>
   );
 };
 
 function getModUrl(mod: ModuleData) {
-  return `/img/equip/${mod.typeName.toLowerCase()}.png`;
+  return `${imageBase}/equip/${mod.typeName.toLowerCase()}.webp`;
 }
 
 interface Props extends BoxProps {
@@ -99,17 +100,16 @@ const SupportBlock = (props: Props) => {
           </Box>
         </Box>
         {/* Avatar */}
-        <Box
+        <Image
+          src={getAvatar(op)}
+          alt=""
           sx={{
             height: 80,
             aspectRatio: "1 / 1",
             boxSizing: "content-box",
             borderBottom: `4px solid ${rarityColors[op.rarity]}`,
-            position: "relative",
           }}
-        >
-          <Image src={getAvatar(op)} fill sizes="(max-width: 768px) 80px, 120px" alt="" />
-        </Box>
+        />
         <Box
           sx={{
             position: "absolute",
@@ -135,30 +135,26 @@ const SupportBlock = (props: Props) => {
                 marginBottom: "2px",
               }}
             >
-              <Box
+              <Image
+                src={`${imageBase}/potential/${op.potential}.webp`}
+                alt={`Potential ${op.potential}`}
                 sx={{
-                  width: { xs: "16px" },
-                  height: { xs: "16px" },
-                  position: "absolute",
+                  width: "16px",
+                  height: "16px",
                   m: "auto",
                   left: -4,
                   right: -4,
                   top: -4,
                   bottom: -4,
-                  backgroundImage: "url('/img/rank/bg.png')",
+                  backgroundImage: `url('${imageBase}/img/rank/bg.webp')`,
                   backgroundSize: "100% 100%",
                 }}
-              >
-                <Image
-                  src={`/img/potential/${op.potential}.png`}
-                  fill
-                  sizes={iconSizes}
-                  alt={`Potential ${op.potential}`}
-                />
-              </Box>
+              />
             </Box>
           )}
-          <Box
+          <Image
+            src={`${imageBase}/elite/${op.elite}_s_box.webp`}
+            alt={`Elite ${op.elite}`}
             className="elite"
             sx={{
               width: { xs: "20px" },
@@ -166,14 +162,7 @@ const SupportBlock = (props: Props) => {
               position: "relative",
               marginBottom: { xs: "0px" },
             }}
-          >
-            <Image
-              src={`/img/elite/${op.elite}_s_box.png`}
-              fill
-              sizes="(max-width: 768px) 20px, 32px"
-              alt={`Elite ${op.elite}`}
-            />
-          </Box>
+          />
           <Box
             className="level"
             sx={{
@@ -208,35 +197,19 @@ const SupportBlock = (props: Props) => {
           {[...Array(3)].map((_, i: number) => {
             if (!op.skillData?.[i]) return <SpaceFiller key={i} />;
             return (
-              <Box
+              <Image
+                src={`${imageBase}/rank/${!op.masteries[i] ? op.skill_level : `m-${op.masteries[i]}`}.webp`}
+                alt={!op.masteries[i] ? `Skill ${i + 1} Rank ${op.skill_level}` : `Mastery ${op.masteries[i]}`}
                 key={i}
                 sx={{
-                  display: "grid",
                   opacity: op.elite >= i ? 1 : 0.25,
                   marginLeft: 0,
                   width: 24,
                   height: 24,
-                  position: "relative",
-                  backgroundImage: "url('/img/rank/bg.png')",
+                  backgroundImage: `url('${imageBase}/rank/bg.webp')`,
                   backgroundSize: "100% 100%",
                 }}
-              >
-                {!op.masteries[i] ? (
-                  <Image
-                    src={`/img/rank/${op.skill_level}.png`}
-                    fill
-                    sizes={iconSizes}
-                    alt={`Skill ${i + 1} Rank ${op.skill_level}`}
-                  />
-                ) : (
-                  <Image
-                    src={`/img/rank/m-${op.masteries[i]}.png`}
-                    fill
-                    sizes={iconSizes}
-                    alt={`Mastery ${op.masteries[i]}`}
-                  />
-                )}
-              </Box>
+              />
             );
           })}
         </Box>
@@ -258,17 +231,21 @@ const SupportBlock = (props: Props) => {
                 key={mod.moduleId}
                 sx={{
                   position: "relative",
-                  display: "grid",
+                  width: 24,
                   height: 24,
-                  aspectRatio: "1 / 1",
-                  backgroundImage: "url('/img/rank/bg.png')",
+                  backgroundImage: `url('${imageBase}/rank/bg.webp')`,
                   backgroundSize: "100% 100%",
-                  border: "1px solid",
-                  borderColor: "background.light",
                   opacity: modLevel ? 1 : 0.25,
                 }}
               >
-                <Image src={getModUrl(mod)} fill sizes="(max-width: 768px) 24px, 32px" alt={mod.typeName} />
+                <Image
+                  src={getModUrl(mod)}
+                  alt={mod.typeName}
+                  sx={{
+                    width: 24,
+                    height: 24,
+                  }}
+                />
                 <Typography
                   zIndex={1}
                   component="abbr"

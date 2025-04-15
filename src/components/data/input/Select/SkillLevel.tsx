@@ -1,7 +1,8 @@
 import React, { memo, useContext } from "react";
 import { ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps } from "@mui/material";
 import { DisabledContext } from "./SelectGroup";
-import Image from "next/image";
+import Image from "components/base/Image";
+import imageBase from "util/imageBase";
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   value?: number;
@@ -44,7 +45,7 @@ const SkillLevel = memo((props: Props) => {
               "& img": { filter: "drop-shadow(0px 0px 2px #000)" },
             }}
           >
-            <Image width={size} height={size} src={`/img/rank/${n}.png`} alt={`Rank ${n}`} />
+            <Image width={size} height={size} src={`${imageBase}/rank/${n}.webp`} alt={`Rank ${n}`} />
           </ToggleButton>
         ))}
     </ToggleButtonGroup>

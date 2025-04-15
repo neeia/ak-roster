@@ -1,8 +1,9 @@
 import React, { memo, useContext } from "react";
 import { Box, BoxProps, ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps, Typography } from "@mui/material";
-import Image from "next/image";
+import Image from "components/base/Image";
 import attachSubComponents from "util/subcomponent";
 import { DisabledContext } from "./SelectGroup";
+import imageBase from "util/imageBase";
 
 interface Props extends BoxProps<"ol"> {
   children?: React.ReactNode;
@@ -60,7 +61,7 @@ function Skill(props: SkillProps) {
           gap: 2,
         }}
       >
-        {src && <Image src={`/img/skills/${src}.png`} alt="" width={size} height={size} />}
+        {src && <Image src={`${imageBase}/skills/${src}.webp`} alt="" width={size} height={size} />}
         <Box
           sx={{
             display: "flex",
@@ -121,7 +122,7 @@ function SkillAlt(props: SkillProps) {
       >
         {src && (
           <Image
-            src={`/img/skills/${src}.png`}
+            src={`${imageBase}/skills/${src}.webp`}
             alt=""
             width={size}
             height={size}
@@ -167,7 +168,7 @@ function Select(props: SelectProps) {
           sx={{ p: 1, "& img": { filter: "drop-shadow(0px 0px 0px #000)" } }}
           onClick={() => onChange(i)}
         >
-          <Image src={`/img/rank/m-${i}.png`} alt={`Mastery ${i}`} width={size} height={size} />
+          <Image src={`${imageBase}/rank/m-${i}.webp`} alt={`Mastery ${i}`} width={size} height={size} />
         </ToggleButton>
       ))}
     </ToggleButtonGroup>

@@ -4,11 +4,12 @@ import { ModuleData, OpInfo } from "types/operators/operator";
 import { Favorite } from "@mui/icons-material";
 import { rarityColors } from "styles/rarityColors";
 import { MAX_PROMOTION_BY_RARITY, MAX_LEVEL_BY_RARITY, getMaxPotentialById } from "util/changeOperator";
-import Image from "next/image";
+import Image from "components/base/Image";
 import getAvatar from "util/fns/getAvatar";
+import imageBase from "util/imageBase";
 
 function getModUrl(mod: ModuleData) {
-  return `/img/equip/${mod.typeName.toLowerCase()}.png`;
+  return `${imageBase}/equip/${mod.typeName.toLowerCase()}.webp`;
 }
 
 interface Props extends BoxProps {
@@ -22,8 +23,6 @@ const OperatorBlock = (props: Props) => {
   const splitName = op.name.replace(/\)$/, "").split(reg);
   const name = splitName[0];
   const nameIsLong = name.split(" ").length > 1 && name.length >= 16;
-
-  const iconSizes = "(max-width: 768px) 16px, 24px";
 
   function isOperatorMaxed(op: OpInfo) {
     if (op.elite !== MAX_PROMOTION_BY_RARITY[op.rarity]) return false;
@@ -117,7 +116,7 @@ const OperatorBlock = (props: Props) => {
           filter: maxed ? (theme) => `drop-shadow(0px 0px 8px ${theme.palette.background.paper})` : 0,
         }}
       >
-        <Image src={getAvatar(op)} fill sizes="(max-width: 768px) 80px, 120px" alt="" />
+        <Image src={getAvatar(op)} sx={{ width: "100%", height: "100%" }} alt="" />
         {maxed && (
           <Box
             sx={{
@@ -150,54 +149,30 @@ const OperatorBlock = (props: Props) => {
             }}
           >
             {op.potential > 1 ? (
-              <Box
+              <Image
+                src={`${imageBase}/potential/${op.potential}.webp`}
+                alt={`Potential ${op.potential}`}
                 sx={{
-                  position: "relative",
                   width: { xs: "12px", sm: "20px" },
                   height: { xs: "16px", sm: "24px" },
+                  m: "auto",
                   ml: "4px",
                   marginBottom: { xs: "2px", sm: "8px" },
+                  backgroundImage: `url('${imageBase}/rank/bg.webp')`,
+                  backgroundSize: "100% 100%",
                 }}
-              >
-                <Box
-                  sx={{
-                    width: "100%",
-                    height: "100%",
-                    position: "absolute",
-                    m: "auto",
-                    left: -4,
-                    right: -4,
-                    top: -4,
-                    bottom: -4,
-                    backgroundImage: "url('/img/rank/bg.png')",
-                    backgroundSize: "100% 100%",
-                  }}
-                >
-                  <Image
-                    src={`/img/potential/${op.potential}.png`}
-                    fill
-                    sizes={iconSizes}
-                    alt={`Potential ${op.potential}`}
-                  />
-                </Box>
-              </Box>
+              />
             ) : null}
             {op.elite > 0 ? (
-              <Box
+              <Image
+                src={`${imageBase}/elite/${op.elite}_s_box.webp`}
+                alt={`Elite ${op.elite}`}
                 sx={{
                   width: { xs: "20px", sm: "32px" },
                   height: { xs: "20px", sm: "32px" },
-                  position: "relative",
                   marginBottom: { xs: "0px", sm: "4px" },
                 }}
-              >
-                <Image
-                  src={`/img/elite/${op.elite}_s_box.png`}
-                  fill
-                  sizes="(max-width: 768px) 20px, 32px"
-                  alt={`Elite ${op.elite}`}
-                />
-              </Box>
+              />
             ) : null}
             {op.elite > 0 || op.level > 1 ? (
               <Box
@@ -247,34 +222,23 @@ const OperatorBlock = (props: Props) => {
             }}
           >
             {[...Array(op.skillData?.length ?? 0)].map((_, i: number) => (
-              <Box
+              <Image
                 key={i}
+                src={
+                  !op.masteries[i]
+                    ? `${imageBase}/rank/${op.skill_level}.webp`
+                    : `${imageBase}/rank/m-${op.masteries[i]}.webp`
+                }
+                alt={`Skill ${i + 1} Rank ${op.skill_level}`}
                 sx={{
                   display: op.elite >= i ? "grid" : "none",
                   marginLeft: { xs: "0px", sm: `${4 * i}px` },
                   width: { xs: "16px", sm: "24px" },
                   height: { xs: "16px", sm: "24px" },
-                  position: "relative",
-                  backgroundImage: "url('/img/rank/bg.png')",
+                  backgroundImage: `url('${imageBase}/rank/bg.webp')`,
                   backgroundSize: "contain",
                 }}
-              >
-                {!op.masteries[i] ? (
-                  <Image
-                    src={`/img/rank/${op.skill_level}.png`}
-                    fill
-                    sizes={iconSizes}
-                    alt={`Skill ${i + 1} Rank ${op.skill_level}`}
-                  />
-                ) : (
-                  <Image
-                    src={`/img/rank/m-${op.masteries[i]}.png`}
-                    fill
-                    sizes={iconSizes}
-                    alt={`Mastery ${op.masteries[i]}`}
-                  />
-                )}
-              </Box>
+              />
             ))}
           </Box>
           {/* Modules */}
@@ -291,20 +255,27 @@ const OperatorBlock = (props: Props) => {
           >
             {(op.moduleData ?? [])
               .filter((mod) => op.modules[mod.moduleId] > 0)
-              .map((mod, i) => (
+              .map((mod) => (
                 <Box
                   key={mod.moduleId}
                   sx={{
                     position: "relative",
-                    display: "grid",
                     height: { xs: "24px", sm: "32px" },
                     aspectRatio: "1 / 1",
                     backgroundColor: "background.default",
-                    backgroundImage: "url('/img/rank/bg.png')",
+                    backgroundImage: `url('${imageBase}/rank/bg.webp')`,
                     backgroundSize: "100% 100%",
                   }}
                 >
-                  <Image src={getModUrl(mod)} fill sizes="(max-width: 768px) 24px, 32px" alt={mod.typeName} />
+                  <Image
+                    src={getModUrl(mod)}
+                    sx={{
+                      position: "absolute",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                    alt={mod.typeName}
+                  />
                   <Typography
                     zIndex={1}
                     component="abbr"
