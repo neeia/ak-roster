@@ -16,11 +16,11 @@ export interface Event {
     [key: string]: number;
   };
   farms?: string[];
-};
+}
 
 export interface EventsData {
   [key: string]: Event;
-};
+}
 
 export interface PlannerSettings {
   allowAllGoals: boolean;
@@ -61,11 +61,13 @@ const depotSettings: DepotSettings = {
 export interface RecruitSettings {
   showBonuses: boolean;
   showPotential: boolean;
+  hideThreeStarRecruits: boolean;
 }
 
 const recruitSettings: RecruitSettings = {
   showBonuses: false,
   showPotential: false,
+  hideThreeStarRecruits: false,
 };
 
 const importSettings: ImportSettings = {

@@ -220,9 +220,9 @@ const Rateup: NextPage = () => {
                       }}
                       onChange={handleSelectChange}
                     >
-                      <option value="event">Event (one rate-up 6⭐️, 50%)</option>
-                      <option value="standard">Standard (two rate-up 6⭐️, each 25%)</option>
-                      <option value="limited">Limited (two rate-up 6⭐️, each 35%)</option>
+                      <option value="event">Event (one rate-up 6★, 50%)</option>
+                      <option value="standard">Standard (two rate-up 6★, each 25%)</option>
+                      <option value="limited">Limited (two rate-up 6★, each 35%)</option>
                     </Select>
                   </FormControl>
                 </Grid>

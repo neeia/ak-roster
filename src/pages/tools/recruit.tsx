@@ -10,6 +10,7 @@
   IconButton,
   Alert,
   Divider,
+  Popover,
 } from "@mui/material";
 import { Combination } from "js-combinatorics";
 import { NextPage } from "next";
@@ -20,15 +21,17 @@ import Layout from "components/Layout";
 import classList from "data/classList";
 import RecruitableOperatorCard from "components/recruit/RecruitableOperatorCard";
 import { UserContext } from "pages/_app";
-import { defaultOperatorObject } from "util/changeOperator";
+import { changeOwned, changePotential, defaultOperatorObject } from "util/changeOperator";
 import Board from "components/base/Board";
 import Chip from "components/base/Chip";
 import { focused } from "styles/theme/appTheme";
 import { Close, Groups, ZoomInMap, ZoomOutMap } from "@mui/icons-material";
-import Image from "next/image";
+import Image from "components/base/Image";
 import { RecruitmentResult } from "types/recruit";
 import useOperators from "util/hooks/useOperators";
 import useSettings from "util/hooks/useSettings";
+import imageBase from "util/imageBase";
+import Potential from "components/data/input/Select/Potential";
 
 const TAGS_BY_CATEGORY = {
   Rarity: ["Top Operator", "Senior Operator", "Starter", "Robot"],
@@ -74,7 +77,7 @@ const options: Tag[] = Object.entries(TAGS_BY_CATEGORY).flatMap(([type, tagArray
 
 const Recruit: NextPage = () => {
   const user = useContext(UserContext);
-  const [roster] = useOperators();
+  const [roster, onChange] = useOperators();
 
   const [activeTags, setActiveTags] = useState<Tag[]>([]);
   const [inputNode, setInputNode] = useState<HTMLInputElement | null>(null);
@@ -110,6 +113,26 @@ const Recruit: NextPage = () => {
 
   const [_settings, setSettings] = useSettings();
   const settings = _settings.recruitSettings;
+
+  const [opId, setOpId] = useState<string>();
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const handleClick = (event: React.MouseEvent<HTMLElement>, op_id: string) => {
+    setAnchorEl(event.currentTarget);
+    setOpId(op_id);
+    event.currentTarget.id = "active-recruit-button";
+  };
+  const handleClose = () => {
+    if (anchorEl) anchorEl.id = "";
+    setAnchorEl(null);
+    setOpId(undefined);
+  };
+
+  const onChangePotential = (value: number | null) => {
+    if (value == null || !opId) return;
+    const op = roster[opId] || defaultOperatorObject(opId);
+    if (!op.potential) onChange(changePotential(changeOwned(op, true), value));
+    else onChange(changePotential(op, value));
+  };
 
   return (
     <Layout tab="/tools" page="/recruit">
@@ -201,7 +224,7 @@ const Recruit: NextPage = () => {
                   <Image
                     width={24}
                     height={24}
-                    src={`/img/classes/class_${option.value.toLowerCase()}.png`}
+                    src={`${imageBase}/classes/class_${option.value.toLowerCase()}.webp`}
                     alt={option.value}
                   />
                 ) : null}
@@ -298,6 +321,24 @@ const Recruit: NextPage = () => {
               }
               label="Next Upgrade"
             />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={settings.hideThreeStarRecruits}
+                  onChange={(e) => {
+                    setSettings((s) => ({
+                      ...s,
+                      recruitSettings: {
+                        ...settings,
+                        hideThreeStarRecruits: e.target.checked,
+                      },
+                    }));
+                  }}
+                  disabled={!user}
+                />
+              }
+              label="Hide 2/3★ Groups"
+            />
           </Box>
           <Divider />
           {activeTags.length === 0 && <Alert severity="info">Select at least one tag to see results.</Alert>}
@@ -307,6 +348,7 @@ const Recruit: NextPage = () => {
                 Math.min(...opSetB.map((op) => (op.rarity === 1 ? 4 : op.rarity))) -
                   Math.min(...opSetA.map((op) => (op.rarity === 1 ? 4 : op.rarity))) || tagSetB.length - tagSetA.length
             )
+            .filter(({ guarantees }) => (settings.hideThreeStarRecruits ? guarantees.length > 0 : true))
             .map(({ tags, operators, guarantees }) => (
               <Box
                 key={tags.join(",")}
@@ -333,7 +375,10 @@ const Recruit: NextPage = () => {
                   <Groups /> {operators.length}
                   <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
                   {guarantees.map((guaranteedRarity) => (
-                    <Chip key={`guaranteed${guaranteedRarity}`} sx={{ background: "#fff", color: "#000" }}>
+                    <Chip
+                      key={`guaranteed${guaranteedRarity}`}
+                      sx={{ backgroundColor: "text.primary", color: "background.paper" }}
+                    >
                       {`${guaranteedRarity}★`}
                     </Chip>
                   ))}
@@ -363,6 +408,14 @@ const Recruit: NextPage = () => {
                       mx: "-1rem",
                       textAlign: "center",
                     },
+                    "& #active-recruit-button": {
+                      filter: "brightness(1.05)",
+                      backgroundColor: "grey.600",
+                      "& img": {
+                        filter: "drop-shadow(0px 0px 1px rgba(0,0,0,0.8))",
+                        transform: "scale(1.01)",
+                      },
+                    },
                   }}
                 >
                   {!isServer() &&
@@ -376,12 +429,31 @@ const Recruit: NextPage = () => {
                           key={operator.id}
                           showPotentials={settings.showPotential}
                           showBonus={settings.showBonuses}
+                          onClick={handleClick}
                         />
                       ))}
                 </Box>
               </Box>
             ))}
+          {matchingOperators.length > 0 && settings.hideThreeStarRecruits ? (
+            <>
+              <Divider />
+              <Box>{matchingOperators.reduce((acc, cur) => acc + 1 - cur.guarantees.length, 0)} group(s) hidden</Box>
+            </>
+          ) : null}
         </Board>
+        <Popover
+          id="recruit-potential-popover"
+          open={anchorEl != null}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        >
+          <Potential exclusive value={opId ? roster[opId]?.potential ?? 0 : 0} onChange={onChangePotential} />
+        </Popover>
       </Box>
     </Layout>
   );

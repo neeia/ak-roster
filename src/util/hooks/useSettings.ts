@@ -12,6 +12,17 @@ function useSettings() {
       const k = key as keyof typeof _settings;
       if (!_settings[k]) {
         _settings[k] = defaultSettings[k] as any;
+      } else {
+        // check if the default settings have changed and update if necessary
+        const defaultValue = defaultSettings[k];
+        if (typeof defaultValue === "object" && defaultValue != null) {
+          Object.keys(defaultValue).forEach((subKey) => {
+            const sk = subKey;
+            if ((_settings[k] as any)[subKey] === undefined) {
+              (_settings[k] as any)[sk] = (defaultValue as any)[sk];
+            }
+          });
+        }
       }
     });
 

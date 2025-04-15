@@ -8,6 +8,7 @@ import Layout from "components/Layout";
 import Promotion from "components/data/input/Select/Promotion";
 import Board from "components/base/Board";
 import Rarity from "components/data/input/Select/Rarity";
+import imageBase from "util/imageBase";
 
 /**
  * The cost of leveling an operator
@@ -313,7 +314,7 @@ export default Level;
 
 const LmdIcon = memo(() => (
   <Box component="span" position="relative" top={3}>
-    <Image src="/img/items/GOLD_SHD.webp" width={26} height={18} alt="LMD" />
+    <Image src={`${imageBase}/items/GOLD_SHD.webp`} width={26} height={18} alt="LMD" />
   </Box>
 ));
 LmdIcon.displayName = "LMD";
