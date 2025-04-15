@@ -33,6 +33,14 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 604800,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'd3gqz3mx7fd4v.cloudfront.net',
+        port: '',
+        pathname: '/images/**',
+      },
+    ],
   },
 };
 

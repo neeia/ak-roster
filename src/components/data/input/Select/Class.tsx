@@ -1,5 +1,5 @@
 import { Box, ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps } from "@mui/material";
-import Image from "next/image";
+import Image from "components/base/Image";
 import React from "react";
 
 const classList = ["Vanguard", "Guard", "Defender", "Sniper", "Caster", "Medic", "Supporter", "Specialist"];

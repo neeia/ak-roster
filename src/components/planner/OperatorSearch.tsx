@@ -11,13 +11,14 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Image from "next/image";
+import Image from "components/base/Image";
 import React, { useCallback } from "react";
 import { VariableSizeList, ListChildComponentProps } from "react-window";
 
 import operatorsJson from "data/operators.json";
 import { OperatorData } from "types/operators/operator";
 import SomePartial from "types/somePartial";
+import imageBase from "util/imageBase";
 
 export const normalizeOperatorName = (operatorName: string) =>
   operatorName.toLowerCase().replace(/['"]/g, "").replace("ł", "l").replace("š", "s");
@@ -81,7 +82,7 @@ const OperatorSearch = (props: Props) => {
                   <InputAdornment position="start" sx={{ pl: 1 }}>
                     {value != null ? (
                       <Image
-                        src={`/img/avatars/${value.id}.png`}
+                        src={`${imageBase}/avatars/${value.id}.webp`}
                         width={32}
                         height={32}
                         alt=""
@@ -138,7 +139,13 @@ function renderRow(props: ListChildComponentProps) {
   return (
     <Typography component="li" key={key} {...rest} noWrap style={inlineStyle}>
       <Box mr={2} display="inline-flex" alignItems="center">
-        <Image src={`/img/avatars/${opData.id}.png`} width={32} height={32} alt="" className="operator-avatar" />
+        <Image
+          src={`${imageBase}/avatars/${opData.id}.webp`}
+          width={32}
+          height={32}
+          alt=""
+          className="operator-avatar"
+        />
       </Box>
       {opData.name}
     </Typography>

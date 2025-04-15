@@ -1,7 +1,8 @@
 import { OpInfo } from "types/operators/operator";
+import imageBase from "util/imageBase";
 
 export default function getAvatarFull(op: OpInfo) {
-  if (op.skin) return `/img/characters/${op.skin.replace("#", "%23")}.png`;
+  if (op.skin) return `${imageBase}/characters/${op.skin.replace("#", "%23")}.webp`;
 
   let intermediate = op.op_id;
   if (op?.elite === 2) {
@@ -9,5 +10,5 @@ export default function getAvatarFull(op: OpInfo) {
   } else if (op?.elite === 1 && op.name === "Amiya") {
     intermediate += "_1";
   }
-  return `/img/characters/${intermediate}.png`;
+  return `${imageBase}/characters/${intermediate}.webp`;
 }

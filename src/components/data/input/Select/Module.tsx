@@ -1,9 +1,10 @@
 import React, { memo, useContext } from "react";
 import { ModuleData } from "types/operators/operator";
 import { Box, BoxProps, ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps, Typography } from "@mui/material";
-import Image from "next/image";
+import Image from "components/base/Image";
 import attachSubComponents from "util/subcomponent";
 import { DisabledContext } from "./SelectGroup";
+import imageBase from "util/imageBase";
 
 interface Props extends BoxProps<"ol"> {}
 const Module = memo((props: Props) => {
@@ -54,7 +55,7 @@ function Item(props: ItemProps) {
           gap: 2,
         }}
       >
-        {src && <Image src={`/img/equip/${src}.png`} alt="" width={size} height={size} />}
+        {src && <Image src={`${imageBase}/equip/${src}.webp`} alt="" width={size} height={size} />}
         <Box
           sx={{
             display: "flex",
@@ -112,11 +113,11 @@ function ItemAlt(props: ItemProps) {
       >
         {src && (
           <Image
-            src={`/img/equip/${src}.png`}
+            src={`${imageBase}/equip/${src}.webp`}
             alt=""
             width={size}
             height={size}
-            style={{ opacity: disabled ? 0.25 : 1 }}
+            sx={{ opacity: disabled ? 0.25 : 1 }}
           />
         )}
         {children}
@@ -159,7 +160,7 @@ function Select(props: SelectProps) {
           sx={{ p: 1, "& img": { filter: "drop-shadow(0px 0px 1px #000)" } }}
           onChange={() => onChange(moduleId, i)}
         >
-          <Image src={`/img/equip/img_stg${i}.png`} alt={`Module ${i}`} width={size} height={size} />
+          <Image src={`${imageBase}/equip/img_stg${i}.webp`} alt={`Module ${i}`} width={size} height={size} />
         </ToggleButton>
       ))}
     </ToggleButtonGroup>

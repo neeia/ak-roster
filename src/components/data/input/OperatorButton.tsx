@@ -3,7 +3,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { rarityColors } from "styles/rarityColors";
 import { Favorite } from "@mui/icons-material";
 import getTextWidth from "styles/getTextWidth";
-import Image from "next/image";
+import Image from "components/base/Image";
 import operatorJson from "data/operators";
 
 const WIDTH_TO_PX = 10 / 7;
@@ -63,9 +63,7 @@ const OperatorButton = React.memo((props: Props) => {
   let opName = t ? <abbr title={op.name}>{nameComponent}</abbr> : nameComponent;
 
   const imgUrl = skin ?? `/img/avatars/${op_id}.png`;
-  const opBranch = op.branch ?? "Not Found" // There's like 2 "operators" that don't have branches and break things.
-  const branchUrl = `/img/subclass/sub_${opBranch.toLowerCase().replace(" ","_")}_icon.png`
-  
+
   return (
     <Button
       className={className}

@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@mui/material";
 import { OpInfo } from "types/operators/operator";
 import { ChangeCircle, PersonAddAlt1 } from "@mui/icons-material";
-import Image from "next/image";
+import Image from "components/base/Image";
 import getAvatar from "util/fns/getAvatar";
 
 interface Props {
@@ -21,10 +21,6 @@ const OpSelectionButton = (props: Props) => {
         height: 96,
         aspectRatio: "1 / 1",
         backgroundColor: "background.light",
-        "& img": {
-          borderRadius: "4px",
-          transition: "transform 0.05s",
-        },
         "&:hover": {
           filter: "brightness(1.04)",
           "& img": {
@@ -37,7 +33,15 @@ const OpSelectionButton = (props: Props) => {
     >
       {op ? (
         <>
-          <Image src={getAvatar(op)} fill sizes="100px" alt={op.name} />
+          <Image
+            src={getAvatar(op)}
+            alt={op.name}
+            sx={{
+              width: 96,
+              height: 96,
+              transition: "transform 0.05s",
+            }}
+          />
           <ChangeCircle
             fontSize="large"
             aria-label="Select Operator"

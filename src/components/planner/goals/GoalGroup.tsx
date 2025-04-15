@@ -19,9 +19,10 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import Image from "next/image";
+import Image from "components/base/Image";
 import React, { memo, useCallback, useState } from "react";
 import GoalData from "types/goalData";
+import imageBase from "util/imageBase";
 
 interface Props {
   operatorGoals: GoalData[] | undefined;
@@ -189,28 +190,31 @@ const GoalGroup = memo((props: Props) => {
                   {operatorGoals
                     .sort((a, b) => a.sort_order - b.sort_order)
                     .map((operatorGoal) => {
-                      const imgUrl = `/img/avatars/${operatorGoal.op_id}.png`;
+                      const imgUrl = `${imageBase}/avatars/${operatorGoal.op_id}.webp`;
                       const isEnabled = !(inactiveOps.includes(operatorGoal.op_id) ?? false);
                       return (
                         <Box
-                          sx={{
-                            "& img": {
+                          key={operatorGoal.op_id}
+                          onClick={(e: React.MouseEvent<HTMLImageElement>) => {
+                            e.stopPropagation();
+                            onOpSelect(operatorGoal.op_id, groupName);
+                          }}
+                        >
+                          <Image
+                            src={imgUrl}
+                            width={48}
+                            height={48}
+                            alt=""
+                            sx={{
                               borderBottomLeftRadius: "50%",
                               borderTopLeftRadius: 8,
                               borderBottomRightRadius: 4,
                               filter: (theme) =>
                                 `drop-shadow(-4px -2px 4px ${alpha(theme.palette.background.paper, 0.5)})
-                                  ${isEnabled ? "grayscale(0)" : "grayscale(1)"}`,
+                                 ${isEnabled ? "grayscale(0)" : "grayscale(1)"}`,
                               ml: -1.5,
-                            },
-                          }}
-                          onClick={(e: React.MouseEvent<HTMLImageElement>) => {
-                            e.stopPropagation();
-                            onOpSelect(operatorGoal.op_id, groupName);
-                          }}
-                          key={operatorGoal.op_id}
-                        >
-                          <Image src={imgUrl} width={48} height={48} alt="" />
+                            }}
+                          />
                         </Box>
                       );
                     })}
