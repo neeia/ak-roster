@@ -1,7 +1,7 @@
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { ImageResponse } from "@vercel/og";
 import operatorJson from "data/operators";
-import { NextRequest } from "next/server";
+import { NextApiRequest } from "next";
 import { rarityColors } from "styles/rarityColors";
 import { ModuleData, Operator } from "types/operators/operator";
 import { Database } from "types/supabase";
@@ -18,15 +18,16 @@ export const config = {
   runtime: "edge",
 };
 
-export default async function handler(request: NextRequest) {
-  const { searchParams } = request.nextUrl;
-  const username = searchParams.get("username");
-  if (!username) {
+export default async function handler(request: NextApiRequest) {
+  const user = (request.url?.split("?")[1] ?? "").split("=")[1];
+  if (!user) {
     return new ImageResponse(<>No User Found</>, {
       width: 1200,
       height: 630,
     });
   }
+
+  const username = user.toString().replace(",", "");
 
   const supabase = createBrowserSupabaseClient<Database>();
 
