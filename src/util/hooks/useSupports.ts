@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import supabase from "supabase/supabaseClient";
 import { OperatorSupport } from "types/operators/supports";
 import handlePostgrestError from "util/fns/handlePostgrestError";

@@ -287,23 +287,17 @@ export type Database = {
       };
       supports: {
         Row: {
-          module: string | null;
           op_id: string;
-          skill: number;
           slot: number;
           user_id: string;
         };
         Insert: {
-          module?: string | null;
           op_id: string;
-          skill: number;
           slot: number;
           user_id?: string;
         };
         Update: {
-          module?: string | null;
           op_id?: string;
-          skill?: number;
           slot?: number;
           user_id?: string;
         };

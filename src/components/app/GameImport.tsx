@@ -138,12 +138,9 @@ const GameImport = memo(() => {
         if (!instId || !roster[instId]) continue;
 
         let charName = roster[instId].currentTmpl ?? roster[instId].charId;
-        let supportModule = supportData.currentEquip;
 
         let support: OperatorSupport = {
-          module: supportModule,
           op_id: charName,
-          skill: supportData.skillIndex ?? -1,
           slot: i,
         };
         await setSupport(support);
@@ -158,10 +155,8 @@ const GameImport = memo(() => {
         const opData = operatorJson[value.charId];
 
         //currently amiya only, if not null operator has class change and must be handled in a custom way
-        if (value.tmpl)
-        {
-          for (let key in value.tmpl)
-          {
+        if (value.tmpl) {
+          for (let key in value.tmpl) {
             let altValue = value.tmpl[key];
 
             //first module is the default one, we can skip.
@@ -185,7 +180,7 @@ const GameImport = memo(() => {
               }
             }
 
-            let alternativeOperator : Operator = {
+            let alternativeOperator: Operator = {
               op_id: key,
               elite: value.evolvePhase,
               level: value.level,
@@ -195,12 +190,10 @@ const GameImport = memo(() => {
               skin: skin,
               modules: altSupportModules,
               masteries: altMasteries,
-            }
+            };
             operators.push(alternativeOperator);
           }
-        }
-        else
-        {
+        } else {
           //first module is the default one, we can skip.
           let supportModules: Record<string, number> = Object.fromEntries(
             opData?.moduleData?.map((mod) => [mod.moduleId, 0]) ?? []
@@ -234,7 +227,6 @@ const GameImport = memo(() => {
           };
           operators.push(operator);
         }
-
       }
       await supabase.from("operators").upsert(operators);
     }
@@ -251,7 +243,7 @@ const GameImport = memo(() => {
         }
       }
       depotData.push({ material_id: "4001", stock: userData.status.gold });
-      await setDepot(depotData,true);
+      await setDepot(depotData, true);
     }
     enqueueSnackbar("Data imported.", { variant: "success" });
   }
@@ -262,9 +254,15 @@ const GameImport = memo(() => {
     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
       You can import your account data if your account is linked to a Yostar account. Doing this WILL log you out from
       the game, if you are currently logged in.
+      <Alert component="aside" variant="outlined" severity="error">
+        <AlertTitle>Import is currently down.</AlertTitle>
+        <Typography sx={{ fontSize: "14px" }}>
+          Due to the recent changes to login, importing is temporarily disabled. We're working to get it back online as
+          soon as possible. Thank you for your patience.
+        </Typography>
+      </Alert>
       <Alert
         component="aside"
-        sx={{}}
         variant="outlined"
         severity="info"
         action={
@@ -395,7 +393,8 @@ const GameImport = memo(() => {
         <Button
           variant="outlined"
           type="submit"
-          disabled={email.length === 0}
+          // disabled={email.length === 0}
+          disabled
           onClick={(event) => {
             event.preventDefault();
             sendCode(email);
@@ -432,7 +431,8 @@ const GameImport = memo(() => {
         <Button
           variant="outlined"
           type="submit"
-          disabled={code.length !== 6}
+          // disabled={code.length !== 6}
+          disabled
           onClick={(event) => {
             event.preventDefault();
             login(email, code);
@@ -442,7 +442,12 @@ const GameImport = memo(() => {
         </Button>
       </Box>
       <Divider />
-      <Button variant="outlined" disabled={!hasToken} onClick={(event) => loginWithToken()}>
+      <Button
+        variant="outlined"
+        // disabled={!hasToken}
+        disabled
+        onClick={(event) => loginWithToken()}
+      >
         Log In With Previous Credentials
       </Button>
     </Box>
