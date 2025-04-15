@@ -8,6 +8,7 @@ import { Database } from "types/supabase";
 import { MAX_LEVEL_BY_RARITY } from "util/changeOperator";
 import getAvatar from "util/fns/getAvatar";
 import getAvatarFull from "util/fns/getAvatarFull";
+import getContrastText from "util/fns/getContrastText";
 import imageBase from "util/imageBase";
 
 function getModUrl(mod: ModuleData) {
@@ -21,10 +22,32 @@ export const config = {
 export default async function handler(request: NextApiRequest) {
   const user = (request.url?.split("?")[1] ?? "").split("=")[1];
   if (!user) {
-    return new ImageResponse(<>No User Found</>, {
-      width: 1200,
-      height: 630,
-    });
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "32px",
+            color: "#fafafa",
+            background: "#212121",
+            width: "100%",
+            height: "100%",
+            paddingLeft: "64px",
+            paddingTop: "128px",
+            position: "relative",
+            lineHeight: 1,
+          }}
+        >
+          <div style={{ fontSize: 48 }}>Krooster | Import</div>
+          <div style={{ fontSize: 64 }}>Oops! This user does not exist.</div>
+        </div>
+      ),
+      {
+        width: 1200,
+        height: 630,
+      }
+    );
   }
 
   const username = user.toString().replace(",", "");
@@ -33,7 +56,7 @@ export default async function handler(request: NextApiRequest) {
 
   const { data: account, error: accountError } = await supabase
     .from("krooster_accounts")
-    .select("display_name, assistant, supports (op_id, slot), operators (*)")
+    .select("display_name, assistant, color, supports (op_id, slot), operators (*)")
     .eq("username", username.toLocaleLowerCase())
     .limit(1)
     .single();
@@ -82,6 +105,8 @@ export default async function handler(request: NextApiRequest) {
   }
 
   const len = Object.keys(operatorJson).length;
+
+  const color = account.color || "#FFD440";
 
   return new ImageResponse(
     (
@@ -134,9 +159,9 @@ export default async function handler(request: NextApiRequest) {
             margin: 1,
             fontSize: 24,
             padding: "4px 8px",
-            backgroundColor: "#ffd440",
+            backgroundColor: color,
             borderRadius: "4px",
-            color: "black",
+            color: getContrastText(color),
           }}
         >
           /u/{username}
@@ -284,7 +309,7 @@ export default async function handler(request: NextApiRequest) {
                               borderRadius: "50%",
                               backgroundColor: "#121212",
                               border: "3px solid",
-                              borderColor: op.level === MAX_LEVEL_BY_RARITY[opData.rarity][2] ? "#ffe58d" : "#707070",
+                              borderColor: op.level === MAX_LEVEL_BY_RARITY[opData.rarity][2] ? color : "#707070",
                             }}
                           >
                             {op.level}

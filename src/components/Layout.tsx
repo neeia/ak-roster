@@ -16,9 +16,10 @@ interface Props {
   header?: React.ReactNode;
   children?: React.ReactNode;
   head?: React.ReactNode;
+  themeColor?: string;
 }
 const Layout = React.memo((props: Props) => {
-  const { page, tab, children, header, head } = props;
+  const { page, tab, children, header, head, themeColor: _themeColor } = props;
   const { siteDescription, tabs } = config;
   const { pages, requireLogin: r1 } = tabs[tab];
   const { title, description, requireLogin: r2 } = pages[page];
@@ -39,14 +40,16 @@ const Layout = React.memo((props: Props) => {
     if (!user && !loading && requireLogin) router.push("/");
   }, [user, account, loading, requireLogin, router]);
 
+  const themeColor = _themeColor ?? brand[tab] ?? brand.DEFAULT;
+
   return (
-    <ThemeProvider theme={createTheme(brand[tab] ?? brand.DEFAULT, lightMode)}>
+    <ThemeProvider theme={createTheme(themeColor, lightMode)}>
       {head ?? (
         <Head
           title={title}
           url={`${server}${tab ?? ""}${page}`}
           description={description ?? siteDescription}
-          themeColor={brand[tab] ?? brand.DEFAULT}
+          themeColor={themeColor}
         />
       )}
       <Box

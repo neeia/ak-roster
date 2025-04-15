@@ -15,6 +15,7 @@ import { useState } from "react";
 import ProfileDialog from "components/lookup/ProfileDialog";
 import useOperators from "util/hooks/useOperators";
 import useSupports from "util/hooks/useSupports";
+import Color from "components/data/profile/Color";
 
 export interface AccountMutateProps {
   user: AccountData;
@@ -69,6 +70,11 @@ const Profile: NextPage = () => {
           <Onboard {...accProps} />
         </Box>
         <Divider />
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
+          Profile
+          <Color {...accProps} />
+        </Box>
+        <Divider />
         <Assistant {...accProps} />
         <SupportSelection supports={supports} setSupports={setSupports} />
         <Divider />
@@ -79,7 +85,12 @@ const Profile: NextPage = () => {
             <Reddit {...accProps} />
           </Box>
         </Box>
-        <ProfileDialog open={open} onClose={() => setOpen(false)} data={{ roster, supports, account }} />
+        <ProfileDialog
+          open={open}
+          onClose={() => setOpen(false)}
+          data={{ roster, supports, account }}
+          color={account.color ?? undefined}
+        />
       </Box>
     </Layout>
   );

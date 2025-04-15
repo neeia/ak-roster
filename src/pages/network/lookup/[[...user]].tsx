@@ -92,6 +92,8 @@ const Lookup = ({ username: _username, data: _data }: InferGetServerSidePropsTyp
           .join(" - ")
       : "";
 
+  const themeColor = superdata?.account?.color || brand["/network"];
+
   return (
     <Layout
       tab="/network"
@@ -115,7 +117,7 @@ const Lookup = ({ username: _username, data: _data }: InferGetServerSidePropsTyp
           }
           url={`${server}/network/lookup/${username.trim().toLocaleLowerCase()}`}
           description={description}
-          themeColor={brand["/network"]}
+          themeColor={themeColor}
         >
           {_username && superdata && (
             <>
@@ -132,6 +134,7 @@ const Lookup = ({ username: _username, data: _data }: InferGetServerSidePropsTyp
           )}
         </Head>
       }
+      themeColor={themeColor}
     >
       {!superdata ? (
         <Box
