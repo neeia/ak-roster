@@ -157,8 +157,9 @@ const AppDrawer = React.memo((props: Props) => {
             sx={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
-              gap: "4px",
+              gap: "8px",
               mx: "8px",
+              mb: "16px",
               "& > a": {
                 display: "flex",
                 alignItems: "center",
