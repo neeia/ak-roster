@@ -55,7 +55,7 @@ const Select = (props: SelectProps) => {
       disabled={_disabled}
       {...rest}
     >
-      <Image src={`${imageBase}/avatars/${avatarId.replace("#", "%23")}.webp`} width={size} height={size} alt="" />
+      <Image src={`${imageBase}/avatars/${avatarId.replace("#", "%23").replace("+","%2b")}.webp`} width={size} height={size} alt="" />
     </ToggleButton>
     // </Tooltip>
   );
