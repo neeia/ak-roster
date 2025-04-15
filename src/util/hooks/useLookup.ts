@@ -27,16 +27,22 @@ function useLookup() {
   const query = useCallback(async (username: string) => {
     setLoading(true);
 
-    const { data: _account, error: accountError } = await supabase
-      .from("krooster_accounts")
-      .select()
-      .eq("username", username.toLocaleLowerCase())
-      .limit(1);
-    handlePostgrestError(accountError);
+    if (!username) {
+      return { props: { username, data: null } };
+    }
 
-    const account = _account?.[0] as AccountData;
-    const user_id = account?.user_id;
-    if (!user_id) {
+    const { data: _account, error } = await supabase
+      .from("krooster_accounts")
+      .select("*, supports (op_id, slot), operators (*)")
+      .eq("username", username.toLocaleLowerCase())
+      .limit(1)
+      .single();
+
+    const user_id = _account?.user_id;
+    if (error) {
+      handlePostgrestError(error);
+      return;
+    } else if (!user_id) {
       clear();
       enqueueSnackbar(`Could not find user: "${username}". Please check your spelling and try again.`, {
         variant: "error",
@@ -44,23 +50,14 @@ function useLookup() {
       return;
     }
 
-    const { data: _roster, error: rosterError } = await supabase.from("operators").select().match({ user_id });
-    handlePostgrestError(rosterError);
-
-    const { data: supports, error: supportError } = await supabase.from("supports").select().match({ user_id });
-    handlePostgrestError(supportError);
-
-    if (!account || !_roster || !supports) {
-      clear();
-      return;
-    }
+    const { supports, operators, ...account } = _account;
 
     const roster: Roster = {};
-    _roster.filter(({ op_id }) => op_id in operatorJson).forEach((op) => (roster[op.op_id] = op as Operator));
+    operators.forEach((op) => (roster[op.op_id] = op as Operator));
 
     setData({
       roster,
-      account,
+      account: account as AccountData,
       supports,
     });
     setLoading(false);
