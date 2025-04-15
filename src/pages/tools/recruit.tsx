@@ -334,7 +334,6 @@ const Recruit: NextPage = () => {
                       },
                     }));
                   }}
-                  disabled={!user}
                 />
               }
               label="Hide 2/3★ Groups"
@@ -430,6 +429,7 @@ const Recruit: NextPage = () => {
                           showPotentials={settings.showPotential}
                           showBonus={settings.showBonuses}
                           onClick={handleClick}
+                          disabled={!user}
                         />
                       ))}
                 </Box>
