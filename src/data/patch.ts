@@ -2,7 +2,7 @@ const patch = [
   {
     version: "3.3.0",
     date: "April 14, 2025",
-    title: "New CDN, OGP embeds, and better Recruitment",
+    title: "New CDN, OGP embeds, profile colors, and better Recruitment",
     content: ["We've got a lot of big changes for you."],
     changelog: [
       "New CDN",
@@ -15,6 +15,8 @@ const patch = [
         "We're playing around with a new experiment, and this is subject to change or removal.",
         "User lookup pages now have OGP embeds - direct profile links now have a preview of the profile attached on platforms like Discord.",
       ],
+      "Colors!",
+      ["You can now add a color to your profile. This color will be used on your lookup page and in the OGP embed."],
       "Recruitment Calculator",
       [
         "You can now choose to hide recruitment tags that don't contain any rare operators.",
