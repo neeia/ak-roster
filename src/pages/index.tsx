@@ -156,7 +156,8 @@ const Home: NextPage = () => {
   const [account, , { loading }] = useAccount();
 
   return (
-    <Head title="Krooster" url={server} description={config.siteDescription}>
+    <>
+      <Head title="Krooster" url={server} description={config.siteDescription}></Head>
       <Box
         component="main"
         sx={{
@@ -512,7 +513,7 @@ const Home: NextPage = () => {
         </TabPanel>
         <Box sx={{ height: "60px" }} />
       </Box>
-    </Head>
+    </>
   );
 };
 

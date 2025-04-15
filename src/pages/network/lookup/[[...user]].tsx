@@ -13,6 +13,9 @@ import useFilter from "util/hooks/useFilter";
 import ProfileDialog from "components/lookup/ProfileDialog";
 import useLookup from "util/hooks/useLookup";
 import Toolbar from "components/data/Toolbar";
+import { server } from "util/server";
+import Head from "components/app/Head";
+import { brand } from "styles/theme/appTheme";
 
 const Lookup: NextPage = () => {
   const { query: routerQuery } = useRouter();
@@ -47,7 +50,7 @@ const Lookup: NextPage = () => {
       header={
         data && (
           <>
-            <IconButton aria-label="Back to lookup" edge="start" onClick={clear}>
+            <IconButton aria-label="Back to lookup" edge="start" onClick={clear} sx={{ color: "primary.contrastText" }}>
               <ArrowBack />
             </IconButton>
             <Typography component="h1" variant="h5" sx={{ lineHeight: "1rem", mr: 1.5 }}>
@@ -55,6 +58,27 @@ const Lookup: NextPage = () => {
             </Typography>
           </>
         )
+      }
+      head={
+        <Head
+          title={data?.account?.display_name ? `View ${data?.account?.display_name}'s profile` : "Krooster Lookup"}
+          url={`${server}/network/lookup/${username.trim().toLocaleLowerCase()}`}
+          description={
+            data?.account?.friendcode.username && data?.account?.friendcode.tag
+              ? [
+                  `${data.account.friendcode.username}#${data.account.friendcode.tag}`,
+                  data.account.server,
+                  data.account.level && `Level ${data.account.level}`,
+                  data.account.onboard,
+                ]
+                  .filter((s) => s)
+                  .join(" - ")
+              : ""
+          }
+          themeColor={brand["/network"]}
+        >
+          <meta property="og:image" content={`${server}/api/og?username=${username.trim().toLocaleLowerCase()}`} />
+        </Head>
       }
     >
       {!data ? (
