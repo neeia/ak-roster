@@ -46,10 +46,11 @@ interface Props {
   showPotentials: boolean;
   showBonus: boolean;
   onClick?: (e: React.MouseEvent<HTMLElement>, op_id: string) => void;
+  disabled?: boolean;
 }
 
 const RecruitableOperatorCard = React.memo((props: Props) => {
-  const { op, showPotentials, showBonus, onClick } = props;
+  const { op, showPotentials, showBonus, onClick, disabled = false } = props;
 
   const opData = operatorJson[op.op_id];
   const [n, t] = opData.name.split(/ [Tt]he /g);
@@ -78,6 +79,7 @@ const RecruitableOperatorCard = React.memo((props: Props) => {
     <Box component="li" sx={{ display: "contents" }}>
       <Button
         onClick={(e) => onClick?.(e, op.op_id)}
+        disabled={disabled}
         sx={{
           listStyleType: "none",
           display: "flex",
@@ -92,6 +94,9 @@ const RecruitableOperatorCard = React.memo((props: Props) => {
           padding: "4px",
           justifyItems: "center",
           alignItems: "center",
+          "&:not(._):not(._)": {
+            opacity: 1,
+          },
         }}
       >
         <Box
