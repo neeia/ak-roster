@@ -117,7 +117,7 @@ const Login: NextPage = () => {
 
   const [resetOpen, setResetOpen] = useState<boolean>(false);
   return (
-    <AuthLayout title="Sign in">
+    <AuthLayout title="Sign in" path="/login">
       {loading ? (
         <Box sx={{ p: 4, display: "flex", justifyContent: "center" }}>
           <CircularProgress />

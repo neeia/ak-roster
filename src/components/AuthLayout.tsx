@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 
 interface Props {
   title: string;
+  path: string;
   children?: React.ReactNode;
 }
 const AuthLayout = (props: Props) => {
-
   const [rng, setRng] = useState(Math.floor(Math.random() * 8));
   useEffect(() => {
     const timeout = setInterval(() => setRng((n) => (n + 1) % 8), 8000);
@@ -19,7 +19,12 @@ const AuthLayout = (props: Props) => {
   }, []);
 
   return (
-    <Head title="Krooster" url={`${server}/register`} description={config.siteDescription}>
+    <>
+      <Head
+        title={props.title}
+        url={`${server}${props.path}`}
+        description={config.tabs[""].pages[props.path]?.description ?? config.siteDescription}
+      />
       <Box
         sx={{
           height: "100dvh",
@@ -72,7 +77,7 @@ const AuthLayout = (props: Props) => {
           </Box>
         </Box>
       </Box>
-    </Head>
+    </>
   );
 };
 

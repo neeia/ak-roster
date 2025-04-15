@@ -252,7 +252,7 @@ const Register: NextPage = () => {
   };
 
   return (
-    <AuthLayout title={title[flow]}>
+    <AuthLayout title={title[flow]} path="/register">
       {loading ? (
         <Box sx={{ p: 4, display: "flex", justifyContent: "center" }}>
           <CircularProgress />

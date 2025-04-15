@@ -15,9 +15,10 @@ interface Props {
   page: string;
   header?: React.ReactNode;
   children?: React.ReactNode;
+  head?: React.ReactNode;
 }
 const Layout = React.memo((props: Props) => {
-  const { page, tab, children, header } = props;
+  const { page, tab, children, header, head } = props;
   const { siteDescription, tabs } = config;
   const { pages, requireLogin: r1 } = tabs[tab];
   const { title, description, requireLogin: r2 } = pages[page];
@@ -40,7 +41,14 @@ const Layout = React.memo((props: Props) => {
 
   return (
     <ThemeProvider theme={createTheme(brand[tab] ?? brand.DEFAULT, lightMode)}>
-      <Head title={title} url={`${server}${tab ?? ""}${page}`} description={description ?? siteDescription} />
+      {head ?? (
+        <Head
+          title={title}
+          url={`${server}${tab ?? ""}${page}`}
+          description={description ?? siteDescription}
+          themeColor={brand[tab] ?? brand.DEFAULT}
+        />
+      )}
       <Box
         display="grid"
         height="100%"
