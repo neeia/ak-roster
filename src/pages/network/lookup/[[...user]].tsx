@@ -115,7 +115,14 @@ const Lookup = ({ username: _username, data: _data }: InferGetServerSidePropsTyp
           }
           themeColor={brand["/network"]}
         >
-          <meta property="og:image" content={`${server}/api/og/${_username}`} />
+          {_username && (
+            <>
+              <meta property="og:image" content={`${server}/api/og/${_username}`} />
+              <meta property="og:image:type" content="image/png" />
+              <meta property="og:image:width" content="1200" />
+              <meta property="og:image:height" content="630" />
+            </>
+          )}
         </Head>
       }
     >
