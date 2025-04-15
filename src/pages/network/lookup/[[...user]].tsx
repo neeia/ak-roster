@@ -77,7 +77,7 @@ const Lookup: NextPage = () => {
           }
           themeColor={brand["/network"]}
         >
-          <meta property="og:image" content={`${server}/api/og?username=${username.trim().toLocaleLowerCase()}`} />
+          <meta property="og:image" content={`${server}/api/og/${username.trim().toLocaleLowerCase()}`} />
         </Head>
       }
     >
