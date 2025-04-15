@@ -1,5 +1,31 @@
 const patch = [
   {
+    version: "3.3.0",
+    date: "April 14, 2025",
+    title: "New CDN, OGP embeds, and better Recruitment",
+    content: ["We've got a lot of big changes for you."],
+    changelog: [
+      "New CDN",
+      [
+        "As part of my ongoing efforts to reduce monthly costs, Krooster now uses a new CDN.",
+        "Hopefully, this change should not impact you. If you notice any issues, please let me know.",
+      ],
+      "OGP Embeds",
+      [
+        "We're playing around with a new experiment, and this is subject to change or removal.",
+        "User lookup pages now have OGP embeds - direct profile links now have a preview of the profile attached on platforms like Discord.",
+      ],
+      "Recruitment Calculator",
+      [
+        "You can now choose to hide recruitment tags that don't contain any rare operators.",
+        "You can also now update your operator's potentials directly from the recruitment screen. You will have to be logged in to do this.",
+      ],
+      "Unfortunately, due to the login changes on Yostar's side, the import feature is currently broken.",
+      ["We're optimistic that fixing this won't take too long, but we're not sure when it will be back."],
+      "We are also currently discussing sponsorship for Krooster to help with the funding issues.",
+    ],
+  },
+  {
     version: "3.2.0",
     date: "March 31, 2025",
     title: "Planner Summary",
