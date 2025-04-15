@@ -43,8 +43,6 @@ const SupportBlock = (props: Props) => {
   const name = splitName[0];
   const nameIsLong = name.split(" ").length > 1 && name.length >= 16;
 
-  const iconSizes = "(max-width: 768px) 16px, 24px";
-
   return (
     <Box
       sx={{
@@ -126,8 +124,8 @@ const SupportBlock = (props: Props) => {
               className="potential"
               sx={{
                 position: "relative",
-                width: { xs: "12px" },
-                height: { xs: "16px" },
+                width: "12px",
+                height: "16px",
                 backgroundColor: "background.paper",
                 border: "1px solid",
                 borderColor: "background.light",
@@ -142,6 +140,7 @@ const SupportBlock = (props: Props) => {
                   width: "16px",
                   height: "16px",
                   m: "auto",
+                  position: "absolute",
                   left: -4,
                   right: -4,
                   top: -4,
@@ -177,7 +176,7 @@ const SupportBlock = (props: Props) => {
               borderRadius: "50%",
               backgroundColor: "background.paper",
               border: "2px solid",
-              borderColor: op.level === MAX_LEVEL_BY_RARITY[op.rarity][2] ? "primary.light" : "grey.500",
+              borderColor: op.level === MAX_LEVEL_BY_RARITY[op.rarity][2] ? "primary.main" : "grey.500",
             }}
           >
             {op.level}
