@@ -81,7 +81,7 @@ const Lookup = ({ username: _username, data: _data }: InferGetServerSidePropsTyp
 
   const image = `${server}/api/og/${_username}`;
   const description =
-    superdata?.account?.friendcode.username && superdata?.account?.friendcode.tag
+    superdata?.account?.friendcode?.username && superdata?.account?.friendcode?.tag
       ? [
           `${superdata.account.friendcode.username}#${superdata.account.friendcode.tag}`,
           superdata.account.server,

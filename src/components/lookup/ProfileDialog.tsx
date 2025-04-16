@@ -210,9 +210,9 @@ const ProfileDialog = (props: Props) => {
                     backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.75),
                   }}
                 >
-                  {data.account.friendcode.username && (
+                  {data.account.friendcode?.username && (
                     <Typography>
-                      {data.account.friendcode.username}#{data.account.friendcode.tag}
+                      {data.account.friendcode?.username}#{data.account.friendcode?.tag}
                     </Typography>
                   )}
                   {(data.account.server || data.account.level || data.account.onboard) && (
