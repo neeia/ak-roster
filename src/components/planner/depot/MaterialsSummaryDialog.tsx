@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
     Accordion,
     AccordionDetails,
@@ -31,6 +31,8 @@ import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import EventIcon from '@mui/icons-material/Event';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import itemsJson from "data/items.json";
 import ItemBase from "../depot/ItemBase";
 import DepotItem from "types/depotItem";
@@ -86,7 +88,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
 
     const [selectedEvent, setSelectedEvent] = useState<NamedEvent>(createEmptyNamedEvent());
 
-    const [accordionIsExpanded, setAccordionExpanded] = useState(false);
+    const [isAccordionExpanded, setAccordionExpanded] = useState(false);
 
     const [roster] = useOperators();
 
@@ -255,10 +257,19 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     }, []
     );
 
-    const onEventChange = (_event: NamedEvent) => {
-        if (_event.index === -1) setSelectedEvent(createEmptyNamedEvent());
+    //reset if out of index
+    useEffect(() => {
+        if (!open) return;
+        if ((selectedEvent.index + 1) > Object.keys(eventsData).length)
+            setSelectedEvent(createEmptyNamedEvent());
+    }, [open, selectedEvent, eventsData, setSelectedEvent]
+    )
 
-        setSelectedEvent(_event);
+    const onEventChange = (_event: NamedEvent) => {
+        if (_event.index === -1)
+            setSelectedEvent(createEmptyNamedEvent());
+        else
+            setSelectedEvent(_event);
 
         if (balanceType === "event" && !_event.farms) {
             setApplyBalance(false);
@@ -792,8 +803,12 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                         {sortedEventMaterials.length > 0 ? (
                                             <Accordion
                                                 onChange={(_, expanded) => setAccordionExpanded(expanded)}
-                                                expanded={accordionIsExpanded}>
-                                                <AccordionSummary>Income up to the selected event is deducted</AccordionSummary>
+                                                expanded={isAccordionExpanded}>
+                                                <AccordionSummary >
+                                                    <Stack direction="row" width="100%" justifyContent="space-between">Income up to the selected event is deducted
+                                                    {isAccordionExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                                                    </Stack>
+                                                </AccordionSummary>
                                                 <AccordionDetails>
                                                     {sortedEventMaterials
                                                         .map(([id, need]) => (
@@ -862,7 +877,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                             unmountOnExit>
                             <Box>
                                 <Typography variant="h3" p={2} fontWeight="bold">
-                                    Total usage of material types, converted to tier 3. <br />Based on existing operators. Includes costs of elite 1-2, skill levels 1-7, all masteries and modules 1-3 and unrelesed CN operators. Depot is ignored.</Typography>
+                                    Total usage of material types, converted to tier 3. <br />Based on existing operators. Includes costs of elite 1-2, skill levels 1-7, all masteries and modules 1-3 and unreleased CN operators. Depot is ignored.</Typography>
                                 {(sortedAllOperatorsStats.length > 0) && (
                                     <>
                                         <Typography variant="h3" p={2} fontWeight="bold">All operators</Typography>
@@ -913,11 +928,11 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                             handleClose();
                             openEvents(true);
                         }}
-                        sx={{ whiteSpace: "nowrap" }}
+                        sx={{ whiteSpace: "nowrap", minWidth: "fit-content" }}
                     >{fullScreen ? "Events" : "Events tracker"}
                     </Button>
                     <EventsSelector
-                        emptyItem={"Select future event"}
+                        emptyItem={"Select future event (tracker, or defaults)"}
                         dataType={'events'}
                         eventsData={eventsData}
                         selectedEvent={selectedEvent ?? createEmptyNamedEvent()}

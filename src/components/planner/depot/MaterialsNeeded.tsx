@@ -26,6 +26,7 @@ import useMenu from "util/hooks/useMenu";
 import useEvents from "util/hooks/useEvents";
 import { EXP, MAX_SAFE_INTEGER } from "util/fns/depot/itemUtils";
 import { EventsData, SubmitEventProps } from "types/events";
+import { useEventsDefaults } from "util/hooks/useEventsDefaults";
 
 interface Props {
   goals: PlannerGoal[];
@@ -57,6 +58,18 @@ const MaterialsNeeded = React.memo((props: Props) => {
   const [craftToggle, setCraftToggle] = useState(initialCraftToggle);
 
   const { eventsData, setEvents, submitEvent } = useEvents();
+  const { trackerDefaults, fetchDefaults } = useEventsDefaults();
+
+  //conditional defaults fetch from api
+  useEffect(() => {
+    if (summaryOpen && Object.keys(eventsData).length === 0)
+      fetchDefaults();
+    else if (eventsTrackerOpen) {
+      fetchDefaults();
+    }
+  }, [summaryOpen, eventsTrackerOpen]
+  )
+
 
   const handleItemClick = useCallback((itemId: string) => {
     setPopoverItemId(itemId);
@@ -541,7 +554,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
           setSummaryOpen(false);
         }}
         openEvents={setEventsTrackerOpen}
-        eventsData={eventsData}
+        eventsData={Object.keys(eventsData ?? {}).length > 0 ? eventsData : trackerDefaults?.eventsData ?? {}}
       />
       <EventsTrackerDialog
         eventsData={eventsData}
@@ -552,6 +565,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
         }}
         openSummary={setSummaryOpen}
         submitEvent={handleSubmitEvent}
+        trackerDefaults={trackerDefaults}
       />
     </>
   );
