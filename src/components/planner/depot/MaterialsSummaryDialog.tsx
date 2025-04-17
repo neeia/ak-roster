@@ -9,13 +9,8 @@ import {
     DialogActions,
     DialogContent,
     DialogTitle,
-    Divider,
-    FormControl,
     IconButton,
     InputAdornment,
-    InputLabel,
-    MenuItem,
-    Select,
     Slide,
     Stack,
     Switch,
@@ -29,6 +24,13 @@ import {
 } from "@mui/material";
 import { TransitionProps } from '@mui/material/transitions';
 import { Close } from "@mui/icons-material";
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import FunctionsIcon from '@mui/icons-material/Functions';
+import ReduceCapacityIcon from '@mui/icons-material/ReduceCapacity';
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import EventIcon from '@mui/icons-material/Event';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import itemsJson from "data/items.json";
 import ItemBase from "../depot/ItemBase";
 import DepotItem from "types/depotItem";
@@ -36,19 +38,15 @@ import { Item } from "types/item";
 import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
 import GoalData, { GoalDataInsert, getPlannerGoals } from "types/goalData";
 import getGoalIngredients from "util/fns/depot/getGoalIngredients";
-import LeaderboardIcon from '@mui/icons-material/Leaderboard';
-import FunctionsIcon from '@mui/icons-material/Functions';
-import ReduceCapacityIcon from '@mui/icons-material/ReduceCapacity';
-import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
-import { EventsData, Event } from "types/localStorageSettings";
 import { OperatorData } from "types/operators/operator";
 import operators from "data/operators";
 import useOperators from "util/hooks/useOperators";
 import { defaultOperatorObject, MAX_SKILL_LEVEL_BY_PROMOTION } from "util/changeOperator"
 import depotToExp from "util/fns/depot/depotToExp";
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
-import EventIcon from '@mui/icons-material/Event';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import { customItemsSort, EXP, farmItemsSort, formatNumber, getFarmCSS, getItemBaseStyling } from "util/fns/depot/itemUtils";
+import EventsSelector from "components/planner/events/EventsSelector";
+import { EventsData, NamedEvent } from "types/events";
+import { createEmptyNamedEvent } from "util/fns/eventUtils";
 
 type GoalBuilder = Partial<GoalDataInsert>;
 
@@ -76,7 +74,6 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     const { open, onClose, depot, expOwned, goalsMaterials, goalData, openEvents, eventsData } = props;
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-    const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
     const containerRef = useRef<HTMLElement>(null);
 
     const [tab, setTab] = useState('summary');
@@ -87,9 +84,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     const [applyBalance, setApplyBalance] = useState(false);
     const [balanceType, setBalanceType] = useState<string | null>(null);
 
-    const emptyEvent: Event = { index: -1, materials: {} };
-    const [selectedEvent, setSelectedEvent] = useState(emptyEvent);
-    const [isSelectFinished, setIsSelectFinished] = useState(false);
+    const [selectedEvent, setSelectedEvent] = useState<NamedEvent>(createEmptyNamedEvent());
 
     const [accordionIsExpanded, setAccordionExpanded] = useState(false);
 
@@ -123,7 +118,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             </ul>
             <strong>3. Events Tracker Setup</strong> - Planning future upgrades with future income.
             <ul>
-                <li>After adding future Events manually or with import, the Summary will also track free materials.</li>
+                <li>After adding future Events from Defaults, manually or with import, the Summary will also track free materials.</li>
                 <li>Combined materials from selected and previous events are factored into all calculations, reducing required amounts.</li>
                 <li>Highlights farmable tier 3 materials from selected event if they were set in the tracker.</li>
             </ul>
@@ -160,7 +155,6 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     };
 
     const handleClose = () => {
-        setIsSelectFinished(true);
         onClose();
     }
 
@@ -261,22 +255,16 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     }, []
     );
 
-    const onEventChange = (index: number) => {
-        setIsSelectFinished(true);
-        if (index === -1) setSelectedEvent(emptyEvent);
-
-        const _event = Object.entries(eventsData).find(([, eventData]) => eventData.index === index)?.[1] ?? emptyEvent;
+    const onEventChange = (_event: NamedEvent) => {
+        if (_event.index === -1) setSelectedEvent(createEmptyNamedEvent());
 
         setSelectedEvent(_event);
-        setIsSelectFinished(true);
 
         if (balanceType === "event" && !_event.farms) {
             setApplyBalance(false);
             setBalanceType(null);
         };
     }
-
-    const EXP = useMemo(() => ["2001", "2002", "2003", "2004"], []);
 
     const getTotalMaterialsUptoSelectedEvent = useCallback(() => {
         if (!eventsData || selectedEvent.index === -1) return { materials: {}, farmTimes: {} };
@@ -316,37 +304,13 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         if (_exp != 0) _eventMaterials["EXP"] = _exp;
 
         return { materials: _eventMaterials, farmTimes: _farmTimes };
-    }, [EXP, selectedEvent, eventsData]
+    }, [selectedEvent, eventsData]
     );
-
-    const localSortId: [string, number][] = useMemo(() => [
-        ["LMD", -3],
-        ["EXP", -2],
-        ["Certificate", -1],
-        //all mats= 0
-        ["Summary", 1],
-        ["Catalyst", 3],
-        ["chip", 2],
-        ["Chip", 2],
-        ["Data", 4],
-    ], []);
 
     const includeCraftIds: string[] = useMemo(() => [
         "30013", //Orirock Cluster
     ], []);
 
-    const customItemsSort = useCallback((idA: string, idB: string, lowTierFirst: boolean = false) => {
-        const itemA = itemsJson[idA as keyof typeof itemsJson];
-        const itemB = itemsJson[idB as keyof typeof itemsJson];
-        const itemAlocalSortID = localSortId.find(keyword => itemA.name.includes(keyword[0]))?.[1] ?? 0;
-        const itemBlocalSortID = localSortId.find(keyword => itemB.name.includes(keyword[0]))?.[1] ?? 0;
-        return (
-            (itemAlocalSortID - itemBlocalSortID) ||
-            (!lowTierFirst ? (itemB.tier - itemA.tier) : (itemA.tier - itemB.tier)) ||
-            (itemB.sortId - itemA.sortId)
-        )
-    }, [localSortId]
-    )
     const calculateStatisticTab = useCallback(() => {
 
         if (!open) return { sortedAllGoalsStats: [], sortedFilteredGoalsStats: [] };
@@ -505,7 +469,6 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             sortedNeedToFarm: [],
             sortedNeedToCraft: [],
             sortedPossibleCraft: [],
-            eventsList: [],
             sortedEventMaterials: [],
             farmTimes: {}
         };
@@ -529,10 +492,6 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         );
 
         _depot["EXP"] = { material_id: "EXP", stock: expOwned };
-
-        //+eventsData: count events mats and add them to depot
-        const eventsList = Object.entries(eventsData ?? {})
-            .sort(([, a], [, b]) => a.index - b.index)
 
         const { materials: _eventMaterials, farmTimes } = getTotalMaterialsUptoSelectedEvent();
 
@@ -577,15 +536,11 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         const sortedNeedToFarm = Object.entries(_materialsNeeded)
             .filter(([id, need]) => !craftingList.includes(id) && need - (_depot[id]?.stock ?? 0) > 0)
             .sort(([itemIdA], [itemIdB]) => {
-                const itemA = itemsJson[itemIdA as keyof typeof itemsJson];
-                const itemB = itemsJson[itemIdB as keyof typeof itemsJson];
-                const itemAlocalSortID = localSortId.find(keyword => itemA.name.includes(keyword[0]))?.[1] ?? 0;
-                const itemBlocalSortID = localSortId.find(keyword => itemB.name.includes(keyword[0]))?.[1] ?? 0;
                 const isInSelectedEventFarmA = selectedEvent?.farms?.includes(itemIdA) ? 1 : 0;
                 const isInSelectedEventFarmB = selectedEvent?.farms?.includes(itemIdB) ? 1 : 0;
                 return (
                     (isInSelectedEventFarmB - isInSelectedEventFarmA) ||
-                    (itemAlocalSortID - itemBlocalSortID) ||
+                    (farmItemsSort(itemIdA, itemIdB)) ||
                     (_materialsNeeded[itemIdB] - (_depot[itemIdB]?.stock ?? 0)) - (_materialsNeeded[itemIdA] - (_depot[itemIdA]?.stock ?? 0))
                 );
             })
@@ -623,43 +578,15 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             sortedNeedToFarm,
             sortedNeedToCraft,
             sortedPossibleCraft,
-            eventsList,
             sortedEventMaterials,
             farmTimes,
         }
-    }, [EXP, open, goalsMaterials, depot, expOwned, eventsData, localSortId, includeCraftIds, selectedEvent,
-        getTier3StatisticFromMaterials, getTotalMaterialsUptoSelectedEvent, customItemsSort,
+    }, [open, goalsMaterials, depot, expOwned, includeCraftIds, selectedEvent,
+        getTier3StatisticFromMaterials, getTotalMaterialsUptoSelectedEvent,
         addBalanceValue]
     );
 
-    const formatNumber = (num: number) => {
-        return num < 1000
-            ? num
-            : num < 1000000
-                ? `${num % 1000 === 0 ? `${num / 1000}` : (num / 1000).toFixed(1)}K`
-                : `${num % 1000000 === 0 ? `${num / 1000000}` : (num / 1000000).toFixed(2)}M`;
-    };
-
-    const itemBaseSize = isMdUp ? 64 : 56;
-
-    const getNumberCSS = (size: number = itemBaseSize) => ({
-        component: "span",
-        sx: {
-            display: "inline-block",
-            py: 0.25,
-            px: 0.5,
-            lineHeight: 1,
-            mr: `${size / 16}px`,
-            mb: `${size / 16}px`,
-            alignSelf: "end",
-            justifySelf: "end",
-            backgroundColor: "background.paper",
-            zIndex: 1,
-            fontSize: `${size / 24 + 12}px`,
-        },
-    });
-
-    const { sortedNeedToFarm, sortedNeedToCraft, sortedPossibleCraft, eventsList, sortedEventMaterials, farmTimes } = useMemo(calculateSummaryTab, [calculateSummaryTab]);
+    const { sortedNeedToFarm, sortedNeedToCraft, sortedPossibleCraft, sortedEventMaterials, farmTimes } = useMemo(calculateSummaryTab, [calculateSummaryTab]);
 
     return (
         <>
@@ -804,9 +731,9 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                 </Stack>
                                                 <Stack direction="row" flexWrap="wrap" alignItems="center">
                                                     {sortedNeedToFarm.map(([id, need]) => (
-                                                        <ItemBase key={id} itemId={id} size={itemBaseSize}
-                                                            sx={{ backgroundColor: selectedEvent?.farms?.includes(id) ? "primary.main" : "" }}>
-                                                            <Typography {...getNumberCSS()}>
+                                                        <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary").itemBaseSize}
+                                                            sx={{ ...(selectedEvent?.farms?.includes(id) && getFarmCSS("box")) }}>
+                                                            <Typography {...getItemBaseStyling("summary").numberCSS}>
                                                                 {formatNumber(need)}
                                                             </Typography>
                                                         </ItemBase>
@@ -829,15 +756,15 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                                                 zIndex: 1,
                                                                             }}
                                                                         />
-                                                                        <ItemBase itemId={id} size={itemBaseSize * 0.75}>
-                                                                            <Typography {...getNumberCSS(itemBaseSize * 0.75)}>
+                                                                        <ItemBase itemId={id} size={getItemBaseStyling("summary_craft").itemBaseSize}>
+                                                                            <Typography {...getItemBaseStyling("summary_craft").numberCSS}>
                                                                                 {formatNumber(need)}
                                                                             </Typography>
                                                                         </ItemBase>
                                                                     </Box>
                                                                 ) : (
-                                                                    <ItemBase key={id} itemId={id} size={itemBaseSize * 0.75}>
-                                                                        <Typography {...getNumberCSS(itemBaseSize * 0.75)}>
+                                                                    <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary_craft").itemBaseSize}>
+                                                                        <Typography {...getItemBaseStyling("summary_craft").numberCSS}>
                                                                             {formatNumber(need)}
                                                                         </Typography>
                                                                     </ItemBase>
@@ -854,8 +781,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                 <Typography variant="h3" p={1} fontWeight="bold">Craft high tier materials</Typography>
                                                 {sortedNeedToCraft
                                                     .map(([id, need]) => (
-                                                        <ItemBase key={id} itemId={id} size={itemBaseSize}>
-                                                            <Typography {...getNumberCSS()}>
+                                                        <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary").itemBaseSize}>
+                                                            <Typography {...getItemBaseStyling("summary").numberCSS}>
                                                                 {formatNumber(need)}
                                                             </Typography>
                                                         </ItemBase>
@@ -871,14 +798,11 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                     {sortedEventMaterials
                                                         .map(([id, need]) => (
                                                             <Tooltip key={`${id}-tip`} title={farmTimes[id] ? `can be farmed in ${farmTimes[id]} event${farmTimes[id] > 1 ? "s" : ""}` : ""}>
-                                                                <ItemBase key={id} itemId={id} size={itemBaseSize * 0.6}
+                                                                <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary_totals").itemBaseSize}
                                                                     sx={{
-                                                                        ...(farmTimes[id] && {
-                                                                            backgroundColor: "primary.main",
-                                                                            borderRadius: "20px",
-                                                                        })
+                                                                        ...(farmTimes[id] && getFarmCSS("round"))
                                                                     }}>
-                                                                    <Typography {...getNumberCSS(0)}>
+                                                                    <Typography {...getItemBaseStyling("summary_totals").numberCSS}>
                                                                         {formatNumber(need)}
                                                                     </Typography>
                                                                 </ItemBase>
@@ -908,8 +832,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                 Total usage of material types, converted to tier 3. <br />Based on planner goals of user. Depot is ignored. </Typography>
                                             <Typography variant="h3" p={2} fontWeight="bold">For all goals, ignoring filters</Typography>
                                             {sortedAllGoalsStats.map(([id, total, percent]) => (
-                                                <ItemBase key={id} itemId={id} size={itemBaseSize}>
-                                                    <Typography {...getNumberCSS()}>
+                                                <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary").itemBaseSize}>
+                                                    <Typography {...getItemBaseStyling("summary").numberCSS}>
                                                         {isTotalDigits ? formatNumber(total) : percent + "%"}
                                                     </Typography>
                                                 </ItemBase>
@@ -918,8 +842,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                 <>
                                                     <Typography variant="h3" p={2} fontWeight="bold">For active goals, with filters</Typography>
                                                     {sortedFilteredGoalsStats.map(([id, total, percent]) => (
-                                                        <ItemBase key={id} itemId={id} size={itemBaseSize}>
-                                                            <Typography {...getNumberCSS()}>
+                                                        <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary").itemBaseSize}>
+                                                            <Typography {...getItemBaseStyling("summary").numberCSS}>
                                                                 {isTotalDigits ? formatNumber(total) : percent + "%"}
                                                             </Typography>
                                                         </ItemBase>
@@ -943,8 +867,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                     <>
                                         <Typography variant="h3" p={2} fontWeight="bold">All operators</Typography>
                                         {sortedAllOperatorsStats.map(([id, total, percent]) => (
-                                            <ItemBase key={id} itemId={id} size={itemBaseSize}>
-                                                <Typography {...getNumberCSS()}>
+                                            <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary").itemBaseSize}>
+                                                <Typography {...getItemBaseStyling("summary").numberCSS}>
                                                     {isTotalDigits ? formatNumber(total) : percent + "%"}
                                                 </Typography>
                                             </ItemBase>
@@ -955,8 +879,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                     <>
                                         <Typography variant="h3" p={2} fontWeight="bold">All unowned by user operators</Typography>
                                         {sortedUnownedOperatorsStats.map(([id, total, percent]) => (
-                                            <ItemBase key={id} itemId={id} size={itemBaseSize}>
-                                                <Typography {...getNumberCSS()}>
+                                            <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary").itemBaseSize}>
+                                                <Typography {...getItemBaseStyling("summary").numberCSS}>
                                                     {isTotalDigits ? formatNumber(total) : percent + "%"}
                                                 </Typography>
                                             </ItemBase>
@@ -989,44 +913,16 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                             handleClose();
                             openEvents(true);
                         }}
+                        sx={{ whiteSpace: "nowrap" }}
                     >{fullScreen ? "Events" : "Events tracker"}
                     </Button>
-                    <FormControl sx={{ flexGrow: 1 }}>
-                        <InputLabel>Select future Event</InputLabel>
-                        <Select
-                            disabled={tab !== "summary" ? true : false}
-                            value={eventsList.length === 0 ? -1 : (selectedEvent?.index ?? -1)}
-                            onChange={(e) => onEventChange(Number(e.target.value))}
-                            onOpen={() => {
-                                setIsSelectFinished(false)
-                            }}
-                            label="Select future Event"
-                            fullWidth
-                        >
-                            <MenuItem value={-1} key={-1} className="no-underline">without Events</MenuItem>
-                            <Divider component="li" />
-                            {eventsList
-                                .map(([name, event]) => (
-                                    <MenuItem value={event.index} key={event.index} className="no-underline">
-                                        <Stack direction="row" justifyContent="space-between" alignItems="center" width="stretch">
-                                            {`${event.index}: ${name}`} {!isSelectFinished ? (
-                                                <Stack direction="row">
-                                                    {(event.farms ?? []).map((id) => [id, 0] as [string, number])
-                                                        .concat(Object.entries(event.materials)
-                                                            .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB)))
-                                                        .slice(0, fullScreen ? 4 : 10)
-                                                        .map(([id, quantity], idx) => (
-                                                            <ItemBase key={`${id}${quantity === 0 && "-farm"}`} itemId={id} size={itemBaseSize * 0.5}>
-                                                                <Typography {...getNumberCSS(0)}>{quantity === 0 ? ["Ⅰ", "Ⅱ", "Ⅲ"][idx] : formatNumber(quantity)}</Typography>
-                                                            </ItemBase>
-                                                        ))}
-                                                    {"..."}
-                                                </Stack>) : null}
-                                        </Stack>
-                                    </MenuItem>
-                                ))}
-                        </Select>
-                    </FormControl>
+                    <EventsSelector
+                        emptyItem={"Select future event"}
+                        dataType={'events'}
+                        eventsData={eventsData}
+                        selectedEvent={selectedEvent ?? createEmptyNamedEvent()}
+                        onChange={onEventChange}
+                    />
                 </DialogActions>
             </Dialog>
         </>)

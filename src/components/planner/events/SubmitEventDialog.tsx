@@ -1,9 +1,9 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField, Typography } from "@mui/material";
 import React, { useEffect, useMemo, useCallback, useState } from "react";
 import { NamedEvent, EventsData, SubmitEventProps, EventsSelectorProps, WebEvent, TrackerDefaults, SubmitSource } from "types/events";
-import EventsSelector from "../events/EventsSelector";
+import EventsSelector from "./EventsSelector";
 import { formatNumber, getWidthFromValue, standardItemsSort, getItemBaseStyling } from "util/fns/depot/itemUtils"
-import ItemEditBox from "../events/ItemEditBox";
+import ItemEditBox from "./ItemEditBox";
 import useEvents from "util/hooks/useEvents";
 import { createEmptyEvent, createEmptyNamedEvent, getEventsFromWebEvents } from "util/fns/eventUtils";
 

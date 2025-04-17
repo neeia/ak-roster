@@ -46,7 +46,7 @@ import { Close } from "@mui/icons-material";
 import { DataShareInfo } from 'util/fns/depot/exportImportHelper';
 import { debounce } from 'lodash';
 import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
-import SubmitEventDialog from 'components/planner/depot/AddEventToDepotDialog';
+import SubmitEventDialog from 'components/planner/events/SubmitEventDialog';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import { MAX_SAFE_INTEGER, getWidthFromValue, formatNumber, standardItemsSort, getItemBaseStyling, isMaterial, getDefaultEventMaterials, getFarmCSS } from 'util/fns/depot/itemUtils'
 import { createEmptyEvent, createEmptyNamedEvent, getDateString, reindexEvents } from "util/fns/eventUtils"
