@@ -174,8 +174,10 @@ const PlannerGoalAdd = (props: Props) => {
             delete _goalBuilder.masteries_from;
             delete _goalBuilder.masteries_to;
           } else {
-            _goalBuilder.masteries_from = currentOp.masteries;
-            _goalBuilder.masteries_to = currentOp.masteries;
+            const skillCount = opData.skillData?.length ?? 0;
+            const masteries = new Array(skillCount).map((_, i) => currentOp.masteries[i] ?? 0);
+            _goalBuilder.masteries_from = masteries;
+            _goalBuilder.masteries_to = masteries;
           }
           return _goalBuilder;
         });
