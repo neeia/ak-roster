@@ -133,18 +133,35 @@ const SubmitEventDialog = (props: Props) => {
     }
 
     const handleInputChange = (id: string, value: number) => {
-
         setRawMaterials((prev) => {
             const newValue = Math.max(0, Math.min(value || 0, materialsLimit?.[id] ?? 0));
             const updated = { ...prev, [id]: newValue };
 
-            const allValuesMatch = Object.entries(updated).every(
-                ([key, val]) => val === (materialsLimit?.[key] ?? 0)
-            );
-            setIsNumbersMatch(allValuesMatch);
             return updated;
         });
     };
+
+    useEffect(() => {
+        if (!open) return;
+
+        const allValuesMatch = Object.entries(rawMaterials).every(
+            ([key, val]) => val === (materialsLimit?.[key] ?? 0)
+        );
+        setIsNumbersMatch(allValuesMatch);
+
+    }, [open, rawMaterials, materialsLimit, setIsNumbersMatch]
+    )
+
+    useEffect(() => {
+        if (!open) return;
+        if (source == "current" && (selectedEvent?.index ?? -1) === -1) {
+            if (isNumbersMatch && (submitedEvent?.farms ?? []).length === 0)
+                setMode("remove");
+            else
+                setMode("modify");
+        }
+    }, [open, source, setMode, submitedEvent, selectedEvent, isNumbersMatch]
+    )
 
     //stale data hooks 
     const { getNextMonthsData } = useEvents();

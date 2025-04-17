@@ -37,21 +37,22 @@ import itemsJson from 'data/items.json';
 import ItemBase from 'components/planner/depot/ItemBase';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import { TransitionProps } from '@mui/material/transitions';
-import { EventsData, SubmitEventProps, SubmitSource } from "types/events";
+import { EventsData, SubmitEventProps, SubmitSource, TrackerDefaults } from "types/events";
 import InputIcon from '@mui/icons-material/Input';
-import ImportExportIcon from '@mui/icons-material/ImportExport';
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from '@mui/icons-material/Delete';
+import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
+import ImportExportIcon from '@mui/icons-material/ImportExport';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { Close } from "@mui/icons-material";
 import { DataShareInfo } from 'util/fns/depot/exportImportHelper';
 import { debounce } from 'lodash';
-import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
 import SubmitEventDialog from 'components/planner/events/SubmitEventDialog';
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import { MAX_SAFE_INTEGER, getWidthFromValue, formatNumber, standardItemsSort, getItemBaseStyling, isMaterial, getDefaultEventMaterials, getFarmCSS } from 'util/fns/depot/itemUtils'
 import { createEmptyEvent, createEmptyNamedEvent, getDateString, reindexEvents } from "util/fns/eventUtils"
 import ItemEditBox from 'components/planner/events/ItemEditBox';
-import { useEventsDefaults } from 'util/hooks/useEventsDefaults';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -69,10 +70,11 @@ interface Props {
     onChange: (data: EventsData) => void;
     openSummary: (state: boolean) => void;
     submitEvent: (submit: SubmitEventProps) => void;
+    trackerDefaults: TrackerDefaults;
 }
 
 const EventsTrackerDialog = React.memo((props: Props) => {
-    const { open, onClose, eventsData, onChange, openSummary, submitEvent } = props;
+    const { open, onClose, eventsData, onChange, openSummary, submitEvent, trackerDefaults } = props;
 
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -101,8 +103,6 @@ const EventsTrackerDialog = React.memo((props: Props) => {
     const [selectedEvent, setSelectedEvent] = useState(createEmptyNamedEvent());
     const [submitSources, setSubmitSources] = useState<SubmitSource[]>(["defaults", "defaultsWeb", "months"]);
 
-    const { trackerDefaults, loading, fetchDefaults } = useEventsDefaults();
-
     const SUPPORTED_IMPORT_EXPORT_TYPES: DataShareInfo[] = [
         {
             format: "CSV",
@@ -126,7 +126,7 @@ const EventsTrackerDialog = React.memo((props: Props) => {
             </ul>
             <h3>Builder</h3>
             <ul>
-                <li>Used to put income "From" source event on top, into target event at bottom.</li>
+                <li>Used to put income from source event on top, into target event at bottom.</li>
                 <li>Action switch to pick what to do with target event: either modify-merge mats, or directly replace</li>
                 <li>Sources of data can be switched to pick from defaults, months, or current events list</li>
                 <li>If called with button on the event will let to fully or partially move materials from event to Depot</li>
@@ -135,19 +135,13 @@ const EventsTrackerDialog = React.memo((props: Props) => {
             {trackerDefaults.lastUpdated ? `Updated ${getDateString(trackerDefaults.lastUpdated)}` : ""}
             <ul>
                 <li>Provided by <Link href="https://ak-events-tracker.vercel.app/" underline="always">ak-events-tracker</Link>.</li>
-                <li>Data from CN prts.wiki events, adjusted by six months, is combined with monthly estimates and sorted by date. These are defaults used by the tracker.</li>
-                <li>The default order can be used as-is or adjusted as global updates occur.</li>
+                <li>Data from CN prts.wiki events, adjusted by six months, is combined with monthly estimates and auto sorted by date. These are defaults used by the tracker.</li>
+                <li>The default list can be used as-is, or as shifts occur in global shedule, can be used as base to create adjusted personal list</li>
             </ul>
         </>;
 
     const EXPORT_IMPORT_INFORMATIOn =
         <Typography variant='caption'>Supports export and import from other Arknights community data sources (like tracking sheets). Data should be compiled into the presented import formats.</Typography>;
-
-    useEffect(() => {
-        //only try to fetch defaults if tracker was opened.
-        if (open)
-            fetchDefaults();
-    }, [open]);
 
     useEffect(() => {
         if (open) {
@@ -374,7 +368,7 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                                     ))}
                             </Stack>
                         </Stack>
-                        <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 4, md: 2 }}>
+                        <Stack direction={{ xs: "column", md: "row" }} alignItems="center" gap={1}>
                             <Tooltip title="Add to Depot & Builder">
                                 <MoveToInboxIcon
                                     fontSize="large"
@@ -392,15 +386,16 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                                         setSubmitDialogOpen(true);
                                     }} />
                             </Tooltip>
+                            {expandedAccordtition === name ? <ExpandLessIcon /> : <ExpandMoreIcon />}
                             <DeleteIcon
                                 fontSize="large"
-                                sx={{
+                                sx={{ 
                                     transition: "opacity 0.1s",
                                     "&:focus, &:hover": {
                                         opacity: 0.5,
                                     },
                                 }}
-                                onClick={() => handleDeleteEvent(name)} />
+                                onClick={() => handleDeleteEvent(name)} />                            
                         </Stack>
                     </Stack>
                 </AccordionSummary>
@@ -590,7 +585,6 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                 setSubmitSources(['defaults', 'months', 'events', 'defaultsWeb'])
                 setSubmitDialogOpen(true);
             }}
-            disabled={loading}
             sx={{ minWidth: "fit-content", whiteSpace: "nowrap" }}
         >Builder
         </Button>)
@@ -601,7 +595,6 @@ const EventsTrackerDialog = React.memo((props: Props) => {
             variant="contained"
             size="small"
             onClick={handleSetEventsFromDefaults}
-            disabled={loading}
             sx={{ minWidth: "fit-content", whiteSpace: "nowrap" }}
         >Defaults
         </Button>)
@@ -614,7 +607,7 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                 onClose={handleClose}
                 TransitionComponent={Transition}
                 fullScreen={fullScreen}
-                keepMounted fullWidth maxWidth="md">
+                keepMounted fullWidth maxWidth="lg">
                 <DialogTitle
                     sx={{
                         display: "flex",

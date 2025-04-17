@@ -34,7 +34,7 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
             break;
         }
         case 'events': {
-            label = emptyItem ? "put materials in" : "Select event";
+            label = (emptyItem && !emptyItem.includes("future")) ? "put materials in" : "Select event";
             break;
         }
         case 'months': { //source only
@@ -81,7 +81,10 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
         <InputLabel>{label}</InputLabel>
         <Select
             disabled={disabled}
-            value={eventsList.length === 0 ? -1 : (selectedEvent?.index ?? -1)}
+            value={(eventsList.length === 0
+                || ((selectedEvent?.index ?? -1) + 1) > Object.keys(eventsData).length)
+                ? -1
+                : (selectedEvent?.index ?? -1)}
             onChange={(e) => handleChange(Number(e.target.value))}
             onOpen={() => {
                 setIsSelectFinished(false)
