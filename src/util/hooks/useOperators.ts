@@ -56,7 +56,19 @@ function useOperators() {
 
       let _roster: Roster = {};
       if (dbOperators?.length)
-        dbOperators.forEach((op) => (op.op_id in operatorJson ? (_roster[op.op_id] = op as Operator) : null));
+        dbOperators.forEach((op) => {
+          if (op.op_id in operatorJson) {
+            const opData = operatorJson[op.op_id];
+            const masteries = opData.skillData?.map((_, i) => op.masteries[i] ?? 0);
+            const modules = Object.fromEntries(
+              (opData.moduleData ?? []).map(({ moduleId }) => [
+                moduleId,
+                (op.modules as Record<string, number>)?.[moduleId] ?? 0,
+              ])
+            );
+            _roster[op.op_id] = { ...op, masteries, modules } as Operator;
+          }
+        });
       else if (!Object.keys(operators).length && legacyOperators) {
         enqueueSnackbar("Loading cached roster data...", { variant: "info" });
         _roster = repair(legacyOperators);
