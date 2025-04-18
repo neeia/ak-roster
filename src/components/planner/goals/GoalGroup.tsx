@@ -11,6 +11,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControlLabel,
   IconButton,
   Menu,
   MenuItem,
@@ -35,7 +36,7 @@ interface Props {
   inactiveOps: string[];
   onOpSelect: (opId: string, groupName: string) => void;
   onGroupSelect: (groupName: string) => void;
-  getCheckboxState: (groupName: string) => { checked: boolean; indeterminate: boolean; disabled: boolean };
+  getCheckboxState: (groupName: string) => { checkboxText: string, checkboxState: { checked: boolean; indeterminate: boolean; disabled: boolean } };
 }
 
 const GoalGroup = memo((props: Props) => {
@@ -58,6 +59,8 @@ const GoalGroup = memo((props: Props) => {
   const [deleteGroupOpen, setDeleteGroupOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const isMenuOpen = Boolean(anchorEl);
+
+  const { checkboxText, checkboxState } = getCheckboxState(groupName);
 
   const onDeleteFromGroupsClick = useCallback(() => {
     removeAllGoalsFromGroup(groupName);
@@ -163,13 +166,17 @@ const GoalGroup = memo((props: Props) => {
               <Typography textAlign="center" variant="h5" sx={{ flexGrow: "1" }}>
                 {groupName}
               </Typography>
-              <Checkbox
-                {...getCheckboxState(groupName)}
-                onClick={(e) => {
-                  const target = e.target as HTMLInputElement;
-                  if (target.checked || !expanded) e.stopPropagation();
-                  onGroupSelect(groupName);
-                }}
+              <FormControlLabel
+                label={checkboxText}
+                labelPlacement="start"
+                control={<Checkbox
+                  {...checkboxState}
+                  onClick={(e) => {
+                    const target = e.target as HTMLInputElement;
+                    if (target.checked || !expanded) e.stopPropagation();
+                    onGroupSelect(groupName);
+                  }}
+                />}
               />
               {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </Box>
@@ -211,8 +218,12 @@ const GoalGroup = memo((props: Props) => {
                               borderBottomRightRadius: 4,
                               filter: (theme) =>
                                 `drop-shadow(-4px -2px 4px ${alpha(theme.palette.background.paper, 0.5)})
-                                 ${isEnabled ? "grayscale(0)" : "grayscale(1)"}`,
+                                 ${isEnabled ? "grayscale(0)" : "grayscale(1) opacity(0.6)"}`,
                               ml: -1.5,
+                              "&:hover": {
+                                backgroundColor: (theme) => alpha(theme.palette.error.dark, isEnabled ? 0.25 : 1)
+                              },
+
                             }}
                           />
                         </Box>
