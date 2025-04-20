@@ -105,15 +105,15 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             </ul>
             <strong>2. Overfarming to Balance</strong>
             <ul>
-                <li><strong>Balance</strong> inputs adjust farming summary around a target number of available tier 3 materials after goals needs are met.</li>
+                <li style={{ verticalAlign: "bottom" }}><strong><CalendarMonthIcon />Balance </strong> inputs adjust farming summary around a target number of available tier 3 materials after goals needs are met.</li>
                 <li><strong>Algorithm:</strong>
                     <ul>
                         <li>Full balance value is applied to the highest %-usage material that isn't orirock</li>
                         <li>Adjusted values are applied to other materials based on the difference in %-usage.</li>
                         <li>%-usage depends on whether goals are tracked, with priority given to: 1. active goals, 2. all goals, 3. unowned operators statistics.</li>
-                        <li>
-                            The <strong>"Event farms only"</strong> button applies the same algorithm but exclusively to 2-3 farmable materials from a selected event.
-                            (<em>To use this option:</em> Set up farmables in the Event Tracker by clicking on tier 3 images)
+                        <li style={{ verticalAlign: "bottom" }}>
+                            The <EventIcon /><strong>Event farms only</strong> button applies the same algorithm but exclusively to 2-3 farmable materials from a selected event.
+                            (<em>To use this option:</em> select event with set T3 Farms)
                         </li>
                     </ul>
                 </li>
@@ -271,7 +271,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         else
             setSelectedEvent(_event);
 
-        if (balanceType === "event" && !_event.farms) {
+        if (balanceType === "event" && (_event.farms?.length ?? 0) === 0) {
             setApplyBalance(false);
             setBalanceType(null);
         };
@@ -690,13 +690,16 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                         value={balanceType}
                                         exclusive
                                         onChange={handleBalanceToggle}
+                                        sx={{ alignItems: "flex-end" }}
                                     >
-                                        <ToggleButton value="event" aria-label="event"
-                                            disabled={!(selectedEvent?.farms) ? true : false}>
-                                            <Tooltip title="Apply only to 2-3 event farms">
-                                                <EventIcon />
-                                            </Tooltip>
-                                        </ToggleButton>
+                                        <Tooltip title="Apply only to 2-3 event farms">
+                                            <Box>
+                                                <ToggleButton value="event" aria-label="event"
+                                                    disabled={(selectedEvent?.farms ?? []).length === 0 ? true : false}>
+                                                    <EventIcon />
+                                                </ToggleButton>
+                                            </Box>
+                                        </Tooltip>
                                         <ToggleButton value="global" aria-label="global">
                                             <Tooltip title="Apply to all materials">
                                                 <CalendarMonthIcon />
@@ -742,9 +745,9 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                 </Stack>
                                                 <Stack direction="row" flexWrap="wrap" alignItems="center">
                                                     {sortedNeedToFarm.map(([id, need]) => (
-                                                        <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary").itemBaseSize}
+                                                        <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary", fullScreen).itemBaseSize}
                                                             sx={{ ...(selectedEvent?.farms?.includes(id) && getFarmCSS("box")) }}>
-                                                            <Typography {...getItemBaseStyling("summary").numberCSS}>
+                                                            <Typography {...getItemBaseStyling("summary", fullScreen).numberCSS}>
                                                                 {formatNumber(need)}
                                                             </Typography>
                                                         </ItemBase>
@@ -767,15 +770,15 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                                                 zIndex: 1,
                                                                             }}
                                                                         />
-                                                                        <ItemBase itemId={id} size={getItemBaseStyling("summary_craft").itemBaseSize}>
-                                                                            <Typography {...getItemBaseStyling("summary_craft").numberCSS}>
+                                                                        <ItemBase itemId={id} size={getItemBaseStyling("summary_craft", fullScreen).itemBaseSize}>
+                                                                            <Typography {...getItemBaseStyling("summary_craft", fullScreen).numberCSS}>
                                                                                 {formatNumber(need)}
                                                                             </Typography>
                                                                         </ItemBase>
                                                                     </Box>
                                                                 ) : (
-                                                                    <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary_craft").itemBaseSize}>
-                                                                        <Typography {...getItemBaseStyling("summary_craft").numberCSS}>
+                                                                    <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary_craft", fullScreen).itemBaseSize}>
+                                                                        <Typography {...getItemBaseStyling("summary_craft", fullScreen).numberCSS}>
                                                                             {formatNumber(need)}
                                                                         </Typography>
                                                                     </ItemBase>
@@ -792,8 +795,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                 <Typography variant="h3" p={1} fontWeight="bold">Craft high tier materials</Typography>
                                                 {sortedNeedToCraft
                                                     .map(([id, need]) => (
-                                                        <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary").itemBaseSize}>
-                                                            <Typography {...getItemBaseStyling("summary").numberCSS}>
+                                                        <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary", fullScreen).itemBaseSize}>
+                                                            <Typography {...getItemBaseStyling("summary", fullScreen).numberCSS}>
                                                                 {formatNumber(need)}
                                                             </Typography>
                                                         </ItemBase>
@@ -806,18 +809,18 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                 expanded={isAccordionExpanded}>
                                                 <AccordionSummary >
                                                     <Stack direction="row" width="100%" justifyContent="space-between">Income up to the selected event is deducted
-                                                    {isAccordionExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                                                        {isAccordionExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
                                                     </Stack>
                                                 </AccordionSummary>
                                                 <AccordionDetails>
                                                     {sortedEventMaterials
                                                         .map(([id, need]) => (
                                                             <Tooltip key={`${id}-tip`} title={farmTimes[id] ? `can be farmed in ${farmTimes[id]} event${farmTimes[id] > 1 ? "s" : ""}` : ""}>
-                                                                <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary_totals").itemBaseSize}
+                                                                <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary_totals", fullScreen).itemBaseSize}
                                                                     sx={{
                                                                         ...(farmTimes[id] && getFarmCSS("round"))
                                                                     }}>
-                                                                    <Typography {...getItemBaseStyling("summary_totals").numberCSS}>
+                                                                    <Typography {...getItemBaseStyling("summary_totals", fullScreen).numberCSS}>
                                                                         {formatNumber(need)}
                                                                     </Typography>
                                                                 </ItemBase>
@@ -847,8 +850,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                 Total usage of material types, converted to tier 3. <br />Based on planner goals of user. Depot is ignored. </Typography>
                                             <Typography variant="h3" p={2} fontWeight="bold">For all goals, ignoring filters</Typography>
                                             {sortedAllGoalsStats.map(([id, total, percent]) => (
-                                                <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary").itemBaseSize}>
-                                                    <Typography {...getItemBaseStyling("summary").numberCSS}>
+                                                <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary", fullScreen).itemBaseSize}>
+                                                    <Typography {...getItemBaseStyling("summary", fullScreen).numberCSS}>
                                                         {isTotalDigits ? formatNumber(total) : percent + "%"}
                                                     </Typography>
                                                 </ItemBase>
@@ -857,8 +860,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                 <>
                                                     <Typography variant="h3" p={2} fontWeight="bold">For active goals, with filters</Typography>
                                                     {sortedFilteredGoalsStats.map(([id, total, percent]) => (
-                                                        <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary").itemBaseSize}>
-                                                            <Typography {...getItemBaseStyling("summary").numberCSS}>
+                                                        <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary", fullScreen).itemBaseSize}>
+                                                            <Typography {...getItemBaseStyling("summary", fullScreen).numberCSS}>
                                                                 {isTotalDigits ? formatNumber(total) : percent + "%"}
                                                             </Typography>
                                                         </ItemBase>
@@ -882,8 +885,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                     <>
                                         <Typography variant="h3" p={2} fontWeight="bold">All operators</Typography>
                                         {sortedAllOperatorsStats.map(([id, total, percent]) => (
-                                            <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary").itemBaseSize}>
-                                                <Typography {...getItemBaseStyling("summary").numberCSS}>
+                                            <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary", fullScreen).itemBaseSize}>
+                                                <Typography {...getItemBaseStyling("summary", fullScreen).numberCSS}>
                                                     {isTotalDigits ? formatNumber(total) : percent + "%"}
                                                 </Typography>
                                             </ItemBase>
@@ -894,8 +897,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                     <>
                                         <Typography variant="h3" p={2} fontWeight="bold">All unowned by user operators</Typography>
                                         {sortedUnownedOperatorsStats.map(([id, total, percent]) => (
-                                            <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary").itemBaseSize}>
-                                                <Typography {...getItemBaseStyling("summary").numberCSS}>
+                                            <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary", fullScreen).itemBaseSize}>
+                                                <Typography {...getItemBaseStyling("summary", fullScreen).numberCSS}>
                                                     {isTotalDigits ? formatNumber(total) : percent + "%"}
                                                 </Typography>
                                             </ItemBase>
@@ -918,26 +921,30 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                 </DialogContent>
                 <DialogActions sx={{
                     gap: 1,
-                    justifyContent: "flex-start"
+                    justifyContent: "flex-start",
+                    width: fullScreen ? "90%" : "100%"
                 }} >
-                    <Button
-                        disabled={tab !== "summary" ? true : false}
-                        variant="contained"
-                        color="primary"
-                        onClick={() => {
-                            handleClose();
-                            openEvents(true);
-                        }}
-                        sx={{ whiteSpace: "nowrap", minWidth: "fit-content" }}
-                    >{fullScreen ? "Events" : "Events tracker"}
-                    </Button>
-                    <EventsSelector
-                        emptyItem={"Select future event (tracker, or defaults)"}
-                        dataType={'events'}
-                        eventsData={eventsData}
-                        selectedEvent={selectedEvent ?? createEmptyNamedEvent()}
-                        onChange={onEventChange}
-                    />
+                    {tab === "summary" && <>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => {
+                                handleClose();
+                                openEvents(true);
+                            }}
+                            sx={{ order: fullScreen ? 2 : 1, whiteSpace: "nowrap", minWidth: "fit-content" }}
+                        >{fullScreen ? "Events" : "Events tracker"}
+                        </Button>
+                        <Box sx={{ width: "100%", order: fullScreen ? 1 : 2 }}>
+                            <EventsSelector
+                                emptyItem={"Select future event (tracker, or defaults)"}
+                                dataType={'events'}
+                                eventsData={eventsData}
+                                selectedEvent={selectedEvent ?? createEmptyNamedEvent()}
+                                onChange={onEventChange}
+                            />
+                        </Box>
+                    </>}
                 </DialogActions>
             </Dialog>
         </>)

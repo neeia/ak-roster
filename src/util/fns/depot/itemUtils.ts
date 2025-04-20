@@ -72,16 +72,16 @@ export const getItemBaseStyling = (variant: "tracker"
         }
             break;
         case "summary_craft": {
-            size = (!smaller ? 64 : 56) * 0.75;
+            size = (!smaller ? 56 : 48) * 0.75;
         }
             break;
         case "summary_totals": {
-            size = (!smaller ? 64 : 56) * 0.6;
+            size = (!smaller ? 56 : 56) * 0.6;
             textAdjust = 10;
         }
             break;
         default: {
-            size = !smaller ? 64 : 56;
+            size = !smaller ? 56 : 48;
         };
             break;
     }
