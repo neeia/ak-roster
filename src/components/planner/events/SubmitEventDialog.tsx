@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField, Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Stack, TextField, Typography } from "@mui/material";
 import React, { useEffect, useMemo, useCallback, useState } from "react";
 import { NamedEvent, EventsData, SubmitEventProps, EventsSelectorProps, WebEvent, TrackerDefaults, SubmitSource } from "types/events";
 import EventsSelector from "./EventsSelector";
@@ -6,6 +6,7 @@ import { formatNumber, getWidthFromValue, standardItemsSort, getItemBaseStyling 
 import ItemEditBox from "./ItemEditBox";
 import useEvents from "util/hooks/useEvents";
 import { createEmptyEvent, createEmptyNamedEvent, getEventsFromWebEvents } from "util/fns/eventUtils";
+import { Close } from "@mui/icons-material";
 
 interface Props {
     open: boolean;
@@ -177,13 +178,14 @@ const SubmitEventDialog = (props: Props) => {
     }
 
     const getSourceName = (source: SubmitSource) => {
+        const arrow = (allowedSources?.length ?? 0) > 1 ? " »" : "";
         switch (source) {
-            case "current": return "Current event";
-            case "currentWeb": return "Selected web event";
-            case "events": return "Events in Tracker";
-            case "months": return "Months generator";
-            case "defaults": return "Defaut event list";
-            case "defaultsWeb": return "CN prts.wiki data";
+            case "current": return "Current event" + arrow;
+            case "currentWeb": return "Selected web event" + arrow;
+            case "events": return "Events in Tracker" + arrow;
+            case "months": return "Months generator" + arrow;
+            case "defaults": return "Defaut event list" + arrow;
+            case "defaultsWeb": return "CN prts.wiki data" + arrow;
             default: return '';
         }
     }
@@ -293,31 +295,32 @@ const SubmitEventDialog = (props: Props) => {
 
     return (
         <Dialog open={open} onClose={handleDialogClose}>
-            <DialogTitle p={1} minHeight="170px">
-                <Stack direction="column" width="100%" gap={1}>
-                    <Stack direction="row">
-                        From: <Button
-                            variant="text"
-                            onClick={() => switchSource()}
-                        ><Typography variant="caption">{getSourceName(source)}</Typography></Button>
-                    </Stack>
-                    <Stack direction="row" alignItems="stretch">
+            <DialogTitle sx={{ p: 2, alignItems: "flex-start" }}>
+                <Stack direction="row" width="100%" gap={1}>
+                    <Stack width="100%" gap={1}>
+                        <Stack direction="row">
+                            From: <Button
+                                variant="text"
+                                sx={{ minWidth: "10rem" }}
+                                onClick={() => switchSource()}
+                            ><Typography variant="caption">{getSourceName(source)}</Typography></Button>
+                        </Stack>
                         {(source === "current" || source === "currentWeb")
                             ? <TextField
                                 value={rawName}
-                                /* disabled={(variant !== "builder")} */
                                 onChange={(e) => {
                                     setRawName(e.target.value);
-                                    /* if (rawName !== submitedEvent.name && rawName !== '') {
-                                        setReplace(true);
-                                    } else {
-                                        setReplace(false);
-                                    } */
                                 }}
                                 onFocus={(e) => e.target.select()}
                                 size="small"
                                 fullWidth
                                 type="text"
+                                slotProps={{
+                                    htmlInput:
+                                    {
+                                        sx: { height: "1.9rem" }
+                                    }
+                                }}
                             />
                             : <EventsSelector
                                 dataType={source}
@@ -325,12 +328,18 @@ const SubmitEventDialog = (props: Props) => {
                                 selectedEvent={selectedFrom}
                                 onChange={handleFromSelectorChange}
                             />}
+                    </Stack>
+                    <Stack justifyContent="space-between"
+                        alignItems="flex-end">
+                        <IconButton onClick={handleDialogClose}>
+                            <Close />
+                        </IconButton>
                         {mode && (<Button
                             variant="text"
                             onClick={switchMode}
-                            sx={{ whiteSpace: "nowrap" }}
+                            sx={{ minWidth: "5rem", pb: "0.8rem", whiteSpace: "nowrap" }}
                         >
-                            {mode}
+                            {`${mode} ${modesList.length > 1 ? "»" : ""}`}
                         </Button>
                         )}
                     </Stack>
@@ -371,7 +380,7 @@ const SubmitEventDialog = (props: Props) => {
                     </Stack>
                 )}
             </DialogContent>
-            <DialogActions sx={{ flexDirection: { xs: "column", md: "row" }, gap: 1 }}>
+            <DialogActions sx={{ p: 2, pd: 0, gap: 1 }}>
                 <EventsSelector
                     emptyItem={source === 'current' ? `Depot & ${mode} current event` : "New event"}
                     dataType={'events'}
@@ -383,7 +392,6 @@ const SubmitEventDialog = (props: Props) => {
                     <Button disabled={isSubmitDisabled} onClick={handleSubmit} variant="contained">
                         Submit
                     </Button>
-                    <Button variant="contained" color="secondary" onClick={handleDialogClose}>Cancel</Button>
                 </Stack>
             </DialogActions>
         </Dialog>
