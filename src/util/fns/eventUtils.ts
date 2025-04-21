@@ -14,16 +14,17 @@ const createMonthEvent = (month: number, year: number, startDay: number = 1): Na
     const firstDayNum = new Date(year, month - 1, 1).getDay();
     const lastDayNum = new Date(year, month - 1, daysInMonth).getDay();
 
-    const firstDay = (firstDayNum + 6) % 7;
-    const lastDay = (lastDayNum + 6) % 7;
+    //to 1-7 = mon-sun
+    const firstDay = 1 + (firstDayNum + 6) % 7;
+    const lastDay = 1 + (lastDayNum + 6) % 7;
 
     const materials: Record<string, number> = {};
-    const remainingDays = daysInMonth - startDay + 1;
+    const remainingDays = daysInMonth - (startDay !== 1 ? startDay : 0);
 
     // AK_CALENDAR - only include days after startDay
     for (const [dayStr, items] of Object.entries(AK_CALENDAR)) {
         const day = parseInt(dayStr);
-        if (day >= startDay && day <= daysInMonth) {
+        if (day > startDay && day <= daysInMonth) {
             for (const [id, amount] of Object.entries(items)) {
                 materials[id] = (materials[id] || 0) + amount;
             }
@@ -37,31 +38,14 @@ const createMonthEvent = (month: number, year: number, startDay: number = 1): Na
 
     // AK_WEEKLY - calculate partial weeks based on start day
     let fullWeeks = 0;
-    if (startDay === 1) {
-        // Full month calculation edging weeks by Wednesday
-        fullWeeks = Math.floor(daysInMonth / 7);
-        if (firstDay <= 3) fullWeeks++;
-        if (lastDay >= 3) fullWeeks++;
-    } else {
-        // Partial month calculation
-        const startDayOfWeekNum = new Date(year, month - 1, startDay).getDay();
-        const startDayOfWeek = (startDayOfWeekNum + 6) % 7;
-
-        // Calculate days remaining in first partial week
-        const daysInFirstWeek = Math.min(7 - startDayOfWeek, remainingDays);
-
-        // Full weeks in the middle
-        const remainingDaysAfterFirstWeek = remainingDays - daysInFirstWeek;
-        const middleFullWeeks = Math.floor(remainingDaysAfterFirstWeek / 7);
-
-        // Days in last partial week
-        const daysInLastWeek = remainingDaysAfterFirstWeek % 7;
-
-        // Count weeks that include Wednesday
-        if (daysInFirstWeek >= 4 || startDayOfWeek <= 3) fullWeeks++;
-        fullWeeks += middleFullWeeks;
-        if (daysInLastWeek > 0 && (startDayOfWeek + remainingDays - 1) % 7 >= 3) fullWeeks++;
-    }
+    let daysLeft = remainingDays;
+    daysLeft -= (8 - firstDay); //remove all days of first week
+    daysLeft -= lastDay; //remove last week days
+    //add first/last weeks based on wednesday - end of weekly farm normally
+    if (firstDay <= 3) fullWeeks++;
+    if (lastDay >= 3) fullWeeks++;
+    //mid-weeks
+    fullWeeks += Math.floor(daysLeft / 7);
 
     for (const [id, amount] of Object.entries(AK_WEEKLY)) {
         materials[id] = (materials[id] || 0) + amount * fullWeeks;

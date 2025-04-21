@@ -81,10 +81,9 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
         <InputLabel>{label}</InputLabel>
         <Select
             disabled={disabled}
-            value={(eventsList.length === 0
-                || ((selectedEvent?.index ?? -1) + 1) > Object.keys(eventsData).length)
-                ? -1
-                : (selectedEvent?.index ?? -1)}
+            value={selectedEvent?.index && eventsList.find(([, a]) => a.index === selectedEvent.index )
+                ? selectedEvent.index
+                : -1}
             onChange={(e) => handleChange(Number(e.target.value))}
             onOpen={() => {
                 setIsSelectFinished(false)
