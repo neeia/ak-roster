@@ -13,16 +13,20 @@ import getGoalIngredients from "util/fns/depot/getGoalIngredients";
 import DepotItem from "types/depotItem";
 import ExportImportDialog from "./ExportImportDialog";
 import MaterialsSummaryDialog from "./MaterialsSummaryDialog";
-import EventsTrackerDialog from "./EventsTrackerDialog";
+import EventsTrackerDialog from "../events/EventsTrackerDialog";
 import Board from "components/base/Board";
 import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
-import { EventsData, LocalStorageSettings } from "types/localStorageSettings";
+import { LocalStorageSettings } from "types/localStorageSettings";
 import depotToExp from "util/fns/depot/depotToExp";
 import { PlannerGoal } from "types/goal";
 import GoalData from "types/goalData";
 import { debounce } from "lodash";
 import { SettingsMenu, SettingsMenuItem, SettingsButton } from "../SettingsMenu";
 import useMenu from "util/hooks/useMenu";
+import useEvents from "util/hooks/useEvents";
+import { EXP, MAX_SAFE_INTEGER } from "util/fns/depot/itemUtils";
+import { EventsData, SubmitEventProps } from "types/events";
+import { useEventsDefaults } from "util/hooks/useEventsDefaults";
 
 interface Props {
   goals: PlannerGoal[];
@@ -36,7 +40,6 @@ interface Props {
   setSettings: (settings: LocalStorageSettings | ((settings: LocalStorageSettings) => LocalStorageSettings)) => void;
 }
 
-const EXP = ["2001", "2002", "2003", "2004"];
 const MaterialsNeeded = React.memo((props: Props) => {
   const { goals, goalData, depot, putDepot, resetDepot, settings, setSettings, depotIsUnsaved, refreshDepotDebounce } = props;
 
@@ -54,7 +57,19 @@ const MaterialsNeeded = React.memo((props: Props) => {
   const initialCraftToggle = 1;
   const [craftToggle, setCraftToggle] = useState(initialCraftToggle);
 
-  const MAX_SAFE_INTEGER = 2147483647;
+  const { eventsData, setEvents, submitEvent } = useEvents();
+  const { trackerDefaults, fetchDefaults } = useEventsDefaults();
+
+  //conditional defaults fetch from api
+  useEffect(() => {
+    if (summaryOpen && Object.keys(eventsData).length === 0)
+      fetchDefaults();
+    else if (eventsTrackerOpen) {
+      fetchDefaults();
+    }
+  }, [summaryOpen, eventsTrackerOpen]
+  )
+
 
   const handleItemClick = useCallback((itemId: string) => {
     setPopoverItemId(itemId);
@@ -221,6 +236,14 @@ const MaterialsNeeded = React.memo((props: Props) => {
     [rawValues, depot, handleValuesChange]
   );
 
+  const handleSubmitEvent = useCallback((submit: SubmitEventProps) => {
+    const depotAddon = submitEvent(submit);
+    if (depotAddon) {
+      handleAddItemsToDepot(depotAddon);
+    }
+  }, [submitEvent, handleAddItemsToDepot]
+  );
+
   const canCraftOne = useCallback(
     (itemId: string) => {
       const updatedDatas: DepotItem[] = [];
@@ -369,11 +392,8 @@ const MaterialsNeeded = React.memo((props: Props) => {
   }, [settings, setSettings, setAnchorEl]);
 
   const handleOnChangeEventsTracker = useCallback((eventsData: EventsData) => {
-    const depotSettings = { ...settings.depotSettings };
-    depotSettings.eventsIncomeData = eventsData;
-
-    setSettings((s) => ({ ...s, depotSettings }));
-  }, [settings, setSettings]);
+    setEvents(eventsData);
+  }, [setEvents]);
 
   const handleResetStock = useCallback(() => {
     //moved reset to useDepot hook.
@@ -534,17 +554,18 @@ const MaterialsNeeded = React.memo((props: Props) => {
           setSummaryOpen(false);
         }}
         openEvents={setEventsTrackerOpen}
-        eventsData={settings.depotSettings.eventsIncomeData}
+        eventsData={Object.keys(eventsData ?? {}).length > 0 ? eventsData : trackerDefaults?.eventsData ?? {}}
       />
       <EventsTrackerDialog
-        eventsData={settings.depotSettings.eventsIncomeData}
+        eventsData={eventsData}
         open={eventsTrackerOpen}
         onChange={handleOnChangeEventsTracker}
         onClose={() => {
           setEventsTrackerOpen(false);
         }}
         openSummary={setSummaryOpen}
-        putDepot={handleAddItemsToDepot}
+        submitEvent={handleSubmitEvent}
+        trackerDefaults={trackerDefaults}
       />
     </>
   );
