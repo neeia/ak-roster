@@ -1,5 +1,16 @@
 const patch = [
   {
+    version: "3.3.1",
+    date: "April 25, 2025",
+    title: "Minor Tweaks and Fixes",
+    content: ["Routine maintenance."],
+    changelog: [
+      "The recruitment calculator has been updated to match the new game version.",
+      "We've migrated most of the remaining images on the site to the new CDN.",
+      "Some event data is now pre-filled in the planner's event tracker.",
+    ],
+  },
+  {
     version: "3.3.0",
     date: "April 14, 2025",
     title: "New CDN, OGP embeds, profile colors, and better Recruitment",
