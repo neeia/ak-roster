@@ -21,8 +21,9 @@ import {
 import React, { useCallback, useEffect, useState } from "react";
 import operatorJson from "data/operators";
 import { GroupsDataInsert } from "types/groupData";
-import Image from "next/image";
+import Image from "components/base/Image";
 import _ from "lodash";
+import imageBase from "util/imageBase";
 
 interface Props {
   open: boolean;
@@ -174,7 +175,7 @@ const GoalReorderDialog = (props: Props) => {
                                                     sx={{ display: "flex", alignItems: "center", p: 0.5, gap: 1 }}
                                                   >
                                                     <Image
-                                                      src={`/img/avatars/${operator.op_id}.png`}
+                                                      src={`${imageBase}/avatars/${operator.op_id}.webp`}
                                                       alt=""
                                                       width={24}
                                                       height={24}

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Box, BoxProps, ThemeProvider, Typography } from "@mui/material";
 import createTheme from "styles/theme/appTheme";
 import { LightContext } from "pages/_app";
+import imageBase from "util/imageBase";
 
 interface Props extends BoxProps {
   title: string;
@@ -51,7 +52,7 @@ const HomeNavSection = (props: Props) => {
               bottom: 0,
               width: "100%",
               height: { xs: 96, sm: 128 },
-              background: `url(/img/assets/${src}.png)`,
+              background: `url('${imageBase}/assets/${src}.webp')`,
               backgroundPosition: "right 0px top 0px",
               backgroundSize: "contain",
               backgroundRepeat: "no-repeat",

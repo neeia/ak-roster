@@ -1,4 +1,5 @@
-import { createTheme, darken, lighten } from "@mui/material/styles";
+import { createTheme, lighten } from "@mui/material/styles";
+import imageBase from "util/imageBase";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -353,7 +354,7 @@ export const focused = {
 };
 
 export const skillBackground = {
-  backgroundImage: "url(/img/rank/bg.png)",
+  backgroundImage: `url('${imageBase}/rank/bg.webp')`,
   backgroundSize: "contain",
   backgroundRepeat: "no-repeat",
 };
