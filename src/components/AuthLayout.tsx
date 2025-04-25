@@ -4,6 +4,7 @@ import { alpha, Box, Typography } from "@mui/material";
 import Logo from "./app/Logo";
 import { server } from "util/server";
 import { useEffect, useState } from "react";
+import imageBase from "util/imageBase";
 
 interface Props {
   title: string;
@@ -28,7 +29,7 @@ const AuthLayout = (props: Props) => {
       <Box
         sx={{
           height: "100dvh",
-          backgroundImage: `url("/img/assets/bg/${rng}.png")`,
+          backgroundImage: `url('${imageBase}/assets/bg/${rng}.webp')`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           transition: "background-image 0.25s ease-in-out",

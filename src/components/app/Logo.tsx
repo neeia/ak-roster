@@ -2,6 +2,7 @@ import React from "react";
 import { Box, BoxProps, LinkProps } from "@mui/material";
 import Link from "components/base/Link";
 import Image from "next/image";
+import imageBase from "util/imageBase";
 
 // seasonal logo filenames
 export const getLogoUrl = () => {
@@ -35,7 +36,7 @@ const Logo = (props: Props) => {
       <Box position="relative" {...rest}>
         <Image
           alt="Krooster - Arknights Roster"
-          src={`/assets/title/${getLogoUrl()}${suffix}.png`}
+          src={`${imageBase}/title/${getLogoUrl()}${suffix}.webp`}
           fill
           sizes={sizes}
         />

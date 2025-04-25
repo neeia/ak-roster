@@ -8,6 +8,7 @@ import CraftingInfo from "./CraftingInfo";
 import NeededToCraft from "./NeededToCraft";
 import StageInfo from "./StageInfo";
 import { Item } from "types/item";
+import imageBase from "util/imageBase";
 
 interface Props {
   itemId: string | null;
@@ -61,7 +62,7 @@ const ItemInfoPopover: React.FC<Props> = React.memo((props) => {
             <Image
               // add key to force remount
               key={item.iconId}
-              src={`/img/items/${item.iconId}.png`}
+              src={`${imageBase}/items/${item.iconId}.webp`}
               width={48}
               height={48}
               alt=""

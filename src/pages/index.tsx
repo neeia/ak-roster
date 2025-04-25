@@ -178,8 +178,8 @@ const Home: NextPage = () => {
             sx={{
               height: "16rem",
               content: {
-                xs: `url(${logoBasePath.current}-v.png)`,
-                sm: `url(${logoBasePath.current}-h.png)`,
+                xs: `url('${logoBasePath.current}-v.webp')`,
+                sm: `url('${logoBasePath.current}-h.webp')`,
               },
             }}
           />
