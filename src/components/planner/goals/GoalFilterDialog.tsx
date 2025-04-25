@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import {
   Box,
   Button,
@@ -18,6 +18,8 @@ import itemsJson from "data/items.json";
 import ItemBase from "../depot/ItemBase";
 import { OperatorGoalCategory } from "types/goal";
 import { GoalFilterHook } from "util/hooks/useGoalFilter";
+import { getItemsByIngredient, isMaterial } from "util/fns/depot/itemUtils";
+import AddIcon from '@mui/icons-material/Add';
 
 interface Props extends GoalFilterHook {
   open: boolean;
@@ -28,6 +30,32 @@ const GoalFilterDialog = memo((props: Props) => {
   const { open, onClose, filters, setFilters, clearFilters } = props;
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
+
+  const [selectedLast, setSelectedLast] = useState<string>();
+
+  const handleMaterialsChange = (_: React.MouseEvent, value: string[]) => {
+
+    setFilters((prevState) => {
+      const { materials: prev } = prevState;
+      let next = value;
+
+      const clickedId = prev.length < next.length ? next.at(-1)
+        : prev.find(id => !next.includes(id));
+
+      if (clickedId && isMaterial(clickedId, undefined, 5)) {
+        if (prev.length > next.length) {//on un-select
+          if (selectedLast === clickedId) {//second click on same item
+            next = getItemsByIngredient(clickedId, next);
+          }
+          setSelectedLast(""); //reset tracking
+        } else {//select - start click tracking
+          setSelectedLast(clickedId);
+        }
+      };
+      return { ...prevState, materials: next }
+    }
+    );
+  }
 
   return (
     <>
@@ -122,24 +150,32 @@ const GoalFilterDialog = memo((props: Props) => {
                 ))}
               </ToggleButtonGroup>
             </Select>
-            <Select title="Uses Material:" nobg label="Clear" onClick={() => setFilters({ ...filters, materials: [] })}>
+            <Select title="Uses Material:" nobg label="Clear" onClick={() => {
+              setFilters({ ...filters, materials: [] });
+              setSelectedLast("");
+            }}>
               <ToggleButtonGroup
                 value={filters.materials}
-                onChange={(_, value) => setFilters({ ...filters, materials: value })}
+                onChange={handleMaterialsChange}
                 sx={{ mr: "-1px" }}
               >
                 {Object.entries(itemsJson)
                   .filter(([id]) => !["2001", "2002", "2003", "2004"].includes(id))
                   .sort(([_, itemA], [__, itemB]) => itemA.sortId - itemB.sortId)
                   .map(([id, item]) => (
-                    <ToggleButton key={id} value={id} sx={{ p: 0.5 }}>
+                    <ToggleButton key={id} value={id} sx={{ p: 0.5, position: "relative" }}>
+                      {id === selectedLast &&
+                        <AddIcon sx={{ position: "absolute", left: "0", top: "0" }} />}
                       <ItemBase itemId={id} size={48} />
                     </ToggleButton>
                   ))}
               </ToggleButtonGroup>
             </Select>
           </Box>
-          <Button onClick={clearFilters}>Clear Filter</Button>
+          <Button onClick={() => {
+            clearFilters();
+            setSelectedLast("");
+          }}>Clear Filter</Button>
         </DialogContent>
       </Dialog>
     </>
