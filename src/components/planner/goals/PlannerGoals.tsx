@@ -629,18 +629,20 @@ const PlannerGoals = (props: Props) => {
 
   const getGroupCheckboxState = useCallback(
     (groupName: string) => {
-      const opsSelection = inactiveOpsInGroups[groupName] ?? [];
+      const opsUnSelection = inactiveOpsInGroups[groupName] ?? [];
       const allOpsInGroup = groupedGoals[groupName]?.map((goal) => goal.op_id) ?? [];
 
-      const allEnabled = opsSelection.length === 0;
-      const someDisabled = opsSelection.length > 0;
+      const allEnabled = opsUnSelection.length === 0;
+      const someDisabled = opsUnSelection.length > 0;
       const emptyGroup = allOpsInGroup.length === 0;
-      const allDisabled = someDisabled && opsSelection.length === allOpsInGroup.length;
-
+      const allDisabled = someDisabled && opsUnSelection.length === allOpsInGroup.length;
       return {
-        checked: allEnabled && !emptyGroup,
-        indeterminate: !allDisabled && someDisabled,
-        disabled: emptyGroup,
+        checkboxText: emptyGroup ? '' : `${allOpsInGroup.length - opsUnSelection.length}/${allOpsInGroup.length}`,
+        checkboxState: {
+          checked: allEnabled && !emptyGroup,
+          indeterminate: !allDisabled && someDisabled,
+          disabled: emptyGroup,
+        }
       };
     },
     [groupedGoals, inactiveOpsInGroups]
