@@ -62,6 +62,7 @@ const SupportSelection = (props: Props) => {
               onClick={() => {
                 setIndex(i);
                 setOpen(true);
+                setInput(supports[index]?.op_id);
               }}
             />
           );
