@@ -1186,7 +1186,7 @@
     },
     {
       "skinId": "char_298_susuro@winter#4",
-      "skinName": "随意而行",
+      "skinName": "Travel Freely",
       "avatarId": "char_298_susuro_winter#4",
       "sortId": 233
     }
@@ -3156,7 +3156,7 @@
     },
     {
       "skinId": "char_4081_warmy@winter#4",
-      "skinName": "街角暖绒",
+      "skinName": "Warm Velvet At the Corner",
       "avatarId": "char_4081_warmy_winter#4",
       "sortId": 232
     }
@@ -4808,7 +4808,7 @@
     },
     {
       "skinId": "char_4151_tinman@sale#11",
-      "skinName": "相位面容",
+      "skinName": "Phase Face",
       "avatarId": "char_4151_tinman_sale#11",
       "sortId": 15
     }
@@ -5301,6 +5301,12 @@
       "skinName": "Young Branch",
       "avatarId": "char_249_mlyss_boc#8",
       "sortId": 306
+    },
+    {
+      "skinId": "char_249_mlyss@ambienceSynesthesia#6",
+      "skinName": "漫步于黄金之梦",
+      "avatarId": "char_249_mlyss_ambienceSynesthesia#6",
+      "sortId": 344
     }
   ],
   "char_4087_ines": [
@@ -5373,6 +5379,12 @@
       "skinName": "Spellbreaker",
       "avatarId": "char_213_mostma_epoque#5",
       "sortId": 25
+    },
+    {
+      "skinId": "char_213_mostma@ambienceSynesthesia#6",
+      "skinName": "幻语乐痕",
+      "avatarId": "char_213_mostma_ambienceSynesthesia#6",
+      "sortId": 346
     }
   ],
   "char_180_amgoat": [
@@ -5453,6 +5465,12 @@
       "skinName": null,
       "avatarId": "char_4133_logos_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4133_logos@ambienceSynesthesia#6",
+      "skinName": "辉煌的静谧",
+      "avatarId": "char_4133_logos_ambienceSynesthesia#6",
+      "sortId": 345
     }
   ],
   "char_2015_dusk": [
@@ -5900,7 +5918,7 @@
     },
     {
       "skinId": "char_245_cello@sale#12",
-      "skinName": "无我唯识",
+      "skinName": "Diversity Oneness",
       "avatarId": "char_245_cello_sale#12",
       "sortId": 16
     }
@@ -5946,7 +5964,7 @@
     },
     {
       "skinId": "char_1028_texas2@epoque#36",
-      "skinName": "幽兰秘辛",
+      "skinName": "Il Segreto Della Notte",
       "avatarId": "char_1028_texas2_epoque#36",
       "sortId": 92
     },
@@ -7096,7 +7114,7 @@
     },
     {
       "skinId": "char_1032_excu2@sale#12",
-      "skinName": "众志归一",
+      "skinName": "Allmind As One",
       "avatarId": "char_1032_excu2_sale#12",
       "sortId": 17
     }
