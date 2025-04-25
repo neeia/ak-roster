@@ -360,6 +360,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -935,6 +948,18 @@
           "Medic",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1359,6 +1384,18 @@
           "DPS",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
           "Senior Operator"
         ]
       },
@@ -2196,6 +2233,17 @@
         "name": "Aciddrop",
         "rarity": 4,
         "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
           "DPS",
           "Ranged",
           "Sniper"
@@ -3228,6 +3276,17 @@
         ]
       },
       {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
         "id": "char_211_adnach",
         "name": "Adnachiel",
         "rarity": 3,
@@ -3342,6 +3401,18 @@
         "tags": [
           "Fast-Redeploy",
           "Debuff",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -3824,6 +3895,17 @@
         ]
       },
       {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
         "id": "char_121_lava",
         "name": "Lava",
         "rarity": 3,
@@ -3907,6 +3989,18 @@
           "Crowd-Control",
           "Ranged",
           "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
           "Senior Operator"
         ]
       },
@@ -4537,6 +4631,17 @@
         ]
       },
       {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
         "id": "char_211_adnach",
         "name": "Adnachiel",
         "rarity": 3,
@@ -4905,6 +5010,18 @@
         "tags": [
           "Fast-Redeploy",
           "Debuff",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -6104,6 +6221,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6325,6 +6455,19 @@
           "DPS",
           "Melee",
           "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -6710,6 +6853,19 @@
         "rarity": 6,
         "tags": [
           "DPS",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
           "Melee",
           "Guard",
           "Top Operator",
@@ -7383,6 +7539,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7875,6 +8044,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8160,6 +8342,18 @@
           "DPS",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
           "Senior Operator"
         ]
       }
@@ -8963,6 +9157,18 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -9289,6 +9495,18 @@
           "Crowd-Control",
           "Ranged",
           "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
           "Senior Operator"
         ]
       }
@@ -9840,6 +10058,18 @@
         "tags": [
           "Fast-Redeploy",
           "Debuff",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -11276,6 +11506,18 @@
         ]
       },
       {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_237_gravel",
         "name": "Gravel",
         "rarity": 4,
@@ -11565,6 +11807,18 @@
       {
         "id": "char_144_red",
         "name": "Projekt Red",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
         "rarity": 5,
         "tags": [
           "Fast-Redeploy",
@@ -12252,6 +12506,18 @@
         "tags": [
           "Fast-Redeploy",
           "Debuff",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -13155,6 +13421,17 @@
         ]
       },
       {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
         "id": "char_211_adnach",
         "name": "Adnachiel",
         "rarity": 3,
@@ -13440,6 +13717,17 @@
         ]
       },
       {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
         "id": "char_121_lava",
         "name": "Lava",
         "rarity": 3,
@@ -13710,6 +13998,17 @@
         "name": "Aciddrop",
         "rarity": 4,
         "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
           "DPS",
           "Ranged",
           "Sniper"
@@ -15606,6 +15905,17 @@
         ]
       },
       {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
         "id": "char_282_catap",
         "name": "Catapult",
         "rarity": 3,
@@ -15762,6 +16072,17 @@
         "name": "Aciddrop",
         "rarity": 4,
         "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
           "DPS",
           "Ranged",
           "Sniper"
@@ -15977,6 +16298,18 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -16099,6 +16432,18 @@
         "tags": [
           "Fast-Redeploy",
           "Debuff",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -16820,10 +17165,21 @@
           "Guard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
       }
     ],
     "guarantees": [
-      5
+      4
     ]
   },
   "AoE,Debuff": {
@@ -17049,6 +17405,18 @@
       {
         "id": "char_144_red",
         "name": "Projekt Red",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
         "rarity": 5,
         "tags": [
           "Fast-Redeploy",
@@ -18126,6 +18494,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18512,6 +18893,19 @@
         "rarity": 6,
         "tags": [
           "DPS",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
           "Melee",
           "Guard",
           "Top Operator",
@@ -19194,6 +19588,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19695,6 +20102,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19873,6 +20293,19 @@
         "rarity": 6,
         "tags": [
           "DPS",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
           "Melee",
           "Guard",
           "Top Operator",
@@ -20245,6 +20678,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20571,6 +21017,19 @@
           "DPS",
           "Melee",
           "Defender",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -21678,6 +22137,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -21795,6 +22267,19 @@
       {
         "id": "char_017_huang",
         "name": "Blaze",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
         "rarity": 6,
         "tags": [
           "DPS",
@@ -22947,6 +23432,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_264_f12yin",
+        "name": "Mountain",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -23397,6 +23895,18 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -23545,6 +24055,18 @@
       {
         "id": "char_144_red",
         "name": "Projekt Red",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
         "rarity": 5,
         "tags": [
           "Fast-Redeploy",
@@ -23934,6 +24456,18 @@
         "tags": [
           "Fast-Redeploy",
           "Debuff",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -26050,6 +26584,18 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -26142,6 +26688,18 @@
         "tags": [
           "Fast-Redeploy",
           "Debuff",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -26784,6 +27342,18 @@
       {
         "id": "char_144_red",
         "name": "Projekt Red",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
         "rarity": 5,
         "tags": [
           "Fast-Redeploy",
@@ -28714,6 +29284,18 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -28840,6 +29422,18 @@
         "tags": [
           "Fast-Redeploy",
           "Debuff",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -29398,6 +29992,18 @@
       {
         "id": "char_144_red",
         "name": "Projekt Red",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
         "rarity": 5,
         "tags": [
           "Fast-Redeploy",
@@ -30510,6 +31116,17 @@
         ]
       },
       {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
         "id": "char_282_catap",
         "name": "Catapult",
         "rarity": 3,
@@ -30667,6 +31284,17 @@
         "name": "Aciddrop",
         "rarity": 4,
         "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      },
+      {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
           "DPS",
           "Ranged",
           "Sniper"
@@ -31146,6 +31774,29 @@
     ],
     "guarantees": [
       1
+    ]
+  },
+  "AoE,DPS,Ranged": {
+    "tags": [
+      "AoE",
+      "DPS",
+      "Ranged"
+    ],
+    "operators": [
+      {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
     ]
   },
   "AoE,Debuff,Ranged": {
@@ -32279,6 +32930,29 @@
       4
     ]
   },
+  "AoE,DPS,Sniper": {
+    "tags": [
+      "AoE",
+      "DPS",
+      "Sniper"
+    ],
+    "operators": [
+      {
+        "id": "char_440_pinecn",
+        "name": "Pinecone",
+        "rarity": 4,
+        "tags": [
+          "AoE",
+          "DPS",
+          "Ranged",
+          "Sniper"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
+    ]
+  },
   "AoE,Debuff,Sniper": {
     "tags": [
       "AoE",
@@ -32464,6 +33138,18 @@
       {
         "id": "char_144_red",
         "name": "Projekt Red",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_214_kafka",
+        "name": "Kafka",
         "rarity": 5,
         "tags": [
           "Fast-Redeploy",

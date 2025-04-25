@@ -21914,12 +21914,12 @@
     "rarity": 4,
     "class": "Specialist",
     "branch": "Skyranger",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_ctrail_1",
         "iconId": null,
-        "skillName": "紧急升空",
+        "skillName": "Emergency Take-Off",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -21983,7 +21983,7 @@
       {
         "skillId": "skchr_ctrail_2",
         "iconId": null,
-        "skillName": "掠空飞翎",
+        "skillName": "Skyswoop Shot",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -22047,11 +22047,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+25",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -60083,12 +60083,12 @@
     "rarity": 5,
     "class": "Specialist",
     "branch": "Merchant",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_talr_1",
         "iconId": null,
-        "skillName": "量衣尺",
+        "skillName": "Tailor's Measure",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -60152,7 +60152,7 @@
       {
         "skillId": "skchr_talr_2",
         "iconId": null,
-        "skillName": "缝线缠身",
+        "skillName": "Lockstitch",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -60216,7 +60216,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“头面人物”",
+        "moduleName": "'The Big Shot'",
         "moduleId": "uniequip_002_talr",
         "typeName": "MER-X",
         "stages": [
@@ -60286,15 +60286,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-3秒",
-      "攻击力+25",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -3 sec",
+      "ATK +25",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -65276,12 +65276,12 @@
     "rarity": 5,
     "class": "Defender",
     "branch": "Primal Protector",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_philae_1",
         "iconId": null,
-        "skillName": "灵河护佑",
+        "skillName": "Blessing of the River of Life",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -65345,7 +65345,7 @@
       {
         "skillId": "skchr_philae_2",
         "iconId": null,
-        "skillName": "冥河诅咒",
+        "skillName": "Curse of the River of Death",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -65409,11 +65409,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+25",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -76446,7 +76446,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "启行未来的灯",
+        "moduleName": "The Enlightened",
         "moduleId": "uniequip_002_threye",
         "typeName": "RIT-X",
         "stages": [
@@ -76516,7 +76516,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -76807,7 +76807,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "社工课程二手教材",
+        "moduleName": "Second-hand Textbook for Social Work",
         "moduleId": "uniequip_002_bobb",
         "typeName": "RIT-X",
         "stages": [
@@ -76877,7 +76877,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -86190,7 +86190,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "迷迭香特限证章",
+        "moduleName": "Rosmontis's Specialized Badge",
         "moduleId": "uniequip_003_rosmon",
         "typeName": "ISW-A",
         "stages": [
@@ -86228,7 +86228,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -89570,12 +89570,12 @@
     "rarity": 6,
     "class": "Vanguard",
     "branch": "Pioneer",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_vulpis_1",
         "iconId": null,
-        "skillName": "小施惩戒",
+        "skillName": "Discreet Discipline",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -89639,7 +89639,7 @@
       {
         "skillId": "skchr_vulpis_2",
         "iconId": null,
-        "skillName": "坠刃拷问",
+        "skillName": "Damoclean Interrogation",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -89703,7 +89703,7 @@
       {
         "skillId": "skchr_vulpis_3",
         "iconId": null,
-        "skillName": "隐狐之艺",
+        "skillName": "La Volpe Nascosta",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -89767,7 +89767,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "杀手也有假期",
+        "moduleName": "Patience, Mission, Vacation",
         "moduleId": "uniequip_002_vulpis",
         "typeName": "SOL-X",
         "stages": [
@@ -89837,15 +89837,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+25",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -98281,12 +98281,12 @@
     "rarity": 6,
     "class": "Caster",
     "branch": "Mech-Accord",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_whitw2_1",
         "iconId": null,
-        "skillName": "慵怠者悲鸣",
+        "skillName": "Lament of the Apathetic",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -98350,7 +98350,7 @@
       {
         "skillId": "skchr_whitw2_2",
         "iconId": null,
-        "skillName": "逐猎狂飙",
+        "skillName": "Hurricane Chase",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -98414,7 +98414,7 @@
       {
         "skillId": "skchr_whitw2_3",
         "iconId": null,
-        "skillName": "终幕·浩劫",
+        "skillName": "Finale: Catastrofe",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -98478,7 +98478,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "狼时",
+        "moduleName": "Hour of the Wolf",
         "moduleId": "uniequip_002_whitw2",
         "typeName": "FUN-X",
         "stages": [
@@ -98548,15 +98548,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "第二天赋效果增强",
-      "攻击力+25",
-      "部署费用-1",
-      "第一天赋效果增强"
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +25",
+      "DP Cost -1",
+      "Improves First Talent"
     ],
     "skillLevels": [
       {
@@ -101219,7 +101219,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "安洁莉娜特限证章",
+        "moduleName": "Angelina's Specialized Badge",
         "moduleId": "uniequip_004_aglina",
         "typeName": "ISW-A",
         "stages": [
@@ -101257,7 +101257,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -104870,7 +104870,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "强弱法",
+        "moduleName": "The Decrescendo",
         "moduleId": "uniequip_002_cello",
         "typeName": "RIT-X",
         "stages": [
@@ -104940,7 +104940,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -106519,12 +106519,12 @@
     "rarity": 6,
     "class": "Specialist",
     "branch": "Executor",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "skillData": [
       {
         "skillId": "skchr_crosly_1",
         "iconId": null,
-        "skillName": "尘烟蔽目",
+        "skillName": "Smoke and Mirrors",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -106588,7 +106588,7 @@
       {
         "skillId": "skchr_crosly_2",
         "iconId": null,
-        "skillName": "硝烟震爆",
+        "skillName": "Smokebomb Blast",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -106652,7 +106652,7 @@
       {
         "skillId": "skchr_crosly_3",
         "iconId": null,
-        "skillName": "烽烟行刑场",
+        "skillName": "Smokescreen Execution",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -106716,7 +106716,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "弑君刃",
+        "moduleName": "Цареубийца",
         "moduleId": "uniequip_002_crosly",
         "typeName": "EXE-X",
         "stages": [
@@ -106786,15 +106786,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "部署费用-1",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DP Cost -1",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -130198,7 +130198,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "苦修者的抗压训练",
+        "moduleName": "Stress Test for Ascetics",
         "moduleId": "uniequip_003_lessng",
         "typeName": "DRE-Y",
         "stages": [
@@ -130268,7 +130268,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
