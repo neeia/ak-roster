@@ -4,11 +4,12 @@ import { Alert, Box, Button, ButtonBase, CircularProgress, Divider, TextField, T
 import supabase from "supabase/supabaseClient";
 import { DISCORD_BLURPLE } from "styles/theme/appTheme";
 import PasswordTextField from "components/app/PasswordTextField";
-import Image from "next/image";
 import AuthLayout from "components/AuthLayout";
 import { enqueueSnackbar } from "notistack";
 import useAccount from "util/hooks/useAccount";
 import { useRouter } from "next/router";
+import Image from "components/base/Image";
+import imageBase from "util/imageBase";
 
 function DiscordButton(props: { onClick: React.MouseEventHandler }) {
   return (
@@ -26,7 +27,7 @@ function DiscordButton(props: { onClick: React.MouseEventHandler }) {
       }}
       onClick={props.onClick}
     >
-      <Image src="/img/assets/discord.svg" width="24" height="18" alt="" />
+      <Image src={`${imageBase}/assets/icons/discord.svg`} width="20" height="15" alt="" />
       Continue with Discord
     </ButtonBase>
   );

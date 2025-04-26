@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Box, Divider, Link, Typography } from "@mui/material";
 import { getLogoUrl } from "components/app/Logo";
+import Image from "components/base/Image";
+import imageBase from "util/imageBase";
 
 const DISC_BLURPLE = "#5865F2";
 const DISC_API = "https://discord.com/api/v10/guilds/970485224624508979/widget.json";
@@ -45,7 +47,7 @@ const DiscordEmbed = (props: Props) => {
       <Box
         sx={{ width: "4rem", height: "4rem", my: -1 }}
         component="img"
-        src={`/assets/title/${getLogoUrl()}-c.png`}
+        src={`${imageBase}/title/${getLogoUrl()}-c.png`}
         alt=""
         loading="lazy"
       />
@@ -54,12 +56,12 @@ const DiscordEmbed = (props: Props) => {
         <Typography variant="caption">{users} online</Typography>
       </Box>
       <Divider orientation="vertical" flexItem />
-      <Box
-        sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }}
-        component="img"
-        src="/img/ext/icon_clyde_white_RGB.svg"
+      <Image
+        sx={{ borderRadius: "50%", width: "3rem", height: "3rem", objectFit: "contain" }}
+        src={`${imageBase}/assets/icons/discord.svg`}
+        width="48"
+        height="48"
         alt="Discord"
-        loading="lazy"
       />
     </Link>
   );

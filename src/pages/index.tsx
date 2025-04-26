@@ -35,6 +35,7 @@ import DiscordEmbed from "components/landing/DiscordEmbed";
 import Update from "components/landing/PatchNotes";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import imageBase from "util/imageBase";
 
 const cons = [
   {
@@ -62,21 +63,21 @@ const cons = [
   {
     name: "Voiddp",
     login: "Voiddp",
-    avatar: "voiddp.png",
+    avatar: "voiddp.webp",
     dark: true,
     color: "rgb(51, 53, 50)",
   },
   {
     name: "DipstickPinez",
     login: "DipstickPinez",
-    avatar: "dipstickpinez.png",
+    avatar: "dipstickpinez.webp",
     dark: false,
     color: "#5ed6b4",
   },
   {
     name: "Stinggyray",
     login: "Stinggyray",
-    avatar: "stinggyray.png",
+    avatar: "stinggyray.webp",
     dark: false,
     color: "#FFCD4C",
   },
@@ -308,11 +309,7 @@ const Home: NextPage = () => {
               <HomeNavItem disabled={!account} href={"/data/view"}>
                 Collection
               </HomeNavItem>
-              <HomeNavItem
-                disabled={!account}
-                href={"/data/planner"}
-                icon={<Image key="p" src="/img/icons/rock.svg" alt="" width={24} height={24} />}
-              >
+              <HomeNavItem disabled={!account} href={"/data/planner"}>
                 Planner
               </HomeNavItem>
               <HomeNavItem disabled={!account} href={"/data/profile"}>
@@ -365,7 +362,7 @@ const Home: NextPage = () => {
                   color: "#F2F2F2",
                 }}
               >
-                <Image src="/img/assets/discord.svg" width="20" height="15" alt="" />
+                <Image src={`${imageBase}/assets/icons/discord.svg`} width="20" height="15" alt="" />
                 Discord
               </HomeNavItem>
               <HomeNavItem
@@ -377,7 +374,7 @@ const Home: NextPage = () => {
                   color: "#F2F2F2",
                 }}
               >
-                <Image width="18" height="18" src="/img/assets/github-1.png" alt="" />
+                <Image width="18" height="18" src={`${imageBase}/assets/icons/github-1.webp`} alt="" />
                 GitHub
               </HomeNavItem>
               <HomeNavItem
@@ -389,7 +386,13 @@ const Home: NextPage = () => {
                   color: "#F2F2F2",
                 }}
               >
-                <Image className="icon" width="24" height="16" src="/img/assets/ko-fi.png" alt="Ko-fi" />
+                <Image
+                  className="icon"
+                  width="24"
+                  height="16"
+                  src={`${imageBase}/assets/icons/ko-fi.webp`}
+                  alt="Ko-fi"
+                />
                 Donations
               </HomeNavItem>
             </HomeNavSection>
@@ -441,7 +444,13 @@ const Home: NextPage = () => {
                     backgroundColor: KOFI_BLUE,
                   }}
                 >
-                  <Image className="icon" width="24" height="16" src="/img/assets/ko-fi.png" alt="Ko-fi" />
+                  <Image
+                    className="icon"
+                    width="24"
+                    height="16"
+                    src={`${imageBase}/assets/icons/ko-fi.webp"`}
+                    alt="Ko-fi"
+                  />
                   Donations
                 </HomeNavItem>
                 <p>
@@ -494,7 +503,7 @@ const Home: NextPage = () => {
                       target="_blank"
                       rel="noreferrer noopener"
                     >
-                      <Image src={`/img/ext/contributors/${c.avatar}`} alt="" width={48} height={48} />
+                      <Image src={`${imageBase}/assets/contributors/${c.avatar}`} alt="" width={48} height={48} />
                       <Box sx={{ display: "flex", flexDirection: "column", gap: 0 }}>
                         <Typography variant="body1">{c.name}</Typography>
                         <Typography variant="caption2">{c.login}</Typography>

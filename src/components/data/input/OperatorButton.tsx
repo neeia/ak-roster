@@ -5,6 +5,7 @@ import { Favorite } from "@mui/icons-material";
 import getTextWidth from "styles/getTextWidth";
 import Image from "components/base/Image";
 import operatorJson from "data/operators";
+import imageBase from "util/imageBase";
 
 const WIDTH_TO_PX = 10 / 7;
 const LONG_CUTOFF = 77;
@@ -62,7 +63,7 @@ const OperatorButton = React.memo((props: Props) => {
   // Process operator name
   let opName = t ? <abbr title={op.name}>{nameComponent}</abbr> : nameComponent;
 
-  const imgUrl = skin ?? `/img/avatars/${op_id}.png`;
+  const imgUrl = skin ?? `${imageBase}/avatars/${op_id}.webp`;
 
   return (
     <Button

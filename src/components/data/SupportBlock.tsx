@@ -145,7 +145,7 @@ const SupportBlock = (props: Props) => {
                   right: -4,
                   top: -4,
                   bottom: -4,
-                  backgroundImage: `url('${imageBase}/img/rank/bg.webp')`,
+                  backgroundImage: `url('${imageBase}/rank/bg.webp')`,
                   backgroundSize: "100% 100%",
                 }}
               />

@@ -2,6 +2,8 @@
 import { Box, Link, Typography } from "@mui/material";
 import { OpenInNew } from "@mui/icons-material";
 import manifest from "data/manifest";
+import Image from "components/base/Image";
+import imageBase from "util/imageBase";
 
 const GITH_COLOR = "#50505A";
 const repo = "https://github.com/neeia/ak-roster-next";
@@ -30,10 +32,11 @@ const GitHubEmbed = () => {
         target="_blank"
         rel="noreferrer noopener"
       >
-        <Box
+        <Image
           sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }}
-          component="img"
-          src="/img/ext/gh-light.png"
+          width="18"
+          height="18"
+          src={`${imageBase}/assets/icons/github-1.webp`}
           alt="GitHub"
         />
         <Box sx={{ display: "flex", flexDirection: "column", gap: 0 }}>
