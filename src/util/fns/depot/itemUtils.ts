@@ -72,16 +72,16 @@ export const getItemBaseStyling = (variant: "tracker"
         }
             break;
         case "summary_craft": {
-            size = (!smaller ? 64 : 56) * 0.75;
+            size = (!smaller ? 56 : 48) * 0.75;
         }
             break;
         case "summary_totals": {
-            size = (!smaller ? 64 : 56) * 0.6;
+            size = (!smaller ? 56 : 56) * 0.6;
             textAdjust = 10;
         }
             break;
         default: {
-            size = !smaller ? 64 : 56;
+            size = !smaller ? 56 : 48;
         };
             break;
     }
@@ -118,9 +118,10 @@ export const getFarmCSS = (variant: "round" | "box", highlighted: boolean = true
 
 };
 
-
-export const isMaterial = (id: string, tier?: number) => {
-    return (Number(id) > 30000 && Number(id) < 32000 && (tier ? (itemsJson[id as keyof typeof itemsJson].tier === tier) : true))
+export const isMaterial = (id: string, tier?: number, tierNot?: number) => {
+    return (Number(id) > 30000 && Number(id) < 32000
+        && (tier ? (itemsJson[id as keyof typeof itemsJson].tier === tier) : true)
+        && (tierNot ? (itemsJson[id as keyof typeof itemsJson].tier !== tierNot) : true))
 };
 
 const summarySortId: [string, number][] = [
@@ -227,3 +228,27 @@ export const getItemByCnName = (cnName: string, tier?: number, material: boolean
     ) as Item | undefined;
     return matchedItem;
 }
+
+export const getItemsByIngredient = (ingr_id: string, result?: string[]) => {
+
+    const results = new Set(result);
+    results.add(ingr_id);
+
+    const findParents = (id: string) => {
+        const targetItem: Item = itemsJson[id as keyof typeof itemsJson];
+        if ((targetItem.tier ?? 5) >= 5) return;
+
+        Object.values(itemsJson).forEach((item: Item) => {
+            if (item.ingredients?.some(ingr => ingr.id === id)) {
+                if (!results.has(item.id)) {
+                    results.add(item.id);
+                }
+                findParents(item.id);
+            }
+        });
+    };
+
+    findParents(ingr_id);
+
+    return Array.from(results);
+};

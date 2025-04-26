@@ -81,16 +81,16 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
         <InputLabel>{label}</InputLabel>
         <Select
             disabled={disabled}
-            value={(eventsList.length === 0
-                || ((selectedEvent?.index ?? -1) + 1) > Object.keys(eventsData).length)
-                ? -1
-                : (selectedEvent?.index ?? -1)}
+            value={selectedEvent?.index && eventsList.find(([, a]) => a.index === selectedEvent.index )
+                ? selectedEvent.index
+                : -1}
             onChange={(e) => handleChange(Number(e.target.value))}
             onOpen={() => {
                 setIsSelectFinished(false)
             }}
             label={label}
             fullWidth
+            sx={{ maxHeight: "3rem", minHeight: "3rem", overflow: "hidden" }}
         >
             <MenuItem value={-1} key={-1} className="no-underline">{emptyOption}</MenuItem>
             <Divider component="li" />
@@ -98,7 +98,9 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
                 .map(([name, event]) => (
                     <MenuItem value={event.index} key={event.index} className="no-underline" onClick={handleOnClick}>
                         <Stack direction="row" justifyContent="flex-end" alignItems="center" width="stretch" flexWrap="wrap">
-                            <Typography sx={{ mr: "auto", whiteSpace: "wrap" }}>{`${event.index}: ${name} `}</Typography> {!isSelectFinished ? (
+                            <Typography sx={{ mr: "auto", whiteSpace: "wrap", fontSize: fullScreen ? "small" : "unset" }}>
+                                {`${event.index}: ${name} `}
+                            </Typography> {!isSelectFinished ? (
                                 <Stack direction="row">
                                     {(event.farms ?? []).map((id) => [id, 0] as [string, number])
                                         .concat(Object.entries(event.materials)
