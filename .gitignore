@@ -46,3 +46,6 @@ yarn-error.log*
 next.config.original.js
 
 src/data/user.ts
+
+/public/assets/
+/public/img/
