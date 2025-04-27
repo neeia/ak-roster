@@ -10,12 +10,12 @@
   "version": "3.3.1",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
+      "src": "https://d3gqz3mx7fd4v.cloudfront.net/images/assets/favicon/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "https://d3gqz3mx7fd4v.cloudfront.net/images/assets/favicon/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
