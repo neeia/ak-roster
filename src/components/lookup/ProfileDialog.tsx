@@ -45,7 +45,7 @@ const ProfileDialog = (props: Props) => {
     if (!ssTarget.current || !data) return;
 
     ssTarget.current.classList.add("screenshot");
-    const canvas = await html2canvas(ssTarget.current);
+    const canvas = await html2canvas(ssTarget.current, { useCORS: true });
     const canvasUrl = canvas.toDataURL();
     const link = document.createElement("a");
 
