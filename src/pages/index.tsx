@@ -152,7 +152,7 @@ const Home: NextPage = () => {
     window.location.href = `/u/${s}`;
   }, []);
 
-  const logoBasePath = useRef(`/assets/title/${getLogoUrl()}`);
+  const logoBasePath = useRef(`${imageBase}/title/${getLogoUrl()}`);
 
   const [account, , { loading }] = useAccount();
 
