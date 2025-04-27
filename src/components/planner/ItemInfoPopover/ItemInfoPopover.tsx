@@ -1,5 +1,4 @@
 import { Paper, Popover, Typography } from "@mui/material";
-import Image from "next/image";
 import React from "react";
 
 import itemsJson from "data/items.json";
@@ -8,6 +7,7 @@ import CraftingInfo from "./CraftingInfo";
 import NeededToCraft from "./NeededToCraft";
 import StageInfo from "./StageInfo";
 import { Item } from "types/item";
+import Image from "components/base/Image";
 import imageBase from "util/imageBase";
 
 interface Props {
@@ -63,10 +63,8 @@ const ItemInfoPopover: React.FC<Props> = React.memo((props) => {
               // add key to force remount
               key={item.iconId}
               src={`${imageBase}/items/${item.iconId}.webp`}
-              width={48}
-              height={48}
+              sx={{ width: "48px", height: "48px" }}
               alt=""
-              style={{ objectFit: "contain" }}
             />
             {item.name}
           </Typography>
