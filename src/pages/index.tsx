@@ -448,7 +448,7 @@ const Home: NextPage = () => {
                     className="icon"
                     width="24"
                     height="16"
-                    src={`${imageBase}/assets/icons/ko-fi.webp"`}
+                    src={`${imageBase}/assets/icons/ko-fi.webp`}
                     alt="Ko-fi"
                   />
                   Donations

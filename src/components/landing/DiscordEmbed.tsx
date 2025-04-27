@@ -57,10 +57,8 @@ const DiscordEmbed = (props: Props) => {
       </Box>
       <Divider orientation="vertical" flexItem />
       <Image
-        sx={{ borderRadius: "50%", width: "3rem", height: "3rem", objectFit: "contain" }}
+        sx={{ borderRadius: "50%", width: "3rem", height: "3rem" }}
         src={`${imageBase}/assets/icons/discord.svg`}
-        width="48"
-        height="48"
         alt="Discord"
       />
     </Link>
