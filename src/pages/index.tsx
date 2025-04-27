@@ -18,7 +18,7 @@
 import type { NextPage } from "next";
 import config from "data/config";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import Image from "components/base/Image";
 import { getLogoUrl } from "components/app/Logo";
 import HomeNavItem from "components/landing/HomeNavItem";
 import HomeNavSection from "components/landing/HomeNavSection";
@@ -362,7 +362,7 @@ const Home: NextPage = () => {
                   color: "#F2F2F2",
                 }}
               >
-                <Image src={`${imageBase}/assets/icons/discord.svg`} width="20" height="15" alt="" />
+                <Image src={`${imageBase}/assets/icons/discord.svg`} sx={{ width: "20px", height: "15px" }} alt="" />
                 Discord
               </HomeNavItem>
               <HomeNavItem
@@ -374,7 +374,7 @@ const Home: NextPage = () => {
                   color: "#F2F2F2",
                 }}
               >
-                <Image width="18" height="18" src={`${imageBase}/assets/icons/github-1.webp`} alt="" />
+                <Image src={`${imageBase}/assets/icons/github-1.webp`} sx={{ width: "18px", height: "18px" }} alt="" />
                 GitHub
               </HomeNavItem>
               <HomeNavItem
@@ -388,8 +388,7 @@ const Home: NextPage = () => {
               >
                 <Image
                   className="icon"
-                  width="24"
-                  height="16"
+                  sx={{ width: "24px", height: "16px" }}
                   src={`${imageBase}/assets/icons/ko-fi.webp`}
                   alt="Ko-fi"
                 />

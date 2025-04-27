@@ -27,7 +27,13 @@ const DiscordInvite = () => {
       target="_blank"
       rel="noreferrer noopener"
     >
-      <Image src={`${imageBase}/assets/icons/discord.svg`} width="20" height="15" alt="" />
+      <Image
+        sx={{ width: "20px", height: "15px" }}
+        src={`${imageBase}/assets/icons/discord.svg`}
+        width="20"
+        height="15"
+        alt=""
+      />
       Join our Discord!
     </Link>
   );

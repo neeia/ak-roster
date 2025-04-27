@@ -27,7 +27,7 @@ function DiscordButton(props: { onClick: React.MouseEventHandler }) {
       }}
       onClick={props.onClick}
     >
-      <Image src={`${imageBase}/assets/icons/discord.svg`} width="20" height="15" alt="" />
+      <Image src={`${imageBase}/assets/icons/discord.svg`} sx={{ width: "20px", height: "15px" }} alt="" />
       Continue with Discord
     </ButtonBase>
   );
