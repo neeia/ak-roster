@@ -1,6 +1,5 @@
-import { Box, Container, SxProps, TextField, Typography } from "@mui/material";
+import { Box, Container, TextField, Typography } from "@mui/material";
 import { NextPage } from "next";
-import Image from "next/image";
 import { memo, useState } from "react";
 
 import { COST_BY_RARITY, MAX_LEVEL_BY_RARITY, clamp } from "util/changeOperator";
@@ -9,6 +8,7 @@ import Promotion from "components/data/input/Select/Promotion";
 import Board from "components/base/Board";
 import Rarity from "components/data/input/Select/Rarity";
 import imageBase from "util/imageBase";
+import Image from "components/base/Image";
 
 /**
  * The cost of leveling an operator
@@ -312,9 +312,5 @@ const Level: NextPage = () => {
 };
 export default Level;
 
-const LmdIcon = memo(() => (
-  <Box component="span" position="relative" top={3}>
-    <Image src={`${imageBase}/items/GOLD_SHD.webp`} width={26} height={18} alt="LMD" />
-  </Box>
-));
+const LmdIcon = memo(() => <Image src={`${imageBase}/items/GOLD_SHD.webp`} width={26} height={18} alt="LMD" top={3} />);
 LmdIcon.displayName = "LMD";

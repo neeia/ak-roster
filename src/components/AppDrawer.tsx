@@ -129,7 +129,6 @@ const AppDrawer = React.memo((props: Props) => {
         hideSubtitle
         sx={{ width: "100%", height: "200px" }}
         LinkProps={{ sx: { position: "relative" } }}
-        sizes="220px"
       >
         <Typography
           sx={{

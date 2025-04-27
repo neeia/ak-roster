@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, BoxProps, LinkProps } from "@mui/material";
 import Link from "components/base/Link";
-import Image from "next/image";
+import Image from "components/base/Image";
 import imageBase from "util/imageBase";
 
 // seasonal logo filenames
@@ -24,21 +24,19 @@ interface Props extends BoxProps {
   LinkProps?: LinkProps;
   full?: boolean;
   hideSubtitle?: boolean;
-  sizes?: string;
 }
 const Logo = (props: Props) => {
-  const { LinkProps, full, hideSubtitle, children, sizes, ...rest } = props;
+  const { LinkProps, full, hideSubtitle, children, sx, ...rest } = props;
 
   const suffix = full ? "-h" : hideSubtitle ? "" : "-v";
 
   return (
     <Link href="/" title="Krooster" {...LinkProps}>
-      <Box position="relative" {...rest}>
+      <Box sx={{ position: "relative", ...sx }} {...rest}>
         <Image
-          alt="Krooster - Arknights Roster"
           src={`${imageBase}/title/${getLogoUrl()}${suffix}.webp`}
-          fill
-          sizes={sizes}
+          sx={{ position: "absolute", width: "100%", height: "100%", objectFit: "contain" }}
+          alt="Krooster - Arknights Roster"
         />
       </Box>
       {children}
