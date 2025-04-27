@@ -1,38 +1,15 @@
 import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { Alert, Box, Button, ButtonBase, CircularProgress, Divider, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, CircularProgress, Divider, TextField, Typography } from "@mui/material";
 import supabase from "supabase/supabaseClient";
-import { DISCORD_BLURPLE } from "styles/theme/appTheme";
 import PasswordTextField from "components/app/PasswordTextField";
 import AuthLayout from "components/AuthLayout";
 import { useRouter } from "next/router";
 import useAccount from "util/hooks/useAccount";
 import { enqueueSnackbar } from "notistack";
 import ResetPassword from "components/app/ResetPassword";
-import Image from "components/base/Image";
-import imageBase from "util/imageBase";
+import DiscordButton from "components/app/DiscordButton";
 
-function DiscordButton(props: { onClick: React.MouseEventHandler }) {
-  return (
-    <ButtonBase
-      sx={{
-        width: "100%",
-        fontSize: "1rem",
-        backgroundColor: DISCORD_BLURPLE,
-        display: "flex",
-        gap: 1,
-        p: 2,
-        borderRadius: 1,
-        transition: "filter 0.1s",
-        ":hover": { filter: "brightness(110%)" },
-      }}
-      onClick={props.onClick}
-    >
-      <Image src={`${imageBase}/assets/icons/discord.svg`} sx={{width: "20px", height: "15px"}} alt="" />
-      Sign In with Discord
-    </ButtonBase>
-  );
-}
 
 const Login: NextPage = () => {
   const { query, isReady } = useRouter();
@@ -193,7 +170,7 @@ const Login: NextPage = () => {
           <Button onClick={() => setResetOpen(true)}>Forgot Password?</Button>
           <ResetPassword open={resetOpen} onClose={() => setResetOpen(false)} />
           <Divider></Divider>
-          <DiscordButton onClick={signInWithDiscord} />
+          <DiscordButton onClick={signInWithDiscord}>Sign In with Discord</DiscordButton>
         </Box>
       )}
     </AuthLayout>
