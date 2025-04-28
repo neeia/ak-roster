@@ -1,5 +1,5 @@
 import { UserData } from "types/arknightsApiTypes/apiTypes";
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import {
   Alert,
   AlertTitle,
@@ -32,25 +32,18 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 const EXCLUDED_ITEMS: string[] = [];
 const GameImport = memo(() => {
-  const isImporterDisabled = true;
+  const disabled = false;
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [_settings, setSettings] = useSettings();
-  if (!_settings.importSettings) {
-    setSettings((s) => ({
-      ...s,
-      importSettings: {
-        importProfile: true,
-        importDepot: true,
-        importOperators: true,
-        importServer : "en",
-      },
-    }));
-  }
   const settings = _settings.importSettings;
-  const [server, setServer] = useState<string>(settings ? settings.importServer : "en");
-  const [hasToken, setHasToken] = useState(localStorage.getItem("token") != null);
-  const [rememberLogin, setRememberLogin] = useState(localStorage.getItem("token") != null);
+  useEffect(() => {
+    const oldToken = localStorage.getItem("token") != null;
+    if (oldToken) localStorage.removeItem("token");
+  });
+
+  const [hasToken, setHasToken] = useState(localStorage.getItem("token_new") != null);
+  const [rememberLogin, setRememberLogin] = useState(localStorage.getItem("token_new") != null);
 
   const [_roster] = useOperators();
 
@@ -67,7 +60,9 @@ const GameImport = memo(() => {
   const login = async (email: string, code: string) => {
     enqueueSnackbar("Logging in...");
     const encodedMail = encodeURIComponent(email);
-    const result = await fetch(`/api/arknights/getData?mail=${encodedMail}&code=${code}&server=${settings.importServer}`);
+    const result = await fetch(
+      `/api/arknights/getData?mail=${encodedMail}&code=${code}&server=${settings.importServer}`
+    );
     if (result.ok) {
       const userData = (await result.json()) as UserData;
       await processGameData(userData);
@@ -78,7 +73,7 @@ const GameImport = memo(() => {
 
   const loginWithToken = async () => {
     enqueueSnackbar("Logging in...", { variant: "info" });
-    const tokenData = localStorage.getItem("token");
+    const tokenData = localStorage.getItem("token_new");
     const result = await fetch(`/api/arknights/getData?server=${settings.importServer}`, {
       method: "POST",
       headers: {
@@ -99,10 +94,10 @@ const GameImport = memo(() => {
     enqueueSnackbar("Data Retrieved. Processing...", { variant: "info" });
 
     if (rememberLogin) {
-      localStorage.setItem("token", JSON.stringify(userData.tokenData));
+      localStorage.setItem("token_new", JSON.stringify(userData.tokenData));
       setHasToken(true);
     } else {
-      localStorage.removeItem("token");
+      localStorage.removeItem("token_new");
       setHasToken(false);
     }
 
@@ -122,7 +117,7 @@ const GameImport = memo(() => {
         friendcode: friendCode,
         level: profileData.level,
         assistant: profileData.secretary,
-        server: "EN",
+        server: settings.importServer,
         onboard: `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`,
       });
 
@@ -255,14 +250,15 @@ const GameImport = memo(() => {
     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
       You can import your account data if your account is linked to a Yostar account. Doing this WILL log you out from
       the game, if you are currently logged in.
-      {isImporterDisabled ?
-      <Alert component="aside" variant="outlined" severity="error">
-        <AlertTitle>Import is currently down.</AlertTitle>
-        <Typography sx={{ fontSize: "14px" }}>
-          Due to the recent changes to login, importing is temporarily disabled. We're working to get it back online as
-          soon as possible. Thank you for your patience.
-        </Typography>
-      </Alert> : null}
+      {disabled ? (
+        <Alert component="aside" variant="outlined" severity="error">
+          <AlertTitle>Import is currently down.</AlertTitle>
+          <Typography sx={{ fontSize: "14px" }}>
+            Due to the recent changes to login, importing is temporarily disabled. We're working to get it back online
+            as soon as possible. Thank you for your patience.
+          </Typography>
+        </Alert>
+      ) : null}
       <Alert
         component="aside"
         variant="outlined"
@@ -380,9 +376,17 @@ const GameImport = memo(() => {
       <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
         <TextField
           select
-          value={server}
+          value={settings?.importServer ?? "en"}
           label="Server"
-          onChange={(e) => setServer(e.target.value)}
+          onChange={(e) => {
+            setSettings((s) => ({
+              ...s,
+              importSettings: {
+                ...settings,
+                importServer: e.target.value.toLocaleLowerCase() as "en" | "jp" | "kr",
+              },
+            }));
+          }}
           variant="outlined"
           size="small"
         >
@@ -407,7 +411,7 @@ const GameImport = memo(() => {
         <Button
           variant="outlined"
           type="submit"
-          disabled={isImporterDisabled || email.length === 0}
+          disabled={disabled || email.length === 0}
           onClick={(event) => {
             event.preventDefault();
             sendCode(email);
@@ -444,7 +448,7 @@ const GameImport = memo(() => {
         <Button
           variant="outlined"
           type="submit"
-          disabled={isImporterDisabled || code.length !== 6}
+          disabled={disabled || code.length !== 6}
           onClick={(event) => {
             event.preventDefault();
             login(email, code);
@@ -454,11 +458,7 @@ const GameImport = memo(() => {
         </Button>
       </Box>
       <Divider />
-      <Button
-        variant="outlined"
-        disabled={isImporterDisabled || !hasToken}
-        onClick={(event) => loginWithToken()}
-      >
+      <Button variant="outlined" disabled={disabled || !hasToken} onClick={(event) => loginWithToken()}>
         Log In With Previous Credentials
       </Button>
     </Box>

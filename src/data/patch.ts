@@ -1,5 +1,15 @@
 const patch = [
   {
+    version: "3.3.2",
+    date: "April 28, 2025",
+    title: "Importing is Back",
+    content: ["We've updated the import system to work with the new login method."],
+    changelog: [
+      "You can also import accounts from the KR and JP servers.",
+      "Existing tokens have been invalidated, so you will need to re-authenticate.",
+    ],
+  },
+  {
     version: "3.3.1",
     date: "April 25, 2025",
     title: "Minor Tweaks and Fixes",

@@ -3,6 +3,7 @@
   AccordionDetails,
   AccordionSummary,
   Alert,
+  AlertTitle,
   Box,
   BoxProps,
   Button,
@@ -185,6 +186,13 @@ const Home: NextPage = () => {
             }}
           />
         </Box>
+        <Typography>
+          Sponsored by the{" "}
+          <Link href="https://maa.plus/" target="_blank" rel="noreferrer noopener" sx={{ color: "#299764" }}>
+            MAA Assistant Arknights
+          </Link>{" "}
+          team.
+        </Typography>
         {!loading && !account ? (
           <Paper
             elevation={2}
@@ -230,21 +238,11 @@ const Home: NextPage = () => {
           >
             <AccountWidget sx={{ p: 0 }} username={account?.username} />
             <Alert severity="info">
-              You can now update your information in one click by connecting to Yostar!
-              <div>
-                <Link sx={{ textDecoration: "1px dotted underline" }} href="/import">
-                  See More
-                </Link>
-              </div>
-            </Alert>
-            <Alert severity="info">
-              Krooster has big plans for the future, and we want your feedback! Please take a moment to fill out our
-              survey - it shouldn't take longer than a couple minutes and makes a big difference.
-              <div>
-                <Link sx={{ textDecoration: "1px dotted underline" }} href="https://forms.gle/kjT6ajTXEBjUCCDW6">
-                  Take the Survey
-                </Link>
-              </div>
+              <AlertTitle>Importing is back!</AlertTitle>
+              <div>We've fixed the import function, and you can also import from JP and KR servers now.</div>
+              <Link sx={{ textDecoration: "1px dotted underline" }} href="/data/import">
+                Go to Import
+              </Link>
             </Alert>
             {errors.map((err, i) => (
               <Alert
@@ -260,7 +258,6 @@ const Home: NextPage = () => {
           </Paper>
         )}
         <ThemeSwitcher />
-
         <Tabs
           value={value}
           onChange={handleChange}
@@ -314,6 +311,9 @@ const Home: NextPage = () => {
               </HomeNavItem>
               <HomeNavItem disabled={!account} href={"/data/profile"}>
                 Profile
+              </HomeNavItem>
+              <HomeNavItem disabled={!account} href={"/data/import"}>
+                Import
               </HomeNavItem>
             </HomeNavSection>
             <HomeNavSection title="Network" color={brand["/network"]} src="network">
@@ -472,6 +472,19 @@ const Home: NextPage = () => {
                   This project would not be possible without the help of the community that makes it worth it. Thank
                   you! And a special thank you to the generous donors who support our work on Ko-fi. Your support is
                   much appreciated, and every dollar goes back into keeping the site running.
+                </p>
+                <p>
+                  Title art by the wonderful{" "}
+                  <Link
+                    href="https://linktr.ee/Jellyfishyu"
+                    title="Linktree"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    color="primary"
+                  >
+                    Elise Mosser
+                  </Link>
+                  .
                 </p>
                 <Typography variant="h5" component="h3" sx={{ pt: 3, pb: 1 }}>
                   Contributors:

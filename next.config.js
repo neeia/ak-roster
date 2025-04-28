@@ -28,6 +28,11 @@ const nextConfig = {
         destination: "/settings",
         permanent: false,
       },
+      {
+        source: "/import",
+        destination: "/data/import",
+        permanent: false,
+      }
     ];
   },
   images: {

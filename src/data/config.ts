@@ -26,6 +26,10 @@ const config: SiteCfg = {
           title: "Presets",
           description: "Configure preset goals for operators.",
         },
+        "/import": {
+          title: "Import",
+          description: "Import account data directly from the game.",
+        },
       },
     },
     "/network": {
@@ -70,11 +74,6 @@ const config: SiteCfg = {
           title: "Settings",
           description: "Change your settings.",
           noIndex: true,
-        },
-        "/import": {
-          title: "Import",
-          description: "Import account data directly from the game.",
-          requireLogin: true,
         },
       },
     },

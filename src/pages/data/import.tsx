@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 const GameImport = dynamic(() => import("components/app/GameImport"), { ssr: false });
 const Import: NextPage = () => {
   return (
-    <Layout tab="" page="/import">
+    <Layout tab="/data" page="/import">
       <Box
         sx={{
           display: "flex",
