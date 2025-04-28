@@ -10,6 +10,7 @@ import {
   Divider,
   FormControlLabel,
   IconButton,
+  MenuItem,
   Stack,
   TextField,
   Typography,
@@ -31,6 +32,7 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 const EXCLUDED_ITEMS: string[] = [];
 const GameImport = memo(() => {
+  const isImporterDisabled = true;
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [_settings, setSettings] = useSettings();
@@ -41,13 +43,12 @@ const GameImport = memo(() => {
         importProfile: true,
         importDepot: true,
         importOperators: true,
+        importServer : "en",
       },
     }));
   }
   const settings = _settings.importSettings;
-  // const [importProfile, setImportProfile] = useState(settings);
-  // const [importOperators, setImportOperators] = useState(true);
-  // const [importDepot, setImportDepot] = useState(true);
+  const [server, setServer] = useState<string>(settings ? settings.importServer : "en");
   const [hasToken, setHasToken] = useState(localStorage.getItem("token") != null);
   const [rememberLogin, setRememberLogin] = useState(localStorage.getItem("token") != null);
 
@@ -60,13 +61,13 @@ const GameImport = memo(() => {
   const sendCode = async (email: string) => {
     enqueueSnackbar("Code sent. Check your e-mail.", { variant: "success" });
     const encodedMail = encodeURIComponent(email);
-    fetch(`/api/arknights/sendAuthMail?mail=${encodedMail}`);
+    fetch(`/api/arknights/sendAuthMail?mail=${encodedMail}&server=${settings.importServer}`);
   };
 
   const login = async (email: string, code: string) => {
     enqueueSnackbar("Logging in...");
     const encodedMail = encodeURIComponent(email);
-    const result = await fetch(`/api/arknights/getData?mail=${encodedMail}&code=${code}`);
+    const result = await fetch(`/api/arknights/getData?mail=${encodedMail}&code=${code}&server=${settings.importServer}`);
     if (result.ok) {
       const userData = (await result.json()) as UserData;
       await processGameData(userData);
@@ -78,7 +79,7 @@ const GameImport = memo(() => {
   const loginWithToken = async () => {
     enqueueSnackbar("Logging in...", { variant: "info" });
     const tokenData = localStorage.getItem("token");
-    const result = await fetch(`/api/arknights/getData`, {
+    const result = await fetch(`/api/arknights/getData?server=${settings.importServer}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -254,13 +255,14 @@ const GameImport = memo(() => {
     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
       You can import your account data if your account is linked to a Yostar account. Doing this WILL log you out from
       the game, if you are currently logged in.
+      {isImporterDisabled ?
       <Alert component="aside" variant="outlined" severity="error">
         <AlertTitle>Import is currently down.</AlertTitle>
         <Typography sx={{ fontSize: "14px" }}>
           Due to the recent changes to login, importing is temporarily disabled. We're working to get it back online as
           soon as possible. Thank you for your patience.
         </Typography>
-      </Alert>
+      </Alert> : null}
       <Alert
         component="aside"
         variant="outlined"
@@ -377,6 +379,18 @@ const GameImport = memo(() => {
       </Box>
       <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
         <TextField
+          select
+          value={server}
+          label="Server"
+          onChange={(e) => setServer(e.target.value)}
+          variant="outlined"
+          size="small"
+        >
+          <MenuItem value={"en"}>EN</MenuItem>
+          <MenuItem value={"jp"}>JP</MenuItem>
+          <MenuItem value={"kr"}>KR</MenuItem>
+        </TextField>
+        <TextField
           id="Mail"
           sx={{
             "& .MuiFilledInput-root": {
@@ -393,8 +407,7 @@ const GameImport = memo(() => {
         <Button
           variant="outlined"
           type="submit"
-          // disabled={email.length === 0}
-          disabled
+          disabled={isImporterDisabled || email.length === 0}
           onClick={(event) => {
             event.preventDefault();
             sendCode(email);
@@ -431,8 +444,7 @@ const GameImport = memo(() => {
         <Button
           variant="outlined"
           type="submit"
-          // disabled={code.length !== 6}
-          disabled
+          disabled={isImporterDisabled || code.length !== 6}
           onClick={(event) => {
             event.preventDefault();
             login(email, code);
@@ -444,8 +456,7 @@ const GameImport = memo(() => {
       <Divider />
       <Button
         variant="outlined"
-        // disabled={!hasToken}
-        disabled
+        disabled={isImporterDisabled || !hasToken}
         onClick={(event) => loginWithToken()}
       >
         Log In With Previous Credentials

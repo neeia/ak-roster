@@ -1,6 +1,4 @@
 import {
-  AccessToken,
-  ApiServer,
   ArknightsServer,
   channelIds,
   Distributor,
@@ -12,17 +10,16 @@ import {
   UserData,
   VersionInfo,
   YostarAuthData,
-  yostarPassportUrls,
+  yostarDomains,
   YostarServer,
   YostarToken,
 } from "../../types/arknightsApiTypes/apiTypes";
-import { randomUUID } from "crypto";
 import * as crypto from "crypto";
+import { randomUUID } from "crypto";
 
-const sendCodeEndpoint = "/account/yostar_auth_request";
-const submitCodeEndpoint = "/account/yostar_auth_submit";
-const getYostarTokenEndpoint = "/user/yostar_createlogin";
-const getAccessTokenEndpoint = "/user/login";
+const sendCodeEndpoint = "/yostar/send-code";
+const submitCodeEndpoint = "/yostar/get-auth";
+const getYostarTokenEndpoint = "/user/login";
 const getu8TokenEndpoint = "/user/v1/getToken";
 
 const loginEndpoint = "/account/login";
@@ -35,16 +32,44 @@ const defaultHeaders = {
   Connection: "Keep-Alive",
 };
 
-const sendTokenToMail = async function (mail: string, server: YostarServer): Promise<boolean> {
-  const passportUrl = yostarPassportUrls[server];
+function generateYostarplatHeaders(body: string, server: YostarServer = "en") {
+  const linkedHashMap = {
+    PID: server === "en" ? "US-ARKNIGHTS" : server === "jp" ? "JP-AK" : "KR-ARKNIGHTS",
+    Channel: "googleplay",
+    Platform: "android",
+    Version: "4.10.0",
+    GVersionNo: "2000112",
+    GBuildNo: "",
+    Lang: server === "en" ? "en" : server === "jp" ? "jp" : "ko",
+    DeviceID: randomUUID(),
+    DeviceModel: "F9",
+    UID: "",
+    Token: "",
+    Time: Math.floor(Date.now() / 1000),
+  };
 
-  const body = { platform: "android", account: mail, authlang: "en" };
-  const sendMail = await fetch(passportUrl + sendCodeEndpoint, {
+  const jsonString = JSON.stringify(linkedHashMap, null, "");
+  const md5Hash = crypto.createHash("md5").update(jsonString + body + "886c085e4a8d30a703367b120dd8353948405ec2").digest("hex");
+
+  const headerAuth = { Head: linkedHashMap, Sign: md5Hash.toUpperCase() };
+
+  return {
+    ...defaultHeaders,
+    Authorization: JSON.stringify(headerAuth, null, ""),
+  };
+}
+
+const sendTokenToMail = async function (mail: string, server: YostarServer): Promise<boolean> {
+  const baseurl = yostarDomains[server];
+  const body = { Account: mail, Randstr: "", Ticket: "" };
+  const headers = generateYostarplatHeaders(JSON.stringify(body), server);
+
+  const sendMail = await fetch(baseurl + sendCodeEndpoint, {
     method: "POST",
     body: JSON.stringify(body),
-    headers: defaultHeaders,
+    headers: headers
   });
-  // console.log("mail sent");
+
   return sendMail.ok;
 };
 
@@ -52,56 +77,37 @@ const sendTokenToMail = async function (mail: string, server: YostarServer): Pro
  * Gets an account data. Reference source: {@link https://github.com/thesadru/ArkPRTS/blob/master/arkprts/auth.py}
  * @param mail - the yostar account mail linked to the arknights account
  * @param code - the code sent to the mail of the account
+ * @param server - the server in which the account is. Valid values are "en", "kr" and "jp"
  * @return {Promise<UserData | null>} - the account {@link UserData} if the request was successful, otherwise null
  */
-const getGameData = async function (mail: string, code: string): Promise<UserData | null> {
-  // console.log("starting to get game data");
-  const server = "en";
+const getGameData = async function (mail: string, code: string, server: "en" | "kr" | "jp"): Promise<UserData | null> {
   const distributor = "yostar";
-
-  //deviceId2 and 3 can be empty strings for yostar global
   const deviceId1 = randomUUID();
-  const deviceId2 = ""; //getMiddleRandomDeviceId();
-  const deviceId3 = ""; //randomUUID();
+  const deviceId2 = "";
+  const deviceId3 = "";
 
   const networkConfig = await getNetworkConfig(server);
+  const yostarToken = await getYostarAuthData(mail, code, server);
 
-  // console.log("getting auth data");
-  const yostarAuthData = await getYostarAuthData(mail, code, server);
-  if (yostarAuthData) {
-    // console.log("getting yostar token");
-    const yostarToken = await getYostarToken(
-      mail,
-      yostarAuthData.yostar_uid,
-      yostarAuthData.yostar_token,
+  if (yostarToken) {
+    return getGameDataWithTokenInternal(
+      yostarToken,
       deviceId1,
-      server
+      deviceId2,
+      deviceId3,
+      distributor,
+      server,
+      networkConfig
     );
-    if (yostarToken) {
-      return getGameDataWithTokenInternal(
-        yostarToken,
-        deviceId1,
-        deviceId2,
-        deviceId3,
-        distributor,
-        server,
-        networkConfig
-      );
-    }
   }
-  // console.log("something went wrong");
+
   return null;
 };
 
-const getGameDataWithToken = async function (tokenData: TokenData): Promise<UserData | null> {
-  // console.log("starting to get game data with starting token");
-  const server = "en";
+const getGameDataWithToken = async function (tokenData: TokenData, server: "en" | "kr" | "jp"): Promise<UserData | null> {
   const distributor = "yostar";
-
-  //deviceId2 and 3 can be empty strings for yostar global
-  const deviceId1 = randomUUID();
-  const deviceId2 = ""; //getMiddleRandomDeviceId();
-  const deviceId3 = ""; //randomUUID();
+  const deviceId2 = "";
+  const deviceId3 = "";
 
   const networkConfig = await getNetworkConfig(server);
 
@@ -136,43 +142,39 @@ const getGameDataWithTokenInternal = async function (
   server: YostarServer,
   networkConfig: Record<string, string>
 ): Promise<UserData | null> {
-  // console.log("getting access token");
-  const accessToken = await getAccessToken(yostarToken.uid, yostarToken.token, deviceId1, server);
-  if (accessToken) {
-    // console.log("getting u8 token");
-    const u8Token = await getU8Token(
-      yostarToken.uid,
-      accessToken.accessToken,
+  const u8Token = await getU8Token(
+    yostarToken.uid,
+    yostarToken.token,
+    deviceId1,
+    deviceId2,
+    deviceId3,
+    distributor,
+    networkConfig
+  );
+
+  if (u8Token) {
+    const loginSecret = await getLoginSecret(
+      u8Token.token,
+      u8Token.uid,
       deviceId1,
       deviceId2,
       deviceId3,
-      distributor,
       networkConfig
     );
-    if (u8Token) {
-      // console.log("getting login secret");
-      const loginSecret = await getLoginSecret(
-        u8Token.token,
-        u8Token.uid,
-        deviceId1,
-        deviceId2,
-        deviceId3,
-        networkConfig
-      );
-      if (loginSecret) {
-        // console.log("getting user data");
-        const data = await getData(loginSecret.secret, loginSecret.uid, networkConfig);
-        // console.log("user data got succesfully");
-        if (data) {
-          data.tokenData = {
-            token: yostarToken,
-            deviceId: deviceId1,
-          };
-        }
-        return data;
+
+    if (loginSecret) {
+      const data = await getData(loginSecret.secret, loginSecret.uid, networkConfig);
+
+      if (data) {
+        data.tokenData = {
+          token: yostarToken,
+          deviceId: deviceId1,
+        };
       }
+      return data;
     }
   }
+
   return null;
 };
 
@@ -183,96 +185,56 @@ const getGameDataWithTokenInternal = async function (
  * @param server - yostar server of the account
  * @return {Promise<YostarAuthData | null>} - the {@link YostarAuthData}, containing token and uid, if the request was successful, otherwise null
  */
-async function getYostarAuthData(mail: string, code: string, server: YostarServer): Promise<YostarAuthData | null> {
-  const passportUrl = yostarPassportUrls[server];
+async function getYostarAuthData(mail: string, code: string, server: YostarServer): Promise<YostarToken | null> {
+  const baseurl = yostarDomains[server];
+  const body = { Account: mail, Code: code };
+  const headers = generateYostarplatHeaders(JSON.stringify(body), server);
 
-  const body = { account: mail, code: code };
-  const codeAuthResponse = await fetch(passportUrl + submitCodeEndpoint, {
+  const codeAuthResponse = await fetch(baseurl + submitCodeEndpoint, {
     method: "POST",
     body: JSON.stringify(body),
-    headers: defaultHeaders,
+    headers: headers,
   });
 
   if (codeAuthResponse.ok) {
     const codeAuthResult = await codeAuthResponse.json();
-    const authData = codeAuthResult as YostarAuthData;
-    return authData.result == 0 ? authData : null;
-  }
+    if (codeAuthResult.Code === 200) {
+      const token = codeAuthResult.Data.Token;
 
-  return null;
-}
+      const yostarTokenBody = {
+        CheckAccount: 0,
+        Geetest: {
+          CaptchaID: null,
+          CaptchaOutput: null,
+          GenTime: null,
+          LotNumber: null,
+          PassToken: null,
+        },
+        OpenID: mail,
+        Secret: "",
+        Token: token,
+        Type: "yostar",
+        UserName: mail,
+      };
 
-/**
- * Gets the yostar token for an account
- * @param mail - the yostar account mail linked to the arknights account
- * @param authUid - the auth uid obtained from {@link getYostarToken}
- * @param authToken - the auth token obtained from {@link getYostarToken}
- * @param deviceId1 - randomly generated uuid of a device. **MUST** be the same of {@link getU8Token} and {@link getLoginSecret}
- * @param server - yostar server of the account
- * @return {Promise<YostarToken | null>} - the {@link YostarToken}, containing token and uid, if the request was successful, otherwise null
- */
-async function getYostarToken(
-  mail: string,
-  authUid: string,
-  authToken: string,
-  deviceId1: string,
-  server: YostarServer
-): Promise<YostarToken | null> {
-  const passportUrl = yostarPassportUrls[server];
-  const yostarTokenBody = {
-    yostar_username: mail,
-    yostar_uid: authUid,
-    yostar_token: authToken,
-    deviceId: deviceId1,
-    createNew: "0",
-  };
+      const yostarTokenHeaders = generateYostarplatHeaders(JSON.stringify(yostarTokenBody), server);
+      const yostarTokenResponse = await fetch(baseurl + getYostarTokenEndpoint, {
+        method: "POST",
+        body: JSON.stringify(yostarTokenBody),
+        headers: yostarTokenHeaders,
+      });
 
-  const yostarTokenResponse = await fetch(passportUrl + getYostarTokenEndpoint, {
-    method: "POST",
-    body: JSON.stringify(yostarTokenBody),
-    headers: defaultHeaders,
-  });
-
-  if (yostarTokenResponse.ok) {
-    const yostarTokenResult = await yostarTokenResponse.json();
-    const yostarToken = yostarTokenResult as YostarToken;
-    return yostarToken.result == 0 ? yostarToken : null;
-  }
-  return null;
-}
-
-/**
- * Gets the passport access token for an account
- * @param yostarTokenUid - the token uid obtained from {@link getYostarToken}
- * @param yostarToken - the yostar token obtained from {@link getYostarToken}
- * @param deviceId1 - randomly generated uuid of a device. **MUST** be the same deviceId1 parameter of other methods
- * @param server - yostar server of the account
- * @return {Promise<AccessToken | null>} - the {@link AccessToken}, containing token and uid, if the request was successful, otherwise null
- */
-async function getAccessToken(
-  yostarTokenUid: string,
-  yostarToken: string,
-  deviceId1: string,
-  server: YostarServer
-): Promise<AccessToken | null> {
-  const passportUrl = yostarPassportUrls[server];
-  const accessTokenBody = {
-    platform: "android",
-    uid: yostarTokenUid,
-    token: yostarToken,
-    deviceId: deviceId1,
-  };
-
-  const accessTokenResponse = await fetch(passportUrl + getAccessTokenEndpoint, {
-    method: "POST",
-    body: JSON.stringify(accessTokenBody),
-    headers: defaultHeaders,
-  });
-
-  if (accessTokenResponse.ok) {
-    const accessTokenResult = await accessTokenResponse.json();
-    const accessToken = accessTokenResult as AccessToken;
-    return accessToken.result == 0 ? accessToken : null;
+      if (yostarTokenResponse.ok) {
+        const yostarTokenResult = await yostarTokenResponse.json();
+        if (yostarTokenResult.Code === 200) {
+          return {
+            uid: yostarTokenResult.Data.UserInfo.ID,
+            token: yostarTokenResult.Data.UserInfo.Token,
+            result: 0,
+          };
+        }
+      }
+    }
   }
 
   return null;
@@ -281,7 +243,7 @@ async function getAccessToken(
 /**
  * Gets the u8 authentication token for an account
  * @param yostarTokenUid - the token uid obtained from {@link getYostarToken}
- * @param accessToken - the access token obtained from {@link getAccessToken}
+ * @param accessToken - the access token obtained from {@link getYostarToken}
  * @param deviceId1 - randomly generated uuid of a device. **MUST** be the same deviceId1 parameter of other methods
  * @param deviceId2 - device id generated by {@link getMiddleRandomDeviceId}. **MUST** be the same deviceId2 parameter of other methods
  * @param deviceId3 - randomly generated uuid of a device. **MUST** be the same deviceId3 parameter of other methods
@@ -301,10 +263,11 @@ async function getU8Token(
   const u8Url = networkConfig["u8"];
   const channelId = channelIds[distributor];
 
-  const extension =
-    distributor == "yostar"
-      ? { uid: yostarTokenUid, token: accessToken }
-      : { uid: yostarTokenUid, access_token: accessToken };
+  const extension = {
+    type: 1,
+    uid: yostarTokenUid,
+    token: accessToken,
+  };
   const u8Body: any = {
     appId: "1",
     platform: 1,
@@ -316,8 +279,7 @@ async function getU8Token(
     deviceId2: deviceId2,
     deviceId3: deviceId3,
   };
-  const u8Sign = generateU8Sign(u8Body);
-  u8Body.sign = u8Sign;
+  u8Body.sign = generateU8Sign(u8Body);
 
   const u8TokenResponse = await fetch(u8Url + getu8TokenEndpoint, {
     method: "POST",
@@ -435,8 +397,7 @@ async function getNetworkConfig(server: ArknightsServer): Promise<Record<string,
   }).then((res) => res.json());
   const content = networkResponse["content"] as string;
   const jsonContent = JSON.parse(content);
-  const networkConfig = jsonContent["configs"][jsonContent["funcVer"]]["network"] as Record<string, string>;
-  return networkConfig;
+  return jsonContent["configs"][jsonContent["funcVer"]]["network"] as Record<string, string>;
 }
 
 /**
@@ -450,6 +411,7 @@ async function getVersionConfig(networkConfig: Record<string, string>): Promise<
   const versionResponse = await fetch(hvUrlFormatted, {
     headers: defaultHeaders,
   });
+
   const versionResult = await versionResponse.json();
   return versionResult as VersionInfo;
 }

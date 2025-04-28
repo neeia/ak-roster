@@ -8,10 +8,10 @@ export const channelIds: { [distributor in Distributor]: string } = {
   yostar: "3",
 };
 
-export const yostarPassportUrls: { [server in YostarServer]: string } = {
-  en: "https://passport.arknights.global",
-  jp: "https://passport.arknights.jp",
-  kr: "https://passport.arknights.kr",
+export const yostarDomains: Record<YostarServer, string> = {
+  en: "https://en-sdk-api.yostarplat.com",
+  jp: "https://jp-sdk-api.yostarplat.com",
+  kr: "https://jp-sdk-api.yostarplat.com",
 };
 
 export const networkConfigUrls: { [server in ArknightsServer]: string } = {
@@ -34,9 +34,6 @@ export interface YostarToken {
   result: number;
   uid: string;
   token: string;
-  yostar_uid: string;
-  yostar_username: string;
-  isNew: 0;
 }
 
 export interface AccessToken {

@@ -3,9 +3,9 @@ import { getGameData, getGameDataWithToken } from "util/hgApi/yostarAuth";
 import { TokenData } from "types/arknightsApiTypes/apiTypes";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  const { mail, code } = req.query as { mail: string; code: string };
+  const { mail, code, server } = req.query as { mail: string; code: string, server: "en" | "kr" | "jp" };
   const token = req.body as TokenData;
-  const data = token ? await getGameDataWithToken(token) : await getGameData(mail, code);
+  const data = token ? await getGameDataWithToken(token, server) : await getGameData(mail, code, server);
   if (data) {
     res.status(200).json(data);
   } else {

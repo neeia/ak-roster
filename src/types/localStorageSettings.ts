@@ -36,6 +36,7 @@ export interface ImportSettings {
   importProfile: boolean;
   importOperators: boolean;
   importDepot: boolean;
+  importServer: "en" | "kr" | "jp";
 }
 
 const depotSettings: DepotSettings = {
@@ -62,6 +63,7 @@ const importSettings: ImportSettings = {
   importProfile: true,
   importOperators: true,
   importDepot: true,
+  importServer: "en",
 };
 
 export const defaultSettings: LocalStorageSettings = {
