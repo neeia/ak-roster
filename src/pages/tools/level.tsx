@@ -312,5 +312,7 @@ const Level: NextPage = () => {
 };
 export default Level;
 
-const LmdIcon = memo(() => <Image src={`${imageBase}/items/GOLD_SHD.webp`} width={26} height={18} alt="LMD" top={3} />);
+const LmdIcon = memo(() => (
+  <Image src={`${imageBase}/items/GOLD_SHD.webp`} width={26} height={18} alt="LMD" sx={{ mt: "3px" }} />
+));
 LmdIcon.displayName = "LMD";
