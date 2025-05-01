@@ -5,20 +5,23 @@ import itemsJson from "data/items.json";
 
 import CraftingInfo from "./CraftingInfo";
 import NeededToCraft from "./NeededToCraft";
-import StageInfo from "./StageInfo";
+import ItemSources from "./ItemSources";
 import { Item } from "types/item";
 import Image from "components/base/Image";
 import imageBase from "util/imageBase";
+import { EventsData } from "types/events";
 
 interface Props {
   itemId: string | null;
   ingredientToCraftedItemsMapping: { [ingredientId: string]: string[] };
   open: boolean;
   onClose: () => void;
+  openEventTracker: () => void;
+  eventsData: EventsData;
 }
 
 const ItemInfoPopover: React.FC<Props> = React.memo((props) => {
-  const { itemId, ingredientToCraftedItemsMapping, open, onClose } = props;
+  const { itemId, ingredientToCraftedItemsMapping, open, onClose, openEventTracker, eventsData } = props;
   const item: Item | null = itemId != null ? itemsJson[itemId as keyof typeof itemsJson] : null;
   return (
     <Popover
@@ -70,7 +73,7 @@ const ItemInfoPopover: React.FC<Props> = React.memo((props) => {
           </Typography>
           <CraftingInfo item={item} />
           <NeededToCraft item={item} ingredientToCraftedItemsMapping={ingredientToCraftedItemsMapping} />
-          <StageInfo item={item} />
+          <ItemSources item={item} openEventTracker={() => { onClose(); openEventTracker(); }} eventsData={eventsData} />
         </Paper>
       )}
     </Popover>
