@@ -533,6 +533,8 @@ const MaterialsNeeded = React.memo((props: Props) => {
           ingredientToCraftedItemsMapping={savedStates.ingredientToCraftedItemsMapping}
           open={popoverOpen}
           onClose={handlePopoverClose}
+          openEventTracker={() => setEventsTrackerOpen(true)}
+          eventsData={Object.keys(eventsData ?? {}).length > 0 ? eventsData : trackerDefaults?.eventsData ?? {}}
         />
       </Board>
       <ExportImportDialog
