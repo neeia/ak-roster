@@ -25,6 +25,7 @@ const SubmitEventDialog = (props: Props) => {
 
     const [rawMaterials, setRawMaterials] = useState<Record<string, number>>({});
     const [rawFarms, setRawFarms] = useState<string[]>([]);
+    const [rawInfinite, setRawInfinite] = useState<string[]>([]);
     const [rawName, setRawName] = useState<string>('');
     const [isNumbersMatch, setIsNumbersMatch] = useState<boolean>(true);
     const [focused, setFocused] = useState<string | false>(false);
@@ -38,6 +39,7 @@ const SubmitEventDialog = (props: Props) => {
         setSelectedFrom(createEmptyNamedEvent());
         setRawMaterials({});
         setRawFarms([]);
+        setRawInfinite([]);
         setRawName('')
         setIsNumbersMatch(false);
         setFocused(false);
@@ -46,6 +48,7 @@ const SubmitEventDialog = (props: Props) => {
     const setFormToSubmited = useCallback(() => {
         setRawMaterials(submitedEvent.materials ?? {});
         setRawFarms(submitedEvent?.farms ?? []);
+        setRawInfinite(submitedEvent?.infinite ?? []);
         setRawName(submitedEvent?.name ?? '');
         setIsNumbersMatch(true);
         setFocused(false);
@@ -124,7 +127,8 @@ const SubmitEventDialog = (props: Props) => {
     const handleFromSelectorChange = (event: NamedEvent) => {
         setSelectedFrom(event);
         setRawMaterials(event.materials);
-        setRawFarms(event.farms ?? [])
+        setRawFarms(event.farms ?? []);
+        setRawInfinite(event.infinite ?? [])
         setRawName(event.name);
     };
     //-
@@ -204,6 +208,7 @@ const SubmitEventDialog = (props: Props) => {
             materialsToDepot,
             materialsToEvent,
             farms,
+            infinite,
             action
         }: SubmitEventProps = {
             targetName: submitedEvent.name ?? "",
@@ -212,6 +217,7 @@ const SubmitEventDialog = (props: Props) => {
             materialsToDepot: [],
             materialsToEvent: false,
             farms: rawFarms,
+            infinite: rawInfinite,
             action: mode ? mode : "replace",
         };
 
@@ -268,10 +274,11 @@ const SubmitEventDialog = (props: Props) => {
             materialsToDepot,
             materialsToEvent,
             farms,
+            infinite,
             action,
         });
         handleDialogClose();
-    }, [handleDialogClose, mode, source, submitedEvent, isNumbersMatch, onSubmit, rawFarms, rawMaterials, rawName, selectedEvent, selectedFrom]
+    }, [handleDialogClose, mode, source, submitedEvent, isNumbersMatch, onSubmit, rawFarms, rawInfinite, rawMaterials, rawName, selectedEvent, selectedFrom]
     );
 
     const isMaterialsEmpty = Object.values(rawMaterials).every((value) => value === 0);
