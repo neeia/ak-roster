@@ -16,7 +16,7 @@ interface Props {
 const ItemSources: React.FC<Props> = (props) => {
   const { item, openEventTracker, eventsData } = props;
 
-  const eventNames = Object.keys(eventsData);
+  const eventNames = Object.keys(eventsData ?? {});
 
   let total = 0, farmableTimes = 0;
   const materialData = eventNames.flatMap((eventName) => {
@@ -54,20 +54,32 @@ const ItemSources: React.FC<Props> = (props) => {
         >
           Add or import events in the Event Tracker to see upcoming sources
         </Button>
-      ) : (
-        <Box component="dl" sx={{ display: "grid", gridTemplateColumns: "1fr auto", rowGap: "4px" }}>
-            {materialData.map((result) =>
-              <EventRow label={result.event} amount={result.amount} />
-            )}
-            {(total || farmableTimes) ?
+      ) : Object.keys(materialData).length === 0 ? (
+          <Box sx={{ paddingLeft: "4px" }}>{"No upcoming events have this material :("}</Box>
+        ) : (
+          <>
+            <Box
+              component="dl"
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "1fr auto",
+                rowGap: "2px",
+                columnGap: "16px",
+                maxHeight: "max(30vh, 300px)",
+                overflowY: "auto"
+              }}
+            >
+              {materialData.map((result) =>
+                <EventRow label={result.event} amount={result.amount} />
+              )}
+            </Box>
+            <Box component="dl" sx={{ display: "grid", gridTemplateColumns: "1fr auto" }}>
               <EventRow label="Total" amount={formatNumber(total) + (farmableTimes ? (" + " + farmableTimes + " farmable") : "")} 
-                sx={{ borderTop: "1px solid", borderColor: "text.secondary", marginTop: "4px" }} />
-              : (
-                "No upcoming events have this material :("
-              )
-            }
-        </Box>
-      )}
+                sx={{ borderTop: "1px solid", borderColor: "text.secondary" }} />
+            </Box>
+          </>
+        )
+      }
     </ItemInfoSection>
   );
 };
@@ -77,8 +89,8 @@ const EventRow: React.FC<{ label: string, amount: string | number, sx?: any }> =
   const { label, amount, sx } = props;
   return (
     <>
-      <Box component="dt" sx={sx}>{label}</Box>
-      <Box component="dd" sx={{ ...sx, textAlign: "right", marginLeft: 0 }}>{amount}</Box>
+      <Box component="dt" sx={{ ...sx, paddingLeft: "4px", whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>{label}</Box>
+      <Box component="dd" sx={{ ...sx, textAlign: "right", marginLeft: 0, paddingRight: "4px" }}>{amount}</Box>
     </>
   )
 };
