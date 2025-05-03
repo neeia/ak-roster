@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { Item } from "types/item";
 
 import ItemInfoSection from "./ItemInfoSection";
@@ -19,17 +19,22 @@ const ItemSources: React.FC<Props> = (props) => {
   const eventNames = Object.keys(eventsData ?? {});
 
   let total = 0, farmableTimes = 0;
+  let firstInfiniteShop = {index: Number.MAX_SAFE_INTEGER, name: ""};
+
   const materialData = eventNames.flatMap((eventName) => {
     const event = eventsData[eventName];
     const results = [];
     if (event.farms?.includes(item.id)) {
       farmableTimes += 1;
-      results.push({ event: eventName, amount: "farmable" });
+      results.push({ index: event.index, event: eventName, amount: "farmable" });
+    }
+    if (event.infinite?.includes(item.id) && event.index < firstInfiniteShop.index) {
+      firstInfiniteShop = {index: event.index, name: eventName};
     }
     if (item.id in event.materials) {
       const amount = event.materials[item.id];
       total += amount;
-      results.push({ event: eventName, amount: formatNumber(amount) });
+      results.push({ index: event.index, event: eventName, amount: formatNumber(amount) });
     }
     if (item.id == "EXP") {
       const totalExp = Object.entries(BATTLE_RECORD_TO_EXP).reduce(
@@ -37,11 +42,12 @@ const ItemSources: React.FC<Props> = (props) => {
       );
       total += totalExp;
       if (totalExp) {
-        results.push({ event: eventName, amount: formatNumber(totalExp) });
+        results.push({ index: event.index, event: eventName, amount: formatNumber(totalExp) });
       }
     }
     return results;
   });
+  materialData.sort((a, b) => a.index - b.index);
 
   return (
     <ItemInfoSection heading="Event sources">
@@ -54,7 +60,7 @@ const ItemSources: React.FC<Props> = (props) => {
         >
           Add or import events in the Event Tracker to see upcoming sources
         </Button>
-      ) : Object.keys(materialData).length === 0 ? (
+      ) : Object.keys(materialData).length === 0 && !firstInfiniteShop.name ? (
           <Box sx={{ paddingLeft: "4px" }}>{"No upcoming events have this material :("}</Box>
         ) : (
           <>
@@ -70,13 +76,16 @@ const ItemSources: React.FC<Props> = (props) => {
               }}
             >
               {materialData.map((result) =>
-                <EventRow label={result.event} amount={result.amount} />
+                <EventRow sx={{ maxWidth: "300px" }} label={result.event} amount={result.amount} />
               )}
             </Box>
             <Box component="dl" sx={{ display: "grid", gridTemplateColumns: "1fr auto" }}>
               <EventRow label="Total" amount={formatNumber(total) + (farmableTimes ? (" + " + farmableTimes + " farmable") : "")} 
                 sx={{ borderTop: "1px solid", borderColor: "text.secondary" }} />
             </Box>
+            {firstInfiniteShop.name &&
+              <Typography sx={{ paddingX: "4px", maxWidth: "600px" }}>Infinite stock in event shops, next available: {firstInfiniteShop.name}</Typography>
+            }
           </>
         )
       }
