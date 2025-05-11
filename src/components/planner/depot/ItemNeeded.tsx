@@ -2,14 +2,14 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { Box, Button, ButtonBase, ButtonGroup, IconButton, InputAdornment, TextField, Tooltip } from "@mui/material";
-import React, { ElementType, useEffect, useState, useRef } from "react";
+import React, { ElementType, useEffect, useState, useMemo, useRef, useCallback } from "react";
 
 import items from "data/items.json";
 
 import CraftingIcon from "./CraftingIcon";
 import ItemStack, { ItemStackProps } from "./ItemStack";
 import { Item } from "types/item";
-import { formatNumber } from "util/fns/depot/itemUtils";
+import DepotItem from "types/depotItem";
 
 interface Props extends ItemStackProps {
   owned: number;
@@ -53,7 +53,12 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
     setRawValue(`${owned}`);
 
     //all ItemNeeded-s render a lot: only recalc on change
-    const abbrOwned = formatNumber(owned);
+    const abbrOwned =
+      owned < 1000
+        ? owned
+        : owned < 1000000
+        ? `${owned % 1000 === 0 ? `${owned / 1000}` : (owned / 1000).toFixed(1)}K`
+        : `${owned % 1000000 === 0 ? `${owned / 1000000}` : (owned / 1000000).toFixed(2)}M`;
     setAbbrOwned(`${abbrOwned}`);
   }, [owned]);
 
