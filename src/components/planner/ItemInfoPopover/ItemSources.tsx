@@ -76,7 +76,7 @@ const ItemSources: React.FC<Props> = (props) => {
               }}
             >
               {materialData.map((result) =>
-                <EventRow sx={{ maxWidth: "300px" }} label={result.event} amount={result.amount} />
+                <EventRow key={result.event + "|" + result.amount} sx={{ maxWidth: "300px" }} label={result.event} amount={result.amount} />
               )}
             </Box>
             <Box component="dl" sx={{ display: "grid", gridTemplateColumns: "1fr auto" }}>
