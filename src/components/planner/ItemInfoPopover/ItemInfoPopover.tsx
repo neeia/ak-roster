@@ -72,7 +72,7 @@ const ItemInfoPopover: React.FC<Props> = React.memo((props) => {
             {item.name}
           </Typography>
           <CraftingInfo item={item} />
-          {itemId != '4001' && <NeededToCraft item={item} ingredientToCraftedItemsMapping={ingredientToCraftedItemsMapping} />}
+          <NeededToCraft item={item} ingredientToCraftedItemsMapping={ingredientToCraftedItemsMapping} />
           <ItemSources item={item} openEventTracker={() => { onClose(); openEventTracker(); }} eventsData={eventsData} />
         </Paper>
       )}

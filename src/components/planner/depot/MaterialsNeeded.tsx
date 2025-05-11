@@ -43,7 +43,7 @@ interface Props {
 const MaterialsNeeded = React.memo((props: Props) => {
   const { goals, goalData, depot, putDepot, resetDepot, settings, setSettings, depotIsUnsaved, refreshDepotDebounce } = props;
 
-  const [popoverOpen, setPopoverOpen] = useState<boolean>(false);
+  const [popoverOpen, setPopoverOpen] = useState(false);
   const [popoverItemId, setPopoverItemId] = useState<string | null>(null);
 
   const [exportImportOpen, setExportImportOpen] = useState<boolean>(false);
@@ -62,12 +62,13 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
   //conditional defaults fetch from api
   useEffect(() => {
-    if ((summaryOpen || popoverOpen) && Object.keys(eventsData ?? {}).length === 0) {
+    if (summaryOpen && Object.keys(eventsData).length === 0)
       fetchDefaults();
-    } else if (eventsTrackerOpen) {
+    else if (eventsTrackerOpen) {
       fetchDefaults();
     }
-  }, [summaryOpen, popoverOpen, eventsTrackerOpen])
+  }, [summaryOpen, eventsTrackerOpen]
+  )
 
 
   const handleItemClick = useCallback((itemId: string) => {
