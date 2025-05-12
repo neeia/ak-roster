@@ -3,6 +3,7 @@ import { Tooltip, Typography } from "@mui/material";
 import itemsJson from "data/items.json";
 
 import ItemBase, { ItemBaseProps } from "./ItemBase";
+import { formatNumber } from "util/fns/depot/itemUtils";
 
 export interface ItemStackProps extends ItemBaseProps {
   quantity: number;
@@ -12,12 +13,7 @@ export interface ItemStackProps extends ItemBaseProps {
 const ItemStack: React.FC<ItemStackProps> = (props) => {
   const { quantity: rawQuantity, showItemNameTooltip, ...rest } = props;
   const { itemId } = rest;
-  const quantity =
-    rawQuantity < 1000
-      ? rawQuantity
-      : rawQuantity < 1000000
-      ? `${rawQuantity % 1000 === 0 ? `${rawQuantity / 1000}` : (rawQuantity / 1000).toFixed(1)}K`
-      : `${rawQuantity % 1000000 === 0 ? `${rawQuantity / 1000000}` : (rawQuantity / 1000000).toFixed(2)}M`;
+  const quantity = formatNumber(rawQuantity);
   const { name } = itemsJson[itemId as keyof typeof itemsJson];
   const fontSize = (rest.size ?? 96) / 24 + 10;
   const itemBase = (
