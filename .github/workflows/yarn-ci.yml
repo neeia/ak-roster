@@ -1,0 +1,19 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  lint:
+    # prevent from double-running on a PR from the current repo
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      # setup workspace
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      # run lint, exit code will fail check if lint fails
+      - run: yarn lint
