@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ACESHIP_ROOT = path.join(__dirname, "../../Arknight-Images");
 
-/**@type {Array<{ sourceDir: string, destDir: string, replace?: (filename: string) => string, filter?: (filename: string) => boolean}} */
+/**@type {Array<{ sourceDir: string, destDir: string, replace?: (filename: string) => string, filter?: (filename: string) => boolean}>} */
 const tasks = [
   {
     sourceDir: path.join(ACESHIP_ROOT, "skills"),

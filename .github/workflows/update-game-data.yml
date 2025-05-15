@@ -1,0 +1,58 @@
+name: Update Game Data
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '37 * * * *'
+
+jobs:
+  run_update_scripts:
+    name: Run update scripts
+    runs-on: ubuntu-latest
+    steps:
+      # see if the branch already exists
+      - name: Check for existing branch
+        run: |
+          if git ls-remote --heads --quiet --exit-code refs/heads/actions/update-game-data > /dev/null; then
+            echo "TARGET_BRANCH=actions/update-game-data" >> $GITHUB_ENV
+          else
+            echo "TARGET_BRANCH=main" >> $GITHUB_ENV
+          fi
+      # checkout the branch if it does, otherwise main
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+      # create the branch if it didn't exist
+      - run: git checkout -B actions/update-game-data
+        if: env.TARGET_BRANCH == 'main'
+      - name: Cache submodules
+        id: cache-submodules
+        uses: actions/cache@v3
+        with:
+          key: '${{ runner.os }}-submodules'
+          path: |
+            scripts/ArknightsGameData
+            scripts/ArknightsGameData_Yostar
+      # set up the project
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: git submodule update --init --depth=1
+      # run update scripts
+      - run: yarn update:all
+      # commit changes and PR, but only if krooster data files changed (i.e. skip submodule-only updates)
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --ignore-submodules --cached --quiet; then
+            VERSION_MESSAGE=$(git submodule --quiet foreach git log -1 --pretty='%h %s%N%-C()')
+            git commit -m "Update game data." -m "$VERSION_MESSAGE"
+            git push origin actions/update-game-data
+            gh pr create -B main -H actions/update-game-data --fill \
+              || gh pr edit -H actions/update-game-data --body "$VERSION_MESSAGE"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
