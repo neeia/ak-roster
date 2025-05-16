@@ -9,38 +9,38 @@ const ACESHIP_ROOT = path.join(__dirname, "../../Arknight-Images");
 const tasks = [
   {
     sourceDir: path.join(ACESHIP_ROOT, "skills"),
-    destDir: "public\\img\\skills",
+    destDir: "public/img/skills",
     filter: (filename) => filename.endsWith(".png") && filename.startsWith("skchr_"),
     replace: (filename) => filename.replace(/^skill_icon_/, ""),
   },
   {
     sourceDir: path.join(ACESHIP_ROOT, "avatars"),
-    destDir: "public\\img\\avatars",
+    destDir: "public/img/avatars",
     filter: (filename) => /^char_.*\.png$/.test(filename),
   },
   {
     sourceDir: path.join(ACESHIP_ROOT, "characters"),
-    destDir: "public\\img\\characters",
+    destDir: "public/img/characters",
     filter: (filename) => /^char_.*\.png$/.test(filename),
   },
   {
     sourceDir: path.join(ACESHIP_ROOT, "equip/icon"),
-    destDir: "public\\img\\equip",
-    filter: (filename) => filename.endsWith(".png"),
+    destDir: "public/img/equip",
+    filter: (filename) => filename.endsWith(".png") && filename !== 'original.png',
   },
   {
     sourceDir: path.join(ACESHIP_ROOT, "equip/stage"),
-    destDir: "public\\img\\equip",
+    destDir: "public/img/equip",
     filter: (filename) => filename.endsWith(".png"),
   },
   {
     sourceDir: path.join(ACESHIP_ROOT, "equip/type"),
-    destDir: "public\\img\\equip",
+    destDir: "public/img/equip",
     filter: (filename) => filename.endsWith(".png"),
   },
   {
     sourceDir: path.join(ACESHIP_ROOT, "items"),
-    destDir: "public\\img\\items",
+    destDir: "public/img/items",
     filter: (filename) => filename.endsWith(".png"),
   },
 ];
@@ -64,7 +64,7 @@ const upload = async (existingFilePaths, task) => {
       const _filename = replaceFn ? replaceFn(filename) : filename;
       const targetFilePath = path.join(destDir, _filename);
       if (targetFilePath && !existingFilePaths.has(_filename)) {
-        console.log(`images: "${targetFilePath}" not found in storage, saving...`);
+        // console.log(`images: "${targetFilePath}" not found in storage, saving...`);
         const sourceFilePath = path.join(sourceDir, filename);
         //console.table({sourceFilePath, targetFilePath});
         await fs.copyFile(sourceFilePath, targetFilePath);
@@ -80,17 +80,18 @@ const uploadAllImages = async () => {
     const uploadCounts = await Promise.all(
       tasks.map(async (task) => {
         // first iterate through all images in the image directory
+        await fs.mkdir(task.destDir, { recursive: true });
         const rawFileNames = await fs.readdir(task.destDir, { withFileTypes: true });
         const existingImageIDs = new Set();
         rawFileNames.forEach((value) => existingImageIDs.add(value));
 
-        console.log(`images: found ${existingImageIDs.size} existing images in ${task.destDir}.`);
+        // console.log(`images: found ${existingImageIDs.size} existing images in ${task.destDir}.`);
 
-        upload(existingImageIDs, task);
+        return upload(existingImageIDs, task);
       })
     );
     const totalUploadCount = uploadCounts.reduce((acc, cur) => acc + cur, 0);
-    console.log(`images: uploaded ${totalUploadCount} new files, done.`);
+    console.log(`images: found ${totalUploadCount} total files, done.`);
   } catch (e) {
     console.error(e);
   }
