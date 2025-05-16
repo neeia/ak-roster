@@ -2,7 +2,7 @@ name: Update Game Data
 on:
   workflow_dispatch:
   schedule:
-    - cron: '37 * * * *'
+    - cron: '37 0 * * *'
 
 jobs:
   run_update_scripts:
@@ -12,7 +12,7 @@ jobs:
       # see if the branch already exists
       - name: Check for existing branch
         run: |
-          if git ls-remote --heads --quiet --exit-code refs/heads/actions/update-game-data > /dev/null; then
+          if git ls-remote --heads --quiet --exit-code ${{ github.repositoryUrl }} refs/heads/actions/update-game-data > /dev/null; then
             echo "TARGET_BRANCH=actions/update-game-data" >> $GITHUB_ENV
           else
             echo "TARGET_BRANCH=main" >> $GITHUB_ENV
@@ -22,7 +22,7 @@ jobs:
         with:
           ref: ${{ env.TARGET_BRANCH }}
       # create the branch if it didn't exist
-      - run: git checkout -B actions/update-game-data
+      - run: git checkout -b actions/update-game-data
         if: env.TARGET_BRANCH == 'main'
       # set up the project
       - uses: actions/setup-node@v4
