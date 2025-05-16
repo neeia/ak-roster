@@ -4,8 +4,8 @@ import { fileURLToPath } from "url";
 
 import { Combination } from "js-combinatorics";
 
-import characterTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/character_table.json" assert { type: "json" };
-import gachaTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/gacha_table.json" assert { type: "json" };
+import characterTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/character_table.json" with { type: "json" };
+import gachaTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/gacha_table.json" with { type: "json" };
 
 export function professionToClass(profession) {
   switch (profession) {
