@@ -396,7 +396,7 @@ const Home: NextPage = () => {
               </HomeNavItem>
               <HomeNavItem
                 external
-                href="https://maa.plus/"
+                href="https://sanitygone.help/"
                 sx={{
                   backgroundColor: "#B8B8C0",
                   color: "#101014",
