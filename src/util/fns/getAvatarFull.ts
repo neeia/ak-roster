@@ -2,7 +2,10 @@ import { OpInfo } from "types/operators/operator";
 import imageBase from "util/imageBase";
 
 export default function getAvatarFull(op: OpInfo) {
-  if (op.skin) return `${imageBase}/characters/${op.skin.replace("#", "%23").replace("+", "%2b")}.webp`;
+  if (op.skin) {
+    if (op.skin === op.op_id) return `${imageBase}/characters/${op.op_id}_1.webp`;
+    else return `${imageBase}/characters/${op.skin.replace("#", "%23").replace("+", "%2b")}.webp`;
+  }
 
   let intermediate = op.op_id;
   if (op?.elite === 2) {
