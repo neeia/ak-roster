@@ -72,7 +72,7 @@ function useEvents(): {
     };
 
     const submitEvent = useCallback((props: SubmitEventProps): null | [string, number][] => {
-        const { targetName, sourceName, targetEventIndex, materialsToDepot, materialsToEvent, action, farms } = props;
+        const { targetName, sourceName, targetEventIndex, materialsToDepot, materialsToEvent, action, farms, infinite } = props;
         const _eventsData = { ...eventsData };
 
         //find target data by index or start new object
@@ -85,12 +85,15 @@ function useEvents(): {
         if (action !== "replace" && name)
             _targetName = name ? name : targetName;
 
+        if (farms.length > 0)
+            _event.farms = farms;
+        if (infinite.length > 0)
+            _event.infinite = infinite;
+
         switch (action) {
             case "create": {
                 if (materialsToEvent)
                     _event.materials = materialsToEvent;
-                if (farms.length > 0)
-                    _event.farms = farms;
                 if (_eventsData[_targetName]) _event.index = _eventsData[_targetName].index;
                 _eventsData[_targetName] = _event;
                 /* console.log("created event:", { _targetName, data: { ..._eventsData[_targetName] } }) */
@@ -99,8 +102,6 @@ function useEvents(): {
             case "replace": {
                 if (materialsToEvent)
                     _event.materials = materialsToEvent;
-                if (farms.length > 0)
-                    _event.farms = farms;
 
                 _eventsData[_targetName] = _event;
                 /* console.log("delete check: ", name, name ? _eventsData[name] : 'noName'); */
@@ -114,8 +115,6 @@ function useEvents(): {
             case "modify": {
                 if (materialsToEvent)
                     _event.materials = addItemsToEvent(_event.materials, materialsToEvent);
-                if (farms.length > 0)
-                    _event.farms = farms;
 
                 if (_eventsData[_targetName]) _event.index = _eventsData[_targetName].index;
 

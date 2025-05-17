@@ -4,6 +4,7 @@ export type Event = {
         [key: string]: number;
     };
     farms?: string[];
+    infinite?: string[];
 }
 
 export type NamedEvent = Event & {
@@ -32,6 +33,7 @@ export type SubmitEventProps = {
     materialsToDepot: [string, number][],
     materialsToEvent: Record<string, number> | false,
     farms: string[],
+    infinite: string[],
     action: 'create' | 'modify' | 'replace' | 'remove',
 }
 
