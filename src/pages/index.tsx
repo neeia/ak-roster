@@ -394,6 +394,79 @@ const Home: NextPage = () => {
                 />
                 Donations
               </HomeNavItem>
+              <HomeNavItem
+                external
+                href="https://maa.plus/"
+                sx={{
+                  backgroundColor: "#B8B8C0",
+                  color: "#101014",
+                }}
+              >
+                <svg width="24" height="24" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.89788 5.7712L4.5614 3.349H7.92624L4.89788 5.7712Z" fill="#484858"></path>
+                  <path d="M9.90436 0.158447L8.97258 2.39429H5.86664L9.90436 0.158447Z" fill="#363643"></path>
+                  <path d="M13.4007 3.23247L9.93237 2.51914L10.9729 0.0224609L13.4007 3.23247Z" fill="#484858"></path>
+                  <path d="M14.6777 3.36406L12.1334 0L17.949 1.86892L14.6777 3.36406Z" fill="#363643"></path>
+                  <path d="M15.7828 3.904L19.0627 2.40491L20.8849 5.77787L15.7828 3.904Z" fill="#484858"></path>
+                  <path d="M10.6162 7.30546L9.87225 3.48035L13.5918 4.24537L10.6162 7.30546Z" fill="#484858"></path>
+                  <path d="M8.97093 3.72363L9.72695 7.61096L5.56885 6.44476L8.97093 3.72363Z" fill="#87879B"></path>
+                  <path d="M4.02947 6.28408L1.12329 6.94822L3.70656 3.95959L4.02947 6.28408Z" fill="#363643"></path>
+                  <path d="M0.885742 7.9805L4.08552 7.24927V10.5398L0.885742 7.9805Z" fill="#484858"></path>
+                  <path d="M9.09586 8.42361L5.01581 10.7122V7.2793L9.09586 8.42361Z" fill="#87879B"></path>
+                  <path d="M9.37436 9.35522L8.46425 11.5391L6.03729 11.2271L9.37436 9.35522Z" fill="#E8E8F2"></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M14.097 11.156L9.48358 11.5209L10.5482 8.96631L14.097 11.156Z"
+                    fill="#87879B"
+                  ></path>
+                  <path d="M14.2049 4.96631L14.9862 10.5908L11.0796 8.18029L14.2049 4.96631Z" fill="#87879B"></path>
+                  <path d="M15.1032 4.66833L20.9203 6.80479L15.9342 10.6504L15.1032 4.66833Z" fill="#484858"></path>
+                  <path d="M20.5312 3.15442L24.7251 5.80851L22.1442 6.14027L20.5312 3.15442Z" fill="#363643"></path>
+                  <path d="M22.5993 7.04386L25.3345 6.69226L23.9669 9.85668L22.5993 7.04386Z" fill="#363643"></path>
+                  <path d="M17.1057 10.9411L21.723 7.37988L23.2621 10.5454L17.1057 10.9411Z" fill="#484858"></path>
+                  <path d="M24.6167 10.7079L26.0314 7.43457L27.446 11.799L24.6167 10.7079Z" fill="#363643"></path>
+                  <path d="M27.5 12.8396L25.737 15.7403L24.6793 11.7518L27.5 12.8396Z" fill="#363643"></path>
+                  <path d="M17.0881 15.0603L23.6921 11.6647L24.9303 16.3337L17.0881 15.0603Z" fill="#484858"></path>
+                  <path d="M16.0499 11.9653L21.7421 11.5995L16.0499 14.5263V11.9653Z" fill="#87879B"></path>
+                  <path d="M15.1196 12.0326V14.5528L10.5684 12.3926L15.1196 12.0326Z" fill="#87879B"></path>
+                  <path d="M12.6529 17.7603L9.93732 13.1449L14.7994 15.4526L12.6529 17.7603Z" fill="#E8E8F2"></path>
+                  <path d="M1.21974 11.9993L0.555847 8.927L3.54335 11.3165L1.21974 11.9993Z" fill="#87879B"></path>
+                  <path d="M5.01581 13.8969V12.0579L7.40024 12.3644L5.01581 13.8969Z" fill="#E8E8F2"></path>
+                  <path d="M2.05988 12.7453L4.08553 12.1501V13.9357L2.05988 12.7453Z" fill="#87879B"></path>
+                  <path d="M0.5 16.527L1.18994 13.3342L3.60473 14.7533L0.5 16.527Z" fill="#87879B"></path>
+                  <path d="M6.15032 18.5781L5.0979 14.9705L7.90435 13.1667L6.15032 18.5781Z" fill="#E8E8F2"></path>
+                  <path d="M11.8441 18.2325L8.8772 13.1901L4.98877 26L11.8441 18.2325Z" fill="#E8E8F2"></path>
+                  <path d="M4.27114 15.4651L5.39967 19.3336L0.885559 17.3993L4.27114 15.4651Z" fill="#E8E8F2"></path>
+                </svg>
+                Sanity;Gone
+              </HomeNavItem>
+              <HomeNavItem
+                external
+                href="https://maa.plus/"
+                sx={{
+                  backgroundColor: "#299764",
+                  color: "#F2F2F2",
+                }}
+              >
+                <Image
+                  className="icon"
+                  sx={{ width: "24px", height: "24px" }}
+                  src={`${imageBase}/assets/icons/maa.webp`}
+                  alt="MAA"
+                />
+                MAA Assistant Arknights
+              </HomeNavItem>
+              <HomeNavItem
+                external
+                href="https://hermitzplanner.github.io/skins/#"
+                sx={{
+                  backgroundColor: "#F2F287",
+                  color: "#212121",
+                }}
+              >
+                Skin Planner
+              </HomeNavItem>
             </HomeNavSection>
           </Box>
         </TabPanel>
