@@ -209,7 +209,7 @@ const PlannerGoalAdd = (props: Props) => {
         setIsEdit(false);
       }
     },
-    [goals, roster, defaultOperatorObject, opData, setOpData, setIsEdit, setCurrentOp, setGoalBuilder, selectedGroup]
+    [goals, roster, opData, setOpData, setIsEdit, setCurrentOp, setGoalBuilder, selectedGroup]
   );
 
   const addGroup = (groupName: string) => {
@@ -299,7 +299,7 @@ const PlannerGoalAdd = (props: Props) => {
     const max_to = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_to];
     setGoalBuilder((prev) => ({
       ...prev,
-      level_from: clamp(1, prev.level_from ?? level_to, elite_from === elite_to ? level_to : max_from),
+      level_from: clamp(1, prev.level_from ?? level_to, elite_from === elite_to ? clamp(1, level_to, max_to) : max_from),
       level_to: clamp(1, level_to, max_to),
     }));
   };
@@ -370,7 +370,7 @@ const PlannerGoalAdd = (props: Props) => {
     if (!opData?.moduleData?.find((mod) => mod.moduleId === moduleId)) return;
 
     const modules_from = { ...(goalBuilder.modules_from as Record<string, number>) };
-    modules_from[moduleId] = clamp(0, modules_from[moduleId], newModuleLevel);
+    modules_from[moduleId] = clamp(0, modules_from[moduleId] || 0, newModuleLevel);
     const modules_to = { ...(goalBuilder.modules_to as Record<string, number>) };
     modules_to[moduleId] = clamp(0, newModuleLevel, 3);
     setGoalBuilder((prev) => ({
