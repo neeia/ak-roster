@@ -12,7 +12,7 @@ jobs:
       # see if the branch already exists
       - name: Check for existing branch
         run: |
-          if git ls-remote --heads --quiet --exit-code ${{ github.repositoryUrl }} refs/heads/actions/update-game-data > /dev/null; then
+          if git ls-remote --heads --quiet --exit-code ${{ github.server_url }}/${{ github.repository }} refs/heads/actions/update-game-data > /dev/null; then
             echo "TARGET_BRANCH=actions/update-game-data" >> $GITHUB_ENV
           else
             echo "TARGET_BRANCH=main" >> $GITHUB_ENV
@@ -59,6 +59,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   update-images:
+    if: ${{ false }}
     name: Update image assets
     runs-on: ubuntu-latest
     steps:
