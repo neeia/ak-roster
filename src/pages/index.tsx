@@ -415,8 +415,8 @@ const Home: NextPage = () => {
                   <path d="M9.09586 8.42361L5.01581 10.7122V7.2793L9.09586 8.42361Z" fill="#87879B"></path>
                   <path d="M9.37436 9.35522L8.46425 11.5391L6.03729 11.2271L9.37436 9.35522Z" fill="#E8E8F2"></path>
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M14.097 11.156L9.48358 11.5209L10.5482 8.96631L14.097 11.156Z"
                     fill="#87879B"
                   ></path>
