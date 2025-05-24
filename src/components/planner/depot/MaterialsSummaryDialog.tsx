@@ -278,7 +278,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     }
 
     const getTotalMaterialsUptoSelectedEvent = useCallback(() => {
-        if (!eventsData || selectedEvent.index === -1) return { materials: {}, farmTimes: {} };
+        if (!eventsData || selectedEvent.index === -1) return { materials: {}, farmTimes: {}, infiniteTimes: {} };
 
         const _eventsData = eventsData;
         const _filteredEvents = Object.entries(_eventsData)
@@ -306,6 +306,17 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                 return acc;
             }, {} as Record<string, number>);
 
+        const infiniteTimes = _filteredEvents
+            .reduce((acc, [, eventData]) => {
+                (eventData.infinite ?? []).forEach((id) => {
+                    acc[id] = (acc[id] ?? 0) + 1;
+                    if (!_eventMaterials[id]) {
+                        _eventMaterials[id] = 0;
+                    }
+                })
+                return acc;
+            }, {} as Record<string, number>);
+
         //EXP count
         const _exp = depotToExp(EXP.reduce((acc, id) => {
             acc[id] = { material_id: id, stock: _eventMaterials[id] ?? 0 }
@@ -314,7 +325,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
 
         if (_exp != 0) _eventMaterials["EXP"] = _exp;
 
-        return { materials: _eventMaterials, farmTimes: _farmTimes };
+        return { materials: _eventMaterials, farmTimes: _farmTimes, infiniteTimes };
     }, [selectedEvent, eventsData]
     );
 
@@ -481,7 +492,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             sortedNeedToCraft: [],
             sortedPossibleCraft: [],
             sortedEventMaterials: [],
-            farmTimes: {}
+            farmTimes: {},
+            infiniteTimes: {},
         };
 
         const craftTier = 4;
@@ -504,7 +516,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
 
         _depot["EXP"] = { material_id: "EXP", stock: expOwned };
 
-        const { materials: _eventMaterials, farmTimes } = getTotalMaterialsUptoSelectedEvent();
+        const { materials: _eventMaterials, farmTimes, infiniteTimes } = getTotalMaterialsUptoSelectedEvent();
 
         Object.entries(_eventMaterials).reduce((acc, [id, quantity]) => {
             if (acc[id]) {
@@ -549,8 +561,11 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             .sort(([itemIdA], [itemIdB]) => {
                 const isInSelectedEventFarmA = selectedEvent?.farms?.includes(itemIdA) ? 1 : 0;
                 const isInSelectedEventFarmB = selectedEvent?.farms?.includes(itemIdB) ? 1 : 0;
+                const isInSelectedEventInfiniteA = selectedEvent?.infinite?.includes(itemIdA) ? 1 : 0;
+                const isInSelectedEventInfiniteB = selectedEvent?.infinite?.includes(itemIdB) ? 1 : 0;
                 return (
                     (isInSelectedEventFarmB - isInSelectedEventFarmA) ||
+                    (isInSelectedEventInfiniteB - isInSelectedEventInfiniteA) ||
                     (farmItemsSort(itemIdA, itemIdB)) ||
                     (_materialsNeeded[itemIdB] - (_depot[itemIdB]?.stock ?? 0)) - (_materialsNeeded[itemIdA] - (_depot[itemIdA]?.stock ?? 0))
                 );
@@ -591,13 +606,28 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             sortedPossibleCraft,
             sortedEventMaterials,
             farmTimes,
+            infiniteTimes
         }
     }, [open, goalsMaterials, depot, expOwned, includeCraftIds, selectedEvent,
         getTier3StatisticFromMaterials, getTotalMaterialsUptoSelectedEvent,
         addBalanceValue]
     );
 
-    const { sortedNeedToFarm, sortedNeedToCraft, sortedPossibleCraft, sortedEventMaterials, farmTimes } = useMemo(calculateSummaryTab, [calculateSummaryTab]);
+    const { sortedNeedToFarm, sortedNeedToCraft, sortedPossibleCraft, sortedEventMaterials, farmTimes, infiniteTimes } = useMemo(calculateSummaryTab, [calculateSummaryTab]);
+
+    const getTotalsTooltipText = useCallback((id: string) => {
+        const lines: string[] = [];
+
+        if (infiniteTimes[id]) lines.push(`Infinite event shop item x${infiniteTimes[id]}`);
+        if (farmTimes[id]) lines.push(`Can be farmed in events x${farmTimes[id]}`)
+
+        return (
+            <div style={{ whiteSpace: 'pre-line', fontSize: "0.9rem" }}>
+                {lines.join("\n")}
+            </div>
+        );
+    }, [farmTimes, infiniteTimes]
+    );
 
     return (
         <>
@@ -746,9 +776,12 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                 <Stack direction="row" flexWrap="wrap" alignItems="center">
                                                     {sortedNeedToFarm.map(([id, need]) => (
                                                         <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary", fullScreen).itemBaseSize}
-                                                            sx={{ ...(selectedEvent?.farms?.includes(id) && getFarmCSS("box")) }}>
+                                                            sx={{
+                                                                ...(selectedEvent?.farms?.includes(id) && getFarmCSS("box")),
+                                                                ...(selectedEvent?.infinite?.includes(id) && getFarmCSS("box", "text.secondary"))
+                                                            }}>
                                                             <Typography {...getItemBaseStyling("summary", fullScreen).numberCSS}>
-                                                                {formatNumber(need)}
+                                                                {`${selectedEvent?.infinite?.includes(id) ? formatNumber(Infinity) : ""}${formatNumber(need)}`}
                                                             </Typography>
                                                         </ItemBase>
                                                     ))}
@@ -803,33 +836,34 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                     ))}
                                             </>
                                         ) : null}
-                                        {sortedEventMaterials.length > 0 ? (
-                                            <Accordion
-                                                onChange={(_, expanded) => setAccordionExpanded(expanded)}
-                                                expanded={isAccordionExpanded}>
-                                                <AccordionSummary >
-                                                    <Stack direction="row" width="100%" justifyContent="space-between">Income up to the selected event is deducted
-                                                        {isAccordionExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                                                    </Stack>
-                                                </AccordionSummary>
-                                                <AccordionDetails>
-                                                    {sortedEventMaterials
-                                                        .map(([id, need]) => (
-                                                            <Tooltip key={`${id}-tip`} title={farmTimes[id] ? `can be farmed in ${farmTimes[id]} event${farmTimes[id] > 1 ? "s" : ""}` : ""}>
-                                                                <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary_totals", fullScreen).itemBaseSize}
-                                                                    sx={{
-                                                                        ...(farmTimes[id] && getFarmCSS("round"))
-                                                                    }}>
-                                                                    <Typography {...getItemBaseStyling("summary_totals", fullScreen).numberCSS}>
-                                                                        {formatNumber(need)}
-                                                                    </Typography>
-                                                                </ItemBase>
-                                                            </Tooltip>
-                                                        ))}
-                                                </AccordionDetails>
-                                            </Accordion>
-                                        ) : null}
                                     </>
+                                )}
+                                {sortedEventMaterials.length > 0 && (
+                                    <Accordion
+                                        onChange={(_, expanded) => setAccordionExpanded(expanded)}
+                                        expanded={isAccordionExpanded}>
+                                        <AccordionSummary >
+                                            <Stack direction="row" width="100%" justifyContent="space-between">Income up to the selected event is deducted
+                                                {isAccordionExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                                            </Stack>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                            {sortedEventMaterials
+                                                .map(([id, num]) => (
+                                                    <Tooltip key={`${id}-tip`} title={getTotalsTooltipText(id)}>
+                                                        <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary_totals", fullScreen).itemBaseSize}
+                                                            sx={{
+                                                                ...(farmTimes[id] && getFarmCSS("round")),
+                                                                ...(infiniteTimes[id] && { ...getFarmCSS("round", "text.primary") })
+                                                            }}>
+                                                            <Typography {...getItemBaseStyling("summary_totals", fullScreen).numberCSS}>
+                                                                {(num === 0 && infiniteTimes[id]) ? formatNumber(Infinity) : formatNumber(num)}
+                                                            </Typography>
+                                                        </ItemBase>
+                                                    </Tooltip>
+                                                ))}
+                                        </AccordionDetails>
+                                    </Accordion>
                                 )}
                             </Box>
                         </Slide>
