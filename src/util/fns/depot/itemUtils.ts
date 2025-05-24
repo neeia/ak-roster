@@ -55,7 +55,7 @@ export const getItemBaseStyling = (variant: "tracker"
     switch (variant) {
         case "tracker": {
             size = 34;
-            textAdjust = 8;
+            textAdjust = 10;
         };
             break;
         case "submit": {
@@ -107,12 +107,11 @@ export const getItemBaseStyling = (variant: "tracker"
     })
 };
 
-export const getFarmCSS = (variant: "round" | "box", highlighted: boolean = true) => {
-    const color = highlighted ? "primary.main" : undefined;
+export const getFarmCSS = (variant: "round" | "box", backgroundColor: string = "primary.main") => {
     let radius = variant === "round" ? "20px" : "6px";
 
     return ({
-        backgroundColor: color,
+        backgroundColor,
         borderRadius: radius,
     })
 
@@ -168,11 +167,13 @@ export const customItemsSort = (idA: string, idB: string, lowTierFirst: boolean 
 };
 
 export const formatNumber = (num: number) => {
-    return num < 1000
-        ? num
-        : num < 1000000
-            ? `${num % 1000 === 0 ? `${num / 1000}` : (num / 1000).toFixed(1)}K`
-            : `${num % 1000000 === 0 ? `${num / 1000000}` : (num / 1000000).toFixed(2)}M`;
+    return num === Infinity
+        ? "∞"
+        : num < 1000
+            ? num
+            : num < 1000000
+                ? `${num % 1000 === 0 ? `${num / 1000}` : (num / 1000).toFixed(1)}K`
+                : `${num % 1000000 === 0 ? `${num / 1000000}` : (num / 1000000).toFixed(2)}M`;
 };
 
 export const getWidthFromValue = (value: string | number, defaultSizeInCh: string = "4ch"): string => {

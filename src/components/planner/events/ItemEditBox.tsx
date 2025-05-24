@@ -85,7 +85,7 @@ const ItemEditBox = React.memo(({
                             opacity: 0.5,
                         },
                     }),
-                    ...getFarmCSS('box', highlighted),
+                    ...getFarmCSS('box', highlighted ? "primary.main" : 'unset' ),
                     ...(stackProps?.sx || {}),
                 }}
             >
