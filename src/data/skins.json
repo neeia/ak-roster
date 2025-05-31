@@ -1343,6 +1343,12 @@
       "skinName": null,
       "avatarId": "char_4130_luton_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4130_luton@yun#6",
+      "skinName": "寄遥思",
+      "avatarId": "char_4130_luton_yun#6",
+      "sortId": 390
     }
   ],
   "char_196_sunbr": [
@@ -7206,7 +7212,7 @@
     },
     {
       "skinId": "char_4011_lessng@whirlwind#7",
-      "skinName": "幻火",
+      "skinName": "Ignis Fatuus",
       "avatarId": "char_4011_lessng_whirlwind#7",
       "sortId": 147
     }
