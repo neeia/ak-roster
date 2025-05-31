@@ -1110,7 +1110,7 @@
   },
   "30165": {
     "id": "30165",
-    "name": "重相位对映体",
+    "name": "Biphasic Enantiomorphic Medium",
     "iconId": "MTL_SL_DYT",
     "tier": 5,
     "sortId": 100001,
@@ -1400,14 +1400,14 @@
   },
   "31093": {
     "id": "31093",
-    "name": "类凝结核",
+    "name": "Pseudocondensation Nucleus",
     "iconId": "MTL_SL_JH",
     "tier": 3,
     "sortId": 100008
   },
   "31094": {
     "id": "31094",
-    "name": "手性屈光体",
+    "name": "Chiral Refractor",
     "iconId": "MTL_SL_QGT",
     "tier": 4,
     "sortId": 100007,
