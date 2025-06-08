@@ -10,7 +10,7 @@ const tasks = [
   {
     sourceDir: path.join(ACESHIP_ROOT, "skills"),
     destDir: "public/img/skills",
-    filter: (filename) => filename.endsWith(".png") && filename.startsWith("skchr_"),
+    filter: (filename) => filename.endsWith(".png") && filename.startsWith("skill_icon_skchr_"),
     replace: (filename) => filename.replace(/^skill_icon_/, ""),
   },
   {
