@@ -6,7 +6,7 @@ import Roster from "types/operators/roster";
 import { Database } from "types/supabase";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  const user = (req.url?.split("/u/")[1] ?? "")[1];
+  const user = req.url?.split("/u/")[1] ?? "";
   if (!user) {
     res.status(400).send("No username provided.");
     return;
@@ -26,6 +26,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     .limit(1)
     .single();
 
+  console.log(account);
   if (!account) {
     res.status(404).send("User not found");
     return;
