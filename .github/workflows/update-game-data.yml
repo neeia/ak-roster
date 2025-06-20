@@ -1,0 +1,94 @@
+name: Update Game Data
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '37 0 * * *'
+
+jobs:
+  run_update_scripts:
+    name: Run update scripts
+    runs-on: ubuntu-latest
+    steps:
+      # see if the branch already exists
+      - name: Check for existing branch
+        run: |
+          if git ls-remote --heads --quiet --exit-code ${{ github.server_url }}/${{ github.repository }} refs/heads/actions/update-game-data > /dev/null; then
+            echo "TARGET_BRANCH=actions/update-game-data" >> $GITHUB_ENV
+          else
+            echo "TARGET_BRANCH=main" >> $GITHUB_ENV
+          fi
+      # checkout the branch if it does, otherwise main
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+      # create the branch if it didn't exist
+      - run: git checkout -b actions/update-game-data
+        if: env.TARGET_BRANCH == 'main'
+      # set up the project
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: |
+          git submodule init scripts/
+          git clone -n --depth=1 $(git config submodule."scripts/ArknightsGameData".url) scripts/ArknightsGameData
+          cd scripts/ArknightsGameData
+          git sparse-checkout set zh_CN/gamedata/excel/
+          cd -
+          git clone -n --depth=1 $(git config submodule."scripts/ArknightsGameData_YoStar".url) scripts/ArknightsGameData_YoStar
+          cd scripts/ArknightsGameData_YoStar
+          git sparse-checkout set en_US/gamedata/excel/
+          cd -
+          git submodule update --init --remote --depth=1 --force scripts/
+      # run update scripts
+      - run: yarn update:all
+      # commit changes and PR, but only if krooster data files changed (i.e. skip submodule-only updates)
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --ignore-submodules --cached --quiet; then
+            VERSION_MESSAGE=$(git submodule --quiet foreach git log -1 --pretty='%h %s%N%-C()')
+            git commit -m "Update game data." -m "$VERSION_MESSAGE"
+            git push origin actions/update-game-data --force
+            gh pr create -B main -H actions/update-game-data --fill \
+              || gh pr edit --body "$VERSION_MESSAGE"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  update-images:
+    if: ${{ false }}
+    name: Update image assets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: main-repo
+          sparse-checkout: scripts
+      - uses: actions/checkout@v4
+        with:
+          repository: PuppiizSunniiz/Arknight-Images
+          path: Arknight-Images
+          sparse-checkout: |
+            skills
+            avatars
+            characters
+            equip
+            items
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: main-repo/.nvmrc
+          cache: 'yarn'
+          cache-dependency-path: main-repo/yarn.lock
+      - name: Run images script
+        run: cd main-repo && yarn install --frozen-lockfile && yarn update:images
+      - name: Sync to S3
+        run: |
+          cd main-repo/public/img
+          aws s3 sync --size-only . s3://krooster-test/images/
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: 'us-east-2'

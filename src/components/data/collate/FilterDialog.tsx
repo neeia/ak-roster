@@ -19,6 +19,7 @@ import { Filters, ToggleFilter } from "util/hooks/useFilter";
 import Select from "../input/Select/SelectGroup";
 import Rarity from "../input/Select/Rarity";
 import Promotion from "../input/Select/Promotion";
+import PropertyLevel from "../input/Select/PropertyLevel";
 
 interface Props {
   filter: Filters;
@@ -79,14 +80,14 @@ const FilterDialog = memo((props: Props) => {
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: { xs: "1fr 1fr", sm: "1fr 1fr auto" },
+              gridTemplateColumns: { xs: "1fr 1fr", sm: "1fr 1fr 1fr auto" },
               width: "100%",
             }}
           >
             <Select title="Class" nobg sx={{ gridColumn: "1 / -1" }}>
               <Class value={[...filter.CLASS]} onChange={(value) => toggleFilter("CLASS", value)} />
             </Select>
-            <Select title="Rarity" nobg sx={{ gridColumn: "span 2" }}>
+            <Select title="Rarity" nobg sx={{ gridColumn: { xs: "span 2", sm: "span 3" } }}>
               <Rarity
                 value={[...filter.RARITY]}
                 onChange={(value) => toggleFilter("RARITY", value)}
@@ -105,6 +106,18 @@ const FilterDialog = memo((props: Props) => {
             </Select>
             <Select title="Module" nobg>
               <ServerFilter value={[...filter.MODULECN]} onChange={(value) => toggleFilter("MODULECN", value)} />
+            </Select>
+            <Select title="Module Level" nobg>
+              <PropertyLevel property="module"
+                value={[...filter.MODULELEVEL]} onChange={(value) => toggleFilter("MODULELEVEL", value)} />
+            </Select>
+            <Select title="Skill Level" nobg sx={{ gridColumn: { xs: "span 2", sm: "span 3" } }}>
+              <PropertyLevel property="skill" fullWidth min={1} max={7}
+                value={[...filter.SKILLLEVEL]} onChange={(value) => toggleFilter("SKILLLEVEL", value)} />
+            </Select>
+            <Select title="Mastery" nobg>
+              <PropertyLevel property="mastery"
+                value={[...filter.MASTERY]} onChange={(value) => toggleFilter("MASTERY", value)} />
             </Select>
           </Box>
           <Button onClick={clearFilters}>Clear Filter</Button>

@@ -358,11 +358,16 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                                 {(_eventData.farms ?? []).map((id) => [id, 0] as [string, number])
                                     .concat(Object.entries(_eventData.materials ?? {})
                                         .sort(([idA], [idB]) => standardItemsSort(idA, idB)))
+                                    .concat((_eventData.infinite ?? [])
+                                        .map((id) => [id, Infinity] as [string, number]))
                                     .map(([id, quantity], idx) => (
                                         <ItemBase
-                                            key={`${id}${quantity === 0 && "-farm"}`}
+                                            key={`${id}${quantity === 0
+                                                ? "-farm"
+                                                : quantity === Infinity ? "-inf" : ""}`}
                                             itemId={id} size={getItemBaseStyling("tracker").itemBaseSize}
-                                            {...quantity === 0 && getFarmCSS("round")}>
+                                            {...quantity === 0 && getFarmCSS("round")}
+                                            {...quantity === Infinity && getFarmCSS("round", "text.primary")}>
                                             <Typography {...getItemBaseStyling("tracker").numberCSS}>{quantity === 0 ? ["Ⅰ", "Ⅱ", "Ⅲ"][idx] : formatNumber(quantity)}</Typography>
                                         </ItemBase>
                                     ))}
