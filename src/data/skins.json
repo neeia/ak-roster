@@ -2057,6 +2057,12 @@
       "skinName": null,
       "avatarId": "char_154_morgan_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_154_morgan@epoque#47",
+      "skinName": "字里行间",
+      "avatarId": "char_154_morgan_epoque#47",
+      "sortId": 112
     }
   ],
   "char_4142_laios": [
