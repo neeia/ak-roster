@@ -7,6 +7,9 @@
     "class": "Medic",
     "branch": "Medic",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -27,6 +30,9 @@
     "class": "Guard",
     "branch": "Dreadnought",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -47,6 +53,9 @@
     "class": "Specialist",
     "branch": "Executor",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -67,6 +76,9 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -87,6 +99,10 @@
     "class": "Sniper",
     "branch": "Flinger",
     "isCnOnly": false,
+    "pools": [
+      "Limited",
+      "Free"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -107,6 +123,9 @@
     "class": "Supporter",
     "branch": "Bard",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -127,6 +146,9 @@
     "class": "Defender",
     "branch": "Protector",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -147,6 +169,9 @@
     "class": "Supporter",
     "branch": "Ritualist",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -167,6 +192,9 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -187,6 +215,9 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -207,6 +238,9 @@
     "class": "Defender",
     "branch": "Protector",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -227,6 +261,9 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -247,6 +284,9 @@
     "class": "Caster",
     "branch": "Core",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -267,6 +307,9 @@
     "class": "Caster",
     "branch": "Splash",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -287,6 +330,10 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_charge_cost[1]",
@@ -413,6 +460,10 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_wyvern_1",
@@ -539,6 +590,10 @@
     "class": "Vanguard",
     "branch": "Charger",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[1]",
@@ -665,6 +720,10 @@
     "class": "Guard",
     "branch": "Dreadnought",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[1]",
@@ -791,6 +850,10 @@
     "class": "Guard",
     "branch": "Centurion",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[1]",
@@ -917,6 +980,10 @@
     "class": "Defender",
     "branch": "Protector",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_heal_self[1]",
@@ -1043,6 +1110,10 @@
     "class": "Defender",
     "branch": "Protector",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_def_up[1]",
@@ -1169,6 +1240,10 @@
     "class": "Defender",
     "branch": "Guardian",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_spot_1",
@@ -1295,6 +1370,10 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_kroos_1",
@@ -1421,6 +1500,9 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[1]",
@@ -1547,6 +1629,10 @@
     "class": "Caster",
     "branch": "Splash",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_magic_rage[1]",
@@ -1673,6 +1759,10 @@
     "class": "Medic",
     "branch": "Medic",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_heal_up[1]",
@@ -1799,6 +1889,10 @@
     "class": "Medic",
     "branch": "Medic",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_range_extend",
@@ -1925,6 +2019,10 @@
     "class": "Caster",
     "branch": "Core",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_stward_1",
@@ -2051,6 +2149,10 @@
     "class": "Supporter",
     "branch": "Decel Binder",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[1]",
@@ -2177,6 +2279,10 @@
     "class": "Caster",
     "branch": "Core",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
@@ -2534,6 +2640,10 @@
     "class": "Caster",
     "branch": "Splash",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_magic_rage[2]",
@@ -2891,6 +3001,10 @@
     "class": "Caster",
     "branch": "Splash",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_magic_rage[2]",
@@ -3248,6 +3362,10 @@
     "class": "Caster",
     "branch": "Mech-Accord",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
@@ -3605,6 +3723,10 @@
     "class": "Caster",
     "branch": "Mystic",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_indigo_1",
@@ -3962,6 +4084,9 @@
     "class": "Caster",
     "branch": "Chain Caster",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_magic_rage[2]",
@@ -4319,6 +4444,10 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_jesica_1",
@@ -4676,6 +4805,10 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_shotst_1",
@@ -5033,6 +5166,10 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
@@ -5390,6 +5527,10 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_mm_1",
@@ -5747,6 +5888,10 @@
     "class": "Sniper",
     "branch": "Artilleryman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_yuki_1",
@@ -6104,6 +6249,10 @@
     "class": "Sniper",
     "branch": "Spreadshooter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_pinecn_1",
@@ -6461,6 +6610,10 @@
     "class": "Sniper",
     "branch": "Deadeye",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_glaze_1",
@@ -6818,6 +6971,10 @@
     "class": "Sniper",
     "branch": "Heavyshooter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_acdrop_1",
@@ -7175,6 +7332,10 @@
     "class": "Sniper",
     "branch": "Besieger",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_totter_1",
@@ -7532,6 +7693,9 @@
     "class": "Sniper",
     "branch": "Loopshooter",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_caper_1",
@@ -7815,6 +7979,9 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_charge_cost[2]",
@@ -8172,6 +8339,10 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_charge_cost[2]",
@@ -8529,6 +8700,10 @@
     "class": "Vanguard",
     "branch": "Charger",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_vigna_1",
@@ -8886,6 +9061,10 @@
     "class": "Vanguard",
     "branch": "Standard Bearer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_assist_cost[2]",
@@ -9243,6 +9422,10 @@
     "class": "Vanguard",
     "branch": "Tactician",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_bstalk_1",
@@ -9600,6 +9783,10 @@
     "class": "Guard",
     "branch": "Instructor",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_doberm_1",
@@ -9957,6 +10144,10 @@
     "class": "Guard",
     "branch": "Dreadnought",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_heal_self[2]",
@@ -10314,6 +10505,9 @@
     "class": "Guard",
     "branch": "Dreadnought",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_peacok_1",
@@ -10665,6 +10859,10 @@
     "class": "Guard",
     "branch": "Lord",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_frostl_1",
@@ -11022,6 +11220,9 @@
     "class": "Guard",
     "branch": "Centurion",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
@@ -11379,6 +11580,10 @@
     "class": "Guard",
     "branch": "Arts Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_frncat_1",
@@ -11736,6 +11941,10 @@
     "class": "Guard",
     "branch": "Swordmaster",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_cutter_1",
@@ -12093,6 +12302,10 @@
     "class": "Guard",
     "branch": "Soloblade",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_utage_1",
@@ -12450,6 +12663,10 @@
     "class": "Guard",
     "branch": "Lord",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_spikes_1",
@@ -12807,6 +13024,10 @@
     "class": "Guard",
     "branch": "Lord",
     "isCnOnly": false,
+    "pools": [
+      "Limited",
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_lolxh_1",
@@ -13158,6 +13379,9 @@
     "class": "Guard",
     "branch": "Crusher",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
@@ -13515,6 +13739,10 @@
     "class": "Guard",
     "branch": "Reaper",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_humus_1",
@@ -13872,6 +14100,9 @@
     "class": "Guard",
     "branch": "Librator",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_wscoot_1",
@@ -14229,6 +14460,10 @@
     "class": "Specialist",
     "branch": "Executor",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_gravel_1",
@@ -14586,6 +14821,10 @@
     "class": "Specialist",
     "branch": "Merchant",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_strong_1",
@@ -14943,6 +15182,10 @@
     "class": "Specialist",
     "branch": "Hookmaster",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_rope_1",
@@ -15300,6 +15543,10 @@
     "class": "Medic",
     "branch": "Medic",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_myrrh_1",
@@ -15657,6 +15904,9 @@
     "class": "Medic",
     "branch": "Medic",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ccheal_1",
@@ -16014,6 +16264,10 @@
     "class": "Medic",
     "branch": "Medic",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_heal_up[2]",
@@ -16371,6 +16625,10 @@
     "class": "Medic",
     "branch": "Multi-target",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_heal_up[2]",
@@ -16728,6 +16986,9 @@
     "class": "Medic",
     "branch": "Therapist",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_finlpp_1",
@@ -17085,6 +17346,10 @@
     "class": "Medic",
     "branch": "Wandering",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_chnut_1",
@@ -17442,6 +17707,10 @@
     "class": "Defender",
     "branch": "Protector",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_yak_1",
@@ -17799,6 +18068,10 @@
     "class": "Defender",
     "branch": "Protector",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_def_up[2]",
@@ -18156,6 +18429,10 @@
     "class": "Defender",
     "branch": "Protector",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_def_up[2]",
@@ -18513,6 +18790,9 @@
     "class": "Defender",
     "branch": "Juggernaut",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_luton_1",
@@ -18870,6 +19150,10 @@
     "class": "Defender",
     "branch": "Guardian",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_sunbr_1",
@@ -19227,6 +19511,9 @@
     "class": "Defender",
     "branch": "Arts Protector",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
@@ -19510,6 +19797,10 @@
     "class": "Supporter",
     "branch": "Summoner",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_deepcl_1",
@@ -19867,6 +20158,10 @@
     "class": "Supporter",
     "branch": "Decel Binder",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[2]",
@@ -20224,6 +20519,10 @@
     "class": "Supporter",
     "branch": "Decel Binder",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_podego_1",
@@ -20581,6 +20880,10 @@
     "class": "Supporter",
     "branch": "Artificer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_robrta_1",
@@ -20938,6 +21241,9 @@
     "class": "Specialist",
     "branch": "Ambusher",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ethan_1",
@@ -21295,6 +21601,10 @@
     "class": "Specialist",
     "branch": "Pusher",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_sqrrel_1",
@@ -21652,6 +21962,10 @@
     "class": "Specialist",
     "branch": "Dollkeeper",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_vrdant_1",
@@ -22009,6 +22323,9 @@
     "class": "Specialist",
     "branch": "Skyranger",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ctrail_1",
@@ -22292,6 +22609,10 @@
     "class": "Medic",
     "branch": "Multi-target",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_heal_up[3]",
@@ -22653,6 +22974,9 @@
     "class": "Medic",
     "branch": "Multi-target",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_breeze_1",
@@ -23014,6 +23338,9 @@
     "class": "Medic",
     "branch": "Multi-target",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_rosesa_1",
@@ -23375,6 +23702,10 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_charge_cost[3]",
@@ -23736,6 +24067,10 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_charge_cost[3]",
@@ -24097,6 +24432,10 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_charge_cost[3]",
@@ -24458,6 +24797,9 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_charge_cost[3]",
@@ -24819,6 +25161,9 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_charge_cost[3]",
@@ -25180,6 +25525,10 @@
     "class": "Vanguard",
     "branch": "Charger",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
@@ -25541,6 +25890,9 @@
     "class": "Vanguard",
     "branch": "Charger",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_wildmn_1",
@@ -25902,6 +26254,9 @@
     "class": "Vanguard",
     "branch": "Charger",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_fang2_1",
@@ -26263,6 +26618,10 @@
     "class": "Vanguard",
     "branch": "Standard Bearer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_assist_cost[3]",
@@ -26624,6 +26983,9 @@
     "class": "Vanguard",
     "branch": "Standard Bearer",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_assist_cost[3]",
@@ -26985,6 +27347,9 @@
     "class": "Vanguard",
     "branch": "Tactician",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_blkngt_1",
@@ -27346,6 +27711,9 @@
     "class": "Vanguard",
     "branch": "Tactician",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_mitm_1",
@@ -27707,6 +28075,9 @@
     "class": "Vanguard",
     "branch": "Agent",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ctable_1",
@@ -28068,6 +28439,9 @@
     "class": "Vanguard",
     "branch": "Agent",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_puzzle_1",
@@ -28429,6 +28803,9 @@
     "class": "Vanguard",
     "branch": "Agent",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_chilc_1",
@@ -28790,6 +29167,9 @@
     "class": "Vanguard",
     "branch": "Agent",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_surfer_1",
@@ -29151,6 +29531,10 @@
     "class": "Guard",
     "branch": "Instructor",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_swire_1",
@@ -29512,6 +29896,9 @@
     "class": "Guard",
     "branch": "Instructor",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_sophia_1",
@@ -29873,6 +30260,9 @@
     "class": "Guard",
     "branch": "Instructor",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_bryota_1",
@@ -30234,6 +30624,9 @@
     "class": "Guard",
     "branch": "Instructor",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_rdoc_1",
@@ -30595,6 +30988,10 @@
     "class": "Guard",
     "branch": "Dreadnought",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
@@ -30956,6 +31353,9 @@
     "class": "Guard",
     "branch": "Dreadnought",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_flameb_1",
@@ -31317,6 +31717,9 @@
     "class": "Guard",
     "branch": "Dreadnought",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_morgan_1",
@@ -31678,6 +32081,9 @@
     "class": "Guard",
     "branch": "Dreadnought",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_laios_1",
@@ -32039,6 +32445,9 @@
     "class": "Guard",
     "branch": "Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_tiger_1",
@@ -32400,6 +32809,10 @@
     "class": "Guard",
     "branch": "Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_flint_1",
@@ -32761,6 +33174,9 @@
     "class": "Guard",
     "branch": "Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_dagda_1",
@@ -33122,6 +33538,10 @@
     "class": "Guard",
     "branch": "Lord",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_whitew_1",
@@ -33483,6 +33903,10 @@
     "class": "Guard",
     "branch": "Lord",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ayer_1",
@@ -33844,6 +34268,9 @@
     "class": "Guard",
     "branch": "Lord",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
@@ -34205,6 +34632,9 @@
     "class": "Guard",
     "branch": "Crusher",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -34566,6 +34996,9 @@
     "class": "Guard",
     "branch": "Swordmaster",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_bibeak_1",
@@ -34927,6 +35360,9 @@
     "class": "Guard",
     "branch": "Swordmaster",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_tachak_1",
@@ -35288,6 +35724,10 @@
     "class": "Guard",
     "branch": "Centurion",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -35649,6 +36089,10 @@
     "class": "Guard",
     "branch": "Centurion",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_broca_1",
@@ -36010,6 +36454,10 @@
     "class": "Guard",
     "branch": "Centurion",
     "isCnOnly": false,
+    "pools": [
+      "Limited",
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_fuze_1",
@@ -36371,6 +36819,10 @@
     "class": "Guard",
     "branch": "Arts Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_astesi_1",
@@ -36732,6 +37184,9 @@
     "class": "Guard",
     "branch": "Arts Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_heal_self[3]",
@@ -37093,6 +37548,10 @@
     "class": "Guard",
     "branch": "Soloblade",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_akafyu_1",
@@ -37454,6 +37913,9 @@
     "class": "Guard",
     "branch": "Soloblade",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_noirc2_1",
@@ -37815,6 +38277,10 @@
     "class": "Guard",
     "branch": "Reaper",
     "isCnOnly": false,
+    "pools": [
+      "Kernel CN",
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_crow_1",
@@ -38176,6 +38642,9 @@
     "class": "Guard",
     "branch": "Reaper",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_highmo_1",
@@ -38537,6 +39006,9 @@
     "class": "Guard",
     "branch": "Librator",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_takila_1",
@@ -38898,6 +39370,9 @@
     "class": "Guard",
     "branch": "Earthshaker",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_odda_1",
@@ -39259,6 +39734,9 @@
     "class": "Guard",
     "branch": "Primguard",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_graceb_1",
@@ -39546,6 +40024,10 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_bluep_1",
@@ -39907,6 +40389,10 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -40268,6 +40754,10 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_swllow_1",
@@ -40629,6 +41119,10 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_aprl_1",
@@ -40990,6 +41484,9 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_kroos2_1",
@@ -41351,6 +41848,9 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_inside_1",
@@ -41712,6 +42212,10 @@
     "class": "Sniper",
     "branch": "Artilleryman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_meteo_1",
@@ -42073,6 +42577,10 @@
     "class": "Sniper",
     "branch": "Artilleryman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -42434,6 +42942,9 @@
     "class": "Sniper",
     "branch": "Artilleryman",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_bdhkgt_1",
@@ -42795,6 +43306,10 @@
     "class": "Sniper",
     "branch": "Spreadshooter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_excu_1",
@@ -43156,6 +43671,10 @@
     "class": "Sniper",
     "branch": "Spreadshooter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
@@ -43517,6 +44036,9 @@
     "class": "Caster",
     "branch": "Core",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_magic_rage[3]",
@@ -43942,6 +44464,9 @@
     "class": "Caster",
     "branch": "Core",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_absin_1",
@@ -44303,6 +44828,9 @@
     "class": "Caster",
     "branch": "Core",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_tomimi_1",
@@ -44664,6 +45192,9 @@
     "class": "Caster",
     "branch": "Core",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_qanik_1",
@@ -45025,6 +45556,10 @@
     "class": "Caster",
     "branch": "Splash",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -45386,6 +45921,10 @@
     "class": "Caster",
     "branch": "Chain Caster",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -45747,6 +46286,9 @@
     "class": "Caster",
     "branch": "Chain Caster",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_halo_1",
@@ -46108,6 +46650,10 @@
     "class": "Caster",
     "branch": "Phalanx",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_beewax_1",
@@ -46469,6 +47015,10 @@
     "class": "Caster",
     "branch": "Splash",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -46830,6 +47380,9 @@
     "class": "Caster",
     "branch": "Splash",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
@@ -47191,6 +47744,9 @@
     "class": "Caster",
     "branch": "Phalanx",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_mint_1",
@@ -47552,6 +48108,10 @@
     "class": "Caster",
     "branch": "Mystic",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_iris_1",
@@ -47913,6 +48473,9 @@
     "class": "Caster",
     "branch": "Mystic",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_hamoni_1",
@@ -48274,6 +48837,9 @@
     "class": "Caster",
     "branch": "Mystic",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_delphn_1",
@@ -48635,6 +49201,9 @@
     "class": "Caster",
     "branch": "Splash",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_lava2_1",
@@ -48996,6 +49565,10 @@
     "class": "Caster",
     "branch": "Blast",
     "isCnOnly": false,
+    "pools": [
+      "Kernel CN",
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_serum_1",
@@ -49357,6 +49930,9 @@
     "class": "Caster",
     "branch": "Blast",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_aroma_1",
@@ -49718,6 +50294,9 @@
     "class": "Caster",
     "branch": "Mech-Accord",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -50079,6 +50658,9 @@
     "class": "Caster",
     "branch": "Mech-Accord",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_magic_rage[3]",
@@ -50440,6 +51022,9 @@
     "class": "Caster",
     "branch": "Mech-Accord",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
@@ -50801,6 +51386,9 @@
     "class": "Caster",
     "branch": "Primal",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_kaitou_1",
@@ -51088,6 +51676,9 @@
     "class": "Caster",
     "branch": "Primal",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_warmy_1",
@@ -51375,6 +51966,9 @@
     "class": "Caster",
     "branch": "Primal",
     "isCnOnly": true,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_christ_1",
@@ -51662,6 +52256,9 @@
     "class": "Caster",
     "branch": "Shaper",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_tecno_1",
@@ -52023,6 +52620,10 @@
     "class": "Supporter",
     "branch": "Summoner",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_otter_1",
@@ -52384,6 +52985,9 @@
     "class": "Supporter",
     "branch": "Summoner",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_folivo_1",
@@ -52745,6 +53349,9 @@
     "class": "Supporter",
     "branch": "Summoner",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_lasher_1",
@@ -53106,6 +53713,10 @@
     "class": "Medic",
     "branch": "Medic",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_heal_up[3]",
@@ -53467,6 +54078,10 @@
     "class": "Medic",
     "branch": "Medic",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_bldsk_1",
@@ -53828,6 +54443,9 @@
     "class": "Medic",
     "branch": "Medic",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_folnic_1",
@@ -54181,6 +54799,370 @@
       }
     ]
   },
+  "char_4196_reckpr": {
+    "id": "char_4196_reckpr",
+    "name": "Record Keeper",
+    "cnName": "录武官",
+    "rarity": 5,
+    "class": "Medic",
+    "branch": "Medic",
+    "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
+    "skillData": [
+      {
+        "skillId": "skchr_reckpr_1",
+        "iconId": null,
+        "skillName": "触类旁通",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 5
+              },
+              {
+                "id": "31024",
+                "quantity": 3
+              },
+              {
+                "id": "30023",
+                "quantity": 4
+              }
+            ],
+            "name": "Skill 1 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 6
+              },
+              {
+                "id": "31094",
+                "quantity": 3
+              },
+              {
+                "id": "31034",
+                "quantity": 5
+              }
+            ],
+            "name": "Skill 1 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 10
+              },
+              {
+                "id": "30135",
+                "quantity": 4
+              },
+              {
+                "id": "31064",
+                "quantity": 4
+              }
+            ],
+            "name": "Skill 1 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_reckpr_2",
+        "iconId": null,
+        "skillName": "一点关窍",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 5
+              },
+              {
+                "id": "30054",
+                "quantity": 3
+              },
+              {
+                "id": "31033",
+                "quantity": 2
+              }
+            ],
+            "name": "Skill 2 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 6
+              },
+              {
+                "id": "30104",
+                "quantity": 3
+              },
+              {
+                "id": "31064",
+                "quantity": 6
+              }
+            ],
+            "name": "Skill 2 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 10
+              },
+              {
+                "id": "30155",
+                "quantity": 4
+              },
+              {
+                "id": "30044",
+                "quantity": 1
+              }
+            ],
+            "name": "Skill 2 Mastery 3",
+            "category": 1
+          }
+        ]
+      }
+    ],
+    "moduleData": [
+      {
+        "moduleName": "未完成的录武簿",
+        "moduleId": "uniequip_002_reckpr",
+        "typeName": "PHY-X",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "31084",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 40000
+              }
+            ],
+            "name": "Module PHY-X Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 20
+              },
+              {
+                "id": "30044",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 50000
+              }
+            ],
+            "name": "Module PHY-X Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 2
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 8
+              },
+              {
+                "id": "31044",
+                "quantity": 5
+              },
+              {
+                "id": "4001",
+                "quantity": 60000
+              }
+            ],
+            "name": "Module PHY-X Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      }
+    ],
+    "potentials": [
+      "部署费用-1",
+      "再部署时间-4秒",
+      "攻击力+27",
+      "天赋效果增强",
+      "部署费用-1"
+    ],
+    "skillLevels": [
+      {
+        "skillLevel": 2,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 2",
+        "category": 2
+      },
+      {
+        "skillLevel": 3,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 4
+          },
+          {
+            "id": "30041",
+            "quantity": 5
+          }
+        ],
+        "name": "Skill Level 3",
+        "category": 2
+      },
+      {
+        "skillLevel": 4,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 6
+          },
+          {
+            "id": "30052",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 4",
+        "category": 2
+      },
+      {
+        "skillLevel": 5,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 6
+          },
+          {
+            "id": "30062",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 5",
+        "category": 2
+      },
+      {
+        "skillLevel": 6,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 6
+          },
+          {
+            "id": "30073",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 6",
+        "category": 2
+      },
+      {
+        "skillLevel": 7,
+        "ingredients": [
+          {
+            "id": "3303",
+            "quantity": 6
+          },
+          {
+            "id": "31033",
+            "quantity": 3
+          },
+          {
+            "id": "31063",
+            "quantity": 2
+          }
+        ],
+        "name": "Skill Level 7",
+        "category": 2
+      }
+    ],
+    "eliteLevels": [
+      {
+        "eliteLevel": 1,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 20000
+          },
+          {
+            "id": "3261",
+            "quantity": 4
+          },
+          {
+            "id": "30022",
+            "quantity": 5
+          },
+          {
+            "id": "30012",
+            "quantity": 3
+          }
+        ],
+        "name": "Elite 1",
+        "category": 0
+      },
+      {
+        "eliteLevel": 2,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 120000
+          },
+          {
+            "id": "3263",
+            "quantity": 3
+          },
+          {
+            "id": "31034",
+            "quantity": 7
+          },
+          {
+            "id": "30013",
+            "quantity": 16
+          }
+        ],
+        "name": "Elite 2",
+        "category": 0
+      }
+    ]
+  },
   "char_348_ceylon": {
     "id": "char_348_ceylon",
     "name": "Ceylon",
@@ -54189,6 +55171,9 @@
     "class": "Medic",
     "branch": "Therapist",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ceylon_1",
@@ -54550,6 +55535,10 @@
     "class": "Medic",
     "branch": "Therapist",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_whispr_1",
@@ -54911,6 +55900,9 @@
     "class": "Medic",
     "branch": "Therapist",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_nowell_1",
@@ -55272,6 +56264,9 @@
     "class": "Medic",
     "branch": "Medic",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_tuye_1",
@@ -55633,6 +56628,10 @@
     "class": "Medic",
     "branch": "Wandering",
     "isCnOnly": false,
+    "pools": [
+      "Kernel CN",
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_mberry_1",
@@ -55994,6 +56993,9 @@
     "class": "Medic",
     "branch": "Wandering",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_glider_1",
@@ -56355,6 +57357,9 @@
     "class": "Medic",
     "branch": "Wandering",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_heal_up[3]",
@@ -56716,6 +57721,9 @@
     "class": "Medic",
     "branch": "Incantation",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -57077,6 +58085,9 @@
     "class": "Medic",
     "branch": "Incantation",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_magic_rage[3]",
@@ -57438,6 +58449,9 @@
     "class": "Medic",
     "branch": "Chain Medic",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_heal_rage[3]",
@@ -57725,6 +58739,9 @@
     "class": "Medic",
     "branch": "Chain Medic",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_papyrs_1",
@@ -58012,6 +59029,10 @@
     "class": "Defender",
     "branch": "Guardian",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_nearl_1",
@@ -58373,6 +59394,10 @@
     "class": "Defender",
     "branch": "Guardian",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_hmau_1",
@@ -58734,6 +59759,9 @@
     "class": "Defender",
     "branch": "Guardian",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_baslin_1",
@@ -59095,6 +60123,10 @@
     "class": "Defender",
     "branch": "Guardian",
     "isCnOnly": false,
+    "pools": [
+      "Limited",
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_sensi_1",
@@ -59456,6 +60488,10 @@
     "class": "Specialist",
     "branch": "Executor",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_red_1",
@@ -59817,6 +60853,10 @@
     "class": "Specialist",
     "branch": "Executor",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_waaifu_1",
@@ -60178,6 +61218,10 @@
     "class": "Specialist",
     "branch": "Executor",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_kafka_1",
@@ -60539,6 +61583,10 @@
     "class": "Specialist",
     "branch": "Merchant",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_nothin_1",
@@ -60900,6 +61948,9 @@
     "class": "Specialist",
     "branch": "Merchant",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_talr_1",
@@ -61261,6 +62312,10 @@
     "class": "Defender",
     "branch": "Sentry Protector",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_liskam_1",
@@ -61622,6 +62677,9 @@
     "class": "Defender",
     "branch": "Sentry Protector",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_udflow_1",
@@ -61983,6 +63041,10 @@
     "class": "Defender",
     "branch": "Protector",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_moeshd_1",
@@ -62344,6 +63406,9 @@
     "class": "Defender",
     "branch": "Protector",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_def_up[3]",
@@ -62705,6 +63770,9 @@
     "class": "Defender",
     "branch": "Juggernaut",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_hpsts_1",
@@ -63066,6 +64134,10 @@
     "class": "Defender",
     "branch": "Arts Protector",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_asbest_1",
@@ -63353,6 +64425,9 @@
     "class": "Defender",
     "branch": "Arts Protector",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_aprot2_1",
@@ -63640,6 +64715,9 @@
     "class": "Defender",
     "branch": "Arts Protector",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_pianst_1",
@@ -63927,6 +65005,9 @@
     "class": "Defender",
     "branch": "Sentry Protector",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_blitz_1",
@@ -64288,6 +65369,9 @@
     "class": "Defender",
     "branch": "Protector",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_zebra_1",
@@ -64649,6 +65733,10 @@
     "class": "Defender",
     "branch": "Fortress",
     "isCnOnly": false,
+    "pools": [
+      "Kernel CN",
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -65010,6 +66098,9 @@
     "class": "Defender",
     "branch": "Fortress",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_firwhl_1",
@@ -65371,6 +66462,10 @@
     "class": "Defender",
     "branch": "Duelist",
     "isCnOnly": false,
+    "pools": [
+      "Kernel CN",
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_aurora_1",
@@ -65732,6 +66827,9 @@
     "class": "Defender",
     "branch": "Duelist",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_cement_1",
@@ -66093,6 +67191,9 @@
     "class": "Defender",
     "branch": "Primal Protector",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_philae_1",
@@ -66380,6 +67481,10 @@
     "class": "Sniper",
     "branch": "Heavyshooter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_prove_1",
@@ -66741,6 +67846,9 @@
     "class": "Sniper",
     "branch": "Heavyshooter",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_melnte_1",
@@ -67102,6 +68210,10 @@
     "class": "Sniper",
     "branch": "Deadeye",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_milu_1",
@@ -67463,6 +68575,10 @@
     "class": "Sniper",
     "branch": "Deadeye",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -67824,6 +68940,9 @@
     "class": "Sniper",
     "branch": "Deadeye",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_lunacu_1",
@@ -68185,6 +69304,10 @@
     "class": "Sniper",
     "branch": "Besieger",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_toddi_1",
@@ -68546,6 +69669,9 @@
     "class": "Sniper",
     "branch": "Besieger",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_erato_1",
@@ -68907,6 +70033,9 @@
     "class": "Sniper",
     "branch": "Flinger",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
@@ -69268,6 +70397,9 @@
     "class": "Sniper",
     "branch": "Hunter",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -69629,6 +70761,9 @@
     "class": "Sniper",
     "branch": "Loopshooter",
     "isCnOnly": true,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_brigid_1",
@@ -69916,6 +71051,9 @@
     "class": "Specialist",
     "branch": "Geek",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_spuria_1",
@@ -70277,6 +71415,10 @@
     "class": "Specialist",
     "branch": "Hookmaster",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_slchan_1",
@@ -70638,6 +71780,9 @@
     "class": "Specialist",
     "branch": "Hookmaster",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_snsant_1",
@@ -70999,6 +72144,9 @@
     "class": "Specialist",
     "branch": "Hookmaster",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_almond_1",
@@ -71360,6 +72508,10 @@
     "class": "Supporter",
     "branch": "Hexer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_slbell_1",
@@ -71721,6 +72873,10 @@
     "class": "Supporter",
     "branch": "Hexer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_vodfox_1",
@@ -72082,6 +73238,9 @@
     "class": "Supporter",
     "branch": "Hexer",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_haini_1",
@@ -72443,6 +73602,10 @@
     "class": "Supporter",
     "branch": "Decel Binder",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_glassb_1",
@@ -72804,6 +73967,10 @@
     "class": "Supporter",
     "branch": "Decel Binder",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_glacus_1",
@@ -73165,6 +74332,9 @@
     "class": "Supporter",
     "branch": "Decel Binder",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_provs_1",
@@ -73526,6 +74696,9 @@
     "class": "Supporter",
     "branch": "Decel Binder",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_grabds_1",
@@ -73887,6 +75060,9 @@
     "class": "Supporter",
     "branch": "Artificer",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_windft_1",
@@ -74248,6 +75424,9 @@
     "class": "Supporter",
     "branch": "Artificer",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_cathy_1",
@@ -74609,6 +75788,9 @@
     "class": "Supporter",
     "branch": "Artificer",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_alanna_1",
@@ -74970,6 +76152,10 @@
     "class": "Supporter",
     "branch": "Bard",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_sora_1",
@@ -75331,6 +76517,9 @@
     "class": "Supporter",
     "branch": "Bard",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_heidi_1",
@@ -75692,6 +76881,10 @@
     "class": "Supporter",
     "branch": "Abjurer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_tknogi_1",
@@ -76053,6 +77246,10 @@
     "class": "Supporter",
     "branch": "Abjurer",
     "isCnOnly": false,
+    "pools": [
+      "Limited",
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ncdeer_1",
@@ -76408,6 +77605,9 @@
     "class": "Supporter",
     "branch": "Abjurer",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_quercu_1",
@@ -76769,6 +77969,9 @@
     "class": "Supporter",
     "branch": "Abjurer",
     "isCnOnly": true,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_xingzh_1",
@@ -77130,6 +78333,9 @@
     "class": "Supporter",
     "branch": "Ritualist",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_threye_1",
@@ -77491,6 +78697,9 @@
     "class": "Supporter",
     "branch": "Ritualist",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_bobb_1",
@@ -77852,6 +79061,10 @@
     "class": "Specialist",
     "branch": "Ambusher",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_mantic_1",
@@ -78213,6 +79426,10 @@
     "class": "Specialist",
     "branch": "Ambusher",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_kirara_1",
@@ -78574,6 +79791,10 @@
     "class": "Specialist",
     "branch": "Pusher",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_panda_1",
@@ -78935,6 +80156,9 @@
     "class": "Specialist",
     "branch": "Pusher",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_forcer_1",
@@ -79296,6 +80520,9 @@
     "class": "Specialist",
     "branch": "Trapmaster",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_robin_1",
@@ -79657,6 +80884,9 @@
     "class": "Specialist",
     "branch": "Trapmaster",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_rfrost_1",
@@ -80018,6 +81248,9 @@
     "class": "Specialist",
     "branch": "Trapmaster",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_wulfen_1",
@@ -80379,6 +81612,9 @@
     "class": "Specialist",
     "branch": "Dollkeeper",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_bena_1",
@@ -80740,6 +81976,9 @@
     "class": "Specialist",
     "branch": "Dollkeeper",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_kazema_1",
@@ -81101,6 +82340,9 @@
     "class": "Specialist",
     "branch": "Dollkeeper",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_iana_1",
@@ -81462,6 +82704,9 @@
     "class": "Specialist",
     "branch": "Alchemist",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_tinman_1",
@@ -81823,6 +83068,9 @@
     "class": "Specialist",
     "branch": "Skyranger",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_tippi_1",
@@ -82110,6 +83358,10 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_angel_1",
@@ -82616,6 +83868,10 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_archet_1",
@@ -83163,6 +84419,9 @@
     "class": "Sniper",
     "branch": "Marksman",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ash_1",
@@ -83669,6 +84928,10 @@
     "class": "Sniper",
     "branch": "Heavyshooter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_shwaz_1",
@@ -84175,6 +85438,9 @@
     "class": "Sniper",
     "branch": "Heavyshooter",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_bgsnow_1",
@@ -84681,6 +85947,10 @@
     "class": "Sniper",
     "branch": "Deadeye",
     "isCnOnly": false,
+    "pools": [
+      "Kernel CN",
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
@@ -85187,6 +86457,9 @@
     "class": "Sniper",
     "branch": "Deadeye",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_lemuen_1",
@@ -85620,6 +86893,9 @@
     "class": "Sniper",
     "branch": "Artilleryman",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_cqbw_1",
@@ -86126,6 +87402,9 @@
     "class": "Sniper",
     "branch": "Artilleryman",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_phenxi_1",
@@ -86632,6 +87911,10 @@
     "class": "Sniper",
     "branch": "Besieger",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -87065,6 +88348,9 @@
     "class": "Sniper",
     "branch": "Besieger",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
@@ -87332,6 +88618,79 @@
           }
         ],
         "isCnOnly": false
+      },
+      {
+        "moduleName": "冰原的影子",
+        "moduleId": "uniequip_003_typhon",
+        "typeName": "SIE-Y",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "30165",
+                "quantity": 2
+              },
+              {
+                "id": "4001",
+                "quantity": 80000
+              }
+            ],
+            "name": "Module SIE-Y Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 60
+              },
+              {
+                "id": "30115",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 100000
+              }
+            ],
+            "name": "Module SIE-Y Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 20
+              },
+              {
+                "id": "30135",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 120000
+              }
+            ],
+            "name": "Module SIE-Y Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -87498,6 +88857,9 @@
     "class": "Sniper",
     "branch": "Flinger",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_rosmon_1",
@@ -87972,6 +89334,9 @@
     "class": "Sniper",
     "branch": "Flinger",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_wisdel_1",
@@ -88405,6 +89770,9 @@
     "class": "Sniper",
     "branch": "Spreadshooter",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_chen2_1",
@@ -88838,6 +90206,9 @@
     "class": "Sniper",
     "branch": "Hunter",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ray_1",
@@ -89271,6 +90642,9 @@
     "class": "Sniper",
     "branch": "Loopshooter",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_narant_1",
@@ -89630,6 +91004,10 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_charge_cost[3]",
@@ -90136,6 +91514,10 @@
     "class": "Vanguard",
     "branch": "Charger",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
@@ -90642,6 +92024,10 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_charge_cost[3]",
@@ -91148,6 +92534,9 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_vulpis_1",
@@ -91581,6 +92970,10 @@
     "class": "Vanguard",
     "branch": "Standard Bearer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel CN",
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_assist_cost[3]",
@@ -92087,6 +93480,10 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel CN",
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_flamtl_1",
@@ -92593,6 +93990,9 @@
     "class": "Vanguard",
     "branch": "Tactician",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_vigil_1",
@@ -93099,6 +94499,9 @@
     "class": "Vanguard",
     "branch": "Tactician",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_mlyss_1",
@@ -93605,6 +95008,9 @@
     "class": "Vanguard",
     "branch": "Agent",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ines_1",
@@ -94038,6 +95444,10 @@
     "class": "Caster",
     "branch": "Blast",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ifrit_1",
@@ -94544,6 +95954,10 @@
     "class": "Caster",
     "branch": "Splash",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -95050,6 +96464,10 @@
     "class": "Caster",
     "branch": "Core",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_amgoat_1",
@@ -95483,6 +96901,10 @@
     "class": "Caster",
     "branch": "Core",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_cerber_1",
@@ -95989,6 +97411,9 @@
     "class": "Caster",
     "branch": "Core",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_heyak_1",
@@ -96495,6 +97920,9 @@
     "class": "Caster",
     "branch": "Core",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_logos_1",
@@ -97001,6 +98429,9 @@
     "class": "Caster",
     "branch": "Splash",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_dusk_1",
@@ -97548,6 +98979,9 @@
     "class": "Caster",
     "branch": "Splash",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_marcil_1",
@@ -97981,6 +99415,10 @@
     "class": "Caster",
     "branch": "Chain Caster",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_pasngr_1",
@@ -98487,6 +99925,10 @@
     "class": "Caster",
     "branch": "Phalanx",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_billro_1",
@@ -98993,6 +100435,9 @@
     "class": "Caster",
     "branch": "Phalanx",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_lin_1",
@@ -99499,6 +100944,9 @@
     "class": "Caster",
     "branch": "Mech-Accord",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_gdglow_1",
@@ -99766,6 +101214,79 @@
           }
         ],
         "isCnOnly": false
+      },
+      {
+        "moduleName": "梦想终将实现",
+        "moduleId": "uniequip_003_gdglow",
+        "typeName": "FUN-Y",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "30155",
+                "quantity": 2
+              },
+              {
+                "id": "4001",
+                "quantity": 80000
+              }
+            ],
+            "name": "Module FUN-Y Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 60
+              },
+              {
+                "id": "30145",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 100000
+              }
+            ],
+            "name": "Module FUN-Y Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 20
+              },
+              {
+                "id": "30165",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 120000
+              }
+            ],
+            "name": "Module FUN-Y Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -99932,6 +101453,9 @@
     "class": "Caster",
     "branch": "Mech-Accord",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_whitw2_1",
@@ -100365,6 +101889,9 @@
     "class": "Caster",
     "branch": "Mystic",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ebnhlz_1",
@@ -100944,6 +102471,9 @@
     "class": "Caster",
     "branch": "Primal",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_nymph_1",
@@ -101303,6 +102833,9 @@
     "class": "Caster",
     "branch": "Primal",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_blaze2_1",
@@ -101662,6 +103195,9 @@
     "class": "Caster",
     "branch": "Shaper",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_necras_1",
@@ -102095,6 +103631,10 @@
     "class": "Supporter",
     "branch": "Hexer",
     "isCnOnly": false,
+    "pools": [
+      "Kernel CN",
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_gnosis_1",
@@ -102601,6 +104141,10 @@
     "class": "Supporter",
     "branch": "Decel Binder",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_aglina_1",
@@ -103148,6 +104692,10 @@
     "class": "Supporter",
     "branch": "Decel Binder",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_lisa_1",
@@ -103654,6 +105202,10 @@
     "class": "Supporter",
     "branch": "Summoner",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_mgllan_1",
@@ -104160,6 +105712,9 @@
     "class": "Supporter",
     "branch": "Bard",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_skadi2_1",
@@ -104593,6 +106148,9 @@
     "class": "Supporter",
     "branch": "Bard",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_cetsyr_1",
@@ -105026,6 +106584,9 @@
     "class": "Supporter",
     "branch": "Abjurer",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_slent2_1",
@@ -105532,6 +107093,9 @@
     "class": "Supporter",
     "branch": "Summoner",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ling_1",
@@ -105965,6 +107529,9 @@
     "class": "Supporter",
     "branch": "Artificer",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ironmn_1",
@@ -106471,6 +108038,9 @@
     "class": "Supporter",
     "branch": "Ritualist",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_cello_1",
@@ -106904,6 +108474,9 @@
     "class": "Supporter",
     "branch": "Ritualist",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_phatm2_1",
@@ -107337,6 +108910,10 @@
     "class": "Specialist",
     "branch": "Executor",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_phatom_1",
@@ -107884,6 +109461,9 @@
     "class": "Specialist",
     "branch": "Executor",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_texas2_1",
@@ -108317,6 +109897,9 @@
     "class": "Specialist",
     "branch": "Executor",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_yato2_1",
@@ -108750,6 +110333,9 @@
     "class": "Specialist",
     "branch": "Executor",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_crosly_1",
@@ -109256,6 +110842,9 @@
     "class": "Specialist",
     "branch": "Merchant",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_lmlee_1",
@@ -109762,6 +111351,9 @@
     "class": "Specialist",
     "branch": "Merchant",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_swire2_1",
@@ -110268,6 +111860,10 @@
     "class": "Specialist",
     "branch": "Pusher",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_weedy_1",
@@ -110774,6 +112370,10 @@
     "class": "Specialist",
     "branch": "Geek",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_haak_1",
@@ -111207,6 +112807,9 @@
     "class": "Specialist",
     "branch": "Geek",
     "isCnOnly": true,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_angel2_1",
@@ -111640,6 +113243,9 @@
     "class": "Specialist",
     "branch": "Hookmaster",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_glady_1",
@@ -112146,6 +113752,10 @@
     "class": "Specialist",
     "branch": "Ambusher",
     "isCnOnly": false,
+    "pools": [
+      "Kernel CN",
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_mizuki_1",
@@ -112693,6 +114303,9 @@
     "class": "Specialist",
     "branch": "Ambusher",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ascln_1",
@@ -113199,6 +114812,9 @@
     "class": "Specialist",
     "branch": "Dollkeeper",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ghost2_1",
@@ -113705,6 +115321,9 @@
     "class": "Specialist",
     "branch": "Trapmaster",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_doroth_1",
@@ -114211,6 +115830,9 @@
     "class": "Specialist",
     "branch": "Trapmaster",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ela_1",
@@ -114644,6 +116266,9 @@
     "class": "Specialist",
     "branch": "Alchemist",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_thorn2_1",
@@ -115077,6 +116702,10 @@
     "class": "Medic",
     "branch": "Medic",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_shining_1",
@@ -115583,6 +117212,10 @@
     "class": "Medic",
     "branch": "Multi-target",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_heal_up[3]",
@@ -116089,6 +117722,10 @@
     "class": "Medic",
     "branch": "Medic",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_kalts_1",
@@ -116636,6 +118273,9 @@
     "class": "Medic",
     "branch": "Therapist",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_lumen_1",
@@ -117142,6 +118782,9 @@
     "class": "Medic",
     "branch": "Wandering",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_agoat2_1",
@@ -117575,6 +119218,9 @@
     "class": "Medic",
     "branch": "Incantation",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
@@ -118008,6 +119654,9 @@
     "class": "Medic",
     "branch": "Chain Medic",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_monstr_1",
@@ -118367,6 +120016,10 @@
     "class": "Defender",
     "branch": "Protector",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_hsguma_1",
@@ -118873,6 +120526,10 @@
     "class": "Defender",
     "branch": "Guardian",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_demkni_1",
@@ -119379,6 +121036,10 @@
     "class": "Defender",
     "branch": "Guardian",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_blemsh_1",
@@ -119885,6 +121546,9 @@
     "class": "Defender",
     "branch": "Guardian",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_shu_1",
@@ -120318,6 +121982,9 @@
     "class": "Defender",
     "branch": "Protector",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_nian_1",
@@ -120824,6 +122491,10 @@
     "class": "Defender",
     "branch": "Juggernaut",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_def_up[3]",
@@ -121330,6 +123001,9 @@
     "class": "Defender",
     "branch": "Juggernaut",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_judge_1",
@@ -121836,6 +123510,10 @@
     "class": "Defender",
     "branch": "Duelist",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_zumama_1",
@@ -122383,6 +124061,9 @@
     "class": "Defender",
     "branch": "Fortress",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_horn_1",
@@ -122889,6 +124570,9 @@
     "class": "Defender",
     "branch": "Sentry Protector",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_jesca2_1",
@@ -123322,6 +125006,9 @@
     "class": "Defender",
     "branch": "Sentry Protector",
     "isCnOnly": true,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_rmixer_1",
@@ -123755,6 +125442,9 @@
     "class": "Defender",
     "branch": "Primal Protector",
     "isCnOnly": true,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_yu_1",
@@ -124114,6 +125804,10 @@
     "class": "Guard",
     "branch": "Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_f12yin_1",
@@ -124620,6 +126314,9 @@
     "class": "Guard",
     "branch": "Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_chyue_1",
@@ -125126,6 +126823,10 @@
     "class": "Guard",
     "branch": "Lord",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_svrash_1",
@@ -125559,6 +127260,10 @@
     "class": "Guard",
     "branch": "Lord",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_atk_up[3]",
@@ -126065,6 +127770,9 @@
     "class": "Guard",
     "branch": "Lord",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_qiubai_1",
@@ -126498,6 +128206,9 @@
     "class": "Guard",
     "branch": "Crusher",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_hodrer_1",
@@ -126931,6 +128642,9 @@
     "class": "Guard",
     "branch": "Crusher",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_ulpia_1",
@@ -127364,6 +129078,9 @@
     "class": "Guard",
     "branch": "Earthshaker",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_pepe_1",
@@ -127797,6 +129514,10 @@
     "class": "Guard",
     "branch": "Swordmaster",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_chen_1",
@@ -128303,6 +130024,9 @@
     "class": "Guard",
     "branch": "Swordmaster",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_irene_1",
@@ -128809,6 +130533,9 @@
     "class": "Guard",
     "branch": "Swordmaster",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_blkkgt_1",
@@ -129242,6 +130969,10 @@
     "class": "Guard",
     "branch": "Centurion",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_huang_1",
@@ -129675,6 +131406,9 @@
     "class": "Guard",
     "branch": "Centurion",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_gvial2_1",
@@ -129942,6 +131676,79 @@
           }
         ],
         "isCnOnly": false
+      },
+      {
+        "moduleName": "好锯多磨",
+        "moduleId": "uniequip_003_gvial2",
+        "typeName": "CEN-Y",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "30115",
+                "quantity": 2
+              },
+              {
+                "id": "4001",
+                "quantity": 80000
+              }
+            ],
+            "name": "Module CEN-Y Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 60
+              },
+              {
+                "id": "30135",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 100000
+              }
+            ],
+            "name": "Module CEN-Y Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 20
+              },
+              {
+                "id": "30155",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 120000
+              }
+            ],
+            "name": "Module CEN-Y Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
       }
     ],
     "potentials": [
@@ -130108,6 +131915,10 @@
     "class": "Guard",
     "branch": "Arts Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_surtr_1",
@@ -130541,6 +132352,9 @@
     "class": "Guard",
     "branch": "Arts Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_vvana_1",
@@ -130974,6 +132788,9 @@
     "class": "Guard",
     "branch": "Arts Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_siege2_1",
@@ -131407,6 +133224,10 @@
     "class": "Guard",
     "branch": "Soloblade",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_helage_1",
@@ -131913,6 +133734,9 @@
     "class": "Guard",
     "branch": "Soloblade",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_zuole_1",
@@ -132419,6 +134243,10 @@
     "class": "Guard",
     "branch": "Instructor",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_pallas_1",
@@ -132925,6 +134753,9 @@
     "class": "Guard",
     "branch": "Dreadnought",
     "isCnOnly": false,
+    "pools": [
+      "Limited"
+    ],
     "skillData": [
       {
         "skillId": "skchr_nearl2_1",
@@ -133431,6 +135262,9 @@
     "class": "Guard",
     "branch": "Dreadnought",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_lessng_1",
@@ -133937,6 +135771,9 @@
     "class": "Guard",
     "branch": "Reaper",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_excu2_1",
@@ -134370,6 +136207,9 @@
     "class": "Guard",
     "branch": "Reaper",
     "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_etlchi_1",
@@ -134803,6 +136643,9 @@
     "class": "Guard",
     "branch": "Librator",
     "isCnOnly": false,
+    "pools": [
+      "Standard"
+    ],
     "skillData": [
       {
         "skillId": "skchr_mlynar_1",
@@ -135228,6 +137071,442 @@
       }
     ]
   },
+  "char_1043_leizi2": {
+    "id": "char_1043_leizi2",
+    "name": "Leizi the Thunderbringer",
+    "cnName": "司霆惊蛰",
+    "rarity": 6,
+    "class": "Guard",
+    "branch": "Librator",
+    "isCnOnly": true,
+    "pools": [
+      "Standard"
+    ],
+    "skillData": [
+      {
+        "skillId": "skchr_leizi2_1",
+        "iconId": null,
+        "skillName": "浩气长存",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 8
+              },
+              {
+                "id": "31054",
+                "quantity": 4
+              },
+              {
+                "id": "31083",
+                "quantity": 5
+              }
+            ],
+            "name": "Skill 1 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 12
+              },
+              {
+                "id": "31074",
+                "quantity": 4
+              },
+              {
+                "id": "30104",
+                "quantity": 7
+              }
+            ],
+            "name": "Skill 1 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 15
+              },
+              {
+                "id": "30135",
+                "quantity": 6
+              },
+              {
+                "id": "31024",
+                "quantity": 6
+              }
+            ],
+            "name": "Skill 1 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_leizi2_2",
+        "iconId": null,
+        "skillName": "正霆摄威",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 8
+              },
+              {
+                "id": "31014",
+                "quantity": 4
+              },
+              {
+                "id": "30083",
+                "quantity": 8
+              }
+            ],
+            "name": "Skill 2 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 12
+              },
+              {
+                "id": "31094",
+                "quantity": 4
+              },
+              {
+                "id": "31034",
+                "quantity": 7
+              }
+            ],
+            "name": "Skill 2 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 15
+              },
+              {
+                "id": "30155",
+                "quantity": 6
+              },
+              {
+                "id": "30054",
+                "quantity": 2
+              }
+            ],
+            "name": "Skill 2 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_leizi2_3",
+        "iconId": null,
+        "skillName": "天地通明",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 8
+              },
+              {
+                "id": "30014",
+                "quantity": 4
+              },
+              {
+                "id": "31073",
+                "quantity": 7
+              }
+            ],
+            "name": "Skill 3 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 12
+              },
+              {
+                "id": "30104",
+                "quantity": 4
+              },
+              {
+                "id": "31064",
+                "quantity": 8
+              }
+            ],
+            "name": "Skill 3 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [
+              {
+                "id": "3303",
+                "quantity": 15
+              },
+              {
+                "id": "30145",
+                "quantity": 6
+              },
+              {
+                "id": "31084",
+                "quantity": 1
+              }
+            ],
+            "name": "Skill 3 Mastery 3",
+            "category": 1
+          }
+        ]
+      }
+    ],
+    "moduleData": [
+      {
+        "moduleName": "“一念”",
+        "moduleId": "uniequip_002_leizi2",
+        "typeName": "LIB-X",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "30135",
+                "quantity": 2
+              },
+              {
+                "id": "4001",
+                "quantity": 80000
+              }
+            ],
+            "name": "Module LIB-X Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_1",
+                "quantity": 60
+              },
+              {
+                "id": "30155",
+                "quantity": 3
+              },
+              {
+                "id": "4001",
+                "quantity": 100000
+              }
+            ],
+            "name": "Module LIB-X Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [
+              {
+                "id": "mod_unlock_token",
+                "quantity": 4
+              },
+              {
+                "id": "mod_update_token_2",
+                "quantity": 20
+              },
+              {
+                "id": "30145",
+                "quantity": 4
+              },
+              {
+                "id": "4001",
+                "quantity": 120000
+              }
+            ],
+            "name": "Module LIB-X Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      }
+    ],
+    "potentials": [
+      "部署费用-1",
+      "第二天赋效果增强",
+      "攻击力+29",
+      "第一天赋效果增强",
+      "部署费用-1"
+    ],
+    "skillLevels": [
+      {
+        "skillLevel": 2,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 5
+          }
+        ],
+        "name": "Skill Level 2",
+        "category": 2
+      },
+      {
+        "skillLevel": 3,
+        "ingredients": [
+          {
+            "id": "3301",
+            "quantity": 5
+          },
+          {
+            "id": "30051",
+            "quantity": 6
+          },
+          {
+            "id": "30011",
+            "quantity": 4
+          }
+        ],
+        "name": "Skill Level 3",
+        "category": 2
+      },
+      {
+        "skillLevel": 4,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 8
+          },
+          {
+            "id": "30062",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 4",
+        "category": 2
+      },
+      {
+        "skillLevel": 5,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 8
+          },
+          {
+            "id": "30012",
+            "quantity": 5
+          },
+          {
+            "id": "30062",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 5",
+        "category": 2
+      },
+      {
+        "skillLevel": 6,
+        "ingredients": [
+          {
+            "id": "3302",
+            "quantity": 8
+          },
+          {
+            "id": "30083",
+            "quantity": 6
+          }
+        ],
+        "name": "Skill Level 6",
+        "category": 2
+      },
+      {
+        "skillLevel": 7,
+        "ingredients": [
+          {
+            "id": "3303",
+            "quantity": 8
+          },
+          {
+            "id": "31073",
+            "quantity": 5
+          },
+          {
+            "id": "31033",
+            "quantity": 3
+          }
+        ],
+        "name": "Skill Level 7",
+        "category": 2
+      }
+    ],
+    "eliteLevels": [
+      {
+        "eliteLevel": 1,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 30000
+          },
+          {
+            "id": "3221",
+            "quantity": 5
+          },
+          {
+            "id": "30032",
+            "quantity": 8
+          },
+          {
+            "id": "30012",
+            "quantity": 8
+          }
+        ],
+        "name": "Elite 1",
+        "category": 0
+      },
+      {
+        "eliteLevel": 2,
+        "ingredients": [
+          {
+            "id": "4001",
+            "quantity": 180000
+          },
+          {
+            "id": "3223",
+            "quantity": 4
+          },
+          {
+            "id": "30145",
+            "quantity": 4
+          },
+          {
+            "id": "31014",
+            "quantity": 8
+          }
+        ],
+        "name": "Elite 2",
+        "category": 0
+      }
+    ]
+  },
   "char_230_savage": {
     "id": "char_230_savage",
     "name": "Savage",
@@ -135236,6 +137515,9 @@
     "class": "Guard",
     "branch": "Centurion",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_savage_1",
@@ -135597,6 +137879,10 @@
     "class": "Sniper",
     "branch": "Artilleryman",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_catap_1",
@@ -135723,6 +138009,10 @@
     "class": "Guard",
     "branch": "Lord",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_midn_1",
@@ -135849,6 +138139,10 @@
     "class": "Guard",
     "branch": "Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_brownb_1",
@@ -136206,6 +138500,10 @@
     "class": "Guard",
     "branch": "Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_jaksel_1",
@@ -136563,6 +138861,10 @@
     "class": "Caster",
     "branch": "Core",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skchr_nightm_1",
@@ -136924,6 +139226,9 @@
     "class": "Vanguard",
     "branch": "Charger",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skcom_def_up[3]",
@@ -137285,6 +139590,10 @@
     "class": "Guard",
     "branch": "Dreadnought",
     "isCnOnly": false,
+    "pools": [
+      "Kernel",
+      "Kernel CN"
+    ],
     "skillData": [
       {
         "skillId": "skcom_quickattack[3]",
@@ -137791,6 +140100,9 @@
     "class": "Guard",
     "branch": "Arts Fighter",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_amiya2_1",
@@ -138152,6 +140464,9 @@
     "class": "Medic",
     "branch": "Incantation",
     "isCnOnly": false,
+    "pools": [
+      "Free"
+    ],
     "skillData": [
       {
         "skillId": "skchr_amiya3_1",

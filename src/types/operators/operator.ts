@@ -30,6 +30,7 @@ export interface OperatorData {
   class: string;
   branch: string;
   isCnOnly: boolean;
+  pools: string[];
   skillData?: SkillData[];
   moduleData?: ModuleData[];
   potentials: string[];
