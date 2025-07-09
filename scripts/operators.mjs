@@ -10,6 +10,7 @@ import cnCharacterPatchTable from "./ArknightsGameData/zh_CN/gamedata/excel/char
 import cnCharacterTable from "./ArknightsGameData/zh_CN/gamedata/excel/character_table.json" with { type: "json" };
 import cnSkillTable from "./ArknightsGameData/zh_CN/gamedata/excel/skill_table.json" with { type: "json" };
 import cnUniequipTable from "./ArknightsGameData/zh_CN/gamedata/excel/uniequip_table.json" with { type: "json" };
+import cnGachaTable from "./ArknightsGameData/zh_CN/gamedata/excel/gacha_table.json" with { type: "json" };
 
 const enPatchCharacters = enCharacterPatchTable.patchChars;
 const cnPatchCharacters = cnCharacterPatchTable.patchChars;
@@ -30,6 +31,32 @@ const operatorNameOverride = {
   Позёмка: "Pozëmka",
   Лето: "Leto",
 };
+
+const colabLimiteds = [
+  //other
+  "char_4019_ncdeer",
+  "char_4067_lolxh",
+  // R6 1
+  "char_456_ash",
+  "char_457_blitz",
+  "char_458_rfrost",
+  "char_459_tachaka",
+  // MH
+  "char_1029_yato2",
+  "char_1030_noirc2",
+  "char_4077_palico",
+  // R6 2
+  "char_4125_rdoc",
+  "char_4123_ela",
+  "char_4124_iana",
+  "char_4126_fuze",
+  // DM
+  "char_4144_chilc",
+  "char_4142_laios",
+  "char_4141_marcil",
+  "char_4143_sensi",
+];
+
 function getOperatorName(operatorId) {
   if (operatorId === "char_1001_amiya2") {
     return "Amiya (Guard)";
@@ -344,6 +371,35 @@ const amiyaEliteLevel = [
   },
 ];
 
+const getPools = (operatorId) => {
+  const id = operatorId;
+  const isKernel = (enCharacterTable[id]?.classicPotentialItemId ?? null) !== null;
+  const isCnKernel = (cnCharacterTable[id]?.classicPotentialItemId ?? null) !== null;
+
+  const isFree = ["char_1001_amiya2", "char_1037_amiya3"].includes(id) || //amiya (guard/medic)
+    cnCharacterTable[id]?.itemObtainApproach &&
+    (cnCharacterTable[id].itemObtainApproach.includes("主题曲剧情")     //story
+      || cnCharacterTable[id].itemObtainApproach.includes("获得")       //reward - (events or IS)
+      || cnCharacterTable[id].itemObtainApproach.includes("交易所")     //exchanges - reds/credit
+      || cnCharacterTable[id].itemObtainApproach.includes("周年奖励")   //anniversary reward
+    );
+
+  const isLimited = colabLimiteds.includes(id) ||
+    Object.values(cnGachaTable["gachaPoolClient"]).some((b) =>
+      b.limitParam?.limitedCharId && b.limitParam.limitedCharId.includes(id));
+
+  const isStandard = !isKernel && !isLimited && !isFree;
+
+  const pools = [];
+  if (isKernel) pools.push("Kernel");
+  if (isCnKernel) pools.push("Kernel CN");
+  if (isLimited) pools.push("Limited");
+  if (isFree) pools.push("Free");
+  if (isStandard) pools.push("Standard");
+
+  return pools;
+}
+
 const createOperatorsJson = () => {
   const operatorsJson = Object.fromEntries(
     [
@@ -357,23 +413,23 @@ const createOperatorsJson = () => {
       const eliteLevels = isPatchCharacter
         ? amiyaEliteLevel
         : operator.phases
-            .filter(({ evolveCost }) => evolveCost != null)
-            .map(({ evolveCost }, i) => {
-              const ingredients = evolveCost.map(gameDataCostToIngredient);
-              ingredients.unshift(getEliteLMDCost(rarity, i + 1));
-              // [0] points to E1, [1] points to E2, so add 1
-              return {
-                eliteLevel: i + 1,
-                ingredients,
-                name: `Elite ${i + 1}`,
-                category: OperatorGoalCategory.Elite,
-              };
-            });
+          .filter(({ evolveCost }) => evolveCost != null)
+          .map(({ evolveCost }, i) => {
+            const ingredients = evolveCost.map(gameDataCostToIngredient);
+            ingredients.unshift(getEliteLMDCost(rarity, i + 1));
+            // [0] points to E1, [1] points to E2, so add 1
+            return {
+              eliteLevel: i + 1,
+              ingredients,
+              name: `Elite ${i + 1}`,
+              category: OperatorGoalCategory.Elite,
+            };
+          });
       const skillLevels = isPatchCharacter
         ? amiyaSkillLevel
         : !operator.allSkillLvlup
-        ? []
-        : operator.allSkillLvlup
+          ? []
+          : operator.allSkillLvlup
             .filter(({ lvlUpCost }) => lvlUpCost != null)
             .map((skillLevelEntry, i) => {
               const cost = skillLevelEntry.lvlUpCost;
@@ -451,6 +507,7 @@ const createOperatorsJson = () => {
         class: professionToClass(operator.profession),
         branch: subProfessionToBranch(operator.subProfessionId),
         isCnOnly,
+        pools: getPools(id),
         skillData,
         moduleData,
         potentials,
