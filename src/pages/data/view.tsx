@@ -51,6 +51,7 @@ const View: NextPage = () => {
           <SearchDialog onChange={setSearch} />
           <Tooltip title="Edit Mode" arrow describeChild>
             <IconButton
+              color={editMode ? "primary" : "default"}
               className={editMode ? "selected" : ""}
               onClick={() => setEditMode(!editMode)}
               aria-label="Edit Mode"
