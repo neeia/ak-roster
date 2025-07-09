@@ -622,7 +622,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         if (farmTimes[id]) lines.push(`Can be farmed in events x${farmTimes[id]}`)
 
         return (
-            <div style={{ whiteSpace: 'pre-line', fontSize: "0.9rem" }}>
+            lines.length > 0 && <div style={{ whiteSpace: 'pre-line', fontSize: "0.9rem" }}>
                 {lines.join("\n")}
             </div>
         );
