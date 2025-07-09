@@ -23,6 +23,8 @@ const checkModuleLevel = (op: OpInfo, value: Set<Value>) =>
     (v === 0 && Object.values(op.modules).every((m) => m === v))
     || (v !== 0 && Object.values(op.modules).some((m) => m === v))
   );;
+const checkPools = (op: OpInfo, value: Set<Value>) =>
+  op.pools && value.values().every((v) => op.pools.some((p) => p === v));
 
 
 export type Value = string | boolean | number;
@@ -38,6 +40,8 @@ export type Filters = {
   MASTERY: Set<Value>;
   SKILLLEVEL: Set<Value>;
   MODULELEVEL: Set<Value>;
+  POOLS: Set<Value>;
+  FAVORITE: Set<Value>;
 };
 export type ToggleFilter = (category: keyof Filters, value: Value) => void;
 
@@ -53,6 +57,8 @@ export default function useFilter(init: Partial<Filters> = {}) {
     MASTERY: init.MASTERY ?? new Set(),
     SKILLLEVEL: init.SKILLLEVEL ?? new Set(),
     MODULELEVEL: init.MODULELEVEL ?? new Set(),
+    POOLS: init.POOLS ?? new Set(),
+    FAVORITE: init.FAVORITE ?? new Set(),
   });
 
   const [search, setSearch] = useState("");
@@ -85,6 +91,8 @@ export default function useFilter(init: Partial<Filters> = {}) {
       if (filters.MASTERY.size && !checkMastery(op, filters.MASTERY)) return false;
       if (filters.SKILLLEVEL.size && !checkSkillLevel(op, filters.SKILLLEVEL)) return false;
       if (filters.MODULELEVEL.size && !checkModuleLevel(op, filters.MODULELEVEL)) return false;
+      if (filters.POOLS.size && !checkPools(op, filters.POOLS)) return false;
+      if (filters.FAVORITE.size && !op.favorite) return false;
       if (!matchOperatorName(op.name, search)) return false;
       return true;
     },

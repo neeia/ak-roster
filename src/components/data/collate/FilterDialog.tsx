@@ -6,6 +6,7 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
+  Stack,
   Tooltip,
   Typography,
   useMediaQuery,
@@ -20,6 +21,8 @@ import Select from "../input/Select/SelectGroup";
 import Rarity from "../input/Select/Rarity";
 import Promotion from "../input/Select/Promotion";
 import PropertyLevel from "../input/Select/PropertyLevel";
+import FavoriteFilter from "./filter/FavoriteFilter";
+import PoolsFilter from "./filter/PoolsFilter";
 
 interface Props {
   filter: Filters;
@@ -80,14 +83,14 @@ const FilterDialog = memo((props: Props) => {
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: { xs: "1fr 1fr", sm: "1fr 1fr 1fr auto" },
+              gridTemplateColumns: { xs: "repeat(4, 1fr)", sm: "repeat(7, 1fr)" },
               width: "100%",
             }}
           >
             <Select title="Class" nobg sx={{ gridColumn: "1 / -1" }}>
               <Class value={[...filter.CLASS]} onChange={(value) => toggleFilter("CLASS", value)} />
             </Select>
-            <Select title="Rarity" nobg sx={{ gridColumn: { xs: "span 2", sm: "span 3" } }}>
+            <Select title="Rarity" nobg sx={{ gridColumn: { xs: "1 / -1", sm: "span 4" } }}>
               <Rarity
                 value={[...filter.RARITY]}
                 onChange={(value) => toggleFilter("RARITY", value)}
@@ -95,32 +98,42 @@ const FilterDialog = memo((props: Props) => {
                 fullWidth
               />
             </Select>
-            <Select title="Elite" nobg>
+            <Select title="Elite" nobg sx={{ gridColumn: { xs: "span 2", sm: "span 3" }}}>
               <Promotion value={[...filter.ELITE]} onChange={(value) => toggleFilter("ELITE", value)} />
             </Select>
-            <Select title="Owned" nobg>
-              <OwnedFilter value={[...filter.OWNED]} onChange={(value) => toggleFilter("OWNED", value)} />
+            <Select title="Owned" nobg sx={{ gridColumn: { xs: "span 2", sm: "span 2" }}}>
+              <Stack direction="row" justifyContent="center">
+                <OwnedFilter value={[...filter.OWNED]} onChange={(value) => toggleFilter("OWNED", value)} />
+                <FavoriteFilter value={[...filter.FAVORITE]} onChange={(value) => toggleFilter("FAVORITE", value)} />
+              </Stack>
             </Select>
-            <Select title="Server" nobg>
+            <Select title="Server" nobg sx={{ gridColumn: { xs: "span 2", sm: "span 1" }}}>
               <ServerFilter value={[...filter.CN]} onChange={(value) => toggleFilter("CN", value)} />
             </Select>
-            <Select title="Module" nobg>
+            <Select title="Module" nobg sx={{ gridColumn: { xs: "span 2", sm: "span 1" }}}>
               <ServerFilter value={[...filter.MODULECN]} onChange={(value) => toggleFilter("MODULECN", value)} />
             </Select>
-            <Select title="Module Level" nobg>
+            <Select title="Module Level" nobg sx={{ gridColumn: { xs: "1 / -1", sm: "span 3" }}}>
               <PropertyLevel property="module"
                 value={[...filter.MODULELEVEL]} onChange={(value) => toggleFilter("MODULELEVEL", value)} />
             </Select>
-            <Select title="Skill Level" nobg sx={{ gridColumn: { xs: "span 2", sm: "span 3" } }}>
+            <Select title="Skill Level" nobg sx={{ gridColumn: { xs: "1 / -1", sm: "span 4" } }}>
               <PropertyLevel property="skill" fullWidth min={1} max={7}
                 value={[...filter.SKILLLEVEL]} onChange={(value) => toggleFilter("SKILLLEVEL", value)} />
             </Select>
-            <Select title="Mastery" nobg>
+            <Select title="Mastery" nobg sx={{ gridColumn: { xs: "1 / -1", sm: "span 3" } }}>
               <PropertyLevel property="mastery"
                 value={[...filter.MASTERY]} onChange={(value) => toggleFilter("MASTERY", value)} />
             </Select>
+            <Select title="Pools" nobg sx={{whiteSpace: "nowrap", gridColumn: "1 / -1" }}>
+              <PoolsFilter property="Pools"
+                value={[...filter.POOLS]} onChange={(value) => toggleFilter("POOLS", value)} />
+            </Select>
           </Box>
-          <Button onClick={clearFilters}>Clear Filter</Button>
+          <Stack direction="row" justifyContent="space-between">
+          <Button onClick={clearFilters} fullWidth>Clear Filter</Button>
+          <Button variant="contained" onClick={() => setOpen(false)} sx={{ display: { md: "none" } }}>Close</Button>
+          </Stack>
         </DialogContent>
       </Dialog>
     </>
