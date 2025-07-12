@@ -1,7 +1,7 @@
 import { Box, ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps } from "@mui/material";
 import React from "react";
 
-const poolsList = ["Standard", "Limited", "Kernel", "Kernel CN", "Recruitment", "Free"];
+const poolsList = ["Standard", "Limited", "Free", "Kernel", "Recruitment","Kernel CN" ];
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange"> {
   onChange: (value: string) => void;
@@ -14,8 +14,9 @@ const PoolsFilter = (props: Props) => {
     <ToggleButtonGroup
       value={value}
       sx={{
-        display: "grid",
-        gridTemplateColumns: { xs: "repeat(4, 1fr)", sm: "repeat(8, 1fr)" },
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: {xs: "center", sm: "flex-start"},
         width: "100%",
         gap: 0.5,
       }}

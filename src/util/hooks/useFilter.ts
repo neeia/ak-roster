@@ -10,13 +10,47 @@ const checkRarity = (op: OpInfo, value: Set<Value>) => value.has(op.rarity);
 const checkCNOnly = (op: OpInfo, value: Set<Value>) => value.has(op.isCnOnly);
 const checkModuleCNOnly = (op: OpInfo, value: Set<Value>) =>
   op.moduleData && op.moduleData.some((m) => value.has(m.isCnOnly));
-const checkSkillLevel = (op: OpInfo, value: Set<Value>) => value.has(op.skill_level);
-const checkMastery = (op: OpInfo, value: Set<Value>) =>
-  op.masteries &&
-  value.values().some((v) =>
-    (v === 0 && op.masteries.every((m) => m === v))
-    || (v !== 0 && op.masteries.some((m) => m === v))
-  );
+
+const checkSkillLevel = (op: OpInfo, value: Set<Value>) => {
+  for (const v of value) {
+    if (
+      (v === 1 && op.skill_level >= 1 && op.skill_level <= 3) ||
+      (v === 4 && op.skill_level >= 4 && op.skill_level <= 6) ||
+      (v === 7 && op.skill_level === 7)
+    ) {
+      return true;
+    }
+  }
+  return false;
+};
+
+const checkMastery = (op: OpInfo, value: Set<Value>) => {
+  const masteries = op.masteries;
+  // 0 — All are 0 or none
+  if (value.has(0)) {
+    if (!masteries || masteries.every((m) => m === 0)) {
+      return true;
+    }
+  }
+  // 1 -3  — any at value
+  for (let i = 1; i <= 3; i++) {
+    if (value.has(i) && masteries?.some((m) => m === i)) {
+      return true;
+    }
+  }
+  // 4 — exactly two at 3
+  if (value.has(4)) {
+    const count = masteries?.filter((m) => m === 3).length ?? 0;
+    if (count === 2) return true;
+  }
+  // 5 — exactly 3 at 3
+  if (value.has(5)) {
+    const count = masteries?.filter((m) => m === 3).length ?? 0;
+    if (count === 3) return true;
+  }
+  return false;
+};
+
 const checkModuleLevel = (op: OpInfo, value: Set<Value>) =>
   op.modules &&
   value.values().some((v) =>
@@ -24,8 +58,7 @@ const checkModuleLevel = (op: OpInfo, value: Set<Value>) =>
     || (v !== 0 && Object.values(op.modules).some((m) => m === v))
   );;
 const checkPools = (op: OpInfo, value: Set<Value>) =>
-  op.pools && value.values().every((v) => op.pools.some((p) => p === v));
-
+  op.pools && value.values().some((v) => op.pools.some((p) => p === v));
 
 export type Value = string | boolean | number;
 
