@@ -8,7 +8,8 @@
     "branch": "Medic",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Free",
+      "Recruitment"
     ],
     "skillData": [],
     "moduleData": [],
@@ -31,7 +32,7 @@
     "branch": "Dreadnought",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Recruitment"
     ],
     "skillData": [],
     "moduleData": [],
@@ -54,7 +55,8 @@
     "branch": "Executor",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Free",
+      "Recruitment"
     ],
     "skillData": [],
     "moduleData": [],
@@ -77,7 +79,7 @@
     "branch": "Marksman",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Recruitment"
     ],
     "skillData": [],
     "moduleData": [],
@@ -147,7 +149,7 @@
     "branch": "Protector",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Recruitment"
     ],
     "skillData": [],
     "moduleData": [],
@@ -170,7 +172,7 @@
     "branch": "Ritualist",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Recruitment"
     ],
     "skillData": [],
     "moduleData": [],
@@ -192,9 +194,7 @@
     "class": "Vanguard",
     "branch": "Pioneer",
     "isCnOnly": true,
-    "pools": [
-      "Standard"
-    ],
+    "pools": [],
     "skillData": [],
     "moduleData": [],
     "potentials": [
@@ -216,7 +216,7 @@
     "branch": "Pioneer",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Recruitment"
     ],
     "skillData": [],
     "moduleData": [],
@@ -239,7 +239,7 @@
     "branch": "Protector",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Recruitment"
     ],
     "skillData": [],
     "moduleData": [],
@@ -262,7 +262,7 @@
     "branch": "Marksman",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Recruitment"
     ],
     "skillData": [],
     "moduleData": [],
@@ -285,7 +285,8 @@
     "branch": "Core",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Free",
+      "Recruitment"
     ],
     "skillData": [],
     "moduleData": [],
@@ -308,7 +309,8 @@
     "branch": "Splash",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Free",
+      "Recruitment"
     ],
     "skillData": [],
     "moduleData": [],
@@ -332,7 +334,10 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Free",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -462,7 +467,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -592,7 +599,10 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Free",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -722,7 +732,10 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Free",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -852,7 +865,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -982,7 +997,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard"
     ],
     "skillData": [
       {
@@ -1112,7 +1128,10 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Free",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -1242,7 +1261,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -1372,7 +1393,10 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Free",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -1501,7 +1525,8 @@
     "branch": "Marksman",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Free",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -1631,7 +1656,10 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Free",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -1761,7 +1789,10 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Free",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -1891,7 +1922,10 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Free",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -2021,7 +2055,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -2151,7 +2187,10 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Free",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -2281,7 +2320,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -2642,7 +2683,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -3003,7 +3046,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -3364,7 +3409,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -3725,7 +3772,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard"
     ],
     "skillData": [
       {
@@ -4446,7 +4494,10 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Free",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -4807,7 +4858,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -5168,7 +5221,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -5529,7 +5584,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -5890,7 +5947,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -6251,7 +6310,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -6612,7 +6673,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -6973,7 +7036,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -7334,7 +7399,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard"
     ],
     "skillData": [
       {
@@ -8341,7 +8407,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -8702,7 +8770,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -9063,7 +9133,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -9424,7 +9496,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard"
     ],
     "skillData": [
       {
@@ -9785,7 +9858,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -10146,7 +10221,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -10861,7 +10938,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -11221,7 +11300,7 @@
     "branch": "Centurion",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -11582,7 +11661,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -11943,7 +12024,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -12304,7 +12387,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -12665,7 +12750,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -13741,7 +13828,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard"
     ],
     "skillData": [
       {
@@ -14462,7 +14550,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -14823,7 +14913,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -15184,7 +15276,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -15545,7 +15639,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -16266,7 +16362,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -16627,7 +16725,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -16987,7 +17087,7 @@
     "branch": "Therapist",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -17348,7 +17448,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard"
     ],
     "skillData": [
       {
@@ -17709,7 +17810,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -18070,7 +18173,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -18431,7 +18536,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -19152,7 +19259,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -19799,7 +19908,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard"
     ],
     "skillData": [
       {
@@ -20160,7 +20270,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -20521,7 +20633,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -20882,7 +20996,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard"
     ],
     "skillData": [
       {
@@ -21603,7 +21718,10 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Free",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -21964,7 +22082,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard"
     ],
     "skillData": [
       {
@@ -22611,7 +22730,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -23704,7 +23824,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -24069,7 +24190,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Free",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -24434,7 +24557,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -25527,7 +25651,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -26620,7 +26745,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -29533,7 +29659,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -32446,7 +32573,8 @@
     "branch": "Fighter",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Free",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -32811,7 +32939,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -33905,7 +34034,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -35726,7 +35856,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -36091,7 +36222,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -36821,7 +36953,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -40026,7 +40159,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -40391,7 +40525,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -40756,7 +40891,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -41121,7 +41257,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -42214,7 +42351,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -42579,7 +42717,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -43308,7 +43447,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -43673,7 +43813,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -45923,7 +46064,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -46652,7 +46794,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -47017,7 +47160,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -52622,7 +52766,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -53715,7 +53860,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -54080,7 +54226,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -55537,7 +55684,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -59031,7 +59179,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -59396,7 +59545,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -60490,7 +60640,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -60855,7 +61006,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -61220,7 +61372,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -62314,7 +62467,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -63043,7 +63197,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -63771,7 +63926,8 @@
     "branch": "Juggernaut",
     "isCnOnly": false,
     "pools": [
-      "Standard"
+      "Free",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -64136,7 +64292,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -67483,7 +67640,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -68212,7 +68370,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -68577,7 +68736,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -71417,7 +71577,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -72510,7 +72671,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -72875,7 +73037,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -73604,7 +73767,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -73969,7 +74133,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -76883,7 +77048,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -79063,7 +79229,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -79793,7 +79960,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -83360,7 +83528,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -84930,7 +85099,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -87913,7 +88083,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -91006,7 +91177,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -91516,7 +91688,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -95446,7 +95619,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -95956,7 +96130,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -96903,7 +97078,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -104694,7 +104870,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -105204,7 +105381,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -108912,7 +109090,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -111862,7 +112041,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -112372,7 +112552,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -116704,7 +116885,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -117214,7 +117396,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -120018,7 +120201,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -120528,7 +120712,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -121038,7 +121223,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -122493,7 +122679,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -123512,7 +123699,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -125806,7 +125994,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -126825,7 +127014,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -127262,7 +127452,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -129516,7 +129707,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -130971,7 +131163,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -131917,7 +132110,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -133226,7 +133420,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -137881,7 +138076,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -138011,7 +138208,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -138141,7 +138340,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -138502,7 +138703,9 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -138863,7 +139066,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -139592,7 +139796,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
