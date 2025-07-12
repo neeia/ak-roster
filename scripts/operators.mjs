@@ -1,24 +1,25 @@
 ﻿import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { loadRepositoryTable } from "./tablesMapper.mjs";
 
-import enCharacterPatchTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/char_patch_table.json" with { type: "json" };
-import enCharacterTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/character_table.json" with { type: "json" };
-import enSkillTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/skill_table.json" with { type: "json" };
-import enUniequipTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/uniequip_table.json" with { type: "json" };
-import cnCharacterPatchTable from "./ArknightsGameData/zh_CN/gamedata/excel/char_patch_table.json" with { type: "json" };
-import cnCharacterTable from "./ArknightsGameData/zh_CN/gamedata/excel/character_table.json" with { type: "json" };
-import cnSkillTable from "./ArknightsGameData/zh_CN/gamedata/excel/skill_table.json" with { type: "json" };
-import cnUniequipTable from "./ArknightsGameData/zh_CN/gamedata/excel/uniequip_table.json" with { type: "json" };
-import cnGachaTable from "./ArknightsGameData/zh_CN/gamedata/excel/gacha_table.json" with { type: "json" };
-import cnStageTable from "./ArknightsGameData/zh_CN/gamedata/excel/stage_table.json" with { type: "json" };
-//cross reference to another updating file: update:operator should be after update:recruit
-import recruitJson from "../src/data/recruitment.json" with { type: "json" };
+const enCharacterPatchTable = loadRepositoryTable("enCharacterPatchTable");
+const enCharacterTable      = loadRepositoryTable("enCharacterTable");
+const enSkillTable          = loadRepositoryTable("enSkillTable");
+const enUniequipTable       = loadRepositoryTable("enUniequipTable");
+const cnCharacterPatchTable = loadRepositoryTable("cnCharacterPatchTable");
+const cnCharacterTable      = loadRepositoryTable("cnCharacterTable");
+const cnSkillTable          = loadRepositoryTable("cnSkillTable");
+const cnUniequipTable       = loadRepositoryTable("cnUniequipTable");
+const cnGachaTable          = loadRepositoryTable("cnGachaTable");
+const cnStageTable          = loadRepositoryTable("cnStageTable");
+
+const recruitJson           = loadRepositoryTable("recruitmentJson");
 
 const enPatchCharacters = enCharacterPatchTable.patchChars;
 const cnPatchCharacters = cnCharacterPatchTable.patchChars;
-const { equipDict: cnEquipDict, charEquip: cnCharEquip } = cnUniequipTable;
-const { equipDict: enEquipDict } = enUniequipTable;
+const { equipDict: cnEquipDict, charEquip: cnCharEquip, subProfDict: cnSubProfDict } = cnUniequipTable;
+const { equipDict: enEquipDict, subProfDict: enSubProfDict } = enUniequipTable;
 const { gachaPoolClient: cnGachaPoolClient } = cnGachaTable;
 const { stages: cnStages } = cnStageTable;
 
@@ -61,6 +62,12 @@ const colabLimiteds = [
   "char_4142_laios",
   "char_4141_marcil",
   "char_4143_sensi",
+  //BDAM
+  "char_4182_oblvns",
+  "char_4183_mortis",
+  "char_4184_dolris",
+  "char_4185_amoris",  
+  "char_4186_tmoris",  
 ];
 const freePoolInclude = [
   "char_1001_amiya2",
@@ -130,90 +137,16 @@ function professionToClass(profession) {
   }
 }
 
-function subProfessionToBranch(subProfession) {
-  switch (subProfession) {
-    case "physician":
-      return "Medic";
-    case "fearless":
-      return "Dreadnought";
-    case "fastshot":
-      return "Marksman";
-    case "bombarder":
-      return "Flinger";
-    case "corecaster":
-      return "Core";
-    case "splashcaster":
-      return "Splash";
-    case "slower":
-      return "Decel Binder";
-    case "funnel":
-      return "Mech-Accord";
-    case "aoesniper":
-      return "Artilleryman";
-    case "reaperrange":
-      return "Spreadshooter"
-    case "longrange":
-      return "Deadeye";
-    case "closerange":
-      return "Heavyshooter";
-    case "siegesniper":
-      return "Besieger";
-    case "bearer":
-      return "Standard Bearer";
-    case "artsfghter":
-      return "Arts Fighter";
-    case "sword":
-      return "Swordmaster";
-    case "musha":
-      return "Soloblade";
-    case "artsprotector":
-      return "Arts Protector";
-    case "blastcaster":
-      return "Blast";
-    case "blessing":
-      return "Abjurer";
-    case "chainhealer":
-      return "Chain Medic";
-    case "chain":
-      return "Chain Caster";
-    case "craftsman":
-      return "Artificer";
-    case "hammer":
-      return "Earthshaker";
-    case "healer":
-      return "Therapist";
-    case "incantationmedic":
-      return "Incantation";
-    case "primcaster":
-      return "Primal";
-    case "ringhealer":
-      return "Multi-target";
-    case "shotprotector":
-      return "Sentry Protector";
-    case "stalker":
-      return "Ambusher";
-    case "traper":
-      return "Trapmaster";
-    case "underminer":
-      return "Hexer";
-    case "unyield":
-      return "Juggernaut";
-    case "wandermedic":
-      return "Wandering";
-    case "soulcaster":
-      return "Shaper";
-    case "skywalker":
-      return "Skyranger";
-    case "primprotector":
-      return "Primal Protector";
-    default:
-      return [...subProfession.toLowerCase()].map((char, i) => (i === 0 ? char.toUpperCase() : char)).join("");
-    //Executor, Bard, Protector, Ritualist, Pioneer, Charger, Centurion
-    //Guardian, Mystic, Loopshooter, Tactician, Instructor, Crusher
-    //Lord, Dollkeeper, Duelist (defender), Fighter, Fortress, Geek
-    //Hookmaster, Liberator, Merchant, Phalanx, Pusher, Reaper, Summoner
-    //
-  }
+function subProfessionToBranch(subProfession, className) {
+  const subProffesionName =
+    enSubProfDict[subProfession]?.subProfessionName
+      ? `${enSubProfDict[subProfession]?.subProfessionName}`.replace(className, "").trim() != ""
+        ? `${enSubProfDict[subProfession]?.subProfessionName}`.replace(className, "").trim()
+        : enSubProfDict[subProfession]?.subProfessionName
+      : [[...subProfession.toLowerCase()].map((char, i) => (i === 0 ? char.toUpperCase() : char)).join(""),
+      cnSubProfDict[subProfession]?.subProfessionName ?? ""]
+        .filter(Boolean).join(" - ");
+  return { id: subProfession, name: subProffesionName };
 }
 
 const convertLMDCostToLMDItem = (cost) => ({
@@ -510,7 +443,7 @@ const createOperatorsJson = () => {
           const skillTable = isCnOnly ? cnSkillTable : enSkillTable;
           return {
             skillId: skillId,
-            iconId: skillTable[skillId].iconId,
+            iconId: skillTable[skillId].iconId ?? null,
             skillName: skillTable[skillId].levels[0].name,
             masteries,
           };
@@ -542,14 +475,15 @@ const createOperatorsJson = () => {
       }
 
       const potentials = (enCharacterTable[id] ?? operator).potentialRanks.map((r) => r.description);
+      const className = professionToClass(operator.profession);
 
       const outputOperator = {
         id,
         name: getOperatorName(id),
         cnName: getCNOperatorName(id),
         rarity,
-        class: professionToClass(operator.profession),
-        branch: subProfessionToBranch(operator.subProfessionId),
+        class: className,
+        branch: subProfessionToBranch(operator.subProfessionId, className),
         isCnOnly,
         pools: getPools(id, rarity),
         skillData,

@@ -1,10 +1,11 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { loadRepositoryTable } from "./tablesMapper.mjs";
 
-import enItemTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/item_table.json" with { type: "json" };
-import cnBuildingData from "./ArknightsGameData/zh_CN/gamedata/excel/building_data.json" with { type: "json" };
-import cnItemTable from "./ArknightsGameData/zh_CN/gamedata/excel/item_table.json" with { type: "json" };
+const enItemTable     = loadRepositoryTable("enItemTable");
+const cnBuildingData  = loadRepositoryTable("cnBuildingData");
+const cnItemTable     = loadRepositoryTable("cnItemTable");
 
 const unofficialItemNameTranslations = {
   30165: "Biphasic Enantiomorphic Medium",
