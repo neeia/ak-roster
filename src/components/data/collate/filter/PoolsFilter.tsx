@@ -1,7 +1,7 @@
 import { Box, ToggleButton, ToggleButtonGroup, ToggleButtonGroupProps } from "@mui/material";
 import React from "react";
 
-const poolsList = ["Standard", "Limited", "Kernel", "Kernel CN", "Free"];
+const poolsList = ["Standard", "Limited", "Kernel", "Kernel CN", "Recruitment", "Free"];
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange"> {
   onChange: (value: string) => void;

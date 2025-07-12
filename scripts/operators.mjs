@@ -11,11 +11,16 @@ import cnCharacterTable from "./ArknightsGameData/zh_CN/gamedata/excel/character
 import cnSkillTable from "./ArknightsGameData/zh_CN/gamedata/excel/skill_table.json" with { type: "json" };
 import cnUniequipTable from "./ArknightsGameData/zh_CN/gamedata/excel/uniequip_table.json" with { type: "json" };
 import cnGachaTable from "./ArknightsGameData/zh_CN/gamedata/excel/gacha_table.json" with { type: "json" };
+import cnStageTable from "./ArknightsGameData/zh_CN/gamedata/excel/stage_table.json" with { type: "json" };
+//cross reference to another updating file: update:operator should be after update:recruit
+import recruitJson from "../src/data/recruitment.json" with { type: "json" };
 
 const enPatchCharacters = enCharacterPatchTable.patchChars;
 const cnPatchCharacters = cnCharacterPatchTable.patchChars;
 const { equipDict: cnEquipDict, charEquip: cnCharEquip } = cnUniequipTable;
 const { equipDict: enEquipDict } = enUniequipTable;
+const { gachaPoolClient: cnGachaPoolClient } = cnGachaTable;
+const { stages: cnStages } = cnStageTable;
 
 const isOperator = (charId) => {
   const operator = cnCharacterTable[charId];
@@ -32,6 +37,7 @@ const operatorNameOverride = {
   Лето: "Leto",
 };
 
+//exclusions/inclusions, can't find how to detect in files.
 const colabLimiteds = [
   //other
   "char_4019_ncdeer",
@@ -56,6 +62,25 @@ const colabLimiteds = [
   "char_4141_marcil",
   "char_4143_sensi",
 ];
+const freePoolInclude = [
+  "char_1001_amiya2",
+  "char_1037_amiya3",
+  //pin-board - texas
+  "char_102_texas",
+  //2 recruitment-vouchers indra+vulcan
+  "char_163_hpsts",
+  "char_155_tiger",
+];
+const standardPoolExclude = [
+  "char_1001_amiya2",
+  "char_1037_amiya3",
+  //recruitment only
+  "char_211_adnach",
+  "char_385_finlpp",
+  "char_127_estell",
+  "char_163_hpsts",
+  "char_155_tiger",
+]
 
 function getOperatorName(operatorId) {
   if (operatorId === "char_1001_amiya2") {
@@ -371,12 +396,13 @@ const amiyaEliteLevel = [
   },
 ];
 
-const getPools = (operatorId) => {
+const getPools = (operatorId, rarity) => {
   const id = operatorId;
   const isKernel = (enCharacterTable[id]?.classicPotentialItemId ?? null) !== null;
   const isCnKernel = (cnCharacterTable[id]?.classicPotentialItemId ?? null) !== null;
 
-  const isFree = ["char_1001_amiya2", "char_1037_amiya3"].includes(id) || //amiya (guard/medic)
+  let isFree =
+    //itemObtainApproach - descripton based cases
     cnCharacterTable[id]?.itemObtainApproach &&
     (cnCharacterTable[id].itemObtainApproach.includes("主题曲剧情")     //story
       || cnCharacterTable[id].itemObtainApproach.includes("获得")       //reward - (events or IS)
@@ -385,10 +411,27 @@ const getPools = (operatorId) => {
     );
 
   const isLimited = colabLimiteds.includes(id) ||
-    Object.values(cnGachaTable["gachaPoolClient"]).some((b) =>
+    Object.values(cnGachaPoolClient).some((b) =>
       b.limitParam?.limitedCharId && b.limitParam.limitedCharId.includes(id));
 
-  const isStandard = !isKernel && !isLimited && !isFree;
+  //not exact detection (find better way later)
+  const isStandard = rarity > 2 //exclude non-gacha 1-2
+    //exclude pools
+    && !isKernel && !isLimited && !isFree
+    //exclude standardPoolExclude
+    && !standardPoolExclude.includes(id)
+    //include 3-4 rarity if not in standardPoolExclude
+    || ((rarity === 3 || rarity === 4) && !standardPoolExclude.includes(id) && !isFree);
+
+  //isFree addon: story stages reward, gacha characters
+  isFree = isFree || freePoolInclude.includes(id)
+    || Object.values(cnStages).some((s) =>
+      s.stageType === "MAIN"
+      && s.stageDropInfo?.displayRewards
+      && s.stageDropInfo.displayRewards.some((r) => r.id && r.id === id))
+
+  const isRecruit = Object.values(recruitJson).some((t) =>
+    t.operators?.some((op) => op.id === id));
 
   const pools = [];
   if (isKernel) pools.push("Kernel");
@@ -396,6 +439,7 @@ const getPools = (operatorId) => {
   if (isLimited) pools.push("Limited");
   if (isFree) pools.push("Free");
   if (isStandard) pools.push("Standard");
+  if (isRecruit) pools.push("Recruitment");
 
   return pools;
 }
@@ -507,7 +551,7 @@ const createOperatorsJson = () => {
         class: professionToClass(operator.profession),
         branch: subProfessionToBranch(operator.subProfessionId),
         isCnOnly,
-        pools: getPools(id),
+        pools: getPools(id, rarity),
         skillData,
         moduleData,
         potentials,
