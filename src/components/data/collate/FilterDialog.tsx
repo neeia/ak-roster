@@ -23,6 +23,7 @@ import Promotion from "../input/Select/Promotion";
 import PropertyLevel from "../input/Select/PropertyLevel";
 import FavoriteFilter from "./filter/FavoriteFilter";
 import PoolsFilter from "./filter/PoolsFilter";
+import MasteryFilter from "./filter/MasteryFilter";
 
 interface Props {
   filter: Filters;
@@ -117,12 +118,12 @@ const FilterDialog = memo((props: Props) => {
               <PropertyLevel property="module"
                 value={[...filter.MODULELEVEL]} onChange={(value) => toggleFilter("MODULELEVEL", value)} />
             </Select>
-            <Select title="Skill Level" nobg sx={{ gridColumn: { xs: "1 / -1", sm: "span 4" } }}>
-              <PropertyLevel property="skill" fullWidth min={1} max={7}
+            <Select title="Skill Level" nobg sx={{ gridColumn: "span 2" }}>
+              <PropertyLevel property="skill" fullWidth min={1} max={7} step={3}
                 value={[...filter.SKILLLEVEL]} onChange={(value) => toggleFilter("SKILLLEVEL", value)} />
             </Select>
-            <Select title="Mastery" nobg sx={{ gridColumn: { xs: "1 / -1", sm: "span 3" } }}>
-              <PropertyLevel property="mastery"
+            <Select title="Mastery" nobg sx={{ gridColumn: { xs: "1 / -1", sm: "span 5" } }}>
+              <MasteryFilter property="mastery"
                 value={[...filter.MASTERY]} onChange={(value) => toggleFilter("MASTERY", value)} />
             </Select>
             <Select title="Pools" nobg sx={{whiteSpace: "nowrap", gridColumn: "1 / -1" }}>

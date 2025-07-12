@@ -7,12 +7,13 @@ import imageBase from "util/imageBase";
 interface Props extends Omit<ToggleButtonGroupProps, "onChange" | "size"> {
   min?: number;
   max?: number;
+  step?: number;
   size?: number;
   onChange: (PropertyLevel: number) => void;
   property: string;
 }
 const PropertyLevel = memo((props: Props) => {
-  const { value, min = 0, max = 3, size = 32, disabled: _disabled = false, sx, onChange, property = "skill", ...rest } = props;
+  const { value, min = 0, max = 3, step = 1, size = 32, disabled: _disabled = false, sx, onChange, property = "skill", ...rest } = props;
 
   const disabled = useContext(DisabledContext) || _disabled;
 
@@ -21,7 +22,7 @@ const PropertyLevel = memo((props: Props) => {
       case "mastery": return "/rank/m-";
       case "module": return "/equip/img_stg";
       case "skill": return "/rank/";
-      default: return "/rank/m-";
+      default: return "/rank/";
     }
   }
 
@@ -39,7 +40,7 @@ const PropertyLevel = memo((props: Props) => {
       }}
       {...rest}
     >
-      {[...Array(max + 1).keys()]
+      {[...Array(Math.floor((max - min) / step) + 1)].map((_, i) => min + i * step)
         .filter((n) => min <= n && n <= max)
         .map((n) => (
           <ToggleButton
