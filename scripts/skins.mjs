@@ -1,10 +1,11 @@
 ﻿import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { loadRepositoryTable } from "./tablesMapper.mjs";
 
-import enSkinTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/skin_table.json" with { type: "json" };
-import cnSkinTable from "./ArknightsGameData/zh_CN/gamedata/excel/skin_table.json" with { type: "json" };
-import cnCharacterTable from "./ArknightsGameData/zh_CN/gamedata/excel/character_table.json" with { type: "json" };
+const enSkinTable = loadRepositoryTable("enSkinTable");
+const cnSkinTable = loadRepositoryTable("cnSkinTable");
+const cnCharacterTable = loadRepositoryTable("cnCharacterTable")
 
 const isOperator = (charId) => {
   const operator = cnCharacterTable[charId];
@@ -20,7 +21,7 @@ const createSkinsJson = () => {
     skinObj[skin.charId] ??= [];
     skinObj[skin.charId].push({
       skinId: skin.skinId,
-      skinName: (enSkin && enSkin.displaySkin.skinName) ?? skin.displaySkin.skinName,
+      skinName: (enSkin && enSkin.displaySkin.skinName) ?? skin.displaySkin.skinName ?? null,
       avatarId: skin.avatarId,
       sortId: skin.displaySkin.sortId,
     });

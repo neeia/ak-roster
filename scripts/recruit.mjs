@@ -1,11 +1,12 @@
 ﻿import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { loadRepositoryTable } from "./tablesMapper.mjs";
 
 import { Combination } from "js-combinatorics";
 
-import characterTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/character_table.json" with { type: "json" };
-import gachaTable from "./ArknightsGameData_YoStar/en_US/gamedata/excel/gacha_table.json" with { type: "json" };
+const characterTable = loadRepositoryTable("enCharacterTable");
+const gachaTable = loadRepositoryTable("enGachaTable");
 
 export function professionToClass(profession) {
   switch (profession) {
