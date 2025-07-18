@@ -373,6 +373,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_332_archet",
+        "name": "Archetto",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -958,6 +970,17 @@
           "Crowd-Control",
           "Melee",
           "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_338_iris",
+        "name": "Iris",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -2059,6 +2082,17 @@
         ]
       },
       {
+        "id": "char_338_iris",
+        "name": "Iris",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_385_finlpp",
         "name": "Purestream",
         "rarity": 4,
@@ -2247,6 +2281,17 @@
           "DPS",
           "Ranged",
           "Sniper"
+        ]
+      },
+      {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
+          "Vanguard"
         ]
       },
       {
@@ -2446,6 +2491,17 @@
         "tags": [
           "AoE",
           "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_338_iris",
+        "name": "Iris",
+        "rarity": 5,
+        "tags": [
+          "DPS",
           "Ranged",
           "Caster",
           "Senior Operator"
@@ -3697,6 +3753,17 @@
         ]
       },
       {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
+          "Vanguard"
+        ]
+      },
+      {
         "id": "char_123_fang",
         "name": "Fang",
         "rarity": 3,
@@ -4119,6 +4186,17 @@
         ]
       },
       {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
+          "Vanguard"
+        ]
+      },
+      {
         "id": "char_123_fang",
         "name": "Fang",
         "rarity": 3,
@@ -4413,6 +4491,17 @@
           "DPS",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_338_iris",
+        "name": "Iris",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       },
@@ -5556,10 +5645,21 @@
           "Supporter",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
+          "Vanguard"
+        ]
       }
     ],
     "guarantees": [
-      5
+      4
     ]
   },
   "Support": {
@@ -6234,6 +6334,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_332_archet",
+        "name": "Archetto",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6626,6 +6738,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_332_archet",
+        "name": "Archetto",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6951,6 +7075,18 @@
         "tags": [
           "DPS",
           "Crowd-Control",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_332_archet",
+        "name": "Archetto",
+        "rarity": 6,
+        "tags": [
+          "DPS",
           "Ranged",
           "Sniper",
           "Top Operator",
@@ -7549,6 +7685,18 @@
           "Survival",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_332_archet",
+        "name": "Archetto",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
           "Top Operator",
           "Senior Operator"
         ]
@@ -8656,6 +8804,17 @@
           "Medic",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_338_iris",
+        "name": "Iris",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8711,6 +8870,17 @@
         "tags": [
           "AoE",
           "Defense",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_338_iris",
+        "name": "Iris",
+        "rarity": 5,
+        "tags": [
+          "DPS",
           "Ranged",
           "Caster",
           "Senior Operator"
@@ -9848,6 +10018,17 @@
           "DPS",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_338_iris",
+        "name": "Iris",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       }
@@ -13001,6 +13182,17 @@
         ]
       },
       {
+        "id": "char_338_iris",
+        "name": "Iris",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_141_nights",
         "name": "Haze",
         "rarity": 4,
@@ -13608,6 +13800,28 @@
     ],
     "guarantees": []
   },
+  "Ranged,Vanguard": {
+    "tags": [
+      "Ranged",
+      "Vanguard"
+    ],
+    "operators": [
+      {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
+          "Vanguard"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
+    ]
+  },
   "AoE,Ranged": {
     "tags": [
       "AoE",
@@ -13796,6 +14010,28 @@
       4
     ]
   },
+  "DP-Recovery,Ranged": {
+    "tags": [
+      "DP-Recovery",
+      "Ranged"
+    ],
+    "operators": [
+      {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
+          "Vanguard"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
+    ]
+  },
   "DPS,Ranged": {
     "tags": [
       "DPS",
@@ -13914,6 +14150,17 @@
           "DPS",
           "Ranged",
           "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_338_iris",
+        "name": "Iris",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
           "Senior Operator"
         ]
       },
@@ -14486,10 +14733,21 @@
           "Supporter",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
+          "Vanguard"
+        ]
       }
     ],
     "guarantees": [
-      5
+      4
     ]
   },
   "Ranged,Support": {
@@ -14727,6 +14985,17 @@
       {
         "id": "char_306_leizi",
         "name": "Leizi",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_338_iris",
+        "name": "Iris",
         "rarity": 5,
         "tags": [
           "DPS",
@@ -16992,6 +17261,17 @@
         ]
       },
       {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
+          "Vanguard"
+        ]
+      },
+      {
         "id": "char_123_fang",
         "name": "Fang",
         "rarity": 3,
@@ -17105,6 +17385,28 @@
           "DP-Recovery",
           "Healing",
           "Melee",
+          "Vanguard"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
+    ]
+  },
+  "Summon,Vanguard": {
+    "tags": [
+      "Summon",
+      "Vanguard"
+    ],
+    "operators": [
+      {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
           "Vanguard"
         ]
       }
@@ -17557,6 +17859,28 @@
           "DP-Recovery",
           "Healing",
           "Melee",
+          "Vanguard"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
+    ]
+  },
+  "DP-Recovery,Summon": {
+    "tags": [
+      "DP-Recovery",
+      "Summon"
+    ],
+    "operators": [
+      {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
           "Vanguard"
         ]
       }
@@ -18663,6 +18987,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_332_archet",
+        "name": "Archetto",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -18993,6 +19329,18 @@
         "tags": [
           "DPS",
           "Crowd-Control",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_332_archet",
+        "name": "Archetto",
+        "rarity": 6,
+        "tags": [
+          "DPS",
           "Ranged",
           "Sniper",
           "Top Operator",
@@ -19598,6 +19946,18 @@
           "Survival",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_332_archet",
+        "name": "Archetto",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
           "Top Operator",
           "Senior Operator"
         ]
@@ -21172,6 +21532,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_332_archet",
+        "name": "Archetto",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -21428,6 +21800,18 @@
           "DPS",
           "Ranged",
           "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_332_archet",
+        "name": "Archetto",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
           "Top Operator",
           "Senior Operator"
         ]
@@ -22434,6 +22818,18 @@
         "tags": [
           "DPS",
           "Crowd-Control",
+          "Ranged",
+          "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_332_archet",
+        "name": "Archetto",
+        "rarity": 6,
+        "tags": [
+          "DPS",
           "Ranged",
           "Sniper",
           "Top Operator",
@@ -24761,6 +25157,17 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_338_iris",
+        "name": "Iris",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -25283,6 +25690,17 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_338_iris",
+        "name": "Iris",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -25694,6 +26112,17 @@
       {
         "id": "char_306_leizi",
         "name": "Leizi",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_338_iris",
+        "name": "Iris",
         "rarity": 5,
         "tags": [
           "DPS",
@@ -30709,6 +31138,17 @@
         ]
       },
       {
+        "id": "char_338_iris",
+        "name": "Iris",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_141_nights",
         "name": "Haze",
         "rarity": 4,
@@ -31776,6 +32216,52 @@
       1
     ]
   },
+  "DP-Recovery,Ranged,Vanguard": {
+    "tags": [
+      "DP-Recovery",
+      "Ranged",
+      "Vanguard"
+    ],
+    "operators": [
+      {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
+          "Vanguard"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
+    ]
+  },
+  "Ranged,Summon,Vanguard": {
+    "tags": [
+      "Ranged",
+      "Summon",
+      "Vanguard"
+    ],
+    "operators": [
+      {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
+          "Vanguard"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
+    ]
+  },
   "AoE,DPS,Ranged": {
     "tags": [
       "AoE",
@@ -31986,6 +32472,29 @@
     ],
     "guarantees": [
       5
+    ]
+  },
+  "DP-Recovery,Ranged,Summon": {
+    "tags": [
+      "DP-Recovery",
+      "Ranged",
+      "Summon"
+    ],
+    "operators": [
+      {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
+          "Vanguard"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
     ]
   },
   "Debuff,DPS,Ranged": {
@@ -33531,6 +34040,29 @@
           "DP-Recovery",
           "Healing",
           "Melee",
+          "Vanguard"
+        ]
+      }
+    ],
+    "guarantees": [
+      4
+    ]
+  },
+  "DP-Recovery,Summon,Vanguard": {
+    "tags": [
+      "DP-Recovery",
+      "Summon",
+      "Vanguard"
+    ],
+    "operators": [
+      {
+        "id": "char_452_bstalk",
+        "name": "Beanstalk",
+        "rarity": 4,
+        "tags": [
+          "DP-Recovery",
+          "Summon",
+          "Ranged",
           "Vanguard"
         ]
       }
