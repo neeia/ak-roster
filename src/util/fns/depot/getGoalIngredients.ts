@@ -25,9 +25,9 @@ const getGoalIngredients = (goal: PlannerGoal): Ingredient[] => {
       };
       return [lmdIngredient, expIngredient];
     case OperatorGoalCategory.Elite:
-      return operator.eliteLevels[goal.eliteLevel - 1].ingredients;
+      return operator.eliteLevels[goal.eliteLevel - 1]?.ingredients ?? [];
     case OperatorGoalCategory.SkillLevel:
-      return operator.skillLevels[goal.skillLevel - 2].ingredients;
+      return operator.skillLevels[goal.skillLevel - 2]?.ingredients ?? [];
     case OperatorGoalCategory.Mastery: {
       const skill = operator.skillData?.find((sk) => sk.skillId === goal.skillId);
       return skill?.masteries[goal.masteryLevel - 1]?.ingredients ?? [];
