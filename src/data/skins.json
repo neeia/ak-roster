@@ -809,6 +809,12 @@
       "skinName": "Summer Flowers FA062",
       "avatarId": "char_151_myrtle_summer#12",
       "sortId": 193
+    },
+    {
+      "skinId": "char_151_myrtle@taiko#1",
+      "skinName": "繁闹祭典",
+      "avatarId": "char_151_myrtle_taiko#1",
+      "sortId": 416
     }
   ],
   "char_452_bstalk": [
