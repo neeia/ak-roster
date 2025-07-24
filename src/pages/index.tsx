@@ -188,10 +188,14 @@ const Home: NextPage = () => {
         </Box>
         <Typography>
           Sponsored by the{" "}
-          <Link href="https://maa.plus/" target="_blank" rel="noreferrer noopener" sx={{ color: "#299764" }}>
-            MAA Assistant Arknights
+          <Link href="https://mirrorchyan.com/" target="_blank" rel="noreferrer noopener" sx={{ color: "#4f46e5" }}>
+            MirrorChyan
           </Link>{" "}
-          team.
+          and{" "}
+          <Link href="https://maa.plus/" target="_blank" rel="noreferrer noopener" sx={{ color: "#299764" }}>
+            MAA
+          </Link>{" "}
+          teams.
         </Typography>
         {!loading && !account ? (
           <Paper
