@@ -56925,7 +56925,7 @@
     "rarity": 5,
     "class": "Medic",
     "branch": "Therapist",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "pools": [
       "Standard"
     ],
@@ -56933,7 +56933,7 @@
       {
         "skillId": "skchr_nowell_1",
         "iconId": null,
-        "skillName": "步履不停",
+        "skillName": "Ceaseless Steps",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -56997,7 +56997,7 @@
       {
         "skillId": "skchr_nowell_2",
         "iconId": null,
-        "skillName": "生命不息",
+        "skillName": "Unending Life",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -57061,7 +57061,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "致祖父",
+        "moduleName": "To Grandpa",
         "moduleId": "uniequip_002_nowell",
         "typeName": "WAH-Y",
         "stages": [
@@ -57131,15 +57131,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+23",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -138431,7 +138431,7 @@
     "rarity": 6,
     "class": "Guard",
     "branch": "Reaper",
-    "isCnOnly": true,
+    "isCnOnly": false,
     "pools": [
       "Standard"
     ],
@@ -138439,7 +138439,7 @@
       {
         "skillId": "skchr_etlchi_1",
         "iconId": null,
-        "skillName": "玫影觅迹",
+        "skillName": "Chasing the Rose Shadow",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -138503,7 +138503,7 @@
       {
         "skillId": "skchr_etlchi_2",
         "iconId": null,
-        "skillName": "绯红壁合",
+        "skillName": "Crimson Harvest",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -138567,7 +138567,7 @@
       {
         "skillId": "skchr_etlchi_3",
         "iconId": null,
-        "skillName": "灵与欲的惜别",
+        "skillName": "Clinging Desire, Longing Spirit",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -138631,7 +138631,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "易枯萎的航船",
+        "moduleName": "A Ferry that Withers",
         "moduleId": "uniequip_002_etlchi",
         "typeName": "REA-X",
         "stages": [
@@ -138701,15 +138701,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "第二天赋效果增强",
-      "攻击力+30",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +30",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {

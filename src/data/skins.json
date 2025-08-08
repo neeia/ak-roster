@@ -878,7 +878,7 @@
     },
     {
       "skinId": "char_289_gyuki@epoque#40",
-      "skinName": "繁霜满阶",
+      "skinName": "Frosted Steps",
       "avatarId": "char_289_gyuki_epoque#40",
       "sortId": 102
     }
@@ -1058,7 +1058,7 @@
     },
     {
       "skinId": "char_4063_quartz@epoque#39",
-      "skinName": "封面佣兵",
+      "skinName": "Cover Mercenary",
       "avatarId": "char_4063_quartz_epoque#39",
       "sortId": 99
     }
@@ -1550,7 +1550,7 @@
     },
     {
       "skinId": "char_4107_vrdant@unveiling#3",
-      "skinName": "玫瑰骑手",
+      "skinName": "Rose Rider",
       "avatarId": "char_4107_vrdant_unveiling#3",
       "sortId": 414
     }
@@ -3600,7 +3600,7 @@
     },
     {
       "skinId": "char_1024_hbisc2@unveiling#2",
-      "skinName": "浪漫满厢",
+      "skinName": "Romance Overflow",
       "avatarId": "char_1024_hbisc2_unveiling#2",
       "sortId": 413
     }
@@ -5386,7 +5386,7 @@
     },
     {
       "skinId": "char_222_bpipe@epoque#40",
-      "skinName": "风笛声声",
+      "skinName": "Echo of Bagpipes",
       "avatarId": "char_222_bpipe_epoque#40",
       "sortId": 101
     },
@@ -7314,7 +7314,7 @@
     },
     {
       "skinId": "char_4098_vvana@epoque#40",
-      "skinName": "寄自奥格尼斯科",
+      "skinName": "Sent from Ognisko",
       "avatarId": "char_4098_vvana_epoque#40",
       "sortId": 100
     }
@@ -7628,7 +7628,7 @@
     },
     {
       "skinId": "char_164_nightm@unveiling#2",
-      "skinName": "湖畔的少女",
+      "skinName": "The Ferry Girl",
       "avatarId": "char_164_nightm_unveiling#2",
       "sortId": 412
     }
