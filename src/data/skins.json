@@ -677,6 +677,12 @@
       "skinName": "'Afternoon Teatime'",
       "avatarId": "char_366_acdrop_whirlwind#4",
       "sortId": 146
+    },
+    {
+      "skinId": "char_366_acdrop@summer#21",
+      "skinName": "悠然假日 HD75",
+      "avatarId": "char_366_acdrop_summer#21",
+      "sortId": 209
     }
   ],
   "char_4062_totter": [
@@ -3345,6 +3351,12 @@
       "skinName": null,
       "avatarId": "char_4140_lasher_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4140_lasher@sightseer#3",
+      "skinName": "憩羽",
+      "avatarId": "char_4140_lasher_sightseer#3",
+      "sortId": 419
     }
   ],
   "char_108_silent": [
