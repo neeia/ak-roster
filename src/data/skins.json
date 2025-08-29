@@ -4445,6 +4445,12 @@
       "skinName": "Echo of the Horrorlair",
       "avatarId": "char_254_vodfox_witch#2",
       "sortId": 224
+    },
+    {
+      "skinId": "char_254_vodfox@yun#8",
+      "skinName": "绣云鹤",
+      "avatarId": "char_254_vodfox_yun#8",
+      "sortId": 404
     }
   ],
   "char_4079_haini": [
