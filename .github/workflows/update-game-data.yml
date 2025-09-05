@@ -36,9 +36,9 @@ jobs:
           cd scripts/ArknightsGameData
           git sparse-checkout set zh_CN/gamedata/excel/
           cd -
-          git clone -n --depth=1 $(git config submodule."scripts/ArknightsGameData_YoStar".url) scripts/ArknightsGameData_YoStar
-          cd scripts/ArknightsGameData_YoStar
-          git sparse-checkout set en_US/gamedata/excel/
+          git clone -n --depth=1 $(git config submodule."scripts/ArknightsAssetsGamedata".url) scripts/ArknightsAssetsGamedata
+          cd scripts/ArknightsAssetsGamedata
+          git sparse-checkout set en/gamedata/excel
           cd -
           git submodule update --init --remote --depth=1 --force scripts/
       # run update scripts
@@ -50,7 +50,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           if ! git diff --ignore-submodules --cached --quiet; then
-            VERSION_MESSAGE=$(git submodule --quiet foreach git log -1 --pretty='%h %s%N%-C()')
+            VERSION_MESSAGE="$(git submodule --quiet foreach git log -1 --pretty='%h %s%N%-C()' -- en), $(git submodule --quiet foreach git log -1 --pretty='%h %s%N%-C()' -- cn)"
             git commit -m "Update game data." -m "$VERSION_MESSAGE"
             git push origin actions/update-game-data --force
             gh pr create -B main -H actions/update-game-data --fill \

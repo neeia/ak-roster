@@ -33,7 +33,7 @@ BSD0
 
 ## Acknowledgements
 
-- Game data is provided by [Kengxxiao's ArknightsGameData repository](https://github.com/Kengxxiao/ArknightsGameData)
+- Game data is provided by [Kengxxiao's ArknightsGameData repository](https://github.com/Kengxxiao/ArknightsGameData) and [ArknightsAssets ArknightsGamedata repository](https://github.com/ArknightsAssets/ArknightsGamedata)
 - Images are provided by [Aceship](https://github.com/Aceship/AN-EN-Tags)
 
 Arknights is &copy;Hypergryph/Studio Montagne/Yostar. This project is unaffiliated with Arknights' creators/distributors.
