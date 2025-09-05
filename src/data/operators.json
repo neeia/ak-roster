@@ -5,7 +5,10 @@
     "cnName": "Lancet-2",
     "rarity": 1,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": false,
     "pools": [
       "Free",
@@ -29,7 +32,10 @@
     "cnName": "Castle-3",
     "rarity": 1,
     "class": "Guard",
-    "branch": "Dreadnought",
+    "branch": {
+      "id": "fearless",
+      "name": "Dreadnought"
+    },
     "isCnOnly": false,
     "pools": [
       "Recruitment"
@@ -52,7 +58,10 @@
     "cnName": "THRM-EX",
     "rarity": 1,
     "class": "Specialist",
-    "branch": "Executor",
+    "branch": {
+      "id": "executor",
+      "name": "Executor"
+    },
     "isCnOnly": false,
     "pools": [
       "Free",
@@ -76,7 +85,10 @@
     "cnName": "正义骑士号",
     "rarity": 1,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Recruitment"
@@ -99,7 +111,10 @@
     "cnName": "泰拉大陆调查团",
     "rarity": 1,
     "class": "Sniper",
-    "branch": "Flinger",
+    "branch": {
+      "id": "bombarder",
+      "name": "Flinger"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited",
@@ -123,7 +138,10 @@
     "cnName": "U-Official",
     "rarity": 1,
     "class": "Supporter",
-    "branch": "Bard",
+    "branch": {
+      "id": "bard",
+      "name": "Bard"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -146,7 +164,10 @@
     "cnName": "Friston-3",
     "rarity": 1,
     "class": "Defender",
-    "branch": "Protector",
+    "branch": {
+      "id": "protector",
+      "name": "Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Recruitment"
@@ -169,7 +190,10 @@
     "cnName": "PhonoR-0",
     "rarity": 1,
     "class": "Supporter",
-    "branch": "Ritualist",
+    "branch": {
+      "id": "ritualist",
+      "name": "Ritualist"
+    },
     "isCnOnly": false,
     "pools": [
       "Recruitment"
@@ -192,7 +216,10 @@
     "cnName": "CONFESS-47",
     "rarity": 1,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": true,
     "pools": [],
     "skillData": [],
@@ -213,7 +240,10 @@
     "cnName": "夜刀",
     "rarity": 2,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Recruitment"
@@ -236,7 +266,10 @@
     "cnName": "黑角",
     "rarity": 2,
     "class": "Defender",
-    "branch": "Protector",
+    "branch": {
+      "id": "protector",
+      "name": "Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Recruitment"
@@ -259,7 +292,10 @@
     "cnName": "巡林者",
     "rarity": 2,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Recruitment"
@@ -282,7 +318,10 @@
     "cnName": "杜林",
     "rarity": 2,
     "class": "Caster",
-    "branch": "Core",
+    "branch": {
+      "id": "corecaster",
+      "name": "Core"
+    },
     "isCnOnly": false,
     "pools": [
       "Free",
@@ -306,7 +345,10 @@
     "cnName": "12F",
     "rarity": 2,
     "class": "Caster",
-    "branch": "Splash",
+    "branch": {
+      "id": "splashcaster",
+      "name": "Splash"
+    },
     "isCnOnly": false,
     "pools": [
       "Free",
@@ -330,7 +372,10 @@
     "cnName": "芬",
     "rarity": 3,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -463,7 +508,10 @@
     "cnName": "香草",
     "rarity": 3,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -595,7 +643,10 @@
     "cnName": "翎羽",
     "rarity": 3,
     "class": "Vanguard",
-    "branch": "Charger",
+    "branch": {
+      "id": "charger",
+      "name": "Charger"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -728,7 +779,10 @@
     "cnName": "玫兰莎",
     "rarity": 3,
     "class": "Guard",
-    "branch": "Dreadnought",
+    "branch": {
+      "id": "fearless",
+      "name": "Dreadnought"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -861,7 +915,10 @@
     "cnName": "泡普卡",
     "rarity": 3,
     "class": "Guard",
-    "branch": "Centurion",
+    "branch": {
+      "id": "centurion",
+      "name": "Centurion"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -993,7 +1050,10 @@
     "cnName": "卡缇",
     "rarity": 3,
     "class": "Defender",
-    "branch": "Protector",
+    "branch": {
+      "id": "protector",
+      "name": "Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -1124,7 +1184,10 @@
     "cnName": "米格鲁",
     "rarity": 3,
     "class": "Defender",
-    "branch": "Protector",
+    "branch": {
+      "id": "protector",
+      "name": "Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -1257,7 +1320,10 @@
     "cnName": "斑点",
     "rarity": 3,
     "class": "Defender",
-    "branch": "Guardian",
+    "branch": {
+      "id": "guardian",
+      "name": "Guardian"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -1389,7 +1455,10 @@
     "cnName": "克洛丝",
     "rarity": 3,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -1522,7 +1591,10 @@
     "cnName": "安德切尔",
     "rarity": 3,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Free",
@@ -1652,7 +1724,10 @@
     "cnName": "炎熔",
     "rarity": 3,
     "class": "Caster",
-    "branch": "Splash",
+    "branch": {
+      "id": "splashcaster",
+      "name": "Splash"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -1785,7 +1860,10 @@
     "cnName": "芙蓉",
     "rarity": 3,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -1918,7 +1996,10 @@
     "cnName": "安赛尔",
     "rarity": 3,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -2051,7 +2132,10 @@
     "cnName": "史都华德",
     "rarity": 3,
     "class": "Caster",
-    "branch": "Core",
+    "branch": {
+      "id": "corecaster",
+      "name": "Core"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -2183,7 +2267,10 @@
     "cnName": "梓兰",
     "rarity": 3,
     "class": "Supporter",
-    "branch": "Decel Binder",
+    "branch": {
+      "id": "slower",
+      "name": "Decel Binder"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -2316,7 +2403,10 @@
     "cnName": "夜烟",
     "rarity": 4,
     "class": "Caster",
-    "branch": "Core",
+    "branch": {
+      "id": "corecaster",
+      "name": "Core"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -2679,7 +2769,10 @@
     "cnName": "远山",
     "rarity": 4,
     "class": "Caster",
-    "branch": "Splash",
+    "branch": {
+      "id": "splashcaster",
+      "name": "Splash"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -3042,7 +3135,10 @@
     "cnName": "格雷伊",
     "rarity": 4,
     "class": "Caster",
-    "branch": "Splash",
+    "branch": {
+      "id": "splashcaster",
+      "name": "Splash"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -3405,7 +3501,10 @@
     "cnName": "卡达",
     "rarity": 4,
     "class": "Caster",
-    "branch": "Mech-Accord",
+    "branch": {
+      "id": "funnel",
+      "name": "Mech-accord"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -3768,7 +3867,10 @@
     "cnName": "深靛",
     "rarity": 4,
     "class": "Caster",
-    "branch": "Mystic",
+    "branch": {
+      "id": "mystic",
+      "name": "Mystic"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -4130,7 +4232,10 @@
     "cnName": "布丁",
     "rarity": 4,
     "class": "Caster",
-    "branch": "Chain Caster",
+    "branch": {
+      "id": "chain",
+      "name": "Chain"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -4490,7 +4595,10 @@
     "cnName": "杰西卡",
     "rarity": 4,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -4854,7 +4962,10 @@
     "cnName": "流星",
     "rarity": 4,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -5217,7 +5328,10 @@
     "cnName": "红云",
     "rarity": 4,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -5580,7 +5694,10 @@
     "cnName": "梅",
     "rarity": 4,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -5943,7 +6060,10 @@
     "cnName": "白雪",
     "rarity": 4,
     "class": "Sniper",
-    "branch": "Artilleryman",
+    "branch": {
+      "id": "aoesniper",
+      "name": "Artilleryman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -6306,7 +6426,10 @@
     "cnName": "松果",
     "rarity": 4,
     "class": "Sniper",
-    "branch": "Spreadshooter",
+    "branch": {
+      "id": "reaperrange",
+      "name": "Spreadshooter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -6669,7 +6792,10 @@
     "cnName": "安比尔",
     "rarity": 4,
     "class": "Sniper",
-    "branch": "Deadeye",
+    "branch": {
+      "id": "longrange",
+      "name": "Deadeye"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -7032,7 +7158,10 @@
     "cnName": "酸糖",
     "rarity": 4,
     "class": "Sniper",
-    "branch": "Heavyshooter",
+    "branch": {
+      "id": "closerange",
+      "name": "Heavyshooter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -7395,7 +7524,10 @@
     "cnName": "铅踝",
     "rarity": 4,
     "class": "Sniper",
-    "branch": "Besieger",
+    "branch": {
+      "id": "siegesniper",
+      "name": "Besieger"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -7757,7 +7889,10 @@
     "cnName": "跃跃",
     "rarity": 4,
     "class": "Sniper",
-    "branch": "Loopshooter",
+    "branch": {
+      "id": "loopshooter",
+      "name": "Loopshooter"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -8043,7 +8178,10 @@
     "cnName": "讯使",
     "rarity": 4,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -8403,7 +8541,10 @@
     "cnName": "清道夫",
     "rarity": 4,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -8766,7 +8907,10 @@
     "cnName": "红豆",
     "rarity": 4,
     "class": "Vanguard",
-    "branch": "Charger",
+    "branch": {
+      "id": "charger",
+      "name": "Charger"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -9129,7 +9273,10 @@
     "cnName": "桃金娘",
     "rarity": 4,
     "class": "Vanguard",
-    "branch": "Standard Bearer",
+    "branch": {
+      "id": "bearer",
+      "name": "Standard Bearer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -9492,7 +9639,10 @@
     "cnName": "豆苗",
     "rarity": 4,
     "class": "Vanguard",
-    "branch": "Tactician",
+    "branch": {
+      "id": "tactician",
+      "name": "Tactician"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -9855,7 +10005,10 @@
     "cnName": "杜宾",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Instructor",
+    "branch": {
+      "id": "instructor",
+      "name": "Instructor"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -10218,7 +10371,10 @@
     "cnName": "缠丸",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Dreadnought",
+    "branch": {
+      "id": "fearless",
+      "name": "Dreadnought"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -10581,7 +10737,10 @@
     "cnName": "断罪者",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Dreadnought",
+    "branch": {
+      "id": "fearless",
+      "name": "Dreadnought"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -10935,7 +11094,10 @@
     "cnName": "霜叶",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Lord",
+    "branch": {
+      "id": "lord",
+      "name": "Lord"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -11298,7 +11460,10 @@
     "cnName": "艾丝黛尔",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Centurion",
+    "branch": {
+      "id": "centurion",
+      "name": "Centurion"
+    },
     "isCnOnly": false,
     "pools": [
       "Recruitment"
@@ -11658,7 +11823,10 @@
     "cnName": "慕斯",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Arts Fighter",
+    "branch": {
+      "id": "artsfghter",
+      "name": "Arts Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -12021,7 +12189,10 @@
     "cnName": "刻刀",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Swordmaster",
+    "branch": {
+      "id": "sword",
+      "name": "Swordmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -12384,7 +12555,10 @@
     "cnName": "宴",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Soloblade",
+    "branch": {
+      "id": "musha",
+      "name": "Soloblade"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -12747,7 +12921,10 @@
     "cnName": "芳汀",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Lord",
+    "branch": {
+      "id": "lord",
+      "name": "Lord"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -13110,7 +13287,10 @@
     "cnName": "罗小黑",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Lord",
+    "branch": {
+      "id": "lord",
+      "name": "Lord"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited",
@@ -13465,7 +13645,10 @@
     "cnName": "石英",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Crusher",
+    "branch": {
+      "id": "crusher",
+      "name": "Crusher"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -13825,7 +14008,10 @@
     "cnName": "休谟斯",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Reaper",
+    "branch": {
+      "id": "reaper",
+      "name": "Reaper"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -14187,7 +14373,10 @@
     "cnName": "骋风",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Librator",
+    "branch": {
+      "id": "librator",
+      "name": "Liberator"
+    },
     "isCnOnly": true,
     "pools": [
       "Standard"
@@ -14547,7 +14736,10 @@
     "cnName": "砾",
     "rarity": 4,
     "class": "Specialist",
-    "branch": "Executor",
+    "branch": {
+      "id": "executor",
+      "name": "Executor"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -14910,7 +15102,10 @@
     "cnName": "孑",
     "rarity": 4,
     "class": "Specialist",
-    "branch": "Merchant",
+    "branch": {
+      "id": "merchant",
+      "name": "Merchant"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -15273,7 +15468,10 @@
     "cnName": "暗索",
     "rarity": 4,
     "class": "Specialist",
-    "branch": "Hookmaster",
+    "branch": {
+      "id": "hookmaster",
+      "name": "Hookmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -15636,7 +15834,10 @@
     "cnName": "末药",
     "rarity": 4,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -15999,7 +16200,10 @@
     "cnName": "嘉维尔",
     "rarity": 4,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -16359,7 +16563,10 @@
     "cnName": "苏苏洛",
     "rarity": 4,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -16722,7 +16929,10 @@
     "cnName": "调香师",
     "rarity": 4,
     "class": "Medic",
-    "branch": "Multi-target",
+    "branch": {
+      "id": "ringhealer",
+      "name": "Multi-target"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -17085,7 +17295,10 @@
     "cnName": "清流",
     "rarity": 4,
     "class": "Medic",
-    "branch": "Therapist",
+    "branch": {
+      "id": "healer",
+      "name": "Therapist"
+    },
     "isCnOnly": false,
     "pools": [
       "Recruitment"
@@ -17445,7 +17658,10 @@
     "cnName": "褐果",
     "rarity": 4,
     "class": "Medic",
-    "branch": "Wandering",
+    "branch": {
+      "id": "wandermedic",
+      "name": "Wandering"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -17807,7 +18023,10 @@
     "cnName": "角峰",
     "rarity": 4,
     "class": "Defender",
-    "branch": "Protector",
+    "branch": {
+      "id": "protector",
+      "name": "Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -18170,7 +18389,10 @@
     "cnName": "蛇屠箱",
     "rarity": 4,
     "class": "Defender",
-    "branch": "Protector",
+    "branch": {
+      "id": "protector",
+      "name": "Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -18533,7 +18755,10 @@
     "cnName": "泡泡",
     "rarity": 4,
     "class": "Defender",
-    "branch": "Protector",
+    "branch": {
+      "id": "protector",
+      "name": "Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -18896,7 +19121,10 @@
     "cnName": "露托",
     "rarity": 4,
     "class": "Defender",
-    "branch": "Juggernaut",
+    "branch": {
+      "id": "unyield",
+      "name": "Juggernaut"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -19256,7 +19484,10 @@
     "cnName": "古米",
     "rarity": 4,
     "class": "Defender",
-    "branch": "Guardian",
+    "branch": {
+      "id": "guardian",
+      "name": "Guardian"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -19619,7 +19850,10 @@
     "cnName": "坚雷",
     "rarity": 4,
     "class": "Defender",
-    "branch": "Arts Protector",
+    "branch": {
+      "id": "artsprotector",
+      "name": "Arts Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -19905,7 +20139,10 @@
     "cnName": "深海色",
     "rarity": 4,
     "class": "Supporter",
-    "branch": "Summoner",
+    "branch": {
+      "id": "summoner",
+      "name": "Summoner"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -20267,7 +20504,10 @@
     "cnName": "地灵",
     "rarity": 4,
     "class": "Supporter",
-    "branch": "Decel Binder",
+    "branch": {
+      "id": "slower",
+      "name": "Decel Binder"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -20630,7 +20870,10 @@
     "cnName": "波登可",
     "rarity": 4,
     "class": "Supporter",
-    "branch": "Decel Binder",
+    "branch": {
+      "id": "slower",
+      "name": "Decel Binder"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -20993,7 +21236,10 @@
     "cnName": "罗比菈塔",
     "rarity": 4,
     "class": "Supporter",
-    "branch": "Artificer",
+    "branch": {
+      "id": "craftsman",
+      "name": "Artificer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -21355,7 +21601,10 @@
     "cnName": "伊桑",
     "rarity": 4,
     "class": "Specialist",
-    "branch": "Ambusher",
+    "branch": {
+      "id": "stalker",
+      "name": "Ambusher"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -21715,7 +21964,10 @@
     "cnName": "阿消",
     "rarity": 4,
     "class": "Specialist",
-    "branch": "Pusher",
+    "branch": {
+      "id": "pusher",
+      "name": "Push Stroker"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -22079,7 +22331,10 @@
     "cnName": "维荻",
     "rarity": 4,
     "class": "Specialist",
-    "branch": "Dollkeeper",
+    "branch": {
+      "id": "dollkeeper",
+      "name": "Dollkeeper"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -22441,7 +22696,10 @@
     "cnName": "云迹",
     "rarity": 4,
     "class": "Specialist",
-    "branch": "Skyranger",
+    "branch": {
+      "id": "skywalker",
+      "name": "Skyranger"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -22727,7 +22985,10 @@
     "cnName": "白面鸮",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Multi-target",
+    "branch": {
+      "id": "ringhealer",
+      "name": "Multi-target"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -23093,7 +23354,10 @@
     "cnName": "微风",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Multi-target",
+    "branch": {
+      "id": "ringhealer",
+      "name": "Multi-target"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -23457,7 +23721,10 @@
     "cnName": "瑰盐",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Multi-target",
+    "branch": {
+      "id": "ringhealer",
+      "name": "Multi-target"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -23821,7 +24088,10 @@
     "cnName": "凛冬",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -24187,7 +24457,10 @@
     "cnName": "德克萨斯",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -24554,7 +24827,10 @@
     "cnName": "贾维",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -24920,7 +25196,10 @@
     "cnName": "青枳",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -25284,7 +25563,10 @@
     "cnName": "红隼",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -25648,7 +25930,10 @@
     "cnName": "松桐",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Counsellor",
+    "branch": {
+      "id": "counsellor",
+      "name": "Counsellor - 策士"
+    },
     "isCnOnly": true,
     "pools": [
       "Free"
@@ -25938,7 +26223,10 @@
     "cnName": "苇草",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Charger",
+    "branch": {
+      "id": "charger",
+      "name": "Charger"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -26304,7 +26592,10 @@
     "cnName": "野鬃",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Charger",
+    "branch": {
+      "id": "charger",
+      "name": "Charger"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -26668,7 +26959,10 @@
     "cnName": "历阵锐枪芬",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Charger",
+    "branch": {
+      "id": "charger",
+      "name": "Charger"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -27032,7 +27326,10 @@
     "cnName": "极境",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Standard Bearer",
+    "branch": {
+      "id": "bearer",
+      "name": "Standard Bearer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -27398,7 +27695,10 @@
     "cnName": "万顷",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Standard Bearer",
+    "branch": {
+      "id": "bearer",
+      "name": "Standard Bearer"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -27762,7 +28062,10 @@
     "cnName": "夜半",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Tactician",
+    "branch": {
+      "id": "tactician",
+      "name": "Tactician"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -28126,7 +28429,10 @@
     "cnName": "渡桥",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Tactician",
+    "branch": {
+      "id": "tactician",
+      "name": "Tactician"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -28490,7 +28796,10 @@
     "cnName": "晓歌",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Agent",
+    "branch": {
+      "id": "agent",
+      "name": "Agent"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -28854,7 +29163,10 @@
     "cnName": "谜图",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Agent",
+    "branch": {
+      "id": "agent",
+      "name": "Agent"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -29218,7 +29530,10 @@
     "cnName": "齐尔查克",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Agent",
+    "branch": {
+      "id": "agent",
+      "name": "Agent"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -29582,7 +29897,10 @@
     "cnName": "寻澜",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Agent",
+    "branch": {
+      "id": "agent",
+      "name": "Agent"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -29946,7 +30264,10 @@
     "cnName": "诗怀雅",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Instructor",
+    "branch": {
+      "id": "instructor",
+      "name": "Instructor"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -30312,7 +30633,10 @@
     "cnName": "鞭刃",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Instructor",
+    "branch": {
+      "id": "instructor",
+      "name": "Instructor"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -30676,7 +31000,10 @@
     "cnName": "苍苔",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Instructor",
+    "branch": {
+      "id": "instructor",
+      "name": "Instructor"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -31040,7 +31367,10 @@
     "cnName": "医生",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Instructor",
+    "branch": {
+      "id": "instructor",
+      "name": "Instructor"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -31404,7 +31734,10 @@
     "cnName": "芙兰卡",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Dreadnought",
+    "branch": {
+      "id": "fearless",
+      "name": "Dreadnought"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -31769,7 +32102,10 @@
     "cnName": "炎客",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Dreadnought",
+    "branch": {
+      "id": "fearless",
+      "name": "Dreadnought"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -32133,7 +32469,10 @@
     "cnName": "摩根",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Dreadnought",
+    "branch": {
+      "id": "fearless",
+      "name": "Dreadnought"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -32497,7 +32836,10 @@
     "cnName": "莱欧斯",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Dreadnought",
+    "branch": {
+      "id": "fearless",
+      "name": "Dreadnought"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -32861,7 +33203,10 @@
     "cnName": "因陀罗",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Fighter",
+    "branch": {
+      "id": "fighter",
+      "name": "Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Free",
@@ -33226,7 +33571,10 @@
     "cnName": "燧石",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Fighter",
+    "branch": {
+      "id": "fighter",
+      "name": "Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -33592,7 +33940,10 @@
     "cnName": "达格达",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Fighter",
+    "branch": {
+      "id": "fighter",
+      "name": "Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -33956,7 +34307,10 @@
     "cnName": "拉普兰德",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Lord",
+    "branch": {
+      "id": "lord",
+      "name": "Lord"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -34321,7 +34675,10 @@
     "cnName": "断崖",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Lord",
+    "branch": {
+      "id": "lord",
+      "name": "Lord"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -34687,7 +35044,10 @@
     "cnName": "烈夏",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Lord",
+    "branch": {
+      "id": "lord",
+      "name": "Lord"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -35051,7 +35411,10 @@
     "cnName": "铎铃",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Crusher",
+    "branch": {
+      "id": "crusher",
+      "name": "Crusher"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -35415,7 +35778,10 @@
     "cnName": "柏喙",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Swordmaster",
+    "branch": {
+      "id": "sword",
+      "name": "Swordmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -35779,7 +36145,10 @@
     "cnName": "战车",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Swordmaster",
+    "branch": {
+      "id": "sword",
+      "name": "Swordmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -36143,7 +36512,10 @@
     "cnName": "幽灵鲨",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Centurion",
+    "branch": {
+      "id": "centurion",
+      "name": "Centurion"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -36509,7 +36881,10 @@
     "cnName": "布洛卡",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Centurion",
+    "branch": {
+      "id": "centurion",
+      "name": "Centurion"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -36875,7 +37250,10 @@
     "cnName": "导火索",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Centurion",
+    "branch": {
+      "id": "centurion",
+      "name": "Centurion"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited",
@@ -37240,7 +37618,10 @@
     "cnName": "星极",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Arts Fighter",
+    "branch": {
+      "id": "artsfghter",
+      "name": "Arts Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -37606,7 +37987,10 @@
     "cnName": "铸铁",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Arts Fighter",
+    "branch": {
+      "id": "artsfghter",
+      "name": "Arts Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -37970,7 +38354,10 @@
     "cnName": "赤冬",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Soloblade",
+    "branch": {
+      "id": "musha",
+      "name": "Soloblade"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -38335,7 +38722,10 @@
     "cnName": "火龙S黑角",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Soloblade",
+    "branch": {
+      "id": "musha",
+      "name": "Soloblade"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -38699,7 +39089,10 @@
     "cnName": "羽毛笔",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Reaper",
+    "branch": {
+      "id": "reaper",
+      "name": "Reaper"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel CN",
@@ -39064,7 +39457,10 @@
     "cnName": "海沫",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Reaper",
+    "branch": {
+      "id": "reaper",
+      "name": "Reaper"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -39428,7 +39824,10 @@
     "cnName": "龙舌兰",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Librator",
+    "branch": {
+      "id": "librator",
+      "name": "Liberator"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -39792,7 +40191,10 @@
     "cnName": "奥达",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Earthshaker",
+    "branch": {
+      "id": "hammer",
+      "name": "Earthshaker"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -40156,7 +40558,10 @@
     "cnName": "聆音",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Primguard",
+    "branch": {
+      "id": "primguard",
+      "name": "Primguard - 本源近卫"
+    },
     "isCnOnly": true,
     "pools": [
       "Standard"
@@ -40814,7 +41219,10 @@
     "cnName": "蓝毒",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -41180,7 +41588,10 @@
     "cnName": "白金",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -41546,7 +41957,10 @@
     "cnName": "灰喉",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -41912,7 +42326,10 @@
     "cnName": "四月",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -42278,7 +42695,10 @@
     "cnName": "寒芒克洛丝",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -42642,7 +43062,10 @@
     "cnName": "隐现",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -43006,7 +43429,10 @@
     "cnName": "陨星",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Artilleryman",
+    "branch": {
+      "id": "aoesniper",
+      "name": "Artilleryman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -43372,7 +43798,10 @@
     "cnName": "慑砂",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Artilleryman",
+    "branch": {
+      "id": "aoesniper",
+      "name": "Artilleryman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -43738,7 +44167,10 @@
     "cnName": "截云",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Artilleryman",
+    "branch": {
+      "id": "aoesniper",
+      "name": "Artilleryman"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -44102,7 +44534,10 @@
     "cnName": "送葬人",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Spreadshooter",
+    "branch": {
+      "id": "reaperrange",
+      "name": "Spreadshooter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -44468,7 +44903,10 @@
     "cnName": "奥斯塔",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Spreadshooter",
+    "branch": {
+      "id": "reaperrange",
+      "name": "Spreadshooter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -44834,7 +45272,10 @@
     "cnName": "吉星",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Spreadshooter",
+    "branch": {
+      "id": "reaperrange",
+      "name": "Spreadshooter"
+    },
     "isCnOnly": true,
     "pools": [
       "Standard"
@@ -45198,7 +45639,10 @@
     "cnName": "阿米娅",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Core",
+    "branch": {
+      "id": "corecaster",
+      "name": "Core"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -45626,7 +46070,10 @@
     "cnName": "苦艾",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Core",
+    "branch": {
+      "id": "corecaster",
+      "name": "Core"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -45990,7 +46437,10 @@
     "cnName": "特米米",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Core",
+    "branch": {
+      "id": "corecaster",
+      "name": "Core"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -46354,7 +46804,10 @@
     "cnName": "雪绒",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Core",
+    "branch": {
+      "id": "corecaster",
+      "name": "Core"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -46718,7 +47171,10 @@
     "cnName": "天火",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Splash",
+    "branch": {
+      "id": "splashcaster",
+      "name": "Splash"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -47083,7 +47539,10 @@
     "cnName": "惊蛰",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Chain Caster",
+    "branch": {
+      "id": "chain",
+      "name": "Chain"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -47449,7 +47908,10 @@
     "cnName": "星源",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Chain Caster",
+    "branch": {
+      "id": "chain",
+      "name": "Chain"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -47813,7 +48275,10 @@
     "cnName": "蜜蜡",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Phalanx",
+    "branch": {
+      "id": "phalanx",
+      "name": "Phalanx"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -48179,7 +48644,10 @@
     "cnName": "莱恩哈特",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Splash",
+    "branch": {
+      "id": "splashcaster",
+      "name": "Splash"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -48545,7 +49013,10 @@
     "cnName": "寒檀",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Splash",
+    "branch": {
+      "id": "splashcaster",
+      "name": "Splash"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -48909,7 +49380,10 @@
     "cnName": "薄绿",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Phalanx",
+    "branch": {
+      "id": "phalanx",
+      "name": "Phalanx"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -49273,7 +49747,10 @@
     "cnName": "爱丽丝",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Mystic",
+    "branch": {
+      "id": "mystic",
+      "name": "Mystic"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -49639,7 +50116,10 @@
     "cnName": "和弦",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Mystic",
+    "branch": {
+      "id": "mystic",
+      "name": "Mystic"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -50003,7 +50483,10 @@
     "cnName": "戴菲恩",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Mystic",
+    "branch": {
+      "id": "mystic",
+      "name": "Mystic"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -50367,7 +50850,10 @@
     "cnName": "炎狱炎熔",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Splash",
+    "branch": {
+      "id": "splashcaster",
+      "name": "Splash"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -50731,7 +51217,10 @@
     "cnName": "蚀清",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Blast",
+    "branch": {
+      "id": "blastcaster",
+      "name": "Blast"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel CN",
@@ -51096,7 +51585,10 @@
     "cnName": "阿罗玛",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Blast",
+    "branch": {
+      "id": "blastcaster",
+      "name": "Blast"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -51460,7 +51952,10 @@
     "cnName": "耶拉",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Mech-Accord",
+    "branch": {
+      "id": "funnel",
+      "name": "Mech-accord"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -51824,7 +52319,10 @@
     "cnName": "洛洛",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Mech-Accord",
+    "branch": {
+      "id": "funnel",
+      "name": "Mech-accord"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -52188,7 +52686,10 @@
     "cnName": "至简",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Mech-Accord",
+    "branch": {
+      "id": "funnel",
+      "name": "Mech-accord"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -52552,7 +53053,10 @@
     "cnName": "折光",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Primal",
+    "branch": {
+      "id": "primcaster",
+      "name": "Primal"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -52916,7 +53420,10 @@
     "cnName": "温米",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Primal",
+    "branch": {
+      "id": "primcaster",
+      "name": "Primal"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -53280,7 +53787,10 @@
     "cnName": "Miss.Christine",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Primal",
+    "branch": {
+      "id": "primcaster",
+      "name": "Primal"
+    },
     "isCnOnly": true,
     "pools": [
       "Free"
@@ -53644,7 +54154,10 @@
     "cnName": "特克诺",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Shaper",
+    "branch": {
+      "id": "soulcaster",
+      "name": "Shaper"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -54008,7 +54521,10 @@
     "cnName": "梅尔",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Summoner",
+    "branch": {
+      "id": "summoner",
+      "name": "Summoner"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -54374,7 +54890,10 @@
     "cnName": "稀音",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Summoner",
+    "branch": {
+      "id": "summoner",
+      "name": "Summoner"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -54738,7 +55257,10 @@
     "cnName": "衡沙",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Summoner",
+    "branch": {
+      "id": "summoner",
+      "name": "Summoner"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -55102,7 +55624,10 @@
     "cnName": "赫默",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -55468,7 +55993,10 @@
     "cnName": "华法琳",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -55834,7 +56362,10 @@
     "cnName": "亚叶",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -56198,7 +56729,10 @@
     "cnName": "录武官",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": true,
     "pools": [
       "Standard"
@@ -56562,7 +57096,10 @@
     "cnName": "锡兰",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Therapist",
+    "branch": {
+      "id": "healer",
+      "name": "Therapist"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -56926,7 +57463,10 @@
     "cnName": "絮雨",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Therapist",
+    "branch": {
+      "id": "healer",
+      "name": "Therapist"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -57292,7 +57832,10 @@
     "cnName": "诺威尔",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Therapist",
+    "branch": {
+      "id": "healer",
+      "name": "Therapist"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -57656,7 +58199,10 @@
     "cnName": "图耶",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -58020,7 +58566,10 @@
     "cnName": "桑葚",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Wandering",
+    "branch": {
+      "id": "wandermedic",
+      "name": "Wandering"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel CN",
@@ -58385,7 +58934,10 @@
     "cnName": "蜜莓",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Wandering",
+    "branch": {
+      "id": "wandermedic",
+      "name": "Wandering"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -58749,7 +59301,10 @@
     "cnName": "哈洛德",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Wandering",
+    "branch": {
+      "id": "wandermedic",
+      "name": "Wandering"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -59113,7 +59668,10 @@
     "cnName": "濯尘芙蓉",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Incantation",
+    "branch": {
+      "id": "incantationmedic",
+      "name": "Incantation"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -59477,7 +60035,10 @@
     "cnName": "刺玫",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Incantation",
+    "branch": {
+      "id": "incantationmedic",
+      "name": "Incantation"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -59841,7 +60402,10 @@
     "cnName": "明椒",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Chain Medic",
+    "branch": {
+      "id": "chainhealer",
+      "name": "Chain"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -60131,7 +60695,10 @@
     "cnName": "莎草",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Chain Medic",
+    "branch": {
+      "id": "chainhealer",
+      "name": "Chain"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -60421,7 +60988,10 @@
     "cnName": "临光",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Guardian",
+    "branch": {
+      "id": "guardian",
+      "name": "Guardian"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -60787,7 +61357,10 @@
     "cnName": "吽",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Guardian",
+    "branch": {
+      "id": "guardian",
+      "name": "Guardian"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -61153,7 +61726,10 @@
     "cnName": "深律",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Guardian",
+    "branch": {
+      "id": "guardian",
+      "name": "Guardian"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -61517,7 +62093,10 @@
     "cnName": "森西",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Guardian",
+    "branch": {
+      "id": "guardian",
+      "name": "Guardian"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited",
@@ -61882,7 +62461,10 @@
     "cnName": "红",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Executor",
+    "branch": {
+      "id": "executor",
+      "name": "Executor"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -62248,7 +62830,10 @@
     "cnName": "槐琥",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Executor",
+    "branch": {
+      "id": "executor",
+      "name": "Executor"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -62614,7 +63199,10 @@
     "cnName": "卡夫卡",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Executor",
+    "branch": {
+      "id": "executor",
+      "name": "Executor"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -62980,7 +63568,10 @@
     "cnName": "乌有",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Merchant",
+    "branch": {
+      "id": "merchant",
+      "name": "Merchant"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -63345,7 +63936,10 @@
     "cnName": "裁度",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Merchant",
+    "branch": {
+      "id": "merchant",
+      "name": "Merchant"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -63709,7 +64303,10 @@
     "cnName": "雷蛇",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Sentry Protector",
+    "branch": {
+      "id": "shotprotector",
+      "name": "Sentry Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -64075,7 +64672,10 @@
     "cnName": "深巡",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Sentry Protector",
+    "branch": {
+      "id": "shotprotector",
+      "name": "Sentry Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -64439,7 +65039,10 @@
     "cnName": "可颂",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Protector",
+    "branch": {
+      "id": "protector",
+      "name": "Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -64805,7 +65408,10 @@
     "cnName": "拜松",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Protector",
+    "branch": {
+      "id": "protector",
+      "name": "Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -65169,7 +65775,10 @@
     "cnName": "火神",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Juggernaut",
+    "branch": {
+      "id": "unyield",
+      "name": "Juggernaut"
+    },
     "isCnOnly": false,
     "pools": [
       "Free",
@@ -65534,7 +66143,10 @@
     "cnName": "石棉",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Arts Protector",
+    "branch": {
+      "id": "artsprotector",
+      "name": "Arts Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -65826,7 +66438,10 @@
     "cnName": "暮落",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Arts Protector",
+    "branch": {
+      "id": "artsprotector",
+      "name": "Arts Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -66116,7 +66731,10 @@
     "cnName": "车尔尼",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Arts Protector",
+    "branch": {
+      "id": "artsprotector",
+      "name": "Arts Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -66406,7 +67024,10 @@
     "cnName": "闪击",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Sentry Protector",
+    "branch": {
+      "id": "shotprotector",
+      "name": "Sentry Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -66770,7 +67391,10 @@
     "cnName": "暴雨",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Protector",
+    "branch": {
+      "id": "protector",
+      "name": "Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -67134,7 +67758,10 @@
     "cnName": "灰毫",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Fortress",
+    "branch": {
+      "id": "fortress",
+      "name": "Fortress"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel CN",
@@ -67499,7 +68126,10 @@
     "cnName": "火哨",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Fortress",
+    "branch": {
+      "id": "fortress",
+      "name": "Fortress"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -67863,7 +68493,10 @@
     "cnName": "极光",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Duelist",
+    "branch": {
+      "id": "duelist",
+      "name": "Duelist"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel CN",
@@ -68228,7 +68861,10 @@
     "cnName": "洋灰",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Duelist",
+    "branch": {
+      "id": "duelist",
+      "name": "Duelist"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -68592,7 +69228,10 @@
     "cnName": "菲莱",
     "rarity": 5,
     "class": "Defender",
-    "branch": "Primal Protector",
+    "branch": {
+      "id": "primprotector",
+      "name": "Primal Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -68882,7 +69521,10 @@
     "cnName": "普罗旺斯",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Heavyshooter",
+    "branch": {
+      "id": "closerange",
+      "name": "Heavyshooter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -69248,7 +69890,10 @@
     "cnName": "玫拉",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Heavyshooter",
+    "branch": {
+      "id": "closerange",
+      "name": "Heavyshooter"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -69612,7 +70257,10 @@
     "cnName": "守林人",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Deadeye",
+    "branch": {
+      "id": "longrange",
+      "name": "Deadeye"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -69978,7 +70626,10 @@
     "cnName": "安哲拉",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Deadeye",
+    "branch": {
+      "id": "longrange",
+      "name": "Deadeye"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -70344,7 +70995,10 @@
     "cnName": "子月",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Deadeye",
+    "branch": {
+      "id": "longrange",
+      "name": "Deadeye"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -70708,7 +71362,10 @@
     "cnName": "熔泉",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Besieger",
+    "branch": {
+      "id": "siegesniper",
+      "name": "Besieger"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -71073,7 +71730,10 @@
     "cnName": "埃拉托",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Besieger",
+    "branch": {
+      "id": "siegesniper",
+      "name": "Besieger"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -71437,7 +72097,10 @@
     "cnName": "承曦格雷伊",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Flinger",
+    "branch": {
+      "id": "bombarder",
+      "name": "Flinger"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -71801,7 +72464,10 @@
     "cnName": "冰酿",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Hunter",
+    "branch": {
+      "id": "hunter",
+      "name": "Hunter"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -72165,8 +72831,11 @@
     "cnName": "水灯心",
     "rarity": 5,
     "class": "Sniper",
-    "branch": "Loopshooter",
-    "isCnOnly": true,
+    "branch": {
+      "id": "loopshooter",
+      "name": "Loopshooter"
+    },
+    "isCnOnly": false,
     "pools": [
       "Free"
     ],
@@ -72174,7 +72843,7 @@
       {
         "skillId": "skchr_brigid_1",
         "iconId": null,
-        "skillName": "所熟知的",
+        "skillName": "Familiarity",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -72238,7 +72907,7 @@
       {
         "skillId": "skchr_brigid_2",
         "iconId": null,
-        "skillName": "可驯服的",
+        "skillName": "Bring to Heel",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -72302,11 +72971,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -72455,7 +73124,10 @@
     "cnName": "空构",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Geek",
+    "branch": {
+      "id": "geek",
+      "name": "Geek"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -72819,7 +73491,10 @@
     "cnName": "崖心",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Hookmaster",
+    "branch": {
+      "id": "hookmaster",
+      "name": "Hookmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -73185,7 +73860,10 @@
     "cnName": "雪雉",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Hookmaster",
+    "branch": {
+      "id": "hookmaster",
+      "name": "Hookmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -73549,7 +74227,10 @@
     "cnName": "杏仁",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Hookmaster",
+    "branch": {
+      "id": "hookmaster",
+      "name": "Hookmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -73913,7 +74594,10 @@
     "cnName": "初雪",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Hexer",
+    "branch": {
+      "id": "underminer",
+      "name": "Hexer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -74279,7 +74963,10 @@
     "cnName": "巫恋",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Hexer",
+    "branch": {
+      "id": "underminer",
+      "name": "Hexer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -74645,7 +75332,10 @@
     "cnName": "海霓",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Hexer",
+    "branch": {
+      "id": "underminer",
+      "name": "Hexer"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -75009,7 +75699,10 @@
     "cnName": "真理",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Decel Binder",
+    "branch": {
+      "id": "slower",
+      "name": "Decel Binder"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -75375,7 +76068,10 @@
     "cnName": "格劳克斯",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Decel Binder",
+    "branch": {
+      "id": "slower",
+      "name": "Decel Binder"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -75741,7 +76437,10 @@
     "cnName": "但书",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Decel Binder",
+    "branch": {
+      "id": "slower",
+      "name": "Decel Binder"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -76105,7 +76804,10 @@
     "cnName": "小满",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Decel Binder",
+    "branch": {
+      "id": "slower",
+      "name": "Decel Binder"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -76469,7 +77171,10 @@
     "cnName": "掠风",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Artificer",
+    "branch": {
+      "id": "craftsman",
+      "name": "Artificer"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -76833,7 +77538,10 @@
     "cnName": "凯瑟琳",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Artificer",
+    "branch": {
+      "id": "craftsman",
+      "name": "Artificer"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -77197,7 +77905,10 @@
     "cnName": "阿兰娜",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Artificer",
+    "branch": {
+      "id": "craftsman",
+      "name": "Artificer"
+    },
     "isCnOnly": true,
     "pools": [
       "Standard"
@@ -77561,7 +78272,10 @@
     "cnName": "空",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Bard",
+    "branch": {
+      "id": "bard",
+      "name": "Bard"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -77926,7 +78640,10 @@
     "cnName": "海蒂",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Bard",
+    "branch": {
+      "id": "bard",
+      "name": "Bard"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -78657,7 +79374,10 @@
     "cnName": "月禾",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Abjurer",
+    "branch": {
+      "id": "blessing",
+      "name": "Abjurer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -79023,7 +79743,10 @@
     "cnName": "九色鹿",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Abjurer",
+    "branch": {
+      "id": "blessing",
+      "name": "Abjurer"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited",
@@ -79382,7 +80105,10 @@
     "cnName": "夏栎",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Abjurer",
+    "branch": {
+      "id": "blessing",
+      "name": "Abjurer"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -79746,7 +80472,10 @@
     "cnName": "行箸",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Abjurer",
+    "branch": {
+      "id": "blessing",
+      "name": "Abjurer"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -80110,7 +80839,10 @@
     "cnName": "凛视",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Ritualist",
+    "branch": {
+      "id": "ritualist",
+      "name": "Ritualist"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -80474,7 +81206,10 @@
     "cnName": "波卜",
     "rarity": 5,
     "class": "Supporter",
-    "branch": "Ritualist",
+    "branch": {
+      "id": "ritualist",
+      "name": "Ritualist"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -80838,7 +81573,10 @@
     "cnName": "狮蝎",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Ambusher",
+    "branch": {
+      "id": "stalker",
+      "name": "Ambusher"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -81204,7 +81942,10 @@
     "cnName": "绮良",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Ambusher",
+    "branch": {
+      "id": "stalker",
+      "name": "Ambusher"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -81937,7 +82678,10 @@
     "cnName": "食铁兽",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Pusher",
+    "branch": {
+      "id": "pusher",
+      "name": "Push Stroker"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -82303,7 +83047,10 @@
     "cnName": "见行者",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Pusher",
+    "branch": {
+      "id": "pusher",
+      "name": "Push Stroker"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -82667,7 +83414,10 @@
     "cnName": "罗宾",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Trapmaster",
+    "branch": {
+      "id": "traper",
+      "name": "Trapmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -83031,7 +83781,10 @@
     "cnName": "霜华",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Trapmaster",
+    "branch": {
+      "id": "traper",
+      "name": "Trapmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -83395,8 +84148,11 @@
     "cnName": "钼铅",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Trapmaster",
-    "isCnOnly": true,
+    "branch": {
+      "id": "traper",
+      "name": "Trapmaster"
+    },
+    "isCnOnly": false,
     "pools": [
       "Standard"
     ],
@@ -83404,7 +84160,7 @@
       {
         "skillId": "skchr_wulfen_1",
         "iconId": null,
-        "skillName": "“驱兽专用”",
+        "skillName": "'For Scaring Beasts'",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -83468,7 +84224,7 @@
       {
         "skillId": "skchr_wulfen_2",
         "iconId": null,
-        "skillName": "“顽石专用”",
+        "skillName": "'For Stubborn Rocks'",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -83532,7 +84288,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "矿石展览柜",
+        "moduleName": "Mineral Display Cabinet",
         "moduleId": "uniequip_002_wulfen",
         "typeName": "TRP-Y",
         "stages": [
@@ -83602,15 +84358,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+23",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +23",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -83759,7 +84515,10 @@
     "cnName": "贝娜",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Dollkeeper",
+    "branch": {
+      "id": "dollkeeper",
+      "name": "Dollkeeper"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -84123,7 +84882,10 @@
     "cnName": "风丸",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Dollkeeper",
+    "branch": {
+      "id": "dollkeeper",
+      "name": "Dollkeeper"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -84487,7 +85249,10 @@
     "cnName": "双月",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Dollkeeper",
+    "branch": {
+      "id": "dollkeeper",
+      "name": "Dollkeeper"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -85218,7 +85983,10 @@
     "cnName": "锡人",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Alchemist",
+    "branch": {
+      "id": "alchemist",
+      "name": "Alchemist"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -85355,7 +86123,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“颅相学”",
+        "moduleName": "'Phrenology'",
         "moduleId": "uniequip_002_tinman",
         "typeName": "ALC-X",
         "stages": [
@@ -85425,7 +86193,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -85582,7 +86350,10 @@
     "cnName": "蒂比",
     "rarity": 5,
     "class": "Specialist",
-    "branch": "Skyranger",
+    "branch": {
+      "id": "skywalker",
+      "name": "Skyranger"
+    },
     "isCnOnly": true,
     "pools": [
       "Standard"
@@ -85872,7 +86643,10 @@
     "cnName": "能天使",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -86383,7 +87157,10 @@
     "cnName": "空弦",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -86935,7 +87712,10 @@
     "cnName": "灰烬",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Marksman",
+    "branch": {
+      "id": "fastshot",
+      "name": "Marksman"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -87444,7 +88224,10 @@
     "cnName": "黑",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Heavyshooter",
+    "branch": {
+      "id": "closerange",
+      "name": "Heavyshooter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -87955,7 +88738,10 @@
     "cnName": "鸿雪",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Heavyshooter",
+    "branch": {
+      "id": "closerange",
+      "name": "Heavyshooter"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -88229,7 +89015,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "仪式感",
+        "moduleName": "чувство ритуала",
         "moduleId": "uniequip_003_bgsnow",
         "typeName": "ARC-X",
         "stages": [
@@ -88299,7 +89085,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -88464,7 +89250,10 @@
     "cnName": "远牙",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Deadeye",
+    "branch": {
+      "id": "longrange",
+      "name": "Deadeye"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel CN",
@@ -88974,7 +89763,10 @@
     "cnName": "蕾缪安",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Deadeye",
+    "branch": {
+      "id": "longrange",
+      "name": "Deadeye"
+    },
     "isCnOnly": true,
     "pools": [
       "Standard"
@@ -89410,7 +90202,10 @@
     "cnName": "W",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Artilleryman",
+    "branch": {
+      "id": "aoesniper",
+      "name": "Artilleryman"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -89919,7 +90714,10 @@
     "cnName": "菲亚梅塔",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Artilleryman",
+    "branch": {
+      "id": "aoesniper",
+      "name": "Artilleryman"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -90428,7 +91226,10 @@
     "cnName": "早露",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Besieger",
+    "branch": {
+      "id": "siegesniper",
+      "name": "Besieger"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -90866,7 +91667,10 @@
     "cnName": "提丰",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Besieger",
+    "branch": {
+      "id": "siegesniper",
+      "name": "Besieger"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -91375,7 +92179,10 @@
     "cnName": "迷迭香",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Flinger",
+    "branch": {
+      "id": "bombarder",
+      "name": "Flinger"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -91852,7 +92659,10 @@
     "cnName": "维什戴尔",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Flinger",
+    "branch": {
+      "id": "bombarder",
+      "name": "Flinger"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -92288,7 +93098,10 @@
     "cnName": "假日威龙陈",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Spreadshooter",
+    "branch": {
+      "id": "reaperrange",
+      "name": "Spreadshooter"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -92797,7 +93610,10 @@
     "cnName": "莱伊",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Hunter",
+    "branch": {
+      "id": "hunter",
+      "name": "Hunter"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -93233,7 +94049,10 @@
     "cnName": "娜仁图亚",
     "rarity": 6,
     "class": "Sniper",
-    "branch": "Loopshooter",
+    "branch": {
+      "id": "loopshooter",
+      "name": "Loopshooter"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -93595,7 +94414,10 @@
     "cnName": "推进之王",
     "rarity": 6,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -94106,7 +94928,10 @@
     "cnName": "风笛",
     "rarity": 6,
     "class": "Vanguard",
-    "branch": "Charger",
+    "branch": {
+      "id": "charger",
+      "name": "Charger"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -94617,7 +95442,10 @@
     "cnName": "嵯峨",
     "rarity": 6,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -95127,7 +95955,10 @@
     "cnName": "忍冬",
     "rarity": 6,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -95563,7 +96394,10 @@
     "cnName": "琴柳",
     "rarity": 6,
     "class": "Vanguard",
-    "branch": "Standard Bearer",
+    "branch": {
+      "id": "bearer",
+      "name": "Standard Bearer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel CN",
@@ -95838,7 +96672,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“友谊万岁”",
+        "moduleName": "'Auld Lang Syne'",
         "moduleId": "uniequip_003_sleach",
         "typeName": "BEA-Y",
         "stages": [
@@ -95908,7 +96742,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -96073,7 +96907,10 @@
     "cnName": "焰尾",
     "rarity": 6,
     "class": "Vanguard",
-    "branch": "Pioneer",
+    "branch": {
+      "id": "pioneer",
+      "name": "Pioneer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel CN",
@@ -96583,7 +97420,10 @@
     "cnName": "伺夜",
     "rarity": 6,
     "class": "Vanguard",
-    "branch": "Tactician",
+    "branch": {
+      "id": "tactician",
+      "name": "Tactician"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -96857,7 +97697,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "时光不再",
+        "moduleName": "Time Has Gone",
         "moduleId": "uniequip_003_vigil",
         "typeName": "TAC-Y",
         "stages": [
@@ -96927,7 +97767,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -97092,7 +97932,10 @@
     "cnName": "缪尔赛思",
     "rarity": 6,
     "class": "Vanguard",
-    "branch": "Tactician",
+    "branch": {
+      "id": "tactician",
+      "name": "Tactician"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -97601,7 +98444,10 @@
     "cnName": "伊内丝",
     "rarity": 6,
     "class": "Vanguard",
-    "branch": "Agent",
+    "branch": {
+      "id": "agent",
+      "name": "Agent"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -98037,7 +98883,10 @@
     "cnName": "伊芙利特",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Blast",
+    "branch": {
+      "id": "blastcaster",
+      "name": "Blast"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -98548,7 +99397,10 @@
     "cnName": "莫斯提马",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Splash",
+    "branch": {
+      "id": "splashcaster",
+      "name": "Splash"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -99059,7 +99911,10 @@
     "cnName": "艾雅法拉",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Core",
+    "branch": {
+      "id": "corecaster",
+      "name": "Core"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -99496,7 +100351,10 @@
     "cnName": "刻俄柏",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Core",
+    "branch": {
+      "id": "corecaster",
+      "name": "Core"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -100007,7 +100865,10 @@
     "cnName": "霍尔海雅",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Core",
+    "branch": {
+      "id": "corecaster",
+      "name": "Core"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -100516,7 +101377,10 @@
     "cnName": "逻各斯",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Core",
+    "branch": {
+      "id": "corecaster",
+      "name": "Core"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -101025,7 +101889,10 @@
     "cnName": "夕",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Splash",
+    "branch": {
+      "id": "splashcaster",
+      "name": "Splash"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -101575,7 +102442,10 @@
     "cnName": "玛露西尔",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Splash",
+    "branch": {
+      "id": "splashcaster",
+      "name": "Splash"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -102011,7 +102881,10 @@
     "cnName": "异客",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Chain Caster",
+    "branch": {
+      "id": "chain",
+      "name": "Chain"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -102521,7 +103394,10 @@
     "cnName": "卡涅利安",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Phalanx",
+    "branch": {
+      "id": "phalanx",
+      "name": "Phalanx"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -103031,7 +103907,10 @@
     "cnName": "林",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Phalanx",
+    "branch": {
+      "id": "phalanx",
+      "name": "Phalanx"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -103540,7 +104419,10 @@
     "cnName": "澄闪",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Mech-Accord",
+    "branch": {
+      "id": "funnel",
+      "name": "Mech-accord"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -104049,7 +104931,10 @@
     "cnName": "荒芜拉普兰德",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Mech-Accord",
+    "branch": {
+      "id": "funnel",
+      "name": "Mech-accord"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -104485,7 +105370,10 @@
     "cnName": "黑键",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Mystic",
+    "branch": {
+      "id": "mystic",
+      "name": "Mystic"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -105067,7 +105955,10 @@
     "cnName": "妮芙",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Primal",
+    "branch": {
+      "id": "primcaster",
+      "name": "Primal"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -105503,7 +106394,10 @@
     "cnName": "烛煌",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Primal",
+    "branch": {
+      "id": "primcaster",
+      "name": "Primal"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -105939,8 +106833,11 @@
     "cnName": "死芒",
     "rarity": 6,
     "class": "Caster",
-    "branch": "Shaper",
-    "isCnOnly": true,
+    "branch": {
+      "id": "soulcaster",
+      "name": "Shaper"
+    },
+    "isCnOnly": false,
     "pools": [
       "Standard"
     ],
@@ -105948,7 +106845,7 @@
       {
         "skillId": "skchr_necras_1",
         "iconId": null,
-        "skillName": "噩愿",
+        "skillName": "Dread Desire",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -106012,7 +106909,7 @@
       {
         "skillId": "skchr_necras_2",
         "iconId": null,
-        "skillName": "折朽",
+        "skillName": "Snap the Withered",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -106076,7 +106973,7 @@
       {
         "skillId": "skchr_necras_3",
         "iconId": null,
-        "skillName": "冠死以冕",
+        "skillName": "Crown the Dead",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -106214,11 +107111,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "第二天赋效果增强",
-      "攻击力+27",
-      "再部署时间-6秒",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +27",
+      "Redeployment Time -6 sec",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -106375,7 +107272,10 @@
     "cnName": "灵知",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Hexer",
+    "branch": {
+      "id": "underminer",
+      "name": "Hexer"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel CN",
@@ -106650,7 +107550,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "一号项目模型",
+        "moduleName": "Project One Model",
         "moduleId": "uniequip_003_gnosis",
         "typeName": "UMD-Y",
         "stages": [
@@ -106720,7 +107620,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -106885,7 +107785,10 @@
     "cnName": "安洁莉娜",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Decel Binder",
+    "branch": {
+      "id": "slower",
+      "name": "Decel Binder"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -107436,7 +108339,10 @@
     "cnName": "铃兰",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Decel Binder",
+    "branch": {
+      "id": "slower",
+      "name": "Decel Binder"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -107947,7 +108853,10 @@
     "cnName": "麦哲伦",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Summoner",
+    "branch": {
+      "id": "summoner",
+      "name": "Summoner"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -108458,7 +109367,10 @@
     "cnName": "电弧",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Summoner",
+    "branch": {
+      "id": "summoner",
+      "name": "Summoner"
+    },
     "isCnOnly": true,
     "pools": [
       "Free"
@@ -108508,7 +109420,10 @@
     "cnName": "浊心斯卡蒂",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Bard",
+    "branch": {
+      "id": "bard",
+      "name": "Bard"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -108944,7 +109859,10 @@
     "cnName": "魔王",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Bard",
+    "branch": {
+      "id": "bard",
+      "name": "Bard"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -109380,7 +110298,10 @@
     "cnName": "淬羽赫默",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Abjurer",
+    "branch": {
+      "id": "blessing",
+      "name": "Abjurer"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -109889,7 +110810,10 @@
     "cnName": "遥",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Abjurer",
+    "branch": {
+      "id": "blessing",
+      "name": "Abjurer"
+    },
     "isCnOnly": true,
     "pools": [
       "Standard"
@@ -110325,7 +111249,10 @@
     "cnName": "令",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Summoner",
+    "branch": {
+      "id": "summoner",
+      "name": "Summoner"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -110761,7 +111688,10 @@
     "cnName": "白铁",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Artificer",
+    "branch": {
+      "id": "craftsman",
+      "name": "Artificer"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -111270,7 +112200,10 @@
     "cnName": "塑心",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Ritualist",
+    "branch": {
+      "id": "ritualist",
+      "name": "Ritualist"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -111779,7 +112712,10 @@
     "cnName": "酒神",
     "rarity": 6,
     "class": "Supporter",
-    "branch": "Ritualist",
+    "branch": {
+      "id": "ritualist",
+      "name": "Ritualist"
+    },
     "isCnOnly": true,
     "pools": [
       "Standard"
@@ -112215,7 +113151,10 @@
     "cnName": "傀影",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Executor",
+    "branch": {
+      "id": "executor",
+      "name": "Executor"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -112767,7 +113706,10 @@
     "cnName": "缄默德克萨斯",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Executor",
+    "branch": {
+      "id": "executor",
+      "name": "Executor"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -113203,7 +114145,10 @@
     "cnName": "麒麟R夜刀",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Executor",
+    "branch": {
+      "id": "executor",
+      "name": "Executor"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -113639,7 +114584,10 @@
     "cnName": "弑君者",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Executor",
+    "branch": {
+      "id": "executor",
+      "name": "Executor"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -114148,7 +115096,10 @@
     "cnName": "老鲤",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Merchant",
+    "branch": {
+      "id": "merchant",
+      "name": "Merchant"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -114657,7 +115608,10 @@
     "cnName": "琳琅诗怀雅",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Merchant",
+    "branch": {
+      "id": "merchant",
+      "name": "Merchant"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -115207,7 +116161,10 @@
     "cnName": "温蒂",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Pusher",
+    "branch": {
+      "id": "pusher",
+      "name": "Push Stroker"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -115718,7 +116675,10 @@
     "cnName": "阿",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Geek",
+    "branch": {
+      "id": "geek",
+      "name": "Geek"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -116156,7 +117116,10 @@
     "cnName": "新约能天使",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Geek",
+    "branch": {
+      "id": "geek",
+      "name": "Geek"
+    },
     "isCnOnly": true,
     "pools": [
       "Limited"
@@ -116592,7 +117555,10 @@
     "cnName": "歌蕾蒂娅",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Hookmaster",
+    "branch": {
+      "id": "hookmaster",
+      "name": "Hookmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -117101,7 +118067,10 @@
     "cnName": "水月",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Ambusher",
+    "branch": {
+      "id": "stalker",
+      "name": "Ambusher"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel CN",
@@ -117652,7 +118621,10 @@
     "cnName": "阿斯卡纶",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Ambusher",
+    "branch": {
+      "id": "stalker",
+      "name": "Ambusher"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -118161,7 +119133,10 @@
     "cnName": "归溟幽灵鲨",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Dollkeeper",
+    "branch": {
+      "id": "dollkeeper",
+      "name": "Dollkeeper"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -118670,7 +119645,10 @@
     "cnName": "多萝西",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Trapmaster",
+    "branch": {
+      "id": "traper",
+      "name": "Trapmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -119179,7 +120157,10 @@
     "cnName": "艾拉",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Trapmaster",
+    "branch": {
+      "id": "traper",
+      "name": "Trapmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -119615,7 +120596,10 @@
     "cnName": "引星棘刺",
     "rarity": 6,
     "class": "Specialist",
-    "branch": "Alchemist",
+    "branch": {
+      "id": "alchemist",
+      "name": "Alchemist"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -119816,7 +120800,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "三面的金币",
+        "moduleName": "A Three-Sided Coin",
         "moduleId": "uniequip_002_thorn2",
         "typeName": "ALC-X",
         "stages": [
@@ -119886,7 +120870,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -120051,7 +121035,10 @@
     "cnName": "闪灵",
     "rarity": 6,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -120562,7 +121549,10 @@
     "cnName": "夜莺",
     "rarity": 6,
     "class": "Medic",
-    "branch": "Multi-target",
+    "branch": {
+      "id": "ringhealer",
+      "name": "Multi-target"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -121073,7 +122063,10 @@
     "cnName": "凯尔希",
     "rarity": 6,
     "class": "Medic",
-    "branch": "Medic",
+    "branch": {
+      "id": "physician",
+      "name": "Medic"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -121624,7 +122617,10 @@
     "cnName": "流明",
     "rarity": 6,
     "class": "Medic",
-    "branch": "Therapist",
+    "branch": {
+      "id": "healer",
+      "name": "Therapist"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -122133,7 +123129,10 @@
     "cnName": "纯烬艾雅法拉",
     "rarity": 6,
     "class": "Medic",
-    "branch": "Wandering",
+    "branch": {
+      "id": "wandermedic",
+      "name": "Wandering"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -122569,7 +123568,10 @@
     "cnName": "焰影苇草",
     "rarity": 6,
     "class": "Medic",
-    "branch": "Incantation",
+    "branch": {
+      "id": "incantationmedic",
+      "name": "Incantation"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -123005,7 +124007,10 @@
     "cnName": "Mon3tr",
     "rarity": 6,
     "class": "Medic",
-    "branch": "Chain Medic",
+    "branch": {
+      "id": "chainhealer",
+      "name": "Chain"
+    },
     "isCnOnly": true,
     "pools": [
       "Standard"
@@ -123367,7 +124372,10 @@
     "cnName": "星熊",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Protector",
+    "branch": {
+      "id": "protector",
+      "name": "Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -123878,7 +124886,10 @@
     "cnName": "塞雷娅",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Guardian",
+    "branch": {
+      "id": "guardian",
+      "name": "Guardian"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -124389,7 +125400,10 @@
     "cnName": "瑕光",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Guardian",
+    "branch": {
+      "id": "guardian",
+      "name": "Guardian"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -124900,7 +125914,10 @@
     "cnName": "黍",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Guardian",
+    "branch": {
+      "id": "guardian",
+      "name": "Guardian"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -125336,7 +126353,10 @@
     "cnName": "年",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Protector",
+    "branch": {
+      "id": "protector",
+      "name": "Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -125845,7 +126865,10 @@
     "cnName": "泥岩",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Juggernaut",
+    "branch": {
+      "id": "unyield",
+      "name": "Juggernaut"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -126356,7 +127379,10 @@
     "cnName": "斥罪",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Juggernaut",
+    "branch": {
+      "id": "unyield",
+      "name": "Juggernaut"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -126865,7 +127891,10 @@
     "cnName": "森蚺",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Duelist",
+    "branch": {
+      "id": "duelist",
+      "name": "Duelist"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -127417,7 +128446,10 @@
     "cnName": "号角",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Fortress",
+    "branch": {
+      "id": "fortress",
+      "name": "Fortress"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -127926,7 +128958,10 @@
     "cnName": "涤火杰西卡",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Sentry Protector",
+    "branch": {
+      "id": "shotprotector",
+      "name": "Sentry Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -128362,7 +129397,10 @@
     "cnName": "信仰搅拌机",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Sentry Protector",
+    "branch": {
+      "id": "shotprotector",
+      "name": "Sentry Protector"
+    },
     "isCnOnly": true,
     "pools": [
       "Free"
@@ -128798,7 +129836,10 @@
     "cnName": "余",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Primal Protector",
+    "branch": {
+      "id": "primprotector",
+      "name": "Primal Protector"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -129160,7 +130201,10 @@
     "cnName": "斩业星熊",
     "rarity": 6,
     "class": "Defender",
-    "branch": "Arts Protector",
+    "branch": {
+      "id": "artsprotector",
+      "name": "Arts Protector"
+    },
     "isCnOnly": true,
     "pools": [
       "Limited"
@@ -129522,7 +130566,10 @@
     "cnName": "山",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Fighter",
+    "branch": {
+      "id": "fighter",
+      "name": "Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -130033,7 +131080,10 @@
     "cnName": "重岳",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Fighter",
+    "branch": {
+      "id": "fighter",
+      "name": "Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -130542,7 +131592,10 @@
     "cnName": "银灰",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Lord",
+    "branch": {
+      "id": "lord",
+      "name": "Lord"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -130980,7 +132033,10 @@
     "cnName": "棘刺",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Lord",
+    "branch": {
+      "id": "lord",
+      "name": "Lord"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -131491,7 +132547,10 @@
     "cnName": "仇白",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Lord",
+    "branch": {
+      "id": "lord",
+      "name": "Lord"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -132366,7 +133425,10 @@
     "cnName": "赫德雷",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Crusher",
+    "branch": {
+      "id": "crusher",
+      "name": "Crusher"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -132802,7 +133864,10 @@
     "cnName": "乌尔比安",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Crusher",
+    "branch": {
+      "id": "crusher",
+      "name": "Crusher"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -133238,7 +134303,10 @@
     "cnName": "佩佩",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Earthshaker",
+    "branch": {
+      "id": "hammer",
+      "name": "Earthshaker"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -133715,7 +134783,10 @@
     "cnName": "陈",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Swordmaster",
+    "branch": {
+      "id": "sword",
+      "name": "Swordmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -134226,7 +135297,10 @@
     "cnName": "艾丽妮",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Swordmaster",
+    "branch": {
+      "id": "sword",
+      "name": "Swordmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -134735,7 +135809,10 @@
     "cnName": "锏",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Swordmaster",
+    "branch": {
+      "id": "sword",
+      "name": "Swordmaster"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -135171,7 +136248,10 @@
     "cnName": "煌",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Centurion",
+    "branch": {
+      "id": "centurion",
+      "name": "Centurion"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -135682,7 +136762,10 @@
     "cnName": "百炼嘉维尔",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Centurion",
+    "branch": {
+      "id": "centurion",
+      "name": "Centurion"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -136191,7 +137274,10 @@
     "cnName": "史尔特尔",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Arts Fighter",
+    "branch": {
+      "id": "artsfghter",
+      "name": "Arts Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -136629,7 +137715,10 @@
     "cnName": "薇薇安娜",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Arts Fighter",
+    "branch": {
+      "id": "artsfghter",
+      "name": "Arts Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -137065,7 +138154,10 @@
     "cnName": "维娜·维多利亚",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Arts Fighter",
+    "branch": {
+      "id": "artsfghter",
+      "name": "Arts Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -137501,7 +138593,10 @@
     "cnName": "赫拉格",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Soloblade",
+    "branch": {
+      "id": "musha",
+      "name": "Soloblade"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -138012,7 +139107,10 @@
     "cnName": "左乐",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Soloblade",
+    "branch": {
+      "id": "musha",
+      "name": "Soloblade"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -138521,7 +139619,10 @@
     "cnName": "帕拉斯",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Instructor",
+    "branch": {
+      "id": "instructor",
+      "name": "Instructor"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -139031,7 +140132,10 @@
     "cnName": "耀骑士临光",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Dreadnought",
+    "branch": {
+      "id": "fearless",
+      "name": "Dreadnought"
+    },
     "isCnOnly": false,
     "pools": [
       "Limited"
@@ -139540,7 +140644,10 @@
     "cnName": "止颂",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Dreadnought",
+    "branch": {
+      "id": "fearless",
+      "name": "Dreadnought"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -140049,7 +141156,10 @@
     "cnName": "圣约送葬人",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Reaper",
+    "branch": {
+      "id": "reaper",
+      "name": "Reaper"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -140485,7 +141595,10 @@
     "cnName": "隐德来希",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Reaper",
+    "branch": {
+      "id": "reaper",
+      "name": "Reaper"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -140921,7 +142034,10 @@
     "cnName": "玛恩纳",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Librator",
+    "branch": {
+      "id": "librator",
+      "name": "Liberator"
+    },
     "isCnOnly": false,
     "pools": [
       "Standard"
@@ -141357,7 +142473,10 @@
     "cnName": "司霆惊蛰",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Librator",
+    "branch": {
+      "id": "librator",
+      "name": "Liberator"
+    },
     "isCnOnly": true,
     "pools": [
       "Standard"
@@ -141793,7 +142912,10 @@
     "cnName": "暴行",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Centurion",
+    "branch": {
+      "id": "centurion",
+      "name": "Centurion"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -142157,7 +143279,10 @@
     "cnName": "空爆",
     "rarity": 3,
     "class": "Sniper",
-    "branch": "Artilleryman",
+    "branch": {
+      "id": "aoesniper",
+      "name": "Artilleryman"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -142289,7 +143414,10 @@
     "cnName": "月见夜",
     "rarity": 3,
     "class": "Guard",
-    "branch": "Lord",
+    "branch": {
+      "id": "lord",
+      "name": "Lord"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -142421,7 +143549,10 @@
     "cnName": "猎蜂",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Fighter",
+    "branch": {
+      "id": "fighter",
+      "name": "Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -142784,7 +143915,10 @@
     "cnName": "杰克",
     "rarity": 4,
     "class": "Guard",
-    "branch": "Fighter",
+    "branch": {
+      "id": "fighter",
+      "name": "Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -143147,7 +144281,10 @@
     "cnName": "夜魔",
     "rarity": 5,
     "class": "Caster",
-    "branch": "Core",
+    "branch": {
+      "id": "corecaster",
+      "name": "Core"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -143513,7 +144650,10 @@
     "cnName": "格拉尼",
     "rarity": 5,
     "class": "Vanguard",
-    "branch": "Charger",
+    "branch": {
+      "id": "charger",
+      "name": "Charger"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -143877,7 +145017,10 @@
     "cnName": "斯卡蒂",
     "rarity": 6,
     "class": "Guard",
-    "branch": "Dreadnought",
+    "branch": {
+      "id": "fearless",
+      "name": "Dreadnought"
+    },
     "isCnOnly": false,
     "pools": [
       "Kernel",
@@ -144388,7 +145531,10 @@
     "cnName": "阿米娅(近卫)",
     "rarity": 5,
     "class": "Guard",
-    "branch": "Arts Fighter",
+    "branch": {
+      "id": "artsfghter",
+      "name": "Arts Fighter"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
@@ -144752,7 +145898,10 @@
     "cnName": "阿米娅(治疗)",
     "rarity": 5,
     "class": "Medic",
-    "branch": "Incantation",
+    "branch": {
+      "id": "incantationmedic",
+      "name": "Incantation"
+    },
     "isCnOnly": false,
     "pools": [
       "Free"
