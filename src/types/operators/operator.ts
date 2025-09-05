@@ -22,13 +22,18 @@ export interface Skin {
   sortId: number;
 }
 
+export interface Branch {
+    id: string;
+    name: string;
+ }
+
 export interface OperatorData {
   id: string;
   name: string;
   cnName: string;
   rarity: number;
   class: string;
-  branch: string;
+  branch: Branch;
   isCnOnly: boolean;
   pools: string[];
   skillData?: SkillData[];

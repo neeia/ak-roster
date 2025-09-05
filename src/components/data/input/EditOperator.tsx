@@ -177,11 +177,11 @@ const EditOperator = React.memo((props: Props) => {
           <Divider orientation="vertical" flexItem />
           <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
             <Image
-              src={`${imageBase}/subclass/sub_${opData.branch.toLocaleLowerCase().replaceAll(" ", "_")}_icon.webp`}
+              src={`${imageBase}/subclass/sub_${opData.branch.id.toLocaleLowerCase().replaceAll(" ", "_")}_icon.webp`}
               alt=""
               sx={{ width: 24, height: 24 }}
             />
-            {opData.branch}
+            {opData.branch.name}
           </Box>
         </Box>
       </DialogTitle>

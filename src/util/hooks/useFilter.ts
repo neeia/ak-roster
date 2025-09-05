@@ -1,9 +1,9 @@
 import { matchOperatorName } from "components/planner/OperatorSearch";
 import { useCallback, useState } from "react";
-import { OpInfo } from "types/operators/operator";
+import { OpInfo, Branch } from "types/operators/operator";
 
 const checkClasses = (op: OpInfo, value: Set<Value>) => value.has(op.class);
-const checkBranches = (op: OpInfo, value: Set<Value>) => value.has(op.branch);
+const checkBranches = (op: OpInfo, value: Set<Value>) => value.has(op.branch.id);
 const checkOwned = (op: OpInfo, value: Set<Value>) => value.has(op.potential > 0);
 const checkElite = (op: OpInfo, value: Set<Value>) => value.has(op.elite);
 const checkRarity = (op: OpInfo, value: Set<Value>) => value.has(op.rarity);
@@ -78,6 +78,11 @@ export type Filters = {
 };
 export type ToggleFilter = (category: keyof Filters, value: Value) => void;
 
+export type ClearFilters = {
+  (): void;
+  (filter: "CLASS" | "BRANCH", values: any[]): void;
+};
+
 export default function useFilter(init: Partial<Filters> = {}) {
   const [filters, setFilters] = useState<Filters>({
     CLASS: init.CLASS ?? new Set(),
@@ -108,9 +113,46 @@ export default function useFilter(init: Partial<Filters> = {}) {
     [filters]
   );
 
-  const clearFilters = useCallback(() => {
-    setFilters((f: Filters) => Object.fromEntries(Object.keys(f).map((k) => [k, new Set()])) as Filters);
-  }, []);
+  const clearBranchFilters = useCallback(
+    (values: Branch[] | undefined) => {
+      setFilters((f: Filters) => {
+        if (!values || values.length === 0) return { ...f, BRANCH: new Set() };
+
+        const newFilter = new Set(f.BRANCH);
+        values.forEach(b => newFilter.delete(b.id));
+        return { ...f, BRANCH: newFilter }
+      })
+    }, []);
+
+  const clearClassFilters = useCallback(
+    (values: string[] | undefined) => {
+      setFilters((f: Filters) => {
+        if (!values || values.length === 0) return { ...f, CLASS: new Set() };
+
+        const newFilter = new Set(f.CLASS);
+        values.forEach(c => newFilter.delete(c));
+        return { ...f, CLASS: newFilter }
+      })
+    }, []);
+
+  const clearFilters: ClearFilters = useCallback(
+    (filter?: "CLASS" | "BRANCH", values?: any[]) => {
+      switch (filter) {
+        case "CLASS":
+          clearClassFilters(values);
+          break;
+        case "BRANCH":
+          clearBranchFilters(values);
+          break;
+        default:
+          setFilters((f: Filters) =>
+            Object.fromEntries(Object.keys(f).map(k => [k, new Set()])) as Filters
+          );
+          break;
+      }
+    },
+    [clearClassFilters, clearBranchFilters]
+  );
 
   const filterFunction = useCallback(
     (op: OpInfo) => {
