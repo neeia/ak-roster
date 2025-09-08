@@ -54,11 +54,11 @@ const Goals: NextPage = () => {
   const [value, setValue] = useState(1);
   const [settings, setSettings] = useSettings();
   const filters = useGoalFilter();
-  const inactiveOpsInGroups = {...settings.plannerSettings.inactiveOpsInGroups}
+  const inactiveOpsInGroups = { ...settings.plannerSettings.inactiveOpsInGroups };
 
   const plannerGoals = goals
     .flatMap((goal) => getPlannerGoals(goal).map((g) => ({ goal: g, group: goal.group_name })))
-    .filter(({ goal, group }) => filters.filterFunction(goal, depot, group, !(inactiveOpsInGroups[group]?.includes(goal.operatorId) ?? false)))
+    .filter(({ goal, group }) => filters.filterFunction(goal, depot, group, settings))
     .map(({ goal }) => goal);
 
   const handleChange = (_: any, newValue: number) => {
@@ -72,7 +72,7 @@ const Goals: NextPage = () => {
         onChange={handleChange}
         aria-label="tab menu"
         variant="fullWidth"
-        sx={{ width: "100%", display: { md: "none" }, minWidth: "410px"}}
+        sx={{ width: "100%", display: { md: "none" }, minWidth: "410px" }}
       >
         <Tab value={1} label={!depotIsUnsaved ? "Depot" : "↑ Depot ↑"} {...a11yProps(1)}></Tab>
         <Tab value={2} label="Goals" {...a11yProps(2)}></Tab>
