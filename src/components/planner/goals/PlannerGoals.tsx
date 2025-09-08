@@ -44,7 +44,7 @@ import OperatorGoals from "./OperatorGoals";
 import PlannerGoalCard from "./PlannerGoalCard";
 import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
 import { LocalStorageSettings } from "types/localStorageSettings";
-import depotToExp from "util/fns/depot/depotToExp";
+import calculateCompletableStatus from "util/fns/planner/calculateCompletableStatus";
 import GoalFilterDialog from "./GoalFilterDialog";
 import { GoalFilterHook } from "util/hooks/useGoalFilter";
 import expToBattleRecords from "util/fns/depot/expToBattleRecords";
@@ -694,7 +694,7 @@ const PlannerGoals = (props: Props) => {
         const plannerGoals = getPlannerGoals(operatorGoal, {
           ...op,
           ...operatorJson[operatorGoal.op_id],
-        }).filter((g) => filter.filterFunction(g, depot, groupName, !inactiveOps.includes(g.operatorId)));
+        }).filter((g) => filter.filterFunction(g, depot, groupName, settings));
 
         return { operatorGoal, plannerGoals, substantial: plannerGoals.length > 0, operator: op };
       });
@@ -718,38 +718,6 @@ const PlannerGoals = (props: Props) => {
     inactiveOpsInGroups,
     settings.plannerSettings.sortEmptyGroupsToBottom,
   ]);
-
-  const calculateCompletableStatus = useCallback(
-    (plannerGoal: PlannerGoal) => {
-      if (settings.plannerSettings.allowAllGoals) {
-        return { completable: true, completableByCrafting: false };
-      }
-
-      const ingredients = getGoalIngredients(plannerGoal);
-      const { craftableItems } = canCompleteByCrafting(
-        Object.fromEntries(ingredients.map(({ quantity, id }) => [id, quantity])),
-        depot,
-        settings.depotSettings.crafting,
-        settings.depotSettings.ignoreLmdInCrafting
-      );
-
-      const completableByCrafting = ingredients.every(
-        ({ id, quantity }) =>
-          (settings.depotSettings.ignoreLmdInCrafting && id === "4001") ||
-          (id === "EXP" ? depotToExp(depot) : depot[id]?.stock) >= quantity ||
-          craftableItems[id]
-      );
-
-      const completable = ingredients.every(
-        ({ id, quantity }) =>
-          (settings.depotSettings.ignoreLmdInCrafting && id === "4001") ||
-          (id === "EXP" ? depotToExp(depot) : depot[id]?.stock) >= quantity
-      );
-
-      return { completable, completableByCrafting };
-    },
-    [settings, depot]
-  );
 
   return (
     <>
@@ -894,7 +862,7 @@ const PlannerGoals = (props: Props) => {
                     onOpSelect={handleOpSelect}
                   >
                     {plannerGoals.map((plannerGoal, index) => {
-                      const { completable, completableByCrafting } = calculateCompletableStatus(plannerGoal);
+                      const { completable, completableByCrafting } = calculateCompletableStatus(plannerGoal, depot, settings);
                       return (
                         <PlannerGoalCard
                           key={index}

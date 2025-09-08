@@ -4,15 +4,15 @@ import { Dispatch, SetStateAction, useCallback, useMemo, useState } from "react"
 import DepotItem from "types/depotItem";
 import { PlannerGoal } from "types/goal";
 import { GoalFilter } from "types/goalFilter";
-import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
-import depotToExp from "util/fns/depot/depotToExp";
+import { LocalStorageSettings } from "types/localStorageSettings";
+import calculateCompletableStatus from "util/fns/planner/calculateCompletableStatus";
 import getGoalIngredients from "util/fns/depot/getGoalIngredients";
 
 export interface GoalFilterHook {
   readonly filters: GoalFilter;
   readonly setFilters: Dispatch<SetStateAction<GoalFilter>>;
   readonly clearFilters: () => void;
-  readonly filterFunction: (goal: PlannerGoal, depot: Record<string, DepotItem>, group: string, opIsEnabled?: boolean) => boolean;
+  filterFunction: (goal: PlannerGoal, depot: Record<string, DepotItem>, group: string, settings: LocalStorageSettings) => boolean;
 }
 
 export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
@@ -35,17 +35,13 @@ export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
   }, [defaultFilter]);
 
   const filterFunction = useCallback(
-    (goal: PlannerGoal, depot: Record<string, DepotItem>, group: string, opIsEnabled?: boolean) => {
+    (goal: PlannerGoal, depot: Record<string, DepotItem>, group: string, settings: LocalStorageSettings) => {
+
       const opData = operatorJson[goal.operatorId];
       const ingredients = getGoalIngredients(goal);
-      const completableByCrafting = canCompleteByCrafting(
-        Object.fromEntries(ingredients.map(({ quantity, id }) => [id, quantity])),
-        depot,
-        Object.keys(depot)
-      );
-      const completable = ingredients.every(({ id, quantity }) =>
-        id === "EXP" ? depotToExp(depot) : depot[id]?.stock >= quantity
-      );
+
+      const { completableByCrafting, completable } = calculateCompletableStatus(goal, depot, settings);
+      const opIsEnabled = !(settings.plannerSettings.inactiveOpsInGroups[group]?.includes(goal.operatorId));
       if (!opData) return false;
       if (opIsEnabled === false) return false;
       if (
@@ -56,21 +52,24 @@ export default function useGoalFilter(init: Partial<GoalFilter> = {}) {
           .every((s) =>
             s.startsWith("-")
               ? (
-                  matchOperatorName(opData.name, s.substring(1)) ||
-                  group.toLocaleLowerCase().includes(s.substring(1).toLocaleLowerCase())
-                )
+                matchOperatorName(opData.name, s.substring(1)) ||
+                group.toLocaleLowerCase().includes(s.substring(1).toLocaleLowerCase())
+              )
               : !(matchOperatorName(opData.name, s) || group.toLocaleLowerCase().includes(s.toLocaleLowerCase()))
           )
       )
         return false;
-      if (
-        (filters.completable && !completable) ||
-        (filters.craftable && !completableByCrafting) ||
-        (filters.uncompletable && (completable || completableByCrafting))
-      )
-        return false;
+      const craftFilters =
+        !filters.completable && !filters.craftable && !filters.uncompletable
+          ? true
+          : [
+            filters.completable && completable,
+            filters.craftable && !completable && completableByCrafting,
+            filters.uncompletable && !completable && !completableByCrafting
+          ].some(Boolean);
+      if (!craftFilters) return false;
       if (filters.category.length && !filters.category.includes(goal.category)) return false;
-      
+
       if (filters.materials.length > 0) {
         return ingredients.some((ingr) => filters.materials.includes(ingr.id));
       }
