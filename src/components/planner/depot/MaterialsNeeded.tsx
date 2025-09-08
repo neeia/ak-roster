@@ -315,7 +315,13 @@ const MaterialsNeeded = React.memo((props: Props) => {
       const nextCraftState = craftToggle < 2 ? craftToggle + 1 : 0;
 
       //depot with current changes
-      const _depot = { ...depot, ...rawValues };
+      const itemPlaceholders = Object.fromEntries(
+        Object.values(itemsJson).map((item) => [
+          item.id,
+          { material_id: item.id, stock: 0 }
+        ])
+      ) as Record<string, DepotItem>;
+      const _depot = { ...itemPlaceholders, ...depot, ...rawValues };
 
       switch (nextCraftState) {
         case 1:
