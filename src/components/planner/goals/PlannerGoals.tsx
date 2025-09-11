@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { Search } from "@mui/icons-material";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import PlannerGoalAdd from "./PlannerGoalAdd";
 import operatorJson from "data/operators";
 import GoalGroup from "./GoalGroup";
@@ -54,6 +54,8 @@ import { enqueueSnackbar } from "notistack";
 import RenameGroupDialog from "./RenameGroupDialog";
 import { SettingsMenu, SettingsMenuItem, SettingsButton } from "../SettingsMenu";
 import useMenu from "util/hooks/useMenu";
+import SyncIcon from '@mui/icons-material/Sync';
+import changeGoal from "util/changeGoal";
 
 type Depot = Record<string, DepotItem>;
 
@@ -716,8 +718,41 @@ const PlannerGoals = (props: Props) => {
     filter,
     depot,
     inactiveOpsInGroups,
-    settings.plannerSettings.sortEmptyGroupsToBottom,
+    settings,
   ]);
+
+  const handleAutoRefreshGoals = useCallback(() => {
+    const plannerSettings = { ...settings.plannerSettings };
+    plannerSettings.autoRefreshGoals = !(plannerSettings?.autoRefreshGoals ?? true);
+
+    setSettings((s) => ({ ...s, plannerSettings }));
+    setAnchorEl(null);
+  }, [settings, setSettings, setAnchorEl]);
+
+  const handleRefreshAllGoals = useCallback(() => {
+    setAnchorEl(null);
+
+    const _goals = goals.map((g) => {
+      const op = roster[g.op_id] ?? null;
+      return op ? changeGoal(g, op) : g;
+    });
+    updateGoals(_goals);
+  }, [goals, roster, updateGoals, setAnchorEl]
+  );
+
+  const handleGoalRefresh = useCallback((goal: GoalData) => {
+    const _goal = changeGoal(goal, roster[goal.op_id])
+    updateGoals([_goal]);
+  }, [updateGoals, roster]
+  );
+
+  //once on page-load > after useEffects from useOps useGoals
+  useEffect(() => {
+    if (settings.plannerSettings.autoRefreshGoals ?? true) {
+      handleRefreshAllGoals();
+    }
+  }
+    , []);
 
   return (
     <>
@@ -739,6 +774,9 @@ const PlannerGoals = (props: Props) => {
               >
                 Sort empty & excluded groups to bottom
               </SettingsMenuItem>
+              <SettingsMenuItem onClick={handleAutoRefreshGoals} checked={settings.plannerSettings.autoRefreshGoals}>
+                Update & Clear Goals on Planner load
+              </SettingsMenuItem>
               <Divider />
               <MenuItem onClick={resetAllOpsInactivity}>
                 <ListItemText inset>Enable all ops</ListItemText>
@@ -748,9 +786,15 @@ const PlannerGoals = (props: Props) => {
               </MenuItem>
               <Divider>
                 <Typography variant="caption" color="textSecondary">
-                  non-local settings
+                  Cloud actions
                 </Typography>
               </Divider>
+              <MenuItem onClick={handleRefreshAllGoals}>
+                <ListItemIcon>
+                  <SyncIcon />
+                </ListItemIcon>
+                Update & Clear Goals, from Roster
+              </MenuItem>
               <MenuItem
                 onClick={() => {
                   setReorderOpen(true);
@@ -860,6 +904,7 @@ const PlannerGoals = (props: Props) => {
                     removeAllGoalsFromOperator={removeAllGoalsFromOperator}
                     completeAllGoalsFromOperator={onPlannerGoalGroupCompleteAllGoals}
                     onOpSelect={handleOpSelect}
+                    onGoalRefresh={handleGoalRefresh}
                   >
                     {plannerGoals.map((plannerGoal, index) => {
                       const { completable, completableByCrafting } = calculateCompletableStatus(plannerGoal, depot, settings);

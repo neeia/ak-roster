@@ -29,6 +29,8 @@ import operatorJson from "data/operators";
 import { enqueueSnackbar } from "notistack";
 import useSettings from "util/hooks/useSettings";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import useGoals from "util/hooks/useGoals";
+import changeGoal from "util/changeGoal";
 
 const EXCLUDED_ITEMS: string[] = [];
 const GameImport = memo(() => {
@@ -46,6 +48,7 @@ const GameImport = memo(() => {
   const [rememberLogin, setRememberLogin] = useState(localStorage.getItem("token_new") != null);
 
   const [_roster] = useOperators();
+  const { goals, updateGoals } = useGoals();
 
   const [user, setAccount] = useAccount();
   const [, setSupport, removeSupport] = useSupports();
@@ -225,6 +228,14 @@ const GameImport = memo(() => {
         }
       }
       await supabase.from("operators").upsert(operators);
+
+      if (settings.refreshGoals) {
+        const _goals = goals.map((g) => {
+          const op = operators.find((o) => o.op_id === g.op_id);
+          return op ? changeGoal(g, op) : g;
+        });
+        await updateGoals(_goals);
+      }
     }
 
     //Update depot
@@ -352,6 +363,27 @@ const GameImport = memo(() => {
             }
             label="Import Operators"
           />
+         <FormControlLabel
+            control={
+              <Checkbox
+                id="refreshGoals"
+                value={settings?.refreshGoals ?? true}
+                checked={settings?.refreshGoals ?? true}
+                disabled={!(settings?.importOperators ?? true)}
+                onChange={(e) => {
+                  setSettings((s) => ({
+                    ...s,
+                    importSettings: {
+                      ...settings,
+                      refreshGoals: e.target.checked,
+                    },
+                  }));
+                }}
+              />
+            }
+            label="Update & Clear Planner Goals"
+            sx={{ ml: 1}}
+          />
           <FormControlLabel
             control={
               <Checkbox
@@ -394,6 +426,7 @@ const GameImport = memo(() => {
           <MenuItem value={"jp"}>JP</MenuItem>
           <MenuItem value={"kr"}>KR</MenuItem>
         </TextField>
+        Bind account to Email in game settings before Log In. Google/Apple/other binds alone aren't supported. Without an Email bind, a second new account will be created.
         <TextField
           id="Mail"
           sx={{
