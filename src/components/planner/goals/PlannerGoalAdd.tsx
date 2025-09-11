@@ -443,8 +443,13 @@ const PlannerGoalAdd = (props: Props) => {
       }
       if (hasChanged) {
         if (!isEdit) {
-          const sortOrders = goals.map(({ sort_order }) => sort_order);
-          goalData.sort_order = Math.max(0, ...sortOrders) + 1;
+          //updateGoals - already counts next sort_order
+          /* const sortOrders = goals.filter(g => g.group_name === goalBuilder.group_name)
+            .map(({ sort_order }) => sort_order);
+          goalData.sort_order = Math.max(0, ...sortOrders) + 1; */
+        } else {
+          //keep previous sort_order when edit
+          goalData.sort_order = goalBuilder.sort_order;
         }
         updateGoals([goalData]);
       }
@@ -706,26 +711,26 @@ const PlannerGoalAdd = (props: Props) => {
               <Mastery>
                 {opData
                   ? opData.skillData?.map((data, skillIndex) => (
-                      <Mastery.Skill
-                        src={data.iconId ?? data.skillId}
-                        key={data.skillId}
-                        skillName={data.skillName}
-                        skillNumber={skillIndex + 1}
-                      >
-                        <SelectGroup.FromTo>
-                          <Mastery.Select
-                            exclusive
-                            value={goalBuilder.masteries_from?.[skillIndex]}
-                            onChange={(masteryLevel) => onMasteryFromChange(skillIndex, masteryLevel)}
-                          />
-                          <Mastery.Select
-                            exclusive
-                            value={goalBuilder.masteries_to?.[skillIndex]}
-                            onChange={(masteryLevel) => onMasteryToChange(skillIndex, masteryLevel)}
-                          />
-                        </SelectGroup.FromTo>
-                      </Mastery.Skill>
-                    ))
+                    <Mastery.Skill
+                      src={data.iconId ?? data.skillId}
+                      key={data.skillId}
+                      skillName={data.skillName}
+                      skillNumber={skillIndex + 1}
+                    >
+                      <SelectGroup.FromTo>
+                        <Mastery.Select
+                          exclusive
+                          value={goalBuilder.masteries_from?.[skillIndex]}
+                          onChange={(masteryLevel) => onMasteryFromChange(skillIndex, masteryLevel)}
+                        />
+                        <Mastery.Select
+                          exclusive
+                          value={goalBuilder.masteries_to?.[skillIndex]}
+                          onChange={(masteryLevel) => onMasteryToChange(skillIndex, masteryLevel)}
+                        />
+                      </SelectGroup.FromTo>
+                    </Mastery.Skill>
+                  ))
                   : null}
               </Mastery>
             </SelectGroup.Toggle>
