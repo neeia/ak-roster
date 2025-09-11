@@ -13,7 +13,7 @@ import {
 
 const isNumber = (value: any) => typeof value === "number";
 export default function applyGoalsToOperator(goal: Partial<GoalDataInsert>, op: Operator): Operator {
-  let _op = { ...op };
+  let _op = structuredClone(op);
   const opData = operatorJson[op.op_id];
   let changed = false;
 
