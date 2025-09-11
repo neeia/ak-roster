@@ -57,7 +57,7 @@ function useGoals() {
         const plannerGoals = getPlannerGoals(goalInsert);
         const substantial = plannerGoals.length > 0;
         if (!substantial) {
-          const index = goals.findIndex((x) => x.op_id === goalInsert.op_id && x.group_name === goalInsert.group_name);
+          const index = _goals.findIndex((x) => x.op_id === goalInsert.op_id && x.group_name === goalInsert.group_name);
           _goals.splice(index, 1);
           supabase
             .from("goals")
@@ -66,7 +66,7 @@ function useGoals() {
             .then(({ error }) => handlePostgrestError(error));
           return;
         }
-        const index = goals.findIndex((x) => x.op_id == goalInsert.op_id && x.group_name == goalInsert.group_name);
+        const index = _goals.findIndex((x) => x.op_id === goalInsert.op_id && x.group_name === goalInsert.group_name);
         if (index !== -1) {
           const newGoal: GoalData = { ...goals[index], ...goalInsert };
           _goals[index] = newGoal;
