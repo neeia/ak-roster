@@ -50,14 +50,17 @@ function useGoals() {
   const updateGoals = useCallback(
     async (goalsData: GoalDataInsert[]) => {
       const _goals = [...goals];
-      const maxIndex = (goals.reduce((acc, goal) => (goal.sort_order > acc ? goal.sort_order : acc), 0) ?? 0) + 1;
-
-      const nulledGoalsData = goalsData.map((g) => fillNull(g, maxIndex));
+      //group max index - remove some of index numbers leakage
+      const maxGroupIndex: Record<string, number> = {};
+      _goals.forEach(g => {
+        maxGroupIndex[g.group_name] = Math.max(maxGroupIndex[g.group_name] ?? 0, g.sort_order ?? 0);
+      });
+      const nulledGoalsData = goalsData.map((g) => fillNull(g, (maxGroupIndex[g.group_name] ?? -1) + 1));
       nulledGoalsData.forEach((goalInsert) => {
         const plannerGoals = getPlannerGoals(goalInsert);
         const substantial = plannerGoals.length > 0;
         if (!substantial) {
-          const index = goals.findIndex((x) => x.op_id === goalInsert.op_id && x.group_name === goalInsert.group_name);
+          const index = _goals.findIndex((x) => x.op_id === goalInsert.op_id && x.group_name === goalInsert.group_name);
           _goals.splice(index, 1);
           supabase
             .from("goals")
@@ -66,7 +69,7 @@ function useGoals() {
             .then(({ error }) => handlePostgrestError(error));
           return;
         }
-        const index = goals.findIndex((x) => x.op_id == goalInsert.op_id && x.group_name == goalInsert.group_name);
+        const index = _goals.findIndex((x) => x.op_id === goalInsert.op_id && x.group_name === goalInsert.group_name);
         if (index !== -1) {
           const newGoal: GoalData = { ...goals[index], ...goalInsert };
           _goals[index] = newGoal;

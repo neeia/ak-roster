@@ -77,6 +77,7 @@ const PlannerGoalAdd = (props: Props) => {
 
   const [opData, setOpData] = useState<OperatorData | null>(null);
   const [currentOp, setCurrentOp] = useState<Operator | null>(null);
+  const [goalOp, setGoalOp] = useState<Operator | null>(null);
   const [selectedGroup, setSelectedGroup] = useState("Default");
 
   const [isEdit, setIsEdit] = useState(false);
@@ -87,7 +88,7 @@ const PlannerGoalAdd = (props: Props) => {
   const [showPreview, setShowPreview] = useState(true);
   const [showPresets, setShowPresets] = useState(true);
   const toggleSection = (section: string) => {
-    if (!opData || !currentOp) return;
+    if (!opData || !currentOp || !goalOp) return;
 
     switch (section) {
       case "elite":
@@ -101,7 +102,7 @@ const PlannerGoalAdd = (props: Props) => {
             delete _goalBuilder.level_to;
           } else {
             _goalBuilder.elite_from = currentOp.elite;
-            _goalBuilder.elite_to = currentOp.elite;
+            _goalBuilder.elite_to = goalOp.elite;
           }
           return _goalBuilder;
         });
@@ -120,7 +121,7 @@ const PlannerGoalAdd = (props: Props) => {
           } else {
             if (!isNumber(_goalBuilder.elite_from) || !isNumber(_goalBuilder.elite_to)) {
               _goalBuilder.elite_from = currentOp.elite;
-              _goalBuilder.elite_to = currentOp.elite;
+              _goalBuilder.elite_to = goalOp.elite;
             }
             _goalBuilder.level_from = clamp(
               1,
@@ -130,7 +131,7 @@ const PlannerGoalAdd = (props: Props) => {
             _goalBuilder.level_to = clamp(
               1,
               currentOp.level,
-              MAX_LEVEL_BY_RARITY[opData.rarity][_goalBuilder.elite_to ?? currentOp.elite]
+              MAX_LEVEL_BY_RARITY[opData.rarity][_goalBuilder.elite_to ?? goalOp.elite]
             );
           }
           return _goalBuilder;
@@ -146,7 +147,7 @@ const PlannerGoalAdd = (props: Props) => {
             delete _goalBuilder.modules_to;
           } else {
             _goalBuilder.modules_from = currentOp.modules;
-            _goalBuilder.modules_to = currentOp.modules;
+            _goalBuilder.modules_to = goalOp.modules;
           }
           return _goalBuilder;
         });
@@ -160,7 +161,7 @@ const PlannerGoalAdd = (props: Props) => {
             delete _goalBuilder.skill_level_to;
           } else {
             _goalBuilder.skill_level_from = currentOp.skill_level;
-            _goalBuilder.skill_level_to = currentOp.skill_level;
+            _goalBuilder.skill_level_to = goalOp.skill_level;
           }
           return _goalBuilder;
         });
@@ -174,9 +175,10 @@ const PlannerGoalAdd = (props: Props) => {
             delete _goalBuilder.masteries_from;
             delete _goalBuilder.masteries_to;
           } else {
-            const masteries = opData.skillData?.map((_, i) => currentOp.masteries[i] || 0) ?? [];
-            _goalBuilder.masteries_from = masteries;
-            _goalBuilder.masteries_to = masteries;
+            const masteries_from = opData.skillData?.map((_, i) => currentOp.masteries[i] || 0) ?? [];
+            const masteries_to = opData.skillData?.map((_, i) => goalOp.masteries[i] || 0) ?? [];
+            _goalBuilder.masteries_from = masteries_from;
+            _goalBuilder.masteries_to = masteries_to;
           }
           return _goalBuilder;
         });
@@ -192,12 +194,14 @@ const PlannerGoalAdd = (props: Props) => {
       if (!_opData) {
         // no operator selected
         setCurrentOp(null);
+        setGoalOp(null);
         setGoalBuilder({});
         return;
       }
       // operator selected, find operator in roster
-      const op = roster[_opData.id] ?? defaultOperatorObject(_opData.id, true);
+      const op = roster[_opData.id] ? structuredClone(roster[_opData.id]) : defaultOperatorObject(_opData.id, true);
       setCurrentOp(op);
+      setGoalOp(structuredClone(op));
       setGoalBuilder({});
 
       // if a group is selected, check if there is an existing goal for the selected group
@@ -209,7 +213,7 @@ const PlannerGoalAdd = (props: Props) => {
         setIsEdit(false);
       }
     },
-    [goals, roster, opData, setOpData, setIsEdit, setCurrentOp, setGoalBuilder, selectedGroup]
+    [goals, roster, opData, setOpData, setIsEdit, setCurrentOp, setGoalOp, setGoalBuilder, selectedGroup]
   );
 
   const addGroup = (groupName: string) => {
@@ -282,7 +286,7 @@ const PlannerGoalAdd = (props: Props) => {
   const onLevelFromChange = (level_from: number) => {
     if (!isNumber(goalBuilder.level_from) || !isNumber(goalBuilder.level_to)) return;
     const elite_from = goalBuilder.elite_from ?? currentOp?.elite ?? 0;
-    const elite_to = goalBuilder.elite_to ?? currentOp?.elite ?? 0;
+    const elite_to = goalBuilder.elite_to ?? goalOp?.elite ?? 0;
     const max_from = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_from];
     const max_to = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_to];
     setGoalBuilder((prev) => ({
@@ -294,7 +298,7 @@ const PlannerGoalAdd = (props: Props) => {
   const onLevelToChange = (level_to: number) => {
     if (!isNumber(goalBuilder.level_from) || !isNumber(goalBuilder.level_to)) return;
     const elite_from = goalBuilder.elite_from ?? currentOp?.elite ?? 0;
-    const elite_to = goalBuilder.elite_to ?? currentOp?.elite ?? 0;
+    const elite_to = goalBuilder.elite_to ?? goalOp?.elite ?? 0;
     const max_from = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_from];
     const max_to = MAX_LEVEL_BY_RARITY[opData!.rarity][elite_to];
     setGoalBuilder((prev) => ({
@@ -381,7 +385,7 @@ const PlannerGoalAdd = (props: Props) => {
   };
 
   const handleGoalAddDialogClose = (shouldAddGoal: boolean) => {
-    if (shouldAddGoal && currentOp) {
+    if (shouldAddGoal && currentOp && goalOp) {
       const goalData: GoalDataInsert = { group_name: selectedGroup, op_id: currentOp.op_id };
 
       let hasChanged = false;
@@ -402,7 +406,7 @@ const PlannerGoalAdd = (props: Props) => {
         (goalBuilder.elite_from !== goalBuilder.elite_to || goalBuilder.level_from < goalBuilder.level_to)
       ) {
         goalData.elite_from = goalBuilder.elite_from ?? currentOp.elite;
-        goalData.elite_to = goalBuilder.elite_to ?? currentOp.elite;
+        goalData.elite_to = goalBuilder.elite_to ?? goalOp.elite;
         goalData.level_from = goalBuilder.level_from;
         goalData.level_to = goalBuilder.level_to;
         hasChanged = true;
@@ -442,9 +446,8 @@ const PlannerGoalAdd = (props: Props) => {
         hasChanged = true;
       }
       if (hasChanged) {
-        if (!isEdit) {
-          const sortOrders = goals.map(({ sort_order }) => sort_order);
-          goalData.sort_order = Math.max(0, ...sortOrders) + 1;
+        if (isEdit) {
+          goalData.sort_order = goalBuilder.sort_order;
         }
         updateGoals([goalData]);
       }
@@ -456,7 +459,7 @@ const PlannerGoalAdd = (props: Props) => {
   };
 
   const handlePreset = (preset: Preset) => {
-    if (!opData || !currentOp) return {};
+    if (!opData || !currentOp || !goalOp) return {};
     const skillCount = opData.skillData?.length ?? 0;
     const maxElite = opData.eliteLevels.length ?? 0;
     const maxLevel = MAX_LEVEL_BY_RARITY[opData.rarity];
@@ -509,7 +512,7 @@ const PlannerGoalAdd = (props: Props) => {
         const _acc = { ...acc };
         _acc[moduleId] =
           Object.entries(preset.modules!).find(([type]) => typeName.endsWith(type))?.[1] ??
-          currentOp.modules[moduleId] ??
+          goalOp.modules[moduleId] ??
           0;
         return _acc;
       }, {} as Record<string, number>);
@@ -592,12 +595,12 @@ const PlannerGoalAdd = (props: Props) => {
               onClick={() => setShowPreview((s) => !s)}
             >
               <Collapse in={showPreview} sx={{ width: "100%" }}>
-                {currentOp && opData && (
+                {currentOp && goalOp && opData && (
                   <SelectGroup.FromTo
                     sx={{ gridTemplateColumns: "1fr 1fr", "& .potential": { display: "none" }, overflow: "hidden" }}
                   >
                     <SupportBlock op={{ ...applyGoalsFromOperator(goalBuilder, currentOp), ...opData }} />
-                    <SupportBlock op={{ ...applyGoalsToOperator(goalBuilder, currentOp), ...opData }} />
+                    <SupportBlock op={{ ...applyGoalsToOperator(goalBuilder, goalOp), ...opData }} />
                   </SelectGroup.FromTo>
                 )}
               </Collapse>
@@ -677,7 +680,7 @@ const PlannerGoalAdd = (props: Props) => {
                 />
                 <Level
                   value={goalBuilder.level_to ?? undefined}
-                  max={MAX_LEVEL_BY_RARITY[opData?.rarity ?? 0][goalBuilder.elite_to ?? currentOp?.elite ?? 0]}
+                  max={MAX_LEVEL_BY_RARITY[opData?.rarity ?? 0][goalBuilder.elite_to ?? goalOp?.elite ?? 0]}
                   onChange={onLevelToChange}
                 />
               </SelectGroup.FromTo>
@@ -706,26 +709,26 @@ const PlannerGoalAdd = (props: Props) => {
               <Mastery>
                 {opData
                   ? opData.skillData?.map((data, skillIndex) => (
-                      <Mastery.Skill
-                        src={data.iconId ?? data.skillId}
-                        key={data.skillId}
-                        skillName={data.skillName}
-                        skillNumber={skillIndex + 1}
-                      >
-                        <SelectGroup.FromTo>
-                          <Mastery.Select
-                            exclusive
-                            value={goalBuilder.masteries_from?.[skillIndex]}
-                            onChange={(masteryLevel) => onMasteryFromChange(skillIndex, masteryLevel)}
-                          />
-                          <Mastery.Select
-                            exclusive
-                            value={goalBuilder.masteries_to?.[skillIndex]}
-                            onChange={(masteryLevel) => onMasteryToChange(skillIndex, masteryLevel)}
-                          />
-                        </SelectGroup.FromTo>
-                      </Mastery.Skill>
-                    ))
+                    <Mastery.Skill
+                      src={data.iconId ?? data.skillId}
+                      key={data.skillId}
+                      skillName={data.skillName}
+                      skillNumber={skillIndex + 1}
+                    >
+                      <SelectGroup.FromTo>
+                        <Mastery.Select
+                          exclusive
+                          value={goalBuilder.masteries_from?.[skillIndex]}
+                          onChange={(masteryLevel) => onMasteryFromChange(skillIndex, masteryLevel)}
+                        />
+                        <Mastery.Select
+                          exclusive
+                          value={goalBuilder.masteries_to?.[skillIndex]}
+                          onChange={(masteryLevel) => onMasteryToChange(skillIndex, masteryLevel)}
+                        />
+                      </SelectGroup.FromTo>
+                    </Mastery.Skill>
+                  ))
                   : null}
               </Mastery>
             </SelectGroup.Toggle>

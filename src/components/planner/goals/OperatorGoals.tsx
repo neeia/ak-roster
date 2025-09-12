@@ -29,6 +29,7 @@ interface Props {
   completeAllGoalsFromOperator: (opId: string, groupName: string) => void;
   children?: React.ReactNode;
   onOpSelect: (opId: string, groupName: string) => void;
+  onGoalUpdate: (operatorGoal: GoalData) => void;
 }
 
 export const OperatorGoals = memo((props: Props) => {
@@ -40,6 +41,7 @@ export const OperatorGoals = memo((props: Props) => {
     completeAllGoalsFromOperator,
     children,
     onOpSelect,
+    onGoalUpdate,
   } = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -92,6 +94,14 @@ export const OperatorGoals = memo((props: Props) => {
       completeAllGoalsFromOperator(operatorGoal.op_id, operatorGoal.group_name);
     },
     [completeAllGoalsFromOperator, handleMoreMenuClose, operatorGoal]
+  );
+
+  const handleUpdateClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      handleMoreMenuClose(e);
+      onGoalUpdate(operatorGoal);
+    },
+    [onGoalUpdate, handleMoreMenuClose, operatorGoal]
   );
 
   return (
@@ -192,6 +202,9 @@ export const OperatorGoals = memo((props: Props) => {
           >
             <MenuItem component="button" onClick={handleEditGoalButtonClick}>
               <Typography>Edit Goal</Typography>
+            </MenuItem>
+            <MenuItem component="button" onClick={handleUpdateClick}>
+              <Typography>Update & Clean</Typography>
             </MenuItem>
             <MenuItem component="button" onClick={handleMoveGoalButtonClick}>
               <Typography>Change Group</Typography>
