@@ -531,7 +531,7 @@ const PlannerGoals = (props: Props) => {
 
       for (const goalData of OperatorGroupGoals) {
         let _goal = goalData;
-        const plannerGoals = getPlannerGoals(goalData);
+        const plannerGoals = getPlannerGoals(goalData, undefined, true);
         plannerGoals.forEach((_plannerGoal) => {
           const { updatedGoal, updatedOperator, updatedDepot } = completePlannerGoal(
             _goal,
@@ -798,6 +798,7 @@ const PlannerGoals = (props: Props) => {
               <MenuItem
                 onClick={() => {
                   setReorderOpen(true);
+
                   setAnchorEl(null);
                 }}
               >
