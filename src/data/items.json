@@ -1110,7 +1110,7 @@
   },
   "30165": {
     "id": "30165",
-    "name": "Biphasic Enantiomorphic Medium",
+    "name": "Rephasic Enantiomer",
     "iconId": "MTL_SL_DYT",
     "tier": 5,
     "sortId": 100001,
@@ -1400,7 +1400,7 @@
   },
   "31093": {
     "id": "31093",
-    "name": "Pseudocondensation Nucleus",
+    "name": "Coagulative Nodule",
     "iconId": "MTL_SL_JH",
     "tier": 3,
     "sortId": 100008
