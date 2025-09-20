@@ -4805,6 +4805,12 @@
       "skinName": null,
       "avatarId": "char_487_bobb_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_487_bobb@kitchen#4",
+      "skinName": "温情烘焙",
+      "avatarId": "char_487_bobb_kitchen#4",
+      "sortId": 335
     }
   ],
   "char_215_mantic": [
