@@ -97,9 +97,15 @@ const Rateup: NextPage = () => {
               newProbabilities[0][j][Math.min(k + 1, 6)] += probabilities[i][j][k] * sixStarChance * subrate;
             }
           } else {
+            // "If you make 150 headhunting attempts without receiving the current rate-up 6-star operator, 
+            // the next 6-star operator received is guaranteed to be the current rate-up 6-star operator.
+            // This mechanism will only take effect once during the current headhunting."
+            // Since it only applies once, we can simply take the case where the current number
+            // of rateups is 0 (j == 0), and current pulls is greater than 150 (0-indexed, so 150 is 151st pull).
+            const pity_subrate = (j == 0 && a >= 150) ? 1 : subrate;
             newProbabilities[Math.min(i + 1, 98)][j][0] += probabilities[i][j][0] * (1 - sixStarChance);
-            newProbabilities[0][j][0] += probabilities[i][j][0] * sixStarChance * (1 - subrate);
-            newProbabilities[0][Math.min(j + 1, 6)][0] += probabilities[i][j][0] * sixStarChance * subrate;
+            newProbabilities[0][j][0] += probabilities[i][j][0] * sixStarChance * (1 - pity_subrate);
+            newProbabilities[0][Math.min(j + 1, 6)][0] += probabilities[i][j][0] * sixStarChance * pity_subrate;
           }
         }
       }
