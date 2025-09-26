@@ -4,13 +4,14 @@ import { EventsData, SubmitEventProps, WebEventsData } from 'types/events'
 import { createDefaultEventsData, createEmptyEvent, reindexEvents, getNextMonthsData } from "util/fns/eventUtils"
 import useLocalStorage from "./useLocalStorage";
 
-function useEvents(): {
-    eventsData: EventsData,
-    setEvents: (newEventsData: EventsData) => void,
-    submitEvent: (submit: SubmitEventProps) => null | [string, number][],
-    getNextMonthsData: (months?: number) => EventsData,
-    createDefaultEventsData: (webEvents: WebEventsData) => EventsData,
-} {
+export interface EventsHook {
+    readonly eventsData: EventsData;
+    readonly setEvents: (newEventsData: EventsData) => void;
+    readonly submitEvent: (submit: SubmitEventProps) => null | [string, number][];
+    readonly getNextMonthsData: (months?: number) => EventsData;
+    readonly createDefaultEventsData: (webEvents: WebEventsData) => EventsData;
+}
+export default function useEvents(): EventsHook {
     const [eventsData, _setEvents] = useLocalStorage<EventsData>("trackerEvents", {});
     const [settings, setSettings] = useSettings();
 
@@ -146,6 +147,5 @@ function useEvents(): {
     return {
         eventsData: _eventsData, setEvents, submitEvent, getNextMonthsData,
         createDefaultEventsData: clientCreateDefaultEventsData
-    }
+    } as const;
 }
-export default useEvents;

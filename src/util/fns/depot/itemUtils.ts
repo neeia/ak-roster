@@ -1,4 +1,5 @@
 import itemsJson from 'data/items.json';
+import DepotItem from 'types/depotItem';
 import { Item } from 'types/item';
 
 export const EXP = ["2001", "2002", "2003", "2004"];
@@ -253,3 +254,47 @@ export const getItemsByIngredient = (ingr_id: string, result?: string[]) => {
 
     return Array.from(results);
 };
+
+const emptyDepot: Record<string, DepotItem> = Object.fromEntries(
+    Object.keys(itemsJson).map((key) => [key, { material_id: key, stock: 0 }])
+);
+
+export const cloneCompleteDepot =
+    (
+        depot: Record<string, DepotItem>,
+        addon?: Record<string, DepotItem> | Record<string, number> | [string, number][],
+        isDeduction: boolean = false
+    ): Record<string, DepotItem> => {
+        const sign = isDeduction ? -1 : 1;
+
+        const result: Record<string, DepotItem> = {};
+        for (const key in itemsJson) {
+            result[key] = {
+                material_id: key,
+                stock: depot[key]?.stock ?? 0,
+            };
+        }
+
+        if (addon) {
+            if (Array.isArray(addon)) {
+                //[string, number][]
+                for (const [id, qty] of addon) {
+                    if (result[id]) result[id].stock += sign * qty;
+                }
+            } else {
+                for (const id in addon) {
+                    const entry = (addon as Record<string, DepotItem | number>)[id];
+                    if (!result[id]) continue;
+
+                    if (typeof entry === "number") {
+                        // Record<string, number>
+                        result[id].stock += sign * entry;
+                    } else {
+                        // Record<string, DepotItem>
+                        result[id].stock += sign * entry.stock;
+                    }
+                }
+            }
+        }
+        return result;
+    }

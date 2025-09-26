@@ -1,5 +1,7 @@
-import { AK_CALENDAR, AK_DAILY, AK_WEEKLY } from "util/fns/depot/itemUtils";
-import { EventsData, NamedEvent, Event, WebEventsData, WebEvent } from "types/events";
+import { AK_CALENDAR, AK_DAILY, AK_WEEKLY, EXP } from "util/fns/depot/itemUtils";
+import { EventsData, NamedEvent, Event, WebEventsData, WebEvent, UpcomingMaterialsData } from "types/events";
+import depotToExp from "./depot/depotToExp";
+import DepotItem from "types/depotItem";
 
 export const createEmptyEvent = () => {
     return { index: -1, materials: {} } as Event;
@@ -198,4 +200,58 @@ export const getDateString = (date: Date | string) => {
     const year = _date.getFullYear();
 
     return `${day}-${month}-${year}`;
+}
+
+export const getTotalMaterialsUptoSelectedEvent = (
+    eventsData: EventsData,
+    selectedEvent: NamedEvent
+): UpcomingMaterialsData => {
+    if (!eventsData || selectedEvent.index === -1) return { materials: {}, farmTimes: {}, infiniteTimes: {} };
+
+    const _eventsData = eventsData;
+    const _filteredEvents = Object.entries(_eventsData)
+        .filter(([, eventData]) => eventData.index <= selectedEvent.index);
+    const _eventMaterials = _filteredEvents
+        .reduce((acc, [, eventData]) => {
+            if (!eventData.materials) return acc;
+            Object.entries(eventData.materials).forEach(([id, quantity]) => {
+                acc[id] = (acc[id] ?? 0) + quantity;
+            });
+            return acc;
+        }, {} as Record<string, number>);
+
+    //store xTimes farms appearances and add 0 mats to totals if missing
+    const _farmTimes = _filteredEvents
+        .reduce((acc, [, eventData]) => {
+            if (eventData.farms) {
+                eventData.farms.forEach((id) => {
+                    acc[id] = (acc[id] ?? 0) + 1;
+                    if (!_eventMaterials[id]) {
+                        _eventMaterials[id] = 0;
+                    }
+                })
+            };
+            return acc;
+        }, {} as Record<string, number>);
+
+    const infiniteTimes = _filteredEvents
+        .reduce((acc, [, eventData]) => {
+            (eventData.infinite ?? []).forEach((id) => {
+                acc[id] = (acc[id] ?? 0) + 1;
+                if (!_eventMaterials[id]) {
+                    _eventMaterials[id] = 0;
+                }
+            })
+            return acc;
+        }, {} as Record<string, number>);
+
+    //EXP count
+    const _exp = depotToExp(EXP.reduce((acc, id) => {
+        acc[id] = { material_id: id, stock: _eventMaterials[id] ?? 0 }
+        return acc
+    }, {} as Record<string, DepotItem>));
+
+    if (_exp != 0) _eventMaterials["EXP"] = _exp;
+
+    return { materials: _eventMaterials, farmTimes: _farmTimes, infiniteTimes };
 }

@@ -1,12 +1,11 @@
 import CraftingIcon from "./CraftingIcon";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import StorageIcon from '@mui/icons-material/Storage';
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import { Box, Divider, ListItemText, MenuItem, Button, Tooltip, Typography } from "@mui/material";
+import { Box, Divider, ListItemText, MenuItem, Button, Tooltip, Typography, ListItemIcon } from "@mui/material";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-
 import itemsJson from "data/items.json";
 import { Ingredient, Item } from "types/item";
-
 import ItemInfoPopover from "../ItemInfoPopover";
 import ItemNeeded from "./ItemNeeded";
 import getGoalIngredients from "util/fns/depot/getGoalIngredients";
@@ -19,16 +18,18 @@ import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
 import { LocalStorageSettings } from "types/localStorageSettings";
 import depotToExp from "util/fns/depot/depotToExp";
 import { PlannerGoal } from "types/goal";
-import GoalData from "types/goalData";
+import GoalData, { GoalsFilteredCalculatedMap } from "types/goalData";
 import { debounce } from "lodash";
 import { SettingsMenu, SettingsMenuItem, SettingsButton } from "../SettingsMenu";
 import useMenu from "util/hooks/useMenu";
-import useEvents from "util/hooks/useEvents";
+import { EventsHook } from "util/hooks/useEvents";
 import { EXP, MAX_SAFE_INTEGER } from "util/fns/depot/itemUtils";
-import { EventsData, SubmitEventProps } from "types/events";
-import { useEventsDefaults } from "util/hooks/useEventsDefaults";
+import { EventsData, NamedEvent, SubmitEventProps, UpcomingMaterialsData } from "types/events";
+import { EventsDefaultsHook } from "util/hooks/useEventsDefaults";
+import EventsSelector from "../events/EventsSelector";
+import { createEmptyNamedEvent } from "util/fns/eventUtils";
 
-interface Props {
+interface Props extends EventsHook, EventsDefaultsHook {
   goals: PlannerGoal[];
   goalData: GoalData[];
   depot: Record<string, DepotItem>;
@@ -38,10 +39,20 @@ interface Props {
   refreshDepotDebounce: () => void;
   settings: LocalStorageSettings;
   setSettings: (settings: LocalStorageSettings | ((settings: LocalStorageSettings) => LocalStorageSettings)) => void;
+  upcomingMaterialsData: UpcomingMaterialsData;
+  selectedEvent: NamedEvent,
+  setSelectedEvent: (namedEvent: NamedEvent) => void;
+  groupedGoalsMap: GoalsFilteredCalculatedMap,
 }
 
 const MaterialsNeeded = React.memo((props: Props) => {
-  const { goals, goalData, depot, putDepot, resetDepot, settings, setSettings, depotIsUnsaved, refreshDepotDebounce } = props;
+  const { goals, goalData, depot, putDepot, resetDepot, settings, setSettings, depotIsUnsaved, refreshDepotDebounce,
+    eventsData, setEvents, submitEvent,
+    loading, trackerDefaults, fetchDefaults,
+    selectedEvent, setSelectedEvent,
+    upcomingMaterialsData,
+    groupedGoalsMap,
+    ...rest } = props;
 
   const [popoverOpen, setPopoverOpen] = useState<boolean>(false);
   const [popoverItemId, setPopoverItemId] = useState<string | null>(null);
@@ -57,9 +68,6 @@ const MaterialsNeeded = React.memo((props: Props) => {
   const initialCraftToggle = 1;
   const [craftToggle, setCraftToggle] = useState(initialCraftToggle);
 
-  const { eventsData, setEvents, submitEvent } = useEvents();
-  const { trackerDefaults, fetchDefaults } = useEventsDefaults();
-
   //conditional defaults fetch from api
   useEffect(() => {
     if ((summaryOpen || popoverOpen) && Object.keys(eventsData ?? {}).length === 0) {
@@ -69,6 +77,11 @@ const MaterialsNeeded = React.memo((props: Props) => {
     }
   }, [summaryOpen, popoverOpen, eventsTrackerOpen])
 
+  const upcomingEvents = useMemo(() =>
+    Object.keys(eventsData ?? {}).length > 0
+      ? { source: eventsData, name: "Tracker" }
+      : { source: trackerDefaults?.eventsData ?? {}, name: "Defaults" }
+    , [eventsData, trackerDefaults.eventsData])
 
   const handleItemClick = useCallback((itemId: string) => {
     setPopoverItemId(itemId);
@@ -111,7 +124,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
   const calculateMaterialsNeeded = useCallback(
     (_rawValues?: Record<string, DepotItem>) => {
 
-      const materialsNeeded: Record<string, number> = {};
+      let materialsNeeded: Record<string, number> = {};
       // 1. populate the ingredients required for each goal
       goals.flatMap(getGoalIngredients).forEach((ingredient: Ingredient) => {
         materialsNeeded[ingredient.id] = (materialsNeeded[ingredient.id] ?? 0) + ingredient.quantity;
@@ -123,6 +136,11 @@ const MaterialsNeeded = React.memo((props: Props) => {
       }
 
       const goalsMaterials = { ...materialsNeeded };
+
+      //2. deduct upcoming mats if event is selected
+      materialsNeeded = Object.fromEntries(
+        Object.entries(materialsNeeded).map(([id, val]) => [id, Math.max(0, val - (upcomingMaterialsData.materials[id] ?? 0))])
+      );
 
       // 3. calculate what ingredients can be fulfilled by crafting
       const _depot = { ...depot, ..._rawValues }; // need to hypothetically deduct from stock
@@ -164,7 +182,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
         expOwned,
       });
 
-    }, [goals, depot, settings]
+    }, [goals, depot, settings, upcomingMaterialsData.materials]
   );
 
   //useEffect recals on each render
@@ -416,10 +434,10 @@ const MaterialsNeeded = React.memo((props: Props) => {
       <Board
         title={
           !depotIsUnsaved
-            ? <Box display="flex" alignItems="center" paddingRight={1}>
+            ? <Box display="flex" alignItems="center" height="min-content" paddingRight={1}>
               <Typography variant="h2">Depot</Typography>
             </Box>
-            : (<Box display="flex" alignItems="center" paddingRight={1}
+            : (<Box display="flex" alignItems="center" height="min-content" paddingRight={1}
               sx={{ flexFlow: "row nowrap", gap: { xs: 1, md: 3 } }}>
               <Typography variant="h2" sx={{ color: { xs: "primary.main", lg: "unset" } }}>Depot</Typography>
               <Tooltip title="on 5s idle: ↑ upload changes to DB ↑">
@@ -429,31 +447,31 @@ const MaterialsNeeded = React.memo((props: Props) => {
             </Box>)
         }
         TitleAction={
-          <Box display="flex" gap={1}>
-            <Button
-              onClick={() => setSummaryOpen(true)}
-              variant="contained"
-              color="primary">
-              Summary
-            </Button>
-            <Tooltip arrow title={craftToggleTooltips[craftToggle]}>
+            <Box display="flex" gap={1}>
               <Button
-                onClick={handleCraftingToggleAll}
+                onClick={() => setSummaryOpen(true)}
                 variant="contained"
-                startIcon={
-                  craftToggle === 1 ? (
-                    <CraftingIcon />
-                  ) : craftToggle === 2 ? (
-                    <CheckCircleIcon sx={{ width: "30px", height: "30px" }} />
-                  ) : (
-                    <RadioButtonUncheckedIcon sx={{ width: "30px", height: "30px" }} />
-                  )}
                 color="primary">
-                Crafting
+                Summary
               </Button>
-            </Tooltip>
-            <SettingsButton props={menuButtonProps} />
-          </Box>
+              <Tooltip arrow title={craftToggleTooltips[craftToggle]}>
+                <Button
+                  onClick={handleCraftingToggleAll}
+                  variant="contained"
+                  startIcon={
+                    craftToggle === 1 ? (
+                      <CraftingIcon />
+                    ) : craftToggle === 2 ? (
+                      <CheckCircleIcon sx={{ width: "30px", height: "30px" }} />
+                    ) : (
+                      <RadioButtonUncheckedIcon sx={{ width: "30px", height: "30px" }} />
+                    )}
+                  color="primary">
+                  Crafting
+                </Button>
+              </Tooltip>
+              <SettingsButton props={menuButtonProps} />
+            </Box>
         }
         sx={{ borderRadius: { xs: "0px 0px 4px 4px", md: "4px" } }}
       >
@@ -474,14 +492,16 @@ const MaterialsNeeded = React.memo((props: Props) => {
             <ListItemText inset>Allow all &gt; goals menu</ListItemText>
           </MenuItem>
           <Divider />
-          <MenuItem onClick={handleExportImport}>
-            <ListItemText inset>Export/Import</ListItemText>
-          </MenuItem>
           <MenuItem onClick={() => {
             setAnchorEl(null);
             setEventsTrackerOpen(true)
           }}>
-            <ListItemText inset>Events income tracker (Export/Import)</ListItemText>
+            <ListItemIcon><StorageIcon /></ListItemIcon>
+            Events Income Tracker
+          </MenuItem>
+          <Divider />
+          <MenuItem onClick={handleExportImport}>
+            <ListItemText inset>Export/Import</ListItemText>
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleResetCrafting}>
@@ -495,43 +515,60 @@ const MaterialsNeeded = React.memo((props: Props) => {
             </ListItemText>
           </MenuItem>
         </SettingsMenu>
-        <Box
-          component="ul"
-          sx={{
-            display: "grid",
-            mt: 2,
-            mb: 0,
-            mx: 0,
-            p: 0,
-            columnGap: { xs: 1, sm: 2 },
-            rowGap: 2,
-            gridTemplateColumns: {
-              xs: "repeat(auto-fill, minmax(96px, 1fr))",
-              sm: "repeat(auto-fill, minmax(108px, 1fr))",
-            },
-            position: "relative",
-          }}
-        >
-          {savedStates.sortedMaterialsNeeded.map(([itemId, needed]) => (
-            <ItemNeeded
-              key={itemId}
-              component="li"
-              itemId={itemId}
-              owned={itemId === "EXP" ? savedStates.expOwned : rawValues[itemId]?.stock ?? depot[itemId]?.stock ?? 0}
-              quantity={needed}
-              canCompleteByCrafting={savedStates.craftableItems[itemId]}
-              canCraftOne={canCraftOne(itemId)}
-              isCrafting={settings.depotSettings.crafting.includes(itemId) ?? false}
-              onChange={handleChange}
-              onCraftOne={handleCraftOne}
-              onCraftingToggle={handleCraftingToggle}
-              onClick={handleItemClick}
-              hideIncrementDecrementButtons={
-                (itemId === "4001" || itemId === "EXP" || !settings.depotSettings.showIncrementDecrementButtons) ??
-                false
-              }
-            />
-          ))}
+        <Box display="flex" flexDirection="column">
+          <Box width="calc(max(400px,50%))" alignSelf="flex-end" mt={-2}>
+              <EventsSelector
+                emptyItem={loading ? "wait, defauls are downloading..." : `Select future event from ${upcomingEvents.name}`}
+                dataType={'events'}
+                eventsData={upcomingEvents.source}
+                selectedEvent={selectedEvent ?? createEmptyNamedEvent()}
+                onChange={setSelectedEvent}
+                onOpen={() => {
+                  if (Object.keys(upcomingEvents.source).length === 0) {
+                    fetchDefaults();
+                  }
+                }}
+              /></Box>
+          <Box
+            component="ul"
+            sx={{
+              display: "grid",
+              mt: 2,
+              mb: 0,
+              mx: 0,
+              p: 0,
+              columnGap: { xs: 1, sm: 2 },
+              rowGap: 2,
+              gridTemplateColumns: {
+                xs: "repeat(auto-fill, minmax(96px, 1fr))",
+                sm: "repeat(auto-fill, minmax(108px, 1fr))",
+              },
+              position: "relative",
+            }}
+          >
+            {savedStates.sortedMaterialsNeeded.map(([itemId, needed]) => (
+              <ItemNeeded
+                key={itemId}
+                component="li"
+                itemId={itemId}
+                owned={itemId === "EXP" ? savedStates.expOwned : rawValues[itemId]?.stock ?? depot[itemId]?.stock ?? 0}
+                quantity={needed}
+                canCompleteByCrafting={savedStates.craftableItems[itemId]}
+                canCraftOne={canCraftOne(itemId)}
+                isCrafting={settings.depotSettings.crafting.includes(itemId) ?? false}
+                onChange={handleChange}
+                onCraftOne={handleCraftOne}
+                onCraftingToggle={handleCraftingToggle}
+                onClick={handleItemClick}
+                hideIncrementDecrementButtons={
+                  (itemId === "4001" || itemId === "EXP" || !settings.depotSettings.showIncrementDecrementButtons) ??
+                  false
+                }
+                upcomingQuantity={upcomingMaterialsData.materials[itemId]}
+
+              />
+            ))}
+          </Box>
         </Box>
         <ItemInfoPopover
           itemId={popoverItemId}
@@ -539,7 +576,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
           open={popoverOpen}
           onClose={handlePopoverClose}
           openEventTracker={() => setEventsTrackerOpen(true)}
-          eventsData={Object.keys(eventsData ?? {}).length > 0 ? eventsData : trackerDefaults?.eventsData ?? {}}
+          eventsData={upcomingEvents.source}
         />
       </Board>
       <ExportImportDialog
@@ -561,7 +598,13 @@ const MaterialsNeeded = React.memo((props: Props) => {
           setSummaryOpen(false);
         }}
         openEvents={setEventsTrackerOpen}
-        eventsData={Object.keys(eventsData ?? {}).length > 0 ? eventsData : trackerDefaults?.eventsData ?? {}}
+        eventsSource={upcomingEvents}
+        selectedEvent={selectedEvent}
+        setSelectedEvent={setSelectedEvent}
+        upcomingMaterialsData={upcomingMaterialsData}
+        groupedGoalsMap={groupedGoalsMap}
+        settings={settings}
+        setSettings={setSettings}
       />
       <EventsTrackerDialog
         eventsData={eventsData}

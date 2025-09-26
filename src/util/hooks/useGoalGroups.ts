@@ -4,6 +4,17 @@ import { GroupsDataInsert } from "types/groupData";
 import handlePostgrestError from "util/fns/handlePostgrestError";
 import useLocalStorage from "./useLocalStorage";
 
+export interface GoalGroupsHook {
+    readonly groups: string[];
+    readonly putGroups: (goalGroupInsert: {
+        group_name: string;
+        sort_order?: number | undefined;
+        user_id?: string | undefined;
+    }[]) => Promise<void>;
+    readonly renameGroup: (oldName: string, newName: string) => Promise<void>;
+    readonly removeGroup: (groupName: string) => Promise<void>;
+}
+
 function useGoalGroups() {
   const [groups, _setGroups] = useLocalStorage<string[]>("v3_groups", []);
   const [user_id, setUserId] = useState<string>("");

@@ -22,7 +22,7 @@ import PlannerGoalAdd from "./PlannerGoalAdd";
 import operatorJson from "data/operators";
 import GoalGroup from "./GoalGroup";
 import Board from "components/base/Board";
-import GoalData, { getPlannerGoals, GoalDataInsert } from "types/goalData";
+import GoalData, { getPlannerGoals, GoalDataInsert, GoalsFilteredCalculatedMap } from "types/goalData";
 import _ from "lodash";
 import {
   changeLevel,
@@ -37,14 +37,12 @@ import {
 } from "util/changeOperator";
 import GoalReorderDialog from "./GoalReorderDialog";
 import DepotItem from "types/depotItem";
-import useGoalGroups from "util/hooks/useGoalGroups";
+import { GoalGroupsHook } from "util/hooks/useGoalGroups";
 import getGoalIngredients from "util/fns/depot/getGoalIngredients";
-import useOperators from "util/hooks/useOperators";
 import OperatorGoals from "./OperatorGoals";
 import PlannerGoalCard from "./PlannerGoalCard";
 import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
 import { LocalStorageSettings } from "types/localStorageSettings";
-import calculateCompletableStatus from "util/fns/planner/calculateCompletableStatus";
 import GoalFilterDialog from "./GoalFilterDialog";
 import { GoalFilterHook } from "util/hooks/useGoalFilter";
 import expToBattleRecords from "util/fns/depot/expToBattleRecords";
@@ -56,38 +54,39 @@ import { SettingsMenu, SettingsMenuItem, SettingsButton } from "../SettingsMenu"
 import useMenu from "util/hooks/useMenu";
 import SyncIcon from '@mui/icons-material/Sync';
 import changeGoal from "util/changeGoal";
+import LowPriorityIcon from '@mui/icons-material/LowPriority';
+import { GoalsHook } from "util/hooks/useGoals";
+import Roster from "types/operators/roster";
+import { Operator } from "types/operators/operator";
 
 type Depot = Record<string, DepotItem>;
 
-interface Props extends GoalFilterHook {
-  goals: GoalData[];
+interface Props extends GoalFilterHook, GoalsHook, GoalGroupsHook {
   depot: Depot;
   setDepot: (depotItem: DepotItem[]) => void;
-  updateGoals: (goalsData: GoalDataInsert[]) => void;
-  removeAllGoals: () => void;
-  removeAllGoalsFromGroup: (groupName: string, cleanLocal?: boolean) => void;
-  removeAllGoalsFromOperator: (opId: string, groupName: string) => void;
-  changeLocalGoalGroup: (oldGroupName: string, newGroupName: string) => void;
   settings: LocalStorageSettings;
+  groupedGoals: _.Dictionary<GoalData[]>,
+  groupedGoalsMap: GoalsFilteredCalculatedMap,
+  roster: Roster,
+  onChange: (op: Operator) => void,
   setSettings: (settings: LocalStorageSettings | ((settings: LocalStorageSettings) => LocalStorageSettings)) => void;
 }
 
 const PlannerGoals = (props: Props) => {
   const {
-    goals,
     depot,
     setDepot,
-    updateGoals,
-    removeAllGoals,
-    removeAllGoalsFromGroup,
-    removeAllGoalsFromOperator,
-    changeLocalGoalGroup,
     settings,
     setSettings,
-    ...filter
+    groupedGoals,
+    groupedGoalsMap,
+    roster,
+    onChange,
+    ...rest
   } = props;
-  const { groups, putGroups, removeGroup, renameGroup } = useGoalGroups();
-  const [roster, onChange] = useOperators();
+  const { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator, changeLocalGoalGroup } = rest;
+  const { groups, putGroups, removeGroup, renameGroup } = rest;
+  const { filters, setFilters, clearFilters, filterFunction } = rest;
 
   const [reorderOpen, setReorderOpen] = useState<boolean>(false);
   const { setAnchorEl, menuProps, menuButtonProps } = useMenu();
@@ -563,7 +562,6 @@ const PlannerGoals = (props: Props) => {
     () => ({ ...(settings.plannerSettings.inactiveOpsInGroups ?? {}) }),
     [settings.plannerSettings.inactiveOpsInGroups]
   );
-  const groupedGoals = useMemo(() => _.groupBy(goals, (goal) => goal.group_name), [goals]);
 
   const handleOpSelect = useCallback(
     (opId: string, groupName: string) => {
@@ -686,40 +684,13 @@ const PlannerGoals = (props: Props) => {
     setAnchorEl(null);
   }, [settings, setSettings, setAnchorEl]);
 
-  const groupedGoalsMemo = useMemo(() => {
-    const sortedGroups = groups?.map((groupName, index) => {
-      const sortedGoals = groupedGoals[groupName]?.sort((a, b) => a.sort_order - b.sort_order) || [];
-      const inactiveOps = inactiveOpsInGroups[groupName] ?? [];
+  const handleCalculateGoalsInOrder = useCallback(() => {
+    const plannerSettings = { ...settings.plannerSettings };
+    plannerSettings.calculateGoalsInOrder = !(plannerSettings?.calculateGoalsInOrder ?? true);
 
-      const operatorGoals = sortedGoals.map((operatorGoal) => {
-        const op = roster[operatorGoal.op_id] ?? defaultOperatorObject(operatorGoal.op_id, true);
-        const plannerGoals = getPlannerGoals(operatorGoal, {
-          ...op,
-          ...operatorJson[operatorGoal.op_id],
-        }).filter((g) => filter.filterFunction(g, depot, groupName, settings));
-
-        return { operatorGoal, plannerGoals, substantial: plannerGoals.length > 0, operator: op };
-      });
-      const hasSubstantialGoals = operatorGoals.some((goal) => goal.substantial);
-
-      return { groupName, index, operatorGoals, inactiveOps, hasSubstantialGoals };
-    });
-
-    if (settings.plannerSettings.sortEmptyGroupsToBottom) {
-      sortedGroups?.sort((a, b) => {
-        return a.hasSubstantialGoals === b.hasSubstantialGoals ? 0 : a.hasSubstantialGoals ? -1 : 1;
-      });
-    }
-    return sortedGroups;
-  }, [
-    groups,
-    groupedGoals,
-    roster,
-    filter,
-    depot,
-    inactiveOpsInGroups,
-    settings,
-  ]);
+    setSettings((s) => ({ ...s, plannerSettings }));
+    setAnchorEl(null);
+  }, [settings, setSettings, setAnchorEl]);
 
   const handleAutoRefreshGoals = useCallback(() => {
     const plannerSettings = { ...settings.plannerSettings };
@@ -770,12 +741,16 @@ const PlannerGoals = (props: Props) => {
               </SettingsMenuItem>
               <SettingsMenuItem
                 onClick={handleSortEmptyGroupsToBottom}
-                checked={settings.plannerSettings.sortEmptyGroupsToBottom}
-              >
+                checked={settings.plannerSettings.sortEmptyGroupsToBottom}>
                 Sort empty & excluded groups to bottom
               </SettingsMenuItem>
               <SettingsMenuItem onClick={handleAutoRefreshGoals} checked={settings.plannerSettings.autoRefreshGoals}>
                 Update & Clear Goals on Planner load
+              </SettingsMenuItem>
+              <SettingsMenuItem
+                onClick={handleCalculateGoalsInOrder}
+                checked={settings.plannerSettings.calculateGoalsInOrder}>
+                <Box display="flex" gap={1}><LowPriorityIcon />Calculate goals in order</Box>
               </SettingsMenuItem>
               <Divider />
               <MenuItem onClick={resetAllOpsInactivity}>
@@ -836,6 +811,10 @@ const PlannerGoals = (props: Props) => {
           }}
         >
           <Grid>
+            <IconButton size="large" onClick={handleCalculateGoalsInOrder}
+              color={(settings.plannerSettings?.calculateGoalsInOrder ?? true) ? "primary" : "default"}>
+              <LowPriorityIcon fontSize="inherit" />
+            </IconButton>
             <IconButton size="large" onClick={() => setFilterOpen(true)}>
               <FilterAltOutlinedIcon fontSize="inherit" />
             </IconButton>
@@ -845,8 +824,8 @@ const PlannerGoals = (props: Props) => {
               id="search"
               autoComplete="off"
               label="Filter with list of groups, ops..."
-              value={filter.filters.search}
-              onChange={(e) => filter.setFilters({ ...filter.filters, search: e.target.value })}
+              value={filters.search}
+              onChange={(e) => setFilters({ ...filters, search: e.target.value })}
               size="small"
               fullWidth={true}
               slotProps={{
@@ -873,7 +852,7 @@ const PlannerGoals = (props: Props) => {
         </Grid>
         {goals &&
           groups &&
-          groupedGoalsMemo?.map(({ groupName, index, operatorGoals, inactiveOps }) => (
+          groupedGoalsMap?.map(({ groupName, index, operatorGoals, inactiveOps, completableOperators, completableByCraftingOperators }) => (
             <GoalGroup
               key={groupName}
               groupName={groupName}
@@ -893,8 +872,10 @@ const PlannerGoals = (props: Props) => {
               onOpSelect={handleOpSelect}
               onGroupSelect={toggleGroupOpsInactivity}
               getCheckboxState={getGroupCheckboxState}
+              completableOperators={completableOperators}
+              completableByCraftingOperators={completableByCraftingOperators}
             >
-              {operatorGoals.map(({ operatorGoal, plannerGoals, substantial, operator }) => (
+              {operatorGoals.map(({ operatorGoal, plannerGoals, substantial, operator, completable, completableByCrafting }) => (
                 <Collapse in={substantial} key={operatorGoal.op_id}>
                   <OperatorGoals
                     key={operatorGoal.op_id}
@@ -906,21 +887,21 @@ const PlannerGoals = (props: Props) => {
                     completeAllGoalsFromOperator={onPlannerGoalGroupCompleteAllGoals}
                     onOpSelect={handleOpSelect}
                     onGoalRefresh={handleGoalRefresh}
+                    completable={completable}
+                    completableByCrafting={completableByCrafting}
                   >
-                    {plannerGoals.map((plannerGoal, index) => {
-                      const { completable, completableByCrafting } = calculateCompletableStatus(plannerGoal, depot, settings);
-                      return (
-                        <PlannerGoalCard
-                          key={index}
-                          goal={plannerGoal}
-                          groupName={groupName}
-                          onGoalDeleted={onPlannerGoalCardGoalDeleted}
-                          onGoalCompleted={onPlannerGoalCardGoalCompleted}
-                          completable={completable}
-                          completableByCrafting={completableByCrafting}
-                        />
-                      );
-                    })}
+                    {plannerGoals.map((plannerGoal, index) => (
+                      <PlannerGoalCard
+                        key={index}
+                        goal={plannerGoal}
+                        groupName={groupName}
+                        onGoalDeleted={onPlannerGoalCardGoalDeleted}
+                        onGoalCompleted={onPlannerGoalCardGoalCompleted}
+                        completable={plannerGoal.completable}
+                        completableByCrafting={plannerGoal.completableByCrafting}
+                        ingredients={plannerGoal.ingredients}
+                      />
+                    ))}
                   </OperatorGoals>
                 </Collapse>
               ))}
@@ -969,7 +950,9 @@ const PlannerGoals = (props: Props) => {
         }}
         goalGroups={groups}
       />
-      <GoalFilterDialog open={filterOpen} onClose={() => setFilterOpen(false)} {...filter} />
+      <GoalFilterDialog open={filterOpen} onClose={() => setFilterOpen(false)} {...{ filters, setFilters, filterFunction, clearFilters }}
+        handleCalculateGoalsInOrder={handleCalculateGoalsInOrder}
+        settings={settings} />
     </>
   );
 };

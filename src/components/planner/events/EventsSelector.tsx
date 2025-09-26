@@ -8,8 +8,10 @@ import {
     Stack,
     Typography,
     useTheme,
-    useMediaQuery
+    useMediaQuery,
+    IconButton
 } from '@mui/material';
+import ClearIcon from '@mui/icons-material/Clear';
 import ItemBase from "components/planner/depot/ItemBase";
 import { EventsSelectorProps } from "types/events"
 import { getItemBaseStyling, customItemsSort, formatNumber, getFarmCSS } from "util/fns/depot/itemUtils";
@@ -23,6 +25,7 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
         eventsData,
         selectedEvent,
         onChange,
+        onOpen,
     } = props;
 
     let label: string;
@@ -51,7 +54,7 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
         }
     };
 
-    const [isSelectFinished, setIsSelectFinished] = useState(true);
+    const [isSelecClosed, setIsSelectClosed] = useState(true);
 
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -60,7 +63,6 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
         .sort(([, a], [, b]) => a.index - b.index), [eventsData]);
 
     const handleChange = (eventIndex: number) => {
-        setIsSelectFinished(true);
         if (eventIndex === -1) {
             onChange?.({ ...createEmptyNamedEvent() });
             return;
@@ -73,10 +75,6 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
         return;
     };
 
-    const handleOnClick = () => {
-        setIsSelectFinished(true);
-    }
-
     return (<FormControl sx={{ flexGrow: 1, width: "100%" }}>
         <InputLabel>{label}</InputLabel>
         <Select
@@ -87,21 +85,34 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
                 : -1}
             onChange={(e) => handleChange(Number(e.target.value))}
             onOpen={() => {
-                setIsSelectFinished(false)
+                setIsSelectClosed(false)
+                onOpen?.();
             }}
+            onClose={() => setIsSelectClosed(true)}
             label={label}
             fullWidth
             sx={{ maxHeight: "3rem", minHeight: "3rem", overflow: "hidden" }}
+            IconComponent={(props) => (
+                <IconButton
+                        size="small"
+                        onClick={(e) => {
+                            e.stopPropagation(); // prevent select open
+                            handleChange(-1); // reset to default
+                        }}
+                    >
+                        <ClearIcon fontSize="small" />
+                    </IconButton>
+            )}
         >
             <MenuItem value={-1} key={-1} className="no-underline">{emptyOption}</MenuItem>
             <Divider component="li" />
             {eventsList
                 .map(([name, event]) => (
-                    <MenuItem value={event.index} key={event.index} className="no-underline" onClick={handleOnClick}>
+                    <MenuItem value={event.index} key={event.index} className="no-underline">
                         <Stack direction="row" justifyContent="flex-end" alignItems="center" width="stretch" flexWrap="wrap">
                             <Typography sx={{ mr: "auto", whiteSpace: "wrap", fontSize: fullScreen ? "small" : "unset" }}>
                                 {`${event.index}: ${name} `}
-                            </Typography> {!isSelectFinished ? (
+                            </Typography> {!isSelecClosed ? (
                                 <Stack direction="row">
                                     {(event.farms ?? []).map((id) => [id, 0] as [string, number])
                                         .concat(Object.entries(event.materials)

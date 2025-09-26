@@ -2,7 +2,14 @@ import { useState } from 'react';
 import useLocalStorage from './useLocalStorage';
 import { TrackerDefaults } from 'types/events';
 
-export function useEventsDefaults() {
+export interface EventsDefaultsHook {
+  readonly trackerDefaults: TrackerDefaults;
+  readonly loading: boolean;
+  readonly error: string | null;
+  readonly fetchDefaults: () => Promise<void>;
+}
+
+export default function useEventsDefaults(): EventsDefaultsHook {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -62,5 +69,5 @@ export function useEventsDefaults() {
 }, []
 ); */
 
-  return { trackerDefaults, loading, error, fetchDefaults: fetchData };
+  return { trackerDefaults, loading, error, fetchDefaults: fetchData } as const;
 }

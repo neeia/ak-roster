@@ -1,6 +1,6 @@
 import { Database } from "./supabase";
-import { OperatorData } from "./operators/operator";
-import { OperatorGoalCategory, PlannerGoal } from "./goal";
+import { Operator, OperatorData } from "./operators/operator";
+import { OperatorGoalCategory, PlannerGoal, PlannerGoalCalculated } from "./goal";
 import operatorJson from "../data/operators";
 import { MAX_LEVEL_BY_RARITY } from "../util/changeOperator";
 import getNumSkills from "util/fns/getNumSkills";
@@ -15,6 +15,23 @@ export type GoalDataInsert = Omit<GoalsTable["Insert"], "user_id" | "modules_fro
   modules_from?: Record<string, number> | null;
   modules_to?: Record<string, number> | null;
 };
+
+export type GoalsFilteredCalculatedMap = {
+    groupName: string;
+    index: number;
+    operatorGoals: {
+        operatorGoal: GoalData;
+        plannerGoals: PlannerGoalCalculated[];
+        substantial: boolean;
+        operator: Operator;
+        completable: boolean;
+        completableByCrafting: boolean;
+    }[];
+    inactiveOps: string[];
+    hasSubstantialGoals: boolean;
+    completableOperators: string[];
+    completableByCraftingOperators: string[];
+}[]
 
 const isNumber = (value: any) => typeof value === "number";
 

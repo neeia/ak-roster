@@ -20,14 +20,18 @@ import { OperatorGoalCategory } from "types/goal";
 import { GoalFilterHook } from "util/hooks/useGoalFilter";
 import { getItemsByIngredient, isMaterial } from "util/fns/depot/itemUtils";
 import AddIcon from '@mui/icons-material/Add';
+import LowPriorityIcon from '@mui/icons-material/LowPriority';
+import { LocalStorageSettings } from "types/localStorageSettings";
 
 interface Props extends GoalFilterHook {
   open: boolean;
   onClose: () => void;
+  handleCalculateGoalsInOrder: () => void;
+  settings: LocalStorageSettings;
 }
 
 const GoalFilterDialog = memo((props: Props) => {
-  const { open, onClose, filters, setFilters, clearFilters } = props;
+  const { open, onClose, filters, setFilters, clearFilters, handleCalculateGoalsInOrder, settings } = props;
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -130,6 +134,12 @@ const GoalFilterDialog = memo((props: Props) => {
                 >
                   Lack Materials
                 </ToggleButton>
+                <IconButton
+                  color={(settings.plannerSettings?.calculateGoalsInOrder ?? true) ? "primary" : "default"}
+                  onClick={() => handleCalculateGoalsInOrder()}
+                >
+                  <LowPriorityIcon />
+                </IconButton>
               </ToggleButtonGroup>
             </Select>
             <Select title="Categories" nobg>

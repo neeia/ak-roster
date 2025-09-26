@@ -38,17 +38,23 @@ import ItemBase from "../depot/ItemBase";
 import DepotItem from "types/depotItem";
 import { Item } from "types/item";
 import canCompleteByCrafting from "util/fns/depot/canCompleteByCrafting";
-import GoalData, { GoalDataInsert, getPlannerGoals } from "types/goalData";
+import GoalData, { GoalDataInsert, GoalsFilteredCalculatedMap, getPlannerGoals } from "types/goalData";
 import getGoalIngredients from "util/fns/depot/getGoalIngredients";
 import { OperatorData } from "types/operators/operator";
 import operators from "data/operators";
 import useOperators from "util/hooks/useOperators";
 import { defaultOperatorObject, MAX_SKILL_LEVEL_BY_PROMOTION } from "util/changeOperator"
 import depotToExp from "util/fns/depot/depotToExp";
-import { customItemsSort, EXP, farmItemsSort, formatNumber, getFarmCSS, getItemBaseStyling } from "util/fns/depot/itemUtils";
+import { cloneCompleteDepot, customItemsSort, EXP, farmItemsSort, formatNumber, getFarmCSS, getItemBaseStyling } from "util/fns/depot/itemUtils";
 import EventsSelector from "components/planner/events/EventsSelector";
-import { EventsData, NamedEvent } from "types/events";
+import { EventsData, NamedEvent, UpcomingMaterialsData } from "types/events";
 import { createEmptyNamedEvent } from "util/fns/eventUtils";
+import { LocalStorageSettings } from "types/localStorageSettings";
+import Image from "components/base/Image";
+import imageBase from "util/imageBase";
+import LowPriorityIcon from '@mui/icons-material/LowPriority';
+import PivotTableChartIcon from '@mui/icons-material/PivotTableChart';
+import { CompletionIndicator } from "../goals/CompletionIndicator";
 
 type GoalBuilder = Partial<GoalDataInsert>;
 
@@ -60,7 +66,16 @@ interface Props {
     expOwned: number;
     goalsMaterials: Record<string, number>;
     openEvents: (state: boolean) => void;
-    eventsData: EventsData;
+    eventsSource: {
+        source: EventsData,
+        name: String
+    }
+    upcomingMaterialsData: UpcomingMaterialsData;
+    selectedEvent: NamedEvent,
+    setSelectedEvent: (namedEvent: NamedEvent) => void;
+    groupedGoalsMap: GoalsFilteredCalculatedMap,
+    settings: LocalStorageSettings;
+    setSettings: (settings: LocalStorageSettings | ((settings: LocalStorageSettings) => LocalStorageSettings)) => void;
 }
 
 const Transition = React.forwardRef(function Transition(
@@ -73,7 +88,10 @@ const Transition = React.forwardRef(function Transition(
 });
 
 const MaterialsSummaryDialog = React.memo((props: Props) => {
-    const { open, onClose, depot, expOwned, goalsMaterials, goalData, openEvents, eventsData } = props;
+    const { open, onClose, depot, expOwned, goalsMaterials, goalData, openEvents, eventsSource, upcomingMaterialsData,
+        selectedEvent, setSelectedEvent,
+        groupedGoalsMap,
+        settings, setSettings } = props;
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
     const containerRef = useRef<HTMLElement>(null);
@@ -85,12 +103,13 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     const [balanceValue, setBalanceValue] = useState<number>(100);
     const [applyBalance, setApplyBalance] = useState(false);
     const [balanceType, setBalanceType] = useState<string | null>(null);
-
-    const [selectedEvent, setSelectedEvent] = useState<NamedEvent>(createEmptyNamedEvent());
+    const [pivot, setPivot] = useState<boolean>(false);
 
     const [isAccordionExpanded, setAccordionExpanded] = useState(false);
 
     const [roster] = useOperators();
+
+    const eventsData = eventsSource.source;
 
     const HELP_INFORMATION =
         <>
@@ -159,6 +178,13 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     const handleClose = () => {
         onClose();
     }
+
+    const handleCalculateGoalsInOrder = useCallback(() => {
+        const plannerSettings = { ...settings.plannerSettings };
+        plannerSettings.calculateGoalsInOrder = !(plannerSettings?.calculateGoalsInOrder ?? true);
+
+        setSettings((s) => ({ ...s, plannerSettings }));
+    }, [settings, setSettings]);
 
     const getMaterialsFromGoalData = (goalData: GoalData[]) => {
 
@@ -277,7 +303,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         };
     }
 
-    const getTotalMaterialsUptoSelectedEvent = useCallback(() => {
+    const getTotalMaterialsUptoSelectedEvent = useMemo(() => {
         if (!eventsData || selectedEvent.index === -1) return { materials: {}, farmTimes: {}, infiniteTimes: {} };
 
         const _eventsData = eventsData;
@@ -490,10 +516,9 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         if (!open) return {
             sortedNeedToFarm: [],
             sortedNeedToCraft: [],
+            sortedNeedToCraftByOpInGroup: [],
             sortedPossibleCraft: [],
             sortedEventMaterials: [],
-            farmTimes: {},
-            infiniteTimes: {},
         };
 
         const craftTier = 4;
@@ -506,26 +531,11 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             "Data", //module ingredients
         ];
 
-        // Create a copy of depot from itemsJson list of items to have full itemsList for calcs
-        const _depot = Object.fromEntries(
-            Object.keys(itemsJson).map((key) => [
-                key,
-                { material_id: key, stock: depot[key]?.stock ?? 0 },
-            ])
-        );
-
-        _depot["EXP"] = { material_id: "EXP", stock: expOwned };
-
-        const { materials: _eventMaterials, farmTimes, infiniteTimes } = getTotalMaterialsUptoSelectedEvent();
-
-        Object.entries(_eventMaterials).reduce((acc, [id, quantity]) => {
-            if (acc[id]) {
-                acc[id].stock = (acc[id].stock ?? 0) + quantity;
-            } else {
-                acc[id] = { material_id: id, stock: quantity };
-            }
-            return acc;
-        }, _depot);
+        const { materials: _eventMaterials } = upcomingMaterialsData;
+        //clone depot & add upcoming mats
+        const _depot = cloneCompleteDepot(depot, _eventMaterials);
+        //Fix EXP on top
+        _depot["EXP"] = { material_id: "EXP", stock: expOwned + (_eventMaterials["EXP"] ?? 0) };
 
         const sortedEventMaterials = Object.entries(_eventMaterials)
             .filter(([id]) => !EXP.includes(id))
@@ -551,10 +561,63 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
 
         addBalanceValue(_materialsNeeded);
 
-        const sortedNeedToCraft = Object.entries(_materialsNeeded)
-            .filter(([id, need]) => craftingList.includes(id) && need - (_depot[id]?.stock ?? 0) > 0)
-            .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB, true))
-            .map(([id, need]) => ([id, need - (_depot[id]?.stock ?? 0)] as [string, number]));
+        let sortedNeedToCraft: [string, number][] = [];
+        let sortedNeedToCraftByOpInGroup: { groupIndex: number, op_id: string, materials: [string, number][] }[] = []
+        if (!(settings.plannerSettings?.calculateGoalsInOrder ?? true)) {
+
+            sortedNeedToCraft = Object.entries(_materialsNeeded)
+                .filter(([id, need]) => craftingList.includes(id) && need - (_depot[id]?.stock ?? 0) > 0)
+                .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB, true))
+                .map(([id, need]) => ([id, need - (_depot[id]?.stock ?? 0)] as [string, number]));
+        } else {
+            //ordered per-group - per-operator scenario
+            let runningDepot = structuredClone(_depot);
+            groupedGoalsMap
+                .sort((a, b) => a.index - b.index)
+                .filter(group => group.hasSubstantialGoals)
+                .forEach(group => {
+                    group.operatorGoals
+                        .filter(opGoal => opGoal.substantial)
+                        .forEach(opGoal => {
+                            const opId = opGoal.operator.op_id;
+
+                            let opInGroupMaterialsNeeded: Record<string, number> = {};
+                            opGoal.plannerGoals.forEach(goal => {
+                                goal.ingredients.forEach(ing => {
+                                    opInGroupMaterialsNeeded[ing.id] = (opInGroupMaterialsNeeded[ing.id] ?? 0) + ing.quantity;
+                                });
+                            });
+                            //mutates opInGroupMaterialsNeeded
+                            canCompleteByCrafting(opInGroupMaterialsNeeded, runningDepot, craftingList);
+
+                            const opInGroupMissingToCraft: [string, number][] = [];
+
+                            Object.entries(opInGroupMaterialsNeeded)
+                                .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB, true))
+                                .forEach(([id, need]) => {
+                                    const have = runningDepot[id]?.stock ?? 0;
+                                    const missing = Math.max(0, need - have);
+
+                                    // consume depot
+                                    if (runningDepot[id]) {
+                                        runningDepot[id].stock = Math.max(0, have - need);
+                                    }
+
+                                    if (missing > 0 && craftingList.includes(id)) {
+                                        opInGroupMissingToCraft.push([id, missing]);
+                                    }
+                                });
+
+                            if (opInGroupMissingToCraft.length > 0) {
+                                sortedNeedToCraftByOpInGroup.push({
+                                    groupIndex: group.index,
+                                    op_id: opId,
+                                    materials: opInGroupMissingToCraft
+                                });
+                            }
+                        });
+                });
+        }
 
         const sortedNeedToFarm = Object.entries(_materialsNeeded)
             .filter(([id, need]) => !craftingList.includes(id) && need - (_depot[id]?.stock ?? 0) > 0)
@@ -603,17 +666,18 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         return {
             sortedNeedToFarm,
             sortedNeedToCraft,
+            sortedNeedToCraftByOpInGroup,
             sortedPossibleCraft,
             sortedEventMaterials,
-            farmTimes,
-            infiniteTimes
         }
     }, [open, goalsMaterials, depot, expOwned, includeCraftIds, selectedEvent,
-        getTier3StatisticFromMaterials, getTotalMaterialsUptoSelectedEvent,
-        addBalanceValue]
+        getTier3StatisticFromMaterials,
+        addBalanceValue, upcomingMaterialsData, groupedGoalsMap,
+        settings.plannerSettings.calculateGoalsInOrder]
     );
 
-    const { sortedNeedToFarm, sortedNeedToCraft, sortedPossibleCraft, sortedEventMaterials, farmTimes, infiniteTimes } = useMemo(calculateSummaryTab, [calculateSummaryTab]);
+    const { sortedNeedToFarm, sortedNeedToCraft, sortedNeedToCraftByOpInGroup, sortedPossibleCraft, sortedEventMaterials } = useMemo(calculateSummaryTab, [calculateSummaryTab]);
+    const { farmTimes, infiniteTimes } = upcomingMaterialsData;
 
     const getTotalsTooltipText = useCallback((id: string) => {
         const lines: string[] = [];
@@ -636,7 +700,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                 onClose={handleClose}
                 TransitionComponent={Transition}
                 fullScreen={fullScreen}
-                keepMounted fullWidth maxWidth="md">
+                keepMounted fullWidth maxWidth="lg">
                 <DialogTitle
                     sx={{
                         display: "grid",
@@ -760,7 +824,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                             mountOnEnter
                             unmountOnExit>
                             <Box>
-                                {sortedNeedToFarm.length === 0 && sortedNeedToCraft.length === 0 ? (
+                                {sortedNeedToFarm.length === 0 &&
+                                    (sortedNeedToCraft.length === 0 && sortedNeedToCraftByOpInGroup.length === 0) ? (
                                     <>
                                         <Typography variant="h3" p={2} fontWeight="bold">All requirements are met</Typography>
                                     </>
@@ -823,47 +888,103 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                 </Stack>
                                             </>
                                         ) : null}
-                                        {sortedNeedToCraft.length > 0 ? (
-                                            <>
-                                                <Typography variant="h3" p={1} fontWeight="bold">Craft high tier materials</Typography>
-                                                {sortedNeedToCraft
-                                                    .map(([id, need]) => (
-                                                        <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary", fullScreen).itemBaseSize}>
-                                                            <Typography {...getItemBaseStyling("summary", fullScreen).numberCSS}>
-                                                                {formatNumber(need)}
-                                                            </Typography>
-                                                        </ItemBase>
-                                                    ))}
-                                            </>
-                                        ) : null}
-                                    </>
-                                )}
-                                {sortedEventMaterials.length > 0 && (
-                                    <Accordion
-                                        onChange={(_, expanded) => setAccordionExpanded(expanded)}
-                                        expanded={isAccordionExpanded}>
-                                        <AccordionSummary >
-                                            <Stack direction="row" width="100%" justifyContent="space-between">Income up to the selected event is deducted
-                                                {isAccordionExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                                        {(sortedNeedToCraft.length > 0 || sortedNeedToCraftByOpInGroup.length > 0) && (
+                                            <><Stack direction="row" alignItems="center">
+                                                <IconButton size="large" onClick={handleCalculateGoalsInOrder}
+                                                    color={(settings.plannerSettings?.calculateGoalsInOrder ?? true) ? "primary" : "default"}>
+                                                    <LowPriorityIcon fontSize="inherit" />
+                                                </IconButton>
+                                                <IconButton disabled={!(settings.plannerSettings?.calculateGoalsInOrder ?? true)}
+                                                    size="large" onClick={() => setPivot(prev => !prev)}>
+                                                    <PivotTableChartIcon />
+                                                </IconButton>
+                                                <Typography variant="h3" p={1} fontWeight="bold">{`Craft high tier materials${(settings.plannerSettings?.calculateGoalsInOrder ?? true) ? " in operators order" : ""}`}</Typography>
                                             </Stack>
-                                        </AccordionSummary>
-                                        <AccordionDetails>
-                                            {sortedEventMaterials
-                                                .map(([id, num]) => (
-                                                    <Tooltip key={`${id}-tip`} title={getTotalsTooltipText(id)}>
-                                                        <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary_totals", fullScreen).itemBaseSize}
-                                                            sx={{
-                                                                ...(farmTimes[id] && getFarmCSS("round")),
-                                                                ...(infiniteTimes[id] && { ...getFarmCSS("round", "text.primary") })
-                                                            }}>
-                                                            <Typography {...getItemBaseStyling("summary_totals", fullScreen).numberCSS}>
-                                                                {(num === 0 && infiniteTimes[id]) ? formatNumber(Infinity) : formatNumber(num)}
-                                                            </Typography>
-                                                        </ItemBase>
-                                                    </Tooltip>
-                                                ))}
-                                        </AccordionDetails>
-                                    </Accordion>
+                                                {!(settings.plannerSettings?.calculateGoalsInOrder ?? true) ? (
+                                                    <>
+                                                        {sortedNeedToCraft
+                                                            .map(([id, need]) => (
+                                                                <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary", fullScreen).itemBaseSize}>
+                                                                    <Typography {...getItemBaseStyling("summary", fullScreen).numberCSS}>
+                                                                        {formatNumber(need)}
+                                                                    </Typography>
+                                                                </ItemBase>
+                                                            ))}
+                                                    </>) : (
+                                                    <Stack
+                                                        direction={pivot ? "column" : "row"}
+                                                        flexWrap={pivot ? "nowrap" : "wrap"}
+                                                        alignItems={pivot ? "start" : "center"}
+                                                    >
+                                                        {sortedNeedToCraftByOpInGroup
+                                                            .map(({ groupIndex, op_id, materials }) => {
+                                                                const avatar = (
+                                                                    <CompletionIndicator key={`${groupIndex}-${op_id}`} ml={pivot ? 0 : 2} completable={false} completableByCrafting={true}>
+                                                                        <Image
+                                                                            src={`${imageBase}/avatars/${op_id}.webp`}
+                                                                            width={getItemBaseStyling("summary_craft", fullScreen).itemBaseSize}
+                                                                            height={getItemBaseStyling("summary_craft", fullScreen).itemBaseSize}
+                                                                            alt=""
+                                                                        />
+                                                                    </CompletionIndicator>
+                                                                );
+                                                                const matsNodes = materials.map(([id, need]) => (
+                                                                    <ItemBase
+                                                                        key={`${groupIndex}-${op_id}-${id}`}
+                                                                        itemId={id}
+                                                                        size={getItemBaseStyling("summary", fullScreen).itemBaseSize}
+                                                                    >
+                                                                        <Typography {...getItemBaseStyling("summary", fullScreen).numberCSS}>
+                                                                            {formatNumber(need)}
+                                                                        </Typography>
+                                                                    </ItemBase>
+                                                                ));
+                                                                return pivot ? (
+                                                                    <Stack
+                                                                        key={`row-${groupIndex}-${op_id}`}
+                                                                        direction="row"
+                                                                        alignItems="center"
+                                                                        flexWrap="wrap"
+                                                                    >
+                                                                        {avatar}
+                                                                        {matsNodes}
+                                                                    </Stack>
+                                                                ) : (
+                                                                    [avatar, ...matsNodes]
+                                                                );
+                                                            })}
+                                                    </Stack>)
+                                                }
+                                            </>
+                                        )}
+                                        {sortedEventMaterials.length > 0 && (
+                                            <Accordion
+                                                onChange={(_, expanded) => setAccordionExpanded(expanded)}
+                                                expanded={isAccordionExpanded}>
+                                                <AccordionSummary >
+                                                    <Stack direction="row" width="100%" justifyContent="space-between">Income up to the selected event is deducted
+                                                        {isAccordionExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                                                    </Stack>
+                                                </AccordionSummary>
+                                                <AccordionDetails>
+                                                    {sortedEventMaterials
+                                                        .map(([id, num]) => (
+                                                            <Tooltip key={`${id}-tip`} title={getTotalsTooltipText(id)}>
+                                                                <ItemBase key={id} itemId={id} size={getItemBaseStyling("summary_totals", fullScreen).itemBaseSize}
+                                                                    sx={{
+                                                                        ...(farmTimes[id] && getFarmCSS("round")),
+                                                                        ...(infiniteTimes[id] && { ...getFarmCSS("round", "text.primary") })
+                                                                    }}>
+                                                                    <Typography {...getItemBaseStyling("summary_totals", fullScreen).numberCSS}>
+                                                                        {(num === 0 && infiniteTimes[id]) ? formatNumber(Infinity) : formatNumber(num)}
+                                                                    </Typography>
+                                                                </ItemBase>
+                                                            </Tooltip>
+                                                        ))}
+                                                </AccordionDetails>
+                                            </Accordion>
+                                        )}
+                                    </>
                                 )}
                             </Box>
                         </Slide>
@@ -958,20 +1079,20 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                     justifyContent: "flex-start",
                     width: fullScreen ? "90%" : "100%"
                 }} >
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => {
+                            handleClose();
+                            openEvents(true);
+                        }}
+                        sx={{ order: fullScreen ? 2 : 1, whiteSpace: "nowrap", minWidth: "fit-content" }}
+                    >{fullScreen ? "Events" : "Events tracker"}
+                    </Button>
                     {tab === "summary" && <>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={() => {
-                                handleClose();
-                                openEvents(true);
-                            }}
-                            sx={{ order: fullScreen ? 2 : 1, whiteSpace: "nowrap", minWidth: "fit-content" }}
-                        >{fullScreen ? "Events" : "Events tracker"}
-                        </Button>
                         <Box sx={{ width: "100%", order: fullScreen ? 1 : 2 }}>
                             <EventsSelector
-                                emptyItem={"Select future event (tracker, or defaults)"}
+                                emptyItem={`Select future event from ${eventsSource.name}`}
                                 dataType={'events'}
                                 eventsData={eventsData}
                                 selectedEvent={selectedEvent ?? createEmptyNamedEvent()}
