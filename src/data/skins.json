@@ -1927,6 +1927,12 @@
       "skinName": "Amidst the Pieces",
       "avatarId": "char_4017_puzzle_epoque#29",
       "sortId": 80
+    },
+    {
+      "skinId": "char_4017_puzzle@shining#3",
+      "skinName": "冷色摇滚",
+      "avatarId": "char_4017_puzzle_shining#3",
+      "sortId": 388
     }
   ],
   "char_4144_chilc": [
@@ -3155,6 +3161,12 @@
       "skinName": "Dusk Wisteria",
       "avatarId": "char_1011_lava2_nian#6",
       "sortId": 125
+    },
+    {
+      "skinId": "char_1011_lava2@whirlwind#9",
+      "skinName": "镇邪焱",
+      "avatarId": "char_1011_lava2_whirlwind#9",
+      "sortId": 154
     }
   ],
   "char_489_serum": [
@@ -3851,6 +3863,12 @@
       "skinName": null,
       "avatarId": "char_4155_talr_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4155_talr@yun#9",
+      "skinName": "桂影窗",
+      "avatarId": "char_4155_talr_yun#9",
+      "sortId": 409
     }
   ],
   "char_107_liskam": [
@@ -6697,6 +6715,12 @@
       "skinName": null,
       "avatarId": "char_003_kalts_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_003_kalts@sale#14",
+      "skinName": "时遗",
+      "avatarId": "char_003_kalts_sale#14",
+      "sortId": 22
     },
     {
       "skinId": "char_003_kalts@boc#6",
