@@ -38,10 +38,10 @@ const ItemNeeded: React.FC<Props> = React.memo((props) => {
     component,
     ...rest
   } = props;
-  const { itemId, quantity } = rest;
+  const { itemId, quantity, upcomingQuantity } = rest;
   const item: Item = items[itemId as keyof typeof items];
   const isCraftable = Boolean(item.ingredients);
-  const isComplete = owned >= quantity;
+  const isComplete = owned >= Math.max(0,quantity - (upcomingQuantity?? 0));
   const [rawValue, setRawValue] = useState<string>("");
 
   const [focused, setFocused] = useState(false);

@@ -24,6 +24,7 @@ import Image from "components/base/Image";
 import React, { memo, useCallback, useState } from "react";
 import GoalData from "types/goalData";
 import imageBase from "util/imageBase";
+import { CompletionIndicator } from "./CompletionIndicator";
 
 interface Props {
   operatorGoals: GoalData[] | undefined;
@@ -37,6 +38,8 @@ interface Props {
   onOpSelect: (opId: string, groupName: string) => void;
   onGroupSelect: (groupName: string) => void;
   getCheckboxState: (groupName: string) => { checkboxText: string, checkboxState: { checked: boolean; indeterminate: boolean; disabled: boolean } };
+  completableOperators: string[];
+  completableByCraftingOperators: string[];
 }
 
 const GoalGroup = memo((props: Props) => {
@@ -52,6 +55,8 @@ const GoalGroup = memo((props: Props) => {
     onOpSelect,
     onGroupSelect,
     getCheckboxState,
+    completableOperators,
+    completableByCraftingOperators,
   } = props;
 
   const [expanded, setExpanded] = useState<boolean>(defaultExpanded);
@@ -206,26 +211,31 @@ const GoalGroup = memo((props: Props) => {
                             e.stopPropagation();
                             onOpSelect(operatorGoal.op_id, groupName);
                           }}
+                        ><CompletionIndicator
+                          completable={completableOperators.includes(operatorGoal.op_id)}
+                          completableByCrafting={completableByCraftingOperators.includes(operatorGoal.op_id)}
+                          orientation="horizontal"
                         >
-                          <Image
-                            src={imgUrl}
-                            width={48}
-                            height={48}
-                            alt=""
-                            sx={{
-                              borderBottomLeftRadius: "50%",
-                              borderTopLeftRadius: 8,
-                              borderBottomRightRadius: 4,
-                              filter: (theme) =>
-                                `drop-shadow(-4px -2px 4px ${alpha(theme.palette.background.paper, 0.5)})
+                            <Image
+                              src={imgUrl}
+                              width={48}
+                              height={48}
+                              alt=""
+                              sx={{
+                                borderBottomLeftRadius: "50%",
+                                borderTopLeftRadius: 8,
+                                borderBottomRightRadius: 4,
+                                filter: (theme) =>
+                                  `drop-shadow(-4px -2px 4px ${alpha(theme.palette.background.paper, 0.5)})
                                  ${isEnabled ? "grayscale(0)" : "grayscale(1) opacity(0.6)"}`,
-                              ml: -1.5,
-                              "&:hover": {
-                                backgroundColor: (theme) => alpha(theme.palette.error.dark, isEnabled ? 0.25 : 1)
-                              },
+                                ml: -1.5,
+                                "&:hover": {
+                                  backgroundColor: (theme) => alpha(theme.palette.error.dark, isEnabled ? 0.25 : 1)
+                                },
 
-                            }}
-                          />
+                              }}
+                            />
+                          </CompletionIndicator>
                         </Box>
                       );
                     })}

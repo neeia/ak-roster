@@ -18,7 +18,7 @@ const canCompleteByCrafting = (
   const plannedChipCrafts: string[] = [];
 
   // 1. Save original recipe
-  const _materialsNeeded = { ...materialsNeeded };
+  const _materialsNeeded = structuredClone(materialsNeeded);
 
   // 2. populate number of ingredients required for items being crafted
   const ingredientToCraftedItemsMapping: Record<string, string[]> = {};

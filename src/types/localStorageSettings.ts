@@ -15,6 +15,7 @@ export interface PlannerSettings {
   sortEmptyGroupsToBottom: boolean;
   inactiveOpsInGroups: InactiveOpsInGroups;
   autoRefreshGoals: boolean;
+  calculateGoalsInOrder: boolean;
 }
 
 const plannerSettings: PlannerSettings = {
@@ -22,6 +23,7 @@ const plannerSettings: PlannerSettings = {
   sortEmptyGroupsToBottom: false,
   inactiveOpsInGroups: {},
   autoRefreshGoals: true,
+  calculateGoalsInOrder: true,
 };
 
 export interface DepotSettings {

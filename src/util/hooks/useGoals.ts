@@ -9,6 +9,15 @@ import { combineGoals } from "util/fns/planner/combineGoals";
 import { enqueueSnackbar } from "notistack";
 import _ from "lodash";
 
+export interface GoalsHook {
+    readonly goals: GoalData[];
+    readonly updateGoals: (goalsData: GoalDataInsert[]) => Promise<void>;
+    readonly removeAllGoals: () => Promise<void>;
+    readonly removeAllGoalsFromGroup: (groupName: string, cleanLocal?: boolean) => Promise<void>;
+    readonly removeAllGoalsFromOperator: (opId: string, groupName: string) => Promise<void>;
+    readonly changeLocalGoalGroup: (oldGoalGroup: string, newGoalGroup: string) => Promise<void>;
+}
+
 const fillNull = (goal: GoalDataInsert, index: number): GoalDataInsert => {
   const {
     op_id,

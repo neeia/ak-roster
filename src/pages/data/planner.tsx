@@ -4,10 +4,22 @@ import Layout from "components/Layout";
 import useGoals from "util/hooks/useGoals";
 import useDepot from "util/hooks/useDepot";
 import { Box, BoxProps, Tab, Tabs } from "@mui/material";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import useSettings from "util/hooks/useSettings";
 import useGoalFilter from "util/hooks/useGoalFilter";
 import { getPlannerGoals } from "types/goalData";
+import useGoalGroups from "util/hooks/useGoalGroups";
+import useOperators from "util/hooks/useOperators";
+import { defaultOperatorObject } from "util/changeOperator";
+import operatorJson from "data/operators";
+import calculateCompletableStatus from "util/fns/planner/calculateCompletableStatus";
+import { PlannerGoal, PlannerGoalCalculated } from "types/goal";
+import _ from "lodash";
+import useEvents from "util/hooks/useEvents";
+import useEventsDefaults from "util/hooks/useEventsDefaults";
+import { createEmptyNamedEvent, getTotalMaterialsUptoSelectedEvent } from "util/fns/eventUtils";
+import { NamedEvent } from "types/events";
+import { cloneCompleteDepot } from "util/fns/depot/itemUtils";
 
 interface TabPanelProps extends BoxProps {
   index: number;
@@ -50,16 +62,109 @@ const PlannerGoals = dynamic(() => import("components/planner/goals/PlannerGoals
 
 const Goals: NextPage = () => {
   const [depot, putDepot, resetDepot, depotIsUnsaved, refreshDepotDebounce] = useDepot();
-  const { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator, changeLocalGoalGroup } = useGoals();
+
   const [value, setValue] = useState(1);
   const [settings, setSettings] = useSettings();
-  const filters = useGoalFilter();
-  const inactiveOpsInGroups = { ...settings.plannerSettings.inactiveOpsInGroups };
 
-  const plannerGoals = goals
-    .flatMap((goal) => getPlannerGoals(goal).map((g) => ({ goal: g, group: goal.group_name })))
-    .filter(({ goal, group }) => filters.filterFunction(goal, depot, group, settings))
-    .map(({ goal }) => goal);
+  const filtersHook = useGoalFilter();
+  const goalsHook = useGoals();
+  const groupsHook = useGoalGroups();
+
+  const [roster, onChange] = useOperators();
+
+  const eventsHook = useEvents();
+  const eventsDefaultsHook = useEventsDefaults();
+  const [selectedEvent, setSelectedEvent] = useState<NamedEvent>(createEmptyNamedEvent());
+
+  //calculate + filter for MaterialsNeeded and PlannerGoals, once at top level 
+  const upcomingEventsSource = useMemo(() => {
+    return Object.keys(eventsHook.eventsData ?? {}).length > 0 ? eventsHook.eventsData : eventsDefaultsHook.trackerDefaults?.eventsData ?? {}
+  }, [eventsHook.eventsData, eventsDefaultsHook.trackerDefaults])
+
+  const upcomingMaterialsData = useMemo(() => {
+    return getTotalMaterialsUptoSelectedEvent(upcomingEventsSource, selectedEvent);
+  }, [upcomingEventsSource, selectedEvent]);
+
+  const groupedGoals = useMemo(() => _.groupBy(goalsHook.goals, (goal) => goal.group_name), [goalsHook.goals]);
+
+  const groupedCalculatedGoals = useMemo(() => {
+
+    //0. clone depot & json & add upcoming mats if event is selected
+    let runningDepot = cloneCompleteDepot(depot, upcomingMaterialsData.materials);
+
+    //+goalGroups level
+    const sortedGroups = groupsHook.groups?.map((groupName, index) => {
+      const sortedGoals = groupedGoals[groupName]?.sort((a, b) => a.sort_order - b.sort_order) || [];
+      const inactiveOps = settings.plannerSettings?.inactiveOpsInGroups?.[groupName] ?? [];
+
+      //+operatorGoals level
+      const operatorGoals = sortedGoals.map((operatorGoal) => {
+        const op = roster[operatorGoal.op_id] ?? defaultOperatorObject(operatorGoal.op_id, true);
+
+        const plannerGoalsRaw = getPlannerGoals(operatorGoal, {
+          ...op,
+          ...operatorJson[operatorGoal.op_id],
+        })
+          //filter visible ops/groups
+          .filter((g) => filtersHook.filterFunction.byOperatorsAndGroups(g, groupName, settings))
+
+        //+plannerGoals level 
+        const { plannerGoals, plannerGoalsDisabled } = plannerGoalsRaw.reduce((acc, plannerGoal) => {
+          const { completable, completableByCrafting, depot: depotAfter, ingredients } =
+            calculateCompletableStatus(plannerGoal, runningDepot, settings);
+
+          if (settings?.plannerSettings?.calculateGoalsInOrder ?? true) {
+            runningDepot = depotAfter;
+          }
+          const plannerGoalCalculated = { ...plannerGoal, completable, completableByCrafting, ingredients };
+          if (filtersHook.filterFunction.byGoalAndMaterials(plannerGoalCalculated, settings, runningDepot)) {
+            acc.plannerGoals.push(plannerGoalCalculated);
+          } else {
+            acc.plannerGoalsDisabled.push(plannerGoalCalculated);
+          }
+
+          return acc;
+        }, { plannerGoals: [], plannerGoalsDisabled: [] } as {
+          plannerGoals: PlannerGoalCalculated[],
+          plannerGoalsDisabled: PlannerGoalCalculated[],
+        });
+        //-return plannerGoals
+
+        const completable = !inactiveOps.includes(op.op_id)
+          && plannerGoals.every((g) => g.completable)
+          && plannerGoalsDisabled.every((g) => g.completable);
+        const completableByCrafting = !inactiveOps.includes(op.op_id)
+          && !completable
+          && plannerGoals.every((g) => g.completable || g.completableByCrafting)
+          && plannerGoalsDisabled.every((g) => g.completable || g.completableByCrafting);
+
+        return { operatorGoal, plannerGoals, substantial: plannerGoals.length > 0, operator: op, completable, completableByCrafting };
+        //-return operatorGoals
+      });
+      const hasSubstantialGoals = operatorGoals.some((goal) => goal.substantial);
+
+      const completableOperators = operatorGoals
+        .filter((og) => og.completable)
+        .map((og) => og.operator.op_id);
+      const completableByCraftingOperators = operatorGoals
+        .filter((og) => og.completableByCrafting)
+        .map((og) => og.operator.op_id);
+
+      return { groupName, index, operatorGoals, inactiveOps, hasSubstantialGoals, completableOperators, completableByCraftingOperators };
+      //-return goalGroups
+    });
+
+    if (settings.plannerSettings.sortEmptyGroupsToBottom) {
+      sortedGroups?.sort((a, b) => {
+        return a.hasSubstantialGoals === b.hasSubstantialGoals ? 0 : a.hasSubstantialGoals ? -1 : 1;
+      });
+    }
+    return sortedGroups;
+  }, [groupsHook, groupedGoals, roster, filtersHook, depot, settings, upcomingMaterialsData.materials]);
+
+  const plannerGoals: PlannerGoal[] = useMemo(() => groupedCalculatedGoals.flatMap(group =>
+    group.operatorGoals.flatMap(opGoal => opGoal.plannerGoals)
+  ), [groupedCalculatedGoals]);
 
   const handleChange = (_: any, newValue: number) => {
     setValue(newValue);
@@ -86,7 +191,7 @@ const Goals: NextPage = () => {
         <TabPanel index={1} value={value}>
           <MaterialsNeeded
             goals={plannerGoals}
-            goalData={goals}
+            goalData={goalsHook.goals}
             depot={depot}
             putDepot={putDepot}
             resetDepot={resetDepot}
@@ -94,21 +199,27 @@ const Goals: NextPage = () => {
             setSettings={setSettings}
             depotIsUnsaved={depotIsUnsaved}
             refreshDepotDebounce={refreshDepotDebounce}
+            upcomingMaterialsData={upcomingMaterialsData}
+            selectedEvent={selectedEvent}
+            setSelectedEvent={setSelectedEvent}
+            groupedGoalsMap={groupedCalculatedGoals}
+            {...eventsHook}
+            {...eventsDefaultsHook}
           />
         </TabPanel>
         <TabPanel index={2} value={value}>
           <PlannerGoals
-            goals={goals}
             depot={depot}
             setDepot={putDepot}
-            updateGoals={updateGoals}
-            removeAllGoals={removeAllGoals}
-            removeAllGoalsFromGroup={removeAllGoalsFromGroup}
-            removeAllGoalsFromOperator={removeAllGoalsFromOperator}
-            changeLocalGoalGroup={changeLocalGoalGroup}
             settings={settings}
             setSettings={setSettings}
-            {...filters}
+            groupedGoals={groupedGoals}
+            groupedGoalsMap={groupedCalculatedGoals}
+            roster={roster}
+            onChange={onChange}
+            {...filtersHook}
+            {...groupsHook}
+            {...goalsHook}
           />
         </TabPanel>
       </Box>
