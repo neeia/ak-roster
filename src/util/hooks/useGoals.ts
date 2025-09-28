@@ -3,19 +3,15 @@ import supabase from "supabase/supabaseClient";
 import GoalData, { getPlannerGoals, GoalDataInsert, plannerGoalToGoalData } from "types/goalData";
 import handlePostgrestError from "util/fns/handlePostgrestError";
 import useLocalStorage from "./useLocalStorage";
-import { useAppSelector } from "legacyStore/hooks";
-import { selectGoals } from "legacyStore/goalsSlice";
-import { combineGoals } from "util/fns/planner/combineGoals";
-import { enqueueSnackbar } from "notistack";
 import _ from "lodash";
 
 export interface GoalsHook {
-    readonly goals: GoalData[];
-    readonly updateGoals: (goalsData: GoalDataInsert[]) => Promise<void>;
-    readonly removeAllGoals: () => Promise<void>;
-    readonly removeAllGoalsFromGroup: (groupName: string, cleanLocal?: boolean) => Promise<void>;
-    readonly removeAllGoalsFromOperator: (opId: string, groupName: string) => Promise<void>;
-    readonly changeLocalGoalGroup: (oldGoalGroup: string, newGoalGroup: string) => Promise<void>;
+  readonly goals: GoalData[];
+  readonly updateGoals: (goalsData: GoalDataInsert[]) => Promise<void>;
+  readonly removeAllGoals: () => Promise<void>;
+  readonly removeAllGoalsFromGroup: (groupName: string, cleanLocal?: boolean) => Promise<void>;
+  readonly removeAllGoalsFromOperator: (opId: string, groupName: string) => Promise<void>;
+  readonly changeLocalGoalGroup: (oldGoalGroup: string, newGoalGroup: string) => Promise<void>;
 }
 
 const fillNull = (goal: GoalDataInsert, index: number): GoalDataInsert => {
@@ -53,7 +49,6 @@ const fillNull = (goal: GoalDataInsert, index: number): GoalDataInsert => {
 
 function useGoals() {
   const [goals, _setGoals] = useLocalStorage<GoalData[]>("v3_goals", []);
-  const legacyGoals = useAppSelector(selectGoals);
   const [user_id, setUserId] = useState<string>("");
 
   const updateGoals = useCallback(
@@ -156,20 +151,6 @@ function useGoals() {
       let goalResult: GoalData[] = [];
       if (_goals?.length) {
         goalResult = _goals as GoalData[];
-      } else if (!goals.length && legacyGoals) {
-        enqueueSnackbar("Loading legacy planner data...", { variant: "info" });
-        const _goals = _.groupBy(legacyGoals.map(plannerGoalToGoalData), (g) => g.op_id ?? "");
-        const combinedGoals = Object.entries(_goals)
-          .filter(([, goals]) => goals?.length)
-          .map(([op_id, goals], i) => combineGoals(goals, op_id, user_id, i))
-          .filter((g) => g != null);
-        goalResult = combinedGoals;
-
-        const { error } = await supabase.from("goals").insert(goalResult);
-        if (error) handlePostgrestError(error);
-        else {
-          enqueueSnackbar("Finished loading data.", { variant: "success" });
-        }
       }
 
       if (!isCanceled) _setGoals(goalResult);
