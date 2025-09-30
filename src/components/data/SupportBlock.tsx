@@ -33,10 +33,11 @@ function getModUrl(mod: ModuleData) {
 
 interface Props extends BoxProps {
   op: OpInfo;
+  forceEliteAvatar?: boolean;
 }
 
 const SupportBlock = (props: Props) => {
-  const { op, sx, ...rest } = props;
+  const { op, sx, forceEliteAvatar = false, ...rest } = props;
 
   const reg = /( the )|\(/gi;
   const splitName = op.name.replace(/\)$/, "").split(reg);
@@ -99,7 +100,7 @@ const SupportBlock = (props: Props) => {
         </Box>
         {/* Avatar */}
         <Image
-          src={getAvatar(op)}
+          src={getAvatar(op, forceEliteAvatar)}
           alt=""
           sx={{
             height: 80,
