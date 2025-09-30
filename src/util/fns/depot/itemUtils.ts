@@ -130,9 +130,9 @@ const summarySortId: [string, number][] = [
     ["Certificate", -1],
     //all mats= 0
     ["Summary", 1],
-    ["Catalyst", 3],
-    ["chip", 2],
-    ["Chip", 2],
+    ["Catalyst", 2],
+    ["chip", 3],
+    ["Chip", 3],
     ["Data", 4],
     ["Record", 5],
 ];
