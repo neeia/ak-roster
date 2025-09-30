@@ -599,8 +599,8 @@ const PlannerGoalAdd = (props: Props) => {
                   <SelectGroup.FromTo
                     sx={{ gridTemplateColumns: "1fr 1fr", "& .potential": { display: "none" }, overflow: "hidden" }}
                   >
-                    <SupportBlock op={{ ...applyGoalsFromOperator(goalBuilder, currentOp), ...opData }} />
-                    <SupportBlock op={{ ...applyGoalsToOperator(goalBuilder, goalOp), ...opData }} />
+                    <SupportBlock op={{ ...applyGoalsFromOperator(goalBuilder, currentOp), ...opData }} forceEliteAvatar={true} />
+                    <SupportBlock op={{ ...applyGoalsToOperator(goalBuilder, goalOp), ...opData }} forceEliteAvatar={true}/>
                   </SelectGroup.FromTo>
                 )}
               </Collapse>
