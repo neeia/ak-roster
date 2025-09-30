@@ -76,6 +76,7 @@ interface Props {
     groupedGoalsMap: GoalsFilteredCalculatedMap,
     settings: LocalStorageSettings;
     setSettings: (settings: LocalStorageSettings | ((settings: LocalStorageSettings) => LocalStorageSettings)) => void;
+    onCraftOne: (itemId: string, isLocal: boolean) => void
 }
 
 const Transition = React.forwardRef(function Transition(
@@ -91,7 +92,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     const { open, onClose, depot, expOwned, goalsMaterials, goalData, openEvents, eventsSource, upcomingMaterialsData,
         selectedEvent, setSelectedEvent,
         groupedGoalsMap,
-        settings, setSettings } = props;
+        settings, setSettings,
+        onCraftOne } = props;
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
     const containerRef = useRef<HTMLElement>(null);
@@ -121,17 +123,22 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             <ul>
                 <li>The Summary automatically calculates missing materials and suggests how to obtain them (based on general Arknights knowledge).</li>
                 <li>Includes statistics to assist in decision-making.</li>
+                <li>
+                    <LowPriorityIcon sx={{ display: "inline-block", verticalAlign: "middle" }} /> <strong>Ordered goal calculation</strong> processes goals sequentially by group and Operator, virtually spending resources and crafting as needed. Produces a more realistic crafting order for each next Operator.
+                </li>
+                <li><strong><Typography component="span" color="primary">+1</Typography>: clickable and performs Depot's "Crafting +1"</strong>. Here features <strong>Safe Crafting</strong>: ordered calculation allows to prevent use of ingredients needed for earlier goals in later ones.
+                    Crafts only from the current depot; future income may shorten the crafting list as foresight, but does not affect Craft One availability.</li>
             </ul>
             <strong>2. Overfarming to Balance</strong>
             <ul>
-                <li style={{ verticalAlign: "bottom" }}><strong><CalendarMonthIcon />Balance </strong> inputs adjust farming summary around a target number of available tier 3 materials after goals needs are met.</li>
+                <li ><strong><CalendarMonthIcon sx={{ display: "inline-block", verticalAlign: "middle" }} />Balance </strong> inputs adjust farming summary around a target number of available tier 3 materials after goals needs are met.</li>
                 <li><strong>Algorithm:</strong>
                     <ul>
                         <li>Full balance value is applied to the highest %-usage material that isn't orirock</li>
                         <li>Adjusted values are applied to other materials based on the difference in %-usage.</li>
                         <li>%-usage depends on whether goals are tracked, with priority given to: 1. active goals, 2. all goals, 3. unowned operators statistics.</li>
-                        <li style={{ verticalAlign: "bottom" }}>
-                            The <EventIcon /><strong>Event farms only</strong> button applies the same algorithm but exclusively to 2-3 farmable materials from a selected event.
+                        <li>
+                            The <EventIcon sx={{ display: "inline-block", verticalAlign: "middle" }} /><strong>Event farms only</strong> button applies the same algorithm but exclusively to 2-3 farmable materials from a selected event.
                             (<em>To use this option:</em> select event with set T3 Farms)
                         </li>
                     </ul>
@@ -562,7 +569,19 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
         addBalanceValue(_materialsNeeded);
 
         let sortedNeedToCraft: [string, number][] = [];
-        let sortedNeedToCraftByOpInGroup: { groupIndex: number, op_id: string, materials: [string, number][] }[] = []
+
+        type CraftByOpArray = {
+            groupIndex: number,
+            op_id: string,
+            materials: {
+                current: Map<string, // materialId -> {missing, isCraftable?}
+                    { missing: number, isCraftable: boolean }
+                >;
+                future: [string, number][];          // materialId -> quantity
+            }
+        }[];
+
+        const sortedNeedToCraftByOpInGroup: CraftByOpArray = [];
         if (!(settings.plannerSettings?.calculateGoalsInOrder ?? true)) {
 
             sortedNeedToCraft = Object.entries(_materialsNeeded)
@@ -571,7 +590,10 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                 .map(([id, need]) => ([id, need - (_depot[id]?.stock ?? 0)] as [string, number]));
         } else {
             //ordered per-group - per-operator scenario
-            let runningDepot = structuredClone(_depot);
+            const runningFutureDepot = cloneCompleteDepot(_depot);
+            const runningCurrentDepot = cloneCompleteDepot(depot);
+            runningCurrentDepot["EXP"] = { material_id: "EXP", stock: expOwned };
+
             groupedGoalsMap
                 .sort((a, b) => a.index - b.index)
                 .filter(group => group.hasSubstantialGoals)
@@ -580,39 +602,92 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                         .filter(opGoal => opGoal.substantial)
                         .forEach(opGoal => {
                             const opId = opGoal.operator.op_id;
-
-                            let opInGroupMaterialsNeeded: Record<string, number> = {};
+                            // Accumulate needed materials per operator
+                            const opInGroupMaterialsNeededFuture: Record<string, number> = {};
+                            const opInGroupMaterialsNeededCurrent: Record<string, number> = {};
                             opGoal.plannerGoals.forEach(goal => {
                                 goal.ingredients.forEach(ing => {
-                                    opInGroupMaterialsNeeded[ing.id] = (opInGroupMaterialsNeeded[ing.id] ?? 0) + ing.quantity;
+                                    opInGroupMaterialsNeededFuture[ing.id] = (opInGroupMaterialsNeededFuture[ing.id] ?? 0) + ing.quantity;
+                                    opInGroupMaterialsNeededCurrent[ing.id] = (opInGroupMaterialsNeededCurrent[ing.id] ?? 0) + ing.quantity;
                                 });
                             });
-                            //mutates opInGroupMaterialsNeeded
-                            canCompleteByCrafting(opInGroupMaterialsNeeded, runningDepot, craftingList);
+                            // Mutate future depot for hypothetical crafting
+                            canCompleteByCrafting(opInGroupMaterialsNeededFuture, runningFutureDepot, craftingList);
 
-                            const opInGroupMissingToCraft: [string, number][] = [];
+                            // Mutate current depot & get craftable info
+                            const { craftableItems } = canCompleteByCrafting(opInGroupMaterialsNeededCurrent, runningCurrentDepot, craftingList);
 
-                            Object.entries(opInGroupMaterialsNeeded)
+                            // Prepare future & current material lists
+                            const futureMaterialsArray: [string, number][] = []; //new Map<string, number>();
+                            const currentMaterialsMap: Map<string, { missing: number, isCraftable: boolean }> = new Map();//[string, number, boolean][] = [];
+
+                            // Future calculation: store quantities in a Map
+                            Object.entries(opInGroupMaterialsNeededFuture)
                                 .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB, true))
                                 .forEach(([id, need]) => {
-                                    const have = runningDepot[id]?.stock ?? 0;
+                                    const have = runningFutureDepot[id]?.stock ?? 0;
                                     const missing = Math.max(0, need - have);
-
-                                    // consume depot
-                                    if (runningDepot[id]) {
-                                        runningDepot[id].stock = Math.max(0, have - need);
-                                    }
+                                    if (runningFutureDepot[id]) runningFutureDepot[id].stock = Math.max(0, have - need);
 
                                     if (missing > 0 && craftingList.includes(id)) {
-                                        opInGroupMissingToCraft.push([id, missing]);
+                                        futureMaterialsArray.push([id, missing]);
+                                    }
+                                });
+                            // Current calculation: store quantities & craftable info in array
+                            Object.entries(opInGroupMaterialsNeededCurrent)
+                                .sort(([itemIdA], [itemIdB]) => customItemsSort(itemIdA, itemIdB, true))
+                                .forEach(([id, need]) => {
+                                    const have = runningCurrentDepot[id]?.stock ?? 0;
+                                    const missing = Math.max(0, need - have);
+                                    if (runningCurrentDepot[id]) runningCurrentDepot[id].stock = Math.max(0, have - need);
+
+                                    if (missing > 0 && craftingList.includes(id)) {
+                                        const isCraftable = !!craftableItems[id];
+                                        currentMaterialsMap.set(id, { missing, isCraftable });
                                     }
                                 });
 
-                            if (opInGroupMissingToCraft.length > 0) {
+                            // Upgrade craftable flags based on ingredients already in list
+                            const craftableMap = new Map<string, number>(); // matId -> craftable amount
+                            currentMaterialsMap.forEach((value, id) => {
+                                let { missing, isCraftable } = value;
+                                if (!isCraftable) return;
+
+                                const matInfo: Item = itemsJson[id as keyof typeof itemsJson];
+                                if (!matInfo.ingredients?.length) {
+                                    // No ingredients -> nothing to check
+                                    craftableMap.set(id, missing);
+                                    return;
+                                }
+
+                                // Check each ingredient
+                                for (const ing of matInfo.ingredients) {
+                                    const ingInfo: Item = itemsJson[ing.id as keyof typeof itemsJson];
+                                    if (!ingInfo || ingInfo.tier >= matInfo.tier) continue; // only lower-tier ingredients matter
+
+                                    const craftableQty = craftableMap.get(ing.id) ?? 0;
+                                    const recipeQty = ing.quantity
+                                    const neededQty = recipeQty * missing; // amount required to craft fully
+
+                                    if ((neededQty - craftableQty) < recipeQty) {
+                                        //means: difference with low tier ingredients is not enough to craft
+                                        isCraftable = false;
+                                        break;
+                                    }
+                                }
+                                currentMaterialsMap.set(id, { missing, isCraftable });
+                                if (isCraftable) craftableMap.set(id, missing);
+                            });
+
+
+                            if (currentMaterialsMap.size > 0) {
                                 sortedNeedToCraftByOpInGroup.push({
                                     groupIndex: group.index,
                                     op_id: opId,
-                                    materials: opInGroupMissingToCraft
+                                    materials: {
+                                        current: currentMaterialsMap,
+                                        future: futureMaterialsArray
+                                    }
                                 });
                             }
                         });
@@ -918,7 +993,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                     >
                                                         {sortedNeedToCraftByOpInGroup
                                                             .map(({ groupIndex, op_id, materials }) => {
-                                                                const avatar = (
+                                                                const avatar = materials.future.length > 0 && (
                                                                     <CompletionIndicator key={`${groupIndex}-${op_id}`} ml={pivot ? 0 : 2} completable={false} completableByCrafting={true}>
                                                                         <Image
                                                                             src={`${imageBase}/avatars/${op_id}.webp`}
@@ -928,17 +1003,53 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                                                         />
                                                                     </CompletionIndicator>
                                                                 );
-                                                                const matsNodes = materials.map(([id, need]) => (
-                                                                    <ItemBase
-                                                                        key={`${groupIndex}-${op_id}-${id}`}
-                                                                        itemId={id}
-                                                                        size={getItemBaseStyling("summary", fullScreen).itemBaseSize}
-                                                                    >
-                                                                        <Typography {...getItemBaseStyling("summary", fullScreen).numberCSS}>
-                                                                            {formatNumber(need)}
-                                                                        </Typography>
-                                                                    </ItemBase>
-                                                                ));
+                                                                const matsNodes = materials.future.map(([id, need]) => {
+                                                                    const isCraftable = materials.current.get(id)?.isCraftable ?? true;
+                                                                    return (
+                                                                        <Tooltip key={id} title={isCraftable ? "Craft One" : ""}>
+                                                                            <Box
+                                                                                key={id}
+                                                                                onClick={() => { if (isCraftable) onCraftOne(id, false); }}
+                                                                                sx={{
+                                                                                    position: "relative",
+                                                                                    display: "inline-block",
+                                                                                    cursor: isCraftable ? "pointer" : "default",
+                                                                                    transition: "opacity 0.1s",
+                                                                                    "&:hover, &:focus": {
+                                                                                        opacity: isCraftable ? 0.5 : 1,
+                                                                                    },
+                                                                                }}
+                                                                            >
+                                                                                <ItemBase
+                                                                                    key={`${groupIndex}-${op_id}-${id}`}
+                                                                                    itemId={id}
+                                                                                    size={getItemBaseStyling("summary", fullScreen).itemBaseSize}
+                                                                                >
+                                                                                    <Typography {...getItemBaseStyling("summary", fullScreen).numberCSS}>
+                                                                                        {formatNumber(need)}
+                                                                                    </Typography>
+                                                                                </ItemBase>
+                                                                                {isCraftable && (
+                                                                                    <Box
+                                                                                        sx={{
+                                                                                            position: "absolute",
+                                                                                            top: "35%",
+                                                                                            left: "50%",
+                                                                                            transform: "translate(-50%, -50%)",
+                                                                                            pointerEvents: "none",
+                                                                                            fontWeight: "900",
+                                                                                            color: "primary.main",
+                                                                                            fontSize: "1.2rem",
+                                                                                            textShadow: `-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black`,
+                                                                                        }}
+                                                                                    >
+                                                                                        +1
+                                                                                    </Box>
+                                                                                )}
+                                                                            </Box></Tooltip>
+                                                                    )
+                                                                }
+                                                                );
                                                                 return pivot ? (
                                                                     <Stack
                                                                         key={`row-${groupIndex}-${op_id}`}

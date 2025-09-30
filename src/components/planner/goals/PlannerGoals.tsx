@@ -13,6 +13,7 @@ import {
   ListItemText,
   MenuItem,
   TextField,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
@@ -811,10 +812,12 @@ const PlannerGoals = (props: Props) => {
           }}
         >
           <Grid>
-            <IconButton size="large" onClick={handleCalculateGoalsInOrder}
-              color={(settings.plannerSettings?.calculateGoalsInOrder ?? true) ? "primary" : "default"}>
-              <LowPriorityIcon fontSize="inherit" />
-            </IconButton>
+            <Tooltip title="Calculate goals in descending order">
+              <IconButton size="large" onClick={handleCalculateGoalsInOrder}
+                color={(settings.plannerSettings?.calculateGoalsInOrder ?? true) ? "primary" : "default"}>
+                <LowPriorityIcon fontSize="inherit" />
+              </IconButton>
+            </Tooltip>
             <IconButton size="large" onClick={() => setFilterOpen(true)}>
               <FilterAltOutlinedIcon fontSize="inherit" />
             </IconButton>

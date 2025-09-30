@@ -75,7 +75,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
     } else if (eventsTrackerOpen) {
       fetchDefaults();
     }
-  }, [summaryOpen, popoverOpen, eventsTrackerOpen])
+  }, [summaryOpen, popoverOpen, eventsTrackerOpen, eventsData, fetchDefaults])
 
   const upcomingEvents = useMemo(() =>
     Object.keys(eventsData ?? {}).length > 0
@@ -162,13 +162,23 @@ const MaterialsNeeded = React.memo((props: Props) => {
         const itemB = itemsJson[itemIdB as keyof typeof itemsJson];
 
         if (!itemA) console.log(itemIdA);
+        const stockA = depot[itemIdA]?.stock ?? 0;
+        const stockB = depot[itemIdB]?.stock ?? 0;
         const compareBySortId = itemA.sortId - itemB.sortId;
         if (settings.depotSettings.sortCompletedToBottom) {
-          return (
-            (neededA && neededA <= depot[itemIdA]?.stock ? 1 : 0) - (neededB && neededB <= depot[itemIdB]?.stock ? 1 : 0) ||
-            (craftableItems[itemIdA] ? 1 : 0) - (craftableItems[itemIdB] ? 1 : 0) ||
-            compareBySortId
-          );
+          const getRank = (itemId: string, needed: number | undefined): number => {
+            const stock = depot[itemId]?.stock ?? 0;
+            const isCraftable = !!craftableItems[itemId];
+
+            if (needed && stock < needed && !isCraftable) return 0; // needed not craftable → first
+            if (isCraftable) return 1;                              // craftable → second
+            return 2;                                               // completed or inactive → last in sort order
+          };
+
+          const rankA = getRank(itemIdA, neededA);
+          const rankB = getRank(itemIdB, neededB);
+
+          return rankA - rankB || compareBySortId;
         }
         return compareBySortId;
       });
@@ -219,16 +229,21 @@ const MaterialsNeeded = React.memo((props: Props) => {
   }, []);
 
   const handleValuesChange = useCallback(
-    (items: DepotItem[]) => {
-      const _rawValues = { ...rawValues };
-      items.forEach((item) => {
-        _rawValues[item.material_id] = { ...item };
-      });
-      setRawValues(_rawValues);
-      //syncronize depot debounce timer
-      refreshDepotDebounce();
-      debouncedOnChange();
-    }, [debouncedOnChange, rawValues, refreshDepotDebounce]
+    (items: DepotItem[], isLocal: boolean = true) => {
+      if (isLocal) {
+        const _rawValues = { ...rawValues };
+        items.forEach((item) => {
+          _rawValues[item.material_id] = { ...item };
+        });
+        setRawValues(_rawValues);
+        //syncronize depot debounce timer
+        refreshDepotDebounce();
+        debouncedOnChange();
+      } else {
+        //direct exposure to children w/o 500ms debounce of MN
+        putDepot(items);
+      }
+    }, [debouncedOnChange, rawValues, refreshDepotDebounce, putDepot]
   );
 
   const handleChange = useCallback(
@@ -248,7 +263,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
           stock: Math.min(existingItem.stock + quantity, MAX_SAFE_INTEGER)
         };
       });
-      handleValuesChange(updatedItems);
+      handleValuesChange(updatedItems, false); //always non-local from Tracker
     },
     [rawValues, depot, handleValuesChange]
   );
@@ -284,7 +299,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
   );
 
   const handleCraftOne = useCallback(
-    (itemId: string) => {
+    (itemId: string, isLocal: boolean = true) => {
       const { ingredients, yield: itemYield } = itemsJson[itemId as keyof typeof itemsJson] as Item;
       if (!ingredients) return;
       const updatedDatas: DepotItem[] = [];
@@ -297,7 +312,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
       const craftedData: DepotItem = { ...rawValues[itemId] ?? depot[itemId] ?? { material_id: itemId, stock: 0 } };
       craftedData.stock = (rawValues[itemId]?.stock ?? depot[itemId]?.stock ?? 0) + (itemYield ?? 1);
       updatedDatas.push(craftedData);
-      handleValuesChange(updatedDatas);
+      handleValuesChange(updatedDatas, isLocal);
     },
     [depot, rawValues, handleValuesChange]
   );
@@ -447,37 +462,37 @@ const MaterialsNeeded = React.memo((props: Props) => {
             </Box>)
         }
         TitleAction={
-            <Box display="flex" gap={1}>
+          <Box display="flex" gap={1}>
+            <Button
+              onClick={() => setSummaryOpen(true)}
+              variant="contained"
+              color="primary">
+              Summary
+            </Button>
+            <Tooltip arrow title={craftToggleTooltips[craftToggle]}>
               <Button
-                onClick={() => setSummaryOpen(true)}
+                onClick={handleCraftingToggleAll}
                 variant="contained"
+                startIcon={
+                  craftToggle === 1 ? (
+                    <CraftingIcon />
+                  ) : craftToggle === 2 ? (
+                    <CheckCircleIcon sx={{ width: "30px", height: "30px" }} />
+                  ) : (
+                    <RadioButtonUncheckedIcon sx={{ width: "30px", height: "30px" }} />
+                  )}
                 color="primary">
-                Summary
+                Crafting
               </Button>
-              <Tooltip arrow title={craftToggleTooltips[craftToggle]}>
-                <Button
-                  onClick={handleCraftingToggleAll}
-                  variant="contained"
-                  startIcon={
-                    craftToggle === 1 ? (
-                      <CraftingIcon />
-                    ) : craftToggle === 2 ? (
-                      <CheckCircleIcon sx={{ width: "30px", height: "30px" }} />
-                    ) : (
-                      <RadioButtonUncheckedIcon sx={{ width: "30px", height: "30px" }} />
-                    )}
-                  color="primary">
-                  Crafting
-                </Button>
-              </Tooltip>
-              <SettingsButton props={menuButtonProps} />
-            </Box>
+            </Tooltip>
+            <SettingsButton props={menuButtonProps} />
+          </Box>
         }
         sx={{ borderRadius: { xs: "0px 0px 4px 4px", md: "4px" } }}
       >
         <SettingsMenu props={menuProps}>
           <SettingsMenuItem onClick={handleSortToBottom} checked={settings.depotSettings.sortCompletedToBottom}>
-            Sort completed items to bottom
+            Sort completed & inactive bottom
           </SettingsMenuItem>
           <SettingsMenuItem onClick={handleShowInactive} checked={settings.depotSettings.showInactiveMaterials}>
             Show inactive materials
@@ -517,18 +532,18 @@ const MaterialsNeeded = React.memo((props: Props) => {
         </SettingsMenu>
         <Box display="flex" flexDirection="column">
           <Box width="calc(max(400px,50%))" alignSelf="flex-end" mt={-2}>
-              <EventsSelector
-                emptyItem={loading ? "wait, defauls are downloading..." : `Select future event from ${upcomingEvents.name}`}
-                dataType={'events'}
-                eventsData={upcomingEvents.source}
-                selectedEvent={selectedEvent ?? createEmptyNamedEvent()}
-                onChange={setSelectedEvent}
-                onOpen={() => {
-                  if (Object.keys(upcomingEvents.source).length === 0) {
-                    fetchDefaults();
-                  }
-                }}
-              /></Box>
+            <EventsSelector
+              emptyItem={loading ? "wait, defauls are downloading..." : `Select future event from ${upcomingEvents.name}`}
+              dataType={'events'}
+              eventsData={upcomingEvents.source}
+              selectedEvent={selectedEvent ?? createEmptyNamedEvent()}
+              onChange={setSelectedEvent}
+              onOpen={() => {
+                if (Object.keys(upcomingEvents.source).length === 0) {
+                  fetchDefaults();
+                }
+              }}
+            /></Box>
           <Box
             component="ul"
             sx={{
@@ -605,6 +620,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
         groupedGoalsMap={groupedGoalsMap}
         settings={settings}
         setSettings={setSettings}
+        onCraftOne={handleCraftOne}
       />
       <EventsTrackerDialog
         eventsData={eventsData}
