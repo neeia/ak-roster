@@ -2839,30 +2839,6 @@
       "skinName": "Seedsower",
       "avatarId": "char_002_amiya_test#1",
       "sortId": 6
-    },
-    {
-      "skinId": "char_1037_amiya3@sale#13",
-      "skinName": "Solo Around The World",
-      "avatarId": "char_1037_amiya3_sale#13",
-      "sortId": 18
-    },
-    {
-      "skinId": "char_1001_amiya2@casc#1",
-      "skinName": "触及星辰",
-      "avatarId": "char_1001_amiya2_casc#1",
-      "sortId": 375
-    },
-    {
-      "skinId": "char_1001_amiya2#2",
-      "skinName": null,
-      "avatarId": "char_1001_amiya2_2",
-      "sortId": -1
-    },
-    {
-      "skinId": "char_1037_amiya3#2",
-      "skinName": null,
-      "avatarId": "char_1037_amiya3_2",
-      "sortId": -1
     }
   ],
   "char_405_absin": [
@@ -7825,6 +7801,34 @@
       "skinName": "The Next Afternoon Tea",
       "avatarId": "char_263_skadi_marthe#5",
       "sortId": 216
+    }
+  ],
+  "char_1037_amiya3": [
+    {
+      "skinId": "char_1037_amiya3@sale#13",
+      "skinName": "Solo Around The World",
+      "avatarId": "char_1037_amiya3_sale#13",
+      "sortId": 18
+    },
+    {
+      "skinId": "char_1037_amiya3#2",
+      "skinName": null,
+      "avatarId": "char_1037_amiya3_2",
+      "sortId": -1
+    }
+  ],
+  "char_1001_amiya2": [
+    {
+      "skinId": "char_1001_amiya2@casc#1",
+      "skinName": "触及星辰",
+      "avatarId": "char_1001_amiya2_casc#1",
+      "sortId": 375
+    },
+    {
+      "skinId": "char_1001_amiya2#2",
+      "skinName": null,
+      "avatarId": "char_1001_amiya2_2",
+      "sortId": -1
     }
   ]
 }
