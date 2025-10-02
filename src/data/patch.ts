@@ -1,5 +1,29 @@
 const patch = [
   {
+    version: "3.3.3",
+    date: "October 03, 2025",
+    title: "Planner Upgrades and QoLs",
+    content: ["Goals sync on import, ordered calculation and more"],
+    changelog: [
+      "Goals",
+      [
+        "Can be auto updated & cleared after account import or from planner page menus",
+        "Ordered calculations mode to process the goal list from first to last, and new operator indicators to help you see where materials will actually run out",
+      ],
+      "Summary & Upcoming Events",
+      [
+      "Summary with ordered calculation mode now shows material crafting grouped in your operators order from goals list",
+      "Crafting materials directly from ordered summary - click on +1. And its safeguarded from wasting materials of previous operator",
+      "Upcoming events are now interated in all planner and its now possible to disable any of them in list on the fly",
+      ],
+      "Also previous updates include",
+      [
+        "More filters for operators: class Branches, Pools, Masteries, Modules and Skill levels",
+        "Various bugfixes and optimizations"
+      ]
+    ],
+  },
+  {
     version: "3.3.2",
     date: "April 28, 2025",
     title: "Importing is Back",
