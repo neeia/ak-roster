@@ -54,6 +54,7 @@ import Image from "components/base/Image";
 import imageBase from "util/imageBase";
 import LowPriorityIcon from '@mui/icons-material/LowPriority';
 import PivotTableChartIcon from '@mui/icons-material/PivotTableChart';
+import BlockIcon from '@mui/icons-material/Block';
 import { CompletionIndicator } from "../goals/CompletionIndicator";
 
 type GoalBuilder = Partial<GoalDataInsert>;
@@ -68,7 +69,8 @@ interface Props {
     openEvents: (state: boolean) => void;
     eventsSource: {
         source: EventsData,
-        name: String
+        name: String,
+        toggleFunction: (name: string) => void,
     }
     upcomingMaterialsData: UpcomingMaterialsData;
     selectedEvent: NamedEvent,
@@ -146,9 +148,12 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             </ul>
             <strong>3. Events Tracker Setup</strong> - Planning future upgrades with future income.
             <ul>
-                <li>After adding future Events from Defaults, manually or with import, the Summary will also track free materials.</li>
+                <li>Using future Events from user's Tracker or automatic Defaults, the Summary will also track free materials.</li>
                 <li>Combined materials from selected and previous events are factored into all calculations, reducing required amounts.</li>
                 <li>Highlights farmable tier 3 materials from selected event if they were set in the tracker.</li>
+                <li>
+                    Materials from <BlockIcon sx={{ display: "inline-block", verticalAlign: "middle", color:"primary.main" }} /> disabled Events are ignored.
+                </li>
             </ul>
         </>;
 
@@ -309,58 +314,6 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
             setBalanceType(null);
         };
     }
-
-    const getTotalMaterialsUptoSelectedEvent = useMemo(() => {
-        if (!eventsData || selectedEvent.index === -1) return { materials: {}, farmTimes: {}, infiniteTimes: {} };
-
-        const _eventsData = eventsData;
-        const _filteredEvents = Object.entries(_eventsData)
-            .filter(([, eventData]) => eventData.index <= selectedEvent.index);
-        const _eventMaterials = _filteredEvents
-            .reduce((acc, [, eventData]) => {
-                if (!eventData.materials) return acc;
-                Object.entries(eventData.materials).forEach(([id, quantity]) => {
-                    acc[id] = (acc[id] ?? 0) + quantity;
-                });
-                return acc;
-            }, {} as Record<string, number>);
-
-        //store xTimes farms appearances and add 0 mats to totals if missing
-        const _farmTimes = _filteredEvents
-            .reduce((acc, [, eventData]) => {
-                if (eventData.farms) {
-                    eventData.farms.forEach((id) => {
-                        acc[id] = (acc[id] ?? 0) + 1;
-                        if (!_eventMaterials[id]) {
-                            _eventMaterials[id] = 0;
-                        }
-                    })
-                };
-                return acc;
-            }, {} as Record<string, number>);
-
-        const infiniteTimes = _filteredEvents
-            .reduce((acc, [, eventData]) => {
-                (eventData.infinite ?? []).forEach((id) => {
-                    acc[id] = (acc[id] ?? 0) + 1;
-                    if (!_eventMaterials[id]) {
-                        _eventMaterials[id] = 0;
-                    }
-                })
-                return acc;
-            }, {} as Record<string, number>);
-
-        //EXP count
-        const _exp = depotToExp(EXP.reduce((acc, id) => {
-            acc[id] = { material_id: id, stock: _eventMaterials[id] ?? 0 }
-            return acc
-        }, {} as Record<string, DepotItem>));
-
-        if (_exp != 0) _eventMaterials["EXP"] = _exp;
-
-        return { materials: _eventMaterials, farmTimes: _farmTimes, infiniteTimes };
-    }, [selectedEvent, eventsData]
-    );
 
     const includeCraftIds: string[] = useMemo(() => [
         "30013", //Orirock Cluster
@@ -1208,6 +1161,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                 eventsData={eventsData}
                                 selectedEvent={selectedEvent ?? createEmptyNamedEvent()}
                                 onChange={onEventChange}
+                                onEventToggle={eventsSource.toggleFunction}
                             />
                         </Box>
                     </>}

@@ -53,6 +53,7 @@ import SubmitEventDialog from 'components/planner/events/SubmitEventDialog';
 import { MAX_SAFE_INTEGER, getWidthFromValue, formatNumber, standardItemsSort, getItemBaseStyling, isMaterial, getDefaultEventMaterials, getFarmCSS } from 'util/fns/depot/itemUtils'
 import { createEmptyEvent, createEmptyNamedEvent, getDateString, reindexEvents } from "util/fns/eventUtils"
 import ItemEditBox from 'components/planner/events/ItemEditBox';
+import BlockIcon from '@mui/icons-material/Block';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -137,6 +138,7 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                 <li>Provided by <Link href="https://ak-events-tracker.vercel.app/" underline="always">ak-events-tracker</Link>.</li>
                 <li>Data from CN prts.wiki events, adjusted by six months, is combined with monthly estimates and auto sorted by date. These are defaults used by the tracker.</li>
                 <li>The default list can be used as-is, or as shifts occur in global shedule, can be used as base to create adjusted personal list</li>
+                <li>Events from Tracker and Defaults can be <BlockIcon sx={{ display: "inline-block", verticalAlign: "middle", color: "primary.main" }} /> disabled in the Events Selector, so they are excluded from calculations.</li>
             </ul>
         </>;
 
@@ -576,14 +578,17 @@ const EventsTrackerDialog = React.memo((props: Props) => {
     };
 
     const handleSetEventsFromDefaults = useCallback(() => {
-        if (trackerDefaults && trackerDefaults.eventsData
-            && Object.keys(trackerDefaults.eventsData).length > 0) {
+        if (trackerDefaults?.eventsData && Object.keys(trackerDefaults.eventsData).length > 0) {
+            const enabledEvents = reindexEvents(
+                Object.fromEntries(
+                    Object.entries(trackerDefaults.eventsData)
+                        .filter(([, eventData]) => !eventData.disabled)
+                ));
 
-            setRawEvents(trackerDefaults.eventsData);
-            onChange(trackerDefaults.eventsData);
+            setRawEvents(enabledEvents);
+            onChange(enabledEvents);
         }
-    }, [trackerDefaults, onChange, setRawEvents]
-    )
+    }, [trackerDefaults, onChange, setRawEvents]);
 
     const getBuilderButton = () => {
         return (<Button

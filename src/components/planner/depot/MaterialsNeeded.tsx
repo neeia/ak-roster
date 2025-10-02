@@ -47,8 +47,8 @@ interface Props extends EventsHook, EventsDefaultsHook {
 
 const MaterialsNeeded = React.memo((props: Props) => {
   const { goals, goalData, depot, putDepot, resetDepot, settings, setSettings, depotIsUnsaved, refreshDepotDebounce,
-    eventsData, setEvents, submitEvent,
-    loading, trackerDefaults, fetchDefaults,
+    eventsData, setEvents, submitEvent, toggleEvent,
+    loading, trackerDefaults, fetchDefaults, toggleDefaultsEvent,
     selectedEvent, setSelectedEvent,
     upcomingMaterialsData,
     groupedGoalsMap,
@@ -79,9 +79,9 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
   const upcomingEvents = useMemo(() =>
     Object.keys(eventsData ?? {}).length > 0
-      ? { source: eventsData, name: "Tracker" }
-      : { source: trackerDefaults?.eventsData ?? {}, name: "Defaults" }
-    , [eventsData, trackerDefaults.eventsData])
+      ? { source: eventsData, name: "Tracker", toggleFunction: toggleEvent }
+      : { source: trackerDefaults?.eventsData ?? {}, name: "Defaults", toggleFunction: toggleDefaultsEvent }
+    , [eventsData, trackerDefaults.eventsData, toggleEvent, toggleDefaultsEvent])
 
   const handleItemClick = useCallback((itemId: string) => {
     setPopoverItemId(itemId);
@@ -543,6 +543,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
                   fetchDefaults();
                 }
               }}
+              onEventToggle={upcomingEvents.toggleFunction}
             /></Box>
           <Box
             component="ul"

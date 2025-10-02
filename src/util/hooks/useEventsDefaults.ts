@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import useLocalStorage from './useLocalStorage';
-import { TrackerDefaults } from 'types/events';
+import { EventsData, TrackerDefaults } from 'types/events';
 
 export interface EventsDefaultsHook {
   readonly trackerDefaults: TrackerDefaults;
   readonly loading: boolean;
   readonly error: string | null;
   readonly fetchDefaults: () => Promise<void>;
+  readonly toggleDefaultsEvent: (name: string) => void;
 }
 
 export default function useEventsDefaults(): EventsDefaultsHook {
@@ -17,10 +18,23 @@ export default function useEventsDefaults(): EventsDefaultsHook {
 
   const putDefaults = (updateTime: any, webEventsData: any, eventsData: any,) => {
 
+    //merge with existing "disabled" props
+    const mergedEventsData: EventsData = Object.fromEntries(
+      Object.entries(eventsData as EventsData).map(([name, event]) => {
+        return [
+          name,
+          {
+            ...event,
+            disabled: trackerDefaults.eventsData?.[name]?.disabled ?? false,
+          },
+        ];
+      })
+    );
+
     setDefaults({
       lastUpdated: updateTime,
       webEventsData: webEventsData,
-      eventsData: eventsData
+      eventsData: mergedEventsData
     });
   };
 
@@ -69,5 +83,23 @@ export default function useEventsDefaults(): EventsDefaultsHook {
 }, []
 ); */
 
-  return { trackerDefaults, loading, error, fetchDefaults: fetchData } as const;
+  const toggleDefaultsEvent = (name: string) => {
+    setDefaults((prev) => {
+      const event = prev.eventsData?.[name];
+      if (!event) return prev;
+
+      return {
+        ...prev,
+        eventsData: {
+          ...prev.eventsData,
+          [name]: {
+            ...event,
+            disabled: !event.disabled,
+          },
+        },
+      };
+    });
+  };
+
+  return { trackerDefaults, loading, error, fetchDefaults: fetchData, toggleDefaultsEvent } as const;
 }
