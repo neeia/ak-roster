@@ -16,6 +16,7 @@ import ItemBase from "components/planner/depot/ItemBase";
 import { EventsSelectorProps } from "types/events"
 import { getItemBaseStyling, customItemsSort, formatNumber, getFarmCSS } from "util/fns/depot/itemUtils";
 import { createEmptyEvent, createEmptyNamedEvent } from 'util/fns/eventUtils';
+import BlockIcon from '@mui/icons-material/Block';
 
 export const EventsSelector = React.memo((props: EventsSelectorProps) => {
     const {
@@ -26,6 +27,7 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
         selectedEvent,
         onChange,
         onOpen,
+        onEventToggle,
     } = props;
 
     let label: string;
@@ -94,14 +96,14 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
             sx={{ maxHeight: "3rem", minHeight: "3rem", overflow: "hidden" }}
             IconComponent={(props) => (
                 <IconButton
-                        size="small"
-                        onClick={(e) => {
-                            e.stopPropagation(); // prevent select open
-                            handleChange(-1); // reset to default
-                        }}
-                    >
-                        <ClearIcon fontSize="small" />
-                    </IconButton>
+                    size="small"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        handleChange(-1);
+                    }}
+                >
+                    <ClearIcon fontSize="small" />
+                </IconButton>
             )}
         >
             <MenuItem value={-1} key={-1} className="no-underline">{emptyOption}</MenuItem>
@@ -110,9 +112,20 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
                 .map(([name, event]) => (
                     <MenuItem value={event.index} key={event.index} className="no-underline">
                         <Stack direction="row" justifyContent="flex-end" alignItems="center" width="stretch" flexWrap="wrap">
+                            {!isSelecClosed && onEventToggle && <IconButton
+                                sx={{
+                                    opacity: !event.disabled ? 0.2 : 1,
+                                    color: event.disabled ? "primary.main" : "inherit",
+                                }}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onEventToggle(name)
+                                }}>
+                                <BlockIcon fontSize='small' />
+                            </IconButton>}
                             <Typography sx={{ mr: "auto", whiteSpace: "wrap", fontSize: fullScreen ? "small" : "unset" }}>
                                 {`${event.index}: ${name} `}
-                            </Typography> {!isSelecClosed ? (
+                            </Typography> {!isSelecClosed && (!onEventToggle || !event.disabled) && (
                                 <Stack direction="row">
                                     {(event.farms ?? []).map((id) => [id, 0] as [string, number])
                                         .concat(Object.entries(event.materials)
@@ -125,7 +138,7 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
                                             </ItemBase>
                                         ))}
                                     <small>{"..."}</small>
-                                </Stack>) : null}
+                                </Stack>)}
                         </Stack>
                     </MenuItem>
                 ))}

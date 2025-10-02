@@ -12,7 +12,7 @@ export type NamedEvent = Event & {
 };
 
 export type EventsData = {
-    [name: string]: Event;
+    [name: string]: Event & { disabled?: boolean };
 }
 
 export type WebEvent = {
@@ -45,6 +45,7 @@ export interface EventsSelectorProps {
     selectedEvent?: Event | null;
     onChange?: (namedEvent: NamedEvent) => void;
     onOpen?: () => void;
+    onEventToggle?: (name: string) => void;
 }
 
 export type SubmitSource = EventsSelectorProps['dataType'] | 'current' | 'currentWeb'

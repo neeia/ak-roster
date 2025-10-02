@@ -210,7 +210,7 @@ export const getTotalMaterialsUptoSelectedEvent = (
 
     const _eventsData = eventsData;
     const _filteredEvents = Object.entries(_eventsData)
-        .filter(([, eventData]) => eventData.index <= selectedEvent.index);
+        .filter(([, eventData]) => eventData.index <= selectedEvent.index && !eventData.disabled);
     const _eventMaterials = _filteredEvents
         .reduce((acc, [, eventData]) => {
             if (!eventData.materials) return acc;

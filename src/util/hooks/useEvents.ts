@@ -10,6 +10,7 @@ export interface EventsHook {
     readonly submitEvent: (submit: SubmitEventProps) => null | [string, number][];
     readonly getNextMonthsData: (months?: number) => EventsData;
     readonly createDefaultEventsData: (webEvents: WebEventsData) => EventsData;
+    readonly toggleEvent: (name: string) => void;
 }
 export default function useEvents(): EventsHook {
     const [eventsData, _setEvents] = useLocalStorage<EventsData>("trackerEvents", {});
@@ -70,6 +71,21 @@ export default function useEvents(): EventsHook {
         });
 
         return _items;
+    };
+
+    const toggleEvent = (name: string) => {
+        _setEvents((prev) => {
+            const event = prev[name];
+            if (!event) return prev;
+
+            return {
+                ...prev,
+                [name]: {
+                    ...event,
+                    disabled: !event.disabled
+                },
+            }
+        });
     };
 
     const submitEvent = useCallback((props: SubmitEventProps): null | [string, number][] => {
@@ -146,6 +162,7 @@ export default function useEvents(): EventsHook {
     }
     return {
         eventsData: _eventsData, setEvents, submitEvent, getNextMonthsData,
-        createDefaultEventsData: clientCreateDefaultEventsData
+        createDefaultEventsData: clientCreateDefaultEventsData,
+        toggleEvent
     } as const;
 }
