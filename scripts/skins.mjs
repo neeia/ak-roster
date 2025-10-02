@@ -18,8 +18,12 @@ const createSkinsJson = () => {
   [...Object.values(cnSkinTable.charSkins)].forEach((skin) => {
     if (!isOperator(skin.charId)) return;
     const enSkin = enSkinTable.charSkins[skin.skinId];
-    skinObj[skin.charId] ??= [];
-    skinObj[skin.charId].push({
+    let charId = skin.charId;
+    if (charId === "char_002_amiya") {
+      charId = skin.skinId.split(/[@#]/)[0];
+    }
+    skinObj[charId] ??= [];
+    skinObj[charId].push({
       skinId: skin.skinId,
       skinName: (enSkin && enSkin.displaySkin.skinName) ?? skin.displaySkin.skinName ?? null,
       avatarId: skin.avatarId,
