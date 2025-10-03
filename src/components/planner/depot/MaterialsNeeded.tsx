@@ -162,21 +162,21 @@ const MaterialsNeeded = React.memo((props: Props) => {
         const itemB = itemsJson[itemIdB as keyof typeof itemsJson];
 
         if (!itemA) console.log(itemIdA);
-        const stockA = depot[itemIdA]?.stock ?? 0;
-        const stockB = depot[itemIdB]?.stock ?? 0;
         const compareBySortId = itemA.sortId - itemB.sortId;
         if (settings.depotSettings.sortCompletedToBottom) {
-          const getRank = (itemId: string, needed: number | undefined): number => {
-            const stock = depot[itemId]?.stock ?? 0;
-            const isCraftable = !!craftableItems[itemId];
+          const getRank = (item: Item, needed: number): number => {
+            const stock = (item.id === "EXP") ? expOwned : (depot[item.id]?.stock ?? 0)
+            const isCraftable = !!craftableItems[item.id] && item.ingredients;
 
-            if (needed && stock < needed && !isCraftable) return 0; // needed not craftable → first
-            if (isCraftable) return 1;                              // craftable → second
-            return 2;                                               // completed or inactive → last in sort order
+            const isComplete = stock >= Math.max(0, needed);
+
+            if (!isComplete && !isCraftable) return 0;
+            if (isCraftable && !isComplete) return 1;
+            return 2;
           };
 
-          const rankA = getRank(itemIdA, neededA);
-          const rankB = getRank(itemIdB, neededB);
+          const rankA = getRank(itemA, neededA);
+          const rankB = getRank(itemB, neededB);
 
           return rankA - rankB || compareBySortId;
         }
@@ -492,7 +492,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
       >
         <SettingsMenu props={menuProps}>
           <SettingsMenuItem onClick={handleSortToBottom} checked={settings.depotSettings.sortCompletedToBottom}>
-            Sort completed & inactive bottom
+            Sort completed & inactive to bottom
           </SettingsMenuItem>
           <SettingsMenuItem onClick={handleShowInactive} checked={settings.depotSettings.showInactiveMaterials}>
             Show inactive materials
