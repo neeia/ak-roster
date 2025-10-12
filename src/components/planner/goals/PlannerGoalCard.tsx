@@ -1,14 +1,12 @@
-import { alpha, Box, Button, Divider, styled, Tooltip, useMediaQuery, useTheme } from "@mui/material";
+import { alpha, Box, Button, Divider, styled, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { memo, useEffect, useState } from "react";
 import ItemStack from "../depot/ItemStack";
 import OperatorGoalIconography from "./OperatorGoalIconography";
 import { OperatorData } from "types/operators/operator";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
-import getGoalIngredients from "util/fns/depot/getGoalIngredients";
 import { DeleteForever, Upload } from "@mui/icons-material";
-import clsx from "clsx";
 import operatorJson from "data/operators";
-import { CompletionIndicator } from "./CompletionIndicator";
+import { CompletionIndicator, CompletionIndicatorProps } from "./CompletionIndicator";
 import { Ingredient } from "types/item";
 
 const GoalCardButton = styled(Button)({
@@ -18,18 +16,16 @@ const GoalCardButton = styled(Button)({
   backgroundColor: "transparent",
 });
 
-interface Props {
+interface Props extends Pick<CompletionIndicatorProps, 'completable' | 'completableByCrafting' | 'requirementsNotMet'> {
   goal: PlannerGoal;
   groupName: string;
   onGoalDeleted: (goal: PlannerGoal, groupName: string) => void;
   onGoalCompleted: (goal: PlannerGoal, groupName: string) => void;
   ingredients: Ingredient[];
-  completable?: boolean;
-  completableByCrafting?: boolean;
 }
 
 const PlannerGoalCard = memo((props: Props) => {
-  const { goal, groupName, onGoalDeleted, onGoalCompleted, completable = false, completableByCrafting = false, ingredients } = props;
+  const { goal, groupName, onGoalDeleted, onGoalCompleted, completable = false, completableByCrafting = false, requirementsNotMet = false, ingredients } = props;
   const theme = useTheme();
   const isXSScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -65,8 +61,7 @@ const PlannerGoalCard = memo((props: Props) => {
 
   return (
     <CompletionIndicator
-      completable={completable}
-      completableByCrafting={completableByCrafting}
+      {...{ completable, completableByCrafting, requirementsNotMet }}
       orientation="vertical"
     >
       <Box
@@ -134,12 +129,16 @@ const PlannerGoalCard = memo((props: Props) => {
           <Tooltip
             arrow
             describeChild
-            title={
-              completable
-                ? "Complete Goal"
+            title={<Typography variant="body2">
+              {completable
+                ? requirementsNotMet
+                  ? <><s>Completable</s>: requirements order not met</>
+                  : "Complete Goal"
                 : completableByCrafting
-                  ? "Craft materials and Complete Goal"
-                  : "Not enough craftable materials"
+                  ? requirementsNotMet
+                    ? <><s>Craftable</s>: requirements order not met</>
+                    : "Craft materials and Complete Goal"
+                  : "Not enough craftable materials"}</Typography>
             }
             placement="left"
           >
@@ -154,7 +153,8 @@ const PlannerGoalCard = memo((props: Props) => {
                     color: "success.main",
                   },
                 }}
-                disabled={!completable && !completableByCrafting}
+                disabled={!completable && !completableByCrafting
+                  || (completable || completableByCrafting) && requirementsNotMet}
               >
                 <Upload fontSize="small" />
               </GoalCardButton>

@@ -3,21 +3,34 @@ import clsx from "clsx";
 
 type Orientation = "vertical" | "horizontal";
 
-interface CompletionIndicatorProps extends BoxProps {
+export interface CompletionIndicatorProps extends BoxProps {
   completable: boolean;
   completableByCrafting: boolean;
-  orientation?: Orientation; 
+  requirementsNotMet?: boolean;
+  orientation?: Orientation;
 }
 
 export function CompletionIndicator({
   completable,
   completableByCrafting,
+  requirementsNotMet = false,
   orientation = "vertical",
   children,
   className,
   ...props
 }: CompletionIndicatorProps) {
-  const status = completable ? "completable" : (completableByCrafting && !completable) ? "craftable" : "none";
+  const status =
+    completable
+      ? "completable"
+      : (completableByCrafting && !completable)
+        ? "craftable"
+        : "none";
+  const backgroundColor =
+    status === "completable"
+      ? "success.main"
+      : status === "craftable"
+        ? "warning.main"
+        : "transparent"
   return (
     <Box
       {...props}
@@ -36,13 +49,21 @@ export function CompletionIndicator({
             bottom: 0,
             width: "2px",
             height: "100%",
-            backgroundColor:
-              status === "completable"
-                ? "success.main"
-                : status === "craftable"
-                ? "warning.main"
-                : "transparent",
+            backgroundColor,
+            zIndex: 1,
           },
+          ...(requirementsNotMet && (completable || completableByCrafting) && {
+            "&:after": {
+              content: '""',
+              position: "absolute",
+              left: 0,
+              top: "35%",
+              width: "2px",
+              height: "30%",
+              backgroundColor: "error.main",
+              zIndex: 2,
+            },
+          }),
         }),
         ...(orientation === "horizontal" && {
           "&:after": {
@@ -52,12 +73,7 @@ export function CompletionIndicator({
             bottom: 0,
             height: "2px",
             width: "70%",
-            backgroundColor:
-              status === "completable"
-                ? "success.main"
-                : status === "craftable"
-                ? "warning.main"
-                : "transparent",
+            backgroundColor,
           },
         }),
         ...props.sx,

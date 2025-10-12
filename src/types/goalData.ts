@@ -1,6 +1,6 @@
 import { Database } from "./supabase";
 import { Operator, OperatorData } from "./operators/operator";
-import { OperatorGoalCategory, PlannerGoal, PlannerGoalCalculated } from "./goal";
+import { OperatorGoalCategory, PlannerGoal, PlannerGoalCalculated, PlannerGoalsSortable } from "./goal";
 import operatorJson from "../data/operators";
 import { MAX_LEVEL_BY_RARITY } from "../util/changeOperator";
 import getNumSkills from "util/fns/getNumSkills";
@@ -17,20 +17,20 @@ export type GoalDataInsert = Omit<GoalsTable["Insert"], "user_id" | "modules_fro
 };
 
 export type GoalsFilteredCalculatedMap = {
-    groupName: string;
-    index: number;
-    operatorGoals: {
-        operatorGoal: GoalData;
-        plannerGoals: PlannerGoalCalculated[];
-        substantial: boolean;
-        operator: Operator;
-        completable: boolean;
-        completableByCrafting: boolean;
-    }[];
-    inactiveOps: string[];
-    hasSubstantialGoals: boolean;
-    completableOperators: string[];
-    completableByCraftingOperators: string[];
+  groupName: string;
+  index: number;
+  operatorGoals: {
+    operatorGoal: GoalData;
+    plannerGoals: PlannerGoalCalculated[];
+    substantial: boolean;
+    operator: Operator;
+    completable: boolean;
+    completableByCrafting: boolean;
+  }[];
+  inactiveOps: string[];
+  hasSubstantialGoals: boolean;
+  completableOperators: string[];
+  completableByCraftingOperators: string[];
 }[]
 
 const isNumber = (value: any) => typeof value === "number";
@@ -73,9 +73,7 @@ export function getGoalString(goal: GoalData, opData: OperatorData) {
 
 export function getPlannerGoals(goal: GoalDataInsert, opData?: OperatorData, sortedInUpgradeOrder?: boolean) {
 
-  type PlannerGoalsSortable = PlannerGoal & {
-    sort_order: number;
-  };
+  let sort_order = 0;
 
   let plannerGoals: PlannerGoalsSortable[] = [];
   if (!opData) {
@@ -88,7 +86,9 @@ export function getPlannerGoals(goal: GoalDataInsert, opData?: OperatorData, sor
         category: OperatorGoalCategory.Elite,
         eliteLevel: i,
         operatorId: goal.op_id,
-        sort_order: 0 + (i * 10),  //elite are 10 or 20
+        //elite are 10 or 20
+        sort_order_upgrade: 0 + (i * 10),
+        sort_order: sort_order++,
       };
       plannerGoals.push(eliteGoal);
     }
@@ -102,7 +102,9 @@ export function getPlannerGoals(goal: GoalDataInsert, opData?: OperatorData, sor
         fromLevel: goal.level_from,
         toLevel: goal.level_to,
         operatorId: goal.op_id,
-        sort_order: 1 + (goal.elite_to * 10), //level are 1 or 11 or 21
+        //level are 1 or 11 or 21
+        sort_order_upgrade: 1 + (goal.elite_to * 10),
+        sort_order: sort_order++,
       };
       plannerGoals.push(levelGoal);
     } else {
@@ -116,7 +118,9 @@ export function getPlannerGoals(goal: GoalDataInsert, opData?: OperatorData, sor
           toLevel,
           eliteLevel: i,
           operatorId: goal.op_id,
-          sort_order: 1 + (i * 10), //level are 1 or 11 or 21
+          //level are 1 or 11 or 21
+          sort_order_upgrade: 1 + (i * 10),
+          sort_order: sort_order++,
         };
         if (fromLevel !== toLevel) plannerGoals.push(eliteGoal);
       }
@@ -129,7 +133,9 @@ export function getPlannerGoals(goal: GoalDataInsert, opData?: OperatorData, sor
         category: OperatorGoalCategory.SkillLevel,
         skillLevel: i,
         operatorId: goal.op_id,
-        sort_order: i + 10 * (i < 5 ? 0 : 1) //SL are  2-4 < lvl5 >= 15-17
+        //SL are  2-4 < lvl5 >= 15-17
+        sort_order_upgrade: i + 10 * (i < 5 ? 0 : 1),
+        sort_order: sort_order++,
       };
       plannerGoals.push(skillLevelGoal);
     }
@@ -143,7 +149,9 @@ export function getPlannerGoals(goal: GoalDataInsert, opData?: OperatorData, sor
             skillId: opData.skillData![skillIndex].skillId,
             masteryLevel: i,
             operatorId: goal.op_id,
-            sort_order: 30 + skillIndex * 10 + i //masteries are 31-33, 41-43, 51-53
+            //masteries are 31-33, 41-43, 51-53
+            sort_order_upgrade: 30 + skillIndex * 10 + i,
+            sort_order: sort_order++,
           };
           plannerGoals.push(masteriesGoal);
         }
@@ -158,7 +166,9 @@ export function getPlannerGoals(goal: GoalDataInsert, opData?: OperatorData, sor
           moduleId: moduleId,
           moduleLevel: i,
           operatorId: goal.op_id,
-          sort_order: 60 + index * 10 + i //modules are 61-63, 71-73...+10 etc..
+          //modules are 61-63, 71-73...+10 etc..
+          sort_order_upgrade: 60 + index * 10 + i,
+          sort_order: sort_order++,
         };
         plannerGoals.push(modulesGoal);
       }
@@ -167,8 +177,8 @@ export function getPlannerGoals(goal: GoalDataInsert, opData?: OperatorData, sor
   return (
     !sortedInUpgradeOrder
       ? plannerGoals
-      : plannerGoals.sort((a, b) => a.sort_order - b.sort_order)
-  ) as PlannerGoal[];
+      : plannerGoals.sort((a, b) => a.sort_order_upgrade - b.sort_order_upgrade)
+  ) as PlannerGoalsSortable[];
 }
 
 export const plannerGoalToGoalData = (goal: PlannerGoal): Partial<GoalDataInsert> => {
