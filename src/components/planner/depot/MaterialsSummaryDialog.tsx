@@ -152,7 +152,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                 <li>Combined materials from selected and previous events are factored into all calculations, reducing required amounts.</li>
                 <li>Highlights farmable tier 3 materials from selected event if they were set in the tracker.</li>
                 <li>
-                    Materials from <BlockIcon sx={{ display: "inline-block", verticalAlign: "middle", color:"primary.main" }} /> disabled Events are ignored.
+                    Materials from <BlockIcon sx={{ display: "inline-block", verticalAlign: "middle", color: "primary.main" }} /> disabled Events are ignored.
                 </li>
             </ul>
         </>;
@@ -600,38 +600,33 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                     }
                                 });
 
-                            // Upgrade craftable flags based on ingredients already in list
-                            const craftableMap = new Map<string, number>(); // matId -> craftable amount
+                            //Update craftable flags based on ingredients already in list
                             currentMaterialsMap.forEach((value, id) => {
                                 let { missing, isCraftable } = value;
                                 if (!isCraftable) return;
 
                                 const matInfo: Item = itemsJson[id as keyof typeof itemsJson];
                                 if (!matInfo.ingredients?.length) {
-                                    // No ingredients -> nothing to check
-                                    craftableMap.set(id, missing);
                                     return;
                                 }
 
                                 // Check each ingredient
                                 for (const ing of matInfo.ingredients) {
                                     const ingInfo: Item = itemsJson[ing.id as keyof typeof itemsJson];
-                                    if (!ingInfo || ingInfo.tier >= matInfo.tier) continue; // only lower-tier ingredients matter
+                                    if (!ingInfo || ingInfo.tier >= matInfo.tier) continue;
 
-                                    const craftableQty = craftableMap.get(ing.id) ?? 0;
-                                    const recipeQty = ing.quantity
-                                    const neededQty = recipeQty * missing; // amount required to craft fully
+                                    const ingredientMissing = currentMaterialsMap.get(ing.id)?.missing ?? 0;
+                                    const craftOneQty = ing.quantity;
+                                    const totalNeeded = craftOneQty * missing;
 
-                                    if ((neededQty - craftableQty) < recipeQty) {
-                                        //means: difference with low tier ingredients is not enough to craft
+                                    if ((totalNeeded - ingredientMissing) < craftOneQty) {
+                                        //not enough for craftOne
                                         isCraftable = false;
+                                        currentMaterialsMap.set(id, { missing, isCraftable });
                                         break;
                                     }
                                 }
-                                currentMaterialsMap.set(id, { missing, isCraftable });
-                                if (isCraftable) craftableMap.set(id, missing);
                             });
-
 
                             if (currentMaterialsMap.size > 0) {
                                 sortedNeedToCraftByOpInGroup.push({
