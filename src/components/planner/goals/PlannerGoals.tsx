@@ -855,7 +855,7 @@ const PlannerGoals = (props: Props) => {
         </Grid>
         {goals &&
           groups &&
-          groupedGoalsMap?.map(({ groupName, index, operatorGoals, inactiveOps, completableOperators, completableByCraftingOperators }) => (
+          groupedGoalsMap?.map(({ groupName, index, operatorGoals, ...rest }) => (
             <GoalGroup
               key={groupName}
               groupName={groupName}
@@ -871,18 +871,15 @@ const PlannerGoals = (props: Props) => {
               }}
               defaultExpanded={index === 0}
               onRename={onGroupRename}
-              inactiveOps={inactiveOps}
               onOpSelect={handleOpSelect}
               onGroupSelect={toggleGroupOpsInactivity}
               getCheckboxState={getGroupCheckboxState}
-              completableOperators={completableOperators}
-              completableByCraftingOperators={completableByCraftingOperators}
+              {...rest}
             >
-              {operatorGoals.map(({ operatorGoal, plannerGoals, substantial, operator, completable, completableByCrafting }) => (
+              {operatorGoals.map(({ operatorGoal, plannerGoals, substantial, ...rest }) => (
                 <Collapse in={substantial} key={operatorGoal.op_id}>
                   <OperatorGoals
                     key={operatorGoal.op_id}
-                    operator={operator}
                     operatorGoal={operatorGoal}
                     onGoalEdit={onGoalEdit}
                     onGoalMove={onGoalMove}
@@ -890,8 +887,7 @@ const PlannerGoals = (props: Props) => {
                     completeAllGoalsFromOperator={onPlannerGoalGroupCompleteAllGoals}
                     onOpSelect={handleOpSelect}
                     onGoalRefresh={handleGoalRefresh}
-                    completable={completable}
-                    completableByCrafting={completableByCrafting}
+                    {...rest}
                   >
                     {plannerGoals.map((plannerGoal, index) => (
                       <PlannerGoalCard
@@ -902,6 +898,7 @@ const PlannerGoals = (props: Props) => {
                         onGoalCompleted={onPlannerGoalCardGoalCompleted}
                         completable={plannerGoal.completable}
                         completableByCrafting={plannerGoal.completableByCrafting}
+                        requirementsNotMet={plannerGoal.requirementsNotMet}
                         ingredients={plannerGoal.ingredients}
                       />
                     ))}

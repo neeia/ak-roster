@@ -80,9 +80,15 @@ export type PlannerGoal =
   | PlannerModuleGoal
   | PlannerSkillLevelGoal
   | PlannerLevelGoal;
-  
-export type PlannerGoalCalculated = PlannerGoal & {
+
+export type PlannerGoalsSortable = PlannerGoal & {
+  sort_order: number;
+  sort_order_upgrade: number;
+};
+
+export type PlannerGoalCalculated = PlannerGoalsSortable & {
   completable: boolean;
   completableByCrafting: boolean;
+  requirementsNotMet: boolean;
   ingredients: Ingredient[];
-};
+}

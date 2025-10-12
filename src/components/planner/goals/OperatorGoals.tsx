@@ -19,9 +19,9 @@ import operatorJson from "data/operators";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Operator } from "types/operators/operator";
 import imageBase from "util/imageBase";
-import { CompletionIndicator } from "./CompletionIndicator";
+import { CompletionIndicator, CompletionIndicatorProps } from "./CompletionIndicator";
 
-interface Props {
+interface Props extends Pick<CompletionIndicatorProps, 'completable' | 'completableByCrafting'> {
   operator: Operator;
   operatorGoal: GoalData;
   onGoalEdit: (opId: string, groupName: string) => void;
@@ -31,8 +31,6 @@ interface Props {
   children?: React.ReactNode;
   onOpSelect: (opId: string, groupName: string) => void;
   onGoalRefresh: (operatorGoal: GoalData) => void;
-  completable: boolean;
-  completableByCrafting: boolean;
 }
 
 export const OperatorGoals = memo((props: Props) => {
@@ -45,8 +43,7 @@ export const OperatorGoals = memo((props: Props) => {
     children,
     onOpSelect,
     onGoalRefresh,
-    completable,
-    completableByCrafting,
+    ...rest
   } = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -160,8 +157,7 @@ export const OperatorGoals = memo((props: Props) => {
               }}
             >
               <CompletionIndicator
-                completable={completable}
-                completableByCrafting={completableByCrafting}
+                {...rest}
                 orientation="vertical"
               >
                 <Image src={imgUrl} width={64} height={64} alt="" />

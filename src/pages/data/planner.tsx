@@ -7,7 +7,7 @@ import { Box, BoxProps, Tab, Tabs } from "@mui/material";
 import { useMemo, useState } from "react";
 import useSettings from "util/hooks/useSettings";
 import useGoalFilter from "util/hooks/useGoalFilter";
-import { getPlannerGoals } from "types/goalData";
+import { getPlannerGoals, GoalsFilteredCalculatedMap, plannerGoalToGoalData } from "types/goalData";
 import useGoalGroups from "util/hooks/useGoalGroups";
 import useOperators from "util/hooks/useOperators";
 import { defaultOperatorObject } from "util/changeOperator";
@@ -20,6 +20,9 @@ import useEventsDefaults from "util/hooks/useEventsDefaults";
 import { createEmptyNamedEvent, getTotalMaterialsUptoSelectedEvent } from "util/fns/eventUtils";
 import { NamedEvent } from "types/events";
 import { cloneCompleteDepot } from "util/fns/depot/itemUtils";
+import applyGoalsToOperator from "util/fns/planner/applyGoalsToOperator";
+import { checkPlannerGoalRequirements } from "util/fns/planner/checkPlannerGoalRequirements";
+import Roster from "types/operators/roster";
 
 interface TabPanelProps extends BoxProps {
   index: number;
@@ -87,10 +90,11 @@ const Goals: NextPage = () => {
 
   const groupedGoals = useMemo(() => _.groupBy(goalsHook.goals, (goal) => goal.group_name), [goalsHook.goals]);
 
-  const groupedCalculatedGoals = useMemo(() => {
+  const groupedCalculatedGoals: GoalsFilteredCalculatedMap = useMemo(() => {
 
     //0. clone depot & json & add upcoming mats if event is selected
     let runningDepot = cloneCompleteDepot(depot, upcomingMaterialsData.materials);
+    const runningRoster: Roster = {};
 
     //+goalGroups level
     const sortedGroups = groupsHook.groups?.map((groupName, index) => {
@@ -107,22 +111,40 @@ const Goals: NextPage = () => {
         })
           //filter visible ops/groups
           .filter((g) => filtersHook.filterFunction.byOperatorsAndGroups(g, groupName, settings))
+          .sort((a, b) => a.sort_order_upgrade - b.sort_order_upgrade);
 
         //+plannerGoals level 
         const { plannerGoals, plannerGoalsDisabled } = plannerGoalsRaw.reduce((acc, plannerGoal) => {
+          if (!runningRoster[plannerGoal.operatorId]) {
+            runningRoster[plannerGoal.operatorId] = structuredClone(op);
+          }
+          let opAfter = runningRoster[operatorGoal.op_id];
+          let requirementsNotMet = false;
+          if (settings?.plannerSettings?.calculateGoalsInOrder ?? true) {
+            requirementsNotMet = !checkPlannerGoalRequirements(plannerGoal, opAfter);
+          }
+
+          //apply goal to runningDepot
           const { completable, completableByCrafting, depot: depotAfter, ingredients } =
             calculateCompletableStatus(plannerGoal, runningDepot, settings);
 
-          if (settings?.plannerSettings?.calculateGoalsInOrder ?? true) {
-            runningDepot = depotAfter;
+          //apply goal to runningOp
+          if (!requirementsNotMet && (completable || completableByCrafting)) {
+            opAfter = applyGoalsToOperator(plannerGoalToGoalData(plannerGoal), opAfter);
           }
-          const plannerGoalCalculated = { ...plannerGoal, completable, completableByCrafting, ingredients };
+
+          //keep temp results only when ordered setting
+          if ((settings?.plannerSettings?.calculateGoalsInOrder ?? true) && !requirementsNotMet) {
+            runningDepot = depotAfter;
+            runningRoster[operatorGoal.op_id] = opAfter;
+          }
+
+          const plannerGoalCalculated = { ...plannerGoal, completable, completableByCrafting, requirementsNotMet, ingredients };
           if (filtersHook.filterFunction.byGoalAndMaterials(plannerGoalCalculated, settings, runningDepot)) {
             acc.plannerGoals.push(plannerGoalCalculated);
           } else {
             acc.plannerGoalsDisabled.push(plannerGoalCalculated);
           }
-
           return acc;
         }, { plannerGoals: [], plannerGoalsDisabled: [] } as {
           plannerGoals: PlannerGoalCalculated[],
@@ -138,7 +160,13 @@ const Goals: NextPage = () => {
           && plannerGoals.every((g) => g.completable || g.completableByCrafting)
           && plannerGoalsDisabled.every((g) => g.completable || g.completableByCrafting);
 
-        return { operatorGoal, plannerGoals, substantial: plannerGoals.length > 0, operator: op, completable, completableByCrafting };
+        return {
+          operatorGoal,
+          plannerGoals: plannerGoals.sort((a, b) => a.sort_order - b.sort_order),
+          substantial: plannerGoals.length > 0,
+          operator: op,
+          completable, completableByCrafting
+        };
         //-return operatorGoals
       });
       const hasSubstantialGoals = operatorGoals.some((goal) => goal.substantial);
