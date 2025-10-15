@@ -9,10 +9,12 @@ import expToBattleRecords from "../depot/expToBattleRecords";
 import { Ingredient } from "types/item";
 
 const calculateCompletableStatus = (plannerGoal: PlannerGoal, depot: Record<string, DepotItem>, settings: LocalStorageSettings) => {
-    if (settings.plannerSettings.allowAllGoals) {
+    if (settings.plannerSettings.allowAllGoals
+        || (settings.depotSettings.ignoreLmdInCrafting && plannerGoal.category === OperatorGoalCategory.Level) //ignore lmd & exp
+    ) {
         return { completable: true, completableByCrafting: false, depot, ingredients: getGoalIngredients(plannerGoal) };
     }
-    let depotUpdate: Record<string,DepotItem>;
+    let depotUpdate: Record<string, DepotItem>;
     let completable = false;
     let completableByCrafting = false;
     let ingredients: Ingredient[];
@@ -24,14 +26,14 @@ const calculateCompletableStatus = (plannerGoal: PlannerGoal, depot: Record<stri
             plannerGoal.eliteLevel,
             plannerGoal.toLevel
         );
-        ingredients = [{id:"4001",quantity:lmd},{id:"EXP",quantity:exp}];
+        ingredients = [{ id: "4001", quantity: lmd }, { id: "EXP", quantity: exp }];
         const { success, depot: _depot } = expToBattleRecords(exp, depot);
         _depot["4001"].stock = Math.max(0, _depot["4001"].stock - lmd);
 
         completableByCrafting = false;
         completable = success
-            && (depot["4001"].stock >= lmd || settings.depotSettings.ignoreLmdInCrafting);        
-        
+            && (depot["4001"].stock >= lmd || settings.depotSettings.ignoreLmdInCrafting);
+
         depotUpdate = completable ? _depot : depot;
     } else {
         ingredients = getGoalIngredients(plannerGoal);

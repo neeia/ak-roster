@@ -565,10 +565,10 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                 });
                             });
                             // Mutate future depot for hypothetical crafting
-                            canCompleteByCrafting(opInGroupMaterialsNeededFuture, runningFutureDepot, craftingList);
+                            canCompleteByCrafting(opInGroupMaterialsNeededFuture, runningFutureDepot, craftingList, settings.depotSettings.ignoreLmdInCrafting);
 
                             // Mutate current depot & get craftable info
-                            const { craftableItems } = canCompleteByCrafting(opInGroupMaterialsNeededCurrent, runningCurrentDepot, craftingList);
+                            const { craftableItems } = canCompleteByCrafting(opInGroupMaterialsNeededCurrent, runningCurrentDepot, craftingList, settings.depotSettings.ignoreLmdInCrafting);
 
                             // Prepare future & current material lists
                             const futureMaterialsArray: [string, number][] = []; //new Map<string, number>();
@@ -696,7 +696,8 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
     }, [open, goalsMaterials, depot, expOwned, includeCraftIds, selectedEvent,
         getTier3StatisticFromMaterials,
         addBalanceValue, upcomingMaterialsData, groupedGoalsMap,
-        settings.plannerSettings.calculateGoalsInOrder]
+        settings.plannerSettings.calculateGoalsInOrder,
+        settings.depotSettings.ignoreLmdInCrafting]
     );
 
     const { sortedNeedToFarm, sortedNeedToCraft, sortedNeedToCraftByOpInGroup, sortedPossibleCraft, sortedEventMaterials } = useMemo(calculateSummaryTab, [calculateSummaryTab]);
