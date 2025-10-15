@@ -1,13 +1,16 @@
 import operatorJson from "data/operators";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
+import { LocalStorageSettings } from "types/localStorageSettings";
 import { Operator } from "types/operators/operator";
 import { MAX_LEVEL_BY_RARITY, MAX_SKILL_LEVEL_BY_PROMOTION } from "util/changeOperator";
 
-export const checkPlannerGoalRequirements = (goal: PlannerGoal, op: Operator): boolean => {
+export const checkPlannerGoalRequirements = (goal: PlannerGoal, op: Operator, settings: LocalStorageSettings): boolean => {
 
     const opData = operatorJson[op.op_id];
     if (!opData) return false;
     const rarity = opData.rarity;
+
+    const ignoreLevel = settings.depotSettings.ignoreLmdInCrafting;
 
     switch (goal.category) {
         //elite - check levels=max for rarity and elite-1
@@ -16,11 +19,13 @@ export const checkPlannerGoalRequirements = (goal: PlannerGoal, op: Operator): b
             if (prevElite < 0) return false;
             const maxLevelPrevElite = MAX_LEVEL_BY_RARITY[rarity][prevElite];
             if (maxLevelPrevElite == null) return false;
-            return op.elite === prevElite && op.level >= maxLevelPrevElite;
+            return op.elite === prevElite
+                && (ignoreLevel || op.level >= maxLevelPrevElite);
         }
 
         //level - need same elite, and ===fromLevel
         case OperatorGoalCategory.Level: {
+            if (ignoreLevel) return true;
             return op.elite === goal.eliteLevel && op.level === goal.fromLevel;
         }
 
@@ -54,7 +59,7 @@ export const checkPlannerGoalRequirements = (goal: PlannerGoal, op: Operator): b
             const currentModuleLevel = op.modules[goal.moduleId] ?? 0;
             return (
                 op.elite === 2 &&
-                op.level >= 60 &&
+                (ignoreLevel || op.level >= 60) &&
                 currentModuleLevel === goal.moduleLevel - 1
             );
         }
