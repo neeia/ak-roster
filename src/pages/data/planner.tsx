@@ -95,6 +95,7 @@ const Goals: NextPage = () => {
     //0. clone depot & json & add upcoming mats if event is selected
     let runningDepot = cloneCompleteDepot(depot, upcomingMaterialsData.materials);
     const runningRoster: Roster = {};
+    const isUpcomingDepot = Object.keys(upcomingMaterialsData.materials).length > 0;
 
     //+goalGroups level
     const sortedGroups = groupsHook.groups?.map((groupName, index) => {
@@ -121,13 +122,23 @@ const Goals: NextPage = () => {
           let opAfter = runningRoster[operatorGoal.op_id];
           let requirementsNotMet = false;
           if (settings?.plannerSettings?.calculateGoalsInOrder ?? true) {
-            requirementsNotMet = !checkPlannerGoalRequirements(plannerGoal, opAfter);
+            requirementsNotMet = !checkPlannerGoalRequirements(plannerGoal, opAfter, settings);
           }
-
+          //"complete" button availability
+          let available = false;
           //apply goal to runningDepot
           const { completable, completableByCrafting, depot: depotAfter, ingredients } =
             calculateCompletableStatus(plannerGoal, runningDepot, settings);
+          available = completable || completableByCrafting;
 
+          //re-set button from current depot if upcoming
+          if ((settings?.plannerSettings?.calculateGoalsInOrder ?? true)
+            || isUpcomingDepot) {
+            const { completable: completableCurrent, completableByCrafting: craftableCurrent } =
+              calculateCompletableStatus(plannerGoal, depot, settings);
+            available = completableCurrent || craftableCurrent;
+            console.log("calc2", completableCurrent, craftableCurrent, available);
+          }
           //apply goal to runningOp
           if (!requirementsNotMet && (completable || completableByCrafting)) {
             opAfter = applyGoalsToOperator(plannerGoalToGoalData(plannerGoal), opAfter);
@@ -138,8 +149,8 @@ const Goals: NextPage = () => {
             runningDepot = depotAfter;
             runningRoster[operatorGoal.op_id] = opAfter;
           }
-
-          const plannerGoalCalculated = { ...plannerGoal, completable, completableByCrafting, requirementsNotMet, ingredients };
+          const plannerGoalCalculated = { ...plannerGoal, completable, completableByCrafting, available, requirementsNotMet, ingredients };
+          console.log(plannerGoalCalculated.operatorId, plannerGoalCalculated.available);
           if (filtersHook.filterFunction.byGoalAndMaterials(plannerGoalCalculated, settings, runningDepot)) {
             acc.plannerGoals.push(plannerGoalCalculated);
           } else {

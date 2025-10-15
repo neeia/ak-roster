@@ -216,7 +216,19 @@ export const OperatorGoals = memo((props: Props) => {
             <MenuItem component="button" onClick={handleMoveGoalButtonClick}>
               <Typography>Change Group</Typography>
             </MenuItem>
-            <Tooltip title="Force complete and remove. Consume or craft items set to 'Crafting'" arrow describeChild>
+            <Tooltip placement="top" arrow
+              slotProps={{
+                popper: {
+                  modifiers: [{
+                    name: 'offset',
+                    options: { offset: [0, 10], },
+                  },],
+                },
+              }}
+              title={
+                <Typography variant="body2" >
+                  Force complete and remove.<br />Consume or craft items set to 'Crafting'
+                </Typography>} describeChild>
               <MenuItem component="button" onClick={handleCompleteGoalsButtonClick}>
                 <Typography color="success">Complete all goals</Typography>
               </MenuItem>

@@ -64,7 +64,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
   const { setAnchorEl, menuProps, menuButtonProps } = useMenu();
 
-  const craftToggleTooltips = ["Toggle only craftable materials ON - use with Goals and Filters", "Toggle all crafting states ON", "Reset all crafting states"];
+  const craftToggleTooltips = ["Toggle only craftable materials ON\nto use with Goals and Filters", "Toggle all crafting states ON", "Reset all crafting states"];
   const initialCraftToggle = 1;
   const [craftToggle, setCraftToggle] = useState(initialCraftToggle);
 
@@ -469,7 +469,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
               color="primary">
               Summary
             </Button>
-            <Tooltip arrow title={craftToggleTooltips[craftToggle]}>
+            <Tooltip arrow title={<Typography variant="body1" sx={{whiteSpace: "pre-line"}}>{craftToggleTooltips[craftToggle]}</Typography>}>
               <Button
                 onClick={handleCraftingToggleAll}
                 variant="contained"
@@ -501,11 +501,8 @@ const MaterialsNeeded = React.memo((props: Props) => {
             Show increment/decrement buttons
           </SettingsMenuItem>
           <SettingsMenuItem onClick={handleAllowNoLmdCrafting} checked={settings.depotSettings.ignoreLmdInCrafting}>
-            Ignore LMD in crafting requirements
+            Ignore LMD & Exp in craft and goals
           </SettingsMenuItem>
-          <MenuItem disabled>
-            <ListItemText inset>Allow all &gt; goals menu</ListItemText>
-          </MenuItem>
           <Divider />
           <MenuItem onClick={() => {
             setAnchorEl(null);
