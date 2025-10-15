@@ -100,7 +100,7 @@
     },
     {
       "skinId": "char_4136_phonor@boc#9",
-      "skinName": "最初的颂歌",
+      "skinName": "Primordial Ode",
       "avatarId": "char_4136_phonor_boc#9",
       "sortId": 329
     }
@@ -280,7 +280,7 @@
     },
     {
       "skinId": "char_124_kroos@sale#14",
-      "skinName": "星月漂流记",
+      "skinName": "Moonlit Voyage",
       "avatarId": "char_124_kroos_sale#14",
       "sortId": 19
     },
@@ -1930,7 +1930,7 @@
     },
     {
       "skinId": "char_497_ctable@epoque#44",
-      "skinName": "湖畔歌者",
+      "skinName": "Bard by the Lake",
       "avatarId": "char_497_ctable_epoque#44",
       "sortId": 109
     },
@@ -5180,7 +5180,7 @@
     },
     {
       "skinId": "char_332_archet@sale#14",
-      "skinName": "至虔者荣光",
+      "skinName": "Glory of the Devout",
       "avatarId": "char_332_archet_sale#14",
       "sortId": 21
     },
@@ -5338,7 +5338,7 @@
     },
     {
       "skinId": "char_300_phenxi@boc#9",
-      "skinName": "审判日",
+      "skinName": "Judgment Day",
       "avatarId": "char_300_phenxi_boc#9",
       "sortId": 328
     }
@@ -5424,7 +5424,7 @@
     },
     {
       "skinId": "char_1035_wisdel@sale#14",
-      "skinName": "超新星",
+      "skinName": "Supernova",
       "avatarId": "char_1035_wisdel_sale#14",
       "sortId": 20
     }
@@ -6600,7 +6600,7 @@
     },
     {
       "skinId": "char_437_mizuki@game#6",
-      "skinName": "永恒玩家",
+      "skinName": "A Player Forever",
       "avatarId": "char_437_mizuki_game#6",
       "sortId": 403
     }
@@ -6766,7 +6766,7 @@
     },
     {
       "skinId": "char_003_kalts@sale#14",
-      "skinName": "时遗",
+      "skinName": "The Remains of Time",
       "avatarId": "char_003_kalts_sale#14",
       "sortId": 22
     },
@@ -7690,7 +7690,7 @@
     },
     {
       "skinId": "char_4064_mlynar@iteration#3",
-      "skinName": "苍茫怒号",
+      "skinName": "Roar Against the Wilds",
       "avatarId": "char_4064_mlynar_iteration#3",
       "sortId": 418
     }
