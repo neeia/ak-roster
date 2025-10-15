@@ -155,13 +155,14 @@ const GameImport = memo(() => {
 
         //currently amiya only, if not null operator has class change and must be handled in a custom way
         if (value.tmpl) {
-          for (let key in value.tmpl) {
-            let altValue = value.tmpl[key];
+          for (let altKey in value.tmpl) {
+            let altValue = value.tmpl[altKey];
+            const altOpData = operatorJson[altKey]!;
 
             //first module is the default one, we can skip.
 
             let altSupportModules: Record<string, number> = Object.fromEntries(
-              opData?.moduleData?.map((mod) => [mod.moduleId, 0]) ?? []
+              altOpData?.moduleData?.map((mod) => [mod.moduleId, 0]) ?? []
             );
             Object.entries(altValue.equip)
               .slice(1)
@@ -170,7 +171,7 @@ const GameImport = memo(() => {
 
             let altMasteries = altValue.skills.map((skill) => skill.specializeLevel);
             let skin = altValue.skinId as string | null;
-            const opSkins: Skin[] = skinJson[value.charId as keyof typeof skinJson];
+            const opSkins: Skin[] = skinJson[altKey as keyof typeof skinJson];
             //convert to aceship format
             if (opSkins && skin) {
               const matches = opSkins.filter((x) => x.skinId == skin);
@@ -180,12 +181,12 @@ const GameImport = memo(() => {
             }
 
             let alternativeOperator: Operator = {
-              op_id: key,
+              op_id: altKey,
               elite: value.evolvePhase,
               level: value.level,
               potential: value.potentialRank + 1,
               skill_level: value.mainSkillLvl,
-              favorite: _roster[value.charId]?.favorite || false,
+              favorite: _roster[altKey]?.favorite || false,
               skin: skin,
               modules: altSupportModules,
               masteries: altMasteries,
@@ -363,7 +364,7 @@ const GameImport = memo(() => {
             }
             label="Import Operators"
           />
-         <FormControlLabel
+          <FormControlLabel
             control={
               <Checkbox
                 id="refreshGoals"
@@ -382,7 +383,7 @@ const GameImport = memo(() => {
               />
             }
             label="Update & Clear Planner Goals"
-            sx={{ ml: 1}}
+            sx={{ ml: 1 }}
           />
           <FormControlLabel
             control={
