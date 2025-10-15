@@ -718,6 +718,14 @@ const PlannerGoals = (props: Props) => {
   }, [updateGoals, roster]
   );
 
+  const handleAllowNoLmdCrafting = useCallback(() => {
+    const depotSettings = { ...settings.depotSettings };
+    depotSettings.ignoreLmdInCrafting = !depotSettings?.ignoreLmdInCrafting;
+
+    setSettings((s) => ({ ...s, depotSettings }));
+    setAnchorEl(null);
+  }, [settings, setSettings, setAnchorEl]);
+
   //once on page-load > after useEffects from useOps useGoals
   useEffect(() => {
     if (settings.plannerSettings.autoRefreshGoals ?? true) {
@@ -739,6 +747,9 @@ const PlannerGoals = (props: Props) => {
             <SettingsMenu props={menuProps}>
               <SettingsMenuItem onClick={handleAllowAllGoals} checked={settings.plannerSettings.allowAllGoals}>
                 Allow completing goals unconditionally
+              </SettingsMenuItem>
+              <SettingsMenuItem onClick={handleAllowNoLmdCrafting} checked={settings.depotSettings.ignoreLmdInCrafting}>
+                Ignore LMD & Exp in craft and goals
               </SettingsMenuItem>
               <SettingsMenuItem
                 onClick={handleSortEmptyGroupsToBottom}
@@ -812,7 +823,10 @@ const PlannerGoals = (props: Props) => {
           }}
         >
           <Grid>
-            <Tooltip title="Calculate goals in descending order">
+            <Tooltip title={
+              <Typography variant="body1">Calculate goals from top op to bottom,
+                <br />following required upgrade order</Typography>
+            }>
               <IconButton size="large" onClick={handleCalculateGoalsInOrder}
                 color={(settings.plannerSettings?.calculateGoalsInOrder ?? true) ? "primary" : "default"}>
                 <LowPriorityIcon fontSize="inherit" />
@@ -892,14 +906,10 @@ const PlannerGoals = (props: Props) => {
                     {plannerGoals.map((plannerGoal, index) => (
                       <PlannerGoalCard
                         key={index}
-                        goal={plannerGoal}
                         groupName={groupName}
                         onGoalDeleted={onPlannerGoalCardGoalDeleted}
                         onGoalCompleted={onPlannerGoalCardGoalCompleted}
-                        completable={plannerGoal.completable}
-                        completableByCrafting={plannerGoal.completableByCrafting}
-                        requirementsNotMet={plannerGoal.requirementsNotMet}
-                        ingredients={plannerGoal.ingredients}
+                        {...plannerGoal}
                       />
                     ))}
                   </OperatorGoals>

@@ -3,11 +3,11 @@ import React, { memo, useEffect, useState } from "react";
 import ItemStack from "../depot/ItemStack";
 import OperatorGoalIconography from "./OperatorGoalIconography";
 import { OperatorData } from "types/operators/operator";
-import { OperatorGoalCategory, PlannerGoal } from "types/goal";
+import { OperatorGoalCategory, PlannerGoal, PlannerGoalCalculated } from "types/goal";
 import { DeleteForever, Upload } from "@mui/icons-material";
 import operatorJson from "data/operators";
-import { CompletionIndicator, CompletionIndicatorProps } from "./CompletionIndicator";
-import { Ingredient } from "types/item";
+import { CompletionIndicator } from "./CompletionIndicator";
+import LowPriorityIcon from '@mui/icons-material/LowPriority';
 
 const GoalCardButton = styled(Button)({
   borderRadius: "0px",
@@ -16,20 +16,50 @@ const GoalCardButton = styled(Button)({
   backgroundColor: "transparent",
 });
 
-interface Props extends Pick<CompletionIndicatorProps, 'completable' | 'completableByCrafting' | 'requirementsNotMet'> {
-  goal: PlannerGoal;
+type Props = PlannerGoalCalculated & {
   groupName: string;
   onGoalDeleted: (goal: PlannerGoal, groupName: string) => void;
   onGoalCompleted: (goal: PlannerGoal, groupName: string) => void;
-  ingredients: Ingredient[];
 }
 
 const PlannerGoalCard = memo((props: Props) => {
-  const { goal, groupName, onGoalDeleted, onGoalCompleted, completable = false, completableByCrafting = false, requirementsNotMet = false, ingredients } = props;
+  const { groupName, onGoalDeleted, onGoalCompleted, ...goal } = props;
+  const { completable, completableByCrafting, requirementsNotMet, ingredients, available } = goal;
   const theme = useTheme();
   const isXSScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
   const [goalName, setGoalName] = useState("");
+
+  const getRequirementString = (goal: PlannerGoal, status: string): React.JSX.Element => {
+    let requirement = "";
+    switch (goal.category) {
+      case OperatorGoalCategory.Level:
+        requirement = "<Elite or LVL>";
+        break;
+      case OperatorGoalCategory.Elite:
+        requirement = goal.eliteLevel < 1 ? "<LVL>" : "<Elite or LVL>";
+        break;
+      case OperatorGoalCategory.SkillLevel:
+        requirement = goal.skillLevel < 5 ? "<prev.SL>" : "<E1 or prev. SL>";
+        break;
+      case OperatorGoalCategory.Mastery:
+        requirement = "<E2, SL7 or prev.M>";
+        break;
+      case OperatorGoalCategory.Module:
+        requirement = "<E2, LVL or prev.S>";
+        break;
+    }
+    return (<>
+      <LowPriorityIcon sx={{ color: "primary.main", display: "inline-block", verticalAlign: "middle" }} />
+      : Missing doable previous goals
+      <Box component="span" display="flex" justifyContent="space-between">
+        (<s>{status}</s>)
+        <Box component="span" ml="auto">
+          {requirement}
+        </Box>
+      </Box></>
+    )
+  }
 
   useEffect(() => {
     const opData: OperatorData = operatorJson[goal.operatorId];
@@ -129,16 +159,17 @@ const PlannerGoalCard = memo((props: Props) => {
           <Tooltip
             arrow
             describeChild
-            title={<Typography variant="body2">
+            title={<Typography variant="body1">
               {completable
                 ? requirementsNotMet
-                  ? <><s>Completable</s>: requirements order not met</>
-                  : "Complete Goal"
+                  ? getRequirementString(goal, "Completable")
+                  : available ? "Complete Goal" : <>Complete at selected event<br />Not enough in current depot</>
                 : completableByCrafting
                   ? requirementsNotMet
-                    ? <><s>Craftable</s>: requirements order not met</>
-                    : "Craft materials and Complete Goal"
-                  : "Not enough craftable materials"}</Typography>
+                    ? getRequirementString(goal, "Craftable")
+                    : available ? "Craft materials and Complete Goal" : <>Craft at selected event<br />Not enough in current depot</>
+                  : "Not enough craftable materials"}
+            </Typography>
             }
             placement="left"
           >
@@ -153,7 +184,8 @@ const PlannerGoalCard = memo((props: Props) => {
                     color: "success.main",
                   },
                 }}
-                disabled={!completable && !completableByCrafting
+                disabled={!available ||
+                  (!completable && !completableByCrafting)
                   || (completable || completableByCrafting) && requirementsNotMet}
               >
                 <Upload fontSize="small" />
@@ -161,7 +193,7 @@ const PlannerGoalCard = memo((props: Props) => {
             </span>
           </Tooltip>
           <Divider />
-          <Tooltip arrow describeChild title="Delete Goal" placement="left">
+          <Tooltip arrow describeChild title={<Typography variant="body1">Delete Goal</Typography>} placement="left">
             <GoalCardButton
               aria-label={`Delete goal: ${goalLabel}`}
               onClick={() => onGoalDeleted(goal, groupName)}

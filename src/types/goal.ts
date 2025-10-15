@@ -90,5 +90,6 @@ export type PlannerGoalCalculated = PlannerGoalsSortable & {
   completable: boolean;
   completableByCrafting: boolean;
   requirementsNotMet: boolean;
+  available: boolean;
   ingredients: Ingredient[];
 }
