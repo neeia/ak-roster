@@ -385,6 +385,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -983,6 +996,18 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1121,6 +1146,18 @@
           "Elemental",
           "Ranged",
           "Supporter",
+          "Robot"
+        ]
+      },
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
           "Robot"
         ]
       }
@@ -1417,6 +1454,18 @@
         "tags": [
           "Fast-Redeploy",
           "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -1781,6 +1830,18 @@
           "Defense",
           "Melee",
           "Defender",
+          "Robot"
+        ]
+      },
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
           "Robot"
         ]
       }
@@ -3475,6 +3536,18 @@
         ]
       },
       {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_237_gravel",
         "name": "Gravel",
         "rarity": 4,
@@ -3803,6 +3876,18 @@
           "Melee",
           "Vanguard"
         ]
+      },
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
+          "Robot"
+        ]
       }
     ],
     "guarantees": []
@@ -4080,6 +4165,18 @@
           "Crowd-Control",
           "Ranged",
           "Caster"
+        ]
+      },
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
+          "Robot"
         ]
       }
     ],
@@ -4502,6 +4599,18 @@
           "DPS",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
           "Senior Operator"
         ]
       },
@@ -5111,6 +5220,18 @@
         "tags": [
           "Fast-Redeploy",
           "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -6346,6 +6467,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6580,6 +6714,19 @@
           "Survival",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -7220,6 +7367,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7365,6 +7525,19 @@
       {
         "id": "char_222_bpipe",
         "name": "Bagpipe",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
         "rarity": 6,
         "tags": [
           "DP-Recovery",
@@ -7697,6 +7870,19 @@
           "DPS",
           "Ranged",
           "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -8500,6 +8686,18 @@
         "tags": [
           "Fast-Redeploy",
           "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -9339,6 +9537,18 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -10031,6 +10241,18 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -10251,6 +10473,18 @@
         "tags": [
           "Fast-Redeploy",
           "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -10894,6 +11128,18 @@
           "Defender",
           "Robot"
         ]
+      },
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
+          "Robot"
+        ]
       }
     ],
     "guarantees": [
@@ -11077,6 +11323,52 @@
           "Elemental",
           "Ranged",
           "Supporter",
+          "Robot"
+        ]
+      }
+    ],
+    "guarantees": [
+      1
+    ]
+  },
+  "Robot,Vanguard": {
+    "tags": [
+      "Robot",
+      "Vanguard"
+    ],
+    "operators": [
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
+          "Robot"
+        ]
+      }
+    ],
+    "guarantees": [
+      1
+    ]
+  },
+  "Crowd-Control,Robot": {
+    "tags": [
+      "Crowd-Control",
+      "Robot"
+    ],
+    "operators": [
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
           "Robot"
         ]
       }
@@ -11699,6 +11991,18 @@
         ]
       },
       {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_237_gravel",
         "name": "Gravel",
         "rarity": 4,
@@ -11896,6 +12200,18 @@
           "Melee",
           "Vanguard"
         ]
+      },
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
+          "Robot"
+        ]
       }
     ],
     "guarantees": []
@@ -12008,10 +12324,23 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
+          "Robot"
+        ]
       }
     ],
     "guarantees": [
-      5
+      5,
+      1
     ]
   },
   "DP-Recovery,Melee": {
@@ -12294,6 +12623,18 @@
           "DPS",
           "Melee",
           "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
           "Senior Operator"
         ]
       },
@@ -12699,6 +13040,18 @@
         "tags": [
           "Fast-Redeploy",
           "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -16616,6 +16969,18 @@
         ]
       },
       {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_272_strong",
         "name": "Jaye",
         "rarity": 4,
@@ -16713,6 +17078,18 @@
         "tags": [
           "Fast-Redeploy",
           "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -17155,10 +17532,23 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
+          "Robot"
+        ]
       }
     ],
     "guarantees": [
-      5
+      5,
+      1
     ]
   },
   "DP-Recovery,Vanguard": {
@@ -18024,6 +18414,18 @@
     ],
     "operators": [
       {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_272_strong",
         "name": "Jaye",
         "rarity": 4,
@@ -18831,6 +19233,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19477,6 +19892,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19625,6 +20053,19 @@
       {
         "id": "char_222_bpipe",
         "name": "Bagpipe",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
         "rarity": 6,
         "tags": [
           "DP-Recovery",
@@ -19958,6 +20399,19 @@
           "DPS",
           "Ranged",
           "Sniper",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -20749,6 +21203,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20818,6 +21285,19 @@
       {
         "id": "char_222_bpipe",
         "name": "Bagpipe",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
         "rarity": 6,
         "tags": [
           "DP-Recovery",
@@ -21048,6 +21528,19 @@
           "Survival",
           "Melee",
           "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -23163,6 +23656,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -23192,6 +23698,19 @@
       {
         "id": "char_222_bpipe",
         "name": "Bagpipe",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
         "rarity": 6,
         "tags": [
           "DP-Recovery",
@@ -23451,6 +23970,19 @@
       {
         "id": "char_222_bpipe",
         "name": "Bagpipe",
+        "rarity": 6,
+        "tags": [
+          "DP-Recovery",
+          "DPS",
+          "Melee",
+          "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_362_saga",
+        "name": "Saga",
         "rarity": 6,
         "tags": [
           "DP-Recovery",
@@ -24303,6 +24835,18 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -24699,6 +25243,18 @@
           "Guard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -24864,6 +25420,18 @@
         "tags": [
           "Fast-Redeploy",
           "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -27061,6 +27629,18 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -27129,6 +27709,18 @@
         "tags": [
           "Fast-Redeploy",
           "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -27978,6 +28570,30 @@
       5
     ]
   },
+  "DPS,Fast-Redeploy,Senior Operator": {
+    "tags": [
+      "DPS",
+      "Fast-Redeploy",
+      "Senior Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      5
+    ]
+  },
   "DPS,Healing,Senior Operator": {
     "tags": [
       "DPS",
@@ -28553,6 +29169,54 @@
       1
     ]
   },
+  "Melee,Robot,Vanguard": {
+    "tags": [
+      "Melee",
+      "Robot",
+      "Vanguard"
+    ],
+    "operators": [
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
+          "Robot"
+        ]
+      }
+    ],
+    "guarantees": [
+      1
+    ]
+  },
+  "Crowd-Control,Melee,Robot": {
+    "tags": [
+      "Crowd-Control",
+      "Melee",
+      "Robot"
+    ],
+    "operators": [
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
+          "Robot"
+        ]
+      }
+    ],
+    "guarantees": [
+      1
+    ]
+  },
   "Defense,Melee,Robot": {
     "tags": [
       "Defense",
@@ -28905,6 +29569,30 @@
           "Elemental",
           "Ranged",
           "Supporter",
+          "Robot"
+        ]
+      }
+    ],
+    "guarantees": [
+      1
+    ]
+  },
+  "Crowd-Control,Robot,Vanguard": {
+    "tags": [
+      "Crowd-Control",
+      "Robot",
+      "Vanguard"
+    ],
+    "operators": [
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
           "Robot"
         ]
       }
@@ -29763,6 +30451,18 @@
         ]
       },
       {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_272_strong",
         "name": "Jaye",
         "rarity": 4,
@@ -29863,6 +30563,18 @@
         "tags": [
           "Fast-Redeploy",
           "Crowd-Control",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -30041,10 +30753,23 @@
           "Vanguard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_4188_confes",
+        "name": "CONFESS-47",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Crowd-Control",
+          "Melee",
+          "Vanguard",
+          "Robot"
+        ]
       }
     ],
     "guarantees": [
-      5
+      5,
+      1
     ]
   },
   "DP-Recovery,Melee,Vanguard": {
@@ -30641,6 +31366,18 @@
       "Melee"
     ],
     "operators": [
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
       {
         "id": "char_272_strong",
         "name": "Jaye",
@@ -33680,6 +34417,18 @@
       "Specialist"
     ],
     "operators": [
+      {
+        "id": "char_455_nothin",
+        "name": "Mr. Nothing",
+        "rarity": 5,
+        "tags": [
+          "Fast-Redeploy",
+          "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
       {
         "id": "char_272_strong",
         "name": "Jaye",

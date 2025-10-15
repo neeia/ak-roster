@@ -220,16 +220,18 @@
       "id": "pioneer",
       "name": "Pioneer"
     },
-    "isCnOnly": true,
-    "pools": [],
+    "isCnOnly": false,
+    "pools": [
+      "Recruitment"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
-      "天赋效果加强",
-      "天赋效果加强",
-      "天赋效果加强",
-      "天赋效果加强",
-      "天赋效果加强"
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent"
     ],
     "skillLevels": [],
     "eliteLevels": []
@@ -14950,7 +14952,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "义",
+        "moduleName": "Yi",
         "moduleId": "uniequip_002_wscoot",
         "typeName": "LIB-X",
         "stages": [
@@ -15020,7 +15022,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -40401,7 +40403,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“双重身份”",
+        "moduleName": "'Two Faces'",
         "moduleId": "uniequip_002_takila",
         "typeName": "LIB-X",
         "stages": [
@@ -40471,7 +40473,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -40997,9 +40999,9 @@
     "class": "Guard",
     "branch": {
       "id": "primguard",
-      "name": "Primguard - 本源近卫"
+      "name": "Primal"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "pools": [
       "Standard"
     ],
@@ -41007,7 +41009,7 @@
       {
         "skillId": "skchr_graceb_1",
         "iconId": null,
-        "skillName": "开颅挽歌",
+        "skillName": "Skullcracking Elegy",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -41071,7 +41073,7 @@
       {
         "skillId": "skchr_graceb_2",
         "iconId": null,
-        "skillName": "破膛弥撒",
+        "skillName": "Disemboweling Mass",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -41135,11 +41137,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+30",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -54228,7 +54230,7 @@
       "id": "primcaster",
       "name": "Primal"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "pools": [
       "Free"
     ],
@@ -54236,7 +54238,7 @@
       {
         "skillId": "skchr_christ_1",
         "iconId": null,
-        "skillName": "自由用餐礼仪",
+        "skillName": "Mealtime Manners",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -54300,7 +54302,7 @@
       {
         "skillId": "skchr_christ_2",
         "iconId": null,
-        "skillName": "狂饮之宴",
+        "skillName": "Bacchanalia",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -54438,11 +54440,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -64012,7 +64014,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -88387,7 +88390,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "空弦特限证章",
+        "moduleName": "Archetto's Specialized Badge",
         "moduleId": "uniequip_004_archet",
         "typeName": "ISW-A",
         "stages": [
@@ -88425,7 +88428,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -90645,7 +90648,7 @@
       "id": "longrange",
       "name": "Deadeye"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "pools": [
       "Standard"
     ],
@@ -90653,7 +90656,7 @@
       {
         "skillId": "skchr_lemuen_1",
         "iconId": null,
-        "skillName": "重逢问候",
+        "skillName": "Salvē Etiam",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -90717,7 +90720,7 @@
       {
         "skillId": "skchr_lemuen_2",
         "iconId": null,
-        "skillName": "归乡邀约",
+        "skillName": "Honesta Missio",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -90781,7 +90784,7 @@
       {
         "skillId": "skchr_lemuen_3",
         "iconId": null,
-        "skillName": "礼炮·强制追思",
+        "skillName": "Salutatio Sclopeti: Memento Mori",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -90845,7 +90848,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“弹匣与花窗”",
+        "moduleName": "'Magazine and Stained Glass'",
         "moduleId": "uniequip_002_lemuen",
         "typeName": "DEA-Y",
         "stages": [
@@ -90915,15 +90918,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+46",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +46",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -96401,7 +96404,8 @@
     "isCnOnly": false,
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -99161,7 +99165,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "落叶四季",
+        "moduleName": "Fallen Leaves of Four Seasons",
         "moduleId": "uniequip_003_mlyss",
         "typeName": "TAC-Y",
         "stages": [
@@ -99231,7 +99235,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -112039,7 +112043,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "可控动量",
+        "moduleName": "Controllable Momentum",
         "moduleId": "uniequip_003_slent2",
         "typeName": "BLS-Y",
         "stages": [
@@ -112109,7 +112113,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -116325,7 +116329,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "木炭画",
+        "moduleName": "рисунок углем",
         "moduleId": "uniequip_003_crosly",
         "typeName": "EXE-Y",
         "stages": [
@@ -116395,7 +116399,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -118584,7 +118588,7 @@
       "id": "geek",
       "name": "Geek"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "pools": [
       "Limited"
     ],
@@ -118592,7 +118596,7 @@
       {
         "skillId": "skchr_angel2_1",
         "iconId": null,
-        "skillName": "天空大扫除",
+        "skillName": "Sweeping the Skies",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118656,7 +118660,7 @@
       {
         "skillId": "skchr_angel2_2",
         "iconId": null,
-        "skillName": "开火成瘾症",
+        "skillName": "Shootoholic",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118720,7 +118724,7 @@
       {
         "skillId": "skchr_angel2_3",
         "iconId": null,
-        "skillName": "使命必达！",
+        "skillName": "Guaranteed Success!",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118784,7 +118788,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "新朋友圣城生活套组",
+        "moduleName": "Convenience Kit for New Friends",
         "moduleId": "uniequip_002_angel2",
         "typeName": "GEE-X",
         "stages": [
@@ -118854,15 +118858,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "第二天赋效果增强",
-      "攻击力+30",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +30",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -119882,7 +119886,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "水月特限证章",
+        "moduleName": "Mizuki's Specialized Badge",
         "moduleId": "uniequip_004_mizuki",
         "typeName": "ISW-A",
         "stages": [
@@ -119920,7 +119924,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -130865,7 +130869,7 @@
       "id": "shotprotector",
       "name": "Sentry Protector"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "pools": [
       "Free"
     ],
@@ -130873,7 +130877,7 @@
       {
         "skillId": "skchr_rmixer_1",
         "iconId": null,
-        "skillName": "铳骑主考官",
+        "skillName": "Gun-Knight Examiner-in-Chief",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -130937,7 +130941,7 @@
       {
         "skillId": "skchr_rmixer_2",
         "iconId": null,
-        "skillName": "八臂电锯侠",
+        "skillName": "Eight-Armed Chainsaw Guy",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -131001,7 +131005,7 @@
       {
         "skillId": "skchr_rmixer_3",
         "iconId": null,
-        "skillName": "退休前布道",
+        "skillName": "Pre-Retirement Preaching",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -131065,7 +131069,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "毛刷套装",
+        "moduleName": "Armor Cleaning Brush Set",
         "moduleId": "uniequip_002_rmixer",
         "typeName": "SPT-X",
         "stages": [
@@ -131135,15 +131139,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -133776,7 +133780,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "沙蚀",
+        "moduleName": "Sand Erosion",
         "moduleId": "uniequip_003_thorns",
         "typeName": "LOR-D",
         "stages": [
@@ -133846,7 +133850,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -143775,7 +143779,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“鞘中人”",
+        "moduleName": "'Man in Scabbard'",
         "moduleId": "uniequip_002_mlynar",
         "typeName": "LIB-X",
         "stages": [
@@ -143845,7 +143849,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
