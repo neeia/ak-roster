@@ -10,6 +10,7 @@ import {
   Divider,
   FormControlLabel,
   IconButton,
+  Link,
   MenuItem,
   Stack,
   TextField,
@@ -37,6 +38,8 @@ const GameImport = memo(() => {
   const disabled = false;
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
+  const [confirm, setConfirm] = useState(false);
+  const [isL1Import, setIsL1Import] = useState<{ error: boolean, email: null | string }>({ error: false, email: null });
   const [_settings, setSettings] = useSettings();
   const settings = _settings.importSettings;
   useEffect(() => {
@@ -94,6 +97,16 @@ const GameImport = memo(() => {
   };
 
   async function processGameData(userData: UserData) {
+    //sync on lvl1 account case. Show error and point to instructions
+    if (userData.status.level === 1) {
+      setIsL1Import({ error: true, email: email });
+      setConfirm(false);
+      enqueueSnackbar("Error: Retrieved Level 1 Account. Read 'How to fix import' instructions", { variant: "error", autoHideDuration: 10000 });
+      return;
+    } else {
+      setIsL1Import({ error: false, email: null });
+    }
+
     enqueueSnackbar("Data Retrieved. Processing...", { variant: "info" });
 
     if (rememberLogin) {
@@ -120,7 +133,7 @@ const GameImport = memo(() => {
         friendcode: friendCode,
         level: profileData.level,
         assistant: profileData.secretary,
-        server: settings.importServer,
+        server: settings.importServer.toUpperCase(),
         onboard: `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`,
       });
 
@@ -257,6 +270,9 @@ const GameImport = memo(() => {
   }
 
   const [collapse, setCollapse] = useState(true);
+
+  const isNewUser = (user?.level ?? 0) < 5;
+  const showEmailAlert = isNewUser || isL1Import.error;
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
@@ -427,7 +443,65 @@ const GameImport = memo(() => {
           <MenuItem value={"jp"}>JP</MenuItem>
           <MenuItem value={"kr"}>KR</MenuItem>
         </TextField>
-        Bind account to Email in game settings before Log In. Google/Apple/other binds alone aren't supported. Without an Email bind, a second new account will be created.
+        <Alert
+          component="aside"
+          variant="outlined"
+          severity={!isL1Import.error ? "warning" : "info"}
+        >
+          <AlertTitle>
+            {!isL1Import.error
+              ? <Typography variant="body1">Bind Arknights account to Email in game settings before Log In.</Typography>
+              : <Typography variant="body1">How to Fix Import After Level 1 Account Error:</Typography>}
+          </AlertTitle>
+          {showEmailAlert && <>
+            {!isL1Import.error
+            ? <><Typography component="span" variant="body2" sx={{ color: "error.main" }}>Warning:</Typography>
+              <Typography component="span" variant="body2">GooglePlay, AppleStore or other binds alone will not work.
+                <br /> Without an Email bind, a second <u>level 1 Arknights account</u> will be created, imported and will bind your Email.</Typography></>
+            : <Typography component="span" variant="body2"><u>What happened:</u> You didn't bind email, so Arknights created and bound new lvl1 account for this email. And your main Arknights account probably uses GooglePlay/AppleStore of same email, or Guest (not bound at all).
+              <br />
+              <u>What to Do to fix:</u>
+              <br />Option 1: Remove your email from Level 1 account and bind it into main account:
+              <ol>
+                <li>Go to AK publisher web site: <Link underline="always" href="https://account.yo-star.com/login">Yostar Account Center</Link></li>
+                <li>Login into level 1 account with <Typography component="span" color="info" variant="body1">
+                  {isL1Import.email ? isL1Import.email : "email"}
+                </Typography> + code</li>
+                <li>Find Email box - Press "Update". Follow instuctions to swap to another email.</li>
+                <ul>
+                  <li>Simplify with virtual "salted" email, by adding custom suffix after "+" in your email. If email provider supports it (Gmail does). As example:</li>
+                  <li>input: <Typography component="span" color="info" variant="body1">
+                    {isL1Import.email
+                      ? `${isL1Import.email.split("@")[0]}+lvl1@${email.split("@")[1]}`
+                      : "your_email+aklvl1@gmail.com"}
+                  </Typography></li>
+                  <li>still recieve codes into: <Typography component="span" color="info" variant="body1">
+                    {isL1Import.email ? isL1Import.email : "your_email@gmail.com"}
+                  </Typography></li>
+                </ul>
+                <li>After swapping to new/salted email, Log Out from level 1 account</li>
+                <li>In game with main Arknights account in settings bind to now free <Typography component="span" color="info" variant="body1">
+                  {isL1Import.email ? isL1Import.email : "email"}
+                </Typography></li>
+              </ol>
+              Option 2 - simply use another email to bind your main Arknights account in game settings and use it for import
+            </Typography>}
+            <br />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  id="confirm"
+                  value={confirm ?? false}
+                  checked={confirm ?? false}
+                  onChange={() => setConfirm((v) => !v)}
+                />
+              }
+              label={!isL1Import.error
+                ? <Typography variant="body1">I bound Email in-game and understand lvl1 warning</Typography>
+                : <Typography variant="body1">I completed all steps, and want to try import again</Typography>}
+            />
+          </>}
+        </Alert>
         <TextField
           id="Mail"
           sx={{
@@ -436,6 +510,7 @@ const GameImport = memo(() => {
             },
           }}
           variant="filled"
+          disabled={showEmailAlert && !confirm}
           label="Mail"
           value={email}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -445,7 +520,7 @@ const GameImport = memo(() => {
         <Button
           variant="outlined"
           type="submit"
-          disabled={disabled || email.length === 0}
+          disabled={disabled || email.length === 0 || (showEmailAlert && !confirm)}
           onClick={(event) => {
             event.preventDefault();
             sendCode(email);
