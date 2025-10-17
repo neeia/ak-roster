@@ -10077,7 +10077,7 @@
   },
   "char_4208_wintim": {
     "id": "char_4208_wintim",
-    "name": "Снегyрочка",
+    "name": "Снегурочка",
     "cnName": "冬时",
     "rarity": 4,
     "class": "Vanguard",
@@ -110866,6 +110866,32 @@
             "moduleLevel": 3,
             "ingredients": [],
             "name": "Module SO-A Stage 3",
+            "category": 3
+          }
+        ],
+        "isCnOnly": true
+      },
+      {
+        "moduleName": "新起点",
+        "moduleId": "uniequip_003_radian",
+        "typeName": "SO-B",
+        "stages": [
+          {
+            "moduleLevel": 1,
+            "ingredients": [],
+            "name": "Module SO-B Stage 1",
+            "category": 3
+          },
+          {
+            "moduleLevel": 2,
+            "ingredients": [],
+            "name": "Module SO-B Stage 2",
+            "category": 3
+          },
+          {
+            "moduleLevel": 3,
+            "ingredients": [],
+            "name": "Module SO-B Stage 3",
             "category": 3
           }
         ],
