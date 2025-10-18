@@ -10,9 +10,10 @@ interface Props extends Omit<ToggleButtonGroupProps, "onChange"> {
   onChange: (value: string) => void;
   onBranchesClose: () => void;
   expandedClass: string | null;
+  onHover?: (value: {id: string, title: string} | null) => void;
 }
 
-const ClassFilter = ({ value, onChange, onBranchesClose, expandedClass }: Props) => {
+const ClassFilter = ({ value, onChange, onBranchesClose, expandedClass, onHover }: Props) => {
   const branches = expandedClass ? getBranches(expandedClass) : [];
 
   const countSelectedBranches = (c: string) => {
@@ -73,12 +74,13 @@ const ClassFilter = ({ value, onChange, onBranchesClose, expandedClass }: Props)
           }}
         >
           {branches.map((b) => (
-            <Tooltip key={b.id} title={b.name} arrow placement="top">
               <ToggleButton
                 key={b.id}
                 value={b.id}
                 disabled={!isClassSelected(expandedClass || "")}
                 onChange={() => onChange(b.id)}
+                onMouseEnter={() => onHover?.({id: b.id, title: b.name})}
+                onMouseLeave={() => onHover?.(null)}
                 sx={{ borderRadius: 1 }}
               >
                 <Image width={35} height={35} src={`${imageBase}/subclass/sub_${b.id.toLowerCase()}_icon.webp`} alt={b.name}
@@ -87,7 +89,6 @@ const ClassFilter = ({ value, onChange, onBranchesClose, expandedClass }: Props)
                   }}
                 />
               </ToggleButton>
-            </Tooltip>
           ))}
           {expandedClass && <IconButton
             onClick={onBranchesClose}>
