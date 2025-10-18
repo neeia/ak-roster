@@ -11,6 +11,7 @@ import {
   Divider,
   IconButton,
   ToggleButton,
+  Tooltip,
   Typography,
   useMediaQuery,
   useTheme,
@@ -48,6 +49,7 @@ import Chip from "components/base/Chip";
 import applyPresetToOperator from "util/fns/planner/applyPresetToOperator";
 import { rarityColors } from "styles/rarityColors";
 import imageBase from "util/imageBase";
+import factionJson from "data/factions";
 
 interface Props {
   op?: Operator;
@@ -163,25 +165,64 @@ const EditOperator = React.memo((props: Props) => {
             <Close />
           </IconButton>
         </Box>
-        <Box sx={{ fontSize: "16px", width: "100%", display: "flex", gap: 1, alignItems: "center" }}>
-          <Typography sx={{ color: rarityColors[opData.rarity] }}>{"★".repeat(opData.rarity)}</Typography>
-          <Divider orientation="vertical" flexItem />
-          <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-            <Image
-              src={`${imageBase}/classes/class_${opData.class.toLocaleLowerCase()}.webp`}
-              alt=""
-              sx={{ width: 24, height: 24 }}
-            />
-            {opData.class}
+        <Box sx={{ fontSize: "16px", width: "100%", display: "flex", gap: 1, alignItems: "center", flexWrap: "wrap" }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1, flexWrap: "wrap" }}>
+            <Typography sx={{ color: rarityColors[opData.rarity] }}>{"★".repeat(opData.rarity)}</Typography>
+            <Divider orientation="vertical" flexItem />
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+              <Image
+                src={`${imageBase}/classes/class_${opData.class.toLocaleLowerCase()}.webp`}
+                alt=""
+                sx={{ width: 24, height: 24 }}
+              />
+              {!fullScreen && <Typography>{opData.class}</Typography>}
+            </Box>
+            <Divider orientation="vertical" flexItem />
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+              <Image
+                src={`${imageBase}/subclass/sub_${opData.branch.id.toLocaleLowerCase().replaceAll(" ", "_")}_icon.webp`}
+                alt=""
+                sx={{ width: 24, height: 24 }}
+              />
+              <Typography whiteSpace="nowrap">{opData.branch.name}</Typography>
+            </Box>
           </Box>
-          <Divider orientation="vertical" flexItem />
-          <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-            <Image
-              src={`${imageBase}/subclass/sub_${opData.branch.id.toLocaleLowerCase().replaceAll(" ", "_")}_icon.webp`}
-              alt=""
-              sx={{ width: 24, height: 24 }}
-            />
-            {opData.branch.name}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              marginLeft: "auto",
+              flexWrap: "wrap",
+              justifyContent: "flex-end",
+              flexGrow: 1,
+            }}
+          >
+            {opData.factions.map((id, idx) => {
+              return (
+                <React.Fragment key={id}>
+                  <Tooltip arrow
+                    disableHoverListener={factionJson[id].powerName === factionJson[id].powerCode}
+                    title={
+                      <Typography>{factionJson[id].powerName}</Typography>}>
+                    <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+                      <Image
+                        src={`${imageBase}/factions/logo_${id}.webp`}
+                        sx={{ display: "block", width: 32, height: 32 }}
+                        alt=""
+                        hideOnError={true}
+                      />
+                      {!fullScreen && <Typography whiteSpace="nowrap">{factionJson[id].powerCode}</Typography>}
+                    </Box>
+                  </Tooltip>
+                  {opData.factions.length > 1 &&
+                    opData.factions.length !== idx + 1 && (
+                      <Divider orientation="vertical" flexItem />
+                    )}
+                </React.Fragment>
+              )
+            }
+            )}
           </Box>
         </Box>
       </DialogTitle>

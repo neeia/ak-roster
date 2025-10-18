@@ -10,6 +10,9 @@
       "name": "Medic"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Free",
       "Recruitment"
@@ -37,6 +40,9 @@
       "name": "Dreadnought"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Recruitment"
     ],
@@ -63,6 +69,9 @@
       "name": "Executor"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Free",
       "Recruitment"
@@ -90,6 +99,10 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "pinus",
+      "kazimierz"
+    ],
     "pools": [
       "Recruitment"
     ],
@@ -116,6 +129,9 @@
       "name": "Flinger"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Limited",
       "Free"
@@ -143,6 +159,9 @@
       "name": "Bard"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Free"
     ],
@@ -169,6 +188,9 @@
       "name": "Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Recruitment"
     ],
@@ -195,6 +217,9 @@
       "name": "Ritualist"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Recruitment"
     ],
@@ -221,6 +246,9 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Recruitment"
     ],
@@ -247,6 +275,11 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "action4",
+      "rhodes",
+      "higashi"
+    ],
     "pools": [
       "Recruitment"
     ],
@@ -273,6 +306,11 @@
       "name": "Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "action4",
+      "rhodes",
+      "higashi"
+    ],
     "pools": [
       "Recruitment"
     ],
@@ -299,6 +337,10 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "action4",
+      "rhodes"
+    ],
     "pools": [
       "Recruitment"
     ],
@@ -325,6 +367,10 @@
       "name": "Core"
     },
     "isCnOnly": false,
+    "factions": [
+      "action4",
+      "rhodes"
+    ],
     "pools": [
       "Free",
       "Recruitment"
@@ -352,6 +398,9 @@
       "name": "Splash"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Free",
       "Recruitment"
@@ -379,6 +428,11 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve1",
+      "rhodes",
+      "kazimierz"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -515,6 +569,10 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "blacksteel",
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -650,6 +708,9 @@
       "name": "Charger"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -786,6 +847,11 @@
       "name": "Dreadnought"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve4",
+      "rhodes",
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -922,6 +988,11 @@
       "name": "Centurion"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve6",
+      "rhodes",
+      "rim"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -1057,6 +1128,11 @@
       "name": "Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve4",
+      "rhodes",
+      "leithanien"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -1191,6 +1267,11 @@
       "name": "Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve1",
+      "rhodes",
+      "bolivar"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -1327,6 +1408,11 @@
       "name": "Guardian"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve6",
+      "rhodes",
+      "sargon"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -1462,6 +1548,11 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve1",
+      "rhodes",
+      "rim"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -1598,6 +1689,11 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve4",
+      "rhodes",
+      "laterano"
+    ],
     "pools": [
       "Free",
       "Recruitment"
@@ -1731,6 +1827,11 @@
       "name": "Splash"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve1",
+      "rhodes",
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -1867,6 +1968,11 @@
       "name": "Medic"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve1",
+      "rhodes",
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -2003,6 +2109,11 @@
       "name": "Medic"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve4",
+      "rhodes",
+      "rim"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -2139,6 +2250,11 @@
       "name": "Core"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve4",
+      "rhodes",
+      "kjerag"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -2274,6 +2390,11 @@
       "name": "Decel Binder"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve6",
+      "rhodes",
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -2410,6 +2531,9 @@
       "name": "Core"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -2776,6 +2900,9 @@
       "name": "Splash"
     },
     "isCnOnly": false,
+    "factions": [
+      "sami"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -3142,6 +3269,9 @@
       "name": "Splash"
     },
     "isCnOnly": false,
+    "factions": [
+      "bolivar"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -3508,6 +3638,9 @@
       "name": "Mech-accord"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -3874,6 +4007,9 @@
       "name": "Mystic"
     },
     "isCnOnly": false,
+    "factions": [
+      "iberia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -4239,6 +4375,9 @@
       "name": "Chain"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Free"
     ],
@@ -4602,6 +4741,11 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "blacksteel",
+      "columbia",
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -4969,6 +5113,9 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "kazimierz"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -5335,6 +5482,9 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -5701,6 +5851,9 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -6067,6 +6220,9 @@
       "name": "Artilleryman"
     },
     "isCnOnly": false,
+    "factions": [
+      "higashi"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -6433,6 +6589,9 @@
       "name": "Spreadshooter"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -6799,6 +6958,9 @@
       "name": "Deadeye"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -7165,6 +7327,9 @@
       "name": "Heavyshooter"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -7531,6 +7696,9 @@
       "name": "Besieger"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -7896,6 +8064,9 @@
       "name": "Loopshooter"
     },
     "isCnOnly": false,
+    "factions": [
+      "bolivar"
+    ],
     "pools": [
       "Free"
     ],
@@ -8259,6 +8430,10 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "karlan",
+      "kjerag"
+    ],
     "pools": [
       "Free"
     ],
@@ -8622,6 +8797,10 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "sweep",
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -8988,6 +9167,9 @@
       "name": "Charger"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -9354,6 +9536,9 @@
       "name": "Standard Bearer"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -9720,6 +9905,9 @@
       "name": "Tactician"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -10086,6 +10274,9 @@
       "name": "Agent"
     },
     "isCnOnly": true,
+    "factions": [
+      "ursus"
+    ],
     "pools": [
       "Standard"
     ],
@@ -10449,6 +10640,10 @@
       "name": "Instructor"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "bolivar"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -10815,6 +11010,9 @@
       "name": "Dreadnought"
     },
     "isCnOnly": false,
+    "factions": [
+      "higashi"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -11181,6 +11379,9 @@
       "name": "Dreadnought"
     },
     "isCnOnly": false,
+    "factions": [
+      "minos"
+    ],
     "pools": [
       "Free"
     ],
@@ -11538,6 +11739,10 @@
       "name": "Lord"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -11904,6 +12109,9 @@
       "name": "Centurion"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Recruitment"
     ],
@@ -12267,6 +12475,9 @@
       "name": "Arts Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -12633,6 +12844,9 @@
       "name": "Swordmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -12999,6 +13213,9 @@
       "name": "Soloblade"
     },
     "isCnOnly": false,
+    "factions": [
+      "higashi"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -13365,6 +13582,9 @@
       "name": "Lord"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -13731,6 +13951,9 @@
       "name": "Lord"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Limited",
       "Free"
@@ -14089,6 +14312,9 @@
       "name": "Crusher"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Free"
     ],
@@ -14452,6 +14678,10 @@
       "name": "Reaper"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -14817,6 +15047,9 @@
       "name": "Liberator"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Standard"
     ],
@@ -15180,6 +15413,9 @@
       "name": "Executor"
     },
     "isCnOnly": false,
+    "factions": [
+      "kazimierz"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -15546,6 +15782,9 @@
       "name": "Merchant"
     },
     "isCnOnly": false,
+    "factions": [
+      "lungmen"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -15912,6 +16151,10 @@
       "name": "Hookmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "lungmen",
+      "rim"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -16278,6 +16521,9 @@
       "name": "Medic"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -16644,6 +16890,10 @@
       "name": "Medic"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "sargon"
+    ],
     "pools": [
       "Free"
     ],
@@ -17007,6 +17257,10 @@
       "name": "Medic"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "siracusa"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -17373,6 +17627,10 @@
       "name": "Multi-target"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "minos"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -17739,6 +17997,9 @@
       "name": "Therapist"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Recruitment"
     ],
@@ -18102,6 +18363,9 @@
       "name": "Wandering"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -18467,6 +18731,10 @@
       "name": "Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "karlan",
+      "kjerag"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -18833,6 +19101,9 @@
       "name": "Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -19199,6 +19470,9 @@
       "name": "Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -19565,6 +19839,9 @@
       "name": "Juggernaut"
     },
     "isCnOnly": false,
+    "factions": [
+      "bolivar"
+    ],
     "pools": [
       "Standard"
     ],
@@ -19928,6 +20205,10 @@
       "name": "Guardian"
     },
     "isCnOnly": false,
+    "factions": [
+      "student",
+      "ursus"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -20294,6 +20575,10 @@
       "name": "Arts Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "columbia"
+    ],
     "pools": [
       "Free"
     ],
@@ -20583,6 +20868,9 @@
       "name": "Summoner"
     },
     "isCnOnly": false,
+    "factions": [
+      "egir"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -20948,6 +21236,9 @@
       "name": "Decel Binder"
     },
     "isCnOnly": false,
+    "factions": [
+      "leithanien"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -21314,6 +21605,10 @@
       "name": "Decel Binder"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "bolivar"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -21680,6 +21975,9 @@
       "name": "Artificer"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -22045,6 +22343,9 @@
       "name": "Ambusher"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Free"
     ],
@@ -22408,6 +22709,9 @@
       "name": "Push Stroker"
     },
     "isCnOnly": false,
+    "factions": [
+      "lungmen"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -22775,6 +23079,9 @@
       "name": "Dollkeeper"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -23140,6 +23447,9 @@
       "name": "Skyranger"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Free"
     ],
@@ -23429,6 +23739,11 @@
       "name": "Multi-target"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhine",
+      "columbia",
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -23798,6 +24113,9 @@
       "name": "Multi-target"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -24165,6 +24483,9 @@
       "name": "Multi-target"
     },
     "isCnOnly": false,
+    "factions": [
+      "iberia"
+    ],
     "pools": [
       "Free"
     ],
@@ -24532,6 +24853,10 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "student",
+      "ursus"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -24901,6 +25226,11 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "penguin",
+      "lungmen",
+      "siracusa"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -25271,6 +25601,10 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "chiave",
+      "siracusa"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -25640,6 +25974,10 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "siesta",
+      "columbia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -26007,6 +26345,9 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Free"
     ],
@@ -26374,6 +26715,9 @@
       "name": "Counsellor - 策士"
     },
     "isCnOnly": true,
+    "factions": [
+      "higashi"
+    ],
     "pools": [
       "Free"
     ],
@@ -26667,6 +27011,10 @@
       "name": "Charger"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria",
+      "tara"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -27036,6 +27384,10 @@
       "name": "Charger"
     },
     "isCnOnly": false,
+    "factions": [
+      "pinus",
+      "kazimierz"
+    ],
     "pools": [
       "Free"
     ],
@@ -27403,6 +27755,10 @@
       "name": "Charger"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "kazimierz"
+    ],
     "pools": [
       "Standard"
     ],
@@ -27770,6 +28126,10 @@
       "name": "Standard Bearer"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "iberia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -28139,6 +28499,9 @@
       "name": "Standard Bearer"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Free"
     ],
@@ -28506,6 +28869,9 @@
       "name": "Tactician"
     },
     "isCnOnly": false,
+    "factions": [
+      "rim"
+    ],
     "pools": [
       "Standard"
     ],
@@ -28873,6 +29239,9 @@
       "name": "Tactician"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Standard"
     ],
@@ -29240,6 +29609,10 @@
       "name": "Agent"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "bolivar"
+    ],
     "pools": [
       "Standard"
     ],
@@ -29607,6 +29980,9 @@
       "name": "Agent"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -29974,6 +30350,9 @@
       "name": "Agent"
     },
     "isCnOnly": false,
+    "factions": [
+      "laios"
+    ],
     "pools": [
       "Limited"
     ],
@@ -30341,6 +30720,10 @@
       "name": "Agent"
     },
     "isCnOnly": false,
+    "factions": [
+      "blacksteel",
+      "columbia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -30708,6 +31091,10 @@
       "name": "Instructor"
     },
     "isCnOnly": false,
+    "factions": [
+      "lgd",
+      "lungmen"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -31077,6 +31464,9 @@
       "name": "Instructor"
     },
     "isCnOnly": false,
+    "factions": [
+      "kazimierz"
+    ],
     "pools": [
       "Free"
     ],
@@ -31444,6 +31834,10 @@
       "name": "Instructor"
     },
     "isCnOnly": false,
+    "factions": [
+      "siesta",
+      "columbia"
+    ],
     "pools": [
       "Free"
     ],
@@ -31811,6 +32205,9 @@
       "name": "Instructor"
     },
     "isCnOnly": false,
+    "factions": [
+      "rainbow"
+    ],
     "pools": [
       "Limited"
     ],
@@ -32178,6 +32575,10 @@
       "name": "Dreadnought"
     },
     "isCnOnly": false,
+    "factions": [
+      "blacksteel",
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -32546,6 +32947,9 @@
       "name": "Dreadnought"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Free"
     ],
@@ -32913,6 +33317,10 @@
       "name": "Dreadnought"
     },
     "isCnOnly": false,
+    "factions": [
+      "glasgow",
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -33280,6 +33688,9 @@
       "name": "Dreadnought"
     },
     "isCnOnly": false,
+    "factions": [
+      "laios"
+    ],
     "pools": [
       "Limited"
     ],
@@ -33647,6 +34058,10 @@
       "name": "Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "glasgow",
+      "victoria"
+    ],
     "pools": [
       "Free",
       "Recruitment"
@@ -34015,6 +34430,9 @@
       "name": "Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -34384,6 +34802,10 @@
       "name": "Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "glasgow",
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -34751,6 +35173,9 @@
       "name": "Lord"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -35119,6 +35544,9 @@
       "name": "Lord"
     },
     "isCnOnly": false,
+    "factions": [
+      "rim"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -35488,6 +35916,10 @@
       "name": "Lord"
     },
     "isCnOnly": false,
+    "factions": [
+      "student",
+      "ursus"
+    ],
     "pools": [
       "Standard"
     ],
@@ -35855,6 +36287,9 @@
       "name": "Crusher"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Standard"
     ],
@@ -36222,6 +36657,9 @@
       "name": "Swordmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "sami"
+    ],
     "pools": [
       "Free"
     ],
@@ -36589,7 +37027,11 @@
       "name": "Swordmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "rainbow"
+    ],
     "pools": [
+      "Limited",
       "Free"
     ],
     "skillData": [
@@ -36956,6 +37398,10 @@
       "name": "Centurion"
     },
     "isCnOnly": false,
+    "factions": [
+      "abyssal",
+      "egir"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -37325,6 +37771,10 @@
       "name": "Centurion"
     },
     "isCnOnly": false,
+    "factions": [
+      "chiave",
+      "siracusa"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -37694,6 +38144,9 @@
       "name": "Centurion"
     },
     "isCnOnly": false,
+    "factions": [
+      "rainbow"
+    ],
     "pools": [
       "Limited",
       "Free"
@@ -38062,6 +38515,9 @@
       "name": "Arts Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -38431,6 +38887,9 @@
       "name": "Arts Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "minos"
+    ],
     "pools": [
       "Free"
     ],
@@ -38798,6 +39257,9 @@
       "name": "Soloblade"
     },
     "isCnOnly": false,
+    "factions": [
+      "higashi"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -39166,6 +39628,11 @@
       "name": "Soloblade"
     },
     "isCnOnly": false,
+    "factions": [
+      "action4",
+      "rhodes",
+      "higashi"
+    ],
     "pools": [
       "Limited"
     ],
@@ -39533,6 +40000,9 @@
       "name": "Reaper"
     },
     "isCnOnly": false,
+    "factions": [
+      "bolivar"
+    ],
     "pools": [
       "Kernel CN",
       "Standard"
@@ -39901,6 +40371,9 @@
       "name": "Reaper"
     },
     "isCnOnly": false,
+    "factions": [
+      "iberia"
+    ],
     "pools": [
       "Free"
     ],
@@ -40268,6 +40741,9 @@
       "name": "Liberator"
     },
     "isCnOnly": false,
+    "factions": [
+      "bolivar"
+    ],
     "pools": [
       "Free"
     ],
@@ -40635,6 +41111,9 @@
       "name": "Earthshaker"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Free"
     ],
@@ -41002,6 +41481,10 @@
       "name": "Primal"
     },
     "isCnOnly": false,
+    "factions": [
+      "bolivar",
+      "laterano"
+    ],
     "pools": [
       "Standard"
     ],
@@ -41295,6 +41778,9 @@
       "name": "Earthshaker"
     },
     "isCnOnly": true,
+    "factions": [
+      "mujica"
+    ],
     "pools": [
       "Limited",
       "Free"
@@ -41663,6 +42149,9 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "iberia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -42032,6 +42521,9 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "kazimierz"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -42401,6 +42893,9 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -42770,6 +43265,9 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "rim"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -43139,6 +43637,10 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "rim"
+    ],
     "pools": [
       "Free"
     ],
@@ -43506,6 +44008,9 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Free"
     ],
@@ -43873,6 +44378,9 @@
       "name": "Artilleryman"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -44242,6 +44750,9 @@
       "name": "Artilleryman"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -44611,6 +45122,9 @@
       "name": "Artilleryman"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Free"
     ],
@@ -44978,6 +45492,9 @@
       "name": "Spreadshooter"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -45347,6 +45864,10 @@
       "name": "Spreadshooter"
     },
     "isCnOnly": false,
+    "factions": [
+      "chiave",
+      "siracusa"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -45716,6 +46237,9 @@
       "name": "Spreadshooter"
     },
     "isCnOnly": true,
+    "factions": [
+      "higashi"
+    ],
     "pools": [
       "Standard"
     ],
@@ -46083,6 +46607,10 @@
       "name": "Core"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "rim"
+    ],
     "pools": [
       "Free"
     ],
@@ -46514,6 +47042,9 @@
       "name": "Core"
     },
     "isCnOnly": false,
+    "factions": [
+      "ursus"
+    ],
     "pools": [
       "Free"
     ],
@@ -46881,6 +47412,9 @@
       "name": "Core"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Free"
     ],
@@ -47248,6 +47782,9 @@
       "name": "Core"
     },
     "isCnOnly": false,
+    "factions": [
+      "sami"
+    ],
     "pools": [
       "Free"
     ],
@@ -47615,6 +48152,9 @@
       "name": "Splash"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -47983,6 +48523,9 @@
       "name": "Chain"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -48352,6 +48895,10 @@
       "name": "Chain"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhine",
+      "columbia"
+    ],
     "pools": [
       "Free"
     ],
@@ -48719,6 +49266,9 @@
       "name": "Phalanx"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -49088,6 +49638,9 @@
       "name": "Splash"
     },
     "isCnOnly": false,
+    "factions": [
+      "rim"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -49457,6 +50010,9 @@
       "name": "Splash"
     },
     "isCnOnly": false,
+    "factions": [
+      "sami"
+    ],
     "pools": [
       "Standard"
     ],
@@ -49824,6 +50380,9 @@
       "name": "Phalanx"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -50191,6 +50750,9 @@
       "name": "Mystic"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -50560,6 +51122,10 @@
       "name": "Mystic"
     },
     "isCnOnly": false,
+    "factions": [
+      "tara",
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -50927,6 +51493,9 @@
       "name": "Mystic"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -51294,6 +51863,10 @@
       "name": "Splash"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -51661,6 +52234,9 @@
       "name": "Blast"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Kernel CN",
       "Standard"
@@ -52029,6 +52605,10 @@
       "name": "Blast"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa",
+      "columbia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -52396,6 +52976,10 @@
       "name": "Mech-accord"
     },
     "isCnOnly": false,
+    "factions": [
+      "karlan",
+      "kjerag"
+    ],
     "pools": [
       "Free"
     ],
@@ -52763,6 +53347,9 @@
       "name": "Mech-accord"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -53130,6 +53717,9 @@
       "name": "Mech-accord"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Free"
     ],
@@ -53497,6 +54087,9 @@
       "name": "Primal"
     },
     "isCnOnly": false,
+    "factions": [
+      "leithanien"
+    ],
     "pools": [
       "Free"
     ],
@@ -53864,6 +54457,9 @@
       "name": "Primal"
     },
     "isCnOnly": false,
+    "factions": [
+      "rim"
+    ],
     "pools": [
       "Standard"
     ],
@@ -54231,6 +54827,9 @@
       "name": "Primal"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -54598,6 +55197,9 @@
       "name": "Shaper"
     },
     "isCnOnly": false,
+    "factions": [
+      "bolivar"
+    ],
     "pools": [
       "Standard"
     ],
@@ -54965,6 +55567,10 @@
       "name": "Summoner"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhine",
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -55334,6 +55940,9 @@
       "name": "Summoner"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Free"
     ],
@@ -55701,6 +56310,9 @@
       "name": "Summoner"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Standard"
     ],
@@ -56068,6 +56680,10 @@
       "name": "Medic"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhine",
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -56437,6 +57053,9 @@
       "name": "Medic"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -56806,6 +57425,10 @@
       "name": "Medic"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "ursus"
+    ],
     "pools": [
       "Free"
     ],
@@ -57173,6 +57796,9 @@
       "name": "Medic"
     },
     "isCnOnly": true,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Standard"
     ],
@@ -57540,6 +58166,10 @@
       "name": "Therapist"
     },
     "isCnOnly": false,
+    "factions": [
+      "siesta",
+      "columbia"
+    ],
     "pools": [
       "Free"
     ],
@@ -57907,6 +58537,9 @@
       "name": "Therapist"
     },
     "isCnOnly": false,
+    "factions": [
+      "iberia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -58276,6 +58909,9 @@
       "name": "Therapist"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -58643,6 +59279,9 @@
       "name": "Medic"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Free"
     ],
@@ -59010,6 +59649,9 @@
       "name": "Wandering"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Kernel CN",
       "Standard"
@@ -59378,6 +60020,9 @@
       "name": "Wandering"
     },
     "isCnOnly": false,
+    "factions": [
+      "rim"
+    ],
     "pools": [
       "Free"
     ],
@@ -59745,6 +60390,9 @@
       "name": "Wandering"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -60112,6 +60760,10 @@
       "name": "Incantation"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -60479,6 +61131,9 @@
       "name": "Incantation"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -60846,6 +61501,10 @@
       "name": "Chain"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "columbia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -61139,6 +61798,9 @@
       "name": "Chain"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Free"
     ],
@@ -61432,6 +62094,10 @@
       "name": "Guardian"
     },
     "isCnOnly": false,
+    "factions": [
+      "followers",
+      "kazimierz"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -61801,6 +62467,10 @@
       "name": "Guardian"
     },
     "isCnOnly": false,
+    "factions": [
+      "lee",
+      "lungmen"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -62170,6 +62840,9 @@
       "name": "Guardian"
     },
     "isCnOnly": false,
+    "factions": [
+      "leithanien"
+    ],
     "pools": [
       "Standard"
     ],
@@ -62537,6 +63210,9 @@
       "name": "Guardian"
     },
     "isCnOnly": false,
+    "factions": [
+      "laios"
+    ],
     "pools": [
       "Limited",
       "Free"
@@ -62905,6 +63581,11 @@
       "name": "Executor"
     },
     "isCnOnly": false,
+    "factions": [
+      "sweep",
+      "rhodes",
+      "siracusa"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -63274,6 +63955,10 @@
       "name": "Executor"
     },
     "isCnOnly": false,
+    "factions": [
+      "lee",
+      "lungmen"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -63643,6 +64328,9 @@
       "name": "Executor"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -64012,6 +64700,9 @@
       "name": "Merchant"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -64381,6 +65072,9 @@
       "name": "Merchant"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa"
+    ],
     "pools": [
       "Standard"
     ],
@@ -64748,6 +65442,10 @@
       "name": "Sentry Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "blacksteel",
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -65117,6 +65815,9 @@
       "name": "Sentry Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "egir"
+    ],
     "pools": [
       "Free"
     ],
@@ -65484,6 +66185,10 @@
       "name": "Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "penguin",
+      "lungmen"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -65853,6 +66558,9 @@
       "name": "Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "lungmen"
+    ],
     "pools": [
       "Free"
     ],
@@ -66220,6 +66928,9 @@
       "name": "Juggernaut"
     },
     "isCnOnly": false,
+    "factions": [
+      "minos"
+    ],
     "pools": [
       "Free",
       "Recruitment"
@@ -66588,6 +67299,9 @@
       "name": "Juggernaut"
     },
     "isCnOnly": true,
+    "factions": [
+      "ursus"
+    ],
     "pools": [
       "Standard"
     ],
@@ -66955,6 +67669,9 @@
       "name": "Arts Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "rim"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -67250,6 +67967,9 @@
       "name": "Arts Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -67543,6 +68263,9 @@
       "name": "Arts Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "leithanien"
+    ],
     "pools": [
       "Free"
     ],
@@ -67836,6 +68559,9 @@
       "name": "Sentry Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "rainbow"
+    ],
     "pools": [
       "Limited"
     ],
@@ -68203,6 +68929,10 @@
       "name": "Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "sargon"
+    ],
     "pools": [
       "Free"
     ],
@@ -68570,6 +69300,10 @@
       "name": "Fortress"
     },
     "isCnOnly": false,
+    "factions": [
+      "pinus",
+      "kazimierz"
+    ],
     "pools": [
       "Kernel CN",
       "Standard"
@@ -68938,6 +69672,9 @@
       "name": "Fortress"
     },
     "isCnOnly": false,
+    "factions": [
+      "rim"
+    ],
     "pools": [
       "Standard"
     ],
@@ -69305,6 +70042,10 @@
       "name": "Duelist"
     },
     "isCnOnly": false,
+    "factions": [
+      "karlan",
+      "kjerag"
+    ],
     "pools": [
       "Kernel CN",
       "Standard"
@@ -69673,6 +70414,9 @@
       "name": "Duelist"
     },
     "isCnOnly": false,
+    "factions": [
+      "rim"
+    ],
     "pools": [
       "Standard"
     ],
@@ -70040,6 +70784,9 @@
       "name": "Primal Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Free"
     ],
@@ -70333,6 +71080,9 @@
       "name": "Heavyshooter"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -70702,6 +71452,9 @@
       "name": "Heavyshooter"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -71069,6 +71822,9 @@
       "name": "Deadeye"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -71438,6 +72194,10 @@
       "name": "Deadeye"
     },
     "isCnOnly": false,
+    "factions": [
+      "abyssal",
+      "egir"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -71807,6 +72567,9 @@
       "name": "Deadeye"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa"
+    ],
     "pools": [
       "Standard"
     ],
@@ -72174,6 +72937,9 @@
       "name": "Besieger"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -72542,6 +73308,9 @@
       "name": "Besieger"
     },
     "isCnOnly": false,
+    "factions": [
+      "minos"
+    ],
     "pools": [
       "Free"
     ],
@@ -72909,6 +73678,10 @@
       "name": "Flinger"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "bolivar"
+    ],
     "pools": [
       "Standard"
     ],
@@ -73276,6 +74049,9 @@
       "name": "Hunter"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Free"
     ],
@@ -73643,6 +74419,10 @@
       "name": "Loopshooter"
     },
     "isCnOnly": false,
+    "factions": [
+      "tara",
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -74010,6 +74790,9 @@
       "name": "Geek"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Standard"
     ],
@@ -74377,6 +75160,10 @@
       "name": "Hookmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "karlan",
+      "kjerag"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -74746,6 +75533,9 @@
       "name": "Hookmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "lungmen"
+    ],
     "pools": [
       "Free"
     ],
@@ -75113,6 +75903,10 @@
       "name": "Hookmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "blacksteel",
+      "columbia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -75480,6 +76274,10 @@
       "name": "Hexer"
     },
     "isCnOnly": false,
+    "factions": [
+      "karlan",
+      "kjerag"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -75849,6 +76647,9 @@
       "name": "Hexer"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -76218,6 +77019,9 @@
       "name": "Hexer"
     },
     "isCnOnly": false,
+    "factions": [
+      "egir"
+    ],
     "pools": [
       "Standard"
     ],
@@ -76585,6 +77389,10 @@
       "name": "Decel Binder"
     },
     "isCnOnly": false,
+    "factions": [
+      "student",
+      "ursus"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -76954,6 +77762,9 @@
       "name": "Decel Binder"
     },
     "isCnOnly": false,
+    "factions": [
+      "iberia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -77323,6 +78134,9 @@
       "name": "Decel Binder"
     },
     "isCnOnly": false,
+    "factions": [
+      "kazimierz"
+    ],
     "pools": [
       "Standard"
     ],
@@ -77690,6 +78504,9 @@
       "name": "Decel Binder"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Standard"
     ],
@@ -78057,6 +78874,9 @@
       "name": "Artificer"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -78424,6 +79244,9 @@
       "name": "Artificer"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -78791,6 +79614,9 @@
       "name": "Artificer"
     },
     "isCnOnly": false,
+    "factions": [
+      "rim"
+    ],
     "pools": [
       "Standard"
     ],
@@ -79158,6 +79984,10 @@
       "name": "Bard"
     },
     "isCnOnly": false,
+    "factions": [
+      "penguin",
+      "lungmen"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -79526,6 +80356,9 @@
       "name": "Bard"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -79893,6 +80726,9 @@
       "name": "Bard"
     },
     "isCnOnly": true,
+    "factions": [
+      "mujica"
+    ],
     "pools": [
       "Limited"
     ],
@@ -80260,6 +81096,9 @@
       "name": "Abjurer"
     },
     "isCnOnly": false,
+    "factions": [
+      "higashi"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -80629,6 +81468,9 @@
       "name": "Abjurer"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Limited",
       "Free"
@@ -80991,6 +81833,10 @@
       "name": "Abjurer"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -81358,6 +82204,9 @@
       "name": "Abjurer"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Free"
     ],
@@ -81725,6 +82574,9 @@
       "name": "Ritualist"
     },
     "isCnOnly": false,
+    "factions": [
+      "sami"
+    ],
     "pools": [
       "Free"
     ],
@@ -82092,6 +82944,9 @@
       "name": "Ritualist"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -82459,6 +83314,9 @@
       "name": "Ambusher"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -82828,6 +83686,9 @@
       "name": "Ambusher"
     },
     "isCnOnly": false,
+    "factions": [
+      "higashi"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -83196,6 +84057,9 @@
       "name": "Ambusher"
     },
     "isCnOnly": true,
+    "factions": [
+      "mujica"
+    ],
     "pools": [
       "Limited",
       "Free"
@@ -83564,6 +84428,9 @@
       "name": "Push Stroker"
     },
     "isCnOnly": false,
+    "factions": [
+      "lungmen"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -83933,6 +84800,9 @@
       "name": "Push Stroker"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Free"
     ],
@@ -84300,6 +85170,9 @@
       "name": "Trapmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Free"
     ],
@@ -84667,6 +85540,9 @@
       "name": "Trapmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "rainbow"
+    ],
     "pools": [
       "Limited"
     ],
@@ -85034,6 +85910,10 @@
       "name": "Trapmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon",
+      "columbia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -85401,6 +86281,9 @@
       "name": "Dollkeeper"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -85768,6 +86651,9 @@
       "name": "Dollkeeper"
     },
     "isCnOnly": false,
+    "factions": [
+      "higashi"
+    ],
     "pools": [
       "Standard"
     ],
@@ -86135,6 +87021,9 @@
       "name": "Dollkeeper"
     },
     "isCnOnly": false,
+    "factions": [
+      "rainbow"
+    ],
     "pools": [
       "Limited"
     ],
@@ -86502,6 +87391,9 @@
       "name": "Dollkeeper"
     },
     "isCnOnly": true,
+    "factions": [
+      "mujica"
+    ],
     "pools": [
       "Limited"
     ],
@@ -86869,6 +87761,9 @@
       "name": "Alchemist"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Free"
     ],
@@ -87236,6 +88131,9 @@
       "name": "Skyranger"
     },
     "isCnOnly": true,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -87529,6 +88427,11 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "penguin",
+      "lungmen",
+      "laterano"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -88043,6 +88946,9 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -88598,6 +89504,9 @@
       "name": "Marksman"
     },
     "isCnOnly": false,
+    "factions": [
+      "rainbow"
+    ],
     "pools": [
       "Limited"
     ],
@@ -89110,6 +90019,10 @@
       "name": "Heavyshooter"
     },
     "isCnOnly": false,
+    "factions": [
+      "siesta",
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -89624,6 +90537,10 @@
       "name": "Heavyshooter"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "ursus"
+    ],
     "pools": [
       "Standard"
     ],
@@ -90136,6 +91053,10 @@
       "name": "Deadeye"
     },
     "isCnOnly": false,
+    "factions": [
+      "pinus",
+      "kazimierz"
+    ],
     "pools": [
       "Kernel CN",
       "Standard"
@@ -90649,6 +91570,9 @@
       "name": "Deadeye"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Standard"
     ],
@@ -91088,6 +92012,10 @@
       "name": "Artilleryman"
     },
     "isCnOnly": false,
+    "factions": [
+      "babel",
+      "rhodes"
+    ],
     "pools": [
       "Limited"
     ],
@@ -91600,6 +92528,9 @@
       "name": "Artilleryman"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Standard"
     ],
@@ -92112,6 +93043,10 @@
       "name": "Besieger"
     },
     "isCnOnly": false,
+    "factions": [
+      "student",
+      "ursus"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -92553,6 +93488,9 @@
       "name": "Besieger"
     },
     "isCnOnly": false,
+    "factions": [
+      "sami"
+    ],
     "pools": [
       "Standard"
     ],
@@ -93065,6 +94003,11 @@
       "name": "Flinger"
     },
     "isCnOnly": false,
+    "factions": [
+      "elite",
+      "rhodes",
+      "columbia"
+    ],
     "pools": [
       "Limited"
     ],
@@ -93545,6 +94488,10 @@
       "name": "Flinger"
     },
     "isCnOnly": false,
+    "factions": [
+      "babel",
+      "rhodes"
+    ],
     "pools": [
       "Limited"
     ],
@@ -93984,6 +94931,10 @@
       "name": "Spreadshooter"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "yan"
+    ],
     "pools": [
       "Limited"
     ],
@@ -94496,6 +95447,9 @@
       "name": "Hunter"
     },
     "isCnOnly": false,
+    "factions": [
+      "rim"
+    ],
     "pools": [
       "Standard"
     ],
@@ -94935,6 +95889,9 @@
       "name": "Loopshooter"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Standard"
     ],
@@ -95374,6 +96331,10 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "glasgow",
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -95888,6 +96849,9 @@
       "name": "Charger"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -96402,6 +97366,9 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "higashi"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -96916,6 +97883,9 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa"
+    ],
     "pools": [
       "Standard"
     ],
@@ -97355,6 +98325,9 @@
       "name": "Standard Bearer"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Kernel CN",
       "Standard"
@@ -97868,6 +98841,10 @@
       "name": "Pioneer"
     },
     "isCnOnly": false,
+    "factions": [
+      "pinus",
+      "kazimierz"
+    ],
     "pools": [
       "Kernel CN",
       "Standard"
@@ -98381,6 +99358,9 @@
       "name": "Tactician"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa"
+    ],
     "pools": [
       "Free"
     ],
@@ -98893,6 +99873,10 @@
       "name": "Tactician"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhine",
+      "columbia"
+    ],
     "pools": [
       "Limited"
     ],
@@ -99405,6 +100389,9 @@
       "name": "Agent"
     },
     "isCnOnly": false,
+    "factions": [
+      "babel"
+    ],
     "pools": [
       "Standard"
     ],
@@ -99844,6 +100831,10 @@
       "name": "Blast"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhine",
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -100358,6 +101349,11 @@
       "name": "Splash"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano",
+      "penguin",
+      "lungmen"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -100872,6 +101868,9 @@
       "name": "Core"
     },
     "isCnOnly": false,
+    "factions": [
+      "leithanien"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -101385,6 +102384,10 @@
       "name": "Core"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "bolivar"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -101899,6 +102902,9 @@
       "name": "Core"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -102411,6 +103417,10 @@
       "name": "Core"
     },
     "isCnOnly": false,
+    "factions": [
+      "elite",
+      "rhodes"
+    ],
     "pools": [
       "Standard"
     ],
@@ -102923,6 +103933,10 @@
       "name": "Splash"
     },
     "isCnOnly": false,
+    "factions": [
+      "sui",
+      "yan"
+    ],
     "pools": [
       "Limited"
     ],
@@ -103476,6 +104490,9 @@
       "name": "Splash"
     },
     "isCnOnly": false,
+    "factions": [
+      "laios"
+    ],
     "pools": [
       "Limited"
     ],
@@ -103915,6 +104932,9 @@
       "name": "Chain"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -104428,6 +105448,10 @@
       "name": "Phalanx"
     },
     "isCnOnly": false,
+    "factions": [
+      "leithanien",
+      "sargon"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -104941,6 +105965,9 @@
       "name": "Phalanx"
     },
     "isCnOnly": false,
+    "factions": [
+      "lungmen"
+    ],
     "pools": [
       "Standard"
     ],
@@ -105453,6 +106480,9 @@
       "name": "Mech-accord"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -105965,6 +106995,9 @@
       "name": "Mech-accord"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa"
+    ],
     "pools": [
       "Limited"
     ],
@@ -106404,6 +107437,9 @@
       "name": "Mystic"
     },
     "isCnOnly": false,
+    "factions": [
+      "leithanien"
+    ],
     "pools": [
       "Standard"
     ],
@@ -106989,6 +108025,9 @@
       "name": "Primal"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Standard"
     ],
@@ -107428,6 +108467,12 @@
       "name": "Primal"
     },
     "isCnOnly": false,
+    "factions": [
+      "elite",
+      "rhodes",
+      "yan",
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -107867,6 +108912,10 @@
       "name": "Primal"
     },
     "isCnOnly": true,
+    "factions": [
+      "elite",
+      "rhodes"
+    ],
     "pools": [
       "Standard"
     ],
@@ -108306,6 +109355,10 @@
       "name": "Shaper"
     },
     "isCnOnly": false,
+    "factions": [
+      "tara",
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -108745,6 +109798,10 @@
       "name": "Hexer"
     },
     "isCnOnly": false,
+    "factions": [
+      "karlan",
+      "kjerag"
+    ],
     "pools": [
       "Kernel CN",
       "Standard"
@@ -109258,6 +110315,9 @@
       "name": "Decel Binder"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -109812,6 +110872,9 @@
       "name": "Decel Binder"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -110326,6 +111389,10 @@
       "name": "Summoner"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhine",
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -110840,6 +111907,10 @@
       "name": "Summoner"
     },
     "isCnOnly": true,
+    "factions": [
+      "elite",
+      "rhodes"
+    ],
     "pools": [
       "Free"
     ],
@@ -110919,6 +111990,9 @@
       "name": "Bard"
     },
     "isCnOnly": false,
+    "factions": [
+      "egir"
+    ],
     "pools": [
       "Limited"
     ],
@@ -111358,6 +112432,9 @@
       "name": "Bard"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Free"
     ],
@@ -111797,6 +112874,10 @@
       "name": "Abjurer"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhine",
+      "columbia"
+    ],
     "pools": [
       "Free"
     ],
@@ -112309,6 +113390,9 @@
       "name": "Abjurer"
     },
     "isCnOnly": true,
+    "factions": [
+      "higashi"
+    ],
     "pools": [
       "Standard"
     ],
@@ -112748,6 +113832,10 @@
       "name": "Summoner"
     },
     "isCnOnly": false,
+    "factions": [
+      "sui",
+      "yan"
+    ],
     "pools": [
       "Limited"
     ],
@@ -113187,6 +114275,9 @@
       "name": "Artificer"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -113699,6 +114790,9 @@
       "name": "Ritualist"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Limited"
     ],
@@ -114211,6 +115305,9 @@
       "name": "Ritualist"
     },
     "isCnOnly": true,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -114650,6 +115747,9 @@
       "name": "Executor"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -115205,6 +116305,11 @@
       "name": "Executor"
     },
     "isCnOnly": false,
+    "factions": [
+      "penguin",
+      "lungmen",
+      "siracusa"
+    ],
     "pools": [
       "Limited"
     ],
@@ -115644,6 +116749,11 @@
       "name": "Executor"
     },
     "isCnOnly": false,
+    "factions": [
+      "action4",
+      "rhodes",
+      "higashi"
+    ],
     "pools": [
       "Limited"
     ],
@@ -116083,6 +117193,10 @@
       "name": "Executor"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "siracusa"
+    ],
     "pools": [
       "Free"
     ],
@@ -116595,6 +117709,10 @@
       "name": "Merchant"
     },
     "isCnOnly": false,
+    "factions": [
+      "lee",
+      "lungmen"
+    ],
     "pools": [
       "Standard"
     ],
@@ -117107,6 +118225,9 @@
       "name": "Merchant"
     },
     "isCnOnly": false,
+    "factions": [
+      "lungmen"
+    ],
     "pools": [
       "Standard"
     ],
@@ -117660,6 +118781,10 @@
       "name": "Push Stroker"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "iberia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -118174,6 +119299,10 @@
       "name": "Geek"
     },
     "isCnOnly": false,
+    "factions": [
+      "lee",
+      "lungmen"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -118615,6 +119744,11 @@
       "name": "Geek"
     },
     "isCnOnly": false,
+    "factions": [
+      "penguin",
+      "lungmen",
+      "laterano"
+    ],
     "pools": [
       "Limited"
     ],
@@ -119054,6 +120188,10 @@
       "name": "Hookmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "abyssal",
+      "egir"
+    ],
     "pools": [
       "Free"
     ],
@@ -119566,6 +120704,10 @@
       "name": "Ambusher"
     },
     "isCnOnly": false,
+    "factions": [
+      "higashi",
+      "egir"
+    ],
     "pools": [
       "Kernel CN",
       "Standard"
@@ -120120,6 +121262,10 @@
       "name": "Ambusher"
     },
     "isCnOnly": false,
+    "factions": [
+      "sweep",
+      "rhodes"
+    ],
     "pools": [
       "Standard"
     ],
@@ -120632,6 +121778,10 @@
       "name": "Dollkeeper"
     },
     "isCnOnly": false,
+    "factions": [
+      "abyssal",
+      "egir"
+    ],
     "pools": [
       "Limited"
     ],
@@ -121144,6 +122294,10 @@
       "name": "Trapmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhine",
+      "columbia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -121656,6 +122810,9 @@
       "name": "Trapmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "rainbow"
+    ],
     "pools": [
       "Limited"
     ],
@@ -122095,6 +123252,9 @@
       "name": "Alchemist"
     },
     "isCnOnly": false,
+    "factions": [
+      "iberia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -122534,6 +123694,9 @@
       "name": "Medic"
     },
     "isCnOnly": false,
+    "factions": [
+      "followers"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -123048,6 +124211,9 @@
       "name": "Multi-target"
     },
     "isCnOnly": false,
+    "factions": [
+      "followers"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -123562,6 +124728,9 @@
       "name": "Medic"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -124116,6 +125285,9 @@
       "name": "Therapist"
     },
     "isCnOnly": false,
+    "factions": [
+      "iberia"
+    ],
     "pools": [
       "Free"
     ],
@@ -124628,6 +125800,9 @@
       "name": "Wandering"
     },
     "isCnOnly": false,
+    "factions": [
+      "leithanien"
+    ],
     "pools": [
       "Limited"
     ],
@@ -125067,6 +126242,10 @@
       "name": "Incantation"
     },
     "isCnOnly": false,
+    "factions": [
+      "tara",
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -125506,6 +126685,9 @@
       "name": "Chain"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Standard"
     ],
@@ -125871,6 +127053,11 @@
       "name": "Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "lgd",
+      "lungmen",
+      "higashi"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -126385,6 +127572,10 @@
       "name": "Guardian"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhine",
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -126899,6 +128090,9 @@
       "name": "Guardian"
     },
     "isCnOnly": false,
+    "factions": [
+      "kazimierz"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -127413,6 +128607,10 @@
       "name": "Guardian"
     },
     "isCnOnly": false,
+    "factions": [
+      "sui",
+      "yan"
+    ],
     "pools": [
       "Limited"
     ],
@@ -127852,6 +129050,10 @@
       "name": "Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "sui",
+      "yan"
+    ],
     "pools": [
       "Limited"
     ],
@@ -128364,6 +129566,9 @@
       "name": "Juggernaut"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -128878,6 +130083,9 @@
       "name": "Juggernaut"
     },
     "isCnOnly": false,
+    "factions": [
+      "siracusa"
+    ],
     "pools": [
       "Standard"
     ],
@@ -129390,6 +130598,9 @@
       "name": "Duelist"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -129945,6 +131156,9 @@
       "name": "Fortress"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -130457,6 +131671,11 @@
       "name": "Sentry Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "blacksteel",
+      "columbia",
+      "victoria"
+    ],
     "pools": [
       "Standard"
     ],
@@ -130896,6 +132115,9 @@
       "name": "Sentry Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Free"
     ],
@@ -131335,6 +132557,10 @@
       "name": "Primal Protector"
     },
     "isCnOnly": false,
+    "factions": [
+      "sui",
+      "yan"
+    ],
     "pools": [
       "Limited"
     ],
@@ -131700,6 +132926,10 @@
       "name": "Arts Protector"
     },
     "isCnOnly": true,
+    "factions": [
+      "lgd",
+      "lungmen"
+    ],
     "pools": [
       "Limited"
     ],
@@ -132065,6 +133295,9 @@
       "name": "Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -132579,6 +133812,10 @@
       "name": "Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "sui",
+      "yan"
+    ],
     "pools": [
       "Limited"
     ],
@@ -133091,6 +134328,10 @@
       "name": "Lord"
     },
     "isCnOnly": false,
+    "factions": [
+      "karlan",
+      "kjerag"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -133532,6 +134773,9 @@
       "name": "Lord"
     },
     "isCnOnly": false,
+    "factions": [
+      "iberia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -134046,6 +135290,9 @@
       "name": "Lord"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Standard"
     ],
@@ -134485,6 +135732,9 @@
       "name": "Lord"
     },
     "isCnOnly": true,
+    "factions": [
+      "mujica"
+    ],
     "pools": [
       "Limited"
     ],
@@ -134924,6 +136174,9 @@
       "name": "Crusher"
     },
     "isCnOnly": false,
+    "factions": [
+      "babel"
+    ],
     "pools": [
       "Standard"
     ],
@@ -135363,6 +136616,10 @@
       "name": "Crusher"
     },
     "isCnOnly": false,
+    "factions": [
+      "abyssal",
+      "egir"
+    ],
     "pools": [
       "Standard"
     ],
@@ -135802,6 +137059,9 @@
       "name": "Earthshaker"
     },
     "isCnOnly": false,
+    "factions": [
+      "sargon"
+    ],
     "pools": [
       "Limited"
     ],
@@ -136282,6 +137542,10 @@
       "name": "Swordmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "lgd",
+      "lungmen"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -136796,6 +138060,9 @@
       "name": "Swordmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "iberia"
+    ],
     "pools": [
       "Standard"
     ],
@@ -137308,6 +138575,12 @@
       "name": "Swordmaster"
     },
     "isCnOnly": false,
+    "factions": [
+      "karlan",
+      "kjerag",
+      "kazimierz",
+      "leithanien"
+    ],
     "pools": [
       "Standard"
     ],
@@ -137747,6 +139020,12 @@
       "name": "Centurion"
     },
     "isCnOnly": false,
+    "factions": [
+      "elite",
+      "rhodes",
+      "yan",
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -138261,6 +139540,10 @@
       "name": "Centurion"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "sargon"
+    ],
     "pools": [
       "Limited"
     ],
@@ -138773,6 +140056,9 @@
       "name": "Arts Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -139214,6 +140500,10 @@
       "name": "Arts Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "leithanien",
+      "kazimierz"
+    ],
     "pools": [
       "Standard"
     ],
@@ -139653,6 +140943,10 @@
       "name": "Arts Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria",
+      "glasgow"
+    ],
     "pools": [
       "Standard"
     ],
@@ -140092,6 +141386,9 @@
       "name": "Soloblade"
     },
     "isCnOnly": false,
+    "factions": [
+      "ursus"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -140606,6 +141903,9 @@
       "name": "Soloblade"
     },
     "isCnOnly": false,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Standard"
     ],
@@ -141118,6 +142418,9 @@
       "name": "Instructor"
     },
     "isCnOnly": false,
+    "factions": [
+      "minos"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN"
@@ -141631,6 +142934,10 @@
       "name": "Dreadnought"
     },
     "isCnOnly": false,
+    "factions": [
+      "kazimierz",
+      "followers"
+    ],
     "pools": [
       "Limited"
     ],
@@ -142143,6 +143450,9 @@
       "name": "Dreadnought"
     },
     "isCnOnly": false,
+    "factions": [
+      "leithanien"
+    ],
     "pools": [
       "Free"
     ],
@@ -142655,6 +143965,9 @@
       "name": "Reaper"
     },
     "isCnOnly": false,
+    "factions": [
+      "laterano"
+    ],
     "pools": [
       "Standard"
     ],
@@ -143167,6 +144480,9 @@
       "name": "Reaper"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes"
+    ],
     "pools": [
       "Standard"
     ],
@@ -143606,6 +144922,9 @@
       "name": "Liberator"
     },
     "isCnOnly": false,
+    "factions": [
+      "kazimierz"
+    ],
     "pools": [
       "Standard"
     ],
@@ -144045,6 +145364,9 @@
       "name": "Liberator"
     },
     "isCnOnly": true,
+    "factions": [
+      "yan"
+    ],
     "pools": [
       "Standard"
     ],
@@ -144484,6 +145806,9 @@
       "name": "Centurion"
     },
     "isCnOnly": false,
+    "factions": [
+      "rim"
+    ],
     "pools": [
       "Free"
     ],
@@ -144851,6 +146176,11 @@
       "name": "Artilleryman"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve6",
+      "rhodes",
+      "kazimierz"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -144986,6 +146316,11 @@
       "name": "Lord"
     },
     "isCnOnly": false,
+    "factions": [
+      "reserve6",
+      "rhodes",
+      "higashi"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -145121,6 +146456,9 @@
       "name": "Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "ursus"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -145487,6 +146825,9 @@
       "name": "Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "columbia"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -145853,6 +147194,9 @@
       "name": "Core"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -146222,6 +147566,9 @@
       "name": "Charger"
     },
     "isCnOnly": false,
+    "factions": [
+      "victoria"
+    ],
     "pools": [
       "Free"
     ],
@@ -146589,6 +147936,10 @@
       "name": "Dreadnought"
     },
     "isCnOnly": false,
+    "factions": [
+      "abyssal",
+      "egir"
+    ],
     "pools": [
       "Kernel",
       "Kernel CN",
@@ -147103,6 +148454,10 @@
       "name": "Arts Fighter"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "rim"
+    ],
     "pools": [
       "Free"
     ],
@@ -147470,6 +148825,10 @@
       "name": "Incantation"
     },
     "isCnOnly": false,
+    "factions": [
+      "rhodes",
+      "rim"
+    ],
     "pools": [
       "Free"
     ],
