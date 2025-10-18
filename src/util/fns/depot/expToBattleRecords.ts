@@ -15,7 +15,7 @@ const expToBattleRecords = (goal: number, depot: Record<string, DepotItem>): Bat
 
   // use as many battle records as possible (from smallest to greatest) without exceeding the goal
   expIds.forEach((id) => {
-    const { stock } = _depot[id];
+    const { stock } = _depot?.[id] ?? {};
     const value = BATTLE_RECORD_TO_EXP[id];
     if (!stock) return;
 
@@ -28,7 +28,7 @@ const expToBattleRecords = (goal: number, depot: Record<string, DepotItem>): Bat
   // add more battle records (from smallest to greatest) until the goal is met
   expIds.toReversed().forEach((id) => {
     if (exp <= 0) return;
-    const { stock } = _depot[id];
+    const { stock } = _depot?.[id] ?? {};
     if (!stock) return;
 
     const value = BATTLE_RECORD_TO_EXP[id];

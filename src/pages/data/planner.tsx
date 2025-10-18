@@ -137,7 +137,6 @@ const Goals: NextPage = () => {
             const { completable: completableCurrent, completableByCrafting: craftableCurrent } =
               calculateCompletableStatus(plannerGoal, depot, settings);
             available = completableCurrent || craftableCurrent;
-            console.log("calc2", completableCurrent, craftableCurrent, available);
           }
           //apply goal to runningOp
           if (!requirementsNotMet && (completable || completableByCrafting)) {
@@ -150,7 +149,6 @@ const Goals: NextPage = () => {
             runningRoster[operatorGoal.op_id] = opAfter;
           }
           const plannerGoalCalculated = { ...plannerGoal, completable, completableByCrafting, available, requirementsNotMet, ingredients };
-          console.log(plannerGoalCalculated.operatorId, plannerGoalCalculated.available);
           if (filtersHook.filterFunction.byGoalAndMaterials(plannerGoalCalculated, settings, runningDepot)) {
             acc.plannerGoals.push(plannerGoalCalculated);
           } else {
