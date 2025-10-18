@@ -36,6 +36,8 @@ const operatorNameOverride = {
   Роса: "Rosa",
   Позёмка: "Pozëmka",
   Лето: "Leto",
+  Веточки: "Vetochki",
+  Снегурочка: "Snegurochka",
 };
 
 //exclusions/inclusions, can't find how to detect in files.
