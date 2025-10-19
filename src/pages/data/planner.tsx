@@ -94,6 +94,7 @@ const Goals: NextPage = () => {
 
     //0. clone depot & json & add upcoming mats if event is selected
     let runningDepot = cloneCompleteDepot(depot, upcomingMaterialsData.materials);
+    const depotComplete = cloneCompleteDepot(depot);
     const runningRoster: Roster = {};
     const isUpcomingDepot = Object.keys(upcomingMaterialsData.materials).length > 0;
 
@@ -135,7 +136,7 @@ const Goals: NextPage = () => {
           if ((settings?.plannerSettings?.calculateGoalsInOrder ?? true)
             || isUpcomingDepot) {
             const { completable: completableCurrent, completableByCrafting: craftableCurrent } =
-              calculateCompletableStatus(plannerGoal, depot, settings);
+              calculateCompletableStatus(plannerGoal, depotComplete, settings);
             available = completableCurrent || craftableCurrent;
           }
           //apply goal to runningOp
