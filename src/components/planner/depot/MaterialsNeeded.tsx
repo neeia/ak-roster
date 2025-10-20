@@ -23,7 +23,7 @@ import { debounce } from "lodash";
 import { SettingsMenu, SettingsMenuItem, SettingsButton } from "../SettingsMenu";
 import useMenu from "util/hooks/useMenu";
 import { EventsHook } from "util/hooks/useEvents";
-import { EXP, MAX_SAFE_INTEGER } from "util/fns/depot/itemUtils";
+import { cloneCompleteDepot, EXP, MAX_SAFE_INTEGER } from "util/fns/depot/itemUtils";
 import { EventsData, NamedEvent, SubmitEventProps, UpcomingMaterialsData } from "types/events";
 import { EventsDefaultsHook } from "util/hooks/useEventsDefaults";
 import EventsSelector from "../events/EventsSelector";
@@ -137,18 +137,20 @@ const MaterialsNeeded = React.memo((props: Props) => {
 
       const goalsMaterials = { ...materialsNeeded };
 
-      //2. deduct upcoming mats if event is selected
-      materialsNeeded = Object.fromEntries(
-        Object.entries(materialsNeeded).map(([id, val]) => [id, Math.max(0, val - (upcomingMaterialsData.materials[id] ?? 0))])
-      );
+      //2. correct: add upcoming to depot to affect full hypotheticall craft
+      const completeDepot = cloneCompleteDepot(depot, upcomingMaterialsData.materials);
 
       // 3. calculate what ingredients can be fulfilled by crafting
-      const _depot = { ...depot, ..._rawValues }; // need to hypothetically deduct from stock
+      const _depot = { ...completeDepot, ..._rawValues }; // need to hypothetically deduct from stock
       const { craftableItems, ingredientToCraftedItemsMapping } = canCompleteByCrafting(
         materialsNeeded,
         _depot,
         settings.depotSettings.crafting,
         settings.depotSettings.ignoreLmdInCrafting
+      );
+      //4. decrease needs to showcase results and crafting/completing states
+      materialsNeeded = Object.fromEntries(
+        Object.entries(materialsNeeded).map(([id, val]) => [id, Math.max(0, val - (upcomingMaterialsData.materials[id] ?? 0))])
       );
 
       const expOwned = depotToExp(depot);
@@ -469,7 +471,7 @@ const MaterialsNeeded = React.memo((props: Props) => {
               color="primary">
               Summary
             </Button>
-            <Tooltip arrow title={<Typography variant="body1" sx={{whiteSpace: "pre-line"}}>{craftToggleTooltips[craftToggle]}</Typography>}>
+            <Tooltip arrow title={<Typography variant="body1" sx={{ whiteSpace: "pre-line" }}>{craftToggleTooltips[craftToggle]}</Typography>}>
               <Button
                 onClick={handleCraftingToggleAll}
                 variant="contained"
