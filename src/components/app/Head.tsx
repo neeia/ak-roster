@@ -24,10 +24,6 @@ const Head = (props: Props) => {
         <link rel="icon" type="image/png" sizes="32x32" href={`${imageBase}/assets/favicon/favicon-32x32.png`} />
         <link rel="icon" type="image/png" sizes="16x16" href={`${imageBase}/assets/favicon/favicon-16x16.png`} />
         <link rel="manifest" href="/manifest.json" />
-        <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-        </style>
         <meta name="theme-color" content={themeColor} />
         {/* <meta name="robots" content="noindex,nofollow" /> */}
         {children}

@@ -175,6 +175,7 @@ const GoalGroup = memo((props: Props) => {
                 label={checkboxText}
                 labelPlacement="start"
                 control={<Checkbox
+                  id={`chk-${groupName}`}
                   {...checkboxState}
                   onClick={(e) => {
                     const target = e.target as HTMLInputElement;
