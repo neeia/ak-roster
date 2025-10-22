@@ -1719,6 +1719,12 @@
       "skinName": null,
       "avatarId": "char_349_chiave_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_349_chiave@race#2",
+      "skinName": "一人车队",
+      "avatarId": "char_349_chiave_race#2",
+      "sortId": 342
     }
   ],
   "char_488_buildr": [
@@ -5775,6 +5781,12 @@
       "skinName": "Summer Flower FA018",
       "avatarId": "char_180_amgoat_summer#5",
       "sortId": 174
+    },
+    {
+      "skinId": "char_180_amgoat@sanrio#2",
+      "skinName": "绵绒小魔女",
+      "avatarId": "char_180_amgoat_sanrio#2",
+      "sortId": 385
     }
   ],
   "char_2013_cerber": [
@@ -6795,6 +6807,12 @@
       "skinName": "Golden Dream",
       "avatarId": "char_4042_lumen_ambienceSynesthesia#3",
       "sortId": 360
+    },
+    {
+      "skinId": "char_4042_lumen@sanrio#2",
+      "skinName": "雨霓行游客",
+      "avatarId": "char_4042_lumen_sanrio#2",
+      "sortId": 387
     }
   ],
   "char_1016_agoat2": [
@@ -7653,6 +7671,12 @@
       "skinName": "Allmind As One",
       "avatarId": "char_1032_excu2_sale#12",
       "sortId": 17
+    },
+    {
+      "skinId": "char_1032_excu2@sanrio#2",
+      "skinName": "蒸汽寻踪者",
+      "avatarId": "char_1032_excu2_sanrio#2",
+      "sortId": 386
     }
   ],
   "char_4010_etlchi": [
