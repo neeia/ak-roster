@@ -54230,7 +54230,7 @@
       "id": "primcaster",
       "name": "Primal"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "pools": [
       "Free"
     ],
@@ -54238,7 +54238,7 @@
       {
         "skillId": "skchr_christ_1",
         "iconId": null,
-        "skillName": "自由用餐礼仪",
+        "skillName": "Mealtime Manners",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -54302,7 +54302,7 @@
       {
         "skillId": "skchr_christ_2",
         "iconId": null,
-        "skillName": "狂饮之宴",
+        "skillName": "Bacchanalia",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -54440,11 +54440,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
