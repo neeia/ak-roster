@@ -1,4 +1,20 @@
 const patch = [
+    {
+    version: "3.3.4",
+    date: "October 25, 2025",
+    title: "Factions and Statistic",
+    content: ["We've added factions and Roster statistics"],
+    changelog: [
+      "Factions: Operators and collection filters now show factions, including all main, sub and hidden factions from latest game updates",
+      "Roster statistics: some interesting numbers about your or other people rosters are now visible in View Profile dialog",
+      "More fixes and tweaks",
+      [
+        "You can now easily copy your u/user krooster url: from input, collection and profile pages",
+        "Fixed some needed calculations in depot, when used with upcoming materials",
+        "Import: More detailed Email warnings for new users, with step-by-steb fix guide for most common import problem"
+      ]
+    ],
+  },
   {
     version: "3.3.3",
     date: "October 03, 2025",
