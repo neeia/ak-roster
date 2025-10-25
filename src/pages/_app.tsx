@@ -14,6 +14,7 @@ import { store } from "legacyStore/store";
 import { SnackbarProvider } from "notistack";
 import OneTimeV3Popup from "components/app/OneTimeV3Popup";
 import useLocalStorage from "util/hooks/useLocalStorage";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ const MyApp = (props: AppProps) => {
   const { Component, pageProps } = props;
 
   const [user, setUser] = React.useState<User | null>(null);
+  const [queryClient] = React.useState(new QueryClient());
 
   React.useEffect(() => {
     const {
@@ -60,18 +62,20 @@ const MyApp = (props: AppProps) => {
     <ReduxProvider store={store}>
       <UserContext.Provider value={user}>
         <LightContext.Provider value={[light, updateTheme]}>
-          <CacheProvider value={clientSideEmotionCache}>
-            <ThemeProvider theme={theme}>
-              <SnackbarProvider maxSnack={3} preventDuplicate>
-                <CssBaseline />
-                <Analytics />
-                <div className={lato.className}>
-                  <Component {...pageProps} />
-                  <OneTimeV3Popup />
-                </div>
-              </SnackbarProvider>
-            </ThemeProvider>
-          </CacheProvider>
+          <QueryClientProvider client={queryClient}>
+            <CacheProvider value={clientSideEmotionCache}>
+              <ThemeProvider theme={theme}>
+                <SnackbarProvider maxSnack={3} preventDuplicate>
+                  <CssBaseline />
+                  <Analytics />
+                  <div className={lato.className}>
+                    <Component {...pageProps} />
+                    <OneTimeV3Popup />
+                  </div>
+                </SnackbarProvider>
+              </ThemeProvider>
+            </CacheProvider>
+          </QueryClientProvider>
         </LightContext.Provider>
       </UserContext.Provider>
     </ReduxProvider>
