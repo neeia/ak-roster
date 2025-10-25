@@ -43,7 +43,11 @@ const AccountContextMenu = (props: Props) => {
       handleAuthError(error);
       return;
     }
-    window.location.reload();
+    if (window.location.pathname.startsWith('/u/')) {
+      window.location.href = '/';
+    } else {
+      window.location.reload();
+    }
   };
 
   return (
