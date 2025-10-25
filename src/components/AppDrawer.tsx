@@ -23,6 +23,7 @@ import useAccount from "util/hooks/useAccount";
 import Link from "./base/Link";
 import manifest from "data/manifest";
 import ThemeSwitcher from "./app/ThemeSwitcher";
+import useTemporaryProfileUrl from "util/hooks/useTemporaryProfileUrl";
 
 const DRAWER_WIDTH_PX = 220;
 const ICON_BY_PATH = [
@@ -79,6 +80,7 @@ const AppDrawer = React.memo((props: Props) => {
   const { title: currentPage, requireLogin: r2 } = pages[page];
 
   const [account] = useAccount();
+  useTemporaryProfileUrl(account?.username);
 
   const drawerContent = (
     <Box
