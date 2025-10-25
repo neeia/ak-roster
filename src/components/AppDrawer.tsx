@@ -187,7 +187,7 @@ const AppDrawer = React.memo((props: Props) => {
                   }}
                 >
                   <ListItemButton
-                    component="a"
+                    component={Link}
                     href={`${tabPath}${pagePath}`}
                     sx={{
                       p: 0,
