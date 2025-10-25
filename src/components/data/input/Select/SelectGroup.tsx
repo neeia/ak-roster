@@ -10,6 +10,7 @@ interface Props extends Omit<BoxProps, "onClick"> {
   label?: string;
   onClick?: () => void;
   nobg?: boolean;
+  header?: React.ReactNode;
 }
 
 const SelectGroup = (props: Props) => {
@@ -38,7 +39,7 @@ const SelectGroup = (props: Props) => {
           width: "100%",
         }}
       >
-        <Typography variant="h3">{title}</Typography>
+        {rest.header ? rest.header : <Typography variant="h3">{title}</Typography>}
         {label && (
           <Button
             variant="text"

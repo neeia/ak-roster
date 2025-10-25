@@ -1,0 +1,324 @@
+{
+  "none": {
+    "powerName": "No team",
+    "powerCode": "NONE",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 0
+  },
+  "rhodes": {
+    "powerName": "Rhodes Island",
+    "powerCode": "Rhodes Island",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 1
+  },
+  "yan": {
+    "powerName": "Yan",
+    "powerCode": "Yan",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 2
+  },
+  "lungmen": {
+    "powerName": "Yan-Lungmen",
+    "powerCode": "Yan-Lungmen",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 3
+  },
+  "egir": {
+    "powerName": "Ægir",
+    "powerCode": "Ægir",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 4
+  },
+  "bolivar": {
+    "powerName": "Bolívar",
+    "powerCode": "Bolívar",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 5
+  },
+  "columbia": {
+    "powerName": "Columbia",
+    "powerCode": "Columbia",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 6
+  },
+  "higashi": {
+    "powerName": "Higashi",
+    "powerCode": "Higashi",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 7
+  },
+  "iberia": {
+    "powerName": "Iberia",
+    "powerCode": "Iberia",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 8
+  },
+  "kazimierz": {
+    "powerName": "Kazimierz",
+    "powerCode": "Kazimierz",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 10
+  },
+  "kjerag": {
+    "powerName": "Kjerag",
+    "powerCode": "Kjerag",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 11
+  },
+  "laterano": {
+    "powerName": "Laterano",
+    "powerCode": "Laterano",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 12
+  },
+  "leithanien": {
+    "powerName": "Leithanien",
+    "powerCode": "Leithanien",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 13
+  },
+  "minos": {
+    "powerName": "Minos",
+    "powerCode": "Minos",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 14
+  },
+  "rim": {
+    "powerName": "Rim Billiton",
+    "powerCode": "Rim Billiton",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 15
+  },
+  "sami": {
+    "powerName": "Sami",
+    "powerCode": "Sami",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 16
+  },
+  "sargon": {
+    "powerName": "Sargon",
+    "powerCode": "Sargon",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 17
+  },
+  "siracusa": {
+    "powerName": "Siracusa",
+    "powerCode": "Siracusa",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 18
+  },
+  "ursus": {
+    "powerName": "Ursus",
+    "powerCode": "Ursus",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 19
+  },
+  "victoria": {
+    "powerName": "Victoria",
+    "powerCode": "Victoria",
+    "powerLevel": 0,
+    "isRaw": false,
+    "sortId": 20
+  },
+  "elite": {
+    "powerName": "Rhodes Island-Elite Operator",
+    "powerCode": "Rhodes-Elite Op",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 21
+  },
+  "sweep": {
+    "powerName": "S.W.E.E.P.",
+    "powerCode": "S.W.E.E.P.",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 22
+  },
+  "babel": {
+    "powerName": "Babel",
+    "powerCode": "Babel",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 23
+  },
+  "abyssal": {
+    "powerName": "Abyssal Hunters",
+    "powerCode": "Abyssal Hunters",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 24
+  },
+  "blacksteel": {
+    "powerName": "Blacksteel Worldwide",
+    "powerCode": "BSW",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 25
+  },
+  "glasgow": {
+    "powerName": "Glasgow",
+    "powerCode": "Glasgow",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 26
+  },
+  "karlan": {
+    "powerName": "Karlan Trade CO., LTD",
+    "powerCode": "Karlan Trade",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 27
+  },
+  "lgd": {
+    "powerName": "Lungmen Guard Department",
+    "powerCode": "L.G.D.",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 28
+  },
+  "penguin": {
+    "powerName": "Penguin Logistics",
+    "powerCode": "Penguin Logistics",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 29
+  },
+  "pinus": {
+    "powerName": "Pinus Sylvestris Knightclub",
+    "powerCode": "Pinus Sylvestris",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 30
+  },
+  "rhine": {
+    "powerName": "Rhine Lab",
+    "powerCode": "Rhine·Lab",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 31
+  },
+  "siesta": {
+    "powerName": "Siesta",
+    "powerCode": "Siesta",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 32
+  },
+  "sui": {
+    "powerName": "Yan-Sui",
+    "powerCode": "Yan-Sui",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 33
+  },
+  "dublinn": {
+    "powerName": "Dublinn",
+    "powerCode": "Dublinn",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 34
+  },
+  "tara": {
+    "powerName": "Tara",
+    "powerCode": "Tara",
+    "powerLevel": 1,
+    "isRaw": false,
+    "sortId": 35
+  },
+  "action4": {
+    "powerName": "Op Team A4",
+    "powerCode": "Op Team A4",
+    "powerLevel": 2,
+    "isRaw": false,
+    "sortId": 36
+  },
+  "reserve1": {
+    "powerName": "Reserve Op Team A1",
+    "powerCode": "Re-Op Team A1",
+    "powerLevel": 2,
+    "isRaw": false,
+    "sortId": 37
+  },
+  "reserve4": {
+    "powerName": "Reserve Op Team A4",
+    "powerCode": "Re-Op Team A4",
+    "powerLevel": 2,
+    "isRaw": false,
+    "sortId": 38
+  },
+  "reserve6": {
+    "powerName": "Reserve Op Team A6",
+    "powerCode": "Re-Op Team A6",
+    "powerLevel": 2,
+    "isRaw": false,
+    "sortId": 39
+  },
+  "chiave": {
+    "powerName": "Chiave Gang",
+    "powerCode": "Chiave Gang",
+    "powerLevel": 2,
+    "isRaw": false,
+    "sortId": 40
+  },
+  "followers": {
+    "powerName": "Followers",
+    "powerCode": "Followers",
+    "powerLevel": 2,
+    "isRaw": false,
+    "sortId": 42
+  },
+  "lee": {
+    "powerName": "Lee's Detective Agency",
+    "powerCode": "Lee's D.A",
+    "powerLevel": 2,
+    "isRaw": false,
+    "sortId": 43
+  },
+  "rainbow": {
+    "powerName": "Team Rainbow",
+    "powerCode": "Team Rainbow",
+    "powerLevel": 2,
+    "isRaw": true,
+    "sortId": 44
+  },
+  "student": {
+    "powerName": "Ursus Student Self-Governing Group",
+    "powerCode": "U.S.S.G",
+    "powerLevel": 2,
+    "isRaw": false,
+    "sortId": 45
+  },
+  "laios": {
+    "powerName": "Laios's Party",
+    "powerCode": "Laios' party",
+    "powerLevel": 2,
+    "isRaw": true,
+    "sortId": 46
+  },
+  "mujica": {
+    "powerName": "Ave Mujica",
+    "powerCode": "Ave Mujica",
+    "powerLevel": 2,
+    "isRaw": true,
+    "sortId": 47
+  }
+}

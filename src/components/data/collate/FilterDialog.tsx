@@ -26,6 +26,7 @@ import PoolsFilter from "./filter/PoolsFilter";
 import MasteryFilter from "./filter/MasteryFilter";
 import classList from "data/classList";
 import { getBranches, getClasses } from "util/fns/classesUtils";
+import FactionsFilter from "./filter/FactionsFilter";
 
 interface Props {
   filter: Filters;
@@ -41,6 +42,9 @@ const FilterDialog = memo((props: Props) => {
   const [open, setOpen] = React.useState(false);
 
   const [expandedClass, setExpandedClass] = React.useState<string | null>(null);
+  const [factionHover, setFactionHover] = React.useState<{ id: string, title: string } | null>(null);
+  const [branchHover, setBranchHover] = React.useState<{ id: string, title: string } | null>(null);
+
 
   const handleToggleClassOrBranch = (val: string): void => {
     const isClass = classList.includes(val);
@@ -157,11 +161,21 @@ const FilterDialog = memo((props: Props) => {
               width: "100%",
             }}
           >
-            <Select title="Class" nobg sx={{ gridColumn: "1 / -1" }}>
+            <Select nobg sx={{ gridColumn: "1 / -1" }}
+              header={<>
+                <Typography variant="h3" width="100%" display="flex" flexDirection="row" gap={1}>Class
+                  {branchHover &&
+                    <Typography component="span" mr="auto" ml="auto" lineHeight={1}
+                      color={filter.BRANCH.has(branchHover.id) ? "primary.main" : "inherit"}>
+                      {expandedClass} - {branchHover.title}</Typography>}
+                </Typography>
+              </>
+              }>
               <Class expandedClass={expandedClass}
                 value={[...filter.CLASS, ...filter.BRANCH]}
                 onChange={handleToggleClassOrBranch}
                 onBranchesClose={() => setExpandedClass(null)}
+                onHover={(b) => setBranchHover(b)}
               />
             </Select>
             <Select title="Rarity" nobg sx={{ gridColumn: { xs: "1 / -1", sm: "span 4" } }}>
@@ -198,6 +212,21 @@ const FilterDialog = memo((props: Props) => {
             <Select title="Mastery" nobg sx={{ gridColumn: { xs: "1 / -1", sm: "span 5" } }}>
               <MasteryFilter property="mastery"
                 value={[...filter.MASTERY]} onChange={(value) => toggleFilter("MASTERY", value)} />
+            </Select>
+            <Select nobg sx={{ whiteSpace: "nowrap", gridColumn: "1 / -1" }}
+              header={<>
+                <Typography variant="h3" width="100%" display="flex" flexDirection="row" gap={1}>Factions
+                  {[...filter.FACTIONS].length > 0 &&
+                    <Typography component="span" color="primary.main" lineHeight={1}>{` (${[...filter.FACTIONS].length})`}</Typography>}
+                  {factionHover &&
+                    <Typography component="span" mr="auto" ml="auto" lineHeight={1}
+                      color={filter.FACTIONS.has(factionHover.id) ? "primary.main" : "inherit"}>
+                      {factionHover.title}</Typography>}
+                </Typography>
+              </>
+              }>
+              <FactionsFilter property="Factions" onHover={(v) => setFactionHover(v)} fullScreen={fullScreen}
+                value={[...filter.FACTIONS]} onChange={(value) => toggleFilter("FACTIONS", value)} />
             </Select>
             <Select title="Pools" nobg sx={{ whiteSpace: "nowrap", gridColumn: "1 / -1" }}>
               <PoolsFilter property="Pools"

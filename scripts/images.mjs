@@ -48,6 +48,11 @@ const tasks = [
     destDir: "public/img/subclass",
     filter: (filename) => filename.endsWith(".png"),
   },
+  {
+    sourceDir: path.join(ACESHIP_ROOT, "factions"),
+    destDir: "public/img/factions",
+    filter: (filename) => filename.endsWith(".png"),
+  },
 ];
 
 const upload = async (existingFilePaths, task) => {

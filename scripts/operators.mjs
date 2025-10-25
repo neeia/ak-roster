@@ -4,17 +4,19 @@ import { fileURLToPath } from "url";
 import { loadRepositoryTable } from "./tablesMapper.mjs";
 
 const enCharacterPatchTable = loadRepositoryTable("enCharacterPatchTable");
-const enCharacterTable      = loadRepositoryTable("enCharacterTable");
-const enSkillTable          = loadRepositoryTable("enSkillTable");
-const enUniequipTable       = loadRepositoryTable("enUniequipTable");
+const enCharacterTable = loadRepositoryTable("enCharacterTable");
+const enSkillTable = loadRepositoryTable("enSkillTable");
+const enUniequipTable = loadRepositoryTable("enUniequipTable");
 const cnCharacterPatchTable = loadRepositoryTable("cnCharacterPatchTable");
-const cnCharacterTable      = loadRepositoryTable("cnCharacterTable");
-const cnSkillTable          = loadRepositoryTable("cnSkillTable");
-const cnUniequipTable       = loadRepositoryTable("cnUniequipTable");
-const cnGachaTable          = loadRepositoryTable("cnGachaTable");
-const cnStageTable          = loadRepositoryTable("cnStageTable");
+const cnCharacterTable = loadRepositoryTable("cnCharacterTable");
+const cnSkillTable = loadRepositoryTable("cnSkillTable");
+const cnUniequipTable = loadRepositoryTable("cnUniequipTable");
+const cnGachaTable = loadRepositoryTable("cnGachaTable");
+const cnStageTable = loadRepositoryTable("cnStageTable");
+const enHandbookTeamTable = loadRepositoryTable("enHandbookTeamTable");
+const cnHandbookTeamTable = loadRepositoryTable("cnHandbookTeamTable");
 
-const recruitJson           = loadRepositoryTable("recruitmentJson");
+const recruitJson = loadRepositoryTable("recruitmentJson");
 
 const enPatchCharacters = enCharacterPatchTable.patchChars;
 const cnPatchCharacters = cnCharacterPatchTable.patchChars;
@@ -45,31 +47,32 @@ const colabLimiteds = [
   //other
   "char_4019_ncdeer",
   "char_4067_lolxh",
-  // R6 1
-  "char_456_ash",
-  "char_457_blitz",
-  "char_458_rfrost",
-  "char_459_tachaka",
   // MH
   "char_1029_yato2",
   "char_1030_noirc2",
   "char_4077_palico",
-  // R6 2
-  "char_4125_rdoc",
-  "char_4123_ela",
-  "char_4124_iana",
-  "char_4126_fuze",
-  // DM
-  "char_4144_chilc",
-  "char_4142_laios",
-  "char_4141_marcil",
-  "char_4143_sensi",
-  //BDAM
-  "char_4182_oblvns",
-  "char_4183_mortis",
-  "char_4184_dolris",
-  "char_4185_amoris",  
-  "char_4186_tmoris",  
+  //other can be auto detected by faction isRaw
+  /*  // R6 1
+    "char_456_ash",
+    "char_457_blitz",
+    "char_458_rfrost",
+    "char_459_tachak",
+    // R6 2
+    "char_4125_rdoc",
+    "char_4123_ela",
+    "char_4124_iana",
+    "char_4126_fuze",
+    // DM
+    "char_4144_chilc",
+    "char_4142_laios",
+    "char_4141_marcil",
+    "char_4143_sensi",
+    //BDAM
+    "char_4182_oblvns",
+    "char_4183_mortis",
+    "char_4184_dolris",
+    "char_4185_amoris",  
+    "char_4186_tmoris", */
 ];
 const freePoolInclude = [
   "char_1001_amiya2",
@@ -331,7 +334,7 @@ const amiyaEliteLevel = [
   },
 ];
 
-const getPools = (operatorId, rarity) => {
+const getPools = (operatorId, rarity, factions) => {
   const id = operatorId;
   const isKernel = (enCharacterTable[id]?.classicPotentialItemId ?? null) !== null;
   const isCnKernel = (cnCharacterTable[id]?.classicPotentialItemId ?? null) !== null;
@@ -344,9 +347,9 @@ const getPools = (operatorId, rarity) => {
       || cnCharacterTable[id].itemObtainApproach.includes("交易所")     //exchanges - reds/credit
       || cnCharacterTable[id].itemObtainApproach.includes("周年奖励")   //anniversary reward
     );
-
-  const isLimited = colabLimiteds.includes(id) ||
-    Object.values(cnGachaPoolClient).some((b) =>
+  const isLimited = factions.some((id) => cnHandbookTeamTable[id]?.isRaw)
+    || colabLimiteds.includes(id)
+    || Object.values(cnGachaPoolClient).some((b) =>
       b.limitParam?.limitedCharId && b.limitParam.limitedCharId.includes(id));
 
   //not exact detection (find better way later)
@@ -378,6 +381,69 @@ const getPools = (operatorId, rarity) => {
 
   return pools;
 }
+
+export const getFactions = (operator) => {
+  const result = new Set();
+
+  const addFaction = (id) => {
+    if (!id || result.has(id)) return;
+    result.add(id);
+  };
+
+  //first power (prioritize team > group > nation)
+  const defaultId = operator.teamId || operator.groupId || operator.nationId;
+  addFaction(defaultId);
+
+  //second from operator + mainPower
+  const mainSources = [operator, operator.mainPower];
+  for (const src of mainSources) {
+    if (!src) continue;
+    for (const key of ["teamId", "groupId", "nationId"]) {
+      const val = src[key];
+      if (val && val !== defaultId) addFaction(val);
+    }
+  }
+
+  //last from subPower array
+  if (Array.isArray(operator.subPower)) {
+    for (const sub of operator.subPower) {
+      for (const key of ["teamId", "groupId", "nationId"]) {
+        const val = sub?.[key];
+        if (val) addFaction(val);
+      }
+    }
+  }
+  return [...result];
+};
+
+const createFactionsJson = () => {
+  const factionsJson = Object.fromEntries(
+    Object.entries(cnHandbookTeamTable).map(([id, power]) => {
+
+      let powerName = (enHandbookTeamTable[id]) ? enHandbookTeamTable[id].powerName : power.powerCode;
+      let powerCode = power.powerCode;
+      //swap based on length, longer is title
+      if (String(powerName).length < String(powerCode).length) {
+        [powerCode, powerName] = [powerName, powerCode];
+      }
+
+      const outputPower = {
+        powerName,
+        powerCode,
+        powerLevel: power.powerLevel,
+        isRaw: power.isRaw,
+        sortId: power.orderNum,
+      };
+      return [id, outputPower];
+    }));
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const outDir = path.join(__dirname, "..", "src/data");
+  const operatorsOutPath = path.join(outDir, "factions.json");
+  fs.writeFileSync(operatorsOutPath, JSON.stringify(factionsJson, null, 2));
+  console.log(`operator factions: wrote ${operatorsOutPath}`);
+};
 
 const createOperatorsJson = () => {
   const operatorsJson = Object.fromEntries(
@@ -479,6 +545,8 @@ const createOperatorsJson = () => {
       const potentials = (enCharacterTable[id] ?? operator).potentialRanks.map((r) => r.description);
       const className = professionToClass(operator.profession);
 
+      const factions = getFactions(operator);
+
       const outputOperator = {
         id,
         name: getOperatorName(id),
@@ -487,7 +555,8 @@ const createOperatorsJson = () => {
         class: className,
         branch: subProfessionToBranch(operator.subProfessionId, className),
         isCnOnly,
-        pools: getPools(id, rarity),
+        factions,
+        pools: getPools(id, rarity, factions),
         skillData,
         moduleData,
         potentials,
@@ -509,5 +578,6 @@ const createOperatorsJson = () => {
 export default createOperatorsJson;
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  createFactionsJson();
   createOperatorsJson();
 }

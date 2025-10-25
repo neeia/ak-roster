@@ -450,15 +450,16 @@ const GameImport = memo(() => {
         >
           <AlertTitle>
             {!isL1Import.error
-              ? <Typography variant="body1">Bind Arknights account to Email in game settings before Log In.</Typography>
+              ? <Typography variant="body1">"Bind Email" to Arknights account in game settings User Center before Log-In.</Typography>
               : <Typography variant="body1">How to Fix Import After Level 1 Account Error:</Typography>}
           </AlertTitle>
           {showEmailAlert && <>
             {!isL1Import.error
             ? <><Typography component="span" variant="body2" sx={{ color: "error.main" }}>Warning:</Typography>
-              <Typography component="span" variant="body2">GooglePlay, AppleStore or other binds alone will not work.
-                <br /> Without an Email bind, a second <u>level 1 Arknights account</u> will be created, imported and will bind your Email.</Typography></>
-            : <Typography component="span" variant="body2"><u>What happened:</u> You didn't bind email, so Arknights created and bound new lvl1 account for this email. And your main Arknights account probably uses GooglePlay/AppleStore of same email, or Guest (not bound at all).
+              <Typography component="span" variant="body2">Import will not work with Google, Apple, Facebook or Recovery Email from "Bind Other Accounts" section.
+                <br />Correct option is "Bind Email" button inside User Center, the one with code confirmation.
+                <br />Logging in from this page with un-bound in game "Email" will create second <u>level 1 Arknights account</u>, lead to error, and wrong binding of used Email.</Typography></>
+            : <Typography component="span" variant="body2"><u>What happened:</u> You didn't bind email, so Arknights created new lvl1 account and bound this email into it. And your main Arknights account is probably bound with Google or Apple accounts of same email, or Guest (not bound at all).
               <br />
               <u>What to Do to fix:</u>
               <br />Option 1: Remove your email from Level 1 account and bind it into main account:
@@ -479,12 +480,12 @@ const GameImport = memo(() => {
                     {isL1Import.email ? isL1Import.email : "your_email@gmail.com"}
                   </Typography></li>
                 </ul>
-                <li>After swapping to new/salted email, Log Out from level 1 account</li>
-                <li>In game with main Arknights account in settings bind to now free <Typography component="span" color="info" variant="body1">
+                <li>After swapping to new address, Log Out from level 1 account</li>
+                <li>In main Arknights account in game settings User Center use "Bind Email" or "Update Email" to input now free <Typography component="span" color="info" variant="body1">
                   {isL1Import.email ? isL1Import.email : "email"}
-                </Typography></li>
+                </Typography> and confirm it with code.</li>
               </ol>
-              Option 2 - simply use another email to bind your main Arknights account in game settings and use it for import
+              Option 2 - simply use another email address to "Bind Email" in your main Arknights account in game settings User Center, and use it for import here.
             </Typography>}
             <br />
             <FormControlLabel
@@ -497,7 +498,7 @@ const GameImport = memo(() => {
                 />
               }
               label={!isL1Import.error
-                ? <Typography variant="body1">I bound Email in-game and understand lvl1 warning</Typography>
+                ? <Typography variant="body1">I read lvl1 warning and used “Bind Email” in-game</Typography>
                 : <Typography variant="body1">I completed all steps, and want to try import again</Typography>}
             />
           </>}

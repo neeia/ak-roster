@@ -3,6 +3,7 @@ import { Divider, IconButton, Menu, MenuItem, IconButtonProps } from "@mui/mater
 import supabase from "supabase/supabaseClient";
 import { Settings } from "@mui/icons-material";
 import handleAuthError from "util/fns/handleAuthError";
+import Link from "components/base/Link";
 
 interface Props extends IconButtonProps {
   changeUsername?: () => void;
@@ -75,7 +76,7 @@ const AccountContextMenu = (props: Props) => {
           horizontal: "right",
         }}
       >
-        <MenuItem component="a" href="/settings">
+        <MenuItem component={Link} href="/settings">
           Account Settings
         </MenuItem>
         {changeUsername && <MenuItem onClick={changeUsername}>Change Display Name</MenuItem>}

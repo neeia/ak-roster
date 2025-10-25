@@ -118,7 +118,16 @@ const repositories = {
   enSkinTable: [
     "./ArknightsAssetsGamedata/en/gamedata/excel/skin_table.json",
     ""
-  ]
+  ],
+  //handbook_team  ,
+  cnHandbookTeamTable: [
+    "./ArknightsGameData/zh_CN/gamedata/excel/handbook_team_table.json",
+    ""
+  ],
+  enHandbookTeamTable: [
+    "./ArknightsAssetsGamedata/en/gamedata/excel/handbook_team_table.json",
+    ""
+  ],
 };
 
 // --- auto-add all krooster ../src/data/*.json files ---

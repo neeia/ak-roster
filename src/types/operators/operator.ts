@@ -27,6 +27,14 @@ export interface Branch {
     name: string;
  }
 
+export interface FactionData {
+    powerName: string,
+    powerCode: string,
+    powerLevel: number,
+    isRaw: boolean,
+    sortId: number
+}
+
 export interface OperatorData {
   id: string;
   name: string;
@@ -35,6 +43,7 @@ export interface OperatorData {
   class: string;
   branch: Branch;
   isCnOnly: boolean;
+  factions: string[];
   pools: string[];
   skillData?: SkillData[];
   moduleData?: ModuleData[];

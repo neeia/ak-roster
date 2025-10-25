@@ -23,6 +23,7 @@ import ShareDialog from "./ShareDialog";
 import { enqueueSnackbar } from "notistack";
 import imageBase from "util/imageBase";
 import getContrastText from "util/fns/getContrastText";
+import AccountStatistic from "./AccountStatistic";
 
 interface Props extends DialogProps {
   data?: LookupData;
@@ -37,6 +38,7 @@ const ProfileDialog = (props: Props) => {
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
   const [saving, setSaving] = React.useState(false);
+  const [statsCollapsed, setStatsCollasped] = React.useState(true);
 
   const ssTarget = useRef<HTMLDivElement>();
   const shareAnchor = useRef<HTMLButtonElement | null>(null);
@@ -116,7 +118,8 @@ const ProfileDialog = (props: Props) => {
         sx: {
           background: "none",
           margin: 0,
-          overflow: "hidden",
+          overflow: fullScreen && !statsCollapsed ? "auto" : { xs: "visible", sm: "hidden" },
+          maxHeight: fullScreen && !statsCollapsed ? "100vh" : "none",
         },
       }}
       sx={{
@@ -131,11 +134,13 @@ const ProfileDialog = (props: Props) => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: 2,
+          gap: 1,
           backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.25),
           backdropFilter: "blur(24px) grayscale(50%)",
           p: 0,
-          overflow: "hidden",
+          overflow: fullScreen && !statsCollapsed ? "auto" : { xs: "visible", sm: "hidden" },
+          position: "relative",
+          minHeight: fullScreen && !statsCollapsed ? "100vh" : "auto",
           "&.screenshot": {
             backgroundColor: "background.paper",
             backdropFilter: "none",
@@ -146,9 +151,9 @@ const ProfileDialog = (props: Props) => {
           theme={(theme: ThemeOptions) =>
             color
               ? {
-                  ...theme,
-                  palette: { ...theme.palette, primary: { main: color } },
-                }
+                ...theme,
+                palette: { ...theme.palette, primary: { main: color } },
+              }
               : theme
           }
         >
@@ -185,9 +190,9 @@ const ProfileDialog = (props: Props) => {
                   src={
                     data.account.assistant
                       ? getAvatarFull({
-                          ...data.roster[data.account.assistant],
-                          ...operatorJson[data.account.assistant],
-                        })
+                        ...data.roster[data.account.assistant],
+                        ...operatorJson[data.account.assistant],
+                      })
                       : `${imageBase}/characters/logo_rhodes.webp`
                   }
                   sx={{
@@ -292,6 +297,7 @@ const ProfileDialog = (props: Props) => {
                   </Box>
                 </Box>
               )}
+              <AccountStatistic data={data} collapsed={statsCollapsed} setCollapsed={setStatsCollasped} />
             </>
           )}
         </ThemeProvider>

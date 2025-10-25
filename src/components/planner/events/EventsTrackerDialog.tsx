@@ -677,12 +677,12 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                         <Grid container spacing={2} mt={1} mb={2}>
                             <Grid size={{ xs: 12, md: 6 }}>
                                 <FormControl fullWidth>
-                                    <InputLabel id="export-format-label">Export format</InputLabel>
+                                    <InputLabel id="tr-export-format-label">Export format</InputLabel>
                                     <Select
-                                        id="export-format"
+                                        id="tr-export-format"
                                         variant="standard"
                                         name="export-format"
-                                        labelId="export-format-label"
+                                        labelId="tr-export-format-label"
                                         label="Export format"
                                         value={exportFormat}
                                         MenuProps={{
@@ -704,12 +704,12 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                             </Grid>
                             <Grid size={{ xs: 8, md: 4 }}>
                                 <FormControl fullWidth>
-                                    <InputLabel id="import-format-label">Import format</InputLabel>
+                                    <InputLabel id="tr-import-format-label">Import format</InputLabel>
                                     <Select
-                                        id="import-format"
+                                        id="tr-import-format"
                                         variant="standard"
                                         name="import-format"
-                                        labelId="import-format-label"
+                                        labelId="tr-import-format-label"
                                         label="import format"
                                         value={importFormat}
                                         MenuProps={{
@@ -752,7 +752,7 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                                     multiline
                                     minRows={10}
                                     maxRows={10}
-                                    id="exported-data-input"
+                                    id="tr-exported-data-input"
                                     label="Export data"
                                     slotProps={{
                                         input: {
@@ -786,7 +786,7 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                                     multiline
                                     minRows={10}
                                     maxRows={10}
-                                    id="import-data-input"
+                                    id="tr-import-data-input"
                                     label="Import data"
                                     value={importData}
                                     disabled={importFormat == ""}
