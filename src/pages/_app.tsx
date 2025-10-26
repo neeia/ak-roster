@@ -34,8 +34,28 @@ const MyApp = (props: AppProps) => {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, newSession) => {
-      if (!newSession) setUser(null);
-      else if (!user) setUser(newSession.user);
+      if (!newSession) {
+        setUser(null);
+        sessionStorage.removeItem('emailVerificationHandled');
+      }
+      else if (!user) {
+        setUser(newSession.user);
+        //verification link redirect: no-user context and dead links
+        //force one page reload on SIGNED_IN for <10min new user to fix.
+        if (event === 'SIGNED_IN') {
+          const alreadyHandled = sessionStorage.getItem('emailVerificationHandled') === 'true';
+          if (!alreadyHandled) {
+            const userCreatedAt = new Date(newSession.user.created_at);
+            const now = new Date();
+            const tenMinutesAgo = new Date(now.getTime() - 10 * 60 * 1000);
+            const isNewUser = userCreatedAt > tenMinutesAgo;
+            if (isNewUser) {
+              sessionStorage.setItem('emailVerificationHandled', 'true');
+              window.location.reload();
+            }
+          }
+        }
+      }
       else if (newSession.user.id !== user.id) {
         setUser(newSession.user);
       }
