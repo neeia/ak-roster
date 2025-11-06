@@ -77,7 +77,7 @@ const Lookup = ({ username: _username, data: _data }: InferGetServerSidePropsTyp
     OWNED: new Set([true]),
   });
 
-  const superdata = data || _data;
+  const [superdata, setSuperdata] = useState(data || _data);
 
   const image = `${server}/api/og/${_username}`;
   const description =
@@ -101,7 +101,11 @@ const Lookup = ({ username: _username, data: _data }: InferGetServerSidePropsTyp
       header={
         superdata && (
           <>
-            <IconButton aria-label="Back to lookup" edge="start" onClick={clear} sx={{ color: "primary.contrastText" }}>
+            <IconButton aria-label="Back to lookup" edge="start" onClick={() => {
+              clear();
+              setSuperdata(null);
+            }
+            } sx={{ color: "primary.contrastText" }}>
               <ArrowBack />
             </IconButton>
             <Typography component="h1" variant="h5" sx={{ lineHeight: "1rem", mr: 1.5 }}>
