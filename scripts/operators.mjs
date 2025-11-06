@@ -545,7 +545,7 @@ const createOperatorsJson = () => {
       const potentials = (enCharacterTable[id] ?? operator).potentialRanks.map((r) => r.description);
       const className = professionToClass(operator.profession);
 
-      const factions = getFactions(operator);
+      const factions = getFactions(enCharacterTable[id] ?? operator);
 
       const outputOperator = {
         id,
