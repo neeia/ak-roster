@@ -56071,7 +56071,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "烧烤店官方优惠章",
+        "moduleName": "Official Coupon Stamp of the BBQ House",
         "moduleId": "uniequip_002_tecno",
         "typeName": "SOC-Y",
         "stages": [
@@ -56141,7 +56141,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -89458,7 +89458,7 @@
       "id": "skywalker",
       "name": "Skyranger"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "columbia"
     ],
@@ -89469,7 +89469,7 @@
       {
         "skillId": "skchr_tippi_1",
         "iconId": null,
-        "skillName": "专业喷绘技巧",
+        "skillName": "Specialist's Spraying Skills",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -89533,7 +89533,7 @@
       {
         "skillId": "skchr_tippi_2",
         "iconId": null,
-        "skillName": "紧急赶场通知",
+        "skillName": "Emergency Scene Change",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -89597,11 +89597,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+25",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -111737,7 +111737,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "未处理的遗产",
+        "moduleName": "Unclaimed Legacy",
         "moduleId": "uniequip_002_necras",
         "typeName": "SOC-X",
         "stages": [
@@ -111807,7 +111807,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -117967,7 +117967,7 @@
       "id": "ritualist",
       "name": "Ritualist"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "victoria"
     ],
@@ -117978,7 +117978,7 @@
       {
         "skillId": "skchr_phatm2_1",
         "iconId": null,
-        "skillName": "暗夜回声",
+        "skillName": "Night Echoes",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118042,7 +118042,7 @@
       {
         "skillId": "skchr_phatm2_2",
         "iconId": null,
-        "skillName": "群体性谵妄",
+        "skillName": "Folie à Plusieurs",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118106,7 +118106,7 @@
       {
         "skillId": "skchr_phatm2_3",
         "iconId": null,
-        "skillName": "空剧场",
+        "skillName": "Le Théâtre du Vide",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118170,7 +118170,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "酒神之心",
+        "moduleName": "Heart of Tragodia",
         "moduleId": "uniequip_002_phatm2",
         "typeName": "RIT-X",
         "stages": [
@@ -118240,15 +118240,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "第一天赋效果增强",
-      "攻击力+23",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +23",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -124201,7 +124201,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“阿斯卡纶的眼睛”",
+        "moduleName": "'Eyes of Ascalon'",
         "moduleId": "uniequip_003_ascln",
         "typeName": "AMB-Y",
         "stages": [
@@ -124271,7 +124271,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -125233,7 +125233,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "梦中人",
+        "moduleName": "In My Dreams",
         "moduleId": "uniequip_003_doroth",
         "typeName": "TRP-X",
         "stages": [
@@ -125303,7 +125303,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -136309,7 +136309,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“夜深人静”",
+        "moduleName": "'In the Dead of Night'",
         "moduleId": "uniequip_003_f12yin",
         "typeName": "FGT-X",
         "stages": [
@@ -136379,7 +136379,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [

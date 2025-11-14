@@ -2162,7 +2162,7 @@
     },
     {
       "skinId": "char_154_morgan@epoque#47",
-      "skinName": "字里行间",
+      "skinName": "Behind the Words",
       "avatarId": "char_154_morgan_epoque#47",
       "sortId": 114
     }
@@ -2524,7 +2524,7 @@
     },
     {
       "skinId": "char_4066_highmo@epoque#45",
-      "skinName": "搁浅",
+      "skinName": "Stranded",
       "avatarId": "char_4066_highmo_epoque#45",
       "sortId": 112
     },
@@ -3960,7 +3960,7 @@
     },
     {
       "skinId": "char_4137_udflow@epoque#46",
-      "skinName": "层流",
+      "skinName": "Laminar Flow",
       "avatarId": "char_4137_udflow_epoque#46",
       "sortId": 113
     }
@@ -4588,7 +4588,7 @@
     },
     {
       "skinId": "char_4079_haini@epoque#45",
-      "skinName": "翻涌",
+      "skinName": "Tidal Bore",
       "avatarId": "char_4079_haini_epoque#45",
       "sortId": 111
     }
@@ -6740,7 +6740,7 @@
     },
     {
       "skinId": "char_4132_ascln@iteration#4",
-      "skinName": "趋光之暗",
+      "skinName": "Phototaxis",
       "avatarId": "char_4132_ascln_iteration#4",
       "sortId": 426
     }
