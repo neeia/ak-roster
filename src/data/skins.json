@@ -1121,6 +1121,12 @@
       "skinName": null,
       "avatarId": "char_491_humus_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_491_humus@marthe#10",
+      "skinName": "烈阳街景",
+      "avatarId": "char_491_humus_marthe#10",
+      "sortId": 228
     }
   ],
   "char_445_wscoot": [
