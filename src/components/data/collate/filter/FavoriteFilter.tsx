@@ -15,7 +15,7 @@ const FavoriteFilter = (props: Props) => {
       value={value}
       sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", width: "100%", height: 48 }}
     >
-      <ToggleButton value={true} onChange={() => onChange(true)}>
+      <ToggleButton sx={{ minWidth: "40px" }} value={true} onChange={() => onChange(true)}>
         <Favorite fontSize="small" color="error" sx={{ m: "2px" }} />
       </ToggleButton>
     </ToggleButtonGroup>

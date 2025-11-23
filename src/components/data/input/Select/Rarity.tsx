@@ -30,6 +30,8 @@ const Rarity = (props: Props) => {
           value={n}
           onChange={() => onChange(n)}
           sx={{
+            "&:not(._):not(._)":
+              { borderRadius: 1 },
             height: 48,
             "& svg": {
               color: rarityColors[n],

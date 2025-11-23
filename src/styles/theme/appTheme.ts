@@ -223,10 +223,23 @@ const appTheme = (brandColor: string, light = false) => {
             "&:hover": {
               background: lighten(_neutral[700], 0.1),
             },
+            //remove borders to remove jumpiness
+            border: "none !important",
+            margin: "0 !important",
             transition: "background-color 0.1s",
-            "&:not(._):not(._):not(._)": {
-              border: "none",
-              margin: 0,
+            //add element at bottom as border
+            position: "relative",
+            overflow: "hidden",
+            "&.Mui-selected": {
+              "&::before": {
+                content: '""',
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: "0.25rem",
+                backgroundColor: brandColor,
+              },
             },
           },
         },
