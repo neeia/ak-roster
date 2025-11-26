@@ -6565,6 +6565,12 @@
       "skinName": null,
       "avatarId": "char_1502_crosly_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_1502_crosly@iteration#5",
+      "skinName": "夜之终局",
+      "avatarId": "char_1502_crosly_iteration#5",
+      "sortId": 427
     }
   ],
   "char_322_lmlee": [
@@ -6579,6 +6585,12 @@
       "skinName": null,
       "avatarId": "char_322_lmlee_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_322_lmlee@whirlwind#10",
+      "skinName": "鉴浮生",
+      "avatarId": "char_322_lmlee_whirlwind#10",
+      "sortId": 161
     },
     {
       "skinId": "char_322_lmlee@witch#3",
