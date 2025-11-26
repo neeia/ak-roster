@@ -54,6 +54,14 @@ export const EventsSelector = React.memo((props: EventsSelectorProps) => {
             label = "Select from web data";
             break;
         }
+        case 'archiveIS': { //source only
+            label = "Select from IS Archive";
+            break;
+        }
+        case 'archiveRA': { //source only
+            label = "Select from RA Archive";
+            break;
+        }
     };
 
     const [isSelecClosed, setIsSelectClosed] = useState(true);

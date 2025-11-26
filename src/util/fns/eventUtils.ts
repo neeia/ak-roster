@@ -72,6 +72,7 @@ const createMonthEvent = (month: number, year: number, startDay: number = 1): Na
 
 export const getNextMonthsData = (months: number = 7): EventsData => {
     const nextMonthsData: EventsData = {};
+    const nextMonthsArray: NamedEvent[] = [];
     const currentDate = new Date();
     const currentDay = currentDate.getDate();
     const currentMonth = currentDate.getMonth() + 1;
@@ -87,10 +88,15 @@ export const getNextMonthsData = (months: number = 7): EventsData => {
 
         if (!monthEvent) continue;
 
-        nextMonthsData[monthEvent.name] = monthEvent;
+        nextMonthsArray.push(monthEvent);
     }
+    nextMonthsArray.sort((a, b) => new Date(a.name).getTime() - new Date(b.name).getTime())
+        .reduce((acc, event, idx) => {
+            acc[event.name] = { ...event, index: idx + 1 };
+            return acc;
+        }, nextMonthsData);
     return nextMonthsData;
-};
+}
 
 export const reindexEvents = (eventsData: EventsData | [string, Event][]): EventsData => {
     const eventsArray = Array.isArray(eventsData)
@@ -177,7 +183,13 @@ export const getEventsFromWebEvents = (webEvents: WebEventsData): EventsData => 
         .sort(([, a], [, b]) => {
             if (!a.date) return 1;
             if (!b.date) return -1;
-            return new Date(b.date).getTime() - new Date(a.date).getTime();
+
+            const dateCompare = new Date(b.date).getTime() - new Date(a.date).getTime();
+            if (dateCompare !== 0) return dateCompare;
+
+            const baseCompare = (a.name?.slice(0, -2) ?? "").localeCompare(b.name?.slice(0, -2) ?? "");
+            if (baseCompare !== 0) return baseCompare;
+            return (b.name?.slice(-2) ?? "").localeCompare(a.name?.slice(-2) ?? "");
         })
         .reduce((acc, [_, item], idx) => {
             const _name = `(${getDateString(item.date ?? new Date())}) ${item.name ?? item.pageName}`;

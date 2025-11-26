@@ -38,7 +38,7 @@ export type SubmitEventProps = {
 }
 
 export interface EventsSelectorProps {
-    dataType: 'events' | 'months' | 'defaults' | 'defaultsWeb' | 'summary';
+    dataType: 'events' | 'months' | 'defaults' | 'defaultsWeb' | 'archiveIS' | 'archiveRA' | 'summary';
     emptyItem?: string;
     disabled?: boolean;
     eventsData: EventsData;
@@ -54,6 +54,10 @@ export interface TrackerDefaults {
     lastUpdated?: string;
     webEventsData?: WebEventsData;
     eventsData?: EventsData;
+    archive?: {
+        integratedStrategies: WebEventsData,
+        reclamationAlgorithm: WebEventsData,
+    }
 }
 
 export type UpcomingMaterialsData = {

@@ -102,16 +102,16 @@ const EventsTrackerDialog = React.memo((props: Props) => {
     const [submitDialogOpen, setSubmitDialogOpen] = useState<boolean>(false);
     const [submitedEvent, setSubmitedEvent] = useState(createEmptyNamedEvent());
     const [selectedEvent, setSelectedEvent] = useState(createEmptyNamedEvent());
-    const [submitSources, setSubmitSources] = useState<SubmitSource[]>(["defaults", "defaultsWeb", "months"]);
+    const [submitSources, setSubmitSources] = useState<SubmitSource[]>(["defaults", "archiveIS", "archiveRA", "defaultsWeb", "months"]);
 
     const SUPPORTED_IMPORT_EXPORT_TYPES: DataShareInfo[] = [
         {
             format: "CSV",
-            description: "A csv file containing 5 columns (,) divided with the following names: eventName, index, material_id, quantity, farms, infinite. Farms and Infinite contains id values (;) divided. Farms up to 3 only.",
+            description: "A csv file containing 5 columns (,) divided with the following names: eventName, index, material_id, quantity, farms, infinite. \n\nFarms and Infinite contains id values (;) divided. Farms up to 3 only.",
         },
         {
             format: "JSON",
-            description: `JSON example: { "eventName": { "index": orderNumber, "materials": { "id1": quantity, "id2": quantity }, "farms": ["id1", "id2"], "infinite": ["id1", "id2"] } }`,
+            description: `JSON example: { \n"eventName": { \n"index": orderNumber, \n"materials": { "id1": quantity, "id2": quantity }, \n"farms": ["id1", "id2"], \n"infinite": ["id1", "id2"] } \n}`,
         },
     ];
 
@@ -144,6 +144,9 @@ const EventsTrackerDialog = React.memo((props: Props) => {
 
     const EXPORT_IMPORT_INFORMATIOn =
         <Typography variant='caption'>Supports export and import from other Arknights community data sources (like tracking sheets). Data should be compiled into the presented import formats.</Typography>;
+
+    const DEFAULTS_DESCRIPTION = "6 months of upcoming events from prts.wiki sorted by date, auto-updated daily.";
+    const BUILDER_DESCRIPTION = "Add new or merge from available sources. Includes IS and RA archive."
 
     useEffect(() => {
         if (open) {
@@ -376,7 +379,7 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                             </Stack>
                         </Stack>
                         <Stack direction={{ xs: "column", md: "row" }} alignItems="center" gap={1}>
-                            <Tooltip title="Add to Depot & Builder">
+                            <Tooltip title={<Typography variant='body2'>Add to Depot & Builder</Typography>}>
                                 <MoveToInboxIcon
                                     fontSize="large"
                                     sx={{
@@ -388,7 +391,7 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         onChange(rawEvents);
-                                        setSubmitSources(["current", "events", "defaults", "defaultsWeb", "months"])
+                                        setSubmitSources(["current", "events", "defaults", "archiveIS", "archiveRA", "defaultsWeb", "months"])
                                         setSubmitedEvent({ name, index: _eventData.index, materials: _eventData.materials ?? {}, farms: _eventData.farms ?? [] });
                                         setSubmitDialogOpen(true);
                                     }} />
@@ -485,11 +488,15 @@ const EventsTrackerDialog = React.memo((props: Props) => {
             <MenuItem key={x.format} value={x.format}>
                 <Stack direction="row" alignItems="center" gap={1}>
                     {x.format}
-                    <Tooltip title={x.description}>
+                    <Tooltip title={
+                        <Typography variant='body2' sx={{ whiteSpace: 'pre-line' }}>
+                            {x.description}
+                        </Typography>
+                    }>
                         <InfoOutlined />
                     </Tooltip>
-                </Stack>
-            </MenuItem>
+                </Stack >
+            </MenuItem >
         ));
     };
 
@@ -590,15 +597,22 @@ const EventsTrackerDialog = React.memo((props: Props) => {
         }
     }, [trackerDefaults, onChange, setRawEvents]);
 
-    const getBuilderButton = () => {
+    const minButton = "4rem";
+
+    const getBuilderButton = (source?: SubmitSource) => {
         return (<Button
             variant="contained"
             size="small"
             onClick={() => {
-                setSubmitSources(['defaults', 'months', 'events', 'defaultsWeb'])
+                if (!source) {
+                    setSubmitSources(['defaults', "archiveIS", "archiveRA", 'months', 'events', 'defaultsWeb']);
+                } else {
+                    setSubmitSources([source]);
+                }
+                setSubmitedEvent({ ...createEmptyNamedEvent() });
                 setSubmitDialogOpen(true);
             }}
-            sx={{ minWidth: "fit-content", whiteSpace: "nowrap" }}
+            sx={{ minWidth: minButton, whiteSpace: "nowrap" }}
         >Builder
         </Button>)
     };
@@ -608,7 +622,7 @@ const EventsTrackerDialog = React.memo((props: Props) => {
             variant="contained"
             size="small"
             onClick={handleSetEventsFromDefaults}
-            sx={{ minWidth: "fit-content", whiteSpace: "nowrap" }}
+            sx={{ minWidth: minButton, whiteSpace: "nowrap" }}
         >Defaults
         </Button>)
     };
@@ -625,6 +639,8 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                     sx={{
                         display: "flex",
                         paddingBottom: "12px",
+                        position: "relative",
+                        fontSize: { xs: "1.5rem", sm: "2rem" }
                     }}
                 >
                     <ToggleButtonGroup
@@ -647,7 +663,7 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                     {(tab === "input") && (!fullScreen ? "Events Tracker" : "Events")}
                     {(tab === "importExport") && "Import/Export"}
                     {(tab === "help") && "Description"}
-                    <IconButton onClick={handleClose} sx={{ display: { sm: "none" }, gridArea: "close" }}>
+                    <IconButton onClick={handleClose} sx={{ display: { sm: "none" }, gridArea: "close", position: "absolute", top: 5, right: 10, }}>
                         <Close />
                     </IconButton>
                 </DialogTitle>
@@ -658,10 +674,10 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                         {Object.keys(rawEvents ?? {}).length === 0 && <List>
                             <ListItem>Input future events, using import, manually or from defaults.</ListItem>
                             <ListItem ><Stack direction="row" gap={2} alignItems="center">
-                                {getDefaultsButton()} 6 months of upcoming events from prts.wiki sorted by date, updated daily.</Stack></ListItem>
+                                {getDefaultsButton()} {DEFAULTS_DESCRIPTION}</Stack></ListItem>
                             <ListItem ><Stack direction="row" gap={2} alignItems="center">
                                 {getBuilderButton()}
-                                Add new or merge from available sources</Stack></ListItem>
+                                {BUILDER_DESCRIPTION}</Stack></ListItem>
                         </List>}
                         {renderedEvents}
                         <Stack direction="row" gap={2} ml={2} mt={2} justifyContent="flex-start">
@@ -730,7 +746,7 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                                 </FormControl>
                             </Grid>
                             <Grid size={{ xs: 4, md: 2 }}>
-                                <Tooltip title="Importing data OVERRIDE the current one">
+                                <Tooltip title={<Typography variant='body2'>Importing data OVERRIDE the current one</Typography>}>
                                     <span>
                                         <Button
                                             variant="contained"
@@ -759,7 +775,7 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                                             readOnly: true,
                                             endAdornment: (
                                                 <InputAdornment position="end" sx={{ alignItems: "flex-end" }}>
-                                                    <Tooltip title="Copy">
+                                                    <Tooltip title={<Typography variant='body2'>Copy</Typography>}>
                                                         <span>
                                                             <IconButton
                                                                 aria-label="Copy exported data"
@@ -812,13 +828,13 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                     }}
                         variant="contained"
                         color="primary">
-                        Open Summary
+                        {`${!fullScreen ? "Open " : " "}Summary`}
                     </Button>
                     <Stack direction="row" gap={{ xs: 1, md: 2 }}>
                         {Object.keys(rawEvents).length > 0 && (
                             <>
-                                {getBuilderButton()}
-                                {getDefaultsButton()}
+                                <Tooltip title={<Typography variant='body2'>{BUILDER_DESCRIPTION}</Typography>}>{getBuilderButton()}</Tooltip>
+                                <Tooltip title={<Typography variant='body2'>{DEFAULTS_DESCRIPTION}</Typography>}>{getDefaultsButton()}</Tooltip>
                             </>
                         )}
                         <Button onClick={resetEventsList}
