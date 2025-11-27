@@ -32,7 +32,7 @@ function useTemporaryProfileUrl(username?: string | null) {
     return () => {
       router.events.off('routeChangeStart', handleRouteChange);
     };
-  }, [username, router.asPath]); // Only run when username or path changes
+  }, [username, router, router.asPath]); // Only run when username or path changes
 }
 
 export default useTemporaryProfileUrl;

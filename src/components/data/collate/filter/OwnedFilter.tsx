@@ -15,10 +15,10 @@ const OwnedFilter = (props: Props) => {
       value={value}
       sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", width: "100%", height: 48 }}
     >
-      <ToggleButton value={true} onChange={() => onChange(true)}>
+      <ToggleButton sx={{ minWidth: "40px", "&:not(._):not(._)": { borderRadius: 1 } }} value={true} onChange={() => onChange(true)}>
         <Check color="success" />
       </ToggleButton>
-      <ToggleButton value={false} onChange={() => onChange(false)}>
+      <ToggleButton sx={{ minWidth: "40px", "&:not(._):not(._)": { borderRadius: 1 } }} value={false} onChange={() => onChange(false)}>
         <Clear color="error" />
       </ToggleButton>
     </ToggleButtonGroup>

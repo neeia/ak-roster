@@ -7,7 +7,7 @@ import imageBase from "util/imageBase";
 
 interface Props extends Omit<ToggleButtonGroupProps, "onChange"> {
     onChange: (value: string) => void;
-    onHover?: (value: {id: string, title: string} | null) => void;
+    onHover?: (value: { id: string, title: string } | null) => void;
     fullScreen?: boolean
 }
 
@@ -48,10 +48,12 @@ const FactionsFilter = (props: Props) => {
                     key={id}
                     value={id}
                     onChange={() => onChange(id)}
-                    onMouseEnter={() => !imageErrors[id] && !fullScreen && onHover?.({id, title})}
+                    onMouseEnter={() => !imageErrors[id] && !fullScreen && onHover?.({ id, title })}
                     onMouseLeave={() => !imageErrors[id] && !fullScreen && onHover?.(null)}
                     sx={{
-                        borderRadius: 1, display: "flex",
+                        "&:not(._):not(._)":
+                            { borderRadius: 1 },
+                        display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         textTransform: "none",
@@ -66,8 +68,7 @@ const FactionsFilter = (props: Props) => {
                         onError={() => setImageErrors((prev) => ({ ...prev, [id]: true }))} />
                     }
                 </ToggleButton>
-               )
-            )}
+            ))}
         </ToggleButtonGroup>
     );
 };

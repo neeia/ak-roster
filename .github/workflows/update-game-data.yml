@@ -14,8 +14,10 @@ jobs:
         run: |
           if git ls-remote --heads --quiet --exit-code ${{ github.server_url }}/${{ github.repository }} refs/heads/actions/update-game-data > /dev/null; then
             echo "TARGET_BRANCH=actions/update-game-data" >> $GITHUB_ENV
+            echo "BRANCH_EXISTS=true" >> $GITHUB_ENV
           else
             echo "TARGET_BRANCH=main" >> $GITHUB_ENV
+            echo "BRANCH_EXISTS=false" >> $GITHUB_ENV
           fi
       # checkout the branch if it does, otherwise main
       - uses: actions/checkout@v4
@@ -40,22 +42,42 @@ jobs:
           cd scripts/ArknightsAssetsGamedata
           git sparse-checkout set en/gamedata/excel
           cd -
-          git submodule update --init --remote --depth=1 --force scripts/
-      # run update scripts
-      - run: yarn update:all
-      # commit changes and PR, but only if krooster data files changed (i.e. skip submodule-only updates)
+          git submodule update --init --remote --depth=20 --force scripts/
+      # run update scripts, continue only if krooster data files changed (i.e. skip submodule-only updates)
+      - run: | 
+          yarn update:all
+          git add -A
+          if git diff --ignore-submodules --cached --quiet; then
+            echo "No changes in jsons, exit early"
+            echo "SKIP_COMMIT=true" >> $GITHUB_ENV
+          else 
+            if [ "$BRANCH_EXISTS" = "true" ]; then
+              echo "Branch exists: reset hard to squash changes"
+              EN_COMMIT=$(cd scripts/ArknightsAssetsGamedata && git rev-parse HEAD)
+              CN_COMMIT=$(cd scripts/ArknightsGameData && git rev-parse HEAD)
+        
+              git fetch origin main --depth=1
+              git reset --hard origin/main
+              git -C scripts/ArknightsAssetsGamedata reset --hard $EN_COMMIT
+              git -C scripts/ArknightsGameData reset --hard $CN_COMMIT
+        
+              yarn update:all
+              git add -A
+            fi 
+          fi
+      # commit changes and PR,  
       - name: Commit changes
+        if: env.SKIP_COMMIT != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if ! git diff --ignore-submodules --cached --quiet; then
-            VERSION_MESSAGE="$(git submodule --quiet foreach git log -1 --pretty='%h %s%N%-C()' -- en), $(git submodule --quiet foreach git log -1 --pretty='%h %s%N%-C()' -- cn)"
-            git commit -m "Update game data." -m "$VERSION_MESSAGE"
-            git push origin actions/update-game-data --force
-            gh pr create -B main -H actions/update-game-data --fill \
-              || gh pr edit --body "$VERSION_MESSAGE"
-          fi
+
+          VERSION_MESSAGE="$(git submodule --quiet foreach git log -1 --pretty='%h %s%N%-C() Data:%cd' --date=format:'%y-%m-%d-%H-%M-%S' -- en),
+          $(git submodule --quiet foreach git log -1 --pretty='%h %s%N%-C()' -- zh_CN)"
+          git commit -m "Update game data." -m "$VERSION_MESSAGE"
+          git push origin actions/update-game-data --force
+          gh pr create -B main -H actions/update-game-data --fill \
+            || gh pr edit --body "$VERSION_MESSAGE"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   update-images:
@@ -77,6 +99,8 @@ jobs:
             characters
             equip
             items
+            subclass
+            factions
       - uses: actions/setup-node@v4
         with:
           node-version-file: main-repo/.nvmrc

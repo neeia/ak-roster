@@ -461,7 +461,7 @@ const StatBlock: React.FC<{
 
     // Desktop layout
     if (!isMobile) {
-       if (topTotal === 0) return <Box width={0} height={0}></Box>
+      if (topTotal === 0) return <Box width={0} height={0}></Box>
       const titleOpsElement = (<Typography variant="body2">
         Ops \w:
       </Typography>)
@@ -747,37 +747,39 @@ const AccountStatistic: React.FC<{
     };
 
     for (const [opId, opData] of Object.entries(operatorJson)) {
-      if (!isOperatorVisible(opData, isCn)) continue;
       const rarityIndex = Math.max(0, Math.min(5, (opData.rarity ?? 1) - 1)); // 1-6 -> 0-5
       const ri = Math.max(0, rarityIndex - 3); // 0-2 for 4..6
       const toTotals = true;
       const toHave = !toTotals
       const ownedOp = roster[opId];
 
-      // rarity totals / have
-      incrementStats(s, "rarity", 0, rarityIndex, toTotals);
-      if (ownedOp) incrementStats(s, "rarity", 0, rarityIndex);
+      //count totals server based - but prioritise user-input - in case krooster lags updates.
+      if (ownedOp || isOperatorVisible(opData, isCn)) {
+        //rarity totals
+        incrementStats(s, "rarity", 0, rarityIndex, toTotals);
+        //Elite1 & Elite2 totals
+        const maxPromotion = MAX_PROMOTION_BY_RARITY[opData.rarity];
+        if (maxPromotion >= 1) incrementStats(s, "elite1", 0, rarityIndex, toTotals);
+        if (maxPromotion === 2) incrementStats(s, "elite2", 0, rarityIndex, toTotals);
 
-      // Elite1 & Elite2 totals / have
-      const maxPromotion = MAX_PROMOTION_BY_RARITY[opData.rarity];
-      if (maxPromotion >= 1) incrementStats(s, "elite1", 0, rarityIndex, toTotals);
-      if (maxPromotion === 2) incrementStats(s, "elite2", 0, rarityIndex, toTotals);
+        //modules & masteries totals
+        if (opData.rarity >= 4) {
+          const mSkillsAmount = (opData.skillData ?? []).filter((sd) => (sd.masteries?.length ?? 0) > 0).length;
+          incrementStats(s, "masteries", 0, ri, toTotals, mSkillsAmount);
+
+          const modsAmount = (opData.moduleData ?? [])
+            .filter((md) => (md.stages?.length ?? 0) > 0 && (!md.isCnOnly || isCn)).length;
+          incrementStats(s, "modules", 0, ri, toTotals, modsAmount);
+        }
+      }
+      //count for owned ops
       if (ownedOp) {
+        incrementStats(s, "rarity", 0, rarityIndex);
+
         const elite = ownedOp.elite;
         if (elite >= 1) incrementStats(s, "elite1", 0, rarityIndex);
         if (elite === 2) incrementStats(s, "elite2", 0, rarityIndex);
-      }
 
-      if (opData.rarity >= 4) {
-        const mSkillsAmount = (opData.skillData ?? []).filter((sd) => (sd.masteries?.length ?? 0) > 0).length;
-        incrementStats(s, "masteries", 0, ri, toTotals, mSkillsAmount);
-
-        const modsAmount = (opData.moduleData ?? [])
-          .filter((md) => (md.stages?.length ?? 0) > 0 && (!md.isCnOnly || isCn)).length;
-        incrementStats(s, "modules", 0, ri, toTotals, modsAmount);
-      }
-
-      if (ownedOp) {
         const maxLevel = MAX_LEVEL_BY_RARITY[opData.rarity][MAX_PROMOTION_BY_RARITY[opData.rarity]];
         const isMaxLevel = ownedOp.elite === MAX_PROMOTION_BY_RARITY[opData.rarity] && ownedOp.level === maxLevel;
         if (isMaxLevel) incrementStats(s, "levelMax", 0, rarityIndex);
