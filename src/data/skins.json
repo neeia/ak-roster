@@ -1121,6 +1121,12 @@
       "skinName": null,
       "avatarId": "char_491_humus_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_491_humus@marthe#10",
+      "skinName": "烈阳街景",
+      "avatarId": "char_491_humus_marthe#10",
+      "sortId": 228
     }
   ],
   "char_445_wscoot": [
@@ -2162,7 +2168,7 @@
     },
     {
       "skinId": "char_154_morgan@epoque#47",
-      "skinName": "字里行间",
+      "skinName": "Behind the Words",
       "avatarId": "char_154_morgan_epoque#47",
       "sortId": 114
     }
@@ -2524,7 +2530,7 @@
     },
     {
       "skinId": "char_4066_highmo@epoque#45",
-      "skinName": "搁浅",
+      "skinName": "Stranded",
       "avatarId": "char_4066_highmo_epoque#45",
       "sortId": 112
     },
@@ -3960,7 +3966,7 @@
     },
     {
       "skinId": "char_4137_udflow@epoque#46",
-      "skinName": "层流",
+      "skinName": "Laminar Flow",
       "avatarId": "char_4137_udflow_epoque#46",
       "sortId": 113
     }
@@ -4588,7 +4594,7 @@
     },
     {
       "skinId": "char_4079_haini@epoque#45",
-      "skinName": "翻涌",
+      "skinName": "Tidal Bore",
       "avatarId": "char_4079_haini_epoque#45",
       "sortId": 111
     }
@@ -6559,6 +6565,12 @@
       "skinName": null,
       "avatarId": "char_1502_crosly_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_1502_crosly@iteration#5",
+      "skinName": "夜之终局",
+      "avatarId": "char_1502_crosly_iteration#5",
+      "sortId": 427
     }
   ],
   "char_322_lmlee": [
@@ -6573,6 +6585,12 @@
       "skinName": null,
       "avatarId": "char_322_lmlee_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_322_lmlee@whirlwind#10",
+      "skinName": "鉴浮生",
+      "avatarId": "char_322_lmlee_whirlwind#10",
+      "sortId": 161
     },
     {
       "skinId": "char_322_lmlee@witch#3",
@@ -6740,7 +6758,7 @@
     },
     {
       "skinId": "char_4132_ascln@iteration#4",
-      "skinName": "趋光之暗",
+      "skinName": "Phototaxis",
       "avatarId": "char_4132_ascln_iteration#4",
       "sortId": 426
     }
