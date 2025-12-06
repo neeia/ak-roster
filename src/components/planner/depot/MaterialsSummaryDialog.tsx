@@ -724,7 +724,7 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                 onClose={handleClose}
                 TransitionComponent={Transition}
                 fullScreen={fullScreen}
-                keepMounted fullWidth maxWidth="lg">
+                keepMounted fullWidth maxWidth="lg">                
                 <DialogTitle
                     sx={{
                         display: "grid",
@@ -827,13 +827,13 @@ const MaterialsSummaryDialog = React.memo((props: Props) => {
                                 </>)}
                         </Stack>
                     </Box>
-                    <IconButton onClick={handleClose} sx={{ display: { sm: "none" }, gridArea: "close" }}>
+                    <IconButton onClick={handleClose} sx={{ display: { sm: "none" }, gridArea: "close", position: {xs: "fixed" }, top: 5, right: 10, zIndex: 2}}>
                         <Close />
                     </IconButton>
                 </DialogTitle>
                 <DialogContent
                     sx={{
-                        height: { sm: '500px', xl: '700px' },
+                        height: { sm: 'min(500px, 65vh)', xl: 'min(700px, 70vh)' },
                         scrollbarWidth: 'none',
                         msOverflowStyle: 'none',
                         "&::-webkit-scrollbar": {

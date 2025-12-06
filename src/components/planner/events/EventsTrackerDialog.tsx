@@ -663,12 +663,12 @@ const EventsTrackerDialog = React.memo((props: Props) => {
                     {(tab === "input") && (!fullScreen ? "Events Tracker" : "Events")}
                     {(tab === "importExport") && "Import/Export"}
                     {(tab === "help") && "Description"}
-                    <IconButton onClick={handleClose} sx={{ display: { sm: "none" }, gridArea: "close", position: "absolute", top: 5, right: 10, }}>
+                    <IconButton onClick={handleClose} sx={{ display: { sm: "none" }, gridArea: "close", position: {xs: "fixed" }, top: 5, right: 10, zIndex: 2}}>
                         <Close />
                     </IconButton>
                 </DialogTitle>
                 <DialogContent
-                    sx={{ height: { sm: '500px', xl: '700px' } }}
+                    sx={{ height: { sm: 'min(500px, 65vh)', xl: 'min(700px, 70vh)' } }}
                     ref={containerRef}>
                     <Box sx={{ display: (tab === "input") ? "unset" : "none" }}>
                         {Object.keys(rawEvents ?? {}).length === 0 && <List>
