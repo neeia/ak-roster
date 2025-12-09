@@ -32,6 +32,7 @@ import useSettings from "util/hooks/useSettings";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import useGoals from "util/hooks/useGoals";
 import changeGoal from "util/changeGoal";
+import { getMaxPotentialById } from "util/changeOperator";
 
 const EXCLUDED_ITEMS: string[] = [];
 const GameImport = memo(() => {
@@ -238,6 +239,21 @@ const GameImport = memo(() => {
             modules: supportModules,
             masteries: masteries,
           };
+
+          if (settings.applyPotentials && operator.potential < getMaxPotentialById(operator.op_id)) {
+            const letterName = `voucher_full_${operator.op_id.split("_").pop()}`;
+            const potName = `p_${operator.op_id}`;
+            const kernelPotName = `class_${potName}`;
+
+            const letterNum = userData.inventory[letterName] ?? 0;
+            const potNum = (userData.inventory[potName] ?? 0) + (userData.inventory[kernelPotName] ?? 0);
+            if (letterNum > 0) {
+              operator.potential = getMaxPotentialById(operator.op_id);
+            } else if (potNum > 0) {
+              operator.potential = Math.min((operator.potential + potNum), getMaxPotentialById(operator.op_id));
+            };
+          };
+
           operators.push(operator);
         }
       }
@@ -404,6 +420,27 @@ const GameImport = memo(() => {
           <FormControlLabel
             control={
               <Checkbox
+                id="applyPotentials"
+                value={settings?.applyPotentials ?? false}
+                checked={settings?.applyPotentials ?? false}
+                disabled={!(settings?.importOperators ?? true)}
+                onChange={(e) => {
+                  setSettings((s) => ({
+                    ...s,
+                    importSettings: {
+                      ...settings,
+                      applyPotentials: e.target.checked,
+                    },
+                  }));
+                }}
+              />
+            }
+            label="Add unused Op Tokens to Potentials"
+            sx={{ ml: 1 }}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
                 id="importDepot"
                 value={settings?.importDepot ?? true}
                 checked={settings?.importDepot ?? true}
@@ -455,38 +492,38 @@ const GameImport = memo(() => {
           </AlertTitle>
           {showEmailAlert && <>
             {!isL1Import.error
-            ? <><Typography component="span" variant="body2" sx={{ color: "error.main" }}>Warning:</Typography>
-              <Typography component="span" variant="body2">Import will not work with Google, Apple, Facebook or Recovery Email from "Bind Other Accounts" section.
-                <br />Correct option is "Bind Email" button inside User Center, the one with code confirmation.
-                <br />Logging in from this page with un-bound in game "Email" will create second <u>level 1 Arknights account</u>, lead to error, and wrong binding of used Email.</Typography></>
-            : <Typography component="span" variant="body2"><u>What happened:</u> You didn't bind email, so Arknights created new lvl1 account and bound this email into it. And your main Arknights account is probably bound with Google or Apple accounts of same email, or Guest (not bound at all).
-              <br />
-              <u>What to Do to fix:</u>
-              <br />Option 1: Remove your email from Level 1 account and bind it into main account:
-              <ol>
-                <li>Go to AK publisher web site: <Link underline="always" href="https://account.yo-star.com/login">Yostar Account Center</Link></li>
-                <li>Login into level 1 account with <Typography component="span" color="info" variant="body1">
-                  {isL1Import.email ? isL1Import.email : "email"}
-                </Typography> + code</li>
-                <li>Find Email box - Press "Update". Follow instuctions to swap to another email.</li>
-                <ul>
-                  <li>Simplify with virtual "salted" email, by adding custom suffix after "+" in your email. If email provider supports it (Gmail does). As example:</li>
-                  <li>input: <Typography component="span" color="info" variant="body1">
-                    {isL1Import.email
-                      ? `${isL1Import.email.split("@")[0]}+lvl1@${email.split("@")[1]}`
-                      : "your_email+aklvl1@gmail.com"}
-                  </Typography></li>
-                  <li>still recieve codes into: <Typography component="span" color="info" variant="body1">
-                    {isL1Import.email ? isL1Import.email : "your_email@gmail.com"}
-                  </Typography></li>
-                </ul>
-                <li>After swapping to new address, Log Out from level 1 account</li>
-                <li>In main Arknights account in game settings User Center use "Bind Email" or "Update Email" to input now free <Typography component="span" color="info" variant="body1">
-                  {isL1Import.email ? isL1Import.email : "email"}
-                </Typography> and confirm it with code.</li>
-              </ol>
-              Option 2 - simply use another email address to "Bind Email" in your main Arknights account in game settings User Center, and use it for import here.
-            </Typography>}
+              ? <><Typography component="span" variant="body2" sx={{ color: "error.main" }}>Warning:</Typography>
+                <Typography component="span" variant="body2">Import will not work with Google, Apple, Facebook or Recovery Email from "Bind Other Accounts" section.
+                  <br />Correct option is "Bind Email" button inside User Center, the one with code confirmation.
+                  <br />Logging in from this page with un-bound in game "Email" will create second <u>level 1 Arknights account</u>, lead to error, and wrong binding of used Email.</Typography></>
+              : <Typography component="span" variant="body2"><u>What happened:</u> You didn't bind email, so Arknights created new lvl1 account and bound this email into it. And your main Arknights account is probably bound with Google or Apple accounts of same email, or Guest (not bound at all).
+                <br />
+                <u>What to Do to fix:</u>
+                <br />Option 1: Remove your email from Level 1 account and bind it into main account:
+                <ol>
+                  <li>Go to AK publisher web site: <Link underline="always" href="https://account.yo-star.com/login">Yostar Account Center</Link></li>
+                  <li>Login into level 1 account with <Typography component="span" color="info" variant="body1">
+                    {isL1Import.email ? isL1Import.email : "email"}
+                  </Typography> + code</li>
+                  <li>Find Email box - Press "Update". Follow instuctions to swap to another email.</li>
+                  <ul>
+                    <li>Simplify with virtual "salted" email, by adding custom suffix after "+" in your email. If email provider supports it (Gmail does). As example:</li>
+                    <li>input: <Typography component="span" color="info" variant="body1">
+                      {isL1Import.email
+                        ? `${isL1Import.email.split("@")[0]}+lvl1@${email.split("@")[1]}`
+                        : "your_email+aklvl1@gmail.com"}
+                    </Typography></li>
+                    <li>still recieve codes into: <Typography component="span" color="info" variant="body1">
+                      {isL1Import.email ? isL1Import.email : "your_email@gmail.com"}
+                    </Typography></li>
+                  </ul>
+                  <li>After swapping to new address, Log Out from level 1 account</li>
+                  <li>In main Arknights account in game settings User Center use "Bind Email" or "Update Email" to input now free <Typography component="span" color="info" variant="body1">
+                    {isL1Import.email ? isL1Import.email : "email"}
+                  </Typography> and confirm it with code.</li>
+                </ol>
+                Option 2 - simply use another email address to "Bind Email" in your main Arknights account in game settings User Center, and use it for import here.
+              </Typography>}
             <br />
             <FormControlLabel
               control={
