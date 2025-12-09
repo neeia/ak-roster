@@ -17,24 +17,32 @@ const calculateCompletableStatus = (plannerGoal: PlannerGoal, depot: Record<stri
     let depotUpdate: Record<string, DepotItem>;
     let completable = false;
     let completableByCrafting = false;
-    let ingredients: Ingredient[];
+    let ingredients: Ingredient[] = [];
     if (plannerGoal.category === OperatorGoalCategory.Level) {
-        const { exp, lmd } = levelingCost(
-            operatorJson[plannerGoal.operatorId].rarity,
-            plannerGoal.eliteLevel,
-            plannerGoal.fromLevel,
-            plannerGoal.eliteLevel,
-            plannerGoal.toLevel
-        );
-        ingredients = [{ id: "4001", quantity: lmd }, { id: "EXP", quantity: exp }];
-        const { success, depot: _depot } = expToBattleRecords(exp, depot);
-        _depot["4001"].stock = Math.max(0, _depot["4001"].stock - lmd);
+        //first elite has no ingr check (radian type cases)
+        const eliteLevels = operatorJson[plannerGoal.operatorId].eliteLevels;
+        if (eliteLevels.length > 0 && eliteLevels[0].ingredients?.length === 0) {
+            depotUpdate = depot;
+            completable = true;
+            completableByCrafting = false;
+        } else {
+            const { exp, lmd } = levelingCost(
+                operatorJson[plannerGoal.operatorId].rarity,
+                plannerGoal.eliteLevel,
+                plannerGoal.fromLevel,
+                plannerGoal.eliteLevel,
+                plannerGoal.toLevel
+            );
+            ingredients = [{ id: "4001", quantity: lmd }, { id: "EXP", quantity: exp }];
+            const { success, depot: _depot } = expToBattleRecords(exp, depot);
+            _depot["4001"].stock = Math.max(0, _depot["4001"].stock - lmd);
 
-        completableByCrafting = false;
-        completable = success
-            && (depot["4001"].stock >= lmd || settings.depotSettings.ignoreLmdInCrafting);
+            completableByCrafting = false;
+            completable = success
+                && (depot["4001"].stock >= lmd || settings.depotSettings.ignoreLmdInCrafting);
 
-        depotUpdate = completable ? _depot : depot;
+            depotUpdate = completable ? _depot : depot;
+        }
     } else {
         ingredients = getGoalIngredients(plannerGoal);
         const { craftableItems, depot: _depot } = canCompleteByCrafting(
