@@ -43,8 +43,10 @@ jobs:
           git sparse-checkout set en/gamedata/excel
           cd -
           git submodule update --init --remote --depth=20 --force scripts/
-      # run update scripts, continue only if krooster data files changed (i.e. skip submodule-only updates)
+      # run update scripts from main, continue only if krooster data files or script themselves changed (i.e. skip submodule-only updates)
       - run: | 
+          git fetch origin main --depth=1
+          git checkout origin/main -- scripts
           yarn update:all
           git add -A
           if git diff --ignore-submodules --cached --quiet; then
@@ -56,7 +58,6 @@ jobs:
               EN_COMMIT=$(cd scripts/ArknightsAssetsGamedata && git rev-parse HEAD)
               CN_COMMIT=$(cd scripts/ArknightsGameData && git rev-parse HEAD)
         
-              git fetch origin main --depth=1
               git reset --hard origin/main
               git -C scripts/ArknightsAssetsGamedata reset --hard $EN_COMMIT
               git -C scripts/ArknightsGameData reset --hard $CN_COMMIT

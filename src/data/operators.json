@@ -115094,7 +115094,83 @@
     "pools": [
       "Free"
     ],
-    "skillData": [],
+    "skillData": [
+      {
+        "skillId": "skchr_radian_1",
+        "iconId": null,
+        "skillName": "律动线",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [],
+            "name": "Skill 1 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [],
+            "name": "Skill 1 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [],
+            "name": "Skill 1 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_radian_2",
+        "iconId": null,
+        "skillName": "环形鳞地",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [],
+            "name": "Skill 2 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [],
+            "name": "Skill 2 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [],
+            "name": "Skill 2 Mastery 3",
+            "category": 1
+          }
+        ]
+      },
+      {
+        "skillId": "skchr_radian_3",
+        "iconId": null,
+        "skillName": "手牵手",
+        "masteries": [
+          {
+            "masteryLevel": 1,
+            "ingredients": [],
+            "name": "Skill 3 Mastery 1",
+            "category": 1
+          },
+          {
+            "masteryLevel": 2,
+            "ingredients": [],
+            "name": "Skill 3 Mastery 2",
+            "category": 1
+          },
+          {
+            "masteryLevel": 3,
+            "ingredients": [],
+            "name": "Skill 3 Mastery 3",
+            "category": 1
+          }
+        ]
+      }
+    ],
     "moduleData": [
       {
         "moduleName": "电弧特勤证章",
@@ -115156,8 +115232,58 @@
       "第二天赋效果增强",
       "部署费用-1"
     ],
-    "skillLevels": [],
-    "eliteLevels": []
+    "skillLevels": [
+      {
+        "skillLevel": 2,
+        "ingredients": [],
+        "name": "Skill Level 2",
+        "category": 2
+      },
+      {
+        "skillLevel": 3,
+        "ingredients": [],
+        "name": "Skill Level 3",
+        "category": 2
+      },
+      {
+        "skillLevel": 4,
+        "ingredients": [],
+        "name": "Skill Level 4",
+        "category": 2
+      },
+      {
+        "skillLevel": 5,
+        "ingredients": [],
+        "name": "Skill Level 5",
+        "category": 2
+      },
+      {
+        "skillLevel": 6,
+        "ingredients": [],
+        "name": "Skill Level 6",
+        "category": 2
+      },
+      {
+        "skillLevel": 7,
+        "ingredients": [],
+        "name": "Skill Level 7",
+        "category": 2
+      }
+    ],
+    "eliteLevels": [
+      {
+        "eliteLevel": 1,
+        "ingredients": [],
+        "name": "Elite 1",
+        "category": 0
+      },
+      {
+        "eliteLevel": 2,
+        "ingredients": [],
+        "name": "Elite 2",
+        "category": 0
+      }
+    ]
   },
   "char_1012_skadi2": {
     "id": "char_1012_skadi2",

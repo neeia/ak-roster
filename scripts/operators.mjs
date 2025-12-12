@@ -334,6 +334,16 @@ const amiyaEliteLevel = [
   },
 ];
 
+const MAX_PROMOTION_BY_RARITY = [0, 0, 0, 1, 2, 2, 2];
+const getEmptyElite = (eliteLevel) => {
+  return {
+    eliteLevel: Number(eliteLevel),
+    ingredients: [],
+    name: `Elite ${eliteLevel}`,
+    category: OperatorGoalCategory.Elite,
+  };
+};
+
 const getPools = (operatorId, rarity, factions) => {
   const id = operatorId;
   const isKernel = (enCharacterTable[id]?.classicPotentialItemId ?? null) !== null;
@@ -470,15 +480,22 @@ const createOperatorsJson = () => {
               category: OperatorGoalCategory.Elite,
             };
           });
+      //fix elite with task ops like radian
+      if (eliteLevels.length === 0 && MAX_PROMOTION_BY_RARITY[rarity] > 0) {
+        for (let i = 1; i <= MAX_PROMOTION_BY_RARITY[rarity]; i++) {
+          eliteLevels.push(getEmptyElite(i));
+        };
+      };
+
       const skillLevels = isPatchCharacter
         ? amiyaSkillLevel
         : !operator.allSkillLvlup
           ? []
           : operator.allSkillLvlup
-            .filter(({ lvlUpCost }) => lvlUpCost != null)
+            .filter(({ lvlUpCost, unlockCond }) => lvlUpCost != null || unlockCond)
             .map((skillLevelEntry, i) => {
               const cost = skillLevelEntry.lvlUpCost;
-              const ingredients = cost.map(gameDataCostToIngredient);
+              const ingredients = cost ? cost.map(gameDataCostToIngredient) : [];
               return {
                 // we want to return the result of a skillup,
                 // and since [0] points to skill level 1 -> 2, we add 2
@@ -495,11 +512,11 @@ const createOperatorsJson = () => {
             skillId != null &&
             levelUpCostCond &&
             // require that all mastery levels have a levelUpCost defined
-            !levelUpCostCond.find(({ levelUpCost }) => levelUpCost == null)
+            !levelUpCostCond.find(({ levelUpCost, unlockCond }) => levelUpCost == null && !unlockCond)
         )
         .map(({ skillId, levelUpCostCond }, i) => {
           const masteries = levelUpCostCond.map(({ levelUpCost }, j) => {
-            const ingredients = levelUpCost.map(gameDataCostToIngredient);
+            const ingredients = levelUpCost ? levelUpCost.map(gameDataCostToIngredient) : [];
             return {
               masteryLevel: j + 1,
               ingredients,
