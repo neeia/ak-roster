@@ -844,7 +844,7 @@
     },
     {
       "skinId": "char_151_myrtle@taiko#1",
-      "skinName": "繁闹祭典",
+      "skinName": "Bustling Festival",
       "avatarId": "char_151_myrtle_taiko#1",
       "sortId": 449
     }
@@ -1405,6 +1405,12 @@
       "skinName": null,
       "avatarId": "char_381_bubble_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_381_bubble@marthe#11",
+      "skinName": "迎风之轮",
+      "avatarId": "char_381_bubble_marthe#11",
+      "sortId": 232
     }
   ],
   "char_4130_luton": [
@@ -1679,6 +1685,12 @@
       "skinName": null,
       "avatarId": "char_4163_rosesa_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4163_rosesa@game#7",
+      "skinName": "冒险启程",
+      "avatarId": "char_4163_rosesa_game#7",
+      "sortId": 417
     }
   ],
   "char_115_headbr": [
@@ -3460,7 +3472,7 @@
     },
     {
       "skinId": "char_4140_lasher@sightseer#3",
-      "skinName": "憩羽",
+      "skinName": "Horus' Rest",
       "avatarId": "char_4140_lasher_sightseer#3",
       "sortId": 444
     }
@@ -5481,6 +5493,12 @@
       "skinName": null,
       "avatarId": "char_391_rosmon_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_391_rosmon@sale#16",
+      "skinName": "An Airy Dream",
+      "avatarId": "char_391_rosmon_sale#16",
+      "sortId": 25
     },
     {
       "skinId": "char_391_rosmon@epoque#17",
@@ -7753,6 +7771,12 @@
       "sortId": -1
     },
     {
+      "skinId": "char_4121_zuole@sale#16",
+      "skinName": "Quiet Move",
+      "avatarId": "char_4121_zuole_sale#16",
+      "sortId": 26
+    },
+    {
       "skinId": "char_4121_zuole@nian#11",
       "skinName": "Youthful Journey",
       "avatarId": "char_4121_zuole_nian#11",
@@ -8100,6 +8124,12 @@
     }
   ],
   "char_1001_amiya2": [
+    {
+      "skinId": "char_1001_amiya2@sale#16",
+      "skinName": "In A Myriad of Universes",
+      "avatarId": "char_1001_amiya2_sale#16",
+      "sortId": 24
+    },
     {
       "skinId": "char_1001_amiya2@casc#1",
       "skinName": "触及星辰",

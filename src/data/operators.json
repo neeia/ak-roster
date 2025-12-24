@@ -115086,7 +115086,7 @@
       "id": "summoner",
       "name": "Summoner"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "elite",
       "rhodes"
@@ -115098,7 +115098,7 @@
       {
         "skillId": "skchr_radian_1",
         "iconId": null,
-        "skillName": "律动线",
+        "skillName": "Periodic Waveform",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -115123,7 +115123,7 @@
       {
         "skillId": "skchr_radian_2",
         "iconId": null,
-        "skillName": "环形鳞地",
+        "skillName": "Ring of Fins",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -115148,7 +115148,7 @@
       {
         "skillId": "skchr_radian_3",
         "iconId": null,
-        "skillName": "手牵手",
+        "skillName": "Hand in Hand",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -115173,7 +115173,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "电弧特勤证章",
+        "moduleName": "Raidian's Special Operator Badge",
         "moduleId": "uniequip_002_radian",
         "typeName": "SO-A",
         "stages": [
@@ -115196,7 +115196,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "新起点",
@@ -115226,11 +115226,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+24",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
