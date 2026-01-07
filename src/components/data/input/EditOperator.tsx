@@ -50,6 +50,7 @@ import applyPresetToOperator from "util/fns/planner/applyPresetToOperator";
 import { rarityColors } from "styles/rarityColors";
 import imageBase from "util/imageBase";
 import factionJson from "data/factions";
+import { alpha } from '@mui/material/styles';
 
 interface Props {
   op?: Operator;
@@ -139,6 +140,11 @@ const EditOperator = React.memo((props: Props) => {
   const opData = operatorJson[op.op_id];
   const opSplit = opData.name.split(" the ");
 
+  const factions = [
+    ...opData.factions.map(id => ({ id, isHidden: false })),
+    ...(opData.factionsHidden?.map(id => ({ id, isHidden: true })) ?? [])
+  ]
+
   return (
     <Dialog open={open} onClose={onClose} fullScreen={fullScreen}>
       <DialogTitle sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
@@ -198,31 +204,42 @@ const EditOperator = React.memo((props: Props) => {
               flexGrow: 1,
             }}
           >
-            {opData.factions.map((id, idx) => {
-              return (
-                <React.Fragment key={id}>
-                  <Tooltip arrow
-                    disableHoverListener={factionJson[id].powerName === factionJson[id].powerCode}
-                    title={
-                      <Typography>{factionJson[id].powerName}</Typography>}>
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-                      <Image
-                        src={`${imageBase}/factions/logo_${id}.webp`}
-                        sx={{ display: "block", width: 32, height: 32 }}
-                        alt=""
-                        hideOnError={true}
-                      />
-                      {!fullScreen && <Typography whiteSpace="nowrap">{factionJson[id].powerCode}</Typography>}
-                    </Box>
-                  </Tooltip>
-                  {opData.factions.length > 1 &&
-                    opData.factions.length !== idx + 1 && (
-                      <Divider orientation="vertical" flexItem />
-                    )}
-                </React.Fragment>
-              )
-            }
-            )}
+            {factions
+              .map(({ id, isHidden }, idx) => {
+                const powerName = [
+                  `${factionJson[id].powerCode === factionJson[id].powerName ? "" : factionJson[id].powerName}`,
+                  `${isHidden ? "hidden" : ""}`]
+                  .filter(Boolean).join(" - ").trim();
+                return (
+                  <React.Fragment key={id}>
+                    <Tooltip arrow
+                      disableHoverListener={powerName == "" || powerName === factionJson[id].powerCode}
+                      title={
+                        <Typography>{powerName}</Typography>}>
+                      <Box sx={{
+                        display: "flex", alignItems: "center", gap: 0.5, borderRadius: 1,
+                        ...(isHidden && {
+                          backgroundColor: (theme) => alpha(theme.palette.primary.main, 0.15),
+                          pl: 0.2, pr: 0.2,
+                        })
+                      }}>
+                        <Image
+                          src={`${imageBase}/factions/logo_${id}.webp`}
+                          sx={{ display: "block", width: 32, height: 32 }}
+                          alt=""
+                          hideOnError={true}
+                        />
+                        {!fullScreen && <Typography whiteSpace="nowrap">{factionJson[id].powerCode}</Typography>}
+                      </Box>
+                    </Tooltip>
+                    {factions.length > 1 &&
+                      factions.length !== idx + 1 && (
+                        <Divider orientation="vertical" flexItem />
+                      )}
+                  </React.Fragment>
+                )
+              }
+              )}
           </Box>
         </Box>
       </DialogTitle>
