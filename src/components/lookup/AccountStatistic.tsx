@@ -463,7 +463,7 @@ const StatBlock: React.FC<{
     if (!isMobile) {
       if (topTotal === 0) return <Box width={0} height={0}></Box>
       const titleOpsElement = (<Typography variant="body2">
-        Ops \w:
+        Ops w/:
       </Typography>)
       return (
         <Box

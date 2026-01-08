@@ -7,6 +7,7 @@ import {
   DialogTitle,
   IconButton,
   Stack,
+  Switch,
   Tooltip,
   Typography,
   useMediaQuery,
@@ -214,16 +215,25 @@ const FilterDialog = memo((props: Props) => {
                 value={[...filter.MASTERY]} onChange={(value) => toggleFilter("MASTERY", value)} />
             </Select>
             <Select nobg sx={{ whiteSpace: "nowrap", gridColumn: "1 / -1" }}
-              header={<>
+              header={<Box display="flex" width="100%" alignItems="center">
                 <Typography variant="h3" width="100%" display="flex" flexDirection="row" gap={1}>Factions
                   {[...filter.FACTIONS].length > 0 &&
                     <Typography component="span" color="primary.main" lineHeight={1}>{` (${[...filter.FACTIONS].length})`}</Typography>}
                   {factionHover &&
                     <Typography component="span" mr="auto" ml="auto" lineHeight={1}
-                      color={filter.FACTIONS.has(factionHover.id) ? "primary.main" : "inherit"}>
+                      color={filter.FACTIONS.has(factionHover.id) || filter.EXCLUDE_HIDDEN_FACTIONS.has(factionHover.id) ? "primary.main" : "inherit"}>
                       {factionHover.title}</Typography>}
                 </Typography>
-              </>
+                <Switch
+                  id="exclude-hidden-switch"
+                  size="small"
+                  checked={filter.EXCLUDE_HIDDEN_FACTIONS.size > 0}
+                  onChange={() => toggleFilter("EXCLUDE_HIDDEN_FACTIONS", "exclude")}
+                  onMouseEnter={() => setFactionHover({ id: "exclude", title: `exclude hidden` })}
+                  onMouseLeave={() => setFactionHover(null)}
+                  sx={{ ml: "auto", mr: 0 }}
+                />
+              </Box>
               }>
               <FactionsFilter property="Factions" onHover={(v) => setFactionHover(v)} fullScreen={fullScreen}
                 value={[...filter.FACTIONS]} onChange={(value) => toggleFilter("FACTIONS", value)} />

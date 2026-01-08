@@ -277,7 +277,9 @@
     "isCnOnly": false,
     "factions": [
       "action4",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "higashi"
     ],
     "pools": [
@@ -308,7 +310,9 @@
     "isCnOnly": false,
     "factions": [
       "action4",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "higashi"
     ],
     "pools": [
@@ -430,7 +434,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve1",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "kazimierz"
     ],
     "pools": [
@@ -849,7 +855,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve4",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "victoria"
     ],
     "pools": [
@@ -990,7 +998,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve6",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "rim"
     ],
     "pools": [
@@ -1130,7 +1140,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve4",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "leithanien"
     ],
     "pools": [
@@ -1269,7 +1281,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve1",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "bolivar"
     ],
     "pools": [
@@ -1410,7 +1424,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve6",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "sargon"
     ],
     "pools": [
@@ -1550,7 +1566,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve1",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "rim"
     ],
     "pools": [
@@ -1691,7 +1709,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve4",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "laterano"
     ],
     "pools": [
@@ -1829,7 +1849,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve1",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "victoria"
     ],
     "pools": [
@@ -1970,7 +1992,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve1",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "victoria"
     ],
     "pools": [
@@ -2111,7 +2135,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve4",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "rim"
     ],
     "pools": [
@@ -2252,7 +2278,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve4",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "kjerag"
     ],
     "pools": [
@@ -2392,7 +2420,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve6",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "columbia"
     ],
     "pools": [
@@ -5109,7 +5139,9 @@
     "isCnOnly": false,
     "factions": [
       "blacksteel",
-      "columbia",
+      "columbia"
+    ],
+    "factionsHidden": [
       "victoria"
     ],
     "pools": [
@@ -11007,7 +11039,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "bolivar"
     ],
     "pools": [
@@ -12106,7 +12140,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "columbia"
     ],
     "pools": [
@@ -15045,7 +15081,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "columbia"
     ],
     "pools": [
@@ -16518,7 +16556,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "lungmen",
+      "lungmen"
+    ],
+    "factionsHidden": [
       "rim"
     ],
     "pools": [
@@ -17257,7 +17297,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "sargon"
     ],
     "pools": [
@@ -17624,7 +17666,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "siracusa"
     ],
     "pools": [
@@ -17994,7 +18038,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "minos"
     ],
     "pools": [
@@ -20942,7 +20988,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "columbia"
     ],
     "pools": [
@@ -22046,7 +22094,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "bolivar"
     ],
     "pools": [
@@ -24181,7 +24231,9 @@
     "isCnOnly": false,
     "factions": [
       "rhine",
-      "columbia",
+      "columbia"
+    ],
+    "factionsHidden": [
       "rhodes"
     ],
     "pools": [
@@ -25668,7 +25720,9 @@
     "isCnOnly": false,
     "factions": [
       "penguin",
-      "lungmen",
+      "lungmen"
+    ],
+    "factionsHidden": [
       "siracusa"
     ],
     "pools": [
@@ -27452,7 +27506,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "victoria",
+      "victoria"
+    ],
+    "factionsHidden": [
       "tara"
     ],
     "pools": [
@@ -28196,7 +28252,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "kazimierz"
     ],
     "pools": [
@@ -28567,7 +28625,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "iberia"
     ],
     "pools": [
@@ -30050,7 +30110,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "bolivar"
     ],
     "pools": [
@@ -40070,7 +40132,9 @@
     "isCnOnly": false,
     "factions": [
       "action4",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "higashi"
     ],
     "pools": [
@@ -41922,7 +41986,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "bolivar",
+      "bolivar"
+    ],
+    "factionsHidden": [
       "laterano"
     ],
     "pools": [
@@ -44374,7 +44440,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "rim"
     ],
     "pools": [
@@ -47640,7 +47708,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "rim"
     ],
     "pools": [
@@ -52896,7 +52966,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "victoria"
     ],
     "pools": [
@@ -53638,7 +53710,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "siracusa",
+      "siracusa"
+    ],
+    "factionsHidden": [
       "columbia"
     ],
     "pools": [
@@ -58458,7 +58532,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "ursus"
     ],
     "pools": [
@@ -61793,7 +61869,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "victoria"
     ],
     "pools": [
@@ -62534,7 +62612,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "columbia"
     ],
     "pools": [
@@ -63275,7 +63355,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "followers",
+      "followers"
+    ],
+    "factionsHidden": [
       "kazimierz"
     ],
     "pools": [
@@ -64763,7 +64845,9 @@
     "isCnOnly": false,
     "factions": [
       "sweep",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "siracusa"
     ],
     "pools": [
@@ -70332,7 +70416,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "sargon"
     ],
     "pools": [
@@ -75081,7 +75167,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "bolivar"
     ],
     "pools": [
@@ -83606,7 +83694,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "victoria"
     ],
     "pools": [
@@ -87683,7 +87773,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "sargon",
+      "sargon"
+    ],
+    "factionsHidden": [
       "columbia"
     ],
     "pools": [
@@ -90201,7 +90293,9 @@
     "isCnOnly": false,
     "factions": [
       "penguin",
-      "lungmen",
+      "lungmen"
+    ],
+    "factionsHidden": [
       "laterano"
     ],
     "pools": [
@@ -92310,7 +92404,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "ursus"
     ],
     "pools": [
@@ -93785,7 +93881,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "babel",
+      "babel"
+    ],
+    "factionsHidden": [
       "rhodes"
     ],
     "pools": [
@@ -95777,7 +95875,9 @@
     "isCnOnly": false,
     "factions": [
       "elite",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "columbia"
     ],
     "pools": [
@@ -96261,7 +96361,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "babel",
+      "babel"
+    ],
+    "factionsHidden": [
       "rhodes"
     ],
     "pools": [
@@ -96704,7 +96806,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "yan"
     ],
     "pools": [
@@ -103563,7 +103667,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "laterano",
+      "laterano"
+    ],
+    "factionsHidden": [
       "penguin",
       "lungmen"
     ],
@@ -104598,7 +104704,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "bolivar"
     ],
     "pools": [
@@ -107703,7 +107811,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "leithanien",
+      "leithanien"
+    ],
+    "factionsHidden": [
       "sargon"
     ],
     "pools": [
@@ -111165,7 +111275,9 @@
     "isCnOnly": false,
     "factions": [
       "elite",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "yan",
       "victoria"
     ],
@@ -115086,7 +115198,7 @@
       "id": "summoner",
       "name": "Summoner"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "elite",
       "rhodes"
@@ -115098,7 +115210,7 @@
       {
         "skillId": "skchr_radian_1",
         "iconId": null,
-        "skillName": "律动线",
+        "skillName": "Periodic Waveform",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -115123,7 +115235,7 @@
       {
         "skillId": "skchr_radian_2",
         "iconId": null,
-        "skillName": "环形鳞地",
+        "skillName": "Ring of Fins",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -115148,7 +115260,7 @@
       {
         "skillId": "skchr_radian_3",
         "iconId": null,
-        "skillName": "手牵手",
+        "skillName": "Hand in Hand",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -115173,7 +115285,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "电弧特勤证章",
+        "moduleName": "Raidian's Special Operator Badge",
         "moduleId": "uniequip_002_radian",
         "typeName": "SO-A",
         "stages": [
@@ -115196,7 +115308,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       },
       {
         "moduleName": "新起点",
@@ -115226,11 +115338,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+24",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -120056,7 +120168,9 @@
     "isCnOnly": false,
     "factions": [
       "penguin",
-      "lungmen",
+      "lungmen"
+    ],
+    "factionsHidden": [
       "siracusa"
     ],
     "pools": [
@@ -120500,7 +120614,9 @@
     "isCnOnly": false,
     "factions": [
       "action4",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "higashi"
     ],
     "pools": [
@@ -120943,7 +121059,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "siracusa"
     ],
     "pools": [
@@ -122531,7 +122649,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "iberia"
     ],
     "pools": [
@@ -123495,7 +123615,9 @@
     "isCnOnly": false,
     "factions": [
       "penguin",
-      "lungmen",
+      "lungmen"
+    ],
+    "factionsHidden": [
       "laterano"
     ],
     "pools": [
@@ -124454,7 +124576,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "higashi",
+      "higashi"
+    ],
+    "factionsHidden": [
       "egir"
     ],
     "pools": [
@@ -130878,7 +131002,9 @@
     "isCnOnly": false,
     "factions": [
       "lgd",
-      "lungmen",
+      "lungmen"
+    ],
+    "factionsHidden": [
       "higashi"
     ],
     "pools": [
@@ -135496,7 +135622,9 @@
     "isCnOnly": false,
     "factions": [
       "blacksteel",
-      "columbia",
+      "columbia"
+    ],
+    "factionsHidden": [
       "victoria"
     ],
     "pools": [
@@ -142474,7 +142602,9 @@
     "isCnOnly": false,
     "factions": [
       "karlan",
-      "kjerag",
+      "kjerag"
+    ],
+    "factionsHidden": [
       "kazimierz",
       "leithanien"
     ],
@@ -142919,7 +143049,9 @@
     "isCnOnly": false,
     "factions": [
       "elite",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "yan",
       "victoria"
     ],
@@ -143438,7 +143570,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "sargon"
     ],
     "pools": [
@@ -144398,7 +144532,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "leithanien",
+      "leithanien"
+    ],
+    "factionsHidden": [
       "kazimierz"
     ],
     "pools": [
@@ -144841,7 +144977,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "victoria",
+      "victoria"
+    ],
+    "factionsHidden": [
       "glasgow"
     ],
     "pools": [
@@ -146905,7 +147043,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "kazimierz",
+      "kazimierz"
+    ],
+    "factionsHidden": [
       "followers"
     ],
     "pools": [
@@ -150444,7 +150584,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve6",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "kazimierz"
     ],
     "pools": [
@@ -150584,7 +150726,9 @@
     "isCnOnly": false,
     "factions": [
       "reserve6",
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "higashi"
     ],
     "pools": [
@@ -152721,7 +152865,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "rim"
     ],
     "pools": [
@@ -153092,7 +153238,9 @@
     },
     "isCnOnly": false,
     "factions": [
-      "rhodes",
+      "rhodes"
+    ],
+    "factionsHidden": [
       "rim"
     ],
     "pools": [

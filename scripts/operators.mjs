@@ -393,11 +393,14 @@ const getPools = (operatorId, rarity, factions) => {
 }
 
 export const getFactions = (operator) => {
-  const result = new Set();
+  const result = {
+    main: new Set(),
+    sub: new Set()
+  };
 
-  const addFaction = (id) => {
-    if (!id || result.has(id)) return;
-    result.add(id);
+  const addFaction = (id, type = "main") => {
+    if (!id || result.main.has(id) || result.sub.has(id)) return;
+    result[`${type}`].add(id);
   };
 
   //first power (prioritize team > group > nation)
@@ -419,11 +422,11 @@ export const getFactions = (operator) => {
     for (const sub of operator.subPower) {
       for (const key of ["teamId", "groupId", "nationId"]) {
         const val = sub?.[key];
-        if (val) addFaction(val);
+        if (val) addFaction(val, "sub");
       }
     }
   }
-  return [...result];
+  return result;
 };
 
 const createFactionsJson = () => {
@@ -572,8 +575,9 @@ const createOperatorsJson = () => {
         class: className,
         branch: subProfessionToBranch(operator.subProfessionId, className),
         isCnOnly,
-        factions,
-        pools: getPools(id, rarity, factions),
+        factions: [...factions.main],
+        ...(factions.sub.size > 0 && { factionsHidden: [...factions.sub] }),
+        pools: getPools(id, rarity, [...factions.main, ...factions.sub]),
         skillData,
         moduleData,
         potentials,

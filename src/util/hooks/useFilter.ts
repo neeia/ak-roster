@@ -59,8 +59,11 @@ const checkModuleLevel = (op: OpInfo, value: Set<Value>) =>
   );;
 const checkPools = (op: OpInfo, value: Set<Value>) =>
   op.pools && value.values().some((v) => op.pools.some((p) => p === v));
-const checkFactions = (op: OpInfo, value: Set<Value>) =>
-  op.factions && value.values().some((v) => op.factions.some((f) => f === v));
+const checkFactions = (op: OpInfo, value: Set<Value>, excludeHiddenFactions: boolean) =>
+  op.factions && value.values().some((v) => 
+    op.factions.some((f) => f === v)
+  || (op.factionsHidden && !excludeHiddenFactions && op.factionsHidden.some((f) => f === v))
+);
 
 export type Value = string | boolean | number;
 
@@ -78,6 +81,7 @@ export type Filters = {
   FACTIONS: Set<Value>;
   POOLS: Set<Value>;
   FAVORITE: Set<Value>;
+  EXCLUDE_HIDDEN_FACTIONS: Set<Value>;
 };
 export type ToggleFilter = (category: keyof Filters, value: Value) => void;
 
@@ -101,6 +105,7 @@ export default function useFilter(init: Partial<Filters> = {}) {
     FACTIONS: init.FACTIONS ?? new Set(),
     POOLS: init.POOLS ?? new Set(),
     FAVORITE: init.FAVORITE ?? new Set(),
+    EXCLUDE_HIDDEN_FACTIONS: init.EXCLUDE_HIDDEN_FACTIONS ?? new Set(),
   });
 
   const [search, setSearch] = useState("");
@@ -170,7 +175,7 @@ export default function useFilter(init: Partial<Filters> = {}) {
       if (filters.MASTERY.size && !checkMastery(op, filters.MASTERY)) return false;
       if (filters.SKILLLEVEL.size && !checkSkillLevel(op, filters.SKILLLEVEL)) return false;
       if (filters.MODULELEVEL.size && !checkModuleLevel(op, filters.MODULELEVEL)) return false;
-      if (filters.FACTIONS.size && !checkFactions(op, filters.FACTIONS)) return false;
+      if (filters.FACTIONS.size && !checkFactions(op, filters.FACTIONS, filters.EXCLUDE_HIDDEN_FACTIONS.size > 0)) return false;
       if (filters.POOLS.size && !checkPools(op, filters.POOLS)) return false;
       if (filters.FAVORITE.size && !op.favorite) return false;
       if (!matchOperatorName(op.name, search)) return false;
