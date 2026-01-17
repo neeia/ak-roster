@@ -398,6 +398,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1006,6 +1018,17 @@
           "DPS",
           "Melee",
           "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       }
@@ -2150,6 +2173,17 @@
           "DPS",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       },
@@ -3312,6 +3346,17 @@
         "rarity": 5,
         "tags": [
           "AoE",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
           "Ranged",
           "Sniper",
           "Senior Operator"
@@ -4611,6 +4656,17 @@
           "DPS",
           "Melee",
           "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       },
@@ -6480,6 +6536,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6897,6 +6965,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6943,6 +7023,18 @@
         "tags": [
           "DPS",
           "Crowd-Control",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
           "Ranged",
           "Caster",
           "Top Operator",
@@ -7883,6 +7975,18 @@
           "DPS",
           "Melee",
           "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
           "Top Operator",
           "Senior Operator"
         ]
@@ -9013,6 +9117,17 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -9450,6 +9565,17 @@
         "rarity": 5,
         "tags": [
           "AoE",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
           "Ranged",
           "Sniper",
           "Senior Operator"
@@ -10251,6 +10377,17 @@
           "DPS",
           "Melee",
           "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       }
@@ -13891,6 +14028,17 @@
         ]
       },
       {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_235_jesica",
         "name": "Jessica",
         "rarity": 4,
@@ -14514,6 +14662,17 @@
           "DPS",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       },
@@ -16627,6 +16786,17 @@
       {
         "id": "char_365_aprl",
         "name": "April",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
         "rarity": 5,
         "tags": [
           "DPS",
@@ -19414,6 +19584,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19461,6 +19643,18 @@
         "tags": [
           "DPS",
           "Crowd-Control",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
           "Ranged",
           "Caster",
           "Top Operator",
@@ -20412,6 +20606,18 @@
           "DPS",
           "Melee",
           "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
           "Top Operator",
           "Senior Operator"
         ]
@@ -21938,6 +22144,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22308,6 +22526,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22602,6 +22832,18 @@
         "tags": [
           "DPS",
           "Crowd-Control",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
           "Ranged",
           "Caster",
           "Top Operator",
@@ -25931,6 +26173,17 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -26267,6 +26520,17 @@
           "DPS",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       }
@@ -27466,6 +27730,17 @@
       {
         "id": "char_365_aprl",
         "name": "April",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
         "rarity": 5,
         "tags": [
           "DPS",
@@ -32394,6 +32669,17 @@
       {
         "id": "char_365_aprl",
         "name": "April",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
         "rarity": 5,
         "tags": [
           "DPS",
