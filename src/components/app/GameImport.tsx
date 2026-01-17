@@ -257,6 +257,22 @@ const GameImport = memo(() => {
           operators.push(operator);
         }
       }
+
+      //if training is in progress, add +1 to trained skill mastery
+      //state: 3 - idle, 2 - finished, not applied, 1 in progress, 0 - no trainee
+      const trainingRoom = userData.building.rooms.TRAINING;
+      const roomData = trainingRoom ? Object.values(trainingRoom)[0] : null;
+      const trainee = roomData?.trainee;
+      
+      if (trainee && trainee.charInstId !== -1 && trainee.targetSkill !== -1 && trainee.state !== 3) {
+        const traineeId = userData.troop.chars[trainee.charInstId]?.charId;
+        const operator = operators.find((o) => o.op_id === traineeId);
+
+        if (operator && operator.masteries && operator.masteries.length > trainee.targetSkill) {
+          operator.masteries[trainee.targetSkill] += 1;
+        }
+      }
+
       await supabase.from("operators").upsert(operators);
 
       if (settings.refreshGoals) {
