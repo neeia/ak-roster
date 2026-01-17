@@ -27206,9 +27206,9 @@
     "class": "Vanguard",
     "branch": {
       "id": "counsellor",
-      "name": "Counsellor - 策士"
+      "name": "Strategist"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "higashi"
     ],
@@ -27219,7 +27219,7 @@
       {
         "skillId": "skchr_makiri_1",
         "iconId": null,
-        "skillName": "入场安排",
+        "skillName": "Entry Plan",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -27283,7 +27283,7 @@
       {
         "skillId": "skchr_makiri_2",
         "iconId": null,
-        "skillName": "万手成局",
+        "skillName": "Match of Myriad Tricks",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -27347,11 +27347,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -47410,7 +47410,7 @@
       "id": "reaperrange",
       "name": "Spreadshooter"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "higashi"
     ],
@@ -47421,7 +47421,7 @@
       {
         "skillId": "skchr_kichi_1",
         "iconId": null,
-        "skillName": "欢迎您来！",
+        "skillName": "Irasshaimase!",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -47485,7 +47485,7 @@
       {
         "skillId": "skchr_kichi_2",
         "iconId": null,
-        "skillName": "吉星高照！",
+        "skillName": "Lucky Star, Shining Bright!",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -47549,7 +47549,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "可疑的宣传页",
+        "moduleName": "A Suspicious Pamphlet",
         "moduleId": "uniequip_002_kichi",
         "typeName": "RPR-X",
         "stages": [
@@ -47619,15 +47619,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+31",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +31",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -55701,7 +55701,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "凡石",
+        "moduleName": "Ordinary Stones",
         "moduleId": "uniequip_002_kaitou",
         "typeName": "PRI-X",
         "stages": [
@@ -55771,7 +55771,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -56071,7 +56071,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "赠别之味",
+        "moduleName": "A Warmy Gift",
         "moduleId": "uniequip_002_warmy",
         "typeName": "PRI-X",
         "stages": [
@@ -56141,7 +56141,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -56441,7 +56441,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“黑色”贩卖机",
+        "moduleName": "The 'Black' Vending Machine",
         "moduleId": "uniequip_002_christ",
         "typeName": "PRI-X",
         "stages": [
@@ -56511,7 +56511,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -74800,7 +74800,8 @@
     ],
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -97899,7 +97900,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "假期的最后一天",
+        "moduleName": "The Last Day of Holiday",
         "moduleId": "uniequip_003_chen2",
         "typeName": "RPR-Y",
         "stages": [
@@ -97969,7 +97970,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -103151,7 +103152,7 @@
     "class": "Vanguard",
     "branch": {
       "id": "counsellor",
-      "name": "Counsellor - 策士"
+      "name": "Strategist"
     },
     "isCnOnly": true,
     "factions": [
@@ -108115,7 +108116,8 @@
     ],
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -111849,7 +111851,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "心声",
+        "moduleName": "'Aspiration'",
         "moduleId": "uniequip_002_nymph",
         "typeName": "PRI-X",
         "stages": [
@@ -111919,7 +111921,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -112296,7 +112298,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "热切的期盼",
+        "moduleName": "The Fervent Longing",
         "moduleId": "uniequip_002_blaze2",
         "typeName": "PRI-X",
         "stages": [
@@ -112366,7 +112368,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -117623,7 +117625,7 @@
       "id": "blessing",
       "name": "Abjurer"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "higashi"
     ],
@@ -117634,7 +117636,7 @@
       {
         "skillId": "skchr_haruka_1",
         "iconId": null,
-        "skillName": "夜啼彩羽",
+        "skillName": "Feathers in the Night",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -117698,7 +117700,7 @@
       {
         "skillId": "skchr_haruka_2",
         "iconId": null,
-        "skillName": "幽隙栖萤",
+        "skillName": "Glade of the Fireflies",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -117762,7 +117764,7 @@
       {
         "skillId": "skchr_haruka_3",
         "iconId": null,
-        "skillName": "夏末游鳞",
+        "skillName": "The Fins of Summer",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -117826,7 +117828,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "迟来的纪念",
+        "moduleName": "The Belated Memorial",
         "moduleId": "uniequip_002_haruka",
         "typeName": "BLS-Y",
         "stages": [
@@ -117896,15 +117898,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-6秒",
-      "攻击力+25",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -6 sec",
+      "ATK +25",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -123256,7 +123258,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "琳琅诗怀雅特限证章",
+        "moduleName": "Swire the Elegant Wit's Badge",
         "moduleId": "uniequip_004_swire2",
         "typeName": "ISW-A",
         "stages": [
@@ -123294,7 +123296,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -138137,7 +138139,7 @@
       "id": "artsprotector",
       "name": "Arts Protector"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "lgd",
       "lungmen"
@@ -138149,7 +138151,7 @@
       {
         "skillId": "skchr_hsgma2_1",
         "iconId": null,
-        "skillName": "恶业苦果",
+        "skillName": "Bitter Karma",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -138213,7 +138215,7 @@
       {
         "skillId": "skchr_hsgma2_2",
         "iconId": null,
-        "skillName": "无始无明",
+        "skillName": "Anadi-Avidya",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -138277,7 +138279,7 @@
       {
         "skillId": "skchr_hsgma2_3",
         "iconId": null,
-        "skillName": "地狱变相",
+        "skillName": "Hell Itself",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -138415,11 +138417,11 @@
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "防御力+30",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +30",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -142693,7 +142695,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "佩佩特限证章",
+        "moduleName": "Pepe's Specialized Badge",
         "moduleId": "uniequip_003_pepe",
         "typeName": "RA-A",
         "stages": [
@@ -142731,7 +142733,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [

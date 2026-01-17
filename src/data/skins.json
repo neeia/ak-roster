@@ -608,7 +608,7 @@
     },
     {
       "skinId": "char_133_mm@summer#20",
-      "skinName": "夏卉 FA054",
+      "skinName": "Summer Flowers FA054",
       "avatarId": "char_133_mm_summer#20",
       "sortId": 221
     }
@@ -5481,6 +5481,12 @@
       "skinName": "Masterpiece",
       "avatarId": "char_197_poca_epoque#12",
       "sortId": 49
+    },
+    {
+      "skinId": "char_197_poca@rilakkuma#1",
+      "skinName": "常伴我身",
+      "avatarId": "char_197_poca_rilakkuma#1",
+      "sortId": 462
     }
   ],
   "char_2012_typhon": [
@@ -5570,7 +5576,7 @@
     },
     {
       "skinId": "char_1013_chen2@summer#20",
-      "skinName": "悠然假日 HD79",
+      "skinName": "Holiday HD79",
       "avatarId": "char_1013_chen2_summer#20",
       "sortId": 219
     },
@@ -5869,6 +5875,12 @@
       "skinName": "Children's Party",
       "avatarId": "char_134_ifrit_kfc#1",
       "sortId": 311
+    },
+    {
+      "skinId": "char_134_ifrit@rilakkuma#1",
+      "skinName": "轻松旅途",
+      "avatarId": "char_134_ifrit_rilakkuma#1",
+      "sortId": 463
     }
   ],
   "char_213_mostma": [
@@ -6262,7 +6274,7 @@
     },
     {
       "skinId": "char_450_necras@summer#20",
-      "skinName": "夏卉 FA161",
+      "skinName": "Summer Flowers FA161",
       "avatarId": "char_450_necras_summer#20",
       "sortId": 220
     }
@@ -6924,7 +6936,7 @@
     },
     {
       "skinId": "char_1039_thorn2@marthe#9",
-      "skinName": "无际之帆",
+      "skinName": "Boundless Sail",
       "avatarId": "char_1039_thorn2_marthe#9",
       "sortId": 231
     }
@@ -7596,7 +7608,7 @@
     },
     {
       "skinId": "char_4058_pepe@sightseer#2",
-      "skinName": "星移",
+      "skinName": "Nuit of the Nightsky",
       "avatarId": "char_4058_pepe_sightseer#2",
       "sortId": 446
     }
