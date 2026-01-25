@@ -700,7 +700,7 @@
     },
     {
       "skinId": "char_366_acdrop@summer#21",
-      "skinName": "悠然假日 HD75",
+      "skinName": "Holiday HD75",
       "avatarId": "char_366_acdrop_summer#21",
       "sortId": 222
     }
@@ -4923,6 +4923,12 @@
       "skinName": null,
       "avatarId": "char_4172_xingzh_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4172_xingzh@epoque#51",
+      "skinName": "留影",
+      "avatarId": "char_4172_xingzh_epoque#51",
+      "sortId": 124
     }
   ],
   "char_1022_flwr2": [
