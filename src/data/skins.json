@@ -396,7 +396,7 @@
     },
     {
       "skinId": "char_141_nights@breaker#1",
-      "skinName": "疗养地怪谈",
+      "skinName": "The Nursing Home Creepshow",
       "avatarId": "char_141_nights_breaker#1",
       "sortId": 478
     }
@@ -1162,7 +1162,7 @@
     },
     {
       "skinId": "char_445_wscoot@epoque#49",
-      "skinName": "异乡的云",
+      "skinName": "Cloud in Foreign Lands",
       "avatarId": "char_445_wscoot_epoque#49",
       "sortId": 120
     }
@@ -1990,7 +1990,7 @@
     },
     {
       "skinId": "char_4147_mitm@breaker#1",
-      "skinName": "无影灯下",
+      "skinName": "Under Surgical Lights",
       "avatarId": "char_4147_mitm_breaker#1",
       "sortId": 476
     }
@@ -4536,7 +4536,7 @@
     },
     {
       "skinId": "char_1027_greyy2@breaker#1",
-      "skinName": "生化沉溺",
+      "skinName": "Biochemical Submergence",
       "avatarId": "char_1027_greyy2_breaker#1",
       "sortId": 477
     }
@@ -4587,6 +4587,12 @@
       "skinName": null,
       "avatarId": "char_4177_brigid_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4177_brigid@epoque#53",
+      "skinName": "轻语入梦",
+      "avatarId": "char_4177_brigid_epoque#53",
+      "sortId": 128
     }
   ],
   "char_4015_spuria": [
@@ -5718,7 +5724,7 @@
     },
     {
       "skinId": "char_4138_narant@breaker#1",
-      "skinName": "链锯陪护者",
+      "skinName": "The Chainsaw Nurse",
       "avatarId": "char_4138_narant_breaker#1",
       "sortId": 475
     }

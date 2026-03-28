@@ -8600,7 +8600,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "暖意的归宿",
+        "moduleName": "Where the Warmth Remains",
         "moduleId": "uniequip_002_caper",
         "typeName": "LPS-X",
         "stages": [
@@ -8670,7 +8670,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -10671,7 +10671,7 @@
       "id": "agent",
       "name": "Agent"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "ursus"
     ],
@@ -10682,7 +10682,7 @@
       {
         "skillId": "skchr_wintim_1",
         "iconId": null,
-        "skillName": "数据分析",
+        "skillName": "Data Analysis",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -10746,7 +10746,7 @@
       {
         "skillId": "skchr_wintim_2",
         "iconId": null,
-        "skillName": "循理归因",
+        "skillName": "Rational Attribution",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -10810,7 +10810,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "缺角的权限",
+        "moduleName": "An Invalid Access Card",
         "moduleId": "uniequip_002_wintim",
         "typeName": "AGE-X",
         "stages": [
@@ -10880,15 +10880,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击速度+5",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ASPD +5",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -69598,7 +69598,7 @@
       "id": "unyield",
       "name": "Juggernaut"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "ursus"
     ],
@@ -69609,7 +69609,7 @@
       {
         "skillId": "skchr_branch_1",
         "iconId": null,
-        "skillName": "绝境抵抗",
+        "skillName": "Desperate Resistance",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -69673,7 +69673,7 @@
       {
         "skillId": "skchr_branch_2",
         "iconId": null,
-        "skillName": "生存决心",
+        "skillName": "Set on Survival",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -69737,7 +69737,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“时间的痕迹”",
+        "moduleName": "'Marks of Time'",
         "moduleId": "uniequip_002_branch",
         "typeName": "UNY-X",
         "stages": [
@@ -69807,15 +69807,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "生命上限+250",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "Max HP +250",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -77899,7 +77899,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "风的颜色",
+        "moduleName": "Color of the Wind",
         "moduleId": "uniequip_002_brigid",
         "typeName": "LPS-X",
         "stages": [
@@ -77969,7 +77969,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -99967,7 +99967,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“吹尽狂沙”",
+        "moduleName": "'Those Buried in Sand'",
         "moduleId": "uniequip_002_narant",
         "typeName": "LPS-X",
         "stages": [
@@ -100037,7 +100037,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -106390,7 +106390,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "宠物大赛第一名",
+        "moduleName": "Pet Contest First Prize",
         "moduleId": "uniequip_003_amgoat",
         "typeName": "CCR-Y",
         "stages": [
@@ -106460,7 +106460,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -113688,7 +113688,7 @@
       "id": "primcaster",
       "name": "Primal"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "elite",
       "rhodes"
@@ -113700,7 +113700,7 @@
       {
         "skillId": "skchr_mantra_1",
         "iconId": null,
-        "skillName": "共鸣溃缩",
+        "skillName": "Resonance Collapse",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -113764,7 +113764,7 @@
       {
         "skillId": "skchr_mantra_2",
         "iconId": null,
-        "skillName": "意识联协",
+        "skillName": "Gestalt Consciousness",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -113828,7 +113828,7 @@
       {
         "skillId": "skchr_mantra_3",
         "iconId": null,
-        "skillName": "无言为真",
+        "skillName": "Truth Unchanted",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -113892,7 +113892,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "中枢神经探测模块",
+        "moduleName": "Central Nerve Detection Module",
         "moduleId": "uniequip_002_mantra",
         "typeName": "PRI-X",
         "stages": [
@@ -113962,15 +113962,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-6秒",
-      "攻击力+31",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -6 sec",
+      "ATK +31",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -117280,7 +117280,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "新起点",
+        "moduleName": "Start+",
         "moduleId": "uniequip_003_radian",
         "typeName": "SO-B",
         "stages": [
@@ -117303,7 +117303,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -152571,7 +152571,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "已知悉",
+        "moduleName": "Acknowledged",
         "moduleId": "uniequip_003_excu2",
         "typeName": "REA-Y",
         "stages": [
@@ -152641,7 +152641,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
