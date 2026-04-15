@@ -3667,7 +3667,7 @@
       "id": "blastcaster",
       "name": "Blast"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "leithanien"
     ],
@@ -3678,7 +3678,7 @@
       {
         "skillId": "skchr_akkord_1",
         "iconId": null,
-        "skillName": "反拍重音",
+        "skillName": "Backbeat Stress",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -3742,7 +3742,7 @@
       {
         "skillId": "skchr_akkord_2",
         "iconId": null,
-        "skillName": "震爆调谐",
+        "skillName": "Explosive Tuning",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -3806,7 +3806,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "移动八音盒",
+        "moduleName": "The Music Box of A Burdenbeast",
         "moduleId": "uniequip_002_akkord",
         "typeName": "BLA-X",
         "stages": [
@@ -3876,15 +3876,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+32",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +32",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -21129,7 +21129,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "守护的道路",
+        "moduleName": "A Guardian's Path",
         "moduleId": "uniequip_002_durnar",
         "typeName": "AST-X",
         "stages": [
@@ -21199,7 +21199,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -40136,7 +40136,8 @@
     ],
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -43024,9 +43025,9 @@
     "class": "Guard",
     "branch": {
       "id": "mercenary",
-      "name": "Mercenary - 佣兵"
+      "name": "Mercenary"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "sargon"
     ],
@@ -43037,7 +43038,7 @@
       {
         "skillId": "skchr_hadiya_1",
         "iconId": null,
-        "skillName": "沙地战术改良",
+        "skillName": "Enhanced Desert Tactics",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -43101,7 +43102,7 @@
       {
         "skillId": "skchr_hadiya_2",
         "iconId": null,
-        "skillName": "剑角之锋",
+        "skillName": "Blade of the Qarnsayf",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -43165,11 +43166,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+30",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +30",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -54825,8 +54826,10 @@
     },
     "isCnOnly": false,
     "factions": [
-      "karlan",
       "kjerag"
+    ],
+    "factionsHidden": [
+      "karlan"
     ],
     "pools": [
       "Free"
@@ -70483,7 +70486,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“石棉大战双头钳兽”",
+        "moduleName": "'Asbestos vs. Two-headed Gloompincer'",
         "moduleId": "uniequip_002_asbest",
         "typeName": "AST-X",
         "stages": [
@@ -70553,7 +70556,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -70853,7 +70856,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "票根收纳册",
+        "moduleName": "Ticket Stub Album",
         "moduleId": "uniequip_002_aprot2",
         "typeName": "AST-X",
         "stages": [
@@ -70923,7 +70926,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -71223,7 +71226,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“日复一日”",
+        "moduleName": "'Tick-tock Tick-tock'",
         "moduleId": "uniequip_002_pianst",
         "typeName": "AST-X",
         "stages": [
@@ -71293,7 +71296,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -72941,8 +72944,10 @@
     },
     "isCnOnly": false,
     "factions": [
-      "karlan",
       "kjerag"
+    ],
+    "factionsHidden": [
+      "karlan"
     ],
     "pools": [
       "Kernel",
@@ -77764,7 +77769,7 @@
       "id": "hunter",
       "name": "Hunter"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "kjerag"
     ],
@@ -77775,7 +77780,7 @@
       {
         "skillId": "skchr_snhunt_1",
         "iconId": "skcom_powerstrike[2]",
-        "skillName": "强力击·β型",
+        "skillName": "Power Strike β",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -77839,7 +77844,7 @@
       {
         "skillId": "skchr_snhunt_2",
         "iconId": null,
-        "skillName": "风雪连弩",
+        "skillName": "Twin Blizzard Bolts",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -77903,7 +77908,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "过去的狩猎",
+        "moduleName": "Hunts of the Past",
         "moduleId": "uniequip_002_snhunt",
         "typeName": "HUN-X",
         "stages": [
@@ -77973,15 +77978,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+32",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +32",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -78877,8 +78882,10 @@
     },
     "isCnOnly": false,
     "factions": [
-      "karlan",
       "kjerag"
+    ],
+    "factionsHidden": [
+      "karlan"
     ],
     "pools": [
       "Kernel",
@@ -79991,8 +79998,10 @@
     },
     "isCnOnly": false,
     "factions": [
-      "karlan",
       "kjerag"
+    ],
+    "factionsHidden": [
+      "karlan"
     ],
     "pools": [
       "Kernel",
@@ -105013,7 +105022,7 @@
       "id": "counsellor",
       "name": "Strategist"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "kjerag"
     ],
@@ -105024,7 +105033,7 @@
       {
         "skillId": "skchr_svash2_1",
         "iconId": null,
-        "skillName": "周旋的谋略",
+        "skillName": "Pawn Break",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -105088,7 +105097,7 @@
       {
         "skillId": "skchr_svash2_2",
         "iconId": null,
-        "skillName": "御敌的锋锐",
+        "skillName": "Countergambit",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -105152,7 +105161,7 @@
       {
         "skillId": "skchr_svash2_3",
         "iconId": null,
-        "skillName": "变革已至",
+        "skillName": "Castled King",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -105216,11 +105225,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "防御力+25",
-      "最大生命值+180",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "DEF +25",
+      "Max HP +180",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -108247,7 +108256,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "霍尔海雅特限证章",
+        "moduleName": "Ho'olheyak's Specialized Badge",
         "moduleId": "uniequip_004_heyak",
         "typeName": "ISW-A",
         "stages": [
@@ -108285,7 +108294,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -111561,7 +111570,7 @@
       "id": "phalanx",
       "name": "Phalanx"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "kjerag"
     ],
@@ -111572,7 +111581,7 @@
       {
         "skillId": "skchr_sbell2_1",
         "iconId": null,
-        "skillName": "铃音吹雪",
+        "skillName": "Ere Snow, Bells Chime",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -111636,7 +111645,7 @@
       {
         "skillId": "skchr_sbell2_2",
         "iconId": null,
-        "skillName": "霜涛覆岭",
+        "skillName": "Peaks, Clad in Frost",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -111700,7 +111709,7 @@
       {
         "skillId": "skchr_sbell2_3",
         "iconId": null,
-        "skillName": "群山俯首",
+        "skillName": "Towards the Mountains, Bow",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -111764,7 +111773,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "千分之一的心",
+        "moduleName": "A Thousandth of A Heart",
         "moduleId": "uniequip_002_sbell2",
         "typeName": "PLX-Y",
         "stages": [
@@ -111834,15 +111843,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "第二天赋效果增强",
-      "攻击力+34",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +34",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -115749,7 +115758,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "灵知特限证章",
+        "moduleName": "Gnosis's Specialized Badge",
         "moduleId": "uniequip_004_gnosis",
         "typeName": "ISW-A",
         "stages": [
@@ -115787,7 +115796,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -117030,7 +117039,7 @@
       "id": "slower",
       "name": "Decel Binder"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "rhine",
       "columbia"
@@ -117042,7 +117051,7 @@
       {
         "skillId": "skchr_halo2_1",
         "iconId": null,
-        "skillName": "星图闪烁",
+        "skillName": "Star Chart's Shine",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -117106,7 +117115,7 @@
       {
         "skillId": "skchr_halo2_2",
         "iconId": null,
-        "skillName": "星束引力",
+        "skillName": "Stellar Gravity",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -117170,7 +117179,7 @@
       {
         "skillId": "skchr_halo2_3",
         "iconId": null,
-        "skillName": "并流连锁",
+        "skillName": "Flux Chain",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -117234,7 +117243,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "探索者的收藏",
+        "moduleName": "The Seeker's Collection",
         "moduleId": "uniequip_002_halo2",
         "typeName": "DEC-Y",
         "stages": [
@@ -117304,15 +117313,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -131990,7 +131999,8 @@
     ],
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -141130,7 +141140,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "无迹",
+        "moduleName": "No Trace",
         "moduleId": "uniequip_002_hsgma2",
         "typeName": "AST-X",
         "stages": [
@@ -141200,7 +141210,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -150450,7 +150460,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "秩序圣“球”",
+        "moduleName": "'Speed and Bag'",
         "moduleId": "uniequip_003_siege2",
         "typeName": "AFT-Y",
         "stages": [
@@ -150520,7 +150530,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [

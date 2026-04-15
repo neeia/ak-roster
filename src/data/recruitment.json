@@ -410,6 +410,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1031,6 +1044,18 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1491,6 +1516,18 @@
           "DPS",
           "Melee",
           "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       },
@@ -2935,6 +2972,18 @@
         "name": "Flint",
         "rarity": 5,
         "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
           "DPS",
           "Melee",
           "Guard",
@@ -4671,6 +4720,18 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_141_nights",
         "name": "Haze",
         "rarity": 4,
@@ -6046,6 +6107,18 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_127_estell",
         "name": "Estelle",
         "rarity": 4,
@@ -6548,6 +6621,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6977,6 +7063,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7266,6 +7365,19 @@
         "tags": [
           "Healing",
           "Support",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
           "Ranged",
           "Medic",
           "Top Operator",
@@ -8197,6 +8309,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8282,6 +8407,30 @@
           "DPS",
           "Ranged",
           "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Summon,Top Operator": {
+    "tags": [
+      "Summon",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
           "Top Operator",
           "Senior Operator"
         ]
@@ -8804,6 +8953,18 @@
           "DPS",
           "Melee",
           "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       }
@@ -9371,6 +9532,18 @@
         "name": "Flint",
         "rarity": 5,
         "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
           "DPS",
           "Melee",
           "Guard",
@@ -10390,6 +10563,18 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -11062,6 +11247,18 @@
           "Survival",
           "Ranged",
           "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       }
@@ -11890,6 +12087,18 @@
         "name": "Flint",
         "rarity": 5,
         "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
           "DPS",
           "Melee",
           "Guard",
@@ -12776,6 +12985,18 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_149_scave",
         "name": "Scavenger",
         "rarity": 4,
@@ -13554,6 +13775,18 @@
         "tags": [
           "AoE",
           "Survival",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -16117,6 +16350,18 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_130_doberm",
         "name": "Dobermann",
         "rarity": 4,
@@ -16385,6 +16630,18 @@
         "tags": [
           "AoE",
           "Survival",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -18851,6 +19108,18 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_235_jesica",
         "name": "Jessica",
         "rarity": 4,
@@ -19596,6 +19865,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19889,6 +20171,19 @@
         "tags": [
           "Healing",
           "Support",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
           "Ranged",
           "Medic",
           "Top Operator",
@@ -20832,6 +21127,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20920,6 +21228,31 @@
           "DPS",
           "Ranged",
           "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Senior Operator,Summon,Top Operator": {
+    "tags": [
+      "Senior Operator",
+      "Summon",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
           "Top Operator",
           "Senior Operator"
         ]
@@ -22194,6 +22527,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22601,6 +22947,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22638,6 +22997,31 @@
           "DPS",
           "Ranged",
           "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Ranged,Summon,Top Operator": {
+    "tags": [
+      "Ranged",
+      "Summon",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
           "Top Operator",
           "Senior Operator"
         ]
@@ -23441,6 +23825,44 @@
         "tags": [
           "Healing",
           "Support",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Medic,Summon,Top Operator": {
+    "tags": [
+      "Medic",
+      "Summon",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
           "Ranged",
           "Medic",
           "Top Operator",
@@ -24727,6 +25149,31 @@
       6
     ]
   },
+  "Healing,Summon,Top Operator": {
+    "tags": [
+      "Healing",
+      "Summon",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
   "Healing,Support,Top Operator": {
     "tags": [
       "Healing",
@@ -24988,6 +25435,18 @@
         "name": "Flint",
         "rarity": 5,
         "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
           "DPS",
           "Melee",
           "Guard",
@@ -25497,6 +25956,18 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -25903,6 +26374,18 @@
         "tags": [
           "AoE",
           "Survival",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -27398,6 +27881,18 @@
           "Guard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -27490,6 +27985,18 @@
         "tags": [
           "AoE",
           "Survival",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -29058,6 +29565,18 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -30322,6 +30841,18 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_130_doberm",
         "name": "Dobermann",
         "rarity": 4,
@@ -30595,6 +31126,18 @@
         "tags": [
           "AoE",
           "Survival",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -31815,6 +32358,18 @@
           "Survival",
           "Melee",
           "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
           "Senior Operator"
         ]
       },
@@ -34374,6 +34929,18 @@
         "tags": [
           "DPS",
           "Survival",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
