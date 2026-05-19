@@ -1433,14 +1433,14 @@
   },
   "31103": {
     "id": "31103",
-    "name": "液化高能气体",
+    "name": "Liquefied High-Energy Gas",
     "iconId": "MTL_SL_YHT",
     "tier": 3,
     "sortId": 100010
   },
   "31104": {
     "id": "31104",
-    "name": "液化醚吸聚体",
+    "name": "Liquefied Æther Absorber",
     "iconId": "MTL_SL_YHT4",
     "tier": 4,
     "sortId": 100009,
@@ -1466,14 +1466,14 @@
   },
   "31113": {
     "id": "31113",
-    "name": "电极单元",
+    "name": "Electrode Unit",
     "iconId": "MTL_SL_DJ",
     "tier": 3,
     "sortId": 100008
   },
   "31114": {
     "id": "31114",
-    "name": "聚能动力单元",
+    "name": "Energy Focusing Unit",
     "iconId": "MTL_SL_DJ4",
     "tier": 4,
     "sortId": 100007,

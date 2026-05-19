@@ -8,9 +8,10 @@ const cnBuildingData  = loadRepositoryTable("cnBuildingData");
 const cnItemTable     = loadRepositoryTable("cnItemTable");
 
 const unofficialItemNameTranslations = {
-  30165: "Biphasic Enantiomorphic Medium",
-  31093: "Pseudocondensation Nucleus",
-  31094: "Chiral Refractor",
+  31103: "Liquefied High-Energy Gas",
+  31104: "Liquefied Æther Absorber",
+  31113: "Electrode Unit",
+  31114: "Energy Focusing Unit",
 };
 
 const getEnglishItemName = (itemId) => {
