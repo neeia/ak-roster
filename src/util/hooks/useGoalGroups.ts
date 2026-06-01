@@ -13,11 +13,14 @@ export interface GoalGroupsHook {
     }[]) => Promise<void>;
     readonly renameGroup: (oldName: string, newName: string) => Promise<void>;
     readonly removeGroup: (groupName: string) => Promise<void>;
+    readonly isLoaded: boolean;
 }
 
 function useGoalGroups() {
   const [groups, _setGroups] = useLocalStorage<string[]>("v3_groups", []);
   const [user_id, setUserId] = useState<string>("");
+
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const putGroups = useCallback(
     async (goalGroupInsert: GroupsDataInsert[]) => {
@@ -71,7 +74,10 @@ function useGoalGroups() {
       } = await supabase.auth.getSession();
       const user_id = session?.user.id;
 
-      if (!user_id) return;
+      if (!user_id) {
+        setIsLoaded(true);
+        return;
+      }
       setUserId(user_id);
 
       const { data } = await supabase.from("groups").select("group_name, sort_order").eq("user_id", user_id);
@@ -81,12 +87,13 @@ function useGoalGroups() {
         names = data.sort((a, b) => a.sort_order - b.sort_order).map((x) => x.group_name);
       }
       _setGroups(names);
+      setIsLoaded(true);
     };
 
     fetchData();
   }, []);
 
-  return { groups, putGroups: putGroups, renameGroup, removeGroup } as const;
+  return { groups, putGroups: putGroups, renameGroup, removeGroup, isLoaded } as const;
 }
 
 export default useGoalGroups;

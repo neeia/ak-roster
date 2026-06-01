@@ -71,6 +71,7 @@ interface Props extends GoalFilterHook, GoalsHook, GoalGroupsHook {
   roster: Roster,
   onChange: (op: Operator) => void,
   setSettings: (settings: LocalStorageSettings | ((settings: LocalStorageSettings) => LocalStorageSettings)) => void;
+  isLoaded: boolean;
 }
 
 const PlannerGoals = (props: Props) => {
@@ -83,6 +84,7 @@ const PlannerGoals = (props: Props) => {
     groupedGoalsMap,
     roster,
     onChange,
+    isLoaded,
     ...rest
   } = props;
   const { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator, changeLocalGoalGroup } = rest;
@@ -731,11 +733,11 @@ const PlannerGoals = (props: Props) => {
 
   //once on page-load > after useEffects from useOps useGoals
   useEffect(() => {
-    if (settings.plannerSettings.autoRefreshGoals ?? true) {
+    if (isLoaded && (settings.plannerSettings.autoRefreshGoals ?? true)) {
       handleRefreshAllGoals();
     }
   }
-    , []);
+    , [isLoaded]);
 
   return (
     <>

@@ -12,6 +12,7 @@ export interface GoalsHook {
   readonly removeAllGoalsFromGroup: (groupName: string, cleanLocal?: boolean) => Promise<void>;
   readonly removeAllGoalsFromOperator: (opId: string, groupName: string) => Promise<void>;
   readonly changeLocalGoalGroup: (oldGoalGroup: string, newGoalGroup: string) => Promise<void>;
+  readonly isLoaded: boolean;
 }
 
 const fillNull = (goal: GoalDataInsert, index: number): GoalDataInsert => {
@@ -50,6 +51,8 @@ const fillNull = (goal: GoalDataInsert, index: number): GoalDataInsert => {
 function useGoals() {
   const [goals, _setGoals] = useLocalStorage<GoalData[]>("v3_goals", []);
   const [user_id, setUserId] = useState<string>("");
+
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const updateGoals = useCallback(
     async (goalsData: GoalDataInsert[]) => {
@@ -142,7 +145,10 @@ function useGoals() {
       } = await supabase.auth.getSession();
       const user_id = session?.user.id;
 
-      if (!user_id) return;
+      if (!user_id) {
+        setIsLoaded(true);
+        return;
+      }
       setUserId(user_id);
 
       //fetch goals
@@ -153,7 +159,10 @@ function useGoals() {
         goalResult = _goals as GoalData[];
       }
 
-      if (!isCanceled) _setGoals(goalResult);
+      if (!isCanceled) {
+        _setGoals(goalResult);
+         setIsLoaded(true);
+      }
     };
 
     fetchData();
@@ -169,6 +178,7 @@ function useGoals() {
     removeAllGoalsFromGroup,
     removeAllGoalsFromOperator,
     changeLocalGoalGroup,
+    isLoaded,
   } as const;
 }
 
