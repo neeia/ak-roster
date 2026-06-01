@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { AppBar, Box, Container, IconButton, ThemeProvider, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, CircularProgress, Container, IconButton, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import config from "data/config";
 import MenuIcon from "@mui/icons-material/Menu";
 import AppDrawer from "./AppDrawer";
@@ -17,9 +17,10 @@ interface Props {
   children?: React.ReactNode;
   head?: React.ReactNode;
   themeColor?: string;
+  isLoading?: boolean;
 }
 const Layout = React.memo((props: Props) => {
-  const { page, tab, children, header, head, themeColor: _themeColor } = props;
+  const { page, tab, children, header, head, themeColor: _themeColor, isLoading } = props;
   const { siteDescription, tabs } = config;
   const { pages, requireLogin: r1 } = tabs[tab];
   const { title, description, requireLogin: r2 } = pages[page];
@@ -87,6 +88,7 @@ const Layout = React.memo((props: Props) => {
                   <Typography component="h1" variant="h5" noWrap sx={{ display: "inline", verticalAlign: "baseline" }}>
                     {title}
                   </Typography>
+                  {isLoading && <CircularProgress size="1rem" color="inherit" aria-label="Loading…" sx={{ml: 1}} />}
                 </Box>
               </>
             )}

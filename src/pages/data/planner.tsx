@@ -209,7 +209,7 @@ const Goals: NextPage = () => {
   };
 
   return (
-    <Layout tab="/data" page="/planner">
+    <Layout tab="/data" page="/planner" isLoading={!(isRosterLoaded && groupsHook.isLoaded && goalsHook.isLoaded)}>
       <Tabs
         value={value}
         onChange={handleChange}
