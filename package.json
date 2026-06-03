@@ -1,6 +1,6 @@
 {
   "name": "ak-roster-next",
-  "version": "3.3.2",
+  "version": "3.3.6",
   "private": true,
   "scripts": {
     "start": "start http://localhost:3000/ & next dev",

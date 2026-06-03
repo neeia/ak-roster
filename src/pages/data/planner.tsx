@@ -73,7 +73,7 @@ const Goals: NextPage = () => {
   const goalsHook = useGoals();
   const groupsHook = useGoalGroups();
 
-  const [roster, onChange] = useOperators();
+  const [roster, onChange, isRosterLoaded] = useOperators();
 
   const eventsHook = useEvents();
   const eventsDefaultsHook = useEventsDefaults();
@@ -209,7 +209,7 @@ const Goals: NextPage = () => {
   };
 
   return (
-    <Layout tab="/data" page="/planner">
+    <Layout tab="/data" page="/planner" isLoading={!(isRosterLoaded && groupsHook.isLoaded && goalsHook.isLoaded)}>
       <Tabs
         value={value}
         onChange={handleChange}
@@ -258,6 +258,7 @@ const Goals: NextPage = () => {
             {...filtersHook}
             {...groupsHook}
             {...goalsHook}
+            isLoaded={isRosterLoaded && groupsHook.isLoaded && goalsHook.isLoaded}
           />
         </TabPanel>
       </Box>

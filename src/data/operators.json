@@ -64525,7 +64525,7 @@
   },
   "char_4224_turdus": {
     "id": "char_4224_turdus",
-    "name": "Укусик",
+    "name": "Ukusik",
     "cnName": "乌啾",
     "rarity": 5,
     "class": "Medic",
@@ -88213,7 +88213,7 @@
   },
   "char_4223_botany": {
     "id": "char_4223_botany",
-    "name": "Ботани",
+    "name": "Botani",
     "cnName": "伯塔尼",
     "rarity": 5,
     "class": "Supporter",
@@ -115432,7 +115432,7 @@
   },
   "char_4226_veen": {
     "id": "char_4226_veen",
-    "name": "Вий",
+    "name": "Viy",
     "cnName": "维伊",
     "rarity": 6,
     "class": "Caster",

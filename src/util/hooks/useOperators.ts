@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Operator, OperatorV2 } from "types/operators/operator";
 import operatorJson from "data/operators";
 import useLocalStorage from "./useLocalStorage";
@@ -11,6 +11,8 @@ import { enqueueSnackbar } from "notistack";
 function useOperators() {
   const [operators, setOperators] = useLocalStorage<Roster>("v3_roster", {});
   const [legacyOperators, setLegacyOperators] = useLocalStorage<null | Record<string, OperatorV2>>("operators", null);
+
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // change operator, push to db
   const onChange = useCallback(
@@ -49,7 +51,10 @@ function useOperators() {
       } = await supabase.auth.getSession();
       const user_id = session?.user.id;
 
-      if (!user_id) return;
+      if (!user_id) {
+        setIsLoaded(true);
+        return;
+      }
 
       const { data: dbOperators, error } = await supabase.from("operators").select().match({ user_id });
       if (error) handlePostgrestError(error);
@@ -73,7 +78,10 @@ function useOperators() {
       }
 
       hydrated.current = true;
-      if (!isCanceled) setOperators(_roster);
+      if (!isCanceled) {
+        setOperators(_roster);
+        setIsLoaded(true);
+      }
     };
 
     fetchData();
@@ -83,6 +91,6 @@ function useOperators() {
     };
   }, []);
 
-  return [operators, onChange] as const;
+  return [operators, onChange, isLoaded] as const;
 }
 export default useOperators;
