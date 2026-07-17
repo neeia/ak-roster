@@ -4465,7 +4465,8 @@
     "pools": [
       "Kernel",
       "Kernel CN",
-      "Standard"
+      "Standard",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -64901,14 +64902,11 @@
     "class": "Medic",
     "branch": {
       "id": "watchman",
-      "name": "Watchman - 守望者"
+      "name": "Watchman"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "yan"
-    ],
-    "factionsHidden": [
-      "sargon"
     ],
     "pools": [
       "Standard"
@@ -64917,7 +64915,7 @@
       {
         "skillId": "skchr_taraxa_1",
         "iconId": null,
-        "skillName": "何处着",
+        "skillName": "Where To?",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -64981,7 +64979,7 @@
       {
         "skillId": "skchr_taraxa_2",
         "iconId": null,
-        "skillName": "扶风起",
+        "skillName": "Upon the Wind",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -65045,11 +65043,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "防御力+20",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "DEF +20",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -74261,7 +74259,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "被摩挲的日子",
+        "moduleName": "The Days Rubbed to Silence",
         "moduleId": "uniequip_002_philae",
         "typeName": "PRP-X",
         "stages": [
@@ -74331,7 +74329,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -77461,7 +77459,7 @@
       "id": "siegesniper",
       "name": "Besieger"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "yan"
     ],
@@ -77472,7 +77470,7 @@
       {
         "skillId": "skchr_ju_1",
         "iconId": null,
-        "skillName": "良弓难张",
+        "skillName": "Fine Bow, Difficult Draw",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -77536,7 +77534,7 @@
       {
         "skillId": "skchr_ju_2",
         "iconId": null,
-        "skillName": "良翼难乘",
+        "skillName": "Fine Wings, Difficult Flight",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -77600,7 +77598,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "田间吓兽人",
+        "moduleName": "Scarecrow in the Field",
         "moduleId": "uniequip_002_ju",
         "typeName": "SIE-X",
         "stages": [
@@ -77670,15 +77668,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "攻击力+34",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "ATK +34",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -89265,7 +89263,8 @@
     ],
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -112948,7 +112947,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "异客特限证章",
+        "moduleName": "Passenger's Specialized Badge",
         "moduleId": "uniequip_004_pasngr",
         "typeName": "RA-A",
         "stages": [
@@ -112986,7 +112985,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -113164,7 +113163,8 @@
     ],
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
@@ -133395,7 +133395,7 @@
       "id": "traper",
       "name": "Trapmaster"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "sui",
       "yan"
@@ -133407,7 +133407,7 @@
       {
         "skillId": "skchr_wang_1",
         "iconId": null,
-        "skillName": "取势",
+        "skillName": "Power Play",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -133471,7 +133471,7 @@
       {
         "skillId": "skchr_wang_2",
         "iconId": null,
-        "skillName": "连星",
+        "skillName": "Wall of Stars",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -133535,7 +133535,7 @@
       {
         "skillId": "skchr_wang_3",
         "iconId": null,
-        "skillName": "天下劫",
+        "skillName": "All-Dominating Fight",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -133599,7 +133599,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "兽形棋盒",
+        "moduleName": "Beast-Shaped Stone Container",
         "moduleId": "uniequip_002_wang",
         "typeName": "TRP-X",
         "stages": [
@@ -133669,15 +133669,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "第一天赋效果增强",
-      "攻击力+27",
-      "第二天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +27",
+      "Improves Second Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -138303,7 +138303,7 @@
     "class": "Medic",
     "branch": {
       "id": "watchman",
-      "name": "Watchman - 守望者"
+      "name": "Watchman"
     },
     "isCnOnly": true,
     "factions": [
@@ -144532,7 +144532,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "人间百味",
+        "moduleName": "Tastes of Life",
         "moduleId": "uniequip_002_yu",
         "typeName": "PRP-X",
         "stages": [
@@ -144602,7 +144602,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -151287,7 +151287,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "艾丽妮特限证章",
+        "moduleName": "Irene's Specialized Badge",
         "moduleId": "uniequip_004_irene",
         "typeName": "ISW-A",
         "stages": [
@@ -151325,7 +151325,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -154607,12 +154607,9 @@
       "id": "artsfghter",
       "name": "Arts Fighter"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "yan"
-    ],
-    "factionsHidden": [
-      "rhodes"
     ],
     "pools": [
       "Standard"
@@ -154621,7 +154618,7 @@
       {
         "skillId": "skchr_chen3_1",
         "iconId": null,
-        "skillName": "赤霄·奔夜",
+        "skillName": "Chi Xiao - Fleeting Night",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -154685,7 +154682,7 @@
       {
         "skillId": "skchr_chen3_2",
         "iconId": null,
-        "skillName": "赤霄·绝影-驰",
+        "skillName": "Chi Xiao - Shadowless Speed",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -154749,7 +154746,7 @@
       {
         "skillId": "skchr_chen3_3",
         "iconId": null,
-        "skillName": "赤霄·天喟",
+        "skillName": "Chi Xiao - Heaven's Plaint",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -154813,7 +154810,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "记忆残页",
+        "moduleName": "Remnant Pages of Memory",
         "moduleId": "uniequip_002_chen3",
         "typeName": "AFT-X",
         "stages": [
@@ -154883,15 +154880,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "第二天赋效果增强",
-      "攻击力+28",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +28",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -159686,7 +159683,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“降落伞”",
+        "moduleName": "'Parachute'",
         "moduleId": "uniequip_002_cairn",
         "typeName": "PRP-X",
         "stages": [
@@ -159756,7 +159753,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
