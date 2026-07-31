@@ -470,7 +470,7 @@
     },
     {
       "skinId": "char_253_greyy@epoque#515",
-      "skinName": "都会送报员",
+      "skinName": "My Fellow Newsboy",
       "avatarId": "char_253_greyy_epoque#515",
       "sortId": 127
     }
@@ -3537,6 +3537,12 @@
       "skinName": null,
       "avatarId": "char_4198_christ_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4198_christ@epoque#56",
+      "skinName": "底绒舞会",
+      "avatarId": "char_4198_christ_epoque#56",
+      "sortId": 132
     }
   ],
   "char_4164_tecno": [
@@ -7819,6 +7825,20 @@
       "skinName": "天穹肇始",
       "avatarId": "char_4194_rmixer_boc#12",
       "sortId": 370
+    }
+  ],
+  "char_4230_mcnist": [
+    {
+      "skinId": "char_4230_mcnist#1",
+      "skinName": null,
+      "avatarId": "char_4230_mcnist",
+      "sortId": -3
+    },
+    {
+      "skinId": "char_4230_mcnist#2",
+      "skinName": null,
+      "avatarId": "char_4230_mcnist_2",
+      "sortId": -1
     }
   ],
   "char_2026_yu": [
