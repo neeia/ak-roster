@@ -12,6 +12,10 @@
 /.next/
 /out/
 
+.open-next/
+.react-router/
+.wrangler/
+
 # production
 /build
 
@@ -49,3 +53,4 @@ src/data/user.ts
 
 /public/assets/
 /public/img/
+/scripts/images.bat

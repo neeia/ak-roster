@@ -26,7 +26,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     .limit(1)
     .single();
 
-  console.log(account);
   if (!account) {
     res.status(404).send("User not found");
     return;
@@ -44,8 +43,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     }
     return roster;
   }, {});
-
-  console.log(accountData);
 
   res.status(200).json({
     data: {
