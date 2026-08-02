@@ -40,6 +40,9 @@ const operatorNameOverride = {
   Лето: "Leto",
   Веточки: "Vetochki",
   Снегурочка: "Snegurochka",
+  Укусик: "Ukusik",
+  Ботани: "Botani",
+  Вий: "Viy",
 };
 
 //exclusions/inclusions, can't find how to detect in files.
@@ -334,6 +337,16 @@ const amiyaEliteLevel = [
   },
 ];
 
+const MAX_PROMOTION_BY_RARITY = [0, 0, 0, 1, 2, 2, 2];
+const getEmptyElite = (eliteLevel) => {
+  return {
+    eliteLevel: Number(eliteLevel),
+    ingredients: [],
+    name: `Elite ${eliteLevel}`,
+    category: OperatorGoalCategory.Elite,
+  };
+};
+
 const getPools = (operatorId, rarity, factions) => {
   const id = operatorId;
   const isKernel = (enCharacterTable[id]?.classicPotentialItemId ?? null) !== null;
@@ -383,11 +396,14 @@ const getPools = (operatorId, rarity, factions) => {
 }
 
 export const getFactions = (operator) => {
-  const result = new Set();
+  const result = {
+    main: new Set(),
+    sub: new Set()
+  };
 
-  const addFaction = (id) => {
-    if (!id || result.has(id)) return;
-    result.add(id);
+  const addFaction = (id, type = "main") => {
+    if (!id || result.main.has(id) || result.sub.has(id)) return;
+    result[`${type}`].add(id);
   };
 
   //first power (prioritize team > group > nation)
@@ -409,11 +425,11 @@ export const getFactions = (operator) => {
     for (const sub of operator.subPower) {
       for (const key of ["teamId", "groupId", "nationId"]) {
         const val = sub?.[key];
-        if (val) addFaction(val);
+        if (val) addFaction(val, "sub");
       }
     }
   }
-  return [...result];
+  return result;
 };
 
 const createFactionsJson = () => {
@@ -470,15 +486,22 @@ const createOperatorsJson = () => {
               category: OperatorGoalCategory.Elite,
             };
           });
+      //fix elite with task ops like radian
+      if (eliteLevels.length === 0 && MAX_PROMOTION_BY_RARITY[rarity] > 0) {
+        for (let i = 1; i <= MAX_PROMOTION_BY_RARITY[rarity]; i++) {
+          eliteLevels.push(getEmptyElite(i));
+        };
+      };
+
       const skillLevels = isPatchCharacter
         ? amiyaSkillLevel
         : !operator.allSkillLvlup
           ? []
           : operator.allSkillLvlup
-            .filter(({ lvlUpCost }) => lvlUpCost != null)
+            .filter(({ lvlUpCost, unlockCond }) => lvlUpCost != null || unlockCond)
             .map((skillLevelEntry, i) => {
               const cost = skillLevelEntry.lvlUpCost;
-              const ingredients = cost.map(gameDataCostToIngredient);
+              const ingredients = cost ? cost.map(gameDataCostToIngredient) : [];
               return {
                 // we want to return the result of a skillup,
                 // and since [0] points to skill level 1 -> 2, we add 2
@@ -495,11 +518,11 @@ const createOperatorsJson = () => {
             skillId != null &&
             levelUpCostCond &&
             // require that all mastery levels have a levelUpCost defined
-            !levelUpCostCond.find(({ levelUpCost }) => levelUpCost == null)
+            !levelUpCostCond.find(({ levelUpCost, unlockCond }) => levelUpCost == null && !unlockCond)
         )
         .map(({ skillId, levelUpCostCond }, i) => {
           const masteries = levelUpCostCond.map(({ levelUpCost }, j) => {
-            const ingredients = levelUpCost.map(gameDataCostToIngredient);
+            const ingredients = levelUpCost ? levelUpCost.map(gameDataCostToIngredient) : [];
             return {
               masteryLevel: j + 1,
               ingredients,
@@ -545,7 +568,7 @@ const createOperatorsJson = () => {
       const potentials = (enCharacterTable[id] ?? operator).potentialRanks.map((r) => r.description);
       const className = professionToClass(operator.profession);
 
-      const factions = getFactions(operator);
+      const factions = getFactions(enCharacterTable[id] ?? operator);
 
       const outputOperator = {
         id,
@@ -555,8 +578,9 @@ const createOperatorsJson = () => {
         class: className,
         branch: subProfessionToBranch(operator.subProfessionId, className),
         isCnOnly,
-        factions,
-        pools: getPools(id, rarity, factions),
+        factions: [...factions.main],
+        ...(factions.sub.size > 0 && { factionsHidden: [...factions.sub] }),
+        pools: getPools(id, rarity, [...factions.main, ...factions.sub]),
         skillData,
         moduleData,
         potentials,

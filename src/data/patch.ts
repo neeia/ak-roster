@@ -1,4 +1,38 @@
 const patch = [
+        {
+    version: "3.3.6",
+    date: "June 1, 2026",
+    title: "Images update && planner bugfixes",
+    content: ["We've updated images, operators and fixed some bugs in the planner"],
+    changelog: [
+      "Images are updated upto to latest CN AK anniversary banner",
+      "Operators data is updated upto Monster Hunter 2 Colab",
+      "Bug fixes in planner", 
+      [
+        "Older goals data was merging into current goals, when planner was used on two devices/browsers and setting `Update Goals on Planner Load` was enabled",
+        "New modules didn't appear in operator data after manually completing module goals",
+      ]
+    ],
+  },
+      {
+    version: "3.3.5",
+    date: "December 11, 2025",
+    title: "Images update && IS, RA Archive in Income Tacker",
+    content: ["We've uploaded new images, new options to Income Tracker and Import"],
+    changelog: [
+      "Images updated upto to latest CN AK version (limited banner patch)",
+      "Builder in Income Tracker now has all past IS and RA resources in batches to add to your planner. Check new data options in 'From'",
+      "Added import option to count unused Operator Tokens as potentials on krooster",
+      "Fixes and tweaks:", 
+      [
+        "Factions will priotize global version for released in global operators: order and new factions availability",
+        "Account statistic will now inclule all operators user owns, and wont exclude CN for EN server",
+        "Manual supports editing in profile: now supports can be removed, slots inconsistencies were fixed",
+        "Back button in Lookup is now working, and menu is accessible",
+        "Raidian fixed: can be fully added to roster or goals either manually or via import."
+      ]
+    ],
+  },
     {
     version: "3.3.4",
     date: "October 25, 2025",

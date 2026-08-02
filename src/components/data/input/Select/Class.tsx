@@ -10,7 +10,7 @@ interface Props extends Omit<ToggleButtonGroupProps, "onChange"> {
   onChange: (value: string) => void;
   onBranchesClose: () => void;
   expandedClass: string | null;
-  onHover?: (value: {id: string, title: string} | null) => void;
+  onHover?: (value: { id: string, title: string } | null) => void;
 }
 
 const ClassFilter = ({ value, onChange, onBranchesClose, expandedClass, onHover }: Props) => {
@@ -33,7 +33,7 @@ const ClassFilter = ({ value, onChange, onBranchesClose, expandedClass, onHover 
           display: "grid",
           gridTemplateColumns: { xs: "repeat(4, 1fr)", sm: "repeat(8, 1fr)" },
           width: "100%",
-          gap: 1,
+          gap: 0.5
         }}
       >
         {classList.map((c) => {
@@ -45,11 +45,14 @@ const ClassFilter = ({ value, onChange, onBranchesClose, expandedClass, onHover 
               onChange={() => {
                 onChange(c)
               }}
-              sx={{
-                borderRadius: 1,
-                borderStyle: isClassSelected(c) ? "solid !important" : "unset",
-                borderWidth: isClassSelected(c) ? "0.25rem !important" : "unset"
-              }}
+              sx={(theme) => ({
+                "&:not(._):not(._)": {
+                  borderRadius: 1,
+                },
+                boxShadow: isClassSelected(c)
+                  ? `inset 0 0 0 0.25rem ${theme.palette.primary.main} !important`
+                  : "none",
+              })}
             >
               <Badge
                 badgeContent={branchCount > 0 ? branchCount : 0} color="primary" overlap="circular"
@@ -68,27 +71,27 @@ const ClassFilter = ({ value, onChange, onBranchesClose, expandedClass, onHover 
             height: { xs: "auto", sm: "5.7rem" }, //remove jumpiness with fixed height
             alignContent: "flex-start",
             flexWrap: "wrap",
-            gap: 1,
+            gap: 0.5,
             justifyContent: "center",
-            width: "100%"
+            width: "100%",
           }}
         >
           {branches.map((b) => (
-              <ToggleButton
-                key={b.id}
-                value={b.id}
-                disabled={!isClassSelected(expandedClass || "")}
-                onChange={() => onChange(b.id)}
-                onMouseEnter={() => onHover?.({id: b.id, title: b.name})}
-                onMouseLeave={() => onHover?.(null)}
-                sx={{ borderRadius: 1 }}
-              >
-                <Image width={35} height={35} src={`${imageBase}/subclass/sub_${b.id.toLowerCase()}_icon.webp`} alt={b.name}
-                  sx={{
-                    pointerEvents: "none",
-                  }}
-                />
-              </ToggleButton>
+            <ToggleButton
+              key={b.id}
+              value={b.id}
+              disabled={!isClassSelected(expandedClass || "")}
+              onChange={() => onChange(b.id)}
+              onMouseEnter={() => onHover?.({ id: b.id, title: b.name })}
+              onMouseLeave={() => onHover?.(null)}
+              sx={{ "&:not(._):not(._)": { borderRadius: 1 } }}
+            >
+              <Image width={35} height={35} src={`${imageBase}/subclass/sub_${b.id.toLowerCase()}_icon.webp`} alt={b.name}
+                sx={{
+                  pointerEvents: "none",
+                }}
+              />
+            </ToggleButton>
           ))}
           {expandedClass && <IconButton
             onClick={onBranchesClose}>

@@ -16,7 +16,7 @@ export default function useEventsDefaults(): EventsDefaultsHook {
 
   const [trackerDefaults, setDefaults] = useLocalStorage<TrackerDefaults>("trackerDefaults", {});
 
-  const putDefaults = (updateTime: any, webEventsData: any, eventsData: any,) => {
+  const putDefaults = (updateTime: any, webEventsData: any, eventsData: any, archive: any) => {
 
     //merge with existing "disabled" props
     const mergedEventsData: EventsData = Object.fromEntries(
@@ -33,8 +33,9 @@ export default function useEventsDefaults(): EventsDefaultsHook {
 
     setDefaults({
       lastUpdated: updateTime,
-      webEventsData: webEventsData,
-      eventsData: mergedEventsData
+      webEventsData,
+      eventsData: mergedEventsData,
+      archive
     });
   };
 
@@ -47,10 +48,11 @@ export default function useEventsDefaults(): EventsDefaultsHook {
       const {
         webEventsData,
         eventsData,
-        eventsUpdated
+        eventsUpdated,
+        archive
       } = await response.json();
-      putDefaults(eventsUpdated, webEventsData, eventsData);
-      if (returnData) return { data: { webEventsData, eventsData } }
+      putDefaults(eventsUpdated, webEventsData, eventsData, archive);
+      if (returnData) return { data: { webEventsData, eventsData, archive } }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
     } finally {

@@ -94,7 +94,19 @@ export interface UserData {
     missionRewards: unknown;
     missionGroups: unknown;
   };
-  building: Record<string, unknown>;
+  building: {
+    rooms: {
+      TRAINING?: {
+        [key: string]: {
+          trainee: {
+            charInstId: number;
+            targetSkill: number;
+            state: number;
+          };
+        };
+      };
+    };
+  };
   dexNav: {
     character?: Record<string, { charInstId: number; count: number; classicCount?: number }>;
     formula: unknown;

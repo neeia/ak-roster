@@ -2,7 +2,7 @@ import operatorJson from "data/operators";
 import { OperatorGoalCategory, PlannerGoal } from "types/goal";
 import { LocalStorageSettings } from "types/localStorageSettings";
 import { Operator } from "types/operators/operator";
-import { MAX_LEVEL_BY_RARITY, MAX_SKILL_LEVEL_BY_PROMOTION } from "util/changeOperator";
+import { MAX_LEVEL_BY_RARITY, MAX_SKILL_LEVEL_BY_PROMOTION, MODULE_REQ_BY_RARITY } from "util/changeOperator";
 
 export const checkPlannerGoalRequirements = (goal: PlannerGoal, op: Operator, settings: LocalStorageSettings): boolean => {
 
@@ -59,7 +59,7 @@ export const checkPlannerGoalRequirements = (goal: PlannerGoal, op: Operator, se
             const currentModuleLevel = op.modules[goal.moduleId] ?? 0;
             return (
                 op.elite === 2 &&
-                (ignoreLevel || op.level >= 60) &&
+                (ignoreLevel || op.level >= MODULE_REQ_BY_RARITY[rarity]) &&
                 currentModuleLevel === goal.moduleLevel - 1
             );
         }

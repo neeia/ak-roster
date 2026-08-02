@@ -198,8 +198,8 @@ const SupportBlock = (props: Props) => {
             if (!op.skillData?.[i]) return <SpaceFiller key={i} />;
             return (
               <Image
-                src={`${imageBase}/rank/${!op.masteries[i] ? op.skill_level : `m-${op.masteries[i]}`}.webp`}
-                alt={!op.masteries[i] ? `Skill ${i + 1} Rank ${op.skill_level}` : `Mastery ${op.masteries[i]}`}
+                src={`${imageBase}/rank/${!op.masteries?.[i] ? op.skill_level : `m-${op.masteries[i]}`}.webp`}
+                alt={!op.masteries?.[i] ? `Skill ${i + 1} Rank ${op.skill_level}` : `Mastery ${op.masteries[i]}`}
                 key={i}
                 sx={{
                   opacity: op.elite >= i ? 1 : 0.25,
@@ -225,7 +225,7 @@ const SupportBlock = (props: Props) => {
           {[...Array(3)].map((_, i) => {
             if (!op.moduleData?.[i]) return <SpaceFiller key={i} />;
             const mod = op.moduleData[i];
-            const modLevel = op.modules[mod.moduleId];
+            const modLevel = op.modules?.[mod.moduleId] ?? null;
             return (
               <Box
                 key={mod.moduleId}
@@ -249,7 +249,7 @@ const SupportBlock = (props: Props) => {
                 <Typography
                   zIndex={1}
                   component="abbr"
-                  title={`Stage ${op.modules[mod.moduleId]}`}
+                  title={`Stage ${op.modules?.[mod.moduleId] ?? 0}`}
                   sx={{
                     fontSize: "10px",
                     position: "absolute",

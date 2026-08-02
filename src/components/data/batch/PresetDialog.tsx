@@ -21,7 +21,7 @@ import Preset from "types/operators/presets";
 import { clamp, MAX_LEVEL_BY_RARITY } from "util/changeOperator";
 import Potential from "../input/Select/Potential";
 
-export const modTypes = ["X", "Y", "D", "A"];
+export const modTypes = ["X", "Y", "D", "A", "B"];
 const isNumber = (value: any) => typeof value === "number";
 
 interface Props {

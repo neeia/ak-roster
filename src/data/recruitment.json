@@ -398,6 +398,44 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1008,6 +1046,41 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1466,6 +1539,30 @@
         "tags": [
           "Fast-Redeploy",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -2154,6 +2251,17 @@
         ]
       },
       {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_385_finlpp",
         "name": "Purestream",
         "rarity": 4,
@@ -2353,6 +2461,17 @@
           "Summon",
           "Ranged",
           "Vanguard"
+        ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
         ]
       },
       {
@@ -2603,6 +2722,17 @@
       {
         "id": "char_328_cammou",
         "name": "Click",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
+        ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
         "rarity": 4,
         "tags": [
           "DPS",
@@ -2901,6 +3031,18 @@
         "name": "Flint",
         "rarity": 5,
         "tags": [
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
           "DPS",
           "Melee",
           "Guard",
@@ -3318,6 +3460,17 @@
         ]
       },
       {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_235_jesica",
         "name": "Jessica",
         "rarity": 4,
@@ -3542,6 +3695,18 @@
         "tags": [
           "Fast-Redeploy",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -4168,6 +4333,17 @@
         ]
       },
       {
+        "id": "char_469_indigo",
+        "name": "Indigo",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
+        ]
+      },
+      {
         "id": "char_4188_confes",
         "name": "CONFESS-47",
         "rarity": 1,
@@ -4615,6 +4791,41 @@
         ]
       },
       {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_141_nights",
         "name": "Haze",
         "rarity": 4,
@@ -4837,6 +5048,17 @@
           "DPS",
           "Ranged",
           "Sniper"
+        ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
         ]
       },
       {
@@ -5990,6 +6212,30 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_127_estell",
         "name": "Estelle",
         "rarity": 4,
@@ -6480,6 +6726,44 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6897,6 +7181,44 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -6943,6 +7265,31 @@
         "tags": [
           "DPS",
           "Crowd-Control",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
           "Ranged",
           "Caster",
           "Top Operator",
@@ -7174,6 +7521,19 @@
         "tags": [
           "Healing",
           "Support",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
           "Ranged",
           "Medic",
           "Top Operator",
@@ -7413,6 +7773,19 @@
           "AoE",
           "Support",
           "Crowd-Control",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
           "Ranged",
           "Caster",
           "Top Operator",
@@ -7886,6 +8259,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8003,6 +8388,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8093,6 +8491,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8178,6 +8589,30 @@
           "DPS",
           "Ranged",
           "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Summon,Top Operator": {
+    "tags": [
+      "Summon",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
           "Top Operator",
           "Senior Operator"
         ]
@@ -8702,6 +9137,30 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -9013,6 +9472,17 @@
           "Caster",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -9261,6 +9731,18 @@
           "Guard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -9454,6 +9936,17 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -9545,6 +10038,18 @@
         "tags": [
           "Fast-Redeploy",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -10253,6 +10758,41 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -10925,6 +11465,30 @@
           "Survival",
           "Ranged",
           "Supporter",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
           "Senior Operator"
         ]
       }
@@ -11760,6 +12324,18 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_127_estell",
         "name": "Estelle",
         "rarity": 4,
@@ -11997,6 +12573,18 @@
         "tags": [
           "Fast-Redeploy",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -12633,6 +13221,30 @@
         "tags": [
           "Fast-Redeploy",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -13423,6 +14035,30 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_127_estell",
         "name": "Estelle",
         "rarity": 4,
@@ -13580,6 +14216,17 @@
       {
         "id": "char_328_cammou",
         "name": "Click",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
+        ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
         "rarity": 4,
         "tags": [
           "DPS",
@@ -13885,6 +14532,17 @@
         "rarity": 5,
         "tags": [
           "AoE",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
           "Ranged",
           "Sniper",
           "Senior Operator"
@@ -14357,6 +15015,17 @@
           "Ranged",
           "Caster"
         ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
+        ]
       }
     ],
     "guarantees": [
@@ -14518,6 +15187,17 @@
         ]
       },
       {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_141_nights",
         "name": "Haze",
         "rarity": 4,
@@ -14612,6 +15292,17 @@
           "DPS",
           "Ranged",
           "Sniper"
+        ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
         ]
       },
       {
@@ -15310,6 +16001,17 @@
           "Ranged",
           "Caster"
         ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
+        ]
       }
     ],
     "guarantees": [
@@ -15371,6 +16073,17 @@
       {
         "id": "char_328_cammou",
         "name": "Click",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
+        ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
         "rarity": 4,
         "tags": [
           "DPS",
@@ -15958,6 +16671,18 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_130_doberm",
         "name": "Dobermann",
         "rarity": 4,
@@ -16226,6 +16951,18 @@
         "tags": [
           "AoE",
           "Survival",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -16636,6 +17373,17 @@
         ]
       },
       {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_235_jesica",
         "name": "Jessica",
         "rarity": 4,
@@ -16981,6 +17729,18 @@
         ]
       },
       {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_272_strong",
         "name": "Jaye",
         "rarity": 4,
@@ -17232,6 +17992,18 @@
       {
         "id": "char_215_mantic",
         "name": "Manticore",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
         "rarity": 5,
         "tags": [
           "DPS",
@@ -18082,6 +18854,17 @@
           "Ranged",
           "Caster"
         ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
+        ]
       }
     ],
     "guarantees": [
@@ -18671,6 +19454,30 @@
       {
         "id": "char_215_mantic",
         "name": "Manticore",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
         "rarity": 5,
         "tags": [
           "DPS",
@@ -19414,6 +20221,44 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -19461,6 +20306,31 @@
         "tags": [
           "DPS",
           "Crowd-Control",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
           "Ranged",
           "Caster",
           "Top Operator",
@@ -19695,6 +20565,19 @@
         "tags": [
           "Healing",
           "Support",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
           "Ranged",
           "Medic",
           "Top Operator",
@@ -19939,6 +20822,19 @@
           "AoE",
           "Support",
           "Crowd-Control",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
           "Ranged",
           "Caster",
           "Top Operator",
@@ -20415,6 +21311,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20534,6 +21442,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20626,6 +21547,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20714,6 +21648,31 @@
           "DPS",
           "Ranged",
           "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Senior Operator,Summon,Top Operator": {
+    "tags": [
+      "Senior Operator",
+      "Summon",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
           "Top Operator",
           "Senior Operator"
         ]
@@ -21938,6 +22897,31 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -21971,6 +22955,19 @@
         "tags": [
           "Healing",
           "Support",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
           "Ranged",
           "Medic",
           "Top Operator",
@@ -22136,6 +23133,19 @@
           "AoE",
           "Support",
           "Crowd-Control",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
           "Ranged",
           "Caster",
           "Top Operator",
@@ -22308,6 +23318,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22328,6 +23350,31 @@
         "tags": [
           "AoE",
           "Debuff",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Defense,Ranged,Top Operator": {
+    "tags": [
+      "Defense",
+      "Ranged",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
           "Ranged",
           "Caster",
           "Top Operator",
@@ -22371,6 +23418,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22408,6 +23468,31 @@
           "DPS",
           "Ranged",
           "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Ranged,Summon,Top Operator": {
+    "tags": [
+      "Ranged",
+      "Summon",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
           "Top Operator",
           "Senior Operator"
         ]
@@ -22543,6 +23628,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22607,6 +23705,18 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_472_pasngr",
+        "name": "Passenger",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22627,6 +23737,31 @@
         "tags": [
           "AoE",
           "Debuff",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Caster,Defense,Top Operator": {
+    "tags": [
+      "Caster",
+      "Defense",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
           "Ranged",
           "Caster",
           "Top Operator",
@@ -23204,6 +24339,44 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "Medic,Summon,Top Operator": {
+    "tags": [
+      "Medic",
+      "Summon",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -23766,6 +24939,31 @@
         "tags": [
           "AoE",
           "Debuff",
+          "Ranged",
+          "Caster",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
+  "AoE,Defense,Top Operator": {
+    "tags": [
+      "AoE",
+      "Defense",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_426_billro",
+        "name": "Carnelian",
+        "rarity": 6,
+        "tags": [
+          "AoE",
+          "Defense",
           "Ranged",
           "Caster",
           "Top Operator",
@@ -24485,6 +25683,31 @@
       6
     ]
   },
+  "Healing,Summon,Top Operator": {
+    "tags": [
+      "Healing",
+      "Summon",
+      "Top Operator"
+    ],
+    "operators": [
+      {
+        "id": "char_003_kalts",
+        "name": "Kal'tsit",
+        "rarity": 6,
+        "tags": [
+          "Summon",
+          "Healing",
+          "Ranged",
+          "Medic",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      }
+    ],
+    "guarantees": [
+      6
+    ]
+  },
   "Healing,Support,Top Operator": {
     "tags": [
       "Healing",
@@ -24751,6 +25974,18 @@
           "Guard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -24843,6 +26078,18 @@
         "tags": [
           "Fast-Redeploy",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -25251,6 +26498,30 @@
         "tags": [
           "Fast-Redeploy",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -25665,6 +26936,30 @@
           "Guard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -25927,6 +27222,17 @@
         "rarity": 5,
         "tags": [
           "AoE",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
           "Ranged",
           "Sniper",
           "Senior Operator"
@@ -26267,6 +27573,17 @@
           "DPS",
           "Ranged",
           "Caster",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
           "Senior Operator"
         ]
       }
@@ -27134,6 +28451,18 @@
           "Guard",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -27226,6 +28555,18 @@
         "tags": [
           "AoE",
           "Survival",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
           "Melee",
           "Guard",
           "Senior Operator"
@@ -27473,6 +28814,17 @@
           "Sniper",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -27641,6 +28993,18 @@
           "Specialist",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -27801,6 +29165,18 @@
       {
         "id": "char_215_mantic",
         "name": "Manticore",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
         "rarity": 5,
         "tags": [
           "DPS",
@@ -28775,6 +30151,30 @@
       {
         "id": "char_215_mantic",
         "name": "Manticore",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
         "rarity": 5,
         "tags": [
           "DPS",
@@ -30047,6 +31447,18 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_130_doberm",
         "name": "Dobermann",
         "rarity": 4,
@@ -30326,6 +31738,18 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_127_estell",
         "name": "Estelle",
         "rarity": 4,
@@ -30457,6 +31881,18 @@
         "tags": [
           "Fast-Redeploy",
           "DPS",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
           "Melee",
           "Specialist",
           "Senior Operator"
@@ -30721,6 +32157,18 @@
       {
         "id": "char_215_mantic",
         "name": "Manticore",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
         "rarity": 5,
         "tags": [
           "DPS",
@@ -31544,6 +32992,30 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_289_gyuki",
         "name": "Matoimaru",
         "rarity": 4,
@@ -31837,6 +33309,17 @@
           "Ranged",
           "Caster"
         ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
+        ]
       }
     ],
     "guarantees": [
@@ -31899,6 +33382,17 @@
       {
         "id": "char_328_cammou",
         "name": "Click",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
+        ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
         "rarity": 4,
         "tags": [
           "DPS",
@@ -32394,6 +33888,17 @@
       {
         "id": "char_365_aprl",
         "name": "April",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Ranged",
+          "Sniper",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_363_toddi",
+        "name": "Toddifons",
         "rarity": 5,
         "tags": [
           "DPS",
@@ -33157,6 +34662,17 @@
           "Ranged",
           "Caster"
         ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
+        ]
       }
     ],
     "guarantees": [
@@ -33599,6 +35115,17 @@
       {
         "id": "char_328_cammou",
         "name": "Click",
+        "rarity": 4,
+        "tags": [
+          "DPS",
+          "Crowd-Control",
+          "Ranged",
+          "Caster"
+        ]
+      },
+      {
+        "id": "char_469_indigo",
+        "name": "Indigo",
         "rarity": 4,
         "tags": [
           "DPS",
@@ -34094,6 +35621,18 @@
         ]
       },
       {
+        "id": "char_475_akafyu",
+        "name": "Akafuyu",
+        "rarity": 5,
+        "tags": [
+          "Survival",
+          "DPS",
+          "Melee",
+          "Guard",
+          "Senior Operator"
+        ]
+      },
+      {
         "id": "char_289_gyuki",
         "name": "Matoimaru",
         "rarity": 4,
@@ -34479,6 +36018,18 @@
       {
         "id": "char_215_mantic",
         "name": "Manticore",
+        "rarity": 5,
+        "tags": [
+          "DPS",
+          "Survival",
+          "Melee",
+          "Specialist",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_478_kirara",
+        "name": "Kirara",
         "rarity": 5,
         "tags": [
           "DPS",

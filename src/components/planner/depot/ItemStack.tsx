@@ -21,7 +21,7 @@ const ItemStack: React.FC<ItemStackProps> = (props) => {
   const itemBase = (
     <ItemBase {...rest}>
       {(upcomingRawQuantity ?? 0) > 0 && (
-        <Tooltip arrow placement="top" title={<Typography>Income upto selected event<br/>"added" to owned, decresing needed</Typography>}>
+        <Tooltip arrow placement="top" title={<Typography>Income upto selected event<br/>"added" to owned, decreasing needed</Typography>}>
           <Typography
             component="span"
             sx={{

@@ -9,21 +9,26 @@ import OperatorSearch from "components/planner/OperatorSearch";
 
 interface Props {
   supports: OperatorSupport[];
-  setSupports: (newSupport: OperatorSupport) => Promise<void>;
+  setSupports: (newSupport: OperatorSupport) => void;
+  removeSupport: (slot: number) => void;
 }
 const SupportSelection = (props: Props) => {
-  const { supports, setSupports } = props;
+  const { supports, setSupports, removeSupport } = props;
 
   const [operators] = useOperators();
   const [index, setIndex] = useState<number>(0);
-  const [input, setInput] = useState<string>(supports[index]?.op_id);
+  const [input, setInput] = useState<string | null>(supports.find((s) => s.slot == index)?.op_id ?? null);
 
   const [open, setOpen] = useState<boolean>(false);
 
   const theme = useTheme();
   const fullScreen = !useMediaQuery(theme.breakpoints.up("sm"));
 
-  const setSupport = (value: string) => {
+  const setSupport = (value: string | null) => {
+    if (!value) {
+      removeSupport(index)
+      return;
+    }
     const support: OperatorSupport = {
       op_id: value,
       slot: index,
@@ -62,7 +67,7 @@ const SupportSelection = (props: Props) => {
               onClick={() => {
                 setIndex(i);
                 setOpen(true);
-                setInput(supports[index]?.op_id);
+                setInput(supports.find((s) => s.slot == i)?.op_id ?? null);
               }}
             />
           );
@@ -72,7 +77,7 @@ const SupportSelection = (props: Props) => {
         open={open}
         onClose={() => {
           setOpen(false);
-          setInput(supports[index]?.op_id);
+          setInput(supports.find((s) => s.slot == index)?.op_id ?? null);
         }}
         fullScreen={fullScreen}
         fullWidth
@@ -82,8 +87,8 @@ const SupportSelection = (props: Props) => {
         <DialogContent>
           <OperatorSearch
             sx={{ mt: 1 }}
-            value={operatorJson[input]}
-            onChange={(op: OperatorData | null) => (op ? setInput(op.id) : null)}
+            value={input ? operatorJson[input] : null}
+            onChange={(op: OperatorData | null) => setInput(op?.id ?? null)}
             filter={filter}
           />
         </DialogContent>
@@ -92,7 +97,7 @@ const SupportSelection = (props: Props) => {
             variant="neutral"
             onClick={() => {
               setOpen(false);
-              setInput(supports[index]?.op_id);
+              setInput(supports.find((s) => s.slot == index)?.op_id ?? null);
             }}
           >
             Cancel
@@ -101,7 +106,7 @@ const SupportSelection = (props: Props) => {
             type="submit"
             variant="contained"
             onClick={() => {
-              if (input in operatorJson) {
+              if (!input || input in operatorJson) {
                 setSupport(input);
                 setOpen(false);
               }

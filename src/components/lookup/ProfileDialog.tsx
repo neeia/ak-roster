@@ -292,7 +292,7 @@ const ProfileDialog = (props: Props) => {
                       .map((s) => {
                         if (Object.keys(data.roster).length == 0 && !s) return null;
                         const op = data.roster[s.op_id];
-                        return <SupportBlock key={op.op_id} op={{ ...op, ...operatorJson[s.op_id] }} />;
+                        return <SupportBlock key={s.op_id} op={{ ...op, ...operatorJson[s.op_id] }} />;
                       })}
                   </Box>
                 </Box>

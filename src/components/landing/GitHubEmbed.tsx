@@ -6,11 +6,12 @@ import Image from "components/base/Image";
 import imageBase from "util/imageBase";
 
 const GITH_COLOR = "#50505A";
-const repo = "https://github.com/neeia/ak-roster-next";
+const repo = "https://github.com/neeia/ak-roster";
 const GitHubEmbed = () => {
   return (
     <Box>
       <Link
+        href={repo}
         sx={{
           mt: 2,
           ":hover": {

@@ -42,6 +42,7 @@ export interface ImportSettings {
   importDepot: boolean;
   importServer: "en" | "kr" | "jp";
   refreshGoals: boolean;
+  applyPotentials: boolean;
 }
 
 const depotSettings: DepotSettings = {
@@ -70,6 +71,7 @@ const importSettings: ImportSettings = {
   importDepot: true,
   importServer: "en",
   refreshGoals: true,
+  applyPotentials: false,
 };
 
 export const defaultSettings: LocalStorageSettings = {

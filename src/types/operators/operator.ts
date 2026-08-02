@@ -44,6 +44,7 @@ export interface OperatorData {
   branch: Branch;
   isCnOnly: boolean;
   factions: string[];
+  factionsHidden?: string[];
   pools: string[];
   skillData?: SkillData[];
   moduleData?: ModuleData[];

@@ -71,6 +71,7 @@ interface Props extends GoalFilterHook, GoalsHook, GoalGroupsHook {
   roster: Roster,
   onChange: (op: Operator) => void,
   setSettings: (settings: LocalStorageSettings | ((settings: LocalStorageSettings) => LocalStorageSettings)) => void;
+  isLoaded: boolean;
 }
 
 const PlannerGoals = (props: Props) => {
@@ -83,6 +84,7 @@ const PlannerGoals = (props: Props) => {
     groupedGoalsMap,
     roster,
     onChange,
+    isLoaded,
     ...rest
   } = props;
   const { goals, updateGoals, removeAllGoals, removeAllGoalsFromGroup, removeAllGoalsFromOperator, changeLocalGoalGroup } = rest;
@@ -448,7 +450,10 @@ const PlannerGoals = (props: Props) => {
               _goal.modules_from = null;
               _goal.modules_to = null;
             }
-            if (op.modules[moduleId] < plannerGoal.moduleLevel) {
+            //!op.modules[moduleId] - new module check: it wasn't present in op data - pass to update op.
+            //OR
+            //current mod lvl less than goal - pass to update op 
+            if (!op.modules[moduleId] || op.modules[moduleId] < plannerGoal.moduleLevel) {
               if (op.elite < 2) op = changePromotion(op, 2);
               if (op.level < MODULE_REQ_BY_RARITY[opData.rarity]) {
                 op = changeLevel(op, MODULE_REQ_BY_RARITY[opData.rarity]);
@@ -728,11 +733,11 @@ const PlannerGoals = (props: Props) => {
 
   //once on page-load > after useEffects from useOps useGoals
   useEffect(() => {
-    if (settings.plannerSettings.autoRefreshGoals ?? true) {
+    if (isLoaded && (settings.plannerSettings.autoRefreshGoals ?? true)) {
       handleRefreshAllGoals();
     }
   }
-    , []);
+    , [isLoaded]);
 
   return (
     <>

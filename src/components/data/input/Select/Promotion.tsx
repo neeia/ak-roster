@@ -32,7 +32,6 @@ const Promotion = memo((props: Props) => {
       sx={{
         display: "flex",
         justifyContent: "center",
-        borderRadius: 1,
         width: "min-content",
         height: "min-content",
         ...sx,
@@ -47,6 +46,7 @@ const Promotion = memo((props: Props) => {
             value={n}
             onChange={() => onChange(n)}
             sx={{
+              "&:not(._):not(._)": { borderRadius: 1 },
               "& img": { filter: "drop-shadow(0px 0px 1px #000)" },
             }}
           >

@@ -24,7 +24,7 @@ export interface AccountMutateProps {
 
 const Profile: NextPage = () => {
   const [roster] = useOperators();
-  const [supports, setSupports] = useSupports();
+  const [supports, setSupports, removeSupport] = useSupports();
   const [account, setAccount] = useAccount();
   const [open, setOpen] = useState(false);
 
@@ -76,7 +76,7 @@ const Profile: NextPage = () => {
         </Box>
         <Divider />
         <Assistant {...accProps} />
-        <SupportSelection supports={supports} setSupports={setSupports} />
+        <SupportSelection supports={supports} setSupports={setSupports} removeSupport={removeSupport} />
         <Divider />
         <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
           Connections
