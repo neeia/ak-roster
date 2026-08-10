@@ -487,6 +487,12 @@
       "skinName": null,
       "avatarId": "char_4051_akkord_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4051_akkord@summer#23",
+      "skinName": "悠然假日 HD91",
+      "avatarId": "char_4051_akkord_summer#23",
+      "sortId": 245
     }
   ],
   "char_328_cammou": [
