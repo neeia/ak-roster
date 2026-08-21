@@ -49319,6 +49319,7 @@
     },
     "isCnOnly": false,
     "factions": [
+      "student",
       "ursus"
     ],
     "pools": [
@@ -52655,12 +52656,9 @@
       "id": "splashcaster",
       "name": "Splash"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "siracusa"
-    ],
-    "factionsHidden": [
-      "leithanien"
     ],
     "pools": [
       "Standard"
@@ -52669,7 +52667,7 @@
       {
         "skillId": "skchr_liesel_1",
         "iconId": null,
-        "skillName": "合奏起拍",
+        "skillName": "Conductor's Cue",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -52733,7 +52731,7 @@
       {
         "skillId": "skchr_liesel_2",
         "iconId": null,
-        "skillName": "直到终曲",
+        "skillName": "Al Fine",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -52797,7 +52795,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“暮约”",
+        "moduleName": "'Dusk Covenant'",
         "moduleId": "uniequip_002_liesel",
         "typeName": "SPC-Y",
         "stages": [
@@ -52867,15 +52865,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+32",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +32",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -130383,7 +130381,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "毒医残章",
+        "moduleName": "Remnant of the Malpractice",
         "moduleId": "uniequip_003_haak",
         "typeName": "GEE-Y",
         "stages": [
@@ -130453,7 +130451,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -137815,7 +137813,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "想要留下的生命",
+        "moduleName": "Life I Want to Retain",
         "moduleId": "uniequip_003_agoat2",
         "typeName": "WDM-Y",
         "stages": [
@@ -137885,7 +137883,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -144726,7 +144724,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "未曾风化",
+        "moduleName": "Unweathered",
         "moduleId": "uniequip_003_jesca2",
         "typeName": "SPT-Y",
         "stages": [
@@ -144796,7 +144794,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -148240,7 +148238,7 @@
       "id": "fighter",
       "name": "Fighter"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "siracusa"
     ],
@@ -148251,7 +148249,7 @@
       {
         "skillId": "skchr_demetr_1",
         "iconId": null,
-        "skillName": "家主的余裕",
+        "skillName": "A Don's Plenty",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -148315,7 +148313,7 @@
       {
         "skillId": "skchr_demetr_2",
         "iconId": null,
-        "skillName": "军师的手段",
+        "skillName": "An Advisor's Tricks",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -148379,7 +148377,7 @@
       {
         "skillId": "skchr_demetr_3",
         "iconId": null,
-        "skillName": "清算",
+        "skillName": "Riscossione",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -148443,7 +148441,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "实用的工具",
+        "moduleName": "The Instrument",
         "moduleId": "uniequip_002_demetr",
         "typeName": "FGT-Y",
         "stages": [
@@ -148513,15 +148511,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+24",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
