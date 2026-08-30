@@ -40,7 +40,7 @@ export interface ImportSettings {
   importProfile: boolean;
   importOperators: boolean;
   importDepot: boolean;
-  importServer: "en" | "kr" | "jp";
+  importServer: "en" | "kr" | "jp"  | "cn";
   refreshGoals: boolean;
   applyPotentials: boolean;
 }

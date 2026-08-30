@@ -1,4 +1,4 @@
-import { UserData } from "types/arknightsApiTypes/apiTypes";
+import { TokenData, UserData } from "types/arknightsApiTypes/apiTypes";
 import React, { memo, useEffect, useState } from "react";
 import {
   Alert,
@@ -24,7 +24,6 @@ import useDepot from "util/hooks/useDepot";
 import DepotItem from "types/depotItem";
 import useSupports from "util/hooks/useSupports";
 import useAccount from "util/hooks/useAccount";
-import supabase from "supabase/supabaseClient";
 import useOperators from "util/hooks/useOperators";
 import operatorJson from "data/operators";
 import { enqueueSnackbar } from "notistack";
@@ -33,6 +32,7 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import useGoals from "util/hooks/useGoals";
 import changeGoal from "util/changeGoal";
 import { getMaxPotentialById } from "util/changeOperator";
+import { buildSKLandTokenData } from "util/hgApi/sklandAuth"
 
 const EXCLUDED_ITEMS: string[] = [];
 const GameImport = memo(() => {
@@ -41,17 +41,31 @@ const GameImport = memo(() => {
   const [code, setCode] = useState("");
   const [confirm, setConfirm] = useState(false);
   const [isL1Import, setIsL1Import] = useState<{ error: boolean, email: null | string }>({ error: false, email: null });
+  const [collapse, setCollapse] = useState(true);
+
   const [_settings, setSettings] = useSettings();
   const settings = _settings.importSettings;
+
+  //cn import stuff
+  const currentServer = (settings?.importServer ?? "en").toLowerCase();
+  const isCnServer = currentServer === "cn";
+  const sklandCommand = "copy(localStorage.getItem('SK_OAUTH_CRED_KEY')+','+localStorage.getItem('SK_TOKEN_CACHE_KEY'))";
+
   useEffect(() => {
     const oldToken = localStorage.getItem("token") != null;
     if (oldToken) localStorage.removeItem("token");
   });
 
+  // Clear input fields when switching between CN and Non-CN servers
+  useEffect(() => {
+    setEmail("");
+    setCode("");
+  }, [isCnServer]);
+
   const [hasToken, setHasToken] = useState(localStorage.getItem("token_new") != null);
   const [rememberLogin, setRememberLogin] = useState(localStorage.getItem("token_new") != null);
 
-  const [_roster] = useOperators();
+  const [_roster, , , overwriteOperators] = useOperators();
   const { goals, updateGoals } = useGoals();
 
   const [user, setAccount] = useAccount();
@@ -64,44 +78,96 @@ const GameImport = memo(() => {
     fetch(`/api/arknights/sendAuthMail?mail=${encodedMail}&server=${settings.importServer}`);
   };
 
-  const login = async (email: string, code: string) => {
-    enqueueSnackbar("Logging in...");
-    const encodedMail = encodeURIComponent(email);
-    const result = await fetch(
-      `/api/arknights/getData?mail=${encodedMail}&code=${code}&server=${settings.importServer}`
-    );
-    if (result.ok) {
-      const userData = (await result.json()) as UserData;
+  const login = async (inputStr: string, code: string) => {
+    enqueueSnackbar("Logging in...", { variant: "info" });
+
+    try {
+      let userData: UserData;
+
+      if (isCnServer) {
+        // 1. Build SKLand TokenData structure from raw credential string
+        const sklandTokenData = buildSKLandTokenData(inputStr);
+
+        const response = await fetch(
+          `/api/arknights/getData?server=${settings.importServer}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(sklandTokenData),
+          }
+        );
+
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.error || "Error retrieving CN server data.");
+        }
+
+        userData = (await response.json()) as UserData;
+      } else {
+        // Non-CN login via mail & code query params
+        const encodedMail = encodeURIComponent(inputStr);
+        const response = await fetch(
+          `/api/arknights/getData?mail=${encodedMail}&code=${code}&server=${settings.importServer}`
+        );
+
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.error || "Error retrieving data.");
+        }
+
+        userData = (await response.json()) as UserData;
+      }
+
       await processGameData(userData);
-    } else {
-      enqueueSnackbar("Error retrieving data.", { variant: "error" });
+      enqueueSnackbar("Successfully synchronized data!", { variant: "success" });
+    } catch (error: any) {
+      enqueueSnackbar(error?.message || "Error retrieving data.", { variant: "error" });
     }
   };
 
   const loginWithToken = async () => {
     enqueueSnackbar("Logging in...", { variant: "info" });
-    const tokenData = localStorage.getItem("token_new");
-    const result = await fetch(`/api/arknights/getData?server=${settings.importServer}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: tokenData,
-    });
+    const rawTokenData = localStorage.getItem("token_new");
 
-    if (result.ok) {
-      const userData = (await result.json()) as UserData;
+    if (!rawTokenData) {
+      enqueueSnackbar("No saved credentials found.", { variant: "error" });
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `/api/arknights/getData?server=${settings.importServer}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: rawTokenData,
+        }
+      );
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || "Error retrieving data.");
+      }
+
+      const userData = (await response.json()) as UserData;
       await processGameData(userData);
-    } else {
-      enqueueSnackbar("Error retrieving data.", { variant: "error" });
+      enqueueSnackbar("Successfully synchronized data!", { variant: "success" });
+    } catch (error: any) {
+      enqueueSnackbar(error?.message || "Error retrieving data.", { variant: "error" });
     }
   };
 
   async function processGameData(userData: UserData) {
     //sync on lvl1 account case. Show error and point to instructions
     if (userData.status.level === 1) {
-      setIsL1Import({ error: true, email: email });
-      setConfirm(false);
+      if (!isCnServer) {
+        setIsL1Import({ error: true, email: email });
+        setConfirm(false);
+      }
       enqueueSnackbar("Error: Retrieved Level 1 Account. Read 'How to fix import' instructions", { variant: "error", autoHideDuration: 10000 });
       return;
     } else {
@@ -263,7 +329,7 @@ const GameImport = memo(() => {
       const trainingRoom = userData.building.rooms.TRAINING;
       const roomData = trainingRoom ? Object.values(trainingRoom)[0] : null;
       const trainee = roomData?.trainee;
-      
+
       if (trainee && trainee.charInstId !== -1 && trainee.targetSkill !== -1 && trainee.state !== 3) {
         const traineeId = userData.troop.chars[trainee.charInstId]?.charId;
         const operator = operators.find((o) => o.op_id === traineeId);
@@ -273,7 +339,7 @@ const GameImport = memo(() => {
         }
       }
 
-      await supabase.from("operators").upsert(operators);
+      overwriteOperators(operators); //delete old and insert new, through delete-incert new function
 
       if (settings.refreshGoals) {
         const _goals = goals.map((g) => {
@@ -295,75 +361,186 @@ const GameImport = memo(() => {
           depotData.push(item);
         }
       }
-      depotData.push({ material_id: "4001", stock: userData.status.gold });
-      await setDepot(depotData, true);
+      if (userData.status.gold) {
+        depotData.push({ material_id: "4001", stock: userData.status.gold });
+      }
+      setDepot(depotData, true);
     }
     enqueueSnackbar("Data imported.", { variant: "success" });
   }
 
-  const [collapse, setCollapse] = useState(true);
-
   const isNewUser = (user?.level ?? 0) < 5;
   const showEmailAlert = isNewUser || isL1Import.error;
 
+  const renderHowItWorksContent = (isCnServer: boolean) => {
+    if (isCnServer) {
+      return (
+        <>
+          <Typography sx={{ fontSize: "14px" }}>
+            Data for CN server accounts is fetched using SKLand web authorization credentials:
+          </Typography>
+          <Box component="ol" sx={{ marginBlock: 1, paddingInlineStart: 2 }}>
+            <Box component="li">
+              Your SKLand authorization credentials are passed to our server to communicate directly with the official SKLand API.
+            </Box>
+            <Box component="li">
+              These credentials strictly represent your SKLand web session and are only used to fetch account data from skland.
+            </Box>
+            <Box component="li">
+              If selected, web session credentials are stored locally inside your browser storage for future updates; otherwise, they are discarded immediately after syncing.
+            </Box>
+          </Box>
+          <Typography sx={{ color: "warning.main", fontWeight: "bold", mt: 1 }}>
+            Credential Lifespan & Invalidation:
+          </Typography>
+          <Typography sx={{ fontSize: "14px", color: "text.primary" }}>
+            * SKLand credentials have short lived lifecycle. You will need to re-extract them when they expire.
+            <br />
+            * Logging out of SKLand in your browser immediately invalidates active tokens.
+          </Typography>
+        </>
+      );
+    }
+
+    return (
+      <>
+        <Typography sx={{ fontSize: "14px" }}>
+          Krooster imitates the login process that the game client goes through when you log in.
+        </Typography>
+        <Box component="ol" sx={{ marginBlock: 1, paddingInlineStart: 2 }}>
+          <Box component="li">
+            Your email is sent to our servers, which send a request to the game servers to send you an email with a 6-digit code.
+          </Box>
+          <Box component="li">
+            Once the code is submitted on this page, another request is sent to our servers, which exchange your email and the code with the game servers to receive an access token.
+          </Box>
+          <Box component="li">
+            The server then immediately exchanges this access token with the game server to access the account data.
+          </Box>
+          <Box component="li">
+            Finally, the account data, along with the access token, is returned to the client (the browser) to be processed.
+            <Box component="ul">
+              <Box component="li">
+                If selected, the access token itself is safely stored within the browser's storage. Otherwise, it is discarded.
+              </Box>
+              <Box component="li">
+                Meanwhile, the rest of the data (as selected below) is processed into the format that the site uses, and uploaded to the database.
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </>
+    );
+  };
+  const renderEmailAlertContent = (isCnServer: boolean, isL1Import: any) => {
+    if (isCnServer) {
+      return (
+        <Typography variant="body2">
+          Open <b>skland.com</b> in browser, log-in to your account. Press F12 (or Right-Click → Inspect) to open Developer Tools, open Console tab, paste this command into the input prompt at the bottom (next to "&gt;" or "&gt;&gt;" symbols):
+          <Box
+            component="code"
+            onClick={() => navigator.clipboard.writeText(sklandCommand)}
+            sx={{
+              display: "block",
+              bgcolor: "action.hover",
+              p: 1,
+              my: 1,
+              borderRadius: 1,
+              fontFamily: "monospace",
+              fontSize: "12px",
+              userSelect: "all",
+              cursor: "pointer",
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-all",
+              position: "relative",
+              transition: "background-color 0.2s",
+              "&:hover": {
+                bgcolor: "action.selected",
+              },
+              "&::after": {
+                content: '"(Click to copy)"',
+                display: "inline-block",
+                ml: 1,
+                fontSize: "11px",
+                fontStyle: "italic",
+                color: "text.secondary",
+                fontFamily: "sans-serif",
+              },
+            }}
+          >
+            {sklandCommand}
+          </Box>
+          Press Enter. After command runs credentials string will be copied, paste it into the field below.
+          <i> Browser may ask you to type <b>"allow pasting"</b> before pasting into console. Type it, and retry.</i>
+        </Typography>
+      );
+    }
+
+    return !isL1Import?.error ? (
+      <>
+        <Typography component="span" variant="body2" sx={{ color: "error.main" }}>
+          Warning:
+        </Typography>
+        <Typography component="span" variant="body2">
+          {" "}Import will not work with Google, Apple, Facebook or Recovery Email from "Bind Other Accounts" section.
+          <br />Correct option is "Bind Email" button inside User Center, the one with code confirmation.
+          <br />Logging in from this page with un-bound in game "Email" will create second <u>level 1 Arknights account</u>, lead to error, and wrong binding of used Email.
+        </Typography>
+      </>
+    ) : (
+      <Typography component="span" variant="body2">
+        <u>What happened:</u> You didn't bind email, so Arknights created new lvl1 account and bound this email into it...
+        <br />
+        <u>What to Do to fix:</u>
+        <br />Option 1: Remove your email from Level 1 account and bind it into main account:
+        <ol>
+          <li>Go to AK publisher web site: <Link underline="always" href="https://account.yo-star.com/login">Yostar Account Center</Link></li>
+          <li>
+            Login into level 1 account with{" "}
+            <Typography component="span" color="info" variant="body1">
+              {isL1Import?.email ? isL1Import.email : "email"}
+            </Typography>{" "}
+            + code
+          </li>
+        </ol>
+        Option 2 - simply use another email address to "Bind Email" in your main Arknights account in game settings User Center.
+      </Typography>
+    );
+  };
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-      You can import your account data if your account is linked to a Yostar account. Doing this WILL log you out from
-      the game, if you are currently logged in.
-      {disabled ? (
+      You can import your account data if your account is linked to a {isCnServer ? "Skland" : "Yostar"} account. {!isCnServer ? "Using Yostar WILL log you out from the game, if you are currently logged in." : ""}
+
+      {disabled && (
         <Alert component="aside" variant="outlined" severity="error">
           <AlertTitle>Import is currently down.</AlertTitle>
           <Typography sx={{ fontSize: "14px" }}>
-            Due to the recent changes to login, importing is temporarily disabled. We're working to get it back online
-            as soon as possible. Thank you for your patience.
+            Due to the recent changes to login, importing is temporarily disabled. We're working to get it back online as soon as possible. Thank you for your patience.
           </Typography>
         </Alert>
-      ) : null}
+      )}
+
+      {/* Top Explanation Alert */}
       <Alert
         component="aside"
         variant="outlined"
         severity="info"
         action={
-          <IconButton onClick={() => setCollapse(!collapse)}>{collapse ? <ExpandLess /> : <ExpandMore />}</IconButton>
+          <IconButton onClick={() => setCollapse(!collapse)}>
+            {collapse ? <ExpandLess /> : <ExpandMore />}
+          </IconButton>
         }
       >
-        <AlertTitle>How It Works</AlertTitle>
+        <AlertTitle>{isCnServer ? "How Skland Import Works" : "How It Works"}</AlertTitle>
         <Collapse in={collapse}>
-          <Typography sx={{ fontSize: "14px" }}>
-            Krooster imitates the login process that the game client goes through when you log in.
-          </Typography>
-          <Box component="ol" sx={{ marginBlock: 1, paddingInlineStart: 2 }}>
-            <Box component="li">
-              Your email is sent to our servers, which send a request to the game servers to send you an email with a
-              6-digit code.
-            </Box>
-            <Box component="li">
-              Once the code is submitted on this page, another request is sent to our servers, which exchange your email
-              and the code with the game servers to receive an access token.
-            </Box>
-            <Box component="li">
-              The server then immediately exchanges this access token with the game server to access the account data.
-            </Box>
-            <Box component="li">
-              Finally, the account data, along with the access token, is returned to the client (the browser) to be
-              processed.
-              <Box component="ul">
-                <Box component="li">
-                  If selected, the access token itself is safely stored within the browser's storage. Otherwise, it is
-                  discarded.
-                </Box>
-                <Box component="li">
-                  Meanwhile, the rest of the data (as selected below) is processed into the format that the site uses,
-                  and uploaded to the database.
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-          <Typography sx={{ color: "error.main" }}>Notice:</Typography>
+          {renderHowItWorksContent(isCnServer)}
+
+          <Typography sx={{ color: "error.main", mt: 1 }}>Notice:</Typography>
           <Typography sx={{ fontSize: "14px", color: "text.primary" }}>
             Krooster is not associated with Yostar or Hypergryph. This is <b>not</b> an officially approved tool. We do
-            not take responsibility for any actions taken by Arknights' publishers as a result of signing in using this
-            method. Use at your own risk.
+            not take responsibility for any actions taken by Arknights' publishers as a result of signing in using presented
+            methods. Use at your own risk.
           </Typography>
           <Typography sx={{ fontSize: "14px", color: "text.primary" }}>
             So far, no such action has taken place; therefore, we consider it acceptable to offer this tool to our
@@ -371,6 +548,8 @@ const GameImport = memo(() => {
           </Typography>
         </Collapse>
       </Alert>
+
+      {/* Import Options Checkboxes */}
       <Box>
         Select what you want to import:
         <Stack>
@@ -378,15 +557,11 @@ const GameImport = memo(() => {
             control={
               <Checkbox
                 id="importProfile"
-                value={settings?.importProfile ?? true}
                 checked={settings?.importProfile ?? true}
                 onChange={(e) => {
-                  setSettings((s) => ({
+                  setSettings((s: any) => ({
                     ...s,
-                    importSettings: {
-                      ...settings,
-                      importProfile: e.target.checked,
-                    },
+                    importSettings: { ...settings, importProfile: e.target.checked },
                   }));
                 }}
               />
@@ -397,15 +572,11 @@ const GameImport = memo(() => {
             control={
               <Checkbox
                 id="importOperators"
-                value={settings?.importOperators ?? true}
                 checked={settings?.importOperators ?? true}
                 onChange={(e) => {
-                  setSettings((s) => ({
+                  setSettings((s: any) => ({
                     ...s,
-                    importSettings: {
-                      ...settings,
-                      importOperators: e.target.checked,
-                    },
+                    importSettings: { ...settings, importOperators: e.target.checked },
                   }));
                 }}
               />
@@ -416,16 +587,12 @@ const GameImport = memo(() => {
             control={
               <Checkbox
                 id="refreshGoals"
-                value={settings?.refreshGoals ?? true}
                 checked={settings?.refreshGoals ?? true}
                 disabled={!(settings?.importOperators ?? true)}
                 onChange={(e) => {
-                  setSettings((s) => ({
+                  setSettings((s: any) => ({
                     ...s,
-                    importSettings: {
-                      ...settings,
-                      refreshGoals: e.target.checked,
-                    },
+                    importSettings: { ...settings, refreshGoals: e.target.checked },
                   }));
                 }}
               />
@@ -437,16 +604,12 @@ const GameImport = memo(() => {
             control={
               <Checkbox
                 id="applyPotentials"
-                value={settings?.applyPotentials ?? false}
-                checked={settings?.applyPotentials ?? false}
+                checked={(settings?.applyPotentials ?? false)}
                 disabled={!(settings?.importOperators ?? true)}
                 onChange={(e) => {
-                  setSettings((s) => ({
+                  setSettings((s: any) => ({
                     ...s,
-                    importSettings: {
-                      ...settings,
-                      applyPotentials: e.target.checked,
-                    },
+                    importSettings: { ...settings, applyPotentials: e.target.checked },
                   }));
                 }}
               />
@@ -458,15 +621,11 @@ const GameImport = memo(() => {
             control={
               <Checkbox
                 id="importDepot"
-                value={settings?.importDepot ?? true}
                 checked={settings?.importDepot ?? true}
                 onChange={(e) => {
-                  setSettings((s) => ({
+                  setSettings((s: any) => ({
                     ...s,
-                    importSettings: {
-                      ...settings,
-                      importDepot: e.target.checked,
-                    },
+                    importSettings: { ...settings, importDepot: e.target.checked },
                   }));
                 }}
               />
@@ -475,17 +634,19 @@ const GameImport = memo(() => {
           />
         </Stack>
       </Box>
+
+      {/* Input Form Section */}
       <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
         <TextField
           select
           value={settings?.importServer ?? "en"}
           label="Server"
           onChange={(e) => {
-            setSettings((s) => ({
+            setSettings((s: any) => ({
               ...s,
               importSettings: {
                 ...settings,
-                importServer: e.target.value.toLocaleLowerCase() as "en" | "jp" | "kr",
+                importServer: e.target.value.toLowerCase() as "en" | "jp" | "kr" | "cn",
               },
             }));
           }}
@@ -495,67 +656,56 @@ const GameImport = memo(() => {
           <MenuItem value={"en"}>EN</MenuItem>
           <MenuItem value={"jp"}>JP</MenuItem>
           <MenuItem value={"kr"}>KR</MenuItem>
+          <MenuItem value={"cn"}>CN - Skland</MenuItem>
         </TextField>
+
+        {/* Warning / Instruction Alert */}
         <Alert
           component="aside"
           variant="outlined"
-          severity={!isL1Import.error ? "warning" : "info"}
+          severity={isCnServer ? "info" : !isL1Import?.error ? "warning" : "info"}
         >
           <AlertTitle>
-            {!isL1Import.error
-              ? <Typography variant="body1">"Bind Email" to Arknights account in game settings User Center before Log-In.</Typography>
-              : <Typography variant="body1">How to Fix Import After Level 1 Account Error:</Typography>}
+            {isCnServer ? (
+              <Typography variant="body1">Extract Skland Credentials via DevTools (F12)</Typography>
+            ) : !isL1Import?.error ? (
+              <Typography variant="body1">"Bind Email" to Arknights account in game settings User Center before Log-In.</Typography>
+            ) : (
+              <Typography variant="body1">How to Fix Import After Level 1 Account Error:</Typography>
+            )}
           </AlertTitle>
-          {showEmailAlert && <>
-            {!isL1Import.error
-              ? <><Typography component="span" variant="body2" sx={{ color: "error.main" }}>Warning:</Typography>
-                <Typography component="span" variant="body2">Import will not work with Google, Apple, Facebook or Recovery Email from "Bind Other Accounts" section.
-                  <br />Correct option is "Bind Email" button inside User Center, the one with code confirmation.
-                  <br />Logging in from this page with un-bound in game "Email" will create second <u>level 1 Arknights account</u>, lead to error, and wrong binding of used Email.</Typography></>
-              : <Typography component="span" variant="body2"><u>What happened:</u> You didn't bind email, so Arknights created new lvl1 account and bound this email into it. And your main Arknights account is probably bound with Google or Apple accounts of same email, or Guest (not bound at all).
-                <br />
-                <u>What to Do to fix:</u>
-                <br />Option 1: Remove your email from Level 1 account and bind it into main account:
-                <ol>
-                  <li>Go to AK publisher web site: <Link underline="always" href="https://account.yo-star.com/login">Yostar Account Center</Link></li>
-                  <li>Login into level 1 account with <Typography component="span" color="info" variant="body1">
-                    {isL1Import.email ? isL1Import.email : "email"}
-                  </Typography> + code</li>
-                  <li>Find Email box - Press "Update". Follow instuctions to swap to another email.</li>
-                  <ul>
-                    <li>Simplify with virtual "salted" email, by adding custom suffix after "+" in your email. If email provider supports it (Gmail does). As example:</li>
-                    <li>input: <Typography component="span" color="info" variant="body1">
-                      {isL1Import.email
-                        ? `${isL1Import.email.split("@")[0]}+lvl1@${email.split("@")[1]}`
-                        : "your_email+aklvl1@gmail.com"}
-                    </Typography></li>
-                    <li>still recieve codes into: <Typography component="span" color="info" variant="body1">
-                      {isL1Import.email ? isL1Import.email : "your_email@gmail.com"}
-                    </Typography></li>
-                  </ul>
-                  <li>After swapping to new address, Log Out from level 1 account</li>
-                  <li>In main Arknights account in game settings User Center use "Bind Email" or "Update Email" to input now free <Typography component="span" color="info" variant="body1">
-                    {isL1Import.email ? isL1Import.email : "email"}
-                  </Typography> and confirm it with code.</li>
-                </ol>
-                Option 2 - simply use another email address to "Bind Email" in your main Arknights account in game settings User Center, and use it for import here.
-              </Typography>}
-            <br />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  id="confirm"
-                  value={confirm ?? false}
-                  checked={confirm ?? false}
-                  onChange={() => setConfirm((v) => !v)}
-                />
-              }
-              label={!isL1Import.error
-                ? <Typography variant="body1">I read lvl1 warning and used “Bind Email” in-game</Typography>
-                : <Typography variant="body1">I completed all steps, and want to try import again</Typography>}
-            />
-          </>}
+
+          {(showEmailAlert || isCnServer) && (
+            <>
+              {renderEmailAlertContent(isCnServer, isL1Import)}
+
+              {/* Hide Level 1 Checkbox for CN Server */}
+              {!isCnServer && (
+                <>
+                  <br />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        id="confirm"
+                        checked={confirm ?? false}
+                        onChange={() => setConfirm((v: boolean) => !v)}
+                      />
+                    }
+                    label={
+                      !isL1Import?.error ? (
+                        <Typography variant="body1">I read lvl1 warning and used “Bind Email” in-game</Typography>
+                      ) : (
+                        <Typography variant="body1">I completed all steps, and want to try import again</Typography>
+                      )
+                    }
+                  />
+                </>
+              )}
+            </>
+          )}
         </Alert>
+
+        {/* Credential / Email Field */}
         <TextField
           id="Mail"
           sx={{
@@ -564,65 +714,84 @@ const GameImport = memo(() => {
             },
           }}
           variant="filled"
-          disabled={showEmailAlert && !confirm}
-          label="Mail"
+          disabled={!isCnServer && showEmailAlert && !confirm}
+          label={isCnServer ? "Skland Credentials String" : "Mail"}
+          placeholder={isCnServer ? "Paste credentials from clipboard..." : ""}
           value={email}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             setEmail(event.target.value.trim());
           }}
         />
-        <Button
-          variant="outlined"
-          type="submit"
-          disabled={disabled || email.length === 0 || (showEmailAlert && !confirm)}
-          onClick={(event) => {
-            event.preventDefault();
-            sendCode(email);
-          }}
-        >
-          Send code
-        </Button>
+
+        {/* Hide Send Code button for CN Server */}
+        {!isCnServer && (
+          <Button
+            variant="outlined"
+            type="submit"
+            disabled={disabled || email.length === 0 || (showEmailAlert && !confirm)}
+            onClick={(event) => {
+              event.preventDefault();
+              sendCode(email);
+            }}
+          >
+            Send code
+          </Button>
+        )}
       </Box>
+
+      {/* Code & Login Form Section (Code Input completely hidden on CN) */}
       <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-        <TextField
-          id="Code"
-          sx={{
-            "& .MuiFilledInput-root": {
-              borderRadius: "2px 0px 0px 2px",
-            },
-          }}
-          variant="filled"
-          label="Code"
-          value={code}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            setCode(event.target.value.trim());
-          }}
-        />
+        {!isCnServer && (
+          <TextField
+            id="Code"
+            sx={{
+              "& .MuiFilledInput-root": {
+                borderRadius: "2px 0px 0px 2px",
+              },
+            }}
+            variant="filled"
+            label="Code"
+            value={code}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setCode(event.target.value.trim());
+            }}
+          />
+        )}
+
         <FormControlLabel
           control={
             <Checkbox
               id="rememberLogin"
-              value={rememberLogin}
+              checked={rememberLogin}
               onChange={(event) => setRememberLogin(event.target.checked)}
             />
           }
           label="Save credentials"
         />
+
         <Button
           variant="outlined"
           type="submit"
-          disabled={disabled || code.length !== 6}
+          disabled={
+            disabled || (isCnServer ? email.length === 0 : code.length !== 6)
+          }
           onClick={(event) => {
             event.preventDefault();
             login(email, code);
           }}
         >
-          Log In and Sync Data
+          {isCnServer ? "Sync Data From Skland" : "Log In and Sync Data"}
         </Button>
       </Box>
+
       <Divider />
-      <Button variant="outlined" disabled={disabled || !hasToken} onClick={(event) => loginWithToken()}>
-        Log In With Previous Credentials
+
+      <Button
+        variant="outlined"
+        disabled={disabled || !hasToken}
+        onClick={() => loginWithToken()}
+      >
+         {isCnServer ? "Sync Data With Previous Credentials" : "Log In With Previous Credentials"}
       </Button>
     </Box>
   );
