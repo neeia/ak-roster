@@ -1,5 +1,19 @@
 const patch = [
-        {
+  {
+    version: "3.3.7",
+    date: "Sept 1, 2026",
+    title: "Import of CN accounts",
+    content: ["We'have added way of importing CN arknights accounts"],
+    changelog: [
+      "Implemented import of CN account via skland.com API, using websession credentials",
+      "Fixed operator import merging new operators data into old data:",
+      [
+        "Now it will fully rewrite all operators with deletion",
+        "To prevent user merging several accounts together by mistake"
+      ]
+    ],
+  },
+  {
     version: "3.3.6",
     date: "June 1, 2026",
     title: "Images update && planner bugfixes",
@@ -7,14 +21,14 @@ const patch = [
     changelog: [
       "Images are updated upto to latest CN AK anniversary banner",
       "Operators data is updated upto Monster Hunter 2 Colab",
-      "Bug fixes in planner", 
+      "Bug fixes in planner",
       [
         "Older goals data was merging into current goals, when planner was used on two devices/browsers and setting `Update Goals on Planner Load` was enabled",
         "New modules didn't appear in operator data after manually completing module goals",
       ]
     ],
   },
-      {
+  {
     version: "3.3.5",
     date: "December 11, 2025",
     title: "Images update && IS, RA Archive in Income Tacker",
@@ -23,7 +37,7 @@ const patch = [
       "Images updated upto to latest CN AK version (limited banner patch)",
       "Builder in Income Tracker now has all past IS and RA resources in batches to add to your planner. Check new data options in 'From'",
       "Added import option to count unused Operator Tokens as potentials on krooster",
-      "Fixes and tweaks:", 
+      "Fixes and tweaks:",
       [
         "Factions will priotize global version for released in global operators: order and new factions availability",
         "Account statistic will now inclule all operators user owns, and wont exclude CN for EN server",
@@ -33,7 +47,7 @@ const patch = [
       ]
     ],
   },
-    {
+  {
     version: "3.3.4",
     date: "October 25, 2025",
     title: "Factions and Statistic",
@@ -62,9 +76,9 @@ const patch = [
       ],
       "Summary & Upcoming Events",
       [
-      "Summary with ordered calculation mode now shows material crafting grouped in your operators order from goals list",
-      "Crafting materials directly from ordered summary - click on +1. And its safeguarded from wasting materials of previous operator",
-      "Upcoming events are now interated in all planner and its now possible to disable any of them in list on the fly",
+        "Summary with ordered calculation mode now shows material crafting grouped in your operators order from goals list",
+        "Crafting materials directly from ordered summary - click on +1. And its safeguarded from wasting materials of previous operator",
+        "Upcoming events are now interated in all planner and its now possible to disable any of them in list on the fly",
       ],
       "Also previous updates include",
       [
