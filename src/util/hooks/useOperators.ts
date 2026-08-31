@@ -81,12 +81,10 @@ function useOperators() {
       }
 
       // 3. Update local state
-      const newRoster: Roster = {};
-      newOperators.forEach((op) => {
-        if (op.op_id in operatorJson) {
-          newRoster[op.op_id] = op;
-        }
-      });
+      const newRoster: Roster = preparedOperators.reduce((acc, op) => {
+        acc[op.op_id] = op;
+        return acc;
+      }, {} as Roster);
 
       setOperators(newRoster);
     },
