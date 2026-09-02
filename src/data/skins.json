@@ -1050,7 +1050,7 @@
     },
     {
       "skinId": "char_185_frncat@marthe#12",
-      "skinName": "补水时间",
+      "skinName": "Hydration Time",
       "avatarId": "char_185_frncat_marthe#12",
       "sortId": 257
     },
@@ -1689,6 +1689,12 @@
       "skinName": null,
       "avatarId": "char_4165_ctrail_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4165_ctrail@yun#11",
+      "skinName": "渡澄空",
+      "avatarId": "char_4165_ctrail_yun#11",
+      "sortId": 475
     }
   ],
   "char_128_plosis": [
@@ -1864,7 +1870,7 @@
     },
     {
       "skinId": "char_4023_rfalcn@epoque#52",
-      "skinName": "三元风情",
+      "skinName": "Charm of the Tiles",
       "avatarId": "char_4023_rfalcn_epoque#52",
       "sortId": 129
     }
@@ -1881,6 +1887,12 @@
       "skinName": null,
       "avatarId": "char_4199_makiri_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4199_makiri@sale#19",
+      "skinName": "暮时宝光",
+      "avatarId": "char_4199_makiri_sale#19",
+      "sortId": 29
     }
   ],
   "char_261_sddrag": [
@@ -3978,7 +3990,7 @@
     },
     {
       "skinId": "char_4139_papyrs@game#8",
-      "skinName": "下一个任务",
+      "skinName": "The Next Side Quest",
       "avatarId": "char_4139_papyrs_game#8",
       "sortId": 460
     }
@@ -4754,7 +4766,7 @@
     },
     {
       "skinId": "char_4177_brigid@epoque#53",
-      "skinName": "轻语入梦",
+      "skinName": "Bedtime Story",
       "avatarId": "char_4177_brigid_epoque#53",
       "sortId": 130
     }
@@ -6834,7 +6846,7 @@
     },
     {
       "skinId": "char_4195_radian@game#8",
-      "skinName": "乱数法则",
+      "skinName": "Lorem Ipsum",
       "avatarId": "char_4195_radian_game#8",
       "sortId": 459
     }
@@ -8614,7 +8626,7 @@
     },
     {
       "skinId": "char_1043_leizi2@game#8",
-      "skinName": "血翼蔷薇",
+      "skinName": "The Bloodwing Rose",
       "avatarId": "char_1043_leizi2_game#8",
       "sortId": 458
     }
