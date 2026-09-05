@@ -339,6 +339,7 @@
       "rhodes"
     ],
     "pools": [
+      "Limited",
       "Free"
     ],
     "skillData": [],
@@ -43792,7 +43793,7 @@
       "kazimierz"
     ],
     "pools": [
-      "Standard"
+      "Limited"
     ],
     "skillData": [
       {
@@ -98158,7 +98159,7 @@
       "columbia"
     ],
     "pools": [
-      "Standard"
+      "Limited"
     ],
     "skillData": [
       {

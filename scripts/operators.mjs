@@ -54,6 +54,10 @@ const colabLimiteds = [
   "char_1029_yato2",
   "char_1030_noirc2",
   "char_4077_palico",
+  // MH2
+  "char_1048_orchd2",
+  "char_1049_catap2",
+  "char_4215_buddy",
   //other can be auto detected by faction isRaw
   /*  // R6 1
     "char_456_ash",
