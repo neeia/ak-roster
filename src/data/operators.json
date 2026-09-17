@@ -65679,7 +65679,7 @@
       "id": "chainhealer",
       "name": "Chain"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "ursus"
     ],
@@ -65690,7 +65690,7 @@
       {
         "skillId": "skchr_turdus_1",
         "iconId": null,
-        "skillName": "火钳秘咒",
+        "skillName": "The Tong Song",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -65754,7 +65754,7 @@
       {
         "skillId": "skchr_turdus_2",
         "iconId": null,
-        "skillName": "“捉迷藏！”",
+        "skillName": "'Peekaboo!'",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -65818,7 +65818,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“睡前故事”",
+        "moduleName": "'Nighttime Stories'",
         "moduleId": "uniequip_002_turdus",
         "typeName": "XAH-X",
         "stages": [
@@ -65888,15 +65888,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+24",
-      "天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +24",
+      "Improves Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -89364,7 +89364,7 @@
       "id": "ritualist",
       "name": "Ritualist"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "ursus"
     ],
@@ -89375,7 +89375,7 @@
       {
         "skillId": "skchr_botany_1",
         "iconId": null,
-        "skillName": "谐波破坏",
+        "skillName": "Disharmonization",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -89439,7 +89439,7 @@
       {
         "skillId": "skchr_botany_2",
         "iconId": null,
-        "skillName": "静域回声",
+        "skillName": "Echoes Through Quietude",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -89503,7 +89503,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "昨日、今日、明日",
+        "moduleName": "Yesterday, Today and Tomorrow",
         "moduleId": "uniequip_002_botany",
         "typeName": "RIT-X",
         "stages": [
@@ -89573,15 +89573,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -118455,7 +118455,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "烦恼问诊匣",
+        "moduleName": "Consultation Toolkit",
         "moduleId": "uniequip_003_nymph",
         "typeName": "PRI-Y",
         "stages": [
@@ -118525,7 +118525,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -123178,7 +123178,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "新生代",
+        "moduleName": "New Generation",
         "moduleId": "uniequip_003_skadi2",
         "typeName": "BAR-Y",
         "stages": [
@@ -123248,7 +123248,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -153265,7 +153265,7 @@
       "id": "hammer",
       "name": "Earthshaker"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "student",
       "ursus"
@@ -153277,7 +153277,7 @@
       {
         "skillId": "skchr_headb2_1",
         "iconId": null,
-        "skillName": "誓不低头",
+        "skillName": "Never Bow",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -153341,7 +153341,7 @@
       {
         "skillId": "skchr_headb2_2",
         "iconId": null,
-        "skillName": "绝不罢休",
+        "skillName": "Never Surrender",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -153405,7 +153405,7 @@
       {
         "skillId": "skchr_headb2_3",
         "iconId": null,
-        "skillName": "无可抵挡",
+        "skillName": "Unstoppable",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -153469,7 +153469,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "迟到的勋章",
+        "moduleName": "Unissued Medal",
         "moduleId": "uniequip_002_headb2",
         "typeName": "HAM-X",
         "stages": [
@@ -153539,15 +153539,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "第二天赋效果增强",
-      "攻击力+40",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +40",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -156662,7 +156662,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "旅游必需品",
+        "moduleName": "Travel Necessities",
         "moduleId": "uniequip_003_surtr",
         "typeName": "AFT-Y",
         "stages": [
@@ -156732,7 +156732,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
