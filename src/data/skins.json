@@ -3789,6 +3789,12 @@
       "skinName": null,
       "avatarId": "char_4196_reckpr_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_4196_reckpr@yun#12",
+      "skinName": "照寰瀛",
+      "avatarId": "char_4196_reckpr_yun#12",
+      "sortId": 478
     }
   ],
   "char_348_ceylon": [
@@ -5810,7 +5816,7 @@
     },
     {
       "skinId": "char_4193_lemuen@ambienceSynesthesia#7",
-      "skinName": "暮星安魂曲",
+      "skinName": "Requiem Vesperis",
       "avatarId": "char_4193_lemuen_ambienceSynesthesia#7",
       "sortId": 422
     }
@@ -6708,7 +6714,7 @@
     },
     {
       "skinId": "char_4146_nymph@ambienceSynesthesia#6",
-      "skinName": "繁花梦幻谈",
+      "skinName": "Blooming Reverie",
       "avatarId": "char_4146_nymph_ambienceSynesthesia#6",
       "sortId": 420
     }
@@ -6768,7 +6774,7 @@
     },
     {
       "skinId": "char_450_necras@ambienceSynesthesia#7",
-      "skinName": "晶化信念",
+      "skinName": "As Clear As Crystal",
       "avatarId": "char_450_necras_ambienceSynesthesia#7",
       "sortId": 423
     }
@@ -7764,7 +7770,7 @@
     },
     {
       "skinId": "char_202_demkni@ambienceSynesthesia#7",
-      "skinName": "黑白冷峻",
+      "skinName": "Unstained, Unshaken",
       "avatarId": "char_202_demkni_ambienceSynesthesia#7",
       "sortId": 421
     }
@@ -8436,7 +8442,7 @@
     },
     {
       "skinId": "char_350_surtr@ambienceSynesthesia#6",
-      "skinName": "超然序曲",
+      "skinName": "Prelude to Transcendence",
       "avatarId": "char_350_surtr_ambienceSynesthesia#6",
       "sortId": 419
     },
