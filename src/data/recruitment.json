@@ -436,6 +436,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -1231,6 +1244,18 @@
           "Crowd-Control",
           "Melee",
           "Vanguard",
+          "Robot"
+        ]
+      },
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
           "Robot"
         ]
       }
@@ -2619,6 +2644,18 @@
           "Supporter",
           "Robot"
         ]
+      },
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
+          "Robot"
+        ]
       }
     ],
     "guarantees": []
@@ -2779,6 +2816,18 @@
           "Starter",
           "Ranged",
           "Caster"
+        ]
+      },
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
+          "Robot"
         ]
       }
     ],
@@ -5210,6 +5259,18 @@
           "Ranged",
           "Sniper"
         ]
+      },
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
+          "Robot"
+        ]
       }
     ],
     "guarantees": [
@@ -6764,6 +6825,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -7011,6 +7085,19 @@
           "DPS",
           "Melee",
           "Vanguard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -7484,6 +7571,19 @@
         "tags": [
           "DPS",
           "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
           "Melee",
           "Guard",
           "Top Operator",
@@ -8271,6 +8371,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -8732,6 +8845,19 @@
           "DPS",
           "Ranged",
           "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -11751,6 +11877,41 @@
           "Supporter",
           "Robot"
         ]
+      },
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
+          "Robot"
+        ]
+      }
+    ],
+    "guarantees": [
+      1
+    ]
+  },
+  "Caster,Robot": {
+    "tags": [
+      "Caster",
+      "Robot"
+    ],
+    "operators": [
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
+          "Robot"
+        ]
       }
     ],
     "guarantees": [
@@ -11933,6 +12094,29 @@
           "Crowd-Control",
           "Melee",
           "Vanguard",
+          "Robot"
+        ]
+      }
+    ],
+    "guarantees": [
+      1
+    ]
+  },
+  "Debuff,Robot": {
+    "tags": [
+      "Debuff",
+      "Robot"
+    ],
+    "operators": [
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
           "Robot"
         ]
       }
@@ -14274,6 +14458,18 @@
           "Ranged",
           "Caster"
         ]
+      },
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
+          "Robot"
+        ]
       }
     ],
     "guarantees": []
@@ -15411,6 +15607,18 @@
           "Ranged",
           "Sniper"
         ]
+      },
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
+          "Robot"
+        ]
       }
     ],
     "guarantees": [
@@ -16120,6 +16328,18 @@
           "Debuff",
           "Ranged",
           "Caster"
+        ]
+      },
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
+          "Robot"
         ]
       }
     ],
@@ -20053,6 +20273,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -20527,6 +20760,19 @@
         "tags": [
           "DPS",
           "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
           "Melee",
           "Guard",
           "Top Operator",
@@ -21323,6 +21569,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -21796,6 +22055,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22079,6 +22351,19 @@
         "tags": [
           "DPS",
           "Survival",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
           "Melee",
           "Guard",
           "Top Operator",
@@ -22503,6 +22788,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -22744,6 +23042,19 @@
       {
         "id": "char_172_svrash",
         "name": "SilverAsh",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
         "rarity": 6,
         "tags": [
           "DPS",
@@ -24162,6 +24473,19 @@
           "Top Operator",
           "Senior Operator"
         ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
       }
     ],
     "guarantees": [
@@ -24228,6 +24552,19 @@
       {
         "id": "char_172_svrash",
         "name": "SilverAsh",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
         "rarity": 6,
         "tags": [
           "DPS",
@@ -25476,6 +25813,19 @@
           "DPS",
           "Ranged",
           "Supporter",
+          "Top Operator",
+          "Senior Operator"
+        ]
+      },
+      {
+        "id": "char_485_pallas",
+        "name": "Pallas",
+        "rarity": 6,
+        "tags": [
+          "DPS",
+          "Support",
+          "Melee",
+          "Guard",
           "Top Operator",
           "Senior Operator"
         ]
@@ -30689,6 +31039,30 @@
       1
     ]
   },
+  "Caster,Ranged,Robot": {
+    "tags": [
+      "Caster",
+      "Ranged",
+      "Robot"
+    ],
+    "operators": [
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
+          "Robot"
+        ]
+      }
+    ],
+    "guarantees": [
+      1
+    ]
+  },
   "Medic,Ranged,Robot": {
     "tags": [
       "Medic",
@@ -30761,6 +31135,30 @@
       1
     ]
   },
+  "Debuff,Ranged,Robot": {
+    "tags": [
+      "Debuff",
+      "Ranged",
+      "Robot"
+    ],
+    "operators": [
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
+          "Robot"
+        ]
+      }
+    ],
+    "guarantees": [
+      1
+    ]
+  },
   "Healing,Ranged,Robot": {
     "tags": [
       "Healing",
@@ -30825,6 +31223,30 @@
           "Elemental",
           "Ranged",
           "Supporter",
+          "Robot"
+        ]
+      }
+    ],
+    "guarantees": [
+      1
+    ]
+  },
+  "Caster,Debuff,Robot": {
+    "tags": [
+      "Caster",
+      "Debuff",
+      "Robot"
+    ],
+    "operators": [
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
           "Robot"
         ]
       }
@@ -33430,6 +33852,18 @@
           "Debuff",
           "Ranged",
           "Caster"
+        ]
+      },
+      {
+        "id": "char_4227_gallus",
+        "name": "GALLUS²",
+        "rarity": 1,
+        "tags": [
+          "Robot",
+          "Debuff",
+          "Ranged",
+          "Caster",
+          "Robot"
         ]
       }
     ],

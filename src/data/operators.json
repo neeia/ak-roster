@@ -307,19 +307,21 @@
       "id": "corecaster",
       "name": "Core"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "rhodes"
     ],
-    "pools": [],
+    "pools": [
+      "Recruitment"
+    ],
     "skillData": [],
     "moduleData": [],
     "potentials": [
-      "天赋效果加强",
-      "天赋效果加强",
-      "天赋效果加强",
-      "天赋效果加强",
-      "天赋效果加强"
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent",
+      "Improves Talent"
     ],
     "skillLevels": [],
     "eliteLevels": []
@@ -20346,6 +20348,7 @@
       "bolivar"
     ],
     "pools": [
+      "Kernel",
       "Kernel CN",
       "Standard"
     ],
@@ -29835,8 +29838,8 @@
       "rim"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -53067,6 +53070,9 @@
     "factions": [
       "siracusa"
     ],
+    "factionsHidden": [
+      "leithanien"
+    ],
     "pools": [
       "Standard"
     ],
@@ -56411,8 +56417,8 @@
       "victoria"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -64200,8 +64206,8 @@
       "victoria"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -66052,6 +66058,9 @@
     "isCnOnly": false,
     "factions": [
       "yan"
+    ],
+    "factionsHidden": [
+      "sargon"
     ],
     "pools": [
       "Standard"
@@ -75635,7 +75644,7 @@
       "id": "primprotector",
       "name": "Primal Protector"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "ursus"
     ],
@@ -75646,7 +75655,7 @@
       {
         "skillId": "skchr_tanya_1",
         "iconId": null,
-        "skillName": "涤净",
+        "skillName": "Decontamination",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -75710,7 +75719,7 @@
       {
         "skillId": "skchr_tanya_2",
         "iconId": null,
-        "skillName": "溃决",
+        "skillName": "Cracking Dam",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -75774,7 +75783,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "“漂洗”",
+        "moduleName": "'The Rinsing'",
         "moduleId": "uniequip_002_tanya",
         "typeName": "PRP-X",
         "stages": [
@@ -75844,15 +75853,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-4秒",
-      "攻击力+25",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -4 sec",
+      "ATK +25",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -78982,8 +78991,8 @@
       "bolivar"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -84922,8 +84931,8 @@
       "columbia"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -87885,8 +87894,8 @@
       "victoria"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -94118,8 +94127,8 @@
       "higashi"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -100818,8 +100827,8 @@
       "laterano"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -102237,7 +102246,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "提丰特限证章",
+        "moduleName": "Typhon's Specialized Badge",
         "moduleId": "uniequip_004_typhon",
         "typeName": "ISW-A",
         "stages": [
@@ -102275,7 +102284,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -109055,7 +109064,7 @@
       "id": "tactician",
       "name": "Tactician"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "rhodes"
     ],
@@ -109066,7 +109075,7 @@
       {
         "skillId": "skchr_closur_1",
         "iconId": null,
-        "skillName": "递归策略",
+        "skillName": "Recursive Tactics",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -109130,7 +109139,7 @@
       {
         "skillId": "skchr_closur_2",
         "iconId": null,
-        "skillName": "模型扩展",
+        "skillName": "Model Expansion",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -109258,7 +109267,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "给自己的小奖杯",
+        "moduleName": "Little Trophy for Herself",
         "moduleId": "uniequip_002_closur",
         "typeName": "TAC-X",
         "stages": [
@@ -109328,15 +109337,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "第二天赋效果增强",
-      "攻击力+25",
-      "攻击速度+8",
-      "部署费用-1"
+      "DP Cost -1",
+      "Improves Second Talent",
+      "ATK +25",
+      "ASPD +8",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -116935,8 +116944,8 @@
       "victoria"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -117893,8 +117902,8 @@
       "leithanien"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -118477,7 +118486,7 @@
       "id": "mystic",
       "name": "Mystic"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "ursus"
     ],
@@ -118488,7 +118497,7 @@
       {
         "skillId": "skchr_veen_1",
         "iconId": null,
-        "skillName": "“自呼号生发”",
+        "skillName": "'From Wailing Born'",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118552,7 +118561,7 @@
       {
         "skillId": "skchr_veen_2",
         "iconId": null,
-        "skillName": "“以鲜血洗去”",
+        "skillName": "'By Blood Cleansed'",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118616,7 +118625,7 @@
       {
         "skillId": "skchr_veen_3",
         "iconId": null,
-        "skillName": "“用赤铁铭记”",
+        "skillName": "'With Iron Engraved'",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -118680,7 +118689,7 @@
     ],
     "moduleData": [
       {
-        "moduleName": "军械库",
+        "moduleName": "Keep Close At Hand",
         "moduleId": "uniequip_002_veen",
         "typeName": "MSC-Y",
         "stages": [
@@ -118750,15 +118759,15 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
-      "部署费用-1",
-      "再部署时间-10秒",
-      "部署费用-1",
-      "第一天赋效果增强",
-      "部署费用-1"
+      "DP Cost -1",
+      "Redeployment Time -10 sec",
+      "DP Cost -1",
+      "Improves First Talent",
+      "DP Cost -1"
     ],
     "skillLevels": [
       {
@@ -119958,6 +119967,10 @@
     "factions": [
       "elite",
       "rhodes"
+    ],
+    "factionsHidden": [
+      "babel",
+      "sargon"
     ],
     "pools": [
       "Standard"
@@ -128753,7 +128766,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“新车和新生活”",
+        "moduleName": "'New Car and New Life'",
         "moduleId": "uniequip_003_texas2",
         "typeName": "EXE-X",
         "stages": [
@@ -128823,7 +128836,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -130035,8 +130048,8 @@
       "lungmen"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -130895,7 +130908,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "Swire the Elegant Wit's Badge",
+        "moduleName": "Swire the Elegant Wit's Specialized Badge",
         "moduleId": "uniequip_004_swire2",
         "typeName": "ISW-A",
         "stages": [
@@ -134528,7 +134541,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "归溟幽灵鲨特限证章",
+        "moduleName": "Specter the Unchained's Specialized Badge",
         "moduleId": "uniequip_004_ghost2",
         "typeName": "ISW-A",
         "stages": [
@@ -134566,7 +134579,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -135186,8 +135199,8 @@
       "columbia"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -141420,7 +141433,7 @@
       "id": "watchman",
       "name": "Watchman"
     },
-    "isCnOnly": true,
+    "isCnOnly": false,
     "factions": [
       "rhodes"
     ],
@@ -141431,7 +141444,7 @@
       {
         "skillId": "skchr_kalts2_1",
         "iconId": null,
-        "skillName": "应急肃正防线",
+        "skillName": "Kriza Responda Bastiono",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -141495,7 +141508,7 @@
       {
         "skillId": "skchr_kalts2_2",
         "iconId": null,
-        "skillName": "保护性拒止",
+        "skillName": "Repuŝado Defenda",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -141559,7 +141572,7 @@
       {
         "skillId": "skchr_kalts2_3",
         "iconId": null,
-        "skillName": "破梏重生",
+        "skillName": "Renaskiĝo Malkatena",
         "masteries": [
           {
             "masteryLevel": 1,
@@ -141623,11 +141636,11 @@
     ],
     "moduleData": [],
     "potentials": [
-      "部署费用-1",
-      "第一天赋效果增强",
-      "攻击力+25",
-      "部署费用-1",
-      "第二天赋效果增强"
+      "DP Cost -1",
+      "Improves First Talent",
+      "ATK +25",
+      "DP Cost -1",
+      "Improves Second Talent"
     ],
     "skillLevels": [
       {
@@ -145971,8 +145984,8 @@
       "victoria"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -147277,7 +147290,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "“老朋友”",
+        "moduleName": "'Old Friends'",
         "moduleId": "uniequip_003_rmixer",
         "typeName": "SPT-Y",
         "stages": [
@@ -147347,7 +147360,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -148804,6 +148817,9 @@
     "factions": [
       "lgd",
       "lungmen"
+    ],
+    "factionsHidden": [
+      "higashi"
     ],
     "pools": [
       "Limited"
@@ -155117,8 +155133,8 @@
       "iberia"
     ],
     "pools": [
-      "Kernel CN",
-      "Standard"
+      "Kernel",
+      "Kernel CN"
     ],
     "skillData": [
       {
@@ -155950,7 +155966,7 @@
         "isCnOnly": false
       },
       {
-        "moduleName": "新合同",
+        "moduleName": "New Contract",
         "moduleId": "uniequip_003_blkkgt",
         "typeName": "SWO-Y",
         "stages": [
@@ -156020,7 +156036,7 @@
             "category": 3
           }
         ],
-        "isCnOnly": true
+        "isCnOnly": false
       }
     ],
     "potentials": [
@@ -158827,6 +158843,9 @@
     "factions": [
       "yan"
     ],
+    "factionsHidden": [
+      "rhodes"
+    ],
     "pools": [
       "Standard"
     ],
@@ -160303,7 +160322,8 @@
     ],
     "pools": [
       "Kernel",
-      "Kernel CN"
+      "Kernel CN",
+      "Recruitment"
     ],
     "skillData": [
       {
