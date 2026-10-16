@@ -13,9 +13,10 @@ function loadJsonFile(primary, fallback, baseUrl = import.meta.url) {
   const fallbackPath = path.resolve(callerDir, fallback);
 
   const file = fs.existsSync(primaryPath) ? primaryPath : fallbackPath;
+  console.log(file);
   const raw = JSON.parse(fs.readFileSync(file, "utf-8"));
   return normalizeJson(raw);
-};
+}
 
 //Normalize empty values to [] that krooster scripts use. Repos have different: Kengxxiao [], Assets {}
 function normalizeJson(value) {
@@ -40,94 +41,34 @@ function normalizeJson(value) {
 //optional fallback [primary, fallback]
 const repositories = {
   //char_patch_table
-  cnCharacterPatchTable: [
-    "./ArknightsGameData/zh_CN/gamedata/excel/char_patch_table.json",
-    ""
-  ],
-  enCharacterPatchTable: [
-    "./ArknightsAssetsGamedata/en/gamedata/excel/char_patch_table.json",
-    ""
-  ],
+  cnCharacterPatchTable: ["./ArknightsGameData/zh_CN/gamedata/excel/char_patch_table.json", ""],
+  enCharacterPatchTable: ["./ArknightsAssetsGamedata/en/gamedata/excel/char_patch_table.json", ""],
   //character_table
-  cnCharacterTable: [
-    "./ArknightsGameData/zh_CN/gamedata/excel/character_table.json",
-    ""
-  ],
-  enCharacterTable: [
-    "./ArknightsAssetsGamedata/en/gamedata/excel/character_table.json",
-    ""
-  ],
+  cnCharacterTable: ["./ArknightsGameData/zh_CN/gamedata/excel/character_table.json", ""],
+  enCharacterTable: ["./ArknightsAssetsGamedata/en/gamedata/excel/character_table.json", ""],
   //skill_table
-  cnSkillTable: [
-    "./ArknightsGameData/zh_CN/gamedata/excel/skill_table.json",
-    ""
-  ],
-  enSkillTable: [
-    "./ArknightsAssetsGamedata/en/gamedata/excel/skill_table.json",
-    ""
-  ],
+  cnSkillTable: ["./ArknightsGameData/zh_CN/gamedata/excel/skill_table.json", ""],
+  enSkillTable: ["./ArknightsAssetsGamedata/en/gamedata/excel/skill_table.json", ""],
   //uniequip_table
-  cnUniequipTable: [
-    "./ArknightsGameData/zh_CN/gamedata/excel/uniequip_table.json",
-    ""
-  ],
-  enUniequipTable: [
-    "./ArknightsAssetsGamedata/en/gamedata/excel/uniequip_table.json",
-    ""
-  ],
+  cnUniequipTable: ["./ArknightsGameData/zh_CN/gamedata/excel/uniequip_table.json", ""],
+  enUniequipTable: ["./ArknightsAssetsGamedata/en/gamedata/excel/uniequip_table.json", ""],
   //gacha_table
-  cnGachaTable: [
-    "./ArknightsGameData/zh_CN/gamedata/excel/gacha_table.json",
-    ""
-  ],
-  enGachaTable: [
-    "./ArknightsAssetsGamedata/en/gamedata/excel/gacha_table.json",
-    ""
-  ],
+  cnGachaTable: ["./ArknightsGameData/zh_CN/gamedata/excel/gacha_table.json", ""],
+  enGachaTable: ["./ArknightsAssetsGamedata/en/gamedata/excel/gacha_table.json", ""],
   //stage_table
-  cnStageTable: [
-    "./ArknightsGameData/zh_CN/gamedata/excel/stage_table.json",
-    ""
-  ],
-  enStageTable: [
-    "./ArknightsAssetsGamedata/en/gamedata/excel/stage_table.json",
-    ""
-  ],
+  cnStageTable: ["./ArknightsGameData/zh_CN/gamedata/excel/stage_table.json", ""],
+  enStageTable: ["./ArknightsAssetsGamedata/en/gamedata/excel/stage_table.json", ""],
   //building_data
-  cnBuildingData: [
-    "./ArknightsGameData/zh_CN/gamedata/excel/building_data.json",
-    ""
-  ],
-  enBuildingData: [
-    "./ArknightsAssetsGamedata/en/gamedata/excel/building_data.json",
-    ""
-  ],
+  cnBuildingData: ["./ArknightsGameData/zh_CN/gamedata/excel/building_data.json", ""],
+  enBuildingData: ["./ArknightsAssetsGamedata/en/gamedata/excel/building_data.json", ""],
   //item_table
-  cnItemTable: [
-    "./ArknightsGameData/zh_CN/gamedata/excel/item_table.json",
-    ""
-  ],
-  enItemTable: [
-    "./ArknightsAssetsGamedata/en/gamedata/excel/item_table.json",
-    ""
-  ],
-  cnSkinTable: [
-    "./ArknightsGameData/zh_CN/gamedata/excel/skin_table.json",
-    ""
-  ],
-  enSkinTable: [
-    "./ArknightsAssetsGamedata/en/gamedata/excel/skin_table.json",
-    ""
-  ],
+  cnItemTable: ["./ArknightsGameData/zh_CN/gamedata/excel/item_table.json", ""],
+  enItemTable: ["./ArknightsAssetsGamedata/en/gamedata/excel/item_table.json", ""],
+  cnSkinTable: ["./ArknightsGameData/zh_CN/gamedata/excel/skin_table.json", ""],
+  enSkinTable: ["./ArknightsAssetsGamedata/en/gamedata/excel/skin_table.json", ""],
   //handbook_team  ,
-  cnHandbookTeamTable: [
-    "./ArknightsGameData/zh_CN/gamedata/excel/handbook_team_table.json",
-    ""
-  ],
-  enHandbookTeamTable: [
-    "./ArknightsAssetsGamedata/en/gamedata/excel/handbook_team_table.json",
-    ""
-  ],
+  cnHandbookTeamTable: ["./ArknightsGameData/zh_CN/gamedata/excel/handbook_team_table.json", ""],
+  enHandbookTeamTable: ["./ArknightsAssetsGamedata/en/gamedata/excel/handbook_team_table.json", ""],
 };
 
 // --- auto-add all krooster ../src/data/*.json files ---
@@ -136,10 +77,7 @@ for (const file of fs.readdirSync(dataDir)) {
   if (file.endsWith(".json")) {
     const baseName = path.basename(file, ".json");
     const keyName = `${baseName}Json`; // e.g. recruitment.json -> recruitmentJson
-    repositories[keyName] = [
-      `../src/data/${file}`,
-      "",
-    ];
+    repositories[keyName] = [`../src/data/${file}`, ""];
   }
 }
 /**
@@ -151,9 +89,12 @@ for (const file of fs.readdirSync(dataDir)) {
 export function loadRepositoryTable(tableName, baseUrl = import.meta.url) {
   if (!(tableName in repositories)) {
     throw new Error(
-      `Invalid repository name "${tableName}". Must be mapped inside tablesMapper.mjs. Otherwise use one of: ${Object.keys(repositories).join(", ")}`
+      `Invalid repository name "${tableName}". Must be mapped inside tablesMapper.mjs. Otherwise use one of: ${Object.keys(
+        repositories
+      ).join(", ")}`
     );
   }
   const [primary, fallback] = repositories[tableName];
+  console.log(tableName);
   return loadJsonFile(primary, fallback, baseUrl);
 }
