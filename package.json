@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "start http://localhost:3000/ & next dev",
-    "next:build": "next build",
+    "next:build": "next build --webpack",
     "next:start": "next start",
     "lint": "next lint",
     "server": "yarn next:build && NODE_ENV=production node server.js",
