@@ -78,7 +78,7 @@ export const profileSchema = {
   additionalProperties: false,
 };
 
-export const servers = ["EN", "官服", "B服", "JP", "KR", "TW"];
+export const servers = ["EN", "CN", "B服", "JP", "KR", "TW"];
 
 export function isCN(server: string): boolean {
   return !["EN", "JP", "KR", "TW"].includes(server);

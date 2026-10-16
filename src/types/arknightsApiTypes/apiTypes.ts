@@ -320,3 +320,9 @@ export interface AssistantData {
   //equipped module
   currentEquip: string | null;
 }
+
+export interface SklandPayload {
+  playerInfo: any;
+  warehouseInfo: any;
+  uid: string;
+}

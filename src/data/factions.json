@@ -320,5 +320,12 @@
     "powerLevel": 2,
     "isRaw": true,
     "sortId": 47
+  },
+  "sees": {
+    "powerName": "S.E.E.S.",
+    "powerCode": "S.E.E.S.",
+    "powerLevel": 2,
+    "isRaw": true,
+    "sortId": 48
   }
 }

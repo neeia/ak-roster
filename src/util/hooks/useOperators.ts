@@ -39,6 +39,58 @@ function useOperators() {
     [setOperators]
   );
 
+  const overwriteOperators = useCallback(
+    async (newOperators: Operator[]) => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      const user_id = session?.user.id;
+      if (!user_id) return;
+
+      if ((newOperators?.length ?? 0) === 0) return;
+
+      // Filter valid operators and append user_id
+      const preparedOperators = newOperators
+        .filter((op) => op.op_id in operatorJson)
+        .map((op) => ({
+          ...op,
+          user_id,
+        }));
+
+      if (preparedOperators.length === 0) return;
+
+      // 1. Delete all existing operator records for this user
+      const { error: deleteError } = await supabase
+        .from("operators")
+        .delete()
+        .eq("user_id", user_id);
+
+      if (deleteError) {
+        handlePostgrestError(deleteError);
+        return;
+      }
+
+      // 2. Insert new operators
+      const { error: insertError } = await supabase
+        .from("operators")
+        .insert(preparedOperators);
+
+      if (insertError) {
+        handlePostgrestError(insertError);
+        return;
+      }
+
+      // 3. Update local state
+      const newRoster: Roster = preparedOperators.reduce((acc, op) => {
+        acc[op.op_id] = op;
+        return acc;
+      }, {} as Roster);
+
+      setOperators(newRoster);
+    },
+    [setOperators]
+  );
+
   const hydrated = useRef(false);
   // fetch data from db
   useEffect(() => {
@@ -91,6 +143,6 @@ function useOperators() {
     };
   }, []);
 
-  return [operators, onChange, isLoaded] as const;
+  return [operators, onChange, isLoaded, overwriteOperators] as const;
 }
 export default useOperators;
