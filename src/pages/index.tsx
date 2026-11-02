@@ -242,11 +242,12 @@ const Home: NextPage = () => {
           >
             <AccountWidget sx={{ p: 0 }} username={account?.username} />
             <Alert severity="info">
-              <AlertTitle>Importing is back!</AlertTitle>
-              <div>We've fixed the import function, and you can also import from JP and KR servers now.</div>
-              <Link sx={{ textDecoration: "1px dotted underline" }} href="/data/import">
-                Go to Import
-              </Link>
+              You can update your information in one click by connecting to Yostar! (EN, JP, KR) and to Skland (CN)
+              <div>
+                <Link sx={{ textDecoration: "1px dotted underline" }} href="/data/import">
+                  Go to Import
+                </Link>
+              </div>
             </Alert>
             {errors.map((err, i) => (
               <Alert
