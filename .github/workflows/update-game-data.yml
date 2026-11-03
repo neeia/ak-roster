@@ -81,39 +81,3 @@ jobs:
             || gh pr edit --body "$VERSION_MESSAGE"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  update-images:
-    if: ${{ false }}
-    name: Update image assets
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          path: main-repo
-          sparse-checkout: scripts
-      - uses: actions/checkout@v4
-        with:
-          repository: PuppiizSunniiz/Arknight-Images
-          path: Arknight-Images
-          sparse-checkout: |
-            skills
-            avatars
-            characters
-            equip
-            items
-            subclass
-            factions
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: main-repo/.nvmrc
-          cache: 'yarn'
-          cache-dependency-path: main-repo/yarn.lock
-      - name: Run images script
-        run: cd main-repo && yarn install --frozen-lockfile && yarn update:images
-      - name: Sync to S3
-        run: |
-          cd main-repo/public/img
-          aws s3 sync --size-only . s3://krooster-test/images/
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: 'us-east-2'
