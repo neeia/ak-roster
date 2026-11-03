@@ -73,12 +73,38 @@ const upload = async (existingFilePaths, task) => {
     filenames.map(async (filename) => {
       const _filename = replaceFn ? replaceFn(filename) : filename;
       const targetFilePath = path.join(destDir, _filename);
-      if (targetFilePath && !existingFilePaths.has(_filename)) {
-        // console.log(`images: "${targetFilePath}" not found in storage, saving...`);
-        const sourceFilePath = path.join(sourceDir, filename);
-        //console.table({sourceFilePath, targetFilePath});
+      
+      const sourceFilePath = path.join(sourceDir, filename);
+      const baseName = _filename.replace(/\.png$/, "");
+      const sizeFilePath = path.join(destDir, `${baseName}.size`);
+
+      const sourceStats = await fs.stat(sourceFilePath);
+      const sourceSize = sourceStats.size;
+
+      let savedSize = null;
+      try {
+        const sizeContent = await fs.readFile(sizeFilePath, "utf-8");
+        savedSize = parseInt(sizeContent.trim(), 10);
+      } catch {
+        // Size file doesn't exist yet
+      }
+
+      if (savedSize === null) {
+        // Scenario: Brand new file
         await fs.copyFile(sourceFilePath, targetFilePath);
+        await fs.writeFile(sizeFilePath, sourceSize.toString());
         uploadCount += 1;
+      } else if (savedSize !== sourceSize) {
+        // Scenario: File updated (size changed)
+        await fs.copyFile(sourceFilePath, targetFilePath);
+        await fs.writeFile(sizeFilePath, sourceSize.toString());
+        uploadCount += 1;
+        console.log("File changed: ", targetFilePath);
+      } else {
+        // Scenario: Same size - skip writing PNG entirely, keep cache lean
+        //uncomment to again write all png files
+        //await fs.copyFile(sourceFilePath, targetFilePath);
+        //uploadCount += 1;
       }
     })
   );
