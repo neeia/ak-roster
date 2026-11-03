@@ -1,0 +1,42 @@
+name: Refresh Image Cache
+
+on:
+  schedule:
+    - cron: '0 0 */5 * *'
+  workflow_dispatch:
+
+jobs:
+  refresh-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Main Repo
+        uses: actions/checkout@v4
+        with:
+          path: main-repo
+          sparse-checkout: |
+            scripts
+
+      - name: Restore and Touch WebP Conversion Cache
+        uses: actions/cache@v4
+        with:
+          path: main-repo/public/img
+          key: webp-cache-universal-${{ github.run_id }}
+          restore-keys: |
+            webp-cache-universal-
+            webp-cache-
+
+      - name: Log Restored Cache Files Count
+        run: |
+          if [ -d "main-repo/public/img" ] && [ "$(ls -A main-repo/public/img)" ]; then
+            cd main-repo/public/img
+            echo "=== Restored Cache File Counts ==="
+            for dir in */; do
+              if [ -d "$dir" ]; then
+                count=$(find "$dir" -name "*.webp" | wc -l)
+                countSize=$(find "$dir" -name "*.size" | wc -l)
+                echo "Folder '$dir': $count webp, $countSize size files"
+              fi
+            done
+          else
+            echo "Cache directory is empty or was not restored."
+          fi

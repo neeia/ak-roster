@@ -12,7 +12,7 @@ jobs:
   update-images:
     if: >
       github.event_name == 'workflow_dispatch' ||
-      (github.event.pull_request.merged == true && contains(github.event.pull_request.title, 'Update game data'))
+      (github.event.pull_request.merged == true && contains(github.event.pull_request.title, 'update game data'))
     runs-on: ubuntu-latest
     steps:
       - name: Configure AWS Credentials
@@ -43,12 +43,38 @@ jobs:
             ui/subclass
             factions
 
+      - name: Restore Universal WebP Cache
+        id: webp-cache
+        uses: actions/cache@v4
+        with:
+          path: main-repo/public/img
+          key: webp-cache-universal-${{ github.run_id }}
+          restore-keys: |
+            webp-cache-universal-
+            webp-cache-
+            
+      - name: Log Restored Cache Files Count
+        run: |
+          if [ -d "main-repo/public/img" ] && [ "$(ls -A main-repo/public/img)" ]; then
+            cd main-repo/public/img
+            echo "=== Restored Cache File Counts ==="
+            for dir in */; do
+              if [ -d "$dir" ]; then
+                count=$(find "$dir" -name "*.webp" | wc -l)
+                countSize=$(find "$dir" -name "*.size" | wc -l)
+                echo "Folder '$dir': $count webp, $countSize size files"
+              fi
+            done
+          else
+            echo "Cache directory is empty or was not restored."
+          fi
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: main-repo/.nvmrc
 
-      - name: Run Images Script Directly
+      - name: Run Images Script (New/Updated PNGs)
         working-directory: main-repo
         run: |
           node scripts/images.mjs
@@ -57,25 +83,41 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y webp
-
-      - name: Convert PNGs to WebP and Remove PNGs
+          
+      - name: Convert New/Updated PNGs and Cleanup
         run: |
           cd main-repo/public/img
-          # Find all png files recursively, convert them, and delete the source png
+          # Any .png file present has passed script as new or updated
           find . -name "*.png" | while read img; do
-            cwebp "$img" -o "${img%.png}.webp"
+            webp_target="${img%.png}.webp"
+            cwebp -quiet "$img" -o "$webp_target"
+            echo "Converted asset: $webp_target"
             rm "$img"
           done
 
-          echo "=== Converted Directory File Counts ==="
-          for dir in */; do
-            if [ -d "$dir" ]; then
-              count=$(find "$dir" -name "*.webp" | wc -l)
-              echo "Folder '$dir': $count webp files"
-            fi
-          done
+      - name: Log Final File Counts
+        run: |
+          if [ -d "main-repo/public/img" ]; then
+            cd main-repo/public/img
+            echo "=== Final Directory File Counts ==="
+            for dir in */; do
+              if [ -d "$dir" ]; then
+                count=$(find "$dir" -name "*.webp" | wc -l)
+                countSize=$(find "$dir" -name "*.size" | wc -l)
+                echo "Folder '$dir': $count webp, $countSize size files"
+              fi
+            done
+          fi
 
       - name: Sync WebP Assets to AWS S3 Bucket
+        continue-on-error: true
         run: |
           cd main-repo/public/img
-          aws s3 sync --no-overwrite . s3://${{ secrets.S3_BUCKET_NAME }}/images/
+          aws s3 sync --no-overwrite --exclude "*.png" --exclude "*.size" . s3://${{ secrets.S3_BUCKET_NAME }}/images/
+
+      - name: Check S3 For Modified Images (Dry Run)
+        continue-on-error: true
+        run: |
+          cd main-repo/public/img
+          echo "=== Modified Images To Update on S3 Later ==="
+          aws s3 sync --dryrun --size-only --exclude "*.png" --exclude "*.size" . s3://${{ secrets.S3_BUCKET_NAME }}/images/
