@@ -1,0 +1,81 @@
+name: Update Image Assets
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  update-images:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.merged == true && contains(github.event.pull_request.title, 'Update game data'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          
+      - name: Checkout Main Repo (Scripts & Config)
+        uses: actions/checkout@v4
+        with:
+          path: main-repo
+          sparse-checkout: |
+            scripts
+
+      - name: Checkout Image Repo (Sparse Folders)
+        uses: actions/checkout@v4
+        with:
+          repository: PuppiizSunniiz/Arknight-Images
+          path: Arknight-Images
+          sparse-checkout: |
+            skills
+            avatars
+            characters
+            equip
+            items
+            ui/subclass
+            factions
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: main-repo/.nvmrc
+
+      - name: Run Images Script Directly
+        working-directory: main-repo
+        run: |
+          node scripts/images.mjs
+
+      - name: Install WebP Utilities
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y webp
+
+      - name: Convert PNGs to WebP and Remove PNGs
+        run: |
+          cd main-repo/public/img
+          # Find all png files recursively, convert them, and delete the source png
+          find . -name "*.png" | while read img; do
+            cwebp "$img" -o "${img%.png}.webp"
+            rm "$img"
+          done
+
+          echo "=== Converted Directory File Counts ==="
+          for dir in */; do
+            if [ -d "$dir" ]; then
+              count=$(find "$dir" -name "*.webp" | wc -l)
+              echo "Folder '$dir': $count webp files"
+            fi
+          done
+
+      - name: Sync WebP Assets to AWS S3 Bucket
+        run: |
+          cd main-repo/public/img
+          aws s3 sync --no-overwrite . s3://${{ secrets.S3_BUCKET_NAME }}/images/
