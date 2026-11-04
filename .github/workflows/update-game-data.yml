@@ -32,7 +32,14 @@ jobs:
           node-version-file: .nvmrc
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - run: |
+      - name: Shallow Clone And Update Submodules
+        run: |
+          # first run after adding submodule on old branch check
+          if [ ! -d "scripts/releasever" ]; then
+            git fetch origin main --depth=1
+            git reset --hard origin/main
+          fi
+          # shallow clone submodule repos
           git submodule init scripts/
           git clone -n --depth=1 $(git config submodule."scripts/ArknightsGameData".url) scripts/ArknightsGameData
           cd scripts/ArknightsGameData
@@ -42,9 +49,14 @@ jobs:
           cd scripts/ArknightsAssetsGamedata
           git sparse-checkout set en/gamedata/excel
           cd -
+          git clone -n --depth=1 "https://github.com/ArknightsAssets/releasever" scripts/releasever
+          cd scripts/releasever
+          git sparse-checkout set releasever.json
+          cd -
           git submodule update --init --remote --depth=20 --force scripts/
-      # run update scripts from main, continue only if krooster data files or script themselves changed (i.e. skip submodule-only updates)
-      - run: | 
+      # Continue only if krooster data files or script themselves changed (i.e. skip submodule-only updates)
+      - name: Run Update Scripts From Main
+        run: | 
           git fetch origin main --depth=1
           git checkout origin/main -- scripts
           yarn update:all
@@ -57,17 +69,19 @@ jobs:
               echo "Branch exists: reset hard to squash changes"
               EN_COMMIT=$(cd scripts/ArknightsAssetsGamedata && git rev-parse HEAD)
               CN_COMMIT=$(cd scripts/ArknightsGameData && git rev-parse HEAD)
+              RV_COMMIT=$(cd scripts/releasever && git rev-parse HEAD)
         
               git reset --hard origin/main
               git -C scripts/ArknightsAssetsGamedata reset --hard $EN_COMMIT
               git -C scripts/ArknightsGameData reset --hard $CN_COMMIT
+              git -C scripts/releasever reset --hard $RV_COMMIT
         
               yarn update:all
               git add -A
             fi 
           fi
       # commit changes and PR,  
-      - name: Commit changes
+      - name: Commit Changes
         if: env.SKIP_COMMIT != 'true'
         run: |
           git config user.name "github-actions[bot]"

@@ -4,3 +4,6 @@
 [submodule "scripts/ArknightsAssetsGamedata"]
 	path = scripts/ArknightsAssetsGamedata
 	url = https://github.com/ArknightsAssets/ArknightsGamedata
+[submodule "scripts/releasever"]
+	path = scripts/releasever
+	url = https://github.com/ArknightsAssets/releasever
