@@ -69,6 +69,9 @@ const repositories = {
   //handbook_team  ,
   cnHandbookTeamTable: ["./ArknightsGameData/zh_CN/gamedata/excel/handbook_team_table.json", ""],
   enHandbookTeamTable: ["./ArknightsAssetsGamedata/en/gamedata/excel/handbook_team_table.json", ""],
+
+  //release_ver
+  cnReleaseVerByIdJson: ["./releasever/releasever.json",""],
 };
 
 // --- auto-add all krooster ../src/data/*.json files ---

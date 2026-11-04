@@ -27,7 +27,8 @@
       "Improves Talent"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2019-05-01"
   },
   "char_286_cast3": {
     "id": "char_286_cast3",
@@ -56,7 +57,8 @@
       "Improves Talent"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4220_kormr": {
     "id": "char_4220_kormr",
@@ -89,7 +91,8 @@
       "天赋效果加强"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2026-09-03"
   },
   "char_376_therex": {
     "id": "char_376_therex",
@@ -119,7 +122,8 @@
       "Improves Talent"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2020-04-26"
   },
   "char_4000_jnight": {
     "id": "char_4000_jnight",
@@ -149,7 +153,8 @@
       "Improves Talent"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2021-10-29"
   },
   "char_4077_palico": {
     "id": "char_4077_palico",
@@ -179,7 +184,8 @@
       "Improves Talent"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2023-03-04"
   },
   "char_4091_ulika": {
     "id": "char_4091_ulika",
@@ -208,7 +214,8 @@
       "Improves Talent"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2023-03-27"
   },
   "char_4093_frston": {
     "id": "char_4093_frston",
@@ -237,7 +244,8 @@
       "Improves Talent"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2023-05-19"
   },
   "char_4136_phonor": {
     "id": "char_4136_phonor",
@@ -266,7 +274,8 @@
       "Improves Talent"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2024-04-30"
   },
   "char_4188_confes": {
     "id": "char_4188_confes",
@@ -295,7 +304,8 @@
       "Improves Talent"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2025-04-30"
   },
   "char_4227_gallus": {
     "id": "char_4227_gallus",
@@ -324,7 +334,8 @@
       "Improves Talent"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2026-04-28"
   },
   "char_4215_buddy": {
     "id": "char_4215_buddy",
@@ -354,7 +365,8 @@
       "天赋效果加强"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2026-05-27"
   },
   "char_502_nblade": {
     "id": "char_502_nblade",
@@ -387,7 +399,8 @@
       "DP Cost -1"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2019-05-01"
   },
   "char_500_noirc": {
     "id": "char_500_noirc",
@@ -420,7 +433,8 @@
       "DP Cost -1"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2019-05-01"
   },
   "char_503_rang": {
     "id": "char_503_rang",
@@ -450,7 +464,8 @@
       "DP Cost -1"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2019-05-01"
   },
   "char_501_durin": {
     "id": "char_501_durin",
@@ -481,7 +496,8 @@
       "DP Cost -1"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2019-05-01"
   },
   "char_009_12fce": {
     "id": "char_009_12fce",
@@ -511,7 +527,8 @@
       "DP Cost -1"
     ],
     "skillLevels": [],
-    "eliteLevels": []
+    "eliteLevels": [],
+    "releaseDateCn": "2019-05-01"
   },
   "char_123_fang": {
     "id": "char_123_fang",
@@ -654,7 +671,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_240_wyvern": {
     "id": "char_240_wyvern",
@@ -793,7 +811,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_192_falco": {
     "id": "char_192_falco",
@@ -932,7 +951,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_208_melan": {
     "id": "char_208_melan",
@@ -1075,7 +1095,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_281_popka": {
     "id": "char_281_popka",
@@ -1217,7 +1238,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_209_ardign": {
     "id": "char_209_ardign",
@@ -1358,7 +1380,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_122_beagle": {
     "id": "char_122_beagle",
@@ -1501,7 +1524,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_284_spot": {
     "id": "char_284_spot",
@@ -1643,7 +1667,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_124_kroos": {
     "id": "char_124_kroos",
@@ -1786,7 +1811,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_211_adnach": {
     "id": "char_211_adnach",
@@ -1926,7 +1952,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_121_lava": {
     "id": "char_121_lava",
@@ -2069,7 +2096,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_120_hibisc": {
     "id": "char_120_hibisc",
@@ -2212,7 +2240,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_212_ansel": {
     "id": "char_212_ansel",
@@ -2355,7 +2384,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_210_stward": {
     "id": "char_210_stward",
@@ -2497,7 +2527,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_278_orchid": {
     "id": "char_278_orchid",
@@ -2640,7 +2671,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_141_nights": {
     "id": "char_141_nights",
@@ -3009,7 +3041,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_109_fmout": {
     "id": "char_109_fmout",
@@ -3378,7 +3411,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_253_greyy": {
     "id": "char_253_greyy",
@@ -3747,7 +3781,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4051_akkord": {
     "id": "char_4051_akkord",
@@ -4113,7 +4148,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-10-31"
   },
   "char_328_cammou": {
     "id": "char_328_cammou",
@@ -4482,7 +4518,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-07-08"
   },
   "char_469_indigo": {
     "id": "char_469_indigo",
@@ -4851,7 +4888,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-05-28"
   },
   "char_4004_pudd": {
     "id": "char_4004_pudd",
@@ -5217,7 +5255,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-10-29"
   },
   "char_235_jesica": {
     "id": "char_235_jesica",
@@ -5591,7 +5630,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_126_shotst": {
     "id": "char_126_shotst",
@@ -5960,7 +6000,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_190_clour": {
     "id": "char_190_clour",
@@ -6329,7 +6370,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-10-15"
   },
   "char_133_mm": {
     "id": "char_133_mm",
@@ -6698,7 +6740,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-11-19"
   },
   "char_118_yuki": {
     "id": "char_118_yuki",
@@ -7067,7 +7110,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_440_pinecn": {
     "id": "char_440_pinecn",
@@ -7436,7 +7480,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-12-15"
   },
   "char_302_glaze": {
     "id": "char_302_glaze",
@@ -7805,7 +7850,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-12-11"
   },
   "char_366_acdrop": {
     "id": "char_366_acdrop",
@@ -8174,7 +8220,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-08-24"
   },
   "char_4062_totter": {
     "id": "char_4062_totter",
@@ -8542,7 +8589,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-10-09"
   },
   "char_4100_caper": {
     "id": "char_4100_caper",
@@ -8908,7 +8956,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-10-31"
   },
   "char_198_blackd": {
     "id": "char_198_blackd",
@@ -9275,7 +9324,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_149_scave": {
     "id": "char_149_scave",
@@ -9645,7 +9695,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_290_vigna": {
     "id": "char_290_vigna",
@@ -10014,7 +10065,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_151_myrtle": {
     "id": "char_151_myrtle",
@@ -10383,7 +10435,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_452_bstalk": {
     "id": "char_452_bstalk",
@@ -10752,7 +10805,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-12-29"
   },
   "char_4208_wintim": {
     "id": "char_4208_wintim",
@@ -11118,7 +11172,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-09-29"
   },
   "char_130_doberm": {
     "id": "char_130_doberm",
@@ -11490,7 +11545,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_289_gyuki": {
     "id": "char_289_gyuki",
@@ -11859,7 +11915,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_159_peacok": {
     "id": "char_159_peacok",
@@ -12219,7 +12276,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-03-30"
   },
   "char_193_frostl": {
     "id": "char_193_frostl",
@@ -12591,7 +12649,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_127_estell": {
     "id": "char_127_estell",
@@ -12957,7 +13016,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_185_frncat": {
     "id": "char_185_frncat",
@@ -13326,7 +13386,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_301_cutter": {
     "id": "char_301_cutter",
@@ -13695,7 +13756,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-04-20"
   },
   "char_337_utage": {
     "id": "char_337_utage",
@@ -14064,7 +14126,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-03-15"
   },
   "char_271_spikes": {
     "id": "char_271_spikes",
@@ -14433,7 +14496,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-09-23"
   },
   "char_4067_lolxh": {
     "id": "char_4067_lolxh",
@@ -14794,7 +14858,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-09-13"
   },
   "char_4063_quartz": {
     "id": "char_4063_quartz",
@@ -15160,7 +15225,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-10-31"
   },
   "char_491_humus": {
     "id": "char_491_humus",
@@ -15531,7 +15597,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-04-03"
   },
   "char_445_wscoot": {
     "id": "char_445_wscoot",
@@ -15897,7 +15964,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-04-03"
   },
   "char_237_gravel": {
     "id": "char_237_gravel",
@@ -16266,7 +16334,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_272_strong": {
     "id": "char_272_strong",
@@ -16635,7 +16704,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-08-10"
   },
   "char_236_rope": {
     "id": "char_236_rope",
@@ -17007,7 +17077,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4170_hdbell": {
     "id": "char_4170_hdbell",
@@ -17299,7 +17370,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-10-29"
   },
   "char_117_myrrh": {
     "id": "char_117_myrrh",
@@ -17668,7 +17740,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_187_ccheal": {
     "id": "char_187_ccheal",
@@ -18037,7 +18110,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_298_susuro": {
     "id": "char_298_susuro",
@@ -18409,7 +18483,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-09-10"
   },
   "char_181_flower": {
     "id": "char_181_flower",
@@ -18781,7 +18856,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_385_finlpp": {
     "id": "char_385_finlpp",
@@ -19147,7 +19223,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-02-28"
   },
   "char_4041_chnut": {
     "id": "char_4041_chnut",
@@ -19515,7 +19592,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-04-13"
   },
   "char_199_yak": {
     "id": "char_199_yak",
@@ -19885,7 +19963,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_150_snakek": {
     "id": "char_150_snakek",
@@ -20254,7 +20333,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_381_bubble": {
     "id": "char_381_bubble",
@@ -20623,7 +20703,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-10-12"
   },
   "char_4130_luton": {
     "id": "char_4130_luton",
@@ -20991,7 +21072,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-04-09"
   },
   "char_196_sunbr": {
     "id": "char_196_sunbr",
@@ -21361,7 +21443,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_260_durnar": {
     "id": "char_260_durnar",
@@ -21730,7 +21813,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_110_deepcl": {
     "id": "char_110_deepcl",
@@ -22098,7 +22182,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_183_skgoat": {
     "id": "char_183_skgoat",
@@ -22467,7 +22552,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_258_podego": {
     "id": "char_258_podego",
@@ -22839,7 +22925,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-06-16"
   },
   "char_484_robrta": {
     "id": "char_484_robrta",
@@ -23207,7 +23294,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-09-16"
   },
   "char_355_ethan": {
     "id": "char_355_ethan",
@@ -23573,7 +23661,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_277_sqrrel": {
     "id": "char_277_sqrrel",
@@ -23943,7 +24032,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4107_vrdant": {
     "id": "char_4107_vrdant",
@@ -24311,7 +24401,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-09-29"
   },
   "char_4165_ctrail": {
     "id": "char_4165_ctrail",
@@ -24603,7 +24694,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-10-30"
   },
   "char_128_plosis": {
     "id": "char_128_plosis",
@@ -24979,7 +25071,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_275_breeze": {
     "id": "char_275_breeze",
@@ -25349,7 +25442,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4163_rosesa": {
     "id": "char_4163_rosesa",
@@ -25719,7 +25813,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-12-04"
   },
   "char_115_headbr": {
     "id": "char_115_headbr",
@@ -26092,7 +26187,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_102_texas": {
     "id": "char_102_texas",
@@ -26469,7 +26565,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_349_chiave": {
     "id": "char_349_chiave",
@@ -26842,7 +26939,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-07-27"
   },
   "char_488_buildr": {
     "id": "char_488_buildr",
@@ -27213,7 +27311,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-07-27"
   },
   "char_4023_rfalcn": {
     "id": "char_4023_rfalcn",
@@ -27583,7 +27682,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-01-29"
   },
   "char_4199_makiri": {
     "id": "char_4199_makiri",
@@ -27953,7 +28053,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-07-31"
   },
   "char_261_sddrag": {
     "id": "char_261_sddrag",
@@ -28328,7 +28429,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_496_wildmn": {
     "id": "char_496_wildmn",
@@ -28699,7 +28801,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-10-29"
   },
   "char_1036_fang2": {
     "id": "char_1036_fang2",
@@ -29072,7 +29175,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-04-30"
   },
   "char_401_elysm": {
     "id": "char_401_elysm",
@@ -29447,7 +29551,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-04-30"
   },
   "char_4119_wanqin": {
     "id": "char_4119_wanqin",
@@ -29817,7 +29922,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-01-29"
   },
   "char_4237_jcinta": {
     "id": "char_4237_jcinta",
@@ -30187,7 +30293,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-07-30"
   },
   "char_476_blkngt": {
     "id": "char_476_blkngt",
@@ -30558,7 +30665,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-01-23"
   },
   "char_4147_mitm": {
     "id": "char_4147_mitm",
@@ -30928,7 +31036,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-07-05"
   },
   "char_497_ctable": {
     "id": "char_497_ctable",
@@ -31301,7 +31410,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-08-08"
   },
   "char_4017_puzzle": {
     "id": "char_4017_puzzle",
@@ -31671,7 +31781,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-12-14"
   },
   "char_4144_chilc": {
     "id": "char_4144_chilc",
@@ -32041,7 +32152,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-08-30"
   },
   "char_4052_surfer": {
     "id": "char_4052_surfer",
@@ -32412,7 +32524,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-01-21"
   },
   "char_308_swire": {
     "id": "char_308_swire",
@@ -32785,7 +32898,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_265_sophia": {
     "id": "char_265_sophia",
@@ -33155,7 +33269,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-10-12"
   },
   "char_4106_bryota": {
     "id": "char_4106_bryota",
@@ -33526,7 +33641,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-07-27"
   },
   "char_4125_rdoc": {
     "id": "char_4125_rdoc",
@@ -33896,7 +34012,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-03-06"
   },
   "char_4245_alga": {
     "id": "char_4245_alga",
@@ -34266,7 +34383,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-10-29"
   },
   "char_106_franka": {
     "id": "char_106_franka",
@@ -34638,7 +34756,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_131_flameb": {
     "id": "char_131_flameb",
@@ -35008,7 +35127,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-10-15"
   },
   "char_154_morgan": {
     "id": "char_154_morgan",
@@ -35379,7 +35499,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-04-03"
   },
   "char_4142_laios": {
     "id": "char_4142_laios",
@@ -35749,7 +35870,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-08-30"
   },
   "char_155_tiger": {
     "id": "char_155_tiger",
@@ -36121,7 +36243,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_415_flint": {
     "id": "char_415_flint",
@@ -36493,7 +36616,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-08-24"
   },
   "char_157_dagda": {
     "id": "char_157_dagda",
@@ -36864,7 +36988,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-10-09"
   },
   "char_140_whitew": {
     "id": "char_140_whitew",
@@ -37235,7 +37360,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_294_ayer": {
     "id": "char_294_ayer",
@@ -37607,7 +37733,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-07-08"
   },
   "char_194_leto": {
     "id": "char_194_leto",
@@ -37978,7 +38105,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-12-02"
   },
   "char_4083_chimes": {
     "id": "char_4083_chimes",
@@ -38348,7 +38476,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-02-09"
   },
   "char_252_bibeak": {
     "id": "char_252_bibeak",
@@ -38718,7 +38847,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-03-15"
   },
   "char_459_tachak": {
     "id": "char_459_tachak",
@@ -39089,7 +39219,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-03-05"
   },
   "char_143_ghost": {
     "id": "char_143_ghost",
@@ -39462,7 +39593,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_356_broca": {
     "id": "char_356_broca",
@@ -39835,7 +39967,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4126_fuze": {
     "id": "char_4126_fuze",
@@ -40206,7 +40339,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-03-06"
   },
   "char_4166_varkis": {
     "id": "char_4166_varkis",
@@ -40576,7 +40710,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-01-06"
   },
   "char_274_astesi": {
     "id": "char_274_astesi",
@@ -40948,7 +41083,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_333_sidero": {
     "id": "char_333_sidero",
@@ -41318,7 +41454,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-04-20"
   },
   "char_475_akafyu": {
     "id": "char_475_akafyu",
@@ -41690,7 +41827,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-04-29"
   },
   "char_1030_noirc2": {
     "id": "char_1030_noirc2",
@@ -42064,7 +42202,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-03-04"
   },
   "char_421_crow": {
     "id": "char_421_crow",
@@ -42435,7 +42574,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-07-31"
   },
   "char_4066_highmo": {
     "id": "char_4066_highmo",
@@ -42805,7 +42945,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-09-26"
   },
   "char_486_takila": {
     "id": "char_486_takila",
@@ -43175,7 +43316,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-07-31"
   },
   "char_4131_odda": {
     "id": "char_4131_odda",
@@ -43545,7 +43687,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-04-09"
   },
   "char_4187_graceb": {
     "id": "char_4187_graceb",
@@ -43844,7 +43987,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-04-30"
   },
   "char_4185_amoris": {
     "id": "char_4185_amoris",
@@ -44215,7 +44359,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-09-02"
   },
   "char_394_hadiya": {
     "id": "char_394_hadiya",
@@ -44511,7 +44656,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-10-31"
   },
   "char_1049_catap2": {
     "id": "char_1049_catap2",
@@ -44885,7 +45031,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-05-27"
   },
   "char_129_bluep": {
     "id": "char_129_bluep",
@@ -45257,7 +45404,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_204_platnm": {
     "id": "char_204_platnm",
@@ -45629,7 +45777,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_367_swllow": {
     "id": "char_367_swllow",
@@ -46001,7 +46150,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-12-11"
   },
   "char_365_aprl": {
     "id": "char_365_aprl",
@@ -46373,7 +46523,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-09-23"
   },
   "char_1021_kroos2": {
     "id": "char_1021_kroos2",
@@ -46746,7 +46897,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-01-23"
   },
   "char_498_inside": {
     "id": "char_498_inside",
@@ -47116,7 +47268,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-06-02"
   },
   "char_219_meteo": {
     "id": "char_219_meteo",
@@ -47488,7 +47641,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_379_sesa": {
     "id": "char_379_sesa",
@@ -47860,7 +48014,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-03-15"
   },
   "char_4078_bdhkgt": {
     "id": "char_4078_bdhkgt",
@@ -48230,7 +48385,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-01-14"
   },
   "char_279_excu": {
     "id": "char_279_excu",
@@ -48602,7 +48758,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-10-15"
   },
   "char_346_aosta": {
     "id": "char_346_aosta",
@@ -48975,7 +49132,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-10-12"
   },
   "char_4203_kichi": {
     "id": "char_4203_kichi",
@@ -49345,7 +49503,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-07-31"
   },
   "char_4213_skybx": {
     "id": "char_4213_skybx",
@@ -49641,7 +49800,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-12-04"
   },
   "char_4218_aigis": {
     "id": "char_4218_aigis",
@@ -50014,7 +50174,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-09-03"
   },
   "char_002_amiya": {
     "id": "char_002_amiya",
@@ -50451,7 +50612,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_405_absin": {
     "id": "char_405_absin",
@@ -50822,7 +50984,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-06-16"
   },
   "char_411_tomimi": {
     "id": "char_411_tomimi",
@@ -51192,7 +51355,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-08-24"
   },
   "char_466_qanik": {
     "id": "char_466_qanik",
@@ -51562,7 +51726,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-10-31"
   },
   "char_166_skfire": {
     "id": "char_166_skfire",
@@ -51933,7 +52098,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_306_leizi": {
     "id": "char_306_leizi",
@@ -52305,7 +52471,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-02-23"
   },
   "char_135_halo": {
     "id": "char_135_halo",
@@ -52676,7 +52843,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-07-03"
   },
   "char_344_beewax": {
     "id": "char_344_beewax",
@@ -53048,7 +53216,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-07-27"
   },
   "char_373_lionhd": {
     "id": "char_373_lionhd",
@@ -53420,7 +53589,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-06-16"
   },
   "char_341_sntlla": {
     "id": "char_341_sntlla",
@@ -53790,7 +53960,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-07-05"
   },
   "char_4031_liesel": {
     "id": "char_4031_liesel",
@@ -54163,7 +54334,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-03-09"
   },
   "char_388_mint": {
     "id": "char_388_mint",
@@ -54533,7 +54705,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-09-23"
   },
   "char_338_iris": {
     "id": "char_338_iris",
@@ -54905,7 +55078,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-12-29"
   },
   "char_297_hamoni": {
     "id": "char_297_hamoni",
@@ -55276,7 +55450,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-12-14"
   },
   "char_4110_delphn": {
     "id": "char_4110_delphn",
@@ -55646,7 +55821,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-09-29"
   },
   "char_1011_lava2": {
     "id": "char_1011_lava2",
@@ -56019,7 +56195,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-02-03"
   },
   "char_489_serum": {
     "id": "char_489_serum",
@@ -56390,7 +56567,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-10-29"
   },
   "char_446_aroma": {
     "id": "char_446_aroma",
@@ -56763,7 +56941,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-04-09"
   },
   "char_4013_kjera": {
     "id": "char_4013_kjera",
@@ -57136,7 +57315,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-12-20"
   },
   "char_4040_rockr": {
     "id": "char_4040_rockr",
@@ -57507,7 +57687,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-04-13"
   },
   "char_4054_malist": {
     "id": "char_4054_malist",
@@ -57877,7 +58058,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-08-08"
   },
   "char_4236_tmslot": {
     "id": "char_4236_tmslot",
@@ -58247,7 +58429,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-07-30"
   },
   "char_499_kaitou": {
     "id": "char_499_kaitou",
@@ -58617,7 +58800,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-10-31"
   },
   "char_4081_warmy": {
     "id": "char_4081_warmy",
@@ -58987,7 +59171,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-01-05"
   },
   "char_4198_christ": {
     "id": "char_4198_christ",
@@ -59357,7 +59542,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-06-03"
   },
   "char_4164_tecno": {
     "id": "char_4164_tecno",
@@ -59727,7 +59913,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-12-04"
   },
   "char_242_otter": {
     "id": "char_242_otter",
@@ -60100,7 +60287,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_336_folivo": {
     "id": "char_336_folivo",
@@ -60470,7 +60658,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-07-27"
   },
   "char_4140_lasher": {
     "id": "char_4140_lasher",
@@ -60840,7 +61029,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-07-31"
   },
   "char_108_silent": {
     "id": "char_108_silent",
@@ -61213,7 +61403,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_171_bldsk": {
     "id": "char_171_bldsk",
@@ -61585,7 +61776,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_345_folnic": {
     "id": "char_345_folnic",
@@ -61958,7 +62150,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-07-08"
   },
   "char_4196_reckpr": {
     "id": "char_4196_reckpr",
@@ -62328,7 +62521,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-07-07"
   },
   "char_348_ceylon": {
     "id": "char_348_ceylon",
@@ -62699,7 +62893,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-09-10"
   },
   "char_436_whispr": {
     "id": "char_436_whispr",
@@ -63071,7 +63266,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-10-30"
   },
   "char_4173_nowell": {
     "id": "char_4173_nowell",
@@ -63441,7 +63637,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-02-12"
   },
   "char_402_tuye": {
     "id": "char_402_tuye",
@@ -63811,7 +64008,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-01-18"
   },
   "char_473_mberry": {
     "id": "char_473_mberry",
@@ -64182,7 +64380,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-09-16"
   },
   "char_449_glider": {
     "id": "char_449_glider",
@@ -64552,7 +64751,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-10-29"
   },
   "char_4114_harold": {
     "id": "char_4114_harold",
@@ -64922,7 +65122,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-12-02"
   },
   "char_1024_hbisc2": {
     "id": "char_1024_hbisc2",
@@ -65296,7 +65497,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-06-08"
   },
   "char_494_vendla": {
     "id": "char_494_vendla",
@@ -65666,7 +65868,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-09-29"
   },
   "char_4071_peper": {
     "id": "char_4071_peper",
@@ -66039,7 +66242,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-10-09"
   },
   "char_4139_papyrs": {
     "id": "char_4139_papyrs",
@@ -66409,7 +66613,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-07-31"
   },
   "char_4224_turdus": {
     "id": "char_4224_turdus",
@@ -66779,7 +66984,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-04-03"
   },
   "char_4222_taraxa": {
     "id": "char_4222_taraxa",
@@ -67078,7 +67284,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-02-06"
   },
   "char_148_nearl": {
     "id": "char_148_nearl",
@@ -67453,7 +67660,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_226_hmau": {
     "id": "char_226_hmau",
@@ -67826,7 +68034,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-01-13"
   },
   "char_4109_baslin": {
     "id": "char_4109_baslin",
@@ -68196,7 +68405,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-10-31"
   },
   "char_4143_sensi": {
     "id": "char_4143_sensi",
@@ -68567,7 +68777,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-08-30"
   },
   "char_144_red": {
     "id": "char_144_red",
@@ -68943,7 +69154,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_243_waaifu": {
     "id": "char_243_waaifu",
@@ -69316,7 +69528,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-11-19"
   },
   "char_214_kafka": {
     "id": "char_214_kafka",
@@ -69688,7 +69901,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-12-15"
   },
   "char_455_nothin": {
     "id": "char_455_nothin",
@@ -70060,7 +70274,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-02-03"
   },
   "char_4155_talr": {
     "id": "char_4155_talr",
@@ -70430,7 +70645,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-10-30"
   },
   "char_107_liskam": {
     "id": "char_107_liskam",
@@ -70803,7 +71019,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4137_udflow": {
     "id": "char_4137_udflow",
@@ -71173,7 +71390,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-05-28"
   },
   "char_201_moeshd": {
     "id": "char_201_moeshd",
@@ -71546,7 +71764,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_325_bison": {
     "id": "char_325_bison",
@@ -71916,7 +72135,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-11-19"
   },
   "char_163_hpsts": {
     "id": "char_163_hpsts",
@@ -72287,7 +72507,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4207_branch": {
     "id": "char_4207_branch",
@@ -72657,7 +72878,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-09-29"
   },
   "char_378_asbest": {
     "id": "char_378_asbest",
@@ -73029,7 +73251,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-06-01"
   },
   "char_4025_aprot2": {
     "id": "char_4025_aprot2",
@@ -73399,7 +73622,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-12-31"
   },
   "char_4047_pianst": {
     "id": "char_4047_pianst",
@@ -73769,7 +73993,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-06-08"
   },
   "char_457_blitz": {
     "id": "char_457_blitz",
@@ -74139,7 +74364,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-03-05"
   },
   "char_304_zebra": {
     "id": "char_304_zebra",
@@ -74512,7 +74738,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-04-14"
   },
   "char_431_ashlok": {
     "id": "char_431_ashlok",
@@ -74884,7 +75111,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-10-11"
   },
   "char_493_firwhl": {
     "id": "char_493_firwhl",
@@ -75254,7 +75482,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-01-14"
   },
   "char_422_aurora": {
     "id": "char_422_aurora",
@@ -75628,7 +75857,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-12-20"
   },
   "char_464_cement": {
     "id": "char_464_cement",
@@ -75998,7 +76228,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-04-03"
   },
   "char_4148_philae": {
     "id": "char_4148_philae",
@@ -76368,7 +76599,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-10-30"
   },
   "char_4225_tanya": {
     "id": "char_4225_tanya",
@@ -76738,7 +76970,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-04-28"
   },
   "char_4169_caledo": {
     "id": "char_4169_caledo",
@@ -77108,7 +77341,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-10-29"
   },
   "char_145_prove": {
     "id": "char_145_prove",
@@ -77480,7 +77714,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4006_melnte": {
     "id": "char_4006_melnte",
@@ -77850,7 +78085,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-04-28"
   },
   "char_158_milu": {
     "id": "char_158_milu",
@@ -78222,7 +78458,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_218_cuttle": {
     "id": "char_218_cuttle",
@@ -78595,7 +78832,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-08-10"
   },
   "char_4014_lunacu": {
     "id": "char_4014_lunacu",
@@ -78965,7 +79203,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-10-31"
   },
   "char_363_toddi": {
     "id": "char_363_toddi",
@@ -79337,7 +79576,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-04-14"
   },
   "char_4043_erato": {
     "id": "char_4043_erato",
@@ -79707,7 +79947,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-05-16"
   },
   "char_4221_ju": {
     "id": "char_4221_ju",
@@ -80077,7 +80318,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-02-06"
   },
   "char_1027_greyy2": {
     "id": "char_1027_greyy2",
@@ -80451,7 +80693,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-07-03"
   },
   "char_4104_coldst": {
     "id": "char_4104_coldst",
@@ -80821,7 +81064,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-09-03"
   },
   "char_4211_snhunt": {
     "id": "char_4211_snhunt",
@@ -81191,7 +81435,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-10-31"
   },
   "char_4177_brigid": {
     "id": "char_4177_brigid",
@@ -81562,7 +81807,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-03-06"
   },
   "char_4015_spuria": {
     "id": "char_4015_spuria",
@@ -81932,7 +82178,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-06-02"
   },
   "char_173_slchan": {
     "id": "char_173_slchan",
@@ -82307,7 +82554,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_383_snsant": {
     "id": "char_383_snsant",
@@ -82677,7 +82925,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-01-06"
   },
   "char_4105_almond": {
     "id": "char_4105_almond",
@@ -83048,7 +83297,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-09-03"
   },
   "char_174_slbell": {
     "id": "char_174_slbell",
@@ -83423,7 +83673,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_254_vodfox": {
     "id": "char_254_vodfox",
@@ -83795,7 +84046,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-04-20"
   },
   "char_4079_haini": {
     "id": "char_4079_haini",
@@ -84165,7 +84417,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-05-28"
   },
   "char_393_toledo": {
     "id": "char_393_toledo",
@@ -84535,7 +84788,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-10-08"
   },
   "char_195_glassb": {
     "id": "char_195_glassb",
@@ -84908,7 +85162,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_326_glacus": {
     "id": "char_326_glacus",
@@ -85280,7 +85535,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-09-10"
   },
   "char_4032_provs": {
     "id": "char_4032_provs",
@@ -85650,7 +85906,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-09-02"
   },
   "char_4122_grabds": {
     "id": "char_4122_grabds",
@@ -86020,7 +86277,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-01-29"
   },
   "char_433_windft": {
     "id": "char_433_windft",
@@ -86391,7 +86649,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-04-29"
   },
   "char_4162_cathy": {
     "id": "char_4162_cathy",
@@ -86761,7 +87020,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-09-29"
   },
   "char_4178_alanna": {
     "id": "char_4178_alanna",
@@ -87131,7 +87391,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-04-03"
   },
   "char_101_sora": {
     "id": "char_101_sora",
@@ -87503,7 +87764,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4045_heidi": {
     "id": "char_4045_heidi",
@@ -87873,7 +88135,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-04-13"
   },
   "char_4184_dolris": {
     "id": "char_4184_dolris",
@@ -88243,7 +88506,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-09-02"
   },
   "char_343_tknogi": {
     "id": "char_343_tknogi",
@@ -88615,7 +88879,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-06-01"
   },
   "char_4019_ncdeer": {
     "id": "char_4019_ncdeer",
@@ -88980,7 +89245,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-01-06"
   },
   "char_492_quercu": {
     "id": "char_492_quercu",
@@ -89354,7 +89620,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-02-11"
   },
   "char_4172_xingzh": {
     "id": "char_4172_xingzh",
@@ -89724,7 +89991,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-01-21"
   },
   "char_1022_flwr2": {
     "id": "char_1022_flwr2",
@@ -90097,7 +90365,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-01-06"
   },
   "char_4102_threye": {
     "id": "char_4102_threye",
@@ -90467,7 +90736,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-07-11"
   },
   "char_487_bobb": {
     "id": "char_487_bobb",
@@ -90837,7 +91107,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-09-29"
   },
   "char_4223_botany": {
     "id": "char_4223_botany",
@@ -91207,7 +91478,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-04-03"
   },
   "char_4219_yukari": {
     "id": "char_4219_yukari",
@@ -91580,7 +91852,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-09-03"
   },
   "char_4234_pedro": {
     "id": "char_4234_pedro",
@@ -91876,7 +92149,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-07-08"
   },
   "char_4244_tocka": {
     "id": "char_4244_tocka",
@@ -92244,7 +92518,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-10-29"
   },
   "char_215_mantic": {
     "id": "char_215_mantic",
@@ -92616,7 +92891,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_478_kirara": {
     "id": "char_478_kirara",
@@ -92988,7 +93264,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-05-28"
   },
   "char_4186_tmoris": {
     "id": "char_4186_tmoris",
@@ -93359,7 +93636,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-09-02"
   },
   "char_241_panda": {
     "id": "char_241_panda",
@@ -93731,7 +94009,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4036_forcer": {
     "id": "char_4036_forcer",
@@ -94101,7 +94380,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-03-12"
   },
   "char_451_robin": {
     "id": "char_451_robin",
@@ -94471,7 +94751,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-12-15"
   },
   "char_458_rfrost": {
     "id": "char_458_rfrost",
@@ -94841,7 +95122,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-03-05"
   },
   "char_4171_wulfen": {
     "id": "char_4171_wulfen",
@@ -95214,7 +95496,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-03-06"
   },
   "char_369_bena": {
     "id": "char_369_bena",
@@ -95584,7 +95867,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-05-28"
   },
   "char_4016_kazema": {
     "id": "char_4016_kazema",
@@ -95955,7 +96239,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-03-12"
   },
   "char_4124_iana": {
     "id": "char_4124_iana",
@@ -96325,7 +96610,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-03-06"
   },
   "char_4183_mortis": {
     "id": "char_4183_mortis",
@@ -96695,7 +96981,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-09-02"
   },
   "char_4151_tinman": {
     "id": "char_4151_tinman",
@@ -97065,7 +97352,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-07-15"
   },
   "char_4232_hbound": {
     "id": "char_4232_hbound",
@@ -97435,7 +97723,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-10-08"
   },
   "char_4191_tippi": {
     "id": "char_4191_tippi",
@@ -97731,7 +98020,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-06-03"
   },
   "char_103_angel": {
     "id": "char_103_angel",
@@ -98252,7 +98542,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_332_archet": {
     "id": "char_332_archet",
@@ -98810,7 +99101,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-12-29"
   },
   "char_456_ash": {
     "id": "char_456_ash",
@@ -99325,7 +99617,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-03-05"
   },
   "char_340_shwaz": {
     "id": "char_340_shwaz",
@@ -99843,7 +100136,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-09-10"
   },
   "char_4055_bgsnow": {
     "id": "char_4055_bgsnow",
@@ -100361,7 +100655,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-08-08"
   },
   "char_1048_orchd2": {
     "id": "char_1048_orchd2",
@@ -100807,7 +101102,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-05-27"
   },
   "char_430_fartth": {
     "id": "char_430_fartth",
@@ -101324,7 +101620,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-10-11"
   },
   "char_4193_lemuen": {
     "id": "char_4193_lemuen",
@@ -101766,7 +102063,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-04-30"
   },
   "char_113_cqbw": {
     "id": "char_113_cqbw",
@@ -102284,7 +102582,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-04-30"
   },
   "char_300_phenxi": {
     "id": "char_300_phenxi",
@@ -102841,7 +103140,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-03-12"
   },
   "char_197_poca": {
     "id": "char_197_poca",
@@ -103359,7 +103659,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-06-16"
   },
   "char_2012_typhon": {
     "id": "char_2012_typhon",
@@ -103915,7 +104216,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-07-05"
   },
   "char_391_rosmon": {
     "id": "char_391_rosmon",
@@ -104402,7 +104704,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-10-30"
   },
   "char_1035_wisdel": {
     "id": "char_1035_wisdel",
@@ -104847,7 +105150,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-04-30"
   },
   "char_1013_chen2": {
     "id": "char_1013_chen2",
@@ -105365,7 +105669,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-07-31"
   },
   "char_4117_ray": {
     "id": "char_4117_ray",
@@ -105880,7 +106185,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-01-05"
   },
   "char_4138_narant": {
     "id": "char_4138_narant",
@@ -106395,7 +106701,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-07-31"
   },
   "char_112_siege": {
     "id": "char_112_siege",
@@ -106913,7 +107220,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_222_bpipe": {
     "id": "char_222_bpipe",
@@ -107430,7 +107738,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-03-15"
   },
   "char_362_saga": {
     "id": "char_362_saga",
@@ -107947,7 +108256,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-02-03"
   },
   "char_4026_vulpis": {
     "id": "char_4026_vulpis",
@@ -108462,7 +108772,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-10-30"
   },
   "char_479_sleach": {
     "id": "char_479_sleach",
@@ -108978,7 +109289,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-09-16"
   },
   "char_420_flamtl": {
     "id": "char_420_flamtl",
@@ -109495,7 +109807,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-10-29"
   },
   "char_427_vigil": {
     "id": "char_427_vigil",
@@ -110010,7 +110323,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-10-31"
   },
   "char_249_mlyss": {
     "id": "char_249_mlyss",
@@ -110599,7 +110913,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-04-28"
   },
   "char_4228_closur": {
     "id": "char_4228_closur",
@@ -111041,7 +111356,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-04-28"
   },
   "char_1045_svash2": {
     "id": "char_1045_svash2",
@@ -111483,7 +111799,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-10-31"
   },
   "char_4087_ines": {
     "id": "char_4087_ines",
@@ -111925,7 +112242,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-04-03"
   },
   "char_134_ifrit": {
     "id": "char_134_ifrit",
@@ -112443,7 +112761,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4229_aphris": {
     "id": "char_4229_aphris",
@@ -112885,7 +113204,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-07-08"
   },
   "char_213_mostma": {
     "id": "char_213_mostma",
@@ -113406,7 +113726,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-11-19"
   },
   "char_180_amgoat": {
     "id": "char_180_amgoat",
@@ -113922,7 +114243,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_2013_cerber": {
     "id": "char_2013_cerber",
@@ -114442,7 +114764,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-02-23"
   },
   "char_4027_heyak": {
     "id": "char_4027_heyak",
@@ -114998,7 +115321,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-04-28"
   },
   "char_4133_logos": {
     "id": "char_4133_logos",
@@ -115514,7 +115838,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-04-30"
   },
   "char_2015_dusk": {
     "id": "char_2015_dusk",
@@ -116071,7 +116396,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-02-03"
   },
   "char_4141_marcil": {
     "id": "char_4141_marcil",
@@ -116513,7 +116839,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-08-30"
   },
   "char_472_pasngr": {
     "id": "char_472_pasngr",
@@ -117071,7 +117398,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-04-14"
   },
   "char_426_billro": {
     "id": "char_426_billro",
@@ -117591,7 +117919,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-05-28"
   },
   "char_4080_lin": {
     "id": "char_4080_lin",
@@ -118106,7 +118435,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-01-14"
   },
   "char_1046_sbell2": {
     "id": "char_1046_sbell2",
@@ -118548,7 +118878,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-10-31"
   },
   "char_377_gdglow": {
     "id": "char_377_gdglow",
@@ -119064,7 +119395,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-02-11"
   },
   "char_1038_whitw2": {
     "id": "char_1038_whitw2",
@@ -119506,7 +119838,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-10-30"
   },
   "char_4046_ebnhlz": {
     "id": "char_4046_ebnhlz",
@@ -120095,7 +120428,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-06-08"
   },
   "char_4226_veen": {
     "id": "char_4226_veen",
@@ -120537,7 +120871,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-04-28"
   },
   "char_4146_nymph": {
     "id": "char_4146_nymph",
@@ -121052,7 +121387,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-07-05"
   },
   "char_1040_blaze2": {
     "id": "char_1040_blaze2",
@@ -121572,7 +121908,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-01-21"
   },
   "char_4204_mantra": {
     "id": "char_4204_mantra",
@@ -122019,7 +122356,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-09-29"
   },
   "char_450_necras": {
     "id": "char_450_necras",
@@ -122462,7 +122800,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-03-06"
   },
   "char_206_gnosis": {
     "id": "char_206_gnosis",
@@ -123020,7 +123359,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-12-20"
   },
   "char_291_aglina": {
     "id": "char_291_aglina",
@@ -123577,7 +123917,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_358_lisa": {
     "id": "char_358_lisa",
@@ -124094,7 +124435,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-07-08"
   },
   "char_1047_halo2": {
     "id": "char_1047_halo2",
@@ -124610,7 +124952,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-10-31"
   },
   "char_248_mgllan": {
     "id": "char_248_mgllan",
@@ -125128,7 +125471,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-10-15"
   },
   "char_4195_radian": {
     "id": "char_4195_radian",
@@ -125337,7 +125681,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-07-14"
   },
   "char_1012_skadi2": {
     "id": "char_1012_skadi2",
@@ -125852,7 +126197,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-04-29"
   },
   "char_4134_cetsyr": {
     "id": "char_4134_cetsyr",
@@ -126294,7 +126640,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-04-30"
   },
   "char_1031_slent2": {
     "id": "char_1031_slent2",
@@ -126810,7 +127157,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-04-28"
   },
   "char_4202_haruka": {
     "id": "char_4202_haruka",
@@ -127252,7 +127600,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-07-31"
   },
   "char_2023_ling": {
     "id": "char_2023_ling",
@@ -127695,7 +128044,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-01-23"
   },
   "char_4072_ironmn": {
     "id": "char_4072_ironmn",
@@ -128210,7 +128560,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-10-09"
   },
   "char_4212_nasti": {
     "id": "char_4212_nasti",
@@ -128653,7 +129004,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-12-04"
   },
   "char_245_cello": {
     "id": "char_245_cello",
@@ -129168,7 +129520,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-10-31"
   },
   "char_1042_phatm2": {
     "id": "char_1042_phatm2",
@@ -129610,7 +129963,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-06-03"
   },
   "char_250_phatom": {
     "id": "char_250_phatom",
@@ -130168,7 +130522,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-04-20"
   },
   "char_1028_texas2": {
     "id": "char_1028_texas2",
@@ -130687,7 +131042,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-10-31"
   },
   "char_1029_yato2": {
     "id": "char_1029_yato2",
@@ -131206,7 +131562,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-03-04"
   },
   "char_1502_crosly": {
     "id": "char_1502_crosly",
@@ -131724,7 +132081,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-10-30"
   },
   "char_322_lmlee": {
     "id": "char_322_lmlee",
@@ -132241,7 +132599,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-01-23"
   },
   "char_1033_swire2": {
     "id": "char_1033_swire2",
@@ -132797,7 +133156,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-07-27"
   },
   "char_400_weedy": {
     "id": "char_400_weedy",
@@ -133317,7 +133677,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-04-30"
   },
   "char_225_haak": {
     "id": "char_225_haak",
@@ -133835,7 +134196,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-01-13"
   },
   "char_1041_angel2": {
     "id": "char_1041_angel2",
@@ -134281,7 +134643,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-04-30"
   },
   "char_474_glady": {
     "id": "char_474_glady",
@@ -134797,7 +135160,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-04-29"
   },
   "char_437_mizuki": {
     "id": "char_437_mizuki",
@@ -135357,7 +135721,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-07-31"
   },
   "char_4132_ascln": {
     "id": "char_4132_ascln",
@@ -135873,7 +136238,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-04-09"
   },
   "char_4246_dminon": {
     "id": "char_4246_dminon",
@@ -136315,7 +136681,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-10-29"
   },
   "char_1023_ghost2": {
     "id": "char_1023_ghost2",
@@ -136872,7 +137239,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-04-29"
   },
   "char_4217_makoto": {
     "id": "char_4217_makoto",
@@ -137317,7 +137685,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-09-03"
   },
   "char_4048_doroth": {
     "id": "char_4048_doroth",
@@ -137834,7 +138203,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-07-03"
   },
   "char_4123_ela": {
     "id": "char_4123_ela",
@@ -138276,7 +138646,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-03-06"
   },
   "char_2027_wang": {
     "id": "char_2027_wang",
@@ -138719,7 +139090,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-02-06"
   },
   "char_1039_thorn2": {
     "id": "char_1039_thorn2",
@@ -139161,7 +139533,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-12-04"
   },
   "char_1015_aglna2": {
     "id": "char_1015_aglna2",
@@ -139532,7 +139905,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-07-30"
   },
   "char_147_shining": {
     "id": "char_147_shining",
@@ -140049,7 +140423,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_179_cgbird": {
     "id": "char_179_cgbird",
@@ -140566,7 +140941,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_003_kalts": {
     "id": "char_003_kalts",
@@ -141124,7 +141500,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-04-29"
   },
   "char_4042_lumen": {
     "id": "char_4042_lumen",
@@ -141639,7 +142016,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-04-29"
   },
   "char_1016_agoat2": {
     "id": "char_1016_agoat2",
@@ -142154,7 +142532,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-07-27"
   },
   "char_1020_reed2": {
     "id": "char_1020_reed2",
@@ -142670,7 +143049,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-12-14"
   },
   "char_4056_titi": {
     "id": "char_4056_titi",
@@ -143115,7 +143495,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-01-06"
   },
   "char_4179_monstr": {
     "id": "char_4179_monstr",
@@ -143557,7 +143938,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-04-03"
   },
   "char_1052_kalts2": {
     "id": "char_1052_kalts2",
@@ -143925,7 +144307,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-04-28"
   },
   "char_136_hsguma": {
     "id": "char_136_hsguma",
@@ -144446,7 +144829,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_202_demkni": {
     "id": "char_202_demkni",
@@ -144964,7 +145348,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_423_blemsh": {
     "id": "char_423_blemsh",
@@ -145481,7 +145866,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-10-12"
   },
   "char_2025_shu": {
     "id": "char_2025_shu",
@@ -145997,7 +146383,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-01-29"
   },
   "char_2014_nian": {
     "id": "char_2014_nian",
@@ -146513,7 +146900,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-01-13"
   },
   "char_311_mudrok": {
     "id": "char_311_mudrok",
@@ -147030,7 +147418,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-10-30"
   },
   "char_4065_judge": {
     "id": "char_4065_judge",
@@ -147545,7 +147934,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-10-31"
   },
   "char_416_zumama": {
     "id": "char_416_zumama",
@@ -148103,7 +148493,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-08-24"
   },
   "char_4039_horn": {
     "id": "char_4039_horn",
@@ -148660,7 +149051,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-04-13"
   },
   "char_1034_jesca2": {
     "id": "char_1034_jesca2",
@@ -149179,7 +149571,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-09-03"
   },
   "char_4194_rmixer": {
     "id": "char_4194_rmixer",
@@ -149694,7 +150087,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-04-30"
   },
   "char_4230_mcnist": {
     "id": "char_4230_mcnist",
@@ -150093,7 +150487,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-07-16"
   },
   "char_2026_yu": {
     "id": "char_2026_yu",
@@ -150536,7 +150931,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-01-21"
   },
   "char_4235_thumpy": {
     "id": "char_4235_thumpy",
@@ -150978,7 +151374,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-07-30"
   },
   "char_1044_hsgma2": {
     "id": "char_1044_hsgma2",
@@ -151424,7 +151821,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-07-31"
   },
   "char_264_f12yin": {
     "id": "char_264_f12yin",
@@ -151941,7 +152339,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-12-15"
   },
   "char_2024_chyue": {
     "id": "char_2024_chyue",
@@ -152457,7 +152856,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-01-14"
   },
   "char_4037_demetr": {
     "id": "char_4037_demetr",
@@ -152899,7 +153299,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-03-09"
   },
   "char_172_svrash": {
     "id": "char_172_svrash",
@@ -153344,7 +153745,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_293_thorns": {
     "id": "char_293_thorns",
@@ -153861,7 +154263,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-08-10"
   },
   "char_4082_qiubai": {
     "id": "char_4082_qiubai",
@@ -154376,7 +154779,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-02-09"
   },
   "char_4182_oblvns": {
     "id": "char_4182_oblvns",
@@ -154818,7 +155222,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-09-02"
   },
   "char_4088_hodrer": {
     "id": "char_4088_hodrer",
@@ -155333,7 +155738,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-09-29"
   },
   "char_4145_ulpia": {
     "id": "char_4145_ulpia",
@@ -155849,7 +156255,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-05-28"
   },
   "char_4058_pepe": {
     "id": "char_4058_pepe",
@@ -156332,7 +156739,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-07-31"
   },
   "char_1051_headb2": {
     "id": "char_1051_headb2",
@@ -156775,7 +157183,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-04-03"
   },
   "char_010_chen": {
     "id": "char_010_chen",
@@ -157293,7 +157702,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_4009_irene": {
     "id": "char_4009_irene",
@@ -157850,7 +158260,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-04-29"
   },
   "char_4116_blkkgt": {
     "id": "char_4116_blkkgt",
@@ -158370,7 +158781,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-12-02"
   },
   "char_017_huang": {
     "id": "char_017_huang",
@@ -158892,7 +159304,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-12-11"
   },
   "char_1026_gvial2": {
     "id": "char_1026_gvial2",
@@ -159451,7 +159864,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-08-08"
   },
   "char_350_surtr": {
     "id": "char_350_surtr",
@@ -159968,7 +160382,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-09-23"
   },
   "char_4098_vvana": {
     "id": "char_4098_vvana",
@@ -160486,7 +160901,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-10-31"
   },
   "char_1019_siege2": {
     "id": "char_1019_siege2",
@@ -161004,7 +161420,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-09-29"
   },
   "char_1050_chen3": {
     "id": "char_1050_chen3",
@@ -161449,7 +161866,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-02-06"
   },
   "char_188_helage": {
     "id": "char_188_helage",
@@ -161966,7 +162384,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-09-10"
   },
   "char_4121_zuole": {
     "id": "char_4121_zuole",
@@ -162481,7 +162900,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-01-29"
   },
   "char_485_pallas": {
     "id": "char_485_pallas",
@@ -162998,7 +163418,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-06-29"
   },
   "char_1014_nearl2": {
     "id": "char_1014_nearl2",
@@ -163516,7 +163937,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2021-10-29"
   },
   "char_4011_lessng": {
     "id": "char_4011_lessng",
@@ -164031,7 +164453,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-10-31"
   },
   "char_1032_excu2": {
     "id": "char_1032_excu2",
@@ -164546,7 +164969,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2023-06-02"
   },
   "char_4010_etlchi": {
     "id": "char_4010_etlchi",
@@ -165061,7 +165485,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-02-12"
   },
   "char_4064_mlynar": {
     "id": "char_4064_mlynar",
@@ -165503,7 +165928,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2022-09-02"
   },
   "char_1043_leizi2": {
     "id": "char_1043_leizi2",
@@ -165945,7 +166371,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-07-07"
   },
   "char_4247_oxi": {
     "id": "char_4247_oxi",
@@ -166313,7 +166740,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-10-29"
   },
   "char_4231_clemnt": {
     "id": "char_4231_clemnt",
@@ -166684,7 +167112,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2026-10-08"
   },
   "char_4214_cairn": {
     "id": "char_4214_cairn",
@@ -167054,7 +167483,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2025-12-04"
   },
   "char_230_savage": {
     "id": "char_230_savage",
@@ -167424,7 +167854,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_282_catap": {
     "id": "char_282_catap",
@@ -167566,7 +167997,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-01"
   },
   "char_283_midn": {
     "id": "char_283_midn",
@@ -167708,7 +168140,8 @@
         "name": "Elite 1",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-30"
   },
   "char_137_brownb": {
     "id": "char_137_brownb",
@@ -168077,7 +168510,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-30"
   },
   "char_347_jaksel": {
     "id": "char_347_jaksel",
@@ -168446,7 +168880,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-10-30"
   },
   "char_164_nightm": {
     "id": "char_164_nightm",
@@ -168818,7 +169253,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-30"
   },
   "char_220_grani": {
     "id": "char_220_grani",
@@ -169188,7 +169624,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-30"
   },
   "char_263_skadi": {
     "id": "char_263_skadi",
@@ -169706,7 +170143,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2019-05-30"
   },
   "char_1001_amiya2": {
     "id": "char_1001_amiya2",
@@ -170080,7 +170518,8 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2020-10-30"
   },
   "char_1037_amiya3": {
     "id": "char_1037_amiya3",
@@ -170454,6 +170893,7 @@
         "name": "Elite 2",
         "category": 0
       }
-    ]
+    ],
+    "releaseDateCn": "2024-04-30"
   }
 }

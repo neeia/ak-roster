@@ -51,6 +51,7 @@ export interface OperatorData {
   potentials: string[];
   skillLevels: SkillLevelGoal[];
   eliteLevels: EliteGoal[];
+  releaseDateCn: string;
 }
 
 export interface SkillData {

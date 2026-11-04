@@ -15,6 +15,7 @@ const cnGachaTable = loadRepositoryTable("cnGachaTable");
 const cnStageTable = loadRepositoryTable("cnStageTable");
 const enHandbookTeamTable = loadRepositoryTable("enHandbookTeamTable");
 const cnHandbookTeamTable = loadRepositoryTable("cnHandbookTeamTable");
+const cnReleaseVerByIdJson =  loadRepositoryTable("cnReleaseVerByIdJson");
 
 const recruitJson = loadRepositoryTable("recruitmentJson");
 
@@ -471,6 +472,14 @@ const createFactionsJson = () => {
   console.log(`operator factions: wrote ${operatorsOutPath}`);
 };
 
+const getReleaseDate = (id) => {
+  const releaseVer = cnReleaseVerByIdJson[id];
+  if (!releaseVer) return null;
+  const dateStr = releaseVer.slice(0, 8);
+  const [yy, mm, dd] = dateStr.split('-');  
+  return `20${yy}-${mm}-${dd}`;
+};
+
 const createOperatorsJson = () => {
   const operatorsJson = Object.fromEntries(
     [
@@ -596,6 +605,7 @@ const createOperatorsJson = () => {
         potentials,
         skillLevels,
         eliteLevels,
+        releaseDateCn: getReleaseDate(id),
       };
       return [id, outputOperator];
     })
