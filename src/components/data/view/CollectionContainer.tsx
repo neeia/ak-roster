@@ -29,9 +29,12 @@ const CollectionContainer = (props: Props) => {
     <Box
       component="ol"
       sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: { xs: "center", sm: "left" },
+        display: "grid",
+        gridTemplateColumns: {
+          xs: "repeat(auto-fit, 108px)",
+          sm: "repeat(auto-fit, 164px)"
+        },
+        justifyContent: "center",
         gap: "12px 6px",
         "& .unowned": {
           opacity: 0.75,
@@ -42,6 +45,7 @@ const CollectionContainer = (props: Props) => {
         "& .hidden": {
           display: "none",
         },
+        width: "100%",
         p: 0,
         m: 0,
       }}

@@ -40,10 +40,11 @@ const View: NextPage = () => {
     <Layout tab="/data" page="/view">
       <Box
         sx={{
-          display: "flex",
-          flexDirection: { xs: "column", sm: "row" },
-          gap: 2,
-        }}
+            display: "grid",
+            gridTemplateAreas: { xs: `"ctrl" "box"`, sm: `"ctrl box"` },
+            gridTemplateColumns: { xs: "1fr", sm: "auto 1fr" },
+            gap: 2,
+          }}
       >
         <Toolbar>
           <SortDialog sortFns={sortFunctions} sortQueue={sorts} setSortQueue={setSorts} toggleSort={toggleSort} />
