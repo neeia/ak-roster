@@ -15,14 +15,14 @@ import {
   useTheme,
 } from "@mui/material";
 import { Close, DragHandle, NorthEast, PlaylistAdd, Sort, SouthEast } from "@mui/icons-material";
-import { SortFunctionData, SortListItem } from "types/sort";
+import { SortFunctionData, SortFunctionFields, SortListItem } from "types/sort";
 import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd";
 
 interface Props {
-  sortFns: Record<string, SortFunctionData>;
+  sortFns: Record<keyof SortFunctionFields, SortFunctionData>;
   sortQueue: SortListItem[];
   setSortQueue: (newQueue: SortListItem[]) => void;
-  toggleSort: (property: string, value?: boolean) => void;
+  toggleSort: (property: keyof SortFunctionFields , value?: boolean) => void;
 }
 
 const SortDialog = (props: Props) => {
@@ -43,7 +43,7 @@ const SortDialog = (props: Props) => {
     items.splice(result.destination.index, 0, reorderedItem);
     setSortQueue(items);
   };
-  const changeKey = (orig: string, newKey: string) => {
+  const changeKey = (orig: keyof SortFunctionFields, newKey: keyof SortFunctionFields) => {
     if (orig === newKey) return;
     const items = Array.from(sortQueue);
     const index = items.findIndex((v) => v.key === orig);
@@ -52,7 +52,7 @@ const SortDialog = (props: Props) => {
     }
     setSortQueue(items);
   };
-  const changeDesc = (key: string) => {
+  const changeDesc = (key: keyof SortFunctionFields) => {
     const items = Array.from(sortQueue);
     const index = items.findIndex((v) => v.key === key);
     if (index >= 0) {
@@ -61,7 +61,7 @@ const SortDialog = (props: Props) => {
     setSortQueue(items);
   };
 
-  const openSorts = Object.keys(sortFns).filter((key) => !sortQueue.some((sli) => sli.key === key));
+  const openSorts = (Object.keys(sortFns) as Array<keyof SortFunctionFields>).filter((key) => !sortQueue.some((sli) => sli.key === key));
 
   const [open, setOpen] = React.useState(false);
   return (
@@ -142,7 +142,7 @@ const SortDialog = (props: Props) => {
                             <TextField
                               select
                               value={key}
-                              onChange={(e) => changeKey(key, e.target.value)}
+                              onChange={(e) => changeKey(key, e.target.value as keyof SortFunctionFields)}
                               variant="outlined"
                               size="small"
                             >
@@ -168,19 +168,24 @@ const SortDialog = (props: Props) => {
                     </Draggable>
                   ))}
                   {provided.placeholder}
-                  <Button
-                    onClick={(e) => toggleSort(openSorts[0], sortFns[openSorts[0]].dfDesc)}
-                    size="small"
-                    disabled={openSorts.length === 0}
-                    sx={{
-                      display: "flex",
-                      gap: 1,
-                      width: "fit-content",
-                    }}
-                  >
-                    <PlaylistAdd />
-                    Add a sort
-                  </Button>
+                  <Box display="flex" flexDirection="row" gap={2} alignItems="center">
+                    <Button
+                      onClick={(e) => toggleSort(openSorts[0], sortFns[openSorts[0]].dfDesc)}
+                      size="small"
+                      disabled={openSorts.length === 0}
+                      sx={{
+                        display: "flex",
+                        gap: 1,
+                        width: "fit-content",
+                      }}
+                    >
+                      <PlaylistAdd />
+                      Add a sort
+                    </Button>
+                    <Typography variant="caption" component="div">
+                      Sort order for each type of page is now saved in your browser.
+                    </Typography>
+                  </Box>
                   <Divider variant="middle" />
                   <Box
                     sx={{

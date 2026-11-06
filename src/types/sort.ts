@@ -1,13 +1,25 @@
-import { OpInfo } from "./operators/operator";
+import { OperatorData, OpInfo } from "./operators/operator";
 
 export interface SortListItem {
-  key: string;
+  key: keyof SortFunctionFields;
   desc: boolean;
 }
 
-export type SortFunction = (a: OpInfo, b: OpInfo) => number;
+export type SortOpInfoOrData = OpInfo | OperatorData;
+
+export type SortFunction = (a: SortOpInfoOrData, b: SortOpInfoOrData, isCnAccount?: boolean) => number;
 
 export interface SortFunctionData {
   fn: SortFunction;
   dfDesc: boolean;
 }
+
+export type SortFunctionFields = {
+  Name: "name";
+  Level: "elite" & "level";
+  Rarity: "rarity";
+  Potential: "potential";
+  Favorite: "favorite";
+  "Release Date": "releaseDateCn";
+  Released: "potential" & "isCnOnly";
+};
