@@ -12,6 +12,7 @@ import useFilter from "util/hooks/useFilter";
 import useOperators from "util/hooks/useOperators";
 import { defaultOperatorObject } from "util/changeOperator";
 import Toolbar from "components/data/Toolbar";
+import useSettings from "util/hooks/useSettings";
 
 const EditOperator = dynamic(() => import("components/data/input/EditOperator"), { ssr: false });
 const CollectionContainer = dynamic(() => import("components/data/view/CollectionContainer"), { ssr: false });
@@ -20,11 +21,17 @@ const View: NextPage = () => {
   const [opId, setOpId] = useState("char_002_amiya");
   const [editOpen, setEditOpen] = useState(false);
 
-  const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort([
-    { key: "Favorite", desc: true },
-    { key: "Level", desc: true },
-    { key: "Rarity", desc: true },
-  ]);
+  const [settings, setSettings] = useSettings();
+  const pageSort = (settings?.sortingSettings?.view ?? []).length > 0
+    ? settings.sortingSettings.view
+    : [
+      { key: "Favorite" as const, desc: true },
+      { key: "Level" as const, desc: true },
+      { key: "Release Date" as const, desc: true },
+      { key: "Rarity" as const, desc: true },
+    ];
+
+  const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort(pageSort, setSettings, "view");
   const { filters, toggleFilter, clearFilters, filterFunction, setSearch } = useFilter({
     OWNED: new Set([true]),
   });
