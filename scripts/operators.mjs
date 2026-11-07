@@ -15,6 +15,7 @@ const cnGachaTable = loadRepositoryTable("cnGachaTable");
 const cnStageTable = loadRepositoryTable("cnStageTable");
 const enHandbookTeamTable = loadRepositoryTable("enHandbookTeamTable");
 const cnHandbookTeamTable = loadRepositoryTable("cnHandbookTeamTable");
+const cnReleaseVerByIdJson =  loadRepositoryTable("cnReleaseVerByIdJson");
 
 const recruitJson = loadRepositoryTable("recruitmentJson");
 
@@ -33,20 +34,16 @@ const isOperator = (charId) => {
 const operatorNameOverride = {
   ShiraYuki: "Shirayuki",
   Гум: "Gummy",
-  Зима: "Zima",
-  Истина: "Istina",
-  Роса: "Rosa",
-  Позёмка: "Pozëmka",
-  Лето: "Leto",
-  Веточки: "Vetochki",
-  Снегурочка: "Snegurochka",
-  Укусик: "Ukusik",
-  Ботани: "Botani",
-  Вий: "Viy",
-  Ольга: "Olga",
-  Тоска: "Toska",
-  Территория: "Territoriya",
 };
+
+const ruToEnMap = {
+  'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'ë', 'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'sch', 'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya',
+  'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 'Е': 'E', 'Ё': 'Ë', 'Ж': 'Zh', 'З': 'Z', 'И': 'I', 'Й': 'Y', 'К': 'K', 'Л': 'L', 'М': 'M', 'Н': 'N', 'О': 'O', 'П': 'P', 'Р': 'R', 'С': 'S', 'Т': 'T', 'У': 'U', 'Ф': 'F', 'Х': 'H', 'Ц': 'Ts', 'Ч': 'Ch', 'Ш': 'Sh', 'Щ': 'Sch', 'Ъ': '', 'Ы': 'Y', 'Ь': '', 'Э': 'E', 'Ю': 'Yu', 'Я': 'Ya'
+};
+
+function cyrillicToLatin(str) {
+  return str.split('').map(char => ruToEnMap[char] ?? char).join('');
+}
 
 //exclusions/inclusions, can't find how to detect in files.
 const colabLimiteds = [
@@ -118,8 +115,12 @@ function getOperatorName(operatorId) {
     console.warn(`Operator is not obtainable: "${operatorId}"`);
   }
   const { appellation } = entry;
-  return operatorNameOverride[appellation] ?? appellation;
+  if (operatorNameOverride[appellation] != null) {
+    return operatorNameOverride[appellation];
+  }
+  return /[а-яё]/i.test(appellation) ? cyrillicToLatin(appellation) : appellation;
 }
+
 function getCNOperatorName(operatorId) {
   if (operatorId === "char_1001_amiya2") {
     return "阿米娅(近卫)";
@@ -133,7 +134,10 @@ function getCNOperatorName(operatorId) {
     console.warn(`Operator is not obtainable: "${operatorId}"`);
   }
   const { name } = entry;
-  return operatorNameOverride[name] ?? name;
+  if (operatorNameOverride[name] != null) {
+    return operatorNameOverride[name];
+  }
+  return /[а-яё]/i.test(name) ? cyrillicToLatin(name) : name;
 }
 function professionToClass(profession) {
   switch (profession) {
@@ -468,6 +472,14 @@ const createFactionsJson = () => {
   console.log(`operator factions: wrote ${operatorsOutPath}`);
 };
 
+const getReleaseDate = (id) => {
+  const releaseVer = cnReleaseVerByIdJson[id];
+  if (!releaseVer) return null;
+  const dateStr = releaseVer.slice(0, 8);
+  const [yy, mm, dd] = dateStr.split('-');  
+  return `20${yy}-${mm}-${dd}`;
+};
+
 const createOperatorsJson = () => {
   const operatorsJson = Object.fromEntries(
     [
@@ -593,6 +605,7 @@ const createOperatorsJson = () => {
         potentials,
         skillLevels,
         eliteLevels,
+        releaseDateCn: getReleaseDate(id),
       };
       return [id, outputOperator];
     })

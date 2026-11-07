@@ -11,6 +11,7 @@ import useFilter from "util/hooks/useFilter";
 import useOperators from "util/hooks/useOperators";
 import { defaultOperatorObject } from "util/changeOperator";
 import Toolbar from "components/data/Toolbar";
+import useSettings from "util/hooks/useSettings";
 
 const EditOperator = dynamic(() => import("components/data/input/EditOperator"), { ssr: false });
 const OperatorSelector = dynamic(() => import("components/data/input/OperatorSelector"), { ssr: false });
@@ -18,10 +19,19 @@ const OperatorSelector = dynamic(() => import("components/data/input/OperatorSel
 const Input: NextPage = () => {
   const [roster, onChange] = useOperators();
 
+  const [settings, setSettings] = useSettings();
+  const pageSort = (settings?.sortingSettings?.input ?? []).length > 0
+    ? settings.sortingSettings.input
+    : [
+      { key: "Released" as const, desc: true },
+      { key: "Rarity" as const, desc: true },
+      { key: "Release Date" as const, desc: true }
+    ];
+
   const [opId, setOpId] = useState<string>();
   const [editOpen, setEditOpen] = useState(false);
 
-  const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort([{ key: "Rarity", desc: true }]);
+  const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort(pageSort, setSettings, "input");
   const { filters, toggleFilter, clearFilters, filterFunction, setSearch } = useFilter();
 
   const selectOp = useCallback((id: string) => {
@@ -31,7 +41,7 @@ const Input: NextPage = () => {
 
   return (
     <Layout tab="/data" page="/input">
-      <Box 
+      <Box
         maxWidth="xl"
         sx={{
           display: "flex",

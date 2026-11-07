@@ -20,6 +20,7 @@ import supabase from "supabase/supabaseClient";
 import AccountData from "types/auth/accountData";
 import Roster from "types/operators/roster";
 import { Operator } from "types/operators/operator";
+import useSettings from "util/hooks/useSettings";
 
 export const getServerSideProps = (async (context) => {
   const username = ([] as string[])
@@ -68,11 +69,17 @@ const Lookup = ({ username: _username, data: _data }: InferGetServerSidePropsTyp
   const { query, data, loading, clear } = useLookup();
   const [open, setOpen] = useState(false);
 
-  const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort([
-    { key: "Favorite", desc: true },
-    { key: "Level", desc: true },
-    { key: "Rarity", desc: true },
-  ]);
+  const [settings, setSettings] = useSettings();
+  const pageSort = (settings?.sortingSettings?.lookup ?? []).length > 0
+    ? settings.sortingSettings.lookup
+    : [
+      { key: "Favorite" as const, desc: true },
+      { key: "Level" as const, desc: true },
+      { key: "Release Date" as const, desc: true },
+      { key: "Rarity" as const, desc: true },
+    ];
+
+  const { sorts, setSorts, toggleSort, sortFunction, sortFunctions } = useSort(pageSort, setSettings, "lookup");
   const { filters, toggleFilter, clearFilters, filterFunction, setSearch } = useFilter({
     OWNED: new Set([true]),
   });
@@ -83,13 +90,13 @@ const Lookup = ({ username: _username, data: _data }: InferGetServerSidePropsTyp
   const description =
     superdata?.account?.friendcode?.username && superdata?.account?.friendcode?.tag
       ? [
-          `${superdata.account.friendcode.username}#${superdata.account.friendcode.tag}`,
-          superdata.account.server,
-          superdata.account.level && `Level ${superdata.account.level}`,
-          superdata.account.onboard,
-        ]
-          .filter((s) => s)
-          .join(" - ")
+        `${superdata.account.friendcode.username}#${superdata.account.friendcode.tag}`,
+        superdata.account.server,
+        superdata.account.level && `Level ${superdata.account.level}`,
+        superdata.account.onboard,
+      ]
+        .filter((s) => s)
+        .join(" - ")
       : "";
 
   const themeColor = superdata?.account?.color || brand["/network"];

@@ -1,9 +1,26 @@
+import { SortListItem } from "./sort";
+
 export interface LocalStorageSettings {
   version: string;
   plannerSettings: PlannerSettings;
   depotSettings: DepotSettings;
   recruitSettings: RecruitSettings;
   importSettings: ImportSettings;
+  sortingSettings: SortingSettings;
+}
+
+export interface SortingSettings {
+  input: SortListItem[];
+  view: SortListItem[];
+  lookup: SortListItem[];
+  operatorSearch: SortListItem[]; 
+}
+
+const sortingSettings: SortingSettings = {
+  input: [],
+  view: [],
+  lookup: [],
+  operatorSearch: [],
 }
 
 export interface InactiveOpsInGroups {
@@ -80,4 +97,5 @@ export const defaultSettings: LocalStorageSettings = {
   recruitSettings,
   depotSettings,
   importSettings,
+  sortingSettings,
 };
