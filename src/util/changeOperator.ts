@@ -195,7 +195,7 @@ export const changeModule = (op: Operator, id: string, value: number) => {
 
   if (op.elite !== 2 || op.level < MODULE_REQ_BY_RARITY[rarity]) return op;
   const modules = { ...op.modules };
-  modules[id] = value;
+  modules[id] = clamp(0, value, 3);
   return { ...op, modules };
 };
 
