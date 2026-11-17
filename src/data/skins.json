@@ -144,7 +144,7 @@
     },
     {
       "skinId": "char_4215_buddy@mh#2",
-      "skinName": "露营时间喵！",
+      "skinName": "Camping Time!",
       "avatarId": "char_4215_buddy_mh#2",
       "sortId": 438
     }
@@ -254,7 +254,7 @@
     },
     {
       "skinId": "char_281_popka@sale#18",
-      "skinName": "幽然灵竹",
+      "skinName": "The Bamboo Spiritualist",
       "avatarId": "char_281_popka_sale#18",
       "sortId": 28
     },
@@ -4024,7 +4024,7 @@
     },
     {
       "skinId": "char_494_vendla@game#10",
-      "skinName": "蔷薇之谜",
+      "skinName": "The Enigma of Roses",
       "avatarId": "char_494_vendla_game#10",
       "sortId": 471
     }
@@ -6256,7 +6256,7 @@
     },
     {
       "skinId": "char_4026_vulpis@epoque#55",
-      "skinName": "失焦",
+      "skinName": "Out of Focus",
       "avatarId": "char_4026_vulpis_epoque#55",
       "sortId": 133
     }
@@ -7001,6 +7001,12 @@
       "skinName": null,
       "avatarId": "char_1047_halo2_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_1047_halo2@striker#4",
+      "skinName": "暗能质子",
+      "avatarId": "char_1047_halo2_striker#4",
+      "sortId": 408
     }
   ],
   "char_248_mgllan": [
@@ -7015,6 +7021,12 @@
       "skinName": null,
       "avatarId": "char_248_mgllan_2",
       "sortId": -1
+    },
+    {
+      "skinId": "char_248_mgllan@epoque#60",
+      "skinName": "绿影之下",
+      "avatarId": "char_248_mgllan_epoque#60",
+      "sortId": 141
     },
     {
       "skinId": "char_248_mgllan@kitchen#1",
